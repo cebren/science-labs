@@ -6,3 +6,5 @@ The public website for Confluence Curriculum & PD, led by Dr. Lance Pedersen: ht
 It hosts the Alberta Science (Grades 7–9) Starter Pack, free interactive labs and slide decks for Alberta's new Science 7 to 9 curriculum (2027/28).
 
 This is a static site. Hostinger deploys the `main` branch into `public_html` on every push.
+
+`_build/` holds the catalog and the deck builder (`make_deck.py`). The web server blocks it with its own `.htaccess`.

@@ -1,0 +1,45 @@
+/* Deck viewer: each slide is a 1920x1080 <section> scaled to fit */
+html,body{margin:0;height:100%}
+body.deck{background:#0E1418;color:#E9EEF1;font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;overflow-x:hidden}
+.dk-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 16px;background:#141D23;border-bottom:1px solid #26333C;font-size:.95rem}
+.dk-bar a{color:#9FD0F0}
+.dk-title{font-family:"Bricolage Grotesque","Segoe UI",sans-serif;font-weight:700;font-size:1.05rem;margin-right:auto}
+.dk-stage-wrap{display:block;padding:12px}
+.dk-stage{position:relative;margin:0 auto;width:100%;max-width:calc((100vh - 150px) * 16 / 9);aspect-ratio:16/9;overflow:hidden;background:#000;border-radius:6px;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.dk-scaler{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.dk-scaler>section{position:relative;width:1920px;height:1080px;overflow:hidden;box-sizing:border-box}
+.dk-scaler>section:not(.on){display:none!important}
+.dk-scaler section *{box-sizing:border-box}
+.dk-scaler section p,.dk-scaler section h1,.dk-scaler section h2,.dk-scaler section h3,.dk-scaler section h4,.dk-scaler section ul,.dk-scaler section ol{margin:0}
+.dk-scaler section table{border-collapse:separate;border-spacing:0;width:100%;overflow:hidden}
+.dk-scaler section th,.dk-scaler section td{text-align:left;padding:18px 24px;border-bottom:1px solid rgba(127,127,127,.3);vertical-align:top}
+.dk-scaler section th{font-weight:700}
+.dk-scaler section tr:last-child td{border-bottom:0}
+.dk-scaler section img{max-width:100%}
+.dk-scaler aside{display:none!important}
+x-shape{display:inline-block;flex:none}
+x-shape[kind="arrow-right"]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)}
+x-shape[kind="arrow-left"]{clip-path:polygon(100% 30%,40% 30%,40% 0,0 50%,40% 100%,40% 70%,100% 70%)}
+x-shape[kind="arrow-down"]{clip-path:polygon(30% 0,70% 0,70% 60%,100% 60%,50% 100%,0 60%,30% 60%)}
+x-shape[kind="arrow-up"]{clip-path:polygon(30% 100%,70% 100%,70% 40%,100% 40%,50% 0,0 40%,30% 40%)}
+x-shape[kind="circle"],x-shape[kind="ellipse"]{border-radius:50%}
+x-shape[kind="triangle"]{clip-path:polygon(50% 0,100% 100%,0 100%)}
+x-shape[kind="diamond"]{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.dk-ctrl{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;padding:8px 16px 14px}
+.dk-ctrl button{font:inherit;font-weight:700;background:#1F5E8C;color:#fff;border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+.dk-ctrl button[aria-pressed="true"]{background:#3A9E96}
+.dk-ctrl button:disabled{opacity:.4;cursor:default}
+.dk-ctrl button:focus-visible,.dk-bar a:focus-visible{outline:3px solid #E0A030;outline-offset:2px}
+.dk-count{font-family:"JetBrains Mono",ui-monospace,monospace;min-width:6ch;text-align:center}
+.dk-notes{box-sizing:border-box;max-width:1100px;margin:0 auto 18px;padding:14px 18px;background:#172129;border:1px solid #2C3A45;border-radius:10px;line-height:1.55;width:calc(100% - 32px)}
+.dk-notes[hidden]{display:none}
+.dk-notes h2{font-family:"JetBrains Mono",monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#A2AEB7;margin:0 0 6px}
+@media print{
+  @page{size:landscape;margin:0}
+  body.deck{background:#fff;display:block}
+  .dk-bar,.dk-ctrl,.dk-notes{display:none!important}
+  .dk-stage-wrap{padding:0;display:block}
+  .dk-stage{max-width:none;width:auto;aspect-ratio:auto;overflow:visible;box-shadow:none;border-radius:0;background:none}
+  .dk-scaler{position:static;transform:none!important;width:auto;height:auto}
+  .dk-scaler>section,.dk-scaler>section:not(.on){display:flex!important;break-after:page;zoom:.52}
+}
