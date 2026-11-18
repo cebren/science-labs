@@ -1,0 +1,5722 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Science 8 Year Plan 2027/28</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a teacher's day book. Units run down the page as chapters; each class is one ruled line with date, lesson, outcome codes and resource status. Grade colour matches the Confluence Science Starter Pack index. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#15212C; --muted:#53606D; --line:#D2D9E0;
+  --g7:#A4501E; --g7-soft:#F8E7DC; --g8:#1D5FA8; --g8-soft:#DFEAF6; --g9:#2E7A4F; --g9-soft:#DFF0E5;
+  --carry:#2E7A4F; --carry-soft:#DFF0E5; --adapt:#9A6A08; --adapt-soft:#FBF0D6; --new:#B4471F; --new-soft:#F8E2D8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --g7:#F0A070; --g7-soft:#3A2418; --g8:#7DB0F0; --g8-soft:#18283C; --g9:#74C995; --g9-soft:#16301F;
+  --carry:#74C995; --carry-soft:#16301F; --adapt:#E8C068; --adapt-soft:#3A2E12; --new:#F09A74; --new-soft:#3A2218;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --g7:#F0A070; --g7-soft:#3A2418; --g8:#7DB0F0; --g8-soft:#18283C; --g9:#74C995; --g9-soft:#16301F;
+  --carry:#74C995; --carry-soft:#16301F; --adapt:#E8C068; --adapt-soft:#3A2E12; --new:#F09A74; --new-soft:#3A2218;
+  color-scheme:dark }
+:root{--gc:var(--g8);--gs:var(--g8-soft)}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gc)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gc);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+.muted{color:var(--muted)}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 18px;display:grid;gap:14px}
+.brand{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:flex-end;justify-content:space-between}
+.brand h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+.brand h1 span{color:var(--gc)}
+.draft{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1.5px dashed var(--gc);color:var(--gc);padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:8px}
+.sub{color:var(--muted);max-width:70ch;margin-top:6px;font-size:.92rem}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:8px 12px;min-width:110px}
+.stat b{display:block;font-family:var(--f-display);font-size:1.35rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat.lab{border-color:var(--gc);background:var(--gs)}
+.stat.lab b{color:var(--gc)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding-block:6px}
+nav.tabs a{text-decoration:none;padding:8px 13px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--muted);white-space:nowrap}
+nav.tabs a:hover{color:var(--ink);background:var(--surface-2)}
+nav.tabs a[aria-current="page"]{background:var(--gc);color:var(--surface)}
+
+main{padding-block:22px 56px}
+.panel{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+.panel>*{min-width:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.controls input[type="search"]{flex:1 1 220px;min-width:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface-2)}
+.controls select{flex:1 1 200px;min-width:0;width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);max-width:100%}
+.seg{display:flex;gap:3px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;flex-wrap:wrap}
+.seg button{border:0;background:none;font-weight:700;font-size:.82rem;color:var(--muted);padding:5px 11px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.check{display:flex;gap:6px;align-items:center;font-size:.86rem;color:var(--muted)}
+.check input{accent-color:var(--gc)}
+.count{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);margin-left:auto}
+
+.unit{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.unit-head{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;justify-content:space-between;padding:14px 16px;border-bottom:2px solid var(--gc);background:var(--surface)}
+.unit-head h2{font-size:1.25rem;font-weight:800;letter-spacing:-.01em}
+.unit-head span{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.core{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;padding:10px 16px;background:var(--gs);border-bottom:1px solid var(--line);align-items:start}
+.core .tag{font-family:var(--f-mono);font-weight:600;font-size:.8rem;color:var(--gc);border:1.5px solid var(--gc);border-radius:6px;padding:1px 7px;margin-top:2px}
+.core p{font-weight:700}
+.core small{display:block;color:var(--muted);font-size:.84rem;font-weight:400}
+.lablink{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-weight:700;font-size:.86rem;color:var(--gc);text-decoration:none;background:var(--surface);border:1px solid var(--gc);border-radius:999px;padding:2px 10px}
+.lablink:hover{text-decoration:underline}
+.lablink svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+.day{display:grid;grid-template-columns:5.6em minmax(0,1fr) minmax(0,13em) 7.2em;gap:4px 14px;padding:10px 16px;border-bottom:1px solid var(--line);align-items:start}
+.day:last-child{border-bottom:0}
+.when{font-family:var(--f-mono);font-size:.78rem;line-height:1.35;font-variant-numeric:tabular-nums}
+.when b{display:block;font-size:.9rem;color:var(--ink)}
+.when span{color:var(--muted)}
+.what{min-width:0;display:grid;gap:3px}
+.what .lesson{font-weight:700}
+.ev{font-size:.78rem;color:var(--gc);font-weight:700}
+.res{font-size:.84rem;color:var(--muted)}
+.res b{color:var(--ink);font-weight:700}
+.codes{display:flex;flex-wrap:wrap;gap:4px;align-content:start}
+.codes code{font-family:var(--f-mono);font-size:.7rem;padding:1px 6px;border-radius:5px;background:var(--surface-2);border:1px solid var(--line)}
+.st{justify-self:end;display:grid;gap:4px;justify-items:end}
+.pill{font-family:var(--f-mono);font-size:.64rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill.carry{background:var(--carry-soft);color:var(--carry)}
+.pill.adapt{background:var(--adapt-soft);color:var(--adapt)}
+.pill.new{background:var(--new-soft);color:var(--new)}
+.minilab{font-size:.74rem;font-weight:700;color:var(--gc);text-decoration:none;white-space:nowrap}
+.minilab:hover{text-decoration:underline}
+.off{display:flex;gap:14px;padding:6px 16px;border-bottom:1px solid var(--line);background:var(--surface-2);font-size:.82rem;color:var(--muted)}
+.off .when{width:5.6em;flex:0 0 auto}
+.off:last-child{border-bottom:0}
+@media (max-width:720px){
+  .day{grid-template-columns:4.6em minmax(0,1fr)}
+  .codes,.st{grid-column:2}
+  .st{justify-self:start;justify-items:start;grid-auto-flow:column}
+}
+
+.block{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px;min-width:0;grid-template-columns:minmax(0,1fr)}
+.block h2{font-size:1.3rem;font-weight:800}
+.tablewrap{overflow-x:auto}
+table.t{border-collapse:collapse;font-size:.86rem;width:100%}
+table.t th,table.t td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+table.t th{font-family:var(--f-display);font-weight:700;background:var(--surface-2);position:sticky;top:0}
+table.t td.num{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.t td.code{font-family:var(--f-mono);font-size:.78rem;white-space:nowrap;color:var(--gc);font-weight:600}
+table.t tr.u td{background:var(--gs);font-weight:700}
+.yes{color:var(--carry);font-weight:700}
+.no{color:var(--new);font-weight:700}
+.cmp{display:grid;gap:12px}
+.cmp article{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:10px}
+.cmp h3{font-size:1.08rem}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px 18px}
+.kv div{min-width:0}
+.kv dt{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kv dd{margin:2px 0 0;font-size:.9rem}
+.bar{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;background:var(--gc)}
+.prose{display:grid;gap:12px;max-width:72ch}
+.prose h3{font-size:1.05rem;margin-top:6px}
+.empty{padding:28px;text-align:center;border:1.5px dashed var(--line);border-radius:var(--r);color:var(--muted)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:16px 28px;display:grid;gap:4px;font-size:.84rem;color:var(--muted)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">Science 8 · 2027/28</div>
+        <h1>Science <span>8</span> Year Plan <span class="draft">Draft</span></h1>
+        <p class="sub" id="sub"></p>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Year plan sections">
+  <div class="wrap" id="tabs">
+    <a href="#plan">Day by day</a>
+    <a href="#outcomes">Outcome map</a>
+    <a href="#comparison">Curriculum comparison</a>
+    <a href="#pacing">Calendar and pacing</a>
+    <a href="#rationale">Rationale</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="panel" id="v-plan">
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search lessons, resources or codes" aria-label="Search lessons">
+      <select id="unitSel" aria-label="Unit"></select>
+      <div class="seg" role="group" aria-label="Resource status" id="stSeg">
+        <button type="button" data-s="all" aria-pressed="true">All</button>
+        <button type="button" data-s="Carry over" aria-pressed="false">Carry over</button>
+        <button type="button" data-s="Adapt" aria-pressed="false">Adapt</button>
+        <button type="button" data-s="New build" aria-pressed="false">New build</button>
+      </div>
+      <label class="check"><input type="checkbox" id="showOff" checked> Show non-class days</label>
+      <span class="count" id="count"></span>
+    </div>
+    <div id="plan" style="display:grid;gap:16px"></div>
+  </section>
+  <section class="panel" id="v-outcomes" hidden>
+    <div class="controls">
+      <input type="search" id="oq" placeholder="Search codes or statements" aria-label="Search outcomes">
+      <div class="seg" role="group" aria-label="Statement type" id="oSeg">
+        <button type="button" data-o="all" aria-pressed="true">All</button>
+        <button type="button" data-o="Knowledge" aria-pressed="false">Knowledge</button>
+        <button type="button" data-o="Skills" aria-pressed="false">Skills</button>
+      </div>
+      <span class="count" id="ocount"></span>
+    </div>
+    <div class="block"><p class="muted" id="onote"></p><div class="tablewrap"><table class="t" id="otable"></table></div></div>
+  </section>
+  <section class="panel" id="v-comparison" hidden><h2 id="ctitle"></h2><div class="cmp" id="cmp"></div><div class="block"><h2>Sources</h2><div id="csrc" class="prose"></div></div></section>
+  <section class="panel" id="v-pacing" hidden><div id="pace" style="display:grid;gap:16px"></div></section>
+  <section class="panel" id="v-rationale" hidden><div class="block"><div class="prose" id="rat"></div></div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="labnote"></span>
+    <span>Dates follow a projected EPSB 2027/28 calendar. Outcome codes are labels added for this collection for the unnumbered Draft Science (7 to 9) Curriculum, September 2026.</span>
+    <span>All interactive labs: <a href="https://claude.ai/artifact/9SVj66LucMGzU8g1w1Z7Ro" target="_blank" rel="noopener">Confluence Science Starter Pack</a></span>
+  </div>
+</footer>
+
+<!-- LABS:START -->
+<script type="application/json" id="labs">{
+ "grade": 8,
+ "updated": "2026-11-16",
+ "note": "Lab links are added by the scheduled task once a lab is shared publicly. Keys are understanding codes.",
+ "labs": {
+  "SL1": {
+   "title": "Laws and Theories Lab",
+   "url": "https://claude.ai/artifact/8CYJUC2j51SsH1gj4MN3fs",
+   "linked": "2026-10-28",
+   "deck": {
+    "title": "Laws and Theories Slides",
+    "url": "https://claude.ai/artifact/TLJseWZJPugfNftkyjtHzM",
+    "linked": "2026-10-31"
+   }
+  },
+  "SL2": {
+   "title": "Patterns and Bias Lab",
+   "url": "https://claude.ai/artifact/G9Ka7E9ksLXigH3HPRaqf7",
+   "linked": "2026-10-28",
+   "deck": {
+    "title": "Patterns and Bias Slides",
+    "url": "https://claude.ai/artifact/Sj9xGBdGmC1Ns189cmcKq5",
+    "linked": "2026-11-02"
+   }
+  },
+  "M1": {
+   "title": "Atom Builder Lab",
+   "url": "https://claude.ai/artifact/725yTHgxZ2T67Z2hyxLbES",
+   "linked": "2026-10-31",
+   "deck": {
+    "title": "Atom Builder Slides",
+    "url": "https://claude.ai/artifact/BMKiMfJKGCKcLVWZ1MEJcs",
+    "linked": "2026-11-02"
+   }
+  },
+  "M2": {
+   "title": "Periodic Table Lab",
+   "url": "https://claude.ai/artifact/GdAFfjD4uPc4mfbjFPwgEK",
+   "linked": "2026-11-02",
+   "deck": {
+    "title": "Periodic Table Slides",
+    "url": "https://claude.ai/artifact/SBTnCjEEqoM9RUd7Hn4PxK",
+    "linked": "2026-11-02"
+   }
+  },
+  "F1": {
+   "title": "Forces in Motion Lab",
+   "url": "https://claude.ai/artifact/3SEKPm1PxZqVD11V2p3KmL",
+   "linked": "2026-10-31",
+   "deck": {
+    "title": "Forces in Motion Slides",
+    "url": "https://claude.ai/artifact/M9JeS9TarTK5fJ9G8hp7HF",
+    "linked": "2026-10-31"
+   }
+  },
+  "F2": {
+   "title": "Fluids and Pressure Lab",
+   "url": "https://claude.ai/artifact/95dsV9J4jY14PB8ib8P7WY",
+   "linked": "2026-11-02",
+   "deck": {
+    "title": "Fluids and Pressure Slides",
+    "url": "https://claude.ai/artifact/TzYcGb7t37Jt8GmQAwnkq6",
+    "linked": "2026-11-04"
+   }
+  },
+  "CS3": {
+   "title": "Design Criteria Lab",
+   "url": "https://claude.ai/artifact/TDnHSQ1sAJDjVYTEdr76c6",
+   "linked": "2026-11-02",
+   "deck": {
+    "title": "Design Criteria Slides",
+    "url": "https://claude.ai/artifact/GUbcR2ZJWZXpG7niWEWbRP",
+    "linked": "2026-11-02"
+   }
+  },
+  "EN1": {
+   "title": "Energy Stores Lab",
+   "url": "https://claude.ai/artifact/BTRZqib24LnULKAoUZJKYP",
+   "linked": "2026-11-04",
+   "deck": {
+    "title": "Energy Stores Slides",
+    "url": "https://claude.ai/artifact/CGkHT55HJ1i6yboBVBtysK",
+    "linked": "2026-11-04"
+   }
+  },
+  "EN2": {
+   "title": "Static Charge Lab",
+   "url": "https://claude.ai/artifact/XeKMhLK6qaUZjBwkDES1uE",
+   "linked": "2026-11-04",
+   "deck": {
+    "title": "Static Charge Slides",
+    "url": "https://claude.ai/artifact/Wq9YwwsNNsYthSqA1JfMAH",
+    "linked": "2026-11-04"
+   }
+  },
+  "EN3": {
+   "title": "Wave Energy Lab",
+   "url": "https://claude.ai/artifact/A24iq5T7bgxnpyu35sGHeS",
+   "linked": "2026-11-05",
+   "deck": {
+    "title": "Wave Energy Slides",
+    "url": "https://claude.ai/artifact/5JE4VeVos9cNPMQ2PhtRpB",
+    "linked": "2026-11-05"
+   }
+  },
+  "LS1": {
+   "title": "Cell Explorer Lab",
+   "url": "https://claude.ai/artifact/TWZBTipigURQTrbxuvBZrr",
+   "linked": "2026-11-07",
+   "deck": {
+    "title": "Cell Explorer Slides",
+    "url": "https://claude.ai/artifact/7MVqwZ2tXxi2aAq7WaJK54",
+    "linked": "2026-11-07"
+   }
+  },
+  "LS2": {
+   "title": "Cell Division Lab",
+   "url": "https://claude.ai/artifact/TsDngDQVcwbkSxCeCtJoSP",
+   "linked": "2026-11-10",
+   "deck": {
+    "title": "Cell Division Slides",
+    "url": "https://claude.ai/artifact/LFFujowZrFwtv8T3mzVbgA",
+    "linked": "2026-11-10"
+   }
+  },
+  "LS3": {
+   "title": "Body Systems Lab",
+   "url": "https://claude.ai/artifact/XbDcLUmpRDj8FLFevSG3Ng",
+   "linked": "2026-11-10",
+   "deck": {
+    "title": "Body Systems Slides",
+    "url": "https://claude.ai/artifact/UywYd6noHzL43erhqbWeVw",
+    "linked": "2026-11-10"
+   }
+  },
+  "CS1": {
+   "title": "Efficient Code Lab",
+   "url": "https://claude.ai/artifact/PiBDv7HywJr85T3di52UXD",
+   "linked": "2026-11-10",
+   "deck": {
+    "title": "Efficient Code Slides",
+    "url": "https://claude.ai/artifact/MwmNUhK4kZ8UeBUECcYU19",
+    "linked": "2026-11-10"
+   }
+  },
+  "CS2": {
+   "title": "AI Impact Lab",
+   "url": "https://claude.ai/artifact/3LdYfGoEaUnD595rAnP5G4",
+   "linked": "2026-11-11",
+   "deck": {
+    "title": "AI Impact Slides",
+    "url": "https://claude.ai/artifact/FMUMSrZsyZateuxByxp39Z",
+    "linked": "2026-11-11"
+   }
+  },
+  "ES1": {
+   "title": "Fossil Record Lab",
+   "url": "https://claude.ai/artifact/5jjCKPRaHWfMHivCWM9CW9",
+   "linked": "2026-11-16",
+   "deck": {
+    "title": "Fossil Record Slides",
+    "url": "https://claude.ai/artifact/NGvZds5r7Z2yGH8y3gwBaJ",
+    "linked": "2026-11-16"
+   }
+  },
+  "ES2": {
+   "title": "Resource Extraction Lab",
+   "url": "https://claude.ai/artifact/SqwpKh3wek4uXwETSK8jyJ",
+   "linked": "2026-11-16",
+   "deck": {
+    "title": "Resource Extraction Slides",
+    "url": "https://claude.ai/artifact/1gx5CxZaazDZL3bCjETWN1",
+    "linked": "2026-11-16"
+   }
+  },
+  "SP1": {
+   "title": "Cosmic History Lab",
+   "url": "https://claude.ai/artifact/RC7oUeTxg9i5TvdLHdYFQ5",
+   "linked": "2026-11-16",
+   "deck": {
+    "title": "Cosmic History Slides",
+    "url": "https://claude.ai/artifact/WK22gz9vYt3LT8Z7bv5wNM",
+    "linked": "2026-11-16"
+   }
+  },
+  "SL3": {
+   "title": "Sustainable Futures Lab",
+   "url": "https://claude.ai/artifact/UtQHNvRBvFWGVRgzWywCQv",
+   "linked": "2026-11-16",
+   "deck": {
+    "title": "Sustainable Futures Slides",
+    "url": "https://claude.ai/artifact/KndxFtSQY6X7jPFLyezagM",
+    "linked": "2026-11-16"
+   }
+  }
+ }
+}</script>
+<!-- LABS:END -->
+
+<script type="application/json" id="plandata">
+{
+"grade": 8,
+"title": "Science 8 Year Plan 2027/28 (DRAFT: projected EPSB calendar; Draft Science 7-9 Curriculum, Sept 2026). Outcome codes are defined on the Outcome Map tab.",
+"items": [
+{
+"t": "unit",
+"name": "INTRO",
+"lo": ""
+},
+{
+"t": "day",
+"date": "2027-09-01",
+"day": "1",
+"lesson": "Intro day 1: short classes, course outline",
+"unit": "Intro | Course launch"
+},
+{
+"t": "day",
+"date": "2027-09-02",
+"day": "2",
+"ev": "Grade level assemblies (projected)",
+"lesson": "Intro day 2: introductions and ice breakers",
+"unit": "Intro | Course launch"
+},
+{
+"t": "unit",
+"name": "SCIENTIFIC LITERACY LAUNCH: Safety, Methods, Laws and Theories, Patterns in Data",
+"lo": "Learning outcomes: SAFE, SL1, SL2"
+},
+{
+"t": "core",
+"code": "SL1",
+"und": "Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"lo": "Scientific Literacy LO: Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge."
+},
+{
+"t": "day",
+"date": "2027-09-03",
+"day": "1",
+"ev": "Grade level assemblies (projected)",
+"lesson": "Scientific method; facts, models, laws and theories",
+"unit": "Launch | SL1: Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"codes": "SL1.K1, SL1.K2, SL1.S1",
+"pres": "Scientific Method",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2027-09-06",
+"lesson": "HOLIDAY: Labour Day"
+},
+{
+"t": "day",
+"date": "2027-09-07",
+"day": "2",
+"lesson": "Graphing review: patterns between two variables",
+"unit": "Launch | SL2: Unbiased data can help accurately predict trends.",
+"codes": "SL2.K1, SL2.S1",
+"pres": "Graphing Review",
+"act": "Graphing Stations",
+"need": "Graphing Assignments",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-09-08",
+"day": "1",
+"lesson": "Rotocopter Lab: use a model to make and test predictions",
+"unit": "Launch | SL1: Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"codes": "SL1.K6, SL1.S3, SL2.S1",
+"pres": "Rotocopter Lab",
+"act": "Paper helicopter",
+"need": "Sm, Med and Lrg rotocopters; Rotocopters Scaled",
+"status": "Carry over"
+},
+{
+"t": "core",
+"code": "SAFE",
+"und": "Safety in Science: students demonstrate safety through responsive decision making and ethical behaviour (subject introduction).",
+"lo": "Safety in Science LO: Subject introduction: Safety in Science (not a numbered learning outcome)."
+},
+{
+"t": "day",
+"date": "2027-09-09",
+"day": "2",
+"lesson": "Lab safety and WHMIS basics",
+"unit": "Launch | SAFE: Safety in Science: students demonstrate safety through responsive decision making and ethical behaviour (subject introduction).",
+"codes": "SAFE",
+"pres": "Lab safety & WHMIS",
+"act": "Lab safety doodle notes",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-09-10",
+"day": "1",
+"lesson": "WHMIS activity in Lab: safety stations",
+"unit": "Launch | SAFE: Safety in Science: students demonstrate safety through responsive decision making and ethical behaviour (subject introduction).",
+"codes": "SAFE",
+"act": "safety stations, handout, Domino Activity",
+"need": "WHMIS \"I Have, Who Has\"",
+"status": "Carry over"
+},
+{
+"t": "core",
+"code": "SL2",
+"und": "Unbiased data can help accurately predict trends.",
+"lo": "Scientific Literacy LO: Students interpret patterns and possible bias in data."
+},
+{
+"t": "day",
+"date": "2027-09-13",
+"day": "2",
+"lesson": "When patterns mislead: bias in reasoning and analysis (rotocopter class data)",
+"unit": "Launch | SL2: Unbiased data can help accurately predict trends.",
+"codes": "SL2.K2, SL2.K3, SL2.S2",
+"act": "Bias in data cases (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-09-14",
+"day": "1",
+"lesson": "Laws vs theories card sort; launch year-long 'law or theory?' wall",
+"unit": "Launch | SL1: Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"codes": "SL1.K3, SL1.K4, SL1.K5, SL1.K8, SL1.S1",
+"act": "Law vs theory card sort (new)",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "UNIT 1 MATTER: Atoms and the Periodic Table",
+"lo": "Learning outcomes: M1, M2"
+},
+{
+"t": "core",
+"code": "M1",
+"und": "Atoms can be defined by their structure.",
+"lo": "Matter LO: Students interpret matter in relation to atomic structure and physical and chemical properties."
+},
+{
+"t": "day",
+"date": "2027-09-15",
+"day": "2",
+"lesson": "Bridge: particle model; pure substances and mixtures (new Gr 7 content this cohort missed)",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.K1",
+"pres": "Topic 1 - Fluids and PMOM; Topic 2 - Classification",
+"act": "Topic 1, Topic 2",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-09-16",
+"day": "1",
+"lesson": "All matter is made of atoms; seeing the invisible",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.K1, M1.K2",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-09-17",
+"day": "2",
+"lesson": "Subatomic particles: protons, electrons, neutrons; the nucleus",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.K3, M1.K4",
+"pres": "Sci 9 Chem Topic 3 - Atomic Models (adapt)",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2027-09-20",
+"lesson": "PD Day"
+},
+{
+"t": "day",
+"date": "2027-09-21",
+"day": "1",
+"lesson": "Atomic models through history: Dalton to Bohr (models, not laws)",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.K5, SL1.K6",
+"pres": "Sci 9 Gold Foil experiment (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-09-22",
+"day": "2",
+"lesson": "Bohr models: electron shells (2, 8, 8)",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.K6, M1.S1",
+"act": "Bohr model practice (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-09-23",
+"day": "1",
+"ev": "CAT 4 (projected)",
+"lesson": "Bohr model build (first 18 elements)",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.S1, M1.K6",
+"act": "Bohr model build (new)",
+"need": "Beads, paper plates or pipe cleaners",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2027-09-24",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2027-09-27",
+"day": "2",
+"lesson": "Research a technology used to study atoms (electron microscopes, particle accelerators, STM)",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.S2, M1.K2",
+"act": "Atom tech research (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-09-28",
+"day": "1",
+"lesson": "Topic 1 Formative: atomic structure",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.K3, M1.K6, M1.S1",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "M2",
+"und": "Information about elements and their properties can be determined by using the periodic table.",
+"lo": "Matter LO: Students interpret matter in relation to atomic structure and physical and chemical properties."
+},
+{
+"t": "day",
+"date": "2027-09-29",
+"day": "2",
+"lesson": "Elements: one type of atom; names and symbols",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.K1, M2.K2",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2027-09-30",
+"lesson": "HOLIDAY: National Day for Truth and Reconciliation"
+},
+{
+"t": "day",
+"date": "2027-10-01",
+"day": "1",
+"lesson": "Element name origins research",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.S1, M2.K2",
+"act": "Element name story cards (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-04",
+"day": "2",
+"lesson": "Atomic number and the periodic table",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.K3, M2.K4, M2.S2",
+"pres": "Sci 9 Topic 4/5 - Classifying Elements (adapt)",
+"act": "periodic table colouring",
+"need": "Periodic tables",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-10-05",
+"day": "1",
+"lesson": "Groups and periods: valence electrons and shells",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.K5, M2.S2, M1.K6",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-10-06",
+"day": "2",
+"lesson": "Metals vs non-metals on the periodic table (property stations)",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.K6, M2.S2",
+"act": "Metal/non-metal stations (new)",
+"need": "Element samples",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-07",
+"day": "1",
+"lesson": "Make your own periodic table",
+"unit": "U1 Matter | M2: Information about elements and their properties can be determined by using the periodic table.",
+"codes": "M2.K4, M2.K5, M2.S2",
+"pres": "Sci 9 Make your own periodic table handout (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-10-08",
+"day": "2",
+"lesson": "Review",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.S1, M2.S2",
+"act": "Study Guide (new)",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2027-10-11",
+"lesson": "HOLIDAY: Thanksgiving"
+},
+{
+"t": "day",
+"date": "2027-10-12",
+"day": "1",
+"lesson": "Unit Test: Matter",
+"unit": "U1 Matter | M1: Atoms can be defined by their structure.",
+"codes": "M1.S1, M1.K3, M2.K5, M2.S2",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "UNIT 2 FORCES, MOTION AND FLUIDS",
+"lo": "Learning outcomes: F1, F2, CS3"
+},
+{
+"t": "core",
+"code": "F1",
+"und": "The motion of an object changes because of forces acting on it.",
+"lo": "Energy LO: Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure."
+},
+{
+"t": "day",
+"date": "2027-10-13",
+"day": "2",
+"lesson": "Forces and net force; balanced vs unbalanced",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.K1, F1.K2, F1.S1",
+"act": "Tug of war force diagrams (new)",
+"need": "Spring scales",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-14",
+"day": "1",
+"lesson": "Net force and changes in speed and direction (horizontal motion)",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.K3, F1.S2",
+"act": "Cart pushes (new)",
+"need": "Carts",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-15",
+"day": "2",
+"lesson": "Newton's first law: inertia (a law, not a theory)",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.K4, SL1.K4",
+"act": "Inertia stations (new)",
+"need": "Coins, cards, cups",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2027-10-18",
+"lesson": "PD Day"
+},
+{
+"t": "day",
+"date": "2027-10-19",
+"day": "1",
+"lesson": "Mass and inertia investigation",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.K5, F1.S3",
+"need": "Carts, masses",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-20",
+"day": "2",
+"lesson": "Speed: v = d/t problems",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.K6, F1.S4",
+"act": "Speed problems (new)",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2027-10-21",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2027-10-22",
+"day": "1",
+"lesson": "Controlled experiment: speed, distance and time (ramps and timers)",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.S5, F1.S4",
+"act": "Speed lab (new)",
+"need": "Ramps, metre sticks, timers",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-25",
+"day": "2",
+"lesson": "Analyze motion data for patterns and bias",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.S5, SL2.S1, SL2.S2",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-26",
+"day": "1",
+"lesson": "Topic 1 Formative and review: forces and motion",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.K2, F1.K4, F1.S2, F1.S4",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-10-27",
+"day": "2",
+"lesson": "Topic 1 Summative: forces and motion",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.S1, F1.S2, F1.S4",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "F2",
+"und": "The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"lo": "Energy LO: Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure."
+},
+{
+"t": "day",
+"date": "2027-10-28",
+"day": "1",
+"lesson": "Fluids and the particle model",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K1, F2.K3",
+"pres": "Topic 1 - Fluids and PMOM",
+"act": "Topic 1",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-10-29",
+"day": "2",
+"ev": "Halloween Dance PM (projected)",
+"lesson": "Viscosity and flow rate",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K2, F2.S3",
+"pres": "Topic 4 - Viscosity and Flow Rate",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-01",
+"day": "1",
+"lesson": "Viscosity Lab",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.S3",
+"act": "Viscosity Lab",
+"need": "Assorted fluids, ramps, timers",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-02",
+"day": "2",
+"lesson": "Viscosity practice; viscosity in technology",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K2, F2.S3",
+"act": "Extra Viscosity Practice",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-03",
+"day": "1",
+"lesson": "Pressure: particles colliding with container walls",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K2, F2.K3",
+"pres": "Topic 7 - Pressure",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-04",
+"day": "2",
+"lesson": "Pascal's law: P = F/A",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K5, F2.S1",
+"pres": "Topic 7; Mechanical T4: Force Pressure Area",
+"act": "Pressure Calculations; Topic 4 and 5 Notes",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-05",
+"day": "1",
+"lesson": "Pressure calculations",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.S2, F2.S1",
+"act": "KEY - Pressure practice",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-08",
+"day": "2",
+"lesson": "Compressibility of liquids and gases (syringe lab)",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K4, F2.S4",
+"pres": "Topic 7 - Pressure/Compression",
+"act": "Syringe activity",
+"need": "Syringes",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-09",
+"day": "1",
+"ev": "Remembrance ceremony (projected)",
+"lesson": "Hydraulics and pneumatics: brakes, hospital beds, jackhammers",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.K6",
+"pres": "Topic 8 - Fluid Systems; Mechanical T5: Hydraulics & Pneumatics",
+"act": "Topic 8",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2027-11-10",
+"lesson": "Fall Break (projected)"
+},
+{
+"t": "off",
+"date": "2027-11-11",
+"lesson": "HOLIDAY: Remembrance Day"
+},
+{
+"t": "off",
+"date": "2027-11-12",
+"lesson": "Fall Break (projected)"
+},
+{
+"t": "off",
+"date": "2027-11-15",
+"lesson": "Fall Break (projected)"
+},
+{
+"t": "core",
+"code": "CS3",
+"und": "Design criteria and testing can help turn ideas into solutions.",
+"lo": "Computer Science LO: Students examine the role of design criteria and testing in design processes."
+},
+{
+"t": "day",
+"date": "2027-11-16",
+"day": "2",
+"lesson": "Design challenge launch: fluid-powered device; design criteria and constraints",
+"unit": "U2 Forces and Fluids | CS3: Design criteria and testing can help turn ideas into solutions.",
+"codes": "CS3.K1, CS3.K2, CS3.S1, F2.S5",
+"act": "Hydraulic arm brief (adapt from Rube Goldberg Project)",
+"need": "Syringes, tubing, cardboard, budget sheet",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-11-17",
+"day": "1",
+"lesson": "Design test plan based on criteria",
+"unit": "U2 Forces and Fluids | CS3: Design criteria and testing can help turn ideas into solutions.",
+"codes": "CS3.K3, CS3.S2",
+"act": "Test plan template (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-11-18",
+"day": "2",
+"lesson": "Build day",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.S5, CS3.K2",
+"need": "Build materials",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-11-19",
+"day": "1",
+"lesson": "Test day: collect data against criteria",
+"unit": "U2 Forces and Fluids | CS3: Design criteria and testing can help turn ideas into solutions.",
+"codes": "CS3.K3, CS3.K4, CS3.S2, F2.S5",
+"act": "Project testing",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-11-22",
+"day": "2",
+"lesson": "Analyze results and propose improvements; career spotlight: instrumentation technician",
+"unit": "U2 Forces and Fluids | CS3: Design criteria and testing can help turn ideas into solutions.",
+"codes": "CS3.K4, CS3.S3, SL1.K9, SL1.S4",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2027-11-23",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2027-11-24",
+"day": "1",
+"lesson": "Review",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.S1, F2.S2, F2.S4",
+"act": "Unit Review, Unit Review Key (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-11-25",
+"day": "2",
+"lesson": "Flex day: catch up, reteach, or enrichment",
+"unit": "U2 Forces and Fluids | F2: The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"codes": "F2.S2, F1.S4",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2027-11-26",
+"day": "1",
+"lesson": "Unit Test: Forces, Motion and Fluids",
+"unit": "U2 Forces and Fluids | F1: The motion of an object changes because of forces acting on it.",
+"codes": "F1.S2, F1.S4, F2.S1, F2.S2, F2.S4",
+"pres": "Unit Test (rebuild)",
+"status": "Adapt"
+},
+{
+"t": "unit",
+"name": "UNIT 3 ENERGY: Energy Stores, Static Electricity and Waves",
+"lo": "Learning outcomes: EN1, EN2, EN3"
+},
+{
+"t": "core",
+"code": "EN1",
+"und": "Energy can be transferred between energy stores.",
+"lo": "Energy LO: Students examine energy stores and transfers in an object or a system."
+},
+{
+"t": "day",
+"date": "2027-11-29",
+"day": "2",
+"lesson": "Energy stores: a model for energy in a system",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.K1, EN1.K3, EN1.S1",
+"act": "Energy store sort (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-11-30",
+"day": "1",
+"lesson": "Examples of energy stores around the school",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.K3, EN1.S2",
+"act": "Energy store scavenger hunt (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-12-01",
+"day": "2",
+"lesson": "Energy pathways: heating, radiation, mechanical work, electrical",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.K4, EN1.S3",
+"pres": "Mechanical T3: Energy, Friction, and Efficiency (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-02",
+"day": "1",
+"lesson": "Work and change in energy stores (pendulum and ramp)",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.K2, EN1.S3",
+"pres": "Mechanical T1: work",
+"act": "Work Calculations (qualitative focus)",
+"need": "Pendulums, ramps",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-03",
+"day": "2",
+"lesson": "Topic 1 Formative: energy stores and transfers",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.S1, EN1.S3",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "EN2",
+"und": "Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"lo": "Energy LO: Students examine energy stores and transfers in an object or a system."
+},
+{
+"t": "day",
+"date": "2027-12-06",
+"day": "1",
+"lesson": "Static electricity: charging by friction",
+"unit": "U3 Energy | EN2: Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"codes": "EN2.K1, EN2.K2",
+"pres": "Sci 9 Electricity topic 1 - Static Electricity (move to Gr 8)",
+"need": "Balloons, wool, PVC rods",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-07",
+"day": "2",
+"lesson": "Static stations: like and unlike charges, induction",
+"unit": "U3 Energy | EN2: Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"codes": "EN2.K3, EN2.S2",
+"act": "Static stations (from Sci 9)",
+"need": "Electroscopes, pith balls",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-08",
+"day": "1",
+"lesson": "Discharge and sparks; static technologies (printers, paint sprayers, air filters)",
+"unit": "U3 Energy | EN2: Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"codes": "EN2.K4, EN2.K1, EN2.S1",
+"need": "Van de Graaff (if available)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-09",
+"day": "2",
+"lesson": "Lightning research",
+"unit": "U3 Energy | EN2: Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"codes": "EN2.K5, EN2.S3",
+"act": "Lightning research (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-12-10",
+"day": "1",
+"lesson": "Topic 2 Formative: static electricity",
+"unit": "U3 Energy | EN2: Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"codes": "EN2.K2, EN2.K3, EN2.S1",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "EN3",
+"und": "Energy can be transferred as a wave.",
+"lo": "Energy LO: Students examine energy stores and transfers in an object or a system."
+},
+{
+"t": "day",
+"date": "2027-12-13",
+"day": "2",
+"lesson": "Waves transfer energy, not matter (slinkies and ropes)",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K1, EN3.S1",
+"pres": "Topic 1 - Nature of Light (adapt to waves)",
+"need": "Slinkies, ropes",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-14",
+"day": "1",
+"lesson": "Wave properties: wavelength, frequency, amplitude, period, speed",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K2, EN3.S2",
+"act": "Wave diagram practice (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-12-15",
+"day": "2",
+"lesson": "Frequency, amplitude and energy",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K3, EN3.S1",
+"act": "PhET Wave on a String (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2027-12-16",
+"day": "1",
+"lesson": "Mechanical vs electromagnetic waves",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K4, EN3.K5, EN3.S3",
+"pres": "Topic 1 - Behavior of light",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2027-12-17",
+"day": "2",
+"lesson": "Waves at a boundary: transmitted, reflected, refracted, dispersed, absorbed",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K6, EN3.S4",
+"need": "Ray boxes, filters",
+"status": "Adapt"
+},
+{
+"t": "unit",
+"name": "Dec 20 to Dec 31",
+"lo": "HOLIDAYS"
+},
+{
+"t": "day",
+"date": "2028-01-03",
+"day": "1",
+"lesson": "Law of reflection",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K7, EN3.S5",
+"pres": "Topic 2 - Reflection",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-04",
+"day": "2",
+"lesson": "Reflection Lab",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K7, EN3.S5",
+"pres": "Reflection Lab",
+"act": "Reflection and Mirrors",
+"need": "Shortened reflection lab handout",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-05",
+"day": "1",
+"lesson": "Refraction: a change in speed bends a wave",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K8, EN3.S4",
+"pres": "Topic 3 - Refraction",
+"act": "Demo Option, Demo 2",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-06",
+"day": "2",
+"lesson": "Refraction lab",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K8, EN3.S4",
+"need": "Ray boxes, water, glass blocks",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-01-07",
+"day": "1",
+"lesson": "Waves in technology: ultrasound, fibre optics, seismic waves",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K4, EN3.S4, EN3.S1",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-01-10",
+"day": "2",
+"lesson": "Topic 3 Formative",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.K2, EN3.K6, EN3.S4, EN3.S5",
+"act": "Topic 1-3 Formative",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-01-11",
+"day": "1",
+"lesson": "Review",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.S3, EN2.S1, EN3.S2",
+"act": "Topic 1-3 Review, Topic 1-3 Review Key",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2028-01-12",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2028-01-13",
+"day": "2",
+"lesson": "Flex day: catch up, reteach, or enrichment",
+"unit": "U3 Energy | EN3: Energy can be transferred as a wave.",
+"codes": "EN3.S4, EN2.S2",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-14",
+"day": "1",
+"lesson": "Review",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.S3, EN3.S5",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-01-17",
+"day": "2",
+"lesson": "Unit Test: Energy",
+"unit": "U3 Energy | EN1: Energy can be transferred between energy stores.",
+"codes": "EN1.S3, EN2.S1, EN3.S2, EN3.S3, EN3.S5",
+"pres": "Topic 1-3 Summative (rebuild)",
+"status": "Adapt"
+},
+{
+"t": "unit",
+"name": "UNIT 4 LIFE SCIENCE: Cells and Organ Systems",
+"lo": "Learning outcomes: LS1, LS2, LS3"
+},
+{
+"t": "core",
+"code": "LS1",
+"und": "Cells support life in organisms of varying complexity.",
+"lo": "Life Science LO: Students analyze the structures and functions of cells and organ systems."
+},
+{
+"t": "day",
+"date": "2028-01-18",
+"day": "1",
+"lesson": "Cells: the basic unit of life",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K1",
+"pres": "Topic 1 - Slides (Living Things)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-01-19",
+"day": "2",
+"lesson": "Parts of the microscope; how microscopes advanced science",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K2, LS1.S1",
+"pres": "Topic 2 - Slides",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-20",
+"day": "1",
+"lesson": "Microscope Lab: Letter E",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S1",
+"act": "Microscope Lab, Letter E Lab",
+"need": "Microscopes, slides",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-21",
+"day": "2",
+"lesson": "Drawings, field of view and total magnification",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K3, LS1.S2, LS1.S3",
+"pres": "Topic 2 - Slides",
+"act": "Microscope practice, key, microscope matching game",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-24",
+"day": "1",
+"lesson": "Unicellular vs multicellular; bacteria have no nucleus",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K7, LS1.K1",
+"pres": "Topic 3 Slides",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-25",
+"day": "2",
+"lesson": "Cell organelles and their functions",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K4, LS1.K5, LS1.S5",
+"act": "Animal Cell Doodle Notes",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-26",
+"day": "1",
+"lesson": "Plant vs animal cells lab",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K6, LS1.S4, LS1.S3",
+"act": "Plant Cell Doodle Notes, Plant vs animal cell lab",
+"need": "Microscopes, Elodea, cheek swabs",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-01-27",
+"day": "2",
+"lesson": "Cell Analogy Poster (summative)",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S5, LS1.K5",
+"act": "Cell Analogy Poster",
+"need": "Cell poster",
+"status": "Carry over"
+},
+{
+"t": "off",
+"date": "2028-01-28",
+"lesson": "PD Day"
+},
+{
+"t": "day",
+"date": "2028-01-31",
+"day": "1",
+"lesson": "Unicellular organisms and health: bacteria, fungi, protists research",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K8, LS1.S6",
+"act": "Microbe research (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-02-01",
+"day": "2",
+"lesson": "Topic 1-3 Formative and review",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K5, LS1.S2, LS1.S4",
+"act": "Topic 1-3 Formative",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-02-02",
+"day": "1",
+"lesson": "Summative topic 1-3",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S2, LS1.S4, LS1.S5",
+"pres": "Regular test, Adapted / BGL Test",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-02-03",
+"day": "2",
+"ev": "Centurion Classic (projected)",
+"lesson": "Cell membrane, diffusion and osmosis",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K10, LS1.K9",
+"pres": "Topic 4 Slides",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-02-04",
+"day": "1",
+"ev": "Centurion Classic (projected)",
+"lesson": "Diffusion and osmosis lab",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S7, LS1.K10",
+"act": "Cell membrane/diffusion lab",
+"need": "Student Handout for lab",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-02-07",
+"day": "2",
+"lesson": "Regulating the cell: cellular respiration and protein formation",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.K9, LS1.S8",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "LS2",
+"und": "Cell division is essential for survival and diversity.",
+"lo": "Life Science LO: Students analyze the structures and functions of cells and organ systems."
+},
+{
+"t": "day",
+"date": "2028-02-08",
+"day": "1",
+"lesson": "DNA: where cells keep their instructions",
+"unit": "U4 Life Science | LS2: Cell division is essential for survival and diversity.",
+"codes": "LS2.K1, LS2.K2, LS2.K3, LS2.S1",
+"vid": "Amoeba Sisters DNA (Sci 9)",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2028-02-09",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2028-02-10",
+"day": "2",
+"lesson": "Cell division: growth, repair, reproduction, variation",
+"unit": "U4 Life Science | LS2: Cell division is essential for survival and diversity.",
+"codes": "LS2.K4",
+"pres": "Sci 9 Topic 5 (mitosis and meiosis) (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-02-11",
+"day": "1",
+"lesson": "Mitosis vs meiosis",
+"unit": "U4 Life Science | LS2: Cell division is essential for survival and diversity.",
+"codes": "LS2.K5, LS2.K6, LS2.S3",
+"act": "Mitosis/meiosis modelling (new)",
+"need": "Pipe cleaners or socks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-02-14",
+"day": "2",
+"lesson": "Identify the type of cell division (onion root tip images)",
+"unit": "U4 Life Science | LS2: Cell division is essential for survival and diversity.",
+"codes": "LS2.S2, LS2.S3",
+"act": "Onion Skin Cell Lab (adapt to root tip)",
+"need": "Microscopes, prepared slides",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-02-15",
+"day": "1",
+"lesson": "Topic 4/5 Formative and review",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S7, LS2.S3",
+"act": "Topic4/5 Formative",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-02-16",
+"day": "2",
+"lesson": "Topic 4/5 Summative",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S7, LS1.S8, LS2.S2, LS2.S3",
+"pres": "Regular test, Adapted, BGL",
+"status": "Adapt"
+},
+{
+"t": "core",
+"code": "LS3",
+"und": "The interdependent functions of organ systems influence the overall health of an individual.",
+"lo": "Life Science LO: Students analyze the structures and functions of cells and organ systems."
+},
+{
+"t": "day",
+"date": "2028-02-17",
+"day": "1",
+"lesson": "Levels of organization; specialized cells and stem cells",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.K1, LS3.K2, LS3.K3, LS3.S1, LS3.S3",
+"pres": "Topic 5 Slides (specialized cells)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-02-18",
+"day": "2",
+"lesson": "Circulatory and respiratory systems",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.K4",
+"pres": "Topic 6/7",
+"vid": "National Geo video",
+"status": "Carry over"
+},
+{
+"t": "off",
+"date": "2028-02-21",
+"lesson": "HOLIDAY: Family Day"
+},
+{
+"t": "day",
+"date": "2028-02-22",
+"day": "1",
+"lesson": "Digestive and excretory systems",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.K4",
+"vid": "Very indepth vid of digestion",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-02-23",
+"day": "2",
+"lesson": "Nervous, muscular and skeletal systems",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.K4",
+"pres": "Endocrine/Nervous/Excretory intro (adapt)",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2028-02-24",
+"lesson": "Teachers' Convention (projected)"
+},
+{
+"t": "off",
+"date": "2028-02-25",
+"lesson": "Teachers' Convention (projected)"
+},
+{
+"t": "day",
+"date": "2028-02-28",
+"day": "1",
+"lesson": "Organ system research project",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.S2, LS3.K4",
+"act": "Research Project",
+"need": "Chromebooks",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-02-29",
+"day": "2",
+"lesson": "Research project work period",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.S2",
+"act": "Research Project",
+"need": "Chromebooks",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-03-01",
+"day": "1",
+"lesson": "Disorders: predict effects of an organ system not working",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.S4, LS3.K4",
+"pres": "Disorders",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-03-02",
+"day": "2",
+"lesson": "Diagnostic procedures: X-rays, blood tests, MRI",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.K5, LS3.S5",
+"act": "Diagnostic procedure research (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-03",
+"day": "1",
+"lesson": "Review",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S5, LS2.S3, LS3.S1, LS3.S4",
+"act": "Topic 6/7 Formative, Review Booklet",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-03-06",
+"day": "2",
+"lesson": "Flex day: catch up, reteach, or enrichment",
+"unit": "U4 Life Science | LS3: The interdependent functions of organ systems influence the overall health of an individual.",
+"codes": "LS3.S4",
+"status": "Carry over"
+},
+{
+"t": "day",
+"date": "2028-03-07",
+"day": "1",
+"lesson": "Unit Summative: Cells and Organ Systems",
+"unit": "U4 Life Science | LS1: Cells support life in organisms of varying complexity.",
+"codes": "LS1.S5, LS2.S3, LS3.S1, LS3.S4",
+"pres": "Regular, Adapted, BGL",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2028-03-08",
+"lesson": "Non-Instructional Day"
+},
+{
+"t": "off",
+"date": "2028-03-09",
+"lesson": "PD Day"
+},
+{
+"t": "off",
+"date": "2028-03-10",
+"lesson": "PD Day"
+},
+{
+"t": "unit",
+"name": "UNIT 5 COMPUTER SCIENCE: Efficient Programs and Artificial Intelligence",
+"lo": "Learning outcomes: CS1, CS2"
+},
+{
+"t": "core",
+"code": "CS1",
+"und": "Programs can be enhanced for efficiency.",
+"lo": "Computer Science LO: Students examine ways to improve efficiency in computer systems."
+},
+{
+"t": "day",
+"date": "2028-03-13",
+"day": "2",
+"lesson": "Block-based coding refresher; the input, process, output (IPO) cycle",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K4, CS1.S2",
+"need": "Chromebooks, MakeCode or Scratch",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-14",
+"day": "1",
+"lesson": "Variables: names, numbers and strings",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K5, CS1.K6, CS1.S4",
+"act": "Variable scoreboard program (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-15",
+"day": "2",
+"lesson": "Variables with loops and conditionals",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K7, CS1.S4",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-16",
+"day": "1",
+"lesson": "Events: external and internal",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K2, CS1.K3, CS1.S2",
+"act": "Event-driven mini game (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-17",
+"day": "2",
+"lesson": "Functions: reuse a set of instructions",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K1, CS1.S1",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-20",
+"day": "1",
+"lesson": "Refactor for efficiency: replace repeated code with functions and variables",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K8, CS1.S3",
+"act": "Refactor challenge (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-21",
+"day": "2",
+"lesson": "Debugging challenge",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.S5, CS1.S2",
+"act": "Bug hunt cards (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-22",
+"day": "1",
+"lesson": "Sensors: light, temperature and motion as inputs",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.K4, CS1.S6",
+"act": "Sensor exploration (new)",
+"need": "micro:bits or simulator",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-03-23",
+"day": "2",
+"lesson": "Coding check (formative)",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.S2, CS1.S3, CS1.S5",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "CS2",
+"und": "AI impacts human tasks in a variety of ways.",
+"lo": "Computer Science LO: Students examine ways to improve efficiency in computer systems."
+},
+{
+"t": "day",
+"date": "2028-03-24",
+"day": "1",
+"lesson": "What is AI? Efficiency in processing, decisions and tasks; how scientists use AI",
+"unit": "U5 Computer Science | CS2: AI impacts human tasks in a variety of ways.",
+"codes": "CS2.K1, CS2.K7",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "Mar 27 to Mar 31",
+"lo": "HOLIDAYS"
+},
+{
+"t": "off",
+"date": "2028-04-03",
+"lesson": "PD Day"
+},
+{
+"t": "day",
+"date": "2028-04-04",
+"day": "2",
+"lesson": "Machine learning: supervised, unsupervised, reinforcement (Teachable Machine)",
+"unit": "U5 Computer Science | CS2: AI impacts human tasks in a variety of ways.",
+"codes": "CS2.K2, CS2.S1",
+"act": "Teachable Machine activity (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-05",
+"day": "1",
+"lesson": "Bias, generative AI, chatbots and deepfakes",
+"unit": "U5 Computer Science | CS2: AI impacts human tasks in a variety of ways.",
+"codes": "CS2.K3, CS2.K4, CS2.K5, CS2.K9, CS2.S2, SL2.K3",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2028-04-06",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2028-04-07",
+"day": "2",
+"lesson": "Recommendation algorithms and you; AI and the workforce",
+"unit": "U5 Computer Science | CS2: AI impacts human tasks in a variety of ways.",
+"codes": "CS2.K6, CS2.K8, CS2.S3, CS2.S4",
+"act": "Algorithm reflection (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-10",
+"day": "1",
+"lesson": "Computer Science check: efficient code and AI",
+"unit": "U5 Computer Science | CS1: Programs can be enhanced for efficiency.",
+"codes": "CS1.S2, CS1.S3, CS2.S1, CS2.S2",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "UNIT 6 EARTH SCIENCE: Geological History and Resources",
+"lo": "Learning outcomes: ES1, ES2"
+},
+{
+"t": "core",
+"code": "ES1",
+"und": "Evidence from geological records provides information about Earth's history.",
+"lo": "Earth Science LO: Students investigate Earth's geological history and its implications for resource exploration."
+},
+{
+"t": "day",
+"date": "2028-04-11",
+"day": "2",
+"lesson": "The geological time scale (toilet paper timeline)",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K1, ES1.S1",
+"pres": "Sci 7 Planet Earth resources (adapt)",
+"act": "Toilet paper timeline (new)",
+"need": "Toilet paper rolls, markers",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-04-12",
+"day": "1",
+"lesson": "Relative dating: reading rock layers",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K2, ES1.S2",
+"act": "Rock layer puzzles (new)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-04-13",
+"day": "2",
+"lesson": "How fossils form: mineralization and compression",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K4, ES1.K5, ES1.S3",
+"act": "Fossil formation stations (new)",
+"need": "Plaster, shells, clay",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2028-04-14",
+"lesson": "HOLIDAY: Good Friday"
+},
+{
+"t": "off",
+"date": "2028-04-17",
+"lesson": "HOLIDAY: Easter Monday"
+},
+{
+"t": "day",
+"date": "2028-04-18",
+"day": "1",
+"lesson": "What the fossil record tells us; why it has gaps",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K3, ES1.K7",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-19",
+"day": "2",
+"lesson": "Evidence of change over time: comparing organisms and fossils",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K6, ES1.S4",
+"act": "Fossil comparison (new)",
+"need": "Fossil replicas or images",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-20",
+"day": "1",
+"lesson": "Alberta's badlands: fossil discovery research (Royal Tyrrell Museum)",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K8, ES1.S5",
+"act": "Badlands research (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-21",
+"day": "2",
+"lesson": "Topic 1 Formative: geological history",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.K1, ES1.K2, ES1.S2, ES1.S4",
+"status": "New build"
+},
+{
+"t": "core",
+"code": "ES2",
+"und": "Geological resource extraction methods change Earth's surface.",
+"lo": "Earth Science LO: Students investigate Earth's geological history and its implications for resource exploration."
+},
+{
+"t": "day",
+"date": "2028-04-24",
+"day": "1",
+"lesson": "Geological resources and why they are unevenly distributed",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.K1, ES2.K2",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-25",
+"day": "2",
+"lesson": "Alberta's resources in everyday products (phones, medical devices, plastics)",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.K3, ES2.S1",
+"act": "Phone teardown map (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-26",
+"day": "1",
+"lesson": "Finding resources: surveying and core sampling (cupcake core lab)",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.K5, ES2.S2",
+"act": "Cupcake core sampling lab (new)",
+"need": "Layered cupcakes, straws",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-27",
+"day": "2",
+"lesson": "Surface and underground mining; how extraction changes the land",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.K4, ES2.S2",
+"act": "Cookie mining simulation (new)",
+"need": "Chocolate chip cookies, toothpicks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-04-28",
+"day": "1",
+"lesson": "Responsible extraction in Alberta: CCS, methane reduction, water recycling, tailings",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.K6, ES2.S3",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-01",
+"day": "2",
+"lesson": "Impact analysis: economic and environmental costs and benefits; career spotlight: geophysicist",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.S3, SL1.K9, SL1.S4",
+"act": "Impact matrix (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-02",
+"day": "1",
+"ev": "CAT 4 (projected)",
+"lesson": "Review",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.S2, ES1.S4, ES2.S3",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2028-05-03",
+"day": "3",
+"lesson": "DAY 3"
+},
+{
+"t": "day",
+"date": "2028-05-04",
+"day": "2",
+"lesson": "Flex day: catch up, reteach, or enrichment",
+"unit": "U6 Earth Science | ES2: Geological resource extraction methods change Earth's surface.",
+"codes": "ES2.S1",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-05",
+"day": "1",
+"lesson": "Unit Test: Earth Science",
+"unit": "U6 Earth Science | ES1: Evidence from geological records provides information about Earth's history.",
+"codes": "ES1.S1, ES1.S2, ES2.S1, ES2.S3",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "UNIT 7 SPACE SCIENCE: Origin and Evolution of the Universe",
+"lo": "Learning outcomes: SP1"
+},
+{
+"t": "core",
+"code": "SP1",
+"und": "Understandings of the universe have changed over time.",
+"lo": "Space Science LO: Students analyze the origin and evolution of the universe."
+},
+{
+"t": "day",
+"date": "2028-05-08",
+"day": "2",
+"ev": "Track Day (projected)",
+"lesson": "Astronomy: planets, solar systems, galaxies and the universe (scale)",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.K1, SP1.K2, SP1.S1",
+"pres": "Sci 9 Topic B - Distribution of matter (adapt)",
+"act": "Dan's note package (adapt)",
+"vid": "Introduction to the Solar System: Crash Course",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-05-09",
+"day": "1",
+"lesson": "Models of the universe through history: Babylonia, Greece, Ptolemy, Galileo",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.K4, SP1.S2, SL1.K2",
+"pres": "Sci 9 Topic A - Observations (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-05-10",
+"day": "2",
+"lesson": "The Big Bang theory and the model behind it",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.K5, SP1.S3, SL1.K7",
+"act": "Balloon expansion model (new)",
+"need": "Balloons, markers",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-11",
+"day": "1",
+"lesson": "From hydrogen and helium to stars, elements and the solar system",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.K6, SP1.S3",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-12",
+"day": "2",
+"lesson": "Star brightness: luminosity and distance; the Milky Way from Earth",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.K3, SP1.K7, SP1.S4",
+"act": "Flashlight brightness lab (new)",
+"need": "Flashlights",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-15",
+"day": "1",
+"lesson": "Life cycle of a star",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.K8, SP1.S5",
+"act": "Star life cycle comic (new)",
+"vid": "Extra: Supernova, Neutron Star, Black holes",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-05-16",
+"day": "2",
+"lesson": "Research a law or theory: Big Bang, gravitation, plate tectonics, cell theory",
+"unit": "U7 Space | SL1: Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"codes": "SL1.S2, SL1.K3, SL1.K8",
+"act": "Law or theory research (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-17",
+"day": "1",
+"lesson": "Formative and review",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.S1, SP1.S3, SP1.S5",
+"status": "New build"
+},
+{
+"t": "off",
+"date": "2028-05-18",
+"lesson": "Non-Instructional Day"
+},
+{
+"t": "off",
+"date": "2028-05-19",
+"lesson": "Non-Instructional Day"
+},
+{
+"t": "off",
+"date": "2028-05-22",
+"lesson": "HOLIDAY: Victoria Day"
+},
+{
+"t": "day",
+"date": "2028-05-23",
+"day": "2",
+"lesson": "Review",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.S2, SP1.S4",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-24",
+"day": "1",
+"lesson": "Unit Test: Space Science",
+"unit": "U7 Space | SP1: Understandings of the universe have changed over time.",
+"codes": "SP1.S1, SP1.S3, SP1.S4, SP1.S5",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "UNIT 8 SCIENTIFIC LITERACY CAPSTONE: Sustainability for Future Generations",
+"lo": "Learning outcomes: SL3"
+},
+{
+"t": "core",
+"code": "SL3",
+"und": "Sustainability supports present needs while addressing long-term impacts.",
+"lo": "Scientific Literacy LO: Students examine how sustainability supports the needs of future generations."
+},
+{
+"t": "day",
+"date": "2028-05-25",
+"day": "2",
+"lesson": "Stewardship and sustainability: meeting present and future needs",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K1, SL3.K2, SL3.S1",
+"pres": "Water Topic 1 - Water Use (adapt)",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-05-26",
+"day": "1",
+"lesson": "Actions that support sustainability: resources, land planning, targets",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K3, SL3.S2",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-29",
+"day": "2",
+"ev": "Zone track (projected)",
+"lesson": "Green technology: EVs, hydrogen, solar, CCS, vertical farming",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K4, SL3.S3",
+"act": "Green tech stations (new)",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-30",
+"day": "1",
+"lesson": "Technology for monitoring: AI, drones, precision agriculture, zero-emission mining",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K5, SL3.K7, SL3.S3, CS2.K7",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-05-31",
+"day": "2",
+"lesson": "Sustainable agriculture and soil health; career spotlight: agronomist",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K6, SL3.S2, SL1.K9, SL1.S4",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-06-01",
+"day": "1",
+"lesson": "Cleaner energy in Alberta: natural gas, hydrogen, nuclear (uranium), renewables",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K8, SL3.K9, SL3.K10, SL3.S4",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-06-02",
+"day": "2",
+"lesson": "Water quality as a sustainability indicator",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K3, SL3.S5",
+"pres": "Water Quality / Topic 6",
+"act": "Topic 6 - wonderville; water quality lab",
+"need": "Water test kits",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-05",
+"day": "1",
+"lesson": "Research project: impacts of a local or provincial sustainability effort",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.K11, SL3.S5, SL2.S1",
+"act": "Research organizer (new)",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-06-06",
+"day": "2",
+"lesson": "Research work period; check data for bias",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.S5, SL2.S2",
+"need": "Chromebooks",
+"status": "New build"
+},
+{
+"t": "day",
+"date": "2028-06-07",
+"day": "1",
+"lesson": "Capstone presentations (summative)",
+"unit": "U8 Sustainability | SL3: Sustainability supports present needs while addressing long-term impacts.",
+"codes": "SL3.S5, SL3.S1, SL3.S2",
+"act": "Presentation rubric (new)",
+"status": "New build"
+},
+{
+"t": "unit",
+"name": "REVIEW AND FINAL ASSESSMENT",
+"lo": "Learning outcomes: All Grade 8 learning outcomes"
+},
+{
+"t": "day",
+"date": "2028-06-08",
+"day": "2",
+"lesson": "Review: Matter",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "M1.S1, M2.S2",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-09",
+"day": "1",
+"lesson": "Review: Forces, Motion and Fluids",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "F1.S4, F2.S2",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-12",
+"day": "2",
+"lesson": "Review: Energy",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "EN1.S3, EN3.S5",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-13",
+"day": "1",
+"lesson": "Review: Cells and Organ Systems",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "LS1.S5, LS2.S3, LS3.S4",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-14",
+"day": "2",
+"lesson": "Review: Earth Science",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "ES1.S2, ES2.S3",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-15",
+"day": "1",
+"lesson": "Review: Space and Computer Science",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "SP1.S3, CS1.S3",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-16",
+"day": "2",
+"lesson": "Year-end lab: design test of your choice (criteria, constraints, data)",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "CS3.S2, CS3.S3, SL2.S1",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2028-06-19",
+"lesson": "PD Day"
+},
+{
+"t": "day",
+"date": "2028-06-20",
+"day": "1",
+"ev": "Gr 9 ELA PAT (projected)",
+"lesson": "Year-end lab work period",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "CS3.S2, SL1.S3",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-21",
+"day": "2",
+"ev": "Gr 9 MATH PAT A (projected)",
+"lesson": "Final exam review",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "M2.S2, F1.S4, F2.S2, EN3.S5",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-22",
+"day": "1",
+"ev": "Gr 9 MATH PAT B (projected)",
+"lesson": "Final exam (if your school runs one) or flex",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "M2.S2, F2.S2, LS2.S3, SP1.S3",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-23",
+"day": "2",
+"ev": "Gr 9 SOCIAL PAT (projected)",
+"lesson": "Flex and celebration of learning",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "SL1.S1",
+"status": "Adapt"
+},
+{
+"t": "day",
+"date": "2028-06-26",
+"day": "1",
+"ev": "Gr 9 SCIENCE PAT (projected); Last Day of Classes",
+"lesson": "Flex",
+"unit": "Review | All Grade 8 learning outcomes",
+"codes": "SL1.S1",
+"status": "Adapt"
+},
+{
+"t": "off",
+"date": "2028-06-27",
+"lesson": "Operational Day"
+}
+],
+"rationale": [
+"Overall approach",
+"The plan keeps the skeleton of the 2026/27 Science 8 plan: two Intro days, seven PD days, seven Day 3s, a twelve-class review block, and the five Grade 9 PAT days noted as events. The projected calendar has 167 instructional classes against 169 in 2026/27. The difference is Easter: in 2028 Good Friday and Easter Monday fall two weeks after Spring Break instead of beside it.",
+"Why open with Scientific Literacy and safety (7 classes)",
+"WHMIS is now formally a Grade 9 outcome, but Grade 8 still runs labs, so your two safety lessons stay in the launch and map to the Safety in Science section of the draft. The Rotocopter Lab becomes the first use of a model to make and test predictions (SL1.S3). A laws vs theories wall started here is added to all year: Newton's first law, Pascal's law and the law of reflection on one side, and the Big Bang theory and cell theory on the other.",
+"Unit 1 Matter first (16 classes, September to October)",
+"Atoms and electrons are the foundation for three later units: particle collisions explain fluid pressure, electron transfer explains static electricity, and shells explain the periodic table. A short unit also settles lab routines early. The first lesson is a bridge because the draft assumes new Grade 7 mixtures and pure substances, which this cohort did not take. Science 9 atomic model and periodic table resources can be adapted.",
+"Unit 2 Forces, Motion and Fluids (26 classes, October to November)",
+"Fluids keep their current fall slot so the viscosity, pressure and syringe labs stay where they are. Forces and motion come first in the unit because the draft groups motion, fluids and pressure in one learning outcome. The unit ends with a hydraulic design challenge that covers design criteria, constraints and testing (CS3) and replaces the Rube Goldberg project, which was tied to simple machines that have moved to Grade 7.",
+"Unit 3 Energy (25 classes, late November to January)",
+"Energy stores follow naturally from work and forces. Static electricity uses the electron ideas from Matter. Energy stores, static and the first wave lessons fit before the winter break. Waves finish in January and reuse your Light Topics 1 to 3, including the reflection and refraction labs. Lenses and the eye are no longer Grade 8 outcomes, so the Light unit shrinks from about 29 classes to a wave strand of about 15 classes including review.",
+"Unit 4 Cells and Organ Systems (31 classes, January to March)",
+"This is the largest Grade 8 outcome and the one with the most reusable material, so it keeps nearly its current length. It starts about two weeks later than this year. DNA and cell division (mitosis and meiosis) are new to Grade 8 and sit between cells and organ systems, so students see why cells divide before studying tissues and organs. Science 9 Topic 5 resources can move down.",
+"Unit 5 Computer Science (14 classes, March to April)",
+"Short coding tasks are resilient to Spring Break and the PD days around it. Programming efficiency (functions, variables, events) comes before AI so students understand what a program is before discussing machine learning. The AI lesson on bias links back to the patterns and bias outcome (SL2). This cohort missed new Grade 7 computer systems, so the unit opens with a block coding refresher.",
+"Unit 6 Earth Science (16 classes, April to early May)",
+"Students saw fossils and the geological time scale in old Grade 7, so ES1 moves quickly. Resource extraction (ES2) is new and leads straight into the sustainability capstone. Spring makes local rock-layer walks or a Royal Tyrrell Museum connection possible.",
+"Unit 7 Space (10 classes, May)",
+"The Big Bang theory is the draft's own example of a theory tested with models (SL1.K7). Placing Space late lets students use that example to finish the laws vs theories research task. May has a non-instructional Thursday and Friday and Victoria Day, so a compact unit suits the month.",
+"Unit 8 Sustainability capstone (10 classes, late May to early June)",
+"SL3 pulls the year together: responsible extraction (ES2), energy sources (EN1), AI and drones for monitoring (CS2), and checking data for bias (SL2). The water quality lab from your current Water unit is reused here. A research project gives students a final performance task.",
+"Review and final assessment (12 classes, June)",
+"Grade 8 does not write a PAT, but June is disrupted by Grade 9 PATs, so the review block keeps its current length. It includes a student-designed test lab that revisits design criteria and data, and room for a final exam if your school runs one.",
+"Pacing logic",
+"Class time roughly follows the number of knowledge and skill statements in each outcome, adjusted for lab demand and what this cohort already saw in old Grade 7. The Pacing table on the Calendar & Pacing tab shows the comparison. Every outcome code maps to at least one lesson, and the Outcome Map tab counts coverage live.",
+"Things to confirm",
+"1) The curriculum is a draft for optional field testing in 2026/27, so recheck outcomes against the final release. 2) EPSB has not published the 2027/28 calendar; PD days, breaks, convention, Day 3s, events and PAT dates are projected and marked 'projected'. 3) Your two 2026/27 sheets list different PAT dates (Science 8: ELA Jun 8, Math Jun 15 and 17, Social Jun 18, Science Jun 22; Science 9: Jun 22 to 28). This plan uses the same projected dates as the Science 9 plan (Jun 20 to 26) so the two agree. 4) New equipment: carts, ramps and timers for motion; onion root tip slides; micro:bits or a simulator."
+],
+"comparison": {
+"title": "Grade 8 Science: current Program of Studies vs Draft Science (7-9) Curriculum (September 2026)",
+"head": [
+"Area (current >> new)",
+"Current Program of Studies (Grade 8)",
+"Draft new curriculum (Grade 8)",
+"Status",
+"What stays",
+"What is new or expanded",
+"What leaves Grade 8 (and where it goes)",
+"Planning implication"
+],
+"rows": [
+[
+"Overall design",
+"Program of Studies (2003, updated 2014). Five units (A to E), each with an emphasis. Outcomes split into STS and Knowledge, Skills, and Attitudes.",
+"Draft Science (7 to 9) Curriculum, September 2026 (optional field testing in 2026/27). Grade 8 has 11 learning outcomes across seven organizing ideas, each with Knowledge, Understanding, and Skills and Procedures.",
+"Restructured",
+"Inquiry, lab work and Alberta context remain.",
+"Computer Science and Scientific Literacy become content strands. Formulas are shown symbolically but need not be memorized.",
+"Unit emphases and attitude outcomes are gone.",
+"Plan by learning outcome and understanding. Codes in this workbook (e.g., F2.K5) are our own labels because the draft is unnumbered."
+],
+[
+"Unit A Mix and Flow of Matter  >>  Energy: forces and fluids (F2), plus Matter (M1, M2)",
+"4 general outcomes: fluids in technology (with WHMIS), composition of fluids and solutions, viscosity, density, buoyancy and compressibility, fluid technologies.",
+"Fluids now sit in the Energy LO 'Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure' (F2). A separate Matter LO covers atoms and the periodic table.",
+"Split and refocused",
+"Viscosity and flow rate, pressure (P = F/A), compressibility of liquids and gases, the particle model, hydraulic and fluid technologies, building a fluid-powered device.",
+"Pascal's law by name; pressure explained by particle collisions with container walls.",
+"Pure substances, mixtures and solutions, solubility and concentration, density and buoyancy (move to new Grade 7 Matter). WHMIS moves to new Grade 9 Matter.",
+"Topics 4, 7 and 8 (viscosity, pressure, fluid systems) carry over. Topics 2, 5 and 6 (classification, solubility, density, buoyancy) retire to Grade 7. Keep one bridging lesson because the 2027/28 cohort took the old Grade 7."
+],
+[
+"Unit B Cells and Systems  >>  Life Science: cells and organ systems",
+"4 general outcomes: structure and function of living things, cells, healthy human body systems, research into body systems and medicine.",
+"LO: Students analyze the structures and functions of cells and organ systems. Three understandings: cells (LS1), DNA and cell division (LS2), organ systems and health (LS3).",
+"Retained and expanded",
+"Cells as the basic unit of life, microscopes, unicellular vs multicellular, plant vs animal cells, diffusion and osmosis, specialized cells, tissues and organs, respiratory, circulatory, digestive and excretory systems, disorders.",
+"Total magnification calculations, a named organelle list (mitochondria, ribosomes, vacuoles), bacteria without a nucleus, microbes and health, cellular respiration and protein formation, DNA location, mitosis vs meiosis (moved down from Grade 9), stem cells, muscular, skeletal and nervous systems, diagnostic procedures.",
+"Studies of characteristics of living things, body responses to stimuli, research into nutrition and medical advances.",
+"Highest carry-over unit. Add DNA and cell division lessons (Science 9 Topic 5 resources can move down) and a diagnostic procedures task."
+],
+[
+"Unit C Light and Optical Systems  >>  Energy: waves (EN3)",
+"3 general outcomes: nature of light and vision, transmission and the ray model, image formation, vision and imaging technologies.",
+"Waves become one understanding in the Energy LO 'Students examine energy stores and transfers in an object or a system': energy can be transferred as a wave.",
+"Narrowed and generalized",
+"Reflection and the law of reflection, refraction, transmission and absorption by materials.",
+"General wave properties (wavelength, frequency, amplitude, period, speed), mechanical vs electromagnetic waves, wave energy, dispersion.",
+"Lenses and image formation, mirrors and image types (move to new Grade 9 optical technology), the eye and camera, eye dissection, vision correction, animal eyes, history of optical devices, digital imaging.",
+"Light Topics 1 to 3 (nature of light, reflection, refraction and their labs) carry over. Topics 4 and 5 (lenses, eye, extending vision) retire from Grade 8; lens labs move to Grade 9."
+],
+[
+"Unit D Mechanical Systems  >>  Energy: forces and motion (F1), energy stores (EN1), design criteria (CS3)",
+"4 general outcomes: devices improved over time, analyzing machines and subsystems, transmission of force and energy (simple machines, ratios, work, hydraulics), social and environmental contexts.",
+"Motion and forces (F1), energy stores and pathways (EN1) and design criteria and testing (CS3) cover the parts that remain.",
+"Largely replaced",
+"Hydraulics and pneumatics, pressure, work as energy transfer, evaluating a device against criteria.",
+"Net force, balanced and unbalanced forces, Newton's first law and inertia, speed (v = d/t) and a controlled speed experiment, energy stores (thermal, kinetic, elastic, gravitational, chemical, magnetic, electrostatic, nuclear) and pathways.",
+"Simple machines, levers, inclined planes, gears and pulleys, mechanical advantage, speed ratios, machines through history (move to new Grade 7 forces, structures and simple machines).",
+"Mechanical T4 and T5 (pressure, hydraulics) carry over. T1 to T3 and T6 to T8 retire to Grade 7. The Rube Goldberg project becomes a criteria-and-constraints hydraulic design challenge."
+],
+[
+"Unit E Freshwater and Saltwater Systems  >>  (no direct successor)",
+"4 general outcomes: distribution and quality of water, landforms, water and climate (glaciers, oceans, erosion), aquatic life, human impacts on aquatic systems.",
+"No Grade 8 water outcome. Erosion and surface change appear in new Grade 7 Earth Science; water quality appears only as part of sustainability (SL3).",
+"Removed as a unit",
+"Water quality testing and treatment, as one strand of sustainability.",
+"",
+"Glaciers and icefields, oceans and currents, stream characteristics, desalination, aquatic adaptations and populations.",
+"About 27 classes are freed. The water quality lab and water use lessons can be reused in the sustainability capstone."
+],
+[
+"(Old Grade 9 Electricity: static)  >>  Energy: static electricity (EN2)",
+"Not in current Grade 8. Static electricity was part of Grade 9 Electrical Principles.",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"New to Grade 8",
+"",
+"Charging by friction, like and unlike charges, induction, sparks, static technologies (laser printers, paint sprayers, air filters), lightning.",
+"",
+"Science 9 static presentations and stations move down to Grade 8."
+],
+[
+"(Old Grade 9 Matter: atoms, periodic table)  >>  Matter: atoms and the periodic table",
+"Not in current Grade 8. Atomic structure and the periodic table were Grade 9.",
+"LO: Students interpret matter in relation to atomic structure and physical and chemical properties. Two understandings: atoms (M1) and the periodic table (M2).",
+"New to Grade 8",
+"",
+"Subatomic particles, Bohr models up to 18 electrons, technologies that study atoms, element names and symbols, atomic number, groups and periods, metals vs non-metals.",
+"",
+"Science 9 Topics 3 to 5 (atomic models, classifying elements) can be adapted for Grade 8."
+],
+[
+"(Old Grade 7 Planet Earth: fossils)  >>  Earth Science: geological history and resources",
+"Not in current Grade 8. Fossils and the geological time scale were old Grade 7.",
+"LO: Students investigate Earth's geological history and its implications for resource exploration. Two understandings: geological records (ES1) and resource extraction (ES2).",
+"New to Grade 8",
+"",
+"Geological time scale, relative dating, fossil formation, Alberta's badlands, geological resources in Alberta, exploration (surveying, core samples), surface and underground mining, responsible extraction (CCS, methane reduction, water recycling, tailings).",
+"",
+"This cohort saw fossils in old Grade 7, so ES1 can move quickly; ES2 is mostly new."
+],
+[
+"(Old Grade 9 Space: stars, galaxies)  >>  Space Science: origin and evolution of the universe",
+"Not in current Grade 8. Distribution of matter in the universe was Grade 9.",
+"LO: Students analyze the origin and evolution of the universe. One understanding: understandings of the universe have changed over time (SP1).",
+"New to Grade 8",
+"",
+"History of models (Babylonia, Greece, Ptolemy, Galileo), Big Bang theory, formation of elements and stars, star brightness, star life cycle, the Milky Way.",
+"",
+"Science 9 Space Topics A and B can be adapted."
+],
+[
+"(none)  >>  Computer Science",
+"No computer science outcomes in the Science POS.",
+"Two LOs: Students examine ways to improve efficiency in computer systems (CS1 efficient programs, CS2 AI). Students examine the role of design criteria and testing in design processes (CS3).",
+"New",
+"",
+"Block-based functions, variables and events, debugging, sensors, the IPO cycle; types of machine learning, AI bias, generative AI, chatbots, recommendation algorithms, AI and work, AI ethics; design criteria, constraints, testing and improvement.",
+"",
+"New unit (about 14 classes) plus a design challenge inside the fluids unit. Needs devices and a block editor such as MakeCode or Scratch."
+],
+[
+"Skills and Nature of Science  >>  Scientific Literacy",
+"Inquiry, problem solving and decision-making skills plus attitudes, embedded in each unit.",
+"Three LOs: laws and theories (SL1), patterns and bias in data (SL2), sustainability for future generations (SL3).",
+"Elevated to content",
+"Planning investigations, graphing, interpreting data.",
+"Facts, models, laws and theories, why theories never become laws, predicting with models, science careers, bias in data, sustainability, green technology, hydrogen, uranium and nuclear energy, sustainable agriculture.",
+"",
+"Teach SL1 and SL2 in the launch and revisit them with each law or theory met during the year; SL3 is the year-end capstone."
+],
+[
+"Provincial assessment",
+"No Grade 8 PAT.",
+"No Grade 8 PAT.",
+"No change",
+"Grade 9 PAT days are shown as school events because they affect the timetable.",
+"",
+"",
+"Final assessment format is a school choice."
+]
+],
+"sources": [
+"Alberta Education, Science Grades 7-8-9 Program of Studies (2003, updated 2014), Grade 8 Units A to E.",
+"Alberta Education and Childcare, Draft Science (7-9) Curriculum, September 2026 (Optional Field Testing in 2026-27)."
+]
+},
+"outcomes": {
+"note": "Grade 8 outcome codes (our labels: the draft is unnumbered). Counts update from the Outcome Codes column on the 202728 tab.",
+"head": [
+"Code",
+"Organizing Idea",
+"Learning Outcome",
+"Understanding code",
+"Understanding",
+"Type",
+"Statement (paraphrased from draft)",
+"# Lessons mapped",
+"First scheduled",
+"Covered?"
+],
+"rows": [
+[
+"M1",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Understanding",
+"Atoms can be defined by their structure.",
+"11",
+"2027-09-16",
+"Yes"
+],
+[
+"M1.K1",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Knowledge",
+"All matter is composed of atoms.",
+"1",
+"2027-09-16",
+"Yes"
+],
+[
+"M1.K2",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Knowledge",
+"An atom is too small to be detected without the use of technology.",
+"2",
+"2027-09-16",
+"Yes"
+],
+[
+"M1.K3",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Knowledge",
+"An atom is electrically neutral and composed of protons (positive), electrons (negative), and neutrons (no charge).",
+"3",
+"2027-09-17",
+"Yes"
+],
+[
+"M1.K4",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Knowledge",
+"Protons and neutrons make up an atom's nucleus.",
+"1",
+"2027-09-17",
+"Yes"
+],
+[
+"M1.K5",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Knowledge",
+"An atomic model is a theoretical representation of an atom's structure.",
+"1",
+"2027-09-21",
+"Yes"
+],
+[
+"M1.K6",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Knowledge",
+"Electrons can be represented orbiting the nucleus in shells (Bohr model): first shell holds 2, second 8, third 8.",
+"4",
+"2027-09-22",
+"Yes"
+],
+[
+"M1.S1",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Skills & Procedures",
+"Model the location and charge of subatomic particles in an atom, limited to atoms with a maximum of 18 electrons.",
+"6",
+"2027-09-22",
+"Yes"
+],
+[
+"M1.S2",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M1",
+"Atoms can be defined by their structure.",
+"Skills & Procedures",
+"Research a technology used to study atoms and atomic structure.",
+"1",
+"2027-09-27",
+"Yes"
+],
+[
+"M2",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Understanding",
+"Information about elements and their properties can be determined by using the periodic table.",
+"12",
+"2027-09-15",
+"Yes"
+],
+[
+"M2.K1",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Knowledge",
+"Elements are pure substances made of only one type of atom and cannot be broken down by physical or chemical means.",
+"2",
+"2027-09-15",
+"Yes"
+],
+[
+"M2.K2",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Knowledge",
+"An element is assigned a name and symbol.",
+"2",
+"2027-09-29",
+"Yes"
+],
+[
+"M2.K3",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Knowledge",
+"All atoms of the same element have the same number of protons, which is the atomic number.",
+"1",
+"2027-10-04",
+"Yes"
+],
+[
+"M2.K4",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Knowledge",
+"The periodic table organizes elements by atomic number and typically shows atomic mass and state of matter.",
+"2",
+"2027-10-04",
+"Yes"
+],
+[
+"M2.K5",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Knowledge",
+"Elements are organized into groups (number of valence electrons) and periods (number of electron shells).",
+"3",
+"2027-10-05",
+"Yes"
+],
+[
+"M2.K6",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Knowledge",
+"The organization of the periodic table can be used to distinguish metals from non-metals.",
+"1",
+"2027-10-06",
+"Yes"
+],
+[
+"M2.S1",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Skills & Procedures",
+"Research how the name and symbol of an element was assigned.",
+"1",
+"2027-10-01",
+"Yes"
+],
+[
+"M2.S2",
+"Matter",
+"Students interpret matter in relation to atomic structure and physical and chemical properties.",
+"M2",
+"Information about elements and their properties can be determined by using the periodic table.",
+"Skills & Procedures",
+"Determine the name, symbol, and properties of an element, using the periodic table.",
+"9",
+"2027-10-04",
+"Yes"
+],
+[
+"F1",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Understanding",
+"The motion of an object changes because of forces acting on it.",
+"13",
+"2027-10-13",
+"Yes"
+],
+[
+"F1.K1",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Knowledge",
+"Net force is the sum of all forces acting on an object.",
+"1",
+"2027-10-13",
+"Yes"
+],
+[
+"F1.K2",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Knowledge",
+"When net force is zero, forces are balanced and the object's motion will not change.",
+"2",
+"2027-10-13",
+"Yes"
+],
+[
+"F1.K3",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Knowledge",
+"Changes in speed and direction of motion depend on the net force.",
+"1",
+"2027-10-14",
+"Yes"
+],
+[
+"F1.K4",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Knowledge",
+"Newton's first law (law of inertia): an object at rest stays at rest and an object in motion continues at constant speed in a straight line unless acted on by an unbalanced force.",
+"2",
+"2027-10-15",
+"Yes"
+],
+[
+"F1.K5",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Knowledge",
+"The greater the mass, the greater the inertia and the force needed to change motion.",
+"1",
+"2027-10-19",
+"Yes"
+],
+[
+"F1.K6",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Knowledge",
+"Speed is the relationship between distance and time: v = d/t.",
+"1",
+"2027-10-20",
+"Yes"
+],
+[
+"F1.S1",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Skills & Procedures",
+"Describe how forces affect the motion of an object.",
+"2",
+"2027-10-13",
+"Yes"
+],
+[
+"F1.S2",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Skills & Procedures",
+"Predict the direction of an object's motion based on net force, limited to horizontal motion.",
+"4",
+"2027-10-14",
+"Yes"
+],
+[
+"F1.S3",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Skills & Procedures",
+"Investigate how objects with different masses resist changes in motion when a force is applied.",
+"1",
+"2027-10-19",
+"Yes"
+],
+[
+"F1.S4",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Skills & Procedures",
+"Solve problems related to speed, distance, and time.",
+"8",
+"2027-10-20",
+"Yes"
+],
+[
+"F1.S5",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F1",
+"The motion of an object changes because of forces acting on it.",
+"Skills & Procedures",
+"Conduct a controlled experiment to determine the relationship between speed, distance, and time.",
+"2",
+"2027-10-22",
+"Yes"
+],
+[
+"F2",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Understanding",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"18",
+"2027-10-28",
+"Yes"
+],
+[
+"F2.K1",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Knowledge",
+"Fluids have no fixed shape and can flow, including liquids and gases.",
+"1",
+"2027-10-28",
+"Yes"
+],
+[
+"F2.K2",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Knowledge",
+"Properties of fluids include pressure (force over an area), viscosity (resistance to motion), and compressibility (volume change under pressure).",
+"3",
+"2027-10-29",
+"Yes"
+],
+[
+"F2.K3",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Knowledge",
+"Pressure is created by particles colliding with a container's wall as the wall exerts an equal but opposite force.",
+"2",
+"2027-10-28",
+"Yes"
+],
+[
+"F2.K4",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Knowledge",
+"The space between particles affects the compressibility of a fluid.",
+"1",
+"2027-11-08",
+"Yes"
+],
+[
+"F2.K5",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Knowledge",
+"Pascal's law expresses pressure as force applied perpendicularly over an area: P = F/A.",
+"1",
+"2027-11-04",
+"Yes"
+],
+[
+"F2.K6",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Knowledge",
+"Pascal's law applies in fluid technologies such as hospital beds, automotive brakes, and jackhammers.",
+"1",
+"2027-11-09",
+"Yes"
+],
+[
+"F2.S1",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Skills & Procedures",
+"Explain the relationship between pressure, force, and area.",
+"4",
+"2027-11-04",
+"Yes"
+],
+[
+"F2.S2",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Skills & Procedures",
+"Solve problems involving calculations related to pressure, force, and area.",
+"7",
+"2027-11-05",
+"Yes"
+],
+[
+"F2.S3",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Skills & Procedures",
+"Investigate the viscosity of various fluids.",
+"3",
+"2027-10-29",
+"Yes"
+],
+[
+"F2.S4",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Skills & Procedures",
+"Compare the compressibility of liquids and gases.",
+"3",
+"2027-11-08",
+"Yes"
+],
+[
+"F2.S5",
+"Energy",
+"Students analyze the motion of objects resulting from interactions of forces, fluids, and pressure.",
+"F2",
+"The motion and arrangement of particles can be used to predict the behaviour of fluids.",
+"Skills & Procedures",
+"Apply the properties of fluids to move an object.",
+"3",
+"2027-11-16",
+"Yes"
+],
+[
+"EN1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Understanding",
+"Energy can be transferred between energy stores.",
+"9",
+"2027-11-29",
+"Yes"
+],
+[
+"EN1.K1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Knowledge",
+"An energy store is a model representing how much energy is available within a system.",
+"1",
+"2027-11-29",
+"Yes"
+],
+[
+"EN1.K2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Knowledge",
+"Change in energy stores can indicate the amount of work done on an object or in a system.",
+"1",
+"2027-12-02",
+"Yes"
+],
+[
+"EN1.K3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Knowledge",
+"Types of energy stores: thermal, kinetic, elastic, gravitational, chemical, magnetic, electrostatic, nuclear.",
+"2",
+"2027-11-29",
+"Yes"
+],
+[
+"EN1.K4",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Knowledge",
+"Energy is transferred between stores through pathways: heating, radiation, mechanical work, electrical.",
+"1",
+"2027-12-01",
+"Yes"
+],
+[
+"EN1.S1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Skills & Procedures",
+"Identify various types of energy stores.",
+"2",
+"2027-11-29",
+"Yes"
+],
+[
+"EN1.S2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Skills & Procedures",
+"Provide examples of energy stores.",
+"1",
+"2027-11-30",
+"Yes"
+],
+[
+"EN1.S3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN1",
+"Energy can be transferred between energy stores.",
+"Skills & Procedures",
+"Describe how energy is transferred between energy stores through energy pathways.",
+"7",
+"2027-12-01",
+"Yes"
+],
+[
+"EN2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Understanding",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"8",
+"2027-12-06",
+"Yes"
+],
+[
+"EN2.K1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Knowledge",
+"Static electricity is the accumulation of electrons on a material's surface and is used in laser printers, paint sprayers, and air filters.",
+"2",
+"2027-12-06",
+"Yes"
+],
+[
+"EN2.K2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Knowledge",
+"Rubbing objects together transfers electrons: the material losing electrons becomes positive, the one gaining becomes negative.",
+"2",
+"2027-12-06",
+"Yes"
+],
+[
+"EN2.K3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Knowledge",
+"Like charges repel, unlike charges attract, and charged objects attract neutral objects (induction).",
+"2",
+"2027-12-07",
+"Yes"
+],
+[
+"EN2.K4",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Knowledge",
+"Static electricity is often discharged as a spark when a conductor touches the material.",
+"1",
+"2027-12-08",
+"Yes"
+],
+[
+"EN2.K5",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Knowledge",
+"Static electricity can cause natural phenomena, including lightning.",
+"1",
+"2027-12-09",
+"Yes"
+],
+[
+"EN2.S1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Skills & Procedures",
+"Explain how static electricity is discharged through the transfer of electrons.",
+"4",
+"2027-12-08",
+"Yes"
+],
+[
+"EN2.S2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Skills & Procedures",
+"Investigate how charged materials interact with one another.",
+"2",
+"2027-12-07",
+"Yes"
+],
+[
+"EN2.S3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN2",
+"Static electricity accumulates and can be discharged, which results in the transfer of energy.",
+"Skills & Procedures",
+"Research how lightning results from static electricity in clouds.",
+"1",
+"2027-12-09",
+"Yes"
+],
+[
+"EN3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Understanding",
+"Energy can be transferred as a wave.",
+"17",
+"2027-12-13",
+"Yes"
+],
+[
+"EN3.K1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"A wave is a disturbance or oscillation that transfers energy without transporting matter.",
+"1",
+"2027-12-13",
+"Yes"
+],
+[
+"EN3.K2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"Waves have measurable properties: wavelength, frequency, amplitude, period, speed.",
+"2",
+"2027-12-14",
+"Yes"
+],
+[
+"EN3.K3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"Higher frequency and higher amplitude waves transfer more energy.",
+"1",
+"2027-12-15",
+"Yes"
+],
+[
+"EN3.K4",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"Mechanical waves (seismic, water) require a medium; electromagnetic waves (radio, microwave) do not.",
+"2",
+"2027-12-16",
+"Yes"
+],
+[
+"EN3.K5",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"Mechanical waves oscillate particles of a medium while transferring energy in the direction of travel.",
+"1",
+"2027-12-16",
+"Yes"
+],
+[
+"EN3.K6",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"At a new medium a wave can be transmitted, reflected, refracted, dispersed, or absorbed.",
+"2",
+"2027-12-17",
+"Yes"
+],
+[
+"EN3.K7",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"Law of reflection: the angle of incidence equals the angle of reflection.",
+"2",
+"2028-01-03",
+"Yes"
+],
+[
+"EN3.K8",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Knowledge",
+"Refraction is the bending of a wave due to a change in speed in a new medium.",
+"2",
+"2028-01-05",
+"Yes"
+],
+[
+"EN3.S1",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Skills & Procedures",
+"Relate energy stores and transfers to waves.",
+"3",
+"2027-12-13",
+"Yes"
+],
+[
+"EN3.S2",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Skills & Procedures",
+"Describe the properties of a wave.",
+"3",
+"2027-12-14",
+"Yes"
+],
+[
+"EN3.S3",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Skills & Procedures",
+"Differentiate between mechanical and electromagnetic waves.",
+"2",
+"2027-12-16",
+"Yes"
+],
+[
+"EN3.S4",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Skills & Procedures",
+"Interpret the behaviour of waves when encountering different surfaces or mediums.",
+"6",
+"2027-12-17",
+"Yes"
+],
+[
+"EN3.S5",
+"Energy",
+"Students examine energy stores and transfers in an object or a system.",
+"EN3",
+"Energy can be transferred as a wave.",
+"Skills & Procedures",
+"Represent the law of reflection.",
+"7",
+"2028-01-03",
+"Yes"
+],
+[
+"ES1",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Understanding",
+"Evidence from geological records provides information about Earth's history.",
+"10",
+"2028-04-11",
+"Yes"
+],
+[
+"ES1.K1",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"The geological time scale organizes Earth's history into intervals showing major geological events and the appearance and disappearance of life forms.",
+"2",
+"2028-04-11",
+"Yes"
+],
+[
+"ES1.K2",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"Relative dating determines younger and older rock layers.",
+"2",
+"2028-04-12",
+"Yes"
+],
+[
+"ES1.K3",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"The fossil record gives information about geological events, past climates and environments, and living and extinct organisms.",
+"1",
+"2028-04-18",
+"Yes"
+],
+[
+"ES1.K4",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"Fossils are found in sedimentary rocks and form over thousands to millions of years under specific conditions.",
+"1",
+"2028-04-13",
+"Yes"
+],
+[
+"ES1.K5",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"Fossils form when remains or impressions are mineralized or compressed.",
+"1",
+"2028-04-13",
+"Yes"
+],
+[
+"ES1.K6",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"Evidence of change over time comes from comparing organisms and fossils.",
+"1",
+"2028-04-19",
+"Yes"
+],
+[
+"ES1.K7",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"Remains and impressions can be destroyed by geological processes.",
+"1",
+"2028-04-18",
+"Yes"
+],
+[
+"ES1.K8",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Knowledge",
+"Alberta's badlands ('les mauvaises terres a traverser') are renowned for extensive fossil beds.",
+"1",
+"2028-04-20",
+"Yes"
+],
+[
+"ES1.S1",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Skills & Procedures",
+"Represent the geological time scale.",
+"2",
+"2028-04-11",
+"Yes"
+],
+[
+"ES1.S2",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Skills & Procedures",
+"Distinguish between younger and older rock layers.",
+"5",
+"2028-04-12",
+"Yes"
+],
+[
+"ES1.S3",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Skills & Procedures",
+"Explore how different types of fossils are formed.",
+"1",
+"2028-04-13",
+"Yes"
+],
+[
+"ES1.S4",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Skills & Procedures",
+"Describe evidence of change in organisms over time.",
+"3",
+"2028-04-19",
+"Yes"
+],
+[
+"ES1.S5",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES1",
+"Evidence from geological records provides information about Earth's history.",
+"Skills & Procedures",
+"Research the discovery of fossils in the badlands of Alberta.",
+"1",
+"2028-04-20",
+"Yes"
+],
+[
+"ES2",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Understanding",
+"Geological resource extraction methods change Earth's surface.",
+"10",
+"2028-04-24",
+"Yes"
+],
+[
+"ES2.K1",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Knowledge",
+"Geological resources are naturally occurring materials on or below the surface with economic value.",
+"1",
+"2028-04-24",
+"Yes"
+],
+[
+"ES2.K2",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Knowledge",
+"Geological resources are unevenly distributed due to past geological processes.",
+"1",
+"2028-04-24",
+"Yes"
+],
+[
+"ES2.K3",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Knowledge",
+"Alberta's fossil fuels and minerals provide raw materials for plastics and parts of products such as medical devices and cell phones.",
+"1",
+"2028-04-25",
+"Yes"
+],
+[
+"ES2.K4",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Knowledge",
+"Humans change Earth's surface through surface mines (coal, gravel) and underground mines (copper, iron).",
+"1",
+"2028-04-27",
+"Yes"
+],
+[
+"ES2.K5",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Knowledge",
+"Methods to locate resources include surveying the surface and core sample drilling.",
+"1",
+"2028-04-26",
+"Yes"
+],
+[
+"ES2.K6",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Knowledge",
+"Responsible extraction in Alberta includes carbon capture and storage, methane reduction, water recycling and filtration, and tailings management.",
+"1",
+"2028-04-28",
+"Yes"
+],
+[
+"ES2.S1",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Skills & Procedures",
+"Investigate geological resources found in Alberta and their primary uses.",
+"3",
+"2028-04-25",
+"Yes"
+],
+[
+"ES2.S2",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Skills & Procedures",
+"Research exploration and extraction methods for a geological resource.",
+"2",
+"2028-04-26",
+"Yes"
+],
+[
+"ES2.S3",
+"Earth Science",
+"Students investigate Earth's geological history and its implications for resource exploration.",
+"ES2",
+"Geological resource extraction methods change Earth's surface.",
+"Skills & Procedures",
+"Analyze potential economic and environmental impacts of geological resource extraction.",
+"5",
+"2028-04-28",
+"Yes"
+],
+[
+"LS1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Understanding",
+"Cells support life in organisms of varying complexity.",
+"19",
+"2028-01-18",
+"Yes"
+],
+[
+"LS1.K1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Cells are the basic unit of life and vary in size, shape, and function.",
+"2",
+"2028-01-18",
+"Yes"
+],
+[
+"LS1.K2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Microscopes have enabled and advanced the study of cells.",
+"1",
+"2028-01-19",
+"Yes"
+],
+[
+"LS1.K3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Total magnification of a compound light microscope is the product of its lens powers.",
+"1",
+"2028-01-21",
+"Yes"
+],
+[
+"LS1.K4",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Organelles are specialized structures supporting functions in unicellular and multicellular organisms.",
+"1",
+"2028-01-25",
+"Yes"
+],
+[
+"LS1.K5",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Organelles in plant and animal cells: cell membrane, nucleus, cytoplasm, mitochondria, ribosomes, vacuoles.",
+"3",
+"2028-01-25",
+"Yes"
+],
+[
+"LS1.K6",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Organelles only in plant cells: cell wall and chloroplasts.",
+"1",
+"2028-01-26",
+"Yes"
+],
+[
+"LS1.K7",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Some unicellular organisms, including bacteria, have no nucleus.",
+"1",
+"2028-01-24",
+"Yes"
+],
+[
+"LS1.K8",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Some unicellular organisms (bacteria, fungi, protists) can affect the health of humans and other organisms.",
+"1",
+"2028-01-31",
+"Yes"
+],
+[
+"LS1.K9",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"Processes regulating a cell's internal environment: cellular respiration, diffusion, osmosis, protein formation.",
+"2",
+"2028-02-03",
+"Yes"
+],
+[
+"LS1.K10",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Knowledge",
+"The semi-permeable cell membrane enables diffusion and osmosis.",
+"2",
+"2028-02-03",
+"Yes"
+],
+[
+"LS1.S1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Use a microscope to study cells.",
+"2",
+"2028-01-19",
+"Yes"
+],
+[
+"LS1.S2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Calculate total magnification of a microscope.",
+"3",
+"2028-01-21",
+"Yes"
+],
+[
+"LS1.S3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Create diagrams of cells based on a microscope image.",
+"2",
+"2028-01-21",
+"Yes"
+],
+[
+"LS1.S4",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Identify organelles in plant and animal cells.",
+"3",
+"2028-01-26",
+"Yes"
+],
+[
+"LS1.S5",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Describe the function of organelles.",
+"6",
+"2028-01-25",
+"Yes"
+],
+[
+"LS1.S6",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Research how a unicellular organism can affect the health of another organism.",
+"1",
+"2028-01-31",
+"Yes"
+],
+[
+"LS1.S7",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Investigate the processes of diffusion and osmosis.",
+"3",
+"2028-02-04",
+"Yes"
+],
+[
+"LS1.S8",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS1",
+"Cells support life in organisms of varying complexity.",
+"Skills & Procedures",
+"Describe processes that regulate the internal environment of cells.",
+"2",
+"2028-02-07",
+"Yes"
+],
+[
+"LS2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Understanding",
+"Cell division is essential for survival and diversity.",
+"10",
+"2028-02-08",
+"Yes"
+],
+[
+"LS2.K1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Knowledge",
+"DNA is the genetic information that provides instructions for the cell's survival.",
+"1",
+"2028-02-08",
+"Yes"
+],
+[
+"LS2.K2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Knowledge",
+"Most plant and animal cells store DNA in the nucleus; cells without a nucleus (bacteria) may store DNA in the cytoplasm.",
+"1",
+"2028-02-08",
+"Yes"
+],
+[
+"LS2.K3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Knowledge",
+"Cells within an individual organism contain the same DNA.",
+"1",
+"2028-02-08",
+"Yes"
+],
+[
+"LS2.K4",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Knowledge",
+"Cell division enables growth, repair, reproduction, and variation.",
+"1",
+"2028-02-10",
+"Yes"
+],
+[
+"LS2.K5",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Knowledge",
+"Mitosis creates two identical daughter cells and enables growth and repair.",
+"1",
+"2028-02-11",
+"Yes"
+],
+[
+"LS2.K6",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Knowledge",
+"Meiosis creates four non-identical daughter cells used in sexual reproduction.",
+"1",
+"2028-02-11",
+"Yes"
+],
+[
+"LS2.S1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Skills & Procedures",
+"Compare the location of DNA in different types of cells.",
+"1",
+"2028-02-08",
+"Yes"
+],
+[
+"LS2.S2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Skills & Procedures",
+"Identify the type of cell division from a given representation.",
+"2",
+"2028-02-14",
+"Yes"
+],
+[
+"LS2.S3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS2",
+"Cell division is essential for survival and diversity.",
+"Skills & Procedures",
+"Compare mitosis and meiosis.",
+"8",
+"2028-02-11",
+"Yes"
+],
+[
+"LS3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Understanding",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"12",
+"2028-02-17",
+"Yes"
+],
+[
+"LS3.K1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Knowledge",
+"Complex organisms show levels of organization: cell, tissue, organ, organ system, organism.",
+"1",
+"2028-02-17",
+"Yes"
+],
+[
+"LS3.K2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Knowledge",
+"Specialized cells, such as nerve cells and red blood cells, perform specific functions.",
+"1",
+"2028-02-17",
+"Yes"
+],
+[
+"LS3.K3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Knowledge",
+"Stem cells are non-specialized cells that can specialize into any type of cell.",
+"1",
+"2028-02-17",
+"Yes"
+],
+[
+"LS3.K4",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Knowledge",
+"Human organ systems are interdependent: digestive, respiratory, circulatory, muscular, skeletal, nervous, excretory.",
+"5",
+"2028-02-18",
+"Yes"
+],
+[
+"LS3.K5",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Knowledge",
+"Diagnostic procedures such as X-rays and blood tests identify function level or disease in organ systems.",
+"1",
+"2028-03-02",
+"Yes"
+],
+[
+"LS3.S1",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Skills & Procedures",
+"Describe the levels of organization in complex organisms.",
+"3",
+"2028-02-17",
+"Yes"
+],
+[
+"LS3.S2",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Skills & Procedures",
+"Research various organ systems in humans.",
+"2",
+"2028-02-28",
+"Yes"
+],
+[
+"LS3.S3",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Skills & Procedures",
+"Compare the functions of specialized and non-specialized cells.",
+"1",
+"2028-02-17",
+"Yes"
+],
+[
+"LS3.S4",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Skills & Procedures",
+"Predict the effects of an organ system not functioning properly.",
+"5",
+"2028-03-01",
+"Yes"
+],
+[
+"LS3.S5",
+"Life Science",
+"Students analyze the structures and functions of cells and organ systems.",
+"LS3",
+"The interdependent functions of organ systems influence the overall health of an individual.",
+"Skills & Procedures",
+"Research a diagnostic medical procedure.",
+"1",
+"2028-03-02",
+"Yes"
+],
+[
+"SP1",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Understanding",
+"Understandings of the universe have changed over time.",
+"11",
+"2028-05-08",
+"Yes"
+],
+[
+"SP1.K1",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"Astronomy is the scientific study of the universe.",
+"1",
+"2028-05-08",
+"Yes"
+],
+[
+"SP1.K2",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"Our solar system is part of the Milky Way, one of billions of galaxies.",
+"1",
+"2028-05-08",
+"Yes"
+],
+[
+"SP1.K3",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"Almost all stars visible to the naked eye are in the Milky Way.",
+"1",
+"2028-05-12",
+"Yes"
+],
+[
+"SP1.K4",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"Models of the universe evolved through history: ancient civilizations (Babylonia, ancient Greece) and astronomers such as Ptolemy and Galileo.",
+"1",
+"2028-05-09",
+"Yes"
+],
+[
+"SP1.K5",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"The Big Bang theory explains the universe starting from a dense, single point that expanded under high temperature and pressure.",
+"1",
+"2028-05-10",
+"Yes"
+],
+[
+"SP1.K6",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"As the universe expanded and cooled, hydrogen and helium formed, then the first stars, heavier elements, and eventually the solar system.",
+"1",
+"2028-05-11",
+"Yes"
+],
+[
+"SP1.K7",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"A star's observed brightness depends on its luminosity and distance from Earth.",
+"1",
+"2028-05-12",
+"Yes"
+],
+[
+"SP1.K8",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Knowledge",
+"Stars have a life cycle: formation, changes in mass, size, and brightness, and star death.",
+"1",
+"2028-05-15",
+"Yes"
+],
+[
+"SP1.S1",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Skills & Procedures",
+"Examine the relationship between planets, solar systems, galaxies, and the universe.",
+"3",
+"2028-05-08",
+"Yes"
+],
+[
+"SP1.S2",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Skills & Procedures",
+"Explore how understandings, theories, and models of the universe have changed over time.",
+"2",
+"2028-05-09",
+"Yes"
+],
+[
+"SP1.S3",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Skills & Procedures",
+"Describe the origin and evolution of the universe according to the Big Bang theory.",
+"6",
+"2028-05-10",
+"Yes"
+],
+[
+"SP1.S4",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Skills & Procedures",
+"Compare the visibility of various stars in the Milky Way.",
+"3",
+"2028-05-12",
+"Yes"
+],
+[
+"SP1.S5",
+"Space Science",
+"Students analyze the origin and evolution of the universe.",
+"SP1",
+"Understandings of the universe have changed over time.",
+"Skills & Procedures",
+"Explore the life cycle of a star.",
+"3",
+"2028-05-15",
+"Yes"
+],
+[
+"CS1",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Understanding",
+"Programs can be enhanced for efficiency.",
+"11",
+"2028-03-13",
+"Yes"
+],
+[
+"CS1.K1",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Functions can be designed in a programming language.",
+"1",
+"2028-03-17",
+"Yes"
+],
+[
+"CS1.K2",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"An event is a detectable action, change, or occurrence.",
+"1",
+"2028-03-16",
+"Yes"
+],
+[
+"CS1.K3",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Programs recognize and respond to external events (e.g., mouse click) and internal events (e.g., a timer completes).",
+"1",
+"2028-03-16",
+"Yes"
+],
+[
+"CS1.K4",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Sensors collect data from the environment as input to the IPO cycle and are used in applications such as robotics.",
+"2",
+"2028-03-13",
+"Yes"
+],
+[
+"CS1.K5",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Variables store information that can be retrieved and changed throughout a program.",
+"1",
+"2028-03-14",
+"Yes"
+],
+[
+"CS1.K6",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Variables have descriptive names and can be assigned as a number or a string of text.",
+"1",
+"2028-03-14",
+"Yes"
+],
+[
+"CS1.K7",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Variables can be used with loops, conditionals, functions, and events.",
+"1",
+"2028-03-15",
+"Yes"
+],
+[
+"CS1.K8",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Knowledge",
+"Efficient code uses functions, variables, and events effectively so programs run faster and more reliably.",
+"1",
+"2028-03-20",
+"Yes"
+],
+[
+"CS1.S1",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Skills & Procedures",
+"Create a function to carry out a set of instructions using visual block-based code.",
+"1",
+"2028-03-17",
+"Yes"
+],
+[
+"CS1.S2",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Skills & Procedures",
+"Explain the purpose of block-based code containing functions, variables, and events.",
+"5",
+"2028-03-13",
+"Yes"
+],
+[
+"CS1.S3",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Skills & Procedures",
+"Adjust block-based code using functions, variables, and events to improve efficiency.",
+"4",
+"2028-03-20",
+"Yes"
+],
+[
+"CS1.S4",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Skills & Procedures",
+"Write a program using visual block-based code that includes variables.",
+"2",
+"2028-03-14",
+"Yes"
+],
+[
+"CS1.S5",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Skills & Procedures",
+"Debug errors in block-based code that contains functions, variables, and events.",
+"2",
+"2028-03-21",
+"Yes"
+],
+[
+"CS1.S6",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS1",
+"Programs can be enhanced for efficiency.",
+"Skills & Procedures",
+"Explore the use of sensors.",
+"1",
+"2028-03-22",
+"Yes"
+],
+[
+"CS2",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Understanding",
+"AI impacts human tasks in a variety of ways.",
+"6",
+"2028-03-24",
+"Yes"
+],
+[
+"CS2.K1",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"AI systems can increase efficiency in information processing, decision making, and task completion.",
+"1",
+"2028-03-24",
+"Yes"
+],
+[
+"CS2.K2",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"Types of machine learning: supervised, unsupervised, and reinforcement learning.",
+"1",
+"2028-04-04",
+"Yes"
+],
+[
+"CS2.K3",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"Bias in AI can be introduced by developers, data sets, algorithms, and user input.",
+"1",
+"2028-04-05",
+"Yes"
+],
+[
+"CS2.K4",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"Generative AI can produce images, text, videos, and music.",
+"1",
+"2028-04-05",
+"Yes"
+],
+[
+"CS2.K5",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"A chatbot simulates conversations, understands questions, and answers in real time using AI.",
+"1",
+"2028-04-05",
+"Yes"
+],
+[
+"CS2.K6",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"Recommendation algorithms predict content a person may like from previous online activity.",
+"1",
+"2028-04-07",
+"Yes"
+],
+[
+"CS2.K7",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"Scientists use AI for data analysis, climate modelling, and classifying galaxies in space images.",
+"2",
+"2028-03-24",
+"Yes"
+],
+[
+"CS2.K8",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"AI can automate repetitive tasks, create new career opportunities, and change skills needed for work.",
+"1",
+"2028-04-07",
+"Yes"
+],
+[
+"CS2.K9",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Knowledge",
+"AI has ethical implications: privacy and security, fairness and bias, misinformation and deepfakes, accountability, and influence on user behaviour.",
+"1",
+"2028-04-05",
+"Yes"
+],
+[
+"CS2.S1",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Skills & Procedures",
+"Compare types of machine learning.",
+"2",
+"2028-04-04",
+"Yes"
+],
+[
+"CS2.S2",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Skills & Procedures",
+"Explore AI, considering ethics and bias.",
+"2",
+"2028-04-05",
+"Yes"
+],
+[
+"CS2.S3",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Skills & Procedures",
+"Reflect on how recommendation algorithms influence individuals.",
+"1",
+"2028-04-07",
+"Yes"
+],
+[
+"CS2.S4",
+"Computer Science",
+"Students examine ways to improve efficiency in computer systems.",
+"CS2",
+"AI impacts human tasks in a variety of ways.",
+"Skills & Procedures",
+"Examine ways AI is reshaping the workforce.",
+"1",
+"2028-04-07",
+"Yes"
+],
+[
+"CS3",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Understanding",
+"Design criteria and testing can help turn ideas into solutions.",
+"7",
+"2027-11-16",
+"Yes"
+],
+[
+"CS3.K1",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Knowledge",
+"Design criteria are the specific requirements a solution must meet.",
+"1",
+"2027-11-16",
+"Yes"
+],
+[
+"CS3.K2",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Knowledge",
+"Constraints (e.g., budget, available resources) limit a design and can affect innovation positively or negatively.",
+"2",
+"2027-11-16",
+"Yes"
+],
+[
+"CS3.K3",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Knowledge",
+"Solutions can be tested to determine whether design criteria were met.",
+"2",
+"2027-11-17",
+"Yes"
+],
+[
+"CS3.K4",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Knowledge",
+"Data can be analyzed to identify strengths and weaknesses of a design.",
+"2",
+"2027-11-19",
+"Yes"
+],
+[
+"CS3.S1",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Skills & Procedures",
+"Describe how constraints might impact a solution.",
+"1",
+"2027-11-16",
+"Yes"
+],
+[
+"CS3.S2",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Skills & Procedures",
+"Design a test to evaluate potential solutions based on design criteria.",
+"4",
+"2027-11-17",
+"Yes"
+],
+[
+"CS3.S3",
+"Computer Science",
+"Students examine the role of design criteria and testing in design processes.",
+"CS3",
+"Design criteria and testing can help turn ideas into solutions.",
+"Skills & Procedures",
+"Analyze potential improvements to a solution.",
+"2",
+"2027-11-22",
+"Yes"
+],
+[
+"SL1",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Understanding",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"14",
+"2027-09-03",
+"Yes"
+],
+[
+"SL1.K1",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Scientific knowledge can refer to facts, models, laws, and theories.",
+"1",
+"2027-09-03",
+"Yes"
+],
+[
+"SL1.K2",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Repeatedly confirmed observations may be accepted as facts, which can be revised or rejected with new evidence.",
+"2",
+"2027-09-03",
+"Yes"
+],
+[
+"SL1.K3",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Laws and theories are widely accepted, supported by large bodies of evidence, equally important, used to predict, and testable.",
+"2",
+"2027-09-14",
+"Yes"
+],
+[
+"SL1.K4",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Scientific laws describe phenomena, can be expressed as cause and effect, a rule, or an equation, and are considered universal.",
+"2",
+"2027-09-14",
+"Yes"
+],
+[
+"SL1.K5",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Scientific theories explain why or how phenomena occur and integrate a wide range of knowledge.",
+"1",
+"2027-09-14",
+"Yes"
+],
+[
+"SL1.K6",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"A scientific model helps explain or predict a phenomenon.",
+"2",
+"2027-09-08",
+"Yes"
+],
+[
+"SL1.K7",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Scientists use models to test hypotheses when developing theories, such as the Big Bang theory.",
+"1",
+"2028-05-10",
+"Yes"
+],
+[
+"SL1.K8",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Theories cannot change into laws, and laws cannot change into theories.",
+"2",
+"2027-09-14",
+"Yes"
+],
+[
+"SL1.K9",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Knowledge",
+"Science careers develop, test, and apply laws and theories, e.g., geophysicist, agronomist, instrumentation technician.",
+"3",
+"2027-11-22",
+"Yes"
+],
+[
+"SL1.S1",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Skills & Procedures",
+"Compare scientific laws to scientific theories.",
+"4",
+"2027-09-03",
+"Yes"
+],
+[
+"SL1.S2",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Skills & Procedures",
+"Research a scientific law or theory.",
+"1",
+"2028-05-16",
+"Yes"
+],
+[
+"SL1.S3",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Skills & Procedures",
+"Develop predictions for a phenomenon, using a scientific model.",
+"2",
+"2027-09-08",
+"Yes"
+],
+[
+"SL1.S4",
+"Scientific Literacy",
+"Students investigate the role of scientific laws and theories and how they contribute to scientific knowledge.",
+"SL1",
+"Scientific laws and theories play specific roles in describing and explaining phenomena.",
+"Skills & Procedures",
+"Explore how a career in science uses the body of scientific knowledge.",
+"3",
+"2027-11-22",
+"Yes"
+],
+[
+"SL2",
+"Scientific Literacy",
+"Students interpret patterns and possible bias in data.",
+"SL2",
+"Unbiased data can help accurately predict trends.",
+"Understanding",
+"Unbiased data can help accurately predict trends.",
+"8",
+"2027-09-07",
+"Yes"
+],
+[
+"SL2.K1",
+"Scientific Literacy",
+"Students interpret patterns and possible bias in data.",
+"SL2",
+"Unbiased data can help accurately predict trends.",
+"Knowledge",
+"The relationship between two variables can reveal patterns to predict trends, identify risks, and make decisions.",
+"1",
+"2027-09-07",
+"Yes"
+],
+[
+"SL2.K2",
+"Scientific Literacy",
+"Students interpret patterns and possible bias in data.",
+"SL2",
+"Unbiased data can help accurately predict trends.",
+"Knowledge",
+"Critical-thinking skills support interpreting and analyzing patterns.",
+"1",
+"2027-09-13",
+"Yes"
+],
+[
+"SL2.K3",
+"Scientific Literacy",
+"Students interpret patterns and possible bias in data.",
+"SL2",
+"Unbiased data can help accurately predict trends.",
+"Knowledge",
+"Bias can lead to incorrect conclusions through errors in reasoning, misinterpretation or inaccurate analysis, and flawed decision making.",
+"2",
+"2027-09-13",
+"Yes"
+],
+[
+"SL2.S1",
+"Scientific Literacy",
+"Students interpret patterns and possible bias in data.",
+"SL2",
+"Unbiased data can help accurately predict trends.",
+"Skills & Procedures",
+"Analyze patterns in real-world situations.",
+"5",
+"2027-09-07",
+"Yes"
+],
+[
+"SL2.S2",
+"Scientific Literacy",
+"Students interpret patterns and possible bias in data.",
+"SL2",
+"Unbiased data can help accurately predict trends.",
+"Skills & Procedures",
+"Explore how bias can lead to incorrect conclusions.",
+"3",
+"2027-09-13",
+"Yes"
+],
+[
+"SL3",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Understanding",
+"Sustainability supports present needs while addressing long-term impacts.",
+"10",
+"2028-05-25",
+"Yes"
+],
+[
+"SL3.K1",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Environmental stewardship supports sustainability by meeting present needs while considering future generations.",
+"1",
+"2028-05-25",
+"Yes"
+],
+[
+"SL3.K2",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Sustainability is the ability of systems to function effectively into the future.",
+"1",
+"2028-05-25",
+"Yes"
+],
+[
+"SL3.K3",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Actions: green technology, managing resources while protecting air, land, and water, planning expansion while preserving natural areas, setting targets for pollution, waste, and emissions.",
+"2",
+"2028-05-26",
+"Yes"
+],
+[
+"SL3.K4",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Green technology (electric or hydrogen vehicles, solar, carbon capture and storage, vertical farming) can reduce human impacts.",
+"1",
+"2028-05-29",
+"Yes"
+],
+[
+"SL3.K5",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"AI and drones can reduce environmental impacts by monitoring, predicting, and improving resource use.",
+"1",
+"2028-05-30",
+"Yes"
+],
+[
+"SL3.K6",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Sustainable agriculture protects biodiversity, supports soil and ecosystem health, and maximizes long-term yield.",
+"1",
+"2028-05-31",
+"Yes"
+],
+[
+"SL3.K7",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Sustainability initiatives led to precision agriculture and autonomous zero-emission mining equipment.",
+"1",
+"2028-05-30",
+"Yes"
+],
+[
+"SL3.K8",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Cleaner energy (natural gas, hydrogen, nuclear, renewables) can balance demand with emission reduction.",
+"1",
+"2028-06-01",
+"Yes"
+],
+[
+"SL3.K9",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Hydrogen can be used in gas utilities, transportation, industry, power generation, and power storage.",
+"1",
+"2028-06-01",
+"Yes"
+],
+[
+"SL3.K10",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Alberta has uranium resources for a clean energy strategy that includes nuclear energy.",
+"1",
+"2028-06-01",
+"Yes"
+],
+[
+"SL3.K11",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Knowledge",
+"Sustainability efforts have social, environmental, and economic impacts.",
+"1",
+"2028-06-05",
+"Yes"
+],
+[
+"SL3.S1",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Skills & Procedures",
+"Relate environmental stewardship to sustainability.",
+"2",
+"2028-05-25",
+"Yes"
+],
+[
+"SL3.S2",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Skills & Procedures",
+"Explain actions that support sustainability.",
+"3",
+"2028-05-26",
+"Yes"
+],
+[
+"SL3.S3",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Skills & Procedures",
+"Investigate ways technologies can be used to enhance sustainability.",
+"2",
+"2028-05-29",
+"Yes"
+],
+[
+"SL3.S4",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Skills & Procedures",
+"Explore ways energy resources can support sustainable energy in Alberta.",
+"1",
+"2028-06-01",
+"Yes"
+],
+[
+"SL3.S5",
+"Scientific Literacy",
+"Students examine how sustainability supports the needs of future generations.",
+"SL3",
+"Sustainability supports present needs while addressing long-term impacts.",
+"Skills & Procedures",
+"Research possible impacts of sustainability efforts at a local or provincial level.",
+"4",
+"2028-06-02",
+"Yes"
+],
+[
+"SAFE",
+"Safety in Science",
+"Subject introduction: Safety in Science (not a numbered learning outcome).",
+"SAFE",
+"Safety in Science: students demonstrate safety through responsive decision making and ethical behaviour (subject introduction).",
+"Subject introduction",
+"Safety in Science: students demonstrate safety through responsive decision making and ethical behaviour (subject introduction).",
+"2",
+"2027-09-09",
+"Yes"
+]
+]
+},
+"pacing": [
+[
+"Calendar check: 2026/27 plan vs projected 2027/28",
+"",
+"",
+"",
+""
+],
+[
+"Day type",
+"2026/27 (counted from current plan)",
+"2027/28 (live count)",
+"Notes",
+"Match?"
+],
+[
+"Intro days",
+"2",
+"2",
+"Wed Sep 1 and Thu Sep 2, 2027 (projected)",
+"Yes"
+],
+[
+"PD days",
+"7",
+"7",
+"Sep 20, Oct 18, Jan 28, Mar 9, Mar 10, Apr 3, Jun 19 (all projected)",
+"Yes"
+],
+[
+"Day 3s",
+"7",
+"7",
+"Sep 24, Oct 21, Nov 23, Jan 12, Feb 9, Apr 6, May 3 (same relative weeks as your 2026/27 Science 8 plan)",
+"Yes"
+],
+[
+"Grade 9 PAT days (events, classes run)",
+"5",
+"5",
+"ELA Jun 20, Math A Jun 21, Math B Jun 22, Social Jun 23, Science Jun 26 (projected; matches the Science 9 plan)",
+"Yes"
+],
+[
+"Statutory holidays (school days)",
+"8",
+"8",
+"Labour Day Sep 6, Truth and Reconciliation Sep 30, Thanksgiving Oct 11, Remembrance Day Nov 11, Family Day Feb 21, Good Friday Apr 14, Easter Monday Apr 17, Victoria Day May 22",
+"Yes"
+],
+[
+"Teachers' Convention days",
+"2",
+"2",
+"Thu Feb 24 and Fri Feb 25, 2028 (projected)",
+"Yes"
+],
+[
+"Non-instructional days (outside breaks)",
+"3",
+"3",
+"Mar 8, May 18, May 19 (projected)",
+"Yes"
+],
+[
+"Fall break days (excluding Nov 11)",
+"3",
+"3",
+"Nov 10, Nov 12, Nov 15 (projected)",
+"Yes"
+],
+[
+"Review classes",
+"12",
+"12",
+"June review and final assessment block",
+"Yes"
+],
+[
+"Instructional classes (excluding Intro)",
+"169",
+"167",
+"Two fewer because Good Friday and Easter Monday do not touch Spring Break in 2028",
+"-2"
+],
+[
+"Pacing by unit",
+"",
+"",
+"",
+""
+],
+[
+"Unit (2027/28)",
+"Classes 2027/28",
+"Knowledge and skill statements",
+"Closest 2026/27 unit (classes)",
+"Share of year"
+],
+[
+"Launch",
+"7",
+"18",
+"Scientific Method incl. safety (5)",
+"0.0419161676646707"
+],
+[
+"U1 Matter",
+"16",
+"16",
+"none (moved from Gr 9)",
+"0.0958083832335329"
+],
+[
+"U2 Forces and Fluids",
+"26",
+"29",
+"Mix and Flow of Matter (31) and part of Mechanical Systems (34)",
+"0.155688622754491"
+],
+[
+"U3 Energy",
+"25",
+"28",
+"Light and Optics (29)",
+"0.149700598802395"
+],
+[
+"U4 Life Science",
+"31",
+"37",
+"Cells and Systems (31)",
+"0.18562874251497"
+],
+[
+"U5 Computer Science",
+"14",
+"27",
+"none (new)",
+"0.0838323353293413"
+],
+[
+"U6 Earth Science",
+"16",
+"22",
+"none (new to Gr 8)",
+"0.0958083832335329"
+],
+[
+"U7 Space",
+"10",
+"13",
+"none (new to Gr 8)",
+"0.0598802395209581"
+],
+[
+"U8 Sustainability",
+"10",
+"16",
+"Water (27)",
+"0.0598802395209581"
+],
+[
+"Review",
+"12",
+"",
+"Review (12)",
+"0.0718562874251497"
+],
+[
+"Total",
+"167",
+"206",
+"169 classes in 2026/27",
+""
+],
+[
+"Resource status of 2027/28 lessons",
+"",
+"",
+"",
+""
+],
+[
+"Status",
+"Lessons",
+"",
+"Meaning",
+""
+],
+[
+"Carry over",
+"33",
+"",
+"Existing 2026/27 resource fits as is",
+""
+],
+[
+"Adapt",
+"57",
+"",
+"Existing resource needs editing to match new outcomes",
+""
+],
+[
+"New build",
+"77",
+"",
+"No existing resource; needs to be created",
+""
+]
+]
+}
+</script>
+
+<script>
+(function(){
+"use strict";
+var P={},L={labs:{}};
+try{P=JSON.parse(document.getElementById("plandata").textContent);}catch(e){}
+try{L=JSON.parse(document.getElementById("labs").textContent)||{labs:{}};}catch(e){}
+var LABS=L.labs||{};
+function $(s){return document.querySelector(s);}
+function el(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;}
+var ARROW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+var WD=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],MO=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function dparts(iso){var d=new Date(iso+"T12:00:00");return {wd:WD[d.getDay()],md:MO[d.getMonth()]+" "+d.getDate()};}
+function stClass(s){return s==="Carry over"?"carry":s==="Adapt"?"adapt":s==="New build"?"new":"";}
+function ucode(c){return String(c).split(".")[0];}
+function labFor(code){return LABS[code]&&LABS[code].url?LABS[code]:null;}
+function deckFor(lab){return lab&&lab.deck&&lab.deck.url?lab.deck:null;}
+
+/* header */
+var items=P.items||[];
+var days=items.filter(function(i){return i.t==="day";});
+var st={"Carry over":0,"Adapt":0,"New build":0};days.forEach(function(d){if(st[d.status]!=null)st[d.status]++;});
+var units=items.filter(function(i){return i.t==="unit";});
+var cores={};items.forEach(function(i){if(i.t==="core"&&i.code!=="SAFE")cores[i.code]=1;});
+var nCore=Object.keys(cores).length,nLab=Object.keys(cores).filter(function(c){return labFor(c);}).length;
+$("#sub").textContent=(P.title||"").replace(/\s*Outcome codes are defined on the Outcome Map tab\.?/,"");
+var stats=$("#stats");
+[[days.length,"classes planned"],[st["Carry over"],"carry over"],[st["Adapt"],"adapt"],[st["New build"],"new build"]].forEach(function(s){var d=el("div","stat");d.appendChild(el("b",null,s[0]));d.appendChild(el("span",null,s[1]));stats.appendChild(d);});
+var ls=el("div","stat lab");ls.appendChild(el("b",null,nLab+"/"+nCore));ls.appendChild(el("span",null,"understandings with a lab"));stats.appendChild(ls);
+$("#labnote").textContent=nLab?("Interactive lab links added "+(L.updated?("as of "+L.updated):"")+". A lab appears here once it has been reviewed and shared."):"Interactive lab links appear here once each lab has been reviewed and shared.";
+
+/* plan view */
+var blocks=[],cur=null,curCore=null;
+items.forEach(function(i){
+  if(i.t==="unit"){cur={u:i,rows:[]};blocks.push(cur);curCore=null;return;}
+  if(!cur){cur={u:{name:"Start of year",lo:""},rows:[]};blocks.push(cur);}
+  if(i.t==="core")curCore=i.code;
+  i._core=curCore;cur.rows.push(i);
+});
+var sel=$("#unitSel");sel.appendChild(new Option("All units","all"));
+blocks.forEach(function(b,k){sel.appendChild(new Option(b.u.name.length>60?b.u.name.slice(0,58)+"…":b.u.name,String(k)));});
+var F={q:"",unit:"all",st:"all",off:true};
+try{var sv=JSON.parse(localStorage.getItem("yp8-filters")||"null");if(sv){F.unit=sv.unit||"all";F.st=sv.st||"all";F.off=sv.off!==false;}}catch(e){}
+function hay(d){return [d.lesson,d.ev,d.codes,d.pres,d.act,d.vid,d.other,d.need,d.text,d.lo,d.unit].join(" ").toLowerCase();}
+function dayMatch(d){if(F.st!=="all"&&d.status!==F.st)return false;if(F.q){var h=hay(d);return F.q.split(/\s+/).every(function(w){return h.indexOf(w)>-1;});}return true;}
+function resLine(d){var parts=[["Presentation",d.pres],["Activities",d.act],["Videos",d.vid],["Other",d.other],["Needs",d.need],["Textbook",d.text]].filter(function(p){return p[1];});
+  if(!parts.length)return null;var p=el("p","res");parts.forEach(function(x,i){if(i)p.appendChild(document.createTextNode(" · "));p.appendChild(el("b",null,x[0]+": "));p.appendChild(document.createTextNode(x[1]));});return p;}
+function renderPlan(){var host=$("#plan");host.textContent="";var shown=0;var filtering=F.q||F.st!=="all";
+  blocks.forEach(function(b,k){if(F.unit!=="all"&&String(k)!==F.unit)return;
+    var vis=b.rows.filter(function(r){return r.t==="day"&&dayMatch(r);});
+    if(filtering&&!vis.length)return;
+    var sec=el("section","unit");var h=el("div","unit-head");h.appendChild(el("h2",null,b.u.name));
+    var n=b.rows.filter(function(r){return r.t==="day";}).length;h.appendChild(el("span",null,(b.u.lo?b.u.lo+" · ":"")+n+" classes"));sec.appendChild(h);
+    b.rows.forEach(function(r){
+      if(r.t==="core"){if(filtering&&!b.rows.some(function(x){return x._core===r.code&&x.t==="day"&&dayMatch(x);}))return;
+        var c=el("div","core");c.appendChild(el("span","tag",r.code));var w=el("div");w.appendChild(el("p",null,r.und));if(r.lo)w.appendChild(el("small",null,r.lo));
+        var lab=labFor(r.code);if(lab){var a=el("a","lablink");a.href=lab.url;a.target="_blank";a.rel="noopener";a.textContent="Interactive lab: "+lab.title;a.insertAdjacentHTML("beforeend",ARROW);w.appendChild(a);var dk=deckFor(lab);if(dk){w.appendChild(document.createTextNode(" "));var b2=el("a","lablink");b2.href=dk.url;b2.target="_blank";b2.rel="noopener";b2.textContent="Slide deck: "+(dk.title||lab.title);b2.insertAdjacentHTML("beforeend",ARROW);w.appendChild(b2);}}
+        c.appendChild(w);sec.appendChild(c);return;}
+      var dp=dparts(r.date);
+      if(r.t==="off"){if(!F.off||filtering)return;var o=el("div","off");var wv=el("div","when mono");wv.textContent=dp.wd+" "+dp.md;o.appendChild(wv);o.appendChild(el("span",null,r.lesson||r.ev||""));sec.appendChild(o);return;}
+      if(!dayMatch(r))return;shown++;
+      var row=el("div","day");
+      var wh=el("div","when");wh.appendChild(el("b",null,dp.md));wh.appendChild(el("span",null,dp.wd+(r.day?" · Day "+r.day:"")+(r.cls?" · #"+r.cls:"")));row.appendChild(wh);
+      var wt=el("div","what");if(r.ev)wt.appendChild(el("span","ev",r.ev));wt.appendChild(el("span","lesson",r.lesson||""));var rl=resLine(r);if(rl)wt.appendChild(rl);row.appendChild(wt);
+      var cd=el("div","codes");(r.codes||"").split(/\s*,\s*/).filter(Boolean).forEach(function(c){cd.appendChild(el("code",null,c));});row.appendChild(cd);
+      var s=el("div","st");if(r.status)s.appendChild(el("span","pill "+stClass(r.status),r.status));
+      var seen={};(r.codes||"").split(/\s*,\s*/).forEach(function(c){var u=ucode(c);var lab=labFor(u);if(lab&&!seen[u]){seen[u]=1;var a=el("a","minilab",u+" lab ↗");a.href=lab.url;a.target="_blank";a.rel="noopener";a.title=lab.title;s.appendChild(a);var dk=deckFor(lab);if(dk){var b2=el("a","minilab",u+" slides ↗");b2.href=dk.url;b2.target="_blank";b2.rel="noopener";b2.title=dk.title||"Slide deck";s.appendChild(b2);}}});
+      row.appendChild(s);sec.appendChild(row);});
+    host.appendChild(sec);});
+  if(!host.children.length){var e=el("div","empty","No classes match. Clear the search or set the filters back to All.");host.appendChild(e);}
+  $("#count").textContent=shown+" of "+days.length+" classes";
+  try{localStorage.setItem("yp8-filters",JSON.stringify({unit:F.unit,st:F.st,off:F.off}));}catch(e){}}
+sel.value=F.unit;$("#showOff").checked=F.off;
+document.querySelectorAll("#stSeg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.s===F.st?"true":"false");b.addEventListener("click",function(){F.st=b.dataset.s;document.querySelectorAll("#stSeg button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});renderPlan();});});
+sel.addEventListener("change",function(){F.unit=sel.value;renderPlan();});
+$("#q").addEventListener("input",function(e){F.q=e.target.value.trim().toLowerCase();renderPlan();});
+$("#showOff").addEventListener("change",function(e){F.off=e.target.checked;renderPlan();});
+renderPlan();
+
+/* outcomes */
+var O=P.outcomes||{head:[],rows:[]},OF={q:"",t:"all"};
+$("#onote").textContent=O.note||"";
+function renderO(){var t=$("#otable");t.textContent="";var tr=el("tr");["Code","Type","Statement","Lessons","First scheduled","Covered","Lab"].forEach(function(h){tr.appendChild(el("th",null,h));});t.appendChild(tr);
+  var n=0;O.rows.forEach(function(r){var code=r[0],type=r[5],stmt=r[6];
+    if(OF.t!=="all"&&type.indexOf(OF.t)!==0)return;
+    if(OF.q){var h=(r.join(" ")).toLowerCase();if(!OF.q.split(/\s+/).every(function(w){return h.indexOf(w)>-1;}))return;}
+    n++;var row=el("tr",type==="Understanding"?"u":"");row.appendChild(el("td","code",code));row.appendChild(el("td",null,type));
+    var sc=el("td",null,stmt);if(type==="Understanding"&&r[2])sc.appendChild(el("div","muted",r[2]));row.appendChild(sc);
+    row.appendChild(el("td","num",r[7]||""));
+    var fs=r[8]||"";row.appendChild(el("td","num",/^\d{4}-\d\d-\d\d/.test(fs)?dparts(fs.slice(0,10)).md:fs));
+    var cv=el("td",(r[9]||"").toLowerCase()==="yes"?"yes":"no",r[9]||"");row.appendChild(cv);
+    var lc=el("td");var lab=labFor(ucode(code));if(lab&&type==="Understanding"){var a=el("a","minilab","Open ↗");a.href=lab.url;a.target="_blank";a.rel="noopener";a.title=lab.title;lc.appendChild(a);var dk=deckFor(lab);if(dk){lc.appendChild(document.createTextNode(" "));var b2=el("a","minilab","Slides ↗");b2.href=dk.url;b2.target="_blank";b2.rel="noopener";b2.title=dk.title||"Slide deck";lc.appendChild(b2);}}row.appendChild(lc);
+    t.appendChild(row);});
+  $("#ocount").textContent=n+" statements";}
+$("#oq").addEventListener("input",function(e){OF.q=e.target.value.trim().toLowerCase();renderO();});
+document.querySelectorAll("#oSeg button").forEach(function(b){b.addEventListener("click",function(){OF.t=b.dataset.o;document.querySelectorAll("#oSeg button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});renderO();});});
+renderO();
+
+/* comparison */
+var C=P.comparison||{rows:[],head:[],sources:[]};$("#ctitle").textContent=C.title||"";
+C.rows.forEach(function(r){var a=el("article");var top=el("div");top.style.cssText="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between";
+  top.appendChild(el("h3",null,r[0]));if(r[3])top.appendChild(el("span","pill "+(/New/.test(r[3])?"new":/Removed/.test(r[3])?"adapt":"carry"),r[3]));a.appendChild(top);
+  var dl=el("dl","kv");[1,2,4,5,6,7].forEach(function(i){if(!r[i])return;var d=el("div");d.appendChild(el("dt",null,C.head[i]||""));d.appendChild(el("dd",null,r[i]));dl.appendChild(d);});a.appendChild(dl);$("#cmp").appendChild(a);});
+C.sources.forEach(function(s){$("#csrc").appendChild(el("p",null,s));});
+
+/* pacing */
+var pace=$("#pace"),blk=null,tbl=null,head=null;
+(P.pacing||[]).forEach(function(r){var filled=r.filter(function(c){return c!=="";}).length;
+  if(filled===1&&r[0]&&!blk||(filled===1&&r[0]&&head)){
+    if(r[0].length>80&&blk){blk.appendChild(el("p","muted",r[0]));return;}
+    blk=el("div","block");blk.appendChild(el("h2",null,r[0]));var w=el("div","tablewrap");tbl=el("table","t");w.appendChild(tbl);blk.appendChild(w);pace.appendChild(blk);head=null;return;}
+  if(!blk)return;
+  if(!head){head=r;var tr=el("tr");r.forEach(function(h){if(h!=="")tr.appendChild(el("th",null,h));});tbl.appendChild(tr);return;}
+  var row=el("tr");r.forEach(function(c,i){if(head[i]===""&&c==="")return;var td;
+    if(/share of year/i.test(head[i]||"")&&c!==""&&!isNaN(+c)){td=el("td");var wrap=el("div");wrap.style.cssText="display:flex;gap:8px;align-items:center";var bar=el("div","bar");bar.style.flex="1";var fill=el("i");fill.style.width=Math.min(100,(+c)*100*4)+"%";bar.appendChild(fill);wrap.appendChild(el("span","mono",Math.round(+c*100)+"%"));wrap.appendChild(bar);td.appendChild(wrap);}
+    else td=el("td",/^-?\d+(\.\d+)?$/.test(c)?"num":(c==="Yes"?"yes":""),c);
+    row.appendChild(td);});tbl.appendChild(row);});
+
+/* rationale */
+var rat=$("#rat");(P.rationale||[]).forEach(function(t){if(t.length<90&&!/[.)]$/.test(t))rat.appendChild(el("h3",null,t));else rat.appendChild(el("p",null,t));});
+
+/* routing */
+var VIEWS=["plan","outcomes","comparison","pacing","rationale"];
+function route(){var h=(location.hash||"").replace("#","");if(VIEWS.indexOf(h)<0)h="plan";
+  VIEWS.forEach(function(v){$("#v-"+v).hidden=v!==h;});
+  document.querySelectorAll("#tabs a").forEach(function(a){if(a.getAttribute("href")==="#"+h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});}
+window.addEventListener("hashchange",route);route();
+})();
+</script>
+
+</body></html>

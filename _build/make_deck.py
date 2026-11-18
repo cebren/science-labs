@@ -57,12 +57,14 @@ page = f"""<!doctype html>
 </head>
 <body class="deck">
 <header class="dk-bar">
+<a class="dk-home" href="/science-starter-pack/">← Science Starter Pack</a>
 <span class="dk-title">{e(title)}</span>
 <span>Science {g} · {e(codes)}</span>
 <a href="{lab_path}">Open the lab</a>
 <a class="dk-dl" href="{path}{slug(title)}.pptx" download>Download for PowerPoint or Google Slides</a>
 <a href="/use/#google-slides">How to open in Google Slides</a>
 <a href="/science-starter-pack/science-{g}/">All Science {g}</a>
+<a href="/science-starter-pack/year-plans/science-{g}/">Science {g} year plan</a>
 </header>
 <main class="dk-stage-wrap"><div class="dk-stage" aria-roledescription="slide deck" aria-label="{e(title)}"><div class="dk-scaler">
 {chr(10).join(sections)}
@@ -118,4 +120,5 @@ mp = os.path.join(root, "_build/decks-hosted.json")
 man = json.load(open(mp)) if os.path.exists(mp) else {}
 man[deck_url] = {"path": path, "slides": len(sections), "date": datetime.date.today().isoformat()}
 json.dump(man, open(mp, "w"), indent=1)
+subprocess.run([sys.executable, os.path.join(here, "add_links.py")], check=True)
 print(f"ok {path} slides={len(sections)} grade_links_updated={n}")
