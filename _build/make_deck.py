@@ -60,6 +60,8 @@ page = f"""<!doctype html>
 <span class="dk-title">{e(title)}</span>
 <span>Science {g} · {e(codes)}</span>
 <a href="{lab_path}">Open the lab</a>
+<a class="dk-dl" href="{path}{slug(title)}.pptx" download>Download for PowerPoint or Google Slides</a>
+<a href="/use/#google-slides">How to open in Google Slides</a>
 <a href="/science-starter-pack/science-{g}/">All Science {g}</a>
 </header>
 <main class="dk-stage-wrap"><div class="dk-stage" aria-roledescription="slide deck" aria-label="{e(title)}"><div class="dk-scaler">
@@ -79,6 +81,21 @@ page = f"""<!doctype html>
 out = os.path.join(root, path.strip("/"), "index.html")
 os.makedirs(os.path.dirname(out), exist_ok=True)
 open(out, "w").write(page)
+
+# editable PowerPoint copy (also opens in Google Slides)
+import subprocess, tempfile, threading, http.server, functools, socketserver
+pptx_name = slug(title) + ".pptx"
+class Q(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, *a): pass
+srv = socketserver.TCPServer(("127.0.0.1", 0), functools.partial(Q, directory=root))
+threading.Thread(target=srv.serve_forever, daemon=True).start()
+tmp = tempfile.mkdtemp()
+try:
+    here = os.path.dirname(os.path.abspath(__file__))
+    subprocess.run(["node", os.path.join(here, "export_pptx.js"), f"http://127.0.0.1:{srv.server_address[1]}{path}", os.path.join(tmp, "s.json"), os.path.join(tmp, "img")], check=True, timeout=600)
+    subprocess.run([sys.executable, os.path.join(here, "pptx_from_json.py"), os.path.join(tmp, "s.json"), os.path.join(os.path.dirname(out), pptx_name), title], check=True, timeout=300)
+finally:
+    srv.shutdown()
 
 # point the grade page's deck button at the hosted copy
 gp = os.path.join(root, f"science-starter-pack/science-{g}/index.html")
