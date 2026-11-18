@@ -1,0 +1,1434 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/climate-solutions-lab/"><meta name="description" content="Complex environmental issues can be addressed by environmental stewardship and sustainability."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Climate Solutions Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a stewardship field notebook. Sticky tab strip, then lessons that pair a short reading column with a live model. Ember marks emissions and heat, water blue marks water and air, soil brown marks land, food and minerals. */
+:root{
+  --bg:#EEF1EE; --surface:#FFFFFF; --surface-2:#F4F6F3; --ink:#17221B; --muted:#4D5C52; --line:#CDD6CF;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5;
+  --ember:#B4471F; --ember-soft:#FAE4DA; --water:#1D6A96; --water-soft:#DCEBF4; --soil:#7A5525; --soil-soft:#F3E8D8;
+  --good:#2E7A4F; --good-soft:#DFF0E5; --bad:#B03A2E; --bad-soft:#F7E0DC; --warn:#8A5A00; --warn-soft:#FBEFD5;
+  --sky:#DCEBF4; --sun:#E9B53E; --grass:#4F9A5E; --dirt:#8C6A44; --dirt-2:#5E4529; --carbon:#2F2A24; --aq1:#3E8E5A; --aq2:#C9A227; --aq3:#D0612B; --aq4:#8E2A45;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1411; --surface:#161E19; --surface-2:#1C261F; --ink:#E4ECE6; --muted:#9FB0A5; --line:#2B3830;
+  --g9:#74C995; --g9-soft:#16301F;
+  --ember:#F2916A; --ember-soft:#3A1E14; --water:#7CC0E8; --water-soft:#13283A; --soil:#DDB57E; --soil-soft:#33281A;
+  --good:#74C995; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --warn:#F0C060; --warn-soft:#3A2C10;
+  --sky:#13283A; --sun:#F2C14E; --grass:#4FA266; --dirt:#7A5B3A; --dirt-2:#4A3620; --carbon:#15110D; --aq1:#4FB57C; --aq2:#E0BE45; --aq3:#EE8A55; --aq4:#D45E7E;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1411; --surface:#161E19; --surface-2:#1C261F; --ink:#E4ECE6; --muted:#9FB0A5; --line:#2B3830;
+  --g9:#74C995; --g9-soft:#16301F;
+  --ember:#F2916A; --ember-soft:#3A1E14; --water:#7CC0E8; --water-soft:#13283A; --soil:#DDB57E; --soil-soft:#33281A;
+  --good:#74C995; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --warn:#F0C060; --warn-soft:#3A2C10;
+  --sky:#13283A; --sun:#F2C14E; --grass:#4FA266; --dirt:#7A5B3A; --dirt-2:#4A3620; --carbon:#15110D; --aq1:#4FB57C; --aq2:#E0BE45; --aq3:#EE8A55; --aq4:#D45E7E;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:none}
+svg .hot:focus-visible circle, svg .hot:focus-visible rect, svg .hot:focus-visible path{stroke:var(--ember);stroke-width:4}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .em{color:var(--ember)} header h1 .so{color:var(--soil)} header h1 .wa{color:var(--water)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.em[aria-pressed="true"]{background:var(--ember);border-color:var(--ember);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.chip.so[aria-pressed="true"]{background:var(--soil);border-color:var(--soil);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox.night{background:var(--night);border-color:var(--night-2)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .lt{fill:var(--star)} svg .ltd{fill:var(--star-dim)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+svg .hot{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--water)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* investigation blocks */
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv > header{display:grid;gap:4px}
+.inv h3{font-size:1.3rem}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+.verdicts{display:grid;gap:8px}
+.vrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2)}
+@media (max-width:560px){.vrow{grid-template-columns:minmax(0,1fr)}}
+.vrow.ok{border-color:var(--good);background:var(--good-soft)} .vrow.no{border-color:var(--bad);background:var(--bad-soft)}
+.vrow p{font-size:.92rem}
+.vrow .why{grid-column:1/-1;font-size:.86rem;color:var(--muted)}
+.scen{background:var(--soil-soft);border-radius:10px;padding:14px;display:grid;gap:6px}
+.scen b{font-family:var(--f-display);font-size:1.1rem}
+.status{font-family:var(--f-mono);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:999px;width:fit-content}
+.status.cov{background:var(--good-soft);color:var(--good)} .status.part{background:var(--warn-soft);color:var(--warn)} .status.gap{background:var(--bad-soft);color:var(--bad)}
+
+/* bars */
+.bars{display:grid;gap:8px}
+.barrow{display:grid;grid-template-columns:8.5em minmax(0,1fr) 4.2em;gap:8px;align-items:center;font-size:.86rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--water);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--ember)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 3.8em}}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit a{color:var(--g9);font-weight:700}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.meter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.meter span{display:grid;gap:2px;text-align:center;font-size:.78rem;color:var(--muted)}
+.meter i{display:block;height:10px;border-radius:5px;background:var(--surface);border:1px solid var(--line)}
+.meter i.on{background:var(--good);border-color:var(--good)}
+.meter i.half{background:var(--warn);border-color:var(--warn)}
+.verdict{font-family:var(--f-display);font-weight:800;font-size:1.15rem}
+.verdict.ok{color:var(--good)} .verdict.no{color:var(--bad)} .verdict.mid{color:var(--warn)}
+.ratings{display:grid;gap:10px}
+.rate{display:grid;gap:6px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--surface-2)}
+.rate p{font-size:.92rem}
+.rate .chips .chip{font-size:.82rem;padding:4px 10px}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.pillars span{border:1px solid var(--line);border-radius:8px;padding:8px;text-align:center;font-size:.82rem;font-weight:700;color:var(--muted);background:var(--surface)}
+.pillars span.on{background:var(--g9-soft);border-color:var(--g9);color:var(--g9)}
+@media (max-width:480px){.pillars{grid-template-columns:minmax(0,1fr)}}
+.aqbar{display:grid;grid-template-columns:3fr 3fr 4fr 1.5fr;gap:3px;font-size:.72rem;font-family:var(--f-mono);text-align:center}
+.aqbar span{padding:4px 2px;border-radius:4px;color:var(--surface);font-weight:600}
+.big{font-family:var(--f-mono);font-size:1.6rem;font-weight:600;font-variant-numeric:tabular-nums}
+.matrix{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.matrix th,.matrix td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:middle}
+.matrix th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.matrix select{padding:4px 6px}
+.steps{display:grid;gap:6px;counter-reset:s;padding:0;list-style:none}
+.steps li{display:grid;grid-template-columns:2em minmax(0,1fr);gap:8px;font-size:.92rem}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--f-mono);font-weight:600;color:var(--soil);background:var(--soil-soft);border-radius:50%;width:1.7em;height:1.7em;display:grid;place-items:center;font-size:.8rem}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Environmental Capstone · SL3</div>
+    <h1>Climate <span class="so">Solutions</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Complex environmental issues can be addressed by environmental stewardship and sustainability. In this lab you will look at climate change and other big environmental issues, the data that helps people make decisions, and the choices that farmers, governments, industries and families can make.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Ten short lessons in order. Each one has a model to try. Start with what makes an environmental issue complex and how we measure it. Then look at climate change, farming, minerals and government actions. Finish with population and the footprint of digital technology.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Big, tangled problems</span>
+      <div class="codes"><span class="code">SL3.K1</span><span class="code">SL3.S1</span></div>
+      <h3>Complex environmental issues</h3>
+      <p>A <b>complex environmental issue</b> has many causes, affects many people and places, and has no single fix. Climate change is one. Others include plastic pollution, scarce resources such as water and minerals, food insecurity, and poor water and air quality.</p>
+      <p><b>Environmental stewardship</b> means taking responsible care of the environment so it stays healthy. <b>Sustainability</b> means meeting our needs today without making it harder for future generations to meet theirs.</p>
+      <p>These issues are tangled together. A drought caused partly by a warming climate can make water scarce, which can lower crop harvests and make food insecurity worse.</p>
+      <div class="key"><b>Big idea:</b> stewardship and sustainability efforts can help address climate change and the other complex issues at the same time.</div>
+    </div>
+    <div class="model">
+      <h4>Model: issue explorer</h4>
+      <div class="chips" id="issueChips" role="group" aria-label="Choose an environmental issue"></div>
+      <div class="detail" id="issueDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Measure before you decide</span>
+      <div class="codes"><span class="code">SL3.K2</span></div>
+      <h3>Monitoring air and water quality</h3>
+      <p><b>Monitoring</b> means measuring something again and again over time. Air and water monitoring stations collect data on pollution levels. The data helps people make <b>informed decisions</b>, from a coach moving practice indoors to a city changing how it treats drinking water.</p>
+      <p>In Canada, the <b>Air Quality Health Index (AQHI)</b> turns air pollution data into a number, usually from 1 to 10. Higher numbers mean higher health risk. Wildfire smoke can push Edmonton's AQHI above 10.</p>
+      <p>Water quality is checked with measurements such as <b>dissolved oxygen</b> (oxygen fish can breathe), <b>pH</b> (how acidic or basic), <b>turbidity</b> (how cloudy) and <b>nitrate</b> (a nutrient from fertilizer and sewage).</p>
+      <p class="note">Many First Nations and Métis communities in Alberta run their own land and water monitoring programs, often combining scientific measurements with long observation of the land.</p>
+    </div>
+    <div class="model">
+      <h4>Model: AQHI decision helper</h4>
+      <label class="field" for="aqhi">AQHI reading: <span id="aqhiVal" class="mono"></span></label>
+      <input type="range" id="aqhi" min="1" max="11" step="1" value="3">
+      <div class="aqbar" aria-hidden="true"><span style="background:var(--aq1)">1 to 3 Low</span><span style="background:var(--aq2);color:var(--ink)">4 to 6 Moderate</span><span style="background:var(--aq3)">7 to 10 High</span><span style="background:var(--aq4)">10+</span></div>
+      <div class="detail" id="aqhiDetail" aria-live="polite"></div>
+      <h4>Model: river sample check</h4>
+      <p class="hint">Made-up readings from three sites on a practice river. Simplified guideline values are used for practice.</p>
+      <div class="chips" id="waterChips" role="group" aria-label="Choose a river sample site"></div>
+      <div class="detail" id="waterDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Speeding up a natural process</span>
+      <div class="codes"><span class="code">SL3.K3</span></div>
+      <h3>Humans accelerate climate change</h3>
+      <p>Earth's climate has changed before, slowly, over thousands of years. Today it is changing much faster. Scientists agree that human activity is the main cause of the warming since the 1800s.</p>
+      <p>Burning coal, oil and natural gas releases <b>carbon dioxide (CO₂)</b>, a greenhouse gas. Clearing forests and some farming practices add more greenhouse gases. These gases absorb energy that Earth's surface radiates, so more of them traps more energy and warms the planet.</p>
+      <p>CO₂ in the air is measured in <b>parts per million (ppm)</b>. It was about 280 ppm before the industrial era and is now more than 420 ppm.</p>
+      <div class="key"><b>Big idea:</b> human activity is speeding up climate change. That also means human choices can slow it down.</div>
+    </div>
+    <div class="model">
+      <h4>Model: carbon dioxide over time</h4>
+      <p class="hint">Tap or focus a bar. Values are rounded yearly averages (ice cores before 1958, then Mauna Loa Observatory).</p>
+      <div class="svgbox"><svg id="co2Svg" viewBox="0 0 520 250" role="group" aria-label="Bar chart of carbon dioxide in the air from 1750 to 2024"></svg></div>
+      <div class="detail" id="co2Detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Swap and improve</span>
+      <div class="codes"><span class="code">SL3.K3</span><span class="code">SL3.S2</span></div>
+      <h3>Slowing climate change</h3>
+      <p>Climate change can be slowed in two main ways.</p>
+      <ul>
+        <li><b>Replace or improve inefficient technologies.</b> An inefficient device wastes energy. LED bulbs, high-efficiency furnaces, heat pumps and better insulation do the same job with less energy.</li>
+        <li><b>Transition to renewable and low-carbon energy.</b> <b>Renewable</b> resources refill naturally: sunlight, wind, moving water and Earth's heat. <b>Low-carbon</b> resources release little CO₂ when making electricity. All renewables are low-carbon, and so is nuclear power, which is not renewable.</li>
+      </ul>
+      <p>Alberta's electricity has changed quickly. The last coal power plants were converted to natural gas by 2024, and southern Alberta now has many wind and solar farms.</p>
+    </div>
+    <div class="model">
+      <h4>Model: household swap simulator</h4>
+      <p class="hint">A made-up Alberta household. Yearly emissions in kilograms of CO₂ are rounded practice estimates.</p>
+      <div class="checks2" id="swapChecks"></div>
+      <div class="bars" id="swapBars"></div>
+      <div class="detail" id="swapDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Farming for a changing climate</span>
+      <div class="codes"><span class="code">SL3.K4</span><span class="code">SL3.K5</span></div>
+      <h3>Climate-smart agriculture</h3>
+      <p><b>Climate-smart agriculture</b> is farming that aims for three goals at once:</p>
+      <ul>
+        <li><b>Productivity:</b> grow more food efficiently, with less waste of water, fuel and fertilizer.</li>
+        <li><b>Resilience:</b> cope with droughts, floods, heat and new pests as the climate changes.</li>
+        <li><b>Mitigation:</b> lower greenhouse gas emissions, or store carbon, wherever possible.</li>
+      </ul>
+      <p>Advanced technologies and innovations help. Tap each one in the model to see which goals it supports.</p>
+      <p class="note">Carbon capture and storage is mostly used at large industrial sites. In Alberta, CO₂ captured at a fertilizer plant and other sites near Edmonton is piped away and stored deep underground. Making fertilizer is a big part of farming's emissions.</p>
+    </div>
+    <div class="model">
+      <h4>Model: farm technology and the three goals</h4>
+      <div class="chips" id="techChips" role="group" aria-label="Choose a farm technology"></div>
+      <div class="pillars" id="pillars"><span>Productivity</span><span>Resilience</span><span>Mitigation</span></div>
+      <div class="detail" id="techDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Carbon underfoot</span>
+      <div class="codes"><span class="code">SL3.K6</span></div>
+      <h3>Healthy soils</h3>
+      <p>Soil holds a huge amount of carbon. Plants take CO₂ from the air during photosynthesis. When roots, leaves and stems break down, some of that carbon becomes <b>soil organic matter</b>, the dark, crumbly part of soil.</p>
+      <p>Healthy soil stores carbon, holds water during droughts, and has the nutrients and living things that crops need. Healthy crops can be <b>nutrient dense</b>, which means rich in vitamins, minerals and protein for the food they provide.</p>
+      <p>Prairie farmers use practices that build soil: <b>zero tillage</b> (planting without ploughing), <b>cover crops</b>, <b>crop rotations</b> with peas or lentils that add nitrogen, leaving crop leftovers on the field, and careful grazing.</p>
+    </div>
+    <div class="model">
+      <h4>Model: soil carbon balance</h4>
+      <p class="hint">Turn practices on and off. The scores are a made-up model to show the direction of change.</p>
+      <div class="checks2" id="soilChecks"></div>
+      <div class="svgbox"><svg id="soilSvg" viewBox="0 0 420 200" role="img" aria-label="Soil profile showing organic matter layer"></svg></div>
+      <div class="detail" id="soilDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Minerals for clean energy</span>
+      <div class="codes"><span class="code">SL3.K7</span><span class="code">SL3.S4</span></div>
+      <h3>Critical minerals in Alberta</h3>
+      <p><b>Critical minerals</b> are minerals a country needs for its economy and security, and whose supply could be at risk. Many are needed for clean energy technologies.</p>
+      <p><b>Lithium</b> is used in rechargeable batteries for electric vehicles and for storing wind and solar power. Alberta has lithium dissolved in salty underground water called <b>brine</b>, in the same deep rock layers that oil companies have drilled for decades.</p>
+      <p><b>Uranium</b> is the fuel for nuclear power plants, a low-carbon energy source. Northeastern Alberta includes part of the Athabasca Basin, one of the richest uranium regions in the world.</p>
+      <p>Alberta is developing new extraction methods, such as <b>direct lithium extraction</b>. Like any mining, these must be weighed against their effects on land, water and communities.</p>
+    </div>
+    <div class="model">
+      <h4>Model: mineral files</h4>
+      <div class="chips" id="minChips" role="group" aria-label="Choose a mineral file"></div>
+      <div class="detail" id="minDetail" aria-live="polite"></div>
+      <h4>How direct lithium extraction works</h4>
+      <ol class="steps">
+        <li>Pump brine up from a well about 2 to 3 km deep.</li>
+        <li>Pass the brine over a material that grabs lithium and lets most other substances pass.</li>
+        <li>Wash the lithium off and process it into lithium compounds for batteries.</li>
+        <li>Pump the leftover brine back underground.</li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Rules, limits and rewards</span>
+      <div class="codes"><span class="code">SL3.K8</span><span class="code">SL3.K9</span><span class="code">SL3.S3</span></div>
+      <h3>Government environmental actions</h3>
+      <p>Governments can support sustainability in three main ways:</p>
+      <ul>
+        <li><b>Regulations for resource extraction:</b> rules for how mines and wells are approved, run and cleaned up afterwards.</li>
+        <li><b>Pollution limits for industry:</b> the most of a pollutant a factory or plant may release into air or water.</li>
+        <li><b>Incentives:</b> rewards, such as rebates or grants, for developing or using eco-friendly technologies and transportation.</li>
+      </ul>
+      <p>An action works better when people support it. Governments build <b>public support</b> with <b>educational campaigns</b> that explain the reasons, or with <b>monetary incentives</b> that make the choice cheaper.</p>
+      <p class="note">People disagree about which actions are best and how much they should cost. In this lab you look at how each type of action works, not which one is right.</p>
+    </div>
+    <div class="model">
+      <h4>Model: government toolbox</h4>
+      <div class="chips" id="govChips" role="group" aria-label="Choose a government action"></div>
+      <div class="detail" id="govDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · More people, more demand</span>
+      <div class="codes"><span class="code">SL3.K10</span><span class="code">SL3.S5</span></div>
+      <h3>Population and resources</h3>
+      <p>The world population was about 2.5 billion in 1950 and is about 8.2 billion today. The United Nations projects about 9.7 billion by 2050.</p>
+      <p>More people need more water, food, energy and minerals. Total demand depends on two things:</p>
+      <div class="formula">total demand = number of people × use per person</div>
+      <p>If the population grows and use per person stays the same, total demand grows. Stewardship and sustainability efforts, such as saving water and wasting less food, lower the use per person. That is why they become more important as the population increases.</p>
+    </div>
+    <div class="model">
+      <h4>Model: demand meter</h4>
+      <label class="field" for="popYear">Year: <span id="popYearVal" class="mono"></span></label>
+      <input type="range" id="popYear" min="0" max="4" step="1" value="3">
+      <label class="field" for="perUse">Use per person compared with today: <span id="perUseVal" class="mono"></span></label>
+      <input type="range" id="perUse" min="60" max="120" step="5" value="100">
+      <div class="stats" id="popStats"></div>
+      <div class="detail" id="popDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 10 · The cloud is on the ground</span>
+      <div class="codes"><span class="code">SL3.K11</span><span class="code">SL3.S6</span></div>
+      <h3>AI, digital technology and the environment</h3>
+      <p>Digital technology feels weightless, but it runs on real machines. "The cloud" is made of <b>data centres</b>: buildings full of computers that run apps, store photos and train and run <b>AI</b> models.</p>
+      <p>Environmental considerations include the electricity data centres use, the water some use for cooling, the minerals mined to build devices, and <b>e-waste</b> (thrown-out electronics).</p>
+      <p>Digital tools can also help the environment, for example AI that spots crop stress from drone images or smarter controls that save energy in buildings. Good decisions weigh both sides.</p>
+    </div>
+    <div class="model">
+      <h4>Model: digital footprint explorer</h4>
+      <div class="chips" id="digChips" role="group" aria-label="Choose a part of the digital footprint"></div>
+      <div class="detail" id="digDetail" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Six investigations. Research an issue, calculate emissions and lithium, design a government action, test demand and weigh the footprint of digital technology. Practice data is made up and labelled.</p>
+  </div>
+
+  <article class="inv">
+    <header><span class="eyebrow">Investigation 1 · SL3.S1</span><h3>Issue research planner</h3>
+    <p class="hint">Pick an issue. Use the research questions, then score three possible solutions from 1 (poor) to 5 (strong) on each criterion. The planner ranks them.</p></header>
+    <div class="chips" id="resChips" role="group" aria-label="Choose an issue to research"></div>
+    <div class="two">
+      <div class="detail" id="resQs"></div>
+      <div class="tablebox"><table class="matrix" id="resMatrix"><thead><tr><th>Solution</th><th>Works well</th><th>Cost</th><th>Fair to people</th><th>Speed</th><th>Total</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="detail" id="resOut" aria-live="polite"></div>
+    <label class="field" for="resNote">My research notes and recommendation</label>
+    <textarea id="resNote"></textarea>
+  </article>
+
+  <article class="inv">
+    <header><span class="eyebrow">Investigation 2 · SL3.S2</span><h3>Emissions calculator</h3>
+    <p class="hint">Emissions from an activity can be estimated with one formula. Emission factors here are rounded practice values.</p></header>
+    <div class="formula">emissions (kg CO₂) = amount of activity × emission factor</div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>A gasoline car drives 15 000 km in a year. Its emission factor is 0.2 kg CO₂ per km.</span>
+      <span>emissions = 15 000 km × 0.2 kg/km = 3000 kg CO₂</span>
+      <span>An electric car charged on a practice grid has a factor of 0.08 kg/km: 15 000 × 0.08 = 1200 kg CO₂.</span>
+      <span>Savings = 3000 − 1200 = 1800 kg CO₂ per year, a 60% cut.</span>
+    </div>
+    <div class="detail" id="emQ" aria-live="polite"></div>
+    <div class="row">
+      <label class="field" for="emAns">Your answer (kg CO₂)<input type="number" id="emAns" step="any"></label>
+      <button class="btn" id="emCheck" type="button">Check</button>
+      <button class="btn ghost" id="emNew" type="button">New problem</button>
+    </div>
+    <p class="fb" id="emFb" aria-live="polite"></p>
+  </article>
+
+  <article class="inv">
+    <header><span class="eyebrow">Investigation 3 · SL3.S3</span><h3>Policy designer</h3>
+    <p class="hint">Read the made-up scenario. Choose the type of government action that fits best, then a way to build public support.</p></header>
+    <div class="scen" id="polScen" aria-live="polite"></div>
+    <p class="tagline">Type of action</p>
+    <div class="chips" id="polAct" role="group" aria-label="Type of action"></div>
+    <p class="tagline">Way to build public support</p>
+    <div class="chips" id="polSup" role="group" aria-label="Way to build public support"></div>
+    <div class="row"><button class="btn" id="polCheck" type="button">Check my design</button><button class="btn ghost" id="polNext" type="button">Next scenario</button></div>
+    <div class="detail" id="polFb" aria-live="polite"></div>
+  </article>
+
+  <article class="inv">
+    <header><span class="eyebrow">Investigation 4 · SL3.S4</span><h3>Lithium from brine</h3>
+    <p class="hint">How much lithium is in a well's brine? Concentrations and the battery estimate are rounded practice values.</p></header>
+    <div class="formula">lithium (g) = brine volume (L) × concentration (mg/L) ÷ 1000</div>
+    <div class="two">
+      <div class="checks2">
+        <label class="field" for="liVol">Brine pumped: <span id="liVolVal" class="mono"></span></label>
+        <input type="range" id="liVol" min="1000" max="20000" step="1000" value="5000">
+        <label class="field" for="liConc">Lithium concentration: <span id="liConcVal" class="mono"></span></label>
+        <input type="range" id="liConc" min="30" max="150" step="5" value="75">
+        <label class="field" for="liRec">Share recovered by the process: <span id="liRecVal" class="mono"></span></label>
+        <input type="range" id="liRec" min="50" max="95" step="5" value="80">
+      </div>
+      <div class="stats" id="liStats"></div>
+    </div>
+    <div class="worked" id="liWork"></div>
+    <div class="detail" id="liQ" aria-live="polite"></div>
+    <div class="row">
+      <label class="field" for="liAns">Your answer (kg of lithium)<input type="number" id="liAns" step="any"></label>
+      <button class="btn" id="liCheck" type="button">Check</button>
+      <button class="btn ghost" id="liNew" type="button">New problem</button>
+    </div>
+    <p class="fb" id="liFb" aria-live="polite"></p>
+  </article>
+
+  <article class="inv">
+    <header><span class="eyebrow">Investigation 5 · SL3.S5</span><h3>Demand and stewardship</h3>
+    <p class="hint">Population growth pushes demand up. Stewardship can pull use per person down. Find the change in total demand.</p></header>
+    <div class="formula">new total ÷ old total = (population factor) × (use per person factor)</div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>A town's population grows by 25%, so the population factor is 1.25.</span>
+      <span>Water saving lowers use per person by 20%, so the use factor is 0.80.</span>
+      <span>1.25 × 0.80 = 1.00. Total water demand stays the same even though the town grew.</span>
+    </div>
+    <div class="detail" id="dmQ" aria-live="polite"></div>
+    <div class="row">
+      <label class="field" for="dmAns">Change in total demand (%) <input type="number" id="dmAns" step="any"></label>
+      <button class="btn" id="dmCheck" type="button">Check</button>
+      <button class="btn ghost" id="dmNew" type="button">New problem</button>
+    </div>
+    <p class="hint">Use a negative number for a decrease.</p>
+    <p class="fb" id="dmFb" aria-live="polite"></p>
+  </article>
+
+  <article class="inv">
+    <header><span class="eyebrow">Investigation 6 · SL3.S6</span><h3>Digital choices</h3>
+    <p class="hint">For each choice, decide whether it raises or lowers environmental impact. Then use the discussion frame.</p></header>
+    <div class="verdicts" id="digVerdicts"></div>
+    <label class="field" for="digNote">Discussion: Should our school use an AI tool to help monitor energy use in the building? Give one benefit, one environmental consideration and your view.</label>
+    <textarea id="digNote"></textarea>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 26. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 SL3, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>SL3.K2:</b> AQHI categories (1 to 3 low, 4 to 6 moderate, 7 to 10 high, above 10 very high) and advice are paraphrased from Environment and Climate Change Canada. River readings are made up, and the guideline values (dissolved oxygen at least about 5 mg/L, pH 6.5 to 9, low turbidity, nitrate under 13 mg/L for aquatic life) are simplified for practice. The note on First Nations and Métis community monitoring is general; please review wording and consider a community partner.</li>
+      <li><b>SL3.K3:</b> "accelerated by human activity" is taught as the scientific consensus that humans are the main cause of warming since the 1800s (IPCC AR6). Renewable and low-carbon are taught as different categories: nuclear is low-carbon but not renewable. CO₂ values (about 280 ppm before 1750, 296 in 1900, 317 in 1960, 354 in 1990, 390 in 2010, 425 in 2024) and the Alberta coal-to-gas conversion completed in 2024 need a currency check. Household numbers are practice estimates.</li>
+      <li><b>SL3.K4 and K5:</b> climate-smart agriculture is taught with the three FAO goals (productivity, resilience, mitigation). Carbon capture and storage is taught honestly as mainly industrial: in Alberta it is linked to farming mostly through fertilizer production near Edmonton (Alberta Carbon Trunk Line); on-farm carbon storage happens mostly in soil. Please verify current project details.</li>
+      <li><b>SL3.K6:</b> the link between healthy soil and nutrient dense crops is taught carefully: healthy soil supports healthy crops, which can be more nutrient rich. Research on soil health and crop nutrient density is still developing. The soil carbon model uses made-up scores to show direction only.</li>
+      <li><b>SL3.K7:</b> lithium is taught from Devonian brines (direct lithium extraction pilots in central Alberta); uranium is taught through Alberta's part of the Athabasca Basin. Canada's operating uranium mines are in Saskatchewan, and Alberta's uranium work is exploration, so the draft's "developing extraction methods" is taught for lithium in detail and for uranium in general. Brine concentrations (30 to 150 mg/L) and about 8 kg of lithium per electric car battery are rounded estimates. Please verify current project status.</li>
+      <li><b>SL3.K8 and K9:</b> government actions are taught by type with general examples. Specific programs and taxes are not named because they change often and are politically contested; the lab stays neutral on which approach is best.</li>
+      <li><b>SL3.K10:</b> population figures are rounded from UN World Population Prospects 2024 (about 2.5 billion in 1950, 8.2 billion in 2025, 9.7 billion projected for 2050). The lab adds that demand depends on use per person as well as population.</li>
+      <li><b>SL3.K11:</b> data centres used about 1.5% of world electricity in 2024 (IEA estimate), and about 62 million tonnes of e-waste were produced in 2022, with under a quarter documented as recycled (Global E-waste Monitor 2024). Both need a currency check.</li>
+      <li><b>Practice data:</b> the household, river, policy scenarios, solution scores, brine wells and demand problems are made up and labelled.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-sl3-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(x, d){ return x.toLocaleString("en-CA", {maximumFractionDigits: d == null ? 1 : d, minimumFractionDigits: 0}); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function hot(g, label, onAct){
+  g.setAttribute("class", "hot"); g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", onAct);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onAct(); } });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+/* ---------- Lesson 1: issues ---------- */
+var ISSUES = [
+  {label: "Climate change", t: "Climate change", c: "Global issue", p: ["What it is: a long-term shift in Earth's temperatures and weather patterns, now sped up by greenhouse gases from human activity.", "Why it is complex: it links to energy, farming, forests, oceans and every other issue on this list.", "Stewardship and sustainability: use energy efficiently, switch to renewable and low-carbon energy, protect forests and soils."]},
+  {label: "Plastic pollution", t: "Plastic pollution", c: "Land and water", p: ["What it is: plastic waste that builds up on land, in rivers and in the ocean. It breaks into tiny microplastics that animals swallow.", "Why it is complex: plastic is cheap and useful, so it is everywhere, and recycling handles only a small share.", "Stewardship and sustainability: reduce single-use plastic, reuse, recycle properly and design products that last."]},
+  {label: "Resource scarcity", t: "Resource scarcity: water and minerals", c: "Supply and demand", p: ["What it is: not having enough of a resource for everyone who needs it. In southern Alberta, river water is shared among farms, towns, industry and ecosystems, and dry years make it scarce.", "Minerals such as lithium are in high demand for batteries, and supplies are limited.", "Stewardship and sustainability: conserve water, recycle metals from old devices and batteries, and plan extraction carefully."]},
+  {label: "Food insecurity", t: "Food insecurity", c: "People and land", p: ["What it is: not having reliable access to enough safe, nutritious food. It affects families in Canada as well as worldwide.", "Why it is complex: it depends on harvests, weather, prices, transport and income.", "Stewardship and sustainability: climate-smart farming, healthy soils, less food waste and local food programs."]},
+  {label: "Water and air quality", t: "Poor water and air quality", c: "Health", p: ["What it is: pollution in water or air that harms people, animals and plants. Wildfire smoke, vehicle exhaust and industrial emissions affect air in Alberta.", "Why it is complex: pollution travels across borders and comes from many sources.", "Stewardship and sustainability: monitor quality, set pollution limits, and reduce burning of fuels."]}
+];
+chipGroup($("issueChips"), ISSUES, "em", function(t){ detail($("issueDetail"), t.t, t.p, t.c); }, 0);
+
+/* ---------- Lesson 2: AQHI and water ---------- */
+function aqhiInfo(v){
+  if (v <= 3) return ["Low risk", "Ideal air for outdoor activities.", "Decision: practice outside as planned.", "var(--aq1)"];
+  if (v <= 6) return ["Moderate risk", "Most people can stay active outside. People with asthma or heart conditions should watch for symptoms.", "Decision: practice outside, but let students with asthma take breaks or move inside.", "var(--aq2)"];
+  if (v <= 10) return ["High risk", "People at risk should cut back on hard outdoor activity. Everyone else should think about doing less, especially if they cough or feel throat irritation.", "Decision: move hard practice indoors.", "var(--aq3)"];
+  return ["Very high risk", "Everyone should cut back or reschedule hard outdoor activity. People at risk should avoid it.", "Decision: cancel or move all outdoor activity inside. This often happens during wildfire smoke events.", "var(--aq4)"];
+}
+function drawAqhi(){
+  var v = parseInt($("aqhi").value, 10), info = aqhiInfo(v);
+  $("aqhiVal").textContent = v > 10 ? "10+" : String(v);
+  detail($("aqhiDetail"), info[0], [info[1], info[2]], "AQHI " + (v > 10 ? "10+" : v));
+  $("aqhiDetail").style.borderLeft = "6px solid " + info[3];
+}
+$("aqhi").addEventListener("input", drawAqhi); drawAqhi();
+
+var WATER = [
+  {label: "Upstream of town", r: [9.5, 7.9, 4, 1.2]},
+  {label: "Below the town outfall", r: [6.0, 7.6, 12, 18]},
+  {label: "After a summer storm", r: [4.2, 7.1, 85, 9]}
+];
+var WLIM = [
+  {n: "Dissolved oxygen", u: "mg/L", ok: function(x){ return x >= 5; }, why: "Most fish need at least about 5 mg/L."},
+  {n: "pH", u: "", ok: function(x){ return x >= 6.5 && x <= 9; }, why: "Aquatic life does best between about 6.5 and 9."},
+  {n: "Turbidity", u: "NTU", ok: function(x){ return x <= 25; }, why: "Very cloudy water blocks light and clogs gills."},
+  {n: "Nitrate", u: "mg/L", ok: function(x){ return x < 13; }, why: "Extra nitrate feeds algae blooms that use up oxygen."}
+];
+chipGroup($("waterChips"), WATER, "wa", function(s){
+  var box = $("waterDetail"); clear(box);
+  box.appendChild(el("span", {"class": "tagline"}, "Practice data · " + s.label));
+  var flags = 0;
+  WLIM.forEach(function(m, i){
+    var ok = m.ok(s.r[i]); if (!ok) flags++;
+    box.appendChild(el("p", null, m.n + ": " + s.r[i] + (m.u ? " " + m.u : "") + (ok ? "  ✓ within guideline" : "  ✗ outside guideline. " + m.why)));
+  });
+  box.appendChild(el("p", null, flags ? "Informed decision: " + flags + " reading(s) flagged. Sample again, find the source and warn downstream users if needed." : "Informed decision: no action needed. Keep monitoring to spot changes."));
+}, 0);
+
+/* ---------- Lesson 3: CO2 chart ---------- */
+var CO2 = [[1750, 280, "Before the industrial era (ice cores)."], [1900, 296, "Coal use was growing fast (ice cores)."], [1960, 317, "Early direct measurements at Mauna Loa, Hawaiʻi."], [1990, 354, "Up about 37 ppm in 30 years."], [2010, 390, "Up about 36 ppm in 20 years: the rise is speeding up."], [2024, 425, "More than 50% above the pre-industrial level."]];
+(function(){
+  var s = $("co2Svg"), x0 = 50, w = 450, y0 = 210, top = 20, min = 250, max = 450;
+  function y(v){ return y0 - (v - min) / (max - min) * (y0 - top); }
+  [250, 300, 350, 400, 450].forEach(function(v){
+    s.appendChild(sv("line", {x1: x0, x2: x0 + w, y1: y(v), y2: y(v), "class": "grid"}));
+    s.appendChild(sv("text", {x: x0 - 6, y: y(v) + 4, "text-anchor": "end", "class": "small"}, String(v)));
+  });
+  s.appendChild(sv("text", {x: 12, y: 14, "class": "small"}, "ppm"));
+  var bw = w / CO2.length;
+  CO2.forEach(function(d, i){
+    var g = sv("g"), bx = x0 + i * bw + 12, by = y(d[1]);
+    g.appendChild(sv("rect", {x: bx, y: by, width: bw - 24, height: y0 - by, rx: 4, fill: i === CO2.length - 1 ? "var(--ember)" : "var(--water)"}));
+    g.appendChild(sv("text", {x: bx + (bw - 24) / 2, y: by - 6, "text-anchor": "middle", "class": "lbl"}, String(d[1])));
+    g.appendChild(sv("text", {x: bx + (bw - 24) / 2, y: y0 + 18, "text-anchor": "middle", "class": "small"}, String(d[0])));
+    hot(g, d[0] + ": about " + d[1] + " ppm", function(){ detail($("co2Detail"), d[0] + ": about " + d[1] + " ppm", [d[2]], "Carbon dioxide"); });
+    s.appendChild(g);
+  });
+  s.appendChild(sv("line", {x1: x0, x2: x0 + w, y1: y0, y2: y0, "class": "axis"}));
+  detail($("co2Detail"), "2024: about 425 ppm", [CO2[5][2], "The bars start at 250 ppm so the change is easy to see."], "Carbon dioxide");
+})();
+
+/* ---------- Lesson 4: swaps ---------- */
+var BASE = [["Car travel", 3000], ["Home heating", 5000], ["Electricity", 3000]];
+var SWAPS = [
+  {id: "sw-ev", t: "Replace the gasoline car with an electric car", k: 0, cut: 1800, type: "Replace technology"},
+  {id: "sw-furn", t: "Replace the old furnace with a high-efficiency furnace", k: 1, cut: 1800, type: "Improve technology"},
+  {id: "sw-ins", t: "Add attic insulation and seal drafts", k: 1, cut: 600, type: "Improve efficiency"},
+  {id: "sw-led", t: "Switch to LED bulbs and efficient appliances", k: 2, cut: 600, type: "Improve technology"},
+  {id: "sw-sol", t: "Install rooftop solar panels", k: 2, cut: 1500, type: "Renewable energy"}
+];
+(function(){
+  store.swaps = store.swaps || {};
+  var box = $("swapChecks");
+  SWAPS.forEach(function(s){
+    var l = el("label", {"for": s.id}), cb = el("input", {type: "checkbox", id: s.id});
+    cb.checked = !!store.swaps[s.id];
+    cb.addEventListener("change", function(){ store.swaps[s.id] = cb.checked; save(); draw(); });
+    l.appendChild(cb); l.appendChild(document.createTextNode(s.t)); box.appendChild(l);
+  });
+  function draw(){
+    var vals = BASE.map(function(b){ return b[1]; }), used = [];
+    SWAPS.forEach(function(s){ if (store.swaps[s.id]) { vals[s.k] -= s.cut; used.push(s.type); } });
+    var bars = $("swapBars"); clear(bars);
+    var total = 0;
+    BASE.forEach(function(b, i){
+      total += vals[i];
+      var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, b[0]));
+      var tr = el("div", {"class": "track"}), f = el("i", {"class": "warn"}); f.style.width = (vals[i] / 5000 * 100) + "%"; tr.appendChild(f); r.appendChild(tr);
+      r.appendChild(el("b", null, fmt(vals[i], 0))); bars.appendChild(r);
+    });
+    var cut = 11000 - total;
+    detail($("swapDetail"), "Total: " + fmt(total, 0) + " kg CO₂ per year", [cut ? "That is " + fmt(cut, 0) + " kg less than before, a " + Math.round(cut / 110) + "% cut." : "Choose swaps to see how emissions change.", used.length ? "Types used: " + used.filter(function(x, i){ return used.indexOf(x) === i; }).join(", ") + "." : "Starting point: 11 000 kg per year (practice estimate)."], "Practice household");
+  }
+  draw();
+})();
+
+/* ---------- Lesson 5: farm tech ---------- */
+var TECH = [
+  {label: "Carbon capture and storage", on: [2], p: ["What it does: captures CO₂ from a smokestack before it reaches the air, then pipes it deep underground into rock layers where it is stored.", "Farm link: fertilizer plants release a lot of CO₂. Capturing it lowers the emissions behind each bag of fertilizer.", "Goal supported: mitigation."]},
+  {label: "AI-powered monitoring", on: [0, 1, 2], p: ["What it does: computers learn to read images and sensor data from drones, satellites and field sensors. They spot crop stress, pests or disease early.", "Farm link: farmers treat only the patches that need it, using less fertilizer and spray.", "Goals supported: productivity, resilience and mitigation (less fertilizer means fewer emissions)."]},
+  {label: "Smart irrigation", on: [0, 1], p: ["What it does: soil moisture sensors and weather data decide when and how much to water.", "Farm link: southern Alberta has large irrigation districts. Watering only when needed saves water in dry years.", "Goals supported: productivity and resilience. It can also cut pumping energy."]},
+  {label: "Greenhouse systems", on: [0, 1], p: ["What it does: grows crops indoors with controlled heat, light, water and nutrients.", "Farm link: Alberta greenhouses can grow vegetables through cold winters and protect crops from hail and drought.", "Goals supported: productivity and resilience. Heating with fossil fuels adds emissions, so efficient heating matters."]},
+  {label: "Zero tillage", on: [0, 1, 2], p: ["What it does: seeds are planted straight into last year's crop leftovers without ploughing.", "Farm link: widely used on the prairies. It saves fuel, keeps moisture in the soil and keeps carbon stored.", "Goals supported: all three."]}
+];
+chipGroup($("techChips"), TECH, "so", function(t){
+  var ps = $("pillars").children;
+  for (var i = 0; i < 3; i++) ps[i].className = t.on.indexOf(i) > -1 ? "on" : "";
+  detail($("techDetail"), t.label, t.p, "Climate-smart agriculture");
+}, 0);
+
+/* ---------- Lesson 6: soil ---------- */
+var SOILP = [
+  {id: "sp-till", t: "Zero tillage (no ploughing)", v: 2},
+  {id: "sp-cover", t: "Grow a cover crop after harvest", v: 2},
+  {id: "sp-rot", t: "Rotate with peas or lentils", v: 1},
+  {id: "sp-res", t: "Leave crop leftovers on the field", v: 1},
+  {id: "sp-burn", t: "Burn the stubble after harvest", v: -2},
+  {id: "sp-bare", t: "Leave the field bare all winter", v: -1}
+];
+(function(){
+  store.soil = store.soil || {};
+  var box = $("soilChecks");
+  SOILP.forEach(function(s){
+    var l = el("label", {"for": s.id}), cb = el("input", {type: "checkbox", id: s.id});
+    cb.checked = !!store.soil[s.id];
+    cb.addEventListener("change", function(){ store.soil[s.id] = cb.checked; save(); draw(); });
+    l.appendChild(cb); l.appendChild(document.createTextNode(s.t)); box.appendChild(l);
+  });
+  function draw(){
+    var sc = 0; SOILP.forEach(function(s){ if (store.soil[s.id]) sc += s.v; });
+    var svg = $("soilSvg"); clear(svg);
+    var dark = 30 + sc * 8; if (dark < 8) dark = 8;
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 420, height: 50, fill: "var(--sky)"}));
+    for (var i = 0; i < 12; i++) svg.appendChild(sv("path", {d: "M" + (20 + i * 34) + " 50 l-6 -" + (14 + sc * 2 > 4 ? 14 + sc * 2 : 4) + " M" + (20 + i * 34) + " 50 l6 -" + (12 + sc * 2 > 4 ? 12 + sc * 2 : 4), stroke: "var(--grass)", "stroke-width": 3, fill: "none"}));
+    svg.appendChild(sv("rect", {x: 0, y: 50, width: 420, height: dark, fill: "var(--carbon)"}));
+    svg.appendChild(sv("rect", {x: 0, y: 50 + dark, width: 420, height: 150 - dark, fill: "var(--dirt)"}));
+    svg.appendChild(sv("text", {x: 12, y: 50 + dark / 2 + 5, "class": "lbl lt"}, "Organic matter layer"));
+    svg.appendChild(sv("text", {x: 12, y: 185, "class": "lbl lt"}, "Subsoil"));
+    var msg = sc >= 4 ? "Soil carbon is building up. Water soaks in and stays longer, and crops have more nutrients to draw on." : sc >= 1 ? "Soil carbon is slowly increasing." : sc === 0 ? "Soil carbon is holding steady. Choose practices to see the trend." : "Soil carbon is being lost to the air as CO₂. Bare or burned soil also blows and washes away.";
+    detail($("soilDetail"), "Soil score " + (sc > 0 ? "+" : "") + sc, [msg], "Made-up model");
+    svg.setAttribute("aria-label", "Soil profile. Organic matter layer is " + (sc > 0 ? "thicker" : sc < 0 ? "thinner" : "unchanged") + ". Soil score " + sc + ".");
+  }
+  draw();
+})();
+
+/* ---------- Lesson 7: minerals ---------- */
+var MINS = [
+  {label: "Lithium", t: "Lithium (Li)", p: ["Used for: rechargeable batteries in electric vehicles, phones and large batteries that store wind and solar power.", "In Alberta: dissolved in deep brines in ancient reef rock layers under central Alberta, including the Leduc area. Pilot plants are testing direct lithium extraction.", "Considerations: uses existing well sites and less land than open-pit mines, but needs energy, water and chemicals, and the brine must be returned safely."]},
+  {label: "Uranium", t: "Uranium (U)", p: ["Used for: fuel in nuclear power plants, which make electricity with very low CO₂ emissions.", "In Alberta: the Athabasca Basin crosses into northeastern Alberta. Companies are exploring there; Canada's working uranium mines are next door in Saskatchewan.", "Considerations: mine waste must be stored safely for a very long time, and projects need agreement with nearby First Nations and Métis communities."]},
+  {label: "Why critical?", t: "What makes a mineral critical?", p: ["It is needed for important technologies, such as batteries, wind turbines and electronics.", "Its supply could be at risk, for example if most of it comes from only a few countries.", "Canada's critical minerals list also includes others, such as nickel, graphite, cobalt and vanadium."]}
+];
+chipGroup($("minChips"), MINS, "so", function(t){ detail($("minDetail"), t.t, t.p, "Mineral file"); }, 0);
+
+/* ---------- Lesson 8: government ---------- */
+var GOV = [
+  {label: "Regulations", c: "Action", t: "Regulations for resource extraction", p: ["Rules for approving, running and cleaning up mines, wells and pipelines.", "Example: a company must show how it will protect groundwater and restore the land before a new lithium well is approved.", "Strength: prevents damage before it happens. Challenge: rules must be checked and enforced."]},
+  {label: "Pollution limits", c: "Action", t: "Pollution limits for industry", p: ["A legal maximum for how much of a pollutant a plant may release into air or water.", "Example: a limit on sulfur dioxide from a power plant's smokestack, checked by monitors.", "Strength: clear and measurable. Challenge: industry may need time and money to meet it."]},
+  {label: "Incentives", c: "Action", t: "Incentives for eco-friendly technology", p: ["Rewards that make a greener choice cheaper, such as rebates, grants or tax credits.", "Examples: a rebate on a heat pump or electric vehicle, or a grant for a company developing a cleaner process.", "Strength: people choose freely. Challenge: it costs public money."]},
+  {label: "Educational campaigns", c: "Public support", t: "Educational campaigns", p: ["Ads, school programs and websites that explain why an action matters and how to take part.", "Example: a campaign explaining how to sort recycling before a new city program starts.", "Builds support by helping people understand the reasons."]},
+  {label: "Monetary incentives", c: "Public support", t: "Monetary incentives", p: ["Money-based rewards that make people more willing to accept or join an action.", "Example: a deposit refund on drink containers encourages people to return them.", "Builds support by making the choice cheaper or rewarding it."]}
+];
+chipGroup($("govChips"), GOV, "wa", function(t){ detail($("govDetail"), t.t, t.p, t.c); }, 0);
+
+/* ---------- Lesson 9: population ---------- */
+var POP = [[1950, 2.5], [1975, 4.1], [2000, 6.1], [2025, 8.2], [2050, 9.7]];
+function drawPop(){
+  var p = POP[parseInt($("popYear").value, 10)], u = parseInt($("perUse").value, 10);
+  $("popYearVal").textContent = p[0] + (p[0] === 2050 ? " (projected)" : "");
+  $("perUseVal").textContent = u + "%";
+  var demand = p[1] / 8.2 * u;
+  var st = $("popStats"); clear(st);
+  [["Population", fmt(p[1]) + " billion"], ["Use per person", u + "% of today"], ["Total demand", Math.round(demand) + "% of today"]].forEach(function(x){
+    var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, x[0])); d.appendChild(el("b", null, x[1])); st.appendChild(d);
+  });
+  var msg = p[0] === 2050 ? (demand > 105 ? "With more people and the same habits, demand rises. Lower use per person to about 85% to keep total demand near today's level." : "Stewardship has kept total demand near or below today's level, even with 1.5 billion more people.") : "Move to 2050 to see the challenge ahead.";
+  detail($("popDetail"), "Total demand = population × use per person", [msg], "Rounded UN figures");
+}
+$("popYear").addEventListener("input", drawPop); $("perUse").addEventListener("input", drawPop); drawPop();
+
+/* ---------- Lesson 10: digital ---------- */
+var DIG = [
+  {label: "Electricity", t: "Data centre electricity", c: "Consideration", p: ["Data centres run all day, every day. Training and running large AI models uses a lot of computing power.", "Data centres used roughly 1.5% of the world's electricity in 2024, and the share is growing.", "The impact depends on the power source: a data centre on wind or hydro power emits far less CO₂ than one on coal."]},
+  {label: "Cooling water", t: "Cooling water", c: "Consideration", p: ["Computers turn electricity into heat. Many data centres use water to cool their equipment.", "In dry regions this adds to water scarcity. Cold climates, like Alberta's, can use outside air for cooling for much of the year."]},
+  {label: "Mining for devices", t: "Minerals in devices", c: "Consideration", p: ["Phones, laptops and servers contain dozens of elements, including lithium, cobalt, copper and gold.", "Mining them uses energy and water and changes land. Keeping devices longer lowers this demand."]},
+  {label: "E-waste", t: "E-waste", c: "Consideration", p: ["E-waste is thrown-out electronics. The world produced about 62 million tonnes in 2022, and less than a quarter was properly recycled.", "Recycling recovers metals and keeps toxic substances out of landfills. Alberta has drop-off programs for old electronics."]},
+  {label: "Digital help", t: "Digital tools that help", c: "Benefit", p: ["AI can spot crop stress, forecast wildfire risk, sort recycling and control building heating so less energy is wasted.", "Video calls can replace some travel.", "A good decision weighs these benefits against the costs."]}
+];
+chipGroup($("digChips"), DIG, "wa", function(t){ detail($("digDetail"), t.t, t.p, t.c); }, 0);
+
+/* ---------- Investigation 1: research planner ---------- */
+var RES = [
+  {label: "Plastic pollution", qs: ["Where does most plastic waste in our community end up?", "Which plastics can our recycling program accept?", "Who is affected: wildlife, rivers, people?", "What have other cities tried?"], sol: ["Ban some single-use plastics", "Deposit refund on more containers", "School reuse challenge"]},
+  {label: "Water scarcity", qs: ["Who shares the river water: farms, towns, industry, ecosystems?", "How have river flows changed in dry years?", "Which users take the most water?", "Which savings are fastest?"], sol: ["Smart irrigation on farms", "Low-flow fixtures in homes", "Water reuse at industrial sites"]},
+  {label: "Food insecurity", qs: ["How many families in our area use food banks?", "How do weather and prices affect local food?", "How much food is wasted at home and school?", "Which programs already help?"], sol: ["School garden and greenhouse", "Food rescue from grocery stores", "Climate-smart farm grants"]},
+  {label: "Air quality", qs: ["What do AQHI records show for our city over the year?", "What are the main sources: traffic, industry, wildfire smoke?", "Who is most at risk?", "Which actions lower exposure or emissions?"], sol: ["Anti-idling zone at schools", "Air filters in classrooms", "More transit and bike routes"]}
+];
+var CRIT = ["Works well", "Cost", "Fair to people", "Speed"];
+(function(){
+  store.res = store.res || {};
+  var cur;
+  function render(r, ri){
+    cur = ri;
+    detail($("resQs"), "Research questions", r.qs.map(function(q, i){ return (i + 1) + ". " + q; }), "Use reliable sources");
+    var tb = document.querySelector("#resMatrix tbody"); clear(tb);
+    r.sol.forEach(function(s, si){
+      var tr = el("tr"); tr.appendChild(el("td", null, s));
+      CRIT.forEach(function(c, ci){
+        var td = el("td"), id = "rs-" + ri + "-" + si + "-" + ci;
+        var lab = el("label", {"for": id, "class": "sr"}, c + " score for " + s);
+        var sel = el("select", {id: id});
+        [1, 2, 3, 4, 5].forEach(function(n){ var o = el("option", {value: n}, String(n)); sel.appendChild(o); });
+        sel.value = (store.res[id] || 3);
+        sel.addEventListener("change", function(){ store.res[id] = parseInt(sel.value, 10); save(); total(); });
+        td.appendChild(lab); td.appendChild(sel); tr.appendChild(td);
+      });
+      tr.appendChild(el("td", {"class": "mono", id: "rt-" + si}, ""));
+      tb.appendChild(tr);
+    });
+    total();
+  }
+  function total(){
+    var r = RES[cur], scores = r.sol.map(function(s, si){
+      var t = 0; CRIT.forEach(function(c, ci){ t += parseInt($("rs-" + cur + "-" + si + "-" + ci).value, 10); });
+      $("rt-" + si).textContent = t + " / 20"; return [s, t];
+    });
+    scores.sort(function(a, b){ return b[1] - a[1]; });
+    detail($("resOut"), "Top choice so far: " + scores[0][0], ["Ranking: " + scores.map(function(x){ return x[0] + " (" + x[1] + ")"; }).join(", ") + ".", "Strong research uses evidence for each score. Many issues need more than one solution working together."], "Your scores");
+  }
+  chipGroup($("resChips"), RES, "so", render, 0);
+  $("resNote").value = store.resNote || "";
+  $("resNote").addEventListener("input", function(){ store.resNote = $("resNote").value; save(); });
+})();
+
+/* ---------- Investigation 2: emissions ---------- */
+var EMQ = [
+  function(){ var km = pick([8000, 10000, 12000, 18000, 20000]), f = pick([0.15, 0.2, 0.25]); return {q: "A car drives " + fmt(km, 0) + " km in a year. Its emission factor is " + f + " kg CO₂ per km. How many kg of CO₂ does it emit?", a: km * f, w: fmt(km, 0) + " × " + f + " = " + fmt(km * f, 0) + " kg CO₂"}; },
+  function(){ var kwh = pick([4000, 5000, 6000, 7000, 8000]), f = pick([0.4, 0.5]), cut = pick([10, 20, 25]); var a = kwh * f * cut / 100; return {q: "A home uses " + fmt(kwh, 0) + " kWh of electricity a year on a grid with " + f + " kg CO₂ per kWh. Efficient appliances cut its use by " + cut + "%. How many kg of CO₂ are saved each year?", a: a, w: fmt(kwh, 0) + " × " + f + " = " + fmt(kwh * f, 0) + " kg; " + cut + "% of that is " + fmt(a, 0) + " kg CO₂ saved"}; },
+  function(){ var km = pick([10000, 15000, 20000]), g = 0.2, e = pick([0.05, 0.08, 0.1]); var a = km * (g - e); return {q: "A family switches from a gasoline car (0.2 kg/km) to an electric car (" + e + " kg/km) and drives " + fmt(km, 0) + " km a year. How many kg of CO₂ do they save each year?", a: a, w: fmt(km, 0) + " × 0.2 = " + fmt(km * g, 0) + "; " + fmt(km, 0) + " × " + e + " = " + fmt(km * e, 0) + "; savings = " + fmt(a, 0) + " kg CO₂"}; },
+  function(){ var bulbs = pick([10, 20, 30]), hrs = 1000, f = 0.5; var a = bulbs * (60 - 9) / 1000 * hrs * f; return {q: "A school replaces " + bulbs + " old 60 W bulbs with 9 W LEDs. Each is on 1000 hours a year. The grid emits 0.5 kg CO₂ per kWh. How many kg of CO₂ are saved per year? (Hint: kWh = watts ÷ 1000 × hours)", a: a, w: "Each bulb saves 51 W ÷ 1000 × 1000 h = 51 kWh; " + bulbs + " × 51 = " + fmt(bulbs * 51, 0) + " kWh; × 0.5 = " + fmt(a, 0) + " kg CO₂"}; }
+];
+(function(){
+  var cur;
+  function next(){ cur = pick(EMQ)(); detail($("emQ"), "Practice problem", [cur.q], "Made-up values"); $("emAns").value = ""; $("emFb").textContent = ""; $("emFb").className = "fb"; }
+  $("emNew").addEventListener("click", next);
+  $("emCheck").addEventListener("click", function(){
+    var v = parseFloat($("emAns").value);
+    if (isNaN(v)) { $("emFb").textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - cur.a) <= Math.max(1, cur.a * 0.01);
+    $("emFb").className = "fb " + (ok ? "ok" : "no");
+    $("emFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.w + ".";
+  });
+  next();
+})();
+
+/* ---------- Investigation 3: policy designer ---------- */
+var POL = [
+  {s: "A river downstream of a factory has high nitrate readings every spring. Fish numbers are dropping.", a: 1, sup: [0, 1], why: "A pollution limit sets the most nitrate the factory may release, and monitoring checks it. An educational campaign explains the fish decline; a monetary incentive such as a grant could help the factory upgrade its treatment."},
+  {s: "A company wants to drill new wells to extract lithium from deep brine near a town.", a: 0, sup: [0], why: "Regulations for resource extraction decide how wells are approved, how groundwater is protected and how land is restored. Public meetings and clear information (education) help nearby residents understand and give input."},
+  {s: "The province wants more families to replace old furnaces with heat pumps.", a: 2, sup: [1, 0], why: "An incentive such as a rebate lowers the cost of eco-friendly technology. The rebate itself is a monetary incentive that builds support, and education explains the savings."},
+  {s: "Too many drink containers end up in ditches and landfills.", a: 2, sup: [1], why: "A deposit refund is an incentive that rewards returning containers, and the refund is a monetary incentive that builds public support. Alberta has used this approach for decades."},
+  {s: "Smoke from a power plant is lowering air quality in a nearby town on calm days.", a: 1, sup: [0], why: "A pollution limit on the plant's emissions, checked by air monitoring stations, targets the source. Sharing AQHI data and the reasons for the limit builds public support."}
+];
+var ACTS = ["Regulations for extraction", "Pollution limit", "Incentive for eco-friendly tech"], SUPS = ["Educational campaign", "Monetary incentive"];
+(function(){
+  var i = 0, ac = null, su = null;
+  var setA = chipGroup($("polAct"), ACTS.map(function(x){ return {label: x}; }), "wa", function(x, j){ ac = j; });
+  var setS = chipGroup($("polSup"), SUPS.map(function(x){ return {label: x}; }), "so", function(x, j){ su = j; });
+  function show(){
+    var p = POL[i]; ac = null; su = null;
+    Array.prototype.forEach.call(document.querySelectorAll("#polAct .chip, #polSup .chip"), function(b){ b.setAttribute("aria-pressed", "false"); });
+    clear($("polScen")); $("polScen").appendChild(el("b", null, "Scenario " + (i + 1) + " of " + POL.length)); $("polScen").appendChild(el("p", null, p.s));
+    clear($("polFb"));
+  }
+  $("polCheck").addEventListener("click", function(){
+    var p = POL[i];
+    if (ac == null || su == null) { detail($("polFb"), "Choose both parts", ["Pick a type of action and a way to build support."]); return; }
+    var okA = ac === p.a, okS = p.sup.indexOf(su) > -1;
+    detail($("polFb"), okA && okS ? "Strong design" : okA ? "Good action. Rethink the support approach." : "Rethink the type of action.", ["Best fit: " + ACTS[p.a] + " with " + p.sup.map(function(k){ return SUPS[k].toLowerCase(); }).join(" or ") + ".", p.why], "Feedback");
+  });
+  $("polNext").addEventListener("click", function(){ i = (i + 1) % POL.length; show(); });
+  show();
+})();
+
+/* ---------- Investigation 4: lithium ---------- */
+function liDraw(){
+  var V = parseInt($("liVol").value, 10), C = parseInt($("liConc").value, 10), R = parseInt($("liRec").value, 10);
+  $("liVolVal").textContent = fmt(V, 0) + " L (" + fmt(V / 1000) + " m³)";
+  $("liConcVal").textContent = C + " mg/L"; $("liRecVal").textContent = R + "%";
+  var inBrine = V * C / 1000, got = inBrine * R / 100;
+  var st = $("liStats"); clear(st);
+  [["Lithium in brine", fmt(inBrine, 0) + " g"], ["Recovered", fmt(got / 1000, 2) + " kg"], ["Car batteries (≈8 kg each)", fmt(got / 1000 / 8, 2)]].forEach(function(x){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, x[0])); d.appendChild(el("b", null, x[1])); st.appendChild(d); });
+  var w = $("liWork"); clear(w);
+  w.appendChild(el("b", null, "Working"));
+  w.appendChild(el("span", null, fmt(V, 0) + " L × " + C + " mg/L = " + fmt(V * C, 0) + " mg = " + fmt(inBrine, 0) + " g"));
+  w.appendChild(el("span", null, fmt(inBrine, 0) + " g × " + R + "% = " + fmt(got, 0) + " g = " + fmt(got / 1000, 2) + " kg"));
+  w.appendChild(el("span", null, "So about " + fmt(8000 / (C * R / 100), 0) + " L of this brine yields the lithium for one car battery (rounded estimate)."));
+}
+["liVol", "liConc", "liRec"].forEach(function(id){ $(id).addEventListener("input", liDraw); }); liDraw();
+(function(){
+  var cur;
+  function next(){
+    var V = pick([10000, 20000, 50000, 100000]), C = pick([50, 60, 75, 100, 120]), R = pick([70, 80, 90]);
+    cur = V * C / 1000 * R / 100 / 1000;
+    detail($("liQ"), "Practice problem", ["A practice well pumps " + fmt(V, 0) + " L of brine with " + C + " mg/L of lithium. The process recovers " + R + "%. How many kilograms of lithium are recovered?"], "Made-up values");
+    $("liAns").value = ""; $("liFb").textContent = ""; $("liFb").className = "fb";
+  }
+  $("liNew").addEventListener("click", next);
+  $("liCheck").addEventListener("click", function(){
+    var v = parseFloat($("liAns").value);
+    if (isNaN(v)) { $("liFb").textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - cur) <= Math.max(0.01, cur * 0.02);
+    $("liFb").className = "fb " + (ok ? "ok" : "no");
+    $("liFb").textContent = (ok ? "Correct: " : "Not quite. The answer is ") + fmt(cur, 2) + " kg. Multiply volume by concentration, divide by 1000 to get grams, take the recovered share, then divide by 1000 for kilograms.";
+  });
+  next();
+})();
+
+/* ---------- Investigation 5: demand ---------- */
+(function(){
+  var cur;
+  function next(){
+    var g = pick([10, 15, 20, 25, 30, 40]), c = pick([0, 5, 10, 15, 20, 25, 30]);
+    var f = (1 + g / 100) * (1 - c / 100);
+    cur = {a: (f - 1) * 100, w: (1 + g / 100).toFixed(2) + " × " + (1 - c / 100).toFixed(2) + " = " + f.toFixed(3) + ", so total demand changes by " + fmt((f - 1) * 100) + "%"};
+    detail($("dmQ"), "Practice problem", ["A region's population grows by " + g + "%. " + (c ? "Stewardship lowers use per person by " + c + "%." : "Use per person does not change.") + " By what percent does total demand change?"], "Made-up values");
+    $("dmAns").value = ""; $("dmFb").textContent = ""; $("dmFb").className = "fb";
+  }
+  $("dmNew").addEventListener("click", next);
+  $("dmCheck").addEventListener("click", function(){
+    var v = parseFloat($("dmAns").value);
+    if (isNaN(v)) { $("dmFb").textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - cur.a) <= 0.6;
+    $("dmFb").className = "fb " + (ok ? "ok" : "no");
+    $("dmFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.w + ".";
+  });
+  next();
+})();
+
+/* ---------- Investigation 6: digital choices ---------- */
+var DIGV = [
+  ["Keeping your phone two more years before replacing it", 1, "Fewer new devices means less mining, manufacturing and e-waste."],
+  ["A data centre switching to wind and solar power", 1, "Same computing, far less CO₂ from the electricity."],
+  ["Streaming every video in the highest quality on a small phone screen", 0, "More data moved and stored uses more electricity, with little visible benefit."],
+  ["Putting an old laptop in the garbage", 0, "Its metals are lost and harmful substances can leak. Use an e-waste drop-off."],
+  ["Using AI images from drones to spray only the weedy parts of a field", 1, "Less herbicide and fuel used, even though the AI uses some electricity."],
+  ["Building a new data centre that cools with river water in a drought-prone area", 0, "It adds to water demand where water is already scarce."]
+];
+(function(){
+  store.dig = store.dig || {};
+  var box = $("digVerdicts");
+  DIGV.forEach(function(d, i){
+    var row = el("div", {"class": "vrow"});
+    row.appendChild(el("p", null, d[0]));
+    var ch = el("div", {"class": "chips", role: "group", "aria-label": "Impact of: " + d[0]});
+    var why = el("p", {"class": "why", "aria-live": "polite"});
+    ["Lowers impact", "Raises impact"].forEach(function(lbl, k){
+      var val = k === 0 ? 1 : 0;
+      var b = el("button", {"class": "chip", type: "button", "aria-pressed": store.dig[i] === val ? "true" : "false"}, lbl);
+      b.addEventListener("click", function(){ store.dig[i] = val; save(); paint(); });
+      ch.appendChild(b);
+    });
+    row.appendChild(ch); row.appendChild(why); box.appendChild(row);
+    function paint(){
+      var v = store.dig[i];
+      Array.prototype.forEach.call(ch.children, function(b, k){ b.setAttribute("aria-pressed", v === (k === 0 ? 1 : 0) ? "true" : "false"); });
+      if (v == null) { row.className = "vrow"; why.textContent = ""; return; }
+      row.className = "vrow " + (v === d[1] ? "ok" : "no");
+      why.textContent = (v === d[1] ? "Correct. " : "Not quite. ") + d[2];
+    }
+    paint();
+  });
+  $("digNote").value = store.digNote || "";
+  $("digNote").addEventListener("input", function(){ store.digNote = $("digNote").value; save(); });
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Government actions", bins: ["Extraction regulation", "Pollution limit", "Incentive", "Builds public support"], items: [
+    ["Mines must have a plan to restore the land before they are approved", 0, "A rule for how resource extraction happens is a regulation."],
+    ["A plant may release no more than a set amount of sulfur dioxide per hour", 1, "A legal maximum for a pollutant is a pollution limit."],
+    ["A rebate for families who buy a heat pump", 2, "A reward for using eco-friendly technology is an incentive."],
+    ["A school program explaining why the city is starting compost pickup", 3, "An educational campaign builds public support."],
+    ["Wells must be sealed and tested when a lithium site closes", 0, "Clean-up rules for extraction sites are regulations."],
+    ["A grant for a company developing cleaner fertilizer", 2, "Money to develop eco-friendly technology is an incentive."],
+    ["A limit on how much nitrate a factory may release into a river", 1, "A maximum discharge is a pollution limit."],
+    ["TV and social media ads showing how to reduce food waste", 3, "Ads that explain an action are an educational campaign."],
+    ["Discounted transit passes for students", 2, "Making eco-friendly transportation cheaper is an incentive."],
+    ["A refund when you return drink containers", 3, "A deposit refund is a monetary incentive that builds support."]
+  ]},
+  {label: "Energy sources", bins: ["Renewable (and low-carbon)", "Low-carbon, not renewable", "High-carbon fossil fuel"], items: [
+    ["Wind turbines in southern Alberta", 0, "Wind refills naturally and makes electricity without burning fuel."],
+    ["Solar panels", 0, "Sunlight is renewable and solar panels emit no CO₂ while running."],
+    ["Nuclear power from uranium", 1, "Very low CO₂, but uranium is mined and does not refill."],
+    ["Coal power plant", 2, "Coal releases the most CO₂ per unit of electricity."],
+    ["Natural gas power plant", 2, "Natural gas is a fossil fuel. It emits less than coal but still a lot."],
+    ["Hydroelectric dam", 0, "Moving water refills through the water cycle."],
+    ["Geothermal heat from deep rock", 0, "Earth's internal heat is renewable on human time scales."],
+    ["Gasoline in a car engine", 2, "Gasoline is made from oil, a fossil fuel."],
+    ["Natural gas plant with carbon capture and storage", 1, "Capture stores most of the CO₂, so it is lower carbon, but the fuel is not renewable."]
+  ]},
+  {label: "Climate-smart goals", bins: ["Productivity", "Resilience", "Mitigation"], items: [
+    ["Growing more wheat on the same land with better seed", 0, "More food from the same land is productivity."],
+    ["Planting a drought-tolerant crop variety", 1, "Coping with dry years is resilience."],
+    ["Capturing CO₂ at a fertilizer plant", 2, "Lowering emissions is mitigation."],
+    ["Storing rainwater in a dugout for dry spells", 1, "Preparing for drought is resilience."],
+    ["Using less nitrogen fertilizer, applied only where needed", 2, "Fertilizer produces nitrous oxide, a greenhouse gas, so less fertilizer is mitigation."],
+    ["Using sensors so the same water grows more crop", 0, "Better yield per litre is productivity."],
+    ["Building soil carbon with cover crops", 2, "Storing carbon in soil removes CO₂ from the air: mitigation."],
+    ["Growing vegetables in a greenhouse safe from hail", 1, "Protecting crops from extreme weather is resilience."]
+  ]}
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Complex environmental issue", "An issue with many causes and effects and no single fix, such as climate change or plastic pollution."],
+  ["Environmental stewardship", "Taking responsible care of the environment so it stays healthy."],
+  ["Sustainability", "Meeting today's needs without making it harder for future generations to meet theirs."],
+  ["Resource scarcity", "Not having enough of a resource, such as water or minerals, for everyone who needs it."],
+  ["Food insecurity", "Not having reliable access to enough safe, nutritious food."],
+  ["Monitoring", "Measuring something again and again over time to spot changes."],
+  ["AQHI", "Air Quality Health Index: a Canadian scale, usually 1 to 10, showing the health risk from air pollution."],
+  ["Dissolved oxygen", "Oxygen mixed into water that fish and other aquatic life breathe."],
+  ["Turbidity", "How cloudy water is, caused by particles such as soil."],
+  ["Greenhouse gas", "A gas, such as carbon dioxide or methane, that absorbs energy radiated by Earth's surface and warms the planet."],
+  ["Parts per million (ppm)", "A unit for tiny amounts: 420 ppm CO₂ means 420 of every million air particles are CO₂."],
+  ["Renewable energy", "Energy from sources that refill naturally, such as sunlight, wind, moving water and Earth's heat."],
+  ["Low-carbon energy", "Energy that releases little CO₂, including renewables and nuclear power."],
+  ["Energy efficiency", "Doing the same job with less energy, such as LED bulbs instead of old bulbs."],
+  ["Climate-smart agriculture", "Farming that raises productivity, builds resilience to climate change and lowers greenhouse gas emissions."],
+  ["Resilience", "The ability to cope with and recover from changes such as drought, floods or new pests."],
+  ["Mitigation", "Actions that lower greenhouse gas emissions or remove CO₂ from the air."],
+  ["Carbon capture and storage", "Capturing CO₂ from a smokestack and storing it deep underground."],
+  ["Smart irrigation", "Using soil sensors and weather data to water crops only when and as much as needed."],
+  ["Soil organic matter", "The dark part of soil made from broken-down plants and living things. It stores carbon."],
+  ["Zero tillage", "Planting seeds without ploughing, which keeps soil carbon and moisture in place."],
+  ["Nutrient dense", "Rich in vitamins, minerals and protein for the amount of food."],
+  ["Critical mineral", "A mineral needed for important technologies whose supply could be at risk, such as lithium."],
+  ["Direct lithium extraction", "Pulling lithium out of brine with a material that grabs lithium, then returning the brine underground."],
+  ["Brine", "Very salty water, such as the deep underground water in Alberta that contains lithium."],
+  ["Incentive", "A reward, such as a rebate or grant, that encourages an eco-friendly choice."],
+  ["Pollution limit", "The most of a pollutant that a factory or plant is allowed to release."],
+  ["Data centre", "A building full of computers that store data and run apps and AI."],
+  ["E-waste", "Thrown-out electronics such as phones, laptops and batteries."]
+];
+
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What makes an environmental issue complex?", ["It has many causes and effects and no single fix.", "It affects only one species.", "It can be solved by one law.", "It happens only in one country."], "Complex issues are tangled with energy, food, water and people."],
+  ["Which best defines sustainability?", ["Meeting today's needs without harming future generations' ability to meet theirs", "Using as many resources as possible now", "Never using any natural resources", "Recycling only plastic"], "Sustainability looks ahead to future generations."],
+  ["Which is an example of environmental stewardship?", ["A class monitoring a creek and removing litter each spring", "Leaving lights on overnight", "Dumping old paint down a drain", "Buying a new phone every year"], "Stewardship is taking responsible care of the environment."],
+  ["The AQHI in Edmonton reads 9 during wildfire smoke. What is an informed decision?", ["Move hard sports practice indoors.", "Run a long race outside.", "Open all classroom windows.", "Ignore it because it is below 10."], "7 to 10 is high risk, so hard outdoor activity should be cut back."],
+  ["Why do scientists monitor water quality over time instead of testing once?", ["Repeated data shows trends and sudden changes that support decisions.", "One test is always wrong.", "Water never changes.", "It is required only for swimming pools."], "Monitoring reveals patterns, such as a spring spike in nitrate."],
+  ["A river sample has dissolved oxygen of 3 mg/L. What does this suggest?", ["Fish may struggle to breathe.", "The water is perfectly healthy.", "The water is too clear.", "The pH is too high."], "Most fish need at least about 5 mg/L."],
+  ["About how much CO₂ was in the air before the industrial era, compared with today?", ["About 280 ppm then, more than 420 ppm now", "About 420 ppm then, 280 ppm now", "About the same", "About 100 ppm then, 1000 ppm now"], "CO₂ has risen by more than 50%."],
+  ["What is the main cause of the rapid warming since the 1800s?", ["Greenhouse gases from human activity, mostly burning fossil fuels", "Changes in the Moon's orbit", "More volcanoes than ever before", "The Sun getting much brighter"], "Scientists agree human activity is the main cause."],
+  ["Which is a way to slow climate change by improving an inefficient technology?", ["Replacing an old furnace with a high-efficiency one", "Building a new coal plant", "Driving more", "Using older light bulbs"], "Doing the same job with less energy lowers emissions."],
+  ["Nuclear power is best described as:", ["Low-carbon but not renewable", "Renewable and high-carbon", "A fossil fuel", "Renewable and low-carbon"], "Uranium is mined and does not refill, but nuclear power emits very little CO₂."],
+  ["A car drives 10 000 km at 0.2 kg CO₂ per km. How much CO₂ does it emit?", ["2000 kg", "200 kg", "20 000 kg", "50 000 kg"], "10 000 × 0.2 = 2000 kg."],
+  ["Climate-smart agriculture aims for which three goals?", ["Productivity, resilience and mitigation", "Speed, size and colour", "Profit only", "Less food, less land, less water"], "These are the three goals of climate-smart agriculture."],
+  ["How does smart irrigation support climate-smart agriculture?", ["It waters only when sensors show crops need it, saving water.", "It waters every field every hour.", "It replaces all rain.", "It removes CO₂ from smokestacks."], "Saving water helps productivity and resilience in dry years."],
+  ["What does carbon capture and storage do?", ["Captures CO₂ from industrial sites and stores it deep underground", "Plants trees in cities", "Turns CO₂ into oxygen in the air", "Stores coal for later"], "In Alberta, CO₂ from sites including a fertilizer plant is stored underground."],
+  ["How can AI-powered monitoring help farmers?", ["It spots crop stress early so farmers treat only the areas that need it.", "It grows the crops by itself.", "It makes it rain.", "It replaces soil."], "Targeted treatment saves inputs and emissions."],
+  ["Why do healthy soils help fight climate change?", ["They store carbon from plants as organic matter.", "They release all their carbon.", "They reflect sunlight into space.", "They contain uranium."], "Soil organic matter is a big carbon store."],
+  ["Which farm practice builds soil carbon?", ["Zero tillage with cover crops", "Burning stubble", "Leaving fields bare all winter", "Ploughing many times a year"], "Keeping soil covered and undisturbed keeps carbon in."],
+  ["Why is lithium considered a critical mineral?", ["It is needed for batteries in clean energy technology and supply could be at risk.", "It is used to make plastic bags.", "It is the most common element on Earth.", "It is a fossil fuel."], "Electric vehicles and energy storage depend on lithium batteries."],
+  ["Where is Alberta's lithium found?", ["Dissolved in deep underground brine", "In glaciers", "In the North Saskatchewan River", "In coal seams on the surface"], "Lithium-rich brines sit in deep rock layers under central Alberta."],
+  ["Why is uranium in demand for clean energy?", ["It fuels nuclear power plants, which emit very little CO₂.", "It is used in solar panels.", "It powers wind turbines.", "It is burned like coal."], "Nuclear is a low-carbon energy source."],
+  ["A law says a factory may release no more than 10 kg of a pollutant per day. This is:", ["A pollution limit", "An incentive", "An educational campaign", "A regulation for resource extraction"], "A legal maximum for a pollutant is a pollution limit."],
+  ["Which approach builds public support with money?", ["A rebate for buying an efficient appliance", "A poster about recycling", "A school presentation", "A news article"], "Monetary incentives make the choice cheaper."],
+  ["The population grows by 20% and use per person stays the same. Total demand:", ["Grows by 20%", "Stays the same", "Falls by 20%", "Doubles"], "Total demand = population × use per person, so 1.2 × 1 = 1.2."],
+  ["Why do sustainability efforts become more important as population grows?", ["More people means more demand for resources unless use per person falls.", "Bigger populations need fewer resources.", "Resources grow with population.", "They do not become more important."], "Lowering use per person can balance a growing population."],
+  ["Which is an environmental consideration of AI and digital technology?", ["Data centres use electricity and sometimes large amounts of cooling water.", "Digital files weigh nothing, so there is no impact.", "AI makes devices last forever.", "Computers absorb CO₂."], "The cloud runs on real buildings full of machines."],
+  ["What is the best way to deal with an old phone you no longer use?", ["Take it to an e-waste recycling drop-off.", "Put it in the garbage.", "Bury it in the yard.", "Burn it."], "Recycling recovers metals and keeps toxic substances out of landfills."]
+];
+
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain the difference between environmental stewardship and sustainability, with an example of each.", a: "Stewardship is taking responsible care of the environment, like a class cleaning and monitoring a creek. Sustainability is meeting today's needs without harming future generations' ability to meet theirs, like a farm managing water so it is available in future dry years.", k: ["Defines stewardship", "Defines sustainability", "An example of each"]},
+  {q: "Choose one complex environmental issue other than climate change. Explain why it is complex and give one stewardship or sustainability solution.", a: "Plastic pollution is complex because plastic is cheap and used everywhere, it comes from many sources, it breaks into microplastics that spread through water and food webs, and only a small share is recycled. One solution is reducing single-use plastic with reusable bottles and containers.", k: ["Names an issue", "Explains at least two reasons it is complex", "Gives a matching solution"]},
+  {q: "How does monitoring air or water quality support informed decision making? Use an example.", a: "Monitoring gives data on pollution levels over time. For example, when wildfire smoke raises Edmonton's AQHI to 8, schools can move hard outdoor activity indoors. River monitoring that shows a nitrate spike can lead a city to find and fix the source.", k: ["Explains monitoring as repeated measurement", "Links data to a decision", "Specific example"]},
+  {q: "Explain how human activity accelerates climate change.", a: "Burning coal, oil and natural gas, clearing forests and some farming release greenhouse gases such as CO₂. These gases absorb energy radiated from Earth's surface. CO₂ has risen from about 280 ppm to more than 420 ppm, so more energy is trapped and the climate is warming faster than natural changes.", k: ["Names human sources", "Explains greenhouse gases trap energy", "Uses the CO₂ rise or rate"]},
+  {q: "Describe two different ways to slow climate change, and say which type each one is.", a: "Replacing an old furnace with a high-efficiency furnace improves an inefficient technology. Building wind farms to replace fossil fuel power plants is a transition to renewable and low-carbon energy.", k: ["One efficiency or replacement example", "One renewable or low-carbon example", "Correctly labels each"]},
+  {q: "A family's car drives 12 000 km a year at 0.2 kg CO₂ per km. They switch to an electric car at 0.08 kg/km. Calculate the yearly savings.", a: "Gasoline: 12 000 × 0.2 = 2400 kg. Electric: 12 000 × 0.08 = 960 kg. Savings = 2400 − 960 = 1440 kg CO₂ per year.", k: ["Gasoline emissions correct", "Electric emissions correct", "Savings with units"]},
+  {q: "What are the three goals of climate-smart agriculture? Give a technology that supports at least two of them.", a: "Productivity, resilience and mitigation. Smart irrigation supports productivity (more crop per litre) and resilience (saves water for dry years). AI-powered monitoring can support all three.", k: ["All three goals", "Names a technology", "Links it to two goals"]},
+  {q: "Explain how healthy soils store carbon and support nutrient dense crops.", a: "Plants take CO₂ from the air, and when roots and leftovers break down, carbon becomes soil organic matter. Practices like zero tillage and cover crops keep it there. Healthy soil also holds water and nutrients and has living things that help crops grow well and be nutrient rich.", k: ["Carbon from plants to organic matter", "A practice that builds soil", "Link to healthy, nutrient-rich crops"]},
+  {q: "Why is Alberta interested in lithium and uranium? Describe one environmental consideration.", a: "Both are in demand for clean energy: lithium for batteries in electric vehicles and energy storage, uranium as fuel for low-carbon nuclear power. Alberta has lithium in deep brines and part of the uranium-rich Athabasca Basin. A consideration is protecting groundwater and land during extraction, or storing uranium mine waste safely.", k: ["Use of lithium", "Use of uranium", "Alberta source", "One environmental consideration"]},
+  {q: "Describe three types of government action for sustainability and two ways governments build public support.", a: "Regulations for resource extraction, pollution limits for industry, and incentives for eco-friendly technologies and transportation. Public support can come from educational campaigns or monetary incentives such as rebates and deposit refunds.", k: ["Three action types", "Educational campaigns", "Monetary incentives"]}
+];
+var LONG = [
+  {q: "Research a complex environmental issue that affects Alberta. Describe its causes and effects, evaluate two possible solutions, and recommend one.", a: "Example: water scarcity in southern Alberta. Causes: dry years, warmer temperatures, growing demand from towns, farms and industry. Effects: lower river flows, stress on fish, limits on irrigation. Solution 1: smart irrigation saves water quickly but costs farmers money up front. Solution 2: low-flow fixtures in homes are cheap but save less in total. Recommendation: smart irrigation with incentives, because farms use the most water, plus home savings as a second step.", k: ["Causes and effects", "Two solutions evaluated with criteria", "Clear recommendation with reasons"]},
+  {q: "Your town wants to cut its greenhouse gas emissions by 40%. Propose a plan that includes improving technologies, switching energy sources and one government action. Explain how each part slows climate change.", a: "A strong plan combines efficiency (insulation, LED lighting, heat pumps), renewable or low-carbon electricity (solar on public buildings, buying wind power), and a government action such as rebates for heat pumps with an education campaign. Each lowers emissions by using less energy or by using energy that releases little CO₂. Numbers should show how the parts add up.", k: ["Efficiency measure", "Energy source switch", "Government action and support approach", "Explains how each lowers emissions"]},
+  {q: "Debate: Should Alberta expand lithium extraction from brine? Discuss benefits for clean energy and environmental considerations, then state your position.", a: "Benefits: lithium supports electric vehicles and energy storage, uses existing well sites and skills, and could reduce reliance on imports. Considerations: energy and water use, chemicals, safe reinjection of brine, and effects on land and nearby communities, including First Nations and Métis. A position should weigh both and name conditions, such as strong regulations and monitoring.", k: ["At least two benefits", "At least two considerations", "Clear position with conditions"]},
+  {q: "As the world population grows toward about 9.7 billion, explain why stewardship and sustainability become more important. Include the relationship between population, use per person and total demand, and one example from food, water or minerals.", a: "Total demand equals population times use per person. If population grows about 18% and habits stay the same, demand grows about 18%. Lowering use per person, by wasting less food, saving water or recycling metals from old devices, can keep total demand steady. Without these efforts, scarcity and environmental damage increase.", k: ["States the relationship", "Uses numbers or a calculation", "Gives a specific example"]},
+  {q: "Discuss the environmental considerations of AI and digital technologies. Should schools use AI tools? Support your view.", a: "Considerations: data centres use electricity and sometimes cooling water, devices need mined minerals, and e-waste must be recycled. Benefits: AI can save energy in buildings or help monitor the environment. A strong answer weighs both and suggests conditions, such as using tools powered by renewable energy and keeping devices longer.", k: ["At least two considerations", "At least one benefit", "Supported position"]}
+];
+
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+var COVROWS = [
+  ["SL3.K1", "Learn: Lesson 1 (issue explorer). Lab Bench: Investigation 1. Quiz, Flashcards, Written Review short answers 1 and 2, extended 1."],
+  ["SL3.K2", "Learn: Lesson 2 (AQHI decision helper and river sample check). Quiz, Flashcards, Written Review short answer 3."],
+  ["SL3.K3", "Learn: Lesson 3 (CO₂ chart) and Lesson 4 (household swap simulator). Lab Bench: Investigation 2. Sort It: energy sources deck. Quiz, Flashcards, Written Review short answers 4 to 6, extended 2."],
+  ["SL3.K4", "Learn: Lesson 5 (three goals). Sort It: climate-smart goals deck. Quiz, Flashcards, Written Review short answer 7."],
+  ["SL3.K5", "Learn: Lesson 5 (farm technology model: carbon capture and storage, AI-powered monitoring, smart irrigation, greenhouse systems). Quiz, Flashcards, Written Review short answer 7."],
+  ["SL3.K6", "Learn: Lesson 6 (soil carbon balance). Sort It: climate-smart goals deck. Quiz, Flashcards, Written Review short answer 8."],
+  ["SL3.K7", "Learn: Lesson 7 (mineral files, direct lithium extraction steps). Lab Bench: Investigation 4. Quiz, Flashcards, Written Review short answer 9, extended 3."],
+  ["SL3.K8", "Learn: Lesson 8 (government toolbox). Lab Bench: Investigation 3. Sort It: government actions deck. Quiz, Flashcards, Written Review short answer 10."],
+  ["SL3.K9", "Learn: Lesson 8 (educational campaigns, monetary incentives). Lab Bench: Investigation 3. Sort It: government actions deck. Quiz, Written Review short answer 10."],
+  ["SL3.K10", "Learn: Lesson 9 (demand meter). Lab Bench: Investigation 5. Quiz, Written Review extended 4."],
+  ["SL3.K11", "Learn: Lesson 10 (digital footprint explorer). Lab Bench: Investigation 6. Quiz, Flashcards, Written Review extended 5."],
+  ["SL3.S1", "Lab Bench: Investigation 1 (issue research planner with solution scoring and notes). Learn: Lesson 1. Written Review: extended 1."],
+  ["SL3.S2", "Lab Bench: Investigation 2 (emissions calculator with worked example and randomized practice). Learn: Lessons 3 and 4. Written Review: extended 2."],
+  ["SL3.S3", "Lab Bench: Investigation 3 (policy designer, five scenarios). Learn: Lesson 8. Sort It: government actions deck."],
+  ["SL3.S4", "Lab Bench: Investigation 4 (lithium from brine calculator with randomized practice). Learn: Lesson 7. Written Review: extended 3."],
+  ["SL3.S5", "Lab Bench: Investigation 5 (demand and stewardship with randomized practice). Learn: Lesson 9. Written Review: extended 4."],
+  ["SL3.S6", "Lab Bench: Investigation 6 (digital choices and discussion frame). Learn: Lesson 10. Written Review: extended 5."]
+];
+(function(){
+  var STM = {"SL3.K1": "Environmental stewardship and sustainability efforts can help address climate change and other complex environmental issues, such as\n• plastic pollution\n• resource scarcity, e.g., water and minerals\n• food insecurity\n• poor water and air quality", "SL3.K2": "Monitoring water and air quality provides insight into pollution levels and supports informed decision making.", "SL3.K3": "Climate change is accelerated by human activity and can be slowed by replacing or improving inefficient technologies and by transitioning to renewable and low-carbon energy resources.", "SL3.K4": "Climate-smart agriculture increases productivity and efficiency, enhances resilience to climate change, and mitigates greenhouse gas emissions.", "SL3.K5": "Advanced technologies and innovations can be leveraged to support climate-smart agriculture such as\n• carbon capture and storage\n• AI-powered monitoring\n• smart irrigation\n• greenhouse systems", "SL3.K6": "Healthy soils store carbon and support the growth of nutrient dense crops.", "SL3.K7": "Alberta is developing extraction methods for critical minerals, including lithium and uranium, which are in demand for clean energy technologies.", "SL3.K8": "Sustainability can be supported by government actions, such as\n• creating regulations for resource extraction\n• setting pollution limits for industry\n• offering incentives for developing or using eco-friendly technologies and transportation", "SL3.K9": "Government environmental actions can gain public support through approaches such as educational campaigns or monetary incentives.", "SL3.K10": "As the human population increases, the demand for resources increases and sustainability efforts become more important.", "SL3.K11": "There are environmental considerations associated with AI and digital technologies.", "SL3.S1": "Research a complex environmental issue, considering potential solutions.", "SL3.S2": "Examine ways to slow the acceleration of climate change.", "SL3.S3": "Explore government environmental actions.", "SL3.S4": "Investigate critical minerals that support clean energy.", "SL3.S5": "Connect environmental stewardship and sustainability efforts to demand for resources.", "SL3.S6": "Discuss environmental considerations related to AI and digital technologies."};
+  var tb = document.querySelector("#covTable tbody");
+  COVROWS.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, STM[r[0]])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[1]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+
+</script>
+
+</body></html>

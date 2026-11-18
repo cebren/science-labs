@@ -1,0 +1,1987 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/chemical-change-lab/"><meta name="description" content="Chemical reactions of pure substances can be determined by observable and quantifiable changes."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Chemical Change Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a reaction bench. Sticky tab strip, then lessons that pair a reading column with a model: atoms regrouping, beakers showing evidence, a balance scale, Bohr shells, an equation counter, a collision box and a safety walk-through. Reactants are always blue, products always warm orange, and each element keeps one atom colour everywhere. */
+:root{
+  --bg:#EDF2EF; --surface:#FFFFFF; --surface-2:#F4F7F5; --ink:#15221B; --muted:#4E5E55; --line:#CCD8D1;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5; --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --rx:#1D5FA8; --rx-soft:#DEEAF7; --pr:#A84A12; --pr-soft:#FBE4DA; --elec:#6A3FA6; --heat:#C2410C; --cool:#1D6FA8;
+  --at-h:#F2F4F6; --at-c:#9AA1A8; --at-n:#BDD3F5; --at-o:#F5B5AC; --at-cl:#C6EABD; --at-na:#DACBEF; --at-metal:#E3D3B8; --at-s:#F3E08F; --at-stroke:#5B6B63;
+  --liquid:#CFE3F2; --glass:#8FA39A; --ppt:#FFFFFF; --glow:#E8F27A; --bluesol:#5DA9E9; --palesol:#A9D3C4; --wool:#8A8F94; --copper:#B5562B; --flame:#F2A33A; --ash:#9A9A92;
+  --pic-bg:#FFFFFF; --pic-ink:#111111; --pic-red:#D0211C;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --rx:#7DB0F0; --rx-soft:#18283C; --pr:#F59A6B; --pr-soft:#3A2218; --elec:#C3A3F0; --heat:#F59A6B; --cool:#7DB0F0;
+  --at-h:#3A4148; --at-c:#5A6168; --at-n:#22385A; --at-o:#5A2A26; --at-cl:#24452A; --at-na:#3B2E52; --at-metal:#4A3E2A; --at-s:#4F4520; --at-stroke:#9DAEA4;
+  --liquid:#1E3446; --glass:#6E8379; --ppt:#E6ECE8; --glow:#C9D45A; --bluesol:#2F6FA8; --palesol:#3F6E60; --wool:#A3A9AE; --copper:#D9824F; --flame:#F2A33A; --ash:#7A7A72;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --rx:#7DB0F0; --rx-soft:#18283C; --pr:#F59A6B; --pr-soft:#3A2218; --elec:#C3A3F0; --heat:#F59A6B; --cool:#7DB0F0;
+  --at-h:#3A4148; --at-c:#5A6168; --at-n:#22385A; --at-o:#5A2A26; --at-cl:#24452A; --at-na:#3B2E52; --at-metal:#4A3E2A; --at-s:#4F4520; --at-stroke:#9DAEA4;
+  --liquid:#1E3446; --glass:#6E8379; --ppt:#E6ECE8; --glow:#C9D45A; --bluesol:#2F6FA8; --palesol:#3F6E60; --wool:#A3A9AE; --copper:#D9824F; --flame:#F2A33A; --ash:#7A7A72;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g9)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g9);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g9)}
+.storebar{display:flex;gap:4px;max-width:420px}
+.storebar i{flex:1;height:6px;border-radius:3px}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.inv{grid-template-columns:minmax(0,1fr)}
+.inv .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}.inv{padding:18px}.inv .two{grid-template-columns:minmax(0,1fr)}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model,.map{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.92rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row,.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.inline input,.inline select{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-size:1.02rem}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g9)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700;min-height:1.4em}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);font-weight:700}
+.choice2 button.right{background:var(--good-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--g9)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* lab-specific */
+.rx{color:var(--rx);font-weight:700} .pr{color:var(--pr);font-weight:700}
+.fml{font-family:var(--f-mono);font-weight:600}
+.fml sub{font-size:.7em}
+.eq{font-family:var(--f-mono);font-size:1rem;font-weight:600;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;line-height:1.7}
+.eq .arrow{color:var(--muted);padding:0 .3em}
+svg .atom circle{stroke:var(--at-stroke);stroke-width:1.5}
+svg .atom text{font-family:var(--f-mono);font-size:11px;font-weight:600;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+svg .mol{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 3}
+svg .mol.rxm{stroke:var(--rx)} svg .mol.prm{stroke:var(--pr)}
+.atom{transition:transform .9s cubic-bezier(.5,0,.3,1)}
+.fade{transition:opacity .5s}
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,92px),1fr));gap:6px}
+.tally div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:.84rem;display:grid;gap:2px}
+.tally b{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.tally .ok{color:var(--good)} .tally .no{color:var(--bad)}
+.scenes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media (max-width:520px){.scenes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scene{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px;cursor:pointer;font-size:.84rem;font-weight:700;text-align:left;color:var(--ink);min-width:0}
+.scene[aria-pressed="true"]{outline:3px solid var(--g9);outline-offset:-2px}
+.scene.done{border-color:var(--good)}
+.beakerbox{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+@media (max-width:480px){.beakerbox{grid-template-columns:minmax(0,1fr)}.beakerbox svg{max-width:150px}}
+.beakerbox svg{width:100%;height:auto;display:block}
+svg .glass{fill:none;stroke:var(--glass);stroke-width:3}
+svg .liq{transition:fill .8s}
+svg .bub{fill:none;stroke:var(--ink);stroke-width:1.2;opacity:.7}
+@keyframes rise{from{transform:translateY(0);opacity:.8}to{transform:translateY(-70px);opacity:0}}
+svg .bub.go{animation:rise 1.6s linear infinite}
+.scale{display:grid;gap:10px}
+.readout{font-family:var(--f-mono);font-size:2rem;font-weight:600;font-variant-numeric:tabular-nums;background:var(--ink);color:var(--bg);border-radius:8px;padding:6px 14px;width:fit-content}
+.bohr svg{width:100%;max-width:300px;height:auto;display:block;margin:0 auto}
+svg .shell{fill:none;stroke:var(--line);stroke-width:1.5}
+svg .shell.val{stroke:var(--g9);stroke-width:2.5}
+svg .e{fill:var(--elec)}
+svg .e.val{fill:var(--g9)}
+svg .nuc{fill:var(--surface-2);stroke:var(--at-stroke);stroke-width:1.5}
+svg .nuct{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--ink);text-anchor:middle}
+.minitable{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px}
+.mcell{border:1px solid var(--line);background:var(--surface);border-radius:5px;padding:4px 1px;cursor:pointer;font-family:var(--f-mono);font-size:.8rem;font-weight:600;color:var(--ink);min-width:0;display:grid;justify-items:center}
+.mcell small{font-size:.58rem;color:var(--muted);font-weight:400}
+.mcell[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.mcell.metal{background:var(--at-metal)} .mcell.non{background:var(--at-cl)} .mcell.noble{background:var(--at-n)}
+.mcell.blank{visibility:hidden}
+canvas.sim{width:100%;height:auto;display:block;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.ctrls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.steps2{display:grid;gap:10px}
+.scen{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:8px}
+.pics{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+@media (max-width:560px){.pics{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pic{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 4px;cursor:pointer;display:grid;gap:2px;justify-items:center;text-align:center;font-size:.7rem;font-weight:700;color:var(--ink);min-width:0}
+.pic svg{width:100%;max-width:60px;height:auto;display:block}
+.pic[aria-pressed="true"]{outline:3px solid var(--g9);outline-offset:-2px}
+.coef{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-family:var(--f-mono);font-weight:600;font-size:1.05rem}
+.term{display:inline-flex;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px 6px}
+.term.r{border-color:var(--rx)} .term.p{border-color:var(--pr)}
+.term button{width:30px;height:30px;border-radius:6px;border:1px solid var(--line);background:var(--surface-2);cursor:pointer;font-weight:700;color:var(--ink)}
+.term output{min-width:1.4em;text-align:center;font-variant-numeric:tabular-nums}
+.cmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+@media (max-width:480px){.cmp{grid-template-columns:minmax(0,1fr)}}
+.evid{display:flex;flex-wrap:wrap;gap:6px}
+.resulttbl{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.resulttbl th,.resulttbl td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.resulttbl th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Matter: Elements, Compounds and Reactions · M2</div>
+    <h1><span class="ac">Chemical Change</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Chemical reactions of pure substances can be determined by observable and quantifiable changes. In a reaction, atoms regroup into new substances. You can see the evidence, measure the mass, write the equation and explain it with electrons.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Nine short lessons in order. Watch atoms regroup, spot the evidence of a reaction, and tell chemical change from physical change. Weigh a reaction to see that mass is conserved. Then use electrons to explain why some substances react, write equations, speed reactions up, and work safely.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · What a reaction is</span>
+      <div class="codes"><span class="code">M2.K1</span><span class="code">M2.S6</span></div>
+      <h3>Atoms regroup into new substances</h3>
+      <p>A <b>chemical reaction</b> is a process where the atoms in the starting substances break apart from their partners and join up in new ways. The starting substances are the <b class="rx">reactants</b>. The new substances are the <b class="pr">products</b>.</p>
+      <p>No atoms appear or disappear. The same atoms are simply rearranged. That is why the products have different properties. Hydrogen and oxygen are both gases that can feed a fire. When they react, their atoms regroup into water, which puts fires out.</p>
+      <p>When natural gas burns in an Alberta furnace, methane and oxygen regroup into carbon dioxide and water vapour, and energy is released to heat the house.</p>
+      <div class="key"><b>Remember:</b> reactants → products. Same atoms, new partners, new substances.</div>
+    </div>
+    <div class="model">
+      <h4>Model: watch the atoms regroup</h4>
+      <p class="hint">Pick a reaction. Press React to move the atoms into their new groups. The atom counts stay the same.</p>
+      <div class="chips" id="l1Chips" role="group" aria-label="Choose a reaction"></div>
+      <div class="svgbox"><svg id="l1Svg" viewBox="0 0 600 220" role="img" aria-label="Particle model of the chosen reaction"></svg></div>
+      <div class="row"><button class="btn" type="button" id="l1Go">React</button><button class="btn ghost" type="button" id="l1Back">Reset</button></div>
+      <div class="eq" id="l1Eq"></div>
+      <div class="tally" id="l1Tally" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Evidence of chemical change</span>
+      <div class="codes"><span class="code">M2.K3</span><span class="code">M2.S1</span></div>
+      <h3>Clues that a reaction happened</h3>
+      <p>You cannot see atoms regroup. Instead, chemists look for <b>evidence</b> that new substances formed:</p>
+      <ul>
+        <li><b>Colour or odour change.</b> A new colour or a new smell can mean a new substance.</li>
+        <li><b>Gas produced.</b> Bubbles or fizzing when no heating is happening.</li>
+        <li><b>Precipitate formed.</b> A <b>precipitate</b> is a solid that forms when two solutions are mixed. The liquid turns cloudy or a solid settles out.</li>
+        <li><b>Energy change.</b> Light is given off, or the temperature goes up or down.</li>
+      </ul>
+      <p>One clue is not proof. Boiling water makes bubbles, but the gas is still water. The more clues you see, the stronger your case for a chemical change.</p>
+      <p class="note">Safety: never smell a chemical by sniffing it directly. Your teacher may show you how to waft a little of the air toward your nose.</p>
+    </div>
+    <div class="model">
+      <h4>Model: evidence spotter</h4>
+      <p class="hint">Pick a scene. Tap every type of evidence you see, then check.</p>
+      <div class="scenes" id="l2Scenes" role="group" aria-label="Lab scenes"></div>
+      <div class="beakerbox"><svg id="l2Svg" viewBox="0 0 150 170" role="img" aria-label="Beaker"></svg><p id="l2Desc"></p></div>
+      <div class="evid" id="l2Ev" role="group" aria-label="Evidence you see"></div>
+      <div class="row"><button class="btn" type="button" id="l2Check">Check my evidence</button></div>
+      <div class="detail" id="l2Out" aria-live="polite"><p>Pick a scene to start.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Physical or chemical?</span>
+      <div class="codes"><span class="code">M2.K4</span><span class="code">M2.S2</span></div>
+      <h3>Physical change makes no new substances</h3>
+      <p>In a <b>physical change</b>, a substance changes its form, size or state, but its particles stay the same. Melting an ice cube is a physical change: the solid water becomes liquid water. Dissolving sugar in water is also physical: the sugar particles spread out among the water particles, but they are still sugar. Boil the water away and the sugar is left behind.</p>
+      <p>In a <b>chemical change</b>, the atoms regroup and new substances form. Toasting bread, rusting a nail and burning wood are chemical changes. They are hard or impossible to reverse.</p>
+      <p>The test question is always the same: <b>were new substances made?</b></p>
+      <div class="key"><b>Remember:</b> physical change = same particles, new form. Chemical change = new particles.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the new substance test</h4>
+      <div class="svgbox"><svg id="l3Svg" viewBox="0 0 600 200" role="img" aria-label="Particle view: melting keeps water particles the same. Burning methane makes carbon dioxide and water."></svg></div>
+      <p class="hint">Now try some everyday changes. Decide, then read the reason.</p>
+      <div class="detail" id="l3Card" aria-live="polite"></div>
+      <div class="row"><button class="btn ghost" type="button" id="l3Phys">Physical</button><button class="btn ghost" type="button" id="l3Chem">Chemical</button><button class="btn ghost" type="button" id="l3Next">Next change</button></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Conservation of mass</span>
+      <div class="codes"><span class="code">M2.K2</span><span class="code">M2.S3</span></div>
+      <h3>Mass in equals mass out</h3>
+      <p>Matter is not created or destroyed in a chemical reaction. Every atom in the reactants ends up in the products. So the <b>mass of the reactants equals the mass of the products</b>. This is the <b>law of conservation of mass</b>. Chemists such as Antoine Lavoisier in France showed it in the late 1700s by weighing reactions in sealed containers.</p>
+      <p>The catch is gases. If a gas escapes from an open container, the scale reading drops. The mass did not vanish. It floated away as gas. If a gas from the air joins the reaction, such as oxygen when steel wool burns, the scale reading goes up.</p>
+      <p>To test the law, use a <b>closed system</b>: a container that nothing can enter or leave.</p>
+      <div class="formula">mass of reactants = mass of products<br>mass of gas escaped = mass before − mass after (open container)</div>
+    </div>
+    <div class="model">
+      <h4>Model: weigh a reaction</h4>
+      <p class="hint">Baking soda and vinegar on a scale. Choose a set-up, then mix.</p>
+      <div class="chips" id="l4Chips" role="group" aria-label="Set-up"></div>
+      <div class="svgbox"><svg id="l4Svg" viewBox="0 0 400 200" role="img" aria-label="Flask on a scale"></svg></div>
+      <div class="row"><span class="readout" id="l4Read" aria-live="off">0.00 g</span><button class="btn" type="button" id="l4Go">Mix the reactants</button><button class="btn ghost" type="button" id="l4Reset">Reset</button></div>
+      <div class="detail" id="l4Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Valence electrons and stability</span>
+      <div class="codes"><span class="code">M2.K6</span><span class="code">M2.S7</span></div>
+      <h3>Full outer shells are stable</h3>
+      <p>Electrons sit in <b>shells</b> around the nucleus. For the first 20 elements, the first shell holds up to 2 electrons, and the next shells fill up to 8.</p>
+      <p>The electrons in the outermost shell are the <b>valence electrons</b>. They are the ones that take part in reactions. For main-group elements, the group number tells you how many there are: group 1 has 1, group 2 has 2, group 13 has 3, up to group 17 with 7.</p>
+      <p>Atoms are most <b>stable</b> when their valence shell is full, like the noble gases in group 18. Helium has 2 and the others have 8. Noble gases almost never react. Other atoms react by losing, gaining or sharing electrons until they have a full shell like a noble gas.</p>
+      <div class="key"><b>Remember:</b> valence electrons = outer shell electrons. Full valence shell = stable.</div>
+    </div>
+    <div class="model bohr">
+      <h4>Model: shell builder for elements 1 to 20</h4>
+      <p class="hint">Pick an element. Valence electrons are green.</p>
+      <div class="minitable" id="l5Table" role="group" aria-label="Elements 1 to 20"></div>
+      <svg id="l5Svg" viewBox="0 0 300 300" role="img" aria-label="Shell diagram"></svg>
+      <div class="detail" id="l5Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Electrons and reactivity</span>
+      <div class="codes"><span class="code">M2.K5</span><span class="code">M2.S7</span></div>
+      <h3>Why some elements react so easily</h3>
+      <p><b>Reactivity</b> is how easily a substance takes part in chemical reactions. It depends on the number of valence electrons.</p>
+      <p>Sodium has 1 valence electron. Losing that one electron gives it a full shell, so sodium reacts very easily. It is stored under oil. Chlorine has 7 valence electrons. Gaining one more gives it a full shell, so chlorine is also very reactive. When they meet, sodium gives its electron to chlorine. Both end up with full shells as the ions Na<sup>+</sup> and Cl<sup>−</sup>.</p>
+      <p>Atoms that are one electron away from a full shell (groups 1 and 17) are the most reactive. Atoms in the middle of a row, such as carbon with 4, tend to share electrons instead. Noble gases already have a full shell, so they are the least reactive.</p>
+      <p class="note">Size matters too. Down group 1, the outer electron is farther from the nucleus and easier to lose, so potassium reacts with water more violently than sodium.</p>
+    </div>
+    <div class="model">
+      <h4>Model: sodium meets chlorine</h4>
+      <p class="hint">Move the valence electron and watch both shells become full.</p>
+      <div class="svgbox"><svg id="l6Svg" viewBox="0 0 600 260" role="img" aria-label="Sodium and chlorine atoms with their valence shells"></svg></div>
+      <div class="row"><button class="btn" type="button" id="l6Go">Transfer the electron</button><button class="btn ghost" type="button" id="l6Back">Reset</button></div>
+      <div class="detail" id="l6Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Representing reactions</span>
+      <div class="codes"><span class="code">M2.K7</span><span class="code">M2.S5</span><span class="code">M2.S6</span></div>
+      <h3>Word equations, chemical equations and models</h3>
+      <p>A <b>word equation</b> names the reactants and products: hydrogen + oxygen → water. The arrow means “react to make”.</p>
+      <p>A <b>chemical equation</b> uses formulas: H<sub>2</sub> + O<sub>2</sub> → H<sub>2</sub>O. As written, this shows 2 oxygen atoms on the left and only 1 on the right. That breaks conservation of mass.</p>
+      <p>To fix it, we <b>balance</b> the equation by putting numbers called <b>coefficients</b> in front of formulas: 2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O. Now each side has 4 hydrogen atoms and 2 oxygen atoms. Never change a subscript, because that would change the substance.</p>
+      <p>A <b>model</b>, such as balls and sticks or the particle pictures in this lab, shows the same thing as a picture you can count.</p>
+    </div>
+    <div class="model">
+      <h4>Model: one reaction, four ways</h4>
+      <div class="chips" id="l7Chips" role="group" aria-label="Choose a reaction"></div>
+      <div class="chips" id="l7Mode" role="group" aria-label="Unbalanced or balanced"></div>
+      <div class="detail" id="l7Out" aria-live="polite"></div>
+      <div class="tally" id="l7Tally"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Reaction rate</span>
+      <div class="codes"><span class="code">M2.K8</span></div>
+      <h3>Collisions make reactions happen</h3>
+      <p>Particles can only react when they <b>collide</b>. Not every collision works. The particles must hit hard enough to break their old bonds.</p>
+      <p>The <b>rate</b> of a reaction is how fast reactants turn into products. Anything that makes useful collisions happen more often speeds it up:</p>
+      <ul>
+        <li><b>Higher temperature.</b> Particles move faster, so they collide more often and with more energy.</li>
+        <li><b>Higher concentration.</b> More reactant particles crowded into the same space bump into each other more often.</li>
+      </ul>
+      <p>That is why food lasts longer in a fridge, and why a fizzing tablet works faster in hot water. Breaking a solid into smaller pieces (more surface area) also speeds reactions up.</p>
+    </div>
+    <div class="model">
+      <h4>Model: collision box</h4>
+      <p class="hint">Blue A and orange B particles react when they hit hard enough. Products turn green. Change the settings and restart.</p>
+      <canvas class="sim" id="l8Cv" width="560" height="300" role="img" aria-label="Moving particles colliding in a box"></canvas>
+      <div class="ctrls">
+        <label class="field" for="l8T">Temperature: <span id="l8Tv"></span></label>
+        <input type="range" id="l8T" min="0" max="80" step="10" value="20">
+        <label class="field" for="l8C">Concentration: <span id="l8Cvv"></span></label>
+        <input type="range" id="l8C" min="10" max="40" step="5" value="20">
+      </div>
+      <div class="row"><button class="btn" type="button" id="l8Go">Restart</button><button class="btn ghost" type="button" id="l8Pause">Pause</button></div>
+      <div class="stats" id="l8Stats" aria-live="off"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · Working safely with chemicals</span>
+      <div class="codes"><span class="code">M2.K9</span><span class="code">M2.S4</span></div>
+      <h3>WHMIS and lab safety</h3>
+      <p><b>WHMIS</b>, the Workplace Hazardous Materials Information System, is Canada’s system for labelling hazardous products at work and at school. A WHMIS label shows <b>pictograms</b> in red diamonds, a signal word (“Danger” or “Warning”) and safety steps. The <b>safety data sheet (SDS)</b> gives full details, including first aid.</p>
+      <p>Other safety protocols matter just as much:</p>
+      <ul>
+        <li>Read the procedure and the labels before you start.</li>
+        <li>Wear safety goggles. Tie back long hair and loose clothing.</li>
+        <li>Never taste anything, and waft instead of sniffing.</li>
+        <li>Use small amounts. Never return extra chemical to the stock bottle.</li>
+        <li>Report spills, breaks and injuries to your teacher right away.</li>
+        <li>Dispose of chemicals the way your teacher says, and wash your hands.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Model: pictograms and safe choices</h4>
+      <p class="hint">Tap a pictogram to see what it means. Then make the safe choice at each step of a lab.</p>
+      <div class="pics" id="l9Pics" role="group" aria-label="WHMIS pictograms (simplified drawings)"></div>
+      <div class="detail" id="l9Pic" aria-live="polite"></div>
+      <div class="scen" id="l9Scen" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four virtual investigations. Run reactions and record your evidence, prove that mass is conserved, balance equations, and predict how atoms use their valence electrons. Results are simulated for practice. Your class will also do real reactions with your teacher.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · Reaction trials</span>
+      <div class="codes"><span class="code">M2.S1</span><span class="code">M2.S2</span></div>
+      <h3>Is it a chemical change?</h3>
+      <p>Choose a trial and run it. Tick the evidence you observe, then decide if it is a chemical or physical change. Each trial is added to your results table.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <div class="scenes" id="b1Trials" role="group" aria-label="Trials"></div>
+        <div class="beakerbox"><svg id="b1Svg" viewBox="0 0 150 170" role="img" aria-label="Beaker for the trial"></svg><p id="b1Desc">Pick a trial.</p></div>
+        <div class="row"><button class="btn" type="button" id="b1Run">Run the trial</button></div>
+      </div>
+      <div class="model">
+        <h4>Record</h4>
+        <div class="evid" id="b1Ev" role="group" aria-label="Evidence observed"></div>
+        <div class="row"><button class="btn ghost" type="button" id="b1Phys">Physical change</button><button class="btn ghost" type="button" id="b1Chem">Chemical change</button></div>
+        <div class="detail" id="b1Out" aria-live="polite"><p>Run a trial first.</p></div>
+      </div>
+    </div>
+    <div class="tablebox"><table class="resulttbl" id="b1Tbl"><thead><tr><th>Trial</th><th>Evidence you ticked</th><th>Your call</th><th>Result</th></tr></thead><tbody></tbody></table></div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Conservation of mass</span>
+      <div class="codes"><span class="code">M2.S3</span><span class="code">M2.K2</span></div>
+      <h3>Weigh before and after</h3>
+      <p>Run the baking soda and vinegar reaction in an open flask and in a plastic bottle sealed with a cap. Record the masses. Then solve the practice problems.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <div class="chips" id="b2Set" role="group" aria-label="Set-up"></div>
+        <div class="row"><button class="btn" type="button" id="b2Run">Run a new trial</button></div>
+        <div class="stats" id="b2Stats" aria-live="polite"></div>
+        <div class="inline">
+          <label class="field" for="b2In">Change in mass (g)<input type="number" id="b2In" step="0.01" class="answer-in"></label>
+          <button class="btn ghost" type="button" id="b2Chk">Check</button>
+        </div>
+        <p class="fb" id="b2Fb" aria-live="polite"></p>
+      </div>
+      <div class="model">
+        <h4>Worked example</h4>
+        <div class="worked">
+          <p>An open flask with vinegar and baking soda has a mass of 182.40 g before mixing and 180.75 g after the fizzing stops. How much gas escaped?</p>
+          <p class="mono">gas escaped = mass before − mass after</p>
+          <p class="mono">= 182.40 g − 180.75 g = 1.65 g</p>
+          <p>In a sealed flask the scale would still read 182.40 g, because the gas stays inside.</p>
+        </div>
+        <h4>Practice</h4>
+        <p id="b2Q"></p>
+        <div class="inline">
+          <label class="field" for="b2PIn">Answer (g)<input type="number" id="b2PIn" step="0.01" class="answer-in"></label>
+          <button class="btn ghost" type="button" id="b2PChk">Check</button>
+          <button class="btn ghost" type="button" id="b2PNew">New problem</button>
+        </div>
+        <p class="fb" id="b2PFb" aria-live="polite"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Equation balancer</span>
+      <div class="codes"><span class="code">M2.S5</span><span class="code">M2.S6</span><span class="code">M2.K7</span></div>
+      <h3>Balance the atoms</h3>
+      <p>Change the coefficients with the + and − buttons until every element has the same number of atoms on both sides. Use the smallest whole numbers.</p>
+    </div>
+    <div class="model">
+      <p id="b3Word" class="hint"></p>
+      <div class="coef" id="b3Eq"></div>
+      <div class="tally" id="b3Tally" aria-live="polite"></div>
+      <div class="row"><button class="btn" type="button" id="b3Chk">Check balance</button><button class="btn ghost" type="button" id="b3Hint">Hint</button><button class="btn ghost" type="button" id="b3New">New equation</button></div>
+      <p class="fb" id="b3Fb" aria-live="polite"></p>
+      <div class="worked">
+        <p><b>Worked example:</b> CH<sub>4</sub> + O<sub>2</sub> → CO<sub>2</sub> + H<sub>2</sub>O</p>
+        <p>1. Carbon: 1 on each side. Leave it.</p>
+        <p>2. Hydrogen: 4 on the left, 2 on the right. Put a 2 in front of H<sub>2</sub>O.</p>
+        <p>3. Oxygen: now 2 + 2 = 4 on the right. Put a 2 in front of O<sub>2</sub>.</p>
+        <p class="mono">CH₄ + 2O₂ → CO₂ + 2H₂O  (C 1 = 1, H 4 = 4, O 4 = 4)</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Electron predictor</span>
+      <div class="codes"><span class="code">M2.S7</span><span class="code">M2.K5</span><span class="code">M2.K6</span></div>
+      <h3>Predict what an atom will do</h3>
+      <p>Use the group number to find the valence electrons. Then predict whether the atom will lose, gain or share electrons, or stay unreactive.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <p id="b4Q" class="big"></p>
+        <div class="inline">
+          <label class="field" for="b4V">Valence electrons<input type="number" id="b4V" min="0" max="8" class="answer-in"></label>
+          <label class="field" for="b4A">Most likely to…
+            <select id="b4A">
+              <option value="">Choose</option>
+              <option value="lose">lose electrons</option>
+              <option value="gain">gain electrons</option>
+              <option value="share">share electrons</option>
+              <option value="none">stay unreactive</option>
+            </select>
+          </label>
+        </div>
+        <div class="row"><button class="btn" type="button" id="b4Chk">Check</button><button class="btn ghost" type="button" id="b4New">New element</button></div>
+        <div class="detail" id="b4Fb" aria-live="polite"></div>
+      </div>
+      <div class="model">
+        <h4>Worked example: magnesium</h4>
+        <div class="worked">
+          <p>Magnesium is in group 2, so it has <b>2 valence electrons</b> (shells 2, 8, 2).</p>
+          <p>Losing 2 electrons is easier than gaining 6. It loses them and becomes Mg<sup>2+</sup>, with the full shells of neon.</p>
+          <p>Prediction: <b>loses electrons</b>. Magnesium is a reactive metal. A ribbon burns with a very bright white light.</p>
+        </div>
+        <p class="note">Hydrogen (1 valence electron) can lose or share. In this lab it counts as sharing when it bonds with non-metals.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 M2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>M2.K2:</b> conservation of mass is taught for a closed system. The lab shows that an open container seems to lose mass when gas escapes (baking soda and vinegar) and to gain mass when oxygen from the air joins (burning steel wool). Lavoisier is named once as context, without dates beyond “late 1700s”.</li>
+      <li><b>M2.K3:</b> evidence is taught as suggesting, not proving, a chemical change. Boiling water is used as the trap case (gas, but no new substance). Odour is paired with a wafting reminder.</li>
+      <li><b>M2.K4:</b> dissolving sugar is taught as physical because the sugar can be recovered by evaporation. Students are not asked about borderline cases such as dissolving salts that warm or cool the water.</li>
+      <li><b>M2.K5:</b> the draft says reactivity “depends on the number of electrons in the valence shell”. The lab teaches this as the main factor for elements, and adds once that atom size also matters (potassium is more reactive than sodium with the same 1 valence electron). Reactivity of compounds is not taught.</li>
+      <li><b>M2.K6:</b> “full” valence shell is taught as the noble gas arrangement: 2 in the first shell and 8 in the next shells, using a 2, 8, 8, 2 model for elements 1 to 20. Hydrogen is treated as sharing with non-metals; beryllium and boron are left out of the predictor because they usually share.</li>
+      <li><b>M2.K7 / M2.S5:</b> the draft does not say whether balancing is expected. The lab teaches word equations, chemical equations and simple balancing with coefficients by atom counting, since balancing shows conservation of mass. State symbols are not used. Sodium chloride is drawn as Na and Cl pairs for counting only; it is really a lattice of ions (see M1).</li>
+      <li><b>M2.K8:</b> temperature is taught as raising both how often and how hard particles collide. Surface area is mentioned once as context; catalysts are not taught. The collision box is a simplified model with made-up energy thresholds.</li>
+      <li><b>M2.K9 / M2.S4:</b> safety rules are general. Pictograms are simplified drawings for learning. Example hazards (hydrochloric acid stock solution, magnesium ribbon) should be checked against the SDSs and procedures in your own lab.</li>
+      <li><b>M2.S1 / M2.S3:</b> the Lab Bench trials and mass readings are simulated practice data. They support, but do not replace, the hands-on reactions the skills call for. Reactions shown (copper(II) sulfate with steel wool, magnesium with dilute hydrochloric acid, calcium chloride with baking soda solution) are common school demonstrations; confirm concentrations and disposal with your division’s guidelines.</li>
+      <li><b>Context:</b> Alberta examples (natural gas furnaces, road salt and rusting) are general. The statements do not name First Nations, Métis, Inuit or Francophone contributions, so none are added.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-m2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); if (s.indexOf(".") > -1) s = s.replace(/0+$/, "").replace(/\.$/, ""); return s; }
+function grp(x){ var s = String(x); var p = s.split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+function picSVG(id, label){
+  var s = sv("svg", {viewBox: "0 0 100 100", role: "img", "aria-label": label});
+  var ink = "var(--pic-ink)", bg = "var(--pic-bg)";
+  if (id === "bio") s.appendChild(sv("circle", {cx: 50, cy: 50, r: 44, fill: bg, stroke: ink, "stroke-width": 5}));
+  else s.appendChild(sv("polygon", {points: "50,5 95,50 50,95 5,50", fill: bg, stroke: "var(--pic-red)", "stroke-width": 7, "stroke-linejoin": "round"}));
+  function P(d, extra){ var a = {d: d, fill: ink}; for (var k in extra) a[k] = extra[k]; s.appendChild(sv("path", a)); }
+  function C(cx, cy, r, extra){ var a = {cx: cx, cy: cy, r: r, fill: ink}; for (var k in extra) a[k] = extra[k]; s.appendChild(sv("circle", a)); }
+  function Rr(x, y, w, h, extra){ var a = {x: x, y: y, width: w, height: h, fill: ink}; for (var k in extra) a[k] = extra[k]; s.appendChild(sv("rect", a)); }
+  var FL = "M50 24 C58 36 66 43 64 57 C63 67 57 72 50 72 C42 72 36 67 36 57 C37 49 44 45 44 37 C48 41 50 45 50 49 C54 43 54 33 50 24Z";
+  if (id === "flame") { P(FL); Rr(34, 74, 32, 4); }
+  if (id === "oxid") { P(FL, {transform: "translate(50 46) scale(.62) translate(-50 -50)"}); C(50, 64, 10, {fill: "none", stroke: ink, "stroke-width": 4}); Rr(34, 76, 32, 4); }
+  if (id === "bomb") { C(44, 60, 12); [[-1,-1],[0,-1.3],[1,-1],[1.3,0],[1,1],[-1.3,0]].forEach(function(v){ s.appendChild(sv("line", {x1: 56 + v[0] * 6, y1: 48 + v[1] * 6, x2: 56 + v[0] * 14, y2: 48 + v[1] * 14, stroke: ink, "stroke-width": 3})); }); }
+  if (id === "gas") { var g = sv("g", {transform: "rotate(-25 50 58)"}); g.appendChild(sv("rect", {x: 28, y: 50, width: 40, height: 16, rx: 8, fill: ink})); g.appendChild(sv("rect", {x: 66, y: 54, width: 8, height: 8, fill: ink})); s.appendChild(g); }
+  if (id === "corr") { Rr(32, 24, 8, 18, {transform: "rotate(35 36 33)"}); Rr(56, 24, 8, 18, {transform: "rotate(-35 60 33)"}); C(42, 50, 2.5); C(42, 57, 2.5); C(58, 50, 2.5); C(58, 57, 2.5); P("M26 66 h20 v6 h-6 l-2 -3 l-2 3 h-10z"); P("M54 66 h20 v8 h-20 v-3 l3 -2 l-3 -1z"); Rr(22, 76, 56, 3); }
+  if (id === "skull") { s.appendChild(sv("line", {x1: 32, y1: 58, x2: 68, y2: 76, stroke: ink, "stroke-width": 5, "stroke-linecap": "round"})); s.appendChild(sv("line", {x1: 68, y1: 58, x2: 32, y2: 76, stroke: ink, "stroke-width": 5, "stroke-linecap": "round"})); C(50, 42, 13); Rr(44, 50, 12, 9); C(45, 41, 3.5, {fill: bg}); C(55, 41, 3.5, {fill: bg}); }
+  if (id === "health") { C(50, 28, 7); P("M36 76 L36 48 Q50 38 64 48 L64 76Z"); P("M50 48 L52.5 55 L60 55 L54 59.5 L56.5 67 L50 62.5 L43.5 67 L46 59.5 L40 55 L47.5 55Z", {fill: bg}); }
+  if (id === "excl") { Rr(45, 26, 10, 32, {rx: 3}); C(50, 68, 5.5); }
+  if (id === "env") { P("M28 64 L38 34 L48 64Z"); Rr(36, 64, 4, 8); P("M52 70 Q64 60 76 70 Q64 78 52 70Z"); P("M76 70 L82 65 L82 75Z"); Rr(24, 74, 56, 2.5); }
+  if (id === "bio") { [0, 120, 240].forEach(function(a){ var r = a * Math.PI / 180 - Math.PI / 2; C(50 + 12 * Math.cos(r), 52 + 12 * Math.sin(r), 11); C(50 + 15 * Math.cos(r), 52 + 15 * Math.sin(r), 6, {fill: bg}); }); C(50, 52, 5, {fill: bg}); C(50, 52, 22, {fill: "none", stroke: ink, "stroke-width": 2.5}); }
+  return s;
+}
+
+var REDUCED = false;
+try { REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function later(fn, ms){ if (REDUCED) fn(); else setTimeout(fn, ms); }
+function cssv(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+var SUBD = {"0":"₀","1":"₁","2":"₂","3":"₃","4":"₄","5":"₅","6":"₆","7":"₇","8":"₈","9":"₉"};
+function uSub(s){ return String(s).replace(/[0-9]/g, function(c){ return SUBD[c]; }); }
+function fsub(f){ return f.replace(/([A-Za-z\)])(\d+)/g, function(m, a, d){ return a + uSub(d); }); }
+
+/* ---------- Chemistry data ---------- */
+function acol(s){
+  var m = {H: "--at-h", O: "--at-o", C: "--at-c", N: "--at-n", Na: "--at-na", Cl: "--at-cl", S: "--at-s"};
+  return "var(" + (m[s] || "--at-metal") + ")";
+}
+function arad(s){ return s === "H" ? 11 : (s === "Na" || s === "Cl" || s === "Mg" || s === "Fe" || s === "Al" || s === "Ca" || s === "Zn" || s === "Cu" ? 16 : 14); }
+/* species: formula, atom counts, shape (first atom in centre) */
+var SP = {
+  H2: {a: {H: 2}, s: ["H","H"], n: "hydrogen"},
+  O2: {a: {O: 2}, s: ["O","O"], n: "oxygen"},
+  N2: {a: {N: 2}, s: ["N","N"], n: "nitrogen"},
+  Cl2: {a: {Cl: 2}, s: ["Cl","Cl"], n: "chlorine"},
+  H2O: {a: {H: 2, O: 1}, s: ["O","H","H"], n: "water"},
+  CH4: {a: {C: 1, H: 4}, s: ["C","H","H","H","H"], n: "methane"},
+  CO2: {a: {C: 1, O: 2}, s: ["C","O","O"], n: "carbon dioxide"},
+  NH3: {a: {N: 1, H: 3}, s: ["N","H","H","H"], n: "ammonia"},
+  Na: {a: {Na: 1}, s: ["Na"], n: "sodium"},
+  NaCl: {a: {Na: 1, Cl: 1}, s: ["Na","Cl"], n: "sodium chloride"},
+  Mg: {a: {Mg: 1}, s: ["Mg"], n: "magnesium"},
+  MgO: {a: {Mg: 1, O: 1}, s: ["Mg","O"], n: "magnesium oxide"},
+  Fe: {a: {Fe: 1}, n: "iron"},
+  Fe2O3: {a: {Fe: 2, O: 3}, n: "iron(III) oxide (rust)"},
+  C3H8: {a: {C: 3, H: 8}, n: "propane"},
+  HCl: {a: {H: 1, Cl: 1}, n: "hydrogen chloride (hydrochloric acid)"},
+  MgCl2: {a: {Mg: 1, Cl: 2}, n: "magnesium chloride"},
+  CaCO3: {a: {Ca: 1, C: 1, O: 3}, n: "calcium carbonate"},
+  CaO: {a: {Ca: 1, O: 1}, n: "calcium oxide"},
+  Al: {a: {Al: 1}, n: "aluminum"},
+  Al2O3: {a: {Al: 2, O: 3}, n: "aluminum oxide"},
+  H2O2: {a: {H: 2, O: 2}, n: "hydrogen peroxide"},
+  Zn: {a: {Zn: 1}, n: "zinc"},
+  ZnCl2: {a: {Zn: 1, Cl: 2}, n: "zinc chloride"},
+  Cu: {a: {Cu: 1}, n: "copper"},
+  CuSO4: {a: {Cu: 1, S: 1, O: 4}, n: "copper(II) sulfate"},
+  FeSO4: {a: {Fe: 1, S: 1, O: 4}, n: "iron(II) sulfate"},
+  NaHCO3: {a: {Na: 1, H: 1, C: 1, O: 3}, n: "sodium hydrogen carbonate (baking soda)"}
+};
+var EQS = [
+  {r: ["H2","O2"], p: ["H2O"], c: [2,1,2], t: "Hydrogen burns"},
+  {r: ["CH4","O2"], p: ["CO2","H2O"], c: [1,2,1,2], t: "Methane burns"},
+  {r: ["N2","H2"], p: ["NH3"], c: [1,3,2], t: "Making ammonia"},
+  {r: ["Na","Cl2"], p: ["NaCl"], c: [2,1,2], t: "Sodium meets chlorine"},
+  {r: ["Mg","O2"], p: ["MgO"], c: [2,1,2], t: "Magnesium burns"},
+  {r: ["Fe","O2"], p: ["Fe2O3"], c: [4,3,2], t: "Iron rusts"},
+  {r: ["C3H8","O2"], p: ["CO2","H2O"], c: [1,5,3,4], t: "Propane burns"},
+  {r: ["Mg","HCl"], p: ["MgCl2","H2"], c: [1,2,1,1], t: "Magnesium in acid"},
+  {r: ["CaCO3"], p: ["CaO","CO2"], c: [1,1,1], t: "Heating limestone"},
+  {r: ["Al","O2"], p: ["Al2O3"], c: [4,3,2], t: "Aluminum and oxygen"},
+  {r: ["H2O2"], p: ["H2O","O2"], c: [2,2,1], t: "Hydrogen peroxide breaks down"},
+  {r: ["Zn","HCl"], p: ["ZnCl2","H2"], c: [1,2,1,1], t: "Zinc in acid"},
+  {r: ["CuSO4","Fe"], p: ["FeSO4","Cu"], c: [1,1,1,1], t: "Steel wool in copper(II) sulfate"},
+  {r: ["NaHCO3","HCl"], p: ["NaCl","H2O","CO2"], c: [1,1,1,1,1], t: "Baking soda and acid"}
+];
+function wordEq(q){ return q.r.map(function(s){ return SP[s].n; }).join(" + ") + " → " + q.p.map(function(s){ return SP[s].n; }).join(" + "); }
+function chemEq(q, coefs){
+  var all = q.r.concat(q.p), out = [];
+  all.forEach(function(s, i){
+    var c = coefs ? coefs[i] : 1;
+    out.push((c > 1 ? c : "") + fsub(s));
+  });
+  return out.slice(0, q.r.length).join(" + ") + " → " + out.slice(q.r.length).join(" + ");
+}
+function countSide(list, coefs, off){
+  var t = {};
+  list.forEach(function(s, i){ var c = coefs[off + i]; for (var k in SP[s].a) t[k] = (t[k] || 0) + SP[s].a[k] * c; });
+  return t;
+}
+function elemsOf(q){ var o = []; q.r.concat(q.p).forEach(function(s){ for (var k in SP[s].a) if (o.indexOf(k) < 0) o.push(k); }); return o; }
+function tallyInto(box, q, coefs){
+  clear(box);
+  var L = countSide(q.r, coefs, 0), R = countSide(q.p, coefs, q.r.length), ok = true;
+  elemsOf(q).forEach(function(k){
+    var d = el("div"), same = L[k] === R[k]; if (!same) ok = false;
+    d.appendChild(el("span", null, k + " atoms"));
+    d.appendChild(el("b", {"class": same ? "ok" : "no"}, (L[k] || 0) + " → " + (R[k] || 0) + (same ? " ✓" : " ✗")));
+    box.appendChild(d);
+  });
+  return ok;
+}
+
+/* draw one particle (molecule or formula unit) centred at x,y */
+function drawParticle(g, shape, x, y, sc){
+  sc = sc || 1;
+  var pos = layoutShape(shape, sc);
+  pos.forEach(function(p, i){
+    var a = sv("g", {"class": "atom"});
+    a.appendChild(sv("circle", {cx: x + p.x, cy: y + p.y, r: arad(shape[i]) * sc, fill: acol(shape[i])}));
+    if (sc >= .8) a.appendChild(sv("text", {x: x + p.x, y: y + p.y}, shape[i]));
+    g.appendChild(a);
+  });
+}
+function layoutShape(shape, sc){
+  var n = shape.length, out = [];
+  if (n === 1) return [{x: 0, y: 0}];
+  if (n === 2) { var d = (arad(shape[0]) + arad(shape[1]) - 6) * sc / 2; return [{x: -d, y: 0}, {x: d, y: 0}]; }
+  out.push({x: 0, y: 0});
+  var R = (arad(shape[0]) + arad(shape[1]) - 5) * sc;
+  for (var i = 1; i < n; i++) {
+    var ang = n === 3 ? (i === 1 ? Math.PI * 0.85 : Math.PI * 0.15) : (-Math.PI / 2 + (i - 1) * 2 * Math.PI / (n - 1));
+    if (n === 3 && shape[0] === "C") ang = i === 1 ? Math.PI : 0;
+    out.push({x: Math.cos(ang) * R, y: Math.sin(ang) * R});
+  }
+  return out;
+}
+
+/* ---------- Lesson 1: atoms regroup ---------- */
+(function(){
+  var RX = [
+    {label: "Hydrogen burns", q: EQS[0], atoms: ["H1","H2","H3","H4","O1","O2"],
+      before: [["H1","H2"],["H3","H4"],["O1","O2"]], after: [["O1","H1","H2"],["O2","H3","H4"]]},
+    {label: "Methane burns", q: EQS[1], atoms: ["C1","H1","H2","H3","H4","O1","O2","O3","O4"],
+      before: [["C1","H1","H2","H3","H4"],["O1","O2"],["O3","O4"]], after: [["C1","O1","O2"],["O3","H1","H2"],["O4","H3","H4"]]},
+    {label: "Making ammonia", q: EQS[2], atoms: ["N1","N2","H1","H2","H3","H4","H5","H6"],
+      before: [["N1","N2"],["H1","H2"],["H3","H4"],["H5","H6"]], after: [["N1","H1","H2","H3"],["N2","H4","H5","H6"]]},
+    {label: "Sodium meets chlorine", q: EQS[3], atoms: ["Na1","Na2","Cl1","Cl2"],
+      before: [["Na1"],["Na2"],["Cl1","Cl2"]], after: [["Na1","Cl1"],["Na2","Cl2"]]}
+  ];
+  var svg = $("l1Svg"), cur, state = "before", nodes = {}, molB, molA;
+  function sym(id){ return id.replace(/\d+$/, ""); }
+  function layout(groups, y){
+    var pos = {}, cents = [];
+    groups.forEach(function(gp, i){
+      var cx = (i + .5) * 600 / groups.length;
+      var shp = gp.map(sym), lp = layoutShape(shp, 1.25);
+      gp.forEach(function(id, j){ pos[id] = {x: cx + lp[j].x, y: y + lp[j].y}; });
+      cents.push({x: cx, n: gp.length});
+    });
+    return {pos: pos, cents: cents};
+  }
+  function build(rx){
+    cur = rx; state = "before"; clear(svg); nodes = {};
+    var t1 = sv("text", {x: 12, y: 22, "class": "small"}, "REACTANTS"); t1.setAttribute("fill", "var(--rx)"); svg.appendChild(t1);
+    var B = layout(rx.before, 120), A = layout(rx.after, 120);
+    molB = sv("g", {"class": "fade"}); molA = sv("g", {"class": "fade", opacity: 0});
+    B.cents.forEach(function(c){ molB.appendChild(sv("ellipse", {cx: c.x, cy: 120, rx: 26 + c.n * 9, ry: 52, "class": "mol rxm"})); });
+    A.cents.forEach(function(c){ molA.appendChild(sv("ellipse", {cx: c.x, cy: 120, rx: 26 + c.n * 9, ry: 52, "class": "mol prm"})); });
+    svg.appendChild(molB); svg.appendChild(molA);
+    rx.atoms.forEach(function(id){
+      var s = sym(id), g = sv("g", {"class": "atom"});
+      g.appendChild(sv("circle", {cx: 0, cy: 0, r: arad(s) * 1.25, fill: acol(s)}));
+      g.appendChild(sv("text", {x: 0, y: 0}, s));
+      g.style.transform = "translate(" + B.pos[id].x + "px," + B.pos[id].y + "px)";
+      svg.appendChild(g); nodes[id] = g;
+    });
+    cur.A = A; cur.B = B;
+    $("l1Eq").innerHTML = "";
+    $("l1Eq").appendChild(el("div", null, "Word: " + wordEq(rx.q)));
+    $("l1Eq").appendChild(el("div", null, "Equation: " + chemEq(rx.q, rx.q.c)));
+    tallyInto($("l1Tally"), rx.q, rx.q.c);
+    svg.setAttribute("aria-label", "Particle model. Reactants: " + rx.q.r.map(function(s){ return SP[s].n; }).join(" and ") + ".");
+    svg.firstChild.textContent = "REACTANTS";
+  }
+  function go(){
+    if (state === "after") return;
+    state = "after";
+    var P = cur.A.pos;
+    for (var id in nodes) nodes[id].style.transform = "translate(" + P[id].x + "px," + P[id].y + "px)";
+    molB.setAttribute("opacity", 0); molA.setAttribute("opacity", 1);
+    svg.firstChild.textContent = "PRODUCTS"; svg.firstChild.setAttribute("fill", "var(--pr)");
+    svg.setAttribute("aria-label", "Particle model. The same atoms regrouped into " + cur.q.p.map(function(s){ return SP[s].n; }).join(" and ") + ".");
+  }
+  chipGroup($("l1Chips"), RX, function(r){ build(r); }, 0);
+  $("l1Go").addEventListener("click", go);
+  $("l1Back").addEventListener("click", function(){ build(cur); });
+})();
+
+/* ---------- Beaker drawing (Lesson 2 and Bench 1) ---------- */
+var EVT = [["c", "Colour or odour change"], ["g", "Gas produced"], ["p", "Precipitate formed"], ["e", "Energy change"]];
+var SCENES = [
+  {k: "cu", name: "Steel wool in copper(II) sulfate", ev: ["c","e"], chem: true,
+    pre: {liq: "--bluesol", solid: "wool"}, post: {liq: "--palesol", solid: "copper", temp: "up"},
+    desc: "A ball of steel wool is dropped into blue copper(II) sulfate solution. After a few minutes the wool is coated in a reddish-brown solid, the blue colour fades and the beaker feels slightly warm.",
+    why: "The reddish-brown coating is copper metal and the solution colour changes, so new substances formed. The small temperature rise is a second clue.", safe: "Copper(II) sulfate is harmful if swallowed and irritates eyes. Wear goggles and gloves and dispose of it as your teacher directs."},
+  {k: "bv", name: "Baking soda in vinegar", ev: ["g","e"], chem: true,
+    pre: {liq: "--liquid"}, post: {liq: "--liquid", bubbles: true, temp: "down"},
+    desc: "A spoonful of baking soda is added to vinegar. It fizzes hard and the beaker feels colder.",
+    why: "The bubbles are carbon dioxide, a new gas. The temperature drop is an energy change.", safe: "Low hazard, but wear goggles: the fizz can splash."},
+  {k: "ppt", name: "Calcium chloride + baking soda solutions", ev: ["p","g"], chem: true,
+    pre: {liq: "--liquid"}, post: {liq: "--liquid", ppt: true, bubbles: true},
+    desc: "Two clear solutions are mixed. The mixture turns cloudy white, a white solid settles to the bottom and a few bubbles appear.",
+    why: "The white solid is a precipitate (calcium carbonate), and the bubbles are carbon dioxide. Both are new substances.", safe: "Calcium chloride irritates eyes. Wear goggles."},
+  {k: "glow", name: "Snapping a glow stick", ev: ["e"], chem: true,
+    pre: {liq: "--liquid"}, post: {liq: "--glow", glow: true},
+    desc: "A glow stick is bent until the glass vial inside snaps. The liquids mix and the stick glows for hours.",
+    why: "Light is given off without heating. The mixed chemicals react and release energy as light.", safe: "Never cut open a glow stick. The liquids irritate skin and eyes."},
+  {k: "mg", name: "Magnesium ribbon in dilute acid", ev: ["g","e"], chem: true,
+    pre: {liq: "--liquid", solid: "ribbon"}, post: {liq: "--liquid", bubbles: true, temp: "up"},
+    desc: "A strip of magnesium ribbon is placed in dilute hydrochloric acid. It fizzes quickly, the tube gets warm and the ribbon disappears.",
+    why: "The bubbles are hydrogen gas, which was not there before. The temperature rise is an energy change.", safe: "Teacher demonstration. Hydrochloric acid is corrosive and hydrogen is flammable, so keep flames away."},
+  {k: "splint", name: "Burning a wooden splint", ev: ["c","g","e"], chem: true,
+    pre: {mode: "splint"}, post: {mode: "splint", flame: true},
+    desc: "A wooden splint is lit. It gives off light and heat, smoke with a new smell rises, and black ash is left.",
+    why: "Light and heat are energy changes, smoke and gases rise off, and the colour and smell change. Wood and oxygen became carbon dioxide, water vapour and ash.", safe: "Tie back hair, keep the splint pointed away from you and have water nearby."}
+];
+var EXTRA = [
+  {k: "boil", name: "Boiling water", ev: ["g"], chem: false,
+    pre: {liq: "--liquid", temp: "up"}, post: {liq: "--liquid", bubbles: true, temp: "up"},
+    desc: "Water is heated on a hot plate. Large bubbles form and rise. Steam comes off the top.",
+    why: "The bubbles are water vapour. The gas is still water, so no new substance formed. Gas alone is not proof of a chemical change.", safe: "Use tongs and heat-proof gloves. Steam burns."},
+  {k: "sugar", name: "Dissolving sugar in water", ev: [], chem: false,
+    pre: {liq: "--liquid", solid: "crystals"}, post: {liq: "--liquid"},
+    desc: "Sugar crystals are stirred into water. They disappear and the water stays clear.",
+    why: "The sugar particles spread out among the water particles. Evaporate the water and the sugar is left behind. No new substance.", safe: "Low hazard. Still, never taste anything in a lab."},
+  {k: "ice", name: "Melting an ice cube", ev: [], chem: false,
+    pre: {liq: "--liquid", solid: "ice", low: true}, post: {liq: "--liquid"},
+    desc: "An ice cube sits in a beaker at room temperature. It slowly turns into liquid water.",
+    why: "Solid water becomes liquid water. The particles are still water, so this is a physical change of state.", safe: "Low hazard. Wipe up spills so no one slips."}
+];
+function drawBeaker(svg, o){
+  clear(svg);
+  if (o.mode === "splint") {
+    svg.appendChild(sv("rect", {x: 68, y: 70, width: 14, height: 90, rx: 3, fill: "var(--at-metal)", stroke: "var(--at-stroke)"}));
+    if (o.flame) {
+      svg.appendChild(sv("path", {d: "M75 20 C88 38 90 50 84 62 C80 70 70 70 66 62 C60 50 64 38 75 20Z", fill: "var(--flame)"}));
+      svg.appendChild(sv("rect", {x: 68, y: 66, width: 14, height: 10, fill: "var(--ash)"}));
+      for (var i = 0; i < 3; i++) { var c = sv("circle", {cx: 66 + i * 9, cy: 18 - i * 3, r: 4, "class": "bub" + (REDUCED ? "" : " go")}); c.style.animationDelay = (i * .4) + "s"; svg.appendChild(c); }
+    }
+    return;
+  }
+  var top = o.low ? 110 : 75;
+  svg.appendChild(sv("rect", {x: 32, y: top, width: 86, height: 148 - top, fill: "var(" + (o.liq || "--liquid") + ")", "class": "liq"}));
+  if (o.glow) svg.appendChild(sv("rect", {x: 32, y: top, width: 86, height: 148 - top, fill: "var(--glow)", opacity: .6}));
+  if (o.ppt) {
+    svg.appendChild(sv("rect", {x: 32, y: top, width: 86, height: 148 - top, fill: "var(--ppt)", opacity: .45}));
+    svg.appendChild(sv("path", {d: "M34 148 Q75 128 116 148Z", fill: "var(--ppt)", stroke: "var(--at-stroke)", "stroke-width": 1}));
+  }
+  if (o.solid === "wool" || o.solid === "copper") {
+    var g = sv("g");
+    for (var j = 0; j < 7; j++) g.appendChild(sv("ellipse", {cx: 75 + Math.cos(j) * 10, cy: 128 + Math.sin(j * 2) * 6, rx: 16, ry: 7, fill: "none", stroke: o.solid === "copper" ? "var(--copper)" : "var(--wool)", "stroke-width": 3}));
+    svg.appendChild(g);
+  }
+  if (o.solid === "ribbon") svg.appendChild(sv("rect", {x: 60, y: 100, width: 34, height: 6, rx: 2, fill: "var(--wool)", transform: "rotate(-20 77 103)"}));
+  if (o.solid === "crystals") for (var k = 0; k < 9; k++) svg.appendChild(sv("rect", {x: 50 + (k * 7) % 50, y: 138 + (k % 3) * 3, width: 5, height: 5, fill: "var(--ppt)", stroke: "var(--at-stroke)", "stroke-width": .8}));
+  if (o.solid === "ice") svg.appendChild(sv("rect", {x: 58, y: 96, width: 32, height: 28, rx: 4, fill: "var(--surface)", stroke: "var(--cool)", "stroke-width": 2}));
+  if (o.bubbles) for (var b = 0; b < 8; b++) {
+    var bc = sv("circle", {cx: 42 + (b * 11) % 70, cy: 140 - (b % 4) * 12, r: 2.5 + (b % 3), "class": "bub" + (REDUCED ? "" : " go")});
+    bc.style.animationDelay = (b * .2) + "s"; svg.appendChild(bc);
+  }
+  svg.appendChild(sv("path", {d: "M28 30 L32 34 L32 148 Q32 152 36 152 L114 152 Q118 152 118 148 L118 34 L122 30", "class": "glass"}));
+  if (o.temp) {
+    var tt = sv("text", {x: 75, y: 24, "text-anchor": "middle", "class": "lbl"}, o.temp === "up" ? "Temp ↑" : "Temp ↓");
+    tt.setAttribute("fill", o.temp === "up" ? "var(--heat)" : "var(--cool)"); svg.appendChild(tt);
+  }
+}
+function evChips(box, onChange){
+  clear(box); var sel = {};
+  EVT.forEach(function(e){
+    var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, e[1]);
+    b.addEventListener("click", function(){ sel[e[0]] = !sel[e[0]]; b.setAttribute("aria-pressed", sel[e[0]] ? "true" : "false"); if (onChange) onChange(); });
+    box.appendChild(b);
+  });
+  return function(){ return EVT.map(function(e){ return e[0]; }).filter(function(k){ return sel[k]; }); };
+}
+function evNames(list){ return list.length ? list.map(function(k){ return EVT.filter(function(e){ return e[0] === k; })[0][1].toLowerCase(); }).join(", ") : "none"; }
+
+/* ---------- Lesson 2: evidence spotter ---------- */
+(function(){
+  var box = $("l2Scenes"), cur = null, getSel, btns = [];
+  store.l2 = store.l2 || {};
+  SCENES.forEach(function(s, i){
+    var b = el("button", {"class": "scene" + (store.l2[s.k] ? " done" : ""), type: "button", "aria-pressed": "false"}, s.name);
+    b.addEventListener("click", function(){ pickScene(i); });
+    box.appendChild(b); btns.push(b);
+  });
+  function pickScene(i){
+    cur = SCENES[i];
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", i === j ? "true" : "false"); });
+    drawBeaker($("l2Svg"), cur.post);
+    $("l2Svg").setAttribute("aria-label", "Drawing of " + cur.name.toLowerCase() + " after mixing");
+    $("l2Desc").textContent = cur.desc;
+    getSel = evChips($("l2Ev"));
+    clear($("l2Out")); $("l2Out").appendChild(el("p", null, "Tap the evidence you see, then check."));
+  }
+  $("l2Check").addEventListener("click", function(){
+    if (!cur) return;
+    var s = getSel(), miss = cur.ev.filter(function(k){ return s.indexOf(k) < 0; }), extra = s.filter(function(k){ return cur.ev.indexOf(k) < 0; });
+    var o = $("l2Out"); clear(o);
+    var ok = !miss.length && !extra.length;
+    o.appendChild(el("h5", null, ok ? "All the evidence spotted." : "Not quite yet."));
+    if (miss.length) o.appendChild(el("p", null, "You missed: " + evNames(miss) + "."));
+    if (extra.length) o.appendChild(el("p", null, "Not shown here: " + evNames(extra) + "."));
+    o.appendChild(el("p", null, cur.why));
+    o.appendChild(el("p", {"class": "hint"}, "Safety: " + cur.safe));
+    if (ok) { store.l2[cur.k] = 1; save(); btns[SCENES.indexOf(cur)].classList.add("done"); }
+  });
+  pickScene(1);
+})();
+
+/* ---------- Lesson 3: physical or chemical ---------- */
+(function(){
+  var svg = $("l3Svg");
+  function box(x, title, col){
+    svg.appendChild(sv("rect", {x: x, y: 8, width: 288, height: 184, rx: 10, fill: "var(--surface)", stroke: "var(--line)"}));
+    var t = sv("text", {x: x + 12, y: 28, "class": "lbl"}, title); t.setAttribute("fill", col); svg.appendChild(t);
+  }
+  box(4, "Physical: melting ice", "var(--rx)");
+  box(308, "Chemical: burning methane", "var(--pr)");
+  var g = sv("g"); svg.appendChild(g);
+  [[40,70],[80,70],[120,70],[40,110],[80,110],[120,110]].forEach(function(p){ drawParticle(g, ["O","H","H"], p[0], p[1], .7); });
+  [[178,58],[250,68],[205,98],[262,116],[180,138],[238,148]].forEach(function(p){ drawParticle(g, ["O","H","H"], p[0], p[1], .7); });
+  var a1 = sv("text", {x: 150, y: 174, "text-anchor": "middle", "class": "small"}, "solid → liquid"); svg.appendChild(a1);
+  var a2 = sv("text", {x: 150, y: 187, "text-anchor": "middle", "class": "small"}, "still water particles"); svg.appendChild(a2);
+  drawParticle(g, ["C","H","H","H","H"], 350, 80, .7); drawParticle(g, ["O","O"], 400, 60, .7); drawParticle(g, ["O","O"], 400, 100, .7);
+  var ar = sv("text", {x: 448, y: 86, "text-anchor": "middle", "class": "lbl"}, "→"); svg.appendChild(ar);
+  drawParticle(g, ["C","O","O"], 510, 60, .7); drawParticle(g, ["O","H","H"], 495, 105, .7); drawParticle(g, ["O","H","H"], 555, 105, .7);
+  svg.appendChild(sv("text", {x: 452, y: 170, "text-anchor": "middle", "class": "small"}, "new particles: carbon dioxide and water"));
+  var CH = [
+    ["Melting butter in a pan", 0, "Solid butter becomes liquid butter. Same particles, new state."],
+    ["Toasting bread", 1, "The brown colour and new smell come from new substances. You cannot untoast bread."],
+    ["A nail rusting outside", 1, "Iron reacts with oxygen and water to form rust, a new orange-brown substance."],
+    ["Dissolving sugar in tea", 0, "Sugar particles spread out but stay sugar. Evaporate the water and the sugar is left."],
+    ["Frying an egg", 1, "The clear egg white turns into a white solid and cannot change back. New substances form."],
+    ["Boiling water in a kettle", 0, "The bubbles are water vapour. The gas is still water."],
+    ["Natural gas burning in a furnace", 1, "Methane and oxygen form carbon dioxide and water, and give off heat and light."],
+    ["Crushing a pop can", 0, "The shape changes but the aluminum is still aluminum."],
+    ["Biscuit dough rising in the oven", 1, "Baking powder reacts to make carbon dioxide gas, which puffs up the dough."],
+    ["Freezing juice into popsicles", 0, "Liquid becomes solid. The juice particles do not change."],
+    ["Fireworks exploding", 1, "Light, heat, smoke and new colours show new substances forming."],
+    ["Tearing paper", 0, "The pieces are smaller, but they are still paper."]
+  ];
+  var order = shuffle(CH), i = 0, answered = false;
+  function show(){
+    var c = order[i % order.length], o = $("l3Card"); clear(o); answered = false;
+    o.appendChild(el("span", {"class": "tagline"}, "Change " + (i % order.length + 1) + " of " + order.length));
+    o.appendChild(el("h5", null, c[0]));
+    o.appendChild(el("p", null, "Were new substances made?"));
+  }
+  function answer(v){
+    if (answered) return; answered = true;
+    var c = order[i % order.length], o = $("l3Card");
+    o.appendChild(el("p", {"class": "fb " + (v === c[1] ? "ok" : "no")}, (v === c[1] ? "Correct: " : "Not quite: ") + (c[1] ? "chemical change." : "physical change.")));
+    o.appendChild(el("p", null, c[2]));
+  }
+  $("l3Phys").addEventListener("click", function(){ answer(0); });
+  $("l3Chem").addEventListener("click", function(){ answer(1); });
+  $("l3Next").addEventListener("click", function(){ i++; show(); });
+  show();
+})();
+
+/* ---------- Lesson 4: weigh a reaction ---------- */
+(function(){
+  var SET = [
+    {label: "Open flask", before: 182.40, after: 180.75, msg: "The reading dropped by 1.65 g. Carbon dioxide gas escaped into the room. The atoms still exist; they just left the flask."},
+    {label: "Closed bottle", before: 182.40, after: 182.40, msg: "The reading stayed the same. The carbon dioxide is trapped inside the sealed bottle, so the mass of the products equals the mass of the reactants. Real labs use small amounts, because gas pressure builds up."},
+    {label: "Steel wool burning", before: 5.00, after: 5.42, msg: "The reading went up by 0.42 g. Oxygen from the air joined the iron to make iron oxide. The extra mass was in the air all along."}
+  ];
+  var cur = SET[0], timer = null, done = false;
+  function fmt2(x){ return x.toFixed(2) + " g"; }
+  function draw(mixed){
+    var s = $("l4Svg"); clear(s);
+    s.appendChild(sv("rect", {x: 90, y: 168, width: 220, height: 22, rx: 4, fill: "var(--surface-2)", stroke: "var(--line)"}));
+    s.appendChild(sv("rect", {x: 110, y: 160, width: 180, height: 8, rx: 2, fill: "var(--line)"}));
+    if (cur === SET[2]) {
+      s.appendChild(sv("path", {d: "M150 160 L160 140 L240 140 L250 160Z", fill: "var(--surface)", stroke: "var(--glass)", "stroke-width": 2}));
+      var g = sv("g"); for (var j = 0; j < 6; j++) g.appendChild(sv("ellipse", {cx: 200 + Math.cos(j) * 12, cy: 132 + Math.sin(j * 2) * 4, rx: 16, ry: 6, fill: "none", stroke: mixed ? "var(--copper)" : "var(--wool)", "stroke-width": 3})); s.appendChild(g);
+      if (mixed && !done) s.appendChild(sv("path", {d: "M200 90 C210 104 210 112 205 120 C200 126 194 124 192 118 C188 110 192 102 200 90Z", fill: "var(--flame)"}));
+      return;
+    }
+    var closed = cur === SET[1];
+    s.appendChild(sv("rect", {x: 160, y: 108, width: 80, height: 52, rx: 8, fill: "var(--liquid)"}));
+    s.appendChild(sv("path", {d: "M185 40 L185 80 L158 108 Q154 112 154 118 L154 152 Q154 160 162 160 L238 160 Q246 160 246 152 L246 118 Q246 112 242 108 L215 80 L215 40", "class": "glass"}));
+    if (closed) s.appendChild(sv("rect", {x: 181, y: 30, width: 38, height: 12, rx: 3, fill: "var(--muted)"}));
+    s.appendChild(sv("path", {d: "M250 150 L288 150 L284 160 L254 160Z", fill: "var(--surface)", stroke: "var(--glass)", "stroke-width": 2}));
+    if (!mixed) { s.appendChild(sv("path", {d: "M256 150 Q269 136 282 150Z", fill: "var(--ppt)", stroke: "var(--at-stroke)"})); s.appendChild(sv("text", {x: 269, y: 128, "text-anchor": "middle", "class": "small"}, "baking soda")); }
+    if (mixed) for (var b = 0; b < 8; b++) { var c = sv("circle", {cx: 168 + (b * 9) % 64, cy: 150 - (b % 4) * 10, r: 3, "class": "bub" + (REDUCED || done ? "" : " go")}); c.style.animationDelay = (b * .2) + "s"; s.appendChild(c); }
+    if (mixed && !closed) for (var k = 0; k < 4; k++) { var t = sv("text", {x: 230 + k * 22, y: 30 + (k % 2) * 16, "class": "small"}, "CO₂"); s.appendChild(t); }
+    s.appendChild(sv("text", {x: 20, y: 30, "class": "small"}, closed ? "Sealed bottle" : "Open flask"));
+  }
+  function reset(){ if (timer) clearInterval(timer); done = false; draw(false); $("l4Read").textContent = fmt2(cur.before); clear($("l4Out")); $("l4Out").appendChild(el("p", null, "Starting mass: " + fmt2(cur.before) + ". Press Mix to start the reaction.")); }
+  $("l4Go").addEventListener("click", function(){
+    if (timer) clearInterval(timer);
+    done = false; draw(true);
+    var t = 0, steps = REDUCED ? 1 : 30;
+    timer = setInterval(function(){
+      t++; var v = cur.before + (cur.after - cur.before) * (t / steps);
+      $("l4Read").textContent = fmt2(v);
+      if (t >= steps) { clearInterval(timer); timer = null; done = true; draw(true); var o = $("l4Out"); clear(o); o.appendChild(el("p", null, "Before: " + fmt2(cur.before) + " · After: " + fmt2(cur.after))); o.appendChild(el("p", null, cur.msg)); o.appendChild(el("p", {"class": "hint"}, "Masses are made-up values for practice.")); }
+    }, 60);
+  });
+  $("l4Reset").addEventListener("click", reset);
+  chipGroup($("l4Chips"), SET, function(s){ cur = s; reset(); }, 0);
+})();
+
+/* ---------- Elements 1 to 20 ---------- */
+var E20 = [
+  [1,"H","hydrogen",1,1,"non"],[2,"He","helium",18,1,"noble"],[3,"Li","lithium",1,2,"metal"],[4,"Be","beryllium",2,2,"metal"],[5,"B","boron",13,2,"non"],[6,"C","carbon",14,2,"non"],[7,"N","nitrogen",15,2,"non"],[8,"O","oxygen",16,2,"non"],[9,"F","fluorine",17,2,"non"],[10,"Ne","neon",18,2,"noble"],
+  [11,"Na","sodium",1,3,"metal"],[12,"Mg","magnesium",2,3,"metal"],[13,"Al","aluminum",13,3,"metal"],[14,"Si","silicon",14,3,"non"],[15,"P","phosphorus",15,3,"non"],[16,"S","sulfur",16,3,"non"],[17,"Cl","chlorine",17,3,"non"],[18,"Ar","argon",18,3,"noble"],[19,"K","potassium",1,4,"metal"],[20,"Ca","calcium",2,4,"metal"]
+];
+function shells(z){ var s = [Math.min(z, 2), Math.min(Math.max(z - 2, 0), 8), Math.min(Math.max(z - 10, 0), 8), Math.max(z - 18, 0)]; return s.filter(function(x){ return x > 0; }); }
+function valence(z){ var s = shells(z); return s[s.length - 1]; }
+function behaviour(e){
+  var v = valence(e[0]), full = e[0] <= 2 ? 2 : 8;
+  if (e[3] === 18) return {act: "none", txt: "Its valence shell is already full, so it is very stable and almost never reacts."};
+  if (e[1] === "H") return {act: "share", txt: "It has 1 electron and needs 1 more to fill its first shell. It usually shares electrons with non-metals."};
+  if (v <= 3 && e[5] === "metal") return {act: "lose", txt: "Losing " + v + " electron" + (v > 1 ? "s" : "") + " is easier than gaining " + (full - v) + ". It forms the ion " + e[1] + (v > 1 ? v : "") + "+ with a full shell underneath."};
+  if (v === 4 || e[1] === "B") return {act: "share", txt: "Losing or gaining " + (v === 4 ? "4" : "several") + " electrons is hard, so it usually shares electrons to complete its shell."};
+  return {act: "gain", txt: "Gaining " + (full - v) + " electron" + (full - v > 1 ? "s" : "") + " fills its shell. With a metal it forms the ion " + e[1] + ((full - v) > 1 ? (full - v) : "") + "−. With other non-metals it shares electrons."};
+}
+function drawBohr(svg, z, cx, cy, radii, opts){
+  opts = opts || {};
+  var s = shells(z), g = sv("g");
+  s.forEach(function(n, i){
+    var r = radii[i], isVal = i === s.length - 1;
+    g.appendChild(sv("circle", {cx: cx, cy: cy, r: r, "class": "shell" + (isVal ? " val" : "")}));
+    for (var j = 0; j < n; j++) {
+      var ang = -Math.PI / 2 + (Math.floor(j / 2) * (2 * Math.PI / Math.min(4, Math.ceil(n / 2) || 1))) + (j % 2 ? .22 : -.22);
+      if (n <= 2) ang = -Math.PI / 2 + j * Math.PI;
+      if (opts.skipLast && isVal && j === n - 1) continue;
+      g.appendChild(sv("circle", {cx: cx + Math.cos(ang) * r, cy: cy + Math.sin(ang) * r, r: 5, "class": "e" + (isVal ? " val" : "")}));
+    }
+  });
+  g.appendChild(sv("circle", {cx: cx, cy: cy, r: radii[0] * .55, "class": "nuc"}));
+  g.appendChild(sv("text", {x: cx, y: cy + 4, "class": "nuct"}, z + "p⁺"));
+  svg.appendChild(g);
+  return g;
+}
+
+/* ---------- Lesson 5: shell builder ---------- */
+(function(){
+  var tb = $("l5Table"), btns = {};
+  var grid = {}; E20.forEach(function(e){ var col = e[3] <= 2 ? e[3] - 1 : e[3] - 10; grid[e[4] + "-" + col] = e; });
+  for (var p = 1; p <= 4; p++) for (var c = 0; c < 8; c++) {
+    var e = grid[p + "-" + c];
+    if (!e) { tb.appendChild(el("span", {"class": "mcell blank", "aria-hidden": "true"})); continue; }
+    (function(e){
+      var b = el("button", {"class": "mcell " + e[5], type: "button", "aria-pressed": "false", "aria-label": e[2] + ", atomic number " + e[0]});
+      b.appendChild(el("small", null, String(e[0]))); b.appendChild(document.createTextNode(e[1]));
+      b.addEventListener("click", function(){ pickEl(e); });
+      tb.appendChild(b); btns[e[1]] = b;
+    })(e);
+  }
+  function pickEl(e){
+    for (var k in btns) btns[k].setAttribute("aria-pressed", k === e[1] ? "true" : "false");
+    var svg = $("l5Svg"); clear(svg);
+    drawBohr(svg, e[0], 150, 150, [40, 70, 100, 130]);
+    var s = shells(e[0]), v = valence(e[0]), bh = behaviour(e);
+    svg.setAttribute("aria-label", e[2] + " shell diagram: " + s.join(", ") + " electrons. " + v + " valence electrons.");
+    var o = $("l5Out"); clear(o);
+    o.appendChild(el("h5", null, e[2].charAt(0).toUpperCase() + e[2].slice(1) + " (" + e[1] + "), group " + e[3]));
+    o.appendChild(el("p", {"class": "mono"}, "Shells: " + s.join(", ") + " · Valence electrons: " + v));
+    o.appendChild(el("p", null, bh.txt));
+  }
+  pickEl(E20[10]);
+})();
+
+/* ---------- Lesson 6: sodium meets chlorine ---------- */
+(function(){
+  var svg = $("l6Svg"), moved = false, ec;
+  var R = [26, 50, 74];
+  function draw(){
+    clear(svg); moved = false;
+    drawBohr(svg, 11, 150, 125, R, {skipLast: true});
+    drawBohr(svg, 17, 450, 125, R);
+    svg.appendChild(sv("text", {x: 150, y: 245, "text-anchor": "middle", "class": "lbl", id: "l6NaT"}, "Na atom: 2, 8, 1"));
+    svg.appendChild(sv("text", {x: 450, y: 245, "text-anchor": "middle", "class": "lbl", id: "l6ClT"}, "Cl atom: 2, 8, 7"));
+    var tx = 450 + Math.cos(Math.PI + .22) * 74, ty = 125 + Math.sin(Math.PI + .22) * 74;
+    ec = sv("circle", {cx: 0, cy: 0, r: 6, "class": "e val"});
+    ec.style.transition = REDUCED ? "none" : "transform 1.2s cubic-bezier(.5,0,.3,1)";
+    ec.style.transform = "translate(" + (150 + 74) + "px,125px)";
+    ec.dataset.tx = tx; ec.dataset.ty = ty;
+    svg.appendChild(ec);
+    var o = $("l6Out"); clear(o);
+    o.appendChild(el("p", null, "Sodium has 1 valence electron. Chlorine has 7. Neither has a full outer shell, so both are very reactive."));
+  }
+  $("l6Go").addEventListener("click", function(){
+    if (moved) return; moved = true;
+    ec.style.transform = "translate(" + ec.dataset.tx + "px," + ec.dataset.ty + "px)";
+    later(function(){
+      $("l6NaT").textContent = "Na⁺ ion: 2, 8"; $("l6ClT").textContent = "Cl⁻ ion: 2, 8, 8";
+      var shellsNa = svg.querySelectorAll(".shell"); if (shellsNa[2]) shellsNa[2].setAttribute("stroke-dasharray", "4 5");
+      var o = $("l6Out"); clear(o);
+      o.appendChild(el("h5", null, "Both shells are now full."));
+      o.appendChild(el("p", null, "Sodium lost its 1 valence electron. Its new outer shell has 8, like neon, and it has 11 protons but 10 electrons: Na⁺. Chlorine gained 1 electron. Its outer shell has 8, like argon, and it has 17 protons but 18 electrons: Cl⁻."));
+      o.appendChild(el("p", null, "The opposite charges attract, forming sodium chloride. Each atom reacted because it was one electron away from a full shell."));
+    }, 1250);
+  });
+  $("l6Back").addEventListener("click", draw);
+  draw();
+})();
+
+/* ---------- Lesson 7: four ways ---------- */
+(function(){
+  var cur = EQS[0], bal = true;
+  function render(){
+    var o = $("l7Out"); clear(o);
+    var c = bal ? cur.c : cur.c.map(function(){ return 1; });
+    o.appendChild(el("p", {"class": "tagline"}, "1 · Word equation")); o.appendChild(el("p", null, wordEq(cur)));
+    o.appendChild(el("p", {"class": "tagline"}, "2 · Chemical equation" + (bal ? " (balanced)" : " (not balanced)"))); o.appendChild(el("p", {"class": "eq"}, chemEq(cur, c)));
+    o.appendChild(el("p", {"class": "tagline"}, "3 · Particle model"));
+    var all = cur.r.concat(cur.p), parts = [];
+    all.forEach(function(s, i){ for (var k = 0; k < c[i]; k++) parts.push({s: s, side: i < cur.r.length ? 0 : 1}); });
+    var w = Math.max(420, parts.length * 64 + 60), svg = sv("svg", {viewBox: "0 0 " + w + " 90", role: "img", "aria-label": "Particle model of the " + (bal ? "balanced" : "unbalanced") + " equation"});
+    var x = 36, drawnArrow = false;
+    parts.forEach(function(p){
+      if (p.side === 1 && !drawnArrow) { svg.appendChild(sv("text", {x: x, y: 50, "text-anchor": "middle", "class": "lbl"}, "→")); x += 40; drawnArrow = true; }
+      drawParticle(svg, SP[p.s].s, x, 45, .85); x += 62;
+    });
+    var bx = el("div", {"class": "svgbox"}); bx.appendChild(svg); o.appendChild(bx);
+    o.appendChild(el("p", {"class": "tagline"}, "4 · Atom count, reactants → products"));
+    var ok = tallyInto($("l7Tally"), cur, c);
+    o.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "Balanced: every atom is accounted for, so mass is conserved." : "Not balanced: the atom counts do not match, so this equation would break conservation of mass."));
+  }
+  chipGroup($("l7Chips"), EQS.slice(0, 5).map(function(q){ return {label: q.t, q: q}; }), function(it){ cur = it.q; render(); }, 0);
+  chipGroup($("l7Mode"), [{label: "Not balanced", v: false}, {label: "Balanced", v: true}], function(it){ bal = it.v; render(); }, 1);
+})();
+
+/* ---------- Lesson 8: collision box ---------- */
+(function(){
+  var cv = $("l8Cv"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height, P = [], running = !REDUCED, raf = null, frames = 0, hits = 0, good = 0, cols = {};
+  function readCols(){ cols = {a: cssv("--rx"), b: cssv("--pr"), c: cssv("--g9"), bg: cssv("--surface"), line: cssv("--line")}; }
+  function tempLabel(){ return $("l8T").value + " °C"; }
+  function speedFactor(){ return (Number($("l8T").value) + 40) / 60; }
+  function reset(){
+    readCols(); P = []; frames = 0; hits = 0; good = 0;
+    var n = Number($("l8C").value), f = speedFactor();
+    for (var i = 0; i < n * 2; i++) {
+      var ang = Math.random() * Math.PI * 2, sp = 1.6 * f * (.5 + Math.random());
+      P.push({x: 10 + Math.random() * (W - 20), y: 10 + Math.random() * (H - 20), vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, t: i % 2 ? "b" : "a"});
+    }
+    $("l8Tv").textContent = tempLabel(); $("l8Cvv").textContent = n + " of each particle";
+    draw(); stats();
+  }
+  function step(){
+    frames++;
+    var r = 7, TH = 2.7;
+    P.forEach(function(p){ p.x += p.vx; p.y += p.vy; if (p.x < r || p.x > W - r) { p.vx *= -1; p.x = Math.max(r, Math.min(W - r, p.x)); } if (p.y < r || p.y > H - r) { p.vy *= -1; p.y = Math.max(r, Math.min(H - r, p.y)); } });
+    for (var i = 0; i < P.length; i++) for (var j = i + 1; j < P.length; j++) {
+      var a = P[i], b = P[j], dx = b.x - a.x, dy = b.y - a.y, d2 = dx * dx + dy * dy;
+      if (d2 < 4 * r * r && d2 > 0) {
+        var d = Math.sqrt(d2), nx = dx / d, ny = dy / d, rv = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
+        if (rv <= 0) continue;
+        if ((a.t === "a" && b.t === "b") || (a.t === "b" && b.t === "a")) { hits++; if (rv > TH) { a.t = "c"; b.t = "c"; good++; } }
+        a.vx -= rv * nx; a.vy -= rv * ny; b.vx += rv * nx; b.vy += rv * ny;
+      }
+    }
+  }
+  function draw(){
+    ctx.fillStyle = cols.bg; ctx.fillRect(0, 0, W, H);
+    P.forEach(function(p){ ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2); ctx.fillStyle = cols[p.t]; ctx.fill(); });
+  }
+  function stats(){
+    var o = $("l8Stats"), n = Number($("l8C").value); clear(o);
+    [["Time", (frames / 60).toFixed(1) + " s"], ["A and B collisions", hits], ["Collisions that reacted", good], ["Reactants used", Math.round(good / n * 100) + "%"]].forEach(function(s){
+      var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, s[0])); d.appendChild(el("b", null, String(s[1]))); o.appendChild(d);
+    });
+  }
+  function loop(){
+    raf = null;
+    if (!running) return;
+    if (!$("learn").hidden) {
+      step(); draw();
+      if (frames % 15 === 0) stats();
+      if (frames % 120 === 0) readCols();
+    }
+    raf = requestAnimationFrame(loop);
+  }
+  function play(){ running = true; $("l8Pause").textContent = "Pause"; if (!raf) raf = requestAnimationFrame(loop); }
+  $("l8Go").addEventListener("click", function(){ reset(); play(); });
+  $("l8Pause").addEventListener("click", function(){ if (running) { running = false; $("l8Pause").textContent = "Play"; } else play(); });
+  $("l8T").addEventListener("input", function(){ $("l8Tv").textContent = tempLabel(); });
+  $("l8C").addEventListener("input", function(){ $("l8Cvv").textContent = $("l8C").value + " of each particle"; });
+  $("l8T").addEventListener("change", function(){ reset(); if (running) play(); });
+  $("l8C").addEventListener("change", function(){ reset(); if (running) play(); });
+  reset();
+  if (running) play(); else $("l8Pause").textContent = "Play";
+})();
+
+/* ---------- Lesson 9: pictograms and safe choices ---------- */
+(function(){
+  var PICS = [
+    {id: "flame", name: "Flame", m: "Flammable: catches fire easily.", ex: "Magnesium ribbon, ethanol, hydrogen gas."},
+    {id: "oxid", name: "Flame over circle", m: "Oxidizer: supplies oxygen and makes fires burn hotter.", ex: "Concentrated hydrogen peroxide."},
+    {id: "corr", name: "Corrosion", m: "Corrosive: burns skin, damages eyes, eats metals.", ex: "Hydrochloric acid stock solution."},
+    {id: "skull", name: "Skull and crossbones", m: "Acutely toxic: small amounts can poison or kill.", ex: "Methanol."},
+    {id: "health", name: "Health hazard", m: "Serious long-term effects, such as cancer or organ damage.", ex: "Benzene."},
+    {id: "excl", name: "Exclamation mark", m: "Less severe hazards: irritates skin or eyes, or harmful if swallowed.", ex: "Copper(II) sulfate, calcium chloride."},
+    {id: "gas", name: "Gas cylinder", m: "Gas under pressure: can explode if heated.", ex: "Compressed carbon dioxide cylinder."}
+  ];
+  var box = $("l9Pics"), btns = [];
+  PICS.forEach(function(p, i){
+    var b = el("button", {type: "button", "class": "pic", "aria-pressed": "false"});
+    var s = picSVG(p.id, ""); s.setAttribute("aria-hidden", "true"); s.removeAttribute("role"); b.appendChild(s);
+    b.appendChild(el("span", null, p.name));
+    b.addEventListener("click", function(){
+      btns.forEach(function(x, j){ x.setAttribute("aria-pressed", i === j ? "true" : "false"); });
+      var o = $("l9Pic"); clear(o);
+      o.appendChild(el("h5", null, p.name)); o.appendChild(el("p", null, p.m)); o.appendChild(el("p", {"class": "hint"}, "Typical lab example: " + p.ex + " Always check the label and SDS."));
+    });
+    box.appendChild(b); btns.push(b);
+  });
+  btns[2].click();
+  var STEPS = [
+    ["You arrive at the lab bench for the magnesium and acid reaction.", ["Read the procedure and the WHMIS labels first", "Start mixing so you finish early"], 0, "Knowing the hazards before you start is the first safety protocol."],
+    ["Your goggles are fogging up.", ["Push them up on your forehead for a minute", "Keep them on and tell your teacher"], 1, "Goggles protect your eyes only when they are on your eyes."],
+    ["You need 10 mL of dilute hydrochloric acid.", ["Pour a small amount into a labelled beaker, then measure", "Dip your pipette straight into the stock bottle"], 0, "Never put anything into a stock bottle. It can contaminate the whole bottle."],
+    ["The reaction starts to fizz and you want to know what the gas smells like.", ["Waft a little air toward your nose", "Put your nose over the test tube and sniff"], 0, "Wafting brings only a tiny amount to your nose. Sniffing directly can harm you."],
+    ["You poured out too much acid.", ["Pour the extra back into the stock bottle", "Ask your teacher how to dispose of the extra"], 1, "Never return chemicals to the stock bottle. Follow the disposal plan."],
+    ["A few drops of acid splash on your hand.", ["Rinse with lots of cool water and tell your teacher", "Wipe it on your jeans and keep going"], 0, "Rinse right away with plenty of water and report every spill or injury."],
+    ["The lab is finished.", ["Clean up, return equipment and wash your hands", "Leave the beakers for the next class"], 0, "Clean benches and washed hands keep the next class safe too."]
+  ];
+  var i = 0, score = 0;
+  function render(){
+    var o = $("l9Scen"); clear(o);
+    if (i >= STEPS.length) {
+      o.appendChild(el("h5", null, "Lab complete: " + score + " of " + STEPS.length + " safe choices."));
+      var b = el("button", {"class": "btn", type: "button"}, "Walk through again");
+      b.addEventListener("click", function(){ i = 0; score = 0; render(); });
+      o.appendChild(b); return;
+    }
+    var s = STEPS[i];
+    o.appendChild(el("span", {"class": "tagline"}, "Step " + (i + 1) + " of " + STEPS.length));
+    o.appendChild(el("p", null, s[0]));
+    var row = el("div", {"class": "choice2"}), bs = [];
+    s[1].forEach(function(t, j){
+      var b = el("button", {type: "button"}, t);
+      b.addEventListener("click", function(){
+        bs.forEach(function(x, k){ x.disabled = true; if (k === s[2]) x.classList.add("right"); });
+        if (j === s[2]) score++; else b.classList.add("wrong");
+        o.appendChild(el("p", {"class": "fb " + (j === s[2] ? "ok" : "no")}, (j === s[2] ? "Safe choice. " : "Unsafe. ") + s[3]));
+        var nx = el("button", {"class": "btn", type: "button"}, "Next step");
+        nx.addEventListener("click", function(){ i++; render(); var f = $("l9Scen").querySelector("button"); if (f) f.focus(); });
+        o.appendChild(nx);
+      });
+      row.appendChild(b); bs.push(b);
+    });
+    o.appendChild(row);
+  }
+  render();
+})();
+
+/* ---------- Bench 1: reaction trials ---------- */
+(function(){
+  var TR = SCENES.concat(EXTRA), cur = null, ran = false, getSel, btns = [];
+  store.b1 = store.b1 || {};
+  TR.forEach(function(t, i){
+    var b = el("button", {"class": "scene" + (store.b1[t.k] ? " done" : ""), type: "button", "aria-pressed": "false"}, t.name);
+    b.addEventListener("click", function(){ pick(i); });
+    $("b1Trials").appendChild(b); btns.push(b);
+  });
+  function pick(i){
+    cur = TR[i]; ran = false;
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", i === j ? "true" : "false"); });
+    drawBeaker($("b1Svg"), cur.pre);
+    $("b1Svg").setAttribute("aria-label", "Set-up before the trial: " + cur.name.toLowerCase());
+    $("b1Desc").textContent = "Ready: " + cur.name + ". Press Run the trial.";
+    getSel = evChips($("b1Ev"));
+    clear($("b1Out")); $("b1Out").appendChild(el("p", null, "Run the trial and observe."));
+  }
+  $("b1Run").addEventListener("click", function(){
+    if (!cur) return;
+    $("b1Desc").textContent = "Mixing…";
+    later(function(){
+      drawBeaker($("b1Svg"), cur.post); ran = true;
+      $("b1Svg").setAttribute("aria-label", "After the trial: " + cur.name.toLowerCase());
+      $("b1Desc").textContent = cur.desc;
+      clear($("b1Out")); $("b1Out").appendChild(el("p", null, "Tick the evidence you observed, then decide."));
+    }, 700);
+  });
+  function decide(chem){
+    if (!cur || !ran) { clear($("b1Out")); $("b1Out").appendChild(el("p", null, "Run the trial first.")); return; }
+    var s = getSel(), right = chem === cur.chem, o = $("b1Out"); clear(o);
+    o.appendChild(el("h5", null, right ? "Correct: " + (cur.chem ? "chemical change." : "physical change.") : "Not quite: this is a " + (cur.chem ? "chemical" : "physical") + " change."));
+    o.appendChild(el("p", null, "Expected evidence: " + evNames(cur.ev) + ". You ticked: " + evNames(s) + "."));
+    o.appendChild(el("p", null, cur.why));
+    o.appendChild(el("p", {"class": "hint"}, "Safety: " + cur.safe));
+    store.b1[cur.k] = {ev: s, call: chem ? "Chemical" : "Physical", ok: right}; save();
+    btns[TR.indexOf(cur)].classList.add("done");
+    table();
+  }
+  function table(){
+    var tb = document.querySelector("#b1Tbl tbody"); clear(tb);
+    TR.forEach(function(t){
+      var r = store.b1[t.k]; if (!r || !r.call) return;
+      var tr = el("tr");
+      tr.appendChild(el("td", null, t.name)); tr.appendChild(el("td", null, evNames(r.ev || []))); tr.appendChild(el("td", null, r.call));
+      tr.appendChild(el("td", {"class": r.ok ? "fb ok" : "fb no"}, r.ok ? "Correct" : "Check again"));
+      tb.appendChild(tr);
+    });
+    if (!tb.firstChild) { var tr0 = el("tr"); tr0.appendChild(el("td", {colspan: "4"}, "No trials recorded yet.")); tb.appendChild(tr0); }
+  }
+  $("b1Phys").addEventListener("click", function(){ decide(false); });
+  $("b1Chem").addEventListener("click", function(){ decide(true); });
+  pick(0); table();
+})();
+
+/* ---------- Bench 2: conservation of mass ---------- */
+(function(){
+  var open = true, trial = null;
+  function r2(x){ return Math.round(x * 100) / 100; }
+  function run(){
+    var bs = r2(2 + Math.random() * 3), cont = r2(150 + Math.random() * 50), before = r2(bs + cont);
+    var gas = r2(bs * 0.52), after = open ? r2(before - gas) : before;
+    trial = {bs: bs, before: before, after: after, diff: r2(before - after)};
+    var o = $("b2Stats"); clear(o);
+    [["Baking soda", bs.toFixed(2) + " g"], ["Total before", before.toFixed(2) + " g"], ["Total after", after.toFixed(2) + " g"], ["Set-up", open ? "Open flask" : "Closed bottle"]].forEach(function(s){
+      var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, s[0])); d.appendChild(el("b", null, s[1])); o.appendChild(d);
+    });
+    $("b2In").value = ""; $("b2Fb").textContent = "Enter the change in mass (before − after).";
+    $("b2Fb").className = "fb";
+  }
+  chipGroup($("b2Set"), [{label: "Open flask", v: true}, {label: "Closed bottle", v: false}], function(it){ open = it.v; run(); }, 0);
+  $("b2Run").addEventListener("click", run);
+  $("b2Chk").addEventListener("click", function(){
+    var v = parseFloat($("b2In").value), fb = $("b2Fb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    if (Math.abs(v - trial.diff) < 0.015) {
+      fb.className = "fb ok";
+      fb.textContent = open ? "Correct: " + trial.diff.toFixed(2) + " g of carbon dioxide escaped. The mass left the flask as a gas." : "Correct: 0.00 g. Nothing could leave the closed bottle, so the mass of the products equals the mass of the reactants.";
+    } else { fb.className = "fb no"; fb.textContent = "Not quite. Subtract: " + trial.before.toFixed(2) + " − " + trial.after.toFixed(2) + "."; }
+  });
+  var cur = null;
+  function newQ(){
+    var t = rint(0, 3);
+    if (t === 0) { var a = r2(rint(200, 900) / 100), b = r2(rint(100, 600) / 100); cur = {q: "In a closed container, " + a.toFixed(2) + " g of iron reacts completely with " + b.toFixed(2) + " g of sulfur to make iron sulfide. What is the mass of the iron sulfide?", a: r2(a + b), w: "mass of products = mass of reactants = " + a.toFixed(2) + " + " + b.toFixed(2)}; }
+    if (t === 1) { var bf = r2(rint(15000, 20000) / 100), g = r2(rint(80, 260) / 100); cur = {q: "An open beaker of acid and chalk has a mass of " + bf.toFixed(2) + " g before the reaction and " + r2(bf - g).toFixed(2) + " g after. How much gas escaped?", a: g, w: "gas escaped = before − after"}; }
+    if (t === 2) { var m = r2(rint(300, 800) / 100), gn = r2(rint(20, 90) / 100); cur = {q: "A " + m.toFixed(2) + " g ball of steel wool burns in an open dish. The product has a mass of " + r2(m + gn).toFixed(2) + " g. What mass of oxygen joined the iron?", a: gn, w: "oxygen added = after − before"}; }
+    if (t === 3) { var tot = r2(rint(10000, 25000) / 100); cur = {q: "A sealed bottle holding vinegar and baking soda has a mass of " + tot.toFixed(2) + " g. What will the scale read after the fizzing stops, before the cap is opened?", a: tot, w: "closed system: mass does not change"}; }
+    $("b2Q").textContent = cur.q; $("b2PIn").value = ""; $("b2PFb").textContent = ""; $("b2PFb").className = "fb";
+  }
+  $("b2PNew").addEventListener("click", newQ);
+  $("b2PChk").addEventListener("click", function(){
+    var v = parseFloat($("b2PIn").value), fb = $("b2PFb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    var ok = Math.abs(v - cur.a) < 0.015;
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + cur.w + " = " + cur.a.toFixed(2) + " g.";
+  });
+  newQ();
+})();
+
+/* ---------- Bench 3: equation balancer ---------- */
+(function(){
+  var cur, coefs, outs = [];
+  store.b3 = store.b3 || 0;
+  function gcdA(a){ var g = a[0]; function gc(x, y){ return y ? gc(y, x % y) : x; } a.forEach(function(x){ g = gc(g, x); }); return g; }
+  function newEq(){
+    var prev = cur; do { cur = pick(EQS); } while (cur === prev);
+    coefs = cur.c.map(function(){ return 1; });
+    $("b3Word").textContent = "Word equation: " + wordEq(cur);
+    var box = $("b3Eq"); clear(box); outs = [];
+    var all = cur.r.concat(cur.p);
+    all.forEach(function(s, i){
+      if (i === cur.r.length) box.appendChild(el("span", {"aria-hidden": "true"}, "→"));
+      else if (i > 0) box.appendChild(el("span", {"aria-hidden": "true"}, "+"));
+      var t = el("span", {"class": "term " + (i < cur.r.length ? "r" : "p")});
+      var m = el("button", {type: "button", "aria-label": "Decrease coefficient of " + SP[s].n}, "−");
+      var out = el("output", {"aria-label": "Coefficient of " + SP[s].n}, "1");
+      var p = el("button", {type: "button", "aria-label": "Increase coefficient of " + SP[s].n}, "+");
+      m.addEventListener("click", function(){ if (coefs[i] > 1) { coefs[i]--; upd(); } });
+      p.addEventListener("click", function(){ if (coefs[i] < 9) { coefs[i]++; upd(); } });
+      t.appendChild(m); t.appendChild(out); t.appendChild(el("span", null, fsub(s))); t.appendChild(p);
+      box.appendChild(t); outs.push(out);
+    });
+    upd(); $("b3Fb").textContent = ""; $("b3Fb").className = "fb";
+  }
+  function upd(){ outs.forEach(function(o, i){ o.textContent = coefs[i]; }); tallyInto($("b3Tally"), cur, coefs); }
+  $("b3Chk").addEventListener("click", function(){
+    var ok = tallyInto($("b3Tally"), cur, coefs), fb = $("b3Fb");
+    if (ok && gcdA(coefs) === 1) { fb.className = "fb ok"; store.b3++; save(); fb.textContent = "Balanced: " + chemEq(cur, coefs) + ". Equations balanced so far: " + store.b3 + "."; }
+    else if (ok) { fb.className = "fb no"; fb.textContent = "The atoms balance, but the numbers can all be divided by " + gcdA(coefs) + ". Use the smallest whole numbers."; }
+    else { fb.className = "fb no"; fb.textContent = "Not balanced yet. Look for an element marked ✗."; }
+  });
+  $("b3Hint").addEventListener("click", function(){
+    var L = countSide(cur.r, coefs, 0), R = countSide(cur.p, coefs, cur.r.length), fb = $("b3Fb");
+    var bad = elemsOf(cur).filter(function(k){ return L[k] !== R[k]; });
+    fb.className = "fb";
+    fb.textContent = bad.length ? "Start with " + bad[0] + ": " + (L[bad[0]] || 0) + " on the left and " + (R[bad[0]] || 0) + " on the right. Change the coefficient of a formula that contains " + bad[0] + ". Leave single elements such as O₂ until last." : "Every element balances. Press Check balance.";
+  });
+  $("b3New").addEventListener("click", newEq);
+  newEq();
+})();
+
+/* ---------- Bench 4: electron predictor ---------- */
+(function(){
+  var POOL = E20.filter(function(e){ return ["H","Be","B"].indexOf(e[1]) < 0; }), cur = null;
+  function newEl(){
+    var prev = cur; do { cur = pick(POOL); } while (cur === prev);
+    $("b4Q").textContent = cur[1] + " · " + cur[2] + " · group " + cur[3];
+    $("b4V").value = ""; $("b4A").value = ""; clear($("b4Fb"));
+  }
+  $("b4Chk").addEventListener("click", function(){
+    var v = parseInt($("b4V").value, 10), a = $("b4A").value, o = $("b4Fb"); clear(o);
+    var rv = valence(cur[0]), bh = behaviour(cur);
+    var okA = a === bh.act || (bh.act === "gain" && a === "share");
+    var okV = v === rv;
+    o.appendChild(el("p", {"class": "fb " + (okV ? "ok" : "no")}, okV ? "Valence electrons: correct, " + rv + "." : "Valence electrons: " + rv + " (shells " + shells(cur[0]).join(", ") + ")."));
+    o.appendChild(el("p", {"class": "fb " + (okA ? "ok" : "no")}, okA ? "Prediction: correct." : "Prediction: it is most likely to " + ({lose: "lose electrons", gain: "gain electrons", share: "share electrons", none: "stay unreactive"})[bh.act] + "."));
+    o.appendChild(el("p", null, bh.txt));
+  });
+  $("b4New").addEventListener("click", newEl);
+  newEl();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Chemical or physical?", bins: ["Physical change", "Chemical change"], items: [
+    ["Ice cube melting", 0, "Solid water becomes liquid water. No new substance."],
+    ["Wood burning in a campfire", 1, "Wood and oxygen become carbon dioxide, water vapour and ash."],
+    ["Sugar dissolving in water", 0, "The sugar can be recovered by evaporating the water."],
+    ["A bike chain rusting", 1, "Iron forms rust, a new substance."],
+    ["Baking soda fizzing in vinegar", 1, "Carbon dioxide gas is a new substance."],
+    ["Water boiling", 0, "The bubbles are still water, as a gas."],
+    ["Glow stick glowing", 1, "Chemicals react and give off light."],
+    ["Chopping carrots", 0, "Smaller pieces, same carrot."],
+    ["Milk going sour", 1, "Bacteria make new substances with a sour smell."],
+    ["Butter melting on toast", 0, "A change of state only."],
+    ["Copper coating forming on steel wool", 1, "Copper metal forms from copper(II) sulfate solution."],
+    ["Fog forming on a cold window", 0, "Water vapour condenses into liquid water."]
+  ]},
+  {label: "Which evidence?", bins: ["Colour or odour", "Gas", "Precipitate", "Energy change"], items: [
+    ["A clear mixture turns cloudy white and a solid settles out", 2, "A solid forming from two solutions is a precipitate."],
+    ["Fizzing when magnesium touches acid", 1, "Bubbles of a new gas, hydrogen."],
+    ["A beaker gets cold when two chemicals mix", 3, "A temperature change is an energy change."],
+    ["Blue solution fades to pale green", 0, "A new colour suggests a new substance."],
+    ["A glow stick gives off light", 3, "Light is energy given off."],
+    ["Bread smells toasty and turns brown", 0, "New smell and colour."],
+    ["A yellow solid appears when two clear solutions mix", 2, "A new solid forming in a solution is a precipitate."],
+    ["A rotten egg smell appears", 0, "A new odour can mean a new substance."],
+    ["Bubbles form when baking soda meets vinegar", 1, "Carbon dioxide gas is produced."],
+    ["A flame gives off heat and light", 3, "Heat and light are energy changes."]
+  ]},
+  {label: "Faster or slower?", bins: ["Faster reaction", "Slower reaction"], items: [
+    ["Warming the reactants", 0, "Particles move faster and collide more often and harder."],
+    ["Putting food in the fridge", 1, "Cold slows the reactions that spoil food."],
+    ["Using more concentrated acid", 0, "More acid particles in the same space means more collisions."],
+    ["Adding water to dilute the acid", 1, "Fewer acid particles per millilitre means fewer collisions."],
+    ["Dropping a fizzing tablet in hot water", 0, "Higher temperature speeds the reaction."],
+    ["Dropping a fizzing tablet in ice water", 1, "Lower temperature slows the reaction."],
+    ["Crushing the tablet into powder first", 0, "More surface area means more particles exposed to collide."],
+    ["Using one big lump instead of powder", 1, "Less surface area exposed."],
+    ["Doubling the number of reactant particles in a box", 0, "Higher concentration means more collisions."],
+    ["Cooling a test tube in an ice bath", 1, "Slower particles collide less often and less hard."]
+  ]},
+  {label: "Lose, gain, share or stable?", bins: ["Loses electrons", "Gains electrons", "Shares electrons", "Stable, unreactive"], items: [
+    ["Sodium (group 1)", 0, "1 valence electron: easier to lose it."],
+    ["Chlorine (group 17)", 1, "7 valence electrons: gains 1 to fill the shell."],
+    ["Neon (group 18)", 3, "Full shell of 8: stable."],
+    ["Carbon (group 14)", 2, "4 valence electrons: shares instead."],
+    ["Magnesium (group 2)", 0, "2 valence electrons: loses them."],
+    ["Oxygen (group 16)", 1, "6 valence electrons: gains 2 when it meets a metal."],
+    ["Argon (group 18)", 3, "Full shell of 8: stable."],
+    ["Potassium (group 1)", 0, "1 valence electron: loses it very easily."],
+    ["Silicon (group 14)", 2, "4 valence electrons: shares."],
+    ["Fluorine (group 17)", 1, "7 valence electrons: gains 1."],
+    ["Helium (group 18)", 3, "Its first shell is full with 2."],
+    ["Aluminum (group 13)", 0, "3 valence electrons: loses them."]
+  ]},
+  {label: "Safe or unsafe?", bins: ["Safe practice", "Unsafe practice"], items: [
+    ["Wearing goggles for the whole lab", 0, "Eyes stay protected the whole time."],
+    ["Tasting a white powder to identify it", 1, "Never taste anything in a lab."],
+    ["Wafting to smell a gas", 0, "Only a small amount reaches your nose."],
+    ["Pouring extra acid back into the stock bottle", 1, "It can contaminate the stock."],
+    ["Reading the WHMIS label before using a chemical", 0, "Know the hazards first."],
+    ["Eating lunch at the lab bench", 1, "Food can pick up chemicals."],
+    ["Telling the teacher about a small spill", 0, "Every spill gets reported."],
+    ["Heating a sealed container", 1, "Pressure can build up until it bursts."],
+    ["Tying back long hair near a flame", 0, "Keeps hair away from flames and chemicals."],
+    ["Checking the SDS for first aid steps", 0, "The SDS has full hazard and first aid details."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Chemical reaction", "A process where the atoms in the reactants regroup to form new substances, the products."],
+  ["Reactant", "A starting substance in a chemical reaction. Written on the left of the arrow."],
+  ["Product", "A new substance made in a chemical reaction. Written on the right of the arrow."],
+  ["Chemical change", "A change that makes new substances with new properties."],
+  ["Physical change", "A change in form, size or state that makes no new substances, such as melting or dissolving."],
+  ["Evidence of chemical change", "Colour or odour change, gas produced, precipitate formed, or energy change (light or temperature)."],
+  ["Precipitate", "A solid that forms when two solutions are mixed."],
+  ["Law of conservation of mass", "Matter is not created or destroyed in a reaction, so mass of reactants = mass of products."],
+  ["Closed system", "A container that nothing can enter or leave, such as a sealed bottle. Used to test conservation of mass."],
+  ["Open system", "A container that gases can escape from or enter, so the scale reading can change."],
+  ["Shell", "A level around the nucleus where electrons are found. For elements 1 to 20: 2, then 8, then 8."],
+  ["Valence electrons", "The electrons in an atom's outermost shell. They take part in reactions."],
+  ["Full valence shell", "An outer shell holding as many electrons as it can: 2 for the first shell, 8 for the next ones. Very stable."],
+  ["Stable", "Unlikely to react. Atoms with full valence shells, like the noble gases, are stable."],
+  ["Reactivity", "How easily a substance takes part in chemical reactions. For elements, it depends mainly on valence electrons."],
+  ["Noble gases", "Group 18. Their valence shells are full, so they almost never react."],
+  ["Word equation", "A reaction written with names: hydrogen + oxygen → water."],
+  ["Chemical equation", "A reaction written with formulas: 2H₂ + O₂ → 2H₂O."],
+  ["Coefficient", "The number in front of a formula in an equation. It tells how many particles. Change it to balance."],
+  ["Balanced equation", "An equation with the same number of each kind of atom on both sides."],
+  ["Collision", "Particles hitting each other. Reactions happen only when particles collide hard enough."],
+  ["Reaction rate", "How fast reactants turn into products."],
+  ["Concentration", "How much of a substance is in a given volume. Higher concentration means more collisions."],
+  ["WHMIS", "Workplace Hazardous Materials Information System: Canada's system for labelling hazardous products."],
+  ["Safety data sheet (SDS)", "A document with full hazard, handling and first aid information for a product."],
+  ["Wafting", "Gently waving air from a container toward your nose instead of sniffing directly."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["In a chemical reaction, what happens to the atoms of the reactants?", ["They regroup to form new substances", "They are destroyed", "They turn into different elements", "They stay joined to the same partners"], "Atoms are rearranged into products. None are created or destroyed."],
+  ["In 2H₂ + O₂ → 2H₂O, what are the products?", ["Water", "Hydrogen and oxygen", "Hydrogen only", "Oxygen and water"], "Products are on the right of the arrow."],
+  ["Which is the best evidence that a chemical change happened?", ["A precipitate forms when two clear solutions mix", "Water boils and makes bubbles", "Ice melts into water", "A can is crushed"], "A new solid forming from solutions is a new substance. The others are physical changes."],
+  ["Why is bubbling during boiling NOT evidence of a chemical change?", ["The gas is still water", "Bubbles never count as evidence", "Boiling makes a precipitate", "No energy is involved"], "Boiling changes water from liquid to gas. No new substance forms."],
+  ["Which of these is a physical change?", ["Dissolving sugar in water", "Toasting bread", "Rusting iron", "Burning wood"], "The sugar can be recovered, so no new substance formed."],
+  ["Mixing two solutions makes the beaker feel cold. This is evidence of…", ["an energy change", "a precipitate", "a colour change", "nothing at all"], "A temperature change is an energy change."],
+  ["A sealed bottle of vinegar and baking soda weighs 160.00 g. After the reaction, it weighs…", ["160.00 g", "more than 160.00 g", "less than 160.00 g", "0 g, because the reactants are gone"], "In a closed system, mass is conserved."],
+  ["The same reaction in an open flask loses mass. Why?", ["Carbon dioxide gas escapes into the air", "Atoms are destroyed", "The scale is broken", "Vinegar turns into nothing"], "The mass leaves as a gas. It still exists."],
+  ["Steel wool gains mass when it burns in an open dish. Why?", ["Oxygen from the air joins the iron", "Burning creates new atoms", "Ash is heavier than metal by magic", "Heat has mass"], "The product contains the iron and the oxygen that joined it."],
+  ["What does the law of conservation of mass say?", ["Mass of reactants equals mass of products", "Mass always increases in a reaction", "Gases have no mass", "Only solids have mass"], "Matter is not created or destroyed in a reaction."],
+  ["What are valence electrons?", ["Electrons in the outermost shell", "Electrons in the nucleus", "Electrons in the first shell only", "Electrons that have been lost"], "They are the outer electrons that take part in reactions."],
+  ["How many valence electrons does chlorine (group 17) have?", ["7", "17", "1", "8"], "Group 17 elements have 7 valence electrons."],
+  ["Why are noble gases so unreactive?", ["Their valence shells are full", "They have no electrons", "They are too heavy", "They are always solids"], "A full valence shell is stable."],
+  ["Why is sodium very reactive?", ["It can lose its 1 valence electron to get a full shell", "It has a full valence shell", "It has 7 valence electrons", "It has no protons"], "Losing one electron leaves a full shell like neon."],
+  ["When sodium reacts with chlorine, what happens to the electron?", ["Sodium gives one electron to chlorine", "Chlorine gives one electron to sodium", "Both lose an electron", "No electrons move"], "Sodium becomes Na⁺ and chlorine becomes Cl⁻. Both have full shells."],
+  ["Which element is most likely to share electrons?", ["Carbon", "Sodium", "Neon", "Potassium"], "Carbon has 4 valence electrons, so sharing is easier than losing or gaining 4."],
+  ["Which equation is balanced?", ["2H₂ + O₂ → 2H₂O", "H₂ + O₂ → H₂O", "H₂ + O₂ → 2H₂O", "2H₂ + 2O₂ → 2H₂O"], "4 H and 2 O on each side."],
+  ["To balance an equation, you may change…", ["the coefficients in front of formulas", "the subscripts in formulas", "the elements in the products", "the arrow direction"], "Changing a subscript would change the substance."],
+  ["How many oxygen atoms are on the left of CH₄ + 2O₂ → CO₂ + 2H₂O?", ["4", "2", "1", "8"], "2 molecules × 2 atoms = 4 oxygen atoms."],
+  ["Which is a word equation?", ["magnesium + oxygen → magnesium oxide", "2Mg + O₂ → 2MgO", "Mg²⁺ and O²⁻", "MgO"], "A word equation uses names instead of formulas."],
+  ["Why does raising the temperature speed up a reaction?", ["Particles move faster, so they collide more often and harder", "Heat adds new atoms", "Particles get larger", "It lowers the mass"], "More frequent and stronger collisions mean more successful collisions."],
+  ["Which change would slow down a reaction between acid and zinc?", ["Diluting the acid with water", "Warming the acid", "Using more concentrated acid", "Using zinc powder instead of a lump"], "Lower concentration means fewer collisions."],
+  ["What must happen for particles to react?", ["They must collide hard enough", "They must be the same colour", "They must be in a closed system", "They must be solids"], "Only collisions with enough energy break the old bonds."],
+  ["What does WHMIS stand for?", ["Workplace Hazardous Materials Information System", "World Health and Medical Information Service", "Warning Hazard Materials In School", "Workplace Health Management and Inspection System"], "It is Canada's hazard labelling system."],
+  ["Where do you find full first aid information for a chemical?", ["The safety data sheet (SDS)", "The periodic table", "The chemical equation", "The pictogram only"], "The SDS gives detailed hazard and first aid information."],
+  ["What is the safe way to smell a chemical?", ["Waft a little air toward your nose", "Sniff it directly", "Taste it first", "Never check for odour, even if told to"], "Wafting limits how much you breathe in."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Define a chemical reaction. Use the words reactants and products.", a: "A chemical reaction is a process where the atoms in the reactants break away from their partners and regroup to form new substances called products. The atoms are not created or destroyed, only rearranged.", k: ["Reactants are the starting substances", "Atoms regroup or rearrange", "Products are new substances", "No atoms are created or destroyed"]},
+  {q: "List the four types of evidence of a chemical change, with one example of each.", a: "Colour or odour change, such as toast turning brown and smelling toasty. Gas produced, such as fizzing when baking soda meets vinegar. Precipitate formed, such as cloudy white solid when calcium chloride and baking soda solutions mix. Energy change, such as light from a glow stick or a beaker getting warm.", k: ["Colour or odour change with example", "Gas produced with example", "Precipitate with example", "Energy change (light or temperature) with example"]},
+  {q: "Explain why melting an ice cube is a physical change but burning wood is a chemical change.", a: "Melting ice changes solid water into liquid water. The particles are still water, so no new substance forms. Burning wood turns wood and oxygen into new substances: carbon dioxide, water vapour and ash. New substances mean a chemical change.", k: ["Melting: same particles, change of state", "Burning: new substances form", "Names a product of burning", "Uses the new substance test"]},
+  {q: "A student says, “My mixture bubbled, so a chemical reaction happened.” Is this enough evidence? Explain.", a: "Not on its own. Bubbles can come from a physical change, such as boiling water, where the gas is still water. The student should look for more evidence, such as a temperature change, colour change or precipitate, or test the gas to see if it is a new substance.", k: ["One clue is not proof", "Boiling as a counter example", "Look for more evidence", "Suggests a test or second clue"]},
+  {q: "A closed bottle with vinegar and baking soda has a mass of 175.30 g before mixing. Predict its mass after the reaction and explain.", a: "It will still be 175.30 g. The bottle is a closed system, so the carbon dioxide gas cannot escape. Atoms are only rearranged, so the mass of the products equals the mass of the reactants.", k: ["Predicts 175.30 g", "Names closed system", "Gas cannot escape", "Mass of reactants equals mass of products"]},
+  {q: "Use valence electrons to explain why neon does not react but fluorine reacts easily.", a: "Neon has 8 valence electrons, a full outer shell, so it is very stable and does not need to gain, lose or share electrons. Fluorine has 7 valence electrons. It needs only one more to fill its shell, so it gains or shares an electron very easily.", k: ["Neon has a full shell of 8", "Full shell means stable", "Fluorine has 7 valence electrons", "Fluorine gains one to fill its shell"]},
+  {q: "Balance this equation and show your atom count: N₂ + H₂ → NH₃", a: "N₂ + 3H₂ → 2NH₃. Left: 2 N and 6 H. Right: 2 × (1 N + 3 H) = 2 N and 6 H. Each element has the same number of atoms on both sides.", k: ["Coefficients 1, 3, 2", "Counts N on both sides", "Counts H on both sides", "Did not change any subscripts"]},
+  {q: "Explain, using collisions, why food spoils more slowly in a fridge.", a: "Spoiling is caused by chemical reactions. In the cold fridge, particles move more slowly, so they collide less often and with less energy. Fewer collisions are hard enough to react, so the reactions that spoil food happen more slowly.", k: ["Spoiling is a chemical reaction", "Lower temperature, slower particles", "Fewer and weaker collisions", "Slower reaction rate"]},
+  {q: "Describe three safety protocols you would follow when doing the magnesium and hydrochloric acid reaction, and why.", a: "Wear goggles the whole time, because acid can splash into eyes. Read the WHMIS label and SDS first, because hydrochloric acid is corrosive and hydrogen gas is flammable. Keep flames away and use small amounts, and report any spill so it is cleaned up safely.", k: ["Goggles with reason", "WHMIS label or SDS", "Names a hazard (corrosive or flammable)", "Another protocol with reason"]}
+];
+var LONG = [
+  {q: "Design an investigation to show that mass is conserved in the reaction between baking soda and vinegar. Include your set-up, the measurements you would take, the result you expect, and why an open container would give a different result.", a: "Put vinegar in a plastic bottle and baking soda in a small bag or cap so they do not touch. Seal the bottle and record its total mass on a balance. Tip the bottle to mix the reactants. When the fizzing stops, record the mass again without opening it. The masses should be the same, because the carbon dioxide stays inside and atoms are only rearranged. In an open container the mass would drop, because the carbon dioxide gas escapes into the air. Use small amounts, because gas pressure builds up, and wear goggles.", k: ["Closed container with reactants kept apart at first", "Mass before and after on a balance", "Expect equal masses", "Explains gas escaping in an open container", "Includes a safety point"]},
+  {q: "Use shell diagrams and valence electrons to explain how sodium and chlorine react to form sodium chloride. Explain why both atoms become more stable.", a: "Sodium has shells 2, 8, 1, so it has 1 valence electron. Chlorine has shells 2, 8, 7, so it has 7. Sodium gives its valence electron to chlorine. Sodium becomes Na⁺ with shells 2, 8, and chlorine becomes Cl⁻ with shells 2, 8, 8. Both now have full outer shells, like the noble gases neon and argon, which is a stable arrangement. The opposite charges attract and form sodium chloride.", k: ["Sodium 2, 8, 1 and chlorine 2, 8, 7", "Electron moves from sodium to chlorine", "Forms Na⁺ and Cl⁻", "Both have full outer shells", "Links full shells to stability"]},
+  {q: "Your class is making a fizzing tablet react as quickly as possible. Using collision theory, explain at least three changes you could make and why each one works.", a: "Use hot water instead of cold. The particles move faster, so they collide more often and with more energy. Use less water, so the reactant particles are more concentrated and collide more often. Crush the tablet into powder, so more particles are exposed at the surface and can collide. Each change increases the number of collisions that are hard enough to react, so the rate increases.", k: ["Higher temperature with reason", "Higher concentration with reason", "More surface area with reason", "Links to more successful collisions"]},
+  {q: "Represent the burning of methane (natural gas) in four ways: a word equation, an unbalanced chemical equation, a balanced chemical equation and an atom count. Explain how the balanced equation shows conservation of mass.", a: "Word equation: methane + oxygen → carbon dioxide + water. Unbalanced: CH₄ + O₂ → CO₂ + H₂O. Balanced: CH₄ + 2O₂ → CO₂ + 2H₂O. Atom count: left has 1 C, 4 H, 4 O. Right has 1 C, 4 H and 2 + 2 = 4 O. Because every atom on the left appears on the right, the mass of the reactants equals the mass of the products.", k: ["Correct word equation", "Correct unbalanced equation", "Correct balanced equation", "Correct atom counts", "Links equal atoms to equal mass"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+ [
+  "M2.K1",
+  "A chemical reaction is a process in which the atoms that make up the original substances, or reactants, regroup into new substances or products.",
+  "Learn L1 (atoms regroup model); Lab Bench 3; Quiz; Flashcards"
+ ],
+ [
+  "M2.K2",
+  "Matter is not created or destroyed during a chemical reaction; therefore, the mass of the reactants is equal to the mass of the products.",
+  "Learn L4 (weigh a reaction: open, closed, steel wool); Lab Bench 2; Quiz; Written"
+ ],
+ [
+  "M2.K3",
+  "Observable evidence of chemical change includes\n• change in colour or odour\n• production of gas or precipitate\n• change in energy, e.g., production of light or change in temperature",
+  "Learn L2 (evidence spotter); Lab Bench 1; Sort It (Which evidence?)"
+ ],
+ [
+  "M2.K4",
+  "Physical change, such as melting an ice cube or dissolving sugar in water, does not result in new products.",
+  "Learn L3 (new substance test); Lab Bench 1 (boiling, sugar, ice); Sort It"
+ ],
+ [
+  "M2.K5",
+  "The reactivity of a pure substance depends on the number of electrons in the substance’s outermost (valence) shell.",
+  "Learn L6 (sodium meets chlorine); Lab Bench 4; Sort It (Lose, gain, share)"
+ ],
+ [
+  "M2.K6",
+  "Atoms are more stable when their outermost (valence) electron shell is full.",
+  "Learn L5 (shell builder 1 to 20); Lab Bench 4; Written"
+ ],
+ [
+  "M2.K7",
+  "Chemical reactions can be represented in various ways, including with chemical equations and by modelling.",
+  "Learn L7 (one reaction, four ways); Lab Bench 3; Written extended 4"
+ ],
+ [
+  "M2.K8",
+  "The rate of chemical reactions is affected by factors, such as temperature and concentration, that influence how often particles collide.",
+  "Learn L8 (collision box); Sort It (Faster or slower?); Written"
+ ],
+ [
+  "M2.K9",
+  "WHMIS and other safety protocols need to be considered when working with chemicals.",
+  "Learn L9 (pictograms and safe choices); Sort It (Safe or unsafe?); Quiz"
+ ],
+ [
+  "M2.S1",
+  "Perform chemical reactions, using a variety of reactants, to demonstrate chemical change.",
+  "Lab Bench 1 (nine virtual trials with results table); Learn L2. Pair with hands-on reactions."
+ ],
+ [
+  "M2.S2",
+  "Differentiate between physical and chemical change.",
+  "Learn L3; Lab Bench 1; Sort It (Chemical or physical?)"
+ ],
+ [
+  "M2.S3",
+  "Perform a chemical reaction to demonstrate how mass is conserved.",
+  "Lab Bench 2 (open vs closed trials, practice problems); Learn L4; Written extended 1"
+ ],
+ [
+  "M2.S4",
+  "Discuss WHMIS and other safety protocols.",
+  "Learn L9 (safety walk-through); Sort It (Safe or unsafe?); Written short 9"
+ ],
+ [
+  "M2.S5",
+  "Represent chemical reactions as chemical equations.",
+  "Learn L7; Lab Bench 3 (equation balancer); Written"
+ ],
+ [
+  "M2.S6",
+  "Demonstrate chemical reactions, using models.",
+  "Learn L1 and L7 (particle models); Lab Bench 3"
+ ],
+ [
+  "M2.S7",
+  "Explain the role of electrons in reactivity of pure substances.",
+  "Learn L5 and L6; Lab Bench 4 (electron predictor); Written extended 2"
+ ]
+];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

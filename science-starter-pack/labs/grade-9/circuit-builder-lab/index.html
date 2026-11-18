@@ -1,0 +1,1920 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/circuit-builder-lab/"><meta name="description" content="Energy can be transferred by a current within a circuit."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Circuit Builder Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a circuit bench. Sticky tab strip, then lessons that pair a reading column with a live schematic: charges drifting in a wire, a switch that opens the loop, cells stacking volts, series and parallel bulbs, meters, a conductor tester, a wire builder, an Ohm's law graph and a safety walk-through. Positive terminals are always red, electrons always blue, conventional current arrows always warm orange. */
+:root{
+  --bg:#EDF2EF; --surface:#FFFFFF; --surface-2:#F4F7F5; --ink:#15221B; --muted:#4E5E55; --line:#CCD8D1;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5; --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --wire:#2A3A31; --pos:#B03A2E; --neg:#1D5FA8; --elec:#1D5FA8; --conv:#B8560F; --glow:#F7C948; --glow-ring:#E3A21A; --off:#E4EAE6;
+  --copper:#B5562B; --alu:#8E9AA3; --nichrome:#6B5B4B; --meter:#5B3FA0;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --wire:#C9D6CE; --pos:#F2907F; --neg:#7DB0F0; --elec:#7DB0F0; --conv:#F5A25F; --glow:#F7C948; --glow-ring:#F2B33A; --off:#26332C;
+  --copper:#D9824F; --alu:#A9B4BC; --nichrome:#B39C86; --meter:#C3A3F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --wire:#C9D6CE; --pos:#F2907F; --neg:#7DB0F0; --elec:#7DB0F0; --conv:#F5A25F; --glow:#F7C948; --glow-ring:#F2B33A; --off:#26332C;
+  --copper:#D9824F; --alu:#A9B4BC; --nichrome:#B39C86; --meter:#C3A3F0;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g9)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g9);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g9)}
+.storebar{display:flex;gap:4px;max-width:420px}
+.storebar i{flex:1;height:6px;border-radius:3px}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.inv{grid-template-columns:minmax(0,1fr)}
+.inv .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}.inv{padding:18px}.inv .two{grid-template-columns:minmax(0,1fr)}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model,.map{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.92rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row,.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.inline input,.inline select{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-size:1.02rem}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g9)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700;min-height:1.4em}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);font-weight:700}
+.choice2 button.right{background:var(--good-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--g9)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* lab-specific */
+svg .w{fill:none;stroke:var(--wire);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+svg .cover{fill:var(--surface);stroke:none}
+svg .sym{fill:none;stroke:var(--wire);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+svg .symf{fill:var(--surface);stroke:var(--wire);stroke-width:2.5}
+svg .dot{fill:var(--wire)}
+svg .bulb{fill:var(--off);stroke:var(--wire);stroke-width:2.5}
+svg .meterc{fill:var(--surface);stroke:var(--meter);stroke-width:2.5}
+svg .metert{font-family:var(--f-mono);font-size:14px;font-weight:600;fill:var(--meter);text-anchor:middle;dominant-baseline:central}
+svg .plus{font-family:var(--f-mono);font-size:13px;font-weight:600;fill:var(--pos);text-anchor:middle}
+svg .minus{font-family:var(--f-mono);font-size:13px;font-weight:600;fill:var(--neg);text-anchor:middle}
+svg .clbl{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--ink);text-anchor:middle}
+svg .cval{font-family:var(--f-mono);font-size:11px;fill:var(--muted);text-anchor:middle}
+svg .arrow{fill:var(--conv)}
+svg .arrow.el{fill:var(--elec)}
+svg .e-dot{fill:var(--elec)}
+svg .fault{stroke:var(--bad);stroke-width:2.5;fill:none}
+svg [role=button]{cursor:pointer}
+svg [role=button]:focus{outline:none}
+svg [role=button]:focus-visible .hit{stroke:var(--g9);stroke-width:3;stroke-dasharray:4 3}
+svg .hit{fill:transparent;stroke:transparent}
+svg [role=button]:hover .hit{stroke:var(--line);stroke-width:2}
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.ro{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.ro span{font-size:.78rem;color:var(--muted)}
+.ro b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.ro.a b{color:var(--meter)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.symgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,96px),1fr));gap:6px}
+.symbtn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:2px;justify-items:center;font-size:.76rem;font-weight:700;color:var(--ink);min-width:0;text-align:center}
+.symbtn svg{width:100%;max-width:80px;height:auto;display:block}
+.symbtn[aria-pressed="true"]{outline:3px solid var(--g9);outline-offset:-2px}
+.tri{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center}
+@media (max-width:480px){.tri{grid-template-columns:minmax(0,1fr)}}
+.tri svg{width:130px;height:auto;display:block}
+.dial{display:flex;flex-wrap:wrap;gap:6px}
+.big{font-family:var(--f-mono);font-size:1.8rem;font-weight:600;font-variant-numeric:tabular-nums;background:var(--ink);color:var(--bg);border-radius:8px;padding:6px 14px;width:fit-content;max-width:100%;overflow-x:auto}
+.mtable{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+.mtable th,.mtable td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+.mtable td.n{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.mtable th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.scen-list{display:grid;gap:8px}
+.scen-list .scen p{font-size:.95rem}
+.toggle2{display:flex;flex-wrap:wrap;gap:6px}
+.sympt{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.93rem;display:grid;gap:4px}
+.sympt li{margin-bottom:2px}
+.bar2{height:12px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.bar2 i{display:block;height:100%;background:var(--g9)}
+.barrow{display:grid;grid-template-columns:7.5em minmax(0,1fr) 5.5em;gap:8px;align-items:center;font-size:.85rem}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Electricity · E1</div>
+    <h1><span class="ac">Circuit Builder</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Energy can be transferred by a current within a circuit. Build circuits, open and close switches, measure volts and amperes, and use Ohm’s law to predict what a circuit will do.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eleven short lessons in order. Start with what current is, close a circuit, and see what voltage does. Then learn the parts and symbols, compare series and parallel circuits, measure with meters, test materials, explore resistance and Ohm’s law, and finish with electrical safety.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Electric current</span>
+      <div class="codes"><span class="code">E1.K1</span><span class="code">E1.K2</span></div>
+      <h3>Moving charge carries energy</h3>
+      <p>Metal wires are full of <b>electrons</b>, tiny particles with a negative charge that are free to move. When a wire is connected to a battery, the electrons all start drifting the same way. This flow of charge is an <b>electric current</b>.</p>
+      <p>The current transfers energy from the battery to the devices in the circuit. The electrons drift slowly, often less than a millimetre each second. The energy still arrives almost instantly, because every electron in the wire starts moving at the same moment, like water already filling a hose.</p>
+      <p>Current is the <b>rate</b> at which charge passes a point. It is measured in <b>amperes</b> (A), often called amps. One ampere means one <b>coulomb</b> of charge passes each second. The unit is named after <b>André-Marie Ampère</b>, a French physicist who showed in the 1820s how electric currents push and pull on each other.</p>
+      <div class="formula">current = charge ÷ time &nbsp;&nbsp; I = Q ÷ t &nbsp;&nbsp; 1 A = 1 C/s</div>
+      <div class="key"><b>Remember:</b> current is how much charge passes a point each second. More charge per second means a bigger current.</div>
+    </div>
+    <div class="model">
+      <h4>Model: count the charge</h4>
+      <p class="hint">Change the current. Watch how many electrons cross the checkpoint each second. Each dot stands for a huge number of real electrons.</p>
+      <label class="field" for="l1I">Current: <span class="mono" id="l1Iv"></span></label>
+      <input type="range" id="l1I" min="0" max="3" step="0.5" value="1">
+      <div class="svgbox"><svg id="l1Svg" viewBox="0 0 600 160" role="img" aria-label="A wire with electrons drifting past a checkpoint"></svg></div>
+      <div class="readouts" aria-live="polite" id="l1Out"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Closed circuits and current direction</span>
+      <div class="codes"><span class="code">E1.K3</span><span class="code">E1.K9</span></div>
+      <h3>A complete loop, and which way it flows</h3>
+      <p>A <b>circuit</b> is a closed path that current can flow around without a break. Open a switch or break a wire, and the path has a gap. Current stops everywhere in that loop at once.</p>
+      <p>Scientists agreed on a direction for current in the 1700s, long before anyone knew about electrons. They chose the way a <b>positive</b> charge would move: out of the positive terminal, around the circuit, and back into the negative terminal. This is called <b>conventional current</b>.</p>
+      <p>Electrons were discovered in 1897. They are negative, so they actually drift the other way, from the negative terminal toward the positive terminal. Circuit diagrams still use conventional current, and both descriptions predict the same results.</p>
+      <div class="key"><b>Remember:</b> conventional current goes from + to −. Electron flow goes from − to +.</div>
+    </div>
+    <div class="model">
+      <h4>Model: close the loop</h4>
+      <p class="hint">Tap the switch (or focus it and press Enter) to open or close the circuit. Then choose which direction to show.</p>
+      <div class="chips" id="l2Dir" role="group" aria-label="Direction to show"></div>
+      <div class="svgbox"><svg id="l2Svg" viewBox="0 0 600 300" role="group" aria-label="Circuit with a cell, a switch and a bulb"></svg></div>
+      <div class="detail" id="l2Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Voltage</span>
+      <div class="codes"><span class="code">E1.K4</span></div>
+      <h3>The push that makes current flow</h3>
+      <p>Inside a battery, chemical reactions push electrons toward one terminal. That terminal gets extra negative charge and the other is left positive. This separation of charge creates a <b>potential difference</b>, also called <b>voltage</b>, between the two terminals.</p>
+      <p>Voltage tells how much energy each coulomb of charge gains from the source, or gives up to a device. It is measured in <b>volts</b> (V). One volt means one joule of energy for every coulomb of charge.</p>
+      <p>When a closed path joins the terminals, the potential difference makes charge flow. A bigger voltage pushes a bigger current through the same bulb. A standard AA cell gives about 1.5 V. Joining cells end to end in a battery adds their voltages.</p>
+      <div class="formula">voltage = energy ÷ charge &nbsp;&nbsp; 1 V = 1 J/C</div>
+      <div class="key"><b>Remember:</b> no potential difference, no current. Voltage is measured between two points.</div>
+    </div>
+    <div class="model">
+      <h4>Model: stack the cells</h4>
+      <p class="hint">Add 1.5 V cells to the battery. The bulb in this model acts like a 10 Ω resistor.</p>
+      <label class="field" for="l3N">Number of cells: <span class="mono" id="l3Nv"></span></label>
+      <input type="range" id="l3N" min="0" max="6" step="1" value="2">
+      <div class="svgbox"><svg id="l3Svg" viewBox="0 0 600 300" role="img" aria-label="Battery and bulb circuit"></svg></div>
+      <div class="readouts" id="l3Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Parts of a circuit</span>
+      <div class="codes"><span class="code">E1.K5</span></div>
+      <h3>Four jobs in every circuit</h3>
+      <p>Most circuits have parts that do four different jobs:</p>
+      <ul>
+        <li><b>Energy store:</b> a cell or battery stores energy chemically and supplies it to the circuit.</li>
+        <li><b>Conductor:</b> wires let charge move between the parts.</li>
+        <li><b>Load device:</b> a device that transfers energy into another store, such as a bulb (light and heat), a motor (motion) or a speaker (sound).</li>
+        <li><b>Control device:</b> a part that manages the current, such as a switch that turns it on and off, or a resistor that limits how much flows.</li>
+      </ul>
+      <p>A flashlight has all four: batteries, metal strips, a bulb or LED, and a switch.</p>
+      <p class="note">A resistor also warms up as current passes through it, so it transfers some energy too. Its main job in a circuit is to control the current.</p>
+    </div>
+    <div class="model">
+      <h4>Model: inside a flashlight</h4>
+      <p class="hint">Tap each part of the flashlight circuit to see its job.</p>
+      <div class="svgbox"><svg id="l4Svg" viewBox="0 0 600 300" role="group" aria-label="Flashlight circuit with selectable parts"></svg></div>
+      <div class="detail" id="l4Out" aria-live="polite"><p>Pick a part to start.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Schematic diagrams</span>
+      <div class="codes"><span class="code">E1.K6</span><span class="code">E1.S1</span></div>
+      <h3>Drawing circuits with symbols</h3>
+      <p>A <b>schematic diagram</b> is a map of a circuit. Each part is drawn as a simple <b>symbol</b>, and wires are drawn as straight lines with square corners. Anyone who knows the symbols can build the circuit from the diagram.</p>
+      <p>Parts can be joined in two ways. In a <b>series</b> circuit, the parts are connected one after another in a single loop. In a <b>parallel</b> circuit, the parts sit on separate <b>branches</b>, and each branch connects across the same two points.</p>
+      <p>In a cell symbol, the long line is the positive terminal and the short thick line is the negative terminal.</p>
+    </div>
+    <div class="model">
+      <h4>Model: symbol library</h4>
+      <p class="hint">Tap a symbol to read what it stands for.</p>
+      <div class="symgrid" id="l5Grid" role="group" aria-label="Circuit symbols"></div>
+      <div class="detail" id="l5Out" aria-live="polite"><p>Pick a symbol.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Series and parallel</span>
+      <div class="codes"><span class="code">E1.K7</span><span class="code">E1.K8</span><span class="code">E1.S4</span></div>
+      <h3>One path or many paths</h3>
+      <p><b>In a series circuit</b>, current flows along a single path. The current is the same at every point in the loop. If one bulb is removed or burns out, the loop is broken and every bulb goes out. Adding more bulbs makes the current smaller, so each bulb gets dimmer.</p>
+      <p><b>In a parallel circuit</b>, current flows along several paths. The current splits at a junction, and the total current equals the sum of the branch currents. Each branch gets the full voltage of the source. A branch can be opened while the others keep working, which is why the outlets and lights in a house are wired in parallel.</p>
+      <div class="formula">series: I is the same everywhere<br>parallel: I<sub>total</sub> = I<sub>1</sub> + I<sub>2</sub> + I<sub>3</sub> &nbsp; and &nbsp; V<sub>branch</sub> = V<sub>source</sub></div>
+      <p class="note">This model ignores the small resistance of the wires and the battery, as most school diagrams do.</p>
+    </div>
+    <div class="model">
+      <h4>Model: series or parallel bulbs</h4>
+      <p class="hint">Choose the arrangement and the number of bulbs. In series, tap a bulb to unscrew it. In parallel, tap a branch switch to open it.</p>
+      <div class="chips" id="l6Mode" role="group" aria-label="Arrangement"></div>
+      <div class="chips" id="l6N" role="group" aria-label="Number of bulbs"></div>
+      <div class="svgbox"><svg id="l6Svg" viewBox="0 0 600 300" role="group" aria-label="Series or parallel circuit"></svg></div>
+      <div class="readouts" id="l6Out" aria-live="polite"></div>
+      <p class="hint" id="l6Note"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Measuring circuits</span>
+      <div class="codes"><span class="code">E1.K10</span><span class="code">E1.S3</span></div>
+      <h3>Ammeters, voltmeters and multimeters</h3>
+      <ul>
+        <li>An <b>ammeter</b> measures current in amperes. It goes <b>in series</b>, so the current passes through it. You break the loop and put the ammeter in the gap.</li>
+        <li>A <b>voltmeter</b> measures potential difference in volts. It connects <b>across</b> a part, in parallel, with one lead on each side.</li>
+        <li>A <b>multimeter</b> can measure volts, amperes and ohms. You turn the dial to choose. To measure resistance, the part must have <b>no power</b> connected.</li>
+      </ul>
+      <p>Always start on the highest range and work down, and check the dial before you connect the leads.</p>
+    </div>
+    <div class="model">
+      <h4>Model: connect the meter</h4>
+      <p class="hint">Choose a meter and a way to connect it to the bulb. Then check.</p>
+      <div class="chips" id="l7Meter" role="group" aria-label="Meter"></div>
+      <div class="chips" id="l7Place" role="group" aria-label="How to connect"></div>
+      <div class="svgbox"><svg id="l7Svg" viewBox="0 0 600 300" role="img" aria-label="Meter connection diagram"></svg></div>
+      <div class="detail" id="l7Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Conductors and insulators</span>
+      <div class="codes"><span class="code">E1.K11</span><span class="code">E1.K12</span></div>
+      <h3>Which materials let charge through?</h3>
+      <p>A <b>conductor</b> is a material that lets charge move through it easily. Metals such as <b>copper</b> and <b>aluminium</b> are excellent conductors because they have electrons that are free to move. Copper is used in house wiring, and aluminium is used in many overhead power lines because it is light.</p>
+      <p>An <b>insulator</b> is a material that resists the movement of charge. <b>Rubber</b>, plastic, glass and dry <b>wood</b> are insulators. Wires are coated in plastic or rubber so the current stays inside the copper.</p>
+      <p>Water is a special case. <b>Tap water</b> conducts because it has dissolved minerals that form charged particles called ions. <b>Deionized water</b> has had those ions removed, so it is a poor conductor. As soon as anything dissolves in it, it starts to conduct again.</p>
+      <div class="key"><b>Remember:</b> treat all water, and wet skin, as a conductor around electricity.</div>
+    </div>
+    <div class="model">
+      <h4>Model: conductor tester</h4>
+      <p class="hint">Pick a material to place across the gap in the tester circuit.</p>
+      <div class="chips" id="l8Mat" role="group" aria-label="Material"></div>
+      <div class="svgbox"><svg id="l8Svg" viewBox="0 0 600 300" role="img" aria-label="Conductor tester"></svg></div>
+      <div class="detail" id="l8Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · Resistance</span>
+      <div class="codes"><span class="code">E1.K13</span><span class="code">E1.K14</span><span class="code">E1.K15</span></div>
+      <h3>What slows the current down</h3>
+      <p><b>Resistance</b> measures how much a part reduces the current. It is measured in <b>ohms</b> (Ω). The higher the resistance, the smaller the current for the same voltage.</p>
+      <p>Three properties of a conductor change its resistance:</p>
+      <ul>
+        <li><b>Material:</b> copper has low resistance. Nichrome, used in toaster wires, has much higher resistance.</li>
+        <li><b>Length:</b> a longer wire has more resistance. Double the length, double the resistance.</li>
+        <li><b>Cross-sectional area:</b> a thicker wire has less resistance, like a wider hallway letting more people through.</li>
+      </ul>
+      <p>A <b>resistor</b> is a part made to have a set resistance. Resistors control current in devices: they protect an LED from too much current, and a variable resistor dims a light or sets a fan speed.</p>
+      <p class="note">Temperature also matters. Most metal wires have more resistance when they are hot.</p>
+    </div>
+    <div class="model">
+      <h4>Model: wire builder</h4>
+      <p class="hint">Change the material, length and thickness of a wire. Compare its resistance with a copper wire 1 m long and 0.5 mm across.</p>
+      <div class="chips" id="l9Mat" role="group" aria-label="Wire material"></div>
+      <label class="field" for="l9L">Length: <span class="mono" id="l9Lv"></span></label>
+      <input type="range" id="l9L" min="0.5" max="10" step="0.5" value="1">
+      <label class="field" for="l9D">Diameter: <span class="mono" id="l9Dv"></span></label>
+      <input type="range" id="l9D" min="0.2" max="2" step="0.1" value="0.5">
+      <div class="svgbox"><svg id="l9Svg" viewBox="0 0 600 120" role="img" aria-label="Wire drawing"></svg></div>
+      <div class="readouts" id="l9Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 10 · Ohm’s law</span>
+      <div class="codes"><span class="code">E1.K16</span><span class="code">E1.S6</span></div>
+      <h3>Voltage, current and resistance together</h3>
+      <p><b>Ohm’s law</b> connects the three quantities:</p>
+      <div class="formula">V = I × R &nbsp;&nbsp; I = V ÷ R &nbsp;&nbsp; R = V ÷ I</div>
+      <p>V is voltage in volts, I is current in amperes, and R is resistance in ohms. You do not need to memorize it. Cover the quantity you want in the triangle, and the other two show you what to do.</p>
+      <ul>
+        <li>Raise the voltage, keep resistance the same: the current goes up by the same factor.</li>
+        <li>Raise the resistance, keep voltage the same: the current goes down.</li>
+      </ul>
+      <p>For a resistor at a steady temperature, a graph of current against voltage is a straight line through zero.</p>
+      <p class="note">A bulb filament gets very hot, so its resistance rises as the current grows. Its graph curves. The bulbs in this lab are modelled as fixed resistors to keep the numbers simple.</p>
+    </div>
+    <div class="model">
+      <h4>Model: Ohm’s law graph</h4>
+      <div class="tri"><svg id="l10Tri" viewBox="0 0 130 115" role="img" aria-label="Ohm's law triangle with V on top, I and R on the bottom"></svg><p class="hint">Set the voltage and the resistance. The point shows the current. The line shows every point for this resistor.</p></div>
+      <label class="field" for="l10V">Voltage: <span class="mono" id="l10Vv"></span></label>
+      <input type="range" id="l10V" min="0" max="12" step="0.5" value="6">
+      <label class="field" for="l10R">Resistance: <span class="mono" id="l10Rv"></span></label>
+      <input type="range" id="l10R" min="2" max="40" step="1" value="10">
+      <div class="svgbox"><svg id="l10Svg" viewBox="0 0 600 300" role="img" aria-label="Graph of current against voltage"></svg></div>
+      <div class="worked mono" id="l10Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 11 · Electrical safety</span>
+      <div class="codes"><span class="code">E1.K17</span><span class="code">E1.S8</span></div>
+      <h3>Staying safe around current</h3>
+      <p>Current through the body can burn tissue, make muscles lock so you cannot let go, and stop the heart from beating normally. Less than one tenth of an ampere across the chest can be deadly. Household outlets in Canada supply about 120 V, which is enough to push a dangerous current through a person, especially with wet skin.</p>
+      <ul>
+        <li>Keep electrical devices away from water. Outlets near sinks and bathtubs use a <b>GFCI</b> (ground fault circuit interrupter) that cuts the power in a fraction of a second if current leaks.</li>
+        <li><b>Fuses and circuit breakers</b> open a circuit when the current gets too large, which prevents wires from overheating and starting fires.</li>
+        <li>Never use cords with cracked insulation, and pull a plug by the plug, not the cord.</li>
+        <li>Stay far away from power lines and downed lines. Keep kites, drones and ladders clear. In Alberta, use Click Before You Dig to locate buried lines before digging.</li>
+        <li>In the lab, use low-voltage cells, check circuits with your teacher before connecting power, and disconnect power before changing a circuit.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Model: safe or unsafe?</h4>
+      <p class="hint">Decide for each situation, then read why.</p>
+      <div class="scen-list" id="l11List"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" hidden role="tabpanel" aria-labelledby="t-bench">
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five virtual investigations. Design schematics, measure with a multimeter, control a current, troubleshoot faults, and solve Ohm’s law problems. All readings are simulated practice data.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · Schematic designer</span>
+      <div class="codes"><span class="code">E1.S1</span><span class="code">E1.S4</span></div>
+      <h3>Design a circuit to meet a goal</h3>
+      <p>Pick a design goal. Set up the circuit with the controls, then check your design. The schematic redraws as you go.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <label class="field" for="b1Goal">Design goal</label>
+        <select id="b1Goal"></select>
+        <div class="chips" id="b1Mode" role="group" aria-label="Arrangement"></div>
+        <div class="chips" id="b1N" role="group" aria-label="Number of bulbs"></div>
+        <div class="chips" id="b1Opts" role="group" aria-label="Extra parts"></div>
+        <div class="row"><button class="btn" type="button" id="b1Check">Check my design</button></div>
+        <div class="detail" id="b1Out" aria-live="polite"><p>Choose a goal, then build.</p></div>
+      </div>
+      <div class="model">
+        <h4>Your schematic</h4>
+        <div class="svgbox"><svg id="b1Svg" viewBox="0 0 600 300" role="img" aria-label="Your schematic diagram"></svg></div>
+        <p class="hint" id="b1Desc"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Multimeter readings</span>
+      <div class="codes"><span class="code">E1.S3</span><span class="code">E1.S4</span><span class="code">E1.K10</span></div>
+      <h3>Measure a mystery circuit</h3>
+      <p>Each circuit has a battery and two resistors. Set the multimeter dial, pick what to measure, and record the reading. Then answer the pattern question. Readings vary a little, as real meters do.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <div class="row"><button class="btn ghost" type="button" id="b2New">New circuit</button><button class="btn ghost" type="button" id="b2Power" aria-pressed="true">Power: on</button></div>
+        <div class="svgbox"><svg id="b2Svg" viewBox="0 0 600 300" role="img" aria-label="Mystery circuit"></svg></div>
+        <span class="tagline">Multimeter dial</span>
+        <div class="chips" id="b2Dial" role="group" aria-label="Multimeter dial"></div>
+        <label class="field" for="b2What">Measure</label>
+        <select id="b2What"></select>
+        <div class="row"><button class="btn" type="button" id="b2Go">Take reading</button></div>
+        <div class="big" id="b2Read" aria-live="polite">0.00</div>
+        <p class="fb" id="b2Fb" aria-live="polite"></p>
+      </div>
+      <div class="model">
+        <h4>Data table</h4>
+        <div class="tablebox"><table class="mtable"><thead><tr><th>Measurement</th><th>Reading</th></tr></thead><tbody id="b2Tbl"></tbody></table></div>
+        <div id="b2Q"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Control devices</span>
+      <div class="codes"><span class="code">E1.S2</span><span class="code">E1.K15</span><span class="code">E1.K5</span></div>
+      <h3>Dim a lamp without blowing the fuse</h3>
+      <p>A 9 V battery runs a lamp (15 Ω) through a switch, a variable resistor and a 0.5 A fuse. Use the control devices to manage the current. What happens when the variable resistor is turned all the way down?</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <div class="svgbox"><svg id="b3Svg" viewBox="0 0 600 300" role="group" aria-label="Lamp circuit with switch, variable resistor and fuse"></svg></div>
+        <label class="field" for="b3R">Variable resistor: <span class="mono" id="b3Rv"></span></label>
+        <input type="range" id="b3R" min="0" max="60" step="1" value="30">
+        <div class="row"><button class="btn ghost" type="button" id="b3Sw">Open switch</button><button class="btn ghost" type="button" id="b3Fuse">Replace fuse</button></div>
+      </div>
+      <div class="model">
+        <div class="readouts" id="b3Out" aria-live="polite"></div>
+        <div class="worked" id="b3Work"></div>
+        <div class="detail" id="b3Msg" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Troubleshooter</span>
+      <div class="codes"><span class="code">E1.S5</span><span class="code">E1.K7</span><span class="code">E1.K8</span></div>
+      <h3>Find the fault</h3>
+      <p>Something is wrong with each circuit. Read the symptoms and the meter readings, then choose the most likely fault. Every bulb in these circuits acts like a 10 Ω resistor when it works.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <div class="svgbox"><svg id="b4Svg" viewBox="0 0 600 300" role="img" aria-label="Faulty circuit"></svg></div>
+        <div class="sympt" id="b4Sym"></div>
+      </div>
+      <div class="model">
+        <span class="tagline" id="b4Count"></span>
+        <div class="choice2" id="b4Opts" role="group" aria-label="Possible faults"></div>
+        <div class="detail" id="b4Out" aria-live="polite"><p>Pick the fault you think is most likely.</p></div>
+        <div class="row"><button class="btn" type="button" id="b4Next">Next circuit</button></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 5 · Ohm’s law problems</span>
+      <div class="codes"><span class="code">E1.S7</span><span class="code">E1.S6</span><span class="code">E1.K16</span></div>
+      <h3>Calculate V, I or R</h3>
+      <p>Use the calculator to check any two values, study the worked example, then solve random practice problems.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <h4>Calculator</h4>
+        <label class="field" for="b5Find">Find</label>
+        <select id="b5Find"><option value="V">Voltage V</option><option value="I">Current I</option><option value="R">Resistance R</option></select>
+        <div class="inline">
+          <label class="field" for="b5A" id="b5Al">Current I (A)</label><input type="number" id="b5A" value="0.3" step="any">
+          <label class="field" for="b5B" id="b5Bl">Resistance R (Ω)</label><input type="number" id="b5B" value="20" step="any">
+        </div>
+        <div class="worked mono" id="b5Calc" aria-live="polite"></div>
+        <h4>Worked example</h4>
+        <div class="worked">
+          <p><b>Problem:</b> A toaster element has a resistance of 12 Ω and is plugged into a 120 V outlet. What current flows?</p>
+          <p class="mono">Given: V = 120 V, R = 12 Ω. Find I.</p>
+          <p class="mono">I = V ÷ R = 120 V ÷ 12 Ω = 10 A</p>
+          <p><b>Answer:</b> about 10 A flows through the element.</p>
+        </div>
+      </div>
+      <div class="model">
+        <h4>Practice</h4>
+        <p id="b5Q"></p>
+        <div class="inline"><label class="field" for="b5Ans" id="b5AnsL">Your answer</label><input type="number" id="b5Ans" step="any"><button class="btn" type="button" id="b5Check">Check</button><button class="btn ghost" type="button" id="b5Next">New problem</button></div>
+        <p class="fb" id="b5Fb" aria-live="polite"></p>
+        <div class="worked mono" id="b5Sol" hidden></div>
+        <p class="hint mono" id="b5Score"></p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 E1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>E1.K1:</b> current is taught as a flow of charge that transfers energy. Electrons drift slowly while energy is transferred almost instantly. In liquids such as tap water the moving charges are ions, not electrons (noted in Lesson 8).</li>
+      <li><b>E1.K2:</b> the coulomb is named so that “rate at which charge passes” has a unit (1 A = 1 C/s); I = Q ÷ t is shown as context only. Ampère is described briefly as a French physicist whose 1820s work showed currents push and pull on each other.</li>
+      <li><b>E1.K4:</b> the draft says voltage arises from “a difference in electric charge between two points”. The lab teaches the more precise idea: a battery separates charge, creating a difference in electric potential energy per coulomb between two points (1 V = 1 J/C). The draft wording is kept as the cause of the potential difference.</li>
+      <li><b>E1.K5:</b> the draft lists a resistor as a control device. The lab keeps that and notes once that a resistor also transfers some energy to the thermal store.</li>
+      <li><b>E1.K7 / E1.K8:</b> series voltages adding to the source voltage is shown as brief context in the measuring investigation. “Not every branch needs to be closed” is taught as: other branches keep working when one is open. Wire and internal battery resistance are ignored, so each parallel branch gets exactly the source voltage.</li>
+      <li><b>E1.K9:</b> conventional current is dated to the 1700s (Franklin’s choice of positive and negative is not named) and the electron to 1897.</li>
+      <li><b>E1.K11 / E1.K12:</b> tap water is taught as a conductor because of dissolved ions, weaker than metals but enough to be dangerous. Deionized water is taught as a poor conductor that becomes conductive once anything dissolves in it.</li>
+      <li><b>E1.K14:</b> wire resistances use rounded room-temperature resistivities (copper 1.7 × 10⁻⁸ Ω·m, aluminium 2.7 × 10⁻⁸ Ω·m, nichrome 1.1 × 10⁻⁶ Ω·m). The formula is not shown; students see the proportions only. Temperature is mentioned once.</li>
+      <li><b>E1.K16:</b> Ohm’s law is taught for resistors at steady temperature. Bulb filaments are not ohmic; the lab models every bulb as a fixed 10 Ω resistor and says so.</li>
+      <li><b>E1.K17 / E1.S8:</b> safety facts are general (about 120 V household supply, GFCI outlets, fuses and breakers, power lines, Click Before You Dig). Check them against your local utility’s guidance. Electrical injury can be a sensitive topic if a student has a personal connection.</li>
+      <li><b>Data:</b> all meter readings, fault cases and practice problems are simulated practice data. They support, but do not replace, hands-on circuits with low-voltage cells.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-e1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); if (s.indexOf(".") > -1) s = s.replace(/0+$/, "").replace(/\.$/, ""); return s; }
+function grp(x){ var s = String(x); var p = s.split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+var REDUCED = false;
+try { REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function f2(x){ return (Math.round(x * 100) / 100).toFixed(2); }
+function sig(x){
+  if (x === 0) return "0";
+  var a = Math.abs(x);
+  if (a >= 100) return String(Math.round(x));
+  if (a >= 10) return fmt(x, 1);
+  if (a >= 1) return fmt(x, 2);
+  return String(Number(x.toPrecision(2)));
+}
+function svgBtn(g, label, fn){
+  g.setAttribute("role", "button"); g.setAttribute("tabindex", "0"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+function refocus(svg, label){
+  if (!label) return;
+  var nodes = svg.querySelectorAll("[role=button]");
+  for (var i = 0; i < nodes.length; i++) if (nodes[i].getAttribute("aria-label") === label) { nodes[i].focus(); return; }
+}
+
+/* ---------- Circuit symbols ---------- */
+/* draws a symbol centred at 0,0, horizontal, spanning x -30..30 */
+function symbol(g, c){
+  var t = c.t;
+  function line(x1, y1, x2, y2, cls, extra){ var a = {x1: x1, y1: y1, x2: x2, y2: y2, "class": cls || "sym"}; for (var k in extra) a[k] = extra[k]; g.appendChild(sv("line", a)); }
+  function stubs(a){ line(-30, 0, -a, 0); line(a, 0, 30, 0); }
+  g.appendChild(sv("rect", {x: -30, y: -17, width: 60, height: 34, "class": "cover"}));
+  if (t === "bulb" || t === "removed") {
+    stubs(14);
+    if (t === "removed") {
+      g.appendChild(sv("circle", {cx: 0, cy: 0, r: 14, fill: "none", stroke: "var(--muted)", "stroke-width": 2, "stroke-dasharray": "3 3"}));
+    } else {
+      var gl = c.glow || 0;
+      if (gl > 0.02) g.appendChild(sv("circle", {cx: 0, cy: 0, r: 15 + 7 * gl, fill: "var(--glow)", "fill-opacity": (0.25 * gl).toFixed(2), stroke: "none"}));
+      g.appendChild(sv("circle", {cx: 0, cy: 0, r: 14, "class": "bulb"}));
+      if (gl > 0.02) g.appendChild(sv("circle", {cx: 0, cy: 0, r: 13, fill: "var(--glow)", "fill-opacity": Math.min(1, 0.25 + 0.75 * gl).toFixed(2)}));
+      line(-10, -10, 10, 10); line(-10, 10, 10, -10);
+    }
+  } else if (t === "switch") {
+    stubs(18);
+    g.appendChild(sv("circle", {cx: -18, cy: 0, r: 3, "class": "dot"}));
+    g.appendChild(sv("circle", {cx: 18, cy: 0, r: 3, "class": "dot"}));
+    if (c.closed) line(-18, 0, 18, 0); else line(-18, 0, 14, -16);
+  } else if (t === "res" || t === "vres") {
+    stubs(20);
+    g.appendChild(sv("polyline", {points: "-20,0 -17,-8 -10,8 -3,-8 4,8 11,-8 17,8 20,0", "class": "sym"}));
+    if (t === "vres") { line(-16, 13, 15, -13); g.appendChild(sv("polygon", {points: "18,-16 9,-14 14,-8", fill: "var(--wire)"})); }
+  } else if (t === "meter") {
+    stubs(14);
+    g.appendChild(sv("circle", {cx: 0, cy: 0, r: 14, "class": "meterc"}));
+    var tx = sv("text", {x: 0, y: 1, "class": "metert"}, c.letter || "A");
+    if (c.vertical) tx.setAttribute("transform", "rotate(-90)");
+    g.appendChild(tx);
+  } else if (t === "motor") {
+    stubs(14);
+    g.appendChild(sv("circle", {cx: 0, cy: 0, r: 14, "class": "symf"}));
+    var tm = sv("text", {x: 0, y: 1, "class": "metert", style: "fill:var(--ink)"}, "M");
+    if (c.vertical) tm.setAttribute("transform", "rotate(-90)");
+    g.appendChild(tm);
+  } else if (t === "fuse") {
+    stubs(16);
+    g.appendChild(sv("rect", {x: -16, y: -7, width: 32, height: 14, rx: 2, "class": "symf"}));
+    if (c.blown) { line(-16, 0, -4, 3); line(4, -3, 16, 0); } else line(-16, 0, 16, 0);
+  } else if (t === "gap") {
+    stubs(14);
+    g.appendChild(sv("circle", {cx: -14, cy: 0, r: 3, "class": "dot"}));
+    g.appendChild(sv("circle", {cx: 14, cy: 0, r: 3, "class": "dot"}));
+    if (c.fill) g.appendChild(sv("rect", {x: -12, y: -6, width: 24, height: 12, rx: 2, fill: c.fill, stroke: "var(--wire)", "stroke-width": 1.5}));
+  } else if (t === "cell" || t === "battery") {
+    if (t === "cell") {
+      line(-30, 0, -4, 0); line(4, 0, 30, 0);
+      line(-4, -16, -4, 16); line(4, -8, 4, 8, "sym", {"stroke-width": 5, "stroke-linecap": "butt"});
+    } else {
+      line(-30, 0, -12, 0); line(12, 0, 30, 0);
+      line(-12, -16, -12, 16); line(-5, -8, -5, 8, "sym", {"stroke-width": 5, "stroke-linecap": "butt"});
+      line(5, -16, 5, 16); line(12, -8, 12, 8, "sym", {"stroke-width": 5, "stroke-linecap": "butt"});
+    }
+  } else if (t === "junction") {
+    line(-30, 0, 30, 0); line(0, -20, 0, 20);
+    g.appendChild(sv("circle", {cx: 0, cy: 0, r: 4, "class": "dot"}));
+  } else if (t === "wire") {
+    line(-30, 0, 30, 0);
+  }
+}
+function placeComp(parent, c, x, y, vertical, lbl){
+  if (!lbl) { var cc = {}; for (var kk in c) if (kk !== "label" && kk !== "val") cc[kk] = c[kk]; c = cc; }
+  var g = sv("g", {transform: "translate(" + x + " " + y + ")" + (vertical ? " rotate(90)" : "")});
+  c.vertical = vertical;
+  symbol(g, c);
+  if (c.on) {
+    g.insertBefore(sv("rect", {x: -29, y: -24, width: 58, height: 48, rx: 6, "class": "hit"}), g.firstChild.nextSibling);
+    svgBtn(g, c.aria || c.label || "component", c.on);
+  }
+  parent.appendChild(g);
+  if (c.label || c.val) {
+    var lx = x, ly = y, anchor = "middle";
+    if (lbl === "below") ly = y + 34;
+    else if (lbl === "above") ly = y - 44;
+    else if (lbl === "right") { lx = x + 28; ly = y + 2; anchor = "start"; }
+    else if (lbl === "left") { lx = x - 28; ly = y + 2; anchor = "end"; }
+    if (c.label) parent.appendChild(sv("text", {x: lx, y: ly, "class": "clbl", "text-anchor": anchor}, c.label));
+    if (c.val) parent.appendChild(sv("text", {x: lx, y: ly + 14, "class": "cval", "text-anchor": anchor}, c.val));
+  }
+  return g;
+}
+function acrossH(parent, x, y, dir, c){
+  /* voltmeter loop above (dir -1) or below (dir 1) a horizontal component at x,y */
+  var yy = y + dir * 52;
+  parent.appendChild(sv("polyline", {points: (x - 30) + "," + y + " " + (x - 30) + "," + yy + " " + (x + 30) + "," + yy + " " + (x + 30) + "," + y, "class": "w"}));
+  parent.appendChild(sv("circle", {cx: x - 30, cy: y, r: 3.5, "class": "dot"}));
+  parent.appendChild(sv("circle", {cx: x + 30, cy: y, r: 3.5, "class": "dot"}));
+  placeComp(parent, c || {t: "meter", letter: "V"}, x, yy, false);
+}
+function acrossV(parent, x, y, c){
+  /* meter loop to the right of a vertical component at x,y */
+  var xx = x + 52;
+  parent.appendChild(sv("polyline", {points: x + "," + (y - 30) + " " + xx + "," + (y - 30) + " " + xx + "," + (y + 30) + " " + x + "," + (y + 30), "class": "w"}));
+  parent.appendChild(sv("circle", {cx: x, cy: y - 30, r: 3.5, "class": "dot"}));
+  parent.appendChild(sv("circle", {cx: x, cy: y + 30, r: 3.5, "class": "dot"}));
+  placeComp(parent, c || {t: "meter", letter: "V"}, xx, y, true);
+}
+function arrowAt(parent, x, y, angle, el){
+  parent.appendChild(sv("polygon", {points: "-7,-6 7,0 -7,6", transform: "translate(" + x + " " + y + ") rotate(" + angle + ")", "class": "arrow" + (el ? " el" : "")}));
+}
+/* spec: {type, source:{t,label,val,on,aria}, top:[], bottom:[], branches:[[...]], mainTop:[], mainBottom:[], arrows, wireOn} */
+function drawCircuit(svg, spec){
+  clear(svg);
+  var L = 70, src = spec.source || {t: "battery"};
+  if (spec.type === "parallel") {
+    var T = 50, B = 250, n = spec.branches.length;
+    var xs = spec.branches.map(function(b, i){ return n === 1 ? 360 : 230 + (500 - 230) * i / (n - 1); });
+    var xr = xs[n - 1];
+    svg.appendChild(sv("polyline", {points: L + "," + 150 + " " + L + "," + T + " " + xr + "," + T + " " + xr + "," + B + " " + L + "," + B + " " + L + ",150", "class": "w"}));
+    xs.forEach(function(x, i){ if (i < n - 1) { svg.appendChild(sv("line", {x1: x, y1: T, x2: x, y2: B, "class": "w"})); svg.appendChild(sv("circle", {cx: x, cy: T, r: 4, "class": "dot"})); svg.appendChild(sv("circle", {cx: x, cy: B, r: 4, "class": "dot"})); } });
+    placeComp(svg, src, L, 150, true, null);
+    svg.appendChild(sv("text", {x: L - 20, y: 128, "class": "plus"}, "+"));
+    svg.appendChild(sv("text", {x: L - 20, y: 182, "class": "minus"}, "−"));
+    if (src.label) { svg.appendChild(sv("text", {x: L + 24, y: 148, "class": "clbl", "text-anchor": "start"}, src.label)); }
+    if (src.val) { svg.appendChild(sv("text", {x: L + 24, y: 162, "class": "cval", "text-anchor": "start"}, src.val)); }
+    (spec.mainTop || []).forEach(function(c){ placeComp(svg, c, 150, T, false, "below"); });
+    (spec.mainBottom || []).forEach(function(c){ placeComp(svg, c, 150, B, false, "above"); });
+    spec.branches.forEach(function(br, i){
+      var m = br.length;
+      br.forEach(function(c, j){
+        var y = m === 1 ? 150 : (m === 2 ? [115, 190][j] : T + (B - T) * (j + 1) / (m + 1));
+        if (c.across) acrossV(svg, xs[i], y, c.across === true ? null : c.across);
+        placeComp(svg, c, xs[i], y, true, c.across ? "left" : "right");
+      });
+    });
+    return;
+  }
+  var Ts = 80, Bs = 250, R = 530, mid = 165;
+  svg.appendChild(sv("polyline", {points: L + "," + mid + " " + L + "," + Ts + " " + R + "," + Ts + " " + R + "," + Bs + " " + L + "," + Bs + " " + L + "," + mid, "class": "w"}));
+  if (spec.wireOn) {
+    var wg = sv("g");
+    wg.appendChild(sv("polyline", {points: L + "," + mid + " " + L + "," + Ts + " " + R + "," + Ts + " " + R + "," + Bs + " " + L + "," + Bs + " " + L + "," + mid, "class": "hit", "stroke-width": 14, fill: "none"}));
+    svgBtn(wg, spec.wireAria || "Wires", spec.wireOn);
+    svg.appendChild(wg);
+  }
+  placeComp(svg, src, L, mid, true, null);
+  svg.appendChild(sv("text", {x: L - 20, y: mid - 22, "class": "plus"}, "+"));
+  svg.appendChild(sv("text", {x: L - 20, y: mid + 32, "class": "minus"}, "−"));
+  if (src.label) svg.appendChild(sv("text", {x: L + 24, y: mid - 2, "class": "clbl", "text-anchor": "start"}, src.label));
+  if (src.val) svg.appendChild(sv("text", {x: L + 24, y: mid + 12, "class": "cval", "text-anchor": "start"}, src.val));
+  var top = spec.top || [], bot = spec.bottom || [];
+  top.forEach(function(c, i){
+    var x = 140 + (460 - 140) * (top.length === 1 ? 0.5 : i / (top.length - 1));
+    if (top.length === 2) x = [200, 400][i];
+    if (c.across) acrossH(svg, x, Ts, -1, c.across === true ? null : c.across);
+    placeComp(svg, c, x, Ts, false, "below");
+  });
+  bot.forEach(function(c, i){
+    var x = bot.length === 1 ? 300 : 200 + (400 - 200) * i / (bot.length - 1);
+    if (c.across) acrossH(svg, x, Bs, 1, c.across === true ? null : c.across);
+    placeComp(svg, c, x, Bs, false, "above");
+  });
+  if (spec.arrows) {
+    var el2 = spec.arrows === "elec";
+    if (!el2) { arrowAt(svg, 105, Ts, 0); arrowAt(svg, R, 140, 90); arrowAt(svg, 495, Bs, 180); arrowAt(svg, L, 112, -90); }
+    else { arrowAt(svg, 105, Ts, 180); arrowAt(svg, R, 140, -90); arrowAt(svg, 495, Bs, 0); arrowAt(svg, L, 112, 90, false); }
+    if (el2) Array.prototype.forEach.call(svg.querySelectorAll(".arrow"), function(a){ a.setAttribute("class", "arrow el"); });
+  }
+}
+function readouts(box, items){
+  clear(box);
+  items.forEach(function(it){
+    var d = el("div", {"class": "ro" + (it.a ? " a" : "")});
+    d.appendChild(el("span", null, it.k)); d.appendChild(el("b", null, it.v)); box.appendChild(d);
+  });
+}
+function glowFrom(P, Pref){ return P <= 0 ? 0 : Math.min(1, Math.sqrt(P / Pref)); }
+
+/* ---------- Lesson 1: count the charge ---------- */
+(function(){
+  var s = $("l1Svg"), slider = $("l1I");
+  s.appendChild(sv("rect", {x: 20, y: 55, width: 560, height: 50, rx: 25, fill: "var(--surface-2)", stroke: "var(--copper)", "stroke-width": 3}));
+  s.appendChild(sv("line", {x1: 300, y1: 40, x2: 300, y2: 120, stroke: "var(--g9)", "stroke-width": 2.5, "stroke-dasharray": "6 4"}));
+  s.appendChild(sv("text", {x: 300, y: 34, "class": "clbl"}, "checkpoint"));
+  s.appendChild(sv("text", {x: 30, y: 140, "class": "clbl", "text-anchor": "start", style: "fill:var(--elec)"}, "← electrons drift toward +"));
+  s.appendChild(sv("text", {x: 570, y: 140, "class": "clbl", "text-anchor": "end", style: "fill:var(--conv)"}, "conventional current →"));
+  var dots = [];
+  for (var i = 0; i < 36; i++) { var c = sv("circle", {cx: 30 + Math.random() * 540, cy: 64 + Math.random() * 32, r: 4.5, "class": "e-dot"}); s.appendChild(c); dots.push({n: c, x: Number(c.getAttribute("cx"))}); }
+  var crossTimes = [], last = null;
+  function upd(){
+    var I = Number(slider.value);
+    $("l1Iv").textContent = fmt(I, 1) + " A";
+    readouts($("l1Out"), [{k: "Current", v: fmt(I, 1) + " A", a: true}, {k: "Charge each second", v: fmt(I, 1) + " C"}, {k: "Charge in 10 s", v: fmt(I * 10, 0) + " C"}]);
+  }
+  function step(ts){
+    if (last == null) last = ts;
+    var dt = Math.min(0.05, (ts - last) / 1000); last = ts;
+    var v = Number(slider.value) * 40;
+    dots.forEach(function(d){
+      var old = d.x; d.x -= v * dt;
+      if (old >= 300 && d.x < 300) crossTimes.push(ts);
+      if (d.x < 30) d.x += 540;
+      d.n.setAttribute("cx", d.x.toFixed(1));
+    });
+    if (!$("learn").hidden) requestAnimationFrame(step); else { last = null; setTimeout(function(){ requestAnimationFrame(step); }, 400); }
+  }
+  slider.addEventListener("input", upd); upd();
+  if (!REDUCED) requestAnimationFrame(step);
+})();
+
+/* ---------- Lesson 2: close the loop ---------- */
+(function(){
+  var closed = true, dir = "conv";
+  function draw(focusLabel){
+    var lab = closed ? "Switch, closed. Tap to open" : "Switch, open. Tap to close";
+    drawCircuit($("l2Svg"), {type: "series", source: {t: "cell", label: "1.5 V cell"}, top: [{t: "switch", closed: closed, label: "switch", on: function(){ closed = !closed; draw(true); }, aria: lab}, {t: "bulb", glow: closed ? 0.8 : 0, label: "bulb"}], arrows: closed ? dir : null});
+    if (focusLabel) refocus($("l2Svg"), closed ? "Switch, closed. Tap to open" : "Switch, open. Tap to close");
+    var out = $("l2Out"); clear(out);
+    if (!closed) { out.appendChild(el("h5", null, "Open circuit")); out.appendChild(el("p", null, "There is a gap in the path, so no current flows anywhere in the loop and the bulb is off.")); return; }
+    out.appendChild(el("h5", null, dir === "conv" ? "Closed circuit: conventional current" : "Closed circuit: electron flow"));
+    out.appendChild(el("p", null, dir === "conv" ? "The orange arrows show conventional current: out of the positive terminal (+), through the switch and bulb, and back to the negative terminal (−)." : "The blue arrows show electron flow: electrons leave the negative terminal (−) and drift around to the positive terminal (+). This is the opposite way to conventional current."));
+  }
+  chipGroup($("l2Dir"), [{label: "Conventional current", v: "conv"}, {label: "Electron flow", v: "elec"}], function(it){ dir = it.v; draw(); }, 0);
+})();
+
+/* ---------- Lesson 3: stack the cells ---------- */
+(function(){
+  function upd(){
+    var n = Number($("l3N").value), V = 1.5 * n, I = V / 10, P = V * I;
+    $("l3Nv").textContent = n + " (" + fmt(V, 1) + " V)";
+    drawCircuit($("l3Svg"), {type: "series", source: {t: n >= 2 ? "battery" : "cell", label: fmt(V, 1) + " V", val: n + (n === 1 ? " cell" : " cells")}, top: [{t: "bulb", glow: glowFrom(P, 8.1), label: "bulb", val: "10 Ω"}], bottom: [{t: "meter", letter: "A", label: "ammeter"}]});
+    readouts($("l3Out"), [{k: "Voltage", v: fmt(V, 1) + " V"}, {k: "Energy per coulomb", v: fmt(V, 1) + " J/C"}, {k: "Current", v: f2(I) + " A", a: true}]);
+  }
+  $("l3N").addEventListener("input", upd); upd();
+})();
+
+/* ---------- Lesson 4: flashlight parts ---------- */
+(function(){
+  var INFO = {
+    battery: ["Energy store", "Two 1.5 V cells joined end to end make a 3 V battery. Chemical energy stored in the cells is transferred by the current to the rest of the circuit."],
+    wire: ["Conductor", "Metal wires or strips let charge move easily between the parts. In a flashlight these are often springs and copper or brass strips."],
+    switch: ["Control device", "The switch opens or closes the path. Closed, current flows. Open, the gap stops the current everywhere."],
+    bulb: ["Load device", "The bulb or LED transfers energy from the current into light, plus some thermal energy that warms the surroundings."],
+    res: ["Control device", "A resistor limits the current. Many LED flashlights have one so the LED does not get too much current and burn out."]
+  };
+  var sel = null;
+  function show(k){
+    sel = k; draw(k);
+    var o = $("l4Out"); clear(o); o.appendChild(el("span", {"class": "tagline"}, INFO[k][0])); o.appendChild(el("p", null, INFO[k][1]));
+  }
+  function draw(k){
+    drawCircuit($("l4Svg"), {type: "series",
+      source: {t: "battery", label: "battery", val: "3 V", on: function(){ show("battery"); }, aria: "Battery"},
+      wireOn: function(){ show("wire"); }, wireAria: "Wires",
+      top: [{t: "switch", closed: true, label: "switch", on: function(){ show("switch"); }, aria: "Switch"}, {t: "bulb", glow: 0.7, label: "LED bulb", on: function(){ show("bulb"); }, aria: "LED bulb"}],
+      bottom: [{t: "res", label: "resistor", on: function(){ show("res"); }, aria: "Resistor"}]});
+    if (k) refocus($("l4Svg"), {battery: "Battery", wire: "Wires", "switch": "Switch", bulb: "LED bulb", res: "Resistor"}[k]);
+  }
+  draw();
+})();
+
+/* ---------- Lesson 5: symbol library ---------- */
+(function(){
+  var SYMS = [
+    {c: {t: "cell"}, n: "Cell", d: "One chemical cell, the energy store. The long line is positive (+) and the short thick line is negative (−)."},
+    {c: {t: "battery"}, n: "Battery", d: "Two or more cells joined together. Their voltages add."},
+    {c: {t: "bulb", glow: 0}, n: "Lamp (bulb)", d: "A load that transfers energy into light and heat."},
+    {c: {t: "switch", closed: false}, n: "Open switch", d: "A control device with a gap. No current can pass."},
+    {c: {t: "switch", closed: true}, n: "Closed switch", d: "A control device with the path complete. Current can pass."},
+    {c: {t: "res"}, n: "Resistor", d: "A control device that limits current. This zigzag symbol is common in North America; some diagrams use a plain rectangle."},
+    {c: {t: "vres"}, n: "Variable resistor", d: "A resistor you can adjust, such as a dimmer or volume control."},
+    {c: {t: "meter", letter: "A"}, n: "Ammeter", d: "Measures current in amperes. Connected in series."},
+    {c: {t: "meter", letter: "V"}, n: "Voltmeter", d: "Measures potential difference in volts. Connected across a part, in parallel."},
+    {c: {t: "motor"}, n: "Motor", d: "A load that transfers energy into motion."},
+    {c: {t: "fuse"}, n: "Fuse", d: "A safety device. Its thin wire melts and opens the circuit if the current gets too large."},
+    {c: {t: "junction"}, n: "Junction", d: "A dot shows where wires join. Current can split or combine here, as in a parallel circuit."}
+  ];
+  var grid = $("l5Grid"), btns = [];
+  SYMS.forEach(function(s, i){
+    var b = el("button", {"class": "symbtn", type: "button", "aria-pressed": "false"});
+    var svg = sv("svg", {viewBox: "-36 -24 72 48", "aria-hidden": "true"});
+    var g = sv("g"); symbol(g, s.c); svg.appendChild(g);
+    b.appendChild(svg); b.appendChild(document.createTextNode(s.n));
+    b.addEventListener("click", function(){
+      btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      var o = $("l5Out"); clear(o); o.appendChild(el("h5", null, s.n)); o.appendChild(el("p", null, s.d));
+    });
+    grid.appendChild(b); btns.push(b);
+  });
+})();
+
+/* ---------- Lesson 6: series or parallel ---------- */
+(function(){
+  var mode = "series", n = 2, removed = [false, false, false], open = [false, false, false], V = 6, R = 10;
+  function draw(focusLabel){
+    var svg = $("l6Svg"), items = [], note;
+    if (mode === "series") {
+      var broken = removed.slice(0, n).some(function(x){ return x; });
+      var I = broken ? 0 : V / (R * n);
+      var bulbs = [];
+      for (var i = 0; i < n; i++) (function(i){
+        var lab = "Bulb " + (i + 1) + (removed[i] ? ", removed. Tap to screw it back in" : ". Tap to unscrew it");
+        bulbs.push({t: removed[i] ? "removed" : "bulb", glow: glowFrom(I * I * R, 3.6), label: "B" + (i + 1), val: removed[i] ? "removed" : f2(I) + " A", on: function(){ removed[i] = !removed[i]; draw(true); }, aria: lab});
+      })(i);
+      drawCircuit(svg, {type: "series", source: {t: "battery", label: "6 V"}, top: bulbs, bottom: [{t: "meter", letter: "A", label: "total", val: f2(I) + " A"}]});
+      items.push({k: "Total current", v: f2(I) + " A", a: true});
+      for (var j = 0; j < n; j++) items.push({k: "Bulb " + (j + 1) + " current", v: removed[j] ? "removed" : f2(I) + " A"});
+      items.push({k: "Voltage per bulb", v: broken ? "0 V" : fmt(I * R, 2) + " V"});
+      note = broken ? "One bulb is removed, so the single path is broken. Every bulb is off and the current is 0 A everywhere." : "The current is the same through every bulb and the ammeter. More bulbs in series means less current, so each bulb is dimmer.";
+    } else {
+      var brs = [], tot = 0;
+      for (var k = 0; k < n; k++) (function(k){
+        var Ib = open[k] ? 0 : V / R; tot += Ib;
+        var lab = "Branch " + (k + 1) + " switch, " + (open[k] ? "open. Tap to close" : "closed. Tap to open");
+        brs.push([{t: "bulb", glow: glowFrom(Ib * Ib * R, 3.6), label: "B" + (k + 1), val: f2(Ib) + " A"}, {t: "switch", closed: !open[k], label: "S" + (k + 1), on: function(){ open[k] = !open[k]; draw(true); }, aria: lab}]);
+      })(k);
+      drawCircuit(svg, {type: "parallel", source: {t: "battery", label: "6 V"}, branches: brs, mainTop: [{t: "meter", letter: "A", label: "total", val: f2(tot) + " A"}]});
+      items.push({k: "Total current", v: f2(tot) + " A", a: true});
+      for (var m = 0; m < n; m++) items.push({k: "Branch " + (m + 1) + " current", v: f2(open[m] ? 0 : V / R) + " A"});
+      items.push({k: "Voltage per branch", v: "6 V"});
+      var sumTxt = []; for (var q = 0; q < n; q++) sumTxt.push(f2(open[q] ? 0 : V / R));
+      note = "Total current = " + sumTxt.join(" + ") + " = " + f2(tot) + " A. Each closed branch gets the full 6 V, so every lit bulb is equally bright. Opening one branch does not affect the others.";
+    }
+    readouts($("l6Out"), items);
+    $("l6Note").textContent = note;
+    if (focusLabel) {
+      var lbls = svg.querySelectorAll("[role=button]");
+      if (draw.lastIdx != null && lbls[draw.lastIdx]) lbls[draw.lastIdx].focus();
+    }
+  }
+  $("l6Svg").addEventListener("focusin", function(e){
+    var lbls = Array.prototype.slice.call($("l6Svg").querySelectorAll("[role=button]"));
+    var i = lbls.indexOf(e.target); if (i > -1) draw.lastIdx = i;
+  });
+  chipGroup($("l6Mode"), [{label: "Series", v: "series"}, {label: "Parallel", v: "parallel"}], function(it){ mode = it.v; removed = [false, false, false]; open = [false, false, false]; draw(); }, 0);
+  chipGroup($("l6N"), [{label: "1 bulb", v: 1}, {label: "2 bulbs", v: 2}, {label: "3 bulbs", v: 3}], function(it){ n = it.v; draw(); }, 1);
+})();
+
+/* ---------- Lesson 7: connect the meter ---------- */
+(function(){
+  var meter = 0, place = 0;
+  var METERS = [{label: "Ammeter", L: "A"}, {label: "Voltmeter", L: "V"}, {label: "Ohmmeter (multimeter on Ω)", L: "Ω"}];
+  var PLACES = [{label: "In series, in the loop"}, {label: "Across the bulb, power on"}, {label: "Across the bulb, power off"}];
+  var RES = [
+    [[1, "Correct. The ammeter is in series, so all the current passes through it. Reading: 0.30 A."], [0, "Unsafe. An ammeter has almost no resistance. Across the bulb it makes a short circuit, so a large current can flow and blow the meter’s fuse."], [0, "With the power off, no current flows, so the ammeter reads 0 A. Ammeters measure current only when the circuit is on."]],
+    [[0, "Wrong place. A voltmeter has a very high resistance. In series it almost stops the current, so the bulb goes out and the meter shows about the battery voltage instead of the bulb’s."], [1, "Correct. The voltmeter is across the bulb, in parallel, so it compares the two sides. Reading: 3.0 V."], [0, "With the power off there is no potential difference to measure, so the voltmeter reads 0 V."]],
+    [[0, "Wrong. To measure resistance, take the part out of the circuit or turn the power off, then connect the leads across it, not in the loop."], [0, "Unsafe for the meter. Measuring resistance with the power on gives a wrong reading and can damage the multimeter. Turn the power off first."], [1, "Correct. With the power off, the ohmmeter sends its own tiny current through the bulb. Reading: 10 Ω."]]
+  ];
+  function draw(){
+    var m = METERS[meter], off = place === 2;
+    var mc = {t: "meter", letter: m.L, label: m.label.split(" ")[0].toLowerCase()};
+    var spec = {type: "series", source: {t: "cell", label: off ? "disconnected" : "3 V", val: off ? "power off" : null}, top: [], bottom: []};
+    var bulb = {t: "bulb", glow: off ? 0 : 0.6, label: "bulb", val: "10 Ω"};
+    if (place === 0) { spec.top = [bulb, mc]; }
+    else { bulb.across = mc; spec.top = [bulb]; }
+    spec.bottom = [{t: "switch", closed: !off, label: off ? "open" : "closed"}];
+    drawCircuit($("l7Svg"), spec);
+    var r = RES[meter][place], o = $("l7Out"); clear(o);
+    o.appendChild(el("p", {"class": "fb " + (r[0] ? "ok" : "no")}, r[0] ? "Good connection" : "Check this connection"));
+    o.appendChild(el("p", null, r[1]));
+  }
+  chipGroup($("l7Meter"), METERS, function(it, i){ meter = i; draw(); }, 0);
+  chipGroup($("l7Place"), PLACES, function(it, i){ place = i; draw(); }, 0);
+})();
+
+/* ---------- Lesson 8: conductor tester ---------- */
+(function(){
+  var MATS = [
+    {label: "Copper", fill: "var(--copper)", I: 0.30, glow: 0.85, kind: "Conductor", d: "The bulb lights fully. Copper has many free electrons, which is why it is used for house wiring."},
+    {label: "Aluminium", fill: "var(--alu)", I: 0.30, glow: 0.85, kind: "Conductor", d: "The bulb lights fully. Aluminium conducts well and is light, so it is used in many overhead power lines."},
+    {label: "Pencil lead (graphite)", fill: "var(--wire)", I: 0.12, glow: 0.35, kind: "Conductor", d: "The bulb glows dimly. Graphite is a non-metal that conducts, but it has more resistance than metals."},
+    {label: "Tap water", fill: "var(--neg)", I: 0.002, glow: 0, kind: "Weak conductor", d: "The bulb stays dark, but a sensitive ammeter shows a small current, about 0.002 A. Dissolved minerals form ions that carry charge. With the much higher voltage of an outlet, tap water can carry a dangerous current."},
+    {label: "Deionized water", fill: "var(--surface-2)", I: 0, glow: 0, kind: "Insulator", d: "No current is detected. The ions have been removed, so there is almost nothing to carry charge. A pinch of salt would make it conduct."},
+    {label: "Rubber", fill: "var(--ink)", I: 0, glow: 0, kind: "Insulator", d: "No current. Rubber holds its electrons tightly, so it is used to coat wires and in electricians’ gloves."},
+    {label: "Dry wood", fill: "var(--nichrome)", I: 0, glow: 0, kind: "Insulator", d: "No current. Dry wood is an insulator. Wet or damp wood can conduct, so never touch power lines with a branch or ladder."},
+    {label: "Plastic", fill: "var(--line)", I: 0, glow: 0, kind: "Insulator", d: "No current. Plastic is used for switch covers, plug bodies and wire coatings."}
+  ];
+  chipGroup($("l8Mat"), MATS, function(m){
+    drawCircuit($("l8Svg"), {type: "series", source: {t: "battery", label: "3 V"}, top: [{t: "gap", fill: m.fill, label: "test gap", val: m.label}, {t: "bulb", glow: m.glow, label: "bulb"}], bottom: [{t: "meter", letter: "A", label: "sensitive ammeter", val: m.I === 0 ? "0.000 A" : m.I.toFixed(3) + " A"}]});
+    var o = $("l8Out"); clear(o);
+    o.appendChild(el("span", {"class": "tagline"}, m.kind)); o.appendChild(el("p", null, m.d));
+  }, 0);
+})();
+
+/* ---------- Lesson 9: wire builder ---------- */
+(function(){
+  var MATS = [{label: "Copper", rho: 1.7e-8, col: "var(--copper)"}, {label: "Aluminium", rho: 2.7e-8, col: "var(--alu)"}, {label: "Nichrome", rho: 1.1e-6, col: "var(--nichrome)"}];
+  var mat = MATS[0];
+  function Rof(rho, L, dmm){ var r = dmm / 2000; return rho * L / (Math.PI * r * r); }
+  var REF = Rof(1.7e-8, 1, 0.5);
+  function upd(){
+    var L = Number($("l9L").value), d = Number($("l9D").value);
+    $("l9Lv").textContent = fmt(L, 1) + " m"; $("l9Dv").textContent = fmt(d, 1) + " mm";
+    var R = Rof(mat.rho, L, d), s = $("l9Svg"); clear(s);
+    var w = 40 + (L / 10) * 500, h = 3 + (d / 2) * 30;
+    s.appendChild(sv("rect", {x: 30, y: 60 - h / 2, width: w, height: h, rx: Math.min(h / 2, 6), fill: mat.col}));
+    s.appendChild(sv("text", {x: 30, y: 20, "class": "clbl", "text-anchor": "start"}, mat.label + " · " + fmt(L, 1) + " m · " + fmt(d, 1) + " mm across"));
+    s.appendChild(sv("text", {x: 30, y: 110, "class": "cval", "text-anchor": "start"}, "Drawing: length and thickness to scale with each other only"));
+    var times = R / REF;
+    readouts($("l9Out"), [{k: "Resistance", v: sig(R) + " Ω", a: true}, {k: "Compared with reference", v: (times >= 10 ? Math.round(times) : fmt(times, 2)) + " ×"}, {k: "Reference wire", v: sig(REF) + " Ω"}]);
+  }
+  chipGroup($("l9Mat"), MATS, function(m){ mat = m; upd(); }, 0);
+  $("l9L").addEventListener("input", upd); $("l9D").addEventListener("input", upd);
+})();
+
+/* ---------- Lesson 10: Ohm's law graph ---------- */
+(function(){
+  var tri = $("l10Tri");
+  tri.appendChild(sv("polygon", {points: "65,5 125,110 5,110", fill: "var(--g9-soft)", stroke: "var(--g9)", "stroke-width": 2.5}));
+  tri.appendChild(sv("line", {x1: 33, y1: 62, x2: 97, y2: 62, stroke: "var(--g9)", "stroke-width": 2}));
+  tri.appendChild(sv("line", {x1: 65, y1: 62, x2: 65, y2: 110, stroke: "var(--g9)", "stroke-width": 2}));
+  tri.appendChild(sv("text", {x: 65, y: 48, "class": "clbl", style: "font-size:20px"}, "V"));
+  tri.appendChild(sv("text", {x: 44, y: 95, "class": "clbl", style: "font-size:20px"}, "I"));
+  tri.appendChild(sv("text", {x: 86, y: 95, "class": "clbl", style: "font-size:20px"}, "R"));
+  var X0 = 70, X1 = 570, Y0 = 250, Y1 = 30;
+  function upd(){
+    var V = Number($("l10V").value), R = Number($("l10R").value), I = V / R;
+    $("l10Vv").textContent = fmt(V, 1) + " V"; $("l10Rv").textContent = R + " Ω";
+    var need = 12 / R, ymax = [0.5, 1, 2, 3, 6].filter(function(x){ return x >= need - 1e-9; })[0] || 6;
+    var s = $("l10Svg"); clear(s);
+    function px(v){ return X0 + (v / 12) * (X1 - X0); } function py(i){ return Y0 - (i / ymax) * (Y0 - Y1); }
+    for (var v = 0; v <= 12; v += 2) { s.appendChild(sv("line", {x1: px(v), y1: Y0, x2: px(v), y2: Y1, stroke: "var(--line)", "stroke-width": 1})); s.appendChild(sv("text", {x: px(v), y: Y0 + 18, "class": "cval"}, String(v))); }
+    for (var k = 0; k <= 4; k++) { var iv = ymax * k / 4; s.appendChild(sv("line", {x1: X0, y1: py(iv), x2: X1, y2: py(iv), stroke: "var(--line)", "stroke-width": 1})); s.appendChild(sv("text", {x: X0 - 8, y: py(iv) + 4, "class": "cval", "text-anchor": "end"}, sig(iv))); }
+    s.appendChild(sv("line", {x1: X0, y1: Y0, x2: X1, y2: Y0, stroke: "var(--ink)", "stroke-width": 1.5}));
+    s.appendChild(sv("line", {x1: X0, y1: Y0, x2: X0, y2: Y1, stroke: "var(--ink)", "stroke-width": 1.5}));
+    s.appendChild(sv("text", {x: (X0 + X1) / 2, y: 290, "class": "clbl"}, "Voltage (V)"));
+    s.appendChild(sv("text", {x: 18, y: 140, "class": "clbl", transform: "rotate(-90 18 140)"}, "Current (A)"));
+    s.appendChild(sv("line", {x1: px(0), y1: py(0), x2: px(12), y2: py(12 / R), stroke: "var(--g9)", "stroke-width": 3}));
+    s.appendChild(sv("line", {x1: px(V), y1: Y0, x2: px(V), y2: py(I), stroke: "var(--meter)", "stroke-width": 1.5, "stroke-dasharray": "4 3"}));
+    s.appendChild(sv("line", {x1: X0, y1: py(I), x2: px(V), y2: py(I), stroke: "var(--meter)", "stroke-width": 1.5, "stroke-dasharray": "4 3"}));
+    s.appendChild(sv("circle", {cx: px(V), cy: py(I), r: 7, fill: "var(--meter)"}));
+    s.appendChild(sv("text", {x: Math.min(px(V) + 12, 520), y: Math.max(py(I) - 10, 22), "class": "clbl", "text-anchor": "start"}, sig(I) + " A"));
+    $("l10Out").textContent = "I = V ÷ R = " + fmt(V, 1) + " V ÷ " + R + " Ω = " + sig(I) + " A";
+  }
+  $("l10V").addEventListener("input", upd); $("l10R").addEventListener("input", upd); upd();
+})();
+
+/* ---------- Lesson 11: safe or unsafe ---------- */
+(function(){
+  var SC = [
+    ["Using a hair dryer while standing in a bathtub of water", 1, "Water and wet skin conduct. If the dryer falls in or leaks current, a dangerous current can pass through you. Bathroom outlets use a GFCI for this reason."],
+    ["Replacing a blown fuse with one of the same rating", 0, "The same rating keeps the protection. A bigger fuse could let wires overheat."],
+    ["Flying a kite near overhead power lines", 1, "If the kite or string touches a line, current can travel down to you. Fly kites in open fields far from lines."],
+    ["Unplugging a lamp by pulling the plug, not the cord", 0, "Pulling the cord can damage the wires and insulation inside."],
+    ["Using a cord with cracked insulation", 1, "Bare copper can be touched or can spark. Replace damaged cords."],
+    ["Turning off the power before changing a circuit in the lab", 0, "No current can flow while you move wires, so you will not get a shock or make a short circuit."],
+    ["Plugging many devices into one outlet with stacked power bars", 1, "Too much current through one outlet can overheat the wiring. The breaker should trip, but this is still a fire risk."],
+    ["Calling 911 and staying back from a downed power line", 0, "Downed lines can still be live, and the ground near them can be dangerous. Stay far back and keep others away."]
+  ];
+  var box = $("l11List");
+  SC.forEach(function(s, i){
+    var d = el("div", {"class": "scen"});
+    d.appendChild(el("p", null, s[0]));
+    var row = el("div", {"class": "choice2"});
+    var fb = el("p", {"class": "hint", "aria-live": "polite"});
+    ["Safe", "Unsafe"].forEach(function(lbl, j){
+      var b = el("button", {type: "button", "aria-pressed": "false"}, lbl);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(row.children, function(x){ x.classList.remove("right", "wrong"); x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        var ok = j === s[1]; b.classList.add(ok ? "right" : "wrong");
+        fb.textContent = (ok ? "Correct. " : "Not quite. This is " + (s[1] ? "unsafe" : "safe") + ". ") + s[2];
+      });
+      row.appendChild(b);
+    });
+    d.appendChild(row); d.appendChild(fb); box.appendChild(d);
+  });
+})();
+
+/* ---------- Bench 1: schematic designer ---------- */
+(function(){
+  var GOALS = [
+    {q: "Two bulbs where removing either bulb turns both off.", mode: "series", n: 2, why: "In series there is only one path, so removing either bulb breaks it."},
+    {q: "Three bulbs that each get the full battery voltage.", mode: "parallel", n: 3, why: "Each parallel branch connects across the battery, so each gets the full voltage."},
+    {q: "Two bulbs, each with its own on and off switch.", mode: "parallel", n: 2, branch: true, why: "A switch on each branch controls only that branch."},
+    {q: "Three bulbs in parallel that one switch turns off all at once.", mode: "parallel", n: 3, main: true, why: "A switch in the main line, before the current splits, controls every branch."},
+    {q: "Measure the total current in a series circuit with two bulbs.", mode: "series", n: 2, amm: true, why: "An ammeter anywhere in a series loop reads the total current, because the current is the same everywhere."},
+    {q: "Measure the voltage across one bulb in a parallel circuit with two bulbs.", mode: "parallel", n: 2, volt: true, why: "The voltmeter goes across the bulb. In parallel it will read the battery voltage."},
+    {q: "Three bulbs in series with a switch to turn them on and off.", mode: "series", n: 3, main: true, why: "Any switch in a series loop controls every bulb."}
+  ];
+  var st = {mode: "series", n: 2, main: false, branch: false, amm: false, volt: false};
+  var sel = $("b1Goal");
+  GOALS.forEach(function(g, i){ sel.appendChild(el("option", {value: String(i)}, (i + 1) + ". " + g.q)); });
+  function draw(){
+    var spec, desc = [];
+    var on = 0.6;
+    if (st.mode === "series") {
+      var top = [];
+      for (var i = 0; i < st.n; i++) { var b = {t: "bulb", glow: 0, label: "B" + (i + 1)}; if (i === 0 && st.volt) b.across = true; top.push(b); }
+      var bot = []; if (st.main) bot.push({t: "switch", closed: true, label: "switch"}); if (st.amm) bot.push({t: "meter", letter: "A", label: "ammeter"});
+      spec = {type: "series", source: {t: "battery", label: "6 V"}, top: top, bottom: bot};
+      desc.push(st.n + (st.n === 1 ? " bulb" : " bulbs") + " in one loop with the battery");
+    } else {
+      var brs = [];
+      for (var k = 0; k < st.n; k++) { var bb = {t: "bulb", glow: 0, label: "B" + (k + 1)}; if (k === 0 && st.volt) bb.across = true; var br = [bb]; if (st.branch) br.push({t: "switch", closed: true, label: "S" + (k + 1)}); brs.push(br); }
+      spec = {type: "parallel", source: {t: "battery", label: "6 V"}, branches: brs, mainTop: st.amm ? [{t: "meter", letter: "A", label: "ammeter"}] : [], mainBottom: st.main ? [{t: "switch", closed: true, label: "main"}] : []};
+      desc.push(st.n + (st.n === 1 ? " bulb" : " bulbs") + " on separate branches");
+    }
+    if (st.main) desc.push(st.mode === "series" ? "a switch in the loop" : "a main switch before the branches split");
+    if (st.branch && st.mode === "parallel") desc.push("a switch on each branch");
+    if (st.amm) desc.push("an ammeter in the main line");
+    if (st.volt) desc.push("a voltmeter across bulb 1");
+    drawCircuit($("b1Svg"), spec);
+    $("b1Desc").textContent = "Your design: " + desc.join(", ") + "." + (st.branch && st.mode === "series" ? " Branch switches only exist in parallel circuits, so none are drawn." : "");
+  }
+  chipGroup($("b1Mode"), [{label: "Series", v: "series"}, {label: "Parallel", v: "parallel"}], function(it){ st.mode = it.v; draw(); }, 0);
+  chipGroup($("b1N"), [{label: "1 bulb", v: 1}, {label: "2 bulbs", v: 2}, {label: "3 bulbs", v: 3}], function(it){ st.n = it.v; draw(); }, 1);
+  [["main", "Main switch"], ["branch", "Branch switches"], ["amm", "Ammeter"], ["volt", "Voltmeter on bulb 1"]].forEach(function(p){
+    var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, p[1]);
+    b.addEventListener("click", function(){ st[p[0]] = !st[p[0]]; b.setAttribute("aria-pressed", st[p[0]] ? "true" : "false"); draw(); });
+    $("b1Opts").appendChild(b);
+  });
+  sel.addEventListener("change", function(){ var o = $("b1Out"); clear(o); o.appendChild(el("p", null, "Goal " + (Number(sel.value) + 1) + ": " + GOALS[sel.value].q + " Build it, then check.")); });
+  $("b1Check").addEventListener("click", function(){
+    var g = GOALS[Number(sel.value)], probs = [];
+    if (st.mode !== g.mode) probs.push("This goal needs a " + g.mode + " circuit.");
+    if (st.n !== g.n) probs.push("Use " + g.n + " bulbs.");
+    if (g.main && !st.main) probs.push("Add a main switch.");
+    if (g.branch && !(st.branch && st.mode === "parallel")) probs.push("Add a switch on each branch.");
+    if (g.amm && !st.amm) probs.push("Add an ammeter.");
+    if (g.volt && !st.volt) probs.push("Add a voltmeter across a bulb.");
+    var o = $("b1Out"); clear(o);
+    var ok = probs.length === 0;
+    var done = store.b1 || []; if (ok && done.indexOf(Number(sel.value)) < 0) { done.push(Number(sel.value)); store.b1 = done; save(); }
+    o.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "Design meets the goal." : "Not yet."));
+    o.appendChild(el("p", null, ok ? g.why : probs.join(" ")));
+    o.appendChild(el("p", {"class": "hint mono"}, "Goals completed: " + done.length + " of " + GOALS.length));
+  });
+  draw();
+})();
+
+/* ---------- Bench 2: multimeter readings ---------- */
+(function(){
+  var c, power = true, dial = 0, rec = {};
+  var WHAT = [
+    {label: "Total current from the battery", q: "A", key: "I"},
+    {label: "Current through R1", q: "A", key: "I1"},
+    {label: "Current through R2", q: "A", key: "I2"},
+    {label: "Voltage across the battery", q: "V", key: "V"},
+    {label: "Voltage across R1", q: "V", key: "V1"},
+    {label: "Voltage across R2", q: "V", key: "V2"},
+    {label: "Resistance of R1", q: "Ω", key: "R1"},
+    {label: "Resistance of R2", q: "Ω", key: "R2"}
+  ];
+  var DIAL = [{label: "V (volts)", q: "V"}, {label: "A (amperes)", q: "A"}, {label: "Ω (ohms)", q: "Ω"}];
+  WHAT.forEach(function(w, i){ $("b2What").appendChild(el("option", {value: String(i)}, w.label)); });
+  chipGroup($("b2Dial"), DIAL, function(it, i){ dial = i; }, 0);
+  function make(){
+    var mode = pick(["series", "parallel"]), V = pick([3, 4.5, 6, 9]), R1 = pick([5, 10, 15, 20, 30]), R2 = pick([5, 10, 15, 20, 30]);
+    c = {mode: mode, V: V, R1: R1, R2: R2};
+    if (mode === "series") { var I = V / (R1 + R2); c.I = I; c.I1 = I; c.I2 = I; c.V1 = I * R1; c.V2 = I * R2; }
+    else { c.I1 = V / R1; c.I2 = V / R2; c.I = c.I1 + c.I2; c.V1 = V; c.V2 = V; }
+    rec = {}; power = true; setPower(); table(); questions(); $("b2Read").textContent = "0.00"; $("b2Fb").textContent = "";
+  }
+  function draw(){
+    var src = {t: "battery", label: power ? "? V" : "disconnected"};
+    if (c.mode === "series") drawCircuit($("b2Svg"), {type: "series", source: src, top: [{t: "res", label: "R1"}, {t: "res", label: "R2"}], bottom: [{t: "switch", closed: power, label: power ? "closed" : "open"}]});
+    else drawCircuit($("b2Svg"), {type: "parallel", source: src, branches: [[{t: "res", label: "R1"}], [{t: "res", label: "R2"}]], mainBottom: [{t: "switch", closed: power, label: power ? "closed" : "open"}]});
+  }
+  function setPower(){ var b = $("b2Power"); b.textContent = "Power: " + (power ? "on" : "off"); b.setAttribute("aria-pressed", power ? "true" : "false"); draw(); }
+  function table(){
+    var tb = $("b2Tbl"); clear(tb);
+    WHAT.forEach(function(w){
+      var tr = el("tr"); tr.appendChild(el("td", null, w.label));
+      tr.appendChild(el("td", {"class": "n"}, rec[w.key] != null ? rec[w.key] + " " + w.q : "not measured")); tb.appendChild(tr);
+    });
+  }
+  function questions(){
+    var box = $("b2Q"); clear(box);
+    var Q = c.mode === "series" ? [
+      ["This is a series circuit. How do the currents through R1, R2 and the battery compare?", ["They are all the same", "They add up to the total", "R1 always has more"], "In series there is one path, so the current is the same everywhere."],
+      ["How do the voltages across R1 and R2 compare with the battery voltage?", ["V1 + V2 equals the battery voltage", "Each equals the battery voltage", "They are both zero"], "In series the source voltage is shared between the parts. The bigger resistor gets the bigger share."]
+    ] : [
+      ["This is a parallel circuit. How do I1 and I2 compare with the total current?", ["I1 + I2 equals the total current", "They are all the same", "The total is smaller than each branch"], "The current splits at the junction and joins again, so the branch currents add up to the total."],
+      ["How do the voltages across R1 and R2 compare with the battery voltage?", ["Each equals the battery voltage", "V1 + V2 equals the battery voltage", "They are both zero"], "Each branch connects across the battery, so each gets the same voltage."]
+    ];
+    box.appendChild(el("h4", null, "What pattern do you see?"));
+    box.appendChild(el("p", {"class": "hint"}, "Take at least four readings first, then answer."));
+    Q.forEach(function(q){
+      var d = el("div", {"class": "scen"}); d.appendChild(el("p", null, q[0]));
+      var row = el("div", {"class": "choice2"}), fb = el("p", {"class": "hint", "aria-live": "polite"});
+      shuffle(q[1].map(function(t, i){ return {t: t, ok: i === 0}; })).forEach(function(o){
+        var b = el("button", {type: "button"}, o.t);
+        b.addEventListener("click", function(){ Array.prototype.forEach.call(row.children, function(x){ x.classList.remove("right", "wrong"); }); b.classList.add(o.ok ? "right" : "wrong"); fb.textContent = (o.ok ? "Correct. " : "Not quite. ") + q[2]; });
+        row.appendChild(b);
+      });
+      d.appendChild(row); d.appendChild(fb); box.appendChild(d);
+    });
+  }
+  $("b2Power").addEventListener("click", function(){ power = !power; setPower(); });
+  $("b2New").addEventListener("click", make);
+  $("b2Go").addEventListener("click", function(){
+    var w = WHAT[Number($("b2What").value)], d = DIAL[dial], fb = $("b2Fb");
+    fb.className = "fb";
+    if (d.q !== w.q) { $("b2Read").textContent = "----"; fb.className = "fb no"; fb.textContent = "Wrong setting. To measure " + (w.q === "A" ? "current, set the dial to A and connect the meter in series." : w.q === "V" ? "voltage, set the dial to V and connect across the part." : "resistance, set the dial to Ω."); return; }
+    if (w.q === "Ω" && power) { $("b2Read").textContent = "----"; fb.className = "fb no"; fb.textContent = "Turn the power off before measuring resistance. A live circuit gives a false reading and can damage the meter."; return; }
+    var val;
+    if (w.q === "Ω") val = c[w.key] * (1 + (Math.random() - 0.5) * 0.02);
+    else val = power ? c[w.key] * (1 + (Math.random() - 0.5) * 0.02) : 0;
+    var shown = w.q === "Ω" ? fmt(val, 1) : f2(val);
+    $("b2Read").textContent = shown + " " + w.q;
+    if (!power) { fb.className = "fb no"; fb.textContent = "The power is off, so there is no current or voltage to measure."; return; }
+    rec[w.key] = shown; table();
+    fb.className = "fb ok"; fb.textContent = "Recorded. " + (w.q === "A" ? "The ammeter was placed in series." : w.q === "V" ? "The voltmeter was placed across the part." : "Measured with the power off.");
+  });
+  make();
+})();
+
+/* ---------- Bench 3: control devices ---------- */
+(function(){
+  var closed = true, blown = false, V = 9, RL = 15, LIMIT = 0.5;
+  function upd(focus){
+    var Rv = Number($("b3R").value);
+    $("b3Rv").textContent = Rv + " Ω";
+    var Rt = RL + Rv, Iwould = V / Rt, msg = $("b3Msg"); clear(msg);
+    if (closed && !blown && Iwould > LIMIT) { blown = true; msg.appendChild(el("p", {"class": "fb no"}, "The fuse blew.")); msg.appendChild(el("p", null, "With the variable resistor at " + Rv + " Ω, the current would be " + f2(Iwould) + " A, more than the 0.5 A rating. The fuse wire melted and opened the circuit. Raise the resistance, then replace the fuse.")); }
+    var I = closed && !blown ? Iwould : 0;
+    var swLab = closed ? "Switch, closed. Tap to open" : "Switch, open. Tap to close";
+    drawCircuit($("b3Svg"), {type: "series", source: {t: "battery", label: "9 V"},
+      top: [{t: "switch", closed: closed, label: "switch", on: function(){ closed = !closed; upd(true); }, aria: swLab}, {t: "vres", label: "variable resistor", val: Rv + " Ω"}],
+      bottom: [{t: "fuse", blown: blown, label: blown ? "fuse (blown)" : "fuse 0.5 A"}, {t: "bulb", glow: glowFrom(I * I * RL, LIMIT * LIMIT * RL), label: "lamp", val: "15 Ω"}]});
+    if (focus) refocus($("b3Svg"), closed ? "Switch, closed. Tap to open" : "Switch, open. Tap to close");
+    $("b3Sw").textContent = closed ? "Open switch" : "Close switch";
+    readouts($("b3Out"), [{k: "Current", v: f2(I) + " A", a: true}, {k: "Total resistance", v: Rt + " Ω"}, {k: "Lamp voltage", v: f2(I * RL) + " V"}, {k: "Fuse", v: blown ? "blown" : "OK"}]);
+    var w = $("b3Work"); clear(w);
+    w.appendChild(el("p", {"class": "mono"}, "R total = 15 Ω + " + Rv + " Ω = " + Rt + " Ω"));
+    w.appendChild(el("p", {"class": "mono"}, "I = V ÷ R = 9 V ÷ " + Rt + " Ω = " + f2(Iwould) + " A" + (I === 0 ? " (if the circuit were complete)" : "")));
+    if (!msg.firstChild) {
+      if (!closed) msg.appendChild(el("p", null, "The switch is open, so there is a gap. No current flows and the lamp is off."));
+      else if (blown) msg.appendChild(el("p", null, "The fuse is blown, so the circuit is open. Raise the resistance above 3 Ω, then replace the fuse."));
+      else msg.appendChild(el("p", null, "More resistance means less current and a dimmer lamp. Less resistance means more current. Below 3 Ω the current would pass 0.5 A and blow the fuse."));
+    }
+  }
+  $("b3R").addEventListener("input", function(){ upd(); });
+  $("b3Sw").addEventListener("click", function(){ closed = !closed; upd(); });
+  $("b3Fuse").addEventListener("click", function(){ blown = false; upd(); });
+  upd();
+})();
+
+/* ---------- Bench 4: troubleshooter ---------- */
+(function(){
+  var cur, count = 0, score = 0, answered = false;
+  function gen(){
+    var t = rint(1, 5), k = rint(0, 2), V = 6, c = {};
+    if (t === 1) {
+      var tops = [0, 1, 2].map(function(i){ return {t: "bulb", glow: 0, label: "B" + (i + 1)}; });
+      c.spec = {type: "series", source: {t: "battery", label: "6 V"}, top: tops, bottom: [{t: "switch", closed: true, label: "switch"}]};
+      c.sym = ["All three bulbs are off.", "The switch is closed.", "Voltmeter across the battery: 6.0 V.", "Voltmeter across B1: " + (k === 0 ? "6.0" : "0.0") + " V, across B2: " + (k === 1 ? "6.0" : "0.0") + " V, across B3: " + (k === 2 ? "6.0" : "0.0") + " V."];
+      c.opts = ["Bulb 1 is burned out", "Bulb 2 is burned out", "Bulb 3 is burned out", "The battery is dead"]; c.ans = k;
+      c.why = "In a series circuit one broken bulb stops the current everywhere. The broken bulb is the gap, so the full 6 V appears across it. The working bulbs have no current, so 0 V across them.";
+    } else if (t === 2) {
+      var n2 = rint(2, 3), tp = []; for (var i = 0; i < n2; i++) tp.push({t: "bulb", glow: 0, label: "B" + (i + 1)});
+      c.spec = {type: "series", source: {t: "battery", label: "6 V (labelled)"}, top: tp, bottom: [{t: "switch", closed: true, label: "switch"}]};
+      c.sym = ["All bulbs are off.", "The switch is closed.", "Voltmeter across the battery: 0.0 V.", "Ohmmeter across each bulb (power off): about 10 Ω each."];
+      c.opts = ["Bulb 1 is burned out", "Bulb 2 is burned out", "The battery is dead", "The switch is open"]; c.ans = 2;
+      c.why = "The battery shows 0 V, so it has no potential difference to push current. Each bulb still has its normal resistance, so the bulbs are fine.";
+    } else if (t === 3 || t === 4) {
+      var brs = [0, 1, 2].map(function(i){ return [{t: "bulb", glow: i === k ? 0 : 0.8, label: "B" + (i + 1)}]; });
+      c.spec = {type: "parallel", source: {t: "battery", label: "6 V"}, branches: brs, mainTop: [{t: "meter", letter: "A", label: "total"}]};
+      c.sym = ["Bulb " + (k + 1) + " is off. The other two bulbs are lit.", "Total current: 1.20 A. Current in branch " + (k + 1) + ": 0.00 A.", "Ohmmeter across bulb " + (k + 1) + " (power off): " + (t === 3 ? "OL, meaning no path at all" : "10 Ω") + "."];
+      c.opts = ["Bulb " + (k + 1) + " is burned out", "A loose wire in branch " + (k + 1), "The battery is dead", "The main switch is open"]; c.ans = t === 3 ? 0 : 1;
+      c.why = t === 3 ? "Only one branch stopped, so the battery and main line are fine. The ohmmeter shows no path through the bulb, so its filament is broken." : "Only one branch stopped, so the battery and main line are fine. The bulb has its normal 10 Ω, so the bulb is good. The break must be somewhere else in that branch, like a loose wire.";
+    } else {
+      var b5 = [0, 1, 2].map(function(i){ return [{t: "bulb", glow: 0, label: "B" + (i + 1)}]; });
+      c.spec = {type: "parallel", source: {t: "battery", label: "6 V"}, branches: b5, mainBottom: [{t: "switch", closed: true, label: "main switch"}]};
+      c.sym = ["All three bulbs are off, even though the main switch lever is in the on position.", "Voltmeter across the battery: 6.0 V.", "Voltmeter across the main switch: 6.0 V.", "Ohmmeter across each bulb (power off): about 10 Ω each."];
+      c.opts = ["The main switch is faulty and stays open", "All three bulbs burned out at once", "The battery is dead", "A loose wire in branch 1"]; c.ans = 0;
+      c.why = "The battery works (6 V) and every bulb tests fine. The full 6 V appears across the main switch, which means the gap is in the switch. A loose wire in one branch would only turn off that branch.";
+    }
+    return c;
+  }
+  function show(){
+    cur = gen(); answered = false; count++;
+    drawCircuit($("b4Svg"), cur.spec);
+    var s = $("b4Sym"); clear(s); s.appendChild(el("span", {"class": "tagline"}, "Symptoms and readings"));
+    var ul = el("ul"); cur.sym.forEach(function(x){ ul.appendChild(el("li", null, x)); }); s.appendChild(ul);
+    var o = $("b4Opts"); clear(o);
+    cur.opts.forEach(function(t, i){
+      var b = el("button", {type: "button"}, t);
+      b.addEventListener("click", function(){
+        if (answered) return; answered = true;
+        var ok = i === cur.ans; if (ok) score++;
+        Array.prototype.forEach.call(o.children, function(x, j){ x.disabled = true; if (j === cur.ans) x.classList.add("right"); });
+        if (!ok) b.classList.add("wrong");
+        var out = $("b4Out"); clear(out);
+        out.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "Correct." : "Not quite. The fault: " + cur.opts[cur.ans].toLowerCase() + "."));
+        out.appendChild(el("p", null, cur.why));
+        $("b4Count").textContent = "Circuit " + count + " · Score " + score + " of " + count;
+        $("b4Next").focus();
+      });
+      o.appendChild(b);
+    });
+    $("b4Count").textContent = "Circuit " + count + " · Score " + score + " of " + (count - 1);
+    var out = $("b4Out"); clear(out); out.appendChild(el("p", null, "Pick the fault you think is most likely."));
+  }
+  $("b4Next").addEventListener("click", show);
+  show();
+})();
+
+/* ---------- Bench 5: Ohm's law problems ---------- */
+(function(){
+  var LBL = {V: "Voltage V (V)", I: "Current I (A)", R: "Resistance R (Ω)"};
+  var OTHER = {V: ["I", "R"], I: ["V", "R"], R: ["V", "I"]};
+  var DEF = {V: 6, I: 0.3, R: 20};
+  function calc(){
+    var f = $("b5Find").value, o = OTHER[f], a = Number($("b5A").value), b = Number($("b5B").value), out = $("b5Calc");
+    if (!isFinite(a) || !isFinite(b) || $("b5A").value === "" || $("b5B").value === "") { out.textContent = "Enter both values."; return; }
+    if (f === "V") out.textContent = "V = I × R = " + a + " A × " + b + " Ω = " + sig(a * b) + " V";
+    else if (b === 0) out.textContent = "The second value cannot be zero.";
+    else if (f === "I") out.textContent = "I = V ÷ R = " + a + " V ÷ " + b + " Ω = " + sig(a / b) + " A";
+    else out.textContent = "R = V ÷ I = " + a + " V ÷ " + b + " A = " + sig(a / b) + " Ω";
+  }
+  $("b5Find").addEventListener("change", function(){
+    var o = OTHER[$("b5Find").value];
+    $("b5Al").textContent = LBL[o[0]]; $("b5Bl").textContent = LBL[o[1]];
+    $("b5A").value = DEF[o[0]]; $("b5B").value = DEF[o[1]]; calc();
+  });
+  $("b5A").addEventListener("input", calc); $("b5B").addEventListener("input", calc); calc();
+
+  var p, tries = 0, right = 0;
+  var THINGS = ["a flashlight bulb", "a resistor on a circuit board", "a toy car motor", "a heating element", "a string of decorative lights", "a phone charger cable"];
+  function newP(){
+    var R = pick([5, 6, 10, 12, 15, 20, 24, 30, 40, 50, 60, 100]), I = pick([0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.75, 1, 1.5, 2]);
+    var V = Math.round(I * R * 1000) / 1000, type = pick(["V", "I", "R"]), thing = pick(THINGS), mA = Math.random() < 0.3;
+    var Itxt = mA ? Math.round(I * 1000) + " mA" : I + " A";
+    p = {type: type, V: V, I: I, R: R};
+    if (type === "V") { p.q = "A current of " + Itxt + " flows through " + thing + " with a resistance of " + R + " Ω. What is the voltage across it?"; p.ans = V; p.u = "V";
+      p.sol = (mA ? "Convert: " + Itxt + " = " + I + " A\n" : "") + "V = I × R = " + I + " A × " + R + " Ω = " + sig(V) + " V"; }
+    if (type === "I") { p.q = "A " + sig(V) + " V source is connected to " + thing + " with a resistance of " + R + " Ω. What current flows, in amperes?"; p.ans = I; p.u = "A";
+      p.sol = "I = V ÷ R = " + sig(V) + " V ÷ " + R + " Ω = " + sig(I) + " A"; }
+    if (type === "R") { p.q = "There are " + sig(V) + " V across " + thing + " and a current of " + Itxt + " flows. What is its resistance?"; p.ans = R; p.u = "Ω";
+      p.sol = (mA ? "Convert: " + Itxt + " = " + I + " A\n" : "") + "R = V ÷ I = " + sig(V) + " V ÷ " + I + " A = " + R + " Ω"; }
+    $("b5Q").textContent = p.q; $("b5AnsL").textContent = "Your answer (" + p.u + ")";
+    $("b5Ans").value = ""; $("b5Fb").textContent = ""; $("b5Fb").className = "fb"; $("b5Sol").hidden = true;
+  }
+  $("b5Check").addEventListener("click", function(){
+    var v = Number($("b5Ans").value), fb = $("b5Fb");
+    if ($("b5Ans").value === "" || !isFinite(v)) { fb.className = "fb no"; fb.textContent = "Type a number first."; return; }
+    tries++;
+    var ok = Math.abs(v - p.ans) <= Math.abs(p.ans) * 0.02 + 1e-9;
+    if (ok) right++;
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = ok ? "Correct: " + sig(p.ans) + " " + p.u + "." : "Not quite. The answer is " + sig(p.ans) + " " + p.u + ".";
+    var s = $("b5Sol"); s.hidden = false; clear(s); p.sol.split("\n").forEach(function(line){ s.appendChild(el("p", null, line)); });
+    store.b5 = {t: tries, r: right}; save();
+    $("b5Score").textContent = "Score this session: " + right + " of " + tries;
+  });
+  $("b5Next").addEventListener("click", newP);
+  newP();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Conductor or insulator?", bins: ["Conductor", "Insulator"], items: [
+    ["Copper wire", 0, "Copper has free electrons. It is used in house wiring."],
+    ["Rubber glove", 1, "Rubber resists the movement of charge."],
+    ["Aluminium foil", 0, "Aluminium is a metal with free electrons."],
+    ["Dry wooden spoon", 1, "Dry wood is an insulator."],
+    ["Tap water", 0, "Dissolved minerals form ions that carry charge. It is a weak conductor, but still a conductor."],
+    ["Deionized water", 1, "With the ions removed, it barely conducts."],
+    ["Plastic wire coating", 1, "Plastic keeps the current inside the copper."],
+    ["Pencil lead (graphite)", 0, "Graphite conducts, though not as well as metals."],
+    ["Glass", 1, "Glass is an insulator, which is why it is used on old power poles."],
+    ["Salt water", 0, "Dissolved salt makes many ions, so it conducts well."],
+    ["Steel paper clip", 0, "Steel is a metal, so it conducts."],
+    ["Dry air", 1, "Air is a good insulator, unless the voltage is huge, as in lightning."]
+  ]},
+  {label: "Series or parallel?", bins: ["Series", "Parallel"], items: [
+    ["Current flows along a single path", 0, "Series circuits have one loop."],
+    ["The total current is the sum of the branch currents", 1, "Current splits into branches and adds back together."],
+    ["Removing one bulb turns all of them off", 0, "One break stops the only path."],
+    ["Each branch has the same voltage as the source", 1, "Each branch connects across the source."],
+    ["The current is the same at every point", 0, "There is only one path for the charge."],
+    ["One branch can be open while others keep working", 1, "The other paths are still complete."],
+    ["Adding more bulbs makes every bulb dimmer", 0, "More resistance in one loop means less current."],
+    ["How the outlets in your home are wired", 1, "Each outlet works on its own and gets the full voltage."],
+    ["A single loop of old holiday lights where one dead bulb darkens the string", 0, "One dead bulb broke the only path."],
+    ["Has junctions where the current splits", 1, "Junctions are where branches begin and end."]
+  ]},
+  {label: "Which job?", bins: ["Energy store", "Conductor", "Load device", "Control device"], items: [
+    ["AA cell", 0, "It stores chemical energy and supplies it to the circuit."],
+    ["Copper wire", 1, "It lets charge move between the parts."],
+    ["Light bulb", 2, "It transfers energy into light and heat."],
+    ["Switch", 3, "It opens or closes the path."],
+    ["Electric motor", 2, "It transfers energy into motion."],
+    ["Resistor", 3, "It limits the current."],
+    ["Car battery", 0, "It stores energy chemically."],
+    ["Dimmer knob (variable resistor)", 3, "It adjusts the current to change brightness."],
+    ["Speaker", 2, "It transfers energy into sound."],
+    ["Metal strip inside a flashlight", 1, "It connects the battery to the bulb."],
+    ["Heating element in a kettle", 2, "It transfers energy into the thermal store of the water."]
+  ]},
+  {label: "Which meter, how connected?", bins: ["Ammeter, in series", "Voltmeter, across", "Ohmmeter, power off"], items: [
+    ["Find the current through a bulb", 0, "Current is measured in series so it flows through the meter."],
+    ["Find the potential difference across a resistor", 1, "Voltage is measured across the part."],
+    ["Check whether a bulb’s filament is broken", 2, "An ohmmeter shows whether there is a path through it."],
+    ["Check whether a battery is dead", 1, "A voltmeter across the battery shows its voltage."],
+    ["Find the total current from a battery", 0, "Put the ammeter in the main line, in series."],
+    ["Find the resistance of a length of nichrome wire", 2, "Measure resistance with the power disconnected."],
+    ["Find the voltage across one branch of a parallel circuit", 1, "Connect the voltmeter across the branch."],
+    ["Find the current in one branch of a parallel circuit", 0, "Put the ammeter in that branch, in series."]
+  ]},
+  {label: "Safe or unsafe?", bins: ["Safe practice", "Unsafe practice"], items: [
+    ["Keeping a radio away from the bathtub", 0, "Water and electricity should never meet."],
+    ["Touching a switch with wet hands", 1, "Wet skin conducts much better than dry skin."],
+    ["Using a GFCI outlet near the kitchen sink", 0, "It cuts the power fast if current leaks."],
+    ["Climbing a tree that touches a power line", 1, "Current can travel through the tree to you."],
+    ["Disconnecting the battery before rewiring a lab circuit", 0, "No current can flow while you work."],
+    ["Putting a metal knife into a toaster that is plugged in", 1, "The knife can touch live parts."],
+    ["Replacing a damaged cord", 0, "Exposed wires can shock or spark."],
+    ["Removing the third prong from a plug so it fits", 1, "The third prong is a safety ground."],
+    ["Using Click Before You Dig before digging a fence post hole", 0, "It locates buried power and gas lines first."],
+    ["Joining wires to make an ammeter go across a battery", 1, "That makes a short circuit with a very large current."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Electric current", "A flow of charge, usually electrons in a conductor, that transfers energy around a circuit."],
+  ["Ampere (A)", "The unit of current. 1 A means 1 coulomb of charge passes a point each second. Named after André-Marie Ampère."],
+  ["Coulomb (C)", "The unit of electric charge."],
+  ["Electron", "A tiny negative particle. In metal wires, free electrons drift to make a current."],
+  ["Circuit", "A closed path that current can flow around continuously."],
+  ["Open circuit", "A circuit with a gap, such as an open switch, so no current flows."],
+  ["Conventional current", "The direction a positive charge would flow: from + to − outside the source. Agreed on before electrons were discovered."],
+  ["Electron flow", "The actual drift of electrons, from − to +. Opposite to conventional current."],
+  ["Potential difference (voltage)", "The difference in electric potential energy per coulomb between two points. It causes current to flow."],
+  ["Volt (V)", "The unit of voltage. 1 V = 1 joule of energy per coulomb of charge."],
+  ["Energy store (cell or battery)", "The part that supplies energy to the circuit. A battery is two or more cells joined."],
+  ["Load device", "A part that transfers energy from the current into another store, such as a bulb, motor or speaker."],
+  ["Control device", "A part that manages the current, such as a switch or a resistor."],
+  ["Schematic diagram", "A drawing of a circuit that uses standard symbols and straight lines."],
+  ["Series circuit", "Parts joined one after another in a single path. The current is the same everywhere."],
+  ["Parallel circuit", "Parts on separate branches. Branch currents add to the total, and each branch has the source voltage."],
+  ["Branch", "One of the separate paths in a parallel circuit."],
+  ["Ammeter", "Measures current in amperes. Connected in series."],
+  ["Voltmeter", "Measures potential difference in volts. Connected across a part, in parallel."],
+  ["Multimeter", "One meter that can measure voltage, current and resistance. Turn the dial to choose."],
+  ["Conductor", "A material that lets charge move through it, such as copper, aluminium or tap water."],
+  ["Insulator", "A material that resists the movement of charge, such as rubber, dry wood or deionized water."],
+  ["Resistance", "A measure of how much a part reduces the current. Measured in ohms (Ω)."],
+  ["Ohm (Ω)", "The unit of resistance."],
+  ["Resistor", "A part with a set resistance, used to control current in a device."],
+  ["Variable resistor", "A resistor that can be adjusted, such as a dimmer switch."],
+  ["Ohm’s law", "V = I × R. Voltage equals current times resistance."],
+  ["Fuse", "A safety device with a thin wire that melts and opens the circuit if the current is too large."],
+  ["GFCI", "Ground fault circuit interrupter: an outlet that cuts power quickly if current leaks, used near water."],
+  ["Short circuit", "A path with almost no resistance, so a very large and dangerous current flows."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is electric current?", ["A flow of charge that transfers energy", "A store of energy in a battery", "The push that makes charge move", "A material that blocks charge"], "Current is moving charge. The push is voltage, the store is the battery."],
+  ["What does 1 ampere mean?", ["1 coulomb of charge passes a point each second", "1 joule of energy per coulomb", "1 volt per ohm of wire", "1 electron per second"], "Current is the rate of charge flow: 1 A = 1 C/s."],
+  ["The ampere is named after André-Marie Ampère. What was he?", ["A French physicist", "An English chemist", "A Canadian engineer", "A German inventor of the battery"], "Ampère was a French physicist who studied how currents push and pull on each other."],
+  ["Why does a lamp light the moment you flip the switch, even though electrons drift slowly?", ["All the electrons in the wire start moving at once", "Electrons travel at the speed of light", "The lamp stores energy", "The switch creates electrons"], "The wire is already full of electrons, so they all start drifting together."],
+  ["What makes a circuit?", ["A closed path that current can flow around", "Any wire connected to a battery at one end", "A battery and a bulb touching", "A switch that is open"], "Current needs a complete loop with no gaps."],
+  ["Which way does conventional current flow outside the battery?", ["From the positive terminal to the negative terminal", "From the negative terminal to the positive terminal", "Both ways at once", "It does not flow"], "Conventional current is the direction a positive charge would move."],
+  ["Why do electrons flow opposite to conventional current?", ["Electrons are negative, and the convention was set before they were discovered", "Electrons are positive", "Wires reverse the current", "The battery is upside down"], "The convention came first. Electrons were discovered in 1897."],
+  ["What does a voltage of 9 V mean?", ["Each coulomb of charge gains 9 J of energy from the source", "9 coulombs pass each second", "The wire has 9 Ω of resistance", "9 electrons leave the battery"], "1 V = 1 J/C."],
+  ["What causes current to flow in a closed circuit?", ["A potential difference between two points", "The resistance of the wire", "The insulator around the wire", "The ammeter"], "The separated charge in the battery creates a potential difference that pushes the current."],
+  ["In a flashlight, which part is the load device?", ["The bulb", "The battery", "The switch", "The metal strip"], "The bulb transfers energy into light."],
+  ["Which part is a control device?", ["A switch", "A cell", "A motor", "A speaker"], "Switches and resistors manage the current."],
+  ["In a cell symbol, what does the long line show?", ["The positive terminal", "The negative terminal", "A resistor", "A switch"], "Long line +, short thick line −."],
+  ["In a series circuit with three bulbs, one bulb burns out. What happens?", ["All the bulbs go out", "Only that bulb goes out", "The others get brighter", "The current doubles"], "There is only one path, so the break stops the current everywhere."],
+  ["In a series circuit, the current through the first bulb is 0.2 A. What is the current through the third bulb?", ["0.2 A", "0.6 A", "0.07 A", "0 A"], "The current is the same at every point in a series circuit."],
+  ["A parallel circuit has branch currents of 0.3 A, 0.5 A and 0.2 A. What is the total current?", ["1.0 A", "0.5 A", "0.3 A", "0.33 A"], "The total is the sum of the branch currents."],
+  ["A 9 V battery runs three bulbs in parallel. What is the voltage across each bulb?", ["9 V", "3 V", "27 V", "0 V"], "Each parallel branch gets the full source voltage."],
+  ["Why are homes wired in parallel?", ["Each device gets full voltage and can be turned off on its own", "It uses less wire", "It makes the current the same everywhere", "It makes all lights turn off together"], "Branches work independently."],
+  ["How is an ammeter connected?", ["In series, so the current flows through it", "Across the part, in parallel", "Only with the power off", "Across the battery"], "An ammeter measures the current passing through it."],
+  ["How is a voltmeter connected?", ["Across the part, in parallel", "In series in the loop", "Only with the power off", "In place of the battery"], "A voltmeter compares two points."],
+  ["What must you do before measuring resistance with a multimeter?", ["Turn off or disconnect the power", "Set the dial to volts", "Connect it in series", "Wet the leads"], "Ohmmeters use their own small current and give false readings in a live circuit."],
+  ["Which material is an insulator?", ["Rubber", "Copper", "Aluminium", "Tap water"], "Rubber resists the movement of charge."],
+  ["Why does tap water conduct but deionized water barely does?", ["Tap water has dissolved ions that carry charge", "Tap water is colder", "Deionized water has more electrons", "Tap water contains copper wire"], "Deionized water has had its ions removed."],
+  ["Which wire has the highest resistance?", ["A long, thin nichrome wire", "A short, thick copper wire", "A short, thin copper wire", "A long, thick copper wire"], "Higher-resistance material, more length and less thickness all raise resistance."],
+  ["Doubling the length of a wire does what to its resistance?", ["Doubles it", "Halves it", "Makes no difference", "Makes it zero"], "Resistance is proportional to length."],
+  ["What does a dimmer switch use to control a light?", ["A variable resistor", "A fuse", "A voltmeter", "An insulator"], "More resistance means less current and a dimmer light."],
+  ["Using Ohm’s law, what current flows through a 20 Ω resistor with 10 V across it?", ["0.5 A", "200 A", "2 A", "30 A"], "I = V ÷ R = 10 V ÷ 20 Ω = 0.5 A."],
+  ["A bulb draws 0.25 A from a 6 V battery. What is its resistance?", ["24 Ω", "1.5 Ω", "6.25 Ω", "0.04 Ω"], "R = V ÷ I = 6 V ÷ 0.25 A = 24 Ω."],
+  ["If the voltage across a resistor doubles, what happens to the current?", ["It doubles", "It halves", "It stays the same", "It drops to zero"], "For a fixed resistance, current is proportional to voltage."],
+  ["What does a fuse do?", ["Opens the circuit when the current gets too large", "Increases the voltage", "Stores energy", "Measures resistance"], "Its thin wire melts to protect the circuit from overheating."],
+  ["Which is the safest action near a downed power line?", ["Stay far back and call 911", "Move it with a dry stick", "Check if it is live by touching it quickly", "Drive over it"], "Downed lines may still be live. Keep away and get help."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain what electric current is and how it transfers energy in a circuit.", a: "Electric current is a flow of charge, usually free electrons drifting through a metal conductor. A battery gives the charge energy, and as the charge moves through a load such as a bulb, the energy is transferred into light and heat. The electrons drift slowly, but the energy arrives almost instantly because all the electrons in the wire move at once.", k: ["Flow of charge or electrons", "Through a conductor", "Energy from the source to the load", "Names an energy change in the load"]},
+  {q: "What does it mean when an ammeter reads 2 A? Use the word coulomb.", a: "It means 2 coulombs of charge pass the ammeter every second. One ampere is one coulomb per second, so current is the rate at which charge passes a point.", k: ["2 coulombs", "Each second", "Current is a rate of charge flow"]},
+  {q: "Describe the difference between conventional current and electron flow, and explain why both are used.", a: "Conventional current is the direction a positive charge would move: from the positive terminal, around the circuit, to the negative terminal. Electron flow is the real drift of negative electrons, from negative to positive. The convention was set in the 1700s, before electrons were discovered in 1897, and it still predicts the same results, so diagrams keep using it.", k: ["Conventional: + to −", "Electrons: − to +", "Convention set before electrons were known", "Both give the same predictions"]},
+  {q: "Explain what voltage is and why a circuit needs it for current to flow.", a: "Voltage, or potential difference, is the difference in electric potential energy per coulomb between two points. A battery separates charge to make one terminal positive and the other negative. When a closed path joins them, this potential difference pushes charge around the circuit. With no potential difference, there is no current.", k: ["Potential difference between two points", "Energy per coulomb (1 V = 1 J/C)", "Battery separates charge", "Causes current in a closed path"]},
+  {q: "Name the four main types of circuit components and give one example of each.", a: "An energy store, such as a cell or battery. A conductor, such as copper wire. A load device, such as a light bulb or motor. A control device, such as a switch or a resistor.", k: ["Energy store with example", "Conductor with example", "Load with example", "Control device with example"]},
+  {q: "Compare series and parallel circuits. Give two differences.", a: "A series circuit has one path, so the current is the same everywhere and one break turns everything off. A parallel circuit has several branches. The total current is the sum of the branch currents, each branch has the source voltage, and a branch can be open while the others keep working.", k: ["Series: one path", "Series: same current everywhere", "Parallel: currents add to total", "Parallel: same voltage on each branch or branches work independently"]},
+  {q: "Describe how to connect an ammeter and a voltmeter to measure the current through and the voltage across a bulb.", a: "Break the circuit next to the bulb and connect the ammeter in the gap, in series, so the current passes through it. Connect the voltmeter across the bulb, with one lead on each side, in parallel. Set the multimeter dial to the right quantity and highest range first.", k: ["Ammeter in series", "Voltmeter across, in parallel", "Correct dial setting", "Start on the highest range or another safe step"]},
+  {q: "Explain why copper is used for wires and rubber is used to coat them.", a: "Copper is a conductor with many free electrons, so charge moves through it easily with little resistance. Rubber is an insulator that resists the movement of charge, so the coating keeps the current inside the wire and protects people from touching it.", k: ["Copper is a good conductor", "Low resistance or free electrons", "Rubber is an insulator", "Coating protects people or keeps current in the wire"]},
+  {q: "A kettle element has a resistance of 24 Ω and is plugged into a 120 V outlet. Calculate the current. Show your work.", a: "Given V = 120 V and R = 24 Ω. I = V ÷ R = 120 V ÷ 24 Ω = 5 A. The current is 5 A.", k: ["Writes the given values", "Uses I = V ÷ R", "Answer 5 A with unit"]},
+  {q: "Identify two unsafe practices around electric current and explain the danger of each.", a: "Using a hair dryer near a full bathtub is unsafe, because water and wet skin conduct and a dangerous current could pass through the body. Flying a kite near power lines is unsafe, because the kite or string could touch a line and carry current down to the person.", k: ["First unsafe practice", "Explains its danger", "Second unsafe practice", "Explains its danger"]}
+];
+var LONG = [
+  {q: "A string of three decorative lights is wired in series. When one bulb burns out, the whole string goes dark. Explain why, then design a better circuit. Draw or describe its schematic and explain the advantages of your design.", a: "In series there is only one path. A burned-out bulb leaves a gap, so the current stops everywhere and every bulb goes dark. A better design puts the three bulbs in parallel, each on its own branch across the battery. Then a burned-out bulb only opens its own branch, and the others keep working. Each bulb also gets the full voltage, so they stay bright. The schematic shows a battery with three branches, each holding one bulb, and a main switch before the branches split to turn them all on and off.", k: ["Series has one path, so a gap stops all current", "Proposes a parallel design", "Describes or draws the schematic with branches", "Other bulbs keep working", "Each bulb gets full voltage or a main switch controls all"]},
+  {q: "Plan an investigation to test how the length of a nichrome wire affects its resistance. Include your variables, the meters you would use and how you would connect them, your expected results, and one safety step.", a: "The manipulated variable is the length of the nichrome wire, for example 20, 40, 60, 80 and 100 cm. The responding variable is resistance. Keep the material, thickness and temperature the same. Connect a cell, a switch and the wire in series with an ammeter, and put a voltmeter across the wire. For each length, record the voltage and current, then calculate R = V ÷ I. Or measure the wire with a multimeter on Ω with the power off. I expect resistance to increase in proportion to length, so double the length gives double the resistance. Safety: use a low-voltage cell and open the switch between readings, because nichrome gets hot.", k: ["Manipulated, responding and controlled variables", "Ammeter in series and voltmeter across the wire, or ohmmeter with power off", "Uses R = V ÷ I", "Predicts resistance increases with length", "A safety step"]},
+  {q: "A student builds a circuit with a 6 V battery, a switch and three bulbs in parallel. Bulbs 1 and 3 light, but bulb 2 does not. Explain how the student could use a multimeter to find out whether bulb 2 is burned out or a wire in its branch is loose.", a: "Because bulbs 1 and 3 work, the battery and main switch must be fine, and the problem is only in branch 2. First, with the power on, an ammeter in branch 2 would read 0 A, confirming there is a gap in that branch. Next, turn off the power and set the multimeter to ohms. Connect it across bulb 2. If it reads about the normal resistance of a bulb, the bulb is fine and the problem is a loose wire. If it reads OL, meaning no path, the bulb’s filament is broken. A voltmeter across bulb 2 with power on can also help: if it reads 6 V while the branch has no current, the gap is in the bulb itself.", k: ["Battery and main line are fine because other bulbs work", "Branch 2 current is 0 A", "Ohmmeter with power off across bulb 2", "Normal reading means loose wire, OL means burned out", "Correct meter connections"]},
+  {q: "Explain the relationship between voltage, current and resistance. Use Ohm’s law, an example calculation and a real device that uses a resistor to control current.", a: "Ohm’s law says V = I × R. For a fixed resistance, the current is proportional to the voltage, so doubling the voltage doubles the current. For a fixed voltage, a larger resistance gives a smaller current. Example: 9 V across a 45 Ω resistor gives I = 9 V ÷ 45 Ω = 0.2 A. If the resistance drops to 15 Ω, the current rises to 0.6 A. A dimmer switch uses a variable resistor: turning the knob raises the resistance, lowering the current so the light is dimmer.", k: ["States V = I × R", "Current increases with voltage", "Current decreases as resistance increases", "Correct example calculation", "Real device using a resistor"]},
+  {q: "Your class is setting up a circuits lab. Write a set of five safety rules for students, and explain why each rule matters in terms of current and the body.", a: "1. Use only low-voltage cells, never wall outlets, because high voltage can push a dangerous current through the body. 2. Keep water and drinks away from circuits, because water and wet skin conduct. 3. Open the switch or disconnect the battery before changing the circuit, so no current flows while you work. 4. Never connect a wire or ammeter straight across a battery, because that is a short circuit: a very large current heats the wires and can burn you. 5. Report damaged wires or hot parts to the teacher, because bare or hot wires can shock or burn.", k: ["Low voltage rule with reason", "Water rule with reason", "Disconnect before changing", "Short circuit rule with reason", "Fifth rule with reason linked to current or the body"]}
+];
+
+/* ---------- Coverage ---------- */
+var COV = [
+  ["E1.K1", "Electric current is a transfer of energy through the flow of electrons in a conductor.", "Learn L1 (count the charge); Flashcards; Quiz; Written short 1"],
+  ["E1.K2", "The rate at which a charge passes a given point in a circuit is expressed in amperes, named after a French physicist (André-Marie Ampère).", "Learn L1 (1 A = 1 C/s, Ampère); Quiz; Written short 2"],
+  ["E1.K3", "A circuit is created when current flows continuously through a closed path.", "Learn L2 (close the loop); Lab Bench 3 (switch); Quiz"],
+  ["E1.K4", "Potential difference, or voltage, expressed in volts, causes current to flow because of a difference in electric charge between two points along a circuit.", "Learn L3 (stack the cells); Written short 4; Quiz"],
+  ["E1.K5", "The main components that can make up a circuit include\n• an energy store, e.g., a battery or cell\n• a conductor\n• a load device, which transfers energy into another energy store, e.g., a light bulb\n• a control device, e.g., a switch or a resistor", "Learn L4 (flashlight parts); Sort It (Which job?); Lab Bench 3; Written short 5"],
+  ["E1.K6", "Components of circuits can be arranged in series or in parallel and can be represented with schematic diagrams that use component symbols.", "Learn L5 (symbol library); Lab Bench 1 (schematic designer)"],
+  ["E1.K7", "In a series circuit, current\n• flows along a single path\n• is the same at any point in the circuit", "Learn L6 (series or parallel); Lab Bench 2 and 4; Sort It (Series or parallel?)"],
+  ["E1.K8", "In a parallel circuit,\n• current flows along multiple paths\n• the total current is equal to the sum of the current in the branches\n• not every branch needs to be closed for the circuit to function\n• voltage in each branch is the same", "Learn L6 (open a branch switch); Lab Bench 2 and 4; Sort It (Series or parallel?)"],
+  ["E1.K9", "Conventional current, defined as the direction in which a positive charge would flow, was established before the discovery of electrons.", "Learn L2 (direction toggle); Quiz; Written short 3"],
+  ["E1.K10", "Technologies used to measure voltage, current, and resistance include voltmeters, ammeters, and multimeters.", "Learn L7 (connect the meter); Lab Bench 2 (multimeter); Sort It (Which meter?)"],
+  ["E1.K11", "Conductors, such as copper, aluminium, and tap water, are materials that allow a charge to be transferred.", "Learn L8 (conductor tester); Sort It (Conductor or insulator?)"],
+  ["E1.K12", "Insulators, such as rubber, wood, and deionized water, are materials that impede the transfer of a charge.", "Learn L8 (conductor tester); Sort It (Conductor or insulator?); Written short 8"],
+  ["E1.K13", "Resistance, expressed in ohms, is a measure of how much a circuit component reduces current.", "Learn L9 and L10; Lab Bench 3; Flashcards"],
+  ["E1.K14", "Properties of conductors, such as material, length, and cross-sectional area, affect resistance.", "Learn L9 (wire builder); Quiz; Written extended 2"],
+  ["E1.K15", "Resistors can be used to control current in devices.", "Learn L9; Lab Bench 3 (variable resistor and fuse); Written extended 4"],
+  ["E1.K16", "Ohm’s law expresses the relationship between voltage, current, and resistance V =I×R.", "Learn L10 (graph and triangle); Lab Bench 5"],
+  ["E1.K17", "Safe practices are required when handling or near electric current.", "Learn L11 (safe or unsafe?); Sort It (Safe or unsafe?); Written extended 5"],
+  ["E1.S1", "Design schematic diagrams of series and parallel circuits.", "Lab Bench 1 (seven design goals); Learn L5; Written extended 1"],
+  ["E1.S2", "Investigate the use of control devices to manage the flow of electric current.", "Lab Bench 3 (switch, variable resistor, fuse); Learn L2 and L4"],
+  ["E1.S3", "Measure voltage, current, and resistance in circuits.", "Lab Bench 2 (multimeter readings); Learn L7; Written short 7. Pair with hands-on meters."],
+  ["E1.S4", "Compare the characteristics of series and parallel circuits.", "Learn L6; Lab Bench 1 and 2 (pattern questions); Written short 6"],
+  ["E1.S5", "Troubleshoot series and parallel circuits.", "Lab Bench 4 (troubleshooter); Written extended 3"],
+  ["E1.S6", "Explain the relationship between voltage, current, and resistance.", "Learn L10; Lab Bench 3; Written extended 4"],
+  ["E1.S7", "Apply Ohm’s law to solve problems involving calculations related to voltage, current, and resistance.", "Lab Bench 5 (calculator, worked example, random practice); Quiz; Written short 9"],
+  ["E1.S8", "Identify safe and unsafe practices around electric current.", "Learn L11; Sort It (Safe or unsafe?); Written short 10 and extended 5"]
+];
+(function(){
+  var tb = document.querySelector("#covTable tbody");
+  COV.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,1368 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/cosmic-history-lab/"><meta name="description" content="Understandings of the universe have changed over time."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cosmic History Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an observatory logbook. Sticky tab strip, then lessons pairing a reading column with a dark sky window: a cosmic address zoom, a city to dark-sky slider, a timeline of ideas, a stretching universe, a cosmic history strip, a two-star brightness test and a star life cycle stepper. Bench: address order, evidence check, cosmic calendar, brightness calculator and star path predictor. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F4F6F9; --ink:#15212C; --muted:#4F5D6B; --line:#CDD6DF;
+  --g8:#1D5FA8; --g8-soft:#DFEAF6;
+  --sky:#121A28; --sky-2:#1C2638; --sky-ink:#E8EDF3; --sky-muted:#AEB9C6; --sky-line:#38465A;
+  --star:#FFF3D6; --hot:#9CC4FF; --warm:#FFD58A; --cool:#FF9A6B; --nebula:#B48CE0; --glow:#F7D27A; --mw:#C7D3E6;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC; --link:#1D5FA8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9FADBA; --line:#2A3540;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --sky:#090E17; --sky-2:#131B28; --sky-ink:#E8EDF3; --sky-muted:#A9B5C3; --sky-line:#2C3746;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9FADBA; --line:#2A3540;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --sky:#090E17; --sky-2:#131B28; --sky-ink:#E8EDF3; --sky-muted:#A9B5C3; --sky-line:#2C3746;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--link)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g8);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--glow);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g8)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g8-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g8)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.skybox{border-radius:8px;background:var(--sky);border:1px solid var(--sky-line);overflow:hidden}
+.skybox svg{display:block;width:100%;height:auto}
+.skybox svg text{font-family:var(--f-body);fill:var(--sky-ink)}
+.skybox svg .lbl{font-size:13px;font-weight:700}
+.skybox svg .small{font-size:11.5px;fill:var(--sky-muted)}
+.skybox svg .mlbl{font-family:var(--f-mono);font-size:11px;fill:var(--sky-muted)}
+.tap{cursor:pointer}
+.tap:hover > :first-child{stroke:var(--glow);stroke-width:2}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g8)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+textarea{min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;align-items:end}
+.tl{display:grid;gap:6px;list-style:none;padding:0}
+.tl button{width:100%;text-align:left;display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:10px;align-items:baseline;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer}
+.tl button:hover{border-color:var(--muted)}
+.tl button[aria-pressed="true"]{border-color:var(--g8);background:var(--g8-soft)}
+.tl .when{font-family:var(--f-mono);font-size:.74rem;color:var(--g8)}
+.tl .who{font-weight:700}
+.order{display:flex;flex-wrap:wrap;gap:6px;min-height:2.6em;padding:8px;border:1.5px dashed var(--line);border-radius:8px;background:var(--surface)}
+.order .chip{cursor:default}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.dt th:first-child,.dt td:first-child{text-align:left;font-family:var(--f-body);font-weight:700}
+.dt th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g8)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td:nth-child(2){white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Space · SP1</div>
+    <h1>Cosmic <span class="ac">History</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Understandings of the universe have changed over time. In this lab you will find our address in the universe, follow how ideas about the sky changed, trace the universe from the Big Bang to the solar system, compare how bright stars look and follow a star from birth to death.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Lessons 1 and 2 find our place in the universe. Lesson 3 follows how ideas changed. Lessons 4 and 5 explain the Big Bang theory. Lessons 6 and 7 are about stars.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · Our cosmic address</span>
+      <h3>Planet, solar system, galaxy, universe</h3>
+      <div class="codes"><span class="code">SP1.K1</span><span class="code">SP1.K2</span><span class="code">SP1.S1</span></div>
+      <p><b>Astronomy</b> is the scientific study of the universe. Astronomers study planets, moons, stars, galaxies and the universe as a whole. The <b>universe</b> is everything that exists: all of space, matter and energy.</p>
+      <p>Each thing in space sits inside something bigger. Earth is a <b>planet</b>. It orbits the Sun with seven other planets, so it is part of our <b>solar system</b>. Our solar system is one small part of the <b>Milky Way</b>, a <b>galaxy</b>. A galaxy is a huge group of stars, gas and dust held together by gravity.</p>
+      <p>The Milky Way is only one galaxy. The universe holds <b>billions of galaxies</b>. Many of the stars in them have their own planets, so there are other solar systems too.</p>
+      <div class="key"><b>Try it:</b> tap each ring to zoom out from Earth to the whole universe we can observe. Notice how the sizes jump.</div>
+      <p class="note">A <b>light-year</b> is the distance light travels in one year, about 9.5 trillion km. It is a distance, not a time.</p>
+    </div>
+    <div class="model">
+      <h4>Zoom out from Earth</h4>
+      <div class="skybox"><svg id="l1-svg" viewBox="0 0 400 300" role="group" aria-label="Nested rings from Earth to the observable universe. Each ring is a button."></svg></div>
+      <div class="detail" id="l1-detail" aria-live="polite"></div>
+      <p class="hint">Not to scale. Each ring is really thousands to millions of times bigger than the one inside it. Sizes are rounded.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · Stars we can see</span>
+      <h3>Every star you can see is in our galaxy</h3>
+      <div class="codes"><span class="code">SP1.K3</span><span class="code">SP1.S4</span></div>
+      <p>On a dark night far from the city, you can see a few thousand stars with your <b>naked eye</b>, which means with no telescope or binoculars. Almost all of them are in the Milky Way. Most are close neighbours of the Sun, within a few thousand light-years.</p>
+      <p>The faint band of light called the Milky Way is the glow of millions of stars too far away to see one by one. We are inside the galaxy, so we see it edge on, like looking across a plate from its rim.</p>
+      <p>The main exception is the <b>Andromeda Galaxy</b>. From a dark place you can see it as a faint smudge. Its light left about 2.5 million years ago. You are not seeing single stars, only their blended glow.</p>
+      <div class="key"><b>Try it:</b> move the slider from downtown Edmonton to a dark-sky preserve. Watch how many stars appear. Then tap the labelled objects.</div>
+      <p class="note">Elk Island National Park is part of the Beaver Hills Dark Sky Preserve east of Edmonton. Jasper National Park is also a dark-sky preserve.</p>
+    </div>
+    <div class="model">
+      <h4>City sky or dark sky?</h4>
+      <div class="skybox"><svg id="l2-svg" viewBox="0 0 400 260" role="group" aria-label="A practice night sky. Labelled objects are buttons."></svg></div>
+      <label class="field" for="l2-dark">Sky darkness: <span class="mono" id="l2-out"></span></label>
+      <input type="range" id="l2-dark" min="0" max="3" step="1" value="0">
+      <div class="detail" id="l2-detail" aria-live="polite"></div>
+      <p class="hint">A made-up practice sky, not a real star chart. Star counts are rough values for the half of the sky above you.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Changing ideas</span>
+      <h3>How our picture of the universe changed</h3>
+      <div class="codes"><span class="code">SP1.K4</span><span class="code">SP1.S2</span></div>
+      <p>People have studied the sky for thousands of years. A <b>theory</b> in science is a well-tested explanation. A <b>model</b> is a simpler picture that helps explain or predict. Over time, new tools and new observations changed both.</p>
+      <p>In <b>Babylonia</b>, sky watchers kept careful records of the Moon and planets on clay tablets and found repeating patterns. In <b>ancient Greece</b>, thinkers built models with Earth at the centre. <b>Ptolemy</b> made the Earth-centred model good enough to predict planet positions. <b>Galileo</b> used a telescope and found evidence that did not fit it.</p>
+      <p>Later, astronomers measured that some fuzzy patches were whole galaxies far beyond the Milky Way, and that galaxies are moving apart. That led to the Big Bang theory.</p>
+      <div class="key"><b>Try it:</b> tap each point on the timeline. For each one, notice the tool or evidence that made the idea change.</div>
+      <p class="note">Many cultures around the world built deep knowledge of the sky. First Nations, Métis and Inuit peoples have long traditions of reading the sky for seasons, travel and teachings. Learn these from Knowledge Keepers and community sources.</p>
+    </div>
+    <div class="model">
+      <h4>A timeline of ideas</h4>
+      <ul class="tl" id="l3-list"></ul>
+      <div class="detail" id="l3-detail" aria-live="polite"></div>
+      <p class="hint">Dates are approximate. BCE means before the Common Era. CE means the Common Era.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · The Big Bang theory</span>
+      <h3>A universe that is stretching</h3>
+      <div class="codes"><span class="code">SP1.K5</span><span class="code">SP1.S3</span></div>
+      <p>The <b>Big Bang theory</b> explains the origin of the universe. About <b>13.8 billion years</b> ago, everything in the universe we can observe was packed into an extremely small, hot and dense state. The temperature and pressure were enormous. Since then, the universe has been <b>expanding</b> and cooling.</p>
+      <p>The Big Bang was not an explosion at one spot in empty space. Space itself has been stretching everywhere at once. That means there is no centre. Every galaxy sees the others moving away.</p>
+      <p>Three main kinds of evidence support the theory. Distant galaxies are moving away from us, and farther ones move away faster. A faint glow of microwaves, left over from the early universe, comes from every direction. The universe is mostly hydrogen and helium, in the amounts the theory predicts.</p>
+      <div class="key"><b>Try it:</b> tap any galaxy to make it home. Then drag the slider to stretch space. Compare how far the nearby and faraway galaxies moved.</div>
+    </div>
+    <div class="model">
+      <h4>Stretching space</h4>
+      <div class="skybox"><svg id="l4-svg" viewBox="0 0 400 280" role="group" aria-label="Galaxies on stretching space. Each galaxy is a button."></svg></div>
+      <label class="field" for="l4-s">Stretch: <span class="mono num" id="l4-out">1.0 ×</span></label>
+      <input type="range" id="l4-s" min="1" max="2" step="0.05" value="1">
+      <div class="tablebox"><table class="dt" id="l4-table"></table></div>
+      <p class="hint">A simple model with made-up distances in units. Real galaxies are not in a grid.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · From the Big Bang to us</span>
+      <h3>Hydrogen, helium, stars and the solar system</h3>
+      <div class="codes"><span class="code">SP1.K6</span><span class="code">SP1.S3</span><span class="code">SP1.S1</span></div>
+      <p>As the universe expanded, it cooled. In the first few minutes, the simplest atom centres formed: <b>hydrogen</b> and <b>helium</b>. They became full atoms about 380 000 years later.</p>
+      <p>Gravity pulled clouds of hydrogen and helium together. In a few hundred million years, the <b>first stars</b> lit up. Inside stars, small atoms fuse into bigger ones. Stars made <b>heavier elements</b> such as carbon, oxygen and iron, and spread them into space when they died.</p>
+      <p>About <b>4.6 billion years ago</b>, a cloud of gas and dust that held those heavier elements collapsed. It formed our Sun and solar system. The iron in your blood and the calcium in your bones were made inside stars.</p>
+      <div class="key"><b>Try it:</b> step through the history of the universe. Watch the temperature drop as the universe grows.</div>
+    </div>
+    <div class="model">
+      <h4>Cosmic history strip</h4>
+      <div class="skybox"><svg id="l5-svg" viewBox="0 0 400 200" role="group" aria-label="A strip showing the universe growing over time. Each marker is a button."></svg></div>
+      <div class="row"><button class="btn ghost" type="button" id="l5-prev">Earlier</button><button class="btn" type="button" id="l5-next">Later</button></div>
+      <div class="detail" id="l5-detail" aria-live="polite"></div>
+      <p class="hint">Markers are evenly spaced, not to scale in time. Times and temperatures are rounded.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · How bright a star looks</span>
+      <h3>Luminosity and distance</h3>
+      <div class="codes"><span class="code">SP1.K7</span><span class="code">SP1.S4</span></div>
+      <p>How bright a star looks from Earth is its <b>apparent brightness</b>. It depends on two things. <b>Luminosity</b> is the total amount of light energy a star gives off each second. <b>Distance</b> is how far the star is from us.</p>
+      <p>A star with more luminosity looks brighter. A star that is farther away looks dimmer, and the dimming is fast. Light spreads out over a bigger and bigger area as it travels. If a star were twice as far away, it would look one quarter as bright. Three times as far, one ninth as bright.</p>
+      <div class="formula">apparent brightness ∝ L ÷ d²<br>(full form: b = L ÷ (4π d²))</div>
+      <p>So a dim star that is close can look brighter than a very luminous star that is far away. Sirius, the brightest star at night, is bright mainly because it is close.</p>
+      <div class="key"><b>Try it:</b> pick two real stars or set your own. Change the luminosity and distance and see which one looks brighter.</div>
+    </div>
+    <div class="model">
+      <h4>Two-star test</h4>
+      <div class="chips" id="l6-pre" role="group" aria-label="Choose a star pair"></div>
+      <div class="skybox"><svg id="l6-svg" viewBox="0 0 400 150" role="img" aria-label="Two stars drawn with glow sizes that match their apparent brightness"></svg></div>
+      <div class="fields">
+        <label class="field" for="l6-la">Star A luminosity (Suns): <span class="mono num" id="l6-la-o"></span><input type="range" id="l6-la" min="-2" max="5.3" step="0.1"></label>
+        <label class="field" for="l6-da">Star A distance (light-years): <span class="mono num" id="l6-da-o"></span><input type="range" id="l6-da" min="0.6" max="3.5" step="0.02"></label>
+        <label class="field" for="l6-lb">Star B luminosity (Suns): <span class="mono num" id="l6-lb-o"></span><input type="range" id="l6-lb" min="-2" max="5.3" step="0.1"></label>
+        <label class="field" for="l6-db">Star B distance (light-years): <span class="mono num" id="l6-db-o"></span><input type="range" id="l6-db" min="0.6" max="3.5" step="0.02"></label>
+      </div>
+      <div class="detail" id="l6-detail" aria-live="polite"></div>
+      <p class="hint">Luminosities and distances of real stars are rounded estimates, and some are uncertain. The model ignores dust between the stars.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l7">
+    <div class="text">
+      <span class="step">Lesson 7 · The life of a star</span>
+      <h3>Stars are born, change and die</h3>
+      <div class="codes"><span class="code">SP1.K8</span><span class="code">SP1.S5</span></div>
+      <p>Stars have a <b>life cycle</b>. A star <b>forms</b> when gravity pulls a cloud of gas and dust, called a <b>nebula</b>, into a hot ball. When its core gets hot enough, it starts to fuse hydrogen into helium and shines.</p>
+      <p>Over its life a star <b>changes in mass, size and brightness</b>. It slowly loses mass in a stream of gas called a stellar wind. Near the end it swells into a giant, becomes much brighter and can throw off its outer layers.</p>
+      <p>How a star lives and dies depends mostly on its <b>mass</b> when it forms. Small stars live a very long time and fade quietly. A star like the Sun becomes a red giant, then a <b>white dwarf</b>. A very massive star lives fast and ends in a <b>supernova</b> explosion, leaving a <b>neutron star</b> or a <b>black hole</b>.</p>
+      <div class="key"><b>Try it:</b> choose a star mass, then step through its life. Watch the size, brightness and mass readouts.</div>
+    </div>
+    <div class="model">
+      <h4>Star life stepper</h4>
+      <div class="chips" id="l7-mass" role="group" aria-label="Choose a star mass"></div>
+      <div class="skybox"><svg id="l7-svg" viewBox="0 0 400 200" role="img" aria-label="The star at the chosen stage of its life"></svg></div>
+      <div class="chips" id="l7-stage" role="group" aria-label="Choose a stage"></div>
+      <div class="stats" id="l7-stats"></div>
+      <div class="detail" id="l7-detail" aria-live="polite"></div>
+      <p class="hint">Star drawings are not to scale. Sizes, brightness and times are rounded values.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Each one has a worked example and new practice every time you press the practice button.</p>
+  </div>
+
+  <article class="lesson" id="b1">
+    <div class="text">
+      <span class="step">Investigation 1 · Cosmic address</span>
+      <h3>Put it in order, smallest to largest</h3>
+      <div class="codes"><span class="code">SP1.S1</span><span class="code">SP1.K2</span></div>
+      <p>Every object in space is part of something larger. Tap the objects in order from <b>smallest</b> to <b>largest</b>. Then check your order.</p>
+      <div class="worked"><b>Worked example</b><span>Earth → solar system → Milky Way galaxy → universe.</span><span>Earth is one planet. The solar system holds the Sun and all eight planets. The Milky Way holds hundreds of billions of stars, many with their own planets. The universe holds billions of galaxies.</span></div>
+    </div>
+    <div class="model">
+      <h4>Order builder</h4>
+      <div class="chips" id="b1-pool" role="group" aria-label="Objects to place"></div>
+      <div class="order" id="b1-order" aria-live="polite" aria-label="Your order"></div>
+      <div class="row"><button class="btn" type="button" id="b1-check">Check order</button><button class="btn ghost" type="button" id="b1-undo">Undo</button><button class="btn ghost" type="button" id="b1-new">New practice</button></div>
+      <p class="fb" id="b1-fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b2">
+    <div class="text">
+      <span class="step">Investigation 2 · Evidence check</span>
+      <h3>Which idea did this evidence support?</h3>
+      <div class="codes"><span class="code">SP1.S2</span><span class="code">SP1.K4</span></div>
+      <p>Ideas about the universe changed when new evidence appeared. Read each observation and choose the idea it supported best.</p>
+      <div class="worked"><b>Worked example</b><span>Observation: Galileo saw four moons circling Jupiter.</span><span>Reasoning: in the Earth-centred model, everything circles Earth. These moons circle Jupiter instead.</span><span>Answer: it supported the Sun-centred model, because it showed that not everything orbits Earth.</span></div>
+    </div>
+    <div class="model">
+      <h4>Evidence card</h4>
+      <div class="detail" id="b2-q" aria-live="polite"></div>
+      <div class="opts" id="b2-opts"></div>
+      <p class="fb" id="b2-fb" aria-live="polite"></p>
+      <div class="row"><button class="btn ghost" type="button" id="b2-new">New practice</button><span class="mono num hint" id="b2-score"></span></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3">
+    <div class="text">
+      <span class="step">Investigation 3 · Cosmic calendar</span>
+      <h3>Squeeze 13.8 billion years into one year</h3>
+      <div class="codes"><span class="code">SP1.S3</span><span class="code">SP1.K6</span></div>
+      <p>The history of the universe is hard to picture. Imagine it as one calendar year. The Big Bang is the first moment of January 1. Today is the last moment of December 31.</p>
+      <div class="formula">day of the year = (time after the Big Bang ÷ 13.8 billion years) × 365</div>
+      <div class="worked"><b>Worked example</b><span>The solar system formed 4.6 billion years ago, which is 13.8 − 4.6 = 9.2 billion years after the Big Bang.</span><span>9.2 ÷ 13.8 = 0.667. Then 0.667 × 365 = about 243.3 days.</span><span>After 243 full days, the date is about September 1. The solar system is new on this calendar.</span></div>
+    </div>
+    <div class="model">
+      <h4>Calendar converter</h4>
+      <label class="field" for="b3-t">Years after the Big Bang (billions): <span class="mono num" id="b3-out"></span></label>
+      <input type="range" id="b3-t" min="0" max="13.8" step="0.05" value="9.2">
+      <div class="stats" id="b3-stats"></div>
+      <div class="worked" id="b3-q" aria-live="polite"></div>
+      <div class="opts" id="b3-opts"></div>
+      <p class="fb" id="b3-fb" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="b3-new">New practice</button>
+    </div>
+  </article>
+
+  <article class="lesson" id="b4">
+    <div class="text">
+      <span class="step">Investigation 4 · Brightness calculator</span>
+      <h3>Which star looks brighter, and by how much?</h3>
+      <div class="codes"><span class="code">SP1.S4</span><span class="code">SP1.K7</span></div>
+      <div class="formula">brightness ratio A ÷ B = (L<sub>A</sub> ÷ L<sub>B</sub>) × (d<sub>B</sub> ÷ d<sub>A</sub>)²</div>
+      <div class="worked"><b>Worked example</b><span>Star A has 100 times the luminosity of star B. Star A is 5 times as far away.</span><span>Luminosity part: 100. Distance part: (1 ÷ 5)² = 1 ÷ 25.</span><span>100 ÷ 25 = 4, so star A looks 4 times as bright as star B.</span></div>
+      <p class="note">You do not need to memorize the formula. Remember the idea: more luminous means brighter, and twice as far means one quarter as bright.</p>
+    </div>
+    <div class="model">
+      <h4>Calculator</h4>
+      <div class="fields">
+        <label class="field" for="b4-la">Star A luminosity (Suns)<input type="number" id="b4-la" min="0.0001" step="any" value="100"></label>
+        <label class="field" for="b4-da">Star A distance (ly)<input type="number" id="b4-da" min="0.01" step="any" value="50"></label>
+        <label class="field" for="b4-lb">Star B luminosity (Suns)<input type="number" id="b4-lb" min="0.0001" step="any" value="1"></label>
+        <label class="field" for="b4-db">Star B distance (ly)<input type="number" id="b4-db" min="0.01" step="any" value="10"></label>
+      </div>
+      <div class="detail" id="b4-out" aria-live="polite"></div>
+      <div class="worked" id="b4-q" aria-live="polite"></div>
+      <div class="opts" id="b4-opts"></div>
+      <p class="fb" id="b4-fb" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="b4-new">New practice</button>
+    </div>
+  </article>
+
+  <article class="lesson" id="b5">
+    <div class="text">
+      <span class="step">Investigation 5 · Star path predictor</span>
+      <h3>Predict how a star will end</h3>
+      <div class="codes"><span class="code">SP1.S5</span><span class="code">SP1.K8</span></div>
+      <p>A star’s starting mass decides its path. Use the guide to predict each star’s life.</p>
+      <div class="tablebox"><table class="dt">
+        <tr><th>Starting mass</th><th>Life on main sequence</th><th>End</th></tr>
+        <tr><td>Less than about 0.5 Suns</td><td>trillions of years</td><td>white dwarf (predicted)</td></tr>
+        <tr><td>About 0.5 to 8 Suns</td><td>billions of years</td><td>red giant, then white dwarf</td></tr>
+        <tr><td>About 8 to 20 Suns</td><td>millions of years</td><td>supernova, then neutron star</td></tr>
+        <tr><td>More than about 20 Suns</td><td>a few million years</td><td>supernova, then black hole</td></tr>
+      </table></div>
+      <div class="worked"><b>Worked example</b><span>A star forms with 3 times the Sun’s mass.</span><span>3 is between 0.5 and 8, so it lives billions of years (less than the Sun), swells into a red giant, throws off its outer layers and ends as a white dwarf.</span></div>
+      <p class="note">The mass boundaries are rounded. Scientists are still studying exactly where they fall.</p>
+    </div>
+    <div class="model">
+      <h4>Predict the path</h4>
+      <div class="detail" id="b5-q" aria-live="polite"></div>
+      <div class="opts" id="b5-opts"></div>
+      <p class="fb" id="b5-fb" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="b5-new">New practice</button>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of more than twenty. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 8 SP1, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-sp1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+var NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) {
+    var v = attrs[k];
+    if ((k === "fill" || k === "stroke" || k === "stop-color") && String(v).indexOf("var(") === 0) n.style[k === "stop-color" ? "stopColor" : k] = v;
+    else if (k === "class") n.setAttribute("class", v);
+    else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(n, d){ return Number(n).toFixed(d); }
+function grp(n){ var p = String(n).split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function sig(n){ var a = Math.abs(n); if (Math.abs(n - Math.round(n)) < 1e-9 && a >= 1) return grp(Math.round(n)); if (a >= 100) return grp(Math.round(n)); if (a >= 10) return fmt(n, 1); if (a >= 1) return fmt(n, 2); if (a >= 0.01) return fmt(n, 3); return Number(n).toPrecision(2); }
+function chipGroup(container, items, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function tappable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label); g.setAttribute("class", "tap");
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+function rng(seed){ var s = seed; return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+function stars(svg, w, h, n, seed){
+  var r = rng(seed || 7);
+  for (var i = 0; i < n; i++) S("circle", {cx: fmt(r() * w, 1), cy: fmt(r() * h, 1), r: fmt(0.5 + r() * 0.8, 2), fill: "var(--sky-muted)", opacity: fmt(0.25 + r() * 0.35, 2)}, svg);
+}
+/* Multiple-choice helper for Bench practice */
+function mc(box, fbBox, options, correct, explain, onDone){
+  clear(box); fbBox.textContent = ""; fbBox.className = "fb";
+  options.forEach(function(o, i){
+    var b = el("button", {"class": "opt", type: "button"}, o);
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(box.children, function(x, j){ x.disabled = true; if (j === correct) x.classList.add("right"); });
+      var ok = i === correct;
+      if (!ok) b.classList.add("wrong");
+      fbBox.className = "fb " + (ok ? "ok" : "no");
+      fbBox.textContent = (ok ? "Correct. " : "Not quite. ") + explain;
+      if (onDone) onDone(ok);
+    });
+    box.appendChild(b);
+  });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: cosmic address ---------- */
+(function(){
+  var L = [
+    {n: "Earth", r: 16, f: "var(--sky-2)", size: "About 12 760 km across", paras: ["Our home planet. Light crosses it in less than a tenth of a second.", "Earth is one of eight planets that orbit the Sun."]},
+    {n: "Solar system", r: 46, f: "var(--sky-2)", size: "About 9 billion km across to Neptune’s orbit", paras: ["The Sun and everything held in orbit by its gravity: eight planets, dwarf planets, moons, asteroids and comets.", "Neptune is about 30 AU (4.5 billion km) from the Sun. Sunlight takes about 4 hours to get there."]},
+    {n: "Milky Way galaxy", r: 78, f: "var(--sky-2)", size: "About 100 000 light-years across", paras: ["Our galaxy: a spiral of 100 to 400 billion stars, plus gas and dust, held together by gravity.", "The Sun is about 26 000 light-years from the centre. It takes about 230 million years to go around once."]},
+    {n: "Local Group", r: 108, f: "var(--sky-2)", size: "About 10 million light-years across", paras: ["Our galaxy’s neighbourhood: the Milky Way, the Andromeda Galaxy and dozens of smaller galaxies.", "Andromeda is about 2.5 million light-years away."]},
+    {n: "Observable universe", r: 140, f: "var(--sky)", size: "About 93 billion light-years across", paras: ["All of the universe we can see from Earth. The whole universe may be much bigger.", "It holds billions of galaxies. Estimates range from hundreds of billions to about two trillion."]}
+  ];
+  var svg = $("l1-svg"), cx = 200, cy = 152, groups = [];
+  stars(svg, 400, 300, 70, 11);
+  for (var i = L.length - 1; i >= 0; i--) (function(i){
+    var g = S("g", null, svg);
+    S("circle", {cx: cx, cy: cy, r: L[i].r, fill: i === 0 ? "var(--hot)" : "var(--sky-2)", "fill-opacity": i === 0 ? 1 : 0.55, stroke: "var(--sky-line)", "stroke-width": 1.5}, g);
+    if (i > 0) S("text", {x: cx, y: cy - L[i].r + 14, "text-anchor": "middle", "class": "small"}, g, L[i].n);
+    tappable(g, L[i].n + ". " + L[i].size, function(){ show(i); });
+    groups[i] = g;
+  })(i);
+  S("text", {x: cx, y: cy + 32, "text-anchor": "middle", "class": "small"}, svg, "Earth");
+  function show(i){
+    groups.forEach(function(g, j){ g.firstChild.style.stroke = j === i ? "var(--glow)" : "var(--sky-line)"; g.firstChild.setAttribute("stroke-width", j === i ? 3 : 1.5); });
+    detail($("l1-detail"), L[i].n, [L[i].size + ".", L[i].paras[0], L[i].paras[1]], "Level " + (i + 1) + " of 5");
+  }
+  show(2);
+})();
+
+/* ---------- Lesson 2: city sky or dark sky ---------- */
+(function(){
+  var LV = [
+    {n: "Downtown Edmonton", lim: 2.5, count: "about 50 stars", haze: 0.38},
+    {n: "Suburb", lim: 3.5, count: "about 150 stars", haze: 0.24},
+    {n: "Rural Alberta", lim: 5.0, count: "about 800 stars", haze: 0.08},
+    {n: "Dark-sky preserve", lim: 6.2, count: "about 2500 to 3000 stars", haze: 0}
+  ];
+  var OBJ = [
+    {n: "Vega", x: 90, y: 60, mag: 0, desc: ["A bright star about 25 light-years away.", "It is in the Milky Way. It is bright enough to see even from downtown."]},
+    {n: "Polaris, the North Star", x: 300, y: 50, mag: 2, desc: ["A star roughly 430 light-years away. The distance is still uncertain.", "It is in the Milky Way. You can find it from the city on a clear night."]},
+    {n: "A faint star", x: 330, y: 170, mag: 4.6, desc: ["A practice faint star a few thousand light-years away.", "It is in the Milky Way, but city lights hide it. You need a darker sky."]},
+    {n: "Milky Way band", x: 200, y: 125, mag: 4.9, band: true, desc: ["The blended glow of millions of distant stars in our galaxy’s disc.", "We see it as a band because we live inside the flat disc."]},
+    {n: "Andromeda Galaxy", x: 120, y: 200, mag: 4.9, smudge: true, desc: ["A whole galaxy about 2.5 million light-years away, outside the Milky Way.", "It looks like a faint smudge. You see the blended light of hundreds of billions of stars, not single stars."]}
+  ];
+  var svg = $("l2-svg"), r = rng(23), field = [];
+  S("rect", {x: 0, y: 0, width: 400, height: 260, fill: "var(--sky)"}, svg);
+  var band = S("path", {d: "M-20,230 C100,160 260,110 420,30 L420,90 C260,160 120,220 -20,280 Z", fill: "var(--mw)", opacity: 0}, svg);
+  for (var i = 0; i < 320; i++) {
+    var u = Math.max(r(), 1e-4), m = Math.max(-1, 6.2 + 2 * Math.log10(u));
+    var near = r() < 0.45;
+    var x = r() * 400, y = near ? (230 - x * 0.5) + (r() - 0.5) * 70 : r() * 260;
+    field.push({c: S("circle", {cx: fmt(x, 1), cy: fmt(y, 1), r: fmt(Math.max(0.6, 2.4 - m * 0.3), 2), fill: "var(--star)"}, svg), m: m});
+  }
+  var haze = S("rect", {x: 0, y: 0, width: 400, height: 260, fill: "var(--cool)", opacity: 0, "pointer-events": "none"}, svg);
+  var objs = OBJ.map(function(o){
+    var g = S("g", null, svg);
+    if (o.band) S("rect", {x: o.x - 40, y: o.y - 16, width: 80, height: 32, rx: 16, fill: "var(--mw)", "fill-opacity": 0.01, stroke: "var(--sky-line)", "stroke-dasharray": "3 3"}, g);
+    else if (o.smudge) S("ellipse", {cx: o.x, cy: o.y, rx: 14, ry: 5, fill: "var(--mw)", opacity: 0.7, transform: "rotate(-30 " + o.x + " " + o.y + ")"}, g);
+    else S("circle", {cx: o.x, cy: o.y, r: Math.max(1.6, 4.2 - o.mag * 0.55), fill: "var(--star)", stroke: "var(--sky-line)"}, g);
+    S("text", {x: o.x, y: o.y + 22, "text-anchor": "middle", "class": "small"}, g, o.n.split(",")[0]);
+    tappable(g, o.n, function(){ detail($("l2-detail"), o.n, o.desc.concat([vis(o)]), "Tap result"); });
+    return {g: g, o: o};
+  });
+  var lvl = 0;
+  function vis(o){ return o.mag <= LV[lvl].lim ? "Visible here: yes." : "Visible here: no. Move to a darker sky."; }
+  function draw(){
+    var L = LV[lvl];
+    $("l2-out").textContent = L.n + " · " + L.count;
+    field.forEach(function(s){ s.c.setAttribute("display", s.m <= L.lim ? "inline" : "none"); });
+    band.setAttribute("opacity", lvl >= 2 ? (lvl === 3 ? 0.22 : 0.1) : 0);
+    haze.setAttribute("opacity", L.haze);
+    objs.forEach(function(x){ if (x.o.mag <= L.lim) { x.g.removeAttribute("display"); x.g.setAttribute("tabindex", "0"); } else { x.g.setAttribute("display", "none"); x.g.setAttribute("tabindex", "-1"); } });
+    detail($("l2-detail"), L.n, ["You can see " + L.count + " with your naked eye here.", lvl < 2 ? "Light from streetlights and buildings brightens the sky and hides faint stars." : "Away from city lights, faint stars, the Milky Way band and the Andromeda Galaxy appear.", "Every star you can see is in the Milky Way."], "Sky darkness " + (lvl + 1) + " of 4");
+  }
+  $("l2-dark").addEventListener("input", function(e){ lvl = +e.target.value; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 3: timeline of ideas ---------- */
+(function(){
+  var T = [
+    {w: "about 1600 to 300 BCE", who: "Babylonia", p: ["Babylonian sky watchers recorded the positions of the Moon and planets on clay tablets for centuries.", "They found repeating patterns and used arithmetic to predict events such as eclipses.", "What changed: careful records showed the sky follows patterns that can be predicted."]},
+    {w: "about 350 BCE", who: "Ancient Greece: Aristotle", p: ["Aristotle argued Earth is a sphere, using the curved shadow Earth casts on the Moon during a lunar eclipse.", "He placed Earth, unmoving, at the centre, with the Sun, Moon, planets and stars circling it.", "What changed: a physical model of the whole universe, with Earth at the centre."]},
+    {w: "about 270 BCE", who: "Ancient Greece: Aristarchus", p: ["Aristarchus suggested that the Sun, not Earth, is at the centre.", "Few people accepted it. Earth did not feel like it was moving, and the idea did not yet predict better.", "What changed: a Sun-centred idea existed, but evidence for it was missing."]},
+    {w: "about 150 CE", who: "Ptolemy", p: ["Ptolemy, working in Alexandria, built a detailed Earth-centred model. Planets moved on small circles called epicycles that rode on bigger circles.", "It predicted planet positions well enough to be used for about 1400 years.", "What changed: a model that made accurate predictions, even though its picture was wrong."]},
+    {w: "800s to 1400s CE", who: "Astronomers worldwide", p: ["Astronomers in the Islamic world, India, China and elsewhere made better observations and improved the models. Chinese astronomers recorded a new star in 1054, now known to be a supernova.", "Many cultures, including First Nations, Métis and Inuit peoples, built their own deep knowledge of the sky.", "What changed: more and better observations from many places."]},
+    {w: "1543", who: "Copernicus", p: ["Nicolaus Copernicus published a model with the Sun at the centre and Earth as one of the planets moving around it.", "It explained the backward loops of planets in a simpler way.", "What changed: a full Sun-centred model, ready to be tested."]},
+    {w: "1609 to 1610", who: "Galileo", p: ["Galileo pointed a telescope at the sky. He saw four moons orbiting Jupiter and a full set of phases of Venus.", "He also saw that the Milky Way is made of countless faint stars.", "What changed: a new tool gave evidence against the Earth-centred model of Ptolemy."]},
+    {w: "1912 to 1924", who: "Leavitt and Hubble", p: ["Henrietta Leavitt found a way to measure distances using certain stars that brighten and dim.", "Edwin Hubble used it to show the Andromeda nebula is far outside the Milky Way. It is a separate galaxy.", "What changed: the universe is far bigger than one galaxy."]},
+    {w: "1927 to 1929", who: "Lemaître and Hubble", p: ["Georges Lemaître proposed that the universe is expanding. Hubble’s measurements showed that farther galaxies are moving away faster.", "Run the expansion backward and everything was once packed together.", "What changed: the beginning of the Big Bang theory."]},
+    {w: "1965 to today", who: "Modern astronomy", p: ["In 1965, Arno Penzias and Robert Wilson detected a faint microwave glow from every direction, left over from the early universe.", "Space telescopes such as Hubble and the James Webb Space Telescope now see galaxies as they were long ago. Canada built parts of Webb.", "What changed: strong evidence for the Big Bang theory, still being tested."]}
+  ];
+  var list = $("l3-list"), btns = [];
+  T.forEach(function(t, i){
+    var li = el("li"), b = el("button", {type: "button", "aria-pressed": "false"});
+    b.appendChild(el("span", {"class": "when"}, t.w)); b.appendChild(el("span", {"class": "who"}, t.who));
+    b.addEventListener("click", function(){ show(i); });
+    li.appendChild(b); list.appendChild(li); btns.push(b);
+  });
+  function show(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", i === j ? "true" : "false"); }); detail($("l3-detail"), T[i].who, T[i].p, T[i].w); }
+  show(0);
+})();
+
+/* ---------- Lesson 4: stretching space ---------- */
+(function(){
+  var r = rng(41), G = [];
+  for (var gx = -4; gx <= 4; gx += 2) for (var gy = -2.5; gy <= 2.5; gy += 1.7) G.push({x: gx + (r() - 0.5) * 1.2, y: gy + (r() - 0.5) * 0.9});
+  var svg = $("l4-svg"), cx = 200, cy = 140, s = 1, home = 6, nodes = [];
+  stars(svg, 400, 280, 30, 5);
+  var lines = S("g", null, svg), gl = S("g", null, svg);
+  G.forEach(function(g, i){
+    var n = S("g", null, gl);
+    S("ellipse", {rx: 7, ry: 3.5, fill: "var(--mw)", stroke: "var(--sky-line)"}, n);
+    var t = S("text", {y: -9, "text-anchor": "middle", "class": "mlbl"}, n, "");
+    tappable(n, "Galaxy " + (i + 1) + ". Make this home.", function(){ home = i; draw(); });
+    nodes.push({g: n, t: t});
+  });
+  function D(a, b){ return Math.hypot(G[a].x - G[b].x, G[a].y - G[b].y); }
+  function draw(){
+    $("l4-out").textContent = fmt(s, 2) + " ×";
+    var others = G.map(function(g, i){ return i; }).filter(function(i){ return i !== home; }).sort(function(a, b){ return D(home, a) - D(home, b); });
+    var picks = [others[0], others[Math.floor(others.length / 2)], others[others.length - 1]], names = ["A (near)", "B (middle)", "C (far)"];
+    clear(lines);
+    G.forEach(function(g, i){
+      var x = cx + g.x * 22 * s, y = cy + g.y * 22 * s;
+      nodes[i].g.setAttribute("transform", "translate(" + fmt(x, 1) + " " + fmt(y, 1) + ")");
+      nodes[i].g.firstChild.style.fill = i === home ? "var(--glow)" : "var(--mw)";
+      var k = picks.indexOf(i);
+      nodes[i].t.textContent = i === home ? "Home" : (k >= 0 ? names[k].charAt(0) : "");
+      if (k >= 0) S("line", {x1: cx + G[home].x * 22 * s, y1: cy + G[home].y * 22 * s, x2: x, y2: y, stroke: "var(--sky-muted)", "stroke-dasharray": "3 4"}, lines);
+    });
+    var t = $("l4-table"); clear(t);
+    var hr = el("tr"); ["Galaxy", "Start", "Now", "Moved"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+    picks.forEach(function(p, k){
+      var d0 = D(home, p) * 10, tr = el("tr");
+      [names[k], fmt(d0, 0), fmt(d0 * s, 0), fmt(d0 * (s - 1), 0)].forEach(function(v){ tr.appendChild(el("td", null, v)); });
+      t.appendChild(tr);
+    });
+  }
+  $("l4-s").addEventListener("input", function(e){ s = +e.target.value; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 5: cosmic history strip ---------- */
+(function(){
+  var H = [
+    {n: "The start", t: "0", temp: "extremely hot", p: "The universe is in an extremely small, hot and dense state, and it begins to expand and cool."},
+    {n: "First second", t: "less than 1 second", temp: "about 10 billion °C", p: "Tiny particles form, including protons and neutrons, the parts of atom centres."},
+    {n: "First minutes", t: "about 3 to 20 minutes", temp: "about 1 billion °C", p: "Protons and neutrons join into the centres of hydrogen and helium atoms, with a tiny amount of lithium. By mass, matter is about three quarters hydrogen and one quarter helium."},
+    {n: "First atoms", t: "about 380 000 years", temp: "about 3000 °C", p: "Atom centres capture electrons and become full hydrogen and helium atoms. Light can now travel freely. We still detect that light today as a faint microwave glow."},
+    {n: "First stars", t: "about 100 to 200 million years", temp: "space about −210 °C", p: "Gravity pulls clouds of hydrogen and helium together. The first stars light up, and the first galaxies begin to form."},
+    {n: "Heavier elements", t: "the next billions of years", temp: "space keeps cooling", p: "Stars fuse small atoms into heavier ones such as carbon, oxygen and iron. Dying stars spread these elements into space, where they mix into new clouds."},
+    {n: "Solar system forms", t: "about 9.2 billion years (4.6 billion years ago)", temp: "space about −269 °C", p: "A cloud of gas and dust that holds heavier elements collapses. The Sun forms at the centre, and the planets form from the leftover disc."},
+    {n: "Today", t: "about 13.8 billion years", temp: "space about −270 °C", p: "The universe is still expanding. The leftover glow from the early universe has cooled to about 2.7 degrees above absolute zero."}
+  ];
+  var svg = $("l5-svg"), i = 0, marks = [];
+  var defs = S("defs", null, svg), lg = S("linearGradient", {id: "l5g", x1: 0, x2: 1, y1: 0, y2: 0}, defs);
+  S("stop", {offset: "0", "stop-color": "var(--star)"}, lg); S("stop", {offset: "0.3", "stop-color": "var(--warm)"}, lg); S("stop", {offset: "0.55", "stop-color": "var(--nebula)"}, lg); S("stop", {offset: "1", "stop-color": "var(--sky-2)"}, lg);
+  S("path", {d: "M20,100 L380,30 L380,170 Z", fill: "url(#l5g)", opacity: 0.85}, svg);
+  stars(svg, 400, 200, 20, 3);
+  H.forEach(function(h, k){
+    var x = 30 + k * (340 / (H.length - 1)), g = S("g", null, svg);
+    S("circle", {cx: x, cy: 186, r: 7, fill: "var(--sky-2)", stroke: "var(--sky-muted)", "stroke-width": 1.5}, g);
+    tappable(g, "Step " + (k + 1) + ": " + h.n, function(){ i = k; show(); });
+    marks.push(g);
+  });
+  var cursor = S("line", {y1: 20, y2: 178, stroke: "var(--sky-ink)", "stroke-width": 2, "stroke-dasharray": "4 3"}, svg);
+  var cap = S("text", {y: 16, "text-anchor": "middle", "class": "lbl"}, svg, "");
+  function show(){
+    var x = 30 + i * (340 / (H.length - 1));
+    cursor.setAttribute("x1", x); cursor.setAttribute("x2", x);
+    cap.setAttribute("x", Math.min(330, Math.max(70, x))); cap.textContent = H[i].n;
+    marks.forEach(function(g, k){ g.firstChild.style.fill = k === i ? "var(--glow)" : "var(--sky-2)"; });
+    detail($("l5-detail"), H[i].n, [H[i].p, "Time after the Big Bang: " + H[i].t + ".", "Temperature: " + H[i].temp + "."], "Step " + (i + 1) + " of " + H.length);
+    $("l5-prev").disabled = i === 0; $("l5-next").disabled = i === H.length - 1;
+  }
+  $("l5-prev").addEventListener("click", function(){ if (i > 0) { i--; show(); } });
+  $("l5-next").addEventListener("click", function(){ if (i < H.length - 1) { i++; show(); } });
+  show();
+})();
+
+/* ---------- Brightness model (shared) ---------- */
+var B_DARK = 3.5e-4, B_CITY = 8.8e-3; /* brightness units: Suns per light-year squared, matched to Sirius */
+function bright(L, d){ return L / (d * d); }
+function visText(b){ return b >= B_CITY ? "visible even from the city" : (b >= B_DARK ? "visible only from a dark sky" : "too faint to see without a telescope"); }
+function ratioText(a, b){
+  if (Math.abs(a / b - 1) < 0.02) return "They look about equally bright.";
+  return a > b ? "Star A looks about " + sig(a / b) + " times as bright as star B." : "Star B looks about " + sig(b / a) + " times as bright as star A.";
+}
+
+/* ---------- Lesson 6: two-star test ---------- */
+(function(){
+  var P = [
+    {label: "Sirius vs Rigel", a: ["Sirius", 25, 8.6], b: ["Rigel", 60000, 860]},
+    {label: "Polaris vs Deneb", a: ["Polaris", 2500, 430], b: ["Deneb", 200000, 2600]},
+    {label: "Vega vs Proxima Centauri", a: ["Vega", 40, 25], b: ["Proxima Centauri", 0.0017, 4.2]},
+    {label: "Same star, twice as far", a: ["Star A", 100, 50], b: ["Star B", 100, 100]}
+  ];
+  var nameA = "Star A", nameB = "Star B", svg = $("l6-svg");
+  stars(svg, 400, 150, 25, 9);
+  var ga = S("g", null, svg), gb = S("g", null, svg);
+  function star(g, x, b, name){
+    clear(g);
+    var rr = Math.max(1.5, Math.min(32, 4 + 4.2 * (Math.log10(b) + 3.5)));
+    S("circle", {cx: x, cy: 68, r: rr * 1.8, fill: "var(--glow)", opacity: 0.18}, g);
+    S("circle", {cx: x, cy: 68, r: rr, fill: "var(--star)"}, g);
+    S("text", {x: x, y: 138, "text-anchor": "middle", "class": "lbl"}, g, name);
+  }
+  var exact = null;
+  function L(id){ if (exact && exact[id] != null) return exact[id]; return Math.pow(10, +$(id).value); }
+  function draw(){
+    var la = L("l6-la"), da = L("l6-da"), lb = L("l6-lb"), db = L("l6-db");
+    $("l6-la-o").textContent = sig(la); $("l6-da-o").textContent = sig(da);
+    $("l6-lb-o").textContent = sig(lb); $("l6-db-o").textContent = sig(db);
+    var ba = bright(la, da), bb = bright(lb, db);
+    star(ga, 110, ba, nameA); star(gb, 290, bb, nameB);
+    detail($("l6-detail"), ratioText(ba, bb).replace("Star A", nameA).replace("star B", nameB).replace("Star B", nameB).replace("star A", nameA), [
+      nameA + ": " + sig(la) + " times the Sun’s luminosity, " + sig(da) + " light-years away, " + visText(ba) + ".",
+      nameB + ": " + sig(lb) + " times the Sun’s luminosity, " + sig(db) + " light-years away, " + visText(bb) + ".",
+      (la > lb) === (ba > bb) ? "Here the more luminous star also looks brighter." : "Here the less luminous star looks brighter because it is much closer."
+    ], "Result");
+  }
+  function set(p){
+    nameA = p.a[0]; nameB = p.b[0];
+    exact = {"l6-la": p.a[1], "l6-da": p.a[2], "l6-lb": p.b[1], "l6-db": p.b[2]};
+    $("l6-la").value = Math.log10(p.a[1]); $("l6-da").value = Math.log10(p.a[2]);
+    $("l6-lb").value = Math.log10(p.b[1]); $("l6-db").value = Math.log10(p.b[2]);
+    draw();
+  }
+  ["l6-la","l6-da","l6-lb","l6-db"].forEach(function(id){ $(id).addEventListener("input", function(){ if (exact) delete exact[id]; if (nameA !== "Star A") { nameA = "Star A"; nameB = "Star B"; } draw(); }); });
+  chipGroup($("l6-pre"), P, set, 0);
+})();
+
+/* ---------- Lesson 7: star life stepper ---------- */
+(function(){
+  var M = [
+    {label: "Red dwarf (0.2 Suns)", stages: [
+      {n: "Nebula", draw: "cloud", size: "a cloud trillions of km wide", br: "dark", mass: "gathering gas", time: "the start", p: "Gravity pulls a clump of gas and dust in a nebula together."},
+      {n: "Protostar", draw: "proto", size: "wider than it will be", br: "glows from heat as it shrinks", mass: "still gaining mass", time: "hundreds of millions of years", p: "The clump heats up as it shrinks. Small stars take a long time to settle."},
+      {n: "Main sequence", draw: "star", rad: 12, col: "var(--cool)", size: "about one fifth of the Sun’s width", br: "less than 1% of the Sun", mass: "loses very little", time: "trillions of years", p: "The star fuses hydrogen into helium very slowly. Red dwarfs are the most common stars, but none is bright enough to see with the naked eye."},
+      {n: "White dwarf (future)", draw: "tiny", size: "about Earth’s size", br: "very dim", mass: "most of its mass stays", time: "far in the future", p: "The universe is only 13.8 billion years old, so no red dwarf has died yet. Scientists predict each one will slowly become a white dwarf."}
+    ]},
+    {label: "Sun-like (1 Sun)", stages: [
+      {n: "Nebula", draw: "cloud", size: "a cloud trillions of km wide", br: "dark", mass: "gathering gas", time: "the start", p: "Gravity pulls a clump of gas and dust in a nebula together. Our Sun formed this way about 4.6 billion years ago."},
+      {n: "Protostar", draw: "proto", size: "wider than the Sun", br: "glows from heat as it shrinks", mass: "still gaining mass", time: "tens of millions of years", p: "The clump shrinks and heats. When the core reaches about 15 million °C, hydrogen fusion begins."},
+      {n: "Main sequence", draw: "star", rad: 24, col: "var(--warm)", size: "1 Sun width (about 1.4 million km)", br: "1 Sun", mass: "loses a tiny amount in the solar wind", time: "about 10 billion years", p: "The star fuses hydrogen into helium in its core and stays steady. The Sun is about halfway through this stage."},
+      {n: "Red giant", draw: "star", rad: 82, col: "var(--cool)", size: "about 100 to 200 times wider", br: "thousands of times brighter", mass: "loses a large share in strong winds", time: "hundreds of millions of years", p: "The core runs low on hydrogen. The star swells, its surface cools and turns red, and it becomes much brighter."},
+      {n: "Planetary nebula", draw: "ring", size: "a glowing shell much bigger than the solar system", br: "the shell glows, lit by the hot core", mass: "outer layers drift away", time: "tens of thousands of years", p: "The star gently pushes off its outer layers. The glowing shell spreads elements such as carbon into space."},
+      {n: "White dwarf", draw: "tiny", size: "about Earth’s size", br: "dim, then fading", mass: "about half the Sun’s mass", time: "cools for billions of years", p: "The leftover hot core is very dense. It no longer fuses, so it slowly cools and fades."}
+    ]},
+    {label: "Massive (15 Suns)", stages: [
+      {n: "Nebula", draw: "cloud", size: "a cloud trillions of km wide", br: "dark", mass: "gathering lots of gas", time: "the start", p: "A large clump of gas and dust collapses under gravity."},
+      {n: "Protostar", draw: "proto", size: "very wide", br: "glows from heat", mass: "still gaining mass", time: "under a million years", p: "Massive stars form faster than small ones."},
+      {n: "Main sequence", draw: "star", rad: 36, col: "var(--hot)", size: "about 6 times wider than the Sun", br: "about 20 000 times the Sun", mass: "loses mass in strong winds", time: "about 10 to 15 million years", p: "The star burns through its hydrogen fast and shines blue-white and very bright."},
+      {n: "Red supergiant", draw: "star", rad: 95, col: "var(--cool)", size: "hundreds of times wider than the Sun", br: "about 100 000 times the Sun", mass: "loses several Suns of mass", time: "about 1 million years", p: "The star swells into a huge red supergiant. Betelgeuse in Orion is an example. Its core fuses heavier and heavier elements, up to iron."},
+      {n: "Supernova", draw: "burst", size: "an exploding cloud racing outward", br: "can outshine a whole galaxy for weeks", mass: "most mass is blasted into space", time: "the core collapses in under a second", p: "The iron core collapses and the star explodes. The explosion makes and spreads heavy elements."},
+      {n: "Neutron star", draw: "tiny", size: "about 20 km across", br: "very dim in visible light", mass: "about 1.4 Suns of mass in a city-sized ball", time: "lasts a very long time", p: "The crushed core becomes a neutron star. Stars that start with more than about 20 Suns of mass usually leave a black hole, where gravity is so strong that not even light escapes."}
+    ]}
+  ];
+  var svg = $("l7-svg"), mi = 1, si = 2, setStage = null;
+  function render(){
+    var st = M[mi].stages[si];
+    clear(svg); stars(svg, 400, 200, 30, 4);
+    var cx = 200, cy = 100;
+    if (st.draw === "cloud") { var r = rng(17); for (var k = 0; k < 14; k++) S("circle", {cx: cx + (r() - 0.5) * 200, cy: cy + (r() - 0.5) * 100, r: 20 + r() * 30, fill: "var(--nebula)", opacity: 0.18}, svg); }
+    else if (st.draw === "proto") { S("circle", {cx: cx, cy: cy, r: 70, fill: "var(--nebula)", opacity: 0.2}, svg); S("circle", {cx: cx, cy: cy, r: 26, fill: "var(--cool)", opacity: 0.85}, svg); }
+    else if (st.draw === "star") { S("circle", {cx: cx, cy: cy, r: st.rad * 1.3, fill: "var(--glow)", opacity: 0.15}, svg); S("circle", {cx: cx, cy: cy, r: st.rad, fill: st.col}, svg); }
+    else if (st.draw === "ring") { S("circle", {cx: cx, cy: cy, r: 70, fill: "none", stroke: "var(--nebula)", "stroke-width": 18, opacity: 0.6}, svg); S("circle", {cx: cx, cy: cy, r: 4, fill: "var(--star)"}, svg); }
+    else if (st.draw === "burst") { for (var a = 0; a < 16; a++) { var an = a * Math.PI / 8; S("line", {x1: cx, y1: cy, x2: cx + Math.cos(an) * 90, y2: cy + Math.sin(an) * 90, stroke: "var(--warm)", "stroke-width": 3, opacity: 0.7}, svg); } S("circle", {cx: cx, cy: cy, r: 30, fill: "var(--star)"}, svg); }
+    else { S("circle", {cx: cx, cy: cy, r: 12, fill: "var(--glow)", opacity: 0.15}, svg); S("circle", {cx: cx, cy: cy, r: 4, fill: "var(--hot)"}, svg); }
+    S("text", {x: 12, y: 22, "class": "lbl"}, svg, st.n);
+    svg.setAttribute("aria-label", M[mi].label + " star at the " + st.n + " stage");
+    var box = $("l7-stats"); clear(box);
+    [["Size", st.size], ["Brightness", st.br], ["Mass", st.mass], ["Time", st.time]].forEach(function(x){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, x[0])); var b = el("b", null, x[1]); b.style.fontSize = ".88rem"; d.appendChild(b); box.appendChild(d); });
+    detail($("l7-detail"), st.n, [st.p], "Stage " + (si + 1) + " of " + M[mi].stages.length);
+  }
+  function stageChips(){ setStage = chipGroup($("l7-stage"), M[mi].stages.map(function(s){ return {label: s.n}; }), function(it, i){ si = i; render(); }, Math.min(si, M[mi].stages.length - 1)); }
+  chipGroup($("l7-mass"), M, function(it, i){ mi = i; si = Math.min(si, M[mi].stages.length - 1); stageChips(); }, 1);
+})();
+
+/* ---------- Bench 1: order builder ---------- */
+(function(){
+  var ITEMS = [["Moon", 1], ["Earth", 2], ["Jupiter", 3], ["Sun", 4], ["Solar system", 5], ["Milky Way galaxy", 6], ["Local Group", 7], ["Observable universe", 8]];
+  var set = [], chosen = [];
+  function draw(){
+    var pool = $("b1-pool"); clear(pool);
+    set.forEach(function(it){
+      var used = chosen.indexOf(it) >= 0, b = el("button", {"class": "chip", type: "button"}, it[0]);
+      b.disabled = used; if (used) b.style.opacity = ".4";
+      b.addEventListener("click", function(){ chosen.push(it); $("b1-fb").textContent = ""; draw(); });
+      pool.appendChild(b);
+    });
+    var o = $("b1-order"); clear(o);
+    if (!chosen.length) o.appendChild(el("span", {"class": "hint"}, "Tap objects above, smallest first."));
+    chosen.forEach(function(it, i){ o.appendChild(el("span", {"class": "chip"}, (i + 1) + ". " + it[0])); });
+  }
+  function fresh(){ set = shuffle(ITEMS).slice(0, 5); chosen = []; $("b1-fb").textContent = ""; draw(); }
+  $("b1-check").addEventListener("click", function(){
+    var fb = $("b1-fb");
+    if (chosen.length < set.length) { fb.className = "fb no"; fb.textContent = "Place all " + set.length + " objects first."; return; }
+    var ok = chosen.every(function(it, i){ return i === 0 || it[1] > chosen[i - 1][1]; });
+    var right = set.slice().sort(function(a, b){ return a[1] - b[1]; }).map(function(x){ return x[0]; }).join(" → ");
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = ok ? "Correct. Each object fits inside or is smaller than the next: " + right + "." : "Not quite. The order is " + right + ". Try a new practice set.";
+  });
+  $("b1-undo").addEventListener("click", function(){ chosen.pop(); draw(); });
+  $("b1-new").addEventListener("click", fresh);
+  fresh();
+})();
+
+/* ---------- Bench 2: evidence check ---------- */
+(function(){
+  var IDEAS = ["Earth-centred model", "Sun-centred model", "The Milky Way is made of many stars", "There are many galaxies", "The universe is expanding (Big Bang)"];
+  var E = [
+    ["Galileo saw four moons orbiting Jupiter.", 1, "Not everything circles Earth, which fits the Sun-centred model."],
+    ["Galileo saw Venus go through a full set of phases, like the Moon.", 1, "A full set of phases only happens if Venus circles the Sun."],
+    ["Through a telescope, the milky band across the sky breaks into countless faint stars.", 2, "Galileo saw that the band is the light of many stars in our own galaxy."],
+    ["Hubble measured the Andromeda nebula to be millions of light-years away, far outside the Milky Way.", 3, "Andromeda is a separate galaxy, so the universe holds more than one galaxy."],
+    ["Telescopes show many fuzzy spiral patches that contain their own stars.", 3, "Each spiral patch is a galaxy of its own."],
+    ["Light from distant galaxies is stretched toward red, and farther galaxies are moving away faster.", 4, "Galaxies moving apart, faster with distance, means space is expanding."],
+    ["A faint microwave glow comes from every direction in the sky.", 4, "This leftover glow from the hot early universe is strong evidence for the Big Bang theory."],
+    ["Ordinary matter in the universe is about three quarters hydrogen and one quarter helium by mass.", 4, "These are the amounts the Big Bang theory predicts from the first few minutes."],
+    ["The Sun, Moon and stars seem to circle Earth each day, and the ground feels still.", 0, "Everyday experience made an Earth-centred model seem obvious."],
+    ["Ptolemy’s model with epicycles predicted planet positions well for centuries.", 0, "Good predictions kept the Earth-centred model in use for about 1400 years."]
+  ];
+  var right = 0, done = 0, cur = -1;
+  function next(){
+    var i; do { i = Math.floor(Math.random() * E.length); } while (i === cur && E.length > 1); cur = i;
+    detail($("b2-q"), "Observation", [E[i][0]], "Practice");
+    mc($("b2-opts"), $("b2-fb"), IDEAS, E[i][1], E[i][2], function(ok){ done++; if (ok) right++; $("b2-score").textContent = right + " of " + done + " correct"; });
+  }
+  $("b2-new").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 3: cosmic calendar ---------- */
+var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var MDAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
+function calDate(t){
+  var day = t / 13.8 * 365;
+  if (day >= 365) return {m: 11, d: 31, day: 365, text: "December 31, the last moment"};
+  var m = 0, rest = day;
+  while (rest >= MDAYS[m]) { rest -= MDAYS[m]; m++; }
+  return {m: m, d: Math.floor(rest) + 1, day: day, text: MONTHS[m] + " " + (Math.floor(rest) + 1)};
+}
+(function(){
+  function show(){
+    var t = +$("b3-t").value, c = calDate(t);
+    $("b3-out").textContent = fmt(t, 2);
+    var box = $("b3-stats"); clear(box);
+    [["Calendar date", c.text], ["Day of year", fmt(c.day, 1)], ["Years ago", fmt(13.8 - t, 2) + " billion"]].forEach(function(x){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, x[0])); d.appendChild(el("b", null, x[1])); box.appendChild(d); });
+  }
+  var EV = [
+    ["The first stars formed about 0.2 billion years after the Big Bang.", 0.2],
+    ["The earliest signs of life on Earth are about 3.7 billion years old.", 13.8 - 3.7],
+    ["The dinosaurs died out about 66 million (0.066 billion) years ago.", 13.8 - 0.066]
+  ];
+  function practice(){
+    var t, txt;
+    if (Math.random() < 0.4) { var e = pick(EV); t = e[1]; txt = e[0]; }
+    else {
+      var c; do { t = Math.round((0.5 + Math.random() * 12.8) * 10) / 10; c = calDate(t); } while (c.d < 4 || c.d > 26);
+      txt = "A practice event happened " + fmt(t, 1) + " billion years after the Big Bang.";
+    }
+    var cd = calDate(t), q = $("b3-q"); clear(q);
+    q.appendChild(el("b", null, "Practice")); q.appendChild(el("span", null, txt + " In which month of the cosmic calendar does it fall?"));
+    var opts = [cd.m]; while (opts.length < 4) { var m = Math.floor(Math.random() * 12); if (opts.indexOf(m) < 0) opts.push(m); }
+    opts.sort(function(a, b){ return a - b; });
+    var tAfter = fmt(t, t < 1 ? 2 : (t > 13.7 ? 3 : 1));
+    mc($("b3-opts"), $("b3-fb"), opts.map(function(m){ return MONTHS[m]; }), opts.indexOf(cd.m), tAfter + " ÷ 13.8 × 365 = day " + fmt(cd.day, 1) + ", which is " + cd.text + ".");
+  }
+  $("b3-t").addEventListener("input", show);
+  $("b3-new").addEventListener("click", practice);
+  show(); practice();
+})();
+
+/* ---------- Bench 4: brightness calculator ---------- */
+(function(){
+  function calc(){
+    var la = +$("b4-la").value, da = +$("b4-da").value, lb = +$("b4-lb").value, db = +$("b4-db").value;
+    if (!(la > 0 && da > 0 && lb > 0 && db > 0)) { detail($("b4-out"), "Enter positive numbers", ["Luminosity and distance must both be greater than zero."], "Check"); return; }
+    var lr = la / lb, dr = Math.pow(db / da, 2), r = lr * dr;
+    detail($("b4-out"), ratioText(r, 1), [
+      "Luminosity part: " + sig(la) + " ÷ " + sig(lb) + " = " + sig(lr) + ".",
+      "Distance part: (" + sig(db) + " ÷ " + sig(da) + ")² = " + sig(dr) + ".",
+      "Ratio A ÷ B = " + sig(lr) + " × " + sig(dr) + " = " + sig(r) + "."
+    ], "Result");
+  }
+  ["b4-la","b4-da","b4-lb","b4-db"].forEach(function(id){ $(id).addEventListener("input", calc); });
+  function desc(R){ if (Math.abs(R - 1) < 1e-9) return "the same brightness as B"; if (R > 1) return sig(R) + " times as bright as B"; var inv = 1 / R; return (Math.abs(inv - Math.round(inv)) < 1e-6 ? "1/" + Math.round(inv) : sig(R) + " times") + " as bright as B"; }
+  function practice(){
+    var k = pick([2, 3, 4, 5, 10]), type = pick([0, 1, 2]), m, txt, R;
+    if (type === 0) { m = 1; txt = "Stars A and B have the same luminosity. Star A is " + k + " times as far away as star B."; }
+    else if (type === 1) { m = k; k = 1; txt = "Stars A and B are the same distance away. Star A has " + m + " times the luminosity of star B."; }
+    else { R = pick([0.25, 0.5, 1, 2, 4]); m = R * k * k; txt = "Star A has " + sig(m) + " times the luminosity of star B and is " + k + " times as far away."; }
+    R = m / (k * k);
+    var cands = [R, m / k, m * k * k, k === 1 ? m * m : R * k].filter(function(x){ return x > 0; }), opts = [];
+    cands.forEach(function(x){ var s = desc(x); if (opts.indexOf(s) < 0) opts.push(s); });
+    [R * 2, R / 2, R * 3].forEach(function(x){ if (opts.length < 4) { var s = desc(x); if (opts.indexOf(s) < 0) opts.push(s); } });
+    var right = desc(R); opts = shuffle(opts.slice(0, 4)); if (opts.indexOf(right) < 0) opts[0] = right;
+    var q = $("b4-q"); clear(q); q.appendChild(el("b", null, "Practice")); q.appendChild(el("span", null, txt + " How bright does star A look compared with star B?"));
+    mc($("b4-opts"), $("b4-fb"), opts, opts.indexOf(right), "Luminosity part " + sig(m) + ". " + (k === 1 ? "Same distance, so the distance part is 1" : "Distance part (1 ÷ " + k + ")² = 1/" + (k * k)) + ". So A looks " + right + ".");
+  }
+  $("b4-new").addEventListener("click", practice);
+  calc(); practice();
+})();
+
+/* ---------- Bench 5: star path predictor ---------- */
+(function(){
+  var ENDS = ["Fades slowly for trillions of years, then a white dwarf", "Red giant, then a white dwarf", "Red supergiant, supernova, then a neutron star", "Red supergiant, supernova, then a black hole"];
+  var MASSES = [0.1, 0.2, 0.3, 0.8, 1, 1.5, 2, 3, 5, 6, 10, 12, 15, 18, 25, 30, 40];
+  function cls(m){ return m < 0.5 ? 0 : (m < 8 ? 1 : (m < 20 ? 2 : 3)); }
+  var WHY = ["Less than about 0.5 Suns: it burns fuel so slowly that it lives for trillions of years.", "Between about 0.5 and 8 Suns: like the Sun, it swells into a red giant and leaves a white dwarf.", "Between about 8 and 20 Suns: its core collapses in a supernova and leaves a neutron star.", "More than about 20 Suns: its core collapses in a supernova and usually leaves a black hole."];
+  function practice(){
+    var m = pick(MASSES), c = cls(m);
+    detail($("b5-q"), "A star forms with " + m + " times the Sun’s mass.", ["Which path will it most likely follow?"], "Practice");
+    mc($("b5-opts"), $("b5-fb"), ENDS, c, WHY[c]);
+  }
+  $("b5-new").addEventListener("click", practice);
+  practice();
+})();
+
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "What scale?", bins: ["Planet", "Solar system", "Galaxy", "Universe"], items: [
+      ["Earth", 0, "Earth is a planet that orbits the Sun."],
+      ["Mars", 0, "Mars is one of the eight planets."],
+      ["Jupiter", 0, "Jupiter is the largest planet, but still only a planet."],
+      ["The Sun and everything held in orbit around it", 1, "That is the definition of our solar system."],
+      ["Includes Neptune, comets and the asteroid belt", 1, "All of these orbit the Sun, so they are part of the solar system."],
+      ["The Milky Way", 2, "The Milky Way is our galaxy."],
+      ["Andromeda", 2, "Andromeda is a separate galaxy about 2.5 million light-years away."],
+      ["Hundreds of billions of stars held together by gravity", 2, "A galaxy is a huge system of stars, gas and dust held by gravity."],
+      ["About 100 000 light-years across", 2, "That is the rough width of the Milky Way galaxy."],
+      ["Holds billions of galaxies", 3, "Only the universe contains billions of galaxies."],
+      ["Everything that exists: all space, matter and energy", 3, "That is the definition of the universe."],
+      ["About 93 billion light-years across for the part we can observe", 3, "That is the size of the observable universe."]
+    ]},
+    {label: "Who added the idea?", bins: ["Babylonia", "Ancient Greece", "Ptolemy", "Galileo", "1900s astronomers"], items: [
+      ["Recorded planet positions on clay tablets", 0, "Babylonian sky watchers kept records for centuries."],
+      ["Predicted eclipses from repeating patterns", 0, "Babylonians used arithmetic on their records to predict events."],
+      ["Argued Earth is round from its curved shadow on the Moon", 1, "Aristotle, in ancient Greece, used lunar eclipses as evidence."],
+      ["Suggested the Sun might be at the centre", 1, "Aristarchus of ancient Greece had this idea about 270 BCE."],
+      ["Earth-centred model with epicycles that predicted planet positions", 2, "Ptolemy’s model was used for about 1400 years."],
+      ["Saw four moons orbiting Jupiter", 3, "Galileo saw them with his telescope in 1610."],
+      ["Saw Venus go through a full set of phases", 3, "Galileo’s observation fit a Sun-centred model."],
+      ["Saw that the Milky Way is made of countless stars", 3, "Galileo’s telescope split the band into stars."],
+      ["Showed Andromeda is a separate galaxy", 4, "Hubble measured its distance in the 1920s."],
+      ["Found that galaxies are moving apart", 4, "Lemaître and Hubble, in the late 1920s."],
+      ["Detected the faint microwave glow from the early universe", 4, "Penzias and Wilson, in 1965."]
+    ]},
+    {label: "Star stages", bins: ["Sun-like star", "Massive star", "Both"], items: [
+      ["Nebula", 2, "Every star forms from a cloud of gas and dust."],
+      ["Protostar", 2, "Every star passes through a shrinking, heating stage."],
+      ["Main sequence: fuses hydrogen into helium", 2, "All stars spend most of their lives fusing hydrogen."],
+      ["Red giant", 0, "A Sun-like star swells into a red giant."],
+      ["Planetary nebula", 0, "A Sun-like star gently pushes off its outer layers."],
+      ["White dwarf", 0, "The leftover core of a Sun-like star."],
+      ["Red supergiant", 1, "Only massive stars swell into supergiants."],
+      ["Supernova", 1, "A massive star’s core collapses and the star explodes."],
+      ["Neutron star", 1, "A city-sized leftover core of a massive star."],
+      ["Black hole", 1, "The leftover of the most massive stars."],
+      ["Lives about 10 billion years", 0, "That is the Sun’s total main sequence lifetime."],
+      ["Lives only millions of years", 1, "Massive stars use up their fuel fast."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Astronomy", "The scientific study of the universe and the objects in it."],
+    ["Universe", "Everything that exists: all of space, matter and energy."],
+    ["Galaxy", "A huge system of stars, gas and dust held together by gravity."],
+    ["Milky Way", "The spiral galaxy that contains our solar system and hundreds of billions of other stars."],
+    ["Solar system", "The Sun and everything held in orbit by its gravity, including the eight planets."],
+    ["Light-year", "The distance light travels in one year, about 9.5 trillion km. It is a distance, not a time."],
+    ["Naked eye", "Seeing without a telescope or binoculars."],
+    ["Andromeda Galaxy", "The nearest large galaxy, about 2.5 million light-years away. It looks like a faint smudge from a dark sky."],
+    ["Model", "A simpler picture or description of something real that helps explain or predict."],
+    ["Theory", "A well-tested scientific explanation supported by many lines of evidence."],
+    ["Earth-centred model", "A model with Earth at the centre and the Sun, Moon, planets and stars circling it. Also called geocentric."],
+    ["Sun-centred model", "A model with the Sun at the centre and Earth as one of the planets orbiting it. Also called heliocentric."],
+    ["Epicycle", "In Ptolemy’s model, a small circle that a planet moved on while riding along a bigger circle around Earth."],
+    ["Big Bang theory", "The explanation that the universe began about 13.8 billion years ago in an extremely hot, dense state and has been expanding and cooling ever since."],
+    ["Expanding universe", "Space itself is stretching, so galaxies far apart are moving away from each other. Farther galaxies move away faster."],
+    ["Cosmic microwave background", "A faint glow of microwaves from every direction, left over from the hot early universe."],
+    ["Nuclear fusion", "Small atom centres joining to make bigger ones, releasing energy. It powers stars and makes heavier elements."],
+    ["Luminosity", "The total amount of light energy a star gives off each second."],
+    ["Apparent brightness", "How bright a star looks from Earth. It depends on luminosity and distance."],
+    ["Nebula", "A cloud of gas and dust in space where stars can form."],
+    ["Protostar", "A young star that is shrinking and heating up, before fusion begins."],
+    ["Main sequence", "The long, steady part of a star’s life when it fuses hydrogen into helium in its core."],
+    ["Red giant", "A late stage of a Sun-like star: swollen, cooler on the surface and much brighter."],
+    ["White dwarf", "The small, hot, dense leftover core of a Sun-like star, about the size of Earth."],
+    ["Supernova", "The huge explosion at the end of a massive star’s life."],
+    ["Neutron star", "A city-sized, extremely dense leftover core of a massive star."],
+    ["Black hole", "An object with gravity so strong that not even light can escape. Some form when the most massive stars die."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){
+    list = [];
+    CARDS.forEach(function(c, j){ var m = store.cards[j]; if (filter === "all" || (filter === "known" && m === "known") || (filter === "learning" && m !== "known")) list.push(j); });
+    if (i >= list.length) i = 0;
+    draw();
+  }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){
+    if (!list.length) return;
+    store.cards[list[i]] = v; save();
+    var before = list.length; flipped = false;
+    if (filter === "all") { i = (i + 1) % list.length; draw(); }
+    else { build(); if (list.length === before && list.length) { i = (i + 1) % list.length; draw(); } }
+  }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["What is astronomy?", ["The scientific study of the universe", "The study of rocks and minerals", "Reading the future from the stars", "The study of weather"], 0, "Astronomy is the science of the universe and everything in it. Astrology, which claims to read the future, is not a science."],
+    ["Which list goes from smallest to largest?", ["Earth, solar system, Milky Way, universe", "Earth, Milky Way, solar system, universe", "Solar system, Earth, universe, Milky Way", "Milky Way, Earth, solar system, universe"], 0, "Earth is in the solar system, which is in the Milky Way, which is one of billions of galaxies in the universe."],
+    ["About how many galaxies are in the universe?", ["Billions", "One", "About 100", "About 8"], 0, "The Milky Way is one of billions of galaxies. Estimates range from hundreds of billions to about two trillion."],
+    ["What is a galaxy?", ["A huge system of stars, gas and dust held together by gravity", "A star with planets around it", "A cloud of gas where one star forms", "Another name for the universe"], 0, "Galaxies hold millions to hundreds of billions of stars, held together by gravity."],
+    ["Almost all the stars you can see with your naked eye are", ["in the Milky Way", "in the Andromeda Galaxy", "in other galaxies spread evenly across the sky", "planets, not stars"], 0, "Naked-eye stars are our neighbours in the Milky Way. Other galaxies are too far away to see single stars."],
+    ["Why can you see more stars at Elk Island National Park than in downtown Edmonton?", ["Less light pollution makes the sky darker", "The stars are closer there", "There are more stars above Elk Island", "The air is thicker there"], 0, "City lights brighten the sky and hide faint stars. Elk Island is part of the Beaver Hills Dark Sky Preserve."],
+    ["A light-year is a measure of", ["distance", "time", "brightness", "speed"], 0, "A light-year is the distance light travels in a year, about 9.5 trillion km."],
+    ["What did Babylonian astronomers contribute?", ["Long records of sky positions that revealed repeating patterns", "The first telescope", "Proof that galaxies move apart", "The Big Bang theory"], 0, "Babylonians recorded the Moon and planets for centuries and used the patterns to predict events such as eclipses."],
+    ["Ptolemy’s model placed which object at the centre?", ["Earth", "The Sun", "The Moon", "The centre of the Milky Way"], 0, "Ptolemy’s Earth-centred model used epicycles and predicted planet positions for about 1400 years."],
+    ["Which observation by Galileo did NOT fit Ptolemy’s Earth-centred model?", ["Venus showing a full set of phases", "The Sun rising in the east", "Stars moving across the sky each night", "The Moon looking round"], 0, "A full set of Venus phases only happens if Venus circles the Sun."],
+    ["What new tool let Galileo change ideas about the universe?", ["The telescope", "The camera", "The space probe", "The radio dish"], 0, "Galileo pointed an early telescope at the sky in 1609 and 1610."],
+    ["Why do scientific models of the universe change over time?", ["New tools and observations give evidence the old model cannot explain", "Scientists vote for a new model each century", "The universe follows different rules each century", "Old models are always completely useless"], 0, "Models change when new evidence appears. Old models were often useful, like Ptolemy’s, even when their picture was wrong."],
+    ["According to the Big Bang theory, about how old is the universe?", ["13.8 billion years", "4.6 billion years", "6000 years", "100 million years"], 0, "The universe is about 13.8 billion years old. The solar system is about 4.6 billion years old."],
+    ["Which statement best describes the Big Bang?", ["The universe began extremely hot and dense, and space has been expanding everywhere since", "A star exploded in the middle of empty space", "Galaxies were thrown out from one centre point we can find", "The Sun exploded and made the planets"], 0, "The Big Bang was not an explosion at one spot. Space itself stretches everywhere, so there is no centre."],
+    ["Which is evidence for the Big Bang theory?", ["A faint microwave glow from every direction", "The phases of the Moon", "Seasons on Earth", "Jupiter’s moons"], 0, "The cosmic microwave background is light left over from the hot early universe."],
+    ["In the stretching-space model, which galaxies move away from you fastest?", ["The farthest ones", "The nearest ones", "All move at the same speed", "None move; only you move"], 0, "When space stretches, every distance grows by the same factor, so bigger distances grow the most."],
+    ["Which elements formed first as the early universe cooled?", ["Hydrogen and helium", "Carbon and oxygen", "Iron and gold", "Calcium and silicon"], 0, "Hydrogen and helium formed in the first few minutes. Heavier elements were made later inside stars."],
+    ["Where did most of the carbon, oxygen and iron in your body come from?", ["Stars that lived and died before the Sun formed", "The first few minutes after the Big Bang", "The Sun today", "Comets only"], 0, "Stars fuse small atoms into heavier ones and spread them when they die. The solar system formed from that enriched gas."],
+    ["Two stars give off the same light, but star A is twice as far away. Star A looks", ["one quarter as bright", "half as bright", "twice as bright", "the same"], 0, "Brightness drops with distance squared: (1 ÷ 2)² = 1/4."],
+    ["Sirius is the brightest star in our night sky mainly because it is", ["close to us", "the most luminous star in the galaxy", "the biggest star", "the hottest star"], 0, "Sirius is about 25 times as luminous as the Sun but only about 8.6 light-years away. Much more luminous stars look dimmer because they are far away."],
+    ["Apparent brightness depends on", ["luminosity and distance", "only luminosity", "only distance", "only the star’s colour"], 0, "A star looks brighter if it gives off more light or if it is closer."],
+    ["Where do stars form?", ["In nebulas, clouds of gas and dust", "Inside planets", "In black holes", "In the Sun’s core"], 0, "Gravity pulls clumps of gas and dust in a nebula together to form stars."],
+    ["What will the Sun most likely become at the end of its life?", ["A red giant, then a white dwarf", "A supernova, then a black hole", "A neutron star", "A planet"], 0, "The Sun is not massive enough to explode. It will swell into a red giant and leave a white dwarf."],
+    ["Which stars end in a supernova?", ["Very massive stars", "Stars like the Sun", "Red dwarfs", "All stars"], 0, "Stars that start with more than about 8 times the Sun’s mass end in supernovas."],
+    ["Over its life, a star changes in", ["mass, size and brightness", "only colour", "nothing at all", "only distance from Earth"], 0, "Stars lose mass in winds, swell into giants and change brightness as they age."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"});
+      d.appendChild(el("h3", null, "You scored " + score + " of 10."));
+      d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try another round for new questions." : "Review the Learn tab, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); q.appendChild(el("h3", null, Q[0]));
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button"}, Q[1][i]);
+      b.dataset.i = i;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (+x.dataset.i === Q[2]) x.classList.add("right"); });
+        if (i !== Q[2]) b.classList.add("wrong"); else score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["Describe Earth’s place in the universe, from planet to universe.", "Earth is a planet that orbits the Sun. The Sun and everything that orbits it make up our solar system. The solar system is one small part of the Milky Way galaxy, which has hundreds of billions of stars. The Milky Way is one of billions of galaxies in the universe.", ["Earth is a planet in the solar system", "The solar system is in the Milky Way", "The Milky Way is a galaxy of many stars", "The universe has billions of galaxies"]],
+    ["What is the difference between a solar system and a galaxy?", "A solar system is one star and the objects that orbit it, such as planets and moons. A galaxy is a huge system of many stars, often hundreds of billions, along with gas and dust, held together by gravity. A galaxy can contain many solar systems.", ["Solar system: one star and its orbiting objects", "Galaxy: many stars, gas and dust", "Held by gravity", "A galaxy contains many solar systems"]],
+    ["Almost every star you can see without a telescope is in the Milky Way. Explain why, and name one exception.", "Stars in other galaxies are millions of light-years away, so single stars there are far too faint to see. The stars we can see are our neighbours in the Milky Way. The Andromeda Galaxy is an exception: from a dark sky we can see its blended glow as a faint smudge, but not its single stars.", ["Other galaxies are very far away", "Their single stars are too faint", "Visible stars are nearby in the Milky Way", "Andromeda appears as a smudge"]],
+    ["How did Babylonian astronomers help build understanding of the sky?", "They recorded the positions of the Moon and planets on clay tablets for centuries. From these records they found repeating patterns and used arithmetic to predict events such as eclipses. Their records showed that the sky can be predicted.", ["Long, careful records", "Found repeating patterns", "Made predictions such as eclipses"]],
+    ["Describe Ptolemy’s model and explain why it was used for so long.", "Ptolemy’s model put Earth at the centre. The Sun, Moon and planets moved around Earth, and planets moved on small circles called epicycles. It was used for about 1400 years because it predicted planet positions well and matched what people saw every day.", ["Earth at the centre", "Epicycles", "Made good predictions", "Matched everyday experience"]],
+    ["Give two observations Galileo made with his telescope and explain what they showed.", "Galileo saw four moons orbiting Jupiter, which showed that not everything circles Earth. He saw Venus go through a full set of phases, which only happens if Venus orbits the Sun. Both were evidence against Ptolemy’s Earth-centred model. He also saw that the Milky Way is made of many stars.", ["Moons of Jupiter", "Phases of Venus", "Evidence against the Earth-centred model", "A telescope was the new tool"]],
+    ["Describe the origin of the universe according to the Big Bang theory.", "About 13.8 billion years ago, the universe was in an extremely small, hot and dense state with very high temperature and pressure. Since then, space has been expanding and cooling everywhere at once. It was not an explosion at one spot in empty space.", ["About 13.8 billion years ago", "Extremely hot and dense", "Space expands and cools", "Not an explosion at one point in space"]],
+    ["Explain how the solar system came to be, starting from the first elements.", "As the universe cooled, hydrogen and helium formed. Gravity pulled these gases into the first stars. Stars fused them into heavier elements and spread those elements when they died. About 4.6 billion years ago, a cloud of gas and dust containing these elements collapsed to form the Sun and planets.", ["Hydrogen and helium formed first", "First stars formed from them", "Stars made heavier elements", "Solar system formed from an enriched cloud 4.6 billion years ago"]],
+    ["A very luminous star looks dimmer from Earth than a less luminous star. Explain how that can happen.", "Apparent brightness depends on luminosity and distance. If the luminous star is much farther away, its light spreads out over a much bigger area before it reaches us. Brightness drops with the square of distance, so distance can outweigh luminosity.", ["Brightness depends on luminosity and distance", "The luminous star is farther away", "Light spreads out", "Twice as far means one quarter as bright"]]
+  ];
+  var LONG = [
+    ["Explain how understandings of the universe changed from ancient Babylonia to today. Use at least four examples and describe the evidence or tool that caused each change.", "Babylonians kept long records and found patterns. Greek thinkers such as Aristotle built Earth-centred models, and Ptolemy made one that predicted planet positions for 1400 years. Copernicus proposed a Sun-centred model, and Galileo’s telescope showed Jupiter’s moons and the phases of Venus as evidence. In the 1920s, Hubble showed Andromeda is a separate galaxy and that galaxies are moving apart. In 1965, the microwave glow gave strong evidence for the Big Bang. Each change came from new tools and new evidence.", ["Babylonian records", "Earth-centred models of Greece and Ptolemy", "Galileo’s telescope evidence", "Many galaxies and expansion in the 1900s", "Evidence and tools drive change"]],
+    ["Tell the story of the universe from the Big Bang to the formation of our solar system. Include at least five events in order.", "The universe began about 13.8 billion years ago in an extremely hot, dense state and began to expand and cool. In the first minutes, hydrogen and helium centres formed. About 380 000 years later, full atoms formed and light travelled freely. After about 100 to 200 million years, the first stars formed. Stars made heavier elements and spread them when they died. About 4.6 billion years ago, a cloud rich in these elements collapsed to form the Sun and planets.", ["Hot, dense start that expands and cools", "Hydrogen and helium form", "First stars form", "Stars make heavier elements", "Solar system forms 4.6 billion years ago", "Events in the correct order"]],
+    ["Compare the life cycles of a Sun-like star and a massive star. Explain how each changes in mass, size and brightness.", "Both form from a nebula, become a protostar and spend most of their lives on the main sequence fusing hydrogen. A Sun-like star lives about 10 billion years, swells into a red giant that is wider and thousands of times brighter, loses its outer layers as a planetary nebula and leaves an Earth-sized white dwarf with about half its mass. A massive star lives only millions of years, swells into a red supergiant, explodes in a supernova that blasts most of its mass into space and leaves a neutron star or black hole.", ["Shared early stages", "Sun-like path: red giant, planetary nebula, white dwarf", "Massive path: supergiant, supernova, neutron star or black hole", "Changes in mass, size and brightness described", "Mass decides the path"]],
+    ["A friend says the brightest stars in the night sky must be the most powerful stars in the galaxy. Use luminosity and distance to agree or disagree, with examples.", "I disagree. How bright a star looks depends on both its luminosity and its distance. Sirius looks the brightest because it is close, about 8.6 light-years away, even though it is only about 25 times as luminous as the Sun. Deneb is around 200 000 times as luminous but looks dimmer because it is roughly 2600 light-years away. A star twice as far looks one quarter as bright.", ["Takes a clear position", "Luminosity and distance both matter", "Uses a real example such as Sirius or Deneb", "Explains the inverse square idea"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["SP1.K1", "Astronomy is the scientific study of the universe.", "Learn: Lesson 1 · Flashcards · Quiz"],
+    ["SP1.K2", "Our solar system is part of the Milky Way galaxy, which is one of billions of galaxies in the universe.", "Learn: Lesson 1 · Bench: Investigation 1 · Sort It: What scale? · Quiz"],
+    ["SP1.K3", "Almost all stars that can be seen with the naked eye are part of the Milky Way.", "Learn: Lesson 2 · Quiz · Written Review"],
+    ["SP1.K4", "Understandings, theories, and models of the universe and our solar system have evolved throughout history, such as those developed by\n• ancient civilizations, e.g., Babylonia and ancient Greece\n• mathematicians and astronomers, e.g., Ptolemy, and Galileo", "Learn: Lesson 3 · Bench: Investigation 2 · Sort It: Who added the idea? · Written Review"],
+    ["SP1.K5", "The Big Bang theory explains the origin of the universe as starting from a dense, single point state that expanded under high temperature and pressure.", "Learn: Lesson 4 · Quiz · Written Review (see note)"],
+    ["SP1.K6", "As the universe expanded and cooled, hydrogen and helium formed, leading to the first stars, the creation of heavier elements, and eventually the solar system.", "Learn: Lesson 5 · Bench: Investigation 3 · Written Review"],
+    ["SP1.K7", "The brightness of a star as observed from Earth depends on the star’s luminosity and distance from Earth.", "Learn: Lesson 6 · Bench: Investigation 4 · Quiz"],
+    ["SP1.K8", "Stars have a life cycle that includes\n• formation\n• changes in mass, size, and brightness\n• star death", "Learn: Lesson 7 · Bench: Investigation 5 · Sort It: Star stages"],
+    ["SP1.S1", "Examine the relationship between planets, solar systems, galaxies, and the universe.", "Learn: Lesson 1 · Bench: Investigation 1 · Sort It: What scale?"],
+    ["SP1.S2", "Explore how understandings, theories, and models of the universe have changed over time.", "Learn: Lesson 3 · Bench: Investigation 2 · Written Review: Extended 1"],
+    ["SP1.S3", "Describe the origin and evolution of the universe according to the Big Bang theory.", "Learn: Lessons 4 and 5 · Bench: Investigation 3 · Written Review: Extended 2"],
+    ["SP1.S4", "Compare the visibility of various stars in the Milky Way.", "Learn: Lessons 2 and 6 · Bench: Investigation 4"],
+    ["SP1.S5", "Explore the life cycle of a star.", "Learn: Lesson 7 · Bench: Investigation 5 · Written Review: Extended 3"]
+  ];
+  var NOTES = [
+    "SP1.K5: “a dense, single point state” is taught more precisely as an extremely small, hot and dense state of everything we can now observe, about 13.8 billion years ago. The lab stresses that the Big Bang was not an explosion at one point in empty space: space expands everywhere and has no centre. Science does not yet describe the very first instant.",
+    "SP1.K5/S3: three lines of evidence (galaxies receding faster with distance, the cosmic microwave background, hydrogen and helium amounts) are added as brief context. The stretching-space model uses made-up distances.",
+    "SP1.K6: hydrogen and helium nuclei are taught as forming in the first minutes and full atoms at about 380 000 years; a trace of lithium is mentioned. Heavier elements are taught as made mainly in stars and spread by star deaths. Times and temperatures in the history strip are rounded.",
+    "SP1.K2/K3: galaxy counts are given as billions (estimates hundreds of billions to about two trillion); Milky Way star count 100 to 400 billion. Naked-eye star counts per sky type are rough values. Andromeda is named as the exception seen as a smudge.",
+    "SP1.K4: historical summaries and dates (Babylonian records, Aristotle, Aristarchus, Ptolemy, Copernicus, Galileo, Leavitt, Hubble, Lemaître, Penzias and Wilson) are approximate and need a spot check. First Nations, Métis and Inuit sky knowledge is acknowledged generally, with no specific community knowledge; please review the wording and consider a community partner.",
+    "SP1.K7/S4: brightness taught as proportional to luminosity ÷ distance squared, shown as context only. Star luminosities and distances (Sirius, Rigel, Polaris, Deneb, Vega, Proxima Centauri) are rounded estimates; Rigel’s visual luminosity is used and Polaris’s distance is uncertain. Visibility thresholds are matched to Sirius and are approximate.",
+    "SP1.K8/S5: life cycle paths and mass boundaries (about 0.5, 8 and 20 Suns) are rounded. “Changes in mass” is taught as mass gained during formation and lost through stellar winds, planetary nebulas and supernovas. Red dwarf deaths are described as predicted.",
+    "Context added: light-year definition, Beaver Hills and Jasper dark-sky preserves, cosmic calendar events (earliest life about 3.7 billion years ago, dinosaurs 66 million years ago)."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); tr.appendChild(el("td", null, r[1])); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

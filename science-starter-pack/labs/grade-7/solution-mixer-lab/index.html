@@ -1,0 +1,1657 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/solution-mixer-lab/"><meta name="description" content="Particles can interact to form solutions."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Solution Mixer Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a bench notebook for solutions. Sticky tab strip, then lessons that pair a short reading column with a beaker, particle simulation or solubility curve. Blue marks the solvent, orange marks the solute, ember marks heat. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+header h1 .pu{color:var(--water)} header h1 .mx{color:var(--mix)}
+.chip.mx[aria-pressed="true"]{background:var(--mix);border-color:var(--mix);color:var(--surface)}
+.pbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.pfig{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px}
+.pfig svg{display:block;width:100%;height:auto}
+.pfig figcaption{font-size:.82rem;color:var(--muted)}
+.verdict{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.badge{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+.badge.pure{background:var(--water-soft);color:var(--water);border-color:var(--water)}
+.badge.mixb{background:var(--mix-soft);color:var(--mix);border-color:var(--mix)}
+.ptable{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.ptable th,.ptable td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.ptable th:first-child,.ptable td:first-child{text-align:left}
+.ptable th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ptable tr.on td{background:var(--water-soft);font-weight:700}
+.state{font-family:var(--f-display);font-size:1.3rem;font-weight:800}
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv h3{font-size:1.3rem}
+.inv .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.readout{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.choice button{background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:4px}
+.choice button:hover:not(:disabled){border-color:var(--muted)}
+.choice button.right{border-color:var(--good);background:var(--leaf-soft)}
+.choice button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice button svg{width:100%;height:auto;display:block}
+.tray{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.cup{border:1.5px dashed var(--line);border-radius:8px;padding:8px;font-size:.85rem;display:grid;gap:2px;background:var(--surface-2)}
+.cup.full{border-style:solid;border-color:var(--good);background:var(--leaf-soft)}
+.cup b{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.log{display:grid;gap:4px;padding-left:1.2em;font-size:.9rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,90px),1fr));gap:8px}
+.lbox{display:grid;gap:4px;justify-items:center;text-align:center;font-size:.85rem}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.inline label.field{flex:1 1 140px}
+.inline input{width:100%}
+/* ---- Solution Mixer additions ---- */
+header h1 .so{color:var(--water)} header h1 .sl{color:var(--pb)}
+.simbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.simbox canvas{display:block;width:100%;height:auto;max-width:100%}
+.sa-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.race{display:grid;gap:6px}
+.scale{display:grid;gap:4px}
+.scale .track{position:relative;height:16px;border-radius:8px;background:linear-gradient(90deg,var(--water-soft),var(--water));border:1px solid var(--line)}
+.scale .mark{position:absolute;top:-4px;width:4px;height:22px;border-radius:2px;background:var(--ink);transform:translateX(-2px);transition:left .3s ease}
+.scale .ends{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);font-family:var(--f-mono)}
+.badge.sat{background:var(--fire-soft);color:var(--fire);border-color:var(--fire)}
+.badge.uns{background:var(--leaf-soft);color:var(--leaf);border-color:var(--leaf)}
+.sbars{display:grid;gap:6px}
+.sbar{display:grid;grid-template-columns:9.5em minmax(0,1fr) 4.5em;gap:8px;align-items:center;font-size:.86rem;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;cursor:pointer;width:100%}
+.sbar:hover{border-color:var(--muted)}
+.sbar[aria-pressed="true"]{border-color:var(--water);background:var(--water-soft)}
+.sbar .track{height:12px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.sbar .track i{display:block;height:100%;background:var(--water);border-radius:6px}
+.sbar b{font-family:var(--f-mono);font-size:.78rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.sbar{grid-template-columns:7em minmax(0,1fr) 3.8em}}
+.checkrow{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.9rem}
+.checkrow label{display:flex;gap:6px;align-items:center}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+.states{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;gap:4px;font-size:.88rem;align-content:start}
+.scard b{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.scard strong{font-family:var(--f-display);font-size:1.1rem}
+.rank{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.rank{grid-template-columns:minmax(0,1fr)}}
+.rank button{background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:4px;font-weight:700}
+.rank button:hover:not(:disabled){border-color:var(--muted)}
+.rank button svg{width:100%;height:auto;display:block}
+.rank button .pos{font-family:var(--f-mono);font-size:.8rem;color:var(--water)}
+.rank button.right{border-color:var(--good);background:var(--leaf-soft)}
+.rank button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.map{display:grid;gap:8px}
+.map .scard{border-left:4px solid var(--water)}
+.map .scard.c2{border-left-color:var(--pb)}
+.map .scard.c3{border-left-color:var(--leaf)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Matter: Pure Substances and Mixtures · M2</div>
+    <h1><span class="so">Solution</span> <span class="sl">Mixer</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Particles can interact to form solutions. When a solute dissolves, its particles spread evenly among the particles of a solvent. How fast that happens, how much is dissolved, and how much could ever dissolve are three different ideas. This lab helps you keep them apart.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with what a solution is, watch particles dissolve, then learn the words for how much is dissolved and how much can dissolve.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Three words</span>
+      <div class="codes"><span class="code">M2.K1</span></div>
+      <h3>Solute, solvent, solution</h3>
+      <p>In the last unit you learned that a <b>solution</b> is a homogeneous mixture. It looks the same all the way through because its particles are evenly mixed.</p>
+      <p>Every solution has two kinds of parts:</p>
+      <ul>
+        <li>The <b>solute</b> is the substance that dissolves. In salt water, the salt is the solute.</li>
+        <li>The <b>solvent</b> is the substance that does the dissolving. In salt water, the water is the solvent. The solvent is usually the part there is more of.</li>
+      </ul>
+      <p>Water dissolves so many substances that a solution in water has its own name: an <b>aqueous solution</b>. Solutions can also be gases, like air, or solids, like brass.</p>
+      <p>Sand stirred into water is not a solution. The sand does not dissolve. It stays in grains you can see, and it settles to the bottom.</p>
+      <div class="key"><b>Remember:</b> solute + solvent = solution. The solute dissolves in the solvent.</div>
+    </div>
+    <div class="model">
+      <h4>Model: who is the solute?</h4>
+      <div class="chips" id="solChips" role="group" aria-label="Choose a mixture"></div>
+      <div class="svgbox fit"><svg id="solSvg" viewBox="0 0 320 190" role="img" aria-label="Particle view of the chosen mixture"></svg></div>
+      <div class="legend" id="solLegend"></div>
+      <div class="detail" id="solDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Watch it happen</span>
+      <div class="codes"><span class="code">M2.K2</span></div>
+      <h3>Dissolving spreads particles evenly</h3>
+      <p><b>Dissolving</b> is the process where particles of solute break away from each other and become evenly spread out among the particles of the solvent.</p>
+      <p>Solvent particles are always moving. They bump into the solid solute and pull particles off its surface. Those solute particles then drift and mix until they are spread evenly through the whole solution.</p>
+      <p>Dissolved particles are far too small to see, so a solution is usually clear. It can still have colour, like tea or a drink made from powder.</p>
+      <p class="note">Dissolving is not melting. Melting needs heat to turn a solid into a liquid. Sugar dissolves in cold water without melting. The particles are also not destroyed: 10 g of sugar stirred into 100 g of water makes 110 g of sugar water.</p>
+    </div>
+    <div class="model">
+      <h4>Model: sugar crystal in water</h4>
+      <div class="simbox"><canvas id="dsCanvas" width="640" height="420" role="img" aria-label="Animated particle model of a sugar crystal dissolving in water. Blue dots are water particles and orange dots are sugar particles."></canvas></div>
+      <div class="row">
+        <button class="btn" id="dsPlay" type="button">Play</button>
+        <button class="btn ghost" id="dsReset" type="button">Reset</button>
+        <button class="chip" id="dsStir" type="button" aria-pressed="false">Stir</button>
+        <button class="chip" id="dsCrush" type="button" aria-pressed="false">Crushed crystal</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Sugar particles dissolved</span><b id="dsDone">0 of 24</b></div>
+        <div class="stat"><span>In top half</span><b id="dsTop">0</b></div>
+        <div class="stat"><span>In bottom half</span><b id="dsBot">24</b></div>
+      </div>
+      <p class="hint" id="dsMsg" aria-live="polite">Press Play. Watch the orange sugar particles leave the crystal and spread out.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Faster dissolving</span>
+      <div class="codes"><span class="code">M2.K3</span></div>
+      <h3>Stirring and surface area speed it up</h3>
+      <p>The <b>rate of dissolving</b> is how fast a solute dissolves. Two things you can do make it faster:</p>
+      <ul>
+        <li><b>Stirring</b> moves the solution. It carries dissolved particles away from the solute, so fresh solvent keeps touching the surface.</li>
+        <li><b>Increasing surface area</b> means breaking the solute into smaller pieces. Only particles on the outside can be pulled away. Crushing a sugar cube puts many more particles on the outside.</li>
+      </ul>
+      <p>Warming the solvent usually speeds up dissolving too, because the particles move faster.</p>
+      <div class="key"><b>Careful:</b> stirring and crushing change how <i>fast</i> a solute dissolves. They do not change how <i>much</i> can dissolve. That amount is the solubility (Lesson 5).</div>
+    </div>
+    <div class="model">
+      <h4>Model: cut the cube, then race</h4>
+      <label class="field" for="saCuts">Cuts along each edge: <span id="saCutsOut" class="mono">1 piece</span>
+        <input type="range" id="saCuts" min="1" max="4" step="1" value="1"></label>
+      <div class="svgbox fit"><svg id="saSvg" viewBox="0 0 320 150" role="img" aria-label="A sugar cube cut into smaller cubes"></svg></div>
+      <div class="stats">
+        <div class="stat"><span>Number of pieces</span><b id="saN">1</b></div>
+        <div class="stat"><span>Total volume</span><b id="saV">8 cm³</b></div>
+        <div class="stat"><span>Total surface area</span><b id="saA">24 cm²</b></div>
+      </div>
+      <div class="row"><button class="chip" id="saStir" type="button" aria-pressed="false">Stir while dissolving</button></div>
+      <div class="race bars" id="saRace"></div>
+      <p class="hint" id="saMsg" aria-live="polite"></p>
+      <p class="hint">Model times are made up for practice. They show the pattern, not real measurements.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · How strong is it?</span>
+      <div class="codes"><span class="code">M2.K4</span></div>
+      <h3>Concentration: dilute, concentrated, saturated</h3>
+      <p>The <b>concentration</b> of a solution tells how much solute is dissolved in a certain amount of solution. One common way to write it:</p>
+      <p class="formula">concentration = mass of solute ÷ volume of solution<br>c = m ÷ V &nbsp;(in g/100 mL or g/L)</p>
+      <p>Two pairs of words describe concentration:</p>
+      <ul>
+        <li><b>Dilute</b> means only a little solute is dissolved. <b>Concentrated</b> means a lot is dissolved. These are comparison words. Weak juice is dilute compared with juice made from more powder.</li>
+        <li><b>Saturated</b> means the solution holds as much solute as it can at that temperature. Extra solute just sits on the bottom. <b>Unsaturated</b> means more could still dissolve.</li>
+      </ul>
+      <p>Adding water makes a solution more dilute. This is called <b>diluting</b>. The same amount of solute is spread through more solvent.</p>
+    </div>
+    <div class="model">
+      <h4>Model: salt water at 20 °C</h4>
+      <label class="field" for="ccG">Salt added: <span id="ccGOut" class="mono">10 g</span>
+        <input type="range" id="ccG" min="0" max="100" step="1" value="10"></label>
+      <label class="field" for="ccV">Water: <span id="ccVOut" class="mono">100 mL</span>
+        <input type="range" id="ccV" min="50" max="250" step="10" value="100"></label>
+      <div class="svgbox fit"><svg id="ccSvg" viewBox="0 0 320 200" role="img" aria-label="Beaker of salt water"></svg></div>
+      <div class="scale">
+        <div class="track" aria-hidden="true"><span class="mark" id="ccMark"></span></div>
+        <div class="ends"><span>dilute</span><span>concentrated</span></div>
+      </div>
+      <div class="detail" id="ccOut" aria-live="polite"></div>
+      <p class="hint">Each dot stands for about 1 g of dissolved salt. Dilute and concentrated have no exact cut-off. This model uses rough cut-offs for salt water.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · A property of each substance</span>
+      <div class="codes"><span class="code">M2.K5</span></div>
+      <h3>Solubility</h3>
+      <p><b>Solubility</b> is the greatest amount of a solute that can dissolve in a given amount of solvent at a specific temperature. It tells you how much is needed to make a saturated solution.</p>
+      <p>Solubility is a <b>physical property</b>, like density or boiling point. Each substance has its own value, so solubility can help identify a substance.</p>
+      <p>A solubility is only complete when it names three things: the amount of solute, the amount of solvent and the temperature. For example: 36 g of table salt in 100 mL of water at 20 °C.</p>
+      <p>A substance that dissolves well is <b>soluble</b>. One that barely dissolves at all, like sand or chalk in water, is called <b>insoluble</b>. Solubility also depends on the solvent. Cooking oil does not dissolve in water, but it does dissolve in some other solvents.</p>
+      <p class="note">Alberta example: a thick layer of salt lies deep underground near Fort Saskatchewan. Companies pump water down to dissolve some of it and bring the salt water back up. This leaves large caverns that are used to store fuels.</p>
+    </div>
+    <div class="model">
+      <h4>Model: solubility in 100 mL of water at 20 °C</h4>
+      <div class="sbars" id="sbBars" role="group" aria-label="Choose a substance"></div>
+      <div class="detail" id="sbOut" aria-live="polite"></div>
+      <p class="hint">Rounded reference values. 100 mL of water has a mass of about 100 g.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Turn up the heat</span>
+      <div class="codes"><span class="code">M2.K6</span></div>
+      <h3>Temperature changes solubility</h3>
+      <p>For most solids, more solute can dissolve as the solvent gets warmer. That is why you can dissolve far more sugar in hot tea than in iced tea.</p>
+      <p>A <b>solubility curve</b> is a graph of solubility at each temperature. The curve for potassium nitrate rises steeply. The curve for table salt is almost flat: hot water dissolves only a little more salt than cold water.</p>
+      <p>If a warm saturated solution cools, it can no longer hold all its solute. The extra solute comes out as solid crystals. This is called <b>crystallization</b>. Rock candy is made this way.</p>
+      <p class="note">Gases work the other way. Oxygen and carbon dioxide are less soluble in warm water. A warm can of pop goes flat faster, and trout in Alberta's mountain streams need cold water that holds more oxygen.</p>
+    </div>
+    <div class="model">
+      <h4>Model: solubility curves</h4>
+      <div class="checkrow" id="scChecks"></div>
+      <label class="field" for="scT">Temperature: <span id="scTOut" class="mono">20 °C</span>
+        <input type="range" id="scT" min="0" max="100" step="1" value="20"></label>
+      <div class="svgbox"><svg id="scSvg" viewBox="0 0 520 300" role="img" aria-label="Solubility curves for the chosen substances"></svg></div>
+      <div class="detail" id="scOut" aria-live="polite"></div>
+      <h4>Oxygen gas in water</h4>
+      <div class="svgbox fit"><svg id="oxSvg" viewBox="0 0 320 150" role="img" aria-label="Line graph: oxygen solubility falls from about 14.6 milligrams per litre at 0 degrees to about 6.4 at 40 degrees"></svg></div>
+      <p class="hint">Rounded reference values for 100 mL of water (solids) and 1 L of water in contact with air (oxygen).</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Putting it together</span>
+      <div class="codes"><span class="code">M2.K2</span><span class="code">M2.K4</span><span class="code">M2.K5</span><span class="code">M2.K6</span></div>
+      <h3>Dissolving, concentration and solubility</h3>
+      <p>These three ideas are linked, but they answer different questions:</p>
+      <div class="map">
+        <div class="scard"><b>Dissolving</b><span>What is happening? Solute particles are spreading out among solvent particles.</span></div>
+        <div class="scard c2"><b>Concentration</b><span>How much is dissolved right now, for each amount of solution?</span></div>
+        <div class="scard c3"><b>Solubility</b><span>What is the most that could dissolve at this temperature?</span></div>
+      </div>
+      <p>When the concentration reaches the solubility, the solution is saturated and dissolving seems to stop. Warming the solution raises the solubility, so dissolving can start again.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a potassium nitrate story</h4>
+      <p class="hint">Start with 100 mL of water at 20 °C. Choose what happens next. Assume you wait until dissolving finishes after each step.</p>
+      <div class="row" id="stBtns">
+        <button class="btn ghost" type="button" data-act="add">Add 10 g</button>
+        <button class="btn ghost" type="button" data-act="stir">Stir</button>
+        <button class="btn ghost" type="button" data-act="heat">Heat 10 °C</button>
+        <button class="btn ghost" type="button" data-act="cool">Cool 10 °C</button>
+        <button class="btn ghost" type="button" data-act="water">Add 50 mL water</button>
+        <button class="btn" type="button" data-act="reset">Start over</button>
+      </div>
+      <div class="states" id="stCards"></div>
+      <div class="detail" id="stMsg" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four virtual investigations. Measure solubility the way a scientist would, calculate concentrations, picture them with particles and read solubility curves.</p>
+  </div>
+
+  <article class="inv">
+    <span class="step">Investigation 1 · M2.S3, M2.S1</span>
+    <h3>Find the solubility</h3>
+    <p>Add solute to 100 mL of water a little at a time. Stir and wait after each scoop. When some solid stays on the bottom, the solution is saturated, and the solubility lies between your last two totals. Test more than one temperature to see how temperature affects solubility.</p>
+    <div class="two">
+      <div class="model">
+        <label class="field" for="fsSub">Solute <select id="fsSub"></select></label>
+        <label class="field" for="fsT">Water temperature: <span id="fsTOut" class="mono">20 °C</span>
+          <input type="range" id="fsT" min="0" max="100" step="10" value="20"></label>
+        <div class="row">
+          <button class="btn ghost" type="button" id="fs1">Add 1 g</button>
+          <button class="btn ghost" type="button" id="fs5">Add 5 g</button>
+          <button class="btn ghost" type="button" id="fs20">Add 20 g</button>
+          <button class="chip" type="button" id="fsStir" aria-pressed="true">Stir</button>
+          <button class="btn ghost" type="button" id="fsEmpty">Empty beaker</button>
+        </div>
+        <div class="svgbox fit"><svg id="fsSvg" viewBox="0 0 320 180" role="img" aria-label="Beaker for the solubility test"></svg></div>
+        <div class="detail" id="fsOut" aria-live="polite"></div>
+        <button class="btn" type="button" id="fsRec">Record result</button>
+      </div>
+      <div class="model">
+        <h4>Your results</h4>
+        <div class="tablebox"><table class="dt" id="fsTable"><thead><tr><th>Solute</th><th>Temp (°C)</th><th>Solubility (g per 100 mL)</th></tr></thead><tbody></tbody></table></div>
+        <div class="svgbox"><svg id="fsChart" viewBox="0 0 520 260" role="img" aria-label="Graph of your recorded results"></svg></div>
+        <div class="row">
+          <button class="chip" type="button" id="fsRef" aria-pressed="false">Show reference curve</button>
+          <button class="btn ghost" type="button" id="fsClear">Clear results</button>
+        </div>
+        <p class="hint">Fair test: keep the amount of water the same and stir every time. Only the temperature changes. Values are simulated practice data.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 2 · M2.S1, M2.S2</span>
+    <h3>Concentration calculator</h3>
+    <div class="two">
+      <div class="model">
+        <div class="inline">
+          <label class="field" for="ccm">Mass of solute (g) <input type="number" id="ccm" min="0" step="any" value="18"></label>
+          <label class="field" for="ccvol">Volume of solution (mL) <input type="number" id="ccvol" min="1" step="any" value="250"></label>
+          <label class="field" for="ccsub">Solute <select id="ccsub"></select></label>
+        </div>
+        <div class="worked" id="ccWork" aria-live="polite"></div>
+      </div>
+      <div class="model">
+        <h4>Practice</h4>
+        <div class="worked" id="prQ"></div>
+        <div class="inline">
+          <label class="field" for="prA">Your answer <input type="number" id="prA" step="any"></label>
+          <button class="btn" type="button" id="prCheck">Check</button>
+          <button class="btn ghost" type="button" id="prNew">New question</button>
+        </div>
+        <p class="fb" id="prFb" aria-live="polite"></p>
+        <p class="hint mono" id="prScore"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 3 · M2.S2</span>
+    <h3>Rank the beakers</h3>
+    <p>Each dot stands for 1 g of dissolved sugar. Tap the beakers in order from <b>most concentrated</b> to <b>least concentrated</b>. Look at how crowded the dots are, not just how many there are.</p>
+    <div class="rank" id="rkArea"></div>
+    <div class="row"><button class="btn ghost" type="button" id="rkNew">New set</button></div>
+    <div class="detail" id="rkOut" aria-live="polite"></div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 4 · M2.S1, M2.S3</span>
+    <h3>Read the solubility data</h3>
+    <p>Use the data table to answer. Each question is new every time. Answers within 2 g or 2 °C count as correct.</p>
+    <div class="two">
+      <div class="model">
+        <div class="worked" id="rdQ"></div>
+        <div class="inline">
+          <label class="field" for="rdA">Your answer <input type="number" id="rdA" step="any"></label>
+          <button class="btn" type="button" id="rdCheck">Check</button>
+          <button class="btn ghost" type="button" id="rdNew">New question</button>
+        </div>
+        <p class="fb" id="rdFb" aria-live="polite"></p>
+      </div>
+      <div class="tablebox"><table class="dt" id="rdTable"></table></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 M2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>M2.K4:</b> the draft pairs "dilute or saturated". The lab teaches two separate scales: dilute and concentrated describe how much solute is dissolved (comparison words with no fixed cut-off), while saturated and unsaturated describe whether more can dissolve at that temperature. A saturated solution of a barely soluble substance is still very dilute. Concentration is shown as c = m ÷ V in g/100 mL; students are not asked to memorize it.</li>
+      <li><b>M2.K6:</b> "can increase" is taught as true for most solids. Table salt changes very little, and gases such as oxygen and carbon dioxide become less soluble as temperature rises (warm pop, trout and cold water). Crystallization on cooling is included as brief context.</li>
+      <li><b>M2.K5:</b> solubility is taught as complete only when it names solute amount, solvent amount and temperature, and as depending on the solvent. Values are rounded reference values in g per 100 g of water (about 100 mL): table salt 36.0, potassium nitrate 31.6, sucrose about 204, baking soda 9.6 at 20 °C; oxygen about 9.1 mg/L at 20 °C. Please spot check against your preferred data book.</li>
+      <li><b>M2.K2 and M2.K3:</b> dissolving is distinguished from melting, and mass is conserved on dissolving. Warming is mentioned once as another way to speed dissolving; the draft lists only stirring and surface area. The lab stresses that stirring and surface area change the rate, not the solubility.</li>
+      <li><b>Alberta examples:</b> salt caverns near Fort Saskatchewan made by dissolving underground salt with water, Edmonton road brine and trout in mountain streams are described in general terms only.</li>
+      <li><b>Lab Bench:</b> Investigation 1 is a simulation built from the reference curves, and the dissolving race times in Lesson 3 are invented; both are labelled as practice data.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-m2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Solubility data (g per 100 g water, about 100 mL) ---------- */
+var SUBS = [
+  {id: "kno3", name: "Potassium nitrate", color: "--pd", data: [13.3,20.9,31.6,45.8,63.9,85.5,110,138,169,202,246], max: 100, use: "used in some fertilizers"},
+  {id: "sugar", name: "Sugar (sucrose)", color: "--pb", data: [179,190,204,219,238,260,287,320,362,415,487], max: 100, use: "table sugar"},
+  {id: "salt", name: "Table salt", color: "--water", data: [35.7,35.8,36.0,36.3,36.6,37.0,37.3,37.8,38.4,39.0,39.8], max: 100, use: "sodium chloride"},
+  {id: "soda", name: "Baking soda", color: "--leaf", data: [6.9,8.2,9.6,11.1,12.7,14.5,16.4], max: 60, use: "sodium bicarbonate; it starts to break down in hot water, so data stop at 60 °C"}
+];
+function sol(s, T){
+  T = Math.max(0, Math.min(s.max, T));
+  var i = Math.min(Math.floor(T / 10), s.data.length - 2), f = (T - i * 10) / 10;
+  return s.data[i] + (s.data[i + 1] - s.data[i]) * f;
+}
+function subById(id){ for (var i = 0; i < SUBS.length; i++) if (SUBS[i].id === id) return SUBS[i]; return SUBS[0]; }
+
+/* ---------- Drawing helpers ---------- */
+function dot(g, x, y, r, v){ g.appendChild(sv("circle", {cx: x, cy: y, r: r, style: "fill:var(" + v + ");stroke:var(--ink);stroke-width:.6"})); }
+function beaker(svg, x, y, w, h, level){
+  /* level: 0..1 liquid fill height fraction; returns liquid rect */
+  var ly = y + h - h * level;
+  svg.appendChild(sv("rect", {x: x, y: ly, width: w, height: y + h - ly, style: "fill:var(--water-soft)"}));
+  svg.appendChild(sv("path", {d: "M" + (x - 6) + " " + (y - 4) + " L" + x + " " + y + " L" + x + " " + (y + h) + " L" + (x + w) + " " + (y + h) + " L" + (x + w) + " " + y + " L" + (x + w + 6) + " " + (y - 4), style: "fill:none;stroke:var(--ink);stroke-width:2"}));
+  return {x: x, y: ly, w: w, h: y + h - ly, bottom: y + h};
+}
+function crystals(svg, liq, n, seed){
+  var r = rng(seed || 7), cols = Math.max(1, Math.floor(liq.w / 7));
+  for (var i = 0; i < n; i++) {
+    var row = Math.floor(i / cols), col = i % cols;
+    var cx = liq.x + 4 + col * 7 + (row % 2) * 3, cy = liq.bottom - 4 - row * 6;
+    svg.appendChild(sv("rect", {x: cx - 2.5, y: cy - 2.5, width: 5, height: 5, transform: "rotate(" + Math.round(r() * 40) + " " + cx + " " + cy + ")", style: "fill:var(--salt);stroke:var(--ink);stroke-width:.8"}));
+  }
+}
+
+/* ---------- Lesson 1: who is the solute ---------- */
+(function(){
+  var MIX = [
+    {label: "Salt water", sol: true, solvent: ["Water", "--pa", 40], solutes: [["Salt", "--pb", 8]], text: "Salt is the solute. Water is the solvent. The salt particles are spread evenly, so it is a solution.", tag: "Aqueous solution"},
+    {label: "Sugar water", sol: true, solvent: ["Water", "--pa", 40], solutes: [["Sugar", "--pb", 10]], text: "Sugar is the solute and water is the solvent. You cannot see the sugar once it has dissolved.", tag: "Aqueous solution"},
+    {label: "Vinegar", sol: true, solvent: ["Water", "--pa", 44], solutes: [["Acetic acid", "--pb", 5]], text: "Vinegar is mostly water with a small amount of acetic acid dissolved in it. The acetic acid is the solute.", tag: "Aqueous solution"},
+    {label: "Soda pop", sol: true, solvent: ["Water", "--pa", 40], solutes: [["Sugar", "--pb", 6], ["Carbon dioxide gas", "--pd", 5]], text: "Pop has more than one solute. Sugar and carbon dioxide gas are both dissolved in water. A solute can be a gas.", tag: "Aqueous solution"},
+    {label: "Air", sol: true, solvent: ["Nitrogen", "--pe", 30], solutes: [["Oxygen", "--pa", 8], ["Argon and others", "--pb", 2]], gas: true, text: "Air is a gas solution. Nitrogen is the solvent because there is the most of it, about 78%. Oxygen and small amounts of other gases are the solutes.", tag: "Gas solution"},
+    {label: "Brass", sol: true, solvent: ["Copper", "--pb", 30], solutes: [["Zinc", "--pe", 12]], solid: true, text: "Brass is a solid solution. Copper is the solvent and zinc is the solute. The atoms are mixed evenly.", tag: "Solid solution"},
+    {label: "Sand in water", sol: false, solvent: ["Water", "--pa", 40], solutes: [["Sand grains", "--sand", 0]], text: "Not a solution. Sand does not dissolve. The grains stay large, you can see them, and they settle to the bottom. This is a heterogeneous mixture.", tag: "Not a solution"}
+  ];
+  var svg = $("solSvg");
+  function draw(m, idx){
+    clear(svg);
+    var r = rng(11 + idx * 13);
+    var liq;
+    if (m.gas) {
+      svg.appendChild(sv("rect", {x: 30, y: 15, width: 260, height: 160, rx: 10, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:2"}));
+      liq = {x: 30, y: 15, w: 260, h: 160, bottom: 175};
+    } else if (m.solid) {
+      svg.appendChild(sv("rect", {x: 30, y: 15, width: 260, height: 160, rx: 4, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:2"}));
+      var all = [];
+      m.solutes.forEach(function(s){ for (var i = 0; i < s[2]; i++) all.push(s[1]); });
+      for (var i = 0; i < m.solvent[2]; i++) all.push(m.solvent[1]);
+      var rr = rng(5); all.sort(function(){ return rr() - 0.5; });
+      var k = 0;
+      for (var row = 0; row < 6; row++) for (var col = 0; col < 7; col++) { if (k < all.length) dot(svg, 52 + col * 36 + (row % 2) * 18, 32 + row * 26, 11, all[k++]); }
+      return;
+    } else {
+      liq = beaker(svg, 40, 20, 240, 160, 0.85);
+    }
+    var parts = [];
+    for (var i = 0; i < m.solvent[2]; i++) parts.push([m.solvent[1], 6]);
+    m.solutes.forEach(function(s){ for (var j = 0; j < s[2]; j++) parts.push([s[1], 6]); });
+    parts.forEach(function(p){ dot(svg, liq.x + 10 + r() * (liq.w - 20), liq.y + 10 + r() * (liq.h - 20), p[1], p[0]); });
+    if (!m.sol) {
+      for (var g = 0; g < 9; g++) {
+        var gx = liq.x + 20 + r() * (liq.w - 40);
+        svg.appendChild(sv("ellipse", {cx: gx, cy: liq.bottom - 9 - (g % 2) * 8, rx: 16, ry: 8, style: "fill:var(--sand);stroke:var(--ink);stroke-width:.8"}));
+      }
+    }
+  }
+  chipGroup($("solChips"), MIX, "", function(m, i){
+    draw(m, i);
+    var lg = $("solLegend"); clear(lg);
+    var items = [[m.solvent[1], m.solvent[0] + (m.sol ? " (solvent)" : "")]];
+    m.solutes.forEach(function(s){ items.push([s[1], s[0] + (m.sol ? " (solute)" : " (does not dissolve)")]); });
+    items.forEach(function(it){ var s = el("span"); var sw = el("i"); sw.style.background = "var(" + it[0] + ")"; s.appendChild(sw); s.appendChild(document.createTextNode(it[1])); lg.appendChild(s); });
+    svg.setAttribute("aria-label", "Particle view of " + m.label + ". " + m.text);
+    detail($("solDetail"), m.label, [m.text], m.tag);
+  }, 0);
+})();
+
+/* ---------- Lesson 2: dissolving canvas ---------- */
+(function(){
+  var cv = $("dsCanvas"), ctx = cv.getContext("2d");
+  var W = 320, H = 210, S = 2;
+  var water = [], sugar = [], running = false, stir = false, crushed = false, t = 0, raf = null, announced = {};
+  var X0 = 26, X1 = 294, Y0 = 26, Y1 = 196;
+  function col(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888"; }
+  function reset(){
+    var r = rng(3);
+    water = []; sugar = []; t = 0; announced = {};
+    for (var i = 0; i < 70; i++) water.push({x: X0 + 6 + r() * (X1 - X0 - 12), y: Y0 + 6 + r() * (Y1 - Y0 - 12), vx: r() - 0.5, vy: r() - 0.5});
+    if (!crushed) {
+      for (var row = 0; row < 4; row++) for (var c = 0; c < 6; c++) sugar.push({x: 136 + c * 10, y: Y1 - 6 - row * 10, gx: c, gy: row, grp: 0, bound: true});
+    } else {
+      var spots = [60, 125, 190, 255];
+      spots.forEach(function(sx, gi){ for (var row2 = 0; row2 < 2; row2++) for (var c2 = 0; c2 < 3; c2++) sugar.push({x: sx + c2 * 10, y: Y1 - 6 - row2 * 10, gx: c2, gy: row2, grp: gi + 1, bound: true}); });
+    }
+    draw(); stats();
+    $("dsMsg").textContent = "Press Play. Watch the orange sugar particles leave the crystal and spread out.";
+  }
+  function exposed(p){
+    /* a bound particle is exposed if any side neighbour in its group is missing */
+    var n = 0;
+    sugar.forEach(function(q){ if (q.bound && q.grp === p.grp && ((Math.abs(q.gx - p.gx) === 1 && q.gy === p.gy) || (Math.abs(q.gy - p.gy) === 1 && q.gx === p.gx))) n++; });
+    return n < 3 || p.gy === (crushed ? 1 : 3);
+  }
+  function step(){
+    t++;
+    var sp = stir ? 2.2 : 1;
+    water.forEach(function(p){
+      p.vx += (Math.random() - 0.5) * 0.6; p.vy += (Math.random() - 0.5) * 0.6;
+      p.vx *= 0.9; p.vy *= 0.9;
+      var fx = 0, fy = 0;
+      if (stir) { var dx = p.x - 160, dy = p.y - 111; fx = -dy * 0.012; fy = dx * 0.012; }
+      p.x += (p.vx + fx) * sp; p.y += (p.vy + fy) * sp;
+      if (p.x < X0 + 4) { p.x = X0 + 4; p.vx = Math.abs(p.vx); } if (p.x > X1 - 4) { p.x = X1 - 4; p.vx = -Math.abs(p.vx); }
+      if (p.y < Y0 + 4) { p.y = Y0 + 4; p.vy = Math.abs(p.vy); } if (p.y > Y1 - 4) { p.y = Y1 - 4; p.vy = -Math.abs(p.vy); }
+    });
+    var rate = 0.006 * (stir ? 3 : 1);
+    sugar.forEach(function(p){
+      if (p.bound) {
+        if (exposed(p) && Math.random() < rate) { p.bound = false; p.vx = 0; p.vy = -0.6; }
+      } else {
+        p.vx = (p.vx || 0) * 0.92 + (Math.random() - 0.5) * 0.7; p.vy = (p.vy || 0) * 0.92 + (Math.random() - 0.5) * 0.7;
+        var fx = 0, fy = 0;
+        if (stir) { var dx = p.x - 160, dy = p.y - 111; fx = -dy * 0.012; fy = dx * 0.012; }
+        p.x += (p.vx + fx) * sp; p.y += (p.vy + fy) * sp;
+        if (p.x < X0 + 4) p.x = X0 + 4; if (p.x > X1 - 4) p.x = X1 - 4;
+        if (p.y < Y0 + 4) p.y = Y0 + 4; if (p.y > Y1 - 4) p.y = Y1 - 4;
+      }
+    });
+  }
+  function draw(){
+    ctx.setTransform(S, 0, 0, S, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = col("--surface"); ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = col("--water-soft"); ctx.fillRect(X0, Y0, X1 - X0, Y1 - Y0);
+    ctx.strokeStyle = col("--line"); ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(X0, (Y0 + Y1) / 2); ctx.lineTo(X1, (Y0 + Y1) / 2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = col("--ink"); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X0 - 6, Y0 - 8); ctx.lineTo(X0, Y0 - 4); ctx.lineTo(X0, Y1); ctx.lineTo(X1, Y1); ctx.lineTo(X1, Y0 - 4); ctx.lineTo(X1 + 6, Y0 - 8); ctx.stroke();
+    ctx.fillStyle = col("--muted"); ctx.font = "11px " + (getComputedStyle(document.body).fontFamily || "sans-serif");
+    ctx.fillText("top half", X0 + 6, Y0 + 12); ctx.fillText("bottom half", X0 + 6, (Y0 + Y1) / 2 + 14);
+    ctx.lineWidth = 0.6;
+    ctx.fillStyle = col("--pa");
+    water.forEach(function(p){ ctx.beginPath(); ctx.arc(p.x, p.y, 3.5, 0, 6.3); ctx.fill(); });
+    var pb = col("--pb"), ink = col("--ink");
+    sugar.forEach(function(p){
+      ctx.fillStyle = pb; ctx.strokeStyle = ink;
+      if (p.bound) { ctx.fillRect(p.x - 4.5, p.y - 4.5, 9, 9); ctx.strokeRect(p.x - 4.5, p.y - 4.5, 9, 9); }
+      else { ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, 6.3); ctx.fill(); ctx.stroke(); }
+    });
+  }
+  function stats(){
+    var free = sugar.filter(function(p){ return !p.bound; }).length, mid = (Y0 + Y1) / 2;
+    var top = sugar.filter(function(p){ return p.y < mid; }).length;
+    $("dsDone").textContent = free + " of " + sugar.length;
+    $("dsTop").textContent = top; $("dsBot").textContent = sugar.length - top;
+    if (free === sugar.length && !announced.all) { announced.all = true; $("dsMsg").textContent = "Every sugar particle has broken away from the crystal. Keep watching to see them spread evenly."; }
+    if (free === sugar.length && Math.abs(top - (sugar.length - top)) <= 3 && !announced.even && t > 60) { announced.even = true; $("dsMsg").textContent = "The sugar is now spread about evenly between the top and bottom halves. The solution is the same all the way through. That is dissolving."; }
+  }
+  function loop(){ if (!running) return; for (var k = 0; k < (reduced ? 4 : 1); k++) step(); draw(); if (t % 10 === 0) stats(); raf = requestAnimationFrame(loop); }
+  $("dsPlay").addEventListener("click", function(){ running = !running; $("dsPlay").textContent = running ? "Pause" : "Play"; if (running) loop(); });
+  $("dsReset").addEventListener("click", function(){ running = false; $("dsPlay").textContent = "Play"; reset(); });
+  toggle($("dsStir"), function(on){ stir = on; });
+  toggle($("dsCrush"), function(on){ crushed = on; running = false; $("dsPlay").textContent = "Play"; reset(); $("dsMsg").textContent = on ? "The same 24 sugar particles are now in four small pieces. More of them are on the outside, touching water. Press Play and compare." : "Back to one whole crystal. Press Play."; });
+  reset();
+  try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw); } catch(e) {}
+})();
+
+/* ---------- Lesson 3: surface area and race ---------- */
+(function(){
+  var stir = false;
+  function render(){
+    var n = +$("saCuts").value, pieces = n * n * n, side = 2 / n, area = 6 * side * side * pieces;
+    $("saCutsOut").textContent = pieces === 1 ? "1 piece" : n + " × " + n + " × " + n + " = " + pieces + " pieces";
+    $("saN").textContent = pieces; $("saA").textContent = fmt(area) + " cm²";
+    var svg = $("saSvg"); clear(svg);
+    /* front face of the cube divided n x n, plus a top face */
+    var s = 100, x = 30, y = 35, d = 26;
+    svg.appendChild(sv("path", {d: "M" + x + " " + y + " l" + d + " " + (-d * 0.8) + " h" + s + " l" + (-d) + " " + (d * 0.8) + " z", style: "fill:var(--fire-soft);stroke:var(--ink);stroke-width:1.5"}));
+    svg.appendChild(sv("path", {d: "M" + (x + s) + " " + y + " l" + d + " " + (-d * 0.8) + " v" + s + " l" + (-d) + " " + (d * 0.8) + " z", style: "fill:var(--mix-soft);stroke:var(--ink);stroke-width:1.5"}));
+    svg.appendChild(sv("rect", {x: x, y: y, width: s, height: s, style: "fill:var(--salt);stroke:var(--ink);stroke-width:1.5"}));
+    for (var i = 1; i < n; i++) {
+      svg.appendChild(sv("line", {x1: x + s * i / n, y1: y, x2: x + s * i / n, y2: y + s, style: "stroke:var(--ink);stroke-width:1"}));
+      svg.appendChild(sv("line", {x1: x, y1: y + s * i / n, x2: x + s, y2: y + s * i / n, style: "stroke:var(--ink);stroke-width:1"}));
+    }
+    svg.appendChild(sv("text", {x: 175, y: 60, "class": "lbl"}, pieces + (pieces === 1 ? " cube" : " cubes")));
+    svg.appendChild(sv("text", {x: 175, y: 80, "class": "small"}, "each " + fmt(side, 2) + " cm on a side"));
+    svg.appendChild(sv("text", {x: 175, y: 100, "class": "small"}, "same sugar, same volume"));
+    svg.appendChild(sv("text", {x: 175, y: 120, "class": "small"}, "surface: " + fmt(area) + " cm²"));
+    svg.setAttribute("aria-label", "A 2 centimetre sugar cube cut into " + pieces + " pieces with a total surface area of " + fmt(area) + " square centimetres");
+    var rows = [["Whole cube", 1], ["8 pieces", 2], ["64 pieces", 4], ["Your choice", n]];
+    var race = $("saRace"); clear(race);
+    var tmax = 300;
+    rows.forEach(function(r){
+      var a = 24 * r[1], tm = 300 * 24 / a / (stir ? 3 : 1);
+      var row = el("div", {"class": "barrow"});
+      row.appendChild(el("span", null, r[0] + (stir ? ", stirred" : "")));
+      var tr = el("span", {"class": "track"}); var bar = el("i"); bar.style.width = (tm / tmax * 100) + "%"; tr.appendChild(bar); row.appendChild(tr);
+      row.appendChild(el("b", null, Math.round(tm) + " s"));
+      race.appendChild(row);
+    });
+    $("saMsg").textContent = "More surface area means more sugar particles touching water, so it dissolves faster. " + (stir ? "Stirring makes every piece dissolve about three times faster in this model." : "Turn on stirring to compare.") + " In every case the same 8 cm³ of sugar ends up dissolved.";
+  }
+  $("saCuts").addEventListener("input", render);
+  toggle($("saStir"), function(on){ stir = on; render(); });
+  render();
+})();
+
+/* ---------- Lesson 4: concentration beaker ---------- */
+(function(){
+  function render(){
+    var g = +$("ccG").value, V = +$("ccV").value;
+    $("ccGOut").textContent = g + " g"; $("ccVOut").textContent = V + " mL";
+    var cap = 0.36 * V, dis = Math.min(g, cap), extra = g - dis, c = dis / V * 100;
+    var svg = $("ccSvg"); clear(svg);
+    var liq = beaker(svg, 60, 20, 200, 170, V / 270);
+    var r = rng(17), nd = Math.round(dis);
+    for (var i = 0; i < nd; i++) dot(svg, liq.x + 6 + r() * (liq.w - 12), liq.y + 6 + r() * Math.max(4, liq.h - 18), 3.2, "--pb");
+    crystals(svg, liq, Math.min(60, Math.round(extra)), 3);
+    svg.appendChild(sv("text", {x: 268, y: liq.y + 4, "class": "small"}, V + " mL"));
+    svg.setAttribute("aria-label", "Beaker with " + V + " mL of water and " + g + " g of salt. " + fmt(dis) + " g dissolved" + (extra > 0 ? " and " + fmt(extra) + " g sitting undissolved on the bottom." : "."));
+    $("ccMark").style.left = Math.min(100, c / 36 * 100) + "%";
+    var word = c === 0 ? "pure water (no solute)" : c < 8 ? "dilute" : c < 24 ? "medium" : "concentrated";
+    var sat = extra > 0 || Math.abs(dis - cap) < 0.01;
+    var box = $("ccOut"); clear(box);
+    var v = el("div", {"class": "verdict"});
+    v.appendChild(el("span", {"class": "badge"}, word));
+    v.appendChild(el("span", {"class": "badge " + (sat ? "sat" : "uns")}, sat ? "saturated" : "unsaturated"));
+    box.appendChild(v);
+    box.appendChild(el("p", {"class": "mono"}, "c = " + fmt(dis) + " g ÷ " + V + " mL = " + fmt(c, 1) + " g per 100 mL"));
+    box.appendChild(el("p", null, sat
+      ? "This water holds as much salt as it can at 20 °C, about " + fmt(cap) + " g in " + V + " mL. " + (extra > 0 ? fmt(extra) + " g will not dissolve and sits on the bottom. Adding more water would let it dissolve." : "One more gram would stay on the bottom.")
+      : "More salt could still dissolve. This much water can hold about " + fmt(cap) + " g of salt at 20 °C."));
+  }
+  $("ccG").addEventListener("input", render); $("ccV").addEventListener("input", render);
+  render();
+})();
+
+/* ---------- Lesson 5: solubility bars ---------- */
+(function(){
+  var ITEMS = [
+    {n: "Sugar (sucrose)", v: 204, s: "204 g", t: "Very soluble. About 204 g of sugar dissolves in 100 mL of water at 20 °C. That is twice the mass of the water."},
+    {n: "Table salt", v: 36, s: "36 g", t: "Soluble. About 36 g of salt dissolves in 100 mL of water at 20 °C. Road crews in Edmonton spray salt brine on roads in winter, and saturated brine has about this much salt."},
+    {n: "Potassium nitrate", v: 31.6, s: "31.6 g", t: "Soluble. About 31.6 g dissolves in 100 mL of water at 20 °C. It is very close to salt at this temperature, but very different when hot (Lesson 6)."},
+    {n: "Baking soda", v: 9.6, s: "9.6 g", t: "Slightly soluble. Only about 9.6 g dissolves in 100 mL of water at 20 °C."},
+    {n: "Chalk", v: 0.0013, s: "≈ 0", t: "Insoluble. Only about a thousandth of a gram of chalk (calcium carbonate) dissolves in 100 mL of water. You would never see it."},
+    {n: "Sand", v: 0, s: "≈ 0", t: "Insoluble. Sand does not dissolve in water. It settles to the bottom."}
+  ];
+  var box = $("sbBars"), btns = [];
+  ITEMS.forEach(function(it, i){
+    var b = el("button", {"class": "sbar", type: "button", "aria-pressed": "false", "aria-label": it.n + ": " + it.s + " per 100 mL"});
+    b.appendChild(el("span", null, it.n));
+    var tr = el("span", {"class": "track"}); var bar = el("i"); bar.style.width = Math.max(0, it.v / 204 * 100) + "%"; tr.appendChild(bar); b.appendChild(tr);
+    b.appendChild(el("b", null, it.s));
+    b.addEventListener("click", function(){ set(i); });
+    box.appendChild(b); btns.push(b);
+  });
+  function set(i){
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    detail($("sbOut"), ITEMS[i].n, [ITEMS[i].t], "Solubility at 20 °C");
+  }
+  set(1);
+})();
+
+/* ---------- Lesson 6: solubility curves ---------- */
+var curveShown = {kno3: true, salt: true, soda: true, sugar: false};
+function drawCurves(svg, opts){
+  clear(svg);
+  var W = +svg.getAttribute("viewBox").split(" ")[2], H = +svg.getAttribute("viewBox").split(" ")[3];
+  var L = 54, R = W - 26, T = 14, B = H - 40;
+  var shown = SUBS.filter(function(s){ return opts.show[s.id]; });
+  var ymax = 50;
+  shown.forEach(function(s){ ymax = Math.max(ymax, s.data[s.data.length - 1]); });
+  (opts.points || []).forEach(function(p){ ymax = Math.max(ymax, p.y); });
+  var step = ymax > 300 ? 100 : ymax > 120 ? 50 : 20;
+  ymax = Math.ceil(ymax / step) * step;
+  function X(t){ return L + (R - L) * t / 100; }
+  function Y(v){ return B - (B - T) * v / ymax; }
+  for (var v = 0; v <= ymax; v += step) {
+    svg.appendChild(sv("line", {x1: L, y1: Y(v), x2: R, y2: Y(v), "class": "grid"}));
+    svg.appendChild(sv("text", {x: L - 6, y: Y(v) + 4, "text-anchor": "end", "class": "small"}, v));
+  }
+  for (var t = 0; t <= 100; t += 20) svg.appendChild(sv("text", {x: X(t), y: B + 16, "text-anchor": "middle", "class": "small"}, t));
+  svg.appendChild(sv("line", {x1: L, y1: B, x2: R, y2: B, "class": "axis"}));
+  svg.appendChild(sv("line", {x1: L, y1: T, x2: L, y2: B, "class": "axis"}));
+  svg.appendChild(sv("text", {x: (L + R) / 2, y: H - 6, "text-anchor": "middle", "class": "small"}, "Temperature (°C)"));
+  svg.appendChild(sv("text", {x: 12, y: (T + B) / 2, transform: "rotate(-90 12 " + ((T + B) / 2) + ")", "text-anchor": "middle", "class": "small"}, "g per 100 mL of water"));
+  shown.forEach(function(s){
+    var d = "";
+    s.data.forEach(function(v, i){ d += (i ? " L" : "M") + X(i * 10) + " " + Y(v); });
+    svg.appendChild(sv("path", {d: d, style: "fill:none;stroke:var(" + s.color + ");stroke-width:2.5"}));
+    var last = s.data.length - 1;
+    var lx = X(last * 10), ly = Y(s.data[last]);
+    svg.appendChild(sv("text", {x: Math.min(lx, R - 4), y: ly - 6, "text-anchor": "end", "class": "small", style: "fill:var(" + s.color + ");font-weight:700"}, s.name.split(" (")[0]));
+  });
+  if (opts.T != null) {
+    svg.appendChild(sv("line", {x1: X(opts.T), y1: T, x2: X(opts.T), y2: B, style: "stroke:var(--fire);stroke-width:1.5;stroke-dasharray:4 3"}));
+    shown.forEach(function(s){ if (opts.T <= s.max) svg.appendChild(sv("circle", {cx: X(opts.T), cy: Y(sol(s, opts.T)), r: 4.5, style: "fill:var(" + s.color + ");stroke:var(--surface);stroke-width:1.5"})); });
+  }
+  (opts.points || []).forEach(function(p){
+    svg.appendChild(sv("circle", {cx: X(p.x), cy: Y(p.y), r: 5, style: "fill:var(--surface);stroke:var(" + p.color + ");stroke-width:2.5"}));
+  });
+}
+(function(){
+  var box = $("scChecks");
+  SUBS.forEach(function(s){
+    var lab = el("label", {"for": "sc-" + s.id});
+    var cb = el("input", {type: "checkbox", id: "sc-" + s.id}); cb.checked = curveShown[s.id];
+    cb.addEventListener("change", function(){ curveShown[s.id] = cb.checked; render(); });
+    var sw = el("span", {"class": "sw"}); sw.style.background = "var(" + s.color + ")";
+    lab.appendChild(cb); lab.appendChild(sw); lab.appendChild(document.createTextNode(s.name));
+    box.appendChild(lab);
+  });
+  function render(){
+    var T = +$("scT").value; $("scTOut").textContent = T + " °C";
+    drawCurves($("scSvg"), {show: curveShown, T: T});
+    var shown = SUBS.filter(function(s){ return curveShown[s.id]; });
+    $("scSvg").setAttribute("aria-label", "Solubility curves. At " + T + " degrees: " + shown.map(function(s){ return s.name + " " + (T <= s.max ? fmt(sol(s, T)) + " g" : "no data"); }).join(", "));
+    var out = $("scOut"); clear(out);
+    out.appendChild(el("span", {"class": "tagline"}, "At " + T + " °C, in 100 mL of water"));
+    shown.forEach(function(s){ out.appendChild(el("p", null, s.name + ": " + (T <= s.max ? fmt(sol(s, T)) + " g" : "no data above " + s.max + " °C"))); });
+    if (!shown.length) out.appendChild(el("p", null, "Tick a substance to see its curve."));
+    else if (curveShown.kno3 && T >= 30) out.appendChild(el("p", {"class": "hint"}, "If this saturated potassium nitrate solution cooled to 20 °C, about " + fmt(sol(SUBS[0], T) - 31.6) + " g would crystallize out."));
+  }
+  $("scT").addEventListener("input", render);
+  render();
+  /* oxygen mini chart */
+  var ox = [[0, 14.6], [10, 11.3], [20, 9.1], [30, 7.6], [40, 6.4]];
+  var svg = $("oxSvg"), L = 40, R = 296, T0 = 12, B = 112;
+  function X(t){ return L + (R - L) * t / 40; } function Y(v){ return B - (B - T0) * v / 16; }
+  [0, 4, 8, 12, 16].forEach(function(v){ svg.appendChild(sv("line", {x1: L, y1: Y(v), x2: R, y2: Y(v), "class": "grid"})); svg.appendChild(sv("text", {x: L - 6, y: Y(v) + 4, "text-anchor": "end", "class": "small"}, v)); });
+  ox.forEach(function(p){ svg.appendChild(sv("text", {x: X(p[0]), y: B + 22, "text-anchor": "middle", "class": "small"}, p[0] + " °C")); });
+  var d = ""; ox.forEach(function(p, i){ d += (i ? " L" : "M") + X(p[0]) + " " + Y(p[1]); });
+  svg.appendChild(sv("path", {d: d, style: "fill:none;stroke:var(--water);stroke-width:2.5"}));
+  ox.forEach(function(p){ svg.appendChild(sv("circle", {cx: X(p[0]), cy: Y(p[1]), r: 3.5, style: "fill:var(--water)"})); });
+  svg.appendChild(sv("text", {x: X(40) - 4, y: Y(14), "text-anchor": "end", "class": "small"}, "mg of oxygen per L of water"));
+})();
+
+/* ---------- Lesson 7: story ---------- */
+(function(){
+  var K = SUBS[0], st;
+  function reset(){ st = {V: 100, g: 0, T: 20}; }
+  function render(msg){
+    var cap = sol(K, st.T) * st.V / 100, dis = Math.min(st.g, cap), extra = st.g - dis, c = dis / st.V * 100;
+    var sat = st.g > 0 && extra >= 0 && Math.abs(dis - cap) < 0.05;
+    var box = $("stCards"); clear(box);
+    function card(b, s, t, cls){ var d = el("div", {"class": "scard " + (cls || "")}); d.appendChild(el("b", null, b)); d.appendChild(el("strong", null, s)); d.appendChild(el("span", null, t)); box.appendChild(d); }
+    card("Beaker", st.V + " mL at " + st.T + " °C", st.g + " g added, " + fmt(dis) + " g dissolved" + (extra > 0.05 ? ", " + fmt(extra) + " g on the bottom" : ""));
+    card("Concentration", fmt(c) + " g/100 mL", c === 0 ? "No solute yet" : (sat ? "Saturated" : "Unsaturated") + (c < 15 ? ", fairly dilute" : c > 60 ? ", very concentrated" : ""), "c2");
+    card("Solubility now", fmt(sol(K, st.T)) + " g/100 mL", "This much water can hold " + fmt(cap) + " g at " + st.T + " °C", "c3");
+    detail($("stMsg"), null, [msg]);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#stBtns button"), function(b){
+    b.addEventListener("click", function(){
+      var a = b.dataset.act, before = Math.min(st.g, sol(K, st.T) * st.V / 100), msg = "";
+      if (a === "reset") { reset(); msg = "A fresh beaker: 100 mL of water at 20 °C."; }
+      if (a === "add") { st.g += 10; var cap = sol(K, st.T) * st.V / 100; msg = st.g <= cap ? "The 10 g dissolved. Its particles spread evenly. Concentration went up." : before >= cap - 0.05 ? "The solution was already saturated, so none of the new solid dissolved. It sits on the bottom." : "Some dissolved until the solution became saturated. The rest stays on the bottom."; }
+      if (a === "stir") msg = "Stirring helps solute dissolve faster, but the amounts do not change. The solubility is the same.";
+      if (a === "heat") { if (st.T >= 100) msg = "The water is already at 100 °C."; else { st.T += 10; var after = Math.min(st.g, sol(K, st.T) * st.V / 100); msg = after > before + 0.05 ? "Warmer water has a higher solubility. Some of the solid on the bottom dissolved, so the concentration went up." : "The solubility went up. The solution is now unsaturated, so it could hold more solute."; } }
+      if (a === "cool") { if (st.T <= 0) msg = "The water is already at 0 °C."; else { st.T -= 10; var after2 = Math.min(st.g, sol(K, st.T) * st.V / 100); msg = after2 < before - 0.05 ? "Cooler water has a lower solubility. " + fmt(before - after2) + " g came out of solution as crystals. That is crystallization." : "The solubility went down, but the solution still holds all its solute."; } }
+      if (a === "water") { st.V += 50; msg = "Adding water diluted the solution. The same solute is spread through more water, so the concentration dropped. More water can also hold more solute in total."; }
+      render(msg);
+    });
+  });
+  reset(); render("A fresh beaker: 100 mL of water at 20 °C. Add some potassium nitrate.");
+})();
+
+/* ---------- Bench 1: find the solubility ---------- */
+(function(){
+  store.fs = store.fs || [];
+  var s = SUBS[0], added = 0, lastClear = 0, stir = true, showRef = false;
+  var sel = $("fsSub");
+  SUBS.forEach(function(x){ sel.appendChild(el("option", {value: x.id}, x.name)); });
+  function T(){ return +$("fsT").value; }
+  function cap(){ return sol(s, T()); }
+  function render(msg){
+    $("fsTOut").textContent = T() + " °C";
+    var svg = $("fsSvg"); clear(svg);
+    var liq = beaker(svg, 70, 20, 180, 150, 0.7);
+    var dis = Math.min(added, cap()), extra = added - dis;
+    var r = rng(29), nd = Math.min(80, Math.round(dis / Math.max(1, cap()) * 60));
+    for (var i = 0; i < nd; i++) dot(svg, liq.x + 6 + r() * (liq.w - 12), liq.y + 6 + r() * (liq.h - 20), 2.6, s.color);
+    crystals(svg, liq, Math.min(50, Math.ceil(extra)), 9);
+    svg.appendChild(sv("text", {x: 258, y: liq.y + 4, "class": "small"}, "100 mL"));
+    var crys = extra > 0.001;
+    svg.setAttribute("aria-label", "Beaker with " + added + " g of " + s.name + " added at " + T() + " degrees. " + (crys ? "Solid remains on the bottom." : "Everything has dissolved."));
+    var box = $("fsOut"); clear(box);
+    box.appendChild(el("p", {"class": "mono"}, "Added so far: " + added + " g · " + (crys ? "solid left on the bottom" : "all dissolved")));
+    box.appendChild(el("p", null, msg || (added === 0 ? "Add solute to start." : crys ? "Saturated. The solubility is between " + lastClear + " g and " + added + " g. Record your result, or empty the beaker and try smaller scoops near that amount." : "Unsaturated. Keep adding.")));
+  }
+  function add(n){
+    if (added > cap()) { render("Already saturated. Extra solid just sits on the bottom. Empty the beaker to try again."); return; }
+    if (added + n <= cap()) lastClear = added + n;
+    added += n;
+    var wait = stir ? "about a minute" : "several minutes";
+    render(added <= cap() ? "It all dissolved after " + wait + (stir ? " of stirring." : " without stirring.") + " Unsaturated." : null);
+  }
+  $("fs1").addEventListener("click", function(){ add(1); });
+  $("fs5").addEventListener("click", function(){ add(5); });
+  $("fs20").addEventListener("click", function(){ add(20); });
+  toggle($("fsStir"), function(on){ stir = on; render(on ? "Stirring is on. Each scoop dissolves faster. The amount that can dissolve does not change." : "Stirring is off. You will wait longer for each scoop, but the solubility you find will be the same."); });
+  $("fsEmpty").addEventListener("click", function(){ added = 0; lastClear = 0; render(); });
+  sel.addEventListener("change", function(){ s = subById(sel.value); $("fsT").max = s.max; if (T() > s.max) $("fsT").value = s.max; added = 0; lastClear = 0; render(); chart(); });
+  $("fsT").addEventListener("input", function(){ added = 0; lastClear = 0; render("New temperature, fresh water. Start adding."); });
+  $("fsRec").addEventListener("click", function(){
+    if (added <= cap()) { render("Not saturated yet. Keep adding until some solid stays on the bottom, then record."); return; }
+    var est = (lastClear + added) / 2;
+    store.fs = store.fs.filter(function(p){ return !(p.id === s.id && p.T === T()); });
+    store.fs.push({id: s.id, T: T(), lo: lastClear, hi: added, est: est}); save();
+    table(); chart();
+    render("Recorded: between " + lastClear + " g and " + added + " g at " + T() + " °C. Try another temperature.");
+  });
+  $("fsClear").addEventListener("click", function(){ store.fs = []; save(); table(); chart(); });
+  toggle($("fsRef"), function(on){ showRef = on; chart(); });
+  function table(){
+    var tb = $("fsTable").querySelector("tbody"); clear(tb);
+    var rows = store.fs.slice().sort(function(a, b){ return a.id < b.id ? -1 : a.id > b.id ? 1 : a.T - b.T; });
+    if (!rows.length) { var tr0 = el("tr"); tr0.appendChild(el("td", {colspan: "3"}, "No results yet.")); tb.appendChild(tr0); }
+    rows.forEach(function(p){
+      var tr = el("tr");
+      tr.appendChild(el("td", null, subById(p.id).name)); tr.appendChild(el("td", null, p.T));
+      tr.appendChild(el("td", null, p.hi - p.lo <= 1 ? p.lo + " to " + p.hi : p.lo + " to " + p.hi + " (try smaller scoops)"));
+      tb.appendChild(tr);
+    });
+  }
+  function chart(){
+    var show = {}; show[s.id] = showRef;
+    var pts = store.fs.filter(function(p){ return p.id === s.id; }).map(function(p){ return {x: p.T, y: p.est, color: s.color}; });
+    var svg = $("fsChart");
+    if (!showRef && !pts.length) { show = {}; }
+    drawCurves(svg, {show: show, points: pts});
+    if (!showRef) {
+      var mx = 50; pts.forEach(function(p){ mx = Math.max(mx, p.y); });
+    }
+    svg.setAttribute("aria-label", "Graph of your " + s.name + " results: " + (pts.length ? pts.map(function(p){ return fmt(p.y) + " g at " + p.x + " degrees"; }).join(", ") : "no points yet") + (showRef ? ". Reference curve shown." : "."));
+  }
+  table(); chart(); render();
+})();
+
+/* ---------- Bench 2: concentration calculator and practice ---------- */
+(function(){
+  var sel = $("ccsub");
+  SUBS.forEach(function(x){ sel.appendChild(el("option", {value: x.id}, x.name)); });
+  sel.value = "salt";
+  function calc(){
+    var m = parseFloat($("ccm").value), V = parseFloat($("ccvol").value), box = $("ccWork"); clear(box);
+    if (!(m >= 0) || !(V > 0)) { box.appendChild(el("p", null, "Enter a mass of 0 g or more and a volume greater than 0 mL.")); return; }
+    var s = subById(sel.value), c = m / V * 100, S20 = sol(s, 20);
+    box.appendChild(el("span", {"class": "tagline"}, "Worked solution"));
+    box.appendChild(el("p", {"class": "mono"}, "c = m ÷ V = " + fmt(m, 2) + " g ÷ " + fmt(V, 2) + " mL = " + fmt(m / V, 3) + " g/mL"));
+    box.appendChild(el("p", {"class": "mono"}, "× 100 → " + fmt(c, 1) + " g per 100 mL  (× 1000 → " + fmt(c * 10, 0) + " g/L)"));
+    box.appendChild(el("p", null, c > S20 + 0.05
+      ? "That is more than the solubility of " + s.name.toLowerCase() + " at 20 °C (" + fmt(S20) + " g per 100 mL). It could not all dissolve at 20 °C. The solution would be saturated, with solid left over."
+      : Math.abs(c - S20) <= 0.05 ? "That equals the solubility at 20 °C. The solution is saturated."
+      : "That is below the solubility of " + s.name.toLowerCase() + " at 20 °C (" + fmt(S20) + " g per 100 mL), so at 20 °C the solution is unsaturated."));
+  }
+  ["ccm", "ccvol"].forEach(function(id){ $(id).addEventListener("input", calc); });
+  sel.addEventListener("change", calc); calc();
+  var cur = null, score = store.prScore || [0, 0];
+  var SOLUTES = ["sugar", "salt", "drink powder", "baking soda", "potassium nitrate"];
+  function gen(){
+    var type = rint(0, 2), q, ans, how;
+    if (type === 0) {
+      var V = pick([50, 200, 250, 400, 500]), m = rint(2, 30), sname = pick(SOLUTES);
+      if (sname === "baking soda") m = rint(1, 9);
+      q = "A student dissolves " + m + " g of " + sname + " to make " + V + " mL of solution. What is the concentration in g per 100 mL?";
+      ans = m / V * 100; how = "c = " + m + " ÷ " + V + " × 100 = " + fmt(ans, 2) + " g per 100 mL";
+    } else if (type === 1) {
+      var c = pick([2, 4, 5, 8, 10, 12, 20]), V2 = pick([100, 200, 250, 500]);
+      q = "You need " + V2 + " mL of a sugar solution with a concentration of " + c + " g per 100 mL. How many grams of sugar do you need?";
+      ans = c * V2 / 100; how = "m = c × V = " + c + " g/100 mL × " + V2 + " mL = " + fmt(ans, 2) + " g";
+    } else {
+      var m3 = rint(4, 20) * 2, V3 = pick([100, 200]), add = V3;
+      q = "A juice has " + m3 + " g of sugar in " + V3 + " mL. You add " + add + " mL of water to dilute it. What is the new concentration in g per 100 mL?";
+      ans = m3 / (V3 + add) * 100; how = "Same " + m3 + " g in " + (V3 + add) + " mL: c = " + m3 + " ÷ " + (V3 + add) + " × 100 = " + fmt(ans, 2) + " g per 100 mL. Doubling the volume halves the concentration.";
+    }
+    cur = {ans: ans, how: how};
+    var b = $("prQ"); clear(b); b.appendChild(el("span", {"class": "tagline"}, "Question")); b.appendChild(el("p", null, q));
+    $("prA").value = ""; $("prFb").textContent = ""; $("prFb").className = "fb";
+  }
+  function showScore(){ $("prScore").textContent = "Correct so far: " + score[0] + " of " + score[1]; }
+  $("prCheck").addEventListener("click", function(){
+    var v = parseFloat($("prA").value);
+    if (isNaN(v)) { $("prFb").textContent = "Type a number first."; $("prFb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur.ans) <= Math.max(0.05, Math.abs(cur.ans) * 0.02);
+    score[1]++; if (ok) score[0]++; store.prScore = score; save(); showScore();
+    $("prFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.how; $("prFb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("prNew").addEventListener("click", gen);
+  gen(); showScore();
+})();
+
+/* ---------- Bench 3: rank the beakers ---------- */
+(function(){
+  var set, picks;
+  function gen(){
+    var tries = 0;
+    do {
+      set = [0, 1, 2].map(function(i){ var V = pick([100, 150, 200, 250]), g = rint(6, 40); return {i: i, V: V, g: g, c: g / V * 100}; });
+      var cs = set.map(function(b){ return b.c; }).sort(function(a, b){ return a - b; });
+      tries++;
+      if (cs[1] / cs[0] > 1.25 && cs[2] / cs[1] > 1.25) break;
+    } while (tries < 200);
+    picks = []; render();
+    detail($("rkOut"), null, ["Tap the most concentrated beaker first."]);
+  }
+  function render(){
+    var area = $("rkArea"); clear(area);
+    set.forEach(function(b, k){
+      var btn = el("button", {type: "button", "aria-label": "Beaker " + "ABC"[k] + ": " + b.g + " g of sugar in " + b.V + " mL"});
+      var svg = sv("svg", {viewBox: "0 0 160 150", "aria-hidden": "true"});
+      var liq = beaker(svg, 25, 10, 110, 130, b.V / 270);
+      var r = rng(100 + b.g * 7 + b.V);
+      for (var i = 0; i < b.g; i++) dot(svg, liq.x + 5 + r() * (liq.w - 10), liq.y + 5 + r() * (liq.h - 10), 2.6, "--pb");
+      btn.appendChild(el("span", null, "Beaker " + "ABC"[k]));
+      btn.appendChild(svg);
+      btn.appendChild(el("span", {"class": "mono"}, b.g + " g · " + b.V + " mL"));
+      var pos = picks.indexOf(k);
+      btn.appendChild(el("span", {"class": "pos"}, pos > -1 ? "Pick " + (pos + 1) : " "));
+      if (picks.length === 3) {
+        var order = set.slice().sort(function(a, c){ return c.c - a.c; });
+        btn.disabled = true;
+        btn.classList.add(order[pos].i === b.i ? "right" : "wrong");
+      } else if (pos > -1) btn.disabled = true;
+      btn.addEventListener("click", function(){ picks.push(k); if (picks.length === 2) { for (var j = 0; j < 3; j++) if (picks.indexOf(j) < 0) picks.push(j); } render(); if (picks.length === 3) finish(); });
+      area.appendChild(btn);
+    });
+  }
+  function finish(){
+    var order = set.slice().sort(function(a, c){ return c.c - a.c; });
+    var ok = picks.every(function(k, j){ return order[j].i === set[k].i; });
+    store.rk = store.rk || [0, 0]; store.rk[1]++; if (ok) store.rk[0]++; save();
+    detail($("rkOut"), ok ? "Correct order" : "Not quite", [
+      order.map(function(b){ return "Beaker " + "ABC"[b.i] + ": " + b.g + " ÷ " + b.V + " × 100 = " + fmt(b.c) + " g per 100 mL"; }).join(" · "),
+      "Concentration depends on both the solute and the volume. More dots in more water can still be more dilute. Sets correct: " + store.rk[0] + " of " + store.rk[1] + "."
+    ]);
+  }
+  $("rkNew").addEventListener("click", gen);
+  gen();
+})();
+
+/* ---------- Bench 4: read the data ---------- */
+(function(){
+  var tbl = $("rdTable");
+  var thead = el("thead"), hr = el("tr"); hr.appendChild(el("th", null, "°C"));
+  SUBS.forEach(function(s){ hr.appendChild(el("th", null, s.name.split(" (")[0])); });
+  thead.appendChild(hr); tbl.appendChild(thead);
+  var tb = el("tbody");
+  for (var t = 0; t <= 100; t += 10) {
+    var tr = el("tr"); tr.appendChild(el("td", null, t));
+    SUBS.forEach(function(s){ tr.appendChild(el("td", null, t <= s.max ? fmt(s.data[t / 10]) : "")); });
+    tb.appendChild(tr);
+  }
+  tbl.appendChild(tb);
+  var cur;
+  function gen(){
+    var type = rint(0, 3), K = SUBS[0], q, ans, how, unit = "g";
+    if (type === 0) {
+      var s = pick(SUBS), T = rint(0, s.max / 10) * 10;
+      q = "How many grams of " + s.name.toLowerCase() + " can dissolve in 100 mL of water at " + T + " °C?";
+      ans = sol(s, T); how = "Read the " + s.name.toLowerCase() + " column at " + T + " °C: " + fmt(ans) + " g.";
+    } else if (type === 1) {
+      var T1 = rint(4, 9) * 10, T2 = rint(0, 3) * 10;
+      q = "100 mL of water at " + T1 + " °C is saturated with potassium nitrate. It cools to " + T2 + " °C. How many grams of crystals form?";
+      ans = sol(K, T1) - sol(K, T2); how = fmt(sol(K, T1)) + " g − " + fmt(sol(K, T2)) + " g = " + fmt(ans) + " g crystallize, because cooler water holds less.";
+    } else if (type === 2) {
+      var T3 = rint(2, 8) * 10, m = Math.round(sol(K, T3));
+      q = "What is the lowest temperature at which " + m + " g of potassium nitrate will all dissolve in 100 mL of water?";
+      ans = T3; unit = "°C"; how = "Find " + m + " g in the potassium nitrate column. It matches about " + T3 + " °C.";
+    } else {
+      var T4 = rint(1, 5) * 10, m4 = pick([20, 30, 40, 50, 60]), cap = sol(K, T4);
+      q = "You add " + m4 + " g of potassium nitrate to 100 mL of water at " + T4 + " °C. How many grams stay undissolved? (Type 0 if it all dissolves.)";
+      ans = Math.max(0, m4 - cap); how = "Solubility at " + T4 + " °C is " + fmt(cap) + " g. " + (m4 > cap ? m4 + " − " + fmt(cap) + " = " + fmt(ans) + " g stays on the bottom, so the solution is saturated." : "All " + m4 + " g dissolves, so the solution is unsaturated.");
+    }
+    cur = {ans: ans, how: how, unit: unit};
+    var b = $("rdQ"); clear(b); b.appendChild(el("span", {"class": "tagline"}, "Question")); b.appendChild(el("p", null, q));
+    $("rdA").value = ""; $("rdFb").textContent = ""; $("rdFb").className = "fb";
+  }
+  $("rdCheck").addEventListener("click", function(){
+    var v = parseFloat($("rdA").value);
+    if (isNaN(v)) { $("rdFb").textContent = "Type a number first."; $("rdFb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur.ans) <= 2;
+    $("rdFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.how; $("rdFb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("rdNew").addEventListener("click", gen);
+  gen();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Solute or solvent", bins: ["Solute", "Solvent"], items: [
+    ["The salt in salt water", 0, "Salt is the substance that dissolves."],
+    ["The water in salt water", 1, "Water does the dissolving, and there is more of it."],
+    ["The sugar in a cup of tea", 0, "Sugar dissolves in the tea."],
+    ["The water in a hummingbird feeder sugar mix", 1, "Water dissolves the sugar."],
+    ["Carbon dioxide gas in soda pop", 0, "The gas is dissolved in the water, so it is a solute."],
+    ["Nitrogen in air", 1, "Nitrogen makes up about 78% of air, so it is the solvent."],
+    ["Oxygen in air", 0, "Oxygen is dissolved in the nitrogen."],
+    ["Zinc in brass", 0, "Zinc is spread through the copper."],
+    ["Copper in brass", 1, "Copper is the main metal, so it is the solvent."],
+    ["Drink crystals in a jug of juice", 0, "The powder dissolves in the water."]
+  ]},
+  {label: "Rate or amount?", bins: ["Speeds up dissolving only", "Changes the solubility", "Has no effect"], items: [
+    ["Stirring the water", 0, "Stirring brings fresh solvent to the solute. It does not change how much can dissolve."],
+    ["Crushing a sugar cube into powder", 0, "More surface area means faster dissolving, not more dissolving."],
+    ["Shaking a closed jar", 0, "Shaking is a kind of stirring."],
+    ["Using granulated sugar instead of a cube", 0, "Smaller pieces have more surface area."],
+    ["Heating the water for potassium nitrate", 1, "Warmer water can hold more of most solids, so solubility rises. It also speeds dissolving."],
+    ["Cooling a saturated sugar solution", 1, "Cooler water holds less, so crystals form."],
+    ["Switching the solvent from water to cooking oil", 1, "Solubility depends on the solvent. Sugar barely dissolves in oil."],
+    ["Using a red cup instead of a blue cup", 2, "The colour of the cup does not affect dissolving."],
+    ["Doing the test in a quiet room", 2, "Sound level does not affect dissolving."]
+  ]},
+  {label: "Dilute, concentrated or saturated", bins: ["Dilute", "Concentrated (not saturated)", "Saturated"], items: [
+    ["One spoonful of drink powder in a big jug of water", 0, "Only a little solute in a lot of water."],
+    ["Juice made with double the powder, all dissolved", 1, "Lots of solute, but it all dissolved."],
+    ["Salt water with salt crystals left on the bottom", 2, "Undissolved solute on the bottom means no more can dissolve."],
+    ["36 g of salt dissolved in 100 mL of water at 20 °C", 2, "That is the solubility of salt at 20 °C."],
+    ["2 g of sugar in 500 mL of water", 0, "Very little solute in a lot of water."],
+    ["Very sweet iced tea with all its sugar dissolved", 1, "A lot of sugar is dissolved, and none is left on the bottom."],
+    ["Water that will not dissolve any more sugar at this temperature", 2, "It holds as much as it can."],
+    ["A sports drink with a little salt and sugar", 0, "Small amounts of solute in a lot of water."]
+  ]},
+  {label: "Soluble in water?", bins: ["Soluble", "Insoluble"], items: [
+    ["Table salt", 0, "About 36 g dissolves in 100 mL at 20 °C."],
+    ["Sugar", 0, "Very soluble: about 204 g in 100 mL at 20 °C."],
+    ["Sand", 1, "Sand grains do not dissolve. They settle out."],
+    ["Chalk", 1, "Only about a thousandth of a gram dissolves."],
+    ["Cooking oil", 1, "Oil floats in a separate layer."],
+    ["Baking soda", 0, "About 9.6 g dissolves in 100 mL at 20 °C."],
+    ["Drink crystals", 0, "They dissolve and colour the water."],
+    ["Iron filings", 1, "Iron does not dissolve in water."],
+    ["Potassium nitrate", 0, "About 31.6 g dissolves in 100 mL at 20 °C, and far more when hot."],
+    ["Sawdust", 1, "Wood bits float or sink but do not dissolve."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Solution", "A homogeneous mixture in which solute particles are dissolved and evenly spread in a solvent."],
+  ["Solute", "The substance that dissolves. Example: salt in salt water."],
+  ["Solvent", "The substance that does the dissolving, usually the part there is more of. Example: water in salt water."],
+  ["Aqueous solution", "A solution in which water is the solvent."],
+  ["Dissolving", "The process in which solute particles break away and become evenly spread among solvent particles."],
+  ["Homogeneous mixture", "A mixture that is the same all the way through."],
+  ["Rate of dissolving", "How fast a solute dissolves."],
+  ["Stirring", "Moving the solution so fresh solvent keeps reaching the solute. It speeds up dissolving."],
+  ["Surface area", "The total area of the outside of the pieces. Smaller pieces have more surface area and dissolve faster."],
+  ["Concentration", "How much solute is dissolved in a certain amount of solution. Example: 10 g per 100 mL."],
+  ["Dilute", "Having only a little solute dissolved. A comparison word."],
+  ["Concentrated", "Having a lot of solute dissolved. A comparison word."],
+  ["Diluting", "Adding more solvent to make a solution less concentrated."],
+  ["Saturated", "Holding as much solute as can dissolve at that temperature. Extra solute stays undissolved."],
+  ["Unsaturated", "Able to dissolve more solute at that temperature."],
+  ["Solubility", "The greatest amount of solute that can dissolve in a given amount of solvent at a specific temperature."],
+  ["Physical property", "A feature you can observe or measure without changing the substance. Solubility is one."],
+  ["Soluble", "Able to dissolve in a solvent. Sugar is soluble in water."],
+  ["Insoluble", "Not able to dissolve in a solvent, or only a tiny amount. Sand is insoluble in water."],
+  ["Solubility curve", "A graph showing how solubility changes with temperature."],
+  ["Crystallization", "Solid crystals forming when a solution holds more solute than it can, often as it cools."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["In salt water, what is the solute?", ["Salt", "Water", "Salt water", "The beaker"], "The solute is the substance that dissolves."],
+  ["In salt water, what is the solvent?", ["Water", "Salt", "Salt water", "Air"], "The solvent does the dissolving and is usually present in the larger amount."],
+  ["Which of these is a solution?", ["Vinegar", "Sand in water", "Oil and water", "Trail mix"], "Vinegar is acetic acid evenly dissolved in water."],
+  ["Air is a solution. Which gas is the solvent?", ["Nitrogen", "Oxygen", "Argon", "Carbon dioxide"], "Nitrogen makes up about 78% of air, the largest part."],
+  ["What happens to sugar particles when sugar dissolves in water?", ["They break apart from each other and spread evenly among the water particles.", "They melt into a liquid.", "They disappear and stop existing.", "They sink and stay at the bottom."], "Dissolving spreads the solute particles evenly. They still exist."],
+  ["You stir 10 g of sugar into 200 g of water until it dissolves. What is the mass of the solution?", ["210 g", "200 g", "190 g", "10 g"], "No particles are lost when dissolving, so the masses add."],
+  ["Why is dissolving different from melting?", ["Dissolving mixes particles into a solvent; melting turns a solid into a liquid using heat.", "They are the same thing.", "Melting only happens in water.", "Dissolving needs a flame."], "Sugar dissolves in cold water without melting."],
+  ["Which change makes a sugar cube dissolve faster?", ["Crushing it into small pieces", "Using a bigger cup", "Adding a second cube", "Using a cold spoon"], "Smaller pieces have more surface area touching the water."],
+  ["How does stirring help a solute dissolve?", ["It keeps bringing fresh solvent to the surface of the solute.", "It adds more solvent.", "It makes the solute melt.", "It raises the solubility."], "Stirring speeds up dissolving but does not change how much can dissolve."],
+  ["A 2 cm cube is cut into eight 1 cm cubes. What happens to the total surface area?", ["It doubles, from 24 cm² to 48 cm².", "It stays the same.", "It halves.", "It becomes eight times smaller."], "Cutting exposes new faces, so there is more surface for the solvent to reach."],
+  ["What does concentration describe?", ["How much solute is dissolved in a certain amount of solution", "How fast a solute dissolves", "The temperature of the solution", "The colour of the solution"], "Concentration is an amount per amount, such as grams per 100 mL."],
+  ["What is the concentration of 15 g of salt in 300 mL of solution?", ["5 g per 100 mL", "45 g per 100 mL", "20 g per 100 mL", "0.5 g per 100 mL"], "c = 15 ÷ 300 × 100 = 5 g per 100 mL."],
+  ["Which solution is more concentrated?", ["20 g of sugar in 100 mL", "30 g of sugar in 300 mL", "They are the same", "You cannot tell"], "20 g/100 mL is greater than 10 g/100 mL."],
+  ["You add 100 mL of water to 100 mL of juice. What happens to the concentration?", ["It is halved.", "It doubles.", "It stays the same.", "It becomes zero."], "The same solute is spread through twice the volume."],
+  ["Some salt stays on the bottom of a glass of salt water, even after stirring. The solution is…", ["saturated", "unsaturated", "dilute", "insoluble"], "Undissolved solute means the water holds all it can at that temperature."],
+  ["Which statement is true?", ["A saturated solution can still be dilute if the solute is barely soluble.", "Saturated and concentrated always mean the same thing.", "Dilute solutions are always saturated.", "A saturated solution has no solute."], "Saturated means no more can dissolve. Dilute means little is dissolved. For chalk, both can be true."],
+  ["Solubility is…", ["the greatest amount of solute that can dissolve in a given amount of solvent at a specific temperature", "how fast a solute dissolves", "how much solvent you have", "the mass of a solution"], "Solubility names an amount of solute, an amount of solvent and a temperature."],
+  ["Why is solubility called a physical property?", ["It can be measured without changing the substance into something new.", "It only applies to metals.", "It changes the substance into a new one.", "It depends on the size of the container."], "Like density and boiling point, it helps identify a substance."],
+  ["About 36 g of salt dissolves in 100 mL of water at 20 °C. How much can dissolve in 200 mL at 20 °C?", ["About 72 g", "About 36 g", "About 18 g", "About 136 g"], "Twice the water can hold twice the solute. The solubility per 100 mL stays the same."],
+  ["Which substance is insoluble in water?", ["Sand", "Sugar", "Salt", "Baking soda"], "Sand does not dissolve. It settles to the bottom."],
+  ["For most solids, what happens to solubility as water gets warmer?", ["It increases.", "It decreases.", "It stays exactly the same.", "It drops to zero."], "Warmer water can usually hold more of a solid solute."],
+  ["Which solute's solubility changes the least between 0 °C and 100 °C?", ["Table salt", "Potassium nitrate", "Sugar", "They all change the same amount"], "Salt goes from about 36 g to about 40 g, an almost flat curve."],
+  ["A warm saturated potassium nitrate solution cools down. What do you see?", ["Crystals form in the solution.", "Bubbles of gas appear.", "The solution becomes more concentrated.", "Nothing changes."], "Cooler water holds less solute, so the extra comes out as crystals."],
+  ["Why does a can of pop go flat faster when it is warm?", ["Gases like carbon dioxide are less soluble in warm water.", "Warm water dissolves more gas.", "Sugar leaves the pop.", "The can gets bigger."], "Unlike most solids, gases dissolve less as temperature rises."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Define solute, solvent and solution. Use sugar water as your example.", a: "The solute is the substance that dissolves, here the sugar. The solvent is the substance that does the dissolving, here the water. The solution is the homogeneous mixture they make together: sugar water.", k: ["Solute defined, sugar", "Solvent defined, water", "Solution as a homogeneous mixture"]},
+  {q: "Describe what happens to the particles when salt dissolves in water.", a: "Moving water particles bump into the salt and pull particles off its surface. The salt particles break away from each other and drift among the water particles until they are evenly spread through the whole solution. They are too small to see, but they are still there.", k: ["Water particles pull solute particles away", "Solute particles spread evenly", "Particles still exist, too small to see"]},
+  {q: "Explain why crushing a sugar cube makes it dissolve faster.", a: "Only the particles on the outside of a piece can be reached by the water. Crushing the cube makes many small pieces with much more total surface area, so more sugar particles touch the water at once and the sugar dissolves faster.", k: ["Dissolving happens at the surface", "Smaller pieces have more surface area", "More particles touch water, faster rate"]},
+  {q: "Your friend says stirring makes more sugar dissolve in a cup of water. Is that right? Explain.", a: "Not quite. Stirring makes sugar dissolve faster because it brings fresh water to the sugar. It does not change the solubility. Once the water is saturated, stirring will not make any more sugar dissolve at that temperature.", k: ["Stirring changes the rate", "Stirring does not change the amount that can dissolve", "Mentions saturation"]},
+  {q: "Calculate the concentration of 24 g of sugar in 400 mL of solution, in g per 100 mL. Show your work.", a: "c = m ÷ V = 24 g ÷ 400 mL = 0.06 g/mL. Multiply by 100: 6 g per 100 mL.", k: ["Uses c = m ÷ V", "Correct division", "6 g per 100 mL with units"]},
+  {q: "Draw particle pictures of a dilute and a concentrated sugar solution in the same size beaker. Describe the difference.", a: "Both beakers have the same number of water particles. The dilute one has only a few sugar particles spread out. The concentrated one has many sugar particles, still evenly spread. Neither picture shows solid on the bottom if both are unsaturated.", k: ["Same amount of solvent", "Few solute particles for dilute", "Many solute particles for concentrated", "Solute evenly spread in both"]},
+  {q: "Explain the difference between a saturated and an unsaturated solution. How could you test which one you have?", a: "A saturated solution holds as much solute as it can at that temperature. An unsaturated solution can still dissolve more. To test, add a small amount of solute and stir. If it dissolves, the solution was unsaturated. If it stays on the bottom, it was saturated.", k: ["Saturated: holds the most it can", "Unsaturated: can dissolve more", "Test by adding a little solute", "Temperature mentioned"]},
+  {q: "Write a complete solubility statement for table salt. Why does it need three parts?", a: "About 36 g of table salt can dissolve in 100 mL of water at 20 °C. It needs the amount of solute, the amount of solvent and the temperature, because more water holds more salt in total, and the temperature changes how much can dissolve.", k: ["Amount of solute", "Amount of solvent", "Temperature", "Reason each part matters"]},
+  {q: "Use the solubility data to explain how temperature affects potassium nitrate and table salt differently.", a: "Potassium nitrate's solubility rises steeply, from about 32 g at 20 °C to about 110 g at 60 °C in 100 mL of water. Table salt's solubility barely changes, from about 36 g to about 37 g over the same range. Most solids become more soluble when warmer, but by very different amounts.", k: ["Potassium nitrate rises steeply", "Salt nearly flat", "Uses numbers from the data", "General pattern for solids"]}
+];
+var LONG = [
+  {q: "Design a fair investigation to find out how water temperature affects the solubility of sugar. Name your variables, describe your steps and say how you will know a solution is saturated.", a: "Question: how does water temperature affect how much sugar dissolves? Manipulated variable: water temperature (for example 10, 30, 50 and 70 °C). Responding variable: the mass of sugar that dissolves. Controlled variables: 100 mL of water each time, the same type of sugar, the same stirring and waiting time. Steps: heat or cool the water to each temperature, add sugar in small measured amounts, stir and wait after each one, and stop when some sugar stays on the bottom. Record the total that dissolved. Repeat each temperature, then graph mass against temperature. Saturated means extra sugar remains after stirring.", k: ["Manipulated, responding and controlled variables", "Same amount of water and stirring", "Adds solute in small measured amounts", "Saturation shown by solid remaining", "Repeats and graphs results"]},
+  {q: "Use the ideas of dissolving, concentration and solubility to explain what happens as you make a jug of drink from powder: first adding a little, then a lot, then too much.", a: "When the powder is added, its particles dissolve: they spread evenly through the water. With a little powder the drink is dilute. As more dissolves, the concentration rises and the drink becomes more concentrated. Stirring helps it dissolve faster. If you keep adding, you eventually reach the solubility for that amount of water and temperature. The solution is saturated, and any extra powder stays on the bottom no matter how much you stir. Adding water or warming it would let more dissolve.", k: ["Dissolving described with particles", "Concentration rises from dilute to concentrated", "Stirring affects rate only", "Solubility sets the limit: saturated", "Ways to dissolve more"]},
+  {q: "Rock candy is made by dissolving a lot of sugar in hot water and letting it cool slowly. Use solubility to explain why crystals grow.", a: "Hot water has a much higher solubility for sugar than cool water, about 487 g per 100 mL at 100 °C compared with about 204 g at 20 °C. So a lot of sugar can dissolve while the water is hot. As the solution cools, the solubility drops and the water can no longer hold all of the sugar. The extra sugar comes out of solution as solid crystals that grow on the string or stick. This is crystallization.", k: ["Solubility higher in hot water", "Uses data or a comparison", "Cooling lowers solubility", "Extra sugar crystallizes", "Names crystallization"]},
+  {q: "Near Fort Saskatchewan, companies pump water into deep salt layers to dissolve salt and make underground caverns. Explain which ideas from this unit make this possible, and what would happen if the water pumped back up were saturated.", a: "Salt is soluble in water, about 36 g per 100 mL, so water pumped down dissolves salt from the walls of the layer and carries it away as salt water. The salt particles spread through the water, making a concentrated solution, and leave an empty space behind. Fresh water keeps dissolving more, a bit like stirring brings fresh solvent. If the salt water coming back up is saturated, it cannot dissolve any more salt, so fresh water must be pumped in to keep the cavern growing.", k: ["Salt is soluble in water", "Dissolving carries salt away and leaves space", "Concentration of the returning water", "Saturated water cannot dissolve more", "Fresh solvent needed"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["M2.K1", "A solution is a homogeneous mixture in which solute particles dissolve in a solvent.", "Learn: Lesson 1 (who is the solute model). Sort It: solute or solvent deck. Quiz, Flashcards, Written Review short answer 1."],
+    ["M2.K2", "Dissolving is the process by which particles of solute become evenly distributed among particles of a solvent.", "Learn: Lesson 2 (sugar crystal particle simulation) and Lesson 7. Quiz, Flashcards, Written Review short answer 2, extended 2."],
+    ["M2.K3", "Stirring or increasing the solute’s surface area can increase the rate of dissolving.", "Learn: Lesson 3 (cut the cube and race), Lesson 2 (stir and crushed crystal toggles). Lab Bench: Investigation 1 stirring toggle. Sort It: rate or amount deck. Quiz, Written Review short answers 3 and 4."],
+    ["M2.K4", "Solutions can be described by their concentration, including dilute or saturated.", "Learn: Lesson 4 (salt water beaker with two scales), Lesson 7. Lab Bench: Investigations 2 and 3. Sort It: dilute, concentrated or saturated deck. Quiz, Flashcards, Written Review short answers 5 to 7."],
+    ["M2.K5", "Solubility is a physical property that describes the amount of solute that can be dissolved in a given amount of solvent at a specific temperature.", "Learn: Lesson 5 (solubility bars), Lesson 7. Lab Bench: Investigation 1. Sort It: soluble in water deck. Quiz, Flashcards, Written Review short answer 8, extended 4."],
+    ["M2.K6", "The amount of solute that dissolves in a specific amount of solvent can increase as the solvent’s temperature increases.", "Learn: Lesson 6 (solubility curves, oxygen graph), Lesson 7. Lab Bench: Investigations 1 and 4. Quiz, Written Review short answer 9, extended 1 and 3."],
+    ["M2.S1", "Relate solubility, concentration, and dissolving.", "Learn: Lesson 7 (potassium nitrate story). Lab Bench: Investigation 2 (compare to solubility) and Investigation 4. Written Review extended 2 and 4."],
+    ["M2.S2", "Represent various concentrations of solutions.", "Lab Bench: Investigation 3 (rank the beakers) and Investigation 2 (calculator with randomized practice). Learn: Lesson 4 particle beaker. Written Review short answer 6."],
+    ["M2.S3", "Investigate factors that influence solubility.", "Lab Bench: Investigation 1 (find the solubility at different temperatures, record and graph, stirring as a control) and Investigation 4. Learn: Lessons 5 and 6. Written Review extended 1."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

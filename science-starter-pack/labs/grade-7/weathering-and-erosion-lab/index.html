@@ -1,0 +1,1642 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/weathering-and-erosion-lab/"><meta name="description" content="Earth’s surface is constantly changing due to the dynamic interactions of various geological processes."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Weathering and Erosion Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field geologist's notebook. Sticky tab strip, then lessons pairing a reading column with a cutaway landscape: Alberta rock, rivers, ice and slopes you can change. Bench: erosion test trays, a slope stability tester, a rate calculator and a local field notebook. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --g7:#A4501E; --g7-soft:#F8E7DC;
+  --sky:#E3EEF4; --rock:#9A8B78; --rock-2:#B9AC99; --rock-dark:#6E6254; --soil:#8C6A48; --soil-2:#B08A60; --sand:#D9C08C; --cap:#5A5248;
+  --water:#3E7FB8; --water-soft:#A9CBE6; --ice:#D4ECF7; --ice-line:#7FB3CF; --veg:#4E8B4A; --veg-2:#2F6B36; --lava:#D25A2A; --snow:#FFFFFF; --cloud:#C8D3DB; --arrow:#18241D;
+  --good:#2D7546; --good-soft:#DDEFE3; --warn:#8A5A00; --warn-soft:#FBEED2; --bad:#B03A2E; --bad-soft:#F7E0DC; --link:#1D5FA8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#16222B; --rock:#7D7061; --rock-2:#94877A; --rock-dark:#544A40; --soil:#6E5238; --soil-2:#8A6C4C; --sand:#B39C6C; --cap:#3E3832;
+  --water:#4F93CF; --water-soft:#2D5272; --ice:#B9DCEC; --ice-line:#6FA4C0; --veg:#5FA05A; --veg-2:#3F8546; --lava:#E06A3A; --snow:#E8EEF2; --cloud:#5B6670; --arrow:#E3ECE6;
+  --good:#7BCB95; --good-soft:#16301F; --warn:#F0C060; --warn-soft:#3A2E12; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#16222B; --rock:#7D7061; --rock-2:#94877A; --rock-dark:#544A40; --soil:#6E5238; --soil-2:#8A6C4C; --sand:#B39C6C; --cap:#3E3832;
+  --water:#4F93CF; --water-soft:#2D5272; --ice:#B9DCEC; --ice-line:#6FA4C0; --veg:#5FA05A; --veg-2:#3F8546; --lava:#E06A3A; --snow:#E8EEF2; --cloud:#5B6670; --arrow:#E3ECE6;
+  --good:#7BCB95; --good-soft:#16301F; --warn:#F0C060; --warn-soft:#3A2E12; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--link)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g7);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--g7);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g7)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g7-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g7)}
+.warn{background:var(--bad-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.warn b{color:var(--bad)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.big{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--g7);line-height:1.1}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.scene{border-radius:8px;background:var(--sky);border:1px solid var(--line);overflow:hidden}
+.scene svg{display:block;width:100%;height:auto}
+.scene svg text{font-family:var(--f-body);fill:var(--ink)}
+.scene svg .lbl{font-size:13px;font-weight:700}
+.scene svg .small{font-size:11.5px;fill:var(--muted)}
+.scene svg .mlbl{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.scene svg .tag{paint-order:stroke;stroke:var(--sky);stroke-width:3px;stroke-linejoin:round}
+.tap{cursor:pointer}
+.tap:hover > circle:first-child{stroke:var(--ink);stroke-width:2.5}
+.tap.on > circle:first-child{stroke:var(--ink);stroke-width:3}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;transition:width .3s}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.74rem;font-weight:600;padding:2px 10px;border-radius:999px}
+.pill.ok{background:var(--good-soft);color:var(--good)}.pill.mid{background:var(--warn-soft);color:var(--warn)}.pill.no{background:var(--bad-soft);color:var(--bad)}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;gap:4px;font-size:.9rem}
+.mini b{font-family:var(--f-display)}
+.chartbox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.chartbox svg{display:block;width:100%;min-width:340px;height:auto}
+.chartbox svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g7)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+textarea{min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;align-items:end}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.dt th:first-child,.dt td:first-child{text-align:left;font-family:var(--f-body);font-weight:700}
+.dt th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g7)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Earth Science · ES1</div>
+    <h1>Weathering and <span class="ac">Erosion</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Earth’s surface is constantly changing due to the dynamic interactions of various geological processes. In this lab you will break rock with frost and roots, follow a grain of sand from a Rocky Mountain peak to a delta, grow a hoodoo, test slopes for landslides and look at real mass‑wasting events in Alberta.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Ten short lessons in order. Each one has a model to try. Lessons 1 and 2 describe Earth and its crust. Lessons 3 to 7 follow rock as it breaks, moves and wears away. Lessons 8 and 9 are about landslides and rockfalls. Lesson 10 shows where sediment ends up.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · A dynamic planet</span>
+      <h3>Earth’s surface never stops changing</h3>
+      <div class="codes"><span class="code">ES1.K1</span><span class="code">ES1.S2</span></div>
+      <p>Earth is a <b>dynamic</b> planet. Dynamic means always changing. Mountains rise, rivers cut valleys and slopes slide downhill. Most of these changes are too slow to notice in one lifetime, but some happen in seconds.</p>
+      <p>A <b>geological process</b> is a natural process that forms or changes Earth’s rock and land. Scientists sort them into two groups.</p>
+      <p><b>Internal processes</b> happen inside Earth and are powered by Earth’s inner heat. Examples are volcanoes, earthquakes and mountain building. They mostly <b>build up</b> land.</p>
+      <p><b>External processes</b> happen at the surface and are powered by the Sun’s energy, which moves water, wind and ice, along with the pull of gravity. Examples are weathering, erosion and landslides. They mostly <b>wear down</b> land.</p>
+      <div class="key"><b>Try it:</b> tap each numbered spot on the landscape. Decide if it is an internal or an external process before you read the answer.</div>
+    </div>
+    <div class="model">
+      <h4>Building up and wearing down</h4>
+      <div class="scene"><svg id="l1-svg" viewBox="0 0 400 270" role="group" aria-label="Cutaway landscape with seven numbered geological processes"></svg></div>
+      <div class="detail" id="l1-detail" aria-live="polite"></div>
+      <p class="hint">Drawing only. Distances and sizes are not to scale.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · Rocks and minerals</span>
+      <h3>What the crust is made of</h3>
+      <div class="codes"><span class="code">ES1.K4</span></div>
+      <p>The <b>crust</b> is Earth’s thin, rocky outer layer. Under the soil, water and ice, the crust is made of <b>rocks</b> and <b>minerals</b>.</p>
+      <p>A <b>mineral</b> is a natural, non‑living solid with its own chemical makeup and its particles arranged in a regular pattern called a crystal. Quartz, feldspar and calcite are minerals.</p>
+      <p>A <b>rock</b> is a natural solid made of one or more minerals, or sometimes of other natural materials such as the remains of ancient plants. Granite is a mix of several minerals. Limestone is made mostly of one mineral, calcite.</p>
+      <p>Weathering acts on the minerals in a rock. Some minerals are hard and resist change. Others are softer or dissolve in weak acids, so rocks made of them wear away faster.</p>
+      <div class="key"><b>Try it:</b> look at each rock through the hand lens. Tap a mineral grain to learn about it.</div>
+      <p class="note">You will learn how rocks form and how to identify minerals in the next lessons of this unit (the rock cycle).</p>
+    </div>
+    <div class="model">
+      <h4>Under the hand lens</h4>
+      <div class="chips" id="l2-rocks" role="group" aria-label="Choose a rock"></div>
+      <div class="scene"><svg id="l2-svg" viewBox="0 0 400 230" role="group" aria-label="Magnified view of mineral grains in a rock"></svg></div>
+      <div class="detail" id="l2-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Weathering</span>
+      <h3>Breaking rock where it sits</h3>
+      <div class="codes"><span class="code">ES1.K5</span><span class="code">ES1.S1</span></div>
+      <p><b>Weathering</b> breaks rocks and minerals into smaller pieces called <b>sediments</b>, such as boulders, gravel, sand, silt and clay. Weathering happens in place. The pieces do not travel yet.</p>
+      <p><b>Physical weathering</b> breaks rock into smaller pieces without changing what it is made of. In <b>frost wedging</b>, water seeps into a crack, freezes and expands by about 9%. The ice pushes the crack wider. Then it melts, more water seeps in, and the cycle repeats.</p>
+      <p><b>Chemical weathering</b> changes the minerals into new substances. Rainwater mixed with carbon dioxide forms a weak acid that slowly dissolves limestone. Oxygen and water turn iron minerals into rust.</p>
+      <p><b>Biological weathering</b> is caused by living things. Roots grow into cracks and pry them open. Lichens and mosses release acids. Burrowing animals expose rock to air and water.</p>
+      <div class="key"><b>Try it:</b> run freeze‑thaw cycles on the rock. Edmonton has many days in fall and spring when the temperature goes above and below 0 °C. Then tap the examples below the model.</div>
+    </div>
+    <div class="model">
+      <h4>Frost wedging</h4>
+      <div class="scene"><svg id="l3-svg" viewBox="0 0 400 220" role="img" aria-label="A rock with a crack that widens with each freeze and thaw"></svg></div>
+      <label class="field" for="l3-cycles">Freeze‑thaw cycles: <span class="mono num" id="l3-out">0</span></label>
+      <input type="range" id="l3-cycles" min="0" max="60" step="1" value="12">
+      <p class="hint" id="l3-cap" aria-live="polite"></p>
+      <h4>Which kind of weathering?</h4>
+      <div class="chips" id="l3-ex" role="group" aria-label="Choose a weathering example"></div>
+      <div class="detail" id="l3-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Four linked processes</span>
+      <h3>The journey of one grain of sand</h3>
+      <div class="codes"><span class="code">ES1.K3</span><span class="code">ES1.S2</span><span class="code">ES1.S3</span></div>
+      <p>Four external processes work together like a relay to change Earth’s surface.</p>
+      <p><b>Weathering</b> breaks rock into sediment. <b>Erosion</b> removes the sediment from where it formed. <b>Transport</b> carries it away in water, ice or wind, or by gravity alone. <b>Deposition</b> drops it in a new place.</p>
+      <p>Each process depends on the one before it. Without weathering, there is little loose sediment to erode. Without deposition, sediment would never pile up to build new land such as deltas and beaches.</p>
+      <p>Over millions of years, these processes wear high mountains down and fill low places up.</p>
+      <div class="key"><b>Try it:</b> step a single grain of quartz from a peak in the Rocky Mountains to a lake far downstream.</div>
+    </div>
+    <div class="model">
+      <h4>From peak to delta</h4>
+      <div class="chips" id="l4-steps" role="group" aria-label="Choose a stage"></div>
+      <div class="scene"><svg id="l4-svg" viewBox="0 0 400 240" role="img" aria-label="A mountain, a river and a lake delta with a sand grain on its journey"></svg></div>
+      <div class="row"><button class="btn ghost" type="button" id="l4-prev">Back</button><button class="btn" type="button" id="l4-next">Next stage</button></div>
+      <div class="detail" id="l4-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Water at work</span>
+      <h3>Waves, ice and groundwater</h3>
+      <div class="codes"><span class="code">ES1.K2</span><span class="code">ES1.S1</span></div>
+      <p><b>Hydrological processes</b> are the ways water moves and changes on and under Earth’s surface. Water is the most powerful agent of change at the surface, in all three of its states.</p>
+      <p><b>Wave action</b> pounds shorelines. Waves throw sand and rock against a cliff and wear a notch at its base until the rock above falls.</p>
+      <p><b>Glacial processes</b> are the work of glaciers, which are huge masses of ice that slowly flow downhill. Glaciers pluck and scrape rock, carve U‑shaped valleys and carry boulders far from home.</p>
+      <p><b>Groundwater flow</b> is water moving slowly through cracks and spaces underground. Slightly acidic groundwater dissolves limestone and can form caves and sinkholes. Water underground also makes slopes heavier and weaker.</p>
+      <p class="note">Running water in rivers and streams is another hydrological process. It moves more sediment than any other agent on land.</p>
+      <div class="key"><b>Try it:</b> choose each water process and tap the labels to see an Alberta example.</div>
+    </div>
+    <div class="model">
+      <h4>Water in three forms</h4>
+      <div class="chips" id="l5-kind" role="group" aria-label="Choose a hydrological process"></div>
+      <div class="scene"><svg id="l5-svg" viewBox="0 0 400 230" role="img" aria-label="Diagram of a hydrological process"></svg></div>
+      <div class="detail" id="l5-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Landforms of erosion</span>
+      <h3>Hoodoos above ground, caves below</h3>
+      <div class="codes"><span class="code">ES1.K6</span><span class="code">ES1.S1</span></div>
+      <p><b>Erosion</b> removes and carries away weathered sediment and debris. Erosion does not wear land evenly. Hard rock resists while soft rock wears away, which leaves behind interesting features.</p>
+      <p><b>Hoodoos</b> are tall columns of soft rock topped by a harder cap rock. Near Drumheller in the Alberta badlands, the cap rock is a harder sandstone sitting on softer sandstone and mudstone. Rain and runoff wash away the soft rock around it, but the cap protects the rock directly underneath. Once the cap falls, the hoodoo wears away quickly.</p>
+      <p><b>Caves</b> form beneath the surface. Groundwater that is slightly acidic seeps through cracks in limestone and dissolves the rock, then carries the dissolved minerals away. Over many thousands of years, cracks grow into passages. Rat’s Nest Cave near Canmore formed this way.</p>
+      <div class="key"><b>Try it:</b> grow a hoodoo, then remove its cap rock. Then switch to the cave.</div>
+    </div>
+    <div class="model">
+      <h4>Erosion through time</h4>
+      <div class="chips" id="l6-kind" role="group" aria-label="Choose a feature"></div>
+      <div class="scene"><svg id="l6-svg" viewBox="0 0 400 240" role="img" aria-label="A hoodoo or a cave changing over time"></svg></div>
+      <label class="field" for="l6-time">Time passed: <span class="mono num" id="l6-out"></span></label>
+      <input type="range" id="l6-time" min="0" max="10" step="1" value="5">
+      <p class="hint" id="l6-cap" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l7">
+    <div class="text">
+      <span class="step">Lesson 7 · What controls erosion</span>
+      <h3>Why some land wears away faster</h3>
+      <div class="codes"><span class="code">ES1.K7</span><span class="code">ES1.S3</span></div>
+      <p>The same rain can wash away a lot of soil on one hill and almost none on another. Erosion depends on many factors.</p>
+      <ul>
+        <li><b>Weather and climate:</b> heavy rain, strong wind and many freeze‑thaw cycles all speed up erosion.</li>
+        <li><b>Hydrological processes:</b> more runoff, waves or flowing ice means more sediment is moved.</li>
+        <li><b>Topography</b>, the shape of the land: water runs faster down steep slopes and carries more sediment.</li>
+        <li><b>Vegetation cover:</b> leaves soften raindrops and roots hold soil in place.</li>
+        <li><b>Human activities:</b> clearing land, construction and trails can expose bare soil. Planting and careful building can protect it.</li>
+      </ul>
+      <div class="key"><b>Try it:</b> change one factor at a time and watch the soil that collects at the bottom of the hill.</div>
+    </div>
+    <div class="model">
+      <h4>Hillside erosion model</h4>
+      <div class="scene"><svg id="l7-svg" viewBox="0 0 400 220" role="img" aria-label="A hillside with rain, plants and a pile of eroded soil"></svg></div>
+      <div class="fields">
+        <label class="field" for="l7-rain">Rainfall: <span class="mono" id="l7-rain-o"></span><input type="range" id="l7-rain" min="1" max="5" step="1" value="3"></label>
+        <label class="field" for="l7-slope">Slope: <span class="mono" id="l7-slope-o"></span><input type="range" id="l7-slope" min="2" max="40" step="1" value="15"></label>
+        <label class="field" for="l7-cover">Plant cover: <span class="mono" id="l7-cover-o"></span><input type="range" id="l7-cover" min="0" max="100" step="5" value="50"></label>
+      </div>
+      <div class="chips" id="l7-human" role="group" aria-label="Human activity"></div>
+      <div class="stats"><div class="stat"><span>Soil lost (model units)</span><b id="l7-out">0</b></div><div class="stat"><span>Rating</span><b id="l7-rate">Low</b></div></div>
+      <div class="meter" aria-hidden="true"><i id="l7-bar" style="width:0"></i></div>
+      <p class="hint" id="l7-cap" aria-live="polite"></p>
+      <p class="hint">This is a made‑up model to show patterns. Real soil loss depends on soil type and many other details.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l8">
+    <div class="text">
+      <span class="step">Lesson 8 · Mass wasting</span>
+      <h3>When gravity takes over</h3>
+      <div class="codes"><span class="code">ES1.K8</span><span class="code">ES1.K9</span></div>
+      <p><b>Mass wasting</b> is a type of erosion in which rocks, soil or debris move downhill because of <b>gravity</b>. No river or glacier has to carry the material. Gravity pulls it down the slope.</p>
+      <p>Some mass wasting is sudden, like a <b>rockfall</b> or a <b>landslide</b>. Some is so slow that you only notice it from tilted fences and trees. That slow movement is called <b>creep</b>.</p>
+      <p>A slope stays put while the forces holding it (friction and the strength of the rock or soil) are bigger than the pull of gravity down the slope. Mass wasting starts when something <b>triggers</b> the slope to fail:</p>
+      <ul>
+        <li><b>Water</b> from heavy rain, snowmelt or rising groundwater adds weight and lowers friction.</li>
+        <li><b>Earthquakes</b> shake loose material and break rock.</li>
+        <li><b>Human activity</b> such as cutting into the base of a slope, mining, or adding buildings at the top.</li>
+      </ul>
+      <div class="key"><b>Try it:</b> choose each type of mass wasting to see how fast it moves and where it happens in Alberta.</div>
+    </div>
+    <div class="model">
+      <h4>Five kinds of downhill movement</h4>
+      <div class="chips" id="l8-kind" role="group" aria-label="Choose a type of mass wasting"></div>
+      <div class="scene"><svg id="l8-svg" viewBox="0 0 400 230" role="img" aria-label="A slope showing a type of mass wasting"></svg></div>
+      <div class="detail" id="l8-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l9">
+    <div class="text">
+      <span class="step">Lesson 9 · Mass wasting in Alberta</span>
+      <h3>Learning from real events</h3>
+      <div class="codes"><span class="code">ES1.S4</span><span class="code">ES1.S5</span><span class="code">ES1.K9</span></div>
+      <p>Alberta’s mountains, foothills and steep river valleys all have slopes that can fail. Studying past events helps people plan safer communities.</p>
+      <p>The best known is the <b>Frank Slide</b> in the Crowsnest Pass. Early on the morning of April 29, 1903, a huge mass of limestone broke off Turtle Mountain and buried part of the coal mining town of Frank in about 100 seconds. At least 70 people died.</p>
+      <p>Scientists still watch Turtle Mountain today with instruments that measure tiny movements, so people can be warned if another large slide begins.</p>
+      <div class="warn"><b>Be thoughtful:</b> some of these events caused deaths and loss of homes. Some students may have family who lived through floods or slides.</div>
+      <div class="key"><b>Try it:</b> tap each place on the map to see what happened, what triggered it and what people do now.</div>
+    </div>
+    <div class="model">
+      <h4>Alberta event map</h4>
+      <div class="scene"><svg id="l9-svg" viewBox="0 0 400 300" role="group" aria-label="Map of Alberta with four mass wasting locations"></svg></div>
+      <div class="detail" id="l9-detail" aria-live="polite"></div>
+      <p class="hint">Map outline is simplified. Event details are summarized from public reports.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l10">
+    <div class="text">
+      <span class="step">Lesson 10 · Deposition</span>
+      <h3>Where sediment comes to rest</h3>
+      <div class="codes"><span class="code">ES1.K10</span><span class="code">ES1.S2</span></div>
+      <p><b>Deposition</b> happens when wind, water or ice carrying sediment slows down or melts and drops it in a new place.</p>
+      <p>Faster water can carry bigger pieces. When a river slows, the biggest, heaviest pieces drop first. Fine silt and clay stay floating the longest. That is why sediment gets sorted by size.</p>
+      <p>Deposition builds landforms. A <b>delta</b> forms where a river enters a lake or ocean, slows down and drops its sediment in a fan shape. The Peace‑Athabasca Delta in northern Alberta is one of the largest freshwater deltas in the world. <b>Dunes</b> are hills of sand dropped by the wind. Melting glaciers leave ridges of mixed rock called <b>moraines</b>.</p>
+      <div class="key"><b>Try it:</b> slow the river down and see which sediments drop out. Then tap each landform.</div>
+    </div>
+    <div class="model">
+      <h4>What can the river carry?</h4>
+      <label class="field" for="l10-speed">River speed: <span class="mono num" id="l10-out"></span></label>
+      <input type="range" id="l10-speed" min="0" max="40" step="1" value="12">
+      <div class="scene"><svg id="l10-svg" viewBox="0 0 400 170" role="img" aria-label="Six sizes of sediment, shown as carried or dropped"></svg></div>
+      <p class="hint">Speeds are rounded values for a simple model. Real rivers also depend on depth and grain shape.</p>
+      <h4>Landforms of deposition</h4>
+      <div class="chips" id="l10-forms" role="group" aria-label="Choose a landform"></div>
+      <div class="detail" id="l10-detail" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Run a fair test on erosion, test slopes for failure and design fixes, calculate how fast land changes, and describe changes you can see around Edmonton.</p>
+  </div>
+
+  <article class="lesson" id="b1">
+    <div class="text">
+      <span class="step">Investigation 1 · Erosion test trays</span>
+      <h3>Which factor moves the most soil?</h3>
+      <div class="codes"><span class="code">ES1.S3</span><span class="code">ES1.K7</span></div>
+      <p>In a classroom stream table, students pour the same amount of water over trays of soil and weigh the soil that washes into a catch cup.</p>
+      <p>A <b>fair test</b> changes one variable on purpose (the <b>independent variable</b>) and measures the result (the <b>dependent variable</b>, here the soil lost). Everything else stays the same (the <b>controlled variables</b>).</p>
+      <p>Choose a factor to test. Run the three trays a few times, look at the averages and then answer the question.</p>
+      <p class="note">The results are simulated practice data with random variation, like a real lab.</p>
+    </div>
+    <div class="model">
+      <div class="chips" id="b1-var" role="group" aria-label="Choose the independent variable"></div>
+      <p class="hint" id="b1-ctrl"></p>
+      <div class="row"><button class="btn" type="button" id="b1-run">Run trial</button><button class="btn ghost" type="button" id="b1-reset">Clear data</button></div>
+      <div class="tablebox"><table class="dt" id="b1-table"></table></div>
+      <div class="chartbox"><svg id="b1-chart" viewBox="0 0 360 170" role="img" aria-label="Bar chart of average soil lost per tray"></svg></div>
+      <p class="fb" id="b1-q"></p>
+      <div class="chips" id="b1-ans" role="group" aria-label="Your conclusion"></div>
+      <p class="fb" id="b1-fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b2">
+    <div class="text">
+      <span class="step">Investigation 2 · Slope stability tester</span>
+      <h3>Will this slope fail?</h3>
+      <div class="codes"><span class="code">ES1.K9</span><span class="code">ES1.S5</span></div>
+      <p>Engineers compare the forces that hold a slope in place with the force pulling it downhill. The result is called the <b>factor of safety</b>.</p>
+      <div class="formula">factor of safety = resisting force ÷ driving force<br>FS = F<sub>resist</sub> ÷ F<sub>drive</sub></div>
+      <p>If FS is greater than 1, the slope holds. If FS falls below 1, the slope fails. Engineers usually want FS of at least 1.3 for safety, since nobody knows every detail inside a hill.</p>
+      <p>Add triggers to make the slope weaker. Then add solutions to make it safer.</p>
+      <p class="note">You do not need to memorize this formula. The tester uses a simplified, made‑up model.</p>
+    </div>
+    <div class="model">
+      <div class="scene"><svg id="b2-svg" viewBox="0 0 400 200" role="img" aria-label="A slope with a house on top, showing whether it is stable"></svg></div>
+      <div class="fields">
+        <label class="field" for="b2-angle">Slope angle: <span class="mono" id="b2-angle-o"></span><input type="range" id="b2-angle" min="10" max="45" step="1" value="28"></label>
+        <label class="field" for="b2-water">Water in the slope: <span class="mono" id="b2-water-o"></span><input type="range" id="b2-water" min="0" max="2" step="1" value="0"></label>
+      </div>
+      <div class="chips" id="b2-trig" role="group" aria-label="Triggers"></div>
+      <div class="chips" id="b2-fix" role="group" aria-label="Solutions"></div>
+      <div class="stats"><div class="stat"><span>Factor of safety</span><b id="b2-fs">0</b></div><div class="stat"><span>Status</span><b id="b2-status">Stable</b></div></div>
+      <p class="hint" id="b2-cap" aria-live="polite"></p>
+      <div class="worked" id="b2-worked"></div>
+      <div class="fields">
+        <label class="field" for="b2-ans">Your FS (2 decimals)<input type="number" id="b2-ans" step="0.01" inputmode="decimal"></label>
+        <label class="field" for="b2-pick">Will it hold?<select id="b2-pick"><option value="">Choose</option><option value="hold">Holds (FS above 1)</option><option value="fail">Fails (FS below 1)</option></select></label>
+      </div>
+      <div class="row"><button class="btn" type="button" id="b2-check">Check</button><button class="btn ghost" type="button" id="b2-new">New problem</button></div>
+      <p class="fb" id="b2-fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3">
+    <div class="text">
+      <span class="step">Investigation 3 · Rate of change</span>
+      <h3>How fast is the land changing?</h3>
+      <div class="codes"><span class="code">ES1.S2</span><span class="code">ES1.K3</span></div>
+      <p>Geologists measure how far a riverbank, cliff or glacier has moved over a number of years. Then they find the <b>rate</b>, which is the change for each year.</p>
+      <div class="formula">rate = change ÷ time &nbsp;&nbsp; r = Δd ÷ t<br>time = change ÷ rate &nbsp;&nbsp; t = Δd ÷ r</div>
+      <p>Rates let us compare processes and predict the future. A riverbank losing 0.5 m each year will lose about 5 m in 10 years, if nothing changes.</p>
+      <p class="note">Practice values are made up but realistic in size. Rates in nature change from year to year.</p>
+    </div>
+    <div class="model">
+      <div class="worked" id="b3-worked"></div>
+      <div class="detail" id="b3-prob" aria-live="polite"></div>
+      <label class="field" for="b3-ans">Your answer<input type="number" id="b3-ans" step="any" inputmode="decimal"></label>
+      <div class="row"><button class="btn" type="button" id="b3-check">Check</button><button class="btn ghost" type="button" id="b3-new">New problem</button><span class="mono num" id="b3-score"></span></div>
+      <p class="fb" id="b3-fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b4">
+    <div class="text">
+      <span class="step">Investigation 4 · Local field notebook</span>
+      <h3>Weathering and erosion around Edmonton</h3>
+      <div class="codes"><span class="code">ES1.S1</span><span class="code">ES1.S2</span></div>
+      <p>You do not need to visit the mountains to see geological processes. Look closely at sidewalks, old buildings, the river valley and your schoolyard.</p>
+      <p>Read each field note. Decide which process best explains what was seen. Then try making your own note on a walk near school.</p>
+      <div class="key"><b>Good field notes</b> say where you were, what you saw, which process you think caused it and what evidence supports your idea.</div>
+    </div>
+    <div class="model">
+      <div class="row"><span class="mono num" id="b4-count"></span></div>
+      <div class="detail" id="b4-note" aria-live="polite"></div>
+      <div class="chips" id="b4-opts" role="group" aria-label="Choose a process"></div>
+      <p class="fb" id="b4-fb" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="b4-next">Next note</button>
+    </div>
+  </article>
+</section>
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 25. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 7 ES1, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-es1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+var NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) {
+    var v = attrs[k];
+    if ((k === "fill" || k === "stroke") && String(v).indexOf("var(") === 0) n.style[k] = v;
+    else if (k === "class") n.setAttribute("class", v);
+    else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(n, d){ return Number(n).toFixed(d); }
+function grp(n){ var p = String(n).split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function sig(n){ var a = Math.abs(n); if (a >= 100) return grp(Math.round(n)); if (a >= 10) return fmt(n, 1); if (a >= 1) return fmt(n, 2); return fmt(n, 3); }
+function chipGroup(container, items, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function tappable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label); g.setAttribute("class", "tap");
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+var reduce = false;
+try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+function arrow(svg, x1, y1, x2, y2, col, w){
+  col = col || "var(--arrow)"; w = w || 2.5;
+  S("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: col, "stroke-width": w, "stroke-linecap": "round"}, svg);
+  var a = Math.atan2(y2 - y1, x2 - x1), h = 8;
+  var p = [[x2, y2], [x2 - h * Math.cos(a - 0.45), y2 - h * Math.sin(a - 0.45)], [x2 - h * Math.cos(a + 0.45), y2 - h * Math.sin(a + 0.45)]];
+  S("polygon", {points: p.map(function(q){ return fmt(q[0], 1) + "," + fmt(q[1], 1); }).join(" "), fill: col}, svg);
+}
+function label(svg, x, y, t, cls, anchor){ return S("text", {x: x, y: y, "class": (cls || "lbl") + " tag", "text-anchor": anchor || "middle"}, svg, t); }
+function rng(seed){ var s = seed || 7; return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+
+/* ---------- Lesson 1: internal and external processes ---------- */
+(function(){
+  var svg = $("l1-svg");
+  S("rect", {x: 0, y: 0, width: 400, height: 270, fill: "var(--sky)"}, svg);
+  S("rect", {x: 0, y: 185, width: 400, height: 85, fill: "var(--soil)"}, svg);
+  S("rect", {x: 0, y: 225, width: 400, height: 45, fill: "var(--rock-dark)"}, svg);
+  S("ellipse", {cx: 300, cy: 262, rx: 70, ry: 20, fill: "var(--lava)"}, svg);
+  S("polygon", {points: "0,185 60,70 110,130 150,60 210,185", fill: "var(--rock)"}, svg);
+  S("polygon", {points: "150,60 135,88 150,84 165,88", fill: "var(--snow)"}, svg);
+  S("polygon", {points: "60,70 48,93 62,90 74,96", fill: "var(--ice)", stroke: "var(--ice-line)"}, svg);
+  S("polygon", {points: "250,185 295,95 315,95 360,185", fill: "var(--rock-2)"}, svg);
+  S("path", {d: "M300,250 L303,95 M310,95 L306,250", stroke: "var(--lava)", "stroke-width": 4, fill: "none"}, svg);
+  S("path", {d: "M296,95 Q305,70 300,50 M312,95 Q318,72 322,58", stroke: "var(--cloud)", "stroke-width": 6, fill: "none", "stroke-linecap": "round"}, svg);
+  S("path", {d: "M210,185 Q228,195 250,185", fill: "var(--water)", stroke: "var(--water)", "stroke-width": 3}, svg);
+  S("line", {x1: 372, y1: 180, x2: 345, y2: 262, stroke: "var(--ink)", "stroke-width": 2, "stroke-dasharray": "6 4"}, svg);
+  S("ellipse", {cx: 220, cy: 30, rx: 34, ry: 13, fill: "var(--cloud)"}, svg);
+  for (var i = 0; i < 5; i++) S("line", {x1: 202 + i * 9, y1: 46, x2: 197 + i * 9, y2: 62, stroke: "var(--water)", "stroke-width": 2}, svg);
+  S("polygon", {points: "190,150 210,185 175,185", fill: "var(--soil-2)"}, svg);
+  var P = [
+    {x: 300, y: 112, n: "Volcano", k: "Internal", t: "Molten rock from deep inside Earth rises and erupts. The lava cools into new rock and can build a mountain. Powered by Earth’s inner heat. Alberta has no active volcanoes, but you can find volcanic rock in the Crowsnest Pass."},
+    {x: 360, y: 225, n: "Earthquake fault", k: "Internal", t: "Rock deep underground breaks and slips along a crack called a fault. The ground shakes and can be lifted or dropped. Powered by Earth’s inner heat moving the crust."},
+    {x: 150, y: 110, n: "Mountain building", k: "Internal", t: "Slow pushing in Earth’s crust folds and stacks rock into mountains. The Rocky Mountains were pushed up this way over millions of years."},
+    {x: 62, y: 102, n: "Glacier", k: "External", t: "A glacier is moving ice. It plucks and scrapes rock from the mountain and carries it downhill. Powered by the Sun (which moves water as snow) and by gravity."},
+    {x: 230, y: 202, n: "River", k: "External", t: "Running water wears away its bed and banks and carries sediment downstream. Powered by the Sun’s water cycle and by gravity."},
+    {x: 220, y: 72, n: "Rain and frost", k: "External", t: "Rain, frost, wind and living things break and wear rock at the surface. This is weathering. Powered mostly by the Sun’s energy."},
+    {x: 182, y: 165, n: "Landslide", k: "External", t: "Loose rock and soil slide downhill because of gravity. This is mass wasting, a kind of erosion."}
+  ];
+  var groups = [];
+  P.forEach(function(p, i){
+    var g = S("g", null, svg);
+    S("circle", {cx: p.x, cy: p.y, r: 13, fill: "var(--g7)", stroke: "var(--surface)", "stroke-width": 2}, g);
+    S("text", {x: p.x, y: p.y + 4.5, "text-anchor": "middle", "class": "lbl", style: "fill:var(--surface)"}, g, String(i + 1));
+    tappable(g, (i + 1) + ". " + p.n, function(){ choose(i); });
+    groups.push(g);
+  });
+  function choose(i){
+    groups.forEach(function(g, j){ g.setAttribute("class", j === i ? "tap on" : "tap"); });
+    var p = P[i];
+    detail($("l1-detail"), (i + 1) + ". " + p.n, [p.t], p.k + " process · " + (p.k === "Internal" ? "builds up land" : "wears down land"));
+  }
+  detail($("l1-detail"), "Tap a number", ["Seven processes are shaping this landscape. Three are internal and four are external."]);
+})();
+
+/* ---------- Lesson 2: rocks and minerals ---------- */
+(function(){
+  var ROCKS = [
+    {label: "Granite", grains: [
+      {n: "Quartz", c: "#E6E3DC", w: .35, t: "A hard, glassy mineral made of silicon and oxygen. Quartz resists weathering, so it often ends up as sand grains."},
+      {n: "Feldspar", c: "#E3A98C", w: .45, t: "The most common mineral group in the crust. Feldspar slowly weathers chemically into clay."},
+      {n: "Mica", c: "#2E2A26", w: .2, t: "A soft mineral that splits into thin, shiny sheets."}],
+     t: "Granite is a speckled rock made of several minerals locked together. You can find granite boulders all over the Edmonton area. Glaciers carried them from the Canadian Shield far to the northeast."},
+    {label: "Sandstone", grains: [
+      {n: "Quartz sand grains", c: "#E2CFA0", w: .8, t: "Rounded grains of quartz, worn smooth while rivers or wind carried them."},
+      {n: "Natural cement", c: "#9C7E55", w: .2, t: "Minerals such as calcite that glue the grains together. When the cement dissolves, the sand falls apart."}],
+     t: "Sandstone is made of sand grains glued together. The hoodoos near Drumheller are carved from sandstone and mudstone."},
+    {label: "Limestone", grains: [
+      {n: "Calcite", c: "#C9CCC6", w: .8, t: "A soft mineral that dissolves in weak acid. This is why limestone forms caves."},
+      {n: "Shell pieces", c: "#F2EEE4", w: .2, t: "Bits of shells and corals from ancient seas. Calcite in the shells came from seawater."}],
+     t: "Limestone is made mostly of calcite. Much of the Rocky Mountains, including Turtle Mountain at the Frank Slide, is limestone that formed in ancient seas."}
+  ];
+  var svg = $("l2-svg");
+  function draw(R){
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 230, fill: "var(--sky)"}, svg);
+    S("circle", {cx: 140, cy: 115, r: 100, fill: "var(--surface)", stroke: "var(--ink)", "stroke-width": 4}, svg);
+    S("line", {x1: 212, y1: 186, x2: 250, y2: 222, stroke: "var(--ink)", "stroke-width": 10, "stroke-linecap": "round"}, svg);
+    var clip = S("clipPath", {id: "l2c"}, svg); S("circle", {cx: 140, cy: 115, r: 97}, clip);
+    var g = S("g", {"clip-path": "url(#l2c)"}, svg), r = rng(R.label.length * 11);
+    S("rect", {x: 40, y: 15, width: 200, height: 200, fill: R.label === "Granite" ? "#D8D0C4" : R.grains[R.grains.length - 1].c}, g);
+    var big = R.label === "Sandstone";
+    for (var i = 0; i < 70; i++) {
+      var u = r(), acc = 0, k = 0;
+      for (k = 0; k < R.grains.length; k++) { acc += R.grains[k].w; if (u < acc) break; }
+      k = Math.min(k, R.grains.length - 1);
+      if (big && k === 1) continue;
+      var x = 45 + r() * 190, y = 20 + r() * 190, s = big ? 13 : 8 + r() * 12;
+      if (R.label === "Granite") S("rect", {x: fmt(x, 1), y: fmt(y, 1), width: fmt(s * 1.3, 1), height: fmt(s, 1), fill: R.grains[k].c, stroke: "var(--rock-dark)", "stroke-width": .6, transform: "rotate(" + Math.round(r() * 90) + " " + fmt(x, 1) + " " + fmt(y, 1) + ")"}, g);
+      else S("ellipse", {cx: fmt(x, 1), cy: fmt(y, 1), rx: fmt(s, 1), ry: fmt(s * (big ? .85 : .6), 1), fill: R.grains[k].c, stroke: "var(--rock-dark)", "stroke-width": .6}, g);
+    }
+    R.grains.forEach(function(G, i){
+      var y = 40 + i * 52, gg = S("g", null, svg);
+      S("circle", {cx: 282, cy: y, r: 13, fill: G.c, stroke: "var(--ink)", "stroke-width": 1.5}, gg);
+      S("text", {x: 302, y: y + 5, "class": "lbl", "text-anchor": "start"}, gg, G.n.length > 12 ? G.n.split(" ")[0] : G.n);
+      tappable(gg, "Mineral: " + G.n, function(){ detail($("l2-detail"), G.n, [G.t], R.label); });
+    });
+    detail($("l2-detail"), R.label, [R.t, "Tap a coloured circle on the right to learn about one part."], "Rock");
+  }
+  chipGroup($("l2-rocks"), ROCKS, function(R){ draw(R); }, 0);
+})();
+
+/* ---------- Lesson 3: weathering ---------- */
+(function(){
+  var svg = $("l3-svg"), inp = $("l3-cycles");
+  function draw(){
+    var n = +inp.value; $("l3-out").textContent = n;
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 220, fill: "var(--sky)"}, svg);
+    S("rect", {x: 0, y: 190, width: 400, height: 30, fill: "var(--soil)"}, svg);
+    var depth = Math.min(150, 12 + n * 2.6), wid = Math.min(26, 2 + n * 0.45), split = n >= 50;
+    var shift = split ? Math.min(40, (n - 50) * 4 + 14) : 0;
+    S("polygon", {points: "70,190 90,50 200,40 " + (200 - wid / 2) + ",40 200," + (40 + depth) + " 200,190", fill: "var(--rock)", stroke: "var(--rock-dark)", "stroke-width": 2}, svg);
+    var g = S("g", {transform: "translate(" + shift + "," + (split ? shift * 0.4 : 0) + ") rotate(" + (split ? shift / 3 : 0) + " 200 190)"}, svg);
+    S("polygon", {points: (200 + wid / 2) + ",40 300,48 330,190 200,190 200," + (40 + depth), fill: "var(--rock-2)", stroke: "var(--rock-dark)", "stroke-width": 2}, g);
+    S("polygon", {points: (200 - wid / 2) + ",40 " + (200 + wid / 2) + ",40 200," + (40 + depth), fill: "var(--ice)", stroke: "var(--ice-line)", "stroke-width": 1.5}, svg);
+    if (n > 0 && !split) { arrow(svg, 200, 70, 200 - 30 - wid, 70); arrow(svg, 200, 70, 230 + wid, 70); }
+    if (split) for (var i = 0; i < 6; i++) S("circle", {cx: 330 + i * 9, cy: 186 - (i % 2) * 5, r: 4 + (i % 3), fill: "var(--rock-2)", stroke: "var(--rock-dark)"}, svg);
+    label(svg, 200, 28, split ? "The rock has split apart" : (n === 0 ? "A thin crack fills with water" : "Ice in the crack pushes outward"));
+    $("l3-cap").textContent = n === 0 ? "Water seeps into a thin crack. Nothing has frozen yet." :
+      split ? "After many cycles the crack reached through the rock and a piece broke off. The broken pieces are sediment, and they are still in place." :
+      "Each time the water freezes it expands by about 9% and pushes the crack a little wider. Then it melts and more water seeps in. Drawing only: real cracks grow at different rates.";
+  }
+  inp.addEventListener("input", draw); draw();
+  var EX = [
+    {label: "Frost in a sidewalk crack", k: "Physical", t: "Ice expands in the crack and breaks the concrete into pieces. The material is still the same, only smaller."},
+    {label: "Sand blown against a rock", k: "Physical", t: "This is abrasion, rock rubbing against rock. Wind and water can sandblast and polish surfaces."},
+    {label: "Rock peeling in layers", k: "Physical", t: "Rock that heats and cools, or that was once deeply buried, can crack and peel in sheets."},
+    {label: "Limestone dissolving", k: "Chemical", t: "Rain with dissolved carbon dioxide is a weak acid. It reacts with calcite and carries it away dissolved. A new substance forms."},
+    {label: "Rusty stains on rock", k: "Chemical", t: "Oxygen and water react with iron in minerals to form rust, which is weaker and crumbles."},
+    {label: "Feldspar turning to clay", k: "Chemical", t: "Water slowly reacts with feldspar and changes it into clay minerals."},
+    {label: "Tree roots in cracks", k: "Biological", t: "Roots grow into cracks and pry the rock apart as they thicken. A living thing caused it, so it is biological."},
+    {label: "Lichen on a boulder", k: "Biological", t: "Lichens release weak acids that slowly eat into the rock surface."},
+    {label: "Ground squirrel burrows", k: "Biological", t: "Burrowing animals move soil and broken rock, exposing fresh rock to air and water."}
+  ];
+  chipGroup($("l3-ex"), EX, function(E){ detail($("l3-detail"), E.label, [E.t], E.k + " weathering"); });
+  detail($("l3-detail"), "Tap an example", ["Decide if it is physical, chemical or biological weathering, then check."]);
+})();
+
+/* ---------- Lesson 4: process chain ---------- */
+(function(){
+  var ST = [
+    {label: "1 Weathering", x: 70, y: 62, t: "Frost wedging cracks a block of granite high on a peak. A grain of quartz comes loose. It is now sediment, but it has not moved yet."},
+    {label: "2 Erosion", x: 110, y: 120, t: "Snowmelt runoff picks the grain up and removes it from the mountainside. Erosion is the removal of weathered material."},
+    {label: "3 Transport", x: 230, y: 168, t: "The grain is carried by the river for hundreds of kilometres. It bumps along the bottom and is slowly rounded and made smaller."},
+    {label: "4 Deposition", x: 338, y: 190, t: "The river slows as it enters a lake. It can no longer carry the grain, so the grain drops. Layer by layer, dropped sediment builds a delta."}
+  ];
+  var svg = $("l4-svg"), cur = 0, setChip;
+  function draw(){
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 240, fill: "var(--sky)"}, svg);
+    S("polygon", {points: "0,240 0,150 60,45 95,90 120,70 170,200 260,210 400,215 400,240", fill: "var(--rock)"}, svg);
+    S("polygon", {points: "60,45 48,70 62,66 76,72", fill: "var(--snow)"}, svg);
+    S("rect", {x: 290, y: 190, width: 110, height: 50, fill: "var(--water-soft)"}, svg);
+    S("path", {d: "M300,200 Q330,185 345,205 Q330,195 300,200 Z", fill: "var(--sand)"}, svg);
+    S("polygon", {points: "290,196 352,186 372,200 330,212 290,206", fill: "var(--sand)", stroke: "var(--soil-2)"}, svg);
+    S("path", {d: "M95,95 Q120,140 160,165 Q220,190 300,198", fill: "none", stroke: "var(--water)", "stroke-width": 6, "stroke-linecap": "round"}, svg);
+    label(svg, 70, 30, "Rocky Mountain peak"); label(svg, 225, 150, "River"); label(svg, 350, 232, "Lake and delta", "small");
+    for (var i = 0; i < cur; i++) S("line", {x1: ST[i].x, y1: ST[i].y, x2: ST[i + 1].x, y2: ST[i + 1].y, stroke: "var(--g7)", "stroke-width": 2, "stroke-dasharray": "4 4"}, svg);
+    var s = ST[cur];
+    S("circle", {cx: s.x, cy: s.y, r: 9, fill: "var(--g7)", stroke: "var(--surface)", "stroke-width": 2.5}, svg);
+    label(svg, s.x, s.y - 16, "grain");
+    detail($("l4-detail"), s.label.slice(2), [s.t], "Stage " + (cur + 1) + " of 4");
+    $("l4-prev").disabled = cur === 0; $("l4-next").disabled = cur === 3;
+  }
+  setChip = chipGroup($("l4-steps"), ST, function(s, i){ cur = i; draw(); }, 0);
+  $("l4-next").addEventListener("click", function(){ if (cur < 3) setChip(cur + 1); });
+  $("l4-prev").addEventListener("click", function(){ if (cur > 0) setChip(cur - 1); });
+})();
+
+/* ---------- Lesson 5: hydrological processes ---------- */
+(function(){
+  var svg = $("l5-svg");
+  function tapLabel(x, y, t, title, body){
+    var g = S("g", null, svg);
+    S("circle", {cx: x, cy: y, r: 9, fill: "var(--g7)", stroke: "var(--surface)", "stroke-width": 2}, g);
+    S("text", {x: x + 14, y: y + 4, "class": "lbl tag", "text-anchor": "start"}, g, t);
+    tappable(g, title, function(){ detail($("l5-detail"), title, [body], "Alberta example"); });
+  }
+  var K = [
+    {label: "Wave action", t: "Waves throw sand and pebbles against the shore. They cut a notch at the base of a cliff, the cliff above collapses, and the shoreline moves back.", draw: function(){
+      S("rect", {x: 0, y: 130, width: 230, height: 100, fill: "var(--water-soft)"}, svg);
+      S("polygon", {points: "230,230 230,165 250,160 250,140 236,128 250,60 400,60 400,230", fill: "var(--soil-2)"}, svg);
+      S("polygon", {points: "250,60 400,60 400,72 250,72", fill: "var(--veg)"}, svg);
+      for (var i = 0; i < 4; i++) S("path", {d: "M" + (40 + i * 45) + ",140 q12,-12 24,0 q12,12 24,0", fill: "none", stroke: "var(--water)", "stroke-width": 3}, svg);
+      arrow(svg, 170, 145, 230, 145);
+      S("polygon", {points: "200,230 230,200 260,230", fill: "var(--rock-2)"}, svg);
+      tapLabel(255, 150, "Notch", "Wave‑cut notch", "Large Alberta lakes such as Lesser Slave Lake and Sylvan Lake have waves strong enough to wear away shorelines. Shoreline property owners often build rock walls to protect the bank.");
+      tapLabel(250, 214, "Fallen rock", "Collapsed cliff", "Once the notch is deep, the rock above has nothing holding it up and falls. Waves then break it down and carry it away.");
+    }},
+    {label: "Glacial processes", t: "Glaciers flow slowly downhill. Rocks frozen into the ice scrape the valley like sandpaper. Ice also plucks blocks of rock. When the ice melts it drops everything it carried.", draw: function(){
+      S("path", {d: "M0,40 L60,40 Q70,190 200,195 Q330,190 340,40 L400,40 L400,230 L0,230 Z", fill: "var(--rock)"}, svg);
+      S("path", {d: "M75,40 Q85,150 200,155 Q315,150 325,40 Z", fill: "var(--ice)", stroke: "var(--ice-line)", "stroke-width": 2}, svg);
+      for (var i = 0; i < 5; i++) S("line", {x1: 110 + i * 45, y1: 60, x2: 115 + i * 40, y2: 130, stroke: "var(--ice-line)", "stroke-width": 1.5, "stroke-dasharray": "5 4"}, svg);
+      S("polygon", {points: "150,195 165,178 185,180 190,196", fill: "var(--rock-dark)"}, svg);
+      tapLabel(80, 110, "U‑shaped valley", "U‑shaped valley", "Valleys carved by glaciers have steep sides and a wide floor. You can see them along the Icefields Parkway in Banff and Jasper national parks.");
+      tapLabel(200, 100, "Glacier ice", "Athabasca Glacier", "The Athabasca Glacier flows from the Columbia Icefield. It has been melting back for over a century, and markers along the trail show where its edge used to be.");
+      tapLabel(170, 212, "Erratic", "Glacial erratic", "Big Rock near Okotoks is a huge boulder carried by glacier ice from the Jasper area and dropped on the prairie. The name Okotoks comes from the Blackfoot word for rock.");
+    }},
+    {label: "Groundwater flow", t: "Rain soaks into the ground and moves slowly through cracks and spaces. Slightly acidic groundwater dissolves limestone. It can hollow out caves, and the roof of a cave can collapse into a sinkhole.", draw: function(){
+      S("rect", {x: 0, y: 70, width: 400, height: 160, fill: "var(--rock-2)"}, svg);
+      S("rect", {x: 0, y: 60, width: 400, height: 22, fill: "var(--soil)"}, svg);
+      S("rect", {x: 0, y: 52, width: 400, height: 10, fill: "var(--veg)"}, svg);
+      S("line", {x1: 0, y1: 120, x2: 400, y2: 120, stroke: "var(--water)", "stroke-width": 2, "stroke-dasharray": "8 5"}, svg);
+      S("path", {d: "M120,160 Q160,135 230,150 Q280,160 300,185 Q240,200 170,190 Q120,185 120,160 Z", fill: "var(--sky)", stroke: "var(--rock-dark)", "stroke-width": 2}, svg);
+      S("path", {d: "M310,52 Q330,90 350,52 Z", fill: "var(--sky)"}, svg);
+      for (var i = 0; i < 5; i++) S("line", {x1: 40 + i * 70, y1: 8, x2: 34 + i * 70, y2: 28, stroke: "var(--water)", "stroke-width": 2}, svg);
+      arrow(svg, 30, 90, 30, 140, "var(--water)"); arrow(svg, 60, 150, 115, 165, "var(--water)");
+      tapLabel(140, 175, "Cave", "Limestone cave", "Rat’s Nest Cave in Grotto Mountain near Canmore formed as groundwater dissolved limestone. It is protected, and visitors can only enter with a licensed guide.");
+      tapLabel(300, 78, "Sinkhole", "Sinkhole", "When dissolved rock leaves a hollow too close to the surface, the ground above can sink or collapse. Sinkholes also form where underground salt or gypsum dissolves.");
+      tapLabel(250, 113, "Water table", "Water table", "The water table is the top of the zone where all the spaces in rock and soil are full of water. Groundwater flows slowly below it.");
+    }},
+    {label: "Running water", t: "Rivers and streams carry more sediment than any other agent on land. Fast water on the outside of a bend wears the bank away. Slow water on the inside drops sediment.", draw: function(){
+      S("rect", {x: 0, y: 0, width: 400, height: 230, fill: "var(--veg)"}, svg);
+      S("path", {d: "M0,60 C120,40 140,190 250,170 C330,155 330,60 400,70", fill: "none", stroke: "var(--water)", "stroke-width": 34}, svg);
+      S("path", {d: "M200,160 C230,150 240,140 245,130", fill: "none", stroke: "var(--sand)", "stroke-width": 10, "stroke-linecap": "round"}, svg);
+      S("path", {d: "M150,200 C190,215 260,210 300,190", fill: "none", stroke: "var(--soil)", "stroke-width": 8}, svg);
+      tapLabel(140, 214, "Cut bank", "Cut bank", "On the outside of a bend, fast water wears away the bank. In Edmonton, the North Saskatchewan River slowly cuts into its valley walls, which can make slopes unstable.");
+      tapLabel(230, 120, "Sandbar", "Point bar and sandbar", "On the inside of a bend, slow water drops sand and gravel. In late summer you can see sandbars in the North Saskatchewan River in Edmonton.");
+    }}
+  ];
+  chipGroup($("l5-kind"), K, function(k){
+    clear(svg); S("rect", {x: 0, y: 0, width: 400, height: 230, fill: "var(--sky)"}, svg); k.draw();
+    detail($("l5-detail"), k.label, [k.t, "Tap a label on the diagram for an Alberta example."]);
+  }, 0);
+})();
+
+/* ---------- Lesson 6: hoodoos and caves ---------- */
+(function(){
+  var svg = $("l6-svg"), inp = $("l6-time"), mode = 0;
+  var MODES = [{label: "Hoodoo with cap rock"}, {label: "Hoodoo without cap rock"}, {label: "Limestone cave"}];
+  function draw(){
+    var t = +inp.value; clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 240, fill: "var(--sky)"}, svg);
+    if (mode < 2) {
+      $("l6-out").textContent = (t * 1000) + " years";
+      var top = 40, base = 215, cap = mode === 0;
+      var lost = t * 13;
+      var sideW = Math.max(0, 140 - t * 14);
+      S("rect", {x: 0, y: base, width: 400, height: 25, fill: "var(--soil-2)"}, svg);
+      if (sideW > 0) { S("rect", {x: 0, y: top + 30 + t * 14, width: sideW, height: base - top - 30 - t * 14, fill: "var(--sand)"}, svg); S("rect", {x: 400 - sideW, y: top + 30 + t * 14, width: sideW, height: base - top - 30 - t * 14, fill: "var(--sand)"}, svg); }
+      var colTop = cap ? top + 22 : Math.min(base - 12, top + 22 + lost * 1.2);
+      var waist = cap ? Math.max(18, 60 - t * 3.5) : 60;
+      var h = base - colTop;
+      S("path", {d: "M" + (200 - 60) + "," + base + " Q" + (200 - waist) + "," + (colTop + h / 2) + " " + (200 - 30) + "," + colTop + " L" + (200 + 30) + "," + colTop + " Q" + (200 + waist) + "," + (colTop + h / 2) + " " + (200 + 60) + "," + base + " Z", fill: "var(--sand)", stroke: "var(--soil-2)", "stroke-width": 2}, svg);
+      for (var i = 1; i < 6; i++) { var yy = colTop + i * h / 6; if (yy < base) S("line", {x1: 140, y1: yy, x2: 260, y2: yy, stroke: "var(--soil-2)", "stroke-width": 1, opacity: .6}, svg); }
+      if (cap) { S("rect", {x: 160, y: top, width: 80, height: 24, rx: 4, fill: "var(--cap)"}, svg); label(svg, 300, top + 16, "hard cap rock", "small"); }
+      label(svg, 200, 232, "soft sandstone and mudstone", "small");
+      for (var r2 = 0; r2 < 4; r2++) S("line", {x1: 70 + r2 * 85, y1: 6, x2: 64 + r2 * 85, y2: 24, stroke: "var(--water)", "stroke-width": 2}, svg);
+      $("l6-cap").textContent = cap ? (t < 3 ? "Rain and runoff start washing away the soft rock around the column. The cap shields the rock right under it." : t < 8 ? "The land around has worn down. The column stands tall because the cap protects it. Its sides narrow as rain splashes them." : "A tall, narrow hoodoo stands alone. Its thin waist means the cap will fall one day. Then it will wear away quickly.") :
+        (t < 3 ? "With no hard cap, rain hits the top of the soft column directly." : "Without its cap, the column wears down fast and becomes a rounded mound. This is why visitors must never climb on or touch hoodoo caps.");
+    } else {
+      $("l6-out").textContent = (t * 10000) + " years";
+      S("rect", {x: 0, y: 50, width: 400, height: 190, fill: "var(--rock-2)"}, svg);
+      S("rect", {x: 0, y: 40, width: 400, height: 12, fill: "var(--veg)"}, svg);
+      for (var j = 0; j < 4; j++) S("line", {x1: 60 + j * 100, y1: 52, x2: 80 + j * 90, y2: 230, stroke: "var(--rock-dark)", "stroke-width": 1.5}, svg);
+      var rx = 8 + t * 15, ry = 4 + t * 5;
+      S("ellipse", {cx: 200, cy: 165, rx: rx, ry: ry, fill: "var(--sky)", stroke: "var(--rock-dark)", "stroke-width": 2}, svg);
+      if (t > 1) S("rect", {x: 200 - rx * .8, y: 165 + ry * .5, width: rx * 1.6, height: ry * .5, fill: "var(--water-soft)"}, svg);
+      if (t >= 6) for (var k = 0; k < 4; k++) S("polygon", {points: (150 + k * 30) + "," + (165 - ry + 2) + " " + (156 + k * 30) + "," + (165 - ry + 2) + " " + (153 + k * 30) + "," + (165 - ry + 16), fill: "var(--rock)"}, svg);
+      arrow(svg, 120, 60, 170, 150, "var(--water)"); arrow(svg, 290, 60, 230, 150, "var(--water)");
+      label(svg, 200, 30, "rain soaks in and becomes slightly acidic");
+      label(svg, 200, 225, "limestone", "small");
+      $("l6-cap").textContent = t === 0 ? "Groundwater seeps along tiny cracks in the limestone." : t < 5 ? "The acidic water dissolves calcite and carries it away. Cracks widen into small tunnels." : "A cave passage has formed. Where drips lose dissolved minerals, new calcite builds stalactites. Drawing only: real caves take many thousands of years.";
+    }
+  }
+  chipGroup($("l6-kind"), MODES, function(m, i){ mode = i; draw(); }, 0);
+  inp.addEventListener("input", draw);
+})();
+
+/* ---------- Lesson 7: erosion factors ---------- */
+var HUMAN = [{label: "No disturbance", f: 1}, {label: "Hiking trail", f: 1.4}, {label: "Construction site", f: 2.2}, {label: "Planted buffer", f: 0.7}];
+function erosionIndex(rain, slope, cover, hf){ return rain * (0.25 + slope / 12) * (1 - 0.85 * cover / 100) * hf * 4; }
+(function(){
+  var svg = $("l7-svg"), human = HUMAN[0];
+  var RAIN = ["", "light", "moderate", "steady", "heavy", "storm"];
+  function draw(){
+    var rain = +$("l7-rain").value, slope = +$("l7-slope").value, cover = +$("l7-cover").value;
+    $("l7-rain-o").textContent = RAIN[rain]; $("l7-slope-o").textContent = slope + "°"; $("l7-cover-o").textContent = cover + "%";
+    var E = erosionIndex(rain, slope, cover, human.f), max = erosionIndex(5, 40, 0, 2.2);
+    $("l7-out").textContent = fmt(E, 1);
+    var lvl = E < 6 ? "Low" : E < 18 ? "Moderate" : "High";
+    $("l7-rate").textContent = lvl;
+    var bar = $("l7-bar"); bar.style.width = Math.min(100, E / max * 100) + "%"; bar.style.background = E < 6 ? "var(--good)" : E < 18 ? "var(--warn)" : "var(--bad)";
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 220, fill: "var(--sky)"}, svg);
+    var a = slope * Math.PI / 180, y1 = 200 - Math.tan(a) * 280;
+    y1 = Math.max(25, y1);
+    S("polygon", {points: "0,200 40,200 320," + fmt(y1, 1) + " 400," + fmt(y1, 1) + " 400,220 0,220", fill: "var(--soil)"}, svg);
+    var r = rng(5), nPlants = Math.round(cover / 7);
+    for (var i = 0; i < nPlants; i++) { var t = r(), px = 50 + t * 260, py = 200 - (px - 40) / 280 * (200 - y1); S("path", {d: "M" + fmt(px, 1) + "," + fmt(py, 1) + " l-5,-12 m5,12 l0,-16 m0,16 l5,-12", stroke: "var(--veg-2)", "stroke-width": 2.5, fill: "none", "stroke-linecap": "round"}, svg); }
+    for (var k = 0; k < rain * 8; k++) { var rx = 20 + r() * 370, ry = 10 + r() * 40; S("line", {x1: fmt(rx, 1), y1: fmt(ry, 1), x2: fmt(rx - 3, 1), y2: fmt(ry + 10, 1), stroke: "var(--water)", "stroke-width": 1.6}, svg); }
+    if (human.f === 2.2) S("rect", {x: 200, y: 200 - (200 - 40) / 280 * (200 - y1) - 30, width: 26, height: 22, fill: "var(--g7)"}, svg);
+    if (human.f === 1.4) S("path", {d: "M80," + fmt(200 - 40 / 280 * (200 - y1), 1) + " L300," + fmt(200 - 260 / 280 * (200 - y1), 1), stroke: "var(--soil-2)", "stroke-width": 5, "stroke-dasharray": "10 6"}, svg);
+    var pile = Math.min(60, E * 1.4);
+    S("path", {d: "M" + fmt(40 - pile, 1) + ",200 Q40," + fmt(200 - pile * 0.5, 1) + " " + fmt(40 + pile * .4, 1) + ",200 Z", fill: "var(--soil-2)", stroke: "var(--soil)"}, svg);
+    label(svg, 70, 214, "eroded soil", "small");
+    $("l7-cap").textContent = lvl === "High" ? "A lot of soil washes off. Try more plant cover or a gentler slope." : lvl === "Moderate" ? "Some soil washes downhill. Which single change would lower it the most?" : "Very little soil moves. Plants and a gentle slope protect the soil.";
+  }
+  ["l7-rain", "l7-slope", "l7-cover"].forEach(function(id){ $(id).addEventListener("input", draw); });
+  chipGroup($("l7-human"), HUMAN, function(h){ human = h; draw(); }, 0);
+})();
+
+/* ---------- Lesson 8: mass wasting types ---------- */
+(function(){
+  var svg = $("l8-svg");
+  var T = [
+    {label: "Rockfall", sp: "Very fast", t: "Blocks of rock break off a steep cliff and fall, bounce or roll. Frost wedging often loosens the blocks first.", ex: "Rockfall is common along mountain highways such as Highway 93 and Highway 1 in the Rockies, where crews scale loose rock and put up fences and nets."},
+    {label: "Landslide", sp: "Fast", t: "A large mass of rock or soil slides down the slope along a surface of weakness, such as a layer of clay or a crack.", ex: "The Frank Slide in 1903 was a huge rock avalanche of limestone off Turtle Mountain in the Crowsnest Pass."},
+    {label: "Slump", sp: "Slow to fast", t: "A block of soil slips down along a curved surface and rotates, leaving a steep scar at the top. Common in clay soils that get soaked.", ex: "Slumps happen along the steep banks of Edmonton’s North Saskatchewan River valley and many other prairie river valleys."},
+    {label: "Debris flow", sp: "Fast", t: "Water‑soaked soil, rock and logs flow downhill like wet concrete, often down a steep creek channel after heavy rain.", ex: "In June 2013, heavy rain sent a debris flood down Cougar Creek in Canmore, damaging homes and the highway."},
+    {label: "Creep", sp: "Very slow", t: "Soil moves downhill only millimetres or centimetres each year. You see it in tilted fence posts, curved tree trunks and cracked retaining walls.", ex: "Many grassy slopes in the Edmonton river valley and the foothills show bent trees and tilted posts from creep."}
+  ];
+  function draw(k){
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 230, fill: "var(--sky)"}, svg);
+    if (k === 0) {
+      S("polygon", {points: "0,230 0,20 120,20 130,60 120,110 160,230", fill: "var(--rock)"}, svg);
+      S("rect", {x: 160, y: 210, width: 240, height: 20, fill: "var(--soil-2)"}, svg);
+      [[150, 80], [185, 140], [230, 196], [270, 202]].forEach(function(p, i){ S("polygon", {points: (p[0] - 10) + "," + (p[1] - 8) + " " + (p[0] + 10) + "," + (p[1] - 10) + " " + (p[0] + 12) + "," + (p[1] + 8) + " " + (p[0] - 8) + "," + (p[1] + 9), fill: "var(--rock-dark)"}, svg); });
+      arrow(svg, 140, 60, 175, 120); arrow(svg, 195, 150, 225, 185);
+      label(svg, 300, 60, "steep cliff");
+    } else if (k === 1) {
+      S("polygon", {points: "0,230 0,40 60,40 330,230", fill: "var(--rock)"}, svg);
+      S("polygon", {points: "70,55 200,145 230,175 120,130 60,70", fill: "var(--rock-2)", stroke: "var(--rock-dark)", "stroke-width": 2}, svg);
+      S("line", {x1: 40, y1: 60, x2: 300, y2: 230, stroke: "var(--ink)", "stroke-width": 2, "stroke-dasharray": "6 4"}, svg);
+      arrow(svg, 130, 95, 220, 155);
+      S("rect", {x: 330, y: 215, width: 70, height: 15, fill: "var(--soil-2)"}, svg);
+      label(svg, 300, 120, "sliding surface");
+    } else if (k === 2) {
+      S("polygon", {points: "0,230 0,60 120,60 300,200 400,200 400,230", fill: "var(--soil)"}, svg);
+      S("path", {d: "M120,60 Q100,150 230,170 L300,200 L210,200 Q140,170 150,100 Z", fill: "var(--soil-2)", stroke: "var(--ink)", "stroke-width": 1.5}, svg);
+      S("path", {d: "M120,60 Q100,150 230,170", fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-dasharray": "5 4"}, svg);
+      S("path", {d: "M170,90 Q140,130 190,150", fill: "none", stroke: "var(--arrow)", "stroke-width": 2.5}, svg); arrow(svg, 185, 148, 196, 152);
+      label(svg, 80, 50, "scar"); label(svg, 300, 180, "curved slip surface", "small");
+    } else if (k === 3) {
+      S("polygon", {points: "0,230 0,30 80,30 300,215 400,215 400,230", fill: "var(--rock)"}, svg);
+      S("path", {d: "M60,40 Q140,120 220,175 Q270,205 340,215 L260,222 Q200,205 150,160 Q100,110 50,48 Z", fill: "var(--soil-2)"}, svg);
+      for (var i = 0; i < 8; i++) S("circle", {cx: 100 + i * 28, cy: 92 + i * 16, r: 4 + (i % 3), fill: "var(--rock-dark)"}, svg);
+      S("ellipse", {cx: 70, cy: 18, rx: 40, ry: 12, fill: "var(--cloud)"}, svg);
+      arrow(svg, 120, 95, 230, 180, "var(--water)");
+      label(svg, 330, 200, "creek fan", "small");
+    } else {
+      S("polygon", {points: "0,230 0,50 400,190 400,230", fill: "var(--soil)"}, svg);
+      S("polygon", {points: "0,50 400,190 400,200 0,60", fill: "var(--veg)"}, svg);
+      [[90, 81], [200, 120], [310, 158]].forEach(function(p){ S("line", {x1: p[0], y1: p[1], x2: p[0] + 14, y2: p[1] - 40, stroke: "var(--rock-dark)", "stroke-width": 4}, svg); });
+      S("path", {d: "M250,140 Q238,120 248,100 L252,70", stroke: "var(--veg-2)", "stroke-width": 5, fill: "none"}, svg);
+      S("circle", {cx: 252, cy: 62, r: 16, fill: "var(--veg)"}, svg);
+      arrow(svg, 120, 120, 180, 141);
+      label(svg, 100, 190, "tilted posts, curved trunk", "small", "start");
+    }
+    var M = T[k];
+    detail($("l8-detail"), M.label, [M.t, M.ex], "Speed: " + M.sp);
+  }
+  chipGroup($("l8-kind"), T, function(m, i){ draw(i); }, 0);
+})();
+
+/* ---------- Lesson 9: Alberta events ---------- */
+(function(){
+  var svg = $("l9-svg");
+  function px(lon){ return 70 + (lon + 120) * 26; }
+  function py(lat){ return 15 + (60 - lat) * 25; }
+  S("rect", {x: 0, y: 0, width: 400, height: 300, fill: "var(--sky)"}, svg);
+  var pts = [[-120, 60], [-110, 60], [-110, 49], [-114.06, 49], [-115.5, 50.5], [-117, 51.5], [-118.5, 52.8], [-120, 53.8]];
+  S("polygon", {points: pts.map(function(p){ return fmt(px(p[0]), 1) + "," + fmt(py(p[1]), 1); }).join(" "), fill: "var(--surface)", stroke: "var(--ink)", "stroke-width": 2}, svg);
+  S("path", {d: "M" + px(-114.06) + "," + py(49) + " L" + px(-115.5) + "," + py(50.5) + " L" + px(-117) + "," + py(51.5) + " L" + px(-118.5) + "," + py(52.8) + " L" + px(-120) + "," + py(53.8), stroke: "var(--rock)", "stroke-width": 10, fill: "none", opacity: .7}, svg);
+  S("text", {x: px(-112.2), y: py(58.8), "class": "mlbl", "text-anchor": "middle"}, svg, "ALBERTA");
+  S("text", {x: px(-118.6), y: py(51.2), "class": "mlbl", "text-anchor": "middle"}, svg, "Rockies");
+  var E = [
+    {n: "Frank Slide, 1903", lon: -114.4, lat: 49.6, dx: 12, dy: 4,
+     what: "About 110 million tonnes of limestone broke off Turtle Mountain and swept across the valley in about 100 seconds, burying part of the town of Frank, the railway and the road. At least 70 people died.",
+     trig: "Turtle Mountain was already weak: its layers are tilted and cracked. Water froze and thawed in the cracks, and coal mining at the base of the mountain may have made it less stable. The night was very cold after a warm spell.",
+     now: "The Alberta Geological Survey monitors Turtle Mountain with sensors and GPS so people can be warned. The Frank Slide Interpretive Centre teaches visitors about the event."},
+    {n: "Cougar Creek, Canmore, 2013", lon: -115.35, lat: 51.09, dx: 12, dy: 4,
+     what: "During the June 2013 floods, days of heavy rain sent a debris flood of water, rock and logs down Cougar Creek. It damaged homes and cut the Trans‑Canada Highway.",
+     trig: "Heavy rain on steep slopes, along with snowmelt, soaked loose rock and soil in the creek channel.",
+     now: "Canmore built a large debris‑retention barrier up the creek to catch rock and logs, and it studies other mountain creeks for similar hazards."},
+    {n: "Edmonton river valley", lon: -113.49, lat: 53.55, dx: 12, dy: 4,
+     what: "Slopes along the North Saskatchewan River valley slowly slump and creep. Over the years, some roads, trails and homes near the valley edge have been damaged, closed or rebuilt.",
+     trig: "The river cuts into the base of the banks. Clay soils lose strength when soaked by rain, snowmelt or leaking water pipes. Building at the top adds weight.",
+     now: "The City of Edmonton monitors many valley slopes, limits building near the top, and uses drainage, piles and plantings to hold slopes."},
+    {n: "Peace River area", lon: -117.29, lat: 56.23, dx: -12, dy: 4, end: true,
+     what: "The deep Peace River valley has many slow and fast landslides. Some have damaged highways, pipelines and homes in and near the Town of Peace River.",
+     trig: "Weak clay and shale layers, river erosion at the base of steep valley walls, and wet years with lots of groundwater.",
+     now: "Engineers drain water from slopes, move or rebuild roads, and use instruments in boreholes to measure slow movement."}
+  ];
+  E.forEach(function(e){
+    var g = S("g", null, svg), x = px(e.lon), y = py(e.lat);
+    S("circle", {cx: x, cy: y, r: 9, fill: "var(--g7)", stroke: "var(--surface)", "stroke-width": 2}, g);
+    S("text", {x: x + e.dx, y: y + e.dy, "class": "lbl tag", "text-anchor": e.end ? "end" : "start"}, g, e.n.split(",")[0]);
+    tappable(g, e.n, function(){
+      var box = $("l9-detail"); clear(box);
+      box.appendChild(el("h5", null, e.n));
+      [["What happened", e.what], ["Triggers", e.trig], ["What people do now", e.now]].forEach(function(p){ var q = el("p"); q.appendChild(el("b", null, p[0] + ": ")); q.appendChild(document.createTextNode(p[1])); box.appendChild(q); });
+    });
+  });
+  detail($("l9-detail"), "Tap a place on the map", ["Four Alberta places where mass wasting has affected people."]);
+})();
+
+/* ---------- Lesson 10: deposition ---------- */
+var SED = [
+  {n: "Clay", mm: "under 0.004 mm", v: 0.02, r: 2},
+  {n: "Silt", mm: "0.004 to 0.06 mm", v: 0.05, r: 3},
+  {n: "Sand", mm: "0.06 to 2 mm", v: 0.25, r: 5},
+  {n: "Gravel", mm: "2 to 64 mm", v: 0.8, r: 8},
+  {n: "Cobble", mm: "64 to 256 mm", v: 2.0, r: 12},
+  {n: "Boulder", mm: "over 256 mm", v: 3.0, r: 17}
+];
+(function(){
+  var svg = $("l10-svg"), inp = $("l10-speed");
+  function draw(){
+    var v = +inp.value / 10; $("l10-out").textContent = fmt(v, 1) + " m/s";
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 170, fill: "var(--water-soft)"}, svg);
+    S("rect", {x: 0, y: 130, width: 400, height: 40, fill: "var(--sand)"}, svg);
+    var n = Math.round(v * 4);
+    for (var i = 0; i < Math.min(n, 12); i++) arrow(svg, 10 + (i % 4) * 100, 12 + Math.floor(i / 4) * 8, 50 + (i % 4) * 100, 12 + Math.floor(i / 4) * 8, "var(--water)", 2);
+    SED.forEach(function(s, i){
+      var x = 35 + i * 66, moving = v >= s.v, y = moving ? 88 : 130 - s.r;
+      S("circle", {cx: x, cy: y, r: s.r, fill: i < 2 ? "var(--soil-2)" : i < 3 ? "var(--sand)" : "var(--rock-dark)", stroke: "var(--ink)", "stroke-width": 1}, svg);
+      S("text", {x: x, y: 58, "class": "lbl tag", "text-anchor": "middle"}, svg, s.n);
+      S("text", {x: x, y: 162, "class": "mlbl", "text-anchor": "middle"}, svg, moving ? "carried" : "dropped");
+    });
+  }
+  inp.addEventListener("input", draw); draw();
+  var F = [
+    {label: "Delta", t: "Where a river enters a lake or the ocean, it slows down and drops sediment in a fan shape. The Peace‑Athabasca Delta, where the Peace and Athabasca rivers reach Lake Athabasca in Wood Buffalo National Park, is one of the largest freshwater deltas in the world.", k: "Water"},
+    {label: "Dunes", t: "Wind picks up sand and drops it where the wind slows, building hills called dunes. Southeastern Alberta has dune fields such as the Middle Sand Hills. Plants now cover and hold many of these old dunes in place.", k: "Wind"},
+    {label: "Moraine", t: "A melting glacier drops a jumble of clay, sand, gravel and boulders called till. Ridges of till are moraines. Much of the Edmonton area is covered in sediment left by glaciers more than 10 000 years ago.", k: "Ice"},
+    {label: "Erratic", t: "An erratic is a boulder carried by a glacier and dropped far from where it formed. Big Rock near Okotoks is a famous example. Granite erratics from the Canadian Shield are common around Edmonton.", k: "Ice"},
+    {label: "Sandbar and floodplain", t: "Slow water on the inside of river bends drops sandbars. During floods, rivers spread over flat land beside them and leave a layer of silt, building a floodplain.", k: "Water"}
+  ];
+  chipGroup($("l10-forms"), F, function(f){ detail($("l10-detail"), f.label, [f.t], "Deposited by " + f.k.toLowerCase()); });
+  detail($("l10-detail"), "Tap a landform", ["Each landform was built by wind, water or ice dropping sediment."]);
+})();
+
+function toggles(container, items, onChange){
+  clear(container);
+  var on = items.map(function(){ return false; });
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ on[i] = !on[i]; b.setAttribute("aria-pressed", on[i] ? "true" : "false"); onChange(on); });
+    container.appendChild(b);
+  });
+  return on;
+}
+
+/* ---------- Bench 1: erosion test trays ---------- */
+(function(){
+  var VARS = [
+    {label: "Slope", unit: "°", vals: [5, 15, 30], f: function(x){ return erosionIndex(3, x, 20, 1); }, ctrl: "Controlled: same soil, same water poured (moderate rain), 20% plant cover, no disturbance.", dir: 0},
+    {label: "Plant cover", unit: "%", vals: [0, 50, 90], f: function(x){ return erosionIndex(3, 15, x, 1); }, ctrl: "Controlled: same soil, same water poured (moderate rain), 15° slope, no disturbance.", dir: 1},
+    {label: "Rainfall", unit: " (1 to 5)", vals: [1, 3, 5], f: function(x){ return erosionIndex(x, 15, 20, 1); }, ctrl: "Controlled: same soil, 15° slope, 20% plant cover, no disturbance.", dir: 0}
+  ];
+  var V = VARS[0], data = [];
+  function run(){
+    data.push(V.vals.map(function(x){ return Math.max(1, V.f(x) * 10 * (0.9 + Math.random() * 0.2)); }));
+    draw();
+  }
+  function draw(){
+    var t = $("b1-table"); clear(t);
+    var hr = el("tr"); hr.appendChild(el("th", null, "Trial")); V.vals.forEach(function(x){ hr.appendChild(el("th", null, V.label + " " + x + V.unit.replace(" (1 to 5)", ""))); }); t.appendChild(hr);
+    data.forEach(function(row, i){ var tr = el("tr"); tr.appendChild(el("td", null, "Trial " + (i + 1))); row.forEach(function(g){ tr.appendChild(el("td", null, fmt(g, 0) + " g")); }); t.appendChild(tr); });
+    var avg = V.vals.map(function(x, j){ if (!data.length) return 0; return data.reduce(function(s, r){ return s + r[j]; }, 0) / data.length; });
+    if (data.length) { var ar = el("tr"); ar.appendChild(el("td", null, "Average")); avg.forEach(function(g){ ar.appendChild(el("td", null, fmt(g, 0) + " g")); }); t.appendChild(ar); }
+    else { var er = el("tr"), td = el("td", null, "No trials yet. Press Run trial."); td.setAttribute("colspan", "4"); er.appendChild(td); t.appendChild(er); }
+    var svg = $("b1-chart"); clear(svg);
+    var max = Math.max(50, Math.max.apply(null, avg)), top = Math.ceil(max / 50) * 50;
+    for (var k = 0; k <= 4; k++) { var y = 140 - k * 30; S("line", {x1: 50, y1: y, x2: 350, y2: y, stroke: "var(--line)", "stroke-width": 1}, svg); S("text", {x: 44, y: y + 4, "text-anchor": "end"}, svg, String(Math.round(top * k / 4))); }
+    avg.forEach(function(g, j){
+      var h = g / top * 120, x = 80 + j * 95;
+      S("rect", {x: x, y: 140 - h, width: 50, height: h, fill: "var(--g7)", rx: 3}, svg);
+      S("text", {x: x + 25, y: 158, "text-anchor": "middle"}, svg, V.vals[j] + V.unit.replace(" (1 to 5)", ""));
+      if (g) S("text", {x: x + 25, y: 134 - h, "text-anchor": "middle"}, svg, fmt(g, 0) + " g");
+    });
+    S("text", {x: 12, y: 14}, svg, "Average soil lost (g)");
+  }
+  var ansSet;
+  function pickVar(v){
+    V = v; data = []; $("b1-ctrl").textContent = v.ctrl; $("b1-fb").textContent = "";
+    $("b1-q").textContent = "Conclusion: as " + v.label.toLowerCase() + " increases, the soil lost…";
+    ansSet = chipGroup($("b1-ans"), [{label: "increases"}, {label: "decreases"}, {label: "stays about the same"}], function(a, i){
+      var fb = $("b1-fb");
+      if (data.length < 2) { fb.className = "fb no"; fb.textContent = "Run at least two trials first, so your conclusion rests on repeated data."; return; }
+      var ok = i === v.dir; fb.className = "fb " + (ok ? "ok" : "no");
+      fb.textContent = ok ? (v.dir === 0 ? "Correct. The averages rise as " + v.label.toLowerCase() + " increases. Repeating trials shows the pattern is real and not just random variation." : "Correct. More plant cover means less soil lost. Leaves soften raindrops and roots hold soil together.") : "Look at the Average row again. Compare the first and last trays.";
+    });
+    draw();
+  }
+  chipGroup($("b1-var"), VARS, function(v){ pickVar(v); }, 0);
+  $("b1-run").addEventListener("click", run);
+  $("b1-reset").addEventListener("click", function(){ data = []; $("b1-fb").textContent = ""; draw(); });
+})();
+
+/* ---------- Bench 2: slope stability ---------- */
+(function(){
+  var TRIG = [{label: "Earthquake shaking"}, {label: "Road cut at the base"}, {label: "House built at the top"}];
+  var FIX = [{label: "Drainage pipes"}, {label: "Retaining wall"}, {label: "Rock bolts and mesh"}, {label: "Deep‑rooted plants"}];
+  var trig = [false, false, false], fix = [false, false, false, false];
+  var WATER = ["dry", "damp", "soaked"];
+  function fs(){
+    var th = +$("b2-angle").value * Math.PI / 180, w = +$("b2-water").value;
+    if (fix[0]) w = Math.max(0, w - 1);
+    var wf = 1 - 0.25 * w - (fix[3] ? -0.05 : 0);
+    var drive = Math.sin(th) * (1 + (trig[0] ? 0.3 : 0) + (trig[2] ? 0.1 : 0));
+    var resist = Math.cos(th) * Math.tan(35 * Math.PI / 180) * wf + 0.12 - (trig[1] ? 0.12 : 0) + (fix[1] ? 0.15 : 0) + (fix[2] ? 0.12 : 0) + (fix[3] ? 0.03 : 0);
+    return resist / drive;
+  }
+  function draw(){
+    $("b2-angle-o").textContent = $("b2-angle").value + "°"; $("b2-water-o").textContent = WATER[+$("b2-water").value];
+    var F = fs(), st = F >= 1.3 ? "Stable" : F >= 1 ? "At risk" : "Fails";
+    $("b2-fs").textContent = fmt(F, 2); $("b2-status").textContent = st;
+    $("b2-status").style.color = F >= 1.3 ? "var(--good)" : F >= 1 ? "var(--warn)" : "var(--bad)";
+    var svg = $("b2-svg"); clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 200, fill: "var(--sky)"}, svg);
+    var th = +$("b2-angle").value * Math.PI / 180, h = Math.min(150, Math.tan(th) * 200), topY = 185 - h;
+    var fail = F < 1, off = fail ? 30 : 0;
+    S("polygon", {points: "0,185 0," + fmt(topY, 1) + " 100," + fmt(topY, 1) + " 300,185", fill: "var(--soil)"}, svg);
+    if (+$("b2-water").value > 0 && !fix[0]) S("line", {x1: 0, y1: fmt(topY + 40 - 15 * +$("b2-water").value, 1), x2: 250, y2: 180, stroke: "var(--water)", "stroke-width": 2, "stroke-dasharray": "6 4"}, svg);
+    var mx = 160, my = topY + (185 - topY) * 0.3;
+    S("polygon", {points: [[120 + off, topY + 8 + off * Math.tan(th)], [200 + off, topY + 8 + off * Math.tan(th) + 80 * Math.tan(th)], [170 + off, topY + 8 + off * Math.tan(th) + 80 * Math.tan(th) + 18], [100 + off, topY + 22 + off * Math.tan(th)]].map(function(p){ return fmt(p[0], 1) + "," + fmt(p[1], 1); }).join(" "), fill: "var(--soil-2)", stroke: "var(--ink)", "stroke-width": 1.5, "stroke-dasharray": fail ? "0" : "4 3"}, svg);
+    if (trig[2]) { S("rect", {x: 30, y: topY - 22, width: 34, height: 22, fill: "var(--surface)", stroke: "var(--ink)"}, svg); S("polygon", {points: "26," + (topY - 22) + " 47," + (topY - 38) + " 68," + (topY - 22), fill: "var(--g7)"}, svg); }
+    if (trig[1]) S("rect", {x: 300, y: 172, width: 100, height: 13, fill: "var(--rock-dark)"}, svg);
+    if (fix[1]) S("rect", {x: 270, y: 150, width: 10, height: 35, fill: "var(--rock-dark)"}, svg);
+    if (fix[2]) for (var i = 0; i < 3; i++) S("line", {x1: 150 + i * 35, y1: topY + (150 + i * 35 - 100) * Math.tan(th) - 2, x2: 130 + i * 35, y2: topY + (150 + i * 35 - 100) * Math.tan(th) + 26, stroke: "var(--ink)", "stroke-width": 3}, svg);
+    if (fix[3]) for (var j = 0; j < 5; j++) { var x = 115 + j * 32; S("circle", {cx: x, cy: topY + (x - 100) * Math.tan(th) - 6, r: 6, fill: "var(--veg)"}, svg); }
+    if (trig[0]) label(svg, 330, 40, "shaking!");
+    S("rect", {x: 0, y: 185, width: 400, height: 15, fill: "var(--rock-dark)"}, svg);
+    if (fail) arrow(svg, mx - 10, my - 10, mx + 50, my + 50 * Math.tan(th));
+    $("b2-cap").textContent = st === "Stable" ? "The resisting force is well above the driving force. Try adding water or a road cut." : st === "At risk" ? "The slope holds for now, but it is below the 1.3 safety target. Which solution would help most?" : "The driving force is bigger than the resisting force, so the slope fails. Add solutions until FS is at least 1.3.";
+  }
+  trig = toggles($("b2-trig"), TRIG, function(o){ trig = o; draw(); });
+  fix = toggles($("b2-fix"), FIX, function(o){ fix = o; draw(); });
+  ["b2-angle", "b2-water"].forEach(function(id){ $(id).addEventListener("input", draw); });
+  draw();
+  var w = $("b2-worked");
+  w.appendChild(el("b", null, "Worked example"));
+  w.appendChild(el("span", null, "A block of soil has a resisting force of 900 kN and a driving force of 600 kN."));
+  w.appendChild(el("span", {"class": "mono"}, "FS = 900 kN ÷ 600 kN = 1.50"));
+  w.appendChild(el("span", null, "1.50 is greater than 1, so the slope holds. It also meets the 1.3 safety target. The units cancel, so FS has no unit."));
+  var P = null;
+  function newP(){
+    var R, D, f;
+    do { R = 300 + Math.round(Math.random() * 90) * 10; D = 300 + Math.round(Math.random() * 80) * 10; f = R / D; } while (Math.abs(f - 1) < 0.04);
+    P = {R: R, D: D, f: f};
+    $("b2-fb").textContent = "Practice: resisting force " + R + " kN, driving force " + D + " kN. Find FS and decide.";
+    $("b2-fb").className = "fb"; $("b2-ans").value = ""; $("b2-pick").value = "";
+  }
+  $("b2-new").addEventListener("click", newP);
+  $("b2-check").addEventListener("click", function(){
+    var a = parseFloat($("b2-ans").value), pick = $("b2-pick").value, good = Math.abs(a - P.f) < 0.011, right = pick === (P.f > 1 ? "hold" : "fail");
+    var fb = $("b2-fb");
+    fb.className = "fb " + (good && right ? "ok" : "no");
+    fb.textContent = (good && right ? "Correct. " : "Not quite. ") + "FS = " + P.R + " ÷ " + P.D + " = " + fmt(P.f, 2) + ", so the slope " + (P.f > 1 ? "holds" : "fails") + (P.f > 1 && P.f < 1.3 ? ", but it is below the 1.3 safety target." : ".");
+  });
+  newP();
+})();
+
+/* ---------- Bench 3: rates ---------- */
+(function(){
+  store.b3 = store.b3 || {r: 0, n: 0};
+  var w = $("b3-worked");
+  w.appendChild(el("b", null, "Worked example"));
+  w.appendChild(el("span", null, "A riverbank moved back 6.0 m in 12 years. What is the rate?"));
+  w.appendChild(el("span", {"class": "mono"}, "r = Δd ÷ t = 6.0 m ÷ 12 years = 0.50 m per year"));
+  w.appendChild(el("span", null, "At that rate, 10 more years would remove about 0.50 × 10 = 5.0 m."));
+  var TYPES = [
+    function(){ var r = pick([0.2, 0.3, 0.4, 0.5, 0.8, 1.2]), t = pick([5, 8, 10, 15, 20]); return {q: "A riverbank in a prairie valley moved back " + fmt(r * t, 1) + " m in " + t + " years. What is the average rate in metres per year?", a: r, u: "m per year", how: fmt(r * t, 1) + " m ÷ " + t + " years = " + sig(r) + " m per year"}; },
+    function(){ var r = pick([5, 8, 10, 12, 15]), t = pick([10, 20, 25, 40]); return {q: "A mountain glacier’s edge melts back about " + r + " m each year. How far will it retreat in " + t + " years at this rate, in metres?", a: r * t, u: "m", how: r + " m per year × " + t + " years = " + (r * t) + " m"}; },
+    function(){ var r = pick([2, 4, 5, 8, 10]), d = r * pick([50, 100, 150, 200]); return {q: "The soft rock around a hoodoo wears down about " + r + " mm each year. How many years will it take to lower the ground by " + d + " mm?", a: d / r, u: "years", how: d + " mm ÷ " + r + " mm per year = " + (d / r) + " years"}; },
+    function(){ var r = pick([0.3, 0.6, 0.9, 1.5]), t = pick([4, 6, 10, 12]); return {q: "Waves on a large Alberta lake wore back a clay bank by " + fmt(r * t, 1) + " m over " + t + " years. What is the rate in metres per year?", a: r, u: "m per year", how: fmt(r * t, 1) + " m ÷ " + t + " years = " + sig(r) + " m per year"}; },
+    function(){ var r = pick([1, 2, 3, 4]), t = pick([5, 10, 20, 30]); return {q: "A slope on a river valley is creeping downhill at about " + r + " cm each year. How far will a fence post move in " + t + " years, in centimetres?", a: r * t, u: "cm", how: r + " cm per year × " + t + " years = " + (r * t) + " cm"}; }
+  ];
+  var P;
+  function score(){ $("b3-score").textContent = store.b3.r + " of " + store.b3.n + " correct"; }
+  function newP(){ P = pick(TYPES)(); detail($("b3-prob"), null, [P.q], "Practice problem"); $("b3-ans").value = ""; $("b3-fb").textContent = ""; }
+  $("b3-new").addEventListener("click", newP);
+  $("b3-check").addEventListener("click", function(){
+    var a = parseFloat($("b3-ans").value), fb = $("b3-fb");
+    if (isNaN(a)) { fb.className = "fb no"; fb.textContent = "Type a number first."; return; }
+    var ok = Math.abs(a - P.a) <= Math.abs(P.a) * 0.02 + 1e-9;
+    store.b3.n++; if (ok) store.b3.r++; save(); score();
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + P.how + ".";
+  });
+  newP(); score();
+})();
+
+/* ---------- Bench 4: field notebook ---------- */
+(function(){
+  var OPTS = ["Physical weathering", "Chemical weathering", "Biological weathering", "Erosion by water", "Mass wasting", "Deposition"];
+  var NOTES = [
+    ["March, sidewalk near school. Chunks have broken out along a crack in the concrete after a week of melting in the afternoon and freezing at night.", 0, "Water in the crack froze and expanded again and again. This is frost wedging, a physical process."],
+    ["Every spring, new potholes appear on Edmonton roads.", 0, "Water seeps under the pavement, freezes and expands, and traffic breaks the weakened surface. Freeze‑thaw is physical weathering."],
+    ["An old cemetery. The letters on a white marble gravestone are blurry and the surface feels sugary, but a granite stone beside it from the same year is still sharp.", 1, "Marble is made of calcite, which slightly acidic rain dissolves. Granite resists. This is chemical weathering."],
+    ["An old brick building. Orange streaks run down the wall below iron bolts, and the bricks near them crumble.", 1, "Iron reacted with oxygen and water to form rust. A new substance formed, so this is chemical weathering."],
+    ["The schoolyard. Poplar roots have lifted and cracked the asphalt path.", 2, "Growing roots pried the path apart. A living thing caused it, so it is biological weathering."],
+    ["A granite boulder in a park is covered in crusty orange and grey patches. Under them, the surface flakes off.", 2, "The patches are lichens. They release weak acids that weaken the rock surface: biological weathering."],
+    ["After a June thunderstorm, a new gully has been cut into the bare dirt of a construction lot, and mud fills the gutter below.", 3, "Fast runoff on bare soil carried sediment away. That is erosion by water."],
+    ["A river valley trail. Fence posts lean downhill, and part of the trail has a curved crack with a step down.", 4, "Soil is moving downhill because of gravity. Leaning posts show creep, and the step shows a small slump. This is mass wasting."],
+    ["August, the North Saskatchewan River. A new sandbar has appeared on the inside of a bend.", 5, "Slow water on the inside of the bend dropped the sand it was carrying. This is deposition."],
+    ["After the snow melts, a pile of sand and grit sits around a storm drain at the bottom of a street.", 5, "Meltwater carried winter road sand downhill and dropped it where the water slowed and spread out. This is deposition."]
+  ];
+  var order = shuffle(NOTES), k = 0, setOpt;
+  function show(){
+    var N = order[k]; $("b4-count").textContent = "Note " + (k + 1) + " of " + order.length;
+    detail($("b4-note"), null, [N[0]], "Field note");
+    $("b4-fb").textContent = "";
+    var box = $("b4-opts"); clear(box);
+    OPTS.forEach(function(o, i){
+      var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, o);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(box.children, function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        var ok = i === N[1], fb = $("b4-fb"); fb.className = "fb " + (ok ? "ok" : "no");
+        fb.textContent = (ok ? "Correct. " : "Not quite: " + OPTS[N[1]].toLowerCase() + ". ") + N[2];
+      });
+      box.appendChild(b);
+    });
+  }
+  $("b4-next").addEventListener("click", function(){ k = (k + 1) % order.length; if (k === 0) order = shuffle(NOTES); show(); });
+  show();
+})();
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "Kind of weathering", bins: ["Physical", "Chemical", "Biological"], items: [
+      ["Ice expands in a crack and splits a rock", 0, "Frost wedging breaks rock without changing what it is made of."],
+      ["Slightly acidic rain dissolves limestone", 1, "The calcite reacts and is carried away dissolved. A chemical change."],
+      ["Tree roots pry a boulder apart", 2, "A living thing did the work."],
+      ["Iron minerals turn to orange rust", 1, "Oxygen and water react with iron to make a new substance."],
+      ["Wind‑blown sand polishes a rock face", 0, "Abrasion is rock grinding on rock."],
+      ["Lichens release acids on a rock surface", 2, "Lichens are living things, so this is biological weathering."],
+      ["Pebbles grind each other smooth in a river", 0, "Abrasion makes pieces smaller and rounder without a chemical change."],
+      ["Feldspar slowly changes into clay", 1, "Water reacts with feldspar to form new clay minerals."],
+      ["Ground squirrels dig burrows that expose fresh rock", 2, "Animals moving soil and rock count as biological weathering."],
+      ["Rock cracks and peels in sheets", 0, "Splitting into layers is a physical process."],
+      ["Moss roots hold water against stone and loosen grains", 2, "The moss is alive, so this is biological."],
+      ["A marble statue’s details blur over a century", 1, "Marble is calcite, which slowly dissolves in acidic rain."]
+    ]},
+    {label: "Which process?", bins: ["Weathering", "Erosion and transport", "Deposition"], items: [
+      ["A rock cracks into gravel where it sits", 0, "Breaking down in place is weathering."],
+      ["A river carries sand downstream", 1, "Moving sediment from place to place is transport."],
+      ["A delta grows where a river meets a lake", 2, "The river slows and drops its sediment."],
+      ["Rain washes loose soil off a bare hillside", 1, "Removing weathered material is erosion."],
+      ["Wind drops sand and builds a dune", 2, "The wind slows and drops the sand."],
+      ["A glacier plucks blocks of rock and carries them", 1, "Glaciers erode and transport rock."],
+      ["Frost splits a boulder in a schoolyard", 0, "The pieces have not moved yet, so this is weathering."],
+      ["A melting glacier leaves a ridge of boulders and gravel", 2, "That ridge is a moraine, made by deposition."],
+      ["Groundwater dissolves limestone deep underground", 0, "Dissolving rock is chemical weathering. Carrying the dissolved minerals away is erosion."],
+      ["A sandbar forms on the inside of a river bend", 2, "Slow water drops sand there."],
+      ["Waves carry pebbles along a beach", 1, "Waves are moving sediment, which is transport."],
+      ["Rain wears soft rock away from around a hoodoo", 1, "Rain and runoff remove the soft rock, which is erosion."]
+    ]},
+    {label: "Internal or external?", bins: ["Internal process", "External process"], items: [
+      ["A volcano erupts", 0, "Driven by heat from inside Earth."],
+      ["An earthquake shakes the ground", 0, "Rock breaking deep in the crust is an internal process."],
+      ["The Rocky Mountains were pushed up", 0, "Mountain building comes from movement in the crust, driven by Earth’s inner heat."],
+      ["A river cuts a valley", 1, "Running water works at the surface, powered by the Sun’s water cycle and gravity."],
+      ["Frost cracks rock on a peak", 1, "Weathering happens at the surface."],
+      ["A landslide rushes downhill", 1, "Gravity moves material at the surface."],
+      ["A glacier carves a U‑shaped valley", 1, "Ice is an external agent."],
+      ["Wind builds sand dunes", 1, "Wind is driven by the Sun heating Earth unevenly."],
+      ["Molten rock cools underground into new rock", 0, "This happens inside Earth."],
+      ["Waves wear away a lakeshore cliff", 1, "Waves are driven by wind at the surface."]
+    ]},
+    {label: "Trigger or solution?", bins: ["Trigger of mass wasting", "Solution that reduces risk"], items: [
+      ["Days of heavy rain soak a slope", 0, "Water adds weight and lowers friction."],
+      ["Installing drainage pipes in a hillside", 1, "Removing water keeps the slope stronger."],
+      ["An earthquake shakes loose rock", 0, "Shaking can break rock and start slides."],
+      ["Building a retaining wall at the base of a slope", 1, "The wall adds support where the slope could slide."],
+      ["Cutting into the base of a slope for a new road", 0, "Removing the base takes away support."],
+      ["Planting trees and shrubs with deep roots", 1, "Roots bind soil, and plants take up water."],
+      ["Fast snowmelt in spring", 0, "Meltwater can saturate the ground."],
+      ["Monitoring a mountain with GPS and sensors", 1, "Early warning lets people move out of harm’s way."],
+      ["A river wearing away the foot of its bank", 0, "The slope loses its support at the bottom."],
+      ["Not allowing houses near the edge of a valley", 1, "Land‑use rules keep people and weight away from risky slopes."],
+      ["A leaking water pipe at the top of a slope", 0, "Extra water weakens the soil."],
+      ["Bolting wire mesh over a rock cut beside a highway", 1, "Bolts and mesh hold loose rock in place."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Dynamic", "Always changing. Earth is a dynamic planet."],
+    ["Geological process", "A natural process that forms or changes Earth’s rock and land."],
+    ["Internal process", "A process inside Earth, powered by Earth’s inner heat, such as volcanoes, earthquakes and mountain building."],
+    ["External process", "A process at Earth’s surface, powered by the Sun’s energy and gravity, such as weathering, erosion and deposition."],
+    ["Crust", "Earth’s thin, rocky outer layer, made of rocks and minerals."],
+    ["Mineral", "A natural, non‑living solid with its own chemical makeup and a regular crystal pattern, such as quartz or calcite."],
+    ["Rock", "A natural solid made of one or more minerals or other natural materials, such as granite or limestone."],
+    ["Weathering", "The breakdown of rocks and minerals into sediments, in place."],
+    ["Sediment", "Pieces of weathered rock and minerals, from boulders down to clay."],
+    ["Physical weathering", "Breaking rock into smaller pieces without changing what it is made of."],
+    ["Frost wedging", "Water freezes in a crack, expands and pushes the crack wider, again and again."],
+    ["Abrasion", "Wearing rock down by rubbing or grinding with other rock carried by water, wind or ice."],
+    ["Chemical weathering", "Weathering that changes minerals into new substances, such as limestone dissolving or iron rusting."],
+    ["Biological weathering", "Weathering caused by living things, such as roots, lichens and burrowing animals."],
+    ["Erosion", "The removal and carrying away of weathered sediment and debris."],
+    ["Transport", "Carrying sediment from one place to another by water, ice, wind or gravity."],
+    ["Deposition", "Dropping sediment in a new place when wind, water or ice slows down or melts."],
+    ["Hydrological processes", "The ways water moves on and under Earth’s surface, such as wave action, glaciers and groundwater flow."],
+    ["Wave action", "Waves wearing away and moving material along a shoreline."],
+    ["Glacier", "A huge mass of ice that slowly flows downhill, eroding and carrying rock."],
+    ["Groundwater", "Water that soaks into the ground and flows slowly through cracks and spaces in rock and soil."],
+    ["Hoodoo", "A tall column of soft rock protected by a harder cap rock, left behind by erosion."],
+    ["Cave", "An underground opening, often formed when acidic groundwater dissolves limestone."],
+    ["Topography", "The shape of the land, including how steep its slopes are."],
+    ["Vegetation cover", "How much of the ground is covered by plants. More cover means less erosion."],
+    ["Mass wasting", "A type of erosion in which rocks, soil or debris move downhill because of gravity."],
+    ["Rockfall", "Blocks of rock that break off a steep cliff and fall or bounce down."],
+    ["Landslide", "A mass of rock or soil that slides quickly down a slope."],
+    ["Slump", "A block of soil that slips and rotates down a curved surface."],
+    ["Creep", "Very slow downhill movement of soil, shown by tilted posts and curved trees."],
+    ["Debris flow", "A fast flow of water‑soaked soil, rock and logs down a steep channel."],
+    ["Trigger", "An event that starts mass wasting, such as heavy rain, an earthquake or cutting into a slope."],
+    ["Factor of safety", "Resisting force ÷ driving force. Above 1 the slope holds, below 1 it fails."],
+    ["Delta", "A fan of sediment dropped where a river enters a lake or ocean."],
+    ["Dune", "A hill of sand dropped by the wind."],
+    ["Moraine", "A ridge of mixed sediment dropped by a melting glacier."],
+    ["Erratic", "A boulder carried by a glacier and dropped far from where it formed, such as Big Rock near Okotoks."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){
+    list = [];
+    CARDS.forEach(function(c, j){ var m = store.cards[j]; if (filter === "all" || (filter === "known" && m === "known") || (filter === "learning" && m !== "known")) list.push(j); });
+    if (i >= list.length) i = 0;
+    draw();
+  }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){
+    if (!list.length) return;
+    store.cards[list[i]] = v; save();
+    var before = list.length; flipped = false;
+    if (filter === "all") { i = (i + 1) % list.length; draw(); }
+    else { build(); if (list.length === before && list.length) { i = (i + 1) % list.length; draw(); } }
+  }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["Which statement best describes Earth?", ["Its surface is always changing, mostly slowly", "Its surface stopped changing long ago", "Only volcanoes change its surface", "It changes only during earthquakes"], 0, "Earth is dynamic. Most changes are slow, but some are sudden."],
+    ["Which is an internal geological process?", ["Mountain building", "Frost wedging", "Deposition of a delta", "A river cutting a valley"], 0, "Mountain building is driven by Earth’s inner heat moving the crust."],
+    ["External processes are mainly powered by…", ["The Sun’s energy and gravity", "Earth’s inner heat", "Earth’s magnetic field", "The Moon’s light"], 0, "The Sun drives water, wind and ice, and gravity pulls material downhill."],
+    ["What is a mineral?", ["A natural, non‑living solid with its own chemical makeup and crystal pattern", "Any piece of rock", "A mixture of soil and water", "A fossil"], 0, "Quartz, feldspar and calcite are minerals. Rocks are made of minerals."],
+    ["Granite is made of quartz, feldspar and mica. Granite is a…", ["Rock", "Mineral", "Sediment", "Crystal"], 0, "A rock is made of one or more minerals."],
+    ["What does weathering do?", ["Breaks rock into sediment where it sits", "Carries sediment to a new place", "Drops sediment in a lake", "Melts rock deep underground"], 0, "Weathering happens in place. Erosion and transport move the pieces."],
+    ["Water freezing in a crack and splitting a rock is…", ["Physical weathering", "Chemical weathering", "Biological weathering", "Deposition"], 0, "Frost wedging changes size, not substance."],
+    ["Water expands by about how much when it freezes?", ["9%", "1%", "50%", "It shrinks"], 0, "That push is enough to widen cracks in rock."],
+    ["Slightly acidic rain dissolving limestone is…", ["Chemical weathering", "Physical weathering", "Deposition", "Mass wasting"], 0, "The calcite reacts and is carried off dissolved."],
+    ["Tree roots cracking a sidewalk is an example of…", ["Biological weathering", "Chemical weathering", "Deposition", "An internal process"], 0, "A living thing caused the weathering."],
+    ["What is the correct order?", ["Weathering, erosion, transport, deposition", "Deposition, weathering, transport, erosion", "Erosion, deposition, weathering, transport", "Transport, weathering, deposition, erosion"], 0, "Rock breaks, is removed, is carried, then is dropped."],
+    ["Which is a hydrological process named in this unit?", ["Groundwater flow", "Mountain building", "Volcanic eruption", "Earthquake"], 0, "Wave action, glacial processes and groundwater flow all involve water."],
+    ["How do glaciers change the land?", ["They pluck and scrape rock, carve U‑shaped valleys and drop sediment", "They only melt and add water", "They build volcanoes", "They have no effect on rock"], 0, "Ice with rock frozen in it works like sandpaper."],
+    ["Big Rock near Okotoks is a…", ["Glacial erratic", "Hoodoo", "Volcano", "Delta"], 0, "A glacier carried it from the Jasper area and dropped it on the prairie."],
+    ["Why does a hoodoo stand tall?", ["A hard cap rock protects the softer rock under it", "It is made of the hardest rock in Alberta", "Wind piles sand on top of it", "Plants hold it together"], 0, "Soft rock around it wears away while the cap shields the column."],
+    ["How do most caves in limestone form?", ["Acidic groundwater dissolves the rock", "Glaciers dig them", "Earthquakes open them", "Animals dig them"], 0, "Over thousands of years, cracks grow into passages."],
+    ["Which change would reduce erosion on a hillside the most?", ["Planting more vegetation", "Removing plants for a parking lot", "Making the slope steeper", "Adding more rainfall"], 0, "Plants soften raindrops and roots hold soil."],
+    ["Topography means…", ["The shape of the land", "The type of minerals in rock", "The amount of rain", "The age of a rock"], 0, "Steeper topography usually means faster erosion."],
+    ["Mass wasting is movement of rock and soil downhill caused mainly by…", ["Gravity", "Wind", "Magnetism", "Sunlight"], 0, "Gravity pulls the material down the slope."],
+    ["Tilted fence posts and curved tree trunks on a slope are signs of…", ["Creep", "A rockfall", "Deposition", "A volcano"], 0, "Creep is very slow mass wasting."],
+    ["Which is a trigger of mass wasting?", ["Heavy rain soaking a slope", "Planting deep‑rooted shrubs", "Installing drainage pipes", "Building a retaining wall"], 0, "Water adds weight and reduces friction. The other choices are solutions."],
+    ["The Frank Slide in 1903 happened on…", ["Turtle Mountain in the Crowsnest Pass", "The North Saskatchewan River in Edmonton", "Cougar Creek in Canmore", "The Peace River valley"], 0, "Limestone broke off Turtle Mountain and buried part of the town of Frank."],
+    ["A slope has a resisting force of 800 kN and a driving force of 1000 kN. What happens?", ["FS = 0.80, so it fails", "FS = 1.25, so it holds", "FS = 1.80, so it holds", "FS = 200, so it holds"], 0, "800 ÷ 1000 = 0.80, which is less than 1."],
+    ["A river slows down as it enters a lake. Which sediment drops first?", ["The largest, heaviest pieces such as gravel", "Clay", "Silt", "All of it drops at once"], 0, "Fine clay and silt stay floating the longest."],
+    ["The Peace‑Athabasca Delta was built mainly by…", ["Deposition of river sediment", "Wind erosion", "Volcanic eruptions", "Frost wedging"], 0, "Rivers slowed at Lake Athabasca and dropped their sediment."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"});
+      d.appendChild(el("h3", null, "You scored " + score + " of 10."));
+      d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try another round for new questions." : "Review the Learn tab, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); q.appendChild(el("h3", null, Q[0]));
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button"}, Q[1][i]);
+      b.dataset.i = i;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (+x.dataset.i === Q[2]) x.classList.add("right"); });
+        if (i !== Q[2]) b.classList.add("wrong"); else score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["Explain the difference between internal and external geological processes. Give one example of each.", "Internal processes happen inside Earth and are powered by Earth’s inner heat. They build up land, for example volcanoes or mountain building. External processes happen at the surface and are powered by the Sun’s energy and gravity. They wear land down, for example weathering or a landslide.", ["Internal processes are powered by Earth’s inner heat", "External processes are powered by the Sun and gravity", "A correct internal example", "A correct external example"]],
+    ["What is the difference between a rock and a mineral?", "A mineral is a natural, non‑living solid with its own chemical makeup and a regular crystal pattern, such as quartz. A rock is made of one or more minerals or other natural materials. Granite is a rock made of quartz, feldspar and mica.", ["Mineral has its own chemical makeup and crystal pattern", "Rock is made of one or more minerals", "Correct example of each"]],
+    ["Describe how frost wedging breaks rock. Why is it common around Edmonton?", "Water seeps into a crack, freezes and expands by about 9%, pushing the crack wider. When the ice melts, more water seeps deeper. Repeating this breaks the rock. Edmonton has many fall and spring days when the temperature crosses 0 °C, so freeze‑thaw cycles happen often.", ["Water enters a crack", "Freezing water expands and pushes", "The cycle repeats", "Many freeze‑thaw days in Edmonton"]],
+    ["Compare physical, chemical and biological weathering with one example of each.", "Physical weathering breaks rock without changing what it is made of, such as frost wedging. Chemical weathering changes minerals into new substances, such as acidic rain dissolving limestone or iron rusting. Biological weathering is caused by living things, such as roots prying open cracks.", ["Physical: smaller pieces, same material", "Chemical: new substances form", "Biological: caused by living things", "A correct example for each"]],
+    ["What is the difference between weathering and erosion?", "Weathering breaks rock into sediment where it sits. Erosion removes that sediment and carries it away. Weathering usually comes first and gives erosion loose material to move.", ["Weathering breaks rock in place", "Erosion removes and moves sediment", "Weathering makes material for erosion"]],
+    ["Explain how a hoodoo forms.", "A layer of hard cap rock sits on top of softer sandstone and mudstone. Rain and runoff wash away the soft rock around it. The cap protects the rock right under it, so a tall column is left. When the cap falls, the column wears away quickly.", ["Hard cap rock over soft rock", "Rain and runoff erode the soft rock", "The cap protects the column", "Without the cap it wears away"]],
+    ["Name three factors that affect how fast erosion happens and explain one of them.", "Erosion depends on weather and climate, hydrological processes, topography, vegetation cover and human activities. For example, on a steep slope water runs faster, so it can carry more soil away.", ["Names three correct factors", "Explains how one factor changes erosion"]],
+    ["What is mass wasting? Name two kinds.", "Mass wasting is a type of erosion in which rocks, soil or debris move downhill because of gravity. Kinds include rockfalls, landslides, slumps, debris flows and creep.", ["Movement downhill", "Caused by gravity", "Two correct kinds"]],
+    ["Explain why a river drops gravel before it drops clay when it slows down.", "Faster water can carry bigger, heavier pieces. As the river slows, it can no longer carry the heaviest pieces, so gravel drops first. Clay is so small and light that it stays floating until the water is almost still.", ["Faster water carries bigger pieces", "As it slows, heavy pieces drop first", "Clay stays floating longest"]]
+  ];
+  var LONG = [
+    ["Follow a grain of quartz from a Rocky Mountain peak to the Peace‑Athabasca Delta. Name and explain each process it goes through, and describe one hydrological process that helps along the way.", "The grain starts in granite on a peak. Frost wedging, a physical weathering process, breaks it loose. A glacier or snowmelt runoff erodes it from the mountainside. Rivers transport it hundreds of kilometres, bumping it smooth. Where the river enters Lake Athabasca it slows down and the grain is deposited, adding to the delta. Glacial processes and running water are hydrological processes that do much of this work.", ["Weathering frees the grain", "Erosion removes it", "Transport by water or ice", "Deposition where water slows", "A hydrological process explained", "Correct order"]],
+    ["Use the Frank Slide to discuss the impact of mass wasting in Alberta. Explain what happened, what likely triggered it, and how people reduce the risk today.", "In April 1903, a huge mass of limestone broke off Turtle Mountain and buried part of Frank in about 100 seconds. At least 70 people died, and the railway and road were buried. The mountain was already cracked and its layers tilted. Freeze‑thaw in cracks and coal mining at the base likely helped set it off. Today scientists monitor the mountain with sensors and GPS so people can be warned, and the event teaches communities to plan around steep slopes.", ["What happened and when", "Impact on people and property", "At least two triggers or causes", "Present day monitoring or planning", "Respectful tone"]],
+    ["A town wants to build homes at the top of a river valley slope in clay soil. Suggest at least three solutions to reduce the risk of mass wasting and explain how each one works.", "First, keep homes back from the edge, so less weight is added near the slope and people are out of harm’s way. Second, install drainage so rain and snowmelt cannot soak the clay, which keeps friction high. Third, plant deep‑rooted vegetation to bind the soil and take up water. A retaining wall at the base and monitoring for slow movement would also help.", ["At least three solutions", "Each linked to a trigger it reduces", "Uses ideas of water, weight or support", "Mentions monitoring or land‑use planning"]],
+    ["Design a fair test to find out how vegetation cover affects erosion. Name your variables and predict the result.", "I will use three trays of the same soil at the same slope, with 0%, 50% and 90% of the surface covered by grass. I will pour the same amount of water the same way on each and collect and weigh the soil that washes off. The independent variable is plant cover, the dependent variable is the mass of soil lost, and the controlled variables are soil type, slope, amount of water and pouring height. I predict the tray with 90% cover loses the least soil because roots hold soil and leaves soften the water. I will repeat each tray three times and average.", ["Independent variable named", "Dependent variable named", "At least three controlled variables", "Prediction with reason", "Repeated trials"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["ES1.K1", "Earth is a dynamic planet that is shaped by internal and external geological processes.", "Learn 1 (building up and wearing down); Sort It (deck 3); Flashcards; Quiz; Written Review short 1"],
+    ["ES1.K2", "Hydrological processes, such as wave action, glacial processes, and groundwater flow, contribute to geological processes.", "Learn 5 (water in three forms); Learn 6 (cave); Flashcards; Quiz; Written Review extended 1"],
+    ["ES1.K3", "The geological processes of weathering, erosion, transport, and deposition change Earth’s surface.", "Learn 4 (peak to delta); Bench 3; Sort It (deck 2); Flashcards; Quiz; Written Review short 5, extended 1"],
+    ["ES1.K4", "Earth’s crust is composed of rocks and minerals.", "Learn 2 (hand lens); Flashcards; Quiz; Written Review short 2"],
+    ["ES1.K5", "Weathering, which can be physical, chemical, or biological, breaks down rocks and minerals into sediments.", "Learn 3 (frost wedging, examples); Bench 4; Sort It (deck 1); Flashcards; Quiz; Written Review short 3 and 4"],
+    ["ES1.K6", "Erosion removes and transports weathered sediments and debris, creating features on Earth’s surface, e.g., hoodoos, and beneath Earth’s surface, e.g., caves.", "Learn 6 (hoodoo and cave); Learn 5; Flashcards; Quiz; Written Review short 6"],
+    ["ES1.K7", "Erosion is influenced by many factors, including weather and climate, hydrological processes, topography, vegetation cover, and human activities.", "Learn 7 (hillside model); Bench 1 (test trays); Flashcards; Quiz; Written Review short 7, extended 4"],
+    ["ES1.K8", "Mass wasting is a type of erosion in which rocks, soil, or debris move downhill because of gravity, e.g., landslides and rockfalls.", "Learn 8 (five kinds); Flashcards; Quiz; Written Review short 8"],
+    ["ES1.K9", "Mass wasting can be triggered by many factors, including water, earthquakes, and human activity.", "Learn 8 and 9; Bench 2 (slope tester); Sort It (deck 4); Quiz; Written Review extended 2 and 3"],
+    ["ES1.K10", "Deposition occurs when sediments are transported by wind, water, or ice and are dropped in a new location, resulting in landforms such as deltas and dunes.", "Learn 10 (river speed, landforms); Sort It (deck 2); Flashcards; Quiz; Written Review short 9"],
+    ["ES1.S1", "Describe local areas that have experienced weathering and erosion.", "Learn 3, 5 and 6 (Alberta examples); Bench 4 (field notebook)"],
+    ["ES1.S2", "Explain how geological processes change Earth’s surface.", "Learn 1, 4 and 10; Bench 3 (rates); Written Review short 1 and 5, extended 1"],
+    ["ES1.S3", "Investigate the relationship among various geological processes.", "Learn 4 and 7; Bench 1 (fair test); Sort It (deck 2); Written Review extended 1 and 4"],
+    ["ES1.S4", "Discuss the impact of mass-wasting events that have occurred in Alberta.", "Learn 9 (event map); Learn 8; Written Review extended 2"],
+    ["ES1.S5", "Suggest solutions to minimize the impact of potential mass-wasting events.", "Learn 9; Bench 2 (solutions); Sort It (deck 4); Written Review extended 3"]
+  ];
+  var NOTES = [
+    "ES1.K1: internal processes are taught as powered by Earth’s inner heat and mostly building land up; external processes as powered by the Sun’s energy (moving water, wind and ice) and gravity, mostly wearing land down. Plate tectonics is not named (Science 9).",
+    "ES1.K2: wave action, glacial processes and groundwater flow are taught as named. Running water in rivers is added briefly because it moves the most sediment on land. Groundwater is also linked to slope failure.",
+    "ES1.K3 and K6: many geologists include transport inside erosion. The lab keeps them as separate steps to match the draft list, and defines erosion as removal and transport as carrying.",
+    "ES1.K4: a mineral is defined with a crystal pattern and its own chemical makeup; rocks are made of minerals or other natural materials (coal is mentioned as plant remains). Rock types and mineral identification are left to ES2.",
+    "ES1.K5: water expands by about 9% when it freezes. Dissolving limestone is grouped as chemical weathering; carrying away the dissolved minerals is erosion.",
+    "ES1.K6: Drumheller hoodoos are described as harder sandstone caps on softer sandstone and mudstone; Rat’s Nest Cave near Canmore is named as a limestone solution cave. Please verify both descriptions.",
+    "ES1.K8: some textbooks treat mass wasting as separate from erosion, since no carrying agent is needed. The lab follows the draft and calls it a type of erosion driven by gravity. Slump, debris flow and creep are added to the draft’s landslides and rockfalls.",
+    "ES1.S4: Frank Slide facts (April 29, 1903; about 110 million tonnes of limestone; about 100 seconds; at least 70 deaths; monitoring by the Alberta Geological Survey), Cougar Creek (June 2013 debris flood, retention barrier), Edmonton river valley slumps and Peace River area landslides are summarized from public sources and need verification. Deaths and flood losses are sensitive topics.",
+    "ES1.K10: the Peace‑Athabasca Delta is described as one of the world’s largest freshwater deltas; the Middle Sand Hills as a southeastern Alberta dune field; Big Rock as a glacial erratic from the Jasper area. The Blackfoot origin of the name Okotoks is mentioned once; please review.",
+    "Models: the hillside erosion index, test tray masses (random variation of 10%), slope factor of safety model and river speed thresholds are simplified or made up for practice and labelled. Sediment size ranges follow the common Wentworth scale."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); tr.appendChild(el("td", null, r[1])); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

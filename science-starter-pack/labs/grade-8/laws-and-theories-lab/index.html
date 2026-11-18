@@ -1,0 +1,1104 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/laws-and-theories-lab/"><meta name="description" content="Scientific laws and theories play specific roles in describing and explaining phenomena."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Laws and Theories Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800;900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a reference shelf of scientific knowledge. Laws are teal (they describe), theories are violet (they explain), facts and data are amber, models are the blue accent. Tabs on a sticky bar, one working panel per tab. */
+:root{
+  --bg:#EEF1F6; --surface:#FFFFFF; --surface-2:#F4F6FA; --ink:#162030; --muted:#525E6E; --line:#CDD5E0;
+  --accent:#1F5FA6; --accent-soft:#DDE8F6;
+  --obs:#0B7468; --obs-soft:#D5EFEA; --inf:#7A3FA8; --inf-soft:#EEE2F7;
+  --data:#9A5A00; --data-soft:#F8EAD3;
+  --good:#1E7A3C; --good-soft:#DCF1E2; --bad:#B23A2E; --bad-soft:#F8E0DC;
+  --f-display:"Schibsted Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E131B; --surface:#161D27; --surface-2:#1B2330; --ink:#E3E9F1; --muted:#9CA8B8; --line:#2B3544;
+  --accent:#7FB0F0; --accent-soft:#182A40;
+  --obs:#5CCBB9; --obs-soft:#143430; --inf:#C49BEB; --inf-soft:#2C1F40;
+  --data:#EDB45E; --data-soft:#3A2A12;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E131B; --surface:#161D27; --surface-2:#1B2330; --ink:#E3E9F1; --muted:#9CA8B8; --line:#2B3544;
+  --accent:#7FB0F0; --accent-soft:#182A40;
+  --obs:#5CCBB9; --obs-soft:#143430; --inf:#C49BEB; --inf-soft:#2C1F40;
+  --data:#EDB45E; --data-soft:#3A2A12;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+button{font:inherit;color:inherit}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font-weight:500;cursor:pointer;font-size:.92rem}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn.obs{background:var(--obs-soft);border-color:var(--obs);color:var(--obs)}
+.btn.inf{background:var(--inf-soft);border-color:var(--inf);color:var(--inf)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input[type=number],input[type=text],textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;max-width:100%}
+textarea{width:100%;min-height:110px;resize:vertical}
+
+/* header */
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{padding-block:26px 18px;display:grid;gap:14px}
+.brand{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:flex-end}
+.brand h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:900;letter-spacing:-.02em;}
+.brand h1 span{color:var(--accent)}
+.brand .lede{color:var(--muted);max-width:62ch;margin-top:6px}
+.under{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border-radius:var(--r);padding:10px 14px;max-width:62ch;font-size:.95rem}
+.under b{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:4px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,auto);gap:4px 18px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.stats b{display:block;font-size:1.25rem;color:var(--ink);font-variant-numeric:tabular-nums}
+#themeBtn{justify-self:start}
+
+/* tabs */
+.tabsbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
+.tabs [role=tab]{border:0;background:none;padding:12px 14px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;font-size:.95rem}
+.tabs [role=tab][aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:700}
+.tabs [role=tab]:hover{color:var(--ink)}
+main{padding-block:26px 56px}
+[role=tabpanel]{display:grid;gap:22px}
+.intro{color:var(--muted);max-width:66ch}
+
+/* sections */
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.sec-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.sec-head h2{font-size:1.45rem;font-weight:800}
+.step{font-family:var(--f-mono);font-size:.74rem;color:var(--accent);font-weight:600}
+.codes{display:flex;gap:6px;flex-wrap:wrap}
+.code{font-family:var(--f-mono);font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;align-items:start}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.prose{display:grid;gap:10px;max-width:64ch}
+.prose ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.model{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:12px;min-width:0}
+.model h3{font-size:1rem;font-weight:700}
+.note{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+.tag.obs{background:var(--obs-soft);color:var(--obs)}
+.tag.inf{background:var(--inf-soft);color:var(--inf)}
+.tag.qual{background:var(--accent-soft);color:var(--accent)}
+.tag.quant{background:var(--data-soft);color:var(--data)}
+.out{border-left:4px solid var(--accent);background:var(--surface);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.95rem}
+.out.obs{border-color:var(--obs)} .out.inf{border-color:var(--inf)} .out.data{border-color:var(--data)}
+.fb{padding:10px 12px;border-radius:8px;font-size:.93rem}
+.fb.good{background:var(--good-soft);color:var(--ink);border-left:4px solid var(--good)}
+.fb.bad{background:var(--bad-soft);color:var(--ink);border-left:4px solid var(--bad)}
+.formula{font-family:var(--f-mono);background:var(--data-soft);color:var(--ink);padding:8px 12px;border-radius:8px;display:inline-block;font-size:.95rem}
+svg text{font-family:var(--f-body)}
+.svgbox{width:100%;overflow-x:auto}
+.svgbox svg{display:block;width:100%;height:auto;max-width:100%}
+table{border-collapse:collapse;font-size:.9rem;width:100%}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--surface-2);font-weight:700}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.tablebox{overflow-x:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:6px;align-content:start}
+.card h4{font-size:1rem}
+.flip{cursor:pointer;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:6px}
+.flip:hover{border-color:var(--accent)}
+.checks{display:grid;gap:6px;min-width:0}
+.checks>*{min-width:0}
+.checks select,#netType{width:100%}
+[hidden]{display:none!important}
+.checks label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.checks input{margin-top:5px}
+
+/* sort */
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:14px;padding:22px;font-size:1.15rem;min-height:110px;display:grid;place-items:center;text-align:center;max-width:620px;margin:0 auto;width:100%}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px;margin:0 auto;width:100%}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:16px;background:var(--surface-2);cursor:pointer;font-weight:700;font-family:var(--f-display);font-size:1.1rem;display:grid;gap:4px;text-align:center}
+.bin small{font-family:var(--f-body);font-weight:400;font-size:.8rem;color:var(--muted)}
+.bin.a{border-color:var(--obs);color:var(--obs)} .bin.b{border-color:var(--inf);color:var(--inf)}
+.bin:hover{background:var(--surface)}
+
+/* flashcards */
+.fc{perspective:1000px;max-width:560px;margin:0 auto;width:100%}
+.fc-inner{position:relative;min-height:220px;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:26px;display:grid;place-items:center;text-align:center;cursor:pointer;width:100%}
+.fc-term{font-family:var(--f-display);font-size:1.8rem;font-weight:800;}
+.fc-def{font-size:1.05rem}
+.meter{height:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent)}
+
+/* quiz */
+.q{display:grid;gap:10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+details.model-ans{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--surface-2)}
+details.model-ans summary{cursor:pointer;font-weight:700}
+.pill-count{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.cov td:first-child{white-space:nowrap;font-family:var(--f-mono);font-size:.8rem}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+footer .wrap{padding-block:18px 28px;display:grid;gap:4px}
+</style>
+<style>
+.bins{grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr))}
+.bin.c{border-color:var(--data);color:var(--data)} .bin.d{border-color:var(--accent);color:var(--accent)}
+.tag.law{background:var(--obs-soft);color:var(--obs)} .tag.thy{background:var(--inf-soft);color:var(--inf)}
+.tag.fact{background:var(--data-soft);color:var(--data)} .tag.mod{background:var(--accent-soft);color:var(--accent)}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
+.kcell{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--surface);display:grid;gap:6px;align-content:start}
+.kcell.law{border-top:4px solid var(--obs)} .kcell.thy{border-top:4px solid var(--inf)} .kcell.fact{border-top:4px solid var(--data)} .kcell.mod{border-top:4px solid var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+canvas{display:block;width:100%;max-width:100%;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+footer .credit a{color:var(--accent)}
+</style>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">Science 8 · SL1 · Launch: Laws, Theories and Bias</div>
+        <h1>Laws <span>and</span> Theories Lab</h1>
+        <p class="lede">A law tells you what happens. A theory tells you why it happens. Explore how facts, models, laws and theories each do a different job in building scientific knowledge.</p>
+      </div>
+      <div class="stats" aria-label="Your progress">
+        <div>Quiz best<b id="stQuiz">–</b></div>
+        <div>Cards known<b id="stCards">0</b></div>
+        <div>Sort best<b id="stSort">–</b></div>
+      </div>
+    </div>
+    <div class="under"><b>Big idea</b><span>Scientific laws and theories play specific roles in describing and explaining phenomena.</span></div>
+    <button class="btn" id="themeBtn" type="button">Switch theme</button>
+  </div>
+</header>
+
+<nav class="tabsbar" aria-label="Lab sections">
+  <div class="wrap">
+    <div class="tabs" role="tablist" id="tablist">
+      <button role="tab" id="t-learn" aria-controls="learn" aria-selected="true">Learn</button>
+      <button role="tab" id="t-bench" aria-controls="bench" aria-selected="false" tabindex="-1">Lab Bench</button>
+      <button role="tab" id="t-sort" aria-controls="sort" aria-selected="false" tabindex="-1">Sort It</button>
+      <button role="tab" id="t-cards" aria-controls="cards" aria-selected="false" tabindex="-1">Flashcards</button>
+      <button role="tab" id="t-quiz" aria-controls="quiz" aria-selected="false" tabindex="-1">Quiz</button>
+      <button role="tab" id="t-write" aria-controls="write" aria-selected="false" tabindex="-1">Written Review</button>
+      <button role="tab" id="t-cov" aria-controls="cov" aria-selected="false" tabindex="-1">Coverage</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<section role="tabpanel" id="learn" aria-labelledby="t-learn">
+  <p class="intro">Eight short lessons in order. Each one has a model to try.</p>
+
+  <article class="sec" id="L1">
+    <div class="sec-head"><span class="step">Lesson 1</span><h2>Four kinds of scientific knowledge</h2><div class="codes"><span class="code">SL1.K1</span></div></div>
+    <div class="prose">
+      <p>Scientific knowledge is more than a list of facts. It includes four kinds of knowledge that work together:</p>
+      <ul>
+        <li><span class="tag fact">Fact</span> an observation that has been confirmed again and again.</li>
+        <li><span class="tag law">Law</span> a description of what always happens under certain conditions.</li>
+        <li><span class="tag thy">Theory</span> an explanation of why or how it happens.</li>
+        <li><span class="tag mod">Model</span> a representation that helps explain or predict.</li>
+      </ul>
+      <p>Choose a phenomenon (something that happens in nature) to see all four kinds of knowledge about it.</p>
+    </div>
+    <div class="row" id="phenBtns" role="group" aria-label="Choose a phenomenon"></div>
+    <div class="kgrid" id="phenGrid" aria-live="polite"></div>
+  </article>
+
+  <article class="sec" id="L2">
+    <div class="sec-head"><span class="step">Lesson 2</span><h2>Facts: confirmed, but open to revision</h2><div class="codes"><span class="code">SL1.K2</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>When an observation is <b>repeatedly confirmed</b> by many people, with different tools, in different places, scientists may accept it as a <b>scientific fact</b>.</p>
+        <p>Facts are strong, but they are not locked forever. Better tools or new evidence can lead scientists to <b>revise</b> or <b>reject</b> a fact.</p>
+        <p>Example: for about 30 years, textbooks stated that human body cells have 48 chromosomes. In 1956, Joe Hin Tjio and Albert Levan used a better technique to spread out and count chromosomes. They counted 46. Other labs confirmed it, and the accepted fact was revised.</p>
+      </div>
+      <div class="model">
+        <h3>Confirm or revise a fact</h3>
+        <p class="note">Each button is a new lab checking the chromosome count. Watch how confidence grows, then what new evidence does.</p>
+        <div class="row"><button class="btn" id="factOld" type="button">Lab checks with old method (1920s)</button><button class="btn primary" id="factNew" type="button">Lab checks with new method (1956)</button><button class="btn" id="factReset" type="button">Reset</button></div>
+        <div class="svgbox" id="factSvg"></div>
+        <div class="out" id="factOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L3">
+    <div class="sec-head"><span class="step">Lesson 3</span><h2>What laws and theories share</h2><div class="codes"><span class="code">SL1.K3</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>Laws and theories are different jobs, but they have a lot in common. Both are:</p>
+        <ul>
+          <li><b>widely accepted</b> by the scientific community</li>
+          <li><b>supported by large bodies of evidence</b> from many investigations</li>
+          <li><b>equally important</b>: neither one ranks above the other</li>
+          <li><b>used to make predictions</b> about phenomena</li>
+          <li><b>testable</b>: scientists can design investigations that could show them to be wrong</li>
+        </ul>
+        <p>In everyday talk, "theory" can mean a hunch. In science, a theory is one of the strongest kinds of knowledge there is.</p>
+      </div>
+      <div class="model">
+        <h3>Check the claim</h3>
+        <p class="note">Is each statement true of laws, theories, or both?</p>
+        <div id="shareQs" class="q"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L4">
+    <div class="sec-head"><span class="step">Lesson 4</span><h2>Scientific laws describe</h2><div class="codes"><span class="code">SL1.K4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>scientific law</b> describes <b>what happens</b>, every time, under stated conditions. It does not explain why.</p>
+        <p>A law can be written in three ways:</p>
+        <ul>
+          <li><b>Cause and effect</b>: Newton's third law. When object A pushes on object B, object B pushes back on A with an equal force in the opposite direction.</li>
+          <li><b>Rule</b>: the law of superposition. In undisturbed rock layers, lower layers are older than the layers above them.</li>
+          <li><b>Equation</b>: the law of reflection. The angle of reflection equals the angle of incidence: <span class="formula">θ<sub>r</sub> = θ<sub>i</sub></span></li>
+        </ul>
+        <p>Laws are considered <b>universal</b>: the law of reflection works for a mirror in Edmonton, a lake surface in Jasper, and a telescope mirror in space. Each law states its conditions, such as "undisturbed layers".</p>
+      </div>
+      <div class="model">
+        <h3>Test the law of reflection</h3>
+        <label for="reflA">Angle of incidence: <b id="reflAv">40</b>°</label>
+        <input type="range" id="reflA" min="5" max="85" value="40">
+        <div class="row" role="group" aria-label="Choose the mirror location"><button class="btn" data-loc="Edmonton classroom" aria-pressed="true" type="button">Edmonton classroom</button><button class="btn" data-loc="Space telescope mirror" aria-pressed="false" type="button">Space telescope mirror</button><button class="btn" data-loc="Calm water, Lake Louise" aria-pressed="false" type="button">Calm water, Lake Louise</button></div>
+        <div class="svgbox" id="reflSvg"></div>
+        <div class="out law" id="reflOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L5">
+    <div class="sec-head"><span class="step">Lesson 5</span><h2>Scientific theories explain</h2><div class="codes"><span class="code">SL1.K5</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>scientific theory</b> explains <b>why or how</b> phenomena happen. A theory pulls together, or integrates, a wide range of knowledge: many facts, several laws, and evidence from different branches of science.</p>
+        <p>The theory of <b>plate tectonics</b> says Earth's outer layer is broken into plates that move slowly over the hotter rock beneath. That one explanation connects earthquakes, volcanoes, mountain building, fossils and the shape of continents.</p>
+        <p>Canadian geophysicist <b>J. Tuzo Wilson</b> helped build the theory in the 1960s by explaining transform faults and hot spots.</p>
+      </div>
+      <div class="model">
+        <h3>One theory, many lines of evidence</h3>
+        <p class="note">Tap each piece of evidence to see how plate tectonics explains it.</p>
+        <div class="svgbox" id="webSvg"></div>
+        <div class="out thy" id="webOut" aria-live="polite">Pick a piece of evidence around the theory.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L6">
+    <div class="sec-head"><span class="step">Lesson 6</span><h2>Models explain and predict</h2><div class="codes"><span class="code">SL1.K6</span><span class="code">SL1.K7</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>scientific model</b> is a representation that helps explain or predict a phenomenon. Models can be diagrams, physical objects, equations or computer simulations.</p>
+        <p>Scientists use models to <b>test hypotheses</b> while building theories. The <b>Big Bang theory</b> explains that the universe began very hot and dense about 13.8 billion years ago and has been expanding ever since.</p>
+        <p>Belgian physicist and priest <b>Georges Lemaître</b>, who wrote in French, proposed an expanding universe in 1927. Models of an expanding universe predicted that distant galaxies should move away faster than nearby ones. Edwin Hubble's data in 1929 matched. Models also predicted leftover heat from the early universe. It was detected in 1965 as the cosmic microwave background.</p>
+        <p>Every model has limits. In the balloon model, galaxies sit on a 2D surface, but the real universe has three dimensions of space.</p>
+      </div>
+      <div class="model">
+        <h3>Balloon model of an expanding universe</h3>
+        <label for="balloon">Time: <b id="balloonV">1.0</b> × starting size</label>
+        <input type="range" id="balloon" min="10" max="30" value="10">
+        <div class="svgbox" id="balloonSvg"></div>
+        <div class="tablebox" id="balloonTable"></div>
+        <p class="note">Hypothesis to test: if space itself is expanding, then galaxies farther from us will move away faster. Stretch the balloon and compare.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L7">
+    <div class="sec-head"><span class="step">Lesson 7</span><h2>Theories do not grow up into laws</h2><div class="codes"><span class="code">SL1.K8</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A common myth says a hypothesis becomes a theory, and a theory becomes a law once it is proven. That is <b>not how science works</b>.</p>
+        <p>Laws and theories are <b>different kinds of knowledge</b> that answer different questions. A theory cannot change into a law, and a law cannot change into a theory. No amount of evidence turns an explanation into a description.</p>
+        <p>Example: Newton's law of universal gravitation <i>describes</i> how strongly objects attract each other. Einstein's general theory of relativity <i>explains</i> gravity as mass curving space and time. Both are still used today. Neither one turned into the other.</p>
+      </div>
+      <div class="model">
+        <h3>Myth or science?</h3>
+        <div class="row"><button class="btn" id="mythBtn" type="button" aria-pressed="true">Show the myth</button><button class="btn" id="sciBtn" type="button" aria-pressed="false">Show how science works</button></div>
+        <div class="svgbox" id="mythSvg"></div>
+        <div class="out" id="mythOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L8">
+    <div class="sec-head"><span class="step">Lesson 8</span><h2>Careers that build and use scientific knowledge</h2><div class="codes"><span class="code">SL1.K9</span></div></div>
+    <p class="prose">People in science-related careers advance knowledge by developing, testing and applying laws and theories. Tap a card.</p>
+    <div class="cards" id="careerCards"></div>
+  </article>
+</section>
+
+<section role="tabpanel" id="bench" aria-labelledby="t-bench" hidden>
+  <p class="intro">Hands-on stations. Most use new random values each time.</p>
+
+  <article class="sec" id="B1">
+    <div class="sec-head"><span class="step">Station 1</span><h2>Law or theory?</h2><div class="codes"><span class="code">SL1.S1</span></div></div>
+    <div class="tablebox"><table>
+      <tr><th>Feature</th><th>Scientific law</th><th>Scientific theory</th></tr>
+      <tr><td>Main job</td><td>Describes <b>what</b> happens</td><td>Explains <b>why or how</b> it happens</td></tr>
+      <tr><td>Usual form</td><td>Cause and effect statement, rule or equation</td><td>A detailed explanation, often with models</td></tr>
+      <tr><td>Scope</td><td>Considered universal under its stated conditions</td><td>Integrates many facts, laws and fields</td></tr>
+      <tr><td>Shared</td><td colspan="2">Widely accepted, supported by much evidence, equally important, used for predictions, testable</td></tr>
+      <tr><td>Can it become the other?</td><td colspan="2">No. A law never becomes a theory and a theory never becomes a law.</td></tr>
+    </table></div>
+    <p class="note">Practice: decide whether each statement is a law (describes) or a theory (explains).</p>
+    <div class="out" id="ltStmt" style="font-size:1.08rem"></div>
+    <div class="row"><button class="btn obs" id="ltLaw" type="button">Law</button><button class="btn inf" id="ltThy" type="button">Theory</button><span class="pill-count" id="ltScore"></span></div>
+    <div id="ltFb" aria-live="polite"></div>
+    <div class="row"><button class="btn" id="ltNext" type="button">Next statement</button></div>
+  </article>
+
+  <article class="sec" id="B2">
+    <div class="sec-head"><span class="step">Station 2</span><h2>Research a law or theory</h2><div class="codes"><span class="code">SL1.S2</span></div></div>
+    <p class="prose">Pick a law or theory. Read the starter card, then use it to plan your own research. Check facts in at least two trusted sources, such as a textbook, a science museum or a university website.</p>
+    <div class="row" id="resBtns" role="group" aria-label="Choose a topic"></div>
+    <div class="two">
+      <div class="model" id="resCard"></div>
+      <div class="model">
+        <h3>My research organizer</h3>
+        <p class="note">Your notes save in this browser only.</p>
+        <div class="checks" id="resForm"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="B3">
+    <div class="sec-head"><span class="step">Station 3</span><h2>Predict with a model: gases in an Alberta winter</h2><div class="codes"><span class="code">SL1.S3</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>The <b>particle model</b> of gases, part of kinetic molecular theory, says gas particles move faster when warmer. At constant pressure, faster particles push outward harder and the gas takes up more space. This matches <b>Charles's law</b>, discovered by French scientist Jacques Charles: at constant pressure, the volume of a gas is proportional to its temperature in kelvin.</p>
+        <p class="formula">V₂ = V₁ × T₂ ÷ T₁ &nbsp; (T in kelvin: K = °C + 273)</p>
+        <p class="note">Worked example: a 3.0 L balloon at 22 °C (295 K) is taken outside at −30 °C (243 K). V₂ = 3.0 L × 243 ÷ 295 = <b>2.5 L</b>. The balloon shrinks.</p>
+        <p class="note">You do not need to memorize this formula. Use it as a model to make predictions.</p>
+      </div>
+      <div class="model">
+        <label for="gasT">Gas temperature: <b id="gasTv">22</b> °C</label>
+        <input type="range" id="gasT" min="-40" max="60" value="22">
+        <canvas id="gasCv" width="520" height="240" aria-label="Particle model of gas in a cylinder with a movable piston"></canvas>
+        <div class="out data" id="gasOut" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="model">
+      <h3>Your turn: predict, then test</h3>
+      <div id="gasQ" class="q"></div>
+      <div class="row"><button class="btn" id="gasNew" type="button">New problem</button></div>
+    </div>
+    <div class="model">
+      <h3>Predict with a rock layer model</h3>
+      <p class="note">Use the law of superposition to predict the order of fossils in this model of a Drumheller badlands cliff. Tap the oldest layer first, then work upward.</p>
+      <div class="svgbox" id="rockSvg"></div>
+      <div id="rockFb" aria-live="polite"></div>
+      <div class="row"><button class="btn" id="rockNew" type="button">New cliff</button></div>
+    </div>
+  </article>
+
+  <article class="sec" id="B4">
+    <div class="sec-head"><span class="step">Station 4</span><h2>Career case files</h2><div class="codes"><span class="code">SL1.S4</span></div></div>
+    <p class="note">Pick a career. See how it uses the body of scientific knowledge, then solve its problem.</p>
+    <div class="row" id="caseBtns"></div>
+    <div id="caseBox" class="model"></div>
+  </article>
+</section>
+
+<section role="tabpanel" id="sort" aria-labelledby="t-sort" hidden>
+  <p class="intro">Sort each card into the right bin. Missed cards come back at the end of the round.</p>
+  <div class="row" style="justify-content:center" role="group" aria-label="Choose a deck" id="deckBtns"></div>
+  <p class="pill-count" id="sortStatus" style="text-align:center"></p>
+  <div class="sortcard" id="sortCard" aria-live="polite"></div>
+  <div class="bins" id="bins"></div>
+  <div id="sortFb" aria-live="polite" style="max-width:620px;margin:0 auto;width:100%"></div>
+  <div class="row" style="justify-content:center"><button class="btn" id="sortRestart" type="button">Restart round</button></div>
+</section>
+
+<section role="tabpanel" id="cards" aria-labelledby="t-cards" hidden>
+  <p class="intro">Tap the card or press Space to flip it. Mark each one as known or still learning.</p>
+  <div class="row" style="justify-content:center">
+    <button class="btn" id="fcShuffle" type="button">Shuffle</button>
+    <button class="btn" id="fcOnly" type="button" aria-pressed="false">Still learning only</button>
+    <span class="pill-count" id="fcCount"></span>
+  </div>
+  <div class="fc"><div class="fc-inner" id="fcCard" tabindex="0" role="button" aria-label="Flashcard, press to flip"></div></div>
+  <div class="row" style="justify-content:center">
+    <button class="btn" id="fcPrev" type="button">Previous</button>
+    <button class="btn inf" id="fcLearn" type="button">Still learning</button>
+    <button class="btn primary" id="fcKnow" type="button">I know it</button>
+    <button class="btn" id="fcNext" type="button">Next</button>
+  </div>
+  <div style="max-width:560px;margin:0 auto;width:100%"><div class="meter"><i id="fcMeter" style="width:0%"></i></div></div>
+</section>
+
+<section role="tabpanel" id="quiz" aria-labelledby="t-quiz" hidden>
+  <p class="intro">Ten questions are drawn from a bank of <span id="qBankN"></span>. Each answer shows an explanation.</p>
+  <div class="sec" id="quizBox"></div>
+</section>
+
+<section role="tabpanel" id="write" aria-labelledby="t-write" hidden>
+  <p class="intro">Write your answer first, then open the model answer and tick the key ideas you included. Your drafts stay in this browser only.</p>
+  <h2 style="font-size:1.3rem">Short answer</h2>
+  <div id="shortList" style="display:grid;gap:14px"></div>
+  <h2 style="font-size:1.3rem">Extended response</h2>
+  <div id="longList" style="display:grid;gap:14px"></div>
+</section>
+
+<section role="tabpanel" id="cov" aria-labelledby="t-cov" hidden>
+  <p class="intro">For teachers: every knowledge (K) and skills and procedures (S) statement for this understanding, and where the lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  <div class="sec"><div class="tablebox"><table class="cov" id="covTable"></table></div></div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Science 8 · Draft Science (7 to 9) Curriculum, 2027/28 implementation.</span>
+  <span>Progress is saved in this browser only. No sign-in and no data leaves your device.</span>
+  <span><button class="btn" id="resetAll" type="button">Clear my progress</button> <span id="resetMsg" class="note"></span></span>
+</div></footer>
+<script>
+"use strict";
+const PHEN = [
+  {k:"Falling objects", fact:"A dropped object always falls toward the centre of Earth. This has been observed millions of times, everywhere on Earth.", law:"Newton's law of universal gravitation describes the pull between any two masses: F = G × m₁ × m₂ ÷ r². More mass means more pull. More distance means less pull.", theory:"Einstein's general theory of relativity explains why: mass curves space and time, and objects follow that curve.", model:"A heavy ball on a stretched sheet makes a dip, and marbles roll toward it. It shows how mass might bend space."},
+  {k:"Gases", fact:"A sealed balloon brought outside on a −30 °C Edmonton day gets smaller. It grows again when brought back inside.", law:"Charles's law describes it: at constant pressure, gas volume is proportional to temperature in kelvin (V₁ ÷ T₁ = V₂ ÷ T₂).", theory:"Kinetic molecular theory explains why: gas is made of tiny moving particles. Colder particles move slower and push less on the balloon walls.", model:"The particle model shows gas particles as dots that move faster when heated, bouncing off the container walls."},
+  {k:"Rock layers", fact:"In the Drumheller badlands, the same layers of sandstone, mudstone and coal appear in the same order along many kilometres of valley walls.", law:"The law of superposition: in undisturbed rock layers, each layer is younger than the one below it.", theory:"The theory of plate tectonics and the rock cycle explain how layers form, get buried, lift up and tilt over millions of years.", model:"A layer cake or stacked coloured sand in a jar models how sediments pile up, oldest on the bottom."},
+  {k:"Chemical reactions", fact:"When steel wool burns in a sealed container, the total mass before and after is the same on a balance.", law:"The law of conservation of mass: in a closed system, the mass of the products equals the mass of the reactants. French chemist Antoine Lavoisier showed this with careful measurements in the 1770s and 1780s.", theory:"Atomic theory explains why: atoms are rearranged into new substances. They are not created or destroyed.", model:"Ball-and-stick models show atoms joining in new combinations while the number of each kind of atom stays the same."},
+  {k:"The universe", fact:"Light from distant galaxies is stretched toward the red end of the spectrum (redshift). Astronomers have confirmed this for many thousands of galaxies.", law:"Hubble's law describes it: a galaxy's speed away from us is proportional to its distance (v = H₀ × d).", theory:"The Big Bang theory explains why: the universe began hot and dense and space itself has been expanding ever since.", model:"An inflating balloon with dots drawn on it. As it stretches, every dot moves away from every other dot."}
+];
+
+const SHARE = [
+  {q:"Explains why or how something happens.", a:"t", ex:"That is the job of a theory."},
+  {q:"Is supported by a large body of evidence.", a:"b", ex:"Both laws and theories rest on large bodies of evidence."},
+  {q:"Can be written as an equation such as θr = θi.", a:"l", ex:"Laws are often written as equations, rules or cause and effect statements."},
+  {q:"Can be used to make predictions.", a:"b", ex:"Both laws and theories are used to predict what will happen."},
+  {q:"Is testable.", a:"b", ex:"Both can be tested by investigations."},
+  {q:"Is more important than the other kind.", a:"n", ex:"Neither. Laws and theories are equally important."},
+  {q:"Integrates a wide range of scientific knowledge.", a:"t", ex:"Theories pull together many facts, laws and fields."},
+  {q:"Describes what happens, and is considered universal.", a:"l", ex:"Laws describe phenomena and are considered universal."}
+];
+
+const WEB = [
+  {k:"Earthquakes", x:70, y:40, t:"Most earthquakes happen along plate boundaries, where plates grind past, pull apart or push together."},
+  {k:"Volcanoes", x:330, y:40, t:"Volcanoes form where one plate sinks under another and melts, or where plates pull apart. The Pacific Ring of Fire traces plate edges."},
+  {k:"Rocky Mountains", x:30, y:130, t:"Colliding plates squeezed and stacked rock layers upward to build the Rockies west of Calgary and Edmonton."},
+  {k:"Matching fossils", x:350, y:130, t:"The same fossil reptiles appear in South America and Africa because the continents were once joined, then drifted apart."},
+  {k:"Coastline fit", x:70, y:220, t:"Africa and South America fit together like puzzle pieces. They split as plates moved apart."},
+  {k:"Seafloor age", x:330, y:220, t:"Rock is youngest at mid-ocean ridges and older farther away. New seafloor forms at ridges and spreads outward."}
+];
+
+const LT_POOL = [
+  ["Energy cannot be created or destroyed, only changed from one form to another.","l","This describes what always happens (the law of conservation of energy). It does not say why."],
+  ["All living things are made of cells, cells are the basic unit of life, and new cells come from existing cells. This explains how life grows and reproduces.","t","Cell theory explains how living things are built and reproduce, and integrates biology."],
+  ["An object at rest stays at rest unless an unbalanced force acts on it.","l","Newton's first law describes motion. It does not explain the cause of inertia."],
+  ["Diseases such as measles are caused by microorganisms that spread between people.","t","Germ theory explains how many diseases happen and spread."],
+  ["In undisturbed rock layers, lower layers are older than upper layers.","l","The law of superposition is a rule that describes rock layers."],
+  ["Species change over many generations through natural selection, which explains the variety of life on Earth.","t","The theory of evolution by natural selection explains how and why species change."],
+  ["The angle of reflection equals the angle of incidence.","l","The law of reflection is an equation that describes light."],
+  ["Matter is made of tiny particles that are always moving, and their motion explains temperature and the states of matter.","t","Kinetic molecular theory explains the behaviour of solids, liquids and gases."],
+  ["At constant pressure, a gas expands when its temperature rises.","l","Charles's law describes a relationship between volume and temperature."],
+  ["Earth's outer layer is broken into moving plates, which explains earthquakes, volcanoes and mountain building.","t","Plate tectonics explains many Earth features."],
+  ["Every force has an equal and opposite reaction force.","l","Newton's third law describes forces in pairs."],
+  ["The universe began in a hot, dense state and has been expanding, which explains why distant galaxies move away from us.","t","The Big Bang theory explains the history of the universe."],
+  ["In a closed system, the mass of the products equals the mass of the reactants.","l","The law of conservation of mass describes chemical reactions."],
+  ["All matter is made of atoms that combine and rearrange in chemical reactions.","t","Atomic theory explains what matter is made of and why mass is conserved."]
+];
+
+const RESEARCH = [
+  {k:"Law of conservation of mass", type:"law", who:"Antoine Lavoisier (France), 1770s to 1780s, building on earlier work by Mikhail Lomonosov (Russia).", what:"In a closed system, total mass stays the same during a chemical reaction.", ev:"Careful weighing of reactants and products in sealed containers. Repeated in labs worldwide for over 200 years.", pred:"If 10 g of baking soda reacts with vinegar in a sealed bag, the bag's total mass will not change.", link:"Explained by atomic theory."},
+  {k:"Law of superposition", type:"law", who:"Nicolas Steno (Denmark), 1669.", what:"In undisturbed layers of sedimentary rock, older layers are below younger ones.", ev:"Observations of rock layers on every continent, including the Red Deer River valley in Alberta.", pred:"A fossil found in a lower layer is older than one found higher in the same undisturbed cliff.", link:"Used by paleontologists at the Royal Tyrrell Museum to put dinosaur fossils in order."},
+  {k:"Hubble's law", type:"law", who:"Proposed by Georges Lemaître (Belgium) in 1927 and confirmed with data by Edwin Hubble (USA) in 1929. In 2018 the International Astronomical Union recommended calling it the Hubble and Lemaître law.", what:"The farther a galaxy is from us, the faster it moves away: v = H₀ × d.", ev:"Redshift and distance measurements for thousands of galaxies.", pred:"A galaxy twice as far away should be moving away about twice as fast.", link:"Explained by the Big Bang theory."},
+  {k:"Big Bang theory", type:"theory", who:"Georges Lemaître (1927); developed by George Gamow, Ralph Alpher, Robert Herman and many others.", what:"The universe began very hot and dense about 13.8 billion years ago and has expanded and cooled since.", ev:"Galaxy redshifts, the cosmic microwave background detected in 1965, and the amounts of light elements like hydrogen and helium.", pred:"Predicted leftover radiation filling all of space, which was later detected.", link:"Integrates physics, chemistry and astronomy."},
+  {k:"Plate tectonics", type:"theory", who:"Alfred Wegener's continental drift idea (1912), then J. Tuzo Wilson (Canada), Harry Hess and others in the 1960s.", what:"Earth's outer layer is broken into plates that move slowly, explaining earthquakes, volcanoes and mountains.", ev:"Seafloor ages, magnetic stripes on the ocean floor, matching fossils and rocks, earthquake locations, GPS measurements of plate motion.", pred:"Predicts where earthquakes and volcanoes are most likely.", link:"Integrates geology, physics and biology."},
+  {k:"Cell theory", type:"theory", who:"Matthias Schleiden and Theodor Schwann (Germany), 1838 to 1839; Rudolf Virchow added that cells come from cells (1855).", what:"All living things are made of cells, cells are the basic unit of life, and all cells come from existing cells.", ev:"Microscope observations of plants, animals and microorganisms.", pred:"Any newly discovered organism will be made of cells.", link:"Integrates biology, chemistry and medicine."}
+];
+const RES_FIELDS = [["q","My research question"],["src","Two sources I used"],["what","What it describes or explains, in my words"],["ev","Key evidence that supports it"],["pred","A prediction it makes that I could test"],["who","People who contributed, and where they were from"]];
+
+const CAREERS = [
+  {k:"geo", job:"Geophysicist", topic:"Geology and resources", what:"Geophysicists apply laws of physics, like how waves reflect and travel through rock, to map what lies underground. In Alberta they help find oil, gas, groundwater and geothermal heat, and they monitor small earthquakes.",
+   intro:"A geophysicist sends a sound pulse into the ground near Drayton Valley. The echo from a rock layer returns after 0.80 s. Sound travels through these rocks at about 3000 m/s.",
+   formula:"depth = speed × time ÷ 2 (the pulse goes down and back up)",
+   qs:[{q:"How deep is the rock layer?",o:["1200 m","2400 m","3750 m"],a:0,ex:"3000 m/s × 0.80 s = 2400 m for the round trip. Divide by 2: the layer is 1200 m deep."},
+       {q:"Which kind of knowledge is the geophysicist applying?",o:["A law describing how waves travel and reflect","A guess","An opinion about rocks"],a:0,ex:"Laws of wave reflection and speed describe what the pulse does. The geophysicist applies them to predict depth."}]},
+  {k:"agro", job:"Agronomist", topic:"Sustainability", what:"Agronomists use soil science, plant biology and chemistry to help farmers grow crops while protecting soil and water. They test predictions with field trials and data.",
+   intro:"An agronomist runs canola trials near Vegreville with different amounts of nitrogen fertilizer. Extra nitrogen that crops do not use can wash into streams.",
+   table:[["Nitrogen (kg/ha)","Yield (bushels/acre)"],["0","28"],["40","40"],["80","48"],["120","50"],["160","50"]],
+   qs:[{q:"Which rate gives most of the yield with the least wasted fertilizer?",o:["0 kg/ha","80 to 120 kg/ha","160 kg/ha"],a:1,ex:"Yield climbs quickly up to 80 kg/ha, then barely changes. Adding more past 120 kg/ha gives no extra canola and risks polluting water."},
+       {q:"How is the agronomist advancing scientific knowledge?",o:["By testing predictions with data from controlled field trials","By picking a number at random","By copying last year's plan"],a:0,ex:"Field trials test predictions from soil and plant science and add new evidence."}]},
+  {k:"inst", job:"Instrumentation technician", topic:"Design criteria", what:"Instrumentation technicians install, test and calibrate sensors that measure temperature, pressure and flow in places like refineries, water treatment plants and hospitals. Designs must meet criteria for accuracy and safety, based on scientific laws.",
+   intro:"A technician checks a gas storage tank sensor. Using a gas law, the design predicts the pressure should rise about 10% when the gas warms from 273 K to 300 K. The sensor shows these readings.",
+   table:[["Gas temperature (K)","Predicted pressure (kPa)","Sensor reading (kPa)"],["273","200","200"],["287","210","214"],["300","220","229"]],
+   qs:[{q:"What does the data show about the sensor?",o:["It reads correctly at all temperatures","It reads too high, and the error grows as temperature rises","It reads too low"],a:1,ex:"At 273 K it matches. At 300 K it reads 9 kPa high. The error grows with temperature, so it needs recalibrating."},
+       {q:"Why does the technician trust the predicted values?",o:["They come from a gas law that is widely accepted and tested","The technician guessed them","Sensors are never wrong"],a:0,ex:"Gas laws have been tested countless times, so they set the standard the sensor must meet."}]}
+];
+
+const SORT_DECKS = {
+  lt:{name:"Law or theory", bins:[["Law","describes what happens","a"],["Theory","explains why or how","b"]], items:[
+    ["Energy is conserved in every interaction.","Law"],["Cell theory","Theory"],["θr = θi","Law"],["Germ theory of disease","Theory"],
+    ["Lower rock layers are older than upper ones.","Law"],["Plate tectonics","Theory"],["Every action force has an equal and opposite reaction force.","Law"],["Big Bang","Theory"],
+    ["V₁ ÷ T₁ = V₂ ÷ T₂","Law"],["Kinetic molecular theory","Theory"],["Mass is conserved in a closed system.","Law"],["Atomic theory","Theory"],
+    ["Galaxy speed is proportional to distance.","Law"],["Evolution by natural selection","Theory"]]},
+  kinds:{name:"Fact, law, theory or model", bins:[["Fact","confirmed observation","c"],["Law","describes","a"],["Theory","explains","b"],["Model","represents","d"]], items:[
+    ["Water at sea level boils at 100 °C. This has been measured countless times.","Fact"],["A globe showing Earth's continents and oceans.","Model"],["Gravity is explained as mass curving space and time.","Theory"],["F = G × m₁ × m₂ ÷ r²","Law"],
+    ["A computer simulation of a wildfire spreading near Fort McMurray.","Model"],["Earth's moon has phases that repeat about every 29.5 days.","Fact"],["Atoms rearrange in reactions, which is why mass is conserved.","Theory"],["Mass of products equals mass of reactants in a closed system.","Law"],
+    ["A balloon with dots that spread apart as it inflates.","Model"],["The bones of Albertosaurus have been found in Alberta rock layers.","Fact"],["Species change over generations by natural selection.","Theory"],["In undisturbed rock, lower layers are older.","Law"]]}
+};
+
+const FLASH = [
+  ["Scientific knowledge","Facts, models, laws and theories that describe and explain the natural world."],
+  ["Phenomenon","Something that happens in nature that can be observed. Plural: phenomena."],
+  ["Scientific fact","An observation that has been repeatedly confirmed. It can be revised or rejected with new evidence."],
+  ["Scientific law","A description of what happens under stated conditions, written as a cause and effect statement, rule or equation. Considered universal."],
+  ["Scientific theory","An explanation of why or how phenomena happen that integrates a wide range of knowledge."],
+  ["Scientific model","A representation that helps explain or predict a phenomenon."],
+  ["Hypothesis","A testable explanation for a specific question. Models can be used to test hypotheses."],
+  ["Prediction","A statement of what should happen if a law, theory or hypothesis is correct."],
+  ["Testable","Able to be checked by an investigation that could show it is wrong."],
+  ["Universal","True everywhere, under the stated conditions."],
+  ["Body of evidence","All the observations and data from many investigations that support an idea."],
+  ["Law of superposition","In undisturbed rock layers, lower layers are older than upper layers."],
+  ["Law of reflection","The angle of reflection equals the angle of incidence."],
+  ["Charles's law","At constant pressure, gas volume is proportional to temperature in kelvin."],
+  ["Law of conservation of mass","In a closed system, total mass stays the same during a chemical reaction."],
+  ["Plate tectonics","The theory that Earth's outer layer is made of moving plates."],
+  ["Big Bang theory","The theory that the universe began hot and dense and has been expanding for about 13.8 billion years."],
+  ["Kinetic molecular theory","The theory that matter is made of moving particles whose motion explains temperature and states of matter."],
+  ["Geophysicist","A scientist who applies physics to study Earth, for example to find resources underground."],
+  ["Agronomist","A scientist who studies soil and crops to grow food sustainably."],
+  ["Instrumentation technician","A technician who installs and calibrates sensors to meet design criteria."]
+];
+
+const QUIZ = [
+  {q:"What does a scientific law do?",o:["Explains why something happens","Describes what happens under stated conditions","Is a guess that needs testing","Becomes a theory when proven"],a:1,ex:"Laws describe phenomena. Theories explain them."},
+  {q:"What does a scientific theory do?",o:["Describes a single measurement","Explains why or how phenomena happen","Turns into a law with more evidence","States an opinion"],a:1,ex:"A theory explains why or how and integrates a wide range of knowledge."},
+  {q:"Which is a myth about laws and theories?",o:["Both are testable","Both are supported by large bodies of evidence","A theory becomes a law once it is proven","Both are used to make predictions"],a:2,ex:"Theories and laws are different kinds of knowledge. One cannot change into the other."},
+  {q:"Which statement about laws and theories is correct?",o:["Laws are more important than theories","Theories are more important than laws","They are equally important","Neither is testable"],a:2,ex:"Laws and theories are equally important. They do different jobs."},
+  {q:"Which is NOT one of the forms a law can take?",o:["An equation","A rule","A cause and effect statement","A detailed explanation of why"],a:3,ex:"Explaining why is the job of a theory."},
+  {q:"θr = θi is an example of a law written as…",o:["a rule","an equation","a theory","a model"],a:1,ex:"The law of reflection is written as an equation."},
+  {q:"\"In undisturbed rock layers, lower layers are older.\" This is…",o:["a theory","a law written as a rule","a hypothesis","a model"],a:1,ex:"The law of superposition is a rule that describes rock layers."},
+  {q:"Which best describes a scientific fact?",o:["An observation that has been repeatedly confirmed","Something that can never change","A personal belief","An explanation of why"],a:0,ex:"Facts are confirmed observations, and they can still be revised with new evidence."},
+  {q:"Textbooks once said human body cells have 48 chromosomes. In 1956 better methods counted 46. This shows that…",o:["science is unreliable","facts can be revised with additional evidence","the first scientists cheated","facts become theories"],a:1,ex:"New evidence led scientists to revise an accepted fact."},
+  {q:"A scientific model is…",o:["a perfect copy of reality","a representation that helps explain or predict","the same thing as a law","only a physical object"],a:1,ex:"Models represent phenomena to help explain or predict. They can be diagrams, objects, equations or simulations."},
+  {q:"The balloon model of the universe helps scientists…",o:["prove the universe is made of rubber","represent how expanding space moves galaxies apart","measure the mass of the Sun","describe chemical reactions"],a:1,ex:"Dots spreading on an inflating balloon represent galaxies moving apart as space expands."},
+  {q:"Which theory explains why distant galaxies are moving away from us?",o:["Cell theory","Big Bang theory","Germ theory","Atomic theory"],a:1,ex:"The Big Bang theory explains the expansion of the universe."},
+  {q:"Who first proposed that the universe is expanding, in 1927?",o:["Isaac Newton","Georges Lemaître","Charles Darwin","Marie Curie"],a:1,ex:"Belgian physicist Georges Lemaître proposed an expanding universe in 1927."},
+  {q:"Which piece of evidence was predicted by Big Bang models and later detected?",o:["Moon phases","The cosmic microwave background","Earthquakes","Magnetism"],a:1,ex:"Leftover radiation from the early universe was predicted and then detected in 1965."},
+  {q:"Plate tectonics explains earthquakes, volcanoes, fossils on different continents and mountain building. This shows that theories…",o:["integrate a wide range of knowledge","only explain one thing","are just guesses","are laws"],a:0,ex:"Theories pull together many kinds of evidence into one explanation."},
+  {q:"What does it mean that a law is \"universal\"?",o:["It only works in labs","It works everywhere under its stated conditions","It was discovered by everyone","It explains everything"],a:1,ex:"A law applies everywhere, as long as its conditions are met."},
+  {q:"What does \"testable\" mean?",o:["It appears on a test","Investigations could show it to be wrong","It has never been tested","It is always true"],a:1,ex:"A testable idea can be checked. If the evidence disagreed, the idea could be shown wrong."},
+  {q:"A 2.0 L balloon at 300 K is cooled to 270 K at constant pressure. Using Charles's law, the new volume is…",o:["1.8 L","2.0 L","2.2 L","3.0 L"],a:0,ex:"V₂ = 2.0 × 270 ÷ 300 = 1.8 L. Cooler gas takes up less space."},
+  {q:"Which kind of knowledge is \"Atoms rearrange during reactions, so mass is conserved\"?",o:["Fact","Law","Theory","Model"],a:2,ex:"It explains why mass is conserved, so it comes from atomic theory."},
+  {q:"Newton's law of gravitation and Einstein's general relativity show that…",o:["the law became a theory","a law describes gravity and a theory explains it","Newton was completely wrong","theories replace laws"],a:1,ex:"Both are used today. One describes, one explains. Neither turned into the other."},
+  {q:"A geophysicist uses wave reflection to find an oil-bearing layer. This is an example of…",o:["applying scientific laws","ignoring evidence","creating a theory from nothing","a myth"],a:0,ex:"Geophysicists apply laws of wave behaviour to predict what is underground."},
+  {q:"An agronomist tests how fertilizer amounts affect canola yield in field trials. This advances knowledge by…",o:["collecting evidence that tests predictions","avoiding data","guessing","copying a law"],a:0,ex:"Field trials test predictions from soil and plant science."},
+  {q:"An instrumentation technician compares sensor readings to values predicted by a gas law. The sensor is off. What should happen?",o:["Change the gas law","Recalibrate or replace the sensor","Ignore it","Call it a theory"],a:1,ex:"The gas law is well tested, so the sensor must be fixed to meet the design criteria."},
+  {q:"Scientists use a computer model to test the hypothesis that wildfire smoke will reach Edmonton by evening. The model is being used to…",o:["describe a law","make and test a prediction","replace observation","prove a fact forever"],a:1,ex:"Models help scientists predict and test hypotheses."},
+  {q:"Which is true of BOTH laws and theories?",o:["They describe only","They explain only","They are widely accepted and used to make predictions","They cannot be tested"],a:2,ex:"Both are widely accepted, supported by evidence, equally important, testable and used to predict."}
+];
+
+const SHORT = [
+  {p:"What is the main difference between a scientific law and a scientific theory?",m:"A law describes what happens under stated conditions, often as a rule or equation. A theory explains why or how it happens and integrates a wide range of knowledge.",k:["Law describes what happens","Theory explains why or how","A correct example of either"]},
+  {p:"List four kinds of scientific knowledge and give a one-line description of each.",m:"Fact: a repeatedly confirmed observation. Law: a description of what happens. Theory: an explanation of why or how. Model: a representation that helps explain or predict.",k:["Fact","Law","Theory","Model"]},
+  {p:"Can a scientific fact ever change? Explain with an example.",m:"Yes. Facts can be revised or rejected with additional evidence. For example, the human chromosome count was accepted as 48 until better methods in 1956 showed 46.",k:["Facts can be revised or rejected","New evidence causes the change","Gives an example"]},
+  {p:"Give three things that laws and theories have in common.",m:"Both are widely accepted, supported by large bodies of evidence, equally important, used to make predictions and testable. Any three.",k:["First shared feature","Second shared feature","Third shared feature"]},
+  {p:"Describe the three ways a scientific law can be expressed, with an example of each.",m:"Cause and effect: every action force has an equal and opposite reaction force (Newton's third law). Rule: lower rock layers are older (law of superposition). Equation: θr = θi (law of reflection).",k:["Cause and effect with example","Rule with example","Equation with example"]},
+  {p:"Explain why a theory cannot become a law.",m:"Laws and theories are different kinds of knowledge. A law describes and a theory explains. More evidence makes a theory stronger, but it never changes an explanation into a description.",k:["They are different kinds of knowledge","Law describes, theory explains","Evidence strengthens but does not convert"]},
+  {p:"What is a scientific model? Give an example and one limitation.",m:"A model is a representation that helps explain or predict a phenomenon. Example: a balloon with dots models the expanding universe. Limitation: the balloon surface is 2D, but space is 3D.",k:["Definition","Example","Limitation"]},
+  {p:"How did models and predictions help develop the Big Bang theory?",m:"Models of an expanding universe predicted that distant galaxies move away faster and that leftover heat should fill space. Hubble's galaxy data and the 1965 detection of the cosmic microwave background matched these predictions and supported the theory.",k:["Models made predictions","Predictions were tested with observations","Evidence supported the theory"]},
+  {p:"Choose a career (geophysicist, agronomist or instrumentation technician) and explain how it uses laws or theories.",m:"Example: a geophysicist applies laws of wave reflection and wave speed to calculate the depth of rock layers and locate resources such as groundwater, oil or gas.",k:["Names a career","Names a law or theory used","Explains how it is applied"]}
+];
+
+const LONG = [
+  {p:"Your friend says, \"Evolution is just a theory. When scientists prove it, it will become a law.\" Write a response that corrects this idea using what you know about facts, laws and theories.",k:["Explains scientific meaning of theory (not a guess)","Theories are supported by large bodies of evidence","Theories cannot become laws","Laws describe, theories explain","Laws and theories are equally important"]},
+  {p:"Research a scientific law or theory. Describe what it describes or explains, who contributed to it and where they were from, the evidence that supports it, and one prediction it makes.",k:["Clear statement of the law or theory","Correctly identified as law or theory","Contributors named","Evidence described","A testable prediction"]},
+  {p:"Use the particle model of gases to predict what happens to a balloon left in a car overnight in an Edmonton winter, then brought inside. Include a calculation with Charles's law and explain the prediction using the model.",k:["Prediction: shrinks in the cold, expands inside","Correct conversion to kelvin","Correct use of V₂ = V₁ × T₂ ÷ T₁","Explains with particle speed","States the model's assumption, such as constant pressure"]},
+  {p:"Choose one phenomenon (falling objects, gases, rock layers, chemical reactions or the universe). Describe a fact, a law, a theory and a model related to it, and explain how they work together.",k:["Fact","Law","Theory","Model","Explains how they connect"]}
+];
+
+const COVERAGE = [
+  ["SL1.K1","Scientific knowledge can refer to facts, models, laws, and theories.","Learn: Lesson 1; Sort It (four kinds deck); Flashcards"],
+  ["SL1.K2","Observations repeatedly confirmed may be accepted as scientific facts, which can be revised or rejected with additional evidence.","Learn: Lesson 2; Quiz; Written Review"],
+  ["SL1.K3","Laws and theories are widely accepted, supported by large bodies of evidence, equally important, used to make predictions, and testable.","Learn: Lesson 3; Lab Bench: Station 1 table; Quiz"],
+  ["SL1.K4","Scientific laws are descriptions of phenomena, can be expressed as cause and effect, rule, or equation, and are considered universal.","Learn: Lesson 4; Lab Bench: Stations 1 and 3"],
+  ["SL1.K5","Scientific theories explain why or how phenomena occur and integrate a wide range of scientific knowledge.","Learn: Lesson 5; Lab Bench: Station 1"],
+  ["SL1.K6","A scientific model is a representation that helps explain or predict a phenomenon.","Learn: Lesson 6; Lab Bench: Station 3"],
+  ["SL1.K7","Scientists may use models to test hypotheses when developing theories, such as the Big Bang theory.","Learn: Lesson 6 (balloon model); Quiz; Written Review"],
+  ["SL1.K8","Scientific theories cannot change into laws, and laws cannot change into theories.","Learn: Lesson 7; Written Review (extended 1)"],
+  ["SL1.K9","Science-related careers advance knowledge by developing, testing and applying laws and theories: geophysicist, agronomist, instrumentation technician.","Learn: Lesson 8; Lab Bench: Station 4"],
+  ["SL1.S1","Compare scientific laws to scientific theories.","Lab Bench: Station 1; Sort It; Learn: Lessons 3 to 5 and 7"],
+  ["SL1.S2","Research a scientific law or theory.","Lab Bench: Station 2; Written Review (extended 2)"],
+  ["SL1.S3","Develop predictions for a phenomenon, using a scientific model.","Lab Bench: Station 3; Learn: Lesson 6; Written Review (extended 3)"],
+  ["SL1.S4","Explore how a career in an applicable field of study in science uses the body of scientific knowledge.","Lab Bench: Station 4; Learn: Lesson 8"]
+];
+/* ---------- HELPERS ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "rb-g8-sl1-laws-theories";
+let store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { store = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const rnd = (a, b) => a + Math.random() * (b - a);
+const ri = (a, b) => Math.floor(rnd(a, b + 1));
+function fb(el, ok, html) { el.innerHTML = '<div class="fb ' + (ok ? "good" : "bad") + '">' + html + "</div>"; }
+const NS = "http://www.w3.org/2000/svg";
+
+function updateStats() {
+  $("stQuiz").textContent = store.quizBest != null ? store.quizBest + "/10" : "–";
+  const known = Object.values(store.fc || {}).filter(v => v === "k").length;
+  $("stCards").textContent = known + "/" + FLASH.length;
+  $("stSort").textContent = store.sortBest != null ? store.sortBest + "%" : "–";
+}
+
+/* ---------- THEME ---------- */
+(function () {
+  const root = document.documentElement;
+  if (store.theme) root.setAttribute("data-theme", store.theme);
+  $("themeBtn").addEventListener("click", () => {
+    const cur = root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next); store.theme = next; save();
+  });
+})();
+
+/* ---------- TABS ---------- */
+(function () {
+  const tabs = [...document.querySelectorAll('[role=tab]')];
+  function select(tab, focus) {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+      $(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) tab.focus();
+    store.tab = tab.id; save();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", e => {
+      let n = null;
+      if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+      if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (e.key === "Home") n = tabs[0];
+      if (e.key === "End") n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); select(n, true); }
+    });
+  });
+  const saved = store.tab && $(store.tab);
+  if (saved) select(saved);
+})();
+
+/* ---------- LESSON 1: four kinds ---------- */
+(function () {
+  const kinds = [["fact", "Fact", "fact"], ["law", "Law", "law"], ["theory", "Theory", "thy"], ["model", "Model", "mod"]];
+  function show(p) {
+    [...$("phenBtns").children].forEach(b => b.setAttribute("aria-pressed", b.textContent === p.k));
+    $("phenGrid").innerHTML = kinds.map(([f, n, c]) => `<div class="kcell ${c}"><span class="tag ${c}">${n}</span><span>${esc(p[f])}</span></div>`).join("");
+  }
+  PHEN.forEach(p => { const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.textContent = p.k; b.onclick = () => show(p); $("phenBtns").appendChild(b); });
+  show(PHEN[0]);
+})();
+
+/* ---------- LESSON 2: fact revision ---------- */
+(function () {
+  let checks = [];
+  function draw() {
+    const W = 420, H = 150;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chromosome counts reported by labs">`;
+    s += `<text x="10" y="18" font-size="11" fill="var(--muted)">Count reported by each lab</text>`;
+    [44, 46, 48].forEach(v => { const y = 120 - (v - 44) * 22; s += `<line x1="40" x2="${W - 10}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="32" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${v}</text>`; });
+    checks.forEach((c, i) => { const x = 54 + i * 26, y = 120 - (c.v - 44) * 22; if (x < W - 10) s += `<circle cx="${x}" cy="${y}" r="8" fill="${c.n ? "var(--accent)" : "var(--data)"}"/>`; });
+    s += `<circle cx="60" cy="140" r="5" fill="var(--data)"/><text x="70" y="144" font-size="11" fill="var(--ink)">old method</text><circle cx="170" cy="140" r="5" fill="var(--accent)"/><text x="180" y="144" font-size="11" fill="var(--ink)">new method</text></svg>`;
+    $("factSvg").innerHTML = s;
+    const olds = checks.filter(c => !c.n).length, news = checks.filter(c => c.n).length;
+    let t;
+    if (!checks.length) t = "No labs have checked yet.";
+    else if (!news) t = `${olds} lab${olds > 1 ? "s" : ""} reported 48. With repeated confirmation, the count of 48 was accepted as a fact.`;
+    else if (news < 3) t = `New evidence: ${news} lab${news > 1 ? "s" : ""} using a better method counted 46. Scientists check whether other labs get the same result.`;
+    else t = `${news} labs using the better method all counted 46. The old fact of 48 was rejected and revised to 46. Facts are strong, but new evidence can change them.`;
+    $("factOut").innerHTML = '<span class="tag fact">Status</span> ' + t;
+  }
+  $("factOld").onclick = () => { if (checks.length < 13) checks.push({ v: 48, n: false }); draw(); };
+  $("factNew").onclick = () => { if (checks.length < 13) checks.push({ v: 46, n: true }); draw(); };
+  $("factReset").onclick = () => { checks = []; draw(); };
+  draw();
+})();
+
+/* ---------- LESSON 3: shared features ---------- */
+(function () {
+  const lbl = { l: "Laws", t: "Theories", b: "Both", n: "Neither" };
+  SHARE.forEach(it => {
+    const d = document.createElement("div"); d.className = "q";
+    d.innerHTML = `<p>${esc(it.q)}</p><div class="row"></div><div aria-live="polite"></div>`;
+    Object.entries(lbl).forEach(([k, v]) => { const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.textContent = v; b.onclick = () => fb(d.lastElementChild, k === it.a, (k === it.a ? "Correct. " : "Not quite. Answer: " + lbl[it.a] + ". ") + esc(it.ex)); d.querySelector(".row").appendChild(b); });
+    $("shareQs").appendChild(d);
+  });
+})();
+
+/* ---------- LESSON 4: reflection ---------- */
+(function () {
+  let loc = "Edmonton classroom";
+  function draw() {
+    const a = +$("reflA").value; $("reflAv").textContent = a;
+    const W = 400, H = 220, cx = 200, cy = 180, L = 150, r = a * Math.PI / 180;
+    const ix = cx - L * Math.sin(r), iy = cy - L * Math.cos(r), ox = cx + L * Math.sin(r), oy = iy;
+    const surf = loc.startsWith("Calm") ? "var(--accent)" : "var(--muted)";
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Light ray reflecting from a mirror at ${a} degrees">`;
+    s += `<rect x="30" y="${cy}" width="340" height="10" fill="${surf}" opacity=".5"/><line x1="30" x2="370" y1="${cy}" y2="${cy}" stroke="${surf}" stroke-width="3"/>`;
+    s += `<line x1="${cx}" x2="${cx}" y1="${cy}" y2="20" stroke="var(--muted)" stroke-dasharray="5 4"/><text x="${cx + 4}" y="30" font-size="11" fill="var(--muted)">normal</text>`;
+    s += `<line x1="${ix}" y1="${iy}" x2="${cx}" y2="${cy}" stroke="var(--data)" stroke-width="3"/><line x1="${cx}" y1="${cy}" x2="${ox}" y2="${oy}" stroke="var(--obs)" stroke-width="3"/>`;
+    const ar = 40, p = (ang) => [cx + ar * Math.sin(ang), cy - ar * Math.cos(ang)];
+    const [a1x, a1y] = p(-r), [a2x, a2y] = p(r);
+    s += `<path d="M${cx} ${cy - ar} A${ar} ${ar} 0 0 0 ${a1x} ${a1y}" fill="none" stroke="var(--data)"/><path d="M${cx} ${cy - ar} A${ar} ${ar} 0 0 1 ${a2x} ${a2y}" fill="none" stroke="var(--obs)"/>`;
+    s += `<text x="${cx - 70}" y="${cy - 50}" font-size="12" fill="var(--data)">θi = ${a}°</text><text x="${cx + 22}" y="${cy - 50}" font-size="12" fill="var(--obs)">θr = ${a}°</text>`;
+    s += `<text x="${ix}" y="${iy - 6}" font-size="11" fill="var(--data)" text-anchor="middle">incoming ray</text><text x="${ox}" y="${oy - 6}" font-size="11" fill="var(--obs)" text-anchor="middle">reflected ray</text>`;
+    s += `<text x="30" y="${H - 8}" font-size="11" fill="var(--muted)">${esc(loc)}</text></svg>`;
+    $("reflSvg").innerHTML = s;
+    $("reflOut").innerHTML = `<span class="tag law">Law of reflection</span> θ<sub>i</sub> = ${a}°, so θ<sub>r</sub> = ${a}°. Same result at the ${esc(loc.toLowerCase())}. The law describes <i>what</i> light does everywhere. Explaining <i>why</i> needs a theory of light.`;
+  }
+  $("reflA").oninput = draw;
+  document.querySelectorAll("[data-loc]").forEach(b => b.onclick = () => { loc = b.dataset.loc; document.querySelectorAll("[data-loc]").forEach(x => x.setAttribute("aria-pressed", x === b)); draw(); });
+  draw();
+})();
+
+/* ---------- LESSON 5: theory web ---------- */
+(function () {
+  let sel = null;
+  function draw() {
+    let s = `<svg viewBox="-30 0 500 260" role="img" aria-label="Plate tectonics theory connected to six lines of evidence">`;
+    WEB.forEach((w, i) => s += `<line x1="220" y1="130" x2="${w.x + 40}" y2="${w.y}" stroke="${sel === i ? "var(--inf)" : "var(--line)"}" stroke-width="${sel === i ? 3 : 1.5}"/>`);
+    s += `<ellipse cx="220" cy="130" rx="78" ry="30" fill="var(--inf-soft)" stroke="var(--inf)" stroke-width="2"/><text x="220" y="127" text-anchor="middle" font-size="13" font-weight="700" fill="var(--inf)">Plate tectonics</text><text x="220" y="143" text-anchor="middle" font-size="10" fill="var(--inf)">theory</text>`;
+    WEB.forEach((w, i) => s += `<g class="wn" data-i="${i}" tabindex="0" role="button" aria-label="${esc(w.k)}" style="cursor:pointer"><rect x="${w.x - 20}" y="${w.y - 16}" width="120" height="30" rx="15" fill="${sel === i ? "var(--inf)" : "var(--surface)"}" stroke="var(--inf)"/><text x="${w.x + 40}" y="${w.y + 4}" text-anchor="middle" font-size="11" fill="${sel === i ? "var(--surface)" : "var(--ink)"}">${esc(w.k)}</text></g>`);
+    s += "</svg>"; $("webSvg").innerHTML = s;
+    $("webSvg").querySelectorAll(".wn").forEach(g => {
+      const go = () => { sel = +g.dataset.i; $("webOut").innerHTML = `<span class="tag thy">${esc(WEB[sel].k)}</span> ${esc(WEB[sel].t)}`; draw(); $("webSvg").querySelector(`[data-i="${sel}"]`).focus(); };
+      g.addEventListener("click", go); g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+  }
+  draw();
+})();
+
+/* ---------- LESSON 6: balloon ---------- */
+(function () {
+  const pts = [[0, 0, "Home (Milky Way)"], [18, -10, "A"], [-30, 22, "B"], [48, 30, "C"], [-60, -42, "D"]];
+  function draw() {
+    const f = +$("balloon").value / 10; $("balloonV").textContent = f.toFixed(1);
+    const cx = 200, cy = 125;
+    let s = `<svg viewBox="0 0 400 250" role="img" aria-label="Balloon with galaxy dots spreading apart as it inflates">`;
+    s += `<circle cx="${cx}" cy="${cy}" r="${40 * f}" fill="var(--accent-soft)" stroke="var(--accent)"/>`;
+    pts.forEach(([x, y, n], i) => {
+      const px = cx + x * f * 0.6, py = cy + y * f * 0.6;
+      s += `<circle cx="${px}" cy="${py}" r="${i ? 5 : 7}" fill="${i ? "var(--inf)" : "var(--data)"}"/><text x="${px + 8}" y="${py + 4}" font-size="11" fill="var(--ink)">${n}</text>`;
+    });
+    s += "</svg>"; $("balloonSvg").innerHTML = s;
+    let t = '<table><tr><th>Galaxy</th><th class="num">Start distance</th><th class="num">Distance now</th><th class="num">Moved away by</th></tr>';
+    pts.slice(1).sort((a, b) => Math.hypot(a[0], a[1]) - Math.hypot(b[0], b[1])).forEach(([x, y, n]) => {
+      const d0 = Math.hypot(x, y) / 10, d = d0 * f;
+      t += `<tr><td>${n}</td><td class="num">${d0.toFixed(1)} cm</td><td class="num">${d.toFixed(1)} cm</td><td class="num">${(d - d0).toFixed(1)} cm</td></tr>`;
+    });
+    t += "</table>"; $("balloonTable").innerHTML = t + (f > 1 ? '<p class="note">The farthest galaxy moved away the most in the same time, so it is moving fastest. That matches the prediction and Hubble\'s data.</p>' : "");
+  }
+  $("balloon").oninput = draw; draw();
+})();
+
+/* ---------- LESSON 7: myth ---------- */
+(function () {
+  function draw(myth) {
+    $("mythBtn").setAttribute("aria-pressed", myth); $("sciBtn").setAttribute("aria-pressed", !myth);
+    let s = `<svg viewBox="0 0 400 200" role="img" aria-label="${myth ? "Incorrect ladder diagram" : "Correct diagram"}">`;
+    if (myth) {
+      [["Hypothesis", 150], ["Theory", 95], ["Law", 40]].forEach(([n, y], i) => s += `<rect x="${60 + i * 90}" y="${y}" width="100" height="34" rx="6" fill="var(--surface-2)" stroke="var(--bad)"/><text x="${110 + i * 90}" y="${y + 22}" text-anchor="middle" font-size="13" fill="var(--ink)">${n}</text>`);
+      s += `<path d="M160 160 L180 130 M250 105 L270 75" stroke="var(--bad)" stroke-width="2" marker-end="url(#ah)"/><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--bad)"/></marker></defs>`;
+      s += `<line x1="40" y1="20" x2="360" y2="190" stroke="var(--bad)" stroke-width="4" opacity=".7"/><text x="300" y="30" font-size="14" font-weight="700" fill="var(--bad)">MYTH</text>`;
+    } else {
+      s += `<rect x="130" y="150" width="140" height="34" rx="6" fill="var(--data-soft)" stroke="var(--data)"/><text x="200" y="172" text-anchor="middle" font-size="12" fill="var(--ink)">Observations and evidence</text>`;
+      s += `<rect x="20" y="40" width="130" height="54" rx="6" fill="var(--obs-soft)" stroke="var(--obs)"/><text x="85" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="var(--obs)">Law</text><text x="85" y="80" text-anchor="middle" font-size="11" fill="var(--ink)">describes what</text>`;
+      s += `<rect x="250" y="40" width="130" height="54" rx="6" fill="var(--inf-soft)" stroke="var(--inf)"/><text x="315" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="var(--inf)">Theory</text><text x="315" y="80" text-anchor="middle" font-size="11" fill="var(--ink)">explains why or how</text>`;
+      s += `<line x1="170" y1="150" x2="95" y2="96" stroke="var(--obs)" stroke-width="2"/><line x1="230" y1="150" x2="305" y2="96" stroke="var(--inf)" stroke-width="2"/>`;
+      s += `<line x1="152" y1="67" x2="248" y2="67" stroke="var(--muted)" stroke-dasharray="4 3"/><text x="200" y="60" text-anchor="middle" font-size="10" fill="var(--muted)">work together</text><text x="200" y="84" text-anchor="middle" font-size="10" fill="var(--muted)">never convert</text>`;
+    }
+    s += "</svg>"; $("mythSvg").innerHTML = s;
+    $("mythOut").innerHTML = myth ? '<span class="tag" style="background:var(--bad-soft);color:var(--bad)">Myth</span> "Ideas climb a ladder from hypothesis to theory to law as they get proven." This is wrong.' : '<span class="tag mod">Science</span> Laws and theories both grow from evidence. They do different jobs and stay different kinds of knowledge. A theory with more evidence becomes a stronger theory, not a law.';
+  }
+  $("mythBtn").onclick = () => draw(true); $("sciBtn").onclick = () => draw(false); draw(true);
+})();
+
+/* ---------- LESSON 8: careers ---------- */
+(function () {
+  CAREERS.forEach(c => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "flip"; let open = false;
+    const r = () => { b.innerHTML = `<span class="eyebrow">${esc(c.topic)}</span><h4>${esc(c.job)}</h4>` + (open ? `<span>${esc(c.what)}</span>` : '<span class="note">Tap to see how they use laws and theories.</span>'); b.setAttribute("aria-expanded", open); };
+    b.onclick = () => { open = !open; r(); }; r(); $("careerCards").appendChild(b);
+  });
+})();
+
+/* ---------- STATION 1 ---------- */
+(function () {
+  let order = shuffle(LT_POOL), i = 0, right = 0, tries = 0, answered = false;
+  function show() { $("ltStmt").textContent = order[i][0]; $("ltFb").innerHTML = ""; answered = false; }
+  function ans(x) {
+    if (answered) return; answered = true; tries++;
+    const it = order[i], ok = it[1] === x; if (ok) right++;
+    fb($("ltFb"), ok, (ok ? "Correct. " : "Not quite. It is a " + (it[1] === "l" ? "law" : "theory") + ". ") + esc(it[2]));
+    $("ltScore").textContent = right + " correct of " + tries;
+  }
+  $("ltLaw").onclick = () => ans("l"); $("ltThy").onclick = () => ans("t");
+  $("ltNext").onclick = () => { i++; if (i >= order.length) { order = shuffle(LT_POOL); i = 0; } show(); };
+  show();
+})();
+
+/* ---------- STATION 2: research ---------- */
+(function () {
+  store.res = store.res || {};
+  RES_FIELDS.forEach(([k, l]) => {
+    const id = "res-" + k;
+    const lab = document.createElement("label"); lab.setAttribute("for", id); lab.style.display = "block"; lab.innerHTML = `<b>${esc(l)}</b>`;
+    const ta = document.createElement("textarea"); ta.id = id; ta.style.minHeight = "64px"; ta.value = store.res[k] || "";
+    ta.oninput = () => { store.res[k] = ta.value; save(); };
+    $("resForm").appendChild(lab); $("resForm").appendChild(ta);
+  });
+  function show(r) {
+    [...$("resBtns").children].forEach(b => b.setAttribute("aria-pressed", b.textContent === r.k));
+    const c = r.type === "law" ? "law" : "thy";
+    $("resCard").innerHTML = `<h3>${esc(r.k)} <span class="tag ${c}">${r.type === "law" ? "Law" : "Theory"}</span></h3>
+      <p><b>${r.type === "law" ? "Describes" : "Explains"}:</b> ${esc(r.what)}</p>
+      <p><b>Contributors:</b> ${esc(r.who)}</p><p><b>Evidence:</b> ${esc(r.ev)}</p><p><b>Prediction:</b> ${esc(r.pred)}</p><p><b>Connection:</b> ${esc(r.link)}</p>
+      <p class="note">Research tip: confirm these points in two sources, then add one thing this card does not say.</p>`;
+  }
+  RESEARCH.forEach(r => { const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.textContent = r.k; b.onclick = () => show(r); $("resBtns").appendChild(b); });
+  show(RESEARCH[0]);
+})();
+
+/* ---------- STATION 3: gas model ---------- */
+(function () {
+  const cv = $("gasCv"), ctx = cv.getContext("2d");
+  const parts = Array.from({ length: 40 }, () => ({ x: Math.random(), y: Math.random(), a: Math.random() * Math.PI * 2 }));
+  const V0 = 3.0, T0 = 295;
+  let raf = null, last = 0;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function col(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888"; }
+  function frame(t) {
+    const C = +$("gasT").value, T = C + 273, V = V0 * T / T0;
+    const W = cv.width, H = cv.height, maxW = 440, w = 60 + (maxW - 60) * (V / (V0 * 333 / T0));
+    const dt = last ? Math.min(50, t - last) : 16; last = t;
+    const sp = Math.sqrt(T / T0) * 0.0009 * dt;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = col("--surface-2"); ctx.fillRect(20, 40, w, 160);
+    ctx.strokeStyle = col("--muted"); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(20 + w + 40, 40); ctx.lineTo(20, 40); ctx.lineTo(20, 200); ctx.lineTo(20 + w + 40, 200); ctx.stroke();
+    ctx.fillStyle = col("--accent"); ctx.fillRect(20 + w, 44, 12, 152);
+    ctx.fillStyle = col("--inf");
+    parts.forEach(p => {
+      if (!reduce) { p.x += Math.cos(p.a) * sp * (maxW / w); p.y += Math.sin(p.a) * sp * 2.6; }
+      if (p.x < 0) { p.x = 0; p.a = Math.PI - p.a; } if (p.x > 1) { p.x = 1; p.a = Math.PI - p.a; }
+      if (p.y < 0) { p.y = 0; p.a = -p.a; } if (p.y > 1) { p.y = 1; p.a = -p.a; }
+      ctx.beginPath(); ctx.arc(26 + p.x * (w - 12), 46 + p.y * 148, 4, 0, 7); ctx.fill();
+    });
+    ctx.fillStyle = col("--ink"); ctx.font = "14px sans-serif";
+    ctx.fillText(`${C} °C = ${T} K   Volume ≈ ${V.toFixed(2)} L`, 20, 26);
+    if (!reduce) raf = requestAnimationFrame(frame);
+  }
+  function update() {
+    const C = +$("gasT").value; $("gasTv").textContent = C; const T = C + 273, V = V0 * T / T0;
+    $("gasOut").innerHTML = `Model prediction: a 3.0 L balloon at 22 °C becomes <b>${V.toFixed(2)} L</b> at ${C} °C. ${C < 22 ? "Slower particles push less, so the piston moves in." : C > 22 ? "Faster particles push harder, so the piston moves out." : "This is the starting temperature."}`;
+    if (reduce) frame(performance.now());
+  }
+  $("gasT").oninput = update; update();
+  if (!reduce) raf = requestAnimationFrame(frame);
+  // practice
+  function newQ() {
+    const V1 = (ri(15, 50) / 10), C1 = ri(15, 25), C2 = ri(-40, 40);
+    const T1 = C1 + 273, T2 = C2 + 273, V2 = V1 * T2 / T1;
+    const d = $("gasQ");
+    d.innerHTML = `<p>A balloon holds <b>${V1.toFixed(1)} L</b> of air at <b>${C1} °C</b>. Predict its volume at <b>${C2} °C</b>, at the same pressure. Round to 2 decimal places.</p>
+      <p class="note">First predict: will it get bigger or smaller? Then use V₂ = V₁ × T₂ ÷ T₁ with temperatures in kelvin.</p>
+      <div class="row"><label for="gasIn">V₂ (L)</label><input type="number" step="0.01" id="gasIn" style="width:8em"><button class="btn primary" type="button" id="gasChk">Check</button></div><div id="gasFb" aria-live="polite"></div>`;
+    $("gasChk").onclick = () => {
+      const v = parseFloat($("gasIn").value), ok = Math.abs(v - V2) <= 0.02;
+      fb($("gasFb"), ok, (ok ? "Correct. " : "Check your work. ") + `T₁ = ${C1} + 273 = ${T1} K. T₂ = ${C2} + 273 = ${T2} K. V₂ = ${V1.toFixed(1)} × ${T2} ÷ ${T1} = <b>${V2.toFixed(2)} L</b>. ${V2 < V1 ? "Colder, so smaller." : V2 > V1 ? "Warmer, so larger." : ""}`);
+    };
+  }
+  $("gasNew").onclick = newQ; newQ();
+  // rock layers
+  const FOSSILS = ["Ammonite shell", "Albertosaurus tooth", "Fern leaf", "Duck-billed dinosaur bone", "Fish scale", "Turtle shell"];
+  const COLORS = ["var(--data-soft)", "var(--obs-soft)", "var(--inf-soft)", "var(--accent-soft)", "var(--surface-2)"];
+  let layers = [], step = 0;
+  function newCliff() { layers = shuffle(FOSSILS).slice(0, 4); step = 0; drawRock(); $("rockFb").innerHTML = ""; }
+  function drawRock() {
+    const W = 400, h = 40;
+    let s = `<svg viewBox="0 0 ${W} ${h * 4 + 20}" role="group" aria-label="Rock layers, tap the oldest first">`;
+    layers.forEach((f, i) => {
+      const y = 10 + (3 - i) * h, done = i < step;
+      s += `<g class="lay" data-i="${i}" tabindex="0" role="button" aria-label="Layer with ${esc(f)}" style="cursor:pointer"><rect x="10" y="${y}" width="${W - 20}" height="${h - 2}" fill="${COLORS[i]}" stroke="${done ? "var(--good)" : "var(--line)"}" stroke-width="${done ? 3 : 1}"/><text x="24" y="${y + 24}" font-size="13" fill="var(--ink)">${esc(f)}</text>${done ? `<text x="${W - 24}" y="${y + 24}" font-size="13" text-anchor="end" fill="var(--good)">#${i + 1} oldest</text>` : ""}</g>`;
+    });
+    s += "</svg>"; $("rockSvg").innerHTML = s;
+    $("rockSvg").querySelectorAll(".lay").forEach(g => {
+      const go = () => {
+        const i = +g.dataset.i;
+        if (i === step) { step++; drawRock(); fb($("rockFb"), true, step === 4 ? "All four in order. The law of superposition let you predict the order of the fossils from bottom (oldest) to top (youngest)." : "Correct. Next, find the next oldest layer."); }
+        else if (i < step) {} else fb($("rockFb"), false, "Not yet. In undisturbed layers, the lowest remaining layer is the oldest.");
+      };
+      g.addEventListener("click", go); g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+  }
+  $("rockNew").onclick = newCliff; newCliff();
+})();
+
+/* ---------- STATION 4: career cases ---------- */
+(function () {
+  function show(c) {
+    [...$("caseBtns").children].forEach(b => b.setAttribute("aria-pressed", b.dataset.k === c.k));
+    let h = `<h3>${esc(c.job)} <span class="eyebrow">${esc(c.topic)}</span></h3><p>${esc(c.what)}</p><p><b>Case:</b> ${esc(c.intro)}</p>`;
+    if (c.formula) h += `<p class="formula">${esc(c.formula)}</p>`;
+    if (c.table) h += `<div class="tablebox"><table><tr>${c.table[0].map(x => `<th>${esc(x)}</th>`).join("")}</tr>${c.table.slice(1).map(r => `<tr>${r.map(x => `<td class="num">${esc(x)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+    $("caseBox").innerHTML = h;
+    c.qs.forEach(q => {
+      const d = document.createElement("div"); d.className = "q";
+      d.innerHTML = `<p><b>${esc(q.q)}</b></p><div class="opts"></div><div aria-live="polite"></div>`;
+      q.o.forEach((o, i) => { const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.textContent = o; b.onclick = () => fb(d.lastElementChild, i === q.a, (i === q.a ? "Correct. " : "Not quite. ") + esc(q.ex)); d.querySelector(".opts").appendChild(b); });
+      $("caseBox").appendChild(d);
+    });
+  }
+  CAREERS.forEach(c => { const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.dataset.k = c.k; b.textContent = c.job; b.onclick = () => show(c); $("caseBtns").appendChild(b); });
+  show(CAREERS[0]);
+})();
+
+/* ---------- SORT IT ---------- */
+(function () {
+  let deck = "lt", queue = [], first = 0, total = 0, seen = new Set(), current = null;
+  Object.entries(SORT_DECKS).forEach(([k, D]) => { const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.dataset.d = k; b.textContent = D.name; b.onclick = () => { deck = k; start(); }; $("deckBtns").appendChild(b); });
+  function start() {
+    const D = SORT_DECKS[deck];
+    queue = shuffle(D.items); total = queue.length; first = 0; seen = new Set();
+    [...$("deckBtns").children].forEach(b => b.setAttribute("aria-pressed", b.dataset.d === deck));
+    $("bins").innerHTML = "";
+    D.bins.forEach(([n, sub, c]) => { const b = document.createElement("button"); b.className = "bin " + c; b.type = "button"; b.innerHTML = esc(n) + "<small>" + esc(sub) + "</small>"; b.onclick = () => pick(n); $("bins").appendChild(b); });
+    $("sortFb").innerHTML = ""; next();
+  }
+  function next() {
+    current = queue.shift();
+    const bins = [...$("bins").children];
+    if (!current) {
+      const pct = Math.round(first / total * 100);
+      $("sortCard").innerHTML = `<div><b>Round complete.</b><br>First-try score: ${first} of ${total} (${pct}%)</div>`;
+      $("sortStatus").textContent = "";
+      if (store.sortBest == null || pct > store.sortBest) { store.sortBest = pct; save(); updateStats(); }
+      bins.forEach(b => b.disabled = true); return;
+    }
+    bins.forEach(b => b.disabled = false);
+    $("sortCard").textContent = current[0];
+    $("sortStatus").textContent = (total - queue.length - 1) + " sorted · " + (queue.length + 1) + " left";
+  }
+  function pick(n) {
+    if (!current) return;
+    const ok = current[1] === n;
+    if (ok && !seen.has(current[0])) first++;
+    seen.add(current[0]);
+    if (!ok) queue.push(current);
+    fb($("sortFb"), ok, ok ? "Correct: " + esc(current[0]) + " → " + esc(n) : "Not quite. That one is a " + esc(current[1].toLowerCase()) + ". It will come back later.");
+    next();
+  }
+  $("sortRestart").onclick = start;
+  start();
+})();
+
+/* ---------- FLASHCARDS ---------- */
+(function () {
+  store.fc = store.fc || {};
+  let order = FLASH.map((_, i) => i), i = 0, flipped = false, only = false;
+  const list = () => only ? order.filter(k => store.fc[FLASH[k][0]] !== "k") : order;
+  function render() {
+    const L = list();
+    if (!L.length) { $("fcCard").innerHTML = '<div><b>Every card is marked known.</b><br><span class="note">Turn off "Still learning only" to review them all.</span></div>'; $("fcCount").textContent = ""; }
+    else {
+      if (i >= L.length) i = 0;
+      const [t, d] = FLASH[L[i]], st = store.fc[t];
+      $("fcCard").innerHTML = flipped ? `<div class="fc-def">${esc(d)}</div>` : `<div><div class="fc-term">${esc(t)}</div>${st ? `<span class="tag ${st === "k" ? "qual" : "inf"}">${st === "k" ? "Known" : "Still learning"}</span>` : ""}</div>`;
+      $("fcCard").setAttribute("aria-label", (flipped ? "Definition: " + d : "Term: " + t) + ". Press Space to flip.");
+      $("fcCount").textContent = "Card " + (i + 1) + " of " + L.length;
+    }
+    const known = Object.values(store.fc).filter(v => v === "k").length;
+    $("fcMeter").style.width = (known / FLASH.length * 100) + "%";
+    updateStats();
+  }
+  const flip = () => { flipped = !flipped; render(); };
+  $("fcCard").onclick = flip;
+  $("fcCard").onkeydown = e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); } if (e.key === "ArrowRight") $("fcNext").click(); if (e.key === "ArrowLeft") $("fcPrev").click(); };
+  const mark = v => { const L = list(); if (!L.length) return; store.fc[FLASH[L[i]][0]] = v; save(); flipped = false; if (!only || v !== "k") i++; render(); };
+  $("fcKnow").onclick = () => mark("k"); $("fcLearn").onclick = () => mark("l");
+  $("fcNext").onclick = () => { i++; flipped = false; render(); };
+  $("fcPrev").onclick = () => { const L = list(); i = (i - 1 + Math.max(L.length, 1)) % Math.max(L.length, 1); flipped = false; render(); };
+  $("fcShuffle").onclick = () => { order = shuffle(order); i = 0; flipped = false; render(); };
+  $("fcOnly").onclick = () => { only = !only; $("fcOnly").setAttribute("aria-pressed", only); i = 0; flipped = false; render(); };
+  render();
+})();
+
+/* ---------- QUIZ ---------- */
+(function () {
+  $("qBankN").textContent = QUIZ.length;
+  let round = [], qi = 0, score = 0;
+  function start() { round = shuffle(QUIZ).slice(0, 10); qi = 0; score = 0; show(); }
+  function show() {
+    const box = $("quizBox");
+    if (qi >= round.length) {
+      const best = store.quizBest == null || score > store.quizBest;
+      if (best) { store.quizBest = score; save(); updateStats(); }
+      box.innerHTML = `<h2 style="font-size:1.4rem">Round complete: ${score} / 10</h2><p>${score >= 8 ? "Excellent interpreting." : score >= 6 ? "Good work. Review the explanations for the ones you missed." : "Revisit the Learn tab, then try another round."}</p><p class="note">Best score: ${store.quizBest}/10</p><div class="row"><button class="btn primary" id="qAgain" type="button">New round</button></div>`;
+      $("qAgain").onclick = start; $("qAgain").focus(); return;
+    }
+    const Q = round[qi], opts = shuffle(Q.o.map((t, k) => [t, k === Q.a]));
+    box.innerHTML = `<div class="q"><span class="pill-count">Question ${qi + 1} of 10 · Score ${score}</span><h3 style="font-size:1.15rem;font-family:var(--f-body);font-stretch:100%">${esc(Q.q)}</h3><div class="opts" id="qOpts"></div><div id="qFb" aria-live="polite"></div><div class="row"><button class="btn primary" id="qNext" type="button" hidden>Next</button></div></div>`;
+    opts.forEach(([t, ok]) => {
+      const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.textContent = t;
+      b.onclick = () => {
+        [...$("qOpts").children].forEach(x => { x.disabled = true; if (x.dataset.ok === "1") x.classList.add("right"); });
+        if (ok) score++; else b.classList.add("wrong");
+        fb($("qFb"), ok, (ok ? "Correct. " : "Not quite. ") + esc(Q.ex));
+        $("qNext").hidden = false; $("qNext").focus();
+      };
+      b.dataset.ok = ok ? "1" : "0"; $("qOpts").appendChild(b);
+    });
+    $("qNext").onclick = () => { qi++; show(); };
+  }
+  start();
+})();
+
+/* ---------- WRITTEN REVIEW ---------- */
+(function () {
+  store.wr = store.wr || {}; store.wc = store.wc || {};
+  function block(item, id, long) {
+    const d = document.createElement("article"); d.className = "sec";
+    const checks = item.k.map((k, j) => `<label for="${id}c${j}"><input type="checkbox" id="${id}c${j}" ${store.wc[id + "c" + j] ? "checked" : ""}> <span>${esc(k)}</span></label>`).join("");
+    d.innerHTML = `<div class="sec-head"><span class="step">${long ? "Extended" : "Short"} ${id.replace(/\D/g, "")}</span></div><p><b>${esc(item.p)}</b></p><label class="note" for="${id}t">Your answer</label><textarea id="${id}t">${esc(store.wr[id] || "")}</textarea>` +
+      (item.m ? `<details class="model-ans"><summary>Model answer</summary><p style="margin-top:8px">${esc(item.m)}</p></details>` : "") +
+      `<details class="model-ans"${item.m ? "" : ""}><summary>${long ? "Key ideas a strong response includes" : "Key-idea checklist"}</summary><div class="checks" style="margin-top:8px">${checks}</div></details>`;
+    d.querySelector("textarea").oninput = e => { store.wr[id] = e.target.value; save(); };
+    d.querySelectorAll("input[type=checkbox]").forEach(cb => cb.onchange = () => { store.wc[cb.id] = cb.checked; save(); });
+    return d;
+  }
+  SHORT.forEach((s, i) => $("shortList").appendChild(block(s, "s" + (i + 1), false)));
+  LONG.forEach((s, i) => $("longList").appendChild(block(s, "e" + (i + 1), true)));
+})();
+
+/* ---------- COVERAGE ---------- */
+$("covTable").innerHTML = "<tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr>" + COVERAGE.map(r => `<tr><td>${r[0]}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
+
+/* ---------- RESET ---------- */
+(function () {
+  let armed = false;
+  $("resetAll").onclick = () => {
+    if (!armed) { armed = true; $("resetAll").textContent = "Press again to confirm"; $("resetMsg").textContent = ""; setTimeout(() => { armed = false; $("resetAll").textContent = "Clear my progress"; }, 4000); return; }
+    const theme = store.theme; store = theme ? { theme } : {}; save(); $("resetMsg").textContent = "Progress cleared. Reloading the lab view…";
+    setTimeout(() => location.reload(), 600);
+  };
+})();
+updateStats();
+</script>
+
+</body></html>

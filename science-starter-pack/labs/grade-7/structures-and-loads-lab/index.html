@@ -1,0 +1,1599 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/structures-and-loads-lab/"><meta name="description" content="Structures can be designed and constructed to withstand different types of forces."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Structures and Loads Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a structures workbench. Sticky tab strip, then lessons that pair a short reading column with a model: an arch bridge, structure categories, nature pairs, loads on a house, a loaded beam, a fatigue test, failure cards and design briefs. Ember marks compression (push), river blue marks tension (pull). */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---- Structures and Loads additions: ember marks compression (push), river blue marks tension (pull), timber and steel for materials ---- */
+:root{ --push:#B0431B; --push-soft:#FAE5DB; --pull:#1C6A8A; --pull-soft:#DCEDF4; --timber:#A9772F; --steel:#5C6670; --sky:#E4EEF3; --ground:#CDBF9F; --snow:#F7FAFC; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --push:#F2916A; --push-soft:#3A1E14; --pull:#6DC1E0; --pull-soft:#132C38; --timber:#D2A15A; --steel:#A3ADB7; --sky:#16232B; --ground:#5A5140; --snow:#DCE6EC; }}
+:root[data-theme="dark"]{ --push:#F2916A; --push-soft:#3A1E14; --pull:#6DC1E0; --pull-soft:#132C38; --timber:#D2A15A; --steel:#A3ADB7; --sky:#16232B; --ground:#5A5140; --snow:#DCE6EC; }
+header h1 .pu{color:var(--push)} header h1 .pl{color:var(--pull)}
+.part{cursor:pointer;outline:none}
+.part .shape{transition:fill .2s ease, stroke .2s ease}
+.part:hover .shape,.part:focus-visible .shape{stroke:var(--ink);stroke-width:3}
+.part.on .shape{fill:var(--g7);stroke:var(--g7)}
+.part.arch.on .shape{fill:none}
+.inline{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.readout{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--muted)}
+.readout b{font-family:var(--f-mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.meterbar{height:12px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meterbar i{display:block;height:100%;width:0;background:var(--leaf);transition:width .3s ease}
+.meterbar i.warn{background:var(--fire)}
+.loadlist{display:grid;gap:4px;padding:0;margin:0}
+.loadlist li{list-style:none;display:flex;gap:8px;align-items:center;font-size:.92rem}
+.tagp{font-family:var(--f-mono);font-size:.68rem;font-weight:600;padding:1px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.tagp.perm{background:var(--pull-soft);color:var(--pull)}
+.tagp.temp{background:var(--push-soft);color:var(--push)}
+.cmp{width:100%;border-collapse:collapse;font-size:.9rem;min-width:460px}
+.cmp th,.cmp td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.cmp th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.factors{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.factor{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:4px;font-size:.92rem}
+.factor b{font-family:var(--f-display);font-size:1rem}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:8px}
+.case ul{display:grid;gap:4px}
+.loadrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:.92rem;padding:6px 0;border-bottom:1px solid var(--line)}
+.loadrow:last-child{border-bottom:0}
+.loadrow select{min-width:0}
+.icon svg{width:100%;max-width:220px;height:auto;display:block}
+@media (max-width:480px){.loadrow{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Forces: Structures and Simple Machines · F1</div>
+    <h1>Structures and <span class="pu">Loads</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Structures can be designed and constructed to withstand different types of forces. Bridges, towers, eggshells and beaver dams all hold up loads. This lab shows the parts and kinds of structures, the forces that push and pull on them, why some fail, and how designers build them to last.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. Start with the parts and kinds of structures, then look at loads and the forces inside a structure, why structures fail, and how designers plan them.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Parts of a structure</span>
+      <div class="codes"><span class="code">F1.K1</span><span class="code">F1.S2</span></div>
+      <h3>Beams, columns and arches</h3>
+      <p>A <b>structure</b> is anything that has a shape and holds up a load, from a bridge to a bird’s nest. Most structures are built from parts, called <b>components</b>, that work together.</p>
+      <p>A <b>beam</b> is a part that lies across a gap and carries a load. A floor joist and a bridge deck are beams.</p>
+      <p>A <b>column</b> is an upright part that holds weight from above and carries it down to the ground. Pillars and fence posts are columns.</p>
+      <p>An <b>arch</b> is a curved part. It carries a load around its curve and pushes out and down at its ends. Solid supports at the ends, called <b>abutments</b>, keep the arch from spreading.</p>
+      <p class="note">The components interact. In the bridge model, the deck beam rests on columns, and the columns pass the load to the arch.</p>
+      <div class="key"><b>Remember:</b> beams span gaps, columns hold weight from above, and arches carry loads around a curve to their ends.</div>
+    </div>
+    <div class="model">
+      <h4>Model: an arch bridge</h4>
+      <p class="hint">Tap or tab to a part to learn what it does. Then press Find it to test yourself.</p>
+      <div class="svgbox fit" id="partsBox"></div>
+      <div class="row">
+        <button class="btn" id="findBtn" type="button">Find it</button>
+        <span class="hint mono" id="findScore"></span>
+      </div>
+      <div class="detail" id="partsDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Kinds of structures</span>
+      <div class="codes"><span class="code">F1.K8</span><span class="code">F1.K9</span><span class="code">F1.S2</span></div>
+      <h3>Mass, frame and shell</h3>
+      <p>Natural and human-made structures can be sorted into three <b>categories</b>.</p>
+      <p>A <b>mass structure</b>, also called a solid structure, is made by piling up or shaping material. Its own weight holds it in place. A dam and a beaver dam are mass structures.</p>
+      <p>A <b>frame structure</b> is a skeleton of parts joined together. The frame carries the load. Your skeleton and the wall framing of a house are frames.</p>
+      <p>A <b>shell structure</b> is a thin, curved outer layer that holds its shape and encloses a space. It spreads a load over its whole surface. An egg and a bike helmet are shells.</p>
+      <p>Many structures <b>combine categories</b> to withstand a load better. A house has a mass concrete foundation, a wooden frame and an outer shell of sheathing.</p>
+      <div class="key"><b>Remember:</b> mass structures use their weight, frames use a skeleton, and shells use a thin curved surface.</div>
+    </div>
+    <div class="model">
+      <h4>Model: structure categories</h4>
+      <p class="hint">Choose a category to see how it holds a load and some examples.</p>
+      <div class="chips" id="catChips" role="group" aria-label="Choose a structure category"></div>
+      <div class="icon" id="catIcon" aria-hidden="true"></div>
+      <div class="detail" id="catDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Learning from nature</span>
+      <div class="codes"><span class="code">F1.K2</span><span class="code">F1.S4</span></div>
+      <h3>Natural structures inspire designs</h3>
+      <p>Living things have had a very long time to develop strong, light shapes. Designers study these <b>natural structures</b> and copy the ideas in <b>human-made structures</b>. This is sometimes called <b>biomimicry</b>.</p>
+      <p>Natural and human-made structures often use the same shapes, such as hexagons, tubes, domes and triangles. They also differ. Natural structures grow from living material and can often repair themselves. Human-made structures are built from chosen materials and need people to repair them.</p>
+      <div class="tablebox"><table class="cmp">
+        <thead><tr><th>Feature</th><th>Natural</th><th>Human-made</th></tr></thead>
+        <tbody>
+          <tr><td>How it is made</td><td>Grows or is built by an animal</td><td>Designed and built by people</td></tr>
+          <tr><td>Materials</td><td>Bone, wood, shell, silk, mud</td><td>Steel, concrete, wood, plastic</td></tr>
+          <tr><td>Repair</td><td>Often repairs itself</td><td>Needs inspection and repair</td></tr>
+          <tr><td>Shared ideas</td><td colspan="2">Hexagons, hollow tubes, domes, wide bases, strands in tension</td></tr>
+        </tbody>
+      </table></div>
+      <div class="key"><b>Remember:</b> nature can inspire designs because it uses strong, light shapes.</div>
+    </div>
+    <div class="model">
+      <h4>Model: nature to design</h4>
+      <p class="hint">Choose a natural structure to see the design it inspired, what they share and how they differ.</p>
+      <div class="chips" id="natChips" role="group" aria-label="Choose a natural structure"></div>
+      <div class="detail" id="natDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Loads</span>
+      <div class="codes"><span class="code">F1.K3</span><span class="code">F1.S3</span></div>
+      <h3>Permanent and non-permanent loads</h3>
+      <p>A <b>load</b> is a force that acts on a structure. Forces are measured in <b>newtons</b> (N).</p>
+      <p>A <b>permanent load</b> is always there. The biggest one is the weight of the structure itself. Engineers call this the dead load.</p>
+      <p>A <b>non-permanent load</b> comes and goes or changes size. Wind, the weight of snow, the weight of people and furniture, and the ground shifting under a building are all non-permanent loads. Engineers call many of these live loads.</p>
+      <p>In Alberta, snow on a roof can be a large load. Wet spring snow weighs much more than fluffy fresh snow.</p>
+      <div class="formula">mass of snow: m = density × area × depth<br>weight (a force): W = m × 9.8 N/kg</div>
+      <div class="key"><b>Remember:</b> permanent loads stay the same. Non-permanent loads change.</div>
+    </div>
+    <div class="model">
+      <h4>Model: loads on a house</h4>
+      <p class="hint">Turn each load on or off. Arrows show where the force acts.</p>
+      <div class="chips" id="loadChips" role="group" aria-label="Turn loads on or off"></div>
+      <div class="svgbox fit" id="houseBox"></div>
+      <ul class="loadlist" id="loadList" aria-live="polite"></ul>
+      <h4>Snow load estimator</h4>
+      <div class="inline">
+        <label class="field" for="snArea">Roof area: <span class="mono" id="snAreaOut">60 m²</span><input type="range" id="snArea" min="20" max="150" step="5" value="60"></label>
+        <label class="field" for="snDepth">Snow depth: <span class="mono" id="snDepthOut">40 cm</span><input type="range" id="snDepth" min="0" max="100" step="5" value="40"></label>
+        <label class="field" for="snType">Kind of snow<select id="snType"><option value="100">Fresh, fluffy (about 100 kg/m³)</option><option value="300" selected>Settled (about 300 kg/m³)</option><option value="450">Wet spring snow (about 450 kg/m³)</option></select></label>
+      </div>
+      <div class="worked" id="snOut" aria-live="polite"></div>
+      <p class="hint">Snow densities are rounded typical values.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Forces inside</span>
+      <div class="codes"><span class="code">F1.K4</span></div>
+      <h3>Internal forces and deformation</h3>
+      <p><b>External forces</b> act on a structure from outside. Loads are external forces.</p>
+      <p><b>Internal forces</b> act inside the materials of a structure as its parts push and pull on each other. There are four main kinds. <b>Compression</b> squeezes or pushes together. <b>Tension</b> stretches or pulls apart. <b>Shear</b> pushes parts to slide past each other. <b>Torsion</b> twists.</p>
+      <p>When a beam bends, its top is squeezed in compression and its bottom is stretched in tension. <b>Bending</b> is compression and tension at the same time.</p>
+      <p><b>Deformation</b> is a change in a structure’s shape. A small deformation springs back. A large one can bend a part for good or break it, which damages the structure’s <b>integrity</b>, its ability to hold together and do its job.</p>
+      <div class="key"><b>Remember:</b> loads from outside cause pushes, pulls, slides and twists inside, and these can change a structure’s shape.</div>
+    </div>
+    <div class="model">
+      <h4>Model: a loaded beam</h4>
+      <p class="hint">Add load to the middle of the beam. Watch the squeeze on top and the stretch underneath. This is a simplified model.</p>
+      <div class="svgbox fit" id="beamBox"></div>
+      <label class="field" for="beamLoad">Load on the beam: <span class="mono" id="beamOut">3 of 10</span><input type="range" id="beamLoad" min="0" max="10" step="1" value="3"></label>
+      <div class="detail" id="beamDetail" aria-live="polite"></div>
+      <h4>Four internal forces</h4>
+      <div class="chips" id="forceChips" role="group" aria-label="Choose an internal force"></div>
+      <div class="icon" id="forceIcon" aria-hidden="true"></div>
+      <div class="detail" id="forceDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Fatigue</span>
+      <div class="codes"><span class="code">F1.K5</span></div>
+      <h3>Small loads, repeated many times</h3>
+      <p><b>Structural fatigue</b> is damage that builds up a little at a time when a load is put on and taken off again and again. This is called <b>repeated</b> or <b>cyclic loading</b>.</p>
+      <p>Each cycle can make a tiny crack grow a bit longer. The load may be much smaller than what would break the part in one go. Over time, the crack can grow until the part fails.</p>
+      <p>Bridges with daily traffic, airplane wings that flex on every flight and playground swings are all loaded in cycles. Engineers inspect them for small cracks before they grow.</p>
+      <div class="key"><b>Remember:</b> fatigue is progressive damage from repeated loading that can lead to failure over time.</div>
+    </div>
+    <div class="model">
+      <h4>Model: bend a paper clip</h4>
+      <p class="hint">Choose a bend size and bend the wire back and forth. The damage meter shows the hidden crack growing. Numbers are made up for practice.</p>
+      <div class="chips" id="clipChips" role="group" aria-label="Choose a bend size"></div>
+      <div class="svgbox fit" id="clipBox"></div>
+      <div class="readout"><span>Cycles <b id="clipCycles">0</b></span><span>Crack <b id="clipCrack">none</b></span></div>
+      <div class="meterbar" aria-hidden="true"><i id="clipBar"></i></div>
+      <div class="row">
+        <button class="btn" id="clipOne" type="button">Bend once</button>
+        <button class="btn ghost" id="clipFive" type="button">Bend 5 times</button>
+        <button class="btn ghost" id="clipNew" type="button">New clip</button>
+      </div>
+      <div class="detail" id="clipDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Why structures fail</span>
+      <div class="codes"><span class="code">F1.K6</span><span class="code">F1.S5</span></div>
+      <h3>Four causes of failure</h3>
+      <p>When a structure deforms too much or breaks, we say it has <b>failed</b>. Engineers study failures so they do not happen again.</p>
+      <p><b>Flawed design</b> means the plan itself was wrong. <b>Poor construction</b> means the plan was fine but it was built badly. <b>Improper load</b> means the structure carried more load, or a different load, than it was designed for. <b>Structural fatigue</b> means repeated loading slowly damaged it.</p>
+      <p>A failure can have more than one cause. Investigators look at the evidence, such as where it broke, how it was built and what loads acted on it.</p>
+      <div class="key"><b>Remember:</b> design, construction, load and fatigue are the four causes to check.</div>
+    </div>
+    <div class="model">
+      <h4>Model: cause cards</h4>
+      <p class="hint">Choose a cause to see what it means, an example and how to prevent it.</p>
+      <div class="chips" id="failChips" role="group" aria-label="Choose a cause of failure"></div>
+      <div class="detail" id="failDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Designing a structure</span>
+      <div class="codes"><span class="code">F1.K7</span><span class="code">F1.S1</span><span class="code">F1.S6</span></div>
+      <h3>What shapes a design</h3>
+      <p>Before building, designers think about four <b>factors</b>.</p>
+      <p><b>Function:</b> what job must the structure do? <b>Available resources:</b> what materials, money, tools, time and skilled workers are there? <b>Safety:</b> how will it protect people? Designers make structures stronger than the biggest load they expect. This extra strength is called a <b>safety factor</b>. <b>Intended lifespan and sustainability:</b> how long must it last, and how can it use materials and energy wisely?</p>
+      <p>Two structures can have the same function but different designs. We compare how well they work, for example by how much load they hold for their mass.</p>
+      <div class="key"><b>Remember:</b> function, resources, safety, and lifespan and sustainability all shape a design.</div>
+    </div>
+    <div class="model">
+      <h4>Model: design briefs</h4>
+      <p class="hint">Choose a design brief. See how each factor changes the design.</p>
+      <div class="chips" id="briefChips" role="group" aria-label="Choose a design brief"></div>
+      <div class="factors" id="briefFactors" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Build and test bridges, calculate how well they use their mass, spot structures and their loads, and investigate real and practice failures.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 1 · Craft stick bridge test</span>
+      <div class="codes"><span class="code">F1.S1</span><span class="code">F1.S6</span></div>
+      <h3>Build a bridge that supports a load</h3>
+      <p>Your class is building bridges from craft sticks to span a 40 cm gap. Choose a design and the number of sticks. Then add load in the middle until the bridge fails.</p>
+      <p>Every bridge has the same function, so you can compare designs fairly. Change only one thing at a time.</p>
+      <p>To compare designs, use <b>efficiency</b>: how many times its own mass the bridge held.</p>
+      <div class="formula">efficiency = greatest load held (g) ÷ mass of bridge (g)</div>
+      <p class="note">This is a simplified model. Strengths are made up, but the pattern matches real tests: triangles and arches usually beat flat beams.</p>
+    </div>
+    <div class="model">
+      <h4>Test rig</h4>
+      <div class="chips" id="brDesign" role="group" aria-label="Choose a bridge design"></div>
+      <label class="field" for="brSticks">Number of sticks: <span class="mono" id="brSticksOut">30</span><input type="range" id="brSticks" min="10" max="60" step="2" value="30"></label>
+      <label class="field" for="brAbut"><span><input type="checkbox" id="brAbut" checked> Arch ends held by solid abutments</span></label>
+      <div class="svgbox fit" id="bridgeBox"></div>
+      <div class="readout"><span>Bridge mass <b id="brMass">66 g</b></span><span>Load now <b id="brLoad">0 kg</b></span></div>
+      <div class="row">
+        <button class="btn" id="brAdd1" type="button">Add 1 kg</button>
+        <button class="btn ghost" id="brAddQ" type="button">Add 0.25 kg</button>
+        <button class="btn ghost" id="brNew" type="button">Build again</button>
+      </div>
+      <div class="detail" id="brDetail" aria-live="polite"></div>
+      <div class="tablebox"><table class="dt" id="brTable"><thead><tr><th>Trial</th><th>Design</th><th>Sticks</th><th>Mass (g)</th><th>Held (kg)</th><th>Efficiency</th></tr></thead><tbody></tbody></table></div>
+      <button class="btn ghost" id="brClear" type="button">Clear trials</button>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 2 · Strength for its mass</span>
+      <div class="codes"><span class="code">F1.S6</span></div>
+      <h3>Which design is more effective?</h3>
+      <p>The strongest bridge is not always the best design. A bridge that uses less material for the same job saves resources.</p>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Bridge A has a mass of 60 g and holds 4.2 kg (4200 g).</span>
+        <span>Efficiency A = 4200 g ÷ 60 g = 70</span>
+        <span>Bridge B has a mass of 90 g and holds 5.4 kg (5400 g).</span>
+        <span>Efficiency B = 5400 g ÷ 90 g = 60</span>
+        <span>Bridge B is stronger, but Bridge A is more efficient. It holds 70 times its own mass.</span>
+      </div>
+      <p class="note">Remember to change kilograms to grams first: 1 kg = 1000 g.</p>
+    </div>
+    <div class="model">
+      <h4>Practice</h4>
+      <div class="worked" id="efQ" aria-live="polite"></div>
+      <div class="inline">
+        <label class="field" for="efA">Efficiency of bridge A<input type="number" id="efA" step="any" inputmode="decimal"></label>
+        <label class="field" for="efB">Efficiency of bridge B<input type="number" id="efB" step="any" inputmode="decimal"></label>
+        <label class="field" for="efPick">More efficient design<select id="efPick"><option value="">Choose</option><option value="A">Bridge A</option><option value="B">Bridge B</option></select></label>
+      </div>
+      <div class="row">
+        <button class="btn" id="efCheck" type="button">Check</button>
+        <button class="btn ghost" id="efNew" type="button">New problem</button>
+        <span class="hint mono" id="efScore"></span>
+      </div>
+      <div class="detail" id="efFb" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 3 · Structure spotter</span>
+      <div class="codes"><span class="code">F1.S2</span><span class="code">F1.S3</span></div>
+      <h3>Name the category and sort the loads</h3>
+      <p>For each structure, choose its category. Then decide whether each load is permanent or non-permanent.</p>
+      <p>Ask yourself: does the structure stand by its own weight (mass), by a skeleton (frame) or by a thin curved surface (shell)? Does it use more than one?</p>
+      <p>For loads, ask: is it always there and always the same size? If yes, it is permanent.</p>
+    </div>
+    <div class="model">
+      <h4 id="spName">Structure</h4>
+      <p id="spDesc"></p>
+      <label class="field" for="spCat">Category<select id="spCat"><option value="">Choose</option><option value="mass">Mass</option><option value="frame">Frame</option><option value="shell">Shell</option><option value="combo">Combination</option></select></label>
+      <div id="spLoads"></div>
+      <div class="row">
+        <button class="btn" id="spCheck" type="button">Check</button>
+        <button class="btn ghost" id="spNext" type="button">Next structure</button>
+        <span class="hint mono" id="spScore"></span>
+      </div>
+      <div class="detail" id="spFb" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 4 · Failure case files</span>
+      <div class="codes"><span class="code">F1.S5</span><span class="code">F1.K6</span></div>
+      <h3>Investigate a structure failure</h3>
+      <p>Read the evidence in each case file. Decide the main cause of the failure. Then read how it could have been prevented.</p>
+      <p>Two cases are real events from history. The others are made-up practice cases.</p>
+      <p class="note">Some real failures hurt or killed people. Engineers in Canada remember these events as a reminder that their work protects lives.</p>
+    </div>
+    <div class="model">
+      <div class="chips" id="caseChips" role="group" aria-label="Choose a case file"></div>
+      <div class="case" id="caseBox"></div>
+      <div class="chips" id="caseAns" role="group" aria-label="Choose the main cause"></div>
+      <div class="detail" id="caseFb" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 F1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>F1.K1:</b> beams, columns and arches are taught as the named components, with abutments named as the supports an arch needs. Trusses are mentioned as beams joined in triangles. Foundations appear only as part of the house example.</li>
+      <li><b>F1.K3:</b> loads are taught as forces in newtons. Permanent loads are linked to the engineering term dead load, and non-permanent loads to live loads (people, furniture) and environmental loads (wind, snow, ground shifting). Snow densities in the estimator are rounded typical values (about 100, 300 and 450 kg/m³), and W = m × 9.8 N/kg is shown as context only.</li>
+      <li><b>F1.K4:</b> the draft names internal and external forces without defining them. The lab defines external forces as loads acting from outside and internal forces as compression, tension, shear and torsion inside materials, with bending taught as compression and tension together. Elastic (springs back) and permanent deformation are distinguished. The beam model is qualitative.</li>
+      <li><b>F1.K5:</b> fatigue is taught as cracks that grow a little with each load cycle, even when each load is well below the one that would break the part at once. Paper clip cycle counts are made up and randomized.</li>
+      <li><b>F1.K6 and S5:</b> two real cases are used. Quebec Bridge (1907): the weight of the bridge was underestimated and not rechecked, and the partly built span collapsed, killing many workers. Tacoma Narrows Bridge (1940, Washington State): a thin, flexible deck twisted in moderate wind until it broke; no people died. Please verify these summaries. The Iron Ring tradition is mentioned only as a reminder of responsibility; the myth that rings were made from the bridge’s steel is not repeated. Other case files are invented and labelled as practice. Deaths in real failures may be sensitive for some students.</li>
+      <li><b>F1.K8 and K9:</b> mass is taught as the same category as solid. The tipi is described generally as a frame of poles with a cover (frame plus shell), and the Inuit snow house (iglu) as a dome-shaped shell of snow blocks. No specific community knowledge is described; please review this wording and consider a community partner.</li>
+      <li><b>F1.K2 and S4:</b> nature-inspired pairs (honeycomb and honeycomb panels, hollow bird bones and tube frames, eggshell and domes, tree trunks and towers, spider silk and cables, beaver dams and earth dams) are described as shared ideas. The lab does not claim that any one building was copied from a specific organism.</li>
+      <li><b>F1.S1 and S6:</b> the craft stick bridge test is a made-up model with random variation of about 10 percent. Efficiency (load held ÷ mass) is added as a way to compare designs with a common function.</li>
+      <li><b>Alberta examples:</b> the High Level Bridge in Edmonton (a steel truss frame), grain bins, prairie snow loads and frost heave are everyday contexts only.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-f1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+/* ---------- Lesson 1: parts of an arch bridge ---------- */
+(function(){
+  var box = $("partsBox"), det = $("partsDetail");
+  var svg = sv("svg", {viewBox: "0 0 600 300", role: "group", "aria-label": "Arch bridge with a deck beam, columns and an arch. Each part can be selected."});
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 600, height: 300, fill: "var(--sky)"}));
+  svg.appendChild(sv("path", {d: "M0 250 L100 250 L100 300 L0 300 Z M500 250 L600 250 L600 300 L500 300 Z", fill: "var(--ground)"}));
+  svg.appendChild(sv("rect", {x: 100, y: 270, width: 400, height: 30, fill: "var(--water-soft)"}));
+  svg.appendChild(sv("text", {x: 300, y: 292, "text-anchor": "middle", "class": "small"}, "river"));
+  function archY(x){ var t = (x - 100) / 400; return (1 - t) * (1 - t) * 250 + 2 * t * (1 - t) * (-10) + t * t * 250; }
+  var PARTS = {
+    beam: {label: "Beam", title: "Beam: the bridge deck", text: ["The deck is a beam. It lies across the gap and carries cars and people.", "A loaded beam bends a little. Its top is squeezed (compression) and its bottom is stretched (tension). Here the columns hold the deck up at many points, so it bends less."]},
+    column: {label: "Column", title: "Columns: the uprights", text: ["Columns stand upright and carry the weight of the deck down to the arch and the ground.", "Columns are squeezed in compression. A tall, thin column can bend sideways and collapse. This is called buckling."]},
+    arch: {label: "Arch", title: "Arch: the curved part", text: ["The arch carries the load around its curve to its two ends. It is mostly in compression.", "An arch pushes out as well as down at its ends. The rock banks act as abutments that stop the ends from spreading."]}
+  };
+  var groups = {};
+  function mk(key){
+    var g = sv("g", {"class": "part " + key, tabindex: "0", role: "button", "aria-label": PARTS[key].label});
+    groups[key] = g; return g;
+  }
+  var gA = mk("arch");
+  gA.appendChild(sv("path", {"class": "shape", d: "M100 250 Q300 -10 500 250", fill: "none", stroke: "var(--steel)", "stroke-width": 14}));
+  var gC = mk("column");
+  [130, 170, 210, 250, 350, 390, 430, 470].forEach(function(x){
+    var y = archY(x); gC.appendChild(sv("rect", {"class": "shape", x: x - 5, y: 112, width: 10, height: Math.max(4, y - 112), fill: "var(--steel)", stroke: "var(--steel)"}));
+  });
+  gC.appendChild(sv("rect", {"class": "shape", x: 60, y: 112, width: 14, height: 138, fill: "var(--steel)", stroke: "var(--steel)"}));
+  gC.appendChild(sv("rect", {"class": "shape", x: 526, y: 112, width: 14, height: 138, fill: "var(--steel)", stroke: "var(--steel)"}));
+  var gB = mk("beam");
+  gB.appendChild(sv("rect", {"class": "shape", x: 30, y: 98, width: 540, height: 14, rx: 2, fill: "var(--timber)", stroke: "var(--timber)"}));
+  svg.appendChild(gA); svg.appendChild(gC); svg.appendChild(gB);
+  svg.appendChild(sv("text", {x: 30, y: 90, "class": "small"}, "deck"));
+  box.appendChild(svg);
+  var finding = null, found = 0, tries = 0;
+  function select(key){
+    Object.keys(groups).forEach(function(k){ groups[k].classList.toggle("on", k === key); });
+    if (finding) {
+      tries++;
+      if (key === finding) { found++; detail(det, "Correct: that is the " + PARTS[key].label.toLowerCase() + ".", PARTS[key].text); }
+      else detail(det, "Not quite. You chose the " + PARTS[key].label.toLowerCase() + ". Try Find it again.", PARTS[key].text);
+      $("findScore").textContent = found + " of " + tries + " found";
+      finding = null; return;
+    }
+    detail(det, PARTS[key].title, PARTS[key].text);
+  }
+  Object.keys(groups).forEach(function(k){
+    groups[k].addEventListener("click", function(){ select(k); });
+    groups[k].addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(k); } });
+  });
+  $("findBtn").addEventListener("click", function(){
+    finding = pick(Object.keys(PARTS));
+    Object.keys(groups).forEach(function(k){ groups[k].classList.remove("on"); });
+    detail(det, "Find the " + PARTS[finding].label.toLowerCase(), ["Tap or tab to the part of the bridge that is the " + PARTS[finding].label.toLowerCase() + "."]);
+  });
+  detail(det, "Choose a part", ["Tap the deck, a column or the arch to see what it does."]);
+})();
+
+/* ---------- Lesson 2: categories ---------- */
+(function(){
+  function icon(kind){
+    var s = sv("svg", {viewBox: "0 0 220 110"});
+    s.appendChild(sv("line", {x1: 0, y1: 100, x2: 220, y2: 100, stroke: "var(--muted)", "stroke-width": 2}));
+    if (kind === "mass") {
+      s.appendChild(sv("path", {d: "M30 100 L80 30 L140 30 L190 100 Z", fill: "var(--ground)", stroke: "var(--ink)", "stroke-width": 2}));
+      [50, 70].forEach(function(y){ s.appendChild(sv("line", {x1: 30 + (100 - y) * 0.7, y1: y, x2: 190 - (100 - y) * 0.7, y2: y, stroke: "var(--ink)", "stroke-width": 1, "stroke-dasharray": "4 4"})); });
+    } else if (kind === "frame") {
+      var pts = [[30,100],[70,40],[110,100],[150,40],[190,100]];
+      s.appendChild(sv("polyline", {points: pts.map(function(p){ return p.join(","); }).join(" "), fill: "none", stroke: "var(--steel)", "stroke-width": 4}));
+      s.appendChild(sv("line", {x1: 70, y1: 40, x2: 150, y2: 40, stroke: "var(--steel)", "stroke-width": 4}));
+      s.appendChild(sv("line", {x1: 30, y1: 100, x2: 190, y2: 100, stroke: "var(--steel)", "stroke-width": 4}));
+    } else if (kind === "shell") {
+      s.appendChild(sv("path", {d: "M30 100 A80 75 0 0 1 190 100", fill: "var(--surface-2)", stroke: "var(--ink)", "stroke-width": 4}));
+    } else {
+      s.appendChild(sv("path", {d: "M110 15 L45 100 L175 100 Z", fill: "var(--mix-soft)", stroke: "var(--timber)", "stroke-width": 2}));
+      [[110,15,40,100],[110,15,180,100],[110,15,95,100],[110,15,125,100]].forEach(function(l){ s.appendChild(sv("line", {x1: l[0], y1: l[1] - 10, x2: l[2], y2: l[3], stroke: "var(--timber)", "stroke-width": 3})); });
+    }
+    return s;
+  }
+  var CATS = [
+    {label: "Mass", k: "mass", t: "Mass (solid) structures", p: ["Made by piling up or shaping lots of material. The structure’s own weight holds it in place and keeps it stable.", "Natural: mountains, beaver dams, termite mounds. Human-made: earth-fill dams, stone walls, snow forts, pyramids.", "Strength: hard to knock over. Weakness: uses a lot of material and can crumble if it is worn away."]},
+    {label: "Frame", k: "frame", t: "Frame structures", p: ["A skeleton of parts, such as beams and columns, joined together. The frame carries the load, and the spaces between parts can be empty or covered.", "Natural: skeletons, spider webs, leaf veins. Human-made: house wall framing, bicycles, power line towers, the High Level Bridge in Edmonton.", "Strength: strong for its mass. Triangles in a frame make it rigid. Weakness: joints can loosen or fail."]},
+    {label: "Shell", k: "shell", t: "Shell structures", p: ["A thin, curved outer layer that holds its shape and encloses a space. The load spreads out over the whole curved surface.", "Natural: eggs, turtle shells, snail shells, nut shells. Human-made: domes, bike helmets, pop cans, grain bins, an Inuit snow house (iglu) built as a dome of snow blocks.", "Strength: strong for very little material. Weakness: a sharp point or a dent can break the shell."]},
+    {label: "Combination", k: "combo", t: "Combining categories", p: ["Many structures combine categories so they can withstand a load better.", "A house: mass concrete foundation, wooden frame walls, shell of sheathing and siding. An airplane: a metal frame covered by a thin skin. A tipi: a frame of poles with a cover wrapped around it.", "Each part does the job it is best at, so the whole structure is stronger."]}
+  ];
+  chipGroup($("catChips"), CATS, "", function(c){
+    clear($("catIcon")); $("catIcon").appendChild(icon(c.k));
+    detail($("catDetail"), c.t, c.p);
+  }, 0);
+})();
+
+/* ---------- Lesson 3: nature to design ---------- */
+(function(){
+  var NAT = [
+    {label: "Honeycomb", t: "Honeycomb → honeycomb panels", p: ["Bees build wax cells shaped like hexagons. Hexagons fit together with no gaps and use little wax.", "Inspired design: honeycomb panels inside airplane floors, doors and some packaging. They are strong and very light.", "Shared idea: hexagon cells. Difference: wax cells are built by bees and repaired by them; panels are made of aluminum, paper or plastic in a factory."]},
+    {label: "Bird bones", t: "Hollow bird bones → tube frames", p: ["Many bird bones are hollow tubes, some with thin inner struts. They are stiff but light, which helps birds fly.", "Inspired design: hollow steel or aluminum tubes in bicycle frames, scaffolding and towers.", "Shared idea: a hollow tube resists bending almost as well as a solid rod but uses far less material. Difference: bone grows and heals; a bent bike tube must be replaced."]},
+    {label: "Eggshell", t: "Eggshell → domes", p: ["An egg is a thin shell. Press on its ends and the curve spreads the force around the whole surface.", "Inspired design: dome roofs on arenas and buildings, and bike helmets.", "Shared idea: a curved shell spreads a load. Difference: an eggshell only needs to last a few weeks; a dome is built to last many decades."]},
+    {label: "Tree", t: "Tree trunk and roots → tall towers", p: ["A tree has a wide base and spreading roots that hold it against the wind. Its trunk bends a little in a storm instead of snapping.", "Inspired design: tall towers with wide bases, deep foundations and some flexibility to sway in wind.", "Shared idea: a wide, well-anchored base. Difference: a tree grows thicker each year; a tower stays the size it was built."]},
+    {label: "Spider web", t: "Spider silk → cables and nets", p: ["A spider web is a frame of thin silk strands. The strands are pulled tight in tension and spread the force of a caught insect.", "Inspired design: cables on suspension bridges, safety nets and cable-net roofs.", "Shared idea: thin strands in tension can hold a large load. Difference: silk is made by the spider; steel cable is made in a mill."]},
+    {label: "Beaver dam", t: "Beaver dam → earth-fill dams", p: ["Beavers pile sticks, mud and stones across a stream. The wide, heavy dam holds back water by its own weight.", "Inspired design: earth-fill dams on Alberta rivers are also wide, heavy mass structures.", "Shared idea: a mass structure with a wide base. Difference: beavers repair their dam every night; engineers inspect dams on a schedule."]}
+  ];
+  chipGroup($("natChips"), NAT, "", function(n){ detail($("natDetail"), n.t, n.p); }, 0);
+})();
+
+/* ---------- Lesson 4: loads on a house ---------- */
+(function(){
+  var box = $("houseBox");
+  var svg = sv("svg", {viewBox: "0 0 600 320", role: "img", "aria-label": "A house with arrows showing the loads that are turned on"});
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 600, height: 320, fill: "var(--sky)"}));
+  svg.appendChild(sv("rect", {x: 0, y: 270, width: 600, height: 50, fill: "var(--ground)"}));
+  svg.appendChild(sv("rect", {x: 190, y: 255, width: 220, height: 20, fill: "var(--steel)"}));
+  svg.appendChild(sv("rect", {x: 200, y: 150, width: 200, height: 105, fill: "var(--surface)", stroke: "var(--ink)", "stroke-width": 2}));
+  svg.appendChild(sv("path", {d: "M180 150 L300 70 L420 150 Z", fill: "var(--timber)", stroke: "var(--ink)", "stroke-width": 2}));
+  svg.appendChild(sv("rect", {x: 280, y: 200, width: 40, height: 55, fill: "var(--surface-2)", stroke: "var(--ink)"}));
+  var layers = {};
+  function arrow(g, x1, y1, x2, y2, color){
+    g.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: color, "stroke-width": 4}));
+    var a = Math.atan2(y2 - y1, x2 - x1), L = 10;
+    g.appendChild(sv("path", {d: "M" + x2 + " " + y2 + " L" + (x2 - L * Math.cos(a - 0.5)) + " " + (y2 - L * Math.sin(a - 0.5)) + " L" + (x2 - L * Math.cos(a + 0.5)) + " " + (y2 - L * Math.sin(a + 0.5)) + " Z", fill: color}));
+  }
+  var LOADS = [
+    {label: "Own weight", perm: true, draw: function(g){ arrow(g, 240, 180, 240, 245, "var(--pull)"); arrow(g, 360, 180, 360, 245, "var(--pull)"); g.appendChild(sv("text", {x: 300, y: 172, "text-anchor": "middle", "class": "lbl"}, "own weight")); }, why: "The weight of the walls, roof and foundation never goes away."},
+    {label: "Snow", perm: false, draw: function(g){ g.appendChild(sv("path", {d: "M185 145 L300 66 L415 145 L420 150 L300 62 L180 150 Z", fill: "var(--snow)", stroke: "var(--muted)"})); arrow(g, 240, 40, 240, 100, "var(--push)"); arrow(g, 360, 40, 360, 100, "var(--push)"); g.appendChild(sv("text", {x: 300, y: 30, "text-anchor": "middle", "class": "lbl"}, "snow")); }, why: "Snow piles up in winter and melts in spring."},
+    {label: "Wind", perm: false, draw: function(g){ arrow(g, 60, 180, 190, 180, "var(--push)"); arrow(g, 60, 215, 190, 215, "var(--push)"); g.appendChild(sv("text", {x: 70, y: 168, "class": "lbl"}, "wind")); }, why: "Wind changes speed and direction all the time."},
+    {label: "People and furniture", perm: false, draw: function(g){ g.appendChild(sv("circle", {cx: 240, cy: 220, r: 8, fill: "var(--ink)"})); g.appendChild(sv("rect", {x: 234, y: 230, width: 12, height: 22, fill: "var(--ink)"})); g.appendChild(sv("rect", {x: 340, y: 230, width: 40, height: 22, fill: "var(--mix)"})); arrow(g, 360, 200, 360, 228, "var(--push)"); }, why: "People come and go, and furniture can be moved."},
+    {label: "Ground shifting", perm: false, draw: function(g){ arrow(g, 230, 310, 230, 278, "var(--push)"); arrow(g, 370, 278, 370, 310, "var(--push)"); g.appendChild(sv("text", {x: 430, y: 300, "class": "lbl"}, "ground shifts")); }, why: "Soil can settle, swell or heave with frost, and earthquakes shake it."}
+  ];
+  var on = [true, false, false, false, false];
+  LOADS.forEach(function(L, i){ var g = sv("g"); L.draw(g); layers[i] = g; svg.appendChild(g); });
+  box.appendChild(svg);
+  var chips = $("loadChips");
+  function render(){
+    LOADS.forEach(function(L, i){ layers[i].style.display = on[i] ? "" : "none"; });
+    var ul = $("loadList"); clear(ul);
+    LOADS.forEach(function(L, i){ if (!on[i]) return;
+      var li = el("li"); li.appendChild(el("span", {"class": "tagp " + (L.perm ? "perm" : "temp")}, L.perm ? "Permanent" : "Non-permanent"));
+      li.appendChild(el("span", null, L.label + ": " + L.why)); ul.appendChild(li);
+    });
+    if (!ul.firstChild) ul.appendChild(el("li", null, "No loads turned on. Every real structure carries at least its own weight."));
+  }
+  LOADS.forEach(function(L, i){
+    var b = el("button", {"class": "chip " + (L.perm ? "wa" : "fi"), type: "button", "aria-pressed": on[i] ? "true" : "false"}, L.label);
+    toggle(b, function(v){ on[i] = v; render(); });
+    chips.appendChild(b);
+  });
+  render();
+  function snow(){
+    var A = +$("snArea").value, d = +$("snDepth").value, rho = +$("snType").value;
+    $("snAreaOut").textContent = A + " m²"; $("snDepthOut").textContent = d + " cm";
+    var m = rho * A * d / 100, W = m * 9.8;
+    var out = $("snOut"); clear(out);
+    out.appendChild(el("span", null, "m = " + rho + " kg/m³ × " + A + " m² × " + fmt(d / 100, 2) + " m = " + Math.round(m).toLocaleString("en-CA") + " kg"));
+    out.appendChild(el("span", null, "W = " + Math.round(m).toLocaleString("en-CA") + " kg × 9.8 N/kg ≈ " + Math.round(W).toLocaleString("en-CA") + " N"));
+    out.appendChild(el("b", null, "That is about the mass of " + fmt(m / 1500, 1) + " cars resting on the roof."));
+  }
+  ["snArea", "snDepth", "snType"].forEach(function(id){ $(id).addEventListener("input", snow); });
+  snow();
+})();
+
+/* ---------- Lesson 5: loaded beam and internal forces ---------- */
+(function(){
+  var box = $("beamBox");
+  var svg = sv("svg", {viewBox: "0 0 600 220", role: "img", "aria-label": "A beam resting on two supports bends under a load in the middle"});
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 600, height: 220, fill: "var(--surface)"}));
+  svg.appendChild(sv("path", {d: "M40 170 L70 130 L100 170 Z M500 170 L530 130 L560 170 Z", fill: "var(--steel)"}));
+  var beam = sv("path", {fill: "var(--timber)", stroke: "var(--ink)", "stroke-width": 1.5});
+  var topG = sv("g"), botG = sv("g"), loadG = sv("g");
+  var crack = sv("path", {stroke: "var(--bad)", "stroke-width": 3, fill: "none"});
+  svg.appendChild(beam); svg.appendChild(topG); svg.appendChild(botG); svg.appendChild(loadG); svg.appendChild(crack);
+  svg.appendChild(sv("text", {x: 20, y: 205, "class": "small"}, "squeeze on top = compression · stretch underneath = tension"));
+  box.appendChild(svg);
+  function arr(g, x1, y, x2, color){ g.appendChild(sv("line", {x1: x1, y1: y, x2: x2, y2: y, stroke: color, "stroke-width": 3})); var d = x2 > x1 ? -7 : 7; g.appendChild(sv("path", {d: "M" + x2 + " " + y + " l" + d + " -5 l0 10 Z", fill: color})); }
+  function render(){
+    var L = +$("beamLoad").value; $("beamOut").textContent = L + " of 10";
+    var sag = L >= 10 ? 46 : L * 3.2;
+    var y0 = 120, h = 14;
+    beam.setAttribute("d", "M60 " + y0 + " Q300 " + (y0 + 2 * sag) + " 540 " + y0 + " L540 " + (y0 + h) + " Q300 " + (y0 + h + 2 * sag) + " 60 " + (y0 + h) + " Z");
+    clear(topG); clear(botG); clear(loadG);
+    var len = 8 + L * 3;
+    if (L > 0) {
+      var yt = y0 + sag - 14, yb = y0 + h + sag + 14;
+      arr(topG, 300 - 40 - len, yt, 296 - 6, "var(--push)"); arr(topG, 300 + 40 + len, yt, 304 + 6, "var(--push)");
+      arr(botG, 296, yb, 300 - 40 - len, "var(--pull)"); arr(botG, 304, yb, 300 + 40 + len, "var(--pull)");
+      var bw = 30 + L * 4;
+      loadG.appendChild(sv("rect", {x: 300 - bw / 2, y: y0 + sag - 14 - 20 - L * 3, width: bw, height: 16 + L * 3, fill: "var(--steel)"}));
+    }
+    crack.setAttribute("d", L >= 10 ? "M300 " + (y0 + h + 2 * sag / 2 + 2) + " l-6 -8 l8 -4 l-6 -8" : "");
+    var msg;
+    if (L === 0) msg = ["No load. The beam is straight. Only its own small weight acts on it."];
+    else if (L <= 5) msg = ["Small load: the beam bends a little. The top is in compression and the bottom is in tension.", "Take the load off and it springs back. This is elastic deformation."];
+    else if (L <= 9) msg = ["Large load: the beam bends a lot. Part of the bend may stay after the load is removed. This is permanent deformation.", "The structure has changed shape, but it still holds."];
+    else msg = ["Too much load: the bottom of the beam cracks where it is stretched most. The beam has failed and lost its integrity."];
+    detail($("beamDetail"), L >= 10 ? "Failure" : "Deformation", msg);
+  }
+  $("beamLoad").addEventListener("input", render); render();
+
+  function icon(k){
+    var s = sv("svg", {viewBox: "0 0 220 100"});
+    var P = "var(--push)", Q = "var(--pull)";
+    function a(x1, y1, x2, y2, c){ s.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: c, "stroke-width": 4})); var ang = Math.atan2(y2 - y1, x2 - x1); s.appendChild(sv("path", {d: "M" + x2 + " " + y2 + " L" + (x2 - 10 * Math.cos(ang - 0.5)) + " " + (y2 - 10 * Math.sin(ang - 0.5)) + " L" + (x2 - 10 * Math.cos(ang + 0.5)) + " " + (y2 - 10 * Math.sin(ang + 0.5)) + " Z", fill: c})); }
+    if (k === "c") { s.appendChild(sv("rect", {x: 70, y: 35, width: 80, height: 30, fill: "var(--timber)"})); a(15, 50, 66, 50, P); a(205, 50, 154, 50, P); }
+    if (k === "t") { s.appendChild(sv("rect", {x: 70, y: 40, width: 80, height: 20, fill: "var(--timber)"})); a(66, 50, 15, 50, Q); a(154, 50, 205, 50, Q); }
+    if (k === "s") { s.appendChild(sv("rect", {x: 40, y: 30, width: 140, height: 18, fill: "var(--timber)"})); s.appendChild(sv("rect", {x: 40, y: 52, width: 140, height: 18, fill: "var(--steel)"})); a(60, 20, 150, 20, P); a(160, 82, 70, 82, P); }
+    if (k === "o") { s.appendChild(sv("rect", {x: 40, y: 40, width: 140, height: 20, fill: "var(--timber)"})); s.appendChild(sv("path", {d: "M30 30 A20 20 0 0 1 30 70", stroke: P, "stroke-width": 4, fill: "none"})); s.appendChild(sv("path", {d: "M190 70 A20 20 0 0 1 190 30", stroke: P, "stroke-width": 4, fill: "none"})); }
+    return s;
+  }
+  var F = [
+    {label: "Compression", k: "c", t: "Compression: pushing together", p: ["Forces squeeze a part and try to make it shorter.", "Examples: a column holding up a roof, the top of a bent beam, the stones of an arch."]},
+    {label: "Tension", k: "t", t: "Tension: pulling apart", p: ["Forces stretch a part and try to make it longer.", "Examples: the cables of a suspension bridge, a rope in tug of war, the bottom of a bent beam."]},
+    {label: "Shear", k: "s", t: "Shear: sliding past", p: ["Forces push two parts in opposite directions so they try to slide past each other.", "Examples: scissors cutting paper, a bolt holding two plates that are pulled in opposite directions."]},
+    {label: "Torsion", k: "o", t: "Torsion: twisting", p: ["Forces turn the ends of a part in opposite directions.", "Examples: wringing out a towel, turning a screwdriver, a bridge deck twisting in strong wind."]}
+  ];
+  chipGroup($("forceChips"), F, "", function(f){ clear($("forceIcon")); $("forceIcon").appendChild(icon(f.k)); detail($("forceDetail"), f.t, f.p); }, 0);
+})();
+
+/* ---------- Lesson 6: fatigue ---------- */
+(function(){
+  var SIZES = [
+    {label: "Small bend (20°)", ang: 20, life: [45, 70]},
+    {label: "Medium bend (45°)", ang: 45, life: [18, 30]},
+    {label: "Large bend (90°)", ang: 90, life: [7, 13]}
+  ];
+  var size = SIZES[1], life = 0, cycles = 0, broken = false, flip = false;
+  var box = $("clipBox");
+  var svg = sv("svg", {viewBox: "0 0 600 180", role: "img", "aria-label": "A straight wire being bent back and forth at its middle"});
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 600, height: 180, fill: "var(--surface)"}));
+  var fixed = sv("line", {x1: 60, y1: 90, x2: 300, y2: 90, stroke: "var(--steel)", "stroke-width": 8, "stroke-linecap": "round"});
+  var moving = sv("line", {x1: 300, y1: 90, x2: 540, y2: 90, stroke: "var(--steel)", "stroke-width": 8, "stroke-linecap": "round"});
+  var mark = sv("circle", {cx: 300, cy: 90, r: 0, fill: "var(--bad)"});
+  svg.appendChild(sv("rect", {x: 40, y: 70, width: 30, height: 40, fill: "var(--ink)"}));
+  svg.appendChild(fixed); svg.appendChild(moving); svg.appendChild(mark);
+  svg.appendChild(sv("text", {x: 300, y: 170, "text-anchor": "middle", "class": "small"}, "the bend is here"));
+  box.appendChild(svg);
+  function newClip(){ life = rint(size.life[0], size.life[1]); cycles = 0; broken = false; render(); }
+  function render(){
+    var frac = Math.min(1, cycles / life);
+    var a = broken ? 35 : (cycles === 0 ? 0 : (flip ? 1 : -1) * size.ang) * Math.PI / 180;
+    var x2 = 300 + 240 * Math.cos(a), y2 = 90 + 240 * Math.sin(a) * 0.5;
+    if (broken) { moving.setAttribute("x1", 312); moving.setAttribute("y1", 104); x2 = 520; y2 = 160; }
+    else { moving.setAttribute("x1", 300); moving.setAttribute("y1", 90); }
+    moving.setAttribute("x2", x2); moving.setAttribute("y2", y2);
+    mark.setAttribute("r", broken ? 0 : Math.round(frac * 9));
+    $("clipCycles").textContent = cycles;
+    $("clipCrack").textContent = broken ? "broke" : frac < 0.3 ? "too small to see" : frac < 0.75 ? "small" : "large";
+    var bar = $("clipBar"); bar.style.width = Math.round(frac * 100) + "%"; bar.classList.toggle("warn", frac > 0.7);
+    $("clipOne").disabled = broken; $("clipFive").disabled = broken;
+    var msg;
+    if (broken) msg = ["The wire snapped after " + cycles + " bends. No single bend was strong enough to break it. The damage added up over time. That is fatigue.", "Try a smaller bend. It takes many more cycles to fail."];
+    else if (cycles === 0) msg = ["A new wire. Each bend is a cycle of loading and unloading."];
+    else msg = ["Each bend makes the hidden crack grow a tiny bit. The wire still looks fine from the outside."];
+    detail($("clipDetail"), broken ? "Fatigue failure" : "Cycles so far: " + cycles, msg);
+  }
+  function bend(n){ for (var i = 0; i < n && !broken; i++) { cycles++; flip = !flip; if (cycles >= life) broken = true; } render(); }
+  chipGroup($("clipChips"), SIZES, "", function(s){ size = s; newClip(); }, 1);
+  $("clipOne").addEventListener("click", function(){ bend(1); });
+  $("clipFive").addEventListener("click", function(){ bend(5); });
+  $("clipNew").addEventListener("click", newClip);
+})();
+
+/* ---------- Lesson 7: causes of failure ---------- */
+(function(){
+  var C = [
+    {label: "Flawed design", t: "Flawed design", p: ["The plan was wrong. The designers chose parts that were too weak, missed a load, or made a math error.", "Example: the Quebec Bridge collapsed during construction in 1907 because the weight of the bridge had been underestimated and the numbers were not rechecked.", "Prevent it: check calculations, have another engineer review the plan, and test models first."]},
+    {label: "Poor construction", t: "Poor construction", p: ["The plan was good, but the builders did not follow it. Parts were missing, joints were weak, or cheaper materials were used.", "Example: a deck built with too few bolts and posts that do not sit on proper footings.", "Prevent it: follow the plans, use the right materials, and inspect the work as it is built."]},
+    {label: "Improper load", t: "Improper load", p: ["The structure carried more load, or a different kind of load, than it was designed for.", "Example: a shed roof left under a metre of wet snow all winter, or a truck too heavy for a small bridge.", "Prevent it: post load limits, clear heavy snow, and use the structure only for its intended function."]},
+    {label: "Structural fatigue", t: "Structural fatigue", p: ["Repeated loading slowly grew cracks until a part failed, even though each load was safe on its own.", "Example: a metal sign post that sways in the wind every day for years until it cracks at the base.", "Prevent it: inspect often for small cracks, repair or replace worn parts, and design for the number of cycles expected."]}
+  ];
+  chipGroup($("failChips"), C, "", function(c){ detail($("failDetail"), c.t, c.p); }, 0);
+})();
+
+/* ---------- Lesson 8: design briefs ---------- */
+(function(){
+  var B = [
+    {label: "Park footbridge", f: [
+      ["Function", "Carry hikers, bikes and a small maintenance vehicle across a creek."],
+      ["Available resources", "Trucks cannot reach the site easily, so parts must be light enough to carry in. Budget is set by the province."],
+      ["Safety", "Railings on both sides. Designed to hold well over the heaviest crowd expected, plus snow."],
+      ["Lifespan and sustainability", "Meant to last about 50 years. Treated local wood or weathering steel, built to disturb the creek banks as little as possible."]]},
+    {label: "Festival stage", f: [
+      ["Function", "Hold a band, speakers and lights for one weekend."],
+      ["Available resources", "Rented steel frame parts that bolt together quickly. A small crew and one day to build."],
+      ["Safety", "Weighted bases so wind cannot tip it. Inspected before every show. Closed in high wind."],
+      ["Lifespan and sustainability", "Used for a few days, then taken apart and reused at the next festival."]]},
+    {label: "School bike rack", f: [
+      ["Function", "Hold 20 bikes upright and let them be locked."],
+      ["Available resources", "Steel tube from a local supplier, a school budget and a welding class."],
+      ["Safety", "No sharp edges. Bolted to concrete so it cannot tip onto students."],
+      ["Lifespan and sustainability", "Should last 20 years outdoors. Galvanized steel to resist rust, and it can be recycled at the end."]]}
+  ];
+  chipGroup($("briefChips"), B, "", function(b){
+    var box = $("briefFactors"); clear(box);
+    b.f.forEach(function(x){ var d = el("div", {"class": "factor"}); d.appendChild(el("b", null, x[0])); d.appendChild(el("span", null, x[1])); box.appendChild(d); });
+  }, 0);
+})();
+
+/* ---------- Bench 1: craft stick bridge ---------- */
+(function(){
+  var D = [
+    {label: "Flat beam", k: 0.018, mode: "The flat beam sagged and snapped in the middle. Its bottom was stretched in tension until the sticks broke."},
+    {label: "Deep beam", k: 0.06, mode: "The deep beam held much more than a flat one because the sticks stand on edge. It finally cracked along the bottom where tension was greatest."},
+    {label: "Truss", k: 0.145, mode: "A thin top member of the truss buckled sideways in compression. Triangles kept the rest of the shape rigid until then."},
+    {label: "Arch", k: 0.12, mode: "The arch carried the load around its curve in compression until a joint near the top crushed."}
+  ];
+  var design = D[0], cap = 0, load = 0, done = false;
+  store.br = store.br || [];
+  var box = $("bridgeBox");
+  var svg = sv("svg", {viewBox: "0 0 600 220", role: "img", "aria-label": "Bridge on two tables with a load hanging from the middle"});
+  box.appendChild(svg);
+  function sticks(){ return +$("brSticks").value; }
+  function mass(){ return Math.round(sticks() * 2 * 1.1); }
+  function build(){
+    var n = sticks(), k = design.k;
+    if (design.label === "Arch" && !$("brAbut").checked) k *= 0.35;
+    cap = Math.round(k * Math.pow(n, 1.3) * (0.9 + Math.random() * 0.2) * 100) / 100;
+    load = 0; done = false; render();
+    detail($("brDetail"), "New " + design.label.toLowerCase() + " built", ["Add load to find out how much it holds. The bridge fails when the load is greater than its strength."]);
+  }
+  function draw(){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 600, height: 220, fill: "var(--surface)"}));
+    svg.appendChild(sv("rect", {x: 20, y: 110, width: 120, height: 110, fill: "var(--surface-2)", stroke: "var(--line)"}));
+    svg.appendChild(sv("rect", {x: 460, y: 110, width: 120, height: 110, fill: "var(--surface-2)", stroke: "var(--line)"}));
+    var frac = done ? 1.2 : Math.min(1, load / cap);
+    var sag = frac * 22, y = 104, col = "var(--timber)";
+    var midY = y + sag;
+    if (done) {
+      svg.appendChild(sv("path", {d: "M100 " + y + " L290 " + (y + 50), stroke: col, "stroke-width": 8, fill: "none"}));
+      svg.appendChild(sv("path", {d: "M500 " + y + " L310 " + (y + 50), stroke: col, "stroke-width": 8, fill: "none"}));
+    } else {
+      svg.appendChild(sv("path", {d: "M100 " + y + " Q300 " + (y + 2 * sag) + " 500 " + y, stroke: col, "stroke-width": design.label === "Flat beam" ? 6 : 10, fill: "none"}));
+      if (design.label === "Truss") {
+        var pts = []; for (var i = 0; i <= 8; i++) { var x = 100 + i * 50, t = (x - 100) / 400, yy = y + 4 * t * (1 - t) * sag; pts.push([x, i % 2 ? yy - 40 : yy]); }
+        svg.appendChild(sv("polyline", {points: pts.map(function(p){ return p.join(","); }).join(" "), stroke: col, "stroke-width": 4, fill: "none"}));
+        svg.appendChild(sv("line", {x1: 150, y1: pts[1][1], x2: 450, y2: pts[7][1], stroke: col, "stroke-width": 4}));
+      }
+      if (design.label === "Arch") {
+        svg.appendChild(sv("path", {d: "M140 160 Q300 " + (60 + sag) + " 460 160", stroke: col, "stroke-width": 6, fill: "none"}));
+        if ($("brAbut").checked) { svg.appendChild(sv("rect", {x: 130, y: 150, width: 12, height: 20, fill: "var(--steel)"})); svg.appendChild(sv("rect", {x: 458, y: 150, width: 12, height: 20, fill: "var(--steel)"})); }
+      }
+      if (design.label === "Deep beam") svg.appendChild(sv("path", {d: "M100 " + (y + 10) + " Q300 " + (y + 10 + 2 * sag) + " 500 " + (y + 10), stroke: col, "stroke-width": 6, fill: "none"}));
+    }
+    if (load > 0) {
+      var ly = done ? 190 : midY + 40;
+      svg.appendChild(sv("line", {x1: 300, y1: done ? 160 : midY + 2, x2: 300, y2: ly, stroke: "var(--muted)", "stroke-width": 2}));
+      svg.appendChild(sv("rect", {x: 270, y: ly, width: 60, height: 26, rx: 4, fill: "var(--steel)"}));
+      svg.appendChild(sv("text", {x: 300, y: ly + 18, "text-anchor": "middle", "class": "lbl", fill: "var(--surface)", style: "fill:var(--surface)"}, fmt(load, 2) + " kg"));
+    }
+    svg.appendChild(sv("text", {x: 300, y: 24, "text-anchor": "middle", "class": "small"}, "40 cm gap"));
+  }
+  function render(){
+    $("brSticksOut").textContent = sticks();
+    $("brMass").textContent = mass() + " g";
+    $("brLoad").textContent = fmt(load, 2) + " kg";
+    $("brAdd1").disabled = done; $("brAddQ").disabled = done;
+    draw(); table();
+  }
+  function table(){
+    var tb = document.querySelector("#brTable tbody"); clear(tb);
+    if (!store.br.length) { var tr = el("tr"); var td = el("td", {colspan: "6"}, "No trials yet. Break a bridge to record one."); tr.appendChild(td); tb.appendChild(tr); return; }
+    store.br.forEach(function(r, i){
+      var tr = el("tr");
+      [i + 1, r.d, r.n, r.m, fmt(r.h, 2), fmt(r.h * 1000 / r.m, 0)].forEach(function(v){ tr.appendChild(el("td", null, String(v))); });
+      tb.appendChild(tr);
+    });
+  }
+  function add(x){
+    if (done) return;
+    var next = Math.round((load + x) * 100) / 100;
+    if (next > cap) {
+      done = true;
+      var held = load; load = next;
+      store.br.push({d: design.label + (design.label === "Arch" && !$("brAbut").checked ? " (no abutments)" : ""), n: sticks(), m: mass(), h: held});
+      if (store.br.length > 12) store.br.shift();
+      save(); render();
+      var eff = held * 1000 / mass();
+      var extra = design.label === "Arch" && !$("brAbut").checked ? ["Without abutments, the ends of the arch spread apart and it flattened early. Arches need solid supports at their ends."] : [design.mode];
+      detail($("brDetail"), "Failure at " + fmt(next, 2) + " kg", extra.concat(["Greatest load held: " + fmt(held, 2) + " kg (" + Math.round(held * 1000) + " g). Efficiency = " + Math.round(held * 1000) + " g ÷ " + mass() + " g ≈ " + fmt(eff, 0) + ".", "Recorded in the trials table. Build again to compare another design."]));
+      return;
+    }
+    load = next; render();
+    var f = load / cap;
+    detail($("brDetail"), "Holding " + fmt(load, 2) + " kg", [f < 0.5 ? "The bridge barely sags." : f < 0.85 ? "The bridge is sagging. You can hear the glue joints creak." : "The bridge is sagging a lot. It is close to failing."]);
+  }
+  chipGroup($("brDesign"), D, "", function(d){ design = d; build(); }, 0);
+  $("brSticks").addEventListener("input", build);
+  $("brAbut").addEventListener("change", build);
+  $("brAdd1").addEventListener("click", function(){ add(1); });
+  $("brAddQ").addEventListener("click", function(){ add(0.25); });
+  $("brNew").addEventListener("click", build);
+  $("brClear").addEventListener("click", function(){ store.br = []; save(); table(); });
+})();
+
+/* ---------- Bench 2: efficiency practice ---------- */
+(function(){
+  var q, right = 0, tries = 0;
+  function newQ(){
+    var mA = rint(4, 12) * 10, mB = rint(4, 12) * 10;
+    var eA = rint(30, 120), eB = rint(30, 120);
+    while (eA === eB) eB = rint(30, 120);
+    q = {mA: mA, mB: mB, hA: mA * eA, hB: mB * eB, eA: eA, eB: eB};
+    var box = $("efQ"); clear(box);
+    box.appendChild(el("b", null, "Two bridges with the same function (made-up practice data)"));
+    box.appendChild(el("span", null, "Bridge A: mass " + mA + " g, holds " + fmt(q.hA / 1000, 2) + " kg."));
+    box.appendChild(el("span", null, "Bridge B: mass " + mB + " g, holds " + fmt(q.hB / 1000, 2) + " kg."));
+    box.appendChild(el("span", null, "Find the efficiency of each. Which design is more efficient?"));
+    $("efA").value = ""; $("efB").value = ""; $("efPick").value = "";
+    clear($("efFb"));
+  }
+  $("efCheck").addEventListener("click", function(){
+    var a = parseFloat($("efA").value), b = parseFloat($("efB").value), p = $("efPick").value;
+    var okA = Math.abs(a - q.eA) <= 0.5, okB = Math.abs(b - q.eB) <= 0.5, best = q.eA > q.eB ? "A" : "B", okP = p === best;
+    tries++; if (okA && okB && okP) right++;
+    $("efScore").textContent = right + " of " + tries + " fully correct";
+    detail($("efFb"), okA && okB && okP ? "Correct" : "Check your work", [
+      "A: " + q.hA + " g ÷ " + q.mA + " g = " + q.eA + (okA ? " ✓" : " (you wrote " + (isNaN(a) ? "nothing" : a) + ")"),
+      "B: " + q.hB + " g ÷ " + q.mB + " g = " + q.eB + (okB ? " ✓" : " (you wrote " + (isNaN(b) ? "nothing" : b) + ")"),
+      "Bridge " + best + " is more efficient: it holds more times its own mass." + ((q.hA > q.hB) !== (best === "A") ? " Notice the other bridge held more in total, but used more material." : "")
+    ]);
+  });
+  $("efNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 3: structure spotter ---------- */
+(function(){
+  var S = [
+    {n: "Steel truss railway bridge", d: "A bridge like the High Level Bridge in Edmonton: steel beams joined in triangles, standing on tall steel towers.", c: "frame", why: "Steel beams joined into a skeleton carry the load.", L: [["Weight of the steel bridge", 1], ["A passing train", 0], ["Wind blowing on the side", 0], ["Snow on the deck", 0]]},
+    {n: "Snow fort wall", d: "A thick wall of packed snow blocks built in a schoolyard.", c: "mass", why: "Piled-up snow holds itself in place by its own weight.", L: [["Weight of the snow blocks", 1], ["Students leaning on it", 0], ["Wind", 0]]},
+    {n: "Bike helmet", d: "A thin curved foam and plastic layer around the head.", c: "shell", why: "A thin curved layer spreads the force of a hit.", L: [["Weight of the helmet", 1], ["The force of a fall", 0]]},
+    {n: "Wood-frame house", d: "Walls built from 2 × 6 studs, a roof of wooden trusses, on a concrete foundation, covered with sheathing.", c: "combo", why: "It combines a mass foundation, a wooden frame and an outer shell.", L: [["Weight of walls, roof and foundation", 1], ["Snow on the roof", 0], ["People and furniture", 0], ["Frost heave in the soil", 0]]},
+    {n: "Concrete dome roof", d: "A thin curved concrete roof over a recreation centre pool.", c: "shell", why: "A thin curved surface carries the load.", L: [["Weight of the concrete dome", 1], ["Snow", 0], ["Wind", 0]]},
+    {n: "Earth-fill dam", d: "A huge, wide bank of packed soil and rock across a river valley.", c: "mass", why: "Its enormous weight keeps it in place.", L: [["Weight of the soil and rock", 1], ["The ground shifting", 0], ["A spring flood pushing on it", 0]]},
+    {n: "Power line tower", d: "A tall steel lattice tower holding up electrical wires across a field.", c: "frame", why: "A skeleton of steel parts joined in triangles.", L: [["Weight of the tower", 1], ["Weight of the wires attached to it", 1], ["Ice building up on the wires", 0], ["Wind", 0]]},
+    {n: "Corrugated steel grain bin", d: "A round bin made of thin curved steel sheets on a prairie farm.", c: "shell", why: "Thin curved steel encloses the space and holds its shape.", L: [["Weight of the steel bin", 1], ["Grain stored inside", 0], ["Wind", 0], ["Snow on the roof", 0]]},
+    {n: "Tipi", d: "Long poles leaned together at the top, with a cover wrapped around them.", c: "combo", why: "A frame of poles with a cover acting as a shell.", L: [["Weight of the poles and cover", 1], ["Wind", 0], ["Snow on the cover", 0]]},
+    {n: "Bird’s skeleton", d: "The bones of a goose, many of them hollow, joined together.", c: "frame", why: "A natural skeleton is a frame.", L: [["Weight of the goose’s body", 1], ["Force of landing on water", 0]]}
+  ];
+  var CAT = {mass: "Mass", frame: "Frame", shell: "Shell", combo: "Combination"};
+  var order = shuffle(S), i = 0, right = 0, tries = 0, cur;
+  function show(){
+    cur = order[i % order.length];
+    $("spName").textContent = cur.n; $("spDesc").textContent = cur.d; $("spCat").value = "";
+    var box = $("spLoads"); clear(box);
+    box.appendChild(el("p", {"class": "hint"}, "Loads acting on it:"));
+    cur.L.forEach(function(l, j){
+      var row = el("div", {"class": "loadrow"});
+      var lab = el("label", {"for": "spL" + j}, l[0]);
+      var s = el("select", {id: "spL" + j});
+      [["", "Choose"], ["1", "Permanent"], ["0", "Non-permanent"]].forEach(function(o){ var op = el("option", {value: o[0]}, o[1]); s.appendChild(op); });
+      row.appendChild(lab); row.appendChild(s); box.appendChild(row);
+    });
+    clear($("spFb"));
+  }
+  $("spCheck").addEventListener("click", function(){
+    var ok = $("spCat").value === cur.c, msgs = [];
+    msgs.push((ok ? "Category ✓ " : "Category: it is " + CAT[cur.c] + ". ") + cur.why);
+    var allL = true;
+    cur.L.forEach(function(l, j){
+      var v = $("spL" + j).value, good = v === String(l[1]);
+      if (!good) allL = false;
+      msgs.push((good ? "✓ " : "✗ ") + l[0] + ": " + (l[1] ? "permanent, it is always there." : "non-permanent, it changes or comes and goes."));
+    });
+    tries++; if (ok && allL) right++;
+    $("spScore").textContent = right + " of " + tries + " fully correct";
+    detail($("spFb"), ok && allL ? "All correct" : "Check the feedback", msgs);
+  });
+  $("spNext").addEventListener("click", function(){ i++; show(); });
+  show();
+})();
+
+/* ---------- Bench 4: failure case files ---------- */
+(function(){
+  var CAUSES = ["Flawed design", "Poor construction", "Improper load", "Structural fatigue"];
+  var CASES = [
+    {label: "Quebec Bridge, 1907", real: true, ev: ["A very long steel bridge was being built over the St. Lawrence River.", "During construction, the engineers learned the bridge would weigh much more than first planned, but the design was not changed.", "Workers reported that some steel parts in compression were bending. The partly built span then collapsed, and many workers were killed."], c: 0, ex: "The weight of the bridge itself had been underestimated, so the parts were too weak for their own permanent load. The bridge was redesigned and finished in 1917. Canada’s Iron Ring tradition for new engineers, which began in the 1920s, is often linked to this disaster as a reminder of their duty to keep people safe.", prev: "Recheck the calculations when new information appears, and have other engineers review the design."},
+    {label: "Tacoma Narrows Bridge, 1940", real: true, ev: ["A new suspension bridge in Washington State, USA, had a very thin, flexible deck.", "The deck moved up and down in the wind from the day it opened.", "Four months later, in a moderate wind, the deck began to twist back and forth until it tore apart. No people were killed."], c: 0, ex: "The designers made the deck too thin and flexible and did not understand how wind could make it twist (torsion). The bridge was rebuilt with a deeper, stiffer deck.", prev: "Test models in a wind tunnel and design a stiffer deck that resists twisting."},
+    {label: "Practice: the garage roof", real: false, ev: ["A garage in central Alberta was built to the building code.", "After a winter with no snow clearing, about a metre of heavy, wet spring snow sat on the flat roof.", "The roof beams sagged and two of them cracked. The beams were the right size and well built."], c: 2, ex: "The roof was built correctly, but it carried far more snow load than it was designed for.", prev: "Clear deep snow from flat roofs, especially wet spring snow."},
+    {label: "Practice: the backyard deck", real: false, ev: ["A new deck had the right size beams on the plans.", "The builder used only half the bolts shown, and the posts sat on loose soil instead of concrete footings.", "The deck sagged badly at its first party, well under the load it was designed for."], c: 1, ex: "The design was fine, but it was not built as planned.", prev: "Follow the plans, use proper footings and fasteners, and have the work inspected."},
+    {label: "Practice: the swing set", real: false, ev: ["A steel swing set had been used every school day for 15 years.", "No one ever used it with more than the posted weight.", "An inspector found a crack that had slowly grown at a weld on the top bar. Rust lines showed the crack had grown in small steps."], c: 3, ex: "Each swing loaded and unloaded the top bar. Thousands of cycles grew a crack until the bar was unsafe.", prev: "Inspect for small cracks every year and replace worn parts before they fail."},
+    {label: "Practice: the class tower", real: false, ev: ["A team built a paper tower with four very tall, thin columns and no cross braces.", "They tested it with exactly the load in the challenge rules.", "The columns bent sideways and the tower folded, even though it was glued well."], c: 0, ex: "The plan used columns that were too tall and thin, so they buckled. Triangles or braces would have made it stiffer.", prev: "Add cross braces to make triangles, or use shorter, wider columns."}
+  ];
+  var cur;
+  var ans = $("caseAns"), btns = [];
+  CAUSES.forEach(function(c, i){
+    var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, c);
+    b.addEventListener("click", function(){
+      btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      var ok = i === cur.c;
+      detail($("caseFb"), ok ? "Correct: " + CAUSES[cur.c].toLowerCase() : "Not quite. The main cause was " + CAUSES[cur.c].toLowerCase() + ".", [cur.ex, "How to prevent it: " + cur.prev]);
+    });
+    ans.appendChild(b); btns.push(b);
+  });
+  chipGroup($("caseChips"), CASES, "", function(c){
+    cur = c; var box = $("caseBox"); clear(box);
+    box.appendChild(el("span", {"class": "tagline"}, c.real ? "Real event" : "Made-up practice case"));
+    box.appendChild(el("h5", null, c.label));
+    var ul = el("ul"); c.ev.forEach(function(e){ ul.appendChild(el("li", null, e)); }); box.appendChild(ul);
+    box.appendChild(el("p", {"class": "hint"}, "What was the main cause?"));
+    btns.forEach(function(x){ x.setAttribute("aria-pressed", "false"); });
+    clear($("caseFb"));
+  }, 0);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Mass, frame or shell?", bins: ["Mass", "Frame", "Shell"], items: [
+    ["A beaver dam", 0, "Piled sticks and mud hold back water by their weight."],
+    ["A spider web", 1, "Thin strands joined into a skeleton."],
+    ["An egg", 2, "A thin curved layer encloses the inside."],
+    ["A concrete dam on a river", 0, "Its huge weight keeps it in place."],
+    ["A bicycle", 1, "Tubes joined in triangles make a frame."],
+    ["A turtle’s shell", 2, "A curved outer layer that protects the turtle."],
+    ["A stone wall", 0, "Stacked stones stay in place by their weight."],
+    ["A power line tower", 1, "A steel skeleton of joined parts."],
+    ["A bike helmet", 2, "A thin curved layer spreads the force of a hit."],
+    ["Your skeleton", 1, "Bones joined together are a natural frame."],
+    ["A pop can", 2, "Thin curved metal holds its shape."],
+    ["A termite mound", 0, "Packed soil stands by its own mass."]
+  ]},
+  {label: "Permanent or non-permanent load?", bins: ["Permanent load", "Non-permanent load"], items: [
+    ["The weight of a bridge’s own steel", 0, "It is always there and never changes."],
+    ["Snow on a roof in January", 1, "Snow comes and goes with the seasons."],
+    ["Wind on a tall tower", 1, "Wind changes speed and direction."],
+    ["Students filling a gym for an assembly", 1, "Occupants come and go."],
+    ["The weight of a house’s roof shingles", 0, "Part of the structure itself."],
+    ["Ground shifting under a foundation", 1, "Soil can settle or heave at different times."],
+    ["Cars crossing a bridge at rush hour", 1, "Traffic changes all day."],
+    ["The weight of the concrete floors in a parking garage", 0, "Part of the structure’s own weight."],
+    ["Ice building up on power lines", 1, "Ice forms in storms and later melts."],
+    ["The weight of a dome’s own concrete", 0, "Always there."]
+  ]},
+  {label: "Which internal force?", bins: ["Compression", "Tension", "Shear", "Torsion"], items: [
+    ["A column holding up a roof", 0, "The column is squeezed from above and below."],
+    ["A suspension bridge cable", 1, "The cable is pulled tight."],
+    ["Scissors cutting paper", 2, "The blades push the paper to slide apart."],
+    ["Wringing out a wet towel", 3, "The ends are twisted in opposite directions."],
+    ["The rope in a game of tug of war", 1, "Both teams pull it apart."],
+    ["The top of a bent diving board", 1, "When a diving board bends down, its top is stretched."],
+    ["Stones in an arch", 0, "The arch carries the load by squeezing its stones together."],
+    ["Turning a stuck jar lid", 3, "Your hand twists the lid while the jar is held still."],
+    ["A hole punch cutting paper", 2, "The paper is pushed to slide past itself."],
+    ["Standing on an empty pop can", 0, "Your weight squeezes the can."]
+  ]},
+  {label: "Why did it fail?", bins: ["Flawed design", "Poor construction", "Improper load", "Structural fatigue"], items: [
+    ["The designer forgot to include the weight of snow in the plan", 0, "The plan itself was wrong."],
+    ["Builders used thinner beams than the plans showed", 1, "The plan was fine, but the building was not done as planned."],
+    ["A truck heavier than the posted limit crossed a small bridge", 2, "The load was more than the bridge was designed for."],
+    ["A metal sign post cracked after years of swaying in the wind", 3, "Repeated small loads grew a crack over time."],
+    ["A paper tower used thin columns with no braces and buckled", 0, "The design did not prevent buckling."],
+    ["A shelf was loaded with heavy textbooks when it was made for paperbacks", 2, "It carried more load than intended."],
+    ["Bolts were left out of a deck’s joist hangers", 1, "A construction mistake."],
+    ["A swing set’s top bar cracked after 15 years of daily use", 3, "Thousands of cycles caused fatigue."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Structure", "Anything with a shape that holds up a load, natural or human-made."],
+  ["Component", "A part of a structure, such as a beam, column or arch."],
+  ["Beam", "A part that lies across a gap and carries a load. It bends: compression on top, tension underneath."],
+  ["Column", "An upright part that holds weight from above and carries it down."],
+  ["Arch", "A curved part that carries a load around its curve to its ends."],
+  ["Abutment", "A solid support at the end of an arch or bridge that stops it from spreading."],
+  ["Mass (solid) structure", "A structure made by piling up material. Its own weight holds it in place."],
+  ["Frame structure", "A skeleton of parts joined together that carries the load."],
+  ["Shell structure", "A thin, curved outer layer that holds its shape and spreads a load over its surface."],
+  ["Biomimicry", "Copying ideas from natural structures and living things to design human-made ones."],
+  ["Load", "A force that acts on a structure."],
+  ["Newton (N)", "The unit for force. A 1 kg mass weighs about 9.8 N on Earth."],
+  ["Permanent load", "A load that is always there, such as the weight of the structure itself (dead load)."],
+  ["Non-permanent load", "A load that comes and goes or changes, such as wind, snow, people or ground shifting."],
+  ["External force", "A force acting on a structure from outside, such as a load."],
+  ["Internal force", "A force inside the materials of a structure as its parts push and pull on each other."],
+  ["Compression", "An internal force that squeezes or pushes a part together."],
+  ["Tension", "An internal force that stretches or pulls a part apart."],
+  ["Shear", "An internal force that pushes parts to slide past each other."],
+  ["Torsion", "An internal force that twists a part."],
+  ["Buckling", "When a part in compression suddenly bends sideways, like a thin column."],
+  ["Deformation", "A change in the shape of a structure caused by forces."],
+  ["Integrity", "A structure’s ability to hold together and do its job."],
+  ["Structural fatigue", "Progressive damage from repeated or cyclic loading that can lead to failure over time."],
+  ["Cyclic loading", "A load that is put on and taken off again and again."],
+  ["Structural failure", "When a structure deforms too much or breaks and can no longer do its job."],
+  ["Safety factor", "Extra strength built into a design beyond the biggest load expected."],
+  ["Efficiency (of a structure)", "How much load a structure holds for its mass: load held ÷ mass."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Which component lies across a gap and carries a load?", ["Beam", "Column", "Abutment", "Foundation"], "A beam spans a gap, like a bridge deck or a floor joist."],
+  ["Which component stands upright and carries weight down to the ground?", ["Column", "Beam", "Arch", "Cable"], "Columns hold weight from above."],
+  ["Why does an arch bridge need solid abutments?", ["An arch pushes out at its ends, so they must not spread", "To make the arch lighter", "To stop the arch from twisting in wind", "Abutments carry the cars"], "An arch carries the load to its ends and pushes outward there."],
+  ["A beaver dam is an example of which category of structure?", ["Mass", "Frame", "Shell", "Combination"], "It holds back water by its piled-up weight."],
+  ["Which is a shell structure?", ["An eggshell", "A spider web", "A stone wall", "A bicycle"], "A thin curved layer that holds its shape."],
+  ["A house with a concrete foundation, wooden wall frame and sheathing shows…", ["a combination of mass, frame and shell", "a pure mass structure", "a pure shell structure", "no structure at all"], "Combining categories helps it withstand loads."],
+  ["Hollow bird bones inspired which human-made design?", ["Light, hollow tube frames", "Stone walls", "Flat roofs", "Concrete dams"], "A hollow tube is stiff but light."],
+  ["Which is a difference between most natural and human-made structures?", ["Natural structures can often repair themselves", "Only human-made structures carry loads", "Natural structures never use triangles", "Human-made structures never use curves"], "Living structures grow and heal; built ones need repair by people."],
+  ["Which load is permanent?", ["The weight of the structure itself", "Snow", "Wind", "People"], "The dead load is always there."],
+  ["Which load is non-permanent?", ["Wind on a tower", "The weight of a steel beam in the tower", "The weight of the concrete floor", "The weight of the roof"], "Wind changes all the time."],
+  ["Why is wet spring snow a bigger roof load than the same depth of fresh snow?", ["It is denser, so it has more mass", "It is colder", "It is lighter", "It sticks to the roof"], "More mass in the same volume means more weight."],
+  ["Loads acting on a structure from outside are…", ["external forces", "internal forces", "torsion only", "not forces"], "Loads are external forces."],
+  ["A rope in tug of war is in…", ["tension", "compression", "shear", "torsion"], "It is pulled apart from both ends."],
+  ["When a beam bends under a load in the middle, its top is in…", ["compression", "tension", "torsion", "no force at all"], "The top is squeezed and the bottom is stretched."],
+  ["Twisting a towel to wring it out is an example of…", ["torsion", "shear", "compression", "tension"], "Torsion is a twisting force."],
+  ["A tall, thin column suddenly bends sideways under a load. This is called…", ["buckling", "fatigue", "shear", "tension"], "Columns in compression can buckle if they are too thin."],
+  ["A beam bends under a load, then springs back when the load is removed. This is…", ["deformation that did not harm its integrity", "fatigue failure", "permanent deformation", "a flawed design"], "Small, elastic deformation springs back."],
+  ["Structural fatigue is caused by…", ["repeated or cyclic loading over time", "one very large load", "using the wrong colour of paint", "a structure being too heavy"], "Many cycles grow cracks a little at a time."],
+  ["Why can fatigue be dangerous?", ["Cracks grow slowly and can be hard to see until the part fails", "It only happens to new structures", "It makes structures heavier", "It always gives a loud warning"], "Regular inspection is needed to find small cracks."],
+  ["Builders used half the bolts shown in the plans and the deck sagged. The cause is…", ["poor construction", "flawed design", "fatigue", "a natural structure"], "The plan was fine; the building was not."],
+  ["A truck heavier than the posted limit damages a bridge. The cause is…", ["improper load", "flawed design", "poor construction", "fatigue"], "The load was more than the design allowed."],
+  ["In 1940, the thin, flexible deck of the Tacoma Narrows Bridge twisted in the wind until it broke. The main cause was…", ["flawed design", "poor construction", "fatigue from traffic", "an earthquake"], "The deck design was too flexible for wind."],
+  ["Which design factor asks, “What job must the structure do?”", ["Function", "Safety", "Available resources", "Lifespan"], "Function is the job of the structure."],
+  ["Building a structure stronger than the biggest load expected is called using a…", ["safety factor", "permanent load", "shell", "cyclic load"], "Extra strength protects people if loads are larger than expected."],
+  ["Bridge A (50 g) holds 3 kg. Bridge B (100 g) holds 4 kg. Which is more efficient?", ["Bridge A: 60 times its mass, versus 40", "Bridge B, because it holds more", "They are equal", "You cannot compare them"], "3000 ÷ 50 = 60 and 4000 ÷ 100 = 40."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Name three components of structures and describe what each one does.", a: "A beam lies across a gap and carries a load, like a bridge deck. A column stands upright and carries weight from above down to the ground. An arch is curved and carries a load around its curve to its ends, where abutments stop it from spreading.", k: ["Beam spans a gap", "Column carries weight down", "Arch carries load to its ends"]},
+  {q: "Describe mass, frame and shell structures. Give one natural and one human-made example of each.", a: "A mass structure is piled-up material held in place by its weight, like a beaver dam and a concrete dam. A frame structure is a skeleton of joined parts, like your skeleton and a bicycle. A shell structure is a thin curved layer that spreads a load, like an egg and a bike helmet.", k: ["Mass described with examples", "Frame described with examples", "Shell described with examples"]},
+  {q: "Choose one natural structure and the human-made design it inspired. How are they alike and how are they different?", a: "A honeycomb is made of hexagon cells of wax. Honeycomb panels in airplane floors use the same hexagon shape, so both are strong and light. They differ because bees build and repair the honeycomb, while panels are made of aluminum or paper in a factory and cannot repair themselves.", k: ["Names a natural structure and design", "Describes a shared feature", "Describes a difference"]},
+  {q: "Explain the difference between permanent and non-permanent loads. Give two examples of each for a school gym.", a: "A permanent load is always there and does not change, such as the weight of the gym’s walls and its roof. A non-permanent load comes and goes or changes size, such as students at an assembly and snow on the roof.", k: ["Permanent is always there", "Non-permanent changes", "Two correct examples of each"]},
+  {q: "A plank bridge sags when you walk across it. Describe the internal forces in the plank.", a: "Your weight is an external force on the plank. The plank bends, so its top surface is squeezed in compression and its bottom surface is stretched in tension. If the load is too large, the bottom can crack where it is stretched most.", k: ["Weight is an external force", "Top in compression", "Bottom in tension"]},
+  {q: "What is structural fatigue? Use a paper clip or playground swing to explain.", a: "Structural fatigue is damage that builds up from loads put on and taken off again and again. Each time a paper clip is bent back and forth, a tiny crack grows. No single bend breaks it, but after many cycles the crack is big enough that it snaps.", k: ["Repeated or cyclic loading", "Damage builds up over time", "Leads to failure even with small loads"]},
+  {q: "List the four causes of structural failure and give a short example of each.", a: "Flawed design: the plan used columns too thin to carry the load. Poor construction: builders left out bolts. Improper load: a truck heavier than the limit crossed a bridge. Structural fatigue: a sign post cracked after years of swaying in the wind.", k: ["Flawed design with example", "Poor construction with example", "Improper load with example", "Fatigue with example"]},
+  {q: "Describe the four factors that affect the design of a structure.", a: "Function is the job the structure must do. Available resources are the materials, money, tools, time and workers there are. Safety means protecting people, often by adding a safety factor. Intended lifespan and sustainability are how long it must last and how to use materials and energy wisely.", k: ["Function", "Available resources", "Safety", "Lifespan and sustainability"]},
+  {q: "Bridge A has a mass of 80 g and holds 4.8 kg. Bridge B has a mass of 50 g and holds 3.5 kg. Which design is more effective for its mass? Show your work.", a: "Change kilograms to grams. Bridge A: 4800 g ÷ 80 g = 60. Bridge B: 3500 g ÷ 50 g = 70. Bridge B is more efficient because it holds 70 times its own mass, even though Bridge A holds more in total.", k: ["Changes kg to g", "Calculates 60 and 70", "Chooses Bridge B with a reason"]}
+];
+var LONG = [
+  {q: "Design a craft stick bridge to span a 40 cm gap and hold as much load as possible for its mass. Describe your design, the components and category you would use, how you would test it fairly, and how you would compare it to another design with the same function.", a: "I would build a truss bridge, a frame structure, using beams joined in triangles because triangles keep their shape. The deck is a beam across the gap. I would test it by hanging masses from the middle and adding small amounts until it fails. To be fair, I would use the same gap, the same glue, the same place to add load and the same number of sticks as the other design. I would record the mass of each bridge and the greatest load it held, then compare efficiency (load held ÷ mass). The design with the higher efficiency is more effective, even if the other one holds more in total.", k: ["Names design, components and category", "Explains why the shape is strong", "Fair test: controlled variables", "Measures mass and greatest load", "Compares using efficiency"]},
+  {q: "Investigate a structure failure. Choose the Quebec Bridge, the Tacoma Narrows Bridge or one practice case from the Lab Bench. Describe what happened, the evidence, the main cause and how a similar failure could be prevented.", a: "The Tacoma Narrows Bridge opened in 1940 with a very thin, flexible deck. It moved in the wind from the start. Four months later, in a moderate wind, it twisted back and forth until it tore apart. The evidence of twisting (torsion) and the thin deck show the main cause was flawed design: the designers did not understand how wind would act on such a flexible deck. Similar failures can be prevented by testing models in a wind tunnel and designing deeper, stiffer decks, which is how the bridge was rebuilt.", k: ["Describes what happened", "Uses evidence", "Names the main cause correctly", "Explains how to prevent it"]},
+  {q: "Edmonton has cold winters with heavy snow, strong winds and freeze and thaw cycles. Explain how a designer would plan a bus shelter to withstand these loads. Use the words permanent load, non-permanent load, internal forces and fatigue.", a: "The permanent load is the weight of the shelter’s own frame, roof and glass. The non-permanent loads include snow on the roof, wind on the walls, people leaning on it and the ground shifting with frost. Snow on the roof puts the roof beams in bending, with compression on top and tension underneath, and the columns in compression. Wind pushes the sides and can cause shear and twisting at joints. Because wind and freeze and thaw load the shelter again and again, joints could suffer fatigue, so the designer would use strong welds or bolts, a sloped roof so snow slides off, triangle bracing, deep footings below the frost line and a plan for yearly inspection. A safety factor would make it stronger than the biggest load expected.", k: ["Identifies permanent and non-permanent loads", "Describes internal forces in parts", "Mentions fatigue and inspection", "Gives specific design choices", "Mentions safety"]},
+  {q: "Compare a natural structure and a human-made structure that do the same job, such as a tree and a tall tower, or an eggshell and a dome. Which category is each, how does each withstand its loads and what could designers learn from the natural one?", a: "An eggshell and a dome are both shell structures. An eggshell spreads a push on its ends over its whole curved surface, so a thin layer can hold a large load. A concrete dome uses the same idea to cover a large space with little material. The eggshell only needs to last a few weeks and is light, while the dome must last many decades and carry snow and wind. Designers learn from the egg that a curve can make a thin structure strong.", k: ["Names category for each", "Explains how each carries load", "Similarity and difference", "Lesson designers can learn"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+ [
+  "F1.K1",
+  "Structures are composed of interacting components, such as beams, columns, and arches.",
+  "Learn: Lesson 1 (arch bridge parts model with Find it). Sort It: which internal force deck. Quiz, Flashcards, Written Review short answer 1."
+ ],
+ [
+  "F1.K2",
+  "Natural structures can inspire the design and construction of human-made structures.",
+  "Learn: Lesson 3 (nature to design model and comparison table). Quiz, Flashcards, Written Review short answer 3, extended 4."
+ ],
+ [
+  "F1.K3",
+  "Loads are forces that act on structures and can be classified as\n• permanent, e.g., weight of the structure\n• non-permanent, e.g., wind, weight of snow, weight of occupants, and ground shifting",
+  "Learn: Lesson 4 (loads on a house and snow load estimator). Lab Bench: Investigation 3. Sort It: permanent or non-permanent deck. Quiz, Flashcards, Written Review short answer 4."
+ ],
+ [
+  "F1.K4",
+  "Structural deformation from internal forces, external forces, or both can cause changes to a structure’s shape or integrity.",
+  "Learn: Lesson 5 (loaded beam and four internal forces). Sort It: which internal force deck. Quiz, Flashcards, Written Review short answer 5, extended 3."
+ ],
+ [
+  "F1.K5",
+  "Structural fatigue is progressive damage from repeated or cyclic loading that can lead to a structure’s failure over time.",
+  "Learn: Lesson 6 (bend a paper clip). Lab Bench: Investigation 4 (swing set case). Quiz, Flashcards, Written Review short answer 6."
+ ],
+ [
+  "F1.K6",
+  "Structural deformation and failure can result from\n• flawed design\n• poor construction\n• improper load\n• structural fatigue",
+  "Learn: Lesson 7 (cause cards). Lab Bench: Investigation 4 (failure case files). Sort It: why did it fail deck. Quiz, Written Review short answer 7, extended 2."
+ ],
+ [
+  "F1.K7",
+  "Factors that can affect the design and construction of structures include\n• function\n• available resources\n• safety\n• intended lifespan and sustainability",
+  "Learn: Lesson 8 (design briefs). Quiz, Flashcards, Written Review short answer 8, extended 3."
+ ],
+ [
+  "F1.K8",
+  "Natural and constructed structures can be categorized as\n• mass or solid\n• frame\n• shell",
+  "Learn: Lesson 2 (structure categories). Lab Bench: Investigation 3. Sort It: mass, frame or shell deck. Quiz, Flashcards, Written Review short answer 2."
+ ],
+ [
+  "F1.K9",
+  "Structures from different categories can be combined to better withstand a load.",
+  "Learn: Lesson 2 (combination card). Lab Bench: Investigation 3 (house and tipi). Quiz, Written Review extended 4."
+ ],
+ [
+  "F1.S1",
+  "Develop a structure that supports a load.",
+  "Lab Bench: Investigation 1 (craft stick bridge test). Learn: Lesson 8. Written Review extended 1."
+ ],
+ [
+  "F1.S2",
+  "Identify the components and categories of a structure.",
+  "Learn: Lessons 1 and 2 (Find it game, categories). Lab Bench: Investigation 3 (structure spotter). Sort It: mass, frame or shell deck."
+ ],
+ [
+  "F1.S3",
+  "Classify loads as permanent or non-permanent.",
+  "Learn: Lesson 4. Lab Bench: Investigation 3. Sort It: permanent or non-permanent deck. Written Review short answer 4."
+ ],
+ [
+  "F1.S4",
+  "Compare natural structures to human-made structures.",
+  "Learn: Lesson 3. Written Review short answer 3, extended 4."
+ ],
+ [
+  "F1.S5",
+  "Investigate a structure failure.",
+  "Lab Bench: Investigation 4 (two real and four practice case files). Learn: Lesson 7. Sort It: why did it fail deck. Written Review extended 2."
+ ],
+ [
+  "F1.S6",
+  "Compare the effectiveness of structures that have a common function but different designs.",
+  "Lab Bench: Investigations 1 (trials table) and 2 (efficiency worked example and randomized practice). Written Review short answer 9, extended 1."
+ ]
+];;
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

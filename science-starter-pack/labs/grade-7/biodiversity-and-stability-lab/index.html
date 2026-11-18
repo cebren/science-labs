@@ -1,0 +1,1016 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/biodiversity-and-stability-lab/"><meta name="description" content="The stability of ecosystems is influenced by biodiversity."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Biodiversity and Stability Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field guide for an Alberta ecosystem. Spruce green is the main ink, lake blue marks abiotic things and data, ochre marks energy and adaptations, berry marks interactions between species. Sticky tab bar, one working panel per tab. */
+:root{
+  --bg:#ECF0EA; --surface:#FFFFFF; --surface-2:#F3F6F1; --ink:#18231B; --muted:#526056; --line:#CBD5CC;
+  --accent:#2D6A3C; --accent-soft:#DAEBDD;
+  --lake:#1D6589; --lake-soft:#DAEAF3; --sun:#9A6200; --sun-soft:#F6EAD2; --berry:#A2375A; --berry-soft:#F6DFE7;
+  --good:#1E7A3C; --good-soft:#DCF1E2; --bad:#B23A2E; --bad-soft:#F8E0DC;
+  --ground:#B9A27C; --water:#7DB5D2; --leaf:#5E9E5A;
+  --s1:#2E8B57; --s2:#E07B39; --s3:#D4A017; --s4:#3D7DD8; --s5:#B04FB0; --s6:#C2414B; --s7:#2BA3A3; --s8:#8A6D4B;
+  --f-display:"Young Serif","Georgia",serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1511; --surface:#161F19; --surface-2:#1B261F; --ink:#E2EBE3; --muted:#9BAEA0; --line:#2B3A30;
+  --accent:#7FCB8E; --accent-soft:#183522;
+  --lake:#78B9E0; --lake-soft:#152A38; --sun:#E9B65C; --sun-soft:#382A12; --berry:#EE8FB0; --berry-soft:#3A1C27;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  --ground:#6E5E44; --water:#2F6F92; --leaf:#4E8A4B;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1511; --surface:#161F19; --surface-2:#1B261F; --ink:#E2EBE3; --muted:#9BAEA0; --line:#2B3A30;
+  --accent:#7FCB8E; --accent-soft:#183522;
+  --lake:#78B9E0; --lake-soft:#152A38; --sun:#E9B65C; --sun-soft:#382A12; --berry:#EE8FB0; --berry-soft:#3A1C27;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  --ground:#6E5E44; --water:#2F6F92; --leaf:#4E8A4B;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+button{font:inherit;color:inherit}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:.92rem}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.sm{padding:5px 12px;font-size:.85rem}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input[type=number],input[type=text],textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;max-width:100%}
+textarea{width:100%;min-height:100px;resize:vertical}
+input[type=range]{accent-color:var(--accent);width:100%;max-width:340px}
+label.ctl{display:grid;gap:4px;font-size:.88rem;color:var(--muted)}
+label.ctl b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{padding-block:26px 18px;display:grid;gap:14px}
+.brand{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:flex-end}
+.brand h1{font-size:clamp(2rem,6vw,3rem);letter-spacing:-.01em}
+.brand h1 span{color:var(--accent)}
+.brand .lede{color:var(--muted);max-width:62ch;margin-top:6px}
+.under{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border-radius:var(--r);padding:10px 14px;max-width:66ch;font-size:.95rem}
+.under b{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:4px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,auto);gap:4px 18px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.stats b{display:block;font-size:1.25rem;color:var(--ink);font-variant-numeric:tabular-nums}
+
+.tabsbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
+.tabs [role=tab]{border:0;background:none;padding:12px 14px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;font-size:.95rem}
+.tabs [role=tab][aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs [role=tab]:hover{color:var(--ink)}
+main{padding-block:26px 56px}
+[role=tabpanel]{display:grid;gap:22px}
+.intro{color:var(--muted);max-width:68ch}
+
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.sec-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.sec-head h2{font-size:1.45rem}
+.step{font-family:var(--f-mono);font-size:.74rem;color:var(--accent);font-weight:600}
+.codes{display:flex;gap:6px;flex-wrap:wrap}
+.code{font-family:var(--f-mono);font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;align-items:start}
+@media (max-width:780px){.two{grid-template-columns:minmax(0,1fr)}}
+.prose{display:grid;gap:10px;max-width:66ch;min-width:0}
+.prose ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.model{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:12px;min-width:0}
+.model h3{font-size:1.05rem}
+.note{font-size:.88rem;color:var(--muted)}
+.callout{border-left:4px solid var(--sun);background:var(--sun-soft);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.93rem}
+.callout.lake{border-color:var(--lake);background:var(--lake-soft)}
+.callout.berry{border-color:var(--berry);background:var(--berry-soft)}
+.svgbox{overflow-x:auto;min-width:0}
+.svgbox svg{display:block;width:100%;height:auto;max-width:100%}
+svg text{font-family:var(--f-body)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.88rem;cursor:pointer;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.out{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.93rem;min-width:0}
+.formula{font-family:var(--f-mono);font-size:1rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 14px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablebox{overflow-x:auto;min-width:0}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:7.5em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--accent)}
+.bar .track{background:var(--surface);border:1px solid var(--line);border-radius:6px;height:14px;overflow:hidden;padding:0}
+.bar span:last-child{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.good{color:var(--good)} .bad{color:var(--bad)}
+.fb{padding:8px 12px;border-radius:8px;font-size:.92rem}
+.fb.ok{background:var(--good-soft);color:var(--good)}
+.fb.no{background:var(--bad-soft);color:var(--bad)}
+
+/* nested levels */
+.levels{display:grid;gap:8px}
+.lvl{display:grid;gap:4px;text-align:left;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;cursor:pointer}
+.lvl[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.lvl b{font-family:var(--f-display);font-weight:400;font-size:1.05rem}
+.lvl span{font-size:.85rem;color:var(--muted)}
+
+/* species picker cards */
+.pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:8px}
+.pick button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;cursor:pointer;font-weight:700;font-size:.9rem}
+.pick button[aria-pressed="true"]{border-color:var(--sun);background:var(--sun-soft)}
+
+.sym{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.symcard{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:12px;display:grid;gap:6px;align-content:start}
+.signs{font-family:var(--f-mono);font-weight:600;font-size:1.1rem;color:var(--berry)}
+.symcard h3{font-size:1.1rem}
+.symcard ul{margin:0;padding-left:1.1em;font-size:.9rem;display:grid;gap:3px}
+
+/* web map */
+.node{cursor:pointer}
+.node circle{stroke-width:2}
+.node text{font-size:12px;fill:var(--ink)}
+.edge{stroke:var(--line);stroke-width:1.6}
+.edge.on{stroke:var(--berry);stroke-width:3}
+.node.dim{opacity:.3}
+.node.gone circle{stroke-dasharray:4 3}
+
+/* quadrat field */
+.field{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px;max-width:420px}
+.field button{aspect-ratio:1;border:1px solid var(--line);background:var(--surface);border-radius:4px;cursor:pointer;padding:0;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:1px;max-width:100%}
+.field button[aria-pressed="true"]{outline:3px solid var(--sun);outline-offset:-2px}
+.field i{display:block;width:6px;height:6px;border-radius:50%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* sort */
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);border-radius:12px;padding:10px;min-height:110px;display:grid;gap:6px;align-content:start;background:var(--surface);cursor:pointer;text-align:left}
+.bin h3{font-size:1rem}
+.bin.hot{border-color:var(--accent);background:var(--accent-soft)}
+.tray{display:flex;flex-wrap:wrap;gap:8px}
+.card-i{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:.9rem;text-align:left}
+.card-i[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.placed{font-size:.85rem;padding:5px 9px;border-radius:8px}
+.placed.ok{background:var(--good-soft);color:var(--good)}
+.placed.no{background:var(--bad-soft);color:var(--bad)}
+
+/* flashcards */
+.flash{min-height:200px;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:24px;display:grid;place-items:center;text-align:center;cursor:pointer;width:100%}
+.flash .term{font-family:var(--f-display);font-size:clamp(1.5rem,4vw,2.1rem)}
+.flash .def{font-size:1.05rem;max-width:52ch}
+
+/* quiz */
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:.95rem}
+.opt.ok{border-color:var(--good);background:var(--good-soft)}
+.opt.no{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.progress{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent)}
+
+details.model-ans{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--surface-2)}
+details.model-ans summary{cursor:pointer;font-weight:700;font-size:.9rem}
+.check{display:grid;gap:4px;margin-top:6px}
+.check label{display:flex;gap:8px;align-items:flex-start;font-size:.9rem}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.85rem;color:var(--muted);display:grid;gap:4px}
+footer .credit a{color:var(--accent)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">Science 7 · Life Science: Ecosystems · LS1</div>
+        <h1>Biodiversity and <span>Stability</span> Lab</h1>
+        <p class="lede">Explore how the variety of life in an ecosystem helps it hold together through dry years, hard winters and change. Examples come from Alberta, from Elk Island to the boreal forest.</p>
+      </div>
+      <div class="row">
+        <div class="stats" aria-label="Your progress">
+          <span><b id="stFlash">0</b>cards known</span>
+          <span><b id="stQuiz">0</b>best quiz</span>
+          <span><b id="stSort">0</b>sort rounds</span>
+        </div>
+        <button class="btn sm" id="themeBtn" type="button" aria-label="Change colour theme">Theme: system</button>
+      </div>
+    </div>
+    <div class="under"><b>Big idea</b><span>The stability of ecosystems is influenced by biodiversity.</span></div>
+  </div>
+</header>
+
+<div class="tabsbar">
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Lab sections" id="tabs">
+      <button role="tab" id="tab-learn" aria-controls="p-learn" aria-selected="true">Learn</button>
+      <button role="tab" id="tab-bench" aria-controls="p-bench" aria-selected="false" tabindex="-1">Lab Bench</button>
+      <button role="tab" id="tab-sort" aria-controls="p-sort" aria-selected="false" tabindex="-1">Sort It</button>
+      <button role="tab" id="tab-flash" aria-controls="p-flash" aria-selected="false" tabindex="-1">Flashcards</button>
+      <button role="tab" id="tab-quiz" aria-controls="p-quiz" aria-selected="false" tabindex="-1">Quiz</button>
+      <button role="tab" id="tab-written" aria-controls="p-written" aria-selected="false" tabindex="-1">Written Review</button>
+      <button role="tab" id="tab-coverage" aria-controls="p-coverage" aria-selected="false" tabindex="-1">Coverage</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- LEARN -->
+<section role="tabpanel" id="p-learn" aria-labelledby="tab-learn">
+  <p class="intro">Work through these eight ideas in order. Each one has a model to try. Read the short text, then use the model to check your thinking.</p>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">1 of 8</span><h2>Ecosystems keep changing</h2><div class="codes"><span class="code">LS1.K1</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>An <b>ecosystem</b> is all the living things in an area plus the non-living things around them, such as water, soil, sunlight and temperature.</p>
+        <p>Ecosystems are <b>dynamic</b>. That means their characteristics change over time. Some changes are quick and repeat every year, like Edmonton's river valley turning from green summer forest to snowy winter woods. Other changes take years or decades, like a wetland filling up in wet years and shrinking in dry years.</p>
+        <p>A beaver pond is a good example. Beavers can turn a small creek into a pond full of new life. Years later the pond can drain and become a meadow.</p>
+        <div class="callout lake">Many First Nations and Métis families have watched the same lands for generations, noticing changes in berry crops, water levels and animal numbers. Long-term knowledge like this helps everyone see how ecosystems change over time.</div>
+      </div>
+      <div class="model">
+        <h3>Model: a beaver pond over 40 years</h3>
+        <div class="svgbox"><svg id="pondSvg" viewBox="0 0 400 200" role="img" aria-label="Beaver pond scene"></svg></div>
+        <label class="ctl" for="pondYear">Year <b id="pondYearOut">0</b>
+          <input type="range" id="pondYear" min="0" max="4" step="1" value="0"></label>
+        <div class="out" id="pondText" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">2 of 8</span><h2>From species to ecosystem</h2><div class="codes"><span class="code">LS1.K2</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>Ecologists describe nature in levels. Each level is built from the one before it.</p>
+        <ul>
+          <li><b>Species:</b> one type of organism. Members of a species can mate and produce offspring that can also reproduce.</li>
+          <li><b>Population:</b> all the members of one species living and interacting in the same area.</li>
+          <li><b>Community:</b> all the populations of different species living and interacting in that area.</li>
+          <li><b>Ecosystem:</b> the community interacting with abiotic (non-living) factors such as water, soil, air, light and temperature.</li>
+        </ul>
+        <p>Living parts of an ecosystem are <b>biotic</b> factors. Non-living parts are <b>abiotic</b> factors.</p>
+      </div>
+      <div class="model">
+        <h3>Model: Elk Island National Park, east of Edmonton</h3>
+        <div class="levels" id="levels"></div>
+        <div class="out" id="levelText" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">3 of 8</span><h2>Three kinds of biodiversity</h2><div class="codes"><span class="code">LS1.K3</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p><b>Biodiversity</b> is the variety of life. Scientists look at it in three ways.</p>
+        <ul>
+          <li><b>Genetic diversity:</b> variation among organisms of the same species. Not every snowshoe hare or aspen tree has the same genes.</li>
+          <li><b>Species diversity:</b> the number of different species (called <b>richness</b>) and how evenly individuals are spread among them (called <b>evenness</b> or abundance).</li>
+          <li><b>Ecosystem diversity:</b> the number of different habitat types in an area, like aspen groves, sloughs, grassland and spruce bog all in one landscape.</li>
+        </ul>
+        <p class="note">Scientists also use "ecosystem diversity" for the variety of whole ecosystems across a region. Alberta has six natural regions: Grassland, Parkland, Foothills, Rocky Mountain, Boreal Forest and Canadian Shield.</p>
+      </div>
+      <div class="model">
+        <h3>Model: compare two meadows</h3>
+        <div class="chips" role="group" aria-label="Kind of biodiversity" id="bdChips"></div>
+        <div id="bdBody" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">4 of 8</span><h2>What stability means</h2><div class="codes"><span class="code">LS1.K4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p><b>Ecosystem stability</b> is the ability of an ecosystem to keep its structure, its biodiversity and its processes over time.</p>
+        <ul>
+          <li><b>Structure:</b> its layers and parts, such as tree canopy, shrubs, ground plants, and who eats whom.</li>
+          <li><b>Biodiversity:</b> the variety of species it holds.</li>
+          <li><b>Processes:</b> the jobs it keeps doing, such as photosynthesis, decomposition, recycling nutrients and filtering water.</li>
+        </ul>
+        <p>A stable ecosystem still changes. It can bend during a drought, a hard winter or a bad insect year, then return to about the same condition. Think of a ball in a bowl. A deep bowl lets the ball roll back after a push. A shallow bowl lets it roll out.</p>
+      </div>
+      <div class="model">
+        <h3>Model: give the ecosystem a push</h3>
+        <div class="svgbox"><svg id="bowlSvg" viewBox="0 0 400 170" role="img" aria-label="Ball in a bowl stability model"></svg></div>
+        <div class="row">
+          <div class="chips" role="group" aria-label="Bowl" id="bowlChips"></div>
+        </div>
+        <label class="ctl" for="pushSize">Size of disturbance <b id="pushOut">medium</b>
+          <input type="range" id="pushSize" min="1" max="3" step="1" value="2"></label>
+        <div class="row"><button class="btn primary" type="button" id="pushBtn">Push</button></div>
+        <div class="out" id="bowlText" aria-live="polite">Pick a bowl and press Push.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">5 of 8</span><h2>Niches: a role and a place</h2><div class="codes"><span class="code">LS1.K5</span><span class="code">LS1.K6</span><span class="code">LS1.K8</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>habitat</b> is where a species lives. An <b>ecological niche</b> is the role a species plays in its habitat: what it eats, where and when it feeds, where it nests, and what conditions it needs.</p>
+        <p>When species have different niches, they can share the same environment. Their needs overlap less, so <b>competition</b> for food and space is reduced.</p>
+        <p>Factors that shape a species' niche:</p>
+        <div class="chips" id="nicheFactors" role="group" aria-label="Niche factors"></div>
+        <div class="out" id="nicheFactorText" aria-live="polite">Tap a factor to see an example.</div>
+      </div>
+      <div class="model">
+        <h3>Model: five warblers, one spruce tree</h3>
+        <p class="note">Ecologist Robert MacArthur studied warblers that all eat insects in spruce trees. Each species fed mostly in a different part of the tree. All five of these warblers also nest in Alberta's boreal forest.</p>
+        <div class="svgbox"><svg id="treeSvg" viewBox="0 0 400 260" role="img" aria-label="Spruce tree feeding zones"></svg></div>
+        <div class="chips" id="warblers" role="group" aria-label="Warbler species"></div>
+        <label class="row" style="font-size:.9rem"><input type="checkbox" id="sameZone"> Make every warbler feed in the same zone</label>
+        <div class="bar"><span>Competition</span><span class="track"><i id="compBar" style="width:20%"></i></span><span id="compOut">low</span></div>
+        <div class="out" id="warblerText" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">6 of 8</span><h2>Adaptations fit the environment</h2><div class="codes"><span class="code">LS1.K7</span><span class="code">LS1.K6</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>An <b>adaptation</b> is a feature that makes a species well suited to a specific environment. Adaptations can be:</p>
+        <ul>
+          <li><b>Structural:</b> a body part or shape, like the lynx's wide furry paws.</li>
+          <li><b>Behavioural:</b> something the organism does, like a ground squirrel hibernating.</li>
+          <li><b>Physiological:</b> how the body works inside, like a wood frog making its own antifreeze.</li>
+        </ul>
+        <p>Adaptations also shape a species' niche. The lynx's paws let it hunt hares in deep snow where other predators struggle.</p>
+      </div>
+      <div class="model">
+        <h3>Model: Alberta species field guide</h3>
+        <div class="pick" id="adaptPick"></div>
+        <div class="out" id="adaptText" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">7 of 8</span><h2>Predators help keep balance</h2><div class="codes"><span class="code">LS1.K9</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p><b>Predation</b> is when one organism (the predator) hunts and eats another (the prey). Predators keep prey populations from growing so large that they eat up their food supply.</p>
+        <p>Snowshoe hares and Canada lynx in the boreal forest are a famous example. Fur-trading records from the Hudson's Bay Company showed that both populations rise and fall in a cycle of about 10 years. Food supply and predators both drive the cycle.</p>
+        <p>Try the model. Run it with lynx, then without. Watch the willow shrubs that hares eat in winter.</p>
+      </div>
+      <div class="model">
+        <h3>Model: willow, hares and lynx</h3>
+        <div class="svgbox"><svg id="predSvg" viewBox="0 0 420 220" role="img" aria-label="Population graph"></svg></div>
+        <div class="legend"><span><i style="background:var(--leaf)"></i>Willow (% of full)</span><span><i style="background:var(--sun)"></i>Hares</span><span><i style="background:var(--berry)"></i>Lynx (× 10)</span></div>
+        <div class="row">
+          <button class="btn" type="button" id="predOn" aria-pressed="true">With lynx</button>
+          <button class="btn" type="button" id="predOff" aria-pressed="false">Remove lynx</button>
+        </div>
+        <div class="out" id="predText" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">8 of 8</span><h2>Living together: symbiosis</h2><div class="codes"><span class="code">LS1.K10</span><span class="code">LS1.K6</span></div></div>
+    <div class="prose">
+      <p><b>Symbiosis</b> is a close, long-term relationship between two different species. There are three kinds. The signs show who benefits (+), who is harmed (−) and who is not affected (0).</p>
+    </div>
+    <div class="sym" id="symCards"></div>
+    <div class="callout berry">Predation is not usually called symbiosis because the predator and prey do not live together for a long time. A parasite usually harms its host without killing it quickly, because the parasite needs the host to stay alive.</div>
+  </article>
+</section>
+
+<!-- LAB BENCH -->
+<section role="tabpanel" id="p-bench" aria-labelledby="tab-bench" hidden>
+  <p class="intro">Five investigations. Each one practises a skill from the curriculum. Your results save in this browser only.</p>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">Bench 1</span><h2>Map a slough ecosystem</h2><div class="codes"><span class="code">LS1.S1</span></div></div>
+    <p class="intro">This map shows an aspen parkland slough, the small wetlands that dot the land around Edmonton. Tap any part to light up its connections. Then try removing it to see which parts are affected first.</p>
+    <div style="display:grid;gap:14px">
+      <div class="svgbox model"><svg id="webSvg" style="min-width:560px" viewBox="0 0 640 440" role="img" aria-label="Slough ecosystem connection map"></svg></div>
+      <div class="model">
+        <div class="legend"><span><i style="background:var(--lake)"></i>Abiotic</span><span><i style="background:var(--leaf)"></i>Producer</span><span><i style="background:var(--sun)"></i>Consumer</span><span><i style="background:var(--muted)"></i>Decomposer</span></div>
+        <div class="out" id="webText" aria-live="polite">Tap a part of the slough.</div>
+        <div class="row"><button class="btn" type="button" id="webRemove" disabled>Remove it</button><button class="btn" type="button" id="webReset">Reset map</button></div>
+        <div class="out" id="webImpact" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">Bench 2</span><h2>Quadrat survey: measure biodiversity</h2><div class="codes"><span class="code">LS1.S2</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>Ecologists cannot count every plant in a park. They lay down square frames called <b>quadrats</b> in random spots and count what is inside. Then they calculate:</p>
+        <ul>
+          <li><b>Species richness</b>: how many different species were found.</li>
+          <li><b>Simpson's index of diversity</b>: a number from 0 to 1 that combines richness and evenness. Closer to 1 means more diverse.</li>
+        </ul>
+        <div class="formula">D = 1 − Σ (n ÷ N)²</div>
+        <p class="note">n is the count of one species. N is the total count of all individuals. Σ means "add up for every species". You do not need to memorize this. Use it as a tool.</p>
+        <label class="ctl" for="ecoSel">Ecosystem to survey
+          <select id="ecoSel"></select></label>
+        <p class="note">Tap 5 squares to sample them. Each square is one quadrat.</p>
+        <div class="row"><button class="btn" type="button" id="qRand">Pick 5 at random</button><button class="btn" type="button" id="qNew">New field</button></div>
+      </div>
+      <div class="model">
+        <div class="field" id="field" role="group" aria-label="Field of quadrats"></div>
+        <div class="legend" id="fieldLegend"></div>
+        <div class="tablebox" id="qTally"></div>
+        <div class="row"><button class="btn primary" type="button" id="qSave" disabled>Save to results table</button></div>
+      </div>
+    </div>
+    <div class="model">
+      <h3>Results table</h3>
+      <div class="tablebox" id="qResults"></div>
+      <p class="note" id="qResultsNote"></p>
+    </div>
+    <div class="model">
+      <h3>Worked example and practice</h3>
+      <div class="out" id="simpWorked"></div>
+      <div id="simpPractice"></div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">Bench 3</span><h2>Match the adaptation to the place</h2><div class="codes"><span class="code">LS1.S3</span></div></div>
+    <p class="intro">Read the feature. Choose the environment where it would help the most. Then read why.</p>
+    <div class="model" id="adaptQuiz"></div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">Bench 4</span><h2>Niche analyzer: ducks on one slough</h2><div class="codes"><span class="code">LS1.S4</span></div></div>
+    <p class="intro">Five duck species can share one slough at Beaverhill Lake. Pick two ducks and compare their niches. The more their niches overlap, the more they compete.</p>
+    <div class="two">
+      <div class="model">
+        <div class="tablebox" id="duckTable"></div>
+      </div>
+      <div class="model">
+        <div class="row">
+          <label class="ctl" for="duckA">Duck A <select id="duckA"></select></label>
+          <label class="ctl" for="duckB">Duck B <select id="duckB"></select></label>
+        </div>
+        <div class="out" id="duckOut" aria-live="polite"></div>
+        <div class="callout"><b>Challenge:</b> Which pair overlaps the most? Which pair overlaps the least? Use the analyzer to find out, then explain why both species can still live on the same slough.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec">
+    <div class="sec-head"><span class="step">Bench 5</span><h2>Drought test: does biodiversity help?</h2><div class="codes"><span class="code">LS1.S5</span><span class="code">LS1.K4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>In a long experiment in Minnesota grasslands, ecologist David Tilman's team found that plots with more plant species lost less plant cover in a drought and recovered faster. This model works the same way.</p>
+        <p>Each plot starts full of plants. In years 4 and 5 a drought hits. Every plant species handles drought differently. Choose how many species the plot has, then run 20 plots and compare.</p>
+        <label class="ctl" for="nSpp">Plant species in each plot <b id="nSppOut">1</b>
+          <input type="range" id="nSpp" min="1" max="8" step="1" value="1"></label>
+        <div class="row"><button class="btn primary" type="button" id="runDrought">Run 20 plots</button></div>
+        <div class="out" id="droughtText" aria-live="polite"></div>
+      </div>
+      <div class="model">
+        <div class="svgbox"><svg id="droughtSvg" viewBox="0 0 420 230" role="img" aria-label="Plant cover over 12 years"></svg></div>
+        <div class="tablebox" id="droughtTable"></div>
+      </div>
+    </div>
+    <div class="model">
+      <h3>Discuss it: claim, evidence, reasoning</h3>
+      <p class="note">Write a short argument about how biodiversity supports stability. Use your drought test results as evidence. Your writing saves in this browser.</p>
+      <label class="ctl" for="cerClaim">Claim (answer the question in one sentence)<textarea id="cerClaim" placeholder="Ecosystems with more species are..."></textarea></label>
+      <label class="ctl" for="cerEvid">Evidence (numbers from your test)<textarea id="cerEvid" placeholder="With 1 species the lowest cover was... With 8 species it was..."></textarea></label>
+      <label class="ctl" for="cerReas">Reasoning (connect the evidence to the claim)<textarea id="cerReas" placeholder="This happens because different species..."></textarea></label>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section role="tabpanel" id="p-sort" aria-labelledby="tab-sort" hidden>
+  <p class="intro">Tap a card, then tap the group where it belongs. Finish a round to see your score.</p>
+  <div class="chips" id="sortDecks" role="group" aria-label="Choose a sort"></div>
+  <div class="sec">
+    <div class="sec-head"><h2 id="sortTitle"></h2><span class="note" id="sortScore"></span></div>
+    <div class="tray" id="sortTray"></div>
+    <div class="bins" id="sortBins"></div>
+    <div class="row"><button class="btn" type="button" id="sortRestart">Restart this sort</button></div>
+  </div>
+</section>
+
+<!-- FLASH -->
+<section role="tabpanel" id="p-flash" aria-labelledby="tab-flash" hidden>
+  <p class="intro">Tap the card or press Space to flip it. Mark each term as known or still learning.</p>
+  <div class="row">
+    <div class="chips" role="group" aria-label="Which cards" id="flashFilter"></div>
+    <span class="note" id="flashCount"></span>
+  </div>
+  <button class="flash" type="button" id="flashCard" aria-live="polite"></button>
+  <div class="row">
+    <button class="btn" type="button" id="flPrev">Previous</button>
+    <button class="btn" type="button" id="flLearn">Still learning</button>
+    <button class="btn primary" type="button" id="flKnow">I know it</button>
+    <button class="btn" type="button" id="flNext">Next</button>
+    <button class="btn" type="button" id="flShuffle">Shuffle</button>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section role="tabpanel" id="p-quiz" aria-labelledby="tab-quiz" hidden>
+  <p class="intro">Ten questions drawn from a bank of 24. Each answer comes with an explanation.</p>
+  <div class="sec" id="quizBox"></div>
+</section>
+
+<!-- WRITTEN -->
+<section role="tabpanel" id="p-written" aria-labelledby="tab-written" hidden>
+  <p class="intro">Write your answer first. Then open the model answer and tick the key ideas you included. Your answers save in this browser.</p>
+  <h2>Short answer</h2>
+  <div id="shortList" style="display:grid;gap:14px"></div>
+  <h2>Extended response</h2>
+  <div id="longList" style="display:grid;gap:14px"></div>
+</section>
+
+<!-- COVERAGE -->
+<section role="tabpanel" id="p-coverage" aria-labelledby="tab-coverage" hidden>
+  <p class="intro">Teacher panel. Every knowledge (K) and skills and procedures (S) statement for LS1, and where this lab teaches it.</p>
+  <div class="sec">
+    <div class="sec-head"><h2>LS1 · Biodiversity and stability</h2></div>
+    <p class="note">Outcome: Students analyze stability and biodiversity of ecosystems. Understanding: The stability of ecosystems is influenced by biodiversity.</p>
+    <div class="tablebox" id="covTable"></div>
+  </div>
+  <div class="sec">
+    <h2>Notes on wording</h2>
+    <div class="prose" id="covNotes"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+    <span>Science 7 · Alberta Science 7 to 9 curriculum (draft, 2027/28 implementation) · LS1 Biodiversity and stability</span>
+    <span>Progress saves in this browser only. Nothing is sent anywhere.</span>
+    <div class="row"><button class="btn sm" type="button" id="resetAll">Clear my saved progress</button><span class="note" id="resetMsg"></span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var KEY="rb-g7-ls1-v1";
+var store={};
+try{store=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){store={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function ri(a,b){return a+Math.floor(Math.random()*(b-a+1));}
+var NS="http://www.w3.org/2000/svg";
+
+/* ---------- theme ---------- */
+var themes=["system","light","dark"];
+function applyTheme(){var t=store.theme||"system";if(t==="system")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t);$("themeBtn").textContent="Theme: "+t;}
+$("themeBtn").addEventListener("click",function(){var i=themes.indexOf(store.theme||"system");store.theme=themes[(i+1)%3];save();applyTheme();});
+applyTheme();
+
+/* ---------- tabs ---------- */
+var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+function showTab(id,focus){tabs.forEach(function(t){var on=t.id===id;t.setAttribute("aria-selected",on);t.tabIndex=on?0:-1;$(t.getAttribute("aria-controls")).hidden=!on;if(on&&focus)t.focus();});store.tab=id;save();}
+tabs.forEach(function(t,i){t.addEventListener("click",function(){showTab(t.id);});
+  t.addEventListener("keydown",function(e){var k=e.key,n=null;if(k==="ArrowRight")n=(i+1)%tabs.length;else if(k==="ArrowLeft")n=(i-1+tabs.length)%tabs.length;else if(k==="Home")n=0;else if(k==="End")n=tabs.length-1;if(n!==null){e.preventDefault();showTab(tabs[n].id,true);}});});
+if(store.tab&&$(store.tab))showTab(store.tab);
+
+function chipGroup(el,items,cur,onPick){el.innerHTML="";items.forEach(function(it){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=it.label;b.setAttribute("aria-pressed",it.id===cur);b.addEventListener("click",function(){[].forEach.call(el.children,function(c){c.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");onPick(it.id);});el.appendChild(b);});}
+
+/* ---------- 1. beaver pond ---------- */
+var POND=[
+ {y:0,water:0,dam:false,trees:6,meadow:false,t:"<b>Year 0.</b> A small creek runs through an aspen grove. Trees, shrubs and a few stream insects live here."},
+ {y:3,water:45,dam:true,trees:5,meadow:false,t:"<b>Year 3.</b> Beavers build a dam of aspen branches and mud. The creek floods and a pond forms. Some trees drown. New species arrive: ducks, muskrats, dragonflies and wood frogs."},
+ {y:10,water:60,dam:true,trees:3,meadow:false,t:"<b>Year 10.</b> The pond is full of life. Cattails grow along the edges. Beavers have cut most of the aspen near the water for food and dam building."},
+ {y:25,water:15,dam:false,trees:1,meadow:false,t:"<b>Year 25.</b> With little aspen left nearby, the beavers move away. The dam is not repaired, it breaks, and the pond drains. Pond animals leave or decline."},
+ {y:40,water:0,dam:false,trees:4,meadow:true,t:"<b>Year 40.</b> Rich mud left behind becomes a beaver meadow of sedges, grasses and willow shrubs. Aspen begin to return. The area is still an ecosystem, but its species and characteristics have changed."}];
+function drawPond(){var s=POND[+$("pondYear").value];$("pondYearOut").textContent=s.y;var g=$("pondSvg");g.innerHTML="";
+ function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e;}
+ el("rect",{x:0,y:0,width:400,height:200,fill:"var(--surface)"});
+ el("path",{d:"M0 120 Q100 110 160 140 L240 140 Q300 110 400 120 L400 200 L0 200 Z",fill:"var(--ground)"});
+ if(s.water>0){var top=150-s.water;el("path",{d:"M"+(160-s.water*1.6)+" "+top+" L"+(240+s.water*1.1)+" "+top+" L240 150 L160 150 Z",fill:"var(--water)"});}
+ else if(!s.meadow){el("path",{d:"M150 142 Q200 150 250 142 L250 146 Q200 154 150 146 Z",fill:"var(--water)"});}
+ if(s.meadow){for(var m=0;m<14;m++){var mx=135+m*10;el("path",{d:"M"+mx+" 142 l3 -14 l3 14",fill:"var(--leaf)"});}}
+ if(s.dam)el("rect",{x:240+s.water*1.1,y:150-s.water-4,width:10,height:s.water+8,fill:"var(--sun)",rx:3});
+ var tx=[40,75,110,300,335,370];for(var i=0;i<s.trees;i++){var x=tx[i];el("rect",{x:x-2,y:85,width:4,height:35,fill:"var(--muted)"});el("ellipse",{cx:x,cy:78,rx:14,ry:20,fill:"var(--leaf)"});}
+ var lab=el("text",{x:10,y:22,"font-size":"14",fill:"var(--ink)"});lab.textContent="Year "+s.y;
+ $("pondText").innerHTML=s.t;}
+$("pondYear").addEventListener("input",drawPond);drawPond();
+
+/* ---------- 2. levels ---------- */
+var LEVELS=[
+ {id:"sp",name:"Species",ex:"Wood bison",t:"<b>Species:</b> wood bison. All wood bison belong to one species because they can mate and have calves that grow up and reproduce. Elk Island keeps a separate herd of plains bison north of Highway 16, so wood bison and plains bison stay apart."},
+ {id:"pop",name:"Population",ex:"All wood bison in the park's south area",t:"<b>Population:</b> all the wood bison living south of Highway 16 in Elk Island. They interact as a herd: they graze together, compete for food and mate with each other."},
+ {id:"com",name:"Community",ex:"Bison, elk, beavers, aspen, sedges, songbirds and more",t:"<b>Community:</b> every population living in the park together, including wood bison, elk, moose, beavers, aspen trees, sedges, songbirds, insects and fungi. These populations interact by eating, competing and sheltering each other."},
+ {id:"eco",name:"Ecosystem",ex:"The community plus lakes, soil, sunlight and climate",t:"<b>Ecosystem:</b> the community interacting with abiotic factors such as Astotin Lake's water, the soil, sunlight, snow and temperature. Beavers raise water levels with dams, and water levels shape which plants grow. Living and non-living parts affect each other."}];
+(function(){var box=$("levels");LEVELS.forEach(function(L,i){var b=document.createElement("button");b.type="button";b.className="lvl";b.style.marginLeft=(i*14)+"px";b.innerHTML="<b>"+L.name+"</b><span>"+esc(L.ex)+"</span>";b.setAttribute("aria-pressed",i===0);b.addEventListener("click",function(){[].forEach.call(box.children,function(c){c.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");$("levelText").innerHTML=L.t;});box.appendChild(b);});$("levelText").innerHTML=LEVELS[0].t;})();
+
+/* ---------- 3. biodiversity ---------- */
+var MEADOWS={A:{name:"Meadow A",d:[["Rough fescue",25],["Yarrow",25],["Prairie crocus",25],["Wild rose",25]]},
+ B:{name:"Meadow B",d:[["Smooth brome (invasive)",85],["Yarrow",5],["Prairie crocus",5],["Wild rose",5]]},
+ C:{name:"Meadow C",d:[["Rough fescue",13],["Yarrow",13],["Prairie crocus",12],["Wild rose",12],["Sticky geranium",13],["Three-flowered avens",12],["Northern bedstraw",13],["Junegrass",12]]}};
+function simpson(counts){var N=counts.reduce(function(a,b){return a+b;},0);if(!N)return 0;var s=0;counts.forEach(function(n){s+=(n/N)*(n/N);});return 1-s;}
+var bdMode="species",meadow="A";
+function drawBD(){var b=$("bdBody");
+ if(bdMode==="species"){var m=MEADOWS[meadow];var h='<div class="chips" role="group" aria-label="Meadow" id="mdChips"></div><div class="bars">';
+  m.d.forEach(function(r){h+='<div class="bar"><span>'+esc(r[0])+'</span><span class="track"><i style="width:'+r[1]+'%"></i></span><span>'+r[1]+'</span></div>';});
+  var D=simpson(m.d.map(function(r){return r[1];}));
+  h+='</div><div class="out">Richness: <b>'+m.d.length+' species</b>. Simpson\'s diversity: <b>'+D.toFixed(2)+'</b>. '+
+   (meadow==="A"?"Plants are spread evenly, so evenness is high.":meadow==="B"?"Same four species as Meadow A, but one invasive grass takes over. Richness is the same, evenness is low, so diversity is much lower.":"Twice as many species, spread evenly. This meadow has the highest species diversity.")+'</div>';
+  b.innerHTML=h;chipGroup($("mdChips"),[{id:"A",label:"Meadow A"},{id:"B",label:"Meadow B"},{id:"C",label:"Meadow C"}],meadow,function(id){meadow=id;drawBD();});}
+ else if(bdMode==="genetic"){var g1="",g2="";var cols=["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)","var(--s6)"];for(var i=0;i<12;i++){g1+='<i style="background:var(--s1)"></i>';g2+='<i style="background:'+cols[i%6]+'"></i>';}
+  b.innerHTML='<p class="note">Each dot is one trunk. Colour shows its genes.</p><div class="bars"><div class="bar"><span>Clone grove</span><span class="legend dots">'+g1+'</span><span></span></div><div class="bar"><span>Seedling grove</span><span class="legend dots">'+g2+'</span><span></span></div></div><div class="out">Trembling aspen often spread by sending up new trunks from their roots. One grove can be a single <b>clone</b>: every trunk has identical genes. In fall you can see neighbouring clones turn yellow on different days. A grove grown from many seeds has higher <b>genetic diversity</b>. If a disease strikes, some of its trees are more likely to resist it.</div>';
+  [].forEach.call(b.querySelectorAll(".dots"),function(d){d.style.gap="3px";[].forEach.call(d.children,function(x){x.style.width="12px";x.style.height="12px";x.style.borderRadius="50%";x.style.display="inline-block";});});}
+ else{b.innerHTML='<div class="bars"><div class="bar"><span>Parkland mix</span><span class="chips"><span class="code">aspen grove</span><span class="code">slough</span><span class="code">grassland</span><span class="code">willow shrubs</span><span class="code">spruce bog</span></span><span>5</span></div><div class="bar"><span>Canola field</span><span class="chips"><span class="code">cropland</span></span><span>1</span></div></div><div class="out">A parkland landscape with five habitat types has high <b>ecosystem diversity</b>. Each habitat supports different species, so the whole area holds more life than one large crop field.</div>';}
+}
+chipGroup($("bdChips"),[{id:"genetic",label:"Genetic"},{id:"species",label:"Species"},{id:"ecosystem",label:"Ecosystem"}],bdMode,function(id){bdMode=id;drawBD();});drawBD();
+
+/* ---------- 4. bowl ---------- */
+var bowl="deep",anim=null;
+var PUSH=["small","medium","large"];
+chipGroup($("bowlChips"),[{id:"deep",label:"Deep bowl: many species"},{id:"shallow",label:"Shallow bowl: few species"}],bowl,function(id){bowl=id;drawBowl(200,null);$("bowlText").textContent="Press Push.";});
+$("pushSize").addEventListener("input",function(){$("pushOut").textContent=PUSH[this.value-1];});
+function bowlY(x){var d=bowl==="deep"?100:38;var u=(x-200)/150;return 40+d*(1-u*u);}
+function drawBowl(bx,by){var g=$("bowlSvg");g.innerHTML="";var d="M30 40";for(var x=50;x<=350;x+=5)d+=" L"+x+" "+bowlY(x).toFixed(1);d+=" L370 40";
+ var p=document.createElementNS(NS,"path");p.setAttribute("d",d+" L370 165 L30 165 Z");p.setAttribute("fill","var(--accent-soft)");p.setAttribute("stroke","var(--accent)");p.setAttribute("stroke-width","3");g.appendChild(p);
+ var ledge=document.createElementNS(NS,"rect");ledge.setAttribute("x","352");ledge.setAttribute("y","150");ledge.setAttribute("width","48");ledge.setAttribute("height","20");ledge.setAttribute("fill","var(--bad-soft)");g.appendChild(ledge);
+ var t=document.createElementNS(NS,"text");t.setAttribute("x","8");t.setAttribute("y","20");t.setAttribute("font-size","13");t.setAttribute("fill","var(--muted)");t.textContent=bowl==="deep"?"Many species: deep bowl":"Few species: shallow bowl";g.appendChild(t);
+ var c=document.createElementNS(NS,"circle");c.setAttribute("cx",bx);c.setAttribute("cy",by==null?bowlY(bx)-12:by);c.setAttribute("r","12");c.setAttribute("fill","var(--sun)");g.appendChild(c);}
+drawBowl(200,null);
+$("pushBtn").addEventListener("click",function(){var s=+$("pushSize").value;var A=[60,110,170][s-1];var tips=bowl==="deep"?s===3:s>=2;if(anim)cancelAnimationFrame(anim);var t0=null;
+ var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ function fin(){$("bowlText").innerHTML=tips?(bowl==="deep"?"<b>Tipped over.</b> Even a diverse ecosystem can be overwhelmed by a huge disturbance, like a severe wildfire or a long drought. It may change into a different kind of ecosystem.":"<b>Tipped over.</b> With few species, a medium disturbance pushed the ecosystem into a new state. Few species were left to keep its processes going."):"<b>Rolled back.</b> The ecosystem changed for a while, then returned to about the same condition. That is stability.";}
+ if(reduce){if(tips)drawBowl(376,138);else drawBowl(200,null);fin();return;}
+ function step(ts){if(!t0)t0=ts;var t=(ts-t0)/1000;var x,y=null;
+  if(t<0.6){x=200+A*Math.sin(t/0.6*Math.PI/2);if(x>350){x=350;}}
+  else if(tips){var k=Math.min(1,(t-0.6)/0.6);x=350+26*k;y=bowlY(350)-12+(138-(bowlY(350)-12))*k*k;if(k>=1){drawBowl(376,138);fin();return;}}
+  else{var tt=t-0.6;x=200+A*Math.exp(-tt*1.4)*Math.cos(tt*5);if(tt>3){drawBowl(200,null);fin();return;}}
+  drawBowl(x,y);anim=requestAnimationFrame(step);}
+ anim=requestAnimationFrame(step);});
+
+/* ---------- 5. niches ---------- */
+var FACTORS=[{id:"ba",label:"Biotic and abiotic factors",t:"A canvasback duck needs deep, open water (abiotic) with sago pondweed tubers to eat (biotic). Without both, it cannot use a slough."},
+ {id:"ad",label:"Adaptations",t:"The northern shoveler's wide, comb-edged bill strains tiny animals from the water. Its niche is filter feeding, which few other ducks do."},
+ {id:"co",label:"Competition",t:"Red squirrels and spruce grouse both use spruce trees, but squirrels eat seeds from cones while grouse eat needles. Using different food reduces competition."},
+ {id:"pr",label:"Predation",t:"Snowshoe hares feed close to thick cover where lynx have trouble chasing them. The risk of being eaten shapes where and when hares feed."},
+ {id:"sy",label:"Symbiotic relationships",t:"Aspen roots partner with fungi that bring them water and minerals. This partnership lets aspen grow in poorer soils."}];
+chipGroup($("nicheFactors"),FACTORS.map(function(f){return {id:f.id,label:f.label};}),null,function(id){$("nicheFactorText").textContent=FACTORS.filter(function(f){return f.id===id;})[0].t;});
+var ZONES={top:["200,14 178,70 222,70"],upper:["178,70 193,70 180,120 155,120","222,70 207,70 220,120 245,120"],mid:["155,120 175,120 158,175 128,175","245,120 225,120 242,175 272,175"],inner:["188,95 212,95 216,182 184,182"],lower:["128,175 272,175 310,228 90,228","60,228 340,228 340,246 60,246"]};
+var WARB=[{id:"cm",name:"Cape May",zone:"top",col:"var(--s3)",t:"<b>Cape May warbler:</b> feeds at the very top and outer tips of the tree. Its numbers rise during spruce budworm outbreaks."},
+ {id:"bb",name:"Blackburnian",zone:"upper",col:"var(--s2)",t:"<b>Blackburnian warbler:</b> feeds on the outer branches of the upper tree."},
+ {id:"btg",name:"Black-throated green",zone:"mid",col:"var(--s1)",t:"<b>Black-throated green warbler:</b> feeds on outer branches in the middle of the tree."},
+ {id:"bay",name:"Bay-breasted",zone:"inner",col:"var(--s4)",t:"<b>Bay-breasted warbler:</b> feeds in the middle of the tree close to the trunk."},
+ {id:"yr",name:"Yellow-rumped",zone:"lower",col:"var(--s5)",t:"<b>Yellow-rumped warbler:</b> feeds on low branches and the ground, and catches insects in the air."}];
+var curW="cm";
+function drawTree(){var g=$("treeSvg");g.innerHTML="";function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e;}
+ el("rect",{x:194,y:200,width:12,height:40,fill:"var(--muted)"});
+ el("polygon",{points:"200,10 310,228 90,228",fill:"var(--leaf)",opacity:"0.55"});
+ var same=$("sameZone").checked;
+ WARB.forEach(function(w){var z=same?"mid":w.zone;var on=same||w.id===curW;ZONES[z].forEach(function(p){el("polygon",{points:p,fill:on?w.col:"none",opacity:on?(same?"0.35":"0.85"):"0",stroke:on?"var(--ink)":"none","stroke-width":"1"});});});
+ var t=el("text",{x:8,y:20,"font-size":"13",fill:"var(--muted)"});t.textContent=same?"All five crowd into one zone":"Feeding zone highlighted";
+ $("compBar").style.width=same?"95%":"18%";$("compBar").style.background=same?"var(--bad)":"var(--good)";$("compOut").textContent=same?"high":"low";
+ $("warblerText").innerHTML=same?"<b>Same zone:</b> all five species now hunt the same insects in the same branches. Competition is high. Some birds would go hungry, and one species might be pushed out. Different niches are what let them share one tree.":WARB.filter(function(w){return w.id===curW;})[0].t;}
+chipGroup($("warblers"),WARB.map(function(w){return {id:w.id,label:w.name};}),curW,function(id){curW=id;drawTree();});
+$("sameZone").addEventListener("change",drawTree);drawTree();
+
+/* ---------- 6. adaptations ---------- */
+var ADAPT=[{n:"Snowshoe hare",env:"Boreal forest with deep winter snow",a:[["Structural","Large furry hind feet spread its weight like snowshoes, so it can run on top of soft snow."],["Physiological","Its coat turns white in winter and brown in summer. Shorter days trigger the change, giving it camouflage in each season."]]},
+ {n:"Canada lynx",env:"Snowy boreal forest where hares live",a:[["Structural","Very wide, furry paws and long legs let it chase hares through deep snow."],["Behavioural","It often waits in hiding near hare trails, then pounces."]]},
+ {n:"Wood frog",env:"Forest ponds that freeze solid in winter",a:[["Physiological","It survives being frozen. Up to about two-thirds of its body water can freeze. Its liver floods its cells with sugar (glucose), which acts like antifreeze."],["Behavioural","It breeds very early in spring in temporary ponds that have no fish to eat its eggs."]]},
+ {n:"Lodgepole pine",env:"Foothills and mountain forests where wildfires happen",a:[["Structural","Many of its cones are sealed shut with resin. The heat of a fire melts the resin and releases seeds onto freshly burned ground. It is Alberta's provincial tree."]]},
+ {n:"Moose",env:"Boreal wetlands and forests with deep snow",a:[["Structural","Very long legs let it walk through deep snow and wade into ponds."],["Behavioural","In summer it feeds on water plants, sometimes putting its whole head under water."]]},
+ {n:"Richardson's ground squirrel",env:"Open grassland with cold winters and dry summers",a:[["Behavioural","It digs burrows and spends more than half of the year hibernating underground, avoiding winter cold and late-summer food shortages."],["Structural","Eyes high on its head let it watch for hawks while staying low."]]}];
+(function(){var box=$("adaptPick");ADAPT.forEach(function(s,i){var b=document.createElement("button");b.type="button";b.textContent=s.n;b.setAttribute("aria-pressed",i===0);b.addEventListener("click",function(){[].forEach.call(box.children,function(c){c.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");showA(i);});box.appendChild(b);});
+ function showA(i){var s=ADAPT[i];var h="<p><b>"+esc(s.n)+"</b></p><p class='note'>Environment: "+esc(s.env)+"</p><ul style='margin:6px 0 0;padding-left:1.1em;display:grid;gap:4px'>";s.a.forEach(function(a){h+="<li><span class='code'>"+a[0]+"</span> "+esc(a[1])+"</li>";});$("adaptText").innerHTML=h+"</ul>";}
+ showA(0);})();
+
+/* ---------- 7. predation ---------- */
+function predRun(pred){var V=90,H=20,L=pred?4:0,out=[];for(var t=0;t<100;t++){out.push([V,H,L*10]);var eat=0.5*H*V/(20+V);var nV=Math.max(2,V+0.3*V*(1-V/100)-eat);var kill=1.0*H*L/(30+H);var nH=Math.max(1,H+0.6*eat-0.2*H-kill);var nL=pred?Math.max(0.3,L+0.8*kill-0.25*L):0;V=nV;H=nH;L=nL;}return out;}
+function axes(g,W,Hh,pad,xmax,ymax,xlab,ylab,xticks,yticks){function el(n,a,txt){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;g.appendChild(e);return e;}
+ var x0=pad.l,y0=Hh-pad.b,x1=W-pad.r,y1=pad.t;
+ yticks.forEach(function(v){var y=y0-(v/ymax)*(y0-y1);el("line",{x1:x0,x2:x1,y1:y,y2:y,stroke:"var(--line)","stroke-width":"1"});el("text",{x:x0-6,y:y+4,"font-size":"11","text-anchor":"end",fill:"var(--muted)"},v);});
+ xticks.forEach(function(v){var x=x0+(v/xmax)*(x1-x0);el("text",{x:x,y:y0+16,"font-size":"11","text-anchor":"middle",fill:"var(--muted)"},v);});
+ el("text",{x:(x0+x1)/2,y:Hh-2,"font-size":"11","text-anchor":"middle",fill:"var(--muted)"},xlab);
+ el("text",{x:12,y:(y0+y1)/2,"font-size":"11","text-anchor":"middle",fill:"var(--muted)",transform:"rotate(-90 12 "+((y0+y1)/2)+")"},ylab);
+ return {sx:function(v){return x0+(v/xmax)*(x1-x0);},sy:function(v){return y0-(Math.min(v,ymax)/ymax)*(y0-y1);},el:el};}
+var predOn=true;
+function drawPred(){var g=$("predSvg");g.innerHTML="";var d=predRun(predOn);var A=axes(g,420,220,{l:44,r:12,t:12,b:34},10,100,"Years","Population index",[0,2,4,6,8,10],[0,25,50,75,100]);
+ [["var(--leaf)",0],["var(--sun)",1],["var(--berry)",2]].forEach(function(s){if(!predOn&&s[1]===2)return;var p="";d.forEach(function(r,i){p+=(i?" L":"M")+A.sx(i/10).toFixed(1)+" "+A.sy(r[s[1]]).toFixed(1);});A.el("path",{d:p,fill:"none",stroke:s[0],"stroke-width":"2.5"});});
+ var minV=Math.min.apply(null,d.slice(10).map(function(r){return r[0];})),maxH=Math.max.apply(null,d.map(function(r){return r[1];}));
+ $("predText").innerHTML=predOn?"<b>With lynx:</b> hares rise, then lynx numbers rise and catch more hares. Willow never drops below about <b>"+Math.round(minV)+"%</b>. The populations rise and fall but the system holds together.":"<b>Without lynx:</b> hares climb to about <b>"+Math.round(maxH)+"</b>, eat the willow down to about <b>"+Math.round(minV)+"%</b>, then starve and crash. The swings are bigger and the plants take a heavy hit.";
+ $("predOn").setAttribute("aria-pressed",predOn);$("predOff").setAttribute("aria-pressed",!predOn);}
+$("predOn").addEventListener("click",function(){predOn=true;drawPred();});$("predOff").addEventListener("click",function(){predOn=false;drawPred();});drawPred();
+
+/* ---------- 8. symbiosis ---------- */
+var SYM=[{n:"Mutualism",s:"+ / +",d:"Both species benefit.",ex:["Lichen on a rock: a fungus gives shelter and water, and an alga makes food by photosynthesis.","Bumblebees drink nectar from saskatoon flowers and carry pollen between them.","Fungi on aspen roots trade minerals and water for sugar from the tree."]},
+ {n:"Commensalism",s:"+ / 0",d:"One species benefits. The other is not helped or harmed.",ex:["Brown-headed cowbirds follow grazing bison and catch the insects the bison stir up.","Great horned owls raise chicks in old nests built by magpies or hawks.","Burdock burrs hitch a ride on a deer's fur to new places."]},
+ {n:"Parasitism",s:"+ / −",d:"One species (the parasite) benefits. The other (the host) is harmed.",ex:["Winter ticks drink moose blood. Heavy loads make moose rub off their hair.","Dwarf mistletoe grows into pine branches and steals water and nutrients.","Tapeworms live in the gut of wolves and coyotes."]}];
+$("symCards").innerHTML=SYM.map(function(s){return '<div class="symcard"><div class="signs">'+s.s+'</div><h3>'+s.n+'</h3><p class="note">'+s.d+'</p><ul>'+s.ex.map(function(e){return "<li>"+esc(e)+"</li>";}).join("")+'</ul></div>';}).join("");
+
+/* ---------- BENCH 1: web map ---------- */
+var NODES=[["sun","Sun","a",80,40],["water","Water","a",320,40],["soil","Soil nutrients","a",560,40],
+ ["cattail","Cattail","p",90,150],["pondweed","Pondweed","p",240,150],["aspen","Aspen","p",400,150],["algae","Algae","p",550,150],
+ ["muskrat","Muskrat","c",70,260],["mallard","Mallard","c",200,260],["beaver","Beaver","c",330,260],["mosq","Mosquito larva","c",470,260],
+ ["frog","Wood frog","c",120,370],["dragon","Dragonfly nymph","c",300,370],["mink","Mink","c",450,370],["decomp","Bacteria and fungi","d",580,370]];
+var EDGES=[["sun","cattail","light for photosynthesis"],["sun","pondweed","light for photosynthesis"],["sun","aspen","light for photosynthesis"],["sun","algae","light for photosynthesis"],
+ ["water","cattail","needs wet soil"],["water","pondweed","lives under water"],["water","algae","lives in water"],["water","muskrat","home"],["water","beaver","home and safety"],["water","mosq","larvae live in water"],["water","dragon","nymphs live in water"],
+ ["soil","cattail","nutrients"],["soil","aspen","nutrients"],
+ ["cattail","muskrat","food and lodge material"],["pondweed","mallard","food"],["aspen","beaver","food and dam material"],["algae","mosq","food"],
+ ["mosq","dragon","food"],["mosq","frog","adults are food"],["dragon","mallard","food"],["dragon","frog","adults are food"],
+ ["muskrat","mink","food"],["frog","mink","food"],["mallard","mink","eggs and ducklings are food"],
+ ["beaver","water","dam raises water level"],["cattail","decomp","dead plants"],["aspen","decomp","fallen leaves"],["mink","decomp","dead animals"],["decomp","soil","returns nutrients"]];
+var webSel=null,webGone={};
+var NC={a:"var(--lake)",p:"var(--leaf)",c:"var(--sun)",d:"var(--muted)"};
+var TYPE={a:"abiotic factor",p:"producer",c:"consumer",d:"decomposer"};
+function nodeBy(id){return NODES.filter(function(n){return n[0]===id;})[0];}
+function drawWeb(){var g=$("webSvg");g.innerHTML="";
+ EDGES.forEach(function(e){var a=nodeBy(e[0]),b=nodeBy(e[1]);var l=document.createElementNS(NS,"line");l.setAttribute("x1",a[3]);l.setAttribute("y1",a[4]);l.setAttribute("x2",b[3]);l.setAttribute("y2",b[4]);var on=webSel&&(e[0]===webSel||e[1]===webSel);l.setAttribute("class","edge"+(on?" on":""));if(webGone[e[0]]||webGone[e[1]])l.setAttribute("stroke-dasharray","4 4");g.appendChild(l);});
+ NODES.forEach(function(n){var gg=document.createElementNS(NS,"g");var linked=!webSel||n[0]===webSel||EDGES.some(function(e){return (e[0]===webSel&&e[1]===n[0])||(e[1]===webSel&&e[0]===n[0]);});gg.setAttribute("class","node"+(linked?"":" dim")+(webGone[n[0]]?" gone":""));gg.setAttribute("tabindex","0");gg.setAttribute("role","button");gg.setAttribute("aria-label",n[1]+", "+TYPE[n[2]]);
+  var c=document.createElementNS(NS,"circle");c.setAttribute("cx",n[3]);c.setAttribute("cy",n[4]);c.setAttribute("r","16");c.setAttribute("fill",webGone[n[0]]?"var(--surface)":NC[n[2]]);c.setAttribute("stroke",n[0]===webSel?"var(--ink)":"var(--surface)");gg.appendChild(c);
+  var t=document.createElementNS(NS,"text");t.setAttribute("x",n[3]);t.setAttribute("y",n[4]+32);t.setAttribute("text-anchor","middle");t.textContent=n[1];gg.appendChild(t);
+  function sel(){webSel=n[0];drawWeb();showWeb();}
+  gg.addEventListener("click",sel);gg.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();sel();}});g.appendChild(gg);});}
+function showWeb(){var n=nodeBy(webSel);var out=EDGES.filter(function(e){return e[0]===webSel;}),inn=EDGES.filter(function(e){return e[1]===webSel;});
+ var h="<b>"+n[1]+"</b> <span class='code'>"+TYPE[n[2]]+"</span>";
+ if(inn.length)h+="<p class='note' style='margin-top:6px'>Depends on:</p><ul style='margin:0;padding-left:1.1em'>"+inn.map(function(e){return "<li>"+nodeBy(e[0])[1]+": "+e[2]+"</li>";}).join("")+"</ul>";
+ if(out.length)h+="<p class='note' style='margin-top:6px'>Supports:</p><ul style='margin:0;padding-left:1.1em'>"+out.map(function(e){return "<li>"+nodeBy(e[1])[1]+": "+e[2]+"</li>";}).join("")+"</ul>";
+ $("webText").innerHTML=h;$("webRemove").disabled=!!webGone[webSel];}
+$("webRemove").addEventListener("click",function(){if(!webSel)return;webGone[webSel]=true;var n=nodeBy(webSel);var hit=EDGES.filter(function(e){return e[0]===webSel;}).map(function(e){return nodeBy(e[1])[1];});var lose=EDGES.filter(function(e){return e[1]===webSel;}).map(function(e){return nodeBy(e[0])[1];});
+ var h="<b>"+n[1]+" removed.</b> ";h+=hit.length?"Directly affected first: <b>"+hit.join(", ")+"</b>. They lose something they depend on. ":"Nothing depends on it directly, but it no longer uses its resources. ";
+ if(lose.length)h+="Parts that "+n[1]+" used ("+lose.join(", ")+") may change too, because nothing is eating or using them in the same way. ";
+ h+="Effects can spread further along each link.";if(webSel==="beaver")h+=" Without beaver dams the water level drops, which affects almost everything in the slough.";
+ $("webImpact").innerHTML=h;drawWeb();showWeb();});
+$("webReset").addEventListener("click",function(){webGone={};webSel=null;$("webImpact").innerHTML="";$("webText").textContent="Tap a part of the slough.";$("webRemove").disabled=true;drawWeb();});
+drawWeb();
+
+/* ---------- BENCH 2: quadrats ---------- */
+var ECOS=[{id:"park",name:"Aspen parkland meadow, Elk Island",sp:[["Sedge",14],["Wild rose",12],["Fireweed",10],["Wild strawberry",12],["Rough fescue",14],["Yarrow",10],["Snowberry",14],["Wild vetch",8]]},
+ {id:"bor",name:"Boreal forest floor, near Lac La Biche",sp:[["Feather moss",40],["Bunchberry",16],["Labrador tea",14],["Twinflower",10],["Lingonberry",12],["Black spruce seedling",8]]},
+ {id:"fes",name:"Foothills fescue grassland",sp:[["Rough fescue",34],["Junegrass",14],["Prairie crocus",10],["Three-flowered avens",12],["Yarrow",10],["Sticky geranium",10],["Northern bedstraw",10]]},
+ {id:"can",name:"Canola field, near Vegreville",sp:[["Canola",92],["Wild oats",5],["Dandelion",3]]}];
+var SCOL=["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)","var(--s6)","var(--s7)","var(--s8)"];
+var eco=ECOS[0],grid=[],picked=[];
+$("ecoSel").innerHTML=ECOS.map(function(e,i){return '<option value="'+i+'">'+esc(e.name)+'</option>';}).join("");
+function wpick(sp){var tot=sp.reduce(function(a,s){return a+s[1];},0),r=Math.random()*tot;for(var i=0;i<sp.length;i++){r-=sp[i][1];if(r<0)return i;}return sp.length-1;}
+function newField(){grid=[];for(var c=0;c<64;c++){var k=ri(3,6),cell=[];for(var j=0;j<k;j++)cell.push(wpick(eco.sp));grid.push(cell);}picked=[];drawField();}
+function drawField(){var f=$("field");f.innerHTML="";grid.forEach(function(cell,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed",picked.indexOf(i)>=0);b.setAttribute("aria-label","Quadrat "+(i+1)+(picked.indexOf(i)>=0?", sampled":""));
+  b.innerHTML=cell.map(function(s){return '<i style="background:'+SCOL[s]+'"></i>';}).join("");
+  b.addEventListener("click",function(){var p=picked.indexOf(i);if(p>=0)picked.splice(p,1);else if(picked.length<5)picked.push(i);drawField();});f.appendChild(b);});
+ $("fieldLegend").innerHTML=eco.sp.map(function(s,i){return '<span><i style="background:'+SCOL[i]+'"></i>'+esc(s[0])+'</span>';}).join("");tally();}
+function counts(){var c=eco.sp.map(function(){return 0;});picked.forEach(function(i){grid[i].forEach(function(s){c[s]++;});});return c;}
+function tally(){var c=counts(),N=c.reduce(function(a,b){return a+b;},0);
+ if(!picked.length){$("qTally").innerHTML='<p class="note">No quadrats sampled yet. Tap squares in the field.</p>';$("qSave").disabled=true;return;}
+ var rich=c.filter(function(x){return x>0;}).length,D=simpson(c);
+ var h='<table><thead><tr><th>Species</th><th class="num">n</th><th class="num">n ÷ N</th><th class="num">(n ÷ N)²</th></tr></thead><tbody>';
+ c.forEach(function(n,i){if(n)h+='<tr><td>'+esc(eco.sp[i][0])+'</td><td class="num">'+n+'</td><td class="num">'+(n/N).toFixed(3)+'</td><td class="num">'+Math.pow(n/N,2).toFixed(3)+'</td></tr>';});
+ h+='</tbody></table><div class="out" style="margin-top:8px">Quadrats: <b>'+picked.length+' of 5</b> · N = <b>'+N+'</b> · Richness = <b>'+rich+'</b> · D = 1 − '+(1-D).toFixed(3)+' = <b>'+D.toFixed(2)+'</b></div>';
+ $("qTally").innerHTML=h;$("qSave").disabled=picked.length<5;}
+$("ecoSel").addEventListener("change",function(){eco=ECOS[+this.value];newField();});
+$("qNew").addEventListener("click",newField);
+$("qRand").addEventListener("click",function(){picked=shuffle(grid.map(function(_,i){return i;})).slice(0,5);drawField();});
+$("qSave").addEventListener("click",function(){var c=counts();store.quad=store.quad||{};store.quad[eco.id]={name:eco.name,rich:c.filter(function(x){return x>0;}).length,N:c.reduce(function(a,b){return a+b;},0),D:+simpson(c).toFixed(2)};save();drawResults();});
+function drawResults(){var q=store.quad||{};var rows=ECOS.filter(function(e){return q[e.id];}).map(function(e){return q[e.id];});
+ if(!rows.length){$("qResults").innerHTML='<p class="note">Survey at least two ecosystems and save each one to compare them here.</p>';$("qResultsNote").textContent="";return;}
+ $("qResults").innerHTML='<table><thead><tr><th>Ecosystem</th><th class="num">Individuals</th><th class="num">Richness</th><th class="num">Simpson D</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+esc(r.name)+'</td><td class="num">'+r.N+'</td><td class="num">'+r.rich+'</td><td class="num">'+r.D.toFixed(2)+'</td></tr>';}).join("")+'</tbody></table>';
+ if(rows.length>1){var s=rows.slice().sort(function(a,b){return b.D-a.D;});$("qResultsNote").textContent="Most diverse sample: "+s[0].name+" (D = "+s[0].D.toFixed(2)+"). Least diverse: "+s[s.length-1].name+" (D = "+s[s.length-1].D.toFixed(2)+"). Which one do you predict would recover best from a disturbance?";}
+ else $("qResultsNote").textContent="Survey another ecosystem to compare.";}
+newField();drawResults();
+
+$("simpWorked").innerHTML='<b>Worked example.</b> A quadrat survey at a slough edge found 6 cattails, 3 sedges and 1 bulrush. N = 6 + 3 + 1 = 10.<br>Cattail: (6 ÷ 10)² = 0.36 · Sedge: (3 ÷ 10)² = 0.09 · Bulrush: (1 ÷ 10)² = 0.01<br>Sum = 0.36 + 0.09 + 0.01 = 0.46 · D = 1 − 0.46 = <b>0.54</b>';
+var PNAMES=["Fireweed","Yarrow","Wild rose","Sedge","Rough fescue","Prairie crocus","Bunchberry","Snowberry"];
+var prob=null;
+function newProb(){var k=ri(3,4),names=shuffle(PNAMES).slice(0,k),c=names.map(function(){return ri(1,12);});prob={names:names,c:c,D:simpson(c)};
+ $("simpPractice").innerHTML='<div class="out" style="margin-top:10px"><b>Your turn.</b> A quadrat contains '+names.map(function(n,i){return c[i]+" "+n;}).join(", ")+'. Calculate Simpson\'s index of diversity to two decimal places.</div><div class="row" style="margin-top:8px"><label for="simpAns" class="note">D =</label><input type="number" step="0.01" min="0" max="1" id="simpAns" style="width:7em"><button class="btn primary" type="button" id="simpCheck">Check</button><button class="btn" type="button" id="simpNew">New problem</button></div><div id="simpFb" aria-live="polite" style="margin-top:8px"></div>';
+ $("simpCheck").addEventListener("click",checkProb);$("simpNew").addEventListener("click",newProb);$("simpAns").addEventListener("keydown",function(e){if(e.key==="Enter")checkProb();});}
+function checkProb(){var v=parseFloat($("simpAns").value);var N=prob.c.reduce(function(a,b){return a+b;},0);var steps="N = "+N+". "+prob.names.map(function(n,i){return "("+prob.c[i]+" ÷ "+N+")² = "+Math.pow(prob.c[i]/N,2).toFixed(3);}).join(" · ")+". Sum = "+(1-prob.D).toFixed(3)+". D = 1 − "+(1-prob.D).toFixed(3)+" = "+prob.D.toFixed(2)+".";
+ var ok=!isNaN(v)&&Math.abs(v-prob.D)<=0.011;$("simpFb").innerHTML='<div class="fb '+(ok?"ok":"no")+'">'+(ok?"Correct. ":"Not quite. ")+steps+'</div>';}
+newProb();
+
+/* ---------- BENCH 3: adaptation match ---------- */
+var AQ=[{f:"Thick white winter fur and wide furry feet",o:["Snowy boreal forest","Hot, dry grassland","Deep lake"],a:0,w:"White fur hides the animal against snow and wide feet stop it from sinking. Both only help where there is deep snow."},
+ {f:"Cones that open only after a fire",o:["Wet bog with no fires","Pine forest where wildfires happen","City park lawn"],a:1,w:"Fire melts the resin and the seeds land on open, sunny, ash-rich ground with little competition."},
+ {f:"Webbed feet and waterproof feathers",o:["Rocky mountain peak","Slough or lake","Dry sand dune"],a:1,w:"Webbed feet paddle and waterproof feathers keep a duck warm and floating in water."},
+ {f:"Deep roots that reach water far underground",o:["Dry prairie grassland","Pond bottom","Shady wet forest"],a:0,w:"Grassland plants like rough fescue survive dry summers by reaching deep soil moisture."},
+ {f:"Body that survives partly freezing solid",o:["Tropical rainforest","Forest pond that freezes in winter","Hot desert"],a:1,w:"The wood frog spends winter frozen under leaf litter and thaws in spring. This only matters where winters freeze."},
+ {f:"Long legs for walking through deep snow and wading in ponds",o:["Boreal wetland","Underground burrow","Coral reef"],a:0,w:"The moose uses long legs in both deep snow and shallow ponds of the boreal forest."},
+ {f:"Hibernating underground for more than half the year",o:["Grassland with cold winters and dry late summers","Warm ocean","Rainforest canopy"],a:0,w:"Richardson's ground squirrels skip the hardest seasons when food is scarce."},
+ {f:"A flat, comb-edged bill for straining tiny animals from water",o:["Dry forest floor","Shallow, nutrient-rich slough","Rocky cliff"],a:1,w:"The northern shoveler filters plankton and small invertebrates from shallow, rich water."},
+ {f:"Waxy, needle-shaped leaves that stay on all winter",o:["Northern forest with long cold winters","Warm swamp","Desert oasis"],a:0,w:"Needles lose little water in dry, frozen air, and the tree can photosynthesize as soon as spring arrives."},
+ {f:"Thick layer of fat and a dense double coat of fur",o:["Cold Arctic coast","Warm prairie summer","Tropical river"],a:0,w:"Insulation keeps heat in. Polar bears in northern Canada rely on fat and dense fur."}];
+var aqOrder=shuffle(AQ.map(function(_,i){return i;})),aqI=0,aqScore=0,aqDone=0;
+function drawAQ(){var q=AQ[aqOrder[aqI%AQ.length]];var opts=shuffle(q.o.map(function(t,i){return {t:t,i:i};}));
+ $("adaptQuiz").innerHTML='<p class="eyebrow">Feature '+(aqDone+1)+' · score '+aqScore+' of '+aqDone+'</p><h3>'+esc(q.f)+'</h3><div class="opts" id="aqOpts"></div><div id="aqFb" aria-live="polite"></div><div class="row"><button class="btn" type="button" id="aqNext">Next feature</button></div>';
+ opts.forEach(function(o){var b=document.createElement("button");b.type="button";b.className="opt";b.textContent=o.t;b.addEventListener("click",function(){var ok=o.i===q.a;[].forEach.call($("aqOpts").children,function(c){c.disabled=true;});b.classList.add(ok?"ok":"no");if(!ok){[].forEach.call($("aqOpts").children,function(c){if(c.textContent===q.o[q.a])c.classList.add("ok");});}aqDone++;if(ok)aqScore++;$("aqFb").innerHTML='<div class="fb '+(ok?"ok":"no")+'">'+(ok?"Yes. ":"The best fit is: "+esc(q.o[q.a])+". ")+esc(q.w)+'</div>';});$("aqOpts").appendChild(b);});
+ $("aqNext").addEventListener("click",function(){aqI++;drawAQ();});}
+drawAQ();
+
+/* ---------- BENCH 4: ducks ---------- */
+var DUCKS=[{n:"Mallard",m:"Dabbling (tips up)",d:"Shallow",f:["plants","seeds","invertebrates"],x:"Nests in grass near the water"},
+ {n:"Blue-winged teal",m:"Dabbling (tips up)",d:"Shallow",f:["seeds","invertebrates"],x:"Feeds along muddy edges. Arrives in spring later than mallards"},
+ {n:"Northern shoveler",m:"Filtering at the surface",d:"Shallow",f:["plankton","invertebrates"],x:"Comb-edged bill strains tiny animals"},
+ {n:"Canvasback",m:"Diving",d:"Deep",f:["plants"],x:"Digs up pondweed tubers. Nests over water in bulrushes"},
+ {n:"Lesser scaup",m:"Diving",d:"Deep",f:["invertebrates"],x:"Dives for amphipods (scuds) and snails"}];
+$("duckTable").innerHTML='<table><thead><tr><th>Duck</th><th>Feeding method</th><th>Water depth</th><th>Main foods</th><th>Other</th></tr></thead><tbody>'+DUCKS.map(function(d){return '<tr><td><b>'+d.n+'</b></td><td>'+d.m+'</td><td>'+d.d+'</td><td>'+d.f.join(", ")+'</td><td>'+d.x+'</td></tr>';}).join("")+'</tbody></table>';
+["duckA","duckB"].forEach(function(id,j){$(id).innerHTML=DUCKS.map(function(d,i){return '<option value="'+i+'"'+(i===j?" selected":"")+'>'+d.n+'</option>';}).join("");$(id).addEventListener("change",duckCmp);});
+function duckCmp(){var a=DUCKS[+$("duckA").value],b=DUCKS[+$("duckB").value];if(a===b){$("duckOut").innerHTML="Pick two different ducks.";return;}
+ var sm=a.m===b.m?1:0,sd=a.d===b.d?1:0;var shared=a.f.filter(function(x){return b.f.indexOf(x)>=0;});var all=a.f.concat(b.f.filter(function(x){return a.f.indexOf(x)<0;}));var sf=shared.length/all.length;
+ var pct=Math.round((sm+sd+sf)/3*100);var lvl=pct>=60?"high":pct>=30?"medium":"low";
+ $("duckOut").innerHTML='<div class="bar"><span>Niche overlap</span><span class="track"><i style="width:'+pct+'%;background:'+(lvl==="high"?"var(--bad)":lvl==="medium"?"var(--sun)":"var(--good)")+'"></i></span><span>'+pct+'%</span></div><ul style="margin:8px 0 0;padding-left:1.1em"><li>Feeding method: '+(sm?"same":"different")+'</li><li>Water depth: '+(sd?"same":"different")+'</li><li>Shared foods: '+(shared.length?shared.join(", "):"none")+'</li></ul><p style="margin-top:8px"><b>Competition: '+lvl+'.</b> '+(lvl==="high"?"These two ducks want many of the same things. They can still share the slough because of smaller differences, such as different food sizes, feeding times, or nesting spots.":lvl==="medium"?"Some overlap, but they partly divide the slough's resources.":"Their niches are distinct, so they barely compete even on the same slough.")+'</p>';}
+duckCmp();
+
+/* ---------- BENCH 5: drought ---------- */
+var POOL=[["Blue grama",0.9],["Needle-and-thread",0.85],["Rough fescue",0.8],["Western wheatgrass",0.75],["Junegrass",0.65],["Prairie crocus",0.6],["Yarrow",0.5],["Wild bergamot",0.45],["Sedge",0.35],["Fireweed",0.3],["Kentucky bluegrass",0.2],["Smooth brome",0.15]];
+function plot(n){var sp=shuffle(POOL).slice(0,n),c=sp.map(function(){return 100/n;}),tot=[];for(var y=0;y<=12;y++){var T=c.reduce(function(a,b){return a+b;},0);tot.push(T);if(y===4||y===5){c=c.map(function(v,i){return v*sp[i][1];});T=c.reduce(function(a,b){return a+b;},0);c=c.map(function(v,i){return v+1.2*sp[i][1]*sp[i][1]*v*(1-T/100);});}else{c=c.map(function(v){return v+1.2*v*(1-T/100);});}}return tot;}
+$("nSpp").addEventListener("input",function(){$("nSppOut").textContent=this.value;});
+function runDrought(){var n=+$("nSpp").value,runs=[];for(var i=0;i<20;i++)runs.push(plot(n));
+ var g=$("droughtSvg");g.innerHTML="";var A=axes(g,420,230,{l:44,r:12,t:14,b:34},12,100,"Year","Plant cover (%)",[0,2,4,6,8,10,12],[0,25,50,75,100]);
+ A.el("rect",{x:A.sx(4),y:14,width:A.sx(6)-A.sx(4),height:A.sy(0)-14,fill:"var(--sun-soft)"});A.el("text",{x:(A.sx(4)+A.sx(6))/2,y:28,"font-size":"11","text-anchor":"middle",fill:"var(--sun)"},"drought");
+ runs.forEach(function(r){var p="";r.forEach(function(v,y){p+=(y?" L":"M")+A.sx(y).toFixed(1)+" "+A.sy(v).toFixed(1);});A.el("path",{d:p,fill:"none",stroke:"var(--accent)","stroke-width":"1.2",opacity:"0.35"});});
+ var mean=[];for(var y=0;y<=12;y++){mean.push(runs.reduce(function(a,r){return a+r[y];},0)/20);}var p="";mean.forEach(function(v,y){p+=(y?" L":"M")+A.sx(y).toFixed(1)+" "+A.sy(v).toFixed(1);});A.el("path",{d:p,fill:"none",stroke:"var(--ink)","stroke-width":"3"});
+ var mins=runs.map(function(r){return Math.min.apply(null,r);});var avgMin=mins.reduce(function(a,b){return a+b;},0)/20,worst=Math.min.apply(null,mins),y8=mean[7];
+ store.drought=store.drought||{};store.drought[n]={avgMin:Math.round(avgMin),worst:Math.round(worst),y8:Math.round(y8)};save();
+ $("droughtText").innerHTML="<b>"+n+" species per plot.</b> Thin lines are the 20 plots. The thick line is their average. Average lowest cover: <b>"+Math.round(avgMin)+"%</b>. Worst plot: <b>"+Math.round(worst)+"%</b>. Average cover in year 7, two years after the drought: <b>"+Math.round(y8)+"%</b>.";
+ drawDT();}
+function drawDT(){var d=store.drought||{};var ks=Object.keys(d).sort(function(a,b){return a-b;});if(!ks.length){$("droughtTable").innerHTML='<p class="note">Run plots with 1 species and with 8 species to compare.</p>';return;}
+ $("droughtTable").innerHTML='<table><thead><tr><th class="num">Species</th><th class="num">Avg lowest</th><th class="num">Worst plot</th><th class="num">Year 7</th></tr></thead><tbody>'+ks.map(function(k){return '<tr><td class="num">'+k+'</td><td class="num">'+d[k].avgMin+'%</td><td class="num">'+d[k].worst+'%</td><td class="num">'+d[k].y8+'%</td></tr>';}).join("")+'</tbody></table><p class="note">Drought tolerance values are model settings, not measurements.</p>';}
+$("runDrought").addEventListener("click",runDrought);runDrought();
+["cerClaim","cerEvid","cerReas"].forEach(function(id){var el=$(id);store.cer=store.cer||{};if(store.cer[id])el.value=store.cer[id];el.addEventListener("input",function(){store.cer[id]=el.value;save();});});
+
+/* ---------- SORT ---------- */
+var DECKS=[{id:"lv",name:"Levels of organization",bins:["Species","Population","Community","Ecosystem"],items:[
+ ["Wood bison",0],["Trembling aspen",0],["All the wood bison in Elk Island's south area",1],["Every snowshoe hare in one boreal valley",1],["All the cattails around one slough",1],
+ ["The bison, elk, beavers, aspen and grasses of Elk Island",2],["All the fish, plants and insects living in Lake Wabamun",2],
+ ["Elk Island's living things plus its lakes, soil and weather",3],["A slough's plants and animals together with its water, mud and sunlight",3]]},
+ {id:"rel",name:"Species interactions",bins:["Mutualism (+/+)","Commensalism (+/0)","Parasitism (+/−)","Predation"],items:[
+ ["Fungus and alga living together as a lichen",0],["Bumblebee pollinating saskatoon flowers",0],["Fungi on aspen roots trading minerals for sugar",0],
+ ["Cowbird eating insects stirred up by grazing bison",1],["Great horned owl nesting in an old magpie nest",1],
+ ["Winter ticks feeding on a moose",2],["Dwarf mistletoe growing in a pine branch",2],["Tapeworm in a coyote's gut",2],
+ ["Lynx catching a snowshoe hare",3],["Great blue heron spearing a fish",3]]},
+ {id:"bd",name:"Kinds of biodiversity",bins:["Genetic","Species","Ecosystem"],items:[
+ ["Hares in one population turn white at slightly different times",0],["Aspen seedlings in one grove differ in how well they resist disease",0],["A bison herd started from a few animals, so its members have very similar genes",0],
+ ["A meadow has 14 kinds of wildflowers",1],["A slough has five duck species in similar numbers",1],["A forest where no single tree species takes over",1],
+ ["A landscape with aspen groves, sloughs, grassland and bog",2],["Alberta's six natural regions",2]]},
+ {id:"ba",name:"Biotic or abiotic",bins:["Biotic (living)","Abiotic (non-living)"],items:[
+ ["Beaver",0],["Fungi in the soil",0],["Cattail",0],["Mosquito larva",0],["Bacteria",0],
+ ["Sunlight",1],["Snow depth",1],["Soil minerals",1],["Water temperature",1],["Wind",1]]}];
+var deck=DECKS[0],tray=[],placed=[],selItem=null;
+chipGroup($("sortDecks"),DECKS.map(function(d){return {id:d.id,label:d.name};}),deck.id,function(id){deck=DECKS.filter(function(d){return d.id===id;})[0];startSort();});
+function startSort(){tray=shuffle(deck.items.map(function(it,i){return i;}));placed=deck.bins.map(function(){return [];});selItem=null;drawSort();}
+function drawSort(){$("sortTitle").textContent=deck.name;var done=tray.length===0;var correct=0,total=0;placed.forEach(function(b,bi){b.forEach(function(i){total++;if(deck.items[i][1]===bi)correct++;});});
+ $("sortScore").textContent=done?("Finished: "+correct+" of "+total+" correct."):(tray.length+" cards left");
+ var t=$("sortTray");t.innerHTML="";tray.forEach(function(i){var b=document.createElement("button");b.type="button";b.className="card-i";b.textContent=deck.items[i][0];b.setAttribute("aria-pressed",selItem===i);b.addEventListener("click",function(){selItem=selItem===i?null:i;drawSort();});t.appendChild(b);});
+ if(done){t.innerHTML='<div class="fb '+(correct===total?"ok":"no")+'">'+(correct===total?"Perfect sort.":"Red cards are in the wrong group. Read them again, then restart to try once more.")+'</div>';}
+ var bins=$("sortBins");bins.innerHTML="";deck.bins.forEach(function(name,bi){var b=document.createElement("button");b.type="button";b.className="bin"+(selItem!=null?" hot":"");b.innerHTML="<h3>"+esc(name)+"</h3>"+placed[bi].map(function(i){var ok=deck.items[i][1]===bi;return '<span class="placed '+(ok?"ok":"no")+'">'+(ok?"✓ ":"✗ ")+esc(deck.items[i][0])+'</span>';}).join("");
+  b.setAttribute("aria-label","Place in "+name);b.addEventListener("click",function(){if(selItem==null)return;placed[bi].push(selItem);tray.splice(tray.indexOf(selItem),1);selItem=null;if(!tray.length){store.sortDone=(store.sortDone||0)+1;save();stats();}drawSort();});bins.appendChild(b);});}
+$("sortRestart").addEventListener("click",startSort);startSort();
+
+/* ---------- FLASH ---------- */
+var CARDS=[["Ecosystem","All the living things in an area interacting with each other and with the non-living parts, such as water, soil and sunlight."],
+ ["Dynamic","Always changing. An ecosystem's characteristics vary over seasons, years and decades."],
+ ["Biotic factor","A living or once-living part of an ecosystem, such as plants, animals, fungi and bacteria."],
+ ["Abiotic factor","A non-living part of an ecosystem, such as water, light, temperature, soil and wind."],
+ ["Species","One type of organism. Members can mate and produce offspring that can also reproduce."],
+ ["Population","All the members of one species living and interacting in the same area."],
+ ["Community","All the populations of different species living and interacting in the same area."],
+ ["Biodiversity","The variety of life: genetic diversity, species diversity and ecosystem diversity."],
+ ["Genetic diversity","Variation in genes among organisms of the same species."],
+ ["Species diversity","The number of different species in an area and how evenly individuals are spread among them."],
+ ["Species richness","The number of different species found in an area."],
+ ["Species evenness","How equal the numbers of each species are. High evenness means no one species dominates."],
+ ["Ecosystem diversity","The number of different habitat types in an area, or the variety of ecosystems in a region."],
+ ["Ecosystem stability","The ability of an ecosystem to keep its structure, biodiversity and processes over time."],
+ ["Habitat","The place where a species lives and finds what it needs."],
+ ["Ecological niche","The role a species plays in its habitat, including what it eats, where and when it feeds, and the conditions it needs."],
+ ["Adaptation","A feature that makes a species well suited to a specific environment. It can be structural, behavioural or physiological."],
+ ["Competition","When organisms need the same limited resource, such as food, water, light or space."],
+ ["Predation","When one organism, the predator, hunts and eats another organism, the prey."],
+ ["Predator","An animal that hunts and eats other animals."],
+ ["Prey","An animal that is hunted and eaten by a predator."],
+ ["Symbiosis","A close, long-term relationship between two different species."],
+ ["Mutualism","A symbiotic relationship in which both species benefit (+/+)."],
+ ["Commensalism","A symbiotic relationship in which one species benefits and the other is not affected (+/0)."],
+ ["Parasitism","A symbiotic relationship in which the parasite benefits and the host is harmed (+/−)."],
+ ["Host","The organism a parasite lives on or in."],
+ ["Quadrat","A square frame placed on the ground to sample the organisms in a small, measured area."],
+ ["Simpson's index of diversity","A number from 0 to 1 that measures species diversity using richness and evenness. D = 1 − Σ(n ÷ N)²."],
+ ["Natural region","A large area of Alberta with similar landforms, climate and living things. Alberta has six."]];
+var flFilter="all",flOrder=CARDS.map(function(_,i){return i;}),flI=0,flFlip=false;
+store.known=store.known||{};
+chipGroup($("flashFilter"),[{id:"all",label:"All"},{id:"learning",label:"Still learning"},{id:"known",label:"Known"}],flFilter,function(id){flFilter=id;flI=0;flFlip=false;drawFlash();});
+function flList(){return flOrder.filter(function(i){var k=store.known[CARDS[i][0]];return flFilter==="all"||(flFilter==="known"?k===true:k!==true);});}
+function drawFlash(){var L=flList(),c=$("flashCard");var nk=CARDS.filter(function(x){return store.known[x[0]]===true;}).length;$("flashCount").textContent=nk+" of "+CARDS.length+" known";
+ if(!L.length){c.innerHTML='<span class="def">No cards here yet.</span>';return;}if(flI>=L.length)flI=0;var cd=CARDS[L[flI]];var k=store.known[cd[0]];
+ c.innerHTML=flFlip?'<span class="def">'+esc(cd[1])+'</span>':'<span><span class="eyebrow">'+(flI+1)+' of '+L.length+(k===true?" · known":k===false?" · still learning":"")+'</span><br><span class="term">'+esc(cd[0])+'</span></span>';
+ c.setAttribute("aria-label",flFlip?"Definition: "+cd[1]:"Term: "+cd[0]+". Press to flip.");}
+$("flashCard").addEventListener("click",function(){flFlip=!flFlip;drawFlash();});
+function flMove(d){var L=flList();if(!L.length)return;flI=(flI+d+L.length)%L.length;flFlip=false;drawFlash();}
+$("flNext").addEventListener("click",function(){flMove(1);});$("flPrev").addEventListener("click",function(){flMove(-1);});
+function mark(v){var L=flList();if(!L.length)return;store.known[CARDS[L[flI]][0]]=v;save();stats();if(flFilter!=="all"){flFlip=false;drawFlash();}else flMove(1);}
+$("flKnow").addEventListener("click",function(){mark(true);});$("flLearn").addEventListener("click",function(){mark(false);});
+$("flShuffle").addEventListener("click",function(){flOrder=shuffle(flOrder);flI=0;flFlip=false;drawFlash();});
+drawFlash();
+
+/* ---------- QUIZ ---------- */
+var QB=[["Which is the best example of a population?",["All the wood bison living in Elk Island's south area","All the animals living in Elk Island","One wood bison","Bison, elk and beavers living together"],0,"A population is all the members of one species in one area. Mixed species form a community."],
+ ["What turns a community into an ecosystem?",["Adding more predators","Including the abiotic factors the community interacts with","Counting only the plants","Adding a second population of the same species"],1,"An ecosystem is a community interacting with abiotic factors such as water, soil and sunlight."],
+ ["Which of these is an abiotic factor?",["Fungi in the soil","A beaver","Snow depth","A cattail"],2,"Snow depth is non-living. Fungi, beavers and cattails are all living, so they are biotic."],
+ ["A meadow has 10 plant species, but 95% of the plants are one kind of grass. It has:",["High richness and high evenness","High richness and low evenness","Low richness and high evenness","Only genetic diversity"],1,"Ten species is fairly high richness, but one species dominates, so evenness is low."],
+ ["Genetic diversity describes:",["How many habitats are in an area","Variation among organisms of the same species","How many species live in a lake","How many predators there are"],1,"Genetic diversity is the variation in genes within one species."],
+ ["Which is the best example of high ecosystem diversity?",["A canola field","A single aspen clone","A landscape of aspen groves, sloughs, grassland and bog","A lake with many fish of one species"],2,"Ecosystem diversity counts different habitat types. Four habitat types in one landscape is high."],
+ ["Ecosystem stability is best described as:",["An ecosystem that never changes","The ability to keep its structure, biodiversity and processes over time","An ecosystem with the most predators","An ecosystem with lots of water"],1,"Stable ecosystems still change, but they keep their structure, biodiversity and processes over time."],
+ ["Saying an ecosystem is dynamic means:",["Its characteristics change over time","It has no abiotic factors","It contains only animals","It cannot be disturbed"],0,"Dynamic means changing. Seasons, wet and dry years, and succession all change ecosystems."],
+ ["An ecological niche is:",["Only the place where a species lives","The role a species plays, including what it eats, where and when it feeds and what it needs","The number of species in an ecosystem","A kind of symbiosis"],1,"The place is the habitat. The niche is the species' role and the resources and conditions it uses."],
+ ["Five warbler species feed in different parts of the same spruce trees. This shows that:",["Warblers do not eat insects","Distinct niches reduce competition and let species share a habitat","Spruce trees are parasites","Only one warbler species can live in a forest"],1,"By feeding in different zones, the warblers compete less for the same insects."],
+ ["If two species had exactly the same niche in the same place, what would most likely happen?",["Both would do better","They would compete strongly, and one might be pushed out","They would form a mutualism","Nothing would change"],1,"Identical needs mean strong competition for the same limited resources."],
+ ["The lynx's wide, furry paws are an example of:",["A structural adaptation for deep snow","A behavioural adaptation","Parasitism","Genetic diversity of an ecosystem"],0,"A body part that suits the environment is a structural adaptation. Wide paws act like snowshoes."],
+ ["The wood frog survives being partly frozen because its cells fill with sugar. This is a:",["Structural adaptation","Behavioural adaptation","Physiological adaptation","Commensalism"],2,"It is a change in how the body works inside, so it is physiological."],
+ ["A Richardson's ground squirrel goes underground to hibernate in a burrow. This is mainly a:",["Behavioural adaptation","Structural adaptation","Kind of predation","Kind of mutualism"],0,"Digging a burrow and going into it to hibernate is something the animal does, so it is behavioural. Its body also slows down, which is physiological."],
+ ["In the willow, hare and lynx model, what happened when lynx were removed?",["Hares disappeared right away","Hares grew larger, ate the willow down, then crashed","Willow grew taller than ever","Nothing changed"],1,"Without predators, hares overgrazed their food, then starved. Bigger swings mean less stability."],
+ ["How do predators help maintain ecosystem stability?",["By eating all of the prey","By keeping prey numbers from outgrowing their food supply","By adding nutrients to water","By pollinating flowers"],1,"Predation keeps prey populations in check, which protects plants and the rest of the food web."],
+ ["A fungus and an alga living together as a lichen, each helping the other, is:",["Parasitism","Commensalism","Mutualism","Predation"],2,"Both partners benefit, so it is mutualism (+/+)."],
+ ["Winter ticks feeding on a moose is an example of:",["Mutualism","Parasitism","Commensalism","Competition"],1,"The ticks benefit and the moose is harmed, so it is parasitism (+/−)."],
+ ["A great horned owl raises its chicks in an old magpie nest. The magpies have already left. This is:",["Commensalism","Parasitism","Mutualism","Predation"],0,"The owl benefits and the magpie is not affected, so it is commensalism (+/0)."],
+ ["In mutualism:",["One species is harmed","Both species benefit","Neither species is affected","One species eats the other"],1,"Mutualism is +/+."],
+ ["A Simpson's index of diversity closer to 1 means:",["Lower diversity","Higher diversity","Fewer individuals","More abiotic factors"],1,"D runs from 0 to 1. Values near 1 mean many species spread evenly."],
+ ["A quadrat holds 6 fireweed, 2 yarrow and 2 sedge plants. What is Simpson's index of diversity? D = 1 − Σ(n ÷ N)²",["0.44","0.56","0.80","0.36"],1,"N = 10. (0.6)² + (0.2)² + (0.2)² = 0.36 + 0.04 + 0.04 = 0.44. D = 1 − 0.44 = 0.56."],
+ ["Why do ecosystems with high biodiversity tend to be more stable?",["They have no predators","Different species respond differently to disturbances, so others can keep processes going","They never have droughts","All their species are the same"],1,"If one species declines, others with similar roles can fill in. This is like having a backup."],
+ ["Beavers dam a creek and flood an aspen grove, forming a pond. This best shows that:",["Ecosystems are dynamic and organisms can change abiotic factors","Ecosystems never change","Beavers are producers","Ponds have no biodiversity"],0,"The water level (abiotic) changed because of a living thing, and the whole ecosystem changed with it."],
+ ["Why should quadrats be placed at random?",["To make the work faster","To avoid bias so the sample represents the whole area","To find the rarest plants","Random placement is not needed"],1,"Choosing spots yourself can bias the sample toward interesting patches."]];
+var qz=null;
+function startQuiz(){qz={qs:shuffle(QB.map(function(_,i){return i;})).slice(0,10),i:0,score:0,ans:false};drawQuiz();}
+function drawQuiz(){var box=$("quizBox");
+ if(qz.i>=10){var best=Math.max(store.quizBest||0,qz.score);store.quizBest=best;save();stats();box.innerHTML='<h2>Round complete: '+qz.score+' of 10</h2><p class="note">Best score so far: '+best+' of 10. A new round draws a fresh set of questions.</p><div class="row"><button class="btn primary" type="button" id="qzAgain">Start a new round</button></div>';$("qzAgain").addEventListener("click",startQuiz);return;}
+ var q=QB[qz.qs[qz.i]];var order=shuffle(q[1].map(function(_,i){return i;}));
+ box.innerHTML='<div class="row" style="justify-content:space-between"><span class="eyebrow">Question '+(qz.i+1)+' of 10</span><span class="eyebrow">Score '+qz.score+'</span></div><div class="progress"><i style="width:'+(qz.i*10)+'%"></i></div><h2 style="font-size:1.25rem">'+esc(q[0])+'</h2><div class="opts" id="qzOpts"></div><div id="qzFb" aria-live="polite"></div><div class="row"><button class="btn primary" type="button" id="qzNext" disabled>Next question</button></div>';
+ order.forEach(function(oi){var b=document.createElement("button");b.type="button";b.className="opt";b.textContent=q[1][oi];b.addEventListener("click",function(){var ok=oi===q[2];[].forEach.call($("qzOpts").children,function(c,ci){c.disabled=true;if(order[ci]===q[2])c.classList.add("ok");});if(!ok)b.classList.add("no");if(ok)qz.score++;$("qzFb").innerHTML='<div class="fb '+(ok?"ok":"no")+'">'+(ok?"Correct. ":"Not quite. ")+esc(q[3])+'</div>';$("qzNext").disabled=false;$("qzNext").focus();});$("qzOpts").appendChild(b);});
+ $("qzNext").addEventListener("click",function(){qz.i++;drawQuiz();});}
+startQuiz();
+
+/* ---------- WRITTEN ---------- */
+var SHORT=[["Use an Alberta example to explain the difference between a population and a community.","A population is all the members of one species in an area, such as all the wood bison in Elk Island's south area. A community is all the populations of different species in that area, such as the bison, elk, beavers, aspen and grasses of Elk Island.",["Population is one species in one area","Community is many different species in one area","Gives an Alberta example of each"]],
+ ["Name the three kinds of biodiversity and give an example of each.","Genetic diversity is variation within one species, like aspen trees that differ in disease resistance. Species diversity is the number and evenness of species, like a meadow with many wildflowers. Ecosystem diversity is the number of habitat types, like a landscape with aspen groves, sloughs and grassland.",["Genetic: variation within a species","Species: number and abundance of species","Ecosystem: number of habitat types","An example for each"]],
+ ["Explain the difference between species richness and species evenness.","Richness is how many different species are present. Evenness is how equal their numbers are. Two meadows can have the same richness, but if one species dominates in one meadow, that meadow has lower evenness and lower diversity.",["Richness is the count of species","Evenness is how equal the numbers are","Both affect species diversity"]],
+ ["What does ecosystem stability mean? Name the three things a stable ecosystem keeps.","Ecosystem stability is the capacity of an ecosystem to maintain its structure, its biodiversity and its processes over time, even when disturbances happen.",["Ability to maintain over time","Structure","Biodiversity","Processes"]],
+ ["Explain how having distinct niches reduces competition. Use the spruce warblers as your example.","Each warbler species feeds in a different part of the spruce tree. Because they hunt in different zones, they are not all after the same insects in the same place. Their needs overlap less, so competition is reduced and all five species can live in the same forest.",["Niche is a species' role and resources","Warblers feed in different zones","Less overlap means less competition","Lets species co-exist"]],
+ ["Describe one adaptation of the snowshoe hare and explain how it suits its environment.","The snowshoe hare has large furry hind feet that spread its weight like snowshoes. This lets it move on top of deep snow in the boreal forest to find food and escape predators. Its coat also turns white in winter for camouflage on snow.",["Names a real adaptation","Links it to snow or the boreal forest","Explains the benefit to survival"]],
+ ["Explain how predators help maintain ecosystem stability.","Predators eat prey and keep prey populations from growing too large. Without predators, prey like snowshoe hares can overeat their food plants and then crash. By keeping numbers in check, predators protect plants and the rest of the food web.",["Predators control prey numbers","Prevents overeating of food plants","Protects the rest of the ecosystem"]],
+ ["Compare mutualism, commensalism and parasitism. Give an example of each.","In mutualism both species benefit, like the fungus and alga in a lichen. In commensalism one species benefits and the other is not affected, like cowbirds catching insects stirred up by bison. In parasitism one species benefits and the other is harmed, like winter ticks on a moose.",["Mutualism +/+ with example","Commensalism +/0 with example","Parasitism +/− with example"]],
+ ["Why do ecologists place several quadrats at random when they investigate biodiversity?","Ecologists cannot count every organism, so they sample. Several quadrats give a larger sample that better represents the whole area. Random placement avoids bias, such as only choosing patches that look interesting.",["Cannot count everything, so they sample","More quadrats give a better estimate","Random placement avoids bias"]]];
+var LONG=[["A dry summer hits two Alberta grasslands. One is native fescue grassland with many plant species. The other is a pasture planted with only smooth brome. Predict what happens to each, and explain how biodiversity supports ecosystem stability.","The native fescue grassland will most likely keep more plant cover and recover faster. Its many species respond to drought in different ways. Drought-tolerant species such as blue grama and rough fescue keep growing while others decline, so the grassland's structure and processes such as photosynthesis and food for consumers keep going. The brome pasture depends on one species. If brome handles the drought poorly, most of the plant cover is lost at once and there is no other species to fill in. Animals that eat those plants also lose food. This shows that higher biodiversity acts like insurance: more species means more ways to keep the ecosystem working when conditions change.",["Makes a clear prediction for each grassland","Different species respond differently to drought","Other species fill in when some decline","Mentions structure or processes continuing","Uses evidence such as the drought test or Tilman's study"]],
+ ["Imagine that all lynx disappeared from a boreal forest. Predict how the snowshoe hares, willow shrubs and other species would be affected over several years. Explain your reasoning using the idea of ecosystem stability.","Without lynx, fewer hares would be eaten, so the hare population would grow quickly. The extra hares would eat more willow and other shrubs in winter, reducing the plants. When the food ran out, many hares would starve and the population would crash. Other animals that use willow, such as moose and songbirds, would lose food and shelter. Other predators like foxes or owls might eat more hares, but the swings in population would likely be bigger. This shows that predation helps maintain stability by keeping prey numbers in balance with their food supply.",["Hares increase at first","Willow is overeaten","Hare population crashes later","Effects spread to other species","Links predation to stability"]],
+ ["Five duck species can share one slough. Use the niche analyzer data to explain how they can live together, and identify which two species likely compete the most.","The five ducks divide the slough's resources. Mallards, blue-winged teal and northern shovelers feed in shallow water, while canvasbacks and lesser scaup dive in deep water. Their foods differ too: canvasbacks eat pondweed tubers, scaup eat amphipods and snails, and shovelers filter plankton. Mallards and blue-winged teal overlap the most because both dabble in shallow water and eat seeds and invertebrates. They can still co-exist because of smaller differences, such as the teal feeding along muddy edges and arriving later in spring. Distinct niches reduce competition, which lets all five species share one ecosystem.",["Describes differences in depth, method or food","Names the most overlapping pair with a reason","Explains how small differences still reduce competition","Links distinct niches to co-existence"]],
+ ["Represent the interconnections in a slough ecosystem. Describe at least one species, population, community and the ecosystem, then explain what could happen if the beavers left.","Species: muskrat. Population: all the muskrats in the slough. Community: the muskrats, mallards, beavers, wood frogs, dragonflies, cattails, pondweed, algae and decomposers living together. Ecosystem: that community plus the water, sunlight and soil nutrients. Beavers eat aspen and build dams that raise the water level. If the beavers left, the dam would break and the water level would drop. Pondweed and algae would have less water, mallards and muskrats would lose food and homes, and mink would lose prey. The slough might slowly become a wet meadow. One change can spread through many connections.",["Correct example of each level","Includes abiotic factors","Explains the beaver dam and water level link","Traces effects through at least two connections"]]];
+store.wr=store.wr||{};store.ck=store.ck||{};
+function wrItem(list,boxId,pre){var box=$(boxId);list.forEach(function(q,i){var id=pre+i;var d=document.createElement("div");d.className="sec";
+ d.innerHTML='<p><b>'+(i+1)+'.</b> '+esc(q[0])+'</p><label class="ctl" for="wr-'+id+'">Your answer<textarea id="wr-'+id+'"'+(pre==="L"?' style="min-height:160px"':'')+'></textarea></label><details class="model-ans"><summary>Show model answer and checklist</summary><p style="margin-top:6px">'+esc(q[1])+'</p><div class="check">'+q[2].map(function(k,j){return '<label><input type="checkbox" id="ck-'+id+'-'+j+'"> '+esc(k)+'</label>';}).join("")+'</div></details>';
+ box.appendChild(d);var ta=$("wr-"+id);if(store.wr[id])ta.value=store.wr[id];ta.addEventListener("input",function(){store.wr[id]=ta.value;save();});
+ q[2].forEach(function(_,j){var cb=$("ck-"+id+"-"+j);cb.checked=!!store.ck[id+"-"+j];cb.addEventListener("change",function(){store.ck[id+"-"+j]=cb.checked;save();});});});}
+wrItem(SHORT,"shortList","S");wrItem(LONG,"longList","L");
+
+/* ---------- COVERAGE ---------- */
+var COV=[["LS1.K1","Ecosystems are dynamic and their characteristics can vary over time.","Learn 1 (beaver pond model); Quiz; Written S4"],
+ ["LS1.K2","Components of ecosystems are interconnected with the following relationships: species, which are the same type of organism; populations, which are interacting groups of the same species; communities, which are interacting populations; ecosystems, which are communities interacting with abiotic factors.","Learn 2 (Elk Island levels); Lab Bench 1; Sort It: Levels, Biotic or abiotic; Flashcards; Quiz; Written S1, L4"],
+ ["LS1.K3","Biodiversity refers to the variation within organisms of the same species (genetic diversity); in the number and abundance of different species (species diversity); in the number of unique habitat types in an ecosystem (ecosystem diversity).","Learn 3 (meadows, aspen clones, habitats); Lab Bench 2; Sort It: Kinds of biodiversity; Quiz; Written S2, S3"],
+ ["LS1.K4","Ecosystem stability is the capacity of an ecosystem to maintain its structure, biodiversity, and processes over time.","Learn 4 (ball in a bowl); Lab Bench 5; Quiz; Written S4, L1"],
+ ["LS1.K5","Each species in an ecosystem occupies an ecological niche, or role in their habitat, which allows different species to co-exist in the same environment.","Learn 5 (warbler tree); Lab Bench 4; Quiz; Written S5, L3"],
+ ["LS1.K6","Factors that influence a species' ecological niche include biotic and abiotic factors; adaptations; competition; predation; symbiotic relationships.","Learn 5 (factor chips), Learn 6, Learn 8; Lab Bench 4"],
+ ["LS1.K7","Adaptations are features that make a species well suited to a specific environment.","Learn 6 (Alberta species guide); Lab Bench 3; Quiz; Written S6"],
+ ["LS1.K8","When species occupy distinct ecological niches, competition for resources is reduced.","Learn 5 (same zone toggle); Lab Bench 4; Quiz; Written S5, L3"],
+ ["LS1.K9","Predation plays an important role in maintaining ecosystem stability.","Learn 7 (willow, hare and lynx model); Sort It: Species interactions; Quiz; Written S7, L2"],
+ ["LS1.K10","Symbiotic relationships between different species include mutualism, commensalism, and parasitism.","Learn 8; Sort It: Species interactions; Flashcards; Quiz; Written S8"],
+ ["LS1.S1","Represent the interconnections between components within an ecosystem.","Lab Bench 1 (slough connection map); Learn 2; Written L4"],
+ ["LS1.S2","Investigate the biodiversity of species in various ecosystems.","Lab Bench 2 (quadrat survey of four Alberta ecosystems, Simpson's index practice); Written S9"],
+ ["LS1.S3","Relate species adaptations to the environment in which species live.","Lab Bench 3 (adaptation match); Learn 6; Written S6"],
+ ["LS1.S4","Analyze the ecological niches of different species living in the same ecosystem.","Lab Bench 4 (duck niche analyzer); Learn 5; Written L3"],
+ ["LS1.S5","Discuss how biodiversity supports ecosystem stability.","Lab Bench 5 (drought test and claim, evidence, reasoning); Written L1; Quiz"]];
+$("covTable").innerHTML='<table><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody>'+COV.map(function(r){return '<tr><td class="mono" style="white-space:nowrap">'+r[0]+'</td><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td></tr>';}).join("")+'</tbody></table>';
+$("covNotes").innerHTML='<ul>'+[
+ "LS1.K2 defines a species as \"the same type of organism\". The lab teaches the fuller definition: members can mate and produce offspring that can also reproduce.",
+ "LS1.K5 calls a niche a \"role in their habitat\". The lab keeps that wording and adds what the role includes (food, feeding place and time, conditions needed), and separates niche from habitat.",
+ "LS1.K3 places ecosystem diversity \"in an ecosystem\". Many sources use the term for the variety of ecosystems across a region. The lab teaches the curriculum wording and notes the wider use with Alberta's six natural regions.",
+ "LS1.K10 lists three symbioses. The lab notes that predation is a separate interaction, not usually counted as symbiosis.",
+ "Simpson's index (D = 1 − Σ(n ÷ N)²) is brief context to support LS1.S2. Students use it as a tool and are not asked to memorize it.",
+ "The predator and drought models are simplified teaching models. Their numbers are model settings, not field data."].map(function(t){return "<li>"+esc(t)+"</li>";}).join("")+'</ul>';
+
+/* ---------- stats and reset ---------- */
+function stats(){$("stFlash").textContent=CARDS.filter(function(x){return store.known[x[0]]===true;}).length;$("stQuiz").textContent=(store.quizBest||0)+"/10";$("stSort").textContent=store.sortDone||0;}
+stats();
+var resetArmed=false;
+$("resetAll").addEventListener("click",function(){if(!resetArmed){resetArmed=true;$("resetAll").textContent="Tap again to confirm";$("resetMsg").textContent="This clears cards, scores and written answers in this browser.";return;}
+ store={theme:store.theme};save();resetArmed=false;$("resetAll").textContent="Clear my saved progress";$("resetMsg").textContent="Cleared. Reloading your view.";
+ try{location.reload();}catch(e){}});
+document.addEventListener("keydown",function(e){if($("p-flash").hidden)return;var t=e.target;if(t&&t.getAttribute&&t.getAttribute("role")==="tab")return;if(t&&(t.tagName==="TEXTAREA"||t.tagName==="INPUT"))return;if(e.key===" "&&t===$("flashCard"))return;if(e.key==="ArrowRight")flMove(1);else if(e.key==="ArrowLeft"&&!(t&&t.getAttribute&&t.getAttribute("role")==="tab"))flMove(-1);});
+})();
+
+</script>
+
+</body></html>

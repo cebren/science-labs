@@ -1,0 +1,1318 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/energy-accounts-lab/"><meta name="description" content="Transfer of energy can be used to explain change in objects and systems."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Energy Accounts Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an energy ledger. Sticky tab strip, then lessons that pair a short reading column with a model: a joule ladder, a movable system boundary, a toboggan pull, an energy account and transfer diagrams. Ember marks energy in, blue marks energy out. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ---- Energy Accounts additions: ember marks energy in, water blue marks energy out, leaf marks energy kept in the system ---- */
+:root{ --en:#B0431B; --en-soft:#FAE5DB; --out:#1C6A8A; --out-soft:#DCEDF4; --keep:#2D7546; --keep-soft:#DDEFE3; --snow:#F7FAFC; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --en:#F2916A; --en-soft:#3A1E14; --out:#6DC1E0; --out-soft:#132C38; --keep:#7BCB95; --keep-soft:#16301F; --snow:#1E2A30; }}
+:root[data-theme="dark"]{ --en:#F2916A; --en-soft:#3A1E14; --out:#6DC1E0; --out-soft:#132C38; --keep:#7BCB95; --keep-soft:#16301F; --snow:#1E2A30; }
+header h1 .en{color:var(--en)} header h1 .ac{color:var(--out)}
+.ladder2{display:grid;gap:6px}
+.jl{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr) 6.2em;gap:8px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;cursor:pointer;width:100%;font-size:.85rem}
+.jl:hover{border-color:var(--muted)}
+.jl[aria-pressed="true"]{border-color:var(--en);background:var(--en-soft)}
+.jl .track{height:12px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;position:relative}
+.jl .track i{display:block;height:100%;background:var(--en);border-radius:6px}
+.jl b{font-family:var(--f-mono);font-size:.76rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.jl{grid-template-columns:minmax(0,1fr) 5.6em}.jl .track{grid-column:1/-1;grid-row:2}}
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button.right{background:var(--leaf-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.choice2 button:disabled{cursor:default;color:var(--ink)}
+.b4grid{display:grid;gap:8px}
+.b4row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.92rem}
+.b4row.ok{border-color:var(--good);background:var(--leaf-soft)} .b4row.no{border-color:var(--bad);background:var(--bad-soft)}
+.b4row .chips{flex-wrap:nowrap}
+@media (max-width:560px){.b4row{grid-template-columns:minmax(0,1fr)}.b4row .chips{flex-wrap:wrap}}
+.credit a{color:var(--out)}
+.panel>*,.inv>*,.two>*{min-width:0}
+.inline input{min-width:0}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Energy: Heat and Temperature · EN1</div>
+    <h1><span class="en">Energy</span> <span class="ac">Accounts</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Transfer of energy can be used to explain change in objects and systems. Scientists keep track of energy the way a careful bookkeeper tracks money: count what comes in, count what goes out, and the difference tells you how the system changed.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Five short lessons in order. Each one has a model to try. First learn what energy is and how it is measured. Then draw a system, see how energy transfers cause change, and keep an energy account.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · A number, not a stuff</span>
+      <div class="codes"><span class="code">EN1.K1</span></div>
+      <h3>Energy is a quantity measured in joules</h3>
+      <p>In everyday talk, people say energy as if it were a fluid or a fuel you could pour into a jar. In science, <b>energy</b> is not a substance. It is a <b>quantity</b>: a number that scientists calculate and keep track of.</p>
+      <p>Energy is measured in <b>joules</b> (J). One joule is a small amount. Lifting an apple from the floor to a table top takes about 1 J. Large amounts use <b>kilojoules</b> (1 kJ = 1000 J) and <b>megajoules</b> (1 MJ = 1 000 000 J).</p>
+      <p>A useful way to think about energy: it tells how much <b>work</b> could be done on an object or in a system. Work is done when a force moves something. A system with more energy can do more work, like lifting more apples.</p>
+      <p class="note">Think of a bank account. Money is not a thing you can see inside the bank. It is a number that goes up when money comes in and down when it goes out. Energy is tracked the same way.</p>
+      <div class="key"><b>Remember:</b> energy is an amount, measured in joules. It is never a material you can hold.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the joule ladder</h4>
+      <p class="hint">Each bar shows an amount of energy. The scale grows ten times at each grid line, so small and huge amounts fit together. Tap a bar to read about it.</p>
+      <div class="ladder2" id="jlList" role="group" aria-label="Everyday amounts of energy"></div>
+      <div class="detail" id="jlDetail" aria-live="polite"></div>
+      <p class="hint">Values are rounded estimates.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Draw a boundary</span>
+      <div class="codes"><span class="code">EN1.K2</span></div>
+      <h3>Systems and surroundings</h3>
+      <p>To study energy, scientists first choose a <b>system</b>: the part of the world they want to study. A system is described by its <b>components</b> (its parts) and the <b>interactions</b> between them, such as one part pushing, rubbing or warming another.</p>
+      <p>Everything outside the system is the <b>surroundings</b>. An imaginary line called the <b>system boundary</b> separates the two.</p>
+      <p>You get to choose where the boundary goes. A kettle can be the system, or just the water inside it can be. The choice changes what counts as energy coming in or going out.</p>
+      <div class="key"><b>Tip:</b> always say what your system is before you describe any energy transfer.</div>
+    </div>
+    <div class="model">
+      <h4>Model: move the boundary</h4>
+      <div class="chips" id="sysChips" role="group" aria-label="Choose a scenario"></div>
+      <div class="chips" id="bndChips" role="group" aria-label="Choose a system boundary"></div>
+      <div class="svgbox fit"><svg id="sysSvg" viewBox="0 0 360 230" role="img" aria-label="System diagram"></svg></div>
+      <div class="legend"><span><i style="background:var(--en-soft);border-color:var(--en)"></i>Inside the system</span><span><i style="background:var(--surface-2)"></i>Surroundings</span></div>
+      <div class="detail" id="sysDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Transfers cause change</span>
+      <div class="codes"><span class="code">EN1.K3</span></div>
+      <h3>Energy transfer drives change</h3>
+      <p>When energy moves into or out of an object, something about it changes. It may speed up, slow down, rise, bend, warm up or melt.</p>
+      <p>One way to transfer energy is by doing <b>work</b>. Work is done when a force moves an object in the direction of the force. The amount of work equals the energy transferred:</p>
+      <p class="formula">work = force × distance<br>W = F × d &nbsp;(newtons × metres = joules)</p>
+      <p>So when you see a change caused by a push or a pull, you know work was done and energy was transferred. If the object does not move, no work is done, even if you push hard.</p>
+      <p class="note">Work is not the only way. Energy also transfers by <b>heating</b>, from a hotter object to a colder one. A snowball melting in your glove changed because of heating, not a push. You will study heating in the next lesson set.</p>
+    </div>
+    <div class="model">
+      <h4>Model: pull the toboggan</h4>
+      <label class="field" for="wkF">Pulling force: <span id="wkFOut" class="mono">60 N</span>
+        <input type="range" id="wkF" min="0" max="150" step="10" value="60"></label>
+      <label class="field" for="wkD">Distance pulled: <span id="wkDOut" class="mono">10 m</span>
+        <input type="range" id="wkD" min="0" max="30" step="1" value="10"></label>
+      <div class="svgbox fit"><svg id="wkSvg" viewBox="0 0 360 120" role="img" aria-label="A toboggan pulled across snow"></svg></div>
+      <div class="stats">
+        <div class="stat"><span>Force</span><b id="wkFs">60 N</b></div>
+        <div class="stat"><span>Distance</span><b id="wkDs">10 m</b></div>
+        <div class="stat"><span>Work done = energy transferred</span><b id="wkW">600 J</b></div>
+      </div>
+      <p class="hint" id="wkMsg" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Keep the account</span>
+      <div class="codes"><span class="code">EN1.K4</span></div>
+      <h3>Energy in, energy out</h3>
+      <p>Energy is never created from nothing and never destroyed. It only moves. That means you can keep an energy account for any system:</p>
+      <p class="formula">change in the system’s energy = energy in − energy out<br>ΔE = E<sub>in</sub> − E<sub>out</sub></p>
+      <p>The symbol Δ (delta) means “change in”.</p>
+      <ul>
+        <li>More energy in than out: the system’s energy goes up.</li>
+        <li>More energy out than in: the system’s energy goes down.</li>
+        <li>Equal in and out: the system’s energy stays the same, even though energy is still flowing through it.</li>
+      </ul>
+      <p class="note">A house in an Edmonton January is a good example. The furnace transfers energy in. The house loses energy to the cold air outside. When the two are equal, the temperature inside stays steady.</p>
+    </div>
+    <div class="model">
+      <h4>Model: the energy account</h4>
+      <div class="chips" id="acChips" role="group" aria-label="Choose an example"></div>
+      <label class="field" for="acIn">Energy in: <span id="acInOut" class="mono">900 J</span>
+        <input type="range" id="acIn" min="0" max="1000" step="50" value="900"></label>
+      <label class="field" for="acOut">Energy out: <span id="acOutOut" class="mono">100 J</span>
+        <input type="range" id="acOut" min="0" max="1000" step="50" value="100"></label>
+      <div class="svgbox fit"><svg id="acSvg" viewBox="0 0 360 200" role="img" aria-label="Bar chart of the system's energy before and after"></svg></div>
+      <div class="readout" id="acEq" aria-live="polite"></div>
+      <p class="hint" id="acMsg"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Into, within, out of</span>
+      <div class="codes"><span class="code">EN1.K2</span><span class="code">EN1.K4</span><span class="code">EN1.S1</span></div>
+      <h3>Energy transfer diagrams</h3>
+      <p>An <b>energy transfer diagram</b> shows the whole story of a system:</p>
+      <ul>
+        <li><b>Into</b> the system: arrows crossing the boundary from the surroundings.</li>
+        <li><b>Within</b> the system: transfers from one component to another. These do not change the total.</li>
+        <li><b>Out of</b> the system: arrows crossing the boundary into the surroundings.</li>
+      </ul>
+      <p>Wide arrows mean more joules. The change in the system is what came in minus what went out.</p>
+      <p>Much of the energy that leaves a system ends up warming the air and objects around it, often through friction or sound. It is not lost from the universe. It is just spread out and hard to use again.</p>
+    </div>
+    <div class="model">
+      <h4>Model: follow the joules</h4>
+      <div class="chips" id="tdChips" role="group" aria-label="Choose a system"></div>
+      <div class="svgbox fit"><svg id="tdSvg" viewBox="0 0 360 230" role="img" aria-label="Energy transfer diagram"></svg></div>
+      <div class="detail" id="tdDetail" aria-live="polite"></div>
+      <p class="hint">Numbers are made up for practice, rounded to show the pattern.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Calculate work, balance energy accounts, test a bouncing ball and build a transfer diagram. Practice questions change every time.</p>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 1 · Work calculator</span>
+    <div class="codes"><span class="code">EN1.S2</span><span class="code">EN1.K3</span></div>
+    <h3>How much energy does a push transfer?</h3>
+    <div class="two">
+      <div class="map">
+        <div class="inline">
+          <label class="field" for="b1F">Force (N)<input type="number" id="b1F" value="250" min="0" step="any"></label>
+          <label class="field" for="b1D">Distance (m)<input type="number" id="b1D" value="4" min="0" step="any"></label>
+        </div>
+        <div class="worked" id="b1Work" aria-live="polite"></div>
+      </div>
+      <div class="map">
+        <div class="worked" id="b1Q"></div>
+        <div class="inline">
+          <label class="field" for="b1A"><span id="b1Lab">Your answer</span><input type="number" id="b1A" step="any"></label>
+          <button class="btn" id="b1Check" type="button">Check</button>
+          <button class="btn ghost" id="b1New" type="button">New problem</button>
+        </div>
+        <p class="fb" id="b1Fb" aria-live="polite"></p>
+        <p class="hint mono" id="b1Score"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 2 · Balance the account</span>
+    <div class="codes"><span class="code">EN1.K4</span><span class="code">EN1.S2</span></div>
+    <h3>Did the system gain or lose energy?</h3>
+    <div class="worked" id="b2Q"></div>
+    <div class="inline">
+      <label class="field" for="b2A">Change in the system’s energy (J, use − for a loss)<input type="number" id="b2A" step="any"></label>
+      <button class="btn" id="b2Check" type="button">Check</button>
+      <button class="btn ghost" id="b2New" type="button">New problem</button>
+    </div>
+    <p class="fb" id="b2Fb" aria-live="polite"></p>
+    <p class="hint mono" id="b2Score"></p>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 3 · Virtual investigation</span>
+    <div class="codes"><span class="code">EN1.S2</span><span class="code">EN1.S1</span><span class="code">EN1.K4</span></div>
+    <h3>Where does a bouncing ball’s energy go?</h3>
+    <p>Lifting a ball is work: the force needed equals the ball’s weight, and the distance is the height. So the energy given to the ball is weight × height. Drop it and watch each bounce. Each bounce is lower because some energy leaves the ball.</p>
+    <div class="row">
+      <div class="chips" id="b3Ball" role="group" aria-label="Choose a ball"></div>
+      <div class="chips" id="b3H" role="group" aria-label="Choose a drop height"></div>
+    </div>
+    <div class="row"><button class="btn" id="b3Run" type="button">Drop the ball</button></div>
+    <div class="svgbox"><svg id="b3Svg" viewBox="0 0 560 200" role="img" aria-label="Graph of bounce heights"></svg></div>
+    <div class="tablebox"><table class="dt" id="b3Table"><thead><tr><th>Bounce</th><th>Top height (m)</th><th>Energy at top (J)</th><th>Energy out on that bounce (J)</th></tr></thead><tbody></tbody></table></div>
+    <p class="hint">Data are simulated and made up for practice. Weights are rounded.</p>
+    <div class="worked" id="b3Q"></div>
+    <div class="choice2" id="b3Opts" role="group" aria-label="Answer choices"></div>
+    <p class="fb" id="b3Fb" aria-live="polite"></p>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 4 · Build a transfer diagram</span>
+    <div class="codes"><span class="code">EN1.S1</span><span class="code">EN1.K2</span></div>
+    <h3>Into, within or out of the system?</h3>
+    <div class="chips" id="b4Chips" role="group" aria-label="Choose a scenario"></div>
+    <p id="b4Intro"></p>
+    <div class="b4grid" id="b4Grid"></div>
+    <div class="row"><button class="btn" id="b4Check" type="button">Check my diagram</button><button class="btn ghost" id="b4Reset" type="button">Clear</button></div>
+    <p class="fb" id="b4Fb" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 EN1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>EN1.K1:</b> the draft says energy “indicates the amount of work that can be done”. The lab uses this as a helpful description (“how much work could be done”) and keeps the main idea that energy is a quantity in joules, not a substance. Strictly, energy is the capacity to do work or to heat, and not all of a system’s energy can be turned into work; thermal energy spread into the surroundings is hard to use again. This is mentioned in Lesson 5 without the word entropy.</li>
+      <li><b>EN1.K3:</b> the draft says changes “indicate that work has been done”. The lab teaches that a change shows energy was transferred, and that the transfer can be by work (a force moving an object) or by heating (a temperature difference). Heating is named briefly so the next understanding (EN2) does not contradict this one. Students are shown that pushing without movement does no work.</li>
+      <li><b>EN1.K3 and EN1.S2:</b> W = F × d is borrowed from Forces (F2.K2) as context so students can analyze work in joules. For lifting, the force equals the weight (about 9.8 N per kilogram, rounded to 10 N per kilogram only where stated). Gravitational, kinetic and other energy stores are not named as a list, since they belong to Science 8.</li>
+      <li><b>EN1.K4:</b> taught as ΔE = E<sub>in</sub> − E<sub>out</sub>, including the steady state (in = out) and the idea that energy is conserved. Open, closed and isolated systems are not taught by name.</li>
+      <li><b>Numbers:</b> joule ladder values are rounded estimates (apple 100 g lifted 1 m about 1 J; 45 kg student up 3 m about 1300 J; 10 W LED for 1 h 36 000 J; 1 L of water heated from 20 °C to boiling about 335 000 J; 100 food Calories about 420 000 J; 1 kWh = 3 600 000 J). Transfer diagram numbers, bouncing ball data and practice problems are made up for practice and labelled as such.</li>
+      <li><b>Alberta examples:</b> tobogganing, an outdoor rink, a block heater on a cold Edmonton morning, a furnace in January and cycling in the river valley are everyday contexts only.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-en1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: joule ladder ---------- */
+(function(){
+  var J = [
+    {n: "Lift an apple 1 m", j: 1, t: "A 100 g apple weighs about 1 N. Lifting it 1 m does about 1 N × 1 m = 1 J of work. One joule is a small amount of energy."},
+    {n: "LED bulb for 1 second", j: 10, t: "A 10 W LED bulb transfers 10 J every second. A watt means one joule per second."},
+    {n: "Climb one flight of stairs", j: 1300, t: "A 45 kg student weighs about 440 N. Climbing 3 m of stairs does about 440 N × 3 m ≈ 1300 J of work against gravity."},
+    {n: "LED bulb for 1 hour", j: 36000, t: "10 J each second × 3600 seconds = 36 000 J, or 36 kJ."},
+    {n: "Heat 1 L of water to boiling", j: 335000, t: "Heating 1 L of water from 20 °C to 100 °C takes about 335 000 J, or 335 kJ. Heating is a transfer you will study next."},
+    {n: "A granola bar", j: 420000, t: "A bar with 100 food Calories stores about 420 000 J (420 kJ) in its chemicals. Your body releases it slowly."},
+    {n: "1 kWh on a power bill", j: 3600000, t: "Alberta power bills count energy in kilowatt hours. One kilowatt hour is 3 600 000 J, or 3.6 MJ."}
+  ];
+  var list = $("jlList"), btns = [], max = Math.log10(3600000);
+  function show(i){
+    btns.forEach(function(b, k){ b.setAttribute("aria-pressed", k === i ? "true" : "false"); });
+    detail($("jlDetail"), J[i].n, [J[i].t], fmtJ(J[i].j));
+  }
+  J.forEach(function(it, i){
+    var b = el("button", {"class": "jl", type: "button", "aria-pressed": "false"});
+    b.appendChild(el("span", null, it.n));
+    var tr = el("span", {"class": "track"}), bar = el("i");
+    bar.style.width = Math.max(3, (Math.log10(it.j) + 0.3) / (max + 0.3) * 100) + "%";
+    tr.appendChild(bar); b.appendChild(tr);
+    b.appendChild(el("b", null, fmtJ(it.j)));
+    b.addEventListener("click", function(){ show(i); });
+    list.appendChild(b); btns.push(b);
+  });
+  show(2);
+})();
+function fmtJ(j){
+  var s = String(Math.round(j)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return s + " J";
+}
+
+/* ---------- Lesson 2: system boundary ---------- */
+(function(){
+  var W = 84, H = 34;
+  var SC = [
+    {label: "Electric kettle", comps: {wire: ["Wall wires", 8, 98], body: ["Kettle body", 138, 40], water: ["Water", 138, 98], elem: ["Heating element", 138, 156], air: ["Kitchen air", 268, 98]},
+     b: [
+      {label: "Kettle and water", inc: ["body", "water", "elem"], comps: "Heating element, water and kettle body.", inner: "The element heats the water. The water heats the kettle body.", into: "Electrical energy from the wall wires.", out: "Heating of the kitchen air, plus a little sound."},
+      {label: "Just the water", inc: ["water"], comps: "Only the water.", inner: "Water particles bump into each other and share energy. Warm water rises and cool water sinks.", into: "Heating from the hot element, which is now in the surroundings.", out: "Heating of the kettle body and the air above, and escaping steam."}
+     ]},
+    {label: "Outdoor rink", comps: {stick: ["Hockey stick", 8, 98], puck: ["Puck", 138, 98], ice: ["Ice", 138, 156], air: ["Cold air", 268, 98]},
+     b: [
+      {label: "Just the puck", inc: ["puck"], comps: "Only the puck.", inner: "Nothing much: the puck is one component.", into: "Work done by the stick’s push.", out: "Friction warms the ice and air a little. The bang off the boards makes sound."},
+      {label: "Puck and ice", inc: ["puck", "ice"], comps: "The puck and the ice surface.", inner: "Friction between the puck and the ice slows the puck and warms the ice surface a tiny amount.", into: "Work done by the stick’s push.", out: "Heating of the cold air above the rink, and sound."}
+     ]},
+    {label: "River valley cyclist", comps: {rider: ["Rider", 138, 30], bike: ["Bike", 138, 88], road: ["Trail", 138, 170], air: ["Air", 268, 88], sun: ["Sun", 8, 88]},
+     b: [
+      {label: "Rider and bike", inc: ["rider", "bike"], comps: "The rider and the bike.", inner: "The rider’s leg muscles do work on the pedals. The chain turns the back wheel and the bike speeds up.", into: "Almost none during the ride. The energy from food was already stored in the rider’s body. Sunlight warms the rider a little.", out: "Heating of the air and trail through friction and air resistance, and the rider’s body heat."},
+      {label: "Just the bike", inc: ["bike"], comps: "Only the bike.", inner: "The pedals turn the chain. The chain turns the back wheel.", into: "Work done by the rider’s feet on the pedals. The rider is now in the surroundings.", out: "Heating of the trail and air through friction, and sound from the chain."}
+     ]}
+  ];
+  var svg = $("sysSvg"), sc = SC[0], bi = 0, setB;
+  function arrow(x1, x2, y, col, dash){
+    var g = sv("g");
+    g.appendChild(sv("line", {x1: x1, y1: y, x2: x2 - (x2 > x1 ? 8 : -8), y2: y, style: "stroke:var(" + col + ");stroke-width:5" + (dash ? ";stroke-dasharray:4 4" : "")}));
+    var d = x2 > x1 ? 1 : -1;
+    g.appendChild(sv("path", {d: "M" + x2 + " " + y + " L" + (x2 - 10 * d) + " " + (y - 8) + " L" + (x2 - 10 * d) + " " + (y + 8) + " Z", style: "fill:var(" + col + ")"}));
+    return g;
+  }
+  function draw(){
+    clear(svg);
+    var b = sc.b[bi], minx = 999, miny = 999, maxx = 0, maxy = 0;
+    b.inc.forEach(function(k){ var c = sc.comps[k]; minx = Math.min(minx, c[1]); miny = Math.min(miny, c[2]); maxx = Math.max(maxx, c[1] + W); maxy = Math.max(maxy, c[2] + H); });
+    svg.appendChild(sv("text", {x: 6, y: 16, "class": "small"}, "Surroundings"));
+    svg.appendChild(sv("rect", {x: minx - 10, y: miny - 16, width: maxx - minx + 20, height: maxy - miny + 26, rx: 10, style: "fill:var(--en-soft);stroke:var(--en);stroke-width:2;stroke-dasharray:6 4"}));
+    svg.appendChild(sv("text", {x: minx - 4, y: miny - 4, "class": "small", style: "fill:var(--en)"}, "System boundary"));
+    Object.keys(sc.comps).forEach(function(k){
+      var c = sc.comps[k], inside = b.inc.indexOf(k) > -1;
+      var g = sv("g", {tabindex: "0", role: "img", "aria-label": c[0] + (inside ? ": inside the system" : ": in the surroundings")});
+      g.appendChild(sv("rect", {x: c[1], y: c[2], width: W, height: H, rx: 6, style: "fill:var(" + (inside ? "--surface" : "--surface-2") + ");stroke:var(" + (inside ? "--en" : "--line") + ");stroke-width:1.5"}));
+      g.appendChild(sv("text", {x: c[1] + W / 2, y: c[2] + H / 2 + 4, "text-anchor": "middle", "class": "lbl", style: "font-size:11px"}, c[0]));
+      svg.appendChild(g);
+    });
+    var my = (miny + maxy) / 2 + 8;
+    var none = /^Almost none/.test(b.into);
+    svg.appendChild(arrow(minx - 40, minx - 12, my, "--en", none));
+    svg.appendChild(sv("text", {x: minx - 40, y: my - 10, "class": "small", style: "fill:var(--en)"}, "in"));
+    svg.appendChild(arrow(maxx + 12, maxx + 40, my, "--out"));
+    svg.appendChild(sv("text", {x: maxx + 16, y: my - 10, "class": "small", style: "fill:var(--out)"}, "out"));
+    svg.setAttribute("aria-label", sc.label + ". System: " + b.label + ". " + b.comps + " Energy in: " + b.into + " Energy out: " + b.out);
+    detail($("sysDetail"), "System: " + b.label, ["Components: " + b.comps, "Interactions inside: " + b.inner, "Energy in: " + b.into, "Energy out: " + b.out], sc.label);
+  }
+  function makeB(){
+    clear($("bndChips"));
+    setB = chipGroup($("bndChips"), sc.b, "lf", function(it, i){ bi = i; draw(); }, 0);
+  }
+  chipGroup($("sysChips"), SC, "", function(it){ sc = it; bi = 0; makeB(); }, 0);
+})();
+
+/* ---------- Lesson 3: toboggan work ---------- */
+(function(){
+  var svg = $("wkSvg");
+  function draw(){
+    var F = +$("wkF").value, d = +$("wkD").value, W = F * d;
+    $("wkFOut").textContent = F + " N"; $("wkDOut").textContent = d + " m";
+    $("wkFs").textContent = F + " N"; $("wkDs").textContent = d + " m"; $("wkW").textContent = fmtJ(W);
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 92, width: 360, height: 28, style: "fill:var(--snow);stroke:var(--line)"}));
+    for (var m = 0; m <= 30; m += 5) {
+      var x = 20 + m * 9;
+      svg.appendChild(sv("line", {x1: x, y1: 92, x2: x, y2: 98, "class": "axis"}));
+      svg.appendChild(sv("text", {x: x, y: 112, "text-anchor": "middle", "class": "small"}, m + " m"));
+    }
+    var tx = 20 + d * 9;
+    svg.appendChild(sv("rect", {x: 20, y: 70, width: 36, height: 18, rx: 4, style: "fill:none;stroke:var(--muted);stroke-dasharray:3 3"}));
+    svg.appendChild(sv("text", {x: 38, y: 64, "text-anchor": "middle", "class": "small"}, "start"));
+    svg.appendChild(sv("path", {d: "M" + (tx - 2) + " 88 L" + (tx + 38) + " 88 Q" + (tx + 46) + " 88 " + (tx + 44) + " 78", style: "fill:none;stroke:var(--mix);stroke-width:3"}));
+    svg.appendChild(sv("rect", {x: tx, y: 72, width: 36, height: 14, rx: 3, style: "fill:var(--mix-soft);stroke:var(--mix);stroke-width:1.5"}));
+    if (F > 0) {
+      var len = 10 + F / 150 * 60;
+      svg.appendChild(sv("line", {x1: tx + 44, y1: 76, x2: tx + 44 + len, y2: 76, style: "stroke:var(--en);stroke-width:4"}));
+      svg.appendChild(sv("path", {d: "M" + (tx + 52 + len) + " 76 L" + (tx + 42 + len) + " 69 L" + (tx + 42 + len) + " 83 Z", style: "fill:var(--en)"}));
+      svg.appendChild(sv("text", {x: tx + 46, y: 62, "class": "small", style: "fill:var(--en)"}, F + " N"));
+    }
+    svg.setAttribute("aria-label", "A toboggan pulled with " + F + " newtons across " + d + " metres of snow. Work done: " + W + " joules.");
+    var msg;
+    if (F === 0 && d === 0) msg = "No force and no movement: no work is done and no energy is transferred.";
+    else if (F === 0) msg = "With no pulling force, this force does no work. (A toboggan could still slide on its own from a push given earlier.)";
+    else if (d === 0) msg = "You are pulling, but the toboggan has not moved. No distance means no work, so no energy is transferred to it.";
+    else msg = "W = F × d = " + F + " N × " + d + " m = " + fmtJ(W) + ". That energy went into the toboggan and the snow. It sped the toboggan up and warmed the snow under it a little through friction.";
+    $("wkMsg").textContent = msg;
+  }
+  $("wkF").addEventListener("input", draw); $("wkD").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 4: energy account ---------- */
+(function(){
+  var P = [
+    {label: "Kettle heating up", i: 900, o: 100, sys: "the water in a kettle", note: "The element brings in more energy than the water loses, so the water gets hotter."},
+    {label: "Cocoa cooling outside", i: 0, o: 400, sys: "a mug of hot cocoa on a cold day", note: "No energy comes in. Energy leaves by heating the cold air, so the cocoa cools."},
+    {label: "House in January", i: 600, o: 600, sys: "a house with the furnace on", note: "The furnace replaces exactly what leaks out, so the temperature inside stays steady."},
+    {label: "Phone charging", i: 700, o: 50, sys: "a phone on its charger", note: "Most of the energy stays in the battery. A little warms the air."}
+  ];
+  var BEFORE = 1000, svg = $("acSvg"), cur = P[0];
+  function draw(){
+    var I = +$("acIn").value, O = +$("acOut").value, after = BEFORE + I - O, d = I - O;
+    $("acInOut").textContent = I + " J"; $("acOutOut").textContent = O + " J";
+    clear(svg);
+    var base = 170, sc = 140 / 2000;
+    svg.appendChild(sv("line", {x1: 20, y1: base, x2: 350, y2: base, "class": "axis"}));
+    var cols = [["Before", BEFORE, "--muted"], ["In", I, "--en"], ["Out", O, "--out"], ["After", after, d > 0 ? "--keep" : d < 0 ? "--bad" : "--muted"]];
+    cols.forEach(function(c, k){
+      var x = 36 + k * 80, h = c[1] * sc;
+      svg.appendChild(sv("rect", {x: x, y: base - h, width: 50, height: Math.max(h, 1), rx: 4, style: "fill:var(" + c[2] + ")"}));
+      svg.appendChild(sv("text", {x: x + 25, y: base + 16, "text-anchor": "middle", "class": "lbl"}, c[0]));
+      svg.appendChild(sv("text", {x: x + 25, y: base - h - 6, "text-anchor": "middle", "class": "small"}, c[1] + " J"));
+    });
+    svg.setAttribute("aria-label", "Before " + BEFORE + " joules, in " + I + ", out " + O + ", after " + after + " joules.");
+    $("acEq").textContent = "ΔE = " + I + " J − " + O + " J = " + (d > 0 ? "+" : "") + d + " J";
+    var m = "System: " + cur.sys + ". ";
+    if (d > 0) m += "More energy came in than went out, so the system’s energy went up by " + d + " J.";
+    else if (d < 0) m += "More energy went out than came in, so the system’s energy went down by " + (-d) + " J.";
+    else m += "Energy in equals energy out, so the system’s energy stays the same, even though " + I + " J flowed through it.";
+    $("acMsg").textContent = m;
+  }
+  chipGroup($("acChips"), P, "", function(p){ cur = p; $("acIn").value = p.i; $("acOut").value = p.o; draw(); $("acMsg").textContent += " " + p.note; }, 0);
+  $("acIn").addEventListener("input", draw); $("acOut").addEventListener("input", draw);
+})();
+
+/* ---------- Lesson 5: transfer diagrams ---------- */
+(function(){
+  var T = [
+    {label: "Toaster", sys: "the toaster and the bread", into: [["Electrical energy from the outlet", 1000]], within: ["Electric current heats the wires.", "The glowing wires heat the bread.", "The bread dries and browns."], out: [["Heating of the kitchen air", 600], ["Light from the glowing wires", 50]], change: "The toaster and bread are hotter than before."},
+    {label: "Cyclist braking", sys: "the bike and rider", into: [], within: ["The moving bike and rider lose 2000 J of motion energy.", "The brake pads rub the wheel rims.", "250 J stays in the warm pads and rims for now."], out: [["Heating of the air and trail", 1700], ["Sound of the brakes", 50]], change: "The bike slows down. Its motion energy dropped."},
+    {label: "Phone charging", sys: "the phone", into: [["Electrical energy from the charger", 5000]], within: ["Current flows into the battery.", "The battery stores energy in its chemicals.", "The circuits warm a little."], out: [["Heating of the air", 500]], change: "The battery holds more energy."},
+    {label: "Block heater", sys: "a car engine on a −25 °C night", into: [["Electrical energy through the cord", 3000]], within: ["The heater element warms the coolant.", "The coolant warms the engine block and the oil."], out: [["Heating of the cold air", 2400]], change: "The engine is warmer, so it starts more easily in the morning."}
+  ];
+  var svg = $("tdSvg");
+  function sum(a){ return a.reduce(function(s, x){ return s + x[1]; }, 0); }
+  function draw(t){
+    clear(svg);
+    var maxJ = 5000, I = sum(t.into), O = sum(t.out), d = I - O;
+    svg.appendChild(sv("rect", {x: 120, y: 24, width: 120, height: 180, rx: 10, style: "fill:var(--en-soft);stroke:var(--en);stroke-width:2;stroke-dasharray:6 4"}));
+    svg.appendChild(sv("text", {x: 180, y: 18, "text-anchor": "middle", "class": "small", style: "fill:var(--en)"}, "System boundary"));
+    svg.appendChild(sv("text", {x: 180, y: 110, "text-anchor": "middle", "class": "lbl"}, "Change"));
+    svg.appendChild(sv("text", {x: 180, y: 130, "text-anchor": "middle", "class": "lbl", style: "fill:var(" + (d > 0 ? "--keep" : d < 0 ? "--bad" : "--ink") + ")"}, (d > 0 ? "+" : d < 0 ? "−" : "") + fmtJ(Math.abs(d))));
+    function band(x1, x2, y, J, col, label, dir){
+      var w = 4 + Math.min(1, J / maxJ) * 30;
+      svg.appendChild(sv("rect", {x: Math.min(x1, x2), y: y - w / 2, width: Math.abs(x2 - x1), height: w, style: "fill:var(" + col + ");opacity:.85"}));
+      var tip = dir > 0 ? x2 : x1;
+      svg.appendChild(sv("path", {d: "M" + (tip + 10 * dir) + " " + y + " L" + tip + " " + (y - w / 2 - 5) + " L" + tip + " " + (y + w / 2 + 5) + " Z", style: "fill:var(" + col + ")"}));
+      svg.appendChild(sv("text", {x: (x1 + x2) / 2, y: y - w / 2 - 8, "text-anchor": "middle", "class": "small"}, fmtJ(J)));
+    }
+    if (!t.into.length) svg.appendChild(sv("text", {x: 58, y: 116, "text-anchor": "middle", "class": "small"}, "nothing in"));
+    t.into.forEach(function(a, k){ band(8, 110, 116 + k * 50, a[1], "--en", a[0], 1); });
+    t.out.forEach(function(a, k){ var y = t.out.length === 1 ? 116 : 80 + k * 70; band(250, 340, y, a[1], "--out", a[0], 1); });
+    svg.setAttribute("aria-label", "Energy transfer diagram for " + t.sys + ". In: " + (I ? fmtJ(I) : "nothing") + ". Out: " + fmtJ(O) + ". Change: " + d + " J.");
+    var paras = [];
+    paras.push("Into: " + (t.into.length ? t.into.map(function(a){ return a[0] + " (" + fmtJ(a[1]) + ")"; }).join("; ") : "nothing") + ".");
+    paras.push("Within: " + t.within.join(" "));
+    paras.push("Out of: " + t.out.map(function(a){ return a[0] + " (" + fmtJ(a[1]) + ")"; }).join("; ") + ".");
+    paras.push("Account: ΔE = " + I + " J − " + O + " J = " + d + " J. " + t.change);
+    detail($("tdDetail"), "System: " + t.sys, paras, t.label);
+  }
+  chipGroup($("tdChips"), T, "", draw, 0);
+})();
+
+/* ---------- Bench 1: work calculator ---------- */
+(function(){
+  function calc(){
+    var F = parseFloat($("b1F").value), d = parseFloat($("b1D").value), box = $("b1Work");
+    clear(box);
+    if (!(F >= 0) || !(d >= 0)) { box.appendChild(el("p", null, "Enter a force and a distance that are zero or more.")); return; }
+    var W = F * d;
+    box.appendChild(el("span", {"class": "tagline"}, "Worked example"));
+    box.appendChild(el("p", {"class": "mono"}, "W = F × d"));
+    box.appendChild(el("p", {"class": "mono"}, "W = " + fmt(F, 2) + " N × " + fmt(d, 2) + " m"));
+    box.appendChild(el("p", {"class": "mono"}, "W = " + fmt(W, 1) + " J"));
+    box.appendChild(el("p", null, W > 0 ? "So " + fmt(W, 1) + " J of energy is transferred to the object. Its energy changes: it may speed up, rise, or warm up through friction." : "No work is done, so no energy is transferred by this force."));
+  }
+  $("b1F").addEventListener("input", calc); $("b1D").addEventListener("input", calc); calc();
+  var GEN = [
+    function(){ var F = rint(8, 18) * 5, d = rint(5, 30); return {q: "You pull a toboggan along a flat trail with a force of " + F + " N for " + d + " m. How much work do you do?", a: F * d, u: "J", s: "W = F × d = " + F + " N × " + d + " m = " + F * d + " J"}; },
+    function(){ var F = rint(20, 30) * 10, d = rint(10, 16) / 10; return {q: "A farmhand lifts a hay bale that weighs " + F + " N onto a wagon " + d + " m high. How much work is done on the bale?", a: F * d, u: "J", s: "Lifting force = weight. W = " + F + " N × " + d + " m = " + fmt(F * d, 1) + " J"}; },
+    function(){ var F = rint(12, 24) * 50, d = rint(5, 20); return {q: "Three friends push a stalled car with a total force of " + F + " N for " + d + " m down a snowy street. How much work do they do?", a: F * d, u: "J", s: "W = " + F + " N × " + d + " m = " + F * d + " J"}; },
+    function(){ var F = rint(4, 9) * 10, d = rint(8, 18) / 10; return {q: "A student lifts a backpack that weighs " + F + " N from the floor to a shelf " + d + " m up. How much energy is transferred to the backpack?", a: F * d, u: "J", s: "W = " + F + " N × " + d + " m = " + fmt(F * d, 1) + " J"}; },
+    function(){ var F = rint(4, 12) * 10, d = rint(3, 15), W = F * d; return {q: "A worker does " + W + " J of work pushing a cart with a steady force of " + F + " N. How far did the cart move? Answer in metres.", a: d, u: "m", s: "d = W ÷ F = " + W + " J ÷ " + F + " N = " + d + " m"}; },
+    function(){ var F = rint(3, 9) * 10, d = 0; return {q: "You push on a classroom wall with a force of " + F + " N for one minute. The wall does not move. How much work do you do on the wall?", a: 0, u: "J", s: "The distance is 0 m, so W = " + F + " N × 0 m = 0 J. No energy is transferred to the wall."}; }
+  ];
+  var cur, right = 0, tries = 0;
+  function next(){ cur = pick(GEN)(); clear($("b1Q")); $("b1Q").appendChild(el("span", {"class": "tagline"}, "Practice problem")); $("b1Q").appendChild(el("p", null, cur.q)); $("b1Lab").textContent = "Your answer (" + cur.u + ")"; $("b1A").value = ""; $("b1Fb").textContent = ""; $("b1Fb").className = "fb"; }
+  $("b1New").addEventListener("click", next);
+  $("b1Check").addEventListener("click", function(){
+    var v = parseFloat($("b1A").value);
+    if (isNaN(v)) { $("b1Fb").textContent = "Type a number first."; return; }
+    tries++;
+    var ok = Math.abs(v - cur.a) <= Math.max(0.01, Math.abs(cur.a) * 0.02);
+    if (ok) right++;
+    $("b1Fb").className = "fb " + (ok ? "ok" : "no");
+    $("b1Fb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.s + ".";
+    $("b1Score").textContent = right + " correct out of " + tries;
+  });
+  next();
+})();
+
+/* ---------- Bench 2: energy account practice ---------- */
+(function(){
+  var GEN = [
+    function(){ var i = rint(30, 90) * 1000, o = rint(5, 25) * 1000; return {q: "System: a pot of soup on the stove. In five minutes the burner transfers " + fmtJ(i) + " into the soup. The soup loses " + fmtJ(o) + " to the kitchen air.", i: i, o: o}; },
+    function(){ var i = rint(10, 40) * 10, o = rint(5, 30) * 10; return {q: "System: a skateboarder. A friend’s push does " + fmtJ(i) + " of work on her. Friction and air resistance remove " + fmtJ(o) + ".", i: i, o: o}; },
+    function(){ var o = rint(10, 60) * 1000; return {q: "System: a mug of hot chocolate outside on a −15 °C day. Nothing transfers energy into it. It loses " + fmtJ(o) + " to the cold air.", i: 0, o: o}; },
+    function(){ var i = rint(20, 50) * 1000; return {q: "System: a house in January. During one minute, the furnace transfers " + fmtJ(i) + " in and the walls and windows lose " + fmtJ(i) + " to the outside.", i: i, o: i}; },
+    function(){ var i = rint(6, 15) * 1000, o = rint(1, 5) * 100; return {q: "System: a phone. While charging, " + fmtJ(i) + " comes in from the charger and " + fmtJ(o) + " warms the air.", i: i, o: o}; },
+    function(){ var i = rint(2, 6) * 100, o = rint(7, 12) * 100; return {q: "System: a snowball in your hands. Your warm hands transfer " + fmtJ(i) + " in by heating. It loses " + fmtJ(o) + " when you throw it and it hits a wall.", i: i, o: o}; }
+  ];
+  var cur, right = 0, tries = 0;
+  function next(){ cur = pick(GEN)(); clear($("b2Q")); $("b2Q").appendChild(el("span", {"class": "tagline"}, "Practice problem")); $("b2Q").appendChild(el("p", null, cur.q)); $("b2Q").appendChild(el("p", {"class": "hint"}, "Find ΔE = E in − E out. Use a minus sign for a loss.")); $("b2A").value = ""; $("b2Fb").textContent = ""; $("b2Fb").className = "fb"; }
+  $("b2New").addEventListener("click", next);
+  $("b2Check").addEventListener("click", function(){
+    var v = parseFloat(String($("b2A").value).replace("−", "-"));
+    if (isNaN(v)) { $("b2Fb").textContent = "Type a number first."; return; }
+    var d = cur.i - cur.o; tries++;
+    var ok = Math.abs(v - d) < 0.5;
+    if (ok) right++;
+    var word = d > 0 ? "The system gains energy." : d < 0 ? "The system loses energy." : "In equals out, so the system’s energy stays the same.";
+    $("b2Fb").className = "fb " + (ok ? "ok" : "no");
+    $("b2Fb").textContent = (ok ? "Correct. " : "Not quite. ") + "ΔE = " + cur.i + " J − " + cur.o + " J = " + d + " J. " + word;
+    $("b2Score").textContent = right + " correct out of " + tries;
+  });
+  next();
+})();
+
+/* ---------- Bench 3: bouncing ball ---------- */
+(function(){
+  var BALLS = [{label: "Tennis ball", w: 0.6, k: 0.55}, {label: "Basketball", w: 6, k: 0.7}, {label: "Rubber bouncy ball", w: 0.2, k: 0.8}];
+  var HS = [{label: "1.0 m", h: 1}, {label: "1.5 m", h: 1.5}, {label: "2.0 m", h: 2}];
+  var ball = BALLS[0], H = HS[2], data = null, svg = $("b3Svg");
+  chipGroup($("b3Ball"), BALLS, "", function(b){ ball = b; }, 0);
+  chipGroup($("b3H"), HS, "", function(h){ H = h; }, 2);
+  function run(){
+    data = [];
+    var h = H.h;
+    for (var n = 0; n <= 5; n++) { data.push({n: n, h: h, e: ball.w * h}); h = h * ball.k; }
+    var tb = document.querySelector("#b3Table tbody"); clear(tb);
+    data.forEach(function(r, i){
+      var tr = el("tr");
+      tr.appendChild(el("td", null, i === 0 ? "Drop (start)" : "Bounce " + i));
+      tr.appendChild(el("td", null, fmt(r.h, 2)));
+      tr.appendChild(el("td", null, fmt(r.e, 2)));
+      tr.appendChild(el("td", null, i === 0 ? "" : fmt(data[i - 1].e - r.e, 2)));
+      tb.appendChild(tr);
+    });
+    clear(svg);
+    var base = 170, sc = 140 / 2;
+    svg.appendChild(sv("line", {x1: 50, y1: base, x2: 550, y2: base, "class": "axis"}));
+    [0, 0.5, 1, 1.5, 2].forEach(function(t){
+      var y = base - t * sc;
+      svg.appendChild(sv("line", {x1: 50, y1: y, x2: 550, y2: y, "class": "grid"}));
+      svg.appendChild(sv("text", {x: 44, y: y + 4, "text-anchor": "end", "class": "small"}, fmt(t, 1) + " m"));
+    });
+    var pts = [];
+    data.forEach(function(r, i){
+      var x = 80 + i * 90, y = base - r.h * sc;
+      pts.push(x + "," + y);
+      var g = sv("g", {tabindex: "0", role: "img", "aria-label": (i ? "Bounce " + i : "Drop") + ": top height " + fmt(r.h, 2) + " m, energy " + fmt(r.e, 2) + " J"});
+      g.appendChild(sv("rect", {x: x - 14, y: y, width: 28, height: base - y, rx: 3, style: "fill:var(--en-soft);stroke:var(--en)"}));
+      g.appendChild(sv("text", {x: x, y: y - 6, "text-anchor": "middle", "class": "small"}, fmt(r.e, 2) + " J"));
+      g.appendChild(sv("text", {x: x, y: base + 16, "text-anchor": "middle", "class": "small"}, i ? "B" + i : "Drop"));
+      svg.appendChild(g);
+    });
+    svg.setAttribute("aria-label", ball.label + " dropped from " + H.label + ". Bounce heights: " + data.map(function(r){ return fmt(r.h, 2); }).join(", ") + " m.");
+    ask();
+  }
+  function ask(){
+    var e0 = data[0].e, e1 = data[1].e, lost1 = e0 - e1;
+    var Qs = [
+      {q: "How much energy did the " + ball.label.toLowerCase() + " get when it was lifted " + H.label + " before the drop? (weight " + ball.w + " N)", o: [fmt(e0, 2) + " J", fmt(e0 * 2, 2) + " J", fmt(ball.w, 2) + " J", fmt(H.h, 2) + " J"], why: "W = F × d = " + ball.w + " N × " + H.h + " m = " + fmt(e0, 2) + " J."},
+      {q: "How much energy left the ball during the first bounce?", o: [fmt(lost1, 2) + " J", fmt(e1, 2) + " J", fmt(e0, 2) + " J", "0 J"], why: "Energy out = " + fmt(e0, 2) + " J − " + fmt(e1, 2) + " J = " + fmt(lost1, 2) + " J."},
+      {q: "Where did the energy that left the ball go?", o: ["It warmed the ball and floor a little and made the sound of the bounce.", "It was destroyed when the ball hit the floor.", "It turned into extra rubber in the ball.", "It stayed in the ball for later."], why: "Energy is never destroyed. It left the system (the ball) and spread into the surroundings as heating and sound."},
+      {q: "Which bounce transferred the most joules out of the ball?", o: ["The first bounce", "The last bounce", "All bounces lost the same amount", "None of them lost energy"], why: "Each bounce keeps the same fraction of the height, so the biggest loss in joules happens first, when the ball has the most energy."}
+    ];
+    var Q = pick(Qs), box = $("b3Q"), opts = $("b3Opts");
+    clear(box); clear(opts); $("b3Fb").textContent = "";
+    box.appendChild(el("span", {"class": "tagline"}, "Analyze the data"));
+    box.appendChild(el("p", null, Q.q));
+    var order = shuffle(Q.o.map(function(t, i){ return {t: t, r: i === 0}; })), bs = [];
+    order.forEach(function(o){
+      var b = el("button", {type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        bs.forEach(function(x, j){ x.disabled = true; if (order[j].r) x.classList.add("right"); });
+        if (!o.r) b.classList.add("wrong");
+        $("b3Fb").className = "fb " + (o.r ? "ok" : "no");
+        $("b3Fb").textContent = (o.r ? "Correct. " : "Not quite. ") + Q.why + " Press Drop the ball for another question.";
+      });
+      opts.appendChild(b); bs.push(b);
+    });
+  }
+  $("b3Run").addEventListener("click", run);
+  run();
+})();
+
+/* ---------- Bench 4: build a transfer diagram ---------- */
+(function(){
+  var BINS = ["Into", "Within", "Out of"];
+  var S = [
+    {label: "Block heater", intro: "System: a car’s engine block and its coolant, plugged in overnight in Edmonton at −25 °C.", items: [
+      ["Electrical energy flows in through the cord from the outlet.", 0],
+      ["The heater element warms the coolant.", 1],
+      ["The warm coolant warms the metal of the engine block.", 1],
+      ["The warm engine heats the cold air around it.", 2],
+      ["The warm hood melts some snow resting on top of it.", 2]]},
+    {label: "Outdoor rink", intro: "System: just the hockey puck.", items: [
+      ["The stick pushes the puck forward, doing work on it.", 0],
+      ["Friction with the puck warms the ice surface.", 2],
+      ["The puck hits the boards with a loud bang.", 2],
+      ["Air pushes against the moving puck and warms a tiny bit.", 2],
+      ["The puck’s own particles jiggle faster as it warms from friction.", 1]]},
+    {label: "Toaster", intro: "System: a toaster and the bread inside it.", items: [
+      ["Electric current flows in from the wall outlet.", 0],
+      ["Current warms the wires inside the toaster.", 1],
+      ["The hot wires heat the bread.", 1],
+      ["Glowing wires give off light into the room.", 2],
+      ["The warm toaster heats the kitchen air.", 2]]}
+  ];
+  var cur, ans = [];
+  function render(){
+    var g = $("b4Grid"); clear(g); $("b4Fb").textContent = ""; $("b4Fb").className = "fb";
+    $("b4Intro").textContent = cur.intro + " Tap Into, Within or Out of for each event.";
+    cur.items.forEach(function(it, i){
+      var row = el("div", {"class": "b4row", id: "b4r" + i});
+      row.appendChild(el("span", null, it[0]));
+      var ch = el("div", {"class": "chips", role: "group", "aria-label": "Where does this transfer belong?"});
+      BINS.forEach(function(b, k){
+        var btn = el("button", {"class": "chip", type: "button", "aria-pressed": ans[i] === k ? "true" : "false"}, b);
+        btn.addEventListener("click", function(){ ans[i] = k; row.className = "b4row"; Array.prototype.forEach.call(ch.children, function(x, j){ x.setAttribute("aria-pressed", j === k ? "true" : "false"); }); });
+        ch.appendChild(btn);
+      });
+      row.appendChild(ch); g.appendChild(row);
+    });
+  }
+  chipGroup($("b4Chips"), S, "", function(s){ cur = s; ans = []; render(); }, 0);
+  $("b4Reset").addEventListener("click", function(){ ans = []; render(); });
+  $("b4Check").addEventListener("click", function(){
+    var right = 0, blank = 0;
+    cur.items.forEach(function(it, i){
+      var r = $("b4r" + i);
+      if (ans[i] == null) { blank++; r.className = "b4row"; return; }
+      var ok = ans[i] === it[1]; if (ok) right++;
+      r.className = "b4row " + (ok ? "ok" : "no");
+    });
+    $("b4Fb").className = "fb " + (right === cur.items.length ? "ok" : "no");
+    $("b4Fb").textContent = blank ? "Choose an answer for every event first (" + blank + " left)." : right + " of " + cur.items.length + " correct. " + (right === cur.items.length ? "Your diagram is complete: arrows in, transfers within, arrows out." : "Red rows need another look. Ask: does this energy cross the boundary, or move between parts inside it?");
+  });
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Into, within or out of?", bins: ["Into the system", "Within the system", "Out of the system"], items: [
+    ["System: a kettle and its water. Electrical energy arrives through the cord.", 0, "The wall wires are in the surroundings, so this energy crosses the boundary inward."],
+    ["System: a kettle and its water. The element heats the water.", 1, "Both the element and the water are inside the system."],
+    ["System: a kettle and its water. Warm air and steam rise into the kitchen.", 2, "The kitchen is in the surroundings."],
+    ["System: a cyclist and bike. The rider’s legs push the pedals.", 1, "The rider and the bike are both inside the system."],
+    ["System: just the bike. The rider’s legs push the pedals.", 0, "Now the rider is in the surroundings, so the push brings energy into the bike."],
+    ["System: a snowman. Sunlight warms its surface.", 0, "The Sun is in the surroundings."],
+    ["System: a mug of hot cocoa outside. The cocoa warms the cold air above it.", 2, "The air is in the surroundings."],
+    ["System: a phone. The battery powers the screen.", 1, "The battery and the screen are both parts of the phone."],
+    ["System: a phone. The screen gives off light to your eyes.", 2, "The light leaves the phone."],
+    ["System: a toboggan. A friend pulls the rope.", 0, "Your friend is in the surroundings and does work on the toboggan."]
+  ]},
+  {label: "Is work done?", bins: ["Work is done", "No work is done"], items: [
+    ["Lifting a backpack onto a shelf", 0, "A force moves the backpack upward, in the direction of the force."],
+    ["Pushing hard on a brick wall that does not move", 1, "The wall does not move, so no work is done on it."],
+    ["Pulling a toboggan across the snow", 0, "The pull moves the toboggan along."],
+    ["Holding a heavy box still for one minute", 1, "Your muscles get tired, but the box does not move, so no work is done on the box."],
+    ["A hockey stick pushing a puck forward", 0, "The stick’s force moves the puck."],
+    ["Reading a book quietly", 1, "No force is moving an object."],
+    ["A crane lifting a steel beam", 0, "The crane’s force moves the beam upward."],
+    ["A car parked with its engine off", 1, "Nothing is being moved by a force."],
+    ["Kicking a soccer ball", 0, "Your foot pushes the ball over a short distance."],
+    ["Pushing a stalled car that will not budge", 1, "No distance moved means no work."]
+  ]},
+  {label: "Work or heating?", bins: ["Work (a force moved something)", "Heating (hotter to colder)"], items: [
+    ["A snowball melts in your warm glove", 1, "Energy moved from your warmer hand to the colder snow."],
+    ["A toboggan speeds up when pulled", 0, "A pulling force moved it."],
+    ["A pot of water warms on the stove", 1, "The hotter burner warms the colder pot and water."],
+    ["A spring squashes when you press it", 0, "Your push moved the end of the spring."],
+    ["Cold hands warm up near a campfire", 1, "Energy moves from the hot fire to your colder hands."],
+    ["A shopping cart starts rolling when pushed", 0, "Your push moved the cart."],
+    ["Ice cubes melt in a glass of lemonade", 1, "The warmer lemonade heats the colder ice."],
+    ["A ball flies up when you throw it", 0, "Your hand pushed the ball over a distance."],
+    ["Hot cocoa cools on a cold day", 1, "The hot cocoa heats the colder air."],
+    ["A slingshot band stretches when pulled back", 0, "Your pull moved the band."]
+  ]},
+  {label: "System or surroundings?", bins: ["Part of the system", "Surroundings"], items: [
+    ["System: the water in a kettle. Item: the water", 0, "The water is the whole system."],
+    ["System: the water in a kettle. Item: the heating element", 1, "Only the water was chosen, so the element is outside."],
+    ["System: the water in a kettle. Item: the kitchen air", 1, "The air is outside the boundary."],
+    ["System: a cyclist and bike. Item: the rider’s legs", 0, "The rider is part of this system."],
+    ["System: a cyclist and bike. Item: the bike chain", 0, "The chain is a component of the bike."],
+    ["System: a cyclist and bike. Item: the trail", 1, "The trail is outside the system."],
+    ["System: a cyclist and bike. Item: the wind", 1, "Air is part of the surroundings."],
+    ["System: a house in January. Item: the furnace", 0, "The furnace is inside the house."],
+    ["System: a house in January. Item: the air in the living room", 0, "The living room is inside the house."],
+    ["System: a house in January. Item: the snowy yard", 1, "The yard is outside the house."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Energy", "A quantity, not a substance, that scientists keep track of. It tells how much work could be done. Measured in joules."],
+  ["Joule (J)", "The unit of energy and work. Lifting an apple 1 m takes about 1 J."],
+  ["Kilojoule (kJ)", "1000 joules. Used for larger amounts, such as the energy in food."],
+  ["Quantity", "Something that can be measured and given a number with a unit."],
+  ["Work", "Energy transferred when a force moves an object in the direction of the force. W = F × d."],
+  ["Force", "A push or a pull, measured in newtons (N)."],
+  ["Newton (N)", "The unit of force. An apple weighs about 1 N."],
+  ["System", "The part of the world you choose to study, made of components and their interactions."],
+  ["Component", "One part of a system, such as the water in a kettle."],
+  ["Interaction", "An action between components, such as pushing, rubbing or warming."],
+  ["Surroundings", "Everything outside the system."],
+  ["System boundary", "The imaginary line that separates a system from its surroundings."],
+  ["Energy transfer", "Energy moving from one object or system to another, which causes change."],
+  ["Heating", "Energy transfer from a hotter object to a colder one."],
+  ["Friction", "A force between surfaces that rub. It often transfers energy to the surroundings by warming them."],
+  ["Energy transfer diagram", "A drawing that shows energy into, within and out of a system, with wider arrows for more joules."],
+  ["Change in energy (ΔE)", "Energy in minus energy out. ΔE = E in − E out."],
+  ["Conservation of energy", "Energy is not created or destroyed. It only transfers or changes where it is stored."],
+  ["Steady state", "When energy in equals energy out, so the system’s energy stays the same."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["In science, energy is best described as…", ["a quantity that can be measured and tracked", "an invisible fluid stored in objects", "a type of matter", "a force that pushes things"], "Energy is a number we calculate and keep track of, measured in joules."],
+  ["What unit is energy measured in?", ["Joules", "Newtons", "Metres", "Degrees Celsius"], "Joules (J). Newtons measure force."],
+  ["About how much energy does it take to lift an apple 1 m?", ["About 1 J", "About 100 J", "About 1000 J", "About 1 kJ"], "An apple weighs about 1 N, and 1 N × 1 m = 1 J."],
+  ["How many joules are in 5 kJ?", ["5000 J", "500 J", "50 J", "0.005 J"], "Kilo means 1000, so 5 kJ = 5 × 1000 J."],
+  ["Which sentence uses the word energy the scientific way?", ["The kettle transferred 300 kJ of energy to the water.", "The energy leaked out like water from a cup.", "The battery is full of energy liquid.", "I ran out of energy, so it is gone forever."], "Energy is an amount that is transferred, not a material."],
+  ["What is a system?", ["The part of the world you choose to study", "Everything in the universe", "Only machines with motors", "The air around an object"], "You choose the system, then everything else is the surroundings."],
+  ["What are the surroundings?", ["Everything outside the system", "The parts inside the system", "The energy in the system", "The system boundary"], "The boundary separates the system from the surroundings."],
+  ["The system is the water in a kettle. Which is part of the surroundings?", ["The heating element", "The water", "Water particles at the bottom", "Water particles at the top"], "Only the water was chosen. The element is outside the boundary."],
+  ["A system is described by its…", ["components and their interactions", "colour and size", "temperature only", "surroundings only"], "Components are the parts. Interactions are how the parts act on each other."],
+  ["When is work done on an object?", ["When a force moves it in the direction of the force", "Whenever you push on it", "When it sits still", "Only when it is lifted"], "There must be a force and movement in the direction of that force."],
+  ["You push on a wall with 200 N, but it does not move. How much work do you do on the wall?", ["0 J", "200 J", "100 J", "400 J"], "No movement means no work: 200 N × 0 m = 0 J."],
+  ["You pull a toboggan with 50 N for 20 m. How much work do you do?", ["1000 J", "70 J", "2.5 J", "30 J"], "W = F × d = 50 N × 20 m = 1000 J."],
+  ["A student lifts a 40 N backpack 1.5 m onto a shelf. How much energy is transferred to the backpack?", ["60 J", "41.5 J", "26.7 J", "80 J"], "W = 40 N × 1.5 m = 60 J."],
+  ["A change in an object, such as speeding up or warming up, tells you that…", ["energy was transferred to or from it", "energy was created", "energy was destroyed", "nothing happened to its energy"], "Transfers of energy drive change."],
+  ["A snowball melts in your warm hand. Which kind of energy transfer caused this?", ["Heating", "Work done by a push", "No transfer happened", "Energy was created in the snow"], "Energy moved from your warmer hand to the colder snow. Heating is a transfer too, not only work."],
+  ["Which equation describes a system’s energy account?", ["ΔE = E in − E out", "ΔE = E in + E out", "ΔE = E in × E out", "ΔE = E out − E in"], "The change equals what came in minus what went out."],
+  ["A pot of soup gains 50 kJ from the stove and loses 20 kJ to the air. What is the change in its energy?", ["+30 kJ", "+70 kJ", "−30 kJ", "0 kJ"], "50 kJ − 20 kJ = +30 kJ. The soup gains energy and warms up."],
+  ["A mug of cocoa outside gets no energy in and loses 12 kJ. What is its change in energy?", ["−12 kJ", "+12 kJ", "0 kJ", "−24 kJ"], "0 − 12 kJ = −12 kJ. It cools down."],
+  ["A furnace puts 40 kJ into a house each minute, and the house loses 40 kJ each minute. What happens to the house’s energy?", ["It stays the same.", "It goes up by 40 kJ each minute.", "It goes down by 40 kJ each minute.", "It goes up by 80 kJ each minute."], "Energy in equals energy out, so there is no change. The temperature stays steady."],
+  ["What happens to energy when a bouncing ball stops bouncing?", ["It has been transferred to the floor and air as heating and sound.", "It has been destroyed.", "It is still stored in the ball’s height.", "It turned into new matter."], "Energy is conserved. It spread into the surroundings."],
+  ["In an energy transfer diagram, what does a wider arrow mean?", ["More joules are being transferred", "The transfer is faster", "The energy is hotter", "The arrow points into the system"], "Arrow width shows the amount of energy."],
+  ["System: a toaster and bread. Which is a transfer within the system?", ["The hot wires heat the bread.", "Current flows in from the outlet.", "The toaster warms the kitchen air.", "Light from the wires shines into the room."], "The wires and the bread are both inside the system."],
+  ["System: just a bike. The rider pushes the pedals. This transfer is…", ["into the system", "within the system", "out of the system", "not a transfer"], "The rider is in the surroundings, so energy crosses the boundary into the bike."],
+  ["Why does a moving puck on an outdoor rink slowly come to a stop?", ["Friction transfers its motion energy to the ice and air by warming them.", "Its energy is destroyed by the cold.", "The ice adds energy to it.", "Pucks run out of force."], "Energy leaves the puck system and spreads into the surroundings."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain why scientists say energy is a quantity and not a substance. Use an example.", a: "Energy is not matter. You cannot hold it, pour it or weigh it. It is a number that scientists calculate and keep track of in joules, a bit like money in a bank account. For example, we can say a kettle transferred 300 kJ to the water, but there is no energy material that moved into the water.", k: ["Energy is not matter or a material", "It is a number measured in joules", "Tracked like an account", "Example with an amount"]},
+  {q: "What is a joule? Give one everyday example of about 1 J and one of a much larger amount.", a: "A joule is the unit of energy and work. Lifting an apple about 1 m takes about 1 J. Heating 1 L of water to boiling takes about 335 000 J, and a granola bar stores about 420 000 J.", k: ["Joule is the unit of energy", "Small example near 1 J", "Larger example with a number"]},
+  {q: "Define system, surroundings and system boundary. Use a kettle as your example.", a: "A system is the part of the world you choose to study, such as a kettle and its water. The surroundings are everything outside the system, such as the kitchen air and the wall wires. The system boundary is the imaginary line between them.", k: ["System defined", "Surroundings defined", "Boundary defined", "Kettle example used correctly"]},
+  {q: "Choose the system as just the water in a kettle. Name one transfer into the system and one out of it.", a: "Into: the hot heating element heats the water. Out of: the water heats the kettle body and the air above it, and steam escapes. The element is now in the surroundings because only the water is the system.", k: ["Transfer in from the element", "Transfer out to body, air or steam", "Recognizes the element is now surroundings"]},
+  {q: "When is work done? Give one example where work is done and one where it is not.", a: "Work is done when a force moves an object in the direction of the force. Pulling a toboggan across the snow does work. Pushing on a wall that does not move does no work, because the distance is zero.", k: ["Force plus movement in the direction of the force", "Example with work", "Example without work and why"]},
+  {q: "Calculate the work done when a 250 N hay bale is lifted 1.2 m onto a wagon. Show your work and say what happened to the energy.", a: "W = F × d = 250 N × 1.2 m = 300 J. That 300 J was transferred to the hay bale. It now sits higher than before.", k: ["Uses W = F × d", "Correct answer 300 J", "Units shown", "Energy transferred to the bale"]},
+  {q: "A pot of soup gains 60 kJ from the burner and loses 15 kJ to the air. Calculate the change in its energy and describe what you would notice.", a: "ΔE = E in − E out = 60 kJ − 15 kJ = +45 kJ. The soup gains 45 kJ, so its temperature rises. It gets hotter.", k: ["Uses ΔE = E in − E out", "Correct answer +45 kJ", "Describes the soup warming"]},
+  {q: "A house in January stays at 21 °C with the furnace running. Use energy in and energy out to explain why the temperature does not change.", a: "The furnace transfers energy into the house while the walls and windows lose energy to the cold air outside. When energy in equals energy out, ΔE = 0, so the house’s energy and its temperature stay the same. Energy is still flowing through the house the whole time.", k: ["Energy in from the furnace", "Energy out to the cold outside", "In equals out so ΔE = 0", "Energy still flows through"]},
+  {q: "A snowball melts in your glove and a toboggan speeds up when pulled. Both changes come from energy transfers. Explain how the two transfers are different.", a: "The toboggan changes because of work: a pulling force moved it over a distance. The snowball changes because of heating: energy moved from your warmer hand to the colder snow. Both are energy transfers, and both cause change.", k: ["Toboggan: work by a force over a distance", "Snowball: heating from warmer to colder", "Both are transfers that cause change"]}
+];
+var LONG = [
+  {q: "Draw and describe an energy transfer diagram for a car engine with a block heater plugged in overnight at −25 °C. Name your system, list transfers into, within and out of it, and explain why the engine is easier to start in the morning.", a: "System: the engine block and its coolant. Into: electrical energy flows in through the cord from the outlet. Within: the heater element warms the coolant, and the coolant warms the engine block and oil. Out of: the warm engine heats the cold air around it and may melt snow on the hood. Because more energy comes in than goes out, ΔE is positive and the engine is warmer than the air. Warm oil flows more easily, so the engine starts more easily.", k: ["System named clearly", "Transfer in through the cord", "Transfers within between parts", "Transfers out to the air", "Uses energy in versus energy out to explain warming"]},
+  {q: "A hockey puck slides across an outdoor rink and slowly stops. Your friend says its energy is gone. Use the idea of conservation of energy and the system boundary to explain where the energy went.", a: "Take the puck as the system. The stick did work on it, transferring energy in. As it slides, friction with the ice and pushes from the air transfer energy out of the puck. That energy warms the ice and air a tiny bit, and the bang off the boards makes sound. The puck’s energy decreases until it stops, but the energy is not destroyed. It spread into the surroundings, where it is hard to see or use again.", k: ["Names the puck as the system", "Work from the stick brings energy in", "Friction and air transfer energy out", "Energy warms ice and air or becomes sound", "Energy is conserved, not destroyed"]},
+  {q: "Design a fair investigation to test which ball, a tennis ball or a rubber ball, keeps more of its energy when it bounces. Describe your variables, steps and how you would use W = F × d to compare energies.", a: "Manipulated variable: the type of ball. Responding variable: the bounce height, used to find the energy kept. Controlled variables: the drop height (for example 2.0 m), the floor surface and how the ball is released. Steps: measure each ball’s weight in newtons, drop it from the same height beside a metre stick, record the first bounce height, and repeat three times to find an average. Energy at the start = weight × drop height. Energy after the bounce = weight × bounce height. Compare the fraction kept for each ball. The ball with the higher fraction keeps more energy; the rest is transferred to the floor and air as heating and sound.", k: ["Variables named", "Same drop height and floor", "Repeated trials", "Energy calculated as weight × height", "Explains where the lost energy goes"]},
+  {q: "Choose two different system boundaries for a cyclist riding through the river valley (rider and bike, or just the bike). For each, describe one transfer into and one transfer out of the system, and explain why the choice of boundary changes your answer.", a: "System 1, rider and bike: almost nothing comes in during the ride because the food energy is already stored in the rider. Energy goes out as friction and air resistance warm the air and trail. The pushing of the legs on the pedals is a transfer within. System 2, just the bike: the rider’s feet now do work on the pedals, which is a transfer into the bike. Energy goes out as friction warms the trail. The same push is within the system in the first case and into the system in the second, because the rider moved from inside the boundary to the surroundings.", k: ["Two boundaries described", "In and out named for the first", "In and out named for the second", "Explains that the same push changes category", "Uses the words system and surroundings"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["EN1.K1", "In science, energy is a quantity, not a physical substance, that is measured in joules, which indicates the amount of work that can be done on an object or in a system.", "Learn: Lesson 1 (joule ladder, bank account comparison). Quiz, Flashcards, Written Review short answers 1 and 2."],
+    ["EN1.K2", "A system can be described in terms of its components and their interactions, while the surroundings are everything outside of the system.", "Learn: Lesson 2 (move the boundary model) and Lesson 5. Lab Bench: Investigation 4. Sort It: system or surroundings deck. Quiz, Flashcards, Written Review short answers 3 and 4, extended 4."],
+    ["EN1.K3", "The transfer of energy drives change, and changes in an object or system indicate that work has been done.", "Learn: Lesson 3 (pull the toboggan). Lab Bench: Investigations 1 and 3. Sort It: is work done and work or heating decks. Quiz, Written Review short answers 5 and 9, extended 2."],
+    ["EN1.K4", "The total change in a system’s energy is equal to the total amount of energy that transfers into or out of the system.", "Learn: Lesson 4 (energy account) and Lesson 5. Lab Bench: Investigations 2 and 3. Quiz, Flashcards, Written Review short answers 7 and 8, extended 1 and 2."],
+    ["EN1.S1", "Illustrate the transfer of energy into, within, and out of a system.", "Learn: Lesson 5 (follow the joules transfer diagrams) and Lesson 2. Lab Bench: Investigation 4 (build a transfer diagram). Sort It: into, within or out of deck. Written Review extended 1 and 4."],
+    ["EN1.S2", "Analyze changes in energy when work is done.", "Lab Bench: Investigation 1 (work calculator with randomized practice), Investigation 2 (energy accounts), Investigation 3 (bouncing ball virtual investigation). Learn: Lesson 3. Written Review short answer 6, extended 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

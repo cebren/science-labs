@@ -1,0 +1,1584 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/fossil-record-lab/"><meta name="description" content="Evidence from geological records provides information about Earth’s history."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Fossil Record Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field paleontologist's notebook. Sticky tab strip, then lessons pairing a reading column with a model: a deep-time ruler, rock columns to read, a fossil-forming sequence and the Alberta badlands. Bench: time converter, layer puzzles, a fossil factory, a change detective and a research notebook. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --g8:#1D5FA8; --g8-soft:#DFEAF6;
+  --sky:#E3EEF4; --rock:#9A8B78; --rock-2:#B9AC99; --rock-dark:#6E6254; --soil:#8C6A48; --soil-2:#B08A60; --sand:#D9C08C; --cap:#5A5248;
+  --water:#3E7FB8; --water-soft:#A9CBE6; --ice:#D4ECF7; --ice-line:#7FB3CF; --veg:#4E8B4A; --veg-2:#2F6B36; --lava:#D25A2A; --snow:#FFFFFF; --cloud:#C8D3DB; --arrow:#18241D;
+  --shale:#7D8A8F; --lime:#CFC7AE; --coal:#3A3632; --mudst:#A88F78; --bone:#EADFC8; --amber:#D8902A; --dike:#B5534A;
+  --good:#2D7546; --good-soft:#DDEFE3; --warn:#8A5A00; --warn-soft:#FBEED2; --bad:#B03A2E; --bad-soft:#F7E0DC; --link:#1D5FA8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --sky:#16222B; --rock:#7D7061; --rock-2:#94877A; --rock-dark:#544A40; --soil:#6E5238; --soil-2:#8A6C4C; --sand:#B39C6C; --cap:#3E3832;
+  --water:#4F93CF; --water-soft:#2D5272; --ice:#B9DCEC; --ice-line:#6FA4C0; --veg:#5FA05A; --veg-2:#3F8546; --lava:#E06A3A; --snow:#E8EEF2; --cloud:#5B6670; --arrow:#E3ECE6;
+  --shale:#5E686C; --lime:#8E8873; --coal:#2A2724; --mudst:#80705F; --bone:#CFC3A8; --amber:#C98220; --dike:#B0574D;
+  --good:#7BCB95; --good-soft:#16301F; --warn:#F0C060; --warn-soft:#3A2E12; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --sky:#16222B; --rock:#7D7061; --rock-2:#94877A; --rock-dark:#544A40; --soil:#6E5238; --soil-2:#8A6C4C; --sand:#B39C6C; --cap:#3E3832;
+  --water:#4F93CF; --water-soft:#2D5272; --ice:#B9DCEC; --ice-line:#6FA4C0; --veg:#5FA05A; --veg-2:#3F8546; --lava:#E06A3A; --snow:#E8EEF2; --cloud:#5B6670; --arrow:#E3ECE6;
+  --shale:#5E686C; --lime:#8E8873; --coal:#2A2724; --mudst:#80705F; --bone:#CFC3A8; --amber:#C98220; --dike:#B0574D;
+  --good:#7BCB95; --good-soft:#16301F; --warn:#F0C060; --warn-soft:#3A2E12; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--link)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g8);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--g8);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g8)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g8-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g8)}
+.warn{background:var(--bad-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.warn b{color:var(--bad)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.big{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--g8);line-height:1.1}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.scene{border-radius:8px;background:var(--sky);border:1px solid var(--line);overflow:hidden}
+.scene svg{display:block;width:100%;height:auto}
+.scene svg text{font-family:var(--f-body);fill:var(--ink)}
+.scene svg .lbl{font-size:13px;font-weight:700}
+.scene svg .small{font-size:11.5px;fill:var(--muted)}
+.scene svg .mlbl{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.scene svg .tag{paint-order:stroke;stroke:var(--sky);stroke-width:3px;stroke-linejoin:round}
+.tap{cursor:pointer}
+.tap:hover > circle:first-child{stroke:var(--ink);stroke-width:2.5}
+.tap.on > circle:first-child{stroke:var(--ink);stroke-width:3}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;transition:width .3s}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.74rem;font-weight:600;padding:2px 10px;border-radius:999px}
+.pill.ok{background:var(--good-soft);color:var(--good)}.pill.mid{background:var(--warn-soft);color:var(--warn)}.pill.no{background:var(--bad-soft);color:var(--bad)}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;gap:4px;font-size:.9rem}
+.mini b{font-family:var(--f-display)}
+.chartbox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.chartbox svg{display:block;width:100%;min-width:340px;height:auto}
+.chartbox svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g8)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+textarea{min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;align-items:end}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.dt th:first-child,.dt td:first-child{text-align:left;font-family:var(--f-body);font-weight:700}
+.dt th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+
+.ruler{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.ruler svg{display:block;width:100%;min-width:340px;height:auto}
+.ruler svg text{font-family:var(--f-mono);font-size:11px;fill:var(--ink)}
+.evlist{display:grid;gap:6px;max-height:340px;overflow:auto;padding-right:4px}
+.ev{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:8px;align-items:baseline;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.9rem}
+.ev .mono{color:var(--g8);font-size:.8rem}
+.ev[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.order{display:flex;flex-wrap:wrap;gap:6px;min-height:2.4em;align-items:center}
+.order .pick{font-family:var(--f-mono);font-weight:600;background:var(--g8-soft);color:var(--g8);border-radius:999px;padding:3px 10px}
+.timeline{display:grid;gap:8px;list-style:none;padding:0}
+.timeline li{display:grid;grid-template-columns:4.2em minmax(0,1fr);gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.92rem}
+.timeline .yr{font-family:var(--f-mono);font-weight:600;color:var(--g8)}
+.slist{display:grid;gap:8px}
+.slist .srow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:.9rem}
+.slist .srow .mono{color:var(--g8);font-size:.8rem}
+.mvbtn{border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:2px 8px;cursor:pointer;font-weight:700}
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g8)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Earth Science: Fossils and Resources · ES1</div>
+    <h1>Fossil <span class="ac">Record</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Evidence from geological records provides information about Earth’s history. In this lab you will walk the geological time scale, read rock layers like pages in a book, follow a living thing as it becomes a fossil, compare fossils across millions of years and explore the dinosaur country of the Alberta badlands.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Lessons 1 and 2 are about time and rock layers. Lessons 3 and 4 are about how fossils form and why most living things never become one. Lessons 5 and 6 show what fossils tell us. Lesson 7 visits the Alberta badlands.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · Deep time</span>
+      <h3>The geological time scale</h3>
+      <div class="codes"><span class="code">ES1.K1</span><span class="code">ES1.S1</span></div>
+      <p>Earth is about <b>4.6 billion years</b> old. That is so long that scientists call it <b>deep time</b>. To keep track of it, they use the <b>geological time scale</b>. It is a chart that splits Earth’s history into time intervals.</p>
+      <p>The biggest intervals are <b>eons</b>. Eons are split into <b>eras</b>, and eras are split into <b>periods</b>. For example, the dinosaurs of Alberta lived in the Cretaceous period, in the Mesozoic era, in the Phanerozoic eon.</p>
+      <p>Many boundaries on the scale mark big changes. Some mark <b>major geological events</b>, such as mountains rising or seas flooding a continent. Others mark the <b>appearance and disappearance of life forms</b>. The end of the Cretaceous, about 66 million years ago, is when the non‑bird dinosaurs disappeared.</p>
+      <p>Scientists write <b>Ma</b> for “millions of years ago.” So 66 Ma means 66 million years ago.</p>
+      <div class="key"><b>Try it:</b> pick an event from the list. See where it sits on the ruler, and what date it would be if all of Earth’s history were squeezed into one calendar year.</div>
+    </div>
+    <div class="model">
+      <h4>Earth’s history on one ruler</h4>
+      <div class="chips" id="l1-view" role="group" aria-label="Choose a view"></div>
+      <div class="ruler"><svg id="l1-svg" viewBox="0 0 420 150" role="img" aria-label="The geological time scale drawn as a bar from 4.6 billion years ago to today, with the chosen event marked"></svg></div>
+      <div class="detail" id="l1-detail" aria-live="polite"></div>
+      <div class="evlist" id="l1-events" role="group" aria-label="Events in Earth’s history"></div>
+      <p class="hint">Dates are rounded. Scientists keep refining them as new rocks are dated.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · Reading rock layers</span>
+      <h3>Relative dating: which layer is older?</h3>
+      <div class="codes"><span class="code">ES1.K2</span><span class="code">ES1.S2</span></div>
+      <p><b>Sedimentary rock</b> forms in layers. Sand, mud or shells settle on the bottom of a lake, river or sea. Over time, new layers pile on top and press the lower ones into rock.</p>
+      <p><b>Relative dating</b> is a way to put rock layers in order from older to younger. It does not tell you an age in years. It tells you which came first. Geologists use a few rules.</p>
+      <p><b>Superposition:</b> in layers that have not been flipped or disturbed, the oldest layer is at the bottom and the youngest is at the top.</p>
+      <p><b>Original horizontality:</b> layers are laid down flat. If they are tilted or folded, something happened to them later.</p>
+      <p><b>Cross‑cutting:</b> anything that cuts through a layer, such as a crack called a <b>fault</b> or a sheet of cooled magma called a <b>dike</b>, is younger than the layers it cuts.</p>
+      <p class="note">Scientists can also find an age in years by measuring natural radioactive elements in some rocks, such as volcanic ash. That is called absolute dating. In this lab you only need relative dating.</p>
+      <div class="key"><b>Try it:</b> tap the parts of the rock face in order from oldest to youngest.</div>
+    </div>
+    <div class="model">
+      <h4>Order the rock face</h4>
+      <div class="scene"><svg id="l2-svg" viewBox="0 0 400 240" role="group" aria-label="Cross-section of five rock layers with a dike. Tap parts from oldest to youngest."></svg></div>
+      <div class="order" id="l2-order" aria-live="polite"></div>
+      <div class="row"><button class="btn ghost" type="button" id="l2-reset">Start again</button></div>
+      <div class="detail" id="l2-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Making a fossil</span>
+      <h3>From living thing to stone</h3>
+      <div class="codes"><span class="code">ES1.K5</span><span class="code">ES1.K4</span><span class="code">ES1.S3</span></div>
+      <p>A <b>fossil</b> is the preserved remains or traces of a living thing from long ago. Fossils form in two main ways.</p>
+      <p><b>Mineralized:</b> after burial, water seeping through the sediment carries dissolved minerals. The minerals fill the tiny spaces in bone, shell or wood. Sometimes they slowly replace the original material. The result is a stony copy, such as a dinosaur bone or petrified wood.</p>
+      <p><b>Compressed:</b> a leaf, fern or soft animal is squashed flat under the weight of layers above. Heat and pressure drive off most of the liquids and gases. A thin dark film of carbon, called a <b>carbon film</b>, is left in the rock.</p>
+      <p>Other fossils are <b>impressions</b>. A shell pressed into mud can dissolve away and leave a hollow called a <b>mold</b>. If minerals fill the mold, they form a <b>cast</b>. Footprints, burrows and nests are <b>trace fossils</b>. They show what an animal did, not its body.</p>
+      <p>Fossils usually take <b>thousands to millions of years</b> to form.</p>
+      <div class="key"><b>Try it:</b> step through the story of a duck‑billed dinosaur that died beside an ancient river.</div>
+    </div>
+    <div class="model">
+      <h4>A fossil in six steps</h4>
+      <div class="scene"><svg id="l3-svg" viewBox="0 0 400 230" role="img" aria-label="Cross-section showing a dinosaur skeleton buried in river sediment and turned to stone"></svg></div>
+      <div class="row"><button class="btn ghost" type="button" id="l3-prev">Back</button><span class="mono num" id="l3-step"></span><button class="btn" type="button" id="l3-next">Next step</button></div>
+      <div class="detail" id="l3-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Where fossils are found</span>
+      <h3>Why fossils are rare, and why they are in sedimentary rock</h3>
+      <div class="codes"><span class="code">ES1.K4</span><span class="code">ES1.K7</span></div>
+      <p>Most living things never become fossils. A fossil needs <b>specific conditions</b>:</p>
+      <ul>
+        <li><b>Fast burial</b> in mud, sand or volcanic ash, before scavengers and decay destroy the remains.</li>
+        <li><b>Hard parts</b> such as bones, shells, teeth or wood. Soft bodies usually rot first.</li>
+        <li><b>Little oxygen</b>, which slows decay.</li>
+        <li><b>Time</b> for minerals to do their work.</li>
+      </ul>
+      <p>That is why fossils are found in <b>sedimentary rocks</b>. Those rocks form from the same layers of sediment that bury living things. <b>Igneous rock</b> forms from melted rock, which would destroy remains. <b>Metamorphic rock</b> is changed by great heat and pressure, which usually crushes or erases fossils.</p>
+      <p>Even after a fossil forms, <b>geological processes can destroy it</b>. Weathering and erosion can break it apart at the surface. Rock can be heated, squeezed or melted deep underground. This is why the fossil record has gaps.</p>
+      <div class="key"><b>Try it:</b> choose what happens to a fossil‑rich layer and watch how many fossils survive.</div>
+    </div>
+    <div class="model">
+      <h4>Fossils at risk</h4>
+      <div class="chips" id="l4-proc" role="group" aria-label="Choose a geological process"></div>
+      <div class="scene"><svg id="l4-svg" viewBox="0 0 400 210" role="img" aria-label="A rock layer holding fossils and the effect of the chosen geological process"></svg></div>
+      <div class="stats"><div class="stat"><span>Fossils left</span><b id="l4-left">20 of 20</b></div><div class="stat"><span>Rock type</span><b id="l4-rock">Sedimentary</b></div></div>
+      <div class="detail" id="l4-detail" aria-live="polite"></div>
+      <p class="hint">Simple model. Fossil counts are made up to show the idea.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Reading the fossil record</span>
+      <h3>What fossils tell us about the past</h3>
+      <div class="codes"><span class="code">ES1.K3</span></div>
+      <p>The <b>fossil record</b> is all the fossils ever found, together with the rock layers they came from. Like a library with missing pages, it is incomplete, but it still tells us a lot.</p>
+      <p><b>Living and extinct organisms:</b> fossils show us living things that are gone today, such as dinosaurs and ammonites, and the ancestors of living things, such as early horses. An organism is <b>extinct</b> when no members of its species are left alive.</p>
+      <p><b>Past climates and environments:</b> coral fossils point to a warm, shallow sea. Coal comes from swamp plants. Fossils of turtles and crocodile relatives point to a warm climate.</p>
+      <p><b>Geological events:</b> sea fossils high in the Rocky Mountains show that the rock formed under water and was later pushed up. A layer where many kinds of fossils suddenly stop can mark a mass extinction.</p>
+      <p>Some fossils are <b>index fossils</b>. They were common, spread widely, and lived for a short time. Finding one helps geologists match layers of the same age in different places.</p>
+      <div class="key"><b>Try it:</b> tap each fossil in the Alberta rock column to read the clue it gives.</div>
+    </div>
+    <div class="model">
+      <h4>Alberta through time</h4>
+      <div class="scene"><svg id="l5-svg" viewBox="0 0 400 300" role="group" aria-label="A simplified column of Alberta rock layers with tappable fossils"></svg></div>
+      <div class="detail" id="l5-detail" aria-live="polite"></div>
+      <p class="hint">Simplified column. Real layers are not all found in one place, and thicknesses are not to scale.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Evidence of change</span>
+      <h3>Comparing organisms and fossils</h3>
+      <div class="codes"><span class="code">ES1.K6</span><span class="code">ES1.S4</span></div>
+      <p>When scientists compare fossils from older and younger layers, and compare fossils with living organisms, they see that <b>living things have changed over time</b>. Scientists call this change in living things over many generations <b>evolution</b>.</p>
+      <p><b>Horses</b> are a well studied example. The oldest horse relatives, from about 55 million years ago, were about the size of a fox and had several toes on each foot. Younger fossils are larger, with fewer toes and taller teeth for chewing tough grass. Today’s horses stand on a single toe on each foot.</p>
+      <p>Some fossils show a mix of features. <b>Tiktaalik</b>, found in 2004 on Ellesmere Island in Nunavut, lived about 375 million years ago. It had gills and scales like a fish, but also a neck and sturdy fins with wrist‑like bones.</p>
+      <p>Comparing body parts of living animals adds more evidence. The arm of a human, the wing of a bat and the flipper of a whale have the same set of bones arranged in different ways.</p>
+      <div class="key"><b>Try it:</b> move the slider through time and compare the horse fossils.</div>
+    </div>
+    <div class="model">
+      <h4>Horse fossils through time</h4>
+      <div class="scene"><svg id="l6-svg" viewBox="0 0 400 220" role="img" aria-label="Side view of the horse relative and its front foot for the chosen time"></svg></div>
+      <label class="field" for="l6-range">Time: <span class="mono num" id="l6-out"></span></label>
+      <input type="range" id="l6-range" min="0" max="4" step="1" value="0">
+      <div class="stats" id="l6-stats"></div>
+      <div class="detail" id="l6-detail" aria-live="polite"></div>
+      <p class="hint">Sizes and dates are rounded. The horse family is a branching bush with many side branches, not a single straight line.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l7">
+    <div class="text">
+      <span class="step">Lesson 7 · Alberta’s badlands</span>
+      <h3>“Bad lands to cross”</h3>
+      <div class="codes"><span class="code">ES1.K8</span><span class="code">ES1.S5</span><span class="code">ES1.K7</span></div>
+      <p>Early French explorers called the dry, steep, gullied land of what is now Alberta <b>“les mauvaises terres à traverser,”</b> which means bad lands to cross. The name <b>badlands</b> stuck.</p>
+      <p>Badlands have bare slopes, hoodoos and deep valleys, with very few plants. Along the <b>Red Deer River</b>, near Drumheller and in Dinosaur Provincial Park, meltwater at the end of the last Ice Age carved deep valleys. Rain and runoff keep wearing the soft rock away.</p>
+      <p>That erosion is why the badlands are <b>renowned for extensive fossil beds</b>. Each spring, rain and melting snow uncover new bones in rock layers laid down about 77 to 66 million years ago, when Alberta was a warm coastal plain beside an inland sea. The same erosion will destroy fossils that are not found in time.</p>
+      <p>The badlands lie in Treaty 7 territory. First Nations peoples knew these lands and their large bones long before scientists arrived.</p>
+      <div class="key"><b>Try it:</b> tap each place on the map, then read the discovery timeline.</div>
+    </div>
+    <div class="model">
+      <h4>Fossil country</h4>
+      <div class="scene"><svg id="l7-svg" viewBox="0 0 400 300" role="group" aria-label="Sketch map of Alberta with fossil sites to tap"></svg></div>
+      <div class="detail" id="l7-detail" aria-live="polite"></div>
+      <h4>Discovery timeline</h4>
+      <ol class="timeline" id="l7-time"></ol>
+      <p class="hint">Map is a sketch, not to scale. Facts are summarized from public sources.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Build a time scale, solve rock layer puzzles, run a fossil factory, look for evidence of change and research the badlands.</p>
+  </div>
+
+  <article class="lesson" id="b1">
+    <div class="text">
+      <span class="step">Investigation 1 · Represent the time scale</span>
+      <h3>Squeeze 4.6 billion years</h3>
+      <div class="codes"><span class="code">ES1.S1</span><span class="code">ES1.K1</span></div>
+      <p>A scale model makes deep time easier to picture. You can turn any age into a distance on a strip, or into a date on a one‑year calendar. You do not need to memorize these formulas.</p>
+      <div class="formula">fraction of history = age ÷ 4600 Ma<br>distance from “today” end = fraction × length of strip<br>days before midnight on Dec 31 = fraction × 365</div>
+      <div class="worked">
+        <b>Worked example: the end of the dinosaurs (66 Ma)</b>
+        <span>fraction = 66 ÷ 4600 = 0.0143</span>
+        <span>On a 100 m strip: 0.0143 × 100 m = 1.43 m from the “today” end.</span>
+        <span>On the calendar: 0.0143 × 365 = 5.2 days before midnight, so about December 26.</span>
+      </div>
+      <label class="field" for="b1-len">Length of your strip (m)</label>
+      <input type="number" id="b1-len" min="1" max="1000" step="1" value="100">
+      <label class="field" for="b1-age">Age of an event (Ma)</label>
+      <input type="number" id="b1-age" min="0" max="4600" step="any" value="66">
+      <div class="stats" id="b1-out" aria-live="polite"></div>
+    </div>
+    <div class="model">
+      <h4>Practice</h4>
+      <div class="detail" id="b1-q" aria-live="polite"></div>
+      <label class="field" for="b1-ans">Your answer</label>
+      <input type="number" id="b1-ans" step="any">
+      <div class="row"><button class="btn" type="button" id="b1-check">Check</button><button class="btn ghost" type="button" id="b1-new">New question</button></div>
+      <p class="fb" id="b1-fb" aria-live="polite"></p>
+      <h4>Put events in order</h4>
+      <p class="hint">Use the arrows to order these events from oldest (top) to youngest (bottom).</p>
+      <div class="slist" id="b1-list"></div>
+      <div class="row"><button class="btn" type="button" id="b1-ocheck">Check order</button><button class="btn ghost" type="button" id="b1-onew">New set</button></div>
+      <p class="fb" id="b1-ofb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b2">
+    <div class="text">
+      <span class="step">Investigation 2 · Rock layer puzzles</span>
+      <h3>Oldest to youngest</h3>
+      <div class="codes"><span class="code">ES1.S2</span><span class="code">ES1.K2</span></div>
+      <p>Each puzzle is a new rock face. Tap the parts from <b>oldest to youngest</b>. Use the rules from Lesson 2.</p>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Layers 1 to 4 sit flat, with 1 at the bottom. A dike cuts through layers 1, 2 and 3 but stops under layer 4.</span>
+        <span>Superposition: 1 is oldest, then 2, then 3.</span>
+        <span>Cross‑cutting: the dike is younger than the layers it cuts, so it comes after 3.</span>
+        <span>Layer 4 sits on top of the dike, so it was laid down last.</span>
+        <span><b>Order: 1, 2, 3, dike, 4.</b></span>
+      </div>
+      <div class="stats"><div class="stat"><span>Puzzles solved</span><b id="b2-score">0</b></div><div class="stat"><span>Tries</span><b id="b2-tries">0</b></div></div>
+    </div>
+    <div class="model">
+      <h4>Puzzle</h4>
+      <div class="scene"><svg id="b2-svg" viewBox="0 0 400 240" role="group" aria-label="Randomly made rock face. Tap parts from oldest to youngest."></svg></div>
+      <div class="order" id="b2-order" aria-live="polite"></div>
+      <div class="row"><button class="btn ghost" type="button" id="b2-undo">Undo</button><button class="btn" type="button" id="b2-check">Check</button><button class="btn ghost" type="button" id="b2-new">New puzzle</button></div>
+      <p class="fb" id="b2-fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3">
+    <div class="text">
+      <span class="step">Investigation 3 · Fossil factory</span>
+      <h3>Will it become a fossil?</h3>
+      <div class="codes"><span class="code">ES1.S3</span><span class="code">ES1.K4</span><span class="code">ES1.K5</span></div>
+      <p>Choose a living thing, a place and how fast it is buried. Then choose how much time passes. The factory predicts what kind of fossil is most likely to form, if any.</p>
+      <p>Try to make each kind of fossil: mineralized, carbon film, mold and cast, trace fossil and amber.</p>
+      <div class="fields">
+        <label class="field" for="b3-org">Living thing<select id="b3-org"></select></label>
+        <label class="field" for="b3-place">Place<select id="b3-place"></select></label>
+        <label class="field" for="b3-burial">Burial<select id="b3-burial"><option value="fast">Fast</option><option value="slow">Slow</option></select></label>
+        <label class="field" for="b3-time">Time passed<select id="b3-time"><option value="100">100 years</option><option value="1e4">10 000 years</option><option value="1e7" selected>10 million years</option></select></label>
+      </div>
+      <div class="stats"><div class="stat"><span>Fossil kinds made</span><b id="b3-made">0 of 5</b></div></div>
+    </div>
+    <div class="model">
+      <h4>Result</h4>
+      <div class="meter" aria-hidden="true"><i id="b3-bar" style="width:0;background:var(--g8)"></i></div>
+      <div class="detail" id="b3-out" aria-live="polite"></div>
+      <p class="hint">Simple model based on the conditions in Lesson 4. Real outcomes depend on many more factors.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b4">
+    <div class="text">
+      <span class="step">Investigation 4 · Change detective</span>
+      <h3>Describe change over time</h3>
+      <div class="codes"><span class="code">ES1.S4</span><span class="code">ES1.K6</span></div>
+      <p>Each data set lists fossils from oldest to youngest. Read the table, then answer the question. A good description names the feature, the direction of change and the evidence.</p>
+      <div class="worked">
+        <b>Worked example: horse teeth</b>
+        <span>Evidence: tooth crown height goes from short (55 Ma) to tall (today).</span>
+        <span>Description: over about 55 million years, horse teeth became taller.</span>
+        <span>Link: taller teeth last longer when chewing tough, gritty grass, which spread as forests gave way to grasslands.</span>
+      </div>
+      <div class="chips" id="b4-sets" role="group" aria-label="Choose a data set"></div>
+    </div>
+    <div class="model">
+      <div class="tablebox"><table class="dt" id="b4-table"></table></div>
+      <p class="hint" id="b4-src"></p>
+      <div class="detail" id="b4-q" aria-live="polite"></div>
+      <div class="opts" id="b4-opts"></div>
+      <p class="fb" id="b4-fb" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="b4-next">Next question</button>
+    </div>
+  </article>
+
+  <article class="lesson" id="b5">
+    <div class="text">
+      <span class="step">Investigation 5 · Research notebook</span>
+      <h3>Discovering fossils in the badlands</h3>
+      <div class="codes"><span class="code">ES1.S5</span><span class="code">ES1.K8</span></div>
+      <p>Choose one discovery from the Alberta badlands and research it. Use reliable sources, such as the Royal Tyrrell Museum, Alberta Parks or a university. Check each fact in two sources.</p>
+      <p><b>Fossil rules in Alberta:</b> fossils in Alberta belong to the province. You may pick up fossils lying on the surface on private land with the owner’s permission, but you need a permit to dig. Collecting in provincial parks, including Dinosaur Provincial Park, is not allowed. If you find something special, leave it, take a photo and note where it is, then report it.</p>
+      <p class="note">Your notes are saved only in this browser.</p>
+    </div>
+    <div class="model">
+      <h4>Notebook</h4>
+      <label class="field" for="b5-topic">Discovery I chose</label>
+      <select id="b5-topic"></select>
+      <div id="b5-fields" class="slist"></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 26. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 8 ES1, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-es1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+var NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) {
+    var v = attrs[k];
+    if ((k === "fill" || k === "stroke") && String(v).indexOf("var(") === 0) n.style[k] = v;
+    else if (k === "class") n.setAttribute("class", v);
+    else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(n, d){ return Number(n).toFixed(d); }
+function grp(n){ var p = String(n).split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function sig(n){ var a = Math.abs(n); if (a >= 100) return grp(Math.round(n)); if (a >= 10) return fmt(n, 1); if (a >= 1) return fmt(n, 2); return fmt(n, 3); }
+function chipGroup(container, items, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function tappable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label); g.setAttribute("class", "tap");
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+var reduce = false;
+try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+function arrow(svg, x1, y1, x2, y2, col, w){
+  col = col || "var(--arrow)"; w = w || 2.5;
+  S("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: col, "stroke-width": w, "stroke-linecap": "round"}, svg);
+  var a = Math.atan2(y2 - y1, x2 - x1), h = 8;
+  var p = [[x2, y2], [x2 - h * Math.cos(a - 0.45), y2 - h * Math.sin(a - 0.45)], [x2 - h * Math.cos(a + 0.45), y2 - h * Math.sin(a + 0.45)]];
+  S("polygon", {points: p.map(function(q){ return fmt(q[0], 1) + "," + fmt(q[1], 1); }).join(" "), fill: col}, svg);
+}
+function label(svg, x, y, t, cls, anchor){ return S("text", {x: x, y: y, "class": (cls || "lbl") + " tag", "text-anchor": anchor || "middle"}, svg, t); }
+function rng(seed){ var s = seed || 7; return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+
+/* ---------- Shared time data ---------- */
+var EONS = [["Hadean", 4600, 4000], ["Archean", 4000, 2500], ["Proterozoic", 2500, 539], ["Phanerozoic", 539, 0]];
+var ERAS = [["Paleozoic", 539, 252], ["Mesozoic", 252, 66], ["Cenozoic", 66, 0]];
+var PERIODS = [["Cambrian", 539, 485], ["Ordovician", 485, 444], ["Silurian", 444, 419], ["Devonian", 419, 359], ["Carboniferous", 359, 299], ["Permian", 299, 252], ["Triassic", 252, 201], ["Jurassic", 201, 145], ["Cretaceous", 145, 66], ["Paleogene", 66, 23], ["Neogene", 23, 2.6], ["Quaternary", 2.6, 0]];
+var EVENTS = [
+  [4600, "Earth forms", "geo", "Earth forms from dust and rock circling the young Sun. No rocks this old survive at the surface today."],
+  [3500, "Oldest widely accepted fossils", "life", "Stromatolites are layered mounds built by colonies of microbes. Some scientists think life began even earlier."],
+  [2400, "Oxygen builds up in the air", "geo", "Microbes that use photosynthesis slowly add oxygen to the air and oceans. Rocks rusted red show the change."],
+  [575, "First large, complex life", "life", "Soft‑bodied creatures shaped like fronds and discs appear in the sea."],
+  [539, "Many animals with hard parts appear", "life", "Shells and skeletons appear in the fossil record in a burst called the Cambrian explosion. Trilobites become common."],
+  [508, "Burgess Shale animals buried", "life", "Mud slides bury sea animals, soft parts and all. Today the rock sits high in the Rocky Mountains of Yoho National Park, British Columbia."],
+  [470, "First land plants", "life", "Small, simple plants spread onto land from the water."],
+  [445, "Mass extinction 1", "extinct", "Ice ages and falling sea levels end the Ordovician period. Many sea animals disappear."],
+  [380, "Reefs grow in a sea over Alberta", "geo", "Warm, shallow seas cover what is now Alberta. Corals and other reef builders leave thick limestone layers."],
+  [375, "Tiktaalik: a fish with a neck", "life", "This fossil from Ellesmere Island, Nunavut, shows features of both fish and four‑legged animals."],
+  [372, "Mass extinction 2", "extinct", "Many reef builders and sea animals disappear late in the Devonian period."],
+  [310, "First reptiles", "life", "Animals that lay eggs with shells on land appear."],
+  [252, "Mass extinction 3, the largest", "extinct", "Huge volcanic eruptions change the climate. Most species in the sea and many on land disappear at the end of the Permian."],
+  [230, "First dinosaurs", "life", "Small, two‑legged dinosaurs appear in the Triassic period."],
+  [210, "First small mammals", "life", "Tiny, furry animals appear alongside the dinosaurs."],
+  [201, "Mass extinction 4", "extinct", "Volcanic eruptions as the supercontinent Pangaea splits apart end the Triassic period."],
+  [150, "First birds", "life", "Feathered dinosaurs that can fly, such as Archaeopteryx, appear. Birds are living dinosaurs."],
+  [130, "First flowering plants", "life", "Plants with flowers appear and later spread across the land."],
+  [110, "Borealopelta dies near today’s Fort McMurray", "life", "An armoured dinosaur washes out to sea and sinks. It becomes one of the best preserved dinosaur fossils ever found."],
+  [75, "Inland sea and dinosaur coast in Alberta", "geo", "A shallow inland sea covers eastern Alberta. Its shore is a warm, swampy coastal plain full of dinosaurs. Ammonites swim in the sea."],
+  [70, "Albertosaurus lives near Drumheller", "life", "This large meat‑eater, a smaller relative of Tyrannosaurus, hunts on the coastal plain."],
+  [66, "Mass extinction 5", "extinct", "An asteroid strikes near Mexico’s Yucatán Peninsula. The non‑bird dinosaurs and the ammonites disappear."],
+  [60, "The Rocky Mountains rise", "geo", "Between about 80 and 55 million years ago, rock is pushed up and stacked to build the Rockies. Sea fossils are lifted into the peaks."],
+  [55, "Early horses appear", "life", "Fox‑sized horse relatives with several toes live in forests."],
+  [2.6, "Ice ages begin", "geo", "Ice sheets grow and shrink many times. At their largest they cover almost all of Alberta."],
+  [0.3, "Our species appears", "life", "The oldest fossils of Homo sapiens, people like us, come from Africa."],
+  [0.013, "Ice melts from central Alberta", "geo", "Meltwater from the shrinking ice sheets carves deep valleys, including the Red Deer River badlands."]
+];
+function intervalOf(age, list){ for (var i = 0; i < list.length; i++) { if (age <= list[i][1] && age >= list[i][2] && !(age === list[i][2] && i < list.length - 1 && age !== 0)) return list[i][0]; } return null; }
+function ageText(a){
+  if (a >= 1000) return fmt(a / 1000, 1) + " billion years ago";
+  if (a >= 1) return grp(Math.round(a)) + " million years ago";
+  return grp(Math.round(a * 1e6)) + " years ago";
+}
+function calendarText(a){
+  var before = a / 4600 * 365;
+  if (before >= 1) {
+    var d = new Date(2027, 0, 1, 0, 0, 0); d = new Date(d.getTime() + (365 - before) * 86400000);
+    var M = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return M[d.getMonth()] + " " + d.getDate();
+  }
+  var secs = before * 86400;
+  if (secs >= 3600) return "December 31, about " + fmt(secs / 3600, 1) + " hours before midnight";
+  if (secs >= 60) return "December 31, about " + Math.round(secs / 60) + " minutes before midnight";
+  return "December 31, about " + Math.max(1, Math.round(secs)) + " seconds before midnight";
+}
+
+/* ---------- Lesson 1: deep time ruler ---------- */
+(function(){
+  var svg = $("l1-svg"), sel = 21, zoom = false;
+  var COLS = ["var(--g8-soft)", "var(--surface-2)"];
+  function x(a){ var max = zoom ? 600 : 4600; return 10 + (max - a) / max * 400; }
+  function draw(){
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 420, height: 150, fill: "var(--surface)"}, svg);
+    var rows = zoom ? [["Era", ERAS, 30], ["Period", PERIODS, 74]] : [["Eon", EONS, 30], ["Era", ERAS, 74]];
+    rows.forEach(function(r){
+      S("text", {x: 10, y: r[2] - 6}, svg, r[0]);
+      r[1].forEach(function(p, i){
+        var x1 = x(Math.min(p[1], zoom ? 600 : 4600)), x2 = x(p[2]);
+        if (x2 <= 10) return;
+        S("rect", {x: x1, y: r[2], width: Math.max(1, x2 - x1), height: 28, fill: COLS[i % 2], stroke: "var(--line)"}, svg);
+        var w = x2 - x1, nm = p[0];
+        if (w > 44) S("text", {x: (x1 + x2) / 2, y: r[2] + 18, "text-anchor": "middle"}, svg, w > 70 ? nm : nm.slice(0, 3) + ".");
+        else if (w > 20) S("text", {x: (x1 + x2) / 2, y: r[2] + 18, "text-anchor": "middle", "font-size": "9"}, svg, nm.slice(0, 2));
+      });
+    });
+    if (zoom) S("rect", {x: x(600), y: 30, width: x(539) - x(600), height: 28, fill: "var(--surface-2)", stroke: "var(--line)"}, svg);
+    if (zoom) S("text", {x: (x(600) + x(539)) / 2, y: 48, "text-anchor": "middle", "font-size": "9"}, svg, "Pre.");
+    var ticks = zoom ? [600, 500, 400, 300, 200, 100, 0] : [4600, 3000, 2000, 1000, 0];
+    ticks.forEach(function(t){
+      S("line", {x1: x(t), y1: 106, x2: x(t), y2: 112, stroke: "var(--muted)"}, svg);
+      S("text", {x: x(t), y: 125, "text-anchor": t === 0 ? "end" : (t === ticks[0] ? "start" : "middle")}, svg, t === 0 ? "today" : grp(t) + " Ma");
+    });
+    var E = EVENTS[sel], a = E[0];
+    if (!zoom || a <= 600) {
+      var px = x(a);
+      S("line", {x1: px, y1: 20, x2: px, y2: 106, stroke: "var(--ink)", "stroke-width": 2}, svg);
+      S("polygon", {points: (px - 6) + ",12 " + (px + 6) + ",12 " + px + ",22", fill: E[2] === "extinct" ? "var(--bad)" : "var(--g8)"}, svg);
+    } else {
+      S("text", {x: 14, y: 143}, svg, "This event is older than 600 Ma. Switch to the whole history view.");
+    }
+    var la = E[2] === "extinct" ? a + 0.01 : a;
+    var eon = intervalOf(la, EONS), era = la <= 539 ? intervalOf(la, ERAS) : null, per = la <= 539 ? intervalOf(la, PERIODS) : null;
+    var place = per ? per + " period · " + era + " era · " + eon + " eon" : eon + " eon (part of the Precambrian)";
+    detail($("l1-detail"), E[1], [E[3], "When: " + ageText(a) + ". " + place + ".", "On the one‑year calendar: " + calendarText(a) + "."], E[2] === "extinct" ? "Disappearance of life forms" : E[2] === "life" ? "Appearance of life forms" : "Geological event");
+    Array.prototype.forEach.call($("l1-events").children, function(b, i){ b.setAttribute("aria-pressed", i === sel ? "true" : "false"); });
+  }
+  EVENTS.forEach(function(E, i){
+    var b = el("button", {"class": "ev", type: "button", "aria-pressed": "false"});
+    b.appendChild(el("span", {"class": "mono"}, E[0] >= 1 ? grp(E[0]) + " Ma" : grp(Math.round(E[0] * 1e6)) + " yr"));
+    b.appendChild(el("span", null, E[1]));
+    b.addEventListener("click", function(){ sel = i; if (E[0] > 600) { zoom = false; setView(0); } draw(); });
+    $("l1-events").appendChild(b);
+  });
+  var setView = chipGroup($("l1-view"), [{label: "Whole history"}, {label: "Last 600 million years"}], function(it, i){ zoom = i === 1; draw(); }, 0);
+})();
+
+/* ---------- Layer drawing shared by Lesson 2 and Bench 2 ---------- */
+var ROCKS = [
+  ["Sandstone", "var(--sand)"], ["Shale", "var(--shale)"], ["Limestone", "var(--lime)"], ["Mudstone", "var(--mudst)"], ["Coal", "var(--coal)"], ["Siltstone", "var(--rock-2)"]
+];
+/* P = {n, rocks:[idx], cut:{type:"dike"|"fault", k}} ; returns items array with name and handlers */
+function drawFace(svg, P, onTap, picked){
+  clear(svg);
+  var top = 30, bottom = 230, h = (bottom - top) / P.n;
+  S("rect", {x: 0, y: 0, width: 400, height: 240, fill: "var(--sky)"}, svg);
+  function yTop(i){ return bottom - (i + 1) * h; } /* i = 0 is bottom layer */
+  var parts = [];
+  for (var i = 0; i < P.n; i++) {
+    var R = ROCKS[P.rocks[i]], g = S("g", null, svg), y = yTop(i);
+    var faulted = P.cut && P.cut.type === "fault" && i < P.cut.k;
+    if (faulted) {
+      var fx1 = 230 + (bottom - y) * 0.35, fx2 = 230 + (bottom - y - h) * 0.35;
+      S("polygon", {points: "20," + y + " " + fx1 + "," + y + " " + fx2 + "," + (y + h) + " 20," + (y + h), fill: R[1], stroke: "var(--ink)", "stroke-width": 1}, g);
+      var off = -14, yy = y + off, yb = y + h + off;
+      if (i === 0) yb = bottom;
+      if (i === P.cut.k - 1) yy = y;
+      S("polygon", {points: fx1 + "," + yy + " 380," + yy + " 380," + yb + " " + fx2 + "," + yb, fill: R[1], stroke: "var(--ink)", "stroke-width": 1}, g);
+    } else {
+      S("rect", {x: 20, y: y, width: 360, height: h, fill: R[1], stroke: "var(--ink)", "stroke-width": 1}, g);
+    }
+    var tc = P.rocks[i] === 4 ? "var(--snow)" : "var(--ink)";
+    var t = S("text", {x: 60, y: y + h / 2 + 5, "text-anchor": "middle", "class": "lbl"}, g, "" + (i + 1));
+    t.style.fill = tc;
+    S("text", {x: 330, y: y + h / 2 + 5 - (faulted && i < P.cut.k - 1 ? 14 : (faulted ? 7 : 0)), "text-anchor": "middle", "class": "small"}, g, R[0]).style.fill = tc;
+    parts.push({id: "" + (i + 1), name: "Layer " + (i + 1) + " (" + R[0].toLowerCase() + ")", g: g});
+  }
+  if (P.cut) {
+    var g2 = S("g", null, svg), ytop = yTop(P.cut.k - 1);
+    if (P.cut.type === "dike") {
+      S("polygon", {points: "180," + bottom + " 206," + bottom + " 222," + ytop + " 198," + ytop, fill: "var(--dike)", stroke: "var(--ink)", "stroke-width": 1}, g2);
+      label(g2, 200, ytop + 18 + (bottom - ytop) / 3, "D", "lbl");
+      parts.push({id: "D", name: "Dike D", g: g2});
+    } else {
+      var fxb = 230, fxt = 230 + (bottom - ytop) * 0.35;
+      S("line", {x1: fxb, y1: bottom, x2: fxt, y2: ytop, stroke: "var(--bad)", "stroke-width": 4}, g2);
+      label(g2, fxt - 14, ytop + 18, "F", "lbl");
+      parts.push({id: "F", name: "Fault F", g: g2});
+    }
+  }
+  S("text", {x: 20, y: 20, "class": "mlbl"}, svg, "Ground surface");
+  parts.forEach(function(p){
+    tappable(p.g, p.name, function(){ onTap(p); });
+    if (picked && picked.indexOf(p.id) >= 0) { p.g.style.opacity = "0.55"; }
+  });
+  return parts;
+}
+function correctOrder(P){
+  var o = [];
+  for (var i = 0; i < P.n; i++) { o.push("" + (i + 1)); if (P.cut && i === P.cut.k - 1) o.push(P.cut.type === "dike" ? "D" : "F"); }
+  return o;
+}
+function showOrder(box, picked, parts){
+  clear(box);
+  if (!picked.length) { box.appendChild(el("span", {"class": "hint"}, "Your order will appear here, oldest first.")); return; }
+  picked.forEach(function(id, i){ box.appendChild(el("span", {"class": "pick"}, id)); if (i < picked.length - 1) box.appendChild(el("span", {"aria-hidden": "true"}, "→")); });
+}
+
+/* ---------- Lesson 2: order the rock face ---------- */
+(function(){
+  var P = {n: 5, rocks: [2, 1, 0, 4, 3], cut: {type: "dike", k: 3}}, picked = [];
+  var answer = correctOrder(P);
+  function tap(p){
+    if (picked.indexOf(p.id) >= 0 || picked.length >= answer.length) return;
+    picked.push(p.id); render();
+    if (picked.length === answer.length) {
+      var ok = picked.join() === answer.join();
+      detail($("l2-detail"), ok ? "Correct order" : "Not quite", ok ?
+        ["Layers 1, 2 and 3 were laid down first, oldest at the bottom (superposition). Magma then pushed up and cooled to form dike D, cutting those three layers (cross‑cutting). Layers 4 and 5 were laid down on top of the dike, so they are youngest."] :
+        ["The correct order is " + answer.join(", ") + ". Start at the bottom. The dike is younger than every layer it cuts, but older than the layers that cover it."], ok ? "Superposition and cross‑cutting" : "Try again");
+    } else {
+      detail($("l2-detail"), null, ["You chose " + p.name + ". Keep going."]);
+    }
+  }
+  function render(){ drawFace($("l2-svg"), P, tap, picked); showOrder($("l2-order"), picked); }
+  $("l2-reset").addEventListener("click", function(){ picked = []; render(); detail($("l2-detail"), null, ["Tap the oldest part first."]); });
+  render(); detail($("l2-detail"), null, ["Tap the oldest part first."]);
+})();
+
+/* ---------- Lesson 3: fossil in six steps ---------- */
+(function(){
+  var svg = $("l3-svg"), step = 0;
+  var STEPS = [
+    ["1 · Death beside a river", "About 75 million years ago, a duck‑billed dinosaur dies on a muddy riverbank on Alberta’s warm coastal plain."],
+    ["2 · Fast burial", "A flood soon covers the body with sand and mud. Scavengers cannot reach it, and with little oxygen it decays slowly. The soft parts still rot away, leaving bones and teeth."],
+    ["3 · More layers pile up", "Over thousands of years, more sediment piles on top. Its weight squeezes the lower layers. Minerals glue the grains together and the sediment becomes sedimentary rock."],
+    ["4 · Minerals move in", "Groundwater seeps through the rock carrying dissolved minerals. The minerals fill the tiny holes in the bones and harden. The bones become mineralized fossils, heavy and stony."],
+    ["5 · Deep time", "Millions of years pass. The fossil stays buried, deep in the layers. If the rock were melted or crushed, the fossil would be lost."],
+    ["6 · Uncovered", "Ice Age meltwater, then rain and wind, wear the land away. The rock layers are exposed in a badlands valley, and a bone starts to poke out. A paleontologist spots it."]
+  ];
+  function bones(g, y, col){
+    S("ellipse", {cx: 200, cy: y, rx: 40, ry: 9, fill: col}, g);
+    S("rect", {x: 150, y: y - 3, width: 100, height: 6, rx: 3, fill: col}, g);
+    S("circle", {cx: 255, cy: y - 6, r: 9, fill: col}, g);
+    [170, 190, 215, 232].forEach(function(xx){ S("rect", {x: xx, y: y + 6, width: 5, height: 16, fill: col}, g); });
+  }
+  function draw(){
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 230, fill: "var(--sky)"}, svg);
+    var ground = [150, 150, 110, 110, 70, 150][step];
+    var n = [0, 1, 4, 4, 6, 4][step];
+    if (step === 5) {
+      S("polygon", {points: "0,150 120,150 160,105 240,105 280,150 400,150 400,230 0,230", fill: "var(--soil-2)"}, svg);
+      for (var j = 0; j < 4; j++) S("line", {x1: 0, y1: 165 + j * 16, x2: 400, y2: 165 + j * 16, stroke: "var(--soil)", "stroke-width": 1}, svg);
+      S("rect", {x: 0, y: 214, width: 400, height: 16, fill: "var(--rock)"}, svg);
+    } else {
+      S("rect", {x: 0, y: ground, width: 400, height: 230 - ground, fill: step >= 2 ? "var(--soil-2)" : "var(--sand)"}, svg);
+      for (var k = 0; k < n; k++) S("line", {x1: 0, y1: ground + 14 + k * 14, x2: 400, y2: ground + 14 + k * 14, stroke: "var(--soil)", "stroke-width": 1}, svg);
+      S("rect", {x: 0, y: 214, width: 400, height: 16, fill: "var(--rock)"}, svg);
+    }
+    var by = step === 0 ? 140 : (step === 5 ? 168 : 178);
+    if (step === 1) by = 162;
+    var col = step <= 1 ? "var(--bone)" : (step >= 3 ? "var(--rock-dark)" : "var(--bone)");
+    var g = S("g", null, svg);
+    if (step === 0) { S("ellipse", {cx: 200, cy: 132, rx: 70, ry: 18, fill: "var(--veg)"}, g); S("circle", {cx: 278, cy: 122, r: 14, fill: "var(--veg)"}, g); }
+    else bones(g, by, col);
+    if (step === 1) S("path", {d: "M0,140 Q100,120 200,140 T400,140", fill: "none", stroke: "var(--water)", "stroke-width": 4}, svg);
+    if (step === 3) for (var m = 0; m < 6; m++) arrow(svg, 60 + m * 55, 120, 60 + m * 55 + 10, 150, "var(--water)", 2);
+    if (step === 5) { S("circle", {cx: 330, cy: 132, r: 7, fill: "var(--ink)"}, svg); S("rect", {x: 326, y: 139, width: 8, height: 14, fill: "var(--ink)"}, svg); }
+    label(svg, 200, 24, STEPS[step][0]);
+    $("l3-step").textContent = "Step " + (step + 1) + " of 6";
+    detail($("l3-detail"), STEPS[step][0], [STEPS[step][1]]);
+    $("l3-prev").disabled = step === 0; $("l3-next").disabled = step === 5;
+  }
+  $("l3-prev").addEventListener("click", function(){ if (step > 0) { step--; draw(); } });
+  $("l3-next").addEventListener("click", function(){ if (step < 5) { step++; draw(); } });
+  draw();
+})();
+
+/* ---------- Lesson 4: fossils at risk ---------- */
+(function(){
+  var svg = $("l4-svg");
+  var R = rng(11), pts = [];
+  for (var i = 0; i < 20; i++) pts.push([30 + R() * 340, 115 + R() * 60, R()]);
+  var PROCS = [
+    {label: "Left buried", left: 20, rock: "Sedimentary", t: "Safely buried", p: ["Deep in undisturbed sedimentary rock, fossils can last for hundreds of millions of years. But no one can see them until the rock is exposed."]},
+    {label: "Erosion", left: 7, rock: "Sedimentary", t: "Uncovered, then worn away", p: ["Erosion exposes fossils so people can find them. If no one collects a fossil in time, frost, rain and running water break it apart and wash the pieces away. Fossils that are found are saved; the rest are lost."]},
+    {label: "Heat and pressure", left: 3, rock: "Metamorphic", t: "Squeezed and heated", p: ["Deep burial or mountain building heats and squeezes the rock until it becomes metamorphic rock. Most fossils are stretched, crushed or erased. A few faint, warped shapes may remain."]},
+    {label: "Melting", left: 0, rock: "Igneous", t: "Melted into magma", p: ["If the rock sinks deep enough to melt, every fossil is destroyed. When the magma cools it becomes igneous rock, which holds no fossils."]}
+  ];
+  function draw(P, idx){
+    clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 210, fill: "var(--sky)"}, svg);
+    var rockCol = idx === 2 ? "var(--rock-dark)" : idx === 3 ? "var(--lava)" : "var(--soil-2)";
+    if (idx === 1) S("polygon", {points: "0,100 140,100 175,70 230,70 260,100 400,100 400,210 0,210", fill: "var(--soil)"}, svg);
+    else S("rect", {x: 0, y: 70, width: 400, height: 140, fill: "var(--soil)"}, svg);
+    if (idx === 2) {
+      S("path", {d: "M0,100 Q100,140 200,100 T400,100 L400,190 Q300,150 200,190 T0,190 Z", fill: rockCol, stroke: "var(--ink)"}, svg);
+    } else {
+      S("rect", {x: 0, y: 100, width: 400, height: 90, fill: rockCol, stroke: "var(--ink)"}, svg);
+    }
+    var keep = pts.slice().sort(function(a, b){ return a[2] - b[2]; }).slice(0, P.left);
+    keep.forEach(function(p){
+      if (idx === 2) S("ellipse", {cx: p[0], cy: p[1], rx: 9, ry: 3, fill: "var(--bone)", stroke: "var(--ink)"}, svg);
+      else { S("path", {d: "M" + (p[0] - 8) + "," + (p[1] + 4) + " Q" + p[0] + "," + (p[1] - 10) + " " + (p[0] + 8) + "," + (p[1] + 4) + " Z", fill: "var(--bone)", stroke: "var(--ink)"}, svg); }
+    });
+    if (idx === 1) for (var k = 0; k < 3; k++) arrow(svg, 120 + k * 80, 40, 110 + k * 80, 75, "var(--water)", 2.5);
+    label(svg, 200, 24, P.t);
+    $("l4-left").textContent = P.left + " of 20"; $("l4-rock").textContent = P.rock;
+    detail($("l4-detail"), P.t, P.p);
+  }
+  chipGroup($("l4-proc"), PROCS, function(P, i){ draw(P, i); }, 0);
+})();
+
+/* ---------- Lesson 5: Alberta rock column ---------- */
+(function(){
+  var svg = $("l5-svg");
+  var LAY = [
+    ["Gravel and till", "var(--sand)", "Ice Age, about 2.6 million to 13 000 years ago", "Mammoth tooth", "mammal", "Bones of mammoths, horses and bison have been found in sand and gravel pits around Edmonton. They show that animals that are now extinct here, or extinct everywhere, roamed Alberta during the Ice Age.", "Living and extinct organisms"],
+    ["Mudstone and coal", "var(--coal)", "Late Cretaceous, about 77 to 66 million years ago", "Fern and turtle", "plant", "Coal formed from thick mats of swamp plants. Fossil ferns, turtles and crocodile relatives point to a warm, wet climate on a coastal plain. Dinosaur bones are common in these layers.", "Past climate and environment"],
+    ["Dark shale", "var(--shale)", "Late Cretaceous, about 75 million years ago", "Ammonite", "ammonite", "Ammonites were squid‑like animals with coiled shells. They lived only in the sea, so these layers formed under an inland sea. Ammonites changed quickly and spread widely, so many kinds are index fossils. They all disappeared 66 million years ago.", "Index fossil and extinct organism"],
+    ["Sandstone with armoured dinosaur", "var(--sand)", "Early Cretaceous, about 110 million years ago", "Nodosaur", "dino", "Borealopelta, an armoured dinosaur, was found in rock that formed on the sea floor near today’s Fort McMurray. A land animal in sea rock tells a story: its body probably washed out to sea before it sank and was buried.", "Living and extinct organisms"],
+    ["Limestone reef", "var(--lime)", "Devonian, about 380 million years ago", "Coral", "coral", "Fossil corals and other reef builders show that a warm, shallow sea covered Alberta. Similar limestone with sea fossils now forms peaks in the Rocky Mountains, which shows the rock was pushed up from below sea level, a major geological event.", "Geological event and past environment"]
+  ];
+  function icon(g, kind, x, y){
+    if (kind === "ammonite") { S("circle", {cx: x, cy: y, r: 13, fill: "var(--bone)", stroke: "var(--ink)", "stroke-width": 1.5}, g); S("path", {d: "M" + x + "," + y + " m-8,0 a8,8 0 1,0 16,0 a5,5 0 1,0 -10,0 a2,2 0 1,0 4,0", fill: "none", stroke: "var(--ink)", "stroke-width": 1.5}, g); }
+    else if (kind === "coral") { for (var i = -2; i <= 2; i++) S("path", {d: "M" + (x + i * 5) + "," + (y + 12) + " L" + (x + i * 7) + "," + (y - 10), stroke: "var(--bone)", "stroke-width": 4, "stroke-linecap": "round"}, g); S("circle", {cx: x, cy: y, r: 15, fill: "none", stroke: "none"}, g); }
+    else if (kind === "plant") { S("path", {d: "M" + (x - 12) + "," + (y + 10) + " Q" + x + "," + (y - 16) + " " + (x + 12) + "," + (y - 12), stroke: "var(--veg)", "stroke-width": 3, fill: "none"}, g); for (var j = 0; j < 4; j++) S("ellipse", {cx: x - 6 + j * 5, cy: y + 2 - j * 5, rx: 5, ry: 2.5, fill: "var(--veg)"}, g); }
+    else if (kind === "mammal") { S("rect", {x: x - 12, y: y - 8, width: 24, height: 16, rx: 4, fill: "var(--bone)", stroke: "var(--ink)", "stroke-width": 1.5}, g); for (var k = -1; k <= 1; k++) S("line", {x1: x + k * 6, y1: y - 6, x2: x + k * 6, y2: y + 6, stroke: "var(--ink)"}, g); }
+    else { S("ellipse", {cx: x, cy: y, rx: 18, ry: 9, fill: "var(--bone)", stroke: "var(--ink)", "stroke-width": 1.5}, g); for (var m = -2; m <= 2; m++) S("circle", {cx: x + m * 6, cy: y - 3, r: 2, fill: "var(--ink)"}, g); }
+  }
+  var hh = 52, y0 = 30;
+  S("rect", {x: 0, y: 0, width: 400, height: 300, fill: "var(--sky)"}, svg);
+  S("text", {x: 380, y: 20, "class": "mlbl", "text-anchor": "end"}, svg, "younger ↑");
+  S("text", {x: 380, y: 296, "class": "mlbl", "text-anchor": "end"}, svg, "older ↓");
+  LAY.forEach(function(L, i){
+    var y = y0 + i * hh;
+    S("rect", {x: 20, y: y, width: 360, height: hh, fill: L[1], stroke: "var(--ink)"}, svg);
+    var t = S("text", {x: 30, y: y + 20, "class": "small"}, svg, L[0]); if (i === 1) t.style.fill = "var(--snow)"; else t.style.fill = "var(--ink)";
+    var g = S("g", null, svg);
+    S("circle", {cx: 300, cy: y + hh / 2, r: 20, fill: "var(--surface)", stroke: "var(--line)", "stroke-width": 1.5}, g);
+    icon(g, L[4], 300, y + hh / 2);
+    tappable(g, L[3] + " in " + L[0].toLowerCase(), function(){
+      Array.prototype.forEach.call(svg.querySelectorAll(".tap"), function(n){ n.classList.remove("on"); });
+      g.classList.add("on");
+      detail($("l5-detail"), L[3], [L[5], "Age: " + L[2] + "."], L[6]);
+    });
+  });
+  detail($("l5-detail"), null, ["Tap a fossil to read its clue. Start at the bottom, the oldest layer."]);
+})();
+
+/* ---------- Lesson 6: horse fossils ---------- */
+var HORSES = [
+  ["Eohippus (Hyracotherium)", 55, 0.4, 4, "short", "Forest", "About fox‑sized. Four toes on each front foot and three on each back foot, with pads. Short teeth for soft leaves and fruit."],
+  ["Mesohippus", 35, 0.6, 3, "short", "Woodland", "Larger, with three toes on each foot. The middle toe carries more of the weight."],
+  ["Merychippus", 15, 1.0, 3, "tall", "Grassland", "Pony‑sized. Three toes, but the side toes no longer touch the ground. Tall teeth for chewing gritty grass."],
+  ["Pliohippus", 8, 1.25, 1, "tall", "Grassland", "Mostly one toe per foot, with tiny side toes. Long legs suited to running on open plains."],
+  ["Equus (modern horse)", 0, 1.5, 1, "tall", "Grassland", "One toe per foot, ending in a hoof. Two thin splint bones are what remain of the side toes."]
+];
+(function(){
+  var svg = $("l6-svg");
+  function draw(i){
+    var H = HORSES[i]; clear(svg);
+    S("rect", {x: 0, y: 0, width: 400, height: 220, fill: "var(--sky)"}, svg);
+    S("rect", {x: 0, y: 190, width: 400, height: 30, fill: H[5] === "Forest" ? "var(--veg-2)" : "var(--sand)"}, svg);
+    var sc = H[2] / 1.5, bw = 120 * sc, bh = 46 * sc, legs = 110 * sc, cx = 120, by = 190 - legs - bh / 2;
+    S("ellipse", {cx: cx, cy: by, rx: bw / 2, ry: bh / 2, fill: "var(--rock-dark)"}, svg);
+    S("line", {x1: cx + bw / 2 - 6, y1: by - 4, x2: cx + bw / 2 + 22 * sc, y2: by - 40 * sc, stroke: "var(--rock-dark)", "stroke-width": 16 * sc + 4, "stroke-linecap": "round"}, svg);
+    S("ellipse", {cx: cx + bw / 2 + 34 * sc, cy: by - 44 * sc, rx: 20 * sc + 4, ry: 9 * sc + 3, fill: "var(--rock-dark)"}, svg);
+    [-0.35, -0.22, 0.25, 0.38].forEach(function(f){ S("line", {x1: cx + f * bw, y1: by + 4, x2: cx + f * bw, y2: 190, stroke: "var(--rock-dark)", "stroke-width": 7 * sc + 2}, svg); });
+    S("line", {x1: 30, y1: 190, x2: 30, y2: 34, stroke: "var(--muted)", "stroke-width": 1}, svg);
+    S("text", {x: 34, y: 44, "class": "mlbl"}, svg, "1.5 m");
+    /* foot diagram */
+    var fx = 320, fy = 60;
+    S("rect", {x: 260, y: 30, width: 120, height: 150, rx: 8, fill: "var(--surface)", stroke: "var(--line)"}, svg);
+    S("text", {x: 320, y: 48, "text-anchor": "middle", "class": "mlbl"}, svg, "front foot");
+    S("rect", {x: fx - 6, y: fy, width: 12, height: 50, rx: 5, fill: "var(--bone)", stroke: "var(--ink)"}, svg);
+    var toes = H[3], offs = toes === 4 ? [-24, -8, 8, 24] : toes === 3 ? [-18, 0, 18] : [0];
+    offs.forEach(function(o){
+      var mid = o === 0 || (toes === 4 && Math.abs(o) === 8);
+      var len = toes === 3 && i === 2 && !mid ? 30 : 50;
+      S("rect", {x: fx + o - 5, y: fy + 50, width: 10, height: len, rx: 4, fill: "var(--bone)", stroke: "var(--ink)"}, svg);
+    });
+    if (toes === 1) { S("rect", {x: fx - 14, y: fy + 30, width: 5, height: 26, rx: 2, fill: "var(--bone)", stroke: "var(--ink)"}, svg); S("rect", {x: fx + 9, y: fy + 30, width: 5, height: 26, rx: 2, fill: "var(--bone)", stroke: "var(--ink)"}, svg); S("rect", {x: fx - 10, y: fy + 96, width: 20, height: 10, rx: 3, fill: "var(--ink)"}, svg); }
+    S("text", {x: 320, y: 172, "text-anchor": "middle", "class": "mlbl"}, svg, i === 2 ? "3 toes (2 lifted)" : toes + (toes === 1 ? " toe" : " toes"));
+    $("l6-out").textContent = H[1] === 0 ? "today" : H[1] + " Ma";
+    var st = $("l6-stats"); clear(st);
+    [["Fossil", H[0]], ["Shoulder height", "about " + H[2] + " m"], ["Front toes", "" + H[3]], ["Teeth", H[4]], ["Habitat", H[5]]].forEach(function(p){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, p[0])); d.appendChild(el("b", null, p[1])); st.appendChild(d); });
+    detail($("l6-detail"), H[0], [H[6], i > 0 ? "Compared with the oldest horse: " + fmt(H[2] / HORSES[0][2], 1) + " times taller, with " + H[3] + " front toe" + (H[3] > 1 ? "s" : "") + " instead of 4." : "This is the oldest horse relative in the series. Move the slider to compare."]);
+  }
+  $("l6-range").addEventListener("input", function(e){ draw(+e.target.value); });
+  draw(0);
+})();
+
+/* ---------- Lesson 7: badlands map ---------- */
+(function(){
+  var svg = $("l7-svg");
+  S("rect", {x: 0, y: 0, width: 400, height: 300, fill: "var(--sky)"}, svg);
+  S("polygon", {points: "110,10 300,10 300,290 170,290 170,260 150,230 130,180 110,150 90,110 110,80", fill: "var(--surface)", stroke: "var(--ink)", "stroke-width": 1.5}, svg);
+  S("path", {d: "M150,190 Q190,195 215,215 T290,250", fill: "none", stroke: "var(--water)", "stroke-width": 3}, svg);
+  S("text", {x: 236, y: 222, "class": "small"}, svg, "Red Deer River");
+  S("circle", {cx: 210, cy: 160, r: 5, fill: "var(--ink)"}, svg); S("text", {x: 218, y: 164, "class": "small"}, svg, "Edmonton");
+  var SITES = [
+    [205, 215, "Drumheller", "Drumheller and the Royal Tyrrell Museum", ["Drumheller sits in a badlands valley cut by the Red Deer River. Rock layers here, about 71 to 66 million years old, hold dinosaur bones and coal seams.", "The Royal Tyrrell Museum of Palaeontology opened near Drumheller in 1985. It is named after Joseph Burr Tyrrell, who found a skull of Albertosaurus nearby in 1884."]],
+    [268, 248, "Dinosaur PP", "Dinosaur Provincial Park", ["Further down the Red Deer River, this park protects some of the richest dinosaur fossil beds on Earth. The rocks, about 77 to 75 million years old, have given scientists dozens of dinosaur species and hundreds of skeletons.", "It became a provincial park in 1955 and a UNESCO World Heritage Site in 1979. Collecting fossils in the park is not allowed."]],
+    [240, 62, "Fort McMurray", "Borealopelta near Fort McMurray", ["In 2011, a heavy equipment operator at an oil sands mine uncovered an armoured dinosaur in rock about 110 million years old. Its skin and armour were preserved in three dimensions.", "It shows that fossils can turn up far from the badlands, wherever old sedimentary rock is dug or worn away."]],
+    [150, 120, "Grande Prairie", "Pipestone Creek near Grande Prairie", ["A bonebed here holds the bones of many horned dinosaurs called Pachyrhinosaurus. So many in one place suggests a herd died together, perhaps in a flood."]]
+  ];
+  SITES.forEach(function(s){
+    var g = S("g", null, svg);
+    S("circle", {cx: s[0], cy: s[1], r: 11, fill: "var(--g8)", stroke: "var(--surface)", "stroke-width": 2}, g);
+    S("text", {x: s[0], y: s[1] + 4, "text-anchor": "middle", "font-size": "11", "font-weight": "700"}, g, "+").style.fill = "var(--surface)";
+    label(svg, s[0], s[1] - 16, s[2], "small");
+    tappable(g, s[3], function(){
+      Array.prototype.forEach.call(svg.querySelectorAll(".tap"), function(n){ n.classList.remove("on"); });
+      g.classList.add("on"); detail($("l7-detail"), s[3], s[4]);
+    });
+  });
+  detail($("l7-detail"), "Les mauvaises terres à traverser", ["Tap a site on the map. Most of Alberta’s famous fossil beds lie along the Red Deer River, where erosion has cut deep into the rock."]);
+  var TL = [
+    ["1793", "Peter Fidler, a Hudson’s Bay Company surveyor, is often credited with the first written record of large bones near the Red Deer River."],
+    ["1884", "Joseph Burr Tyrrell of the Geological Survey of Canada, searching for coal, finds a skull of the meat‑eater later named Albertosaurus."],
+    ["1910s", "The “Great Canadian Dinosaur Rush”: teams from the American Museum of Natural History and the Geological Survey of Canada collect skeletons along the Red Deer River."],
+    ["1955", "Dinosaur Provincial Park is created."],
+    ["1979", "Dinosaur Provincial Park becomes a UNESCO World Heritage Site."],
+    ["1985", "The Royal Tyrrell Museum of Palaeontology opens near Drumheller."],
+    ["2011", "Borealopelta is found in an oil sands mine near Fort McMurray."]
+  ];
+  TL.forEach(function(t){ var li = el("li"); li.appendChild(el("span", {"class": "yr"}, t[0])); li.appendChild(el("span", null, t[1])); $("l7-time").appendChild(li); });
+})();
+
+/* ---------- Bench 1: time scale converter ---------- */
+(function(){
+  function calc(){
+    var L = parseFloat($("b1-len").value), A = parseFloat($("b1-age").value), box = $("b1-out"); clear(box);
+    if (!(L > 0) || !(A >= 0) || A > 4600) { box.appendChild(el("p", {"class": "fb no"}, "Enter a strip length above 0 and an age from 0 to 4600 Ma.")); return; }
+    var f = A / 4600;
+    [["Fraction of history", fmt(f, 4)], ["Distance from today’s end", sig(f * L) + " m"], ["Calendar date", calendarText(A)]].forEach(function(p){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, p[0])); d.appendChild(el("b", null, p[1])); box.appendChild(d); });
+  }
+  $("b1-len").addEventListener("input", calc); $("b1-age").addEventListener("input", calc); calc();
+  var Q = null;
+  store.b1 = store.b1 || 0;
+  function newQ(){
+    var E = pick(EVENTS.filter(function(e){ return e[0] >= 1; })), L = pick([10, 46, 100, 200, 460]);
+    var kind = pick(["strip", "days"]);
+    if (kind === "strip") Q = {ans: E[0] / 4600 * L, unit: "m", text: "On a " + L + " m strip, how far from the “today” end is this event: " + E[1].toLowerCase() + " (" + grp(E[0]) + " Ma)?", work: E[0] + " ÷ 4600 × " + L + " = " + sig(E[0] / 4600 * L) + " m"};
+    else Q = {ans: E[0] / 4600 * 365, unit: "days", text: "On the one‑year calendar, how many days before midnight on December 31 is this event: " + E[1].toLowerCase() + " (" + grp(E[0]) + " Ma)?", work: E[0] + " ÷ 4600 × 365 = " + sig(E[0] / 4600 * 365) + " days"};
+    detail($("b1-q"), "Question", [Q.text, "Answer in " + Q.unit + ". Within 5% counts as correct."]);
+    $("b1-ans").value = ""; $("b1-fb").textContent = ""; $("b1-fb").className = "fb";
+  }
+  $("b1-check").addEventListener("click", function(){
+    var v = parseFloat($("b1-ans").value), fb = $("b1-fb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    var ok = Math.abs(v - Q.ans) <= Math.max(0.05 * Q.ans, 0.01);
+    if (ok) { store.b1++; save(); }
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + Q.work + "." + (ok ? " Solved in this browser: " + store.b1 + "." : "");
+    fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $("b1-new").addEventListener("click", newQ); newQ();
+  /* ordering */
+  var set = [];
+  function newSet(){
+    var pool = shuffle(EVENTS), chosen = [], ages = {};
+    for (var i = 0; i < pool.length && chosen.length < 5; i++) { if (!ages[pool[i][0]]) { ages[pool[i][0]] = 1; chosen.push(pool[i]); } }
+    set = shuffle(chosen); drawSet(); $("b1-ofb").textContent = "";
+  }
+  function drawSet(){
+    var box = $("b1-list"); clear(box);
+    set.forEach(function(E, i){
+      var r = el("div", {"class": "srow"});
+      var up = el("button", {"class": "mvbtn", type: "button", "aria-label": "Move " + E[1] + " up"}, "↑");
+      var dn = el("button", {"class": "mvbtn", type: "button", "aria-label": "Move " + E[1] + " down"}, "↓");
+      up.disabled = i === 0; dn.disabled = i === set.length - 1;
+      up.addEventListener("click", function(){ var t = set[i - 1]; set[i - 1] = set[i]; set[i] = t; drawSet(); box.children[i - 1].querySelector("button").focus(); });
+      dn.addEventListener("click", function(){ var t = set[i + 1]; set[i + 1] = set[i]; set[i] = t; drawSet(); box.children[i + 1].querySelectorAll("button")[1].focus(); });
+      r.appendChild(up); r.appendChild(el("span", null, E[1])); r.appendChild(dn); box.appendChild(r);
+    });
+  }
+  $("b1-ocheck").addEventListener("click", function(){
+    var ok = set.every(function(E, i){ return i === 0 || set[i - 1][0] > E[0]; });
+    var right = set.slice().sort(function(a, b){ return b[0] - a[0]; });
+    $("b1-ofb").textContent = ok ? "Correct, oldest to youngest." : "Not yet. Correct order: " + right.map(function(E){ return E[1] + " (" + (E[0] >= 1 ? grp(E[0]) + " Ma" : grp(Math.round(E[0] * 1e6)) + " years ago") + ")"; }).join(", ") + ".";
+    $("b1-ofb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("b1-onew").addEventListener("click", newSet); newSet();
+})();
+
+/* ---------- Bench 2: layer puzzles ---------- */
+(function(){
+  var P, picked, answer, tries = 0;
+  store.b2 = store.b2 || 0;
+  function newP(){
+    var n = 3 + Math.floor(Math.random() * 3), rocks = shuffle([0, 1, 2, 3, 4, 5]).slice(0, n);
+    var type = Math.random() < 0.5 ? "dike" : "fault", k = 1 + Math.floor(Math.random() * n);
+    if (k < 2) k = 2;
+    P = {n: n, rocks: rocks, cut: {type: type, k: k}}; picked = []; answer = correctOrder(P);
+    render(); $("b2-fb").textContent = ""; $("b2-fb").className = "fb";
+  }
+  function render(){ drawFace($("b2-svg"), P, function(p){ if (picked.indexOf(p.id) < 0 && picked.length < answer.length) { picked.push(p.id); render(); } }, picked); showOrder($("b2-order"), picked); }
+  $("b2-undo").addEventListener("click", function(){ picked.pop(); render(); });
+  $("b2-check").addEventListener("click", function(){
+    var fb = $("b2-fb");
+    if (picked.length < answer.length) { fb.textContent = "Tap all " + answer.length + " parts first."; fb.className = "fb no"; return; }
+    tries++; $("b2-tries").textContent = tries;
+    var ok = picked.join() === answer.join(), c = P.cut.type === "dike" ? "dike D" : "fault F";
+    if (ok) { store.b2++; save(); $("b2-score").textContent = store.b2; }
+    var why = "The " + c + " cuts layers 1 to " + P.cut.k + ", so it is younger than them" + (P.cut.k < P.n ? ", and layer " + (P.cut.k + 1) + " lies across it, so it is older than layer " + (P.cut.k + 1) + "." : ". It reaches the top, so it is the youngest part.");
+    fb.textContent = (ok ? "Correct. " : "Not quite. The order is " + answer.join(", ") + ". ") + why;
+    fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $("b2-new").addEventListener("click", newP);
+  $("b2-score").textContent = store.b2;
+  newP();
+})();
+
+/* ---------- Bench 3: fossil factory ---------- */
+(function(){
+  var ORGS = [["clam", "Clam (hard shell)"], ["bone", "Dinosaur (bones)"], ["log", "Tree trunk (wood)"], ["fern", "Fern leaf"], ["jelly", "Jellyfish (soft body)"], ["insect", "Insect"], ["track", "Dinosaur footprint in mud"]];
+  var PLACES = [["river", "Muddy river bank or delta"], ["deep", "Still, low‑oxygen lake or sea bottom"], ["hill", "Dry, open hilltop"], ["resin", "Sticky tree resin"]];
+  ORGS.forEach(function(o){ $("b3-org").appendChild(el("option", {value: o[0]}, o[1])); });
+  PLACES.forEach(function(p){ $("b3-place").appendChild(el("option", {value: p[0]}, p[1])); });
+  store.b3 = store.b3 || {};
+  function result(o, p, b, t){
+    if (p === "hill") return [0, "No fossil", "Out in the open, scavengers, decay, sun, wind and rain destroy the remains before they can be buried. Hilltops are being worn away, not built up with sediment."];
+    if (p === "resin") {
+      if (o !== "insect") return [0, "No fossil", "Resin traps only small things such as insects, seeds and spiders. This is too big."];
+      if (t === "100") return [30, "Not a fossil yet", "The insect is trapped in sticky resin. Over long periods the resin hardens. After about 100 years it is still soft and young."];
+      return [85, "Preserved in amber", "The resin hardened into amber with the insect sealed inside. Amber fossils keep fine details such as wings and hairs.", "amber"];
+    }
+    if (b === "slow" && o !== "clam" && o !== "bone" && o !== "log") return [5, "Very unlikely", "With slow burial, soft parts and footprints are lost to decay, scavengers or erosion before sediment covers them."];
+    if (b === "slow") return [20, "Unlikely", "Slow burial gives scavengers and decay time to scatter or break the remains. A few hard pieces might survive."];
+    if (o === "track") {
+      if (p === "deep") return [0, "No fossil", "Dinosaurs did not walk on deep lake or sea bottoms, so no tracks are made here."];
+      if (t === "100") return [30, "Not a fossil yet", "The dried footprint is covered by new mud, but the sediment has not turned to rock yet."];
+      return [55, "Trace fossil", "The footprint dried, was covered by a new layer of sediment and both turned to rock. It shows how the dinosaur walked, not what its body looked like.", "trace"];
+    }
+    if (t === "100") return [30, "Not a fossil yet", "The remains are buried, but after only 100 years they are still mostly the original material. Fossils usually take thousands to millions of years."];
+    if (o === "jelly") return p === "deep" ? [10, "Rare impression", "A soft body leaves a fossil only in very rare conditions. Fine mud with little oxygen, as in the Burgess Shale, can keep a faint film or impression.", "film"] : [2, "Almost certainly no fossil", "Jellyfish have no hard parts. In a busy river they rot or are torn apart."];
+    if (o === "fern" || o === "insect") return [p === "deep" ? 60 : 40, "Carbon film (compressed)", "The thin " + (o === "fern" ? "leaf" : "insect") + " was squashed under layers of fine mud. Heat and pressure drove off liquids and gases, leaving a dark carbon film.", "film"];
+    if (o === "clam") {
+      if (p === "river") return [70, "Mold and cast", "The shell was pressed into mud. Later, acidic groundwater dissolved it and left a hollow mold. Minerals filled the mold to make a cast.", "cast"];
+      return [75, "Mineralized shell", "Minerals in the water filled and slowly replaced the shell, keeping its shape in stone.", "mineral"];
+    }
+    if (t === "1e4") return [45, "Partly mineralized", "Minerals have started to fill the tiny spaces in the " + (o === "log" ? "wood" : "bone") + ". A full stony fossil usually takes much longer.", "mineral"];
+    return [70, o === "log" ? "Petrified wood (mineralized)" : "Mineralized bone", "Groundwater carried dissolved minerals into the tiny spaces in the " + (o === "log" ? "wood" : "bone") + " and hardened there. The fossil keeps the shape and even the fine structure of the original.", "mineral"];
+  }
+  function run(){
+    var r = result($("b3-org").value, $("b3-place").value, $("b3-burial").value, $("b3-time").value);
+    $("b3-bar").style.width = r[0] + "%";
+    if (r[3]) { store.b3[r[3]] = 1; save(); }
+    var made = ["mineral", "film", "cast", "trace", "amber"].filter(function(k){ return store.b3[k]; }).length;
+    $("b3-made").textContent = made + " of 5";
+    detail($("b3-out"), r[1], [r[2], "Chance of a fossil in this model: " + (r[0] >= 60 ? "good" : r[0] >= 30 ? "fair" : r[0] > 0 ? "poor" : "none") + "."]);
+  }
+  ["b3-org", "b3-place", "b3-burial", "b3-time"].forEach(function(id){ $(id).addEventListener("change", run); });
+  run();
+})();
+
+/* ---------- Bench 4: change detective ---------- */
+(function(){
+  var SETS = [
+    {label: "Horses", head: ["Fossil", "Age (Ma)", "Height (m)", "Front toes", "Teeth"], rows: HORSES.map(function(h){ return [h[0], h[1] === 0 ? "today" : "" + h[1], "" + h[2], "" + h[3], h[4]]; }), src: "Rounded values from published descriptions.",
+      qs: [["How did shoulder height change over time?", ["It increased", "It decreased", "It stayed the same"], 0, "From about 0.4 m to about 1.5 m: horses became larger."],
+           ["How did the number of front toes change?", ["It decreased from 4 to 1", "It increased from 1 to 4", "It stayed at 3"], 0, "Older fossils have more toes. Modern horses stand on one."],
+           ["Which change fits a move from forest to grassland?", ["Taller teeth for chewing gritty grass", "Shorter legs", "More toes for soft ground", "Smaller body"], 0, "Grass is tough and gritty. Tall teeth last longer as they wear down."]]},
+    {label: "Whales", head: ["Fossil", "Age (Ma)", "Hind legs", "Lived", "Nostril position"], rows: [["Pakicetus", "50", "Full legs", "Land, near water", "Tip of snout"], ["Ambulocetus", "49", "Large legs, webbed feet", "Shallow water and land", "Tip of snout"], ["Rodhocetus", "47", "Shorter legs", "Mostly water", "Moved back a little"], ["Dorudon", "40", "Tiny legs, not for walking", "Ocean only", "Farther back"], ["Modern whale", "today", "Small hidden hip bones", "Ocean only", "Top of head (blowhole)"]], src: "Rounded dates and simplified descriptions from published sources.",
+      qs: [["What happened to the hind legs over time?", ["They became smaller", "They became larger", "They stayed the same"], 0, "From full walking legs to tiny bones hidden inside the body."],
+           ["What does the nostril data show?", ["Nostrils moved toward the top of the head", "Nostrils moved to the tip of the snout", "There was no change"], 0, "A blowhole on top lets a whale breathe without lifting its head out of the water."],
+           ["Which evidence best shows whales came from land animals?", ["Older fossils have legs for walking", "Modern whales live in the ocean", "Whales are large", "Whales eat fish"], 0, "The oldest fossils in the series have full legs, and modern whales still have small hip bones."]]},
+    {label: "Snails (practice data)", head: ["Layer", "Depth", "Shell height (mm)", "Spines", "Shell wall"], rows: [["Layer A", "Deepest", "8", "None", "Thin"], ["Layer B", "Deep", "10", "Few", "Thin"], ["Layer C", "Middle", "13", "Some", "Thicker"], ["Layer D", "Shallow", "15", "Many", "Thick"]], src: "Made‑up practice data. Not a real species.",
+      qs: [["Which layer has the oldest snail fossils?", ["Layer A, the deepest", "Layer D, the shallowest", "They are all the same age"], 0, "By superposition, the deepest undisturbed layer is oldest."],
+           ["Describe the change in the shells from older to younger layers.", ["Taller, with more spines and thicker walls", "Shorter, with fewer spines", "No change"], 0, "Each feature changes in the same direction from Layer A to Layer D."],
+           ["Which extra evidence would help most to explain the change?", ["Fossils of predators that crush shells in the same layers", "The colour of the rock", "The weather today", "How many people found the fossils"], 0, "Spines and thick walls protect against crushing predators. Fossils of those predators would support that idea."]]}
+  ];
+  var cur = 0, qi = 0;
+  function show(){
+    var D = SETS[cur], t = $("b4-table"); clear(t);
+    var hr = el("tr"); D.head.forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+    D.rows.forEach(function(r){ var tr = el("tr"); r.forEach(function(c){ tr.appendChild(el("td", null, c)); }); t.appendChild(tr); });
+    $("b4-src").textContent = D.src;
+    var Q = D.qs[qi]; detail($("b4-q"), "Question " + (qi + 1) + " of " + D.qs.length, [Q[0]]);
+    var box = $("b4-opts"); clear(box); $("b4-fb").textContent = ""; $("b4-fb").className = "fb";
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button"}, Q[1][i]); b.dataset.i = i;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(box.children, function(x){ x.disabled = true; if (+x.dataset.i === Q[2]) x.classList.add("right"); });
+        if (i !== Q[2]) b.classList.add("wrong");
+        $("b4-fb").textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3]; $("b4-fb").className = "fb " + (i === Q[2] ? "ok" : "no");
+      });
+      box.appendChild(b);
+    });
+  }
+  $("b4-next").addEventListener("click", function(){ qi = (qi + 1) % SETS[cur].qs.length; show(); });
+  chipGroup($("b4-sets"), SETS, function(d, i){ cur = i; qi = 0; show(); }, 0);
+})();
+
+/* ---------- Bench 5: research notebook ---------- */
+(function(){
+  var TOPICS = ["Joseph Burr Tyrrell and Albertosaurus (1884)", "The Great Canadian Dinosaur Rush (1910s)", "Dinosaur Provincial Park", "The Royal Tyrrell Museum", "Borealopelta, the nodosaur from Fort McMurray", "The Pachyrhinosaurus bonebed near Grande Prairie", "A recent badlands discovery I found"];
+  var PROMPTS = [["what", "What was found, and what kind of fossil is it?"], ["who", "Who found it, when and how?"], ["rock", "Which rock layer was it in, and how old is that layer?"], ["tells", "What does it tell us about Earth’s history: living things, environment or climate, or geological events?"], ["erosion", "How did erosion help people find it, and why must fossils be collected before erosion destroys them?"], ["sources", "My two sources"]];
+  store.b5 = store.b5 || {t: 0};
+  TOPICS.forEach(function(t, i){ $("b5-topic").appendChild(el("option", {value: i}, t)); });
+  $("b5-topic").value = store.b5.t || 0;
+  function build(){
+    var box = $("b5-fields"); clear(box); var t = $("b5-topic").value; store.b5[t] = store.b5[t] || {};
+    PROMPTS.forEach(function(p){
+      var id = "b5-" + p[0], lab = el("label", {"class": "field", "for": id}, p[1]), ta = el("textarea", {id: id});
+      ta.value = store.b5[t][p[0]] || "";
+      ta.addEventListener("input", function(){ store.b5[t][p[0]] = ta.value; save(); });
+      box.appendChild(lab); box.appendChild(ta);
+    });
+  }
+  $("b5-topic").addEventListener("change", function(){ store.b5.t = $("b5-topic").value; save(); build(); });
+  build();
+})();
+
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "Kind of fossil", bins: ["Mineralized", "Compressed (carbon film)", "Mold or cast", "Trace fossil"], items: [
+      ["Petrified wood with tree rings in stone", 0, "Minerals filled the wood’s tiny spaces."],
+      ["A dark, flat outline of a fern in shale", 1, "Pressure left a thin film of carbon."],
+      ["A dinosaur footprint in sandstone", 3, "It shows what an animal did, not its body."],
+      ["A stony dinosaur leg bone, heavy as rock", 0, "Minerals filled and hardened the bone."],
+      ["A hollow in rock in the shape of a shell", 2, "The shell dissolved and left a mold."],
+      ["Rock that filled a shell‑shaped hollow", 2, "That is a cast."],
+      ["Worm burrows in an old mudstone", 3, "Burrows are traces of behaviour."],
+      ["A thin black film of a leaf in coal‑bearing rock", 1, "Compressed plant material."],
+      ["A fossil nest with eggs", 3, "Nests show behaviour, so they are trace fossils."],
+      ["Fossil coral turned to stone", 0, "Minerals replaced and filled the coral."],
+      ["Fossil dung (a coprolite)", 3, "Dung is a trace of what an animal did."],
+      ["The imprint of a trilobite’s body in mudstone", 2, "An impression of the body shape: a mold."]
+    ]},
+    {label: "Older or younger?", bins: ["Older", "Younger"], items: [
+      ["The bottom layer in undisturbed rock", 0, "Superposition: the bottom layer was laid down first."],
+      ["A dike that cuts through three layers, compared with those layers", 1, "Cross‑cutting: it is younger than what it cuts."],
+      ["A layer resting on top of a fault that it covers, compared with the fault", 1, "The layer was laid down after the fault formed."],
+      ["Layers cut by a fault, compared with the fault", 0, "The layers had to exist before they could be broken."],
+      ["The top layer in undisturbed rock", 1, "Superposition: last laid down."],
+      ["Trilobite fossils, compared with dinosaur fossils", 0, "Trilobites lived in the Paleozoic era, before the dinosaurs."],
+      ["Mammoth bones in Ice Age gravel, compared with Albertosaurus bones", 1, "Mammoths lived in the last few million years. Albertosaurus lived about 70 million years ago."],
+      ["Flat layers that are tilted, compared with the tilting", 0, "Layers are laid down flat, then tilted later."],
+      ["A layer with ammonites, compared with a layer of Ice Age gravel above it", 0, "It is deeper, and ammonites disappeared 66 million years ago."],
+      ["A river valley cut into the badlands, compared with the rock layers it cuts", 1, "The valley was carved after the layers formed."]
+    ]},
+    {label: "What the fossil tells us", bins: ["Past climate or environment", "Geological event", "Living or extinct organism"], items: [
+      ["Coral fossils in limestone show a warm, shallow sea", 0, "Corals need warm, clear, shallow water."],
+      ["Sea shells high on a Rocky Mountain peak", 1, "The rock formed under the sea and was pushed up."],
+      ["An Albertosaurus skull shows a meat‑eater no longer alive", 2, "It tells us about an extinct organism."],
+      ["Coal seams formed from swamp plants", 0, "Coal points to a wet, swampy environment."],
+      ["Many kinds of fossils suddenly stop at one layer", 1, "A sudden loss marks a mass extinction event."],
+      ["Fossils of turtles and crocodile relatives in Alberta rock", 0, "These animals point to a warm climate."],
+      ["Fossil leaves of a tree still alive today, the dawn redwood", 2, "Fossils can show living species too."],
+      ["Layers of volcanic ash between fossil beds", 1, "Ash layers record eruptions."],
+      ["Early horse fossils with four toes", 2, "They show an ancestor of a living organism."],
+      ["Fossil ferns and palm‑like plants in Cretaceous rock", 0, "Plants that need warmth point to a mild climate."]
+    ]},
+    {label: "Fossil or not?", bins: ["Likely to fossilize", "Unlikely to fossilize"], items: [
+      ["A clam buried quickly in fine mud", 0, "Hard shell plus fast burial."],
+      ["A jellyfish washed up on a sunny beach", 1, "No hard parts, and it is exposed."],
+      ["A fish that sinks to a still, low‑oxygen lake bottom", 0, "Low oxygen slows decay and fine mud buries it."],
+      ["A deer that dies on an open hillside", 1, "Scavengers and weather destroy it before burial."],
+      ["A tree buried in a flood by mineral‑rich sediment", 0, "Fast burial and minerals can petrify wood."],
+      ["A worm on a forest floor", 1, "Soft body, no burial."],
+      ["Dinosaur bones covered by a river flood", 0, "Fast burial in sediment protects them."],
+      ["A fossil bed heated until the rock melts", 1, "Melting destroys every fossil."],
+      ["An insect trapped in sticky tree resin", 0, "Resin can harden into amber."],
+      ["A leaf that falls on dry ground and dries out", 1, "It crumbles or decays before it is buried."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Deep time", "The huge span of Earth’s history, about 4.6 billion years."],
+    ["Geological time scale", "A chart that splits Earth’s history into time intervals to show when major geological events happened and when life forms appeared and disappeared."],
+    ["Eon", "The largest interval on the geological time scale, such as the Phanerozoic eon."],
+    ["Era", "A division of an eon, such as the Mesozoic era, the age of dinosaurs."],
+    ["Period", "A division of an era, such as the Cretaceous period."],
+    ["Ma", "Short for millions of years ago. 66 Ma means 66 million years ago."],
+    ["Precambrian", "The informal name for all of Earth’s history before about 539 million years ago."],
+    ["Mass extinction", "A time when a large share of Earth’s species disappear in a short time. There have been five big ones."],
+    ["Extinct", "When no members of a species are left alive."],
+    ["Sedimentary rock", "Rock formed from layers of sediment, such as sand, mud or shells, that are pressed and cemented together."],
+    ["Relative dating", "Putting rock layers or events in order from older to younger, without giving an age in years."],
+    ["Absolute dating", "Finding an age in years, for example by measuring natural radioactive elements in volcanic ash."],
+    ["Superposition", "In undisturbed layers, the oldest is at the bottom and the youngest is at the top."],
+    ["Original horizontality", "Sediment layers are laid down flat. Tilted or folded layers were moved later."],
+    ["Cross‑cutting", "A feature that cuts through rock layers is younger than the layers it cuts."],
+    ["Fault", "A crack in rock where the two sides have moved past each other."],
+    ["Dike", "A sheet of magma that pushed up through rock layers and cooled."],
+    ["Fossil", "The preserved remains or traces of a living thing from long ago."],
+    ["Fossil record", "All the fossils ever found, together with the rock layers they came from."],
+    ["Mineralized fossil", "A fossil in which minerals filled or replaced the original bone, shell or wood."],
+    ["Petrified wood", "Wood that has been mineralized and turned to stone."],
+    ["Carbon film", "A thin dark layer of carbon left when a leaf or soft body is compressed in rock."],
+    ["Mold", "A hollow in rock left when buried remains dissolve away."],
+    ["Cast", "A fossil formed when minerals fill a mold."],
+    ["Trace fossil", "Evidence of what an organism did, such as a footprint, burrow, nest or dung."],
+    ["Amber", "Hardened tree resin that can trap and preserve small organisms such as insects."],
+    ["Index fossil", "A fossil of an organism that was common and widespread but lived for a short time, used to match layers of the same age."],
+    ["Ammonite", "An extinct sea animal with a coiled shell, related to squid. Many kinds are index fossils."],
+    ["Paleontologist", "A scientist who studies fossils to learn about ancient life."],
+    ["Evolution", "Change in living things over many generations, shown by evidence such as fossils."],
+    ["Tiktaalik", "A 375 million year old fossil from Nunavut with features of both fish and four‑legged animals."],
+    ["Badlands", "Dry, steep, gullied land with little plant cover. In Alberta, “les mauvaises terres à traverser.”"],
+    ["Hoodoo", "A tall column of soft rock protected by a harder cap, common in the badlands."],
+    ["Dinosaur Provincial Park", "A UNESCO World Heritage Site on the Red Deer River with some of the richest dinosaur fossil beds on Earth."],
+    ["Royal Tyrrell Museum", "Alberta’s museum of palaeontology near Drumheller, named after Joseph Burr Tyrrell."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){
+    list = [];
+    CARDS.forEach(function(c, j){ var m = store.cards[j]; if (filter === "all" || (filter === "known" && m === "known") || (filter === "learning" && m !== "known")) list.push(j); });
+    if (i >= list.length) i = 0;
+    draw();
+  }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){
+    if (!list.length) return;
+    store.cards[list[i]] = v; save();
+    var before = list.length; flipped = false;
+    if (filter === "all") { i = (i + 1) % list.length; draw(); }
+    else { build(); if (list.length === before && list.length) { i = (i + 1) % list.length; draw(); } }
+  }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["About how old is Earth?", ["4.6 billion years", "4.6 million years", "6000 years", "66 million years"], 0, "Scientists estimate Earth formed about 4.6 billion years ago."],
+    ["What does the geological time scale show?", ["Earth’s history split into intervals, with major geological events and when life forms appeared and disappeared", "The depth of each rock layer", "Today’s weather patterns", "The ages of living animals"], 0, "It organizes Earth’s history into eons, eras and periods."],
+    ["Which list goes from largest interval to smallest?", ["Eon, era, period", "Period, era, eon", "Era, eon, period", "Period, eon, era"], 0, "Eons contain eras, and eras contain periods."],
+    ["“66 Ma” means…", ["66 million years ago", "66 metres of rock", "66 thousand years ago", "66 mass extinctions"], 0, "Ma stands for millions of years ago."],
+    ["What happened at the end of the Cretaceous period, about 66 Ma?", ["The non‑bird dinosaurs disappeared", "The first life appeared", "Earth formed", "The first land plants appeared"], 0, "An asteroid impact helped cause a mass extinction."],
+    ["If all of Earth’s history were one calendar year, when would our species appear?", ["In the last hour of December 31", "In early January", "In mid‑June", "On December 1"], 0, "300 000 years is a tiny fraction of 4.6 billion years: about 34 minutes on the calendar."],
+    ["Relative dating tells you…", ["Which rock layers are older and younger", "The exact age in years", "What minerals are in a rock", "How hot the rock was"], 0, "Relative dating puts layers and events in order."],
+    ["In undisturbed sedimentary layers, where is the oldest layer?", ["At the bottom", "At the top", "In the middle", "It cannot be known"], 0, "This is the rule of superposition."],
+    ["A dike cuts through layers 1, 2 and 3. What do you know?", ["The dike is younger than layers 1, 2 and 3", "The dike is older than all three layers", "The dike formed first", "Layer 3 is the oldest"], 0, "Cross‑cutting: a feature is younger than what it cuts."],
+    ["You find tilted sedimentary layers. What does this tell you?", ["They were laid down flat and moved later", "They were laid down tilted", "They are igneous rock", "They have no fossils"], 0, "Original horizontality: sediment settles in flat layers."],
+    ["Why are fossils found mostly in sedimentary rock?", ["Sediment can bury remains without destroying them", "Sedimentary rock is the hardest rock", "Fossils form from magma", "Sedimentary rock is the oldest rock"], 0, "Igneous rock forms from melted rock, and metamorphism usually destroys fossils."],
+    ["Which condition makes a fossil most likely?", ["Fast burial in fine sediment", "Lying in the open for years", "Being eaten by scavengers", "Being in hot, oxygen‑rich air"], 0, "Fast burial protects remains from scavengers and decay."],
+    ["How long do fossils usually take to form?", ["Thousands to millions of years", "A few days", "About one year", "Exactly 100 years"], 0, "Mineralizing and turning sediment to rock is slow."],
+    ["A dinosaur bone becomes heavy and stony because…", ["Minerals from groundwater fill and harden in its tiny spaces", "It freezes", "It is compressed into a carbon film", "It turns into amber"], 0, "This is a mineralized fossil."],
+    ["A thin black outline of a fern in shale is a…", ["Carbon film from compression", "Trace fossil", "Cast", "Mineralized bone"], 0, "Pressure squeezed the leaf and left carbon."],
+    ["A dinosaur footprint in sandstone is a…", ["Trace fossil", "Carbon film", "Petrified fossil", "Index fossil"], 0, "It shows what the animal did, not its body."],
+    ["Which process can destroy fossils?", ["All of these", "Erosion at the surface", "Heat and pressure that make metamorphic rock", "Melting into magma"], 0, "Many geological processes can break, crush or melt fossils."],
+    ["Coral fossils in Alberta limestone suggest that…", ["A warm, shallow sea once covered Alberta", "Alberta was always dry land", "Alberta was covered in ice", "Corals lived in rivers"], 0, "Corals need warm, shallow sea water."],
+    ["Sea fossils high in the Rocky Mountains show…", ["Rock that formed under the sea was later pushed up", "Fish once swam up mountains", "The sea is higher than the mountains", "The fossils fell from the sky"], 0, "Fossils can record major geological events such as mountain building."],
+    ["Why are ammonites useful index fossils?", ["They were widespread and each kind lived for a short time", "They are still alive today", "They lived only in Alberta", "They are very large"], 0, "A short time range and wide spread let geologists match layers of the same age."],
+    ["Older horse fossils compared with modern horses show…", ["Smaller bodies and more toes", "Larger bodies and more toes", "No differences", "Wings"], 0, "Comparing fossils shows change over time."],
+    ["Tiktaalik is important because it…", ["Has features of both fish and four‑legged animals", "Is the oldest fossil on Earth", "Is a dinosaur from Drumheller", "Is a living fish"], 0, "Fossils with mixed features are evidence of change over time."],
+    ["What does “les mauvaises terres à traverser” mean?", ["Bad lands to cross", "Land of dinosaurs", "Red river valley", "Good land for farming"], 0, "Early French explorers named the badlands for how hard they were to travel through."],
+    ["Why are the Alberta badlands so rich in exposed fossils?", ["Erosion keeps wearing away soft rock and uncovering new bones", "Dinosaurs lived only there", "The rock there is igneous", "Fossils grow there"], 0, "Erosion exposes fossil‑rich layers."],
+    ["Who found an Albertosaurus skull near Drumheller in 1884?", ["Joseph Burr Tyrrell", "Peter Fidler", "Charles Walcott", "Barnum Brown"], 0, "The Royal Tyrrell Museum is named after him."],
+    ["In Alberta, what should you do if you find a special fossil?", ["Leave it, photograph it, note the location and report it", "Dig it out and take it home", "Break it to see inside", "Sell it"], 0, "Fossils belong to the province. Digging needs a permit."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"});
+      d.appendChild(el("h3", null, "You scored " + score + " of 10."));
+      d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try another round for new questions." : "Review the Learn tab, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); q.appendChild(el("h3", null, Q[0]));
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button"}, Q[1][i]);
+      b.dataset.i = i;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (+x.dataset.i === Q[2]) x.classList.add("right"); });
+        if (i !== Q[2]) b.classList.add("wrong"); else score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["What is the geological time scale, and what two kinds of information does it represent?", "The geological time scale is a chart that organizes Earth’s history into time intervals: eons, eras and periods. It shows the timing of major geological events, such as mountain building, and the appearance and disappearance of life forms, such as the first dinosaurs and the mass extinction 66 million years ago.", ["Chart of Earth’s history in intervals", "Eons, eras and periods", "Timing of geological events", "Appearance and disappearance of life forms"]],
+    ["Explain why Earth’s history is easier to understand on a scale model such as a one‑year calendar.", "Earth is about 4.6 billion years old, which is too long to picture. Squeezing it into one year shows how long the Precambrian was and how recent humans are. For example, the dinosaurs died out around December 26 and our species appears in the last hour of December 31.", ["4.6 billion years is hard to picture", "A scale model keeps the proportions", "A correct example with a calendar date"]],
+    ["Describe two rules geologists use in relative dating.", "Superposition: in undisturbed layers the oldest is at the bottom and the youngest is at the top. Cross‑cutting: a fault or dike that cuts through layers is younger than the layers it cuts. Original horizontality is another rule: layers start flat.", ["Superposition explained", "Cross‑cutting or original horizontality explained", "Relative dating gives order, not years"]],
+    ["What is the difference between relative dating and absolute dating?", "Relative dating puts layers or events in order from older to younger but gives no age in years. Absolute dating gives an age in years, for example by measuring radioactive elements in volcanic ash.", ["Relative: order only", "Absolute: age in years", "An example or method"]],
+    ["Describe two ways fossils form.", "Mineralized: groundwater carries minerals into the tiny spaces of bone, shell or wood, where they harden into stone. Compressed: a leaf or soft body is squashed under layers of sediment, leaving a thin carbon film. Molds, casts and trace fossils are impressions.", ["Mineralization described", "Compression and carbon film described", "Mentions impressions or trace fossils"]],
+    ["Why are fossils found in sedimentary rock and not usually in igneous or metamorphic rock?", "Sediment can bury remains quickly and gently, and then harden into rock around them. Igneous rock forms from melted rock, which destroys remains. Metamorphic rock forms under great heat and pressure, which usually crushes or erases fossils.", ["Sediment buries remains", "Igneous: melted rock destroys remains", "Metamorphic: heat and pressure destroy fossils"]],
+    ["List three conditions that make fossil formation more likely. Explain one.", "Fast burial, hard parts and low oxygen. Fast burial matters because it hides the remains from scavengers and slows decay, so the body survives long enough for minerals to work.", ["Three correct conditions", "One explained clearly"]],
+    ["Give two examples of what the fossil record tells us about Earth’s history.", "Coral fossils in Alberta limestone show a warm, shallow sea once covered Alberta, so they tell us about past environments. Sea fossils high in the Rockies show rock was pushed up, a geological event. Dinosaur fossils show living things that are now extinct.", ["Past climate or environment example", "Geological event or extinct organism example", "Fossil linked to the conclusion"]],
+    ["Describe evidence of change over time from horse fossils.", "Older horse fossils, from about 55 million years ago, were fox‑sized with four front toes and short teeth. Younger fossils are larger, with fewer toes and taller teeth. Modern horses stand on one toe. Comparing them shows horses changed over time.", ["Older fossils described", "Younger fossils described", "Direction of change stated"]],
+    ["Why are the Alberta badlands renowned for fossils, and where does their name come from?", "Early French explorers called them “les mauvaises terres à traverser,” bad lands to cross. Erosion along the Red Deer River keeps cutting into soft rock about 77 to 66 million years old, uncovering dinosaur bones and other fossils.", ["French explorers’ name and meaning", "Erosion exposes fossil layers", "Rock age or dinosaur fossils mentioned"]]
+  ];
+  var LONG = [
+    ["A geologist sees a cliff with four flat layers. A fault cuts layers 1 to 3, and layer 4 lies unbroken on top. Layer 2 holds ammonites, and layer 4 holds a mammoth tooth. Put the events in order and explain what each piece of evidence tells you.", "Order: layer 1, layer 2, layer 3, then the fault, then layer 4. Superposition puts layer 1 at the bottom as oldest. The fault cuts layers 1 to 3, so it is younger than them (cross‑cutting), but layer 4 covers it, so layer 4 came last. The ammonites in layer 2 show it formed in the sea before 66 million years ago, and they are index fossils that can match it to layers elsewhere. The mammoth tooth shows layer 4 formed during the Ice Age, much later. The gap in time between layers 3 and 4 may mean some rock was eroded away.", ["Correct order", "Superposition used", "Cross‑cutting used", "Ammonite: sea and age", "Mammoth: Ice Age", "Possible time gap noted"]],
+    ["Explain why the fossil record is incomplete. Use what you know about how fossils form and how they can be destroyed.", "Most living things never become fossils. They need fast burial, hard parts, low oxygen and long periods of time. Soft‑bodied animals and animals living in dry uplands rarely fossilize. Even when fossils form, erosion can break them up, metamorphism can crush them and melting destroys them. Many fossils are still buried and never found. So the record has gaps, like a book with missing pages.", ["Specific conditions are needed", "Soft bodies and uplands are rarely preserved", "Geological processes destroy fossils", "Many fossils are not yet found"]],
+    ["Use fossil evidence to describe how Alberta’s environment has changed over hundreds of millions of years.", "About 380 million years ago coral reefs grew in a warm, shallow sea over Alberta, shown by limestone with coral fossils. About 75 million years ago an inland sea with ammonites covered the east, beside a warm, swampy coastal plain with dinosaurs, turtles and the plants that became coal. During the Ice Age mammoths lived here and ice sheets covered the land. Today, Alberta is far from the sea with a cold winter climate.", ["Devonian sea and reefs", "Cretaceous sea and coastal plain", "Ice Age evidence", "Fossils linked to environments"]],
+    ["Choose one fossil discovery in the Alberta badlands. Explain how it was found, what it tells us about Earth’s history, and why rules protect fossils in Alberta.", "Example: in 1884 Joseph Burr Tyrrell, searching for coal for the Geological Survey of Canada, found an Albertosaurus skull in the Red Deer River valley. It showed a large meat‑eater lived in Alberta about 70 million years ago, on a warm coastal plain. Erosion exposed it. Alberta’s rules say fossils belong to the province and need a permit to dig, so important fossils stay available for science and for everyone.", ["Discovery described with who and when", "What it tells us", "Role of erosion", "Why fossils are protected"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["ES1.K1", "The geological time scale organizes Earth’s history into time intervals and is used to represent timing of major geological events and the appearance and disappearance of life forms.", "Learn 1 (deep time ruler, 27 events); Bench 1; Flashcards; Quiz; Written Review short 1 and 2"],
+    ["ES1.K2", "Relative dating is a technique used to determine younger and older rock layers.", "Learn 2 (order the rock face); Bench 2 (puzzles); Sort It (deck 2); Flashcards; Quiz; Written Review short 3 and 4, extended 1"],
+    ["ES1.K3", "The fossil record provides information about Earth’s history, including geological events, past climates and environments, and living and extinct organisms.", "Learn 5 (Alberta column); Sort It (deck 3); Flashcards; Quiz; Written Review short 8, extended 3"],
+    ["ES1.K4", "Fossils are found in sedimentary rocks and are formed over thousands to millions of years under specific conditions.", "Learn 3 and 4; Bench 3 (fossil factory); Sort It (deck 4); Quiz; Written Review short 6 and 7"],
+    ["ES1.K5", "Fossils are formed when remains or impressions of a once-living organism are mineralized or compressed.", "Learn 3 (six steps); Bench 3; Sort It (deck 1); Flashcards; Quiz; Written Review short 5"],
+    ["ES1.K6", "Evidence of change over time can be found by comparing organisms and fossils.", "Learn 6 (horse fossils); Bench 4 (change detective); Flashcards; Quiz; Written Review short 9"],
+    ["ES1.K7", "Remains and impressions of once-living organisms can be destroyed by geological processes.", "Learn 4 (fossils at risk); Learn 7; Sort It (deck 4); Quiz; Written Review extended 2"],
+    ["ES1.K8", "The badlands in what is now Alberta were referred to by early French explorers as “les mauvaises terres à traverser,” or bad lands to cross, and are renowned for extensive fossil beds.", "Learn 7 (map and timeline); Bench 5; Flashcards; Quiz; Written Review short 10"],
+    ["ES1.S1", "Represent the geological time scale.", "Learn 1 (ruler and calendar); Bench 1 (strip and calendar converter, ordering events)"],
+    ["ES1.S2", "Distinguish between younger and older rock layers.", "Learn 2; Bench 2 (random puzzles); Sort It (deck 2); Written Review extended 1"],
+    ["ES1.S3", "Explore how different types of fossils are formed.", "Learn 3; Bench 3 (fossil factory, five kinds); Sort It (deck 1)"],
+    ["ES1.S4", "Describe evidence of change in organisms over time.", "Learn 6; Bench 4 (horses, whales, practice snails); Written Review short 9"],
+    ["ES1.S5", "Research the discovery of fossils in the badlands of Alberta.", "Learn 7 (sites and discovery timeline); Bench 5 (research notebook); Written Review extended 4"]
+  ];
+  var NOTES = [
+    "ES1.K1: dates are rounded from the International Chronostratigraphic Chart (for example, Phanerozoic from about 539 Ma, Earth about 4.6 billion years). “Appearance and disappearance of life forms” is taught with first appearances and the five mass extinctions. Calendar and strip models are added to support S1.",
+    "ES1.K2: relative dating is taught with superposition, original horizontality and cross‑cutting. Superposition is stated for undisturbed layers, since folding can overturn them. Absolute (radiometric) dating is mentioned as context only.",
+    "ES1.K4: “found in sedimentary rocks” is taught as where fossils are almost always found. Rare fossils occur in volcanic ash deposits and lightly metamorphosed rock (the Burgess Shale is slightly metamorphosed), and amber, ice and tar are not rock. “Thousands to millions of years” is taught as the usual time frame.",
+    "ES1.K5: “mineralized or compressed” is taught as the two main ways. Impressions (molds and casts), trace fossils and amber are added so students can explore the different types in S3.",
+    "ES1.K6: change over time is taught with horse fossils, Tiktaalik, early whales and matching limb bones. The word evolution is used once, as the scientific term, since the draft avoids it. Please review. Horse and whale sizes and dates are rounded; the horse family is described as a branching bush.",
+    "ES1.K3: Alberta column is a composite (Devonian reef limestone, Borealopelta, Bearpaw‑type shale with ammonites, Late Cretaceous coal‑bearing mudstone, Ice Age gravel with mammoth bones near Edmonton). Please verify the local examples.",
+    "ES1.K8 and S5: the French phrase is taught as given in the draft. Badlands history (Peter Fidler 1793, J. B. Tyrrell 1884, the 1910s Dinosaur Rush, Dinosaur Provincial Park 1955 and UNESCO 1979, Royal Tyrrell Museum 1985, Borealopelta 2011, Pipestone Creek bonebed) is summarized from public sources and needs verification. The badlands are noted as Treaty 7 territory and First Nations knowledge of the bones is mentioned generally without specific community knowledge; please review and consider a community partner.",
+    "ES1.S5: the summary of Alberta fossil rules (Historical Resources Act: fossils belong to the province, surface collecting on private land with permission, no digging without a permit, no collecting in parks) needs verification before use.",
+    "Models: the layer puzzles, fossil survival counts, fossil factory chances and snail data set are simplified or made up for practice and labelled."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); tr.appendChild(el("td", null, r[1])); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

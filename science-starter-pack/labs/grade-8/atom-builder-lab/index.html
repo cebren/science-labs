@@ -1,0 +1,1385 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/atom-builder-lab/"><meta name="description" content="Atoms can be defined by their structure."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Atom Builder Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a physics bench notebook. Sticky tab strip, then lessons that pair a short reading column with a live atom model. Red marks protons, slate marks neutrons, gold marks electrons, Grade 8 blue marks codes and labels. */
+:root{
+  --bg:#EDF1F5; --surface:#FFFFFF; --surface-2:#F4F7FA; --ink:#14202D; --muted:#4F5E6E; --line:#CFD8E2;
+  --g8:#1D5FA8; --g8-soft:#DFEAF6;
+  --pro:#B3372C; --pro-soft:#F7E1DE; --neu:#56626E; --neu-soft:#E4E8EC; --ele:#8A5F00; --ele-soft:#F6ECD2;
+  --good:#2C7445; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141B; --surface:#161E27; --surface-2:#1B2530; --ink:#E3EAF1; --muted:#9DAAB8; --line:#2B3744;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --pro:#F2897D; --pro-soft:#3A1D1A; --neu:#A9B5C1; --neu-soft:#25303B; --ele:#E9C460; --ele-soft:#352A10;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#161E27; --surface-2:#1B2530; --ink:#E3EAF1; --muted:#9DAAB8; --line:#2B3744;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --pro:#F2897D; --pro-soft:#3A1D1A; --neu:#A9B5C1; --neu-soft:#25303B; --ele:#E9C460; --ele-soft:#352A10;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g8)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g8);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.hint{font-size:.86rem;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .p{color:var(--pro)} header h1 .e{color:var(--ele)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--g8-soft);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g8-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g8)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+.svgbox.wide svg{min-width:540px}
+.atombox{background:var(--surface);border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;padding:6px}
+.atombox svg{display:block;width:100%;max-width:340px;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .mtxt{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.shell{fill:none;stroke:var(--line);stroke-width:1.6}
+.shell.full{stroke:var(--g8);stroke-dasharray:none}
+.shell.empty{stroke-dasharray:4 5}
+.nuc{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.5}
+.pf{fill:var(--pro)} .nf{fill:var(--neu)} .ef{fill:var(--ele)}
+.ptxt{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--pro)}
+.ntxt{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--neu)}
+.sign{font-family:var(--f-mono);font-size:11px;font-weight:600;fill:var(--surface);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.hot{cursor:pointer}
+.hot:focus{outline:none}
+.hot:focus-visible circle,.hot.on circle{stroke:var(--g8);stroke-width:3}
+.tick{stroke:var(--line);stroke-width:1}
+.band{fill:var(--ele-soft);stroke:var(--ele);stroke-width:1;stroke-dasharray:3 3}
+.mark{fill:var(--g8)} .markline{stroke:var(--g8);stroke-width:3}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+
+/* particle table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.ptab{width:100%;border-collapse:collapse;font-size:.92rem;min-width:420px}
+.ptab th,.ptab td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+.ptab th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.ptab tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+
+/* timeline */
+.tl{display:flex;flex-wrap:wrap;gap:6px}
+.tl button{display:grid;gap:0;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;cursor:pointer}
+.tl button b{font-family:var(--f-display);font-size:.95rem}
+.tl button span{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.tl button[aria-pressed="true"]{border-color:var(--g8);background:var(--g8-soft)}
+.tl button[aria-pressed="true"] span{color:var(--g8)}
+
+/* builder */
+.builder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+@media (max-width:860px){.builder{grid-template-columns:minmax(0,1fr);padding:16px}}
+.bench-h{display:grid;gap:6px}
+.bench-h h3{font-size:1.3rem}
+.ctrls{display:grid;gap:10px}
+.ctrl{display:grid;grid-template-columns:7.5em auto 3em auto;gap:8px;align-items:center}
+.ctrl .nm{font-weight:700;display:flex;align-items:center}
+.ctrl output{font-family:var(--f-mono);font-size:1.1rem;text-align:center;font-weight:600}
+.step-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);font-size:1.25rem;font-weight:700;cursor:pointer;line-height:1}
+.step-btn:hover:not(:disabled){border-color:var(--muted)}
+.step-btn:disabled{opacity:.4;cursor:default}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.rd{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.rd span{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.rd b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.elname{font-family:var(--f-display);font-size:1.6rem;font-weight:800}
+.elname small{font-family:var(--f-mono);font-size:.9rem;color:var(--g8);margin-left:8px}
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g8)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:6em;resize:vertical}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+.worked{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+.tally{display:flex;flex-wrap:wrap;gap:6px}
+.tally span{font-family:var(--f-mono);font-size:.74rem;padding:3px 8px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line)}
+.techgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:10px}
+.tech{display:grid;gap:4px;text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:12px;cursor:pointer}
+.tech b{font-family:var(--f-display);font-size:1.02rem}
+.tech span{font-size:.84rem;color:var(--muted)}
+.tech[aria-pressed="true"]{border-color:var(--g8);background:var(--g8-soft)}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g8)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:80ch}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;color:var(--muted)}
+.tnotes li b{color:var(--ink);font-family:var(--f-mono);font-size:.82rem}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.ec{transition:transform .35s ease}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Matter: Atoms and the Periodic Table · M1</div>
+    <h1>Atom <span class="e">Builder</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Atoms can be defined by their structure. Every atom has a tiny nucleus of protons and neutrons, with electrons around it. The number of protons tells you which element it is.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Five short lessons in order. Each one has a model to try. Start with how small atoms are, then open one up and see what is inside.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Everything is made of atoms</span>
+      <h3>Zoom in far enough and you find atoms</h3>
+      <p><b>Matter</b> is anything that has mass and takes up space. Your desk, the air, the water in the North Saskatchewan River and your own body are all matter.</p>
+      <p>All of this matter is made of <b>atoms</b>. An atom is the smallest piece of an element that still has the properties of that element. An <b>element</b> is a pure substance made of only one kind of atom, such as carbon, oxygen or gold.</p>
+      <p>Atoms are very small. A single drop of water holds more than a thousand billion billion atoms. About half a million carbon atoms lined up side by side would just stretch across the width of one human hair.</p>
+      <div class="codes"><span class="code">M1.K1</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: the zoom ladder</h4>
+      <p class="hint">Drag the slider to zoom in. Watch the size shrink and see which tool you need to see each thing.</p>
+      <label class="field" for="zoom">Zoom level <input type="range" id="zoom" min="0" max="7" step="1" value="0"></label>
+      <div class="detail" id="zoomOut" aria-live="polite"></div>
+      <div class="svgbox wide"><svg id="zoomSvg" viewBox="0 0 520 70" role="img" aria-label="Size scale"></svg></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Too small to see</span>
+      <h3>You need technology to detect an atom</h3>
+      <p>An atom is far too small to see with your eyes, and too small even for the microscope in our science room. A light microscope cannot show details smaller than about 200 nanometres. A <b>nanometre</b> (nm) is one billionth of a metre. Most atoms are only about 0.1 to 0.5 nm wide.</p>
+      <p>To detect single atoms, scientists use technology that does not depend on visible light. A <b>scanning tunnelling microscope</b> moves an extremely sharp metal tip just above a surface and measures a tiny electric current. A computer turns those measurements into a map of the atoms. An <b>atomic force microscope</b> feels the surface with a tiny tip, a bit like reading braille.</p>
+      <p>Researchers at the University of Alberta in Edmonton use these microscopes to study and even move single atoms on silicon surfaces.</p>
+      <div class="codes"><span class="code">M1.K2</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: can this tool see an atom?</h4>
+      <p class="hint">Pick a tool. The blue marker shows the smallest detail it can show. The gold band is the size of an atom. A tool can show single atoms only if its marker reaches the band.</p>
+      <div class="chips" id="toolChips" role="group" aria-label="Choose a tool"></div>
+      <div class="svgbox wide"><svg id="toolSvg" viewBox="0 0 560 110" role="img" aria-label="Resolution scale"></svg></div>
+      <div class="detail" id="toolOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Inside an atom</span>
+      <h3>Protons, neutrons and electrons</h3>
+      <p>Atoms are made of even smaller pieces called <b>subatomic particles</b>. There are three kinds.</p>
+      <div class="tablebox"><table class="ptab">
+        <thead><tr><th>Particle</th><th>Charge</th><th>Where it is</th><th>Relative mass</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot" style="background:var(--pro)"></span><b>Proton</b></td><td>positive (+1)</td><td>nucleus</td><td>1</td></tr>
+          <tr><td><span class="dot" style="background:var(--neu)"></span><b>Neutron</b></td><td>no charge (0)</td><td>nucleus</td><td>1</td></tr>
+          <tr><td><span class="dot" style="background:var(--ele)"></span><b>Electron</b></td><td>negative (−1)</td><td>shells around the nucleus</td><td>about 1/1836</td></tr>
+        </tbody>
+      </table></div>
+      <p>The <b>nucleus</b> is the tiny, dense centre of the atom. It holds the protons and neutrons, so it holds almost all of the atom's mass. If the nucleus were the size of a blueberry, the whole atom would be about a kilometre wide. Most of an atom is empty space.</p>
+      <p>An atom is <b>electrically neutral</b>. It has the same number of electrons as protons, so the positive and negative charges cancel out.</p>
+      <div class="codes"><span class="code">M1.K3</span><span class="code">M1.K4</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: explore a lithium atom</h4>
+      <p class="hint">Select a part of the atom (tap it, or use Tab and Enter) to learn about it.</p>
+      <div class="atombox"><svg id="liSvg" viewBox="0 0 320 320"></svg></div>
+      <div class="detail" id="liOut" aria-live="polite"></div>
+      <div class="key" id="liCharge"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Atomic models</span>
+      <h3>A model is our best picture so far</h3>
+      <p>No one has ever looked at an atom the way you look at a ball. So scientists build an <b>atomic model</b>. An atomic model is a theoretical representation of an atom's structure. Theoretical means it is based on evidence and reasoning, not on a direct photo.</p>
+      <p>When new evidence appears, scientists improve the model. Each model on the timeline explained something the older one could not. Scientists from many countries added pieces. Ernest Rutherford did his first prize-winning work on radioactivity at McGill University in Montréal, where Harriet Brooks, one of Canada's first nuclear physicists, worked with him.</p>
+      <div class="codes"><span class="code">M1.K5</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: the atomic model timeline</h4>
+      <p class="hint">Pick a model to see what it looked like and what evidence changed it.</p>
+      <div class="tl" id="tl" role="group" aria-label="Atomic models in time order"></div>
+      <div class="atombox"><svg id="tlSvg" viewBox="0 0 320 240" role="img" aria-label="Atomic model drawing"></svg></div>
+      <div class="detail" id="tlOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · The Bohr model</span>
+      <h3>Electrons fill shells in order</h3>
+      <p>In 1913, Niels Bohr suggested that electrons travel around the nucleus in layers called <b>shells</b>. Each shell holds a set number of electrons. Electrons fill the shell closest to the nucleus first.</p>
+      <ul>
+        <li>The first shell holds a maximum of <b>2</b> electrons.</li>
+        <li>The second shell holds a maximum of <b>8</b> electrons.</li>
+        <li>The third shell holds <b>8</b> electrons for the atoms you study this year.</li>
+      </ul>
+      <p>We write the number in each shell as an <b>electron arrangement</b>. Sodium has 11 electrons, so its arrangement is 2, 8, 1.</p>
+      <p class="note">The Bohr model is a useful picture, but it is simplified. Today scientists describe electrons as a cloud where they are likely to be found, not as tiny planets on fixed paths. In bigger atoms, the third shell can hold up to 18 electrons.</p>
+      <div class="codes"><span class="code">M1.K6</span><span class="code">M1.K5</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: fill the shells</h4>
+      <p class="hint">Change the number of electrons in a neutral atom. The atom has the same number of protons.</p>
+      <label class="field" for="fillN">Electrons: <span id="fillNv" class="mono">1</span><input type="range" id="fillN" min="1" max="18" value="11"></label>
+      <div class="atombox"><svg id="fillSvg" viewBox="0 0 320 320"></svg></div>
+      <div class="detail" id="fillOut" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Build atoms, count their particles, read Bohr diagrams and research a real technology. Your scores and notes stay on this device.</p>
+  </div>
+
+  <div class="builder">
+    <div class="bench-h" style="grid-column:1/-1">
+      <span class="step">Station 1 · Atom builder · M1.S1</span>
+      <h3>Build any atom with up to 18 electrons</h3>
+      <p class="hint">Add or remove particles. The diagram and readouts update as you go. Try to keep the atom neutral.</p>
+    </div>
+    <div class="ctrls">
+      <div class="elname" id="bName" aria-live="polite"></div>
+      <div class="ctrl"><span class="nm"><span class="dot" style="background:var(--pro)"></span>Protons</span><button class="step-btn" type="button" id="pMinus" aria-label="Remove a proton">−</button><output id="pOut" aria-live="polite">0</output><button class="step-btn" type="button" id="pPlus" aria-label="Add a proton">+</button></div>
+      <div class="ctrl"><span class="nm"><span class="dot" style="background:var(--neu)"></span>Neutrons</span><button class="step-btn" type="button" id="nMinus" aria-label="Remove a neutron">−</button><output id="nOut" aria-live="polite">0</output><button class="step-btn" type="button" id="nPlus" aria-label="Add a neutron">+</button></div>
+      <div class="ctrl"><span class="nm"><span class="dot" style="background:var(--ele)"></span>Electrons</span><button class="step-btn" type="button" id="eMinus" aria-label="Remove an electron">−</button><output id="eOut" aria-live="polite">0</output><button class="step-btn" type="button" id="ePlus" aria-label="Add an electron">+</button></div>
+      <div class="readout">
+        <div class="rd"><span>Atomic number</span><b id="rZ"></b></div>
+        <div class="rd"><span>Mass number</span><b id="rA"></b></div>
+        <div class="rd"><span>Overall charge</span><b id="rQ"></b></div>
+        <div class="rd"><span>Electron arrangement</span><b id="rArr"></b></div>
+      </div>
+      <div class="detail" id="bMsg" aria-live="polite"></div>
+      <div class="row"><span class="hint">Quick start:</span><div class="chips" id="presetChips" role="group" aria-label="Load an example atom"></div></div>
+    </div>
+    <div class="ctrls">
+      <div class="atombox"><svg id="bSvg" viewBox="0 0 320 320"></svg></div>
+      <div class="legend"><span><i style="background:var(--pro)"></i>proton</span><span><i style="background:var(--neu)"></i>neutron</span><span><i style="background:var(--ele)"></i>electron</span></div>
+      <div class="worked">
+        <b>Challenge</b>
+        <p id="chTask"></p>
+        <div class="row"><button class="btn" type="button" id="chCheck">Check my atom</button><button class="btn ghost" type="button" id="chNew">New challenge</button></div>
+        <p class="fb" id="chFb" aria-live="polite"></p>
+        <div class="tally" id="chTally"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="builder">
+    <div class="bench-h" style="grid-column:1/-1">
+      <span class="step">Station 2 · Particle counter · M1.S1</span>
+      <h3>Count the particles from two numbers</h3>
+      <p class="hint">The <b>atomic number</b> is the number of protons. The <b>mass number</b> is the number of protons plus neutrons. You do not need to memorize these relationships. Use them as tools.</p>
+    </div>
+    <div class="ctrls">
+      <div class="formula">protons p = atomic number Z<br>electrons e = p &nbsp;(in a neutral atom)<br>neutrons n = mass number A − Z</div>
+      <div class="worked" id="wkEx"></div>
+      <div class="grid3">
+        <label class="field" for="pcEl">Element<select id="pcEl"></select></label>
+        <label class="field" for="pcA">Mass number A<input type="number" id="pcA" min="1" max="45"></label>
+      </div>
+      <div class="worked" id="pcOut" aria-live="polite"></div>
+    </div>
+    <div class="ctrls">
+      <div class="worked">
+        <b>Practice: your turn</b>
+        <p id="prQ"></p>
+        <div class="grid3">
+          <label class="field" for="prP">Protons<input type="number" id="prP" min="0" max="40"></label>
+          <label class="field" for="prN">Neutrons<input type="number" id="prN" min="0" max="40"></label>
+          <label class="field" for="prE">Electrons<input type="number" id="prE" min="0" max="40"></label>
+        </div>
+        <label class="field" for="prArr">Electron arrangement (for example 2, 8, 1)<input type="text" id="prArr" autocomplete="off"></label>
+        <div class="row"><button class="btn" type="button" id="prCheck">Check</button><button class="btn ghost" type="button" id="prNext">New question</button></div>
+        <div id="prFb" aria-live="polite"></div>
+        <div class="tally" id="prTally"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="builder">
+    <div class="bench-h" style="grid-column:1/-1">
+      <span class="step">Station 3 · Read the diagram · M1.S1</span>
+      <h3>Name that atom</h3>
+      <p class="hint">Each diagram shows a neutral atom. Count the protons or the electrons, then pick the element.</p>
+    </div>
+    <div class="ctrls"><div class="atombox"><svg id="ntSvg" viewBox="0 0 320 320"></svg></div></div>
+    <div class="ctrls">
+      <div class="opts" id="ntOpts" role="group" aria-label="Which element is shown?"></div>
+      <div id="ntFb" aria-live="polite"></div>
+      <div class="row"><button class="btn ghost" type="button" id="ntNext">Next diagram</button></div>
+      <div class="tally" id="ntTally"></div>
+    </div>
+  </div>
+
+  <div class="builder">
+    <div class="bench-h" style="grid-column:1/-1">
+      <span class="step">Station 4 · Research a technology · M1.S2</span>
+      <h3>How do scientists study atoms?</h3>
+      <p class="hint">Pick one technology to start your research. Read the starter card, then fill in your research notes using at least two reliable sources. Your notes stay on this device.</p>
+    </div>
+    <div class="ctrls" style="grid-column:1/-1">
+      <div class="techgrid" id="techGrid" role="group" aria-label="Choose a technology"></div>
+      <div class="detail" id="techOut" aria-live="polite"></div>
+    </div>
+    <div class="ctrls">
+      <label class="field" for="rs1">1. What question about atoms does this technology help answer?<textarea id="rs1"></textarea></label>
+      <label class="field" for="rs2">2. How does it work? Explain in your own words.<textarea id="rs2"></textarea></label>
+      <label class="field" for="rs3">3. What has it shown scientists about atoms or atomic structure?<textarea id="rs3"></textarea></label>
+    </div>
+    <div class="ctrls">
+      <label class="field" for="rs4">4. Who uses it, and where? Look for a Canadian or Alberta example.<textarea id="rs4"></textarea></label>
+      <label class="field" for="rs5">5. Sources (title, author or organization, date)<textarea id="rs5"></textarea></label>
+      <div class="worked">
+        <b>Check each source</b>
+        <ul class="checks" id="srcChecks"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" type="button" id="fcAll" aria-pressed="true">All cards</button>
+      <button class="chip" type="button" id="fcLearning" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" type="button" id="fcCard" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="fcPrev">Back</button>
+      <button class="btn ghost" type="button" id="fcStill">Still learning</button>
+      <button class="btn" type="button" id="fcKnow">I know it</button>
+      <button class="btn ghost" type="button" id="fcShuffle">Shuffle</button>
+      <button class="btn ghost" type="button" id="fcReset">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 M1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes" id="tnotes"></div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-m1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function onKeyActivate(node, fn){ node.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Element data (atomic numbers 1 to 18) ---------- */
+var EL = [null,
+  ["Hydrogen","H",1],["Helium","He",4],["Lithium","Li",7],["Beryllium","Be",9],["Boron","B",11],["Carbon","C",12],
+  ["Nitrogen","N",14],["Oxygen","O",16],["Fluorine","F",19],["Neon","Ne",20],["Sodium","Na",23],["Magnesium","Mg",24],
+  ["Aluminum","Al",27],["Silicon","Si",28],["Phosphorus","P",31],["Sulfur","S",32],["Chlorine","Cl",35],["Argon","Ar",40]];
+var CAPS = [2, 8, 8];
+function arrangement(e){
+  var out = [], rem = e;
+  for (var i = 0; i < CAPS.length && rem > 0; i++) { var t = Math.min(rem, CAPS[i]); out.push(t); rem -= t; }
+  return out;
+}
+function arrText(e){ var a = arrangement(e); return a.length ? a.join(", ") : "none"; }
+function chargeText(q){ return q === 0 ? "0" : (q > 0 ? "+" + q : "−" + Math.abs(q)); }
+
+/* ---------- Bohr diagram ---------- */
+var RADII = [64, 100, 136];
+function drawBohr(svg, p, n, e, opts){
+  opts = opts || {};
+  clear(svg);
+  var cx = 160, cy = 160;
+  var arr = arrangement(e);
+  var shellsToDraw = opts.allShells ? 3 : arr.length;
+  for (var s = 0; s < shellsToDraw; s++) {
+    var cls = "shell" + ((arr[s] || 0) === CAPS[s] ? " full" : "") + (!arr[s] ? " empty" : "");
+    svg.appendChild(sv("circle", {cx: cx, cy: cy, r: RADII[s], "class": cls}));
+  }
+  svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 34, "class": "nuc"}));
+  if (p || n) {
+    svg.appendChild(sv("text", {x: cx, y: cy - 4, "text-anchor": "middle", "class": "ptxt"}, p + " p⁺"));
+    svg.appendChild(sv("text", {x: cx, y: cy + 14, "text-anchor": "middle", "class": "ntxt"}, n + " n"));
+  } else {
+    svg.appendChild(sv("text", {x: cx, y: cy + 4, "text-anchor": "middle", "class": "small"}, "empty"));
+  }
+  arr.forEach(function(k, s){
+    for (var i = 0; i < k; i++) {
+      var ang;
+      if (s === 0) ang = -Math.PI / 2 + i * Math.PI;
+      else ang = -Math.PI / 2 + (i * 2 * Math.PI / k);
+      var x = cx + RADII[s] * Math.cos(ang), y = cy + RADII[s] * Math.sin(ang);
+      svg.appendChild(sv("circle", {cx: x.toFixed(1), cy: y.toFixed(1), r: 8, "class": "ef"}));
+      svg.appendChild(sv("text", {x: x.toFixed(1), y: y.toFixed(1), "class": "sign"}, "−"));
+    }
+  });
+  var label = opts.label || ("Bohr diagram: " + p + " protons and " + n + " neutrons in the nucleus. Electrons by shell: " + arrText(e) + ".");
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", label);
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: zoom ladder ---------- */
+(function(){
+  var STEPS = [
+    {name: "Your hand", size: 0.1, txt: "about 10 cm", tool: "your eyes", fact: "Your hand is made of trillions of cells, and every cell is made of atoms."},
+    {name: "A grain of sand", size: 5e-4, txt: "about 0.5 mm", tool: "your eyes", fact: "Most sand is silica, built from silicon and oxygen atoms."},
+    {name: "Width of a human hair", size: 8e-5, txt: "about 0.08 mm (80 µm)", tool: "your eyes, just barely", fact: "About half a million carbon atoms would fit across this width."},
+    {name: "A red blood cell", size: 7e-6, txt: "about 7 µm", tool: "a light microscope", fact: "A micrometre (µm) is one millionth of a metre."},
+    {name: "A bacterium", size: 2e-6, txt: "about 2 µm", tool: "a light microscope", fact: "This is close to the smallest thing a classroom microscope can show clearly."},
+    {name: "A virus", size: 1e-7, txt: "about 100 nm", tool: "an electron microscope", fact: "Most viruses are too small for a light microscope."},
+    {name: "Width of a DNA strand", size: 2e-9, txt: "about 2 nm", tool: "an electron microscope", fact: "A nanometre (nm) is one billionth of a metre."},
+    {name: "A carbon atom", size: 1.5e-10, txt: "about 0.15 nm", tool: "a scanning tunnelling or atomic force microscope", fact: "You have reached a single atom. Everything above it on this ladder is made of atoms like this."}
+  ];
+  var svg = $("zoomSvg"), out = $("zoomOut"), slider = $("zoom");
+  function x(size){ return 30 + (-Math.log10(size) - 1) * 51; }
+  function render(){
+    var i = +slider.value, st = STEPS[i];
+    clear(out);
+    out.appendChild(el("h5", null, st.name));
+    out.appendChild(el("p", null, "Size: " + st.txt + ". To see it you need " + st.tool + "."));
+    out.appendChild(el("p", {"class": "hint"}, st.fact));
+    clear(svg);
+    svg.appendChild(sv("line", {x1: 30, y1: 30, x2: 489, y2: 30, "class": "tick", "stroke-width": 2}));
+    var labels = ["10 cm","1 cm","1 mm","0.1 mm","10 µm","1 µm","100 nm","10 nm","1 nm","0.1 nm"];
+    labels.forEach(function(l, k){
+      var xx = 30 + k * 51;
+      svg.appendChild(sv("line", {x1: xx, y1: 24, x2: xx, y2: 36, "class": "tick"}));
+      svg.appendChild(sv("text", {x: xx, y: 54, "text-anchor": "middle", "class": "mtxt"}, l));
+    });
+    STEPS.forEach(function(s2, k){
+      svg.appendChild(sv("circle", {cx: x(s2.size).toFixed(1), cy: 30, r: k === i ? 8 : 4, "class": k === i ? "ef" : "nf", opacity: k === i ? 1 : .5}));
+    });
+    svg.setAttribute("aria-label", "Size scale from 10 centimetres to 0.1 nanometres. Current step: " + st.name + ", " + st.txt + ".");
+    store.zoom = i; save();
+  }
+  if (store.zoom != null) slider.value = store.zoom;
+  slider.addEventListener("input", render);
+  render();
+})();
+
+/* ---------- Lesson 2: tools ---------- */
+(function(){
+  var TOOLS = [
+    {label: "Your eyes", r: 1e-4, rt: "about 0.1 mm", yes: false, txt: "No. Your eyes can just make out the width of a human hair. An atom is about a million times smaller."},
+    {label: "Light microscope", r: 2e-7, rt: "about 200 nm", yes: false, txt: "No. Waves of visible light are too long to show anything much smaller than 200 nm. It is great for cells and bacteria."},
+    {label: "Scanning electron microscope", r: 1e-9, rt: "about 1 nm", yes: false, txt: "Almost. It scans a beam of electrons over a sample to show surface shapes in fine detail, such as viruses. Most cannot pick out single atoms."},
+    {label: "Transmission electron microscope", r: 5e-11, rt: "below 0.1 nm in the best instruments", yes: true, txt: "Yes. It sends electrons through a very thin slice of a sample. The most advanced ones can show rows of single atoms."},
+    {label: "Scanning tunnelling microscope", r: 1e-10, rt: "about 0.1 nm side to side", yes: true, txt: "Yes. Invented in 1981 by Gerd Binnig and Heinrich Rohrer, who won a Nobel Prize for it. A sharp tip measures a tiny electric current to map single atoms on a surface that conducts electricity."},
+    {label: "Atomic force microscope", r: 1.5e-10, rt: "about 0.1 to 1 nm", yes: true, txt: "Yes, in good conditions. Invented in 1986. A tiny tip on a flexible arm feels the surface. It can map materials that do not conduct electricity."}
+  ];
+  var svg = $("toolSvg"), out = $("toolOut");
+  function x(size){ return 30 + (-Math.log10(size) - 3) * 62.5; }
+  function render(t){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: x(5e-10).toFixed(1), y: 16, width: (x(1e-10) - x(5e-10)).toFixed(1), height: 48, "class": "band"}));
+    svg.appendChild(sv("text", {x: ((x(5e-10) + x(1e-10)) / 2).toFixed(1), y: 12, "text-anchor": "middle", "class": "mtxt"}, "atoms"));
+    svg.appendChild(sv("line", {x1: 30, y1: 40, x2: 530, y2: 40, "class": "tick", "stroke-width": 2}));
+    var labels = ["1 mm","0.1 mm","10 µm","1 µm","100 nm","10 nm","1 nm","0.1 nm","0.01 nm"];
+    labels.forEach(function(l, k){
+      var xx = 30 + k * 62.5;
+      svg.appendChild(sv("line", {x1: xx, y1: 34, x2: xx, y2: 46, "class": "tick"}));
+      svg.appendChild(sv("text", {x: xx, y: 84, "text-anchor": "middle", "class": "mtxt"}, l));
+    });
+    svg.appendChild(sv("text", {x: 30, y: 102, "class": "small"}, "bigger"));
+    svg.appendChild(sv("text", {x: 530, y: 102, "text-anchor": "end", "class": "small"}, "smaller"));
+    var xt = x(t.r);
+    svg.appendChild(sv("line", {x1: 30, y1: 40, x2: xt.toFixed(1), y2: 40, "class": "markline"}));
+    svg.appendChild(sv("circle", {cx: xt.toFixed(1), cy: 40, r: 7, "class": "mark"}));
+    svg.setAttribute("aria-label", t.label + ": smallest detail " + t.rt + ". " + (t.yes ? "Reaches the size of atoms." : "Does not reach the size of atoms."));
+    clear(out);
+    out.appendChild(el("h5", null, t.label + " · smallest detail " + t.rt));
+    out.appendChild(el("p", {"class": "fb " + (t.yes ? "ok" : "no")}, t.yes ? "Can show single atoms" : "Cannot show single atoms"));
+    out.appendChild(el("p", null, t.txt));
+    out.appendChild(el("p", {"class": "hint"}, "Values are approximate."));
+  }
+  chipGroup($("toolChips"), TOOLS, "", render, 1);
+})();
+
+/* ---------- Lesson 3: lithium explorer ---------- */
+(function(){
+  var svg = $("liSvg"), out = $("liOut");
+  var PARTS = {
+    nucleus: ["The nucleus", "The tiny, dense centre of the atom. In lithium-7 it holds 3 protons and 4 neutrons. It has a positive charge because of the protons, and it holds almost all of the atom's mass."],
+    protons: ["Protons (3)", "Positive particles in the nucleus. Every lithium atom has exactly 3 protons. The number of protons is the atomic number, and it decides which element the atom is."],
+    neutrons: ["Neutrons (4)", "Particles with no charge in the nucleus. They have about the same mass as protons. Most lithium atoms have 4 neutrons, but some have 3."],
+    electrons: ["Electrons (3)", "Negative particles that move around the nucleus. Each one has only about 1/1836 of the mass of a proton. Lithium has 2 electrons in the first shell and 1 in the second."],
+    shells: ["Shells", "In the Bohr model, electrons are found in layers called shells. The first shell is full with 2 electrons, so lithium's third electron goes into the second shell."]
+  };
+  var groups = {};
+  function mk(name, label){
+    var g = sv("g", {"class": "hot", tabindex: "0", role: "button", "aria-label": label});
+    g.addEventListener("click", function(){ sel(name); });
+    onKeyActivate(g, function(){ sel(name); });
+    groups[name] = g; return g;
+  }
+  var cx = 160, cy = 160;
+  var gs = mk("shells", "Shells");
+  gs.appendChild(sv("circle", {cx: cx, cy: cy, r: 70, "class": "shell", "stroke-width": 6}));
+  gs.appendChild(sv("circle", {cx: cx, cy: cy, r: 118, "class": "shell", "stroke-width": 6}));
+  svg.appendChild(gs);
+  var gn = mk("nucleus", "Nucleus");
+  gn.appendChild(sv("circle", {cx: cx, cy: cy, r: 32, "class": "nuc", "stroke-dasharray": "4 3"}));
+  svg.appendChild(gn);
+  var spots = [[-9,-12,"p"],[10,-11,"n"],[-15,5,"n"],[3,2,"p"],[18,6,"n"],[-5,17,"n"],[11,19,"p"]];
+  var gp = mk("protons", "Protons"), gne = mk("neutrons", "Neutrons");
+  spots.forEach(function(s){
+    var g = s[2] === "p" ? gp : gne;
+    g.appendChild(sv("circle", {cx: cx + s[0], cy: cy + s[1], r: 9, "class": s[2] === "p" ? "pf" : "nf"}));
+    if (s[2] === "p") g.appendChild(sv("text", {x: cx + s[0], y: cy + s[1], "class": "sign"}, "+"));
+  });
+  svg.appendChild(gne); svg.appendChild(gp);
+  var ge = mk("electrons", "Electrons");
+  [[0,-70],[0,70],[118,0]].forEach(function(d){
+    ge.appendChild(sv("circle", {cx: cx + d[0], cy: cy + d[1], r: 9, "class": "ef"}));
+    ge.appendChild(sv("text", {x: cx + d[0], y: cy + d[1], "class": "sign"}, "−"));
+  });
+  svg.appendChild(ge);
+  svg.appendChild(sv("text", {x: 12, y: 22, "class": "lbl"}, "Lithium-7"));
+  svg.appendChild(sv("text", {x: 12, y: 38, "class": "small"}, "3 p⁺ · 4 n · 3 e⁻"));
+  svg.setAttribute("aria-label", "Interactive diagram of a lithium-7 atom");
+  function sel(name){
+    Object.keys(groups).forEach(function(k){ groups[k].classList.toggle("on", k === name); groups[k].setAttribute("aria-pressed", k === name ? "true" : "false"); });
+    clear(out);
+    out.appendChild(el("h5", null, PARTS[name][0]));
+    out.appendChild(el("p", null, PARTS[name][1]));
+  }
+  sel("nucleus");
+  $("liCharge").innerHTML = "<b>Charge check:</b> 3 protons (+3) and 3 electrons (−3) add up to 0. The neutrons add nothing. So the lithium atom is electrically neutral.";
+})();
+
+/* ---------- Lesson 4: timeline ---------- */
+(function(){
+  var MODELS = [
+    {label: "Dalton", year: "1803", name: "Solid sphere model", who: "John Dalton, an English chemist", txt: "Dalton proposed that all matter is made of tiny, solid atoms that cannot be divided, and that all atoms of one element are alike.", ev: "In 1897, J. J. Thomson discovered the electron, a negative particle much smaller than an atom. So atoms must have smaller parts."},
+    {label: "Thomson", year: "1904", name: "Plum pudding model", who: "J. J. Thomson, an English physicist", txt: "Thomson pictured the atom as a ball of positive charge with negative electrons spread through it, like raisins in a pudding.", ev: "In 1909, Hans Geiger and Ernest Marsden, working with Ernest Rutherford, fired tiny positive particles at thin gold foil. Most went straight through, but a few bounced back."},
+    {label: "Rutherford", year: "1911", name: "Nuclear model", who: "Ernest Rutherford, a physicist from New Zealand", txt: "Rutherford explained the gold foil results. An atom is mostly empty space, with a tiny, dense, positive nucleus in the centre and electrons moving around it.", ev: "This model could not explain why heated atoms give off only certain colours of light, or why electrons do not spiral into the nucleus."},
+    {label: "Bohr", year: "1913", name: "Bohr model (shells)", who: "Niels Bohr, a Danish physicist", txt: "Bohr proposed that electrons travel in shells at set distances from the nucleus, and that each shell holds a limited number of electrons. This explained the colours of light given off by hydrogen.", ev: "Experiments in the 1920s showed that electrons also behave like waves. They cannot follow exact paths like tiny planets."},
+    {label: "Electron cloud", year: "1926", name: "Electron cloud model", who: "Erwin Schrödinger, an Austrian physicist, and others", txt: "Mathematics describes where an electron is likely to be found. The model shows a cloud of probability instead of exact paths. This is the model scientists use today.", ev: "Scientists still use the simpler Bohr model to count electrons in shells, because it predicts the electron arrangements of small atoms well."},
+    {label: "Chadwick", year: "1932", name: "Neutron discovered", who: "James Chadwick, an English physicist", txt: "Chadwick discovered the neutron, a particle with no charge in the nucleus. It explained why atoms have more mass than their protons alone. Rutherford had predicted a neutral particle in 1920.", ev: "With protons, neutrons and electrons all known, the basic structure you are learning this year was complete."}
+  ];
+  var svg = $("tlSvg"), out = $("tlOut"), wrap = $("tl"), btns = [];
+  function dot(x, y, cls, sign, r){
+    svg.appendChild(sv("circle", {cx: x, cy: y, r: r || 7, "class": cls}));
+    if (sign) svg.appendChild(sv("text", {x: x, y: y, "class": "sign"}, sign));
+  }
+  function draw(i){
+    clear(svg);
+    var cx = 160, cy = 120;
+    if (i === 0) {
+      svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 80, "class": "nf"}));
+      svg.appendChild(sv("text", {x: cx, y: 228, "text-anchor": "middle", "class": "small"}, "one solid, uncuttable ball"));
+    } else if (i === 1) {
+      svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 86, "class": "nuc", fill: "var(--pro-soft)", style: "fill:var(--pro-soft);stroke:var(--pro)"}));
+      [[-40,-40],[30,-50],[-55,15],[10,-5],[50,20],[-20,50],[35,58],[-5,-70]].forEach(function(d){ dot(cx + d[0], cy + d[1], "ef", "−"); });
+      svg.appendChild(sv("text", {x: cx, y: 228, "text-anchor": "middle", "class": "small"}, "electrons spread through positive charge"));
+    } else if (i === 2) {
+      [[90,30,20],[80,40,-50],[85,35,75]].forEach(function(o){
+        svg.appendChild(sv("ellipse", {cx: cx, cy: cy, rx: o[0], ry: o[1], transform: "rotate(" + o[2] + " " + cx + " " + cy + ")", "class": "shell"}));
+      });
+      dot(cx, cy, "pf", "+", 9);
+      dot(cx + 88, cy + 15, "ef", "−"); dot(cx - 40, cy - 55, "ef", "−"); dot(cx - 10, cy + 70, "ef", "−");
+      svg.appendChild(sv("text", {x: cx, y: 228, "text-anchor": "middle", "class": "small"}, "tiny dense nucleus, mostly empty space"));
+    } else if (i === 3) {
+      [40, 70, 100].forEach(function(r){ svg.appendChild(sv("circle", {cx: cx, cy: cy, r: r, "class": "shell"})); });
+      dot(cx, cy, "pf", "+", 12);
+      dot(cx, cy - 40, "ef", "−"); dot(cx, cy + 40, "ef", "−");
+      for (var k = 0; k < 8; k++) { var a = -Math.PI / 2 + k * Math.PI / 4; dot((cx + 70 * Math.cos(a)).toFixed(1), (cy + 70 * Math.sin(a)).toFixed(1), "ef", "−"); }
+      dot(cx + 100, cy, "ef", "−");
+      svg.appendChild(sv("text", {x: cx, y: 236, "text-anchor": "middle", "class": "small"}, "electrons in shells at set distances"));
+    } else if (i === 4) {
+      var seed = 7;
+      function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+      for (var j = 0; j < 260; j++) {
+        var rr = Math.pow(rnd(), 1.7) * 95 + 14, aa = rnd() * Math.PI * 2;
+        svg.appendChild(sv("circle", {cx: (cx + rr * Math.cos(aa)).toFixed(1), cy: (cy + rr * Math.sin(aa) * .95).toFixed(1), r: 1.8, "class": "ef", opacity: .75}));
+      }
+      dot(cx, cy, "pf", "+", 9);
+      svg.appendChild(sv("text", {x: cx, y: 228, "text-anchor": "middle", "class": "small"}, "dots show where electrons are likely to be"));
+    } else {
+      [[-8,-8,"p"],[8,-8,"n"],[-8,8,"n"],[8,8,"p"]].forEach(function(d){ dot(cx + d[0], cy + d[1], d[2] === "p" ? "pf" : "nf", d[2] === "p" ? "+" : "", 9); });
+      [55, 95].forEach(function(r){ svg.appendChild(sv("circle", {cx: cx, cy: cy, r: r, "class": "shell"})); });
+      dot(cx, cy - 55, "ef", "−"); dot(cx, cy + 55, "ef", "−");
+      svg.appendChild(sv("text", {x: cx, y: 228, "text-anchor": "middle", "class": "small"}, "helium-4: 2 protons and 2 neutrons in the nucleus"));
+    }
+    svg.setAttribute("aria-label", MODELS[i].name + " drawing");
+  }
+  function set(i){
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    draw(i);
+    var m = MODELS[i];
+    clear(out);
+    out.appendChild(el("h5", null, m.year + " · " + m.name));
+    out.appendChild(el("p", {"class": "hint"}, m.who));
+    out.appendChild(el("p", null, m.txt));
+    out.appendChild(el("p", null, (i === 5 ? "What it completed: " : (i === 4 ? "Still useful: " : "What changed it: ")) + m.ev));
+  }
+  MODELS.forEach(function(m, i){
+    var b = el("button", {type: "button", "aria-pressed": "false"});
+    b.appendChild(el("b", null, m.label)); b.appendChild(el("span", null, m.year));
+    b.addEventListener("click", function(){ set(i); });
+    wrap.appendChild(b); btns.push(b);
+  });
+  set(0);
+})();
+
+/* ---------- Lesson 5: fill the shells ---------- */
+(function(){
+  var s = $("fillN");
+  function render(){
+    var e = +s.value, E = EL[e];
+    $("fillNv").textContent = e;
+    drawBohr($("fillSvg"), e, E[2] - e, e);
+    var a = arrangement(e), out = $("fillOut");
+    clear(out);
+    out.appendChild(el("h5", null, E[0] + " (" + E[1] + ") · arrangement " + a.join(", ")));
+    var lines = a.map(function(k, i){ return "Shell " + (i + 1) + ": " + k + " of " + CAPS[i] + (k === CAPS[i] ? " (full)" : ""); });
+    out.appendChild(el("p", {"class": "mono"}, lines.join(" · ")));
+    var next = a.length && a[a.length - 1] === CAPS[a.length - 1] ? (a.length < 3 ? "This shell is full, so the next electron starts a new shell." : "All three shells are full. This is argon.") : "The next electron goes into this same shell.";
+    out.appendChild(el("p", {"class": "hint"}, next));
+  }
+  s.addEventListener("input", render);
+  render();
+})();
+
+/* ---------- Bench 1: atom builder ---------- */
+(function(){
+  var st = store.builder || {p: 6, n: 6, e: 6};
+  var LIM = {p: 18, n: 22, e: 18};
+  function render(){
+    var p = st.p, n = st.n, e = st.e, q = p - e;
+    $("pOut").textContent = p; $("nOut").textContent = n; $("eOut").textContent = e;
+    $("pMinus").disabled = p <= 0; $("nMinus").disabled = n <= 0; $("eMinus").disabled = e <= 0;
+    $("pPlus").disabled = p >= LIM.p; $("nPlus").disabled = n >= LIM.n; $("ePlus").disabled = e >= LIM.e;
+    var name = $("bName"); clear(name);
+    if (p === 0) { name.textContent = "No element yet"; }
+    else { name.appendChild(document.createTextNode(EL[p][0] + "-" + (p + n))); name.appendChild(el("small", null, EL[p][1])); }
+    $("rZ").textContent = p; $("rA").textContent = p + n; $("rQ").textContent = chargeText(q) + (q === 0 ? " neutral" : "");
+    $("rArr").textContent = arrText(e);
+    drawBohr($("bSvg"), p, n, e, {allShells: true});
+    var msg = $("bMsg"); clear(msg);
+    if (p === 0) msg.appendChild(el("p", null, "Add a proton. The number of protons decides which element the atom is."));
+    else if (q === 0) msg.appendChild(el("p", {"class": "fb ok"}, "Neutral atom of " + EL[p][0].toLowerCase() + ". " + p + " protons and " + e + " electrons balance."));
+    else msg.appendChild(el("p", {"class": "fb no"}, p + " protons and " + e + " electrons give a charge of " + chargeText(q) + ". This is not a neutral atom. A particle like this is called an ion. Add or remove electrons until the charge is 0."));
+    if (p > 0) {
+      var common = EL[p][2] - p;
+      if (n !== common) msg.appendChild(el("p", {"class": "hint"}, "Most " + EL[p][0].toLowerCase() + " atoms have " + common + " neutrons. Atoms of the same element can have different numbers of neutrons, but the element stays the same."));
+      else if (p === 1) msg.appendChild(el("p", {"class": "hint"}, "Most hydrogen atoms have no neutrons. Hydrogen is the only element whose atoms can have none."));
+    }
+    store.builder = st; save();
+  }
+  function bump(k, d){ st[k] = Math.max(0, Math.min(LIM[k], st[k] + d)); render(); }
+  ["p","n","e"].forEach(function(k){
+    $(k + "Plus").addEventListener("click", function(){ bump(k, 1); });
+    $(k + "Minus").addEventListener("click", function(){ bump(k, -1); });
+  });
+  var PRE = [1, 2, 6, 8, 11, 17, 18].map(function(z){ return {label: EL[z][0], z: z}; });
+  PRE.forEach(function(it){
+    var b = el("button", {"class": "chip", type: "button"}, it.label);
+    b.addEventListener("click", function(){ st = {p: it.z, n: EL[it.z][2] - it.z, e: it.z}; render(); });
+    $("presetChips").appendChild(b);
+  });
+  var TARGETS = [];
+  for (var z = 1; z <= 18; z++) TARGETS.push([z, EL[z][2]]);
+  [[1,2],[1,3],[3,6],[5,10],[6,13],[6,14],[7,15],[8,18],[10,22],[12,26],[14,30],[17,37],[18,36]].forEach(function(t){ TARGETS.push(t); });
+  var tg, ok = store.chOk || 0, tries = store.chTries || 0;
+  function newCh(){
+    tg = pick(TARGETS);
+    $("chTask").textContent = "Build a neutral atom of " + EL[tg[0]][0].toLowerCase() + "-" + tg[1] + ". Hint: " + EL[tg[0]][0] + " has atomic number " + tg[0] + ".";
+    $("chFb").textContent = ""; $("chFb").className = "fb";
+  }
+  function tally(){ clear($("chTally")); $("chTally").appendChild(el("span", null, "Built correctly: " + ok + " of " + tries)); }
+  $("chNew").addEventListener("click", newCh);
+  $("chCheck").addEventListener("click", function(){
+    var z = tg[0], need = {p: z, n: tg[1] - z, e: z}, wrong = [];
+    if (st.p !== need.p) wrong.push("protons should be " + need.p + " (the atomic number)");
+    if (st.n !== need.n) wrong.push("neutrons should be " + need.n + " (" + tg[1] + " − " + z + ")");
+    if (st.e !== need.e) wrong.push("electrons should be " + need.e + " so the atom is neutral");
+    tries++;
+    var fb = $("chFb");
+    if (!wrong.length) { ok++; fb.textContent = "Correct. " + EL[z][0] + "-" + tg[1] + " has " + need.p + " protons, " + need.n + " neutrons and " + need.e + " electrons, arranged " + arrText(z) + "."; fb.className = "fb ok"; }
+    else { fb.textContent = "Not yet: " + wrong.join("; ") + "."; fb.className = "fb no"; }
+    store.chOk = ok; store.chTries = tries; save(); tally();
+  });
+  render(); newCh(); tally();
+})();
+
+/* ---------- Bench 2: particle counter ---------- */
+(function(){
+  var sel = $("pcEl"), inA = $("pcA");
+  for (var z = 1; z <= 18; z++) sel.appendChild(el("option", {value: z}, z + " · " + EL[z][0] + " (" + EL[z][1] + ")"));
+  sel.value = 9; inA.value = 19;
+  var wk = $("wkEx");
+  wk.appendChild(el("b", null, "Worked example: fluorine-19"));
+  ["The atomic number of fluorine is 9, so Z = 9. The mass number in the name is 19, so A = 19.",
+   "Protons: p = Z = 9.",
+   "Electrons: the atom is neutral, so e = p = 9.",
+   "Neutrons: n = A − Z = 19 − 9 = 10.",
+   "Electron arrangement: 2 in the first shell, then the other 7 in the second shell. So 2, 7."].forEach(function(t){ wk.appendChild(el("p", {"class": "mono"}, t)); });
+  function calc(){
+    var z = +sel.value, a = Math.round(+inA.value), out = $("pcOut");
+    clear(out);
+    out.appendChild(el("b", null, "Your atom: " + EL[z][0].toLowerCase() + "-" + (a || "?")));
+    if (!a || a < z) { out.appendChild(el("p", {"class": "fb no"}, "The mass number must be at least " + z + ", because the mass number counts the protons plus the neutrons.")); return; }
+    if (a - z > 22) { out.appendChild(el("p", {"class": "fb no"}, "That is far more neutrons than any real " + EL[z][0].toLowerCase() + " atom has. Try a mass number close to " + EL[z][2] + ".")); return; }
+    out.appendChild(el("p", {"class": "mono"}, "p = Z = " + z));
+    out.appendChild(el("p", {"class": "mono"}, "e = p = " + z));
+    out.appendChild(el("p", {"class": "mono"}, "n = A − Z = " + a + " − " + z + " = " + (a - z)));
+    out.appendChild(el("p", {"class": "mono"}, "arrangement: " + arrText(z)));
+    if (a !== EL[z][2]) out.appendChild(el("p", {"class": "hint"}, "The most common " + EL[z][0].toLowerCase() + " atom has mass number " + EL[z][2] + "."));
+  }
+  sel.addEventListener("change", function(){ inA.value = EL[+sel.value][2]; calc(); });
+  inA.addEventListener("input", calc);
+  calc();
+
+  var POOL = [];
+  for (var k = 1; k <= 18; k++) POOL.push([k, EL[k][2]]);
+  [[1,2],[3,6],[6,13],[6,14],[7,15],[8,17],[8,18],[10,22],[12,25],[12,26],[14,30],[16,34],[17,37],[18,36]].forEach(function(t){ POOL.push(t); });
+  var cur, ok = store.prOk || 0, tries = store.prTries || 0;
+  function tally(){ clear($("prTally")); $("prTally").appendChild(el("span", null, "Correct: " + ok + " of " + tries)); }
+  function next(){
+    cur = pick(POOL);
+    $("prQ").textContent = "A neutral atom of " + EL[cur[0]][0].toLowerCase() + "-" + cur[1] + " has atomic number " + cur[0] + ". How many protons, neutrons and electrons does it have? What is its electron arrangement?";
+    ["prP","prN","prE","prArr"].forEach(function(id){ $(id).value = ""; });
+    clear($("prFb"));
+  }
+  $("prNext").addEventListener("click", next);
+  $("prCheck").addEventListener("click", function(){
+    var z = cur[0], a = cur[1];
+    var p = $("prP").value === "" ? NaN : +$("prP").value, n = $("prN").value === "" ? NaN : +$("prN").value, e = $("prE").value === "" ? NaN : +$("prE").value;
+    var arr = ($("prArr").value.match(/\d+/g) || []).map(Number).join(", ");
+    var right = p === z && n === a - z && e === z && arr === arrText(z);
+    tries++; if (right) ok++;
+    store.prOk = ok; store.prTries = tries; save();
+    var fb = $("prFb"); clear(fb);
+    var box = el("div", {"class": "feedback " + (right ? "ok" : "no")});
+    box.appendChild(el("p", {"class": "fb"}, right ? "All correct." : "Check the steps below."));
+    box.appendChild(el("p", {"class": "mono"}, "p = Z = " + z + (p === z ? " ✓" : "")));
+    box.appendChild(el("p", {"class": "mono"}, "n = A − Z = " + a + " − " + z + " = " + (a - z) + (n === a - z ? " ✓" : "")));
+    box.appendChild(el("p", {"class": "mono"}, "e = p = " + z + (e === z ? " ✓" : "")));
+    box.appendChild(el("p", {"class": "mono"}, "arrangement: " + arrText(z) + (arr === arrText(z) ? " ✓" : "")));
+    fb.appendChild(box); tally();
+  });
+  next(); tally();
+})();
+
+/* ---------- Bench 3: name that atom ---------- */
+(function(){
+  var cur, ok = store.ntOk || 0, tries = store.ntTries || 0, answered = false;
+  function tally(){ clear($("ntTally")); $("ntTally").appendChild(el("span", null, "Named correctly: " + ok + " of " + tries)); }
+  function next(){
+    var z = 1 + Math.floor(Math.random() * 18);
+    if (cur === z) z = (z % 18) + 1;
+    cur = z; answered = false;
+    drawBohr($("ntSvg"), z, EL[z][2] - z, z, {label: "Bohr diagram of a mystery neutral atom with " + z + " protons, " + (EL[z][2] - z) + " neutrons and electrons arranged " + arrText(z) + "."});
+    var others = shuffle([].concat.apply([], [[z - 1, z + 1, z - 2, z + 2, z + 8, z - 8].filter(function(v){ return v >= 1 && v <= 18; })])).slice(0, 3);
+    var opts = shuffle([z].concat(others));
+    var area = $("ntOpts"); clear(area); clear($("ntFb"));
+    opts.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, EL[o][0] + " (" + EL[o][1] + ")");
+      b.addEventListener("click", function(){
+        if (answered) return; answered = true; tries++;
+        var right = o === z; if (right) ok++;
+        Array.prototype.forEach.call(area.children, function(x, j){ x.disabled = true; if (opts[j] === z) x.classList.add("right"); });
+        if (!right) b.classList.add("wrong");
+        store.ntOk = ok; store.ntTries = tries; save();
+        var fb = $("ntFb"); clear(fb);
+        fb.appendChild(el("div", {"class": "feedback " + (right ? "ok" : "no")}, (right ? "Correct. " : "Not quite. ") + "The nucleus has " + z + " protons, so the atomic number is " + z + ". That is " + EL[z][0].toLowerCase() + ", with electrons arranged " + arrText(z) + "."));
+        tally(); $("ntNext").focus();
+      });
+      area.appendChild(b);
+    });
+  }
+  $("ntNext").addEventListener("click", next);
+  next(); tally();
+})();
+
+/* ---------- Bench 4: research a technology ---------- */
+(function(){
+  var TECH = [
+    {label: "Scanning tunnelling microscope", s: "Maps single atoms on a surface", d: "A very sharp metal tip moves just above a surface. A tiny electric current flows between the tip and the atoms below. A computer turns changes in the current into a map of the atoms. Physicists at the University of Alberta in Edmonton use these microscopes to build and test circuits made from small groups of atoms on silicon."},
+    {label: "Atomic force microscope", s: "Feels the surface with a tiny tip", d: "A tip on a flexible arm moves across a surface. A laser measures how the arm bends as it passes over atoms. It works on materials that do not conduct electricity, such as minerals and some biological samples. Many Canadian university labs use them."},
+    {label: "Transmission electron microscope", s: "Shines electrons through thin samples", d: "A beam of electrons passes through a very thin slice of material. The best instruments can show rows of atoms in crystals. The Canadian Centre for Electron Microscopy at McMaster University in Hamilton has some of the most powerful electron microscopes in Canada."},
+    {label: "Synchrotron light source", s: "Uses very bright X-rays", d: "Electrons race around a ring at nearly the speed of light and give off extremely bright X-rays. Scientists aim the X-rays at a sample and use the pattern they make to work out how its atoms are arranged. The Canadian Light Source in Saskatoon, also on Treaty 6 territory, is Canada's synchrotron."},
+    {label: "Particle accelerator", s: "Probes the nucleus", d: "Particles are sped up and smashed into atoms to study what the nucleus is made of. TRIUMF in Vancouver is Canada's particle accelerator centre. Scientists there study the nucleus and make rare forms of atoms used in medicine."},
+    {label: "Mass spectrometer", s: "Sorts atoms by mass", d: "Atoms are given a charge and sent through a magnetic or electric field. Lighter ones curve more than heavier ones, so the machine can count atoms of different masses. This is how scientists found that atoms of one element can have different numbers of neutrons. Labs use them to test water, soil and rock samples."},
+    {label: "Gold foil experiment", s: "The historic test that found the nucleus", d: "In 1909, Hans Geiger and Ernest Marsden, working with Ernest Rutherford, fired tiny positive particles at gold foil and watched where they landed on a glowing screen. A few bounced back, which showed that atoms have a tiny, dense, positive nucleus."}
+  ];
+  store.rs = store.rs || {};
+  var grid = $("techGrid"), out = $("techOut"), btns = [];
+  function set(i){
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    clear(out);
+    out.appendChild(el("h5", null, "Starter card: " + TECH[i].label));
+    out.appendChild(el("p", null, TECH[i].d));
+    out.appendChild(el("p", {"class": "hint"}, "This card is a starting point. Find at least two more sources to build your answer."));
+    store.rs.tech = i; save();
+  }
+  TECH.forEach(function(t, i){
+    var b = el("button", {"class": "tech", type: "button", "aria-pressed": "false"});
+    b.appendChild(el("b", null, t.label)); b.appendChild(el("span", null, t.s));
+    b.addEventListener("click", function(){ set(i); });
+    grid.appendChild(b); btns.push(b);
+  });
+  set(store.rs.tech != null ? store.rs.tech : 0);
+  ["rs1","rs2","rs3","rs4","rs5"].forEach(function(id){
+    var t = $(id); t.value = store.rs[id] || "";
+    t.addEventListener("input", function(){ store.rs[id] = t.value; save(); });
+  });
+  var CHECKS = ["Written by a known expert or organization, such as a university, science centre or government lab", "Recent, or the facts in it have not changed", "Agrees with at least one other source", "Explains the science instead of selling a product", "I wrote my notes in my own words"];
+  store.rs.chk = store.rs.chk || [];
+  CHECKS.forEach(function(c, j){
+    var li = el("li"), l = el("label"), cb = el("input", {type: "checkbox", id: "src-" + j});
+    cb.checked = store.rs.chk.indexOf(j) > -1;
+    cb.addEventListener("change", function(){ store.rs.chk = store.rs.chk.filter(function(x){ return x !== j; }); if (cb.checked) store.rs.chk.push(j); save(); });
+    l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); $("srcChecks").appendChild(li);
+  });
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Proton, neutron or electron", bins: ["Proton", "Neutron", "Electron"], items: [
+    ["Has a positive charge", 0, "Protons carry a charge of +1."],
+    ["Has no charge", 1, "Neutrons are neutral. Their name comes from neutral."],
+    ["Has a negative charge", 2, "Electrons carry a charge of −1."],
+    ["Found in shells around the nucleus", 2, "In the Bohr model, electrons are in shells outside the nucleus."],
+    ["Its number tells you which element the atom is", 0, "The number of protons is the atomic number."],
+    ["Found in the nucleus and has no charge", 1, "Neutrons share the nucleus with protons."],
+    ["About 1836 times lighter than a proton", 2, "Electrons have very little mass compared with protons and neutrons."],
+    ["Discovered by J. J. Thomson in 1897", 2, "Thomson's discovery showed atoms have smaller parts."],
+    ["Discovered by James Chadwick in 1932", 1, "Chadwick found the neutral particle Rutherford had predicted."],
+    ["Every carbon atom has exactly 6 of these", 0, "Carbon's atomic number is 6, so it always has 6 protons."],
+    ["Carbon-12 and carbon-14 have different numbers of these", 1, "Atoms of the same element can have different numbers of neutrons."],
+    ["A neutral atom has as many of these as it has protons", 2, "Equal numbers of protons and electrons make the charges cancel."]
+  ]},
+  {label: "Which atomic model?", bins: ["Dalton", "Thomson", "Rutherford", "Bohr", "Electron cloud"], items: [
+    ["A tiny, solid ball that cannot be divided", 0, "Dalton's 1803 model had no inside parts."],
+    ["Negative electrons spread through a ball of positive charge", 1, "This is Thomson's plum pudding model."],
+    ["Often called the plum pudding model", 1, "The electrons are like raisins in a pudding."],
+    ["Mostly empty space around a tiny, dense, positive nucleus", 2, "Rutherford's nuclear model came from the gold foil results."],
+    ["Explained why a few particles bounced back from gold foil", 2, "Only a dense nucleus could push particles straight back."],
+    ["Electrons travel in shells at set distances from the nucleus", 3, "Bohr placed electrons in shells in 1913."],
+    ["The first shell holds 2 electrons and the next holds 8", 3, "Shell limits are part of the Bohr model."],
+    ["Electrons are in regions where they are likely to be, not on exact paths", 4, "The electron cloud model uses probability."],
+    ["All atoms of one element are exactly alike", 0, "Dalton thought so. We now know they can differ in neutrons."],
+    ["Uses mathematics to describe where an electron is probably found", 4, "Schrödinger's work led to the cloud model."]
+  ]},
+  {label: "Electron arrangement: right or wrong?", bins: ["Correct", "Not correct"], items: [
+    ["Carbon (6 electrons): 2, 4", 0, "2 fill the first shell and 4 go in the second."],
+    ["Sodium (11 electrons): 2, 8, 1", 0, "2 + 8 fill two shells, and 1 starts the third."],
+    ["Lithium (3 electrons): 3", 1, "The first shell holds only 2. Lithium is 2, 1."],
+    ["Neon (10 electrons): 2, 9", 1, "The second shell holds at most 8. Neon is 2, 8."],
+    ["Chlorine (17 electrons): 2, 8, 7", 0, "2 + 8 + 7 = 17, and no shell is over its limit."],
+    ["Magnesium (12 electrons): 2, 10", 1, "The second shell is full at 8. Magnesium is 2, 8, 2."],
+    ["Argon (18 electrons): 2, 8, 8", 0, "All three shells are full."],
+    ["Oxygen (8 electrons): 2, 6", 0, "2 + 6 = 8."],
+    ["Sulfur (16 electrons): 2, 6, 8", 1, "Inner shells fill first. Sulfur is 2, 8, 6."],
+    ["Aluminum (13 electrons): 2, 8, 3", 0, "2 + 8 + 3 = 13."],
+    ["Helium (2 electrons): 1, 1", 1, "Both electrons fit in the first shell: 2."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin") || area.querySelector(".btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Matter", "Anything that has mass and takes up space. All matter is made of atoms."],
+  ["Atom", "The smallest piece of an element that still has the properties of that element."],
+  ["Element", "A pure substance made of only one kind of atom, such as carbon or oxygen."],
+  ["Nanometre (nm)", "One billionth of a metre. Most atoms are about 0.1 to 0.5 nm wide."],
+  ["Subatomic particle", "A particle smaller than an atom. Protons, neutrons and electrons are subatomic particles."],
+  ["Proton", "A positive (+1) particle in the nucleus. The number of protons decides the element."],
+  ["Neutron", "A particle with no charge in the nucleus, with about the same mass as a proton."],
+  ["Electron", "A negative (−1) particle that moves around the nucleus. It has about 1/1836 of a proton's mass."],
+  ["Nucleus", "The tiny, dense centre of an atom. It holds the protons and neutrons and almost all of the mass."],
+  ["Electric charge", "A property of particles that can be positive, negative or zero. Opposite charges attract."],
+  ["Electrically neutral", "Having no overall charge. A neutral atom has equal numbers of protons and electrons."],
+  ["Atomic number (Z)", "The number of protons in an atom. Each element has its own atomic number."],
+  ["Mass number (A)", "The number of protons plus neutrons in an atom's nucleus."],
+  ["Atomic model", "A theoretical representation of an atom's structure, based on evidence."],
+  ["Theoretical", "Based on evidence and reasoning to explain something we cannot observe directly."],
+  ["Solid sphere model", "Dalton's 1803 model: atoms are tiny, solid balls that cannot be divided."],
+  ["Plum pudding model", "Thomson's 1904 model: electrons spread through a ball of positive charge."],
+  ["Nuclear model", "Rutherford's 1911 model: a tiny, dense, positive nucleus with electrons around it and mostly empty space."],
+  ["Gold foil experiment", "A 1909 test that fired positive particles at gold foil. A few bounced back, which revealed the nucleus."],
+  ["Bohr model", "Bohr's 1913 model: electrons travel in shells at set distances from the nucleus."],
+  ["Electron shell", "A layer around the nucleus that holds a set number of electrons: 2, then 8, then 8 for the first 18 elements."],
+  ["Electron arrangement", "The number of electrons in each shell, written like 2, 8, 1 for sodium."],
+  ["Electron cloud model", "Today's model: electrons are found in regions where they are likely to be, not on exact paths."],
+  ["Scanning tunnelling microscope", "A tool that maps single atoms on a surface by measuring a tiny electric current through a sharp tip."],
+  ["Atomic force microscope", "A tool that maps a surface, down to atoms, by feeling it with a tiny tip on a flexible arm."],
+  ["Electron microscope", "A microscope that uses a beam of electrons instead of light to see very small things."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is all matter made of?", ["Atoms", "Cells", "Light", "Energy only"], "Everything that has mass and takes up space is made of atoms. Cells are made of atoms too."],
+  ["Why can't you see a single atom with the light microscope in a science room?", ["Atoms are much smaller than the smallest detail visible light can show.", "Atoms are invisible because they have no mass.", "Atoms move too fast to be seen by anything.", "Light microscopes only work on living things."], "A light microscope cannot show details smaller than about 200 nm. Atoms are about 0.1 to 0.5 nm wide."],
+  ["Which technology can map single atoms on a surface?", ["A scanning tunnelling microscope", "A magnifying glass", "A classroom light microscope", "A telescope"], "A scanning tunnelling microscope uses a sharp tip and a tiny electric current to map atoms."],
+  ["Which subatomic particle has a positive charge?", ["Proton", "Neutron", "Electron", "Nucleus"], "Protons carry a charge of +1. The nucleus is not a single particle."],
+  ["Which subatomic particle has no charge?", ["Neutron", "Proton", "Electron", "Shell"], "Neutrons are neutral."],
+  ["In the Bohr model, where are electrons found?", ["In shells around the nucleus", "Inside the nucleus", "Spread evenly through a positive ball", "Only on the outside of the atom's shell wall"], "Bohr placed electrons in shells at set distances from the nucleus."],
+  ["What makes up the nucleus of an atom?", ["Protons and neutrons", "Protons and electrons", "Electrons and neutrons", "Electrons only"], "Protons and neutrons are packed together in the nucleus."],
+  ["Why is an atom electrically neutral?", ["It has the same number of protons and electrons.", "It has the same number of protons and neutrons.", "Neutrons cancel all the charges.", "Electrons have no charge."], "Each proton is +1 and each electron is −1, so equal numbers add up to 0."],
+  ["A neutral atom has 9 protons. How many electrons does it have?", ["9", "10", "18", "0"], "In a neutral atom, electrons equal protons."],
+  ["Which number tells you which element an atom is?", ["The number of protons", "The number of neutrons", "The number of shells", "The mass number"], "The number of protons is the atomic number. Change it and you have a different element."],
+  ["Oxygen-16 has atomic number 8. How many neutrons does it have?", ["8", "16", "24", "6"], "n = A − Z = 16 − 8 = 8."],
+  ["Sodium-23 has atomic number 11. How many neutrons does it have?", ["12", "11", "23", "34"], "n = A − Z = 23 − 11 = 12."],
+  ["What is the electron arrangement of chlorine, which has 17 electrons?", ["2, 8, 7", "2, 7, 8", "8, 8, 1", "2, 15"], "Fill the first shell with 2, the second with 8, and the last 7 go into the third shell."],
+  ["What is the maximum number of electrons in the first shell?", ["2", "8", "18", "1"], "The first shell is small and holds only 2 electrons."],
+  ["A neutral atom has the electron arrangement 2, 8, 3. Which element is it?", ["Aluminum", "Boron", "Sodium", "Silicon"], "2 + 8 + 3 = 13 electrons, so 13 protons. Atomic number 13 is aluminum."],
+  ["Where is almost all of an atom's mass?", ["In the nucleus", "In the electron shells", "Spread evenly through the atom", "In the empty space"], "Protons and neutrons are much heavier than electrons, and they are in the nucleus."],
+  ["What takes up most of the space in an atom?", ["Empty space", "The nucleus", "Neutrons", "Protons"], "The nucleus is tiny. If it were a blueberry, the atom would be about a kilometre wide."],
+  ["What is an atomic model?", ["A theoretical representation of an atom's structure, based on evidence", "A photograph of a real atom", "A list of all the elements", "A machine used to split atoms"], "Models are our best explanation of evidence, and they change as evidence grows."],
+  ["What did the gold foil experiment show?", ["Atoms have a tiny, dense, positive nucleus and are mostly empty space.", "Atoms are solid balls.", "Electrons are inside the nucleus.", "Gold has no atoms."], "Most particles passed through, but a few bounced back from something small and dense."],
+  ["Why did scientists give up Dalton's solid sphere model?", ["The discovery of the electron showed atoms have smaller parts.", "Dalton changed his mind about matter.", "Atoms turned out to be cubes.", "Microscopes showed atoms were hollow."], "Thomson found electrons in 1897, so atoms could not be uncuttable."],
+  ["Which scientist proposed the plum pudding model?", ["J. J. Thomson", "Niels Bohr", "John Dalton", "James Chadwick"], "Thomson pictured electrons spread through positive charge like raisins in a pudding."],
+  ["Why do atomic models keep changing over time?", ["New evidence shows where the old model was incomplete.", "Scientists like to pick new names.", "Atoms themselves keep changing shape.", "Each country uses its own model."], "A good model explains the evidence. When new evidence appears, the model is improved."],
+  ["How does today's electron cloud model describe electrons?", ["As being in regions where they are likely to be found", "As tiny planets on fixed paths", "As raisins in a positive pudding", "As part of the nucleus"], "Electrons behave partly like waves, so scientists describe where they probably are."],
+  ["Which neutral atom has the electron arrangement 2, 8, 8?", ["Argon", "Neon", "Calcium", "Oxygen"], "2 + 8 + 8 = 18 electrons. Atomic number 18 is argon."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Name the three subatomic particles. Give the charge and location of each.", a: "Protons have a positive charge and are in the nucleus. Neutrons have no charge and are also in the nucleus. Electrons have a negative charge and move around the nucleus in shells.", k: ["Proton: positive, nucleus", "Neutron: no charge, nucleus", "Electron: negative, shells around the nucleus"]},
+  {q: "Explain why a carbon atom is electrically neutral.", a: "A carbon atom has 6 protons, each with a charge of +1, and 6 electrons, each with a charge of −1. The total is +6 and −6, which adds up to 0. Neutrons have no charge, so they do not change the total.", k: ["6 protons and 6 electrons", "Positive and negative charges cancel", "Neutrons have no charge"]},
+  {q: "Why do scientists need technology to study atoms? Give one example of a technology.", a: "Atoms are about 0.1 to 0.5 nm wide, far smaller than eyes or light microscopes can show. Scientists use tools such as the scanning tunnelling microscope, which maps single atoms on a surface by measuring a tiny electric current through a sharp tip.", k: ["Atoms are too small to see", "Light microscopes have a limit", "Names a real technology", "Says what the technology does"]},
+  {q: "Describe the Bohr diagram of a neutral nitrogen-14 atom. Nitrogen's atomic number is 7.", a: "The nucleus holds 7 protons and 7 neutrons (14 − 7 = 7). There are 7 electrons: 2 in the first shell and 5 in the second shell, so the arrangement is 2, 5.", k: ["7 protons", "7 neutrons from 14 − 7", "7 electrons", "Arrangement 2, 5"]},
+  {q: "Magnesium-24 has atomic number 12. Find the number of protons, neutrons and electrons, and give the electron arrangement.", a: "Protons = 12. Electrons = 12 because the atom is neutral. Neutrons = 24 − 12 = 12. Arrangement: 2, 8, 2.", k: ["12 protons", "12 neutrons with the subtraction shown", "12 electrons", "Arrangement 2, 8, 2"]},
+  {q: "What is an atomic model, and why do we call it theoretical?", a: "An atomic model is a representation of an atom's structure. It is theoretical because no one can look at an atom directly the way we look at everyday objects. Scientists build the model from evidence and reasoning, and they change it when new evidence appears.", k: ["Represents an atom's structure", "Atoms cannot be observed directly like everyday objects", "Based on evidence", "Can change with new evidence"]},
+  {q: "Explain how the gold foil experiment changed the model of the atom.", a: "Before the experiment, Thomson's model said positive charge was spread through the whole atom. When positive particles were fired at gold foil, most passed straight through but a few bounced back. Rutherford concluded that an atom is mostly empty space with a tiny, dense, positive nucleus.", k: ["Describes the old model", "Most particles passed through", "A few bounced back", "Concludes a tiny, dense, positive nucleus"]},
+  {q: "The nucleus is tiny. Why does it hold almost all of an atom's mass?", a: "The nucleus holds the protons and neutrons, which each have a relative mass of about 1. Electrons have only about 1/1836 of a proton's mass. So almost all the mass is packed into the tiny nucleus.", k: ["Protons and neutrons are in the nucleus", "Protons and neutrons are much heavier than electrons", "Gives the comparison 1/1836 or similar"]},
+  {q: "Give one similarity and one difference between the Bohr model and the electron cloud model.", a: "Similarity: both have a small nucleus in the centre with electrons around it. Difference: the Bohr model shows electrons on fixed shells like paths, while the electron cloud model shows regions where electrons are likely to be found.", k: ["A correct similarity", "Bohr: fixed shells", "Cloud: likely regions, no exact paths"]}
+];
+var LONG = [
+  {q: "Explain step by step how to build a Bohr model of a neutral sulfur-32 atom (atomic number 16). Then explain what would change if one electron were removed.", a: "Step 1: the atomic number is 16, so put 16 protons in the nucleus. Step 2: neutrons = 32 − 16 = 16, so add 16 neutrons to the nucleus. Step 3: the atom is neutral, so add 16 electrons. Step 4: fill shells from the inside out: 2 in the first shell, 8 in the second, and the remaining 6 in the third, for an arrangement of 2, 8, 6. If one electron were removed, there would be 16 protons and 15 electrons. The charge would be +1, so it would no longer be a neutral atom. It would still be sulfur, because the number of protons did not change.", k: ["16 protons from the atomic number", "16 neutrons from 32 − 16", "16 electrons for a neutral atom", "Arrangement 2, 8, 6", "Removing an electron gives a +1 charge", "Still sulfur because protons are unchanged"]},
+  {q: "Describe how the model of the atom developed from Dalton to today. Include at least four models and the evidence that led to each change.", a: "Dalton (1803) described atoms as solid balls that cannot be divided. Thomson discovered the electron in 1897, which showed atoms have parts, so he proposed the plum pudding model, with electrons in a ball of positive charge. In the gold foil experiment, a few particles bounced back, so Rutherford (1911) proposed a tiny, dense, positive nucleus surrounded by mostly empty space. Bohr (1913) placed electrons in shells to explain the colours of light atoms give off. In the 1920s, evidence that electrons behave like waves led to the electron cloud model, which describes where electrons are likely to be. Chadwick found the neutron in 1932, completing the picture of the nucleus. Each change happened because new evidence did not fit the old model.", k: ["At least four models in the correct order", "Describes each model", "Names the evidence for each change", "Explains that models change with evidence", "Mentions the neutron or the current cloud model"]},
+  {q: "Research report: choose one technology used to study atoms or atomic structure. Explain how it works, what it has shown scientists, where it is used in Canada, and how you judged that your sources were reliable.", a: "Sample answer: The scanning tunnelling microscope moves a very sharp tip just above a surface. A tiny electric current flows between the tip and the atoms, and it changes as the tip passes over each atom. A computer turns the current into a map. It has shown that atoms on a surface sit in neat, repeating patterns, and it can even move single atoms. Physicists at the University of Alberta use these microscopes to build circuits from small groups of atoms on silicon. I used a university web page and a science centre article. Both were written by experts, agreed with each other, and explained the science instead of selling a product.", k: ["Names one real technology", "Explains how it works in own words", "Describes what it revealed about atoms", "Gives a Canadian or Alberta example", "Explains how sources were judged"]},
+  {q: "Compare a neutral neon-20 atom (atomic number 10) with a neutral sodium-23 atom (atomic number 11). Compare their particles and electron arrangements, and explain what makes them different elements.", a: "Neon-20 has 10 protons, 10 neutrons (20 − 10) and 10 electrons, arranged 2, 8. Sodium-23 has 11 protons, 12 neutrons (23 − 11) and 11 electrons, arranged 2, 8, 1. Neon's two shells are both full. Sodium has one extra electron, which must start a third shell. They are different elements because they have different numbers of protons. The atomic number, not the number of neutrons or electrons, decides the element.", k: ["Neon: 10 p, 10 n, 10 e", "Sodium: 11 p, 12 n, 11 e", "Arrangements 2, 8 and 2, 8, 1", "Sodium's extra electron starts a new shell", "Different elements because of different numbers of protons"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label"), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = store.wr[id] || [];
+          s = s.filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["M1.K1", "All matter is composed of atoms.", "Learn: Lesson 1 (zoom ladder from a hand to a carbon atom). Flashcards. Quiz."],
+    ["M1.K2", "An atom is too small to be detected without the use of technology.", "Learn: Lessons 1 and 2 (resolution scale for six tools). Lab Bench: Station 4. Quiz, Flashcards, Written Review: short answer 3."],
+    ["M1.K3", "An atom is electrically neutral and is composed of subatomic particles, including\n• protons, which have a positive charge\n• electrons, which have a negative charge\n• neutrons, which do not have a charge", "Learn: Lesson 3 (particle table, lithium explorer, charge check). Lab Bench: Station 1 (charge readout). Sort It: particle deck. Quiz, Flashcards, Written Review: short answer 1 and 2."],
+    ["M1.K4", "Protons and neutrons make up an atom’s nucleus.", "Learn: Lesson 3 (lithium explorer). Lab Bench: Stations 1 and 3. Sort It: particle deck. Quiz, Written Review: short answer 8."],
+    ["M1.K5", "An atomic model is a theoretical representation of an atom’s structure.", "Learn: Lesson 4 (timeline of six models) and Lesson 5 note. Sort It: model deck. Quiz, Flashcards, Written Review: short answer 6, 7, 9 and extended 2."],
+    ["M1.K6", "Electrons can be represented as orbiting an atom’s nucleus in layered shells (Bohr model), including\n• the first shell, which holds a maximum of two electrons\n• the second shell, which holds a maximum of eight electrons\n• the third shell, which holds a maximum of eight electrons", "Learn: Lesson 5 (fill the shells, 1 to 18 electrons). Lab Bench: Stations 1, 2 and 3. Sort It: arrangement deck. Quiz, Written Review."],
+    ["M1.S1", "Model the location and charge of subatomic particles in an atom, limited to atoms that have a maximum of 18 electrons.", "Lab Bench: Station 1 (atom builder with randomized challenges), Station 2 (particle counter, worked example, randomized practice), Station 3 (name that atom). Written Review: short answer 4 and 5, extended 1 and 4."],
+    ["M1.S2", "Research a technology used to study atoms and atomic structure.", "Lab Bench: Station 4 (seven starter cards, research notes, source checklist). Learn: Lesson 2. Written Review: extended 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+  var notes = $("tnotes");
+  notes.appendChild(el("h3", null, "Teacher notes on wording"));
+  var ul = el("ul");
+  [["M1.K6", "The third shell is taught as holding 8 electrons for the atoms in scope (up to 18 electrons). Students are told that it can hold up to 18 in larger atoms, so the draft's \"maximum of eight\" is not taught as a universal limit."],
+   ["M1.K6", "\"Orbiting\" is taught as the Bohr model's picture. Lessons 4 and 5 note that the current electron cloud model has no fixed paths."],
+   ["M1.K3", "Taught that an atom is neutral because it has equal numbers of protons and electrons. The atom builder names an unbalanced particle an ion only in passing. Students also learn that most hydrogen atoms have no neutrons."],
+   ["M1.K1", "Taught as all ordinary matter. Dark matter is not known to be made of atoms; this is not raised with students."],
+   ["M1.S2", "Canadian research examples (University of Alberta, Canadian Centre for Electron Microscopy, Canadian Light Source, TRIUMF) are described generally. Please confirm current names before sharing."],
+   ["Numbers", "Sizes and microscope resolutions are rounded, typical values. The 1/1836 electron mass and the blueberry to kilometre nucleus comparison are approximate."]
+  ].forEach(function(n){ var li = el("li"); li.appendChild(el("b", null, n[0] + " ")); li.appendChild(document.createTextNode(n[1])); ul.appendChild(li); });
+  notes.appendChild(ul);
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

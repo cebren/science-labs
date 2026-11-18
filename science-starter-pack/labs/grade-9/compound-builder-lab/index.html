@@ -1,0 +1,1847 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/compound-builder-lab/"><meta name="description" content="Pure substances can be classified by their composition."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Compound Builder Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a chemist's bench for building formulas. Sticky tab strip, then lessons that pair a reading column with a model: particle boxes, element molecules, an ion maker, a main-group periodic table with ion charges, a charge balancer and a WHMIS pictogram rack. Cations are always warm, anions always blue, and each element keeps one atom colour everywhere. */
+:root{
+  --bg:#EDF2EF; --surface:#FFFFFF; --surface-2:#F4F7F5; --ink:#15221B; --muted:#4E5E55; --line:#CCD8D1;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5; --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --cat:#9E3B16; --cat-soft:#FBE4DA; --an:#1D5FA8; --an-soft:#DEEAF7; --elec:#6A3FA6;
+  --at-h:#F2F4F6; --at-c:#C4C9CE; --at-n:#BDD3F5; --at-o:#F5C1BA; --at-hal:#C6EABD; --at-s:#F3E08F; --at-p:#F6CDA2; --at-metal:#DACBEF; --at-noble:#BCE7E2; --at-semi:#E3DCCB; --at-stroke:#5B6B63;
+  --pic-bg:#FFFFFF; --pic-ink:#111111; --pic-red:#D0211C;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --cat:#F59A6B; --cat-soft:#3A2218; --an:#7DB0F0; --an-soft:#18283C; --elec:#C3A3F0;
+  --at-h:#3A4148; --at-c:#2C3136; --at-n:#22385A; --at-o:#5A2A26; --at-hal:#24452A; --at-s:#4F4520; --at-p:#56391F; --at-metal:#3B2E52; --at-noble:#1F4642; --at-semi:#3E3A2E; --at-stroke:#9DAEA4;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --cat:#F59A6B; --cat-soft:#3A2218; --an:#7DB0F0; --an-soft:#18283C; --elec:#C3A3F0;
+  --at-h:#3A4148; --at-c:#2C3136; --at-n:#22385A; --at-o:#5A2A26; --at-hal:#24452A; --at-s:#4F4520; --at-p:#56391F; --at-metal:#3B2E52; --at-noble:#1F4642; --at-semi:#3E3A2E; --at-stroke:#9DAEA4;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g9)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g9);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g9)}
+.storebar{display:flex;gap:4px;max-width:420px}
+.storebar i{flex:1;height:6px;border-radius:3px}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.inv{grid-template-columns:minmax(0,1fr)}
+.inv .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}.inv{padding:18px}.inv .two{grid-template-columns:minmax(0,1fr)}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model,.map{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.92rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row,.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.inline input,.inline select{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-size:1.02rem}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g9)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700;min-height:1.4em}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);font-weight:700}
+.choice2 button.right{background:var(--good-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--g9)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* lab-specific */
+.cat{color:var(--cat);font-weight:700} .an{color:var(--an);font-weight:700}
+.fml{font-family:var(--f-mono);font-weight:600}
+.fml sub,.big sub{font-size:.7em}
+.boxes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:520px){.boxes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pbox{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:2px;text-align:center;min-width:0}
+.pbox svg{width:100%;height:auto;display:block}
+.pbox span{font-size:.82rem;font-weight:700}
+.pbox[aria-pressed="true"]{outline:3px solid var(--g9);outline-offset:-2px}
+.pbox.done{border-color:var(--good)}
+svg .atom-t{font-family:var(--f-mono);font-size:9px;font-weight:600;fill:var(--ink)}
+svg .big-t{font-family:var(--f-mono);font-size:15px;font-weight:600;fill:var(--ink)}
+.ptable{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px;font-family:var(--f-mono)}
+.ptable .gh{font-size:.62rem;color:var(--muted);text-align:center;padding-bottom:2px}
+.pcell{border:1px solid var(--line);background:var(--surface);border-radius:5px;padding:3px 1px;display:grid;justify-items:center;gap:0;cursor:pointer;min-width:0;font-family:var(--f-mono);color:var(--ink)}
+.pcell b{font-size:.86rem;line-height:1.2}
+.pcell small{font-size:.6rem;color:var(--muted);line-height:1.1;min-height:1.1em}
+.pcell.metal{background:var(--at-metal)} .pcell.nonmetal{background:var(--at-hal)} .pcell.semi{background:var(--at-semi)} .pcell.noble{background:var(--at-noble)}
+.pcell.hl{outline:3px solid var(--g9);outline-offset:-2px}
+.pcell.dim{opacity:.45}
+.pcell .q-cat{color:var(--cat);font-weight:700} .pcell .q-an{color:var(--an);font-weight:700}
+.pcell[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--muted)}
+.legend i{display:inline-block;width:.9em;height:.9em;border-radius:3px;margin-right:5px;vertical-align:-.1em;border:1px solid var(--line)}
+.ladder{display:grid;gap:6px}
+.lrow{display:grid;grid-template-columns:8.5em minmax(0,1fr) 5.4em;gap:8px;align-items:center;font-size:.86rem;border:1px solid transparent;border-radius:6px;padding:2px 4px;background:none;text-align:left;cursor:pointer;color:var(--ink);width:100%}
+.lrow:hover{border-color:var(--line)}
+.lrow[aria-pressed="true"]{background:var(--surface);border-color:var(--g9)}
+.lrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.lrow .track i{display:block;height:100%;background:var(--g9);border-radius:7px}
+.lrow b{font-family:var(--f-mono);font-size:.78rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.lrow{grid-template-columns:6.6em minmax(0,1fr) 4.8em}}
+.ionstat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+@media (max-width:480px){.ionstat{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tiles{display:flex;flex-wrap:wrap;gap:6px;min-height:46px;align-items:center;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:8px}
+.tile{font-family:var(--f-mono);font-weight:600;font-size:.88rem;border-radius:8px;padding:6px 9px;border:2px solid}
+.tile.c{border-color:var(--cat);background:var(--cat-soft);color:var(--cat)}
+.tile.a{border-color:var(--an);background:var(--an-soft);color:var(--an)}
+.big{font-family:var(--f-mono);font-size:1.7rem;font-weight:600}
+.meter{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.pre{width:100%;border-collapse:collapse;font-size:.88rem}
+.pre td,.pre th{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
+.pre th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.pre td:first-child{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.steps{display:grid;gap:4px;padding-left:1.2em;font-size:.93rem}
+.dots{display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+.dots i{width:12px;height:12px;border-radius:50%;border:1px solid var(--at-stroke);display:inline-block}
+.countrow{display:grid;grid-template-columns:3.4em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.9rem}
+.countrow b{font-family:var(--f-mono)}
+.countrow span:last-child{font-family:var(--f-mono);text-align:right}
+.pics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+@media (max-width:560px){.pics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pic{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 4px;cursor:pointer;display:grid;gap:2px;justify-items:center;text-align:center;font-size:.72rem;font-weight:700;color:var(--ink);min-width:0}
+.pic svg{width:100%;max-width:72px;height:auto;display:block}
+.pic[aria-pressed="true"]{outline:3px solid var(--g9);outline-offset:-2px}
+.picbig svg{width:110px;height:110px;display:block}
+.picrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.picrow>div{min-width:0;flex:1 1 200px}
+.cmap svg .node{cursor:pointer}
+.cmap svg .node rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.cmap svg .node.on rect{stroke:var(--g9);stroke-width:3}
+.cmap svg .node:focus{outline:none}
+.cmap svg .node:focus-visible rect{stroke:var(--ink);stroke-width:3}
+.cmap svg .edge{stroke:var(--muted);stroke-width:1.5;fill:none}
+.cmap svg .edge.on{stroke:var(--g9);stroke-width:3}
+.cmap svg .ntext{font-family:var(--f-display);font-size:13px;font-weight:700;fill:var(--ink)}
+svg .focusable:focus{outline:none}
+svg .focusable:focus-visible{outline:3px solid var(--g9)}
+.answer-in{font-family:var(--f-mono);font-size:1.05rem;width:12em}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Matter: Elements, Compounds and Reactions · M1</div>
+    <h1><span class="ac">Compound Builder</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Pure substances can be classified by their composition. Every pure substance is an element or a compound. Elements come as single atoms or as molecules. Compounds are ionic or molecular, and IUPAC rules give each one a name and a formula.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Ten short lessons in order. Sort pure substances into elements and compounds. Meet elements made of single atoms and of molecules. Build ions, then see how ions and shared electrons make compounds. Finish with IUPAC names, formulas and WHMIS safety symbols.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Two kinds of pure substance</span>
+      <div class="codes"><span class="code">M1.K1</span></div>
+      <h3>Elements and compounds</h3>
+      <p>In Science 7 you learned that a <b>pure substance</b> has only one kind of particle all the way through. Pure substances come in two groups.</p>
+      <p>An <b>element</b> is made of only one kind of atom. It cannot be broken down into simpler substances, even by a chemical change. Each element has a symbol on the periodic table, such as O for oxygen and Cu for copper.</p>
+      <p>A <b>compound</b> is made of two or more different elements that are chemically joined in a fixed ratio. Water is always two hydrogen atoms for every one oxygen atom. A compound can be broken apart only by a chemical change. For example, passing electricity through water splits it into hydrogen gas and oxygen gas.</p>
+      <p>A compound behaves very differently from its elements. Sodium is a soft metal that reacts with water. Chlorine is a poisonous green gas. Joined together, they make sodium chloride: table salt.</p>
+      <div class="key"><b>Remember:</b> element = one kind of atom. Compound = two or more different elements joined in a fixed ratio.</div>
+    </div>
+    <div class="model">
+      <h4>Model: zoom in on six pure substances</h4>
+      <p class="hint">Each box shows the particles in a tiny sample. Pick a box, then decide: element or compound?</p>
+      <div class="boxes" id="l1Boxes" role="group" aria-label="Particle boxes"></div>
+      <div class="row"><button class="btn ghost" type="button" id="l1El">Element</button><button class="btn ghost" type="button" id="l1Co">Compound</button></div>
+      <div class="detail" id="l1Out" aria-live="polite"><p>Pick a box to start.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · How element particles look</span>
+      <div class="codes"><span class="code">M1.K2</span><span class="code">M1.S1</span><span class="code">M1.S2</span></div>
+      <h3>Monatomic, diatomic and polyatomic elements</h3>
+      <p>Every particle of an element contains only one kind of atom. But the particles do not all look the same.</p>
+      <p><b>Monatomic</b> elements are made of single atoms that stay apart. The noble gases in the last column, such as helium, neon and radon (Rn), are monatomic. The draft curriculum spells this word <i>monoatomic</i>. Both spellings mean “one atom”.</p>
+      <p><b>Diatomic</b> elements are made of molecules with two atoms of the same kind. Seven elements are diatomic: hydrogen (H<sub>2</sub>), nitrogen (N<sub>2</sub>), oxygen (O<sub>2</sub>), fluorine (F<sub>2</sub>), chlorine (Cl<sub>2</sub>), bromine (Br<sub>2</sub>) and iodine (I<sub>2</sub>). A memory trick: <b>HOFBrINCl</b>, said “hof-brinkle”.</p>
+      <p><b>Polyatomic</b> elements are made of molecules with more than two atoms of the same kind. Sulfur forms rings of eight atoms (S<sub>8</sub>). White phosphorus forms P<sub>4</sub>. Ozone, high in the atmosphere, is O<sub>3</sub>.</p>
+      <p class="note">Alberta link: gas plants that clean “sour” natural gas recover huge amounts of sulfur. It is stored in bright yellow blocks. Each tiny grain is made of S<sub>8</sub> rings.</p>
+      <p class="note">Metals and carbon are written with the symbol alone, like Cu or C. Their atoms join into one big connected network instead of small separate molecules.</p>
+    </div>
+    <div class="model">
+      <h4>Model: element particle explorer</h4>
+      <div class="chips" id="l2Chips" role="group" aria-label="Choose an element"></div>
+      <div class="svgbox"><svg id="l2Svg" viewBox="0 0 320 150" role="img" aria-label="Particle model of the chosen element"></svg></div>
+      <div class="detail" id="l2Out" aria-live="polite"></div>
+      <h4>Where are the seven diatomic elements?</h4>
+      <div id="l2Table"></div>
+      <p class="hint">Highlighted cells are the seven diatomic elements. Tap any cell to read about it.</p>
+      <p class="detail" id="l2Cell" aria-live="polite">Tap a cell.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Atoms acting as one unit</span>
+      <div class="codes"><span class="code">M1.K3</span><span class="code">M1.S3</span></div>
+      <h3>Molecules, from tiny to huge</h3>
+      <p>A <b>molecule</b> is a group of atoms joined together that acts as a single unit. The atoms in a molecule stay together as the substance moves, melts or boils.</p>
+      <p>A molecule can be an element or a compound. O<sub>2</sub> is a molecule of the element oxygen, because both atoms are oxygen. CO<sub>2</sub> is a molecule of a compound, because it has carbon and oxygen.</p>
+      <p>Molecules range hugely in size. An oxygen molecule has 2 atoms. A sugar molecule has 24. One DNA molecule in a human cell holds billions of atoms, yet it still acts as one unit.</p>
+      <div class="key"><b>Careful:</b> not every substance is made of molecules. Ionic compounds like table salt are built from ions packed in a repeating pattern called a <b>crystal lattice</b>. Metals are networks of atoms.</div>
+    </div>
+    <div class="model">
+      <h4>Model: molecule size ladder</h4>
+      <p class="hint">Bars use a stretched (log) scale: each step to the right is ten times more atoms. Tap a row.</p>
+      <div class="ladder" id="l3Ladder" role="group" aria-label="Molecule sizes"></div>
+      <div class="detail" id="l3Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Gaining and losing electrons</span>
+      <div class="codes"><span class="code">M1.K7</span><span class="code">M1.S2</span><span class="code">M1.S3</span></div>
+      <h3>Ions: cations and anions</h3>
+      <p>An atom has positive <b>protons</b> in its nucleus and negative <b>electrons</b> in shells around it. A neutral atom has the same number of each, so the charges cancel.</p>
+      <p>An <b>ion</b> is an atom that has gained or lost electrons, so it has a charge.</p>
+      <ul>
+        <li>An atom that <b>loses</b> one or more electrons has more protons than electrons. It becomes a positive ion, called a <span class="cat">cation</span>. Metals form cations.</li>
+        <li>An atom that <b>gains</b> one or more electrons has more electrons than protons. It becomes a negative ion, called an <span class="an">anion</span>. Non-metals form anions.</li>
+      </ul>
+      <p>The number of protons never changes. It is what makes sodium sodium. Only electrons move.</p>
+      <p>Atoms tend to gain or lose just enough electrons to end up with a full outer shell, like the nearest noble gas. Sodium loses 1 electron to become Na<sup>+</sup>. Chlorine gains 1 to become Cl<sup>−</sup>.</p>
+      <p>Naming: a cation keeps the element name (sodium ion). An anion's name ends in <b>-ide</b> (chloride ion).</p>
+      <div class="key"><b>Memory trick:</b> a ca<b>t</b>ion has a “t” that looks like a plus sign (+). An <b>an</b>ion is <b>a n</b>egative <b>ion</b>.</div>
+    </div>
+    <div class="model">
+      <h4>Model: ion maker</h4>
+      <label class="field" for="l4El">Element<select id="l4El"></select></label>
+      <div class="svgbox"><svg id="l4Svg" viewBox="0 0 300 220" role="img" aria-label="Bohr model of the atom or ion"></svg></div>
+      <div class="row"><button class="btn ghost" type="button" id="l4Minus">Remove an electron</button><button class="btn ghost" type="button" id="l4Plus">Add an electron</button><button class="btn ghost" type="button" id="l4Reset">Reset to neutral atom</button></div>
+      <div class="ionstat" id="l4Stats"></div>
+      <div class="detail" id="l4Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Two kinds of compound</span>
+      <div class="codes"><span class="code">M1.K4</span><span class="code">M1.K5</span><span class="code">M1.K8</span><span class="code">M1.S2</span></div>
+      <h3>Ionic or molecular?</h3>
+      <p>Compounds come in two kinds. You can usually tell which kind from the elements inside.</p>
+      <p>An <b>ionic compound</b> forms when a <b>metal</b> joins a <b>non-metal</b>. The metal atoms lose electrons and become cations. The non-metal atoms gain those electrons and become anions. Opposite charges attract, so the ions pack together in a crystal lattice.</p>
+      <p>The ions always combine in a <b>specific ratio</b> that makes the total charge zero. The compound as a whole is neutral. In sodium chloride there is one Na<sup>+</sup> for every Cl<sup>−</sup>.</p>
+      <p>A <b>molecular compound</b> forms when two or more different <b>non-metals</b> join. No atom gives up its electrons. Instead, the atoms <b>share</b> pairs of electrons, which holds them together as molecules. Water, carbon dioxide and methane (natural gas) are molecular compounds.</p>
+      <p class="note">Hydrogen sits above the metals in the periodic table, but it is a non-metal. When two atoms of the same non-metal share electrons, as in H<sub>2</sub>, the result is a molecule of an element, not a compound.</p>
+    </div>
+    <div class="model">
+      <h4>Model: join two elements</h4>
+      <div class="inline">
+        <label class="field" for="l5A">First element<select id="l5A"></select></label>
+        <label class="field" for="l5B">Second element<select id="l5B"></select></label>
+      </div>
+      <div class="svgbox"><svg id="l5Svg" viewBox="0 0 320 150" role="img" aria-label="Model of how the two elements join"></svg></div>
+      <div class="detail" id="l5Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Reading charges from the table</span>
+      <div class="codes"><span class="code">M1.K6</span><span class="code">M1.K5</span><span class="code">M1.S5</span></div>
+      <h3>Using the periodic table to find the ratio</h3>
+      <p>The periodic table tells you what charge each main-group ion has. Count the columns that matter:</p>
+      <ul>
+        <li>Group 1 metals lose 1 electron: <span class="cat">+1</span>. Group 2 lose 2: <span class="cat">+2</span>. Aluminum in group 13 loses 3: <span class="cat">+3</span>.</li>
+        <li>Group 17 non-metals gain 1 electron: <span class="an">−1</span>. Group 16 gain 2: <span class="an">−2</span>. Group 15 gain 3: <span class="an">−3</span>.</li>
+      </ul>
+      <p>Then find the smallest number of each ion that makes the total charge zero.</p>
+      <div class="worked">
+        <b>Worked example: aluminum and oxygen</b>
+        <span>1. Charges from the table: Al<sup>3+</sup> and O<sup>2−</sup>.</span>
+        <span>2. Smallest total both charges reach: 6.</span>
+        <span>3. Two Al<sup>3+</sup> give +6. Three O<sup>2−</sup> give −6. Total: 0.</span>
+        <span>4. Formula: <span class="fml">Al<sub>2</sub>O<sub>3</sub></span>, aluminum oxide.</span>
+      </div>
+      <p class="note">Many transition metals, like iron and copper, can form more than one ion. Their names include a Roman numeral, such as iron(III) oxide for Fe<sub>2</sub>O<sub>3</sub>. This lab sticks to main-group metals with one charge.</p>
+    </div>
+    <div class="model">
+      <h4>Model: periodic table of ion charges</h4>
+      <div id="l6Table"></div>
+      <div class="legend"><span><i style="background:var(--at-metal)"></i>metal</span><span><i style="background:var(--at-semi)"></i>metalloid</span><span><i style="background:var(--at-hal)"></i>non-metal</span><span><i style="background:var(--at-noble)"></i>noble gas</span></div>
+      <p class="hint">Small numbers show the usual ion charge. Tap a cell.</p>
+      <div class="detail" id="l6Out" aria-live="polite">Tap a cell to see its ion.</div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · The rules chemists share</span>
+      <div class="codes"><span class="code">M1.K9</span><span class="code">M1.S4</span></div>
+      <h3>IUPAC names</h3>
+      <p>Chemists around the world use the same naming rules, set by the <b>International Union of Pure and Applied Chemistry (IUPAC)</b>. One name means one substance, in any country.</p>
+      <p><b>Ionic compounds</b> (metal + non-metal):</p>
+      <ol>
+        <li>Name the metal first, unchanged: <i>magnesium</i>.</li>
+        <li>Name the non-metal second, with its ending changed to <b>-ide</b>: chlorine → <i>chloride</i>.</li>
+        <li>Do not add prefixes. The charges already fix the ratio. MgCl<sub>2</sub> is magnesium chloride.</li>
+      </ol>
+      <p><b>Molecular compounds</b> (two non-metals):</p>
+      <ol>
+        <li>Use a <b>prefix</b> to show how many atoms of each element.</li>
+        <li>Leave off <i>mono-</i> on the first element: CO is carbon monoxide.</li>
+        <li>The second element ends in <b>-ide</b>: N<sub>2</sub>O<sub>4</sub> is dinitrogen tetraoxide.</li>
+      </ol>
+      <p class="note">IUPAC drops the extra vowel only in <i>monoxide</i>. Many books also write <i>tetroxide</i> and <i>pentoxide</i>, and you will see both. A few compounds keep everyday names that IUPAC accepts: water (H<sub>2</sub>O), ammonia (NH<sub>3</sub>) and methane (CH<sub>4</sub>).</p>
+    </div>
+    <div class="model">
+      <h4>Model: name builder</h4>
+      <div class="chips" id="l7Chips" role="group" aria-label="Choose a compound"></div>
+      <div class="detail" id="l7Out" aria-live="polite"></div>
+      <h4>Prefixes for molecular compounds</h4>
+      <div class="tablebox"><table class="pre"><thead><tr><th>Atoms</th><th>Prefix</th><th>Atoms</th><th>Prefix</th></tr></thead><tbody>
+        <tr><td>1</td><td>mono-</td><td>6</td><td>hexa-</td></tr>
+        <tr><td>2</td><td>di-</td><td>7</td><td>hepta-</td></tr>
+        <tr><td>3</td><td>tri-</td><td>8</td><td>octa-</td></tr>
+        <tr><td>4</td><td>tetra-</td><td>9</td><td>nona-</td></tr>
+        <tr><td>5</td><td>penta-</td><td>10</td><td>deca-</td></tr>
+      </tbody></table></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Reading a chemical formula</span>
+      <div class="codes"><span class="code">M1.K10</span><span class="code">M1.S6</span></div>
+      <h3>Symbols and subscripts</h3>
+      <p>A <b>chemical formula</b> shows which elements are in a compound and how many atoms of each.</p>
+      <ul>
+        <li>Each element is shown by its symbol. A symbol starts with a capital letter, sometimes followed by one lowercase letter: Co is cobalt, but CO is carbon and oxygen.</li>
+        <li>A small number written low after a symbol is a <b>subscript</b>. It tells how many atoms of that element there are.</li>
+        <li>If there is no subscript, there is one atom. IUPAC never writes a subscript of 1.</li>
+      </ul>
+      <p>For an ionic compound, the formula shows the ratio of ions. For a molecular compound, it shows the atoms in one molecule.</p>
+      <div class="worked"><b>Worked example: glucose, <span class="fml">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></span></b><span>Carbon 6, hydrogen 12, oxygen 6. Total: 6 + 12 + 6 = 24 atoms in one molecule.</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: formula decoder</h4>
+      <label class="field" for="l8In">Type a formula (capitals matter)<input type="text" id="l8In" class="answer-in" value="C6H12O6" autocomplete="off" spellcheck="false"></label>
+      <div class="chips" id="l8Chips" role="group" aria-label="Example formulas"></div>
+      <div class="detail" id="l8Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · Reading hazard symbols</span>
+      <div class="codes"><span class="code">M1.K11</span><span class="code">M1.S7</span></div>
+      <h3>WHMIS pictograms</h3>
+      <p>Many pure substances are hazardous. Hydrochloric acid burns skin. Methanol is poisonous and catches fire easily. In Canadian workplaces, including school labs, hazards are shown with the <b>Workplace Hazardous Materials Information System</b>, or <b>WHMIS</b>.</p>
+      <p>A WHMIS label uses <b>pictograms</b>: black symbols on a white background inside a red diamond. Each pictogram stands for a group of hazards. A label also has a signal word (“Danger” for more severe hazards, “Warning” for less severe), hazard statements and safety steps. A <b>safety data sheet (SDS)</b> gives the full details.</p>
+      <p>WHMIS matches the Globally Harmonized System (GHS), so the same pictograms are used in many countries.</p>
+      <p class="note">Products sold for home use, like bleach, carry consumer hazard symbols with a different border shape instead. Always read the label and follow your teacher's safety rules.</p>
+    </div>
+    <div class="model">
+      <h4>Model: pictogram rack</h4>
+      <p class="hint">Simplified drawings for learning. Real labels use the official pictograms.</p>
+      <div class="pics" id="l9Pics" role="group" aria-label="WHMIS pictograms"></div>
+      <div class="detail" id="l9Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 10 · Putting it together</span>
+      <div class="codes"><span class="code">M1.S3</span><span class="code">M1.K1</span><span class="code">M1.K3</span></div>
+      <h3>How atoms, ions, elements, molecules and compounds connect</h3>
+      <p>These five words are easy to mix up. Each one names a different thing.</p>
+      <ul>
+        <li><b>Atom:</b> the smallest particle of an element.</li>
+        <li><b>Element:</b> a pure substance made of one kind of atom.</li>
+        <li><b>Ion:</b> an atom that has gained or lost electrons.</li>
+        <li><b>Molecule:</b> atoms sharing electrons, acting as one unit.</li>
+        <li><b>Compound:</b> two or more different elements chemically joined. Ionic compounds are made of ions. Molecular compounds are made of molecules.</li>
+      </ul>
+      <div class="key"><b>Test yourself:</b> O<sub>2</sub> is a molecule but not a compound. NaCl is a compound but not a molecule. H<sub>2</sub>O is both.</div>
+    </div>
+    <div class="model cmap">
+      <h4>Model: concept map</h4>
+      <p class="hint">Tap or press Enter on a box to see how it links to the others.</p>
+      <div class="svgbox"><svg id="l10Svg" viewBox="0 0 340 300" aria-label="Concept map of atoms, ions, elements, molecules and compounds"></svg></div>
+      <div class="detail" id="l10Out" aria-live="polite">Pick a box.</div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Balance ion charges to build ionic compounds, name compounds from formulas, write formulas from names, count atoms and read WHMIS labels. Each one gives new practice every time.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · Charge balancer</span>
+      <div class="codes"><span class="code">M1.K5</span><span class="code">M1.K6</span><span class="code">M1.S2</span><span class="code">M1.S5</span><span class="code">M1.S6</span></div>
+      <h3>Build a neutral ionic compound</h3>
+      <p>Choose a metal and a non-metal. Add ions until the total charge is zero. The formula and IUPAC name appear when the compound is neutral.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <div class="inline">
+          <label class="field" for="b1Cat">Metal (cation)<select id="b1Cat"></select></label>
+          <label class="field" for="b1An">Non-metal (anion)<select id="b1An"></select></label>
+        </div>
+        <div class="row">
+          <button class="btn ghost" type="button" id="b1AddC">Add cation</button>
+          <button class="btn ghost" type="button" id="b1RemC">Remove cation</button>
+          <button class="btn ghost" type="button" id="b1AddA">Add anion</button>
+          <button class="btn ghost" type="button" id="b1RemA">Remove anion</button>
+        </div>
+        <div class="tiles" id="b1Tiles" aria-label="Ions in your compound"></div>
+      </div>
+      <div class="model">
+        <div class="meter" id="b1Meter"></div>
+        <div class="detail" id="b1Out" aria-live="polite"></div>
+        <div class="worked" id="b1Goal"></div>
+        <div class="row"><button class="btn ghost" type="button" id="b1NewGoal">New challenge</button></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Name it</span>
+      <div class="codes"><span class="code">M1.S4</span><span class="code">M1.K9</span></div>
+      <h3>From formula to IUPAC name</h3>
+      <p>Decide if the compound is ionic or molecular, then pick its name. The worked steps appear after you answer.</p>
+    </div>
+    <div class="model">
+      <p class="big" id="b2Q" aria-live="polite"></p>
+      <div class="choice2" id="b2Opts" role="group" aria-label="Choose a name"></div>
+      <div class="detail" id="b2Out" aria-live="polite"></div>
+      <div class="row"><button class="btn" type="button" id="b2New">New compound</button><span class="hint mono" id="b2Score"></span></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Formula it</span>
+      <div class="codes"><span class="code">M1.S5</span><span class="code">M1.K6</span><span class="code">M1.K10</span></div>
+      <h3>From IUPAC name to formula</h3>
+      <p>Type the formula with plain numbers for subscripts, like Na2O. Use a capital letter to start each symbol.</p>
+    </div>
+    <div class="model">
+      <p class="big" id="b3Q" aria-live="polite"></p>
+      <div class="inline"><label class="field" for="b3In">Your formula<input type="text" id="b3In" class="answer-in" autocomplete="off" spellcheck="false"></label><button class="btn" type="button" id="b3Check">Check</button><button class="btn ghost" type="button" id="b3Hint">Hint</button><button class="btn ghost" type="button" id="b3New">New name</button></div>
+      <div class="detail" id="b3Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Atom counter</span>
+      <div class="codes"><span class="code">M1.S6</span><span class="code">M1.K10</span></div>
+      <h3>Count the atoms in a formula</h3>
+      <p>For a molecular compound, count the atoms in one molecule. For an ionic compound, count the atoms in one formula unit (the smallest neutral ratio).</p>
+    </div>
+    <div class="model">
+      <p class="big" id="b4Q" aria-live="polite"></p>
+      <div id="b4Inputs" class="inline"></div>
+      <div class="row"><button class="btn" type="button" id="b4Check">Check</button><button class="btn ghost" type="button" id="b4New">New formula</button></div>
+      <div class="detail" id="b4Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 5 · Label reader</span>
+      <div class="codes"><span class="code">M1.S7</span><span class="code">M1.K11</span></div>
+      <h3>What does this WHMIS pictogram warn about?</h3>
+      <p>Read the pictogram and choose the hazard it stands for. Sometimes you get a hazard and must find the pictogram instead.</p>
+    </div>
+    <div class="two">
+      <div class="model"><div class="picbig" id="b5Pic"></div><p id="b5Q" aria-live="polite"></p></div>
+      <div class="model">
+        <div class="choice2" id="b5Opts" role="group" aria-label="Choose an answer"></div>
+        <div class="detail" id="b5Out" aria-live="polite"></div>
+        <div class="row"><button class="btn" type="button" id="b5New">Next label</button><span class="hint mono" id="b5Score"></span></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 26. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 M1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>M1.K2:</b> the draft spells “monoatomic”; the lab uses the more common “monatomic” and says both mean one atom. Metals and carbon are noted as networks written with the symbol alone, so students do not call copper “monatomic” by default. Students meet “polyatomic element” here; polyatomic ions (such as hydroxide) are not taught.</li>
+      <li><b>M1.K3:</b> the draft lists O<sub>2</sub>, CO<sub>2</sub> and DNA. The lab adds that ionic compounds and metals are not made of molecules (NaCl is a lattice, described by a formula unit). Ladder counts: glucose 24 atoms, human insulin 788 atoms (C<sub>257</sub>H<sub>383</sub>N<sub>65</sub>O<sub>77</sub>S<sub>6</sub>), DNA in one human chromosome “billions” (no exact figure given).</li>
+      <li><b>M1.K6:</b> ratios are found from main-group ion charges by group (1, 2, 13 positive; 15, 16, 17 negative). Transition metals with more than one charge and Roman numeral names are mentioned once (iron(III) oxide) but not practised. Please confirm whether the final curriculum expects multivalent metals.</li>
+      <li><b>M1.K8:</b> the draft says “two or more non-metal atoms”. The lab teaches two or more <i>different</i> non-metal elements, since H<sub>2</sub> or O<sub>2</sub> are molecules of elements, not compounds. Hydrogen is treated as a non-metal. Metalloids are shown on the table but not used in naming.</li>
+      <li><b>M1.K9:</b> molecular names follow the 2005 IUPAC recommendation (no vowel dropped except “monoxide”, so “tetraoxide” and “pentaoxide”). The lab notes that “tetroxide” and “pentoxide” are common and are accepted in practice. Water, ammonia and methane are taught as accepted everyday names. Canadian spellings “aluminum” and “sulfur” are used; IUPAC writes “aluminium”.</li>
+      <li><b>M1.K10:</b> formula order taught as metal first for ionic compounds and in the order of the name for molecular ones. Atom counts for ionic compounds are per formula unit.</li>
+      <li><b>M1.K11:</b> the lab teaches the WHMIS 2015 (GHS-aligned) pictograms, signal words and the SDS. Pictograms are simplified drawings for learning and are labelled as such. The environment pictogram is noted as optional in Canada. Consumer products use different hazard symbols, mentioned once. WHMIS covers mixtures as well as pure substances. Examples (hydrochloric acid, methanol, propane, hydrogen peroxide) describe typical label hazards; check against the SDS for the products in your lab.</li>
+      <li><b>Context:</b> Alberta examples (sulfur blocks at sour gas plants, natural gas as methane, ammonia for fertilizer, road salt) are general. The statements do not name First Nations, Métis, Inuit or Francophone contributions, so none are added. All Lab Bench practice is generated from real compounds.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-m1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); if (s.indexOf(".") > -1) s = s.replace(/0+$/, "").replace(/\.$/, ""); return s; }
+function grp(x){ var s = String(x); var p = s.split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+/* ---------- Chemistry data ---------- */
+var PT = [
+  ["H","Hydrogen",1,1,"nonmetal",null],["He","Helium",2,1,"noble",null],
+  ["Li","Lithium",3,2,"metal",1],["Be","Beryllium",4,2,"metal",2],["B","Boron",5,2,"semi",null],["C","Carbon",6,2,"nonmetal",null],["N","Nitrogen",7,2,"nonmetal",-3],["O","Oxygen",8,2,"nonmetal",-2],["F","Fluorine",9,2,"nonmetal",-1],["Ne","Neon",10,2,"noble",null],
+  ["Na","Sodium",11,3,"metal",1],["Mg","Magnesium",12,3,"metal",2],["Al","Aluminum",13,3,"metal",3],["Si","Silicon",14,3,"semi",null],["P","Phosphorus",15,3,"nonmetal",-3],["S","Sulfur",16,3,"nonmetal",-2],["Cl","Chlorine",17,3,"nonmetal",-1],["Ar","Argon",18,3,"noble",null],
+  ["K","Potassium",19,4,"metal",1],["Ca","Calcium",20,4,"metal",2],["Ga","Gallium",31,4,"metal",3],["Ge","Germanium",32,4,"semi",null],["As","Arsenic",33,4,"semi",null],["Se","Selenium",34,4,"nonmetal",-2],["Br","Bromine",35,4,"nonmetal",-1],["Kr","Krypton",36,4,"noble",null],
+  ["Rb","Rubidium",37,5,"metal",1],["Sr","Strontium",38,5,"metal",2],["In","Indium",49,5,"metal",3],["Sn","Tin",50,5,"metal",null],["Sb","Antimony",51,5,"semi",null],["Te","Tellurium",52,5,"semi",null],["I","Iodine",53,5,"nonmetal",-1],["Xe","Xenon",54,5,"noble",null],
+  ["Cs","Cesium",55,6,"metal",1],["Ba","Barium",56,6,"metal",2],["Tl","Thallium",81,6,"metal",null],["Pb","Lead",82,6,"metal",null],["Bi","Bismuth",83,6,"metal",null],["Po","Polonium",84,6,"semi",null],["At","Astatine",85,6,"semi",null],["Rn","Radon",86,6,"noble",null]
+];
+var GROUPS = [1,2,13,14,15,16,17,18];
+var EL = {};
+PT.forEach(function(r, i){
+  var col = r[3] === 1 ? (r[0] === "H" ? 0 : 7) : (i - (r[3] === 2 ? 2 : r[3] === 3 ? 10 : r[3] === 4 ? 18 : r[3] === 5 ? 26 : 34));
+  EL[r[0]] = {sym: r[0], name: r[1], z: r[2], period: r[3], kind: r[4], charge: r[5], col: col, group: GROUPS[col]};
+});
+var IDE = {N:"nitride", P:"phosphide", O:"oxide", S:"sulfide", Se:"selenide", F:"fluoride", Cl:"chloride", Br:"bromide", I:"iodide", C:"carbide", H:"hydride"};
+var PRE = ["", "mono", "di", "tri", "tetra", "penta", "hexa", "hepta", "octa", "nona", "deca"];
+var KIND = {metal: "metal", nonmetal: "non-metal", semi: "metalloid", noble: "noble gas"};
+
+function lname(s){ return EL[s].name.toLowerCase(); }
+function supCharge(c){ if (!c) return ""; var n = Math.abs(c); return (n > 1 ? n : "") + (c > 0 ? "+" : "−"); }
+var SUPD = {"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","+":"⁺","−":"⁻"};
+var SUBD = {"0":"₀","1":"₁","2":"₂","3":"₃","4":"₄","5":"₅","6":"₆","7":"₇","8":"₈","9":"₉"};
+function uSup(s){ return String(s).split("").map(function(c){ return SUPD[c] || c; }).join(""); }
+function uSub(n){ return String(n).split("").map(function(c){ return SUBD[c] || c; }).join(""); }
+function ionText(s, c){ return s + uSup(supCharge(c)); }
+function plain(parts){ return parts.map(function(p){ return p[0] + (p[1] > 1 ? p[1] : ""); }).join(""); }
+function uni(parts){ return parts.map(function(p){ return p[0] + (p[1] > 1 ? uSub(p[1]) : ""); }).join(""); }
+/* build a formula node with <sub> */
+function fnode(parts, cls){
+  var s = el("span", {"class": cls || "fml"});
+  parts.forEach(function(p){ s.appendChild(document.createTextNode(p[0])); if (p[1] > 1) s.appendChild(el("sub", null, String(p[1]))); });
+  return s;
+}
+function ionNode(sym, c){
+  var s = el("span", {"class": "fml"}); s.appendChild(document.createTextNode(sym)); s.appendChild(el("sup", null, supCharge(c))); return s;
+}
+function gcd(a, b){ return b ? gcd(b, a % b) : a; }
+function lcm(a, b){ return a * b / gcd(a, b); }
+function parseFormula(str){
+  /* returns {parts:[[sym,n]...] in order (merged), ok:bool, msg} */
+  var s = String(str || "").replace(/\s+/g, "");
+  if (!s) return {ok: false, msg: "Type a formula first."};
+  if (!/^[A-Za-z0-9()]+$/.test(s)) return {ok: false, msg: "Use only letters and numbers, like Na2O."};
+  var stack = [[]], i = 0, m;
+  while (i < s.length) {
+    var ch = s[i];
+    if (ch === "(") { stack.push([]); i++; continue; }
+    if (ch === ")") {
+      if (stack.length < 2) return {ok: false, msg: "A bracket is not matched."};
+      var grpA = stack.pop(); i++; m = /^\d+/.exec(s.slice(i)); var k = m ? +m[0] : 1; if (m) i += m[0].length;
+      grpA.forEach(function(p){ stack[stack.length - 1].push([p[0], p[1] * k]); }); continue;
+    }
+    m = /^([A-Z][a-z]?)(\d*)/.exec(s.slice(i));
+    if (!m) return {ok: false, msg: "Each symbol must start with a capital letter. Check “" + s.slice(i, i + 2) + "”."};
+    if (!EL[m[1]] && ["Fe","Cu","Zn","Ag","Au","Hg","Ni","Co","Mn","Cr","Ti","Pt"].indexOf(m[1]) < 0) return {ok: false, msg: "“" + m[1] + "” is not a symbol this lab knows. Check the capital and lowercase letters."};
+    if (m[2] === "0" || m[2] === "1") return {ok: false, msg: "IUPAC formulas never use a subscript of " + m[2] + "."};
+    stack[stack.length - 1].push([m[1], m[2] ? +m[2] : 1]); i += m[0].length;
+  }
+  if (stack.length !== 1) return {ok: false, msg: "A bracket is not closed."};
+  var order = [], counts = {};
+  stack[0].forEach(function(p){ if (!(p[0] in counts)) { order.push(p[0]); counts[p[0]] = 0; } counts[p[0]] += p[1]; });
+  return {ok: true, parts: order.map(function(x){ return [x, counts[x]]; }), raw: stack[0]};
+}
+
+/* compounds */
+var CATS = ["Li","Na","K","Mg","Ca","Al"];
+var ANS = ["N","P","O","S","F","Cl","Br","I"];
+function ionic(c, a){
+  var cc = EL[c].charge, ac = -EL[a].charge, l = lcm(cc, ac);
+  var nc = l / cc, na = l / ac;
+  return {type: "ionic", parts: [[c, nc], [a, na]], name: lname(c) + " " + IDE[a], c: c, a: a, l: l};
+}
+function molName(parts){
+  var n1 = parts[0][1], n2 = parts[1][1];
+  var second = PRE[n2] + IDE[parts[1][0]];
+  if (second.indexOf("monoo") === 0) second = "monoxide";
+  return (n1 > 1 ? PRE[n1] : "") + lname(parts[0][0]) + " " + second;
+}
+var MOLLIST = ["CO","CO2","NO","NO2","N2O","N2O3","N2O4","N2O5","SO2","SO3","CCl4","CF4","PCl3","PCl5","SF6","CS2","NF3","OF2","Cl2O","P4O10","NCl3","IF7"];
+var MOLS = MOLLIST.map(function(f){ var p = parseFormula(f).parts; return {type: "molecular", parts: p, name: molName(p)}; });
+var IONICS = [];
+CATS.forEach(function(c){ ANS.forEach(function(a){ IONICS.push(ionic(c, a)); }); });
+var COMMON = [
+  {type: "molecular", parts: [["H",2],["O",1]], name: "water", common: true},
+  {type: "molecular", parts: [["N",1],["H",3]], name: "ammonia", common: true},
+  {type: "molecular", parts: [["C",1],["H",4]], name: "methane", common: true}
+];
+function steps(cpd){
+  var p = cpd.parts, out = [];
+  if (cpd.common) {
+    out.push("This molecular compound has an everyday name that IUPAC accepts: " + cpd.name + ".");
+    out.push("Its systematic parts: " + p.map(function(x){ return x[1] + " " + lname(x[0]); }).join(" and ") + ".");
+    return out;
+  }
+  if (cpd.type === "ionic") {
+    out.push(EL[cpd.c].name + " is a metal and " + lname(cpd.a) + " is a non-metal, so the compound is ionic.");
+    out.push("Name the metal first, unchanged: " + lname(cpd.c) + ".");
+    out.push("Change the non-metal ending to -ide: " + lname(cpd.a) + " → " + IDE[cpd.a] + ".");
+    out.push("No prefixes for ionic compounds. Name: " + cpd.name + ".");
+  } else {
+    out.push("Both elements are non-metals, so the compound is molecular.");
+    out.push(lname(p[0][0]) + ": " + p[0][1] + " atom" + (p[0][1] > 1 ? "s, prefix " + PRE[p[0][1]] + "-" : ", no prefix on the first element") + ".");
+    out.push(lname(p[1][0]) + ": " + p[1][1] + " atom" + (p[1][1] > 1 ? "s" : "") + ", prefix " + PRE[p[1][1]] + "-, ending -ide.");
+    var nm = "Name: " + cpd.name + ".";
+    if (/tetraoxide|pentaoxide|decaoxide/.test(cpd.name)) nm += " Many books also write " + cpd.name.replace("tetraoxide", "tetroxide").replace("pentaoxide", "pentoxide").replace("decaoxide", "decoxide") + ".";
+    out.push(nm);
+  }
+  return out;
+}
+function ionicSteps(cpd){
+  var cc = EL[cpd.c].charge, ac = EL[cpd.a].charge;
+  return [
+    "Charges from the periodic table: " + ionText(cpd.c, cc) + " (group " + EL[cpd.c].group + ") and " + ionText(cpd.a, ac) + " (group " + EL[cpd.a].group + ").",
+    "Smallest total both charges reach: " + cpd.l + ".",
+    cpd.parts[0][1] + " × (" + cc + "+) = +" + cpd.l + " and " + cpd.parts[1][1] + " × (" + (-ac) + "−) = −" + cpd.l + ". Total charge: 0.",
+    "Formula: " + uni(cpd.parts) + "."
+  ];
+}
+function molSteps(cpd){
+  var p = cpd.parts;
+  return [
+    "Two non-metals, so read the prefixes.",
+    p.map(function(x){ return (x[1] === 1 ? "no prefix or mono" : PRE[x[1]]) + " = " + x[1] + " " + lname(x[0]); }).join("; ") + ".",
+    "Write the symbols in the order of the name, with subscripts.",
+    "Formula: " + uni(p) + "."
+  ];
+}
+
+/* ---------- Drawing ---------- */
+function acol(s){
+  var e = EL[s];
+  if (s === "H") return "var(--at-h)"; if (s === "C") return "var(--at-c)"; if (s === "N") return "var(--at-n)"; if (s === "O") return "var(--at-o)";
+  if (s === "S") return "var(--at-s)"; if (s === "P") return "var(--at-p)";
+  if (["F","Cl","Br","I"].indexOf(s) > -1) return "var(--at-hal)";
+  if (e && e.kind === "noble") return "var(--at-noble)";
+  return "var(--at-metal)";
+}
+var MOL = {
+  He: [["He",0,0]], Ne: [["Ne",0,0]], Ar: [["Ar",0,0]], Rn: [["Rn",0,0]], Kr: [["Kr",0,0]],
+  H2: [["H",-7,0],["H",7,0]], N2: [["N",-8,0],["N",8,0]], O2: [["O",-8,0],["O",8,0]], F2: [["F",-8,0],["F",8,0]],
+  Cl2: [["Cl",-8,0],["Cl",8,0]], Br2: [["Br",-8,0],["Br",8,0]], I2: [["I",-8,0],["I",8,0]],
+  O3: [["O",-14,6],["O",14,6],["O",0,-4]], P4: [["P",-11,0],["P",11,0],["P",0,-11],["P",0,11]],
+  S8: (function(){ var a = []; for (var i = 0; i < 8; i++) a.push(["S", 19 * Math.cos(i * Math.PI / 4), 19 * Math.sin(i * Math.PI / 4), 7.5]); return a; })(),
+  H2O: [["O",0,0],["H",-12,8],["H",12,8]], CO2: [["O",-17,0],["O",17,0],["C",0,0]], CO: [["C",-8,0],["O",8,0]],
+  CH4: [["C",0,0],["H",-12,-10],["H",12,-10],["H",-12,10],["H",12,10]], NH3: [["N",0,0],["H",-13,8],["H",13,8],["H",0,-14]]
+};
+function drawMol(g, key, cx, cy, sc, labels){
+  var list = MOL[key] || [[key.replace(/\d/g, ""), 0, 0]];
+  list.forEach(function(a){
+    var r = (a[3] || 10) * sc;
+    g.appendChild(sv("circle", {cx: cx + a[1] * sc, cy: cy + a[2] * sc, r: r, fill: acol(a[0]), stroke: "var(--at-stroke)", "stroke-width": 1}));
+    if (labels !== false) g.appendChild(sv("text", {x: cx + a[1] * sc, y: cy + a[2] * sc + 3 * sc, "text-anchor": "middle", "class": "atom-t", style: "font-size:" + (a[0].length > 1 ? 7.5 : 9) * sc + "px"}, a[0]));
+  });
+}
+function drawLattice(g, a, b, cols, rows, x0, y0, sp, sc, charges){
+  for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+    var s = (r + c) % 2 === 0 ? a : b;
+    var big = b && s === b ? 1.15 : (b ? .8 : 1);
+    var x = x0 + c * sp, y = y0 + r * sp;
+    g.appendChild(sv("circle", {cx: x, cy: y, r: 9 * sc * big, fill: acol(s), stroke: "var(--at-stroke)", "stroke-width": 1}));
+    var t = charges ? (s === a ? "+" : "−") : s;
+    g.appendChild(sv("text", {x: x, y: y + 3 * sc, "text-anchor": "middle", "class": "atom-t", style: "font-size:" + (charges ? 11 : 7) * sc + "px"}, t));
+  }
+}
+
+/* ---------- Periodic table renderer ---------- */
+function renderTable(box, mode, onPick){
+  clear(box);
+  var t = el("div", {"class": "ptable", role: "group", "aria-label": "Main-group periodic table"});
+  GROUPS.forEach(function(g){ t.appendChild(el("span", {"class": "gh", "aria-hidden": "true"}, "G" + g)); });
+  var cells = [];
+  for (var p = 1; p <= 6; p++) {
+    for (var c = 0; c < 8; c++) {
+      var e = null;
+      for (var k in EL) if (EL[k].period === p && EL[k].col === c) e = EL[k];
+      if (!e) { t.appendChild(el("span", {"aria-hidden": "true"})); continue; }
+      var small = "";
+      if (mode === "charge" && e.charge) small = supCharge(e.charge);
+      if (mode === "diatomic" && ["H","N","O","F","Cl","Br","I"].indexOf(e.sym) > -1) small = e.sym + "₂";
+      var lab = e.name + ", " + e.sym + ", " + KIND[e.kind] + (mode === "charge" && e.charge ? ", usual ion charge " + supCharge(e.charge).replace("−", " minus").replace("+", " plus") : "");
+      var b = el("button", {type: "button", "class": "pcell " + e.kind, "aria-label": lab, "aria-pressed": "false"});
+      b.appendChild(el("b", null, e.sym));
+      var sm = el("small", {"class": mode === "charge" && e.charge ? (e.charge > 0 ? "q-cat" : "q-an") : ""}, small || " ");
+      b.appendChild(sm);
+      if (mode === "diatomic") { if (small) b.classList.add("hl"); else b.classList.add("dim"); }
+      (function(e, b){ b.addEventListener("click", function(){ cells.forEach(function(x){ x.setAttribute("aria-pressed", "false"); }); b.setAttribute("aria-pressed", "true"); onPick(e); }); })(e, b);
+      cells.push(b); t.appendChild(b);
+    }
+  }
+  box.appendChild(t);
+}
+
+/* ---------- Lesson 1: particle boxes ---------- */
+(function(){
+  var BOXES = [
+    {key: "He", label: "Helium gas", ans: 0, why: "Every particle is a single helium atom. One kind of atom means an element."},
+    {key: "O2", label: "Oxygen gas", ans: 0, why: "Each particle has two atoms, but both are oxygen. One kind of atom means an element."},
+    {key: "H2O", label: "Water", ans: 1, why: "Each particle has two hydrogen atoms and one oxygen atom. Two different elements joined in a fixed 2 to 1 ratio make a compound."},
+    {key: "CO2", label: "Carbon dioxide", ans: 1, why: "Each particle has one carbon and two oxygen atoms. Two different elements in a fixed ratio make a compound."},
+    {key: "Cu", label: "Copper metal", ans: 0, lattice: ["Cu"], why: "Only copper atoms, packed in a network. One kind of atom means an element."},
+    {key: "NaCl", label: "Table salt", ans: 1, lattice: ["Na","Cl"], why: "Sodium ions and chloride ions alternate in a lattice, always 1 to 1. Two elements joined in a fixed ratio make a compound."}
+  ];
+  var sel = null, btns = [];
+  store.l1 = store.l1 || {};
+  BOXES.forEach(function(bx, i){
+    var b = el("button", {type: "button", "class": "pbox", "aria-pressed": "false", "aria-label": bx.label + " particle box"});
+    var s = sv("svg", {viewBox: "0 0 120 90", "aria-hidden": "true"});
+    s.appendChild(sv("rect", {x: 1, y: 1, width: 118, height: 88, rx: 6, fill: "var(--surface-2)", stroke: "var(--line)"}));
+    if (bx.lattice) drawLattice(s, bx.lattice[0], bx.lattice[1], 5, 4, 20, 18, 20, .95, false);
+    else [[28,25],[90,22],[60,52],[26,70],[94,68]].forEach(function(p){ drawMol(s, bx.key, p[0], p[1], .95); });
+    b.appendChild(s); b.appendChild(el("span", null, bx.label));
+    if (store.l1[i]) b.classList.add("done");
+    b.addEventListener("click", function(){ sel = i; btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); }); var o = $("l1Out"); clear(o); o.appendChild(el("p", null, bx.label + ": element or compound? Choose below.")); });
+    btns.push(b); $("l1Boxes").appendChild(b);
+  });
+  function answer(k){
+    var o = $("l1Out"); clear(o);
+    if (sel == null) { o.appendChild(el("p", null, "Pick a box first.")); return; }
+    var bx = BOXES[sel], ok = k === bx.ans;
+    o.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, (ok ? "Correct: " : "Not quite: ") + bx.label + " is " + (bx.ans ? "a compound." : "an element.")));
+    o.appendChild(el("p", null, bx.why));
+    if (ok) { store.l1[sel] = 1; save(); btns[sel].classList.add("done"); }
+    var n = Object.keys(store.l1).length;
+    o.appendChild(el("p", {"class": "hint mono"}, n + " of 6 boxes sorted correctly"));
+  }
+  $("l1El").addEventListener("click", function(){ answer(0); });
+  $("l1Co").addEventListener("click", function(){ answer(1); });
+})();
+
+/* ---------- Lesson 2: element explorer ---------- */
+(function(){
+  var LIST = [
+    ["He","Helium","monatomic","Gas","A noble gas that is lighter than air. Each particle is one atom."],
+    ["Ne","Neon","monatomic","Gas","Glows red-orange in signs. Each particle is one atom."],
+    ["Ar","Argon","monatomic","Gas","About 1% of the air. It fills the gap in many double-pane windows to slow heat loss."],
+    ["Rn","Radon","monatomic","Gas","A radioactive gas that seeps up from rocks and soil. It can build up in basements, so health agencies recommend testing homes."],
+    ["H2","Hydrogen","diatomic","Gas","The lightest gas. Each molecule is two hydrogen atoms."],
+    ["N2","Nitrogen","diatomic","Gas","About 78% of the air you breathe is N₂ molecules."],
+    ["O2","Oxygen","diatomic","Gas","About 21% of the air. Your cells use O₂ to release energy from food."],
+    ["F2","Fluorine","diatomic","Gas","A pale yellow gas that reacts with almost everything."],
+    ["Cl2","Chlorine","diatomic","Gas","A poisonous yellow-green gas. Chlorine compounds help disinfect drinking water."],
+    ["Br2","Bromine","diatomic","Liquid","A red-brown liquid. It is one of only two elements that are liquid at room temperature."],
+    ["I2","Iodine","diatomic","Solid","Grey-black crystals that turn into a violet vapour when warmed."],
+    ["O3","Ozone","polyatomic","Gas","Three oxygen atoms. Ozone high in the atmosphere absorbs harmful ultraviolet light."],
+    ["P4","White phosphorus","polyatomic","Solid","Four phosphorus atoms. It catches fire in air, so it is stored under water."],
+    ["S8","Sulfur","polyatomic","Solid","Rings of eight sulfur atoms. Alberta gas plants stack sulfur into huge yellow blocks."]
+  ];
+  var TYPE = {monatomic: "Monatomic: each particle is a single atom.", diatomic: "Diatomic: each molecule has two atoms of the same kind.", polyatomic: "Polyatomic: each molecule has more than two atoms of the same kind."};
+  var svg = $("l2Svg");
+  function show(it){
+    clear(svg);
+    var sc = it[0] === "S8" ? 1.5 : 1.9;
+    [[60,75],[160,75],[260,75]].forEach(function(p){ drawMol(svg, it[0], p[0], p[1], sc); });
+    svg.setAttribute("aria-label", it[1] + " particles: " + it[2]);
+    var o = $("l2Out"); clear(o);
+    var h = el("h5"); h.appendChild(document.createTextNode(it[1] + " · ")); h.appendChild(fnode(parseFormula(it[0]).parts)); o.appendChild(h);
+    o.appendChild(el("p", null, TYPE[it[2]] + " " + it[3] + " at room temperature."));
+    o.appendChild(el("p", null, it[4]));
+  }
+  chipGroup($("l2Chips"), LIST.map(function(it){ return {label: it[0].replace(/(\d)/g, function(d){ return uSub(d); }), it: it}; }), function(x){ show(x.it); }, 6);
+  renderTable($("l2Table"), "diatomic", function(e){
+    var di = ["H","N","O","F","Cl","Br","I"].indexOf(e.sym) > -1;
+    var mono = e.kind === "noble";
+    $("l2Cell").textContent = e.name + " (" + e.sym + "), " + KIND[e.kind] + ". " + (di ? "Diatomic: found as " + e.sym + "₂ molecules." : mono ? "Monatomic: found as single atoms." : e.sym === "S" ? "Polyatomic: found as S₈ rings." : e.sym === "P" ? "Polyatomic: white phosphorus is P₄." : e.kind === "metal" ? "A metal: its atoms form a network, so it is written as " + e.sym + "." : "Written with its symbol alone, " + e.sym + ".");
+  });
+})();
+
+/* ---------- Lesson 3: size ladder ---------- */
+(function(){
+  var ROWS = [
+    ["O₂", "Oxygen", 2, "2", "A molecule of an element: two oxygen atoms."],
+    ["H₂O", "Water", 3, "3", "A molecule of a compound: two hydrogen atoms and one oxygen atom."],
+    ["CO₂", "Carbon dioxide", 3, "3", "A molecule of a compound: one carbon and two oxygen atoms. You breathe it out."],
+    ["CH₄", "Methane", 5, "5", "The main part of Alberta's natural gas. One carbon and four hydrogen atoms."],
+    ["C₆H₁₂O₆", "Glucose", 24, "24", "The sugar plants make in photosynthesis: 6 + 12 + 6 = 24 atoms."],
+    ["C₁₂H₂₂O₁₁", "Sucrose", 45, "45", "Table sugar, made from sugar beets grown in southern Alberta: 12 + 22 + 11 = 45 atoms."],
+    ["Insulin", "Human insulin", 788, "788", "A protein hormone that controls blood sugar. Its formula is C₂₅₇H₃₈₃N₆₅O₇₇S₆, which adds to 788 atoms. Insulin was first purified for patients in Toronto in 1922. Biochemist James Collip, on leave from the University of Alberta, worked out how to purify it."],
+    ["DNA", "DNA in one chromosome", 1e10, "billions", "One very long molecule that carries genetic instructions. It holds billions of atoms and still acts as a single unit."]
+  ];
+  var box = $("l3Ladder"), btns = [];
+  ROWS.forEach(function(r, i){
+    var b = el("button", {type: "button", "class": "lrow", "aria-pressed": "false", "aria-label": r[1] + ", " + r[3] + " atoms"});
+    b.appendChild(el("span", {"class": "fml"}, r[0]));
+    var tr = el("span", {"class": "track"}); var bar = el("i"); bar.style.width = Math.max(4, Math.log(r[2]) / Math.log(1e10) * 100) + "%"; tr.appendChild(bar); b.appendChild(tr);
+    b.appendChild(el("b", null, r[3]));
+    b.addEventListener("click", function(){ btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); }); var o = $("l3Out"); clear(o); o.appendChild(el("h5", null, r[1] + " · " + r[3] + " atoms")); o.appendChild(el("p", null, r[4])); });
+    btns.push(b); box.appendChild(b);
+  });
+  btns[4].click();
+})();
+
+/* ---------- Lesson 4: ion maker ---------- */
+(function(){
+  var LIST = ["Li","N","O","F","Na","Mg","Al","P","S","Cl","K","Ca","Ne","Ar"];
+  var sel = $("l4El");
+  LIST.forEach(function(s){ sel.appendChild(el("option", {value: s}, EL[s].name + " (" + s + ")")); });
+  sel.value = "Na";
+  var e = 11;
+  function shells(n){ var cap = [2, 8, 8, 8], out = []; for (var i = 0; i < 4 && n > 0; i++) { var k = Math.min(cap[i], n); out.push(k); n -= k; } return out; }
+  function draw(){
+    var s = sel.value, z = EL[s].z, svg = $("l4Svg"); clear(svg);
+    var sh = shells(e), R = [34, 56, 78, 98], cx = 150, cy = 110;
+    for (var i = 0; i < sh.length; i++) svg.appendChild(sv("circle", {cx: cx, cy: cy, r: R[i], fill: "none", stroke: "var(--line)", "stroke-width": 1.5}));
+    svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 22, fill: acol(s), stroke: "var(--at-stroke)"}));
+    svg.appendChild(sv("text", {x: cx, y: cy - 2, "text-anchor": "middle", "class": "big-t"}, s));
+    svg.appendChild(sv("text", {x: cx, y: cy + 13, "text-anchor": "middle", "class": "atom-t"}, z + " p⁺"));
+    var count = 0;
+    sh.forEach(function(n, i){
+      for (var j = 0; j < n; j++) {
+        count++;
+        var ang = -Math.PI / 2 + j * 2 * Math.PI / (i === 0 ? 2 : 8) + (i === 0 ? 0 : (j % 2 ? -.12 : .12) * 0);
+        var extra = count > z;
+        svg.appendChild(sv("circle", {cx: cx + R[i] * Math.cos(ang), cy: cy + R[i] * Math.sin(ang), r: 6, fill: extra ? "var(--an)" : "var(--elec)", stroke: "var(--surface)", "stroke-width": 1.5}));
+      }
+    });
+    var lost = z - e;
+    if (lost > 0) svg.appendChild(sv("text", {x: 8, y: 20, "class": "small"}, lost + " electron" + (lost > 1 ? "s" : "") + " removed"));
+    if (lost < 0) svg.appendChild(sv("text", {x: 8, y: 20, "class": "small"}, (-lost) + " electron" + (lost < -1 ? "s" : "") + " added (blue)"));
+    var charge = z - e;
+    svg.setAttribute("aria-label", "Bohr model of " + EL[s].name + " with " + z + " protons and " + e + " electrons, arranged " + sh.join(", ") + ". Charge " + (charge === 0 ? "zero" : supCharge(charge)));
+    var st = $("l4Stats"); clear(st);
+    var outer = sh[sh.length - 1] || 0, full = (sh.length === 1 ? outer === 2 : outer === 8);
+    [["Protons", z], ["Electrons", e], ["Charge", charge === 0 ? "0" : supCharge(charge)], ["Outer shell", outer + (full ? " (full)" : "")]].forEach(function(x){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, x[0])); d.appendChild(el("b", null, String(x[1]))); st.appendChild(d); });
+    var o = $("l4Out"); clear(o);
+    var p = el("p");
+    if (charge === 0) p.textContent = "Neutral " + lname(s) + " atom: " + z + " protons and " + z + " electrons cancel.";
+    else if (charge > 0) { p.appendChild(document.createTextNode("Lost " + charge + " electron" + (charge > 1 ? "s" : "") + ", so there are more protons than electrons. This is a cation: ")); p.appendChild(ionNode(s, charge)); p.appendChild(document.createTextNode(", the " + lname(s) + " ion.")); }
+    else { p.appendChild(document.createTextNode("Gained " + (-charge) + " electron" + (charge < -1 ? "s" : "") + ", so there are more electrons than protons. This is an anion: ")); p.appendChild(ionNode(s, charge)); p.appendChild(document.createTextNode(", the " + (IDE[s] || lname(s)) + " ion.")); }
+    o.appendChild(p);
+    var usual = EL[s].charge;
+    if (EL[s].kind === "noble") o.appendChild(el("p", null, charge === 0 ? "Noble gases already have a full outer shell, so they rarely form ions." : "This ion is not stable. Neon and argon keep their full shells."));
+    else if (charge === usual) o.appendChild(el("p", {"class": "fb ok"}, "Full outer shell. This is the ion " + lname(s) + " usually forms, " + ionText(s, usual) + "."));
+    else o.appendChild(el("p", {"class": "hint"}, "Goal: give " + lname(s) + " a full outer shell. " + (usual > 0 ? "Metals reach it by losing electrons." : "Non-metals reach it by gaining electrons.")));
+  }
+  function reset(){ e = EL[sel.value].z; draw(); }
+  sel.addEventListener("change", reset);
+  $("l4Minus").addEventListener("click", function(){ var z = EL[sel.value].z; if (e > Math.max(0, z - 3)) { e--; draw(); } else { $("l4Out").appendChild(el("p", {"class": "hint"}, "This model stops at a charge of 3+.")); } });
+  $("l4Plus").addEventListener("click", function(){ var z = EL[sel.value].z; if (e < Math.min(z + 3, 28)) { e++; draw(); } else { $("l4Out").appendChild(el("p", {"class": "hint"}, "This model stops at a charge of 3−.")); } });
+  $("l4Reset").addEventListener("click", reset);
+  reset();
+})();
+
+/* ---------- Lesson 5: join two elements ---------- */
+(function(){
+  var LIST = ["Na","K","Li","Mg","Ca","Al","H","C","N","O","F","P","S","Cl","Br"];
+  var A = $("l5A"), B = $("l5B");
+  LIST.forEach(function(s){ A.appendChild(el("option", {value: s}, EL[s].name)); B.appendChild(el("option", {value: s}, EL[s].name)); });
+  A.value = "Na"; B.value = "Cl";
+  var KNOWN = {"H-O": ["H2O","water",[["H",2],["O",1]]], "C-O": ["CO2","carbon dioxide (carbon monoxide, CO, also exists)",[["C",1],["O",2]]], "H-N": ["NH3","ammonia",[["N",1],["H",3]]], "C-H": ["CH4","methane",[["C",1],["H",4]]],
+    "Cl-H": [null,"hydrogen chloride",[["H",1],["Cl",1]]], "F-H": [null,"hydrogen fluoride",[["H",1],["F",1]]], "H-S": [null,"hydrogen sulfide (a toxic gas in sour natural gas)",[["H",2],["S",1]]], "N-O": [null,"nitrogen dioxide (and several other nitrogen oxides)",[["N",1],["O",2]]],
+    "O-S": [null,"sulfur dioxide",[["S",1],["O",2]]], "C-Cl": [null,"carbon tetrachloride",[["C",1],["Cl",4]]], "Cl-P": [null,"phosphorus trichloride",[["P",1],["Cl",3]]], "C-S": [null,"carbon disulfide",[["C",1],["S",2]]], "F-N": [null,"nitrogen trifluoride",[["N",1],["F",3]]], "F-O": [null,"oxygen difluoride",[["O",1],["F",2]]], "O-P": [null,"tetraphosphorus decaoxide",[["P",4],["O",10]]], "Cl-N": [null,"nitrogen trichloride",[["N",1],["Cl",3]]], "Cl-O": [null,"dichlorine monoxide",[["Cl",2],["O",1]]], "C-F": [null,"carbon tetrafluoride",[["C",1],["F",4]]], "Br-H": [null,"hydrogen bromide",[["H",1],["Br",1]]]};
+  function upd(){
+    var a = A.value, b = B.value, ea = EL[a], eb = EL[b], svg = $("l5Svg"), o = $("l5Out");
+    clear(svg); clear(o);
+    var ma = ea.kind === "metal", mb = eb.kind === "metal";
+    if (a === b) {
+      o.appendChild(el("h5", null, "Same element"));
+      var mk = a === "S" ? "S8" : a === "P" ? "P4" : MOL[a + "2"] ? a + "2" : null;
+      o.appendChild(el("p", null, ma ? "Atoms of one metal make the metal element itself, a network of " + lname(a) + " atoms." : EL[a].name + " atoms can share electrons with each other, but the result is a molecule of an element" + (mk ? " (" + mk.replace(/\d+/, function(d){ return uSub(d); }) + ")" : "") + ", not a compound."));
+      if (a === "C") o.lastChild.textContent = "Carbon atoms share electrons with each other, but they build a huge network (diamond or graphite) of the element, not a compound.";
+      if (ma || !mk) drawLattice(svg, a, null, 7, 4, 70, 30, 30, 1.2, false); else drawMol(svg, mk, 160, 75, mk === "S8" ? 2.2 : 2.6);
+      return;
+    }
+    if (ma && mb) {
+      o.appendChild(el("h5", null, "Two metals: no compound here"));
+      o.appendChild(el("p", null, "Metals do not take electrons from each other. Melted together, they form an alloy, which is a mixture, not an ionic or molecular compound."));
+      drawLattice(svg, a, b, 7, 4, 70, 30, 30, 1.2, false);
+      return;
+    }
+    if (ma || mb) {
+      var m = ma ? a : b, n = ma ? b : a;
+      if (!EL[n].charge) {
+        o.appendChild(el("h5", null, "Ionic compound"));
+        o.appendChild(el("p", null, EL[m].name + " is a metal and " + lname(n) + " is a non-metal, so they form an ionic compound. The ion " + lname(n) + " forms here is beyond this lab, so try nitrogen, phosphorus, oxygen, sulfur or a halogen."));
+        drawLattice(svg, m, n, 7, 4, 70, 30, 30, 1.2, true);
+        return;
+      }
+      var cpd = ionic(m, n);
+      var h = el("h5"); h.appendChild(document.createTextNode("Ionic compound: " + cpd.name + ", ")); h.appendChild(fnode(cpd.parts)); o.appendChild(h);
+      var p = el("p"); p.appendChild(document.createTextNode(EL[m].name + " (metal) loses electrons to form ")); p.appendChild(ionNode(m, EL[m].charge)); p.appendChild(document.createTextNode(". " + EL[n].name + " (non-metal) gains electrons to form ")); p.appendChild(ionNode(n, EL[n].charge)); p.appendChild(document.createTextNode(".")); o.appendChild(p);
+      o.appendChild(el("p", null, "They combine " + cpd.parts[0][1] + " to " + cpd.parts[1][1] + " so the total charge is zero. The ions pack into a crystal lattice, not molecules."));
+      drawLattice(svg, m, n, 7, 4, 70, 30, 30, 1.2, true);
+      svg.appendChild(sv("text", {x: 160, y: 146, "text-anchor": "middle", "class": "small"}, "+ cation (" + m + ")   − anion (" + n + ")"));
+      return;
+    }
+    var key = [a, b].sort().join("-"), k = KNOWN[key];
+    o.appendChild(el("h5", null, "Molecular compound"));
+    o.appendChild(el("p", null, "Both are non-metals, so neither gives up electrons. Their atoms share pairs of electrons and form molecules."));
+    if (k) { var pp = el("p"); pp.appendChild(document.createTextNode("Example: ")); pp.appendChild(fnode(k[2])); pp.appendChild(document.createTextNode(", " + k[1] + ".")); o.appendChild(pp); }
+    if (k && k[0]) { drawMol(svg, k[0], 160, 75, 2.6); }
+    else {
+      svg.appendChild(sv("circle", {cx: 140, cy: 75, r: 34, fill: acol(a), stroke: "var(--at-stroke)"}));
+      svg.appendChild(sv("circle", {cx: 180, cy: 75, r: 34, fill: acol(b), stroke: "var(--at-stroke)", "fill-opacity": .85}));
+      svg.appendChild(sv("text", {x: 122, y: 80, "text-anchor": "middle", "class": "big-t"}, a));
+      svg.appendChild(sv("text", {x: 198, y: 80, "text-anchor": "middle", "class": "big-t"}, b));
+      svg.appendChild(sv("circle", {cx: 160, cy: 67, r: 5, fill: "var(--elec)"}));
+      svg.appendChild(sv("circle", {cx: 160, cy: 83, r: 5, fill: "var(--elec)"}));
+      svg.appendChild(sv("text", {x: 160, y: 140, "text-anchor": "middle", "class": "small"}, "shared pair of electrons"));
+    }
+  }
+  A.addEventListener("change", upd); B.addEventListener("change", upd); upd();
+})();
+
+/* ---------- Lesson 6: charges table ---------- */
+renderTable($("l6Table"), "charge", function(e){
+  var o = $("l6Out"); clear(o);
+  o.appendChild(el("h5", null, e.name + " (" + e.sym + ") · group " + e.group + " · " + KIND[e.kind]));
+  var p = el("p");
+  if (e.charge > 0) { p.appendChild(document.createTextNode("Loses " + e.charge + " electron" + (e.charge > 1 ? "s" : "") + " to reach a full outer shell. Ion: ")); p.appendChild(ionNode(e.sym, e.charge)); p.appendChild(document.createTextNode(", the " + lname(e.sym) + " ion (a cation).")); }
+  else if (e.charge < 0) { p.appendChild(document.createTextNode("Gains " + (-e.charge) + " electron" + (e.charge < -1 ? "s" : "") + " to reach a full outer shell. Ion: ")); p.appendChild(ionNode(e.sym, e.charge)); p.appendChild(document.createTextNode(", the " + IDE[e.sym] + " ion (an anion).")); }
+  else if (e.kind === "noble") p.textContent = "Already has a full outer shell, so it rarely forms ions or compounds.";
+  else if (e.sym === "H") p.textContent = "Hydrogen is a non-metal. It usually shares its electron in molecular compounds, such as water.";
+  else if (e.kind === "metal") p.textContent = "This metal can form more than one ion, so it is not used for practice in this lab.";
+  else p.textContent = "Usually shares electrons in molecular compounds instead of forming a simple ion.";
+  o.appendChild(p);
+});
+
+/* ---------- Lesson 7: name builder ---------- */
+(function(){
+  var LIST = [ionic("Na","Cl"), ionic("Mg","Cl"), ionic("Al","O"), ionic("K","S"), ionic("Ca","F"), ionic("Li","N")]
+    .concat(["CO","CO2","N2O4","PCl5","SF6"].map(function(f){ var p = parseFormula(f).parts; return {type: "molecular", parts: p, name: molName(p)}; }))
+    .concat([COMMON[0]]);
+  chipGroup($("l7Chips"), LIST.map(function(c){ return {label: uni(c.parts), c: c}; }), function(x){
+    var c = x.c, o = $("l7Out"); clear(o);
+    var h = el("h5"); h.appendChild(fnode(c.parts)); h.appendChild(document.createTextNode(" → " + c.name)); o.appendChild(h);
+    var ol = el("ol", {"class": "steps"}); steps(c).forEach(function(s){ ol.appendChild(el("li", null, s)); }); o.appendChild(ol);
+  }, 1);
+})();
+
+/* ---------- Lesson 8: formula decoder ---------- */
+(function(){
+  var inp = $("l8In");
+  function upd(){
+    var r = parseFormula(inp.value), o = $("l8Out"); clear(o);
+    if (!r.ok) { o.appendChild(el("p", {"class": "fb no"}, r.msg)); return; }
+    var tot = 0;
+    var h = el("h5"); h.appendChild(fnode(r.raw)); o.appendChild(h);
+    r.parts.forEach(function(p){
+      tot += p[1];
+      var row = el("div", {"class": "countrow"});
+      row.appendChild(el("b", null, p[0]));
+      var d = el("span", {"class": "dots", "aria-hidden": "true"});
+      for (var i = 0; i < Math.min(p[1], 40); i++) { var dot = el("i"); dot.style.background = acol(p[0]); d.appendChild(dot); }
+      if (p[1] > 40) d.appendChild(el("span", {"class": "hint"}, "+" + (p[1] - 40)));
+      row.appendChild(d);
+      row.appendChild(el("span", null, String(p[1])));
+      row.setAttribute("aria-label", (EL[p[0]] ? EL[p[0]].name : p[0]) + ": " + p[1]);
+      o.appendChild(row);
+    });
+    o.appendChild(el("p", {"class": "mono"}, "Total: " + r.parts.map(function(p){ return p[1]; }).join(" + ") + " = " + tot + " atoms"));
+    var allMetalNon = r.parts.length === 2 && ((EL[r.parts[0][0]] || {}).kind === "metal") && ((EL[r.parts[1][0]] || {}).kind === "nonmetal");
+    o.appendChild(el("p", {"class": "hint"}, r.parts.length === 1 ? "One element only: this is an element, not a compound." : allMetalNon ? "Metal + non-metal: ionic. These counts are for one formula unit." : "These counts are for one molecule or one formula unit."));
+  }
+  inp.addEventListener("input", upd);
+  chipGroup($("l8Chips"), ["C6H12O6","H2O","Al2O3","C3H8","CaCl2","S8","C12H22O11"].map(function(f){ return {label: uni(parseFormula(f).parts), f: f}; }), function(x){ inp.value = x.f; upd(); });
+  upd();
+})();
+
+/* ---------- WHMIS pictograms ---------- */
+var PICS = [
+  {id: "flame", name: "Flame", short: "Flammable: catches fire easily", long: "Flammable gases, liquids and solids. Also materials that catch fire on contact with air, heat up on their own, or give off flammable gas with water.", ex: "Methanol, lab ethanol, propane", safe: "Keep away from flames, sparks and heat."},
+  {id: "oxid", name: "Flame over circle", short: "Oxidizer: makes fires burn hotter and faster", long: "Oxidizing materials. They supply oxygen, so they can start a fire or make one much worse.", ex: "Concentrated hydrogen peroxide", safe: "Store away from fuels and flammable materials."},
+  {id: "bomb", name: "Exploding bomb", short: "Explosive: can explode or react violently", long: "Explosives, and self-reactive materials or organic peroxides that can explode when heated or shocked.", ex: "Some organic peroxides", safe: "Avoid heat, shock and friction."},
+  {id: "gas", name: "Gas cylinder", short: "Gas under pressure", long: "Gases stored under pressure. The container may explode if heated, and escaping cold gas can cause frostbite.", ex: "Propane tanks, compressed oxygen or carbon dioxide cylinders", safe: "Secure cylinders upright and keep them away from heat."},
+  {id: "corr", name: "Corrosion", short: "Corrosive: burns skin, damages eyes, eats metals", long: "Materials that cause serious skin burns and eye damage, or corrode metals.", ex: "Concentrated hydrochloric acid, sodium hydroxide", safe: "Wear goggles and gloves. Rinse with lots of water if splashed."},
+  {id: "skull", name: "Skull and crossbones", short: "Acutely toxic: can poison or kill in small amounts", long: "Materials that can cause death or serious poisoning quickly, even from a small amount swallowed, breathed in or absorbed through skin.", ex: "Methanol, hydrogen sulfide (sour gas)", safe: "Do not swallow, breathe or touch. Wash hands after use."},
+  {id: "health", name: "Health hazard", short: "Serious long-term health effects", long: "Materials that may cause cancer, damage organs, cause breathing allergies, harm an unborn child or damage the lungs if swallowed.", ex: "Benzene, found in gasoline", safe: "Avoid breathing vapours. Use a fume hood and gloves."},
+  {id: "excl", name: "Exclamation mark", short: "Less serious health effects", long: "Materials that irritate skin or eyes, cause skin allergies, cause drowsiness, or are harmful if swallowed.", ex: "Many cleaning products and some dilute acids", safe: "Avoid contact. Wash skin if exposed."},
+  {id: "bio", name: "Biohazardous infectious materials", short: "Can cause disease in people or animals", long: "Living organisms or their toxins that can cause disease. This is the only WHMIS pictogram with a round border.", ex: "Bacteria cultures, blood samples", safe: "Follow special handling rules and disinfect work areas."},
+  {id: "env", name: "Environment", short: "Toxic to aquatic life", long: "Materials that harm fish and other aquatic life. Canadian suppliers may use it, but WHMIS does not require it.", ex: "Some pesticides", safe: "Never pour down the drain. Dispose of as hazardous waste."}
+];
+function picSVG(id, label){
+  var s = sv("svg", {viewBox: "0 0 100 100", role: "img", "aria-label": label});
+  var ink = "var(--pic-ink)", bg = "var(--pic-bg)";
+  if (id === "bio") s.appendChild(sv("circle", {cx: 50, cy: 50, r: 44, fill: bg, stroke: ink, "stroke-width": 5}));
+  else s.appendChild(sv("polygon", {points: "50,5 95,50 50,95 5,50", fill: bg, stroke: "var(--pic-red)", "stroke-width": 7, "stroke-linejoin": "round"}));
+  function P(d, extra){ var a = {d: d, fill: ink}; for (var k in extra) a[k] = extra[k]; s.appendChild(sv("path", a)); }
+  function C(cx, cy, r, extra){ var a = {cx: cx, cy: cy, r: r, fill: ink}; for (var k in extra) a[k] = extra[k]; s.appendChild(sv("circle", a)); }
+  function Rr(x, y, w, h, extra){ var a = {x: x, y: y, width: w, height: h, fill: ink}; for (var k in extra) a[k] = extra[k]; s.appendChild(sv("rect", a)); }
+  var FL = "M50 24 C58 36 66 43 64 57 C63 67 57 72 50 72 C42 72 36 67 36 57 C37 49 44 45 44 37 C48 41 50 45 50 49 C54 43 54 33 50 24Z";
+  if (id === "flame") { P(FL); Rr(34, 74, 32, 4); }
+  if (id === "oxid") { P(FL, {transform: "translate(50 46) scale(.62) translate(-50 -50)"}); C(50, 64, 10, {fill: "none", stroke: ink, "stroke-width": 4}); Rr(34, 76, 32, 4); }
+  if (id === "bomb") { C(44, 60, 12); [[-1,-1],[0,-1.3],[1,-1],[1.3,0],[1,1],[-1.3,0]].forEach(function(v){ s.appendChild(sv("line", {x1: 56 + v[0] * 6, y1: 48 + v[1] * 6, x2: 56 + v[0] * 14, y2: 48 + v[1] * 14, stroke: ink, "stroke-width": 3})); }); }
+  if (id === "gas") { var g = sv("g", {transform: "rotate(-25 50 58)"}); g.appendChild(sv("rect", {x: 28, y: 50, width: 40, height: 16, rx: 8, fill: ink})); g.appendChild(sv("rect", {x: 66, y: 54, width: 8, height: 8, fill: ink})); s.appendChild(g); }
+  if (id === "corr") { Rr(32, 24, 8, 18, {transform: "rotate(35 36 33)"}); Rr(56, 24, 8, 18, {transform: "rotate(-35 60 33)"}); C(42, 50, 2.5); C(42, 57, 2.5); C(58, 50, 2.5); C(58, 57, 2.5); P("M26 66 h20 v6 h-6 l-2 -3 l-2 3 h-10z"); P("M54 66 h20 v8 h-20 v-3 l3 -2 l-3 -1z"); Rr(22, 76, 56, 3); }
+  if (id === "skull") { s.appendChild(sv("line", {x1: 32, y1: 58, x2: 68, y2: 76, stroke: ink, "stroke-width": 5, "stroke-linecap": "round"})); s.appendChild(sv("line", {x1: 68, y1: 58, x2: 32, y2: 76, stroke: ink, "stroke-width": 5, "stroke-linecap": "round"})); C(50, 42, 13); Rr(44, 50, 12, 9); C(45, 41, 3.5, {fill: bg}); C(55, 41, 3.5, {fill: bg}); }
+  if (id === "health") { C(50, 28, 7); P("M36 76 L36 48 Q50 38 64 48 L64 76Z"); P("M50 48 L52.5 55 L60 55 L54 59.5 L56.5 67 L50 62.5 L43.5 67 L46 59.5 L40 55 L47.5 55Z", {fill: bg}); }
+  if (id === "excl") { Rr(45, 26, 10, 32, {rx: 3}); C(50, 68, 5.5); }
+  if (id === "env") { P("M28 64 L38 34 L48 64Z"); Rr(36, 64, 4, 8); P("M52 70 Q64 60 76 70 Q64 78 52 70Z"); P("M76 70 L82 65 L82 75Z"); Rr(24, 74, 56, 2.5); }
+  if (id === "bio") { [0, 120, 240].forEach(function(a){ var r = a * Math.PI / 180 - Math.PI / 2; C(50 + 12 * Math.cos(r), 52 + 12 * Math.sin(r), 11); C(50 + 15 * Math.cos(r), 52 + 15 * Math.sin(r), 6, {fill: bg}); }); C(50, 52, 5, {fill: bg}); C(50, 52, 22, {fill: "none", stroke: ink, "stroke-width": 2.5}); }
+  return s;
+}
+(function(){
+  var box = $("l9Pics"), btns = [];
+  PICS.forEach(function(p, i){
+    var b = el("button", {type: "button", "class": "pic", "aria-pressed": "false"});
+    var s = picSVG(p.id, ""); s.setAttribute("aria-hidden", "true"); s.removeAttribute("role"); b.appendChild(s);
+    b.appendChild(el("span", null, p.name));
+    b.addEventListener("click", function(){
+      btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      var o = $("l9Out"); clear(o);
+      o.appendChild(el("h5", null, p.name + ": " + p.short));
+      o.appendChild(el("p", null, p.long));
+      o.appendChild(el("p", null, "Example: " + p.ex + "."));
+      o.appendChild(el("p", null, "Safety: " + p.safe));
+    });
+    btns.push(b); box.appendChild(b);
+  });
+  btns[4].click();
+})();
+
+/* ---------- Lesson 10: concept map ---------- */
+(function(){
+  var N = [
+    {id: "atom", t: "Atom", x: 170, y: 26, d: "The smallest particle of an element. It has protons, neutrons and electrons."},
+    {id: "ion", t: "Ion", x: 62, y: 104, d: "An atom that has gained electrons (anion, negative) or lost electrons (cation, positive)."},
+    {id: "element", t: "Element", x: 278, y: 104, d: "A pure substance made of one kind of atom. It can be single atoms (He), molecules (O₂, S₈) or a network (Cu)."},
+    {id: "molecule", t: "Molecule", x: 170, y: 150, d: "A group of atoms sharing electrons that acts as one unit. It can be an element (O₂) or a compound (H₂O)."},
+    {id: "compound", t: "Compound", x: 150, y: 214, d: "Two or more different elements chemically joined in a fixed ratio. It is ionic or molecular."},
+    {id: "ionic", t: "Ionic compound", x: 72, y: 270, d: "Cations and anions in a lattice, in a ratio that makes the total charge zero. Example: NaCl."},
+    {id: "molc", t: "Molecular compound", x: 262, y: 270, d: "Molecules made of two or more different non-metals sharing electrons. Example: H₂O."}
+  ];
+  var E = [
+    ["atom","ion","An atom gains or loses electrons to become an ion."],
+    ["atom","element","Atoms of only one kind make up an element."],
+    ["atom","molecule","Atoms share electrons to form a molecule."],
+    ["molecule","element","A molecule of only one kind of atom is an element, like O₂."],
+    ["ion","ionic","Cations and anions combine to build an ionic compound."],
+    ["molecule","molc","Molecules with different non-metal atoms make a molecular compound."],
+    ["compound","ionic","One kind of compound: ionic."],
+    ["compound","molc","The other kind of compound: molecular."]
+  ];
+  var svg = $("l10Svg"), byId = {}, lines = [], groups = [];
+  N.forEach(function(n){ byId[n.id] = n; n.w = Math.max(76, n.t.length * 8 + 18); });
+  E.forEach(function(e){ var a = byId[e[0]], b = byId[e[1]]; var l = sv("line", {x1: a.x, y1: a.y, x2: b.x, y2: b.y, "class": "edge"}); svg.appendChild(l); lines.push(l); });
+  N.forEach(function(n){
+    var g = sv("g", {"class": "node", tabindex: "0", role: "button", "aria-label": n.t});
+    g.appendChild(sv("rect", {x: n.x - n.w / 2, y: n.y - 15, width: n.w, height: 30, rx: 8}));
+    g.appendChild(sv("text", {x: n.x, y: n.y + 4.5, "text-anchor": "middle", "class": "ntext"}, n.t));
+    function pick(){
+      groups.forEach(function(x){ x.classList.remove("on"); }); g.classList.add("on");
+      var o = $("l10Out"); clear(o);
+      o.appendChild(el("h5", null, n.t)); o.appendChild(el("p", null, n.d));
+      var ul = el("ul");
+      E.forEach(function(e, i){ var on = e[0] === n.id || e[1] === n.id; lines[i].classList.toggle("on", on); if (on) ul.appendChild(el("li", null, e[2])); });
+      o.appendChild(ul);
+    }
+    g.addEventListener("click", pick);
+    g.addEventListener("keydown", function(ev){ if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); pick(); } });
+    groups.push(g); svg.appendChild(g);
+  });
+})();
+
+/* ---------- Bench 1: charge balancer ---------- */
+(function(){
+  var C = $("b1Cat"), A = $("b1An"), nc = 1, na = 1, goal = null;
+  CATS.forEach(function(s){ C.appendChild(el("option", {value: s}, EL[s].name + " (" + ionText(s, EL[s].charge) + ")")); });
+  ANS.forEach(function(s){ A.appendChild(el("option", {value: s}, EL[s].name + " (" + ionText(s, EL[s].charge) + ")")); });
+  C.value = "Mg"; A.value = "Cl";
+  function upd(){
+    var c = C.value, a = A.value, qc = EL[c].charge, qa = EL[a].charge;
+    var t = $("b1Tiles"); clear(t);
+    for (var i = 0; i < nc; i++) t.appendChild(el("span", {"class": "tile c"}, ionText(c, qc)));
+    for (var j = 0; j < na; j++) t.appendChild(el("span", {"class": "tile a"}, ionText(a, qa)));
+    var pos = nc * qc, neg = na * qa, tot = pos + neg;
+    var m = $("b1Meter"); clear(m);
+    [["Positive charge", "+" + pos], ["Negative charge", "−" + (-neg)], ["Total charge", tot === 0 ? "0" : (tot > 0 ? "+" + tot : "−" + (-tot))], ["Ions", nc + " : " + na]].forEach(function(x){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, x[0])); d.appendChild(el("b", null, x[1])); m.appendChild(d); });
+    var o = $("b1Out"); clear(o);
+    var cpd = ionic(c, a);
+    if (tot !== 0) {
+      o.appendChild(el("p", {"class": "fb no"}, "Not neutral yet. " + (tot > 0 ? "Too much positive charge: add an anion or remove a cation." : "Too much negative charge: add a cation or remove an anion.")));
+    } else if (nc !== cpd.parts[0][1]) {
+      o.appendChild(el("p", {"class": "fb no"}, "Neutral, but not the smallest ratio. Remove ions until you have the fewest that still balance."));
+    } else {
+      var p = el("p", {"class": "fb ok"}); p.appendChild(document.createTextNode("Neutral! Formula ")); p.appendChild(fnode(cpd.parts)); p.appendChild(document.createTextNode(", " + cpd.name + ".")); o.appendChild(p);
+      var ol = el("ol", {"class": "steps"}); ionicSteps(cpd).forEach(function(s){ ol.appendChild(el("li", null, s)); }); o.appendChild(ol);
+      if (goal && goal.c === c && goal.a === a) { o.appendChild(el("p", {"class": "fb ok"}, "Challenge complete.")); store.b1 = (store.b1 || 0) + 1; save(); goal = null; showGoal(); }
+    }
+  }
+  function showGoal(){
+    var g = $("b1Goal"); clear(g);
+    if (!goal) { g.appendChild(el("b", null, "Challenge")); g.appendChild(el("span", null, "Press New challenge to get a compound to build." + (store.b1 ? " Completed so far: " + store.b1 + "." : ""))); return; }
+    g.appendChild(el("b", null, "Challenge: build " + goal.name));
+    g.appendChild(el("span", null, "Choose the right ions, then balance the charge."));
+  }
+  function reset(){ nc = 1; na = 1; upd(); }
+  C.addEventListener("change", reset); A.addEventListener("change", reset);
+  $("b1AddC").addEventListener("click", function(){ if (nc < 6) nc++; upd(); });
+  $("b1RemC").addEventListener("click", function(){ if (nc > 1) nc--; upd(); });
+  $("b1AddA").addEventListener("click", function(){ if (na < 6) na++; upd(); });
+  $("b1RemA").addEventListener("click", function(){ if (na > 1) na--; upd(); });
+  $("b1NewGoal").addEventListener("click", function(){ goal = pick(IONICS.filter(function(x){ return x.parts[0][1] + x.parts[1][1] > 2; })); showGoal(); });
+  showGoal(); upd();
+})();
+
+/* ---------- Bench 2: name it ---------- */
+(function(){
+  var POOL = IONICS.concat(MOLS), cur;
+  store.b2 = store.b2 || {r: 0, n: 0};
+  function distract(c){
+    var p = c.parts, out = [];
+    if (c.type === "ionic") {
+      out.push((p[0][1] > 1 ? PRE[p[0][1]] : "mono") + lname(c.c) + " " + PRE[p[1][1]] + IDE[c.a]);
+      out.push(lname(c.c) + " " + lname(c.a));
+      out.push(lname(c.c) + " " + (p[1][1] > 1 ? "" : "di") + PRE[p[1][1] > 1 ? p[1][1] : 0] + IDE[c.a]);
+      out.push(IDE[c.a] + " " + lname(c.c));
+    } else {
+      out.push(lname(p[0][0]) + " " + IDE[p[1][0]]);
+      if (p[0][1] !== p[1][1]) out.push(molName([[p[0][0], p[1][1]], [p[1][0], p[0][1]]]));
+      out.push((p[0][1] > 1 ? PRE[p[0][1]] : "mono") + lname(p[0][0]) + " " + PRE[p[1][1]] + lname(p[1][0]));
+      if (p[0][1] === 1) out.push("mono" + lname(p[0][0]) + " " + c.name.split(" ")[1]);
+      out.push(molName([[p[0][0], p[0][1]], [p[1][0], p[1][1] + 1]]));
+    }
+    return shuffle(out.filter(function(x, i, arr){ return x !== c.name && arr.indexOf(x) === i; })).slice(0, 3);
+  }
+  function score(){ $("b2Score").textContent = "Correct so far: " + store.b2.r + " of " + store.b2.n; }
+  function next(){
+    cur = pick(POOL);
+    var q = $("b2Q"); clear(q); q.appendChild(fnode(cur.parts));
+    var o = $("b2Opts"); clear(o); $("b2Out").textContent = "Pick the IUPAC name.";
+    var opts = shuffle([cur.name].concat(distract(cur))), btns = [];
+    opts.forEach(function(t){
+      var b = el("button", {type: "button"}, t);
+      b.addEventListener("click", function(){
+        var ok = t === cur.name;
+        btns.forEach(function(x){ x.disabled = true; if (x.textContent === cur.name) x.classList.add("right"); });
+        if (!ok) b.classList.add("wrong");
+        store.b2.n++; if (ok) store.b2.r++; save(); score();
+        var out = $("b2Out"); clear(out);
+        out.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, (ok ? "Correct: " : "Not quite. The name is ") + cur.name + "."));
+        var ol = el("ol", {"class": "steps"}); steps(cur).forEach(function(s){ ol.appendChild(el("li", null, s)); }); out.appendChild(ol);
+      });
+      btns.push(b); o.appendChild(b);
+    });
+  }
+  $("b2New").addEventListener("click", next);
+  score(); next();
+})();
+
+/* ---------- Bench 3: formula it ---------- */
+(function(){
+  var POOL = IONICS.concat(MOLS), cur, inp = $("b3In");
+  function next(){ cur = pick(POOL); $("b3Q").textContent = cur.name; inp.value = ""; $("b3Out").textContent = "Type the formula, then press Check."; }
+  function check(){
+    var o = $("b3Out"); clear(o);
+    var r = parseFormula(inp.value);
+    if (!r.ok) { o.appendChild(el("p", {"class": "fb no"}, r.msg)); return; }
+    var want = plain(cur.parts), got = plain(r.raw);
+    var sameCounts = r.parts.length === cur.parts.length && cur.parts.every(function(p){ return r.parts.some(function(q){ return q[0] === p[0] && q[1] === p[1]; }); });
+    if (got === want) { var p = el("p", {"class": "fb ok"}); p.appendChild(document.createTextNode("Correct: ")); p.appendChild(fnode(cur.parts)); o.appendChild(p); }
+    else if (sameCounts) o.appendChild(el("p", {"class": "fb no"}, "Right atoms, wrong order. Write the " + (cur.type === "ionic" ? "metal" : "first-named element") + " first."));
+    else o.appendChild(el("p", {"class": "fb no"}, "Not quite. Check the worked steps."));
+    if (got !== want || true) { var ol = el("ol", {"class": "steps"}); (cur.type === "ionic" ? ionicSteps(cur) : molSteps(cur)).forEach(function(s){ ol.appendChild(el("li", null, s)); }); o.appendChild(ol); }
+  }
+  $("b3Check").addEventListener("click", check);
+  inp.addEventListener("keydown", function(e){ if (e.key === "Enter") check(); });
+  $("b3Hint").addEventListener("click", function(){
+    var o = $("b3Out"); clear(o);
+    if (cur.type === "ionic") o.appendChild(el("p", null, "Ionic: find the charges from the periodic table, " + ionText(cur.c, EL[cur.c].charge) + " and " + ionText(cur.a, EL[cur.a].charge) + ", then balance them to zero."));
+    else o.appendChild(el("p", null, "Molecular: the prefixes give the subscripts. mono 1, di 2, tri 3, tetra 4, penta 5, hexa 6, hepta 7, deca 10. No prefix on the first element means 1."));
+  });
+  $("b3New").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 4: atom counter ---------- */
+(function(){
+  var EXTRA = ["C6H12O6","C12H22O11","C3H8","C8H18","C2H6O","NH3","CH4","H2O","H2SO4","Ca3P2","Al2S3","P4O10","N2O5"];
+  var POOL = EXTRA.concat(IONICS.map(function(x){ return plain(x.parts); }), MOLS.map(function(x){ return plain(x.parts); }));
+  var cur;
+  function next(){
+    cur = parseFormula(pick(POOL));
+    var q = $("b4Q"); clear(q); q.appendChild(fnode(cur.raw));
+    var box = $("b4Inputs"); clear(box);
+    cur.parts.forEach(function(p, i){ var l = el("label", {"class": "field", "for": "b4n" + i}, (EL[p[0]] ? EL[p[0]].name : p[0]) + " atoms"); var inp = el("input", {type: "number", id: "b4n" + i, min: "0", step: "1", inputmode: "numeric", style: "width:6em"}); l.appendChild(inp); box.appendChild(l); });
+    var lt = el("label", {"class": "field", "for": "b4tot"}, "Total atoms"); lt.appendChild(el("input", {type: "number", id: "b4tot", min: "0", step: "1", inputmode: "numeric", style: "width:6em"})); box.appendChild(lt);
+    $("b4Out").textContent = "Fill in each box, then press Check.";
+  }
+  $("b4Check").addEventListener("click", function(){
+    var ok = true, tot = 0, o = $("b4Out"); clear(o);
+    cur.parts.forEach(function(p, i){ tot += p[1]; var v = +$("b4n" + i).value; if (v !== p[1]) ok = false; });
+    var tv = +$("b4tot").value; if (tv !== tot) ok = false;
+    o.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "All correct." : "Some counts are off. Here is the full count."));
+    o.appendChild(el("p", {"class": "mono"}, cur.parts.map(function(p){ return p[0] + " " + p[1]; }).join(", ") + ". Total " + cur.parts.map(function(p){ return p[1]; }).join(" + ") + " = " + tot + "."));
+    if (/\(/.test(plain(cur.raw))) o.appendChild(el("p", {"class": "hint"}, "A number after brackets multiplies everything inside."));
+  });
+  $("b4New").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 5: label reader ---------- */
+(function(){
+  var cur, mode, last = -1;
+  store.b5 = store.b5 || {r: 0, n: 0};
+  function score(){ $("b5Score").textContent = "Correct so far: " + store.b5.r + " of " + store.b5.n; }
+  function next(){
+    var i; do { i = Math.floor(Math.random() * PICS.length); } while (i === last); last = i;
+    cur = PICS[i]; mode = Math.random() < .6 ? 0 : 1;
+    var pb = $("b5Pic"), o = $("b5Opts"); clear(pb); clear(o); $("b5Out").textContent = "";
+    var others = shuffle(PICS.filter(function(p){ return p !== cur; })).slice(0, 3);
+    var opts = shuffle([cur].concat(others)), btns = [];
+    if (mode === 0) {
+      pb.appendChild(picSVG(cur.id, "WHMIS pictogram to identify"));
+      $("b5Q").textContent = "What hazard does this pictogram show?";
+    } else {
+      pb.appendChild(el("p", {"class": "big", style: "font-size:1.1rem"}, cur.short));
+      $("b5Q").textContent = "Which pictogram shows this hazard?";
+    }
+    opts.forEach(function(p){
+      var b = el("button", {type: "button"});
+      if (mode === 0) b.textContent = p.short;
+      else { var s = picSVG(p.id, ""); s.setAttribute("aria-hidden", "true"); s.removeAttribute("role"); s.setAttribute("width", "54"); s.setAttribute("height", "54"); b.appendChild(s); b.appendChild(el("span", null, " " + p.name)); b.setAttribute("aria-label", p.name); }
+      b.addEventListener("click", function(){
+        var ok = p === cur;
+        btns.forEach(function(x, j){ x.disabled = true; if (opts[j] === cur) x.classList.add("right"); });
+        if (!ok) b.classList.add("wrong");
+        store.b5.n++; if (ok) store.b5.r++; save(); score();
+        var out = $("b5Out"); clear(out);
+        out.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, (ok ? "Correct. " : "Not quite. ") + cur.name + ": " + cur.short + "."));
+        out.appendChild(el("p", null, cur.long + " Example: " + cur.ex + ". " + cur.safe));
+      });
+      btns.push(b); o.appendChild(b);
+    });
+  }
+  $("b5New").addEventListener("click", next);
+  score(); next();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Element or compound?", bins: ["Element", "Compound"], items: [
+    ["H₂", 0, "Two atoms, but both hydrogen. One kind of atom is an element."],
+    ["NaCl", 1, "Sodium and chlorine joined in a fixed ratio make a compound."],
+    ["S₈", 0, "Eight atoms, all sulfur. It is an element."],
+    ["CO₂", 1, "Carbon and oxygen joined together make a compound."],
+    ["Ne", 0, "Single neon atoms. An element."],
+    ["H₂O", 1, "Hydrogen and oxygen in a 2 to 1 ratio. A compound."],
+    ["O₃ (ozone)", 0, "Three atoms, all oxygen. Still an element."],
+    ["CH₄", 1, "Carbon and hydrogen joined together. A compound."],
+    ["Cu", 0, "Only copper atoms. An element."],
+    ["KBr", 1, "Potassium and bromine joined. A compound."],
+    ["N₂", 0, "Two nitrogen atoms. An element."],
+    ["NH₃", 1, "Nitrogen and hydrogen joined. A compound."]
+  ]},
+  {label: "Ionic or molecular?", bins: ["Ionic compound", "Molecular compound"], items: [
+    ["NaCl", 0, "Sodium is a metal and chlorine is a non-metal: ionic."],
+    ["CO₂", 1, "Carbon and oxygen are both non-metals: molecular."],
+    ["MgO", 0, "Magnesium (metal) and oxygen (non-metal): ionic."],
+    ["SO₂", 1, "Sulfur and oxygen are both non-metals: molecular."],
+    ["CaF₂", 0, "Calcium (metal) and fluorine (non-metal): ionic."],
+    ["NH₃", 1, "Nitrogen and hydrogen are both non-metals: molecular."],
+    ["K₂S", 0, "Potassium (metal) and sulfur (non-metal): ionic."],
+    ["CCl₄", 1, "Carbon and chlorine are both non-metals: molecular."],
+    ["Al₂O₃", 0, "Aluminum (metal) and oxygen (non-metal): ionic."],
+    ["N₂O", 1, "Nitrogen and oxygen are both non-metals: molecular."],
+    ["LiBr", 0, "Lithium (metal) and bromine (non-metal): ionic."],
+    ["PCl₃", 1, "Phosphorus and chlorine are both non-metals: molecular."]
+  ]},
+  {label: "Monatomic, diatomic or polyatomic?", bins: ["Monatomic", "Diatomic", "Polyatomic"], items: [
+    ["He", 0, "Helium is a noble gas made of single atoms."],
+    ["Cl₂", 1, "Chlorine molecules have two atoms."],
+    ["S₈", 2, "Sulfur rings have eight atoms."],
+    ["Ar", 0, "Argon is a noble gas made of single atoms."],
+    ["O₂", 1, "Oxygen gas is two atoms per molecule."],
+    ["P₄", 2, "White phosphorus has four atoms per molecule."],
+    ["Kr", 0, "Krypton is a noble gas made of single atoms."],
+    ["I₂", 1, "Iodine is one of the seven diatomic elements."],
+    ["O₃", 2, "Ozone has three oxygen atoms."],
+    ["Rn", 0, "Radon is a noble gas made of single atoms."],
+    ["N₂", 1, "Nitrogen gas is two atoms per molecule."],
+    ["Br₂", 1, "Bromine is one of the seven diatomic elements."]
+  ]},
+  {label: "Cation or anion?", bins: ["Cation (+)", "Anion (−)"], items: [
+    ["Na⁺", 0, "Positive charge: sodium lost one electron."],
+    ["Cl⁻", 1, "Negative charge: chlorine gained one electron."],
+    ["Ca²⁺", 0, "Positive charge: calcium lost two electrons."],
+    ["O²⁻", 1, "Negative charge: oxygen gained two electrons."],
+    ["Al³⁺", 0, "Positive charge: aluminum lost three electrons."],
+    ["N³⁻", 1, "Negative charge: nitrogen gained three electrons."],
+    ["An atom that lost 2 electrons", 0, "Losing electrons leaves more protons, so it is positive."],
+    ["An atom that gained 1 electron", 1, "Gaining electrons makes it negative."],
+    ["Magnesium ion", 0, "Metals form cations. Mg²⁺."],
+    ["Fluoride ion", 1, "The -ide ending names an anion. F⁻."],
+    ["S²⁻", 1, "Negative charge: sulfur gained two electrons."],
+    ["K⁺", 0, "Positive charge: potassium lost one electron."]
+  ]},
+  {label: "Which WHMIS pictogram?", bins: ["Flame", "Flame over circle", "Corrosion", "Skull and crossbones", "Gas cylinder"], items: [
+    ["Catches fire easily", 0, "Flammable materials get the flame."],
+    ["Makes a fire burn hotter by supplying oxygen", 1, "Oxidizers get the flame over a circle."],
+    ["Burns skin and damages eyes", 2, "Corrosive materials get the corrosion pictogram."],
+    ["Can kill or poison in a small amount", 3, "Acute toxicity gets the skull and crossbones."],
+    ["Gas stored under pressure", 4, "Pressurized gases get the gas cylinder."],
+    ["Concentrated hydrochloric acid", 2, "It burns skin and eats metals: corrosion."],
+    ["Lab ethanol", 0, "Ethanol vapour catches fire easily: flame."],
+    ["Concentrated hydrogen peroxide", 1, "It releases oxygen and feeds fires: flame over circle."],
+    ["A propane tank", 4, "Propane is stored as a gas under pressure. Its label also shows the flame."],
+    ["Eats through metal containers", 2, "Corrosive to metals: corrosion."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Pure substance", "Matter with only one kind of particle all the way through. It is an element or a compound."],
+  ["Element", "A pure substance made of only one kind of atom. It cannot be broken down by a chemical change."],
+  ["Compound", "A pure substance made of two or more different elements chemically joined in a fixed ratio."],
+  ["Monatomic element", "An element made of single atoms, such as helium, neon and radon. The draft curriculum spells it monoatomic."],
+  ["Diatomic element", "An element made of two-atom molecules: H₂, N₂, O₂, F₂, Cl₂, Br₂ and I₂."],
+  ["Polyatomic element", "An element made of molecules with more than two atoms of the same kind, such as O₃, P₄ and S₈."],
+  ["Molecule", "A group of atoms joined by shared electrons that acts as a single unit. Examples: O₂, CO₂, DNA."],
+  ["Crystal lattice", "A repeating 3D pattern of particles. Ionic compounds are lattices of ions, not molecules."],
+  ["Proton", "A positive particle in the nucleus. The number of protons decides which element an atom is."],
+  ["Electron", "A negative particle in the shells around the nucleus. Atoms gain, lose or share electrons."],
+  ["Ion", "An atom that has gained or lost electrons, so it has a charge."],
+  ["Cation", "A positive ion. It forms when an atom loses electrons. Metals form cations, like Na⁺."],
+  ["Anion", "A negative ion. It forms when an atom gains electrons. Non-metals form anions, like Cl⁻."],
+  ["Ionic compound", "A compound of oppositely charged ions, usually a metal with a non-metal, combined so the total charge is zero."],
+  ["Molecular compound", "A compound of two or more different non-metals whose atoms share electrons."],
+  ["Ion charge from the table", "Groups 1, 2 and 13 form +1, +2 and +3. Groups 15, 16 and 17 form −3, −2 and −1."],
+  ["Formula unit", "The smallest neutral ratio of ions in an ionic compound, such as one Mg²⁺ and two Cl⁻ in MgCl₂."],
+  ["IUPAC", "The International Union of Pure and Applied Chemistry. It sets the rules for naming compounds."],
+  ["-ide ending", "The ending for the second element in a compound name, and for anions: oxide, chloride, sulfide."],
+  ["Prefix", "Part of a molecular compound name that shows the number of atoms: mono 1, di 2, tri 3, tetra 4, penta 5, hexa 6."],
+  ["Chemical formula", "Element symbols with subscripts that show which atoms are in a compound and how many."],
+  ["Subscript", "A small number after a symbol showing how many atoms of that element. No subscript means one."],
+  ["WHMIS", "Workplace Hazardous Materials Information System: Canada's system for labelling hazardous products at work and school."],
+  ["Pictogram", "A WHMIS symbol in a red diamond that shows a type of hazard, such as flame or corrosion."],
+  ["Safety data sheet (SDS)", "A document with full details on a product's hazards, safe handling and first aid."],
+  ["Signal word", "“Danger” for more severe hazards or “Warning” for less severe ones on a WHMIS label."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Which of these is an element?", ["S₈", "H₂O", "NaCl", "CO₂"], "S₈ contains only sulfur atoms. The others contain two elements."],
+  ["Which of these is a compound?", ["NH₃", "O₂", "Ne", "P₄"], "Ammonia contains two different elements, nitrogen and hydrogen."],
+  ["Which element is monatomic?", ["Argon", "Chlorine", "Nitrogen", "Sulfur"], "Noble gases like argon exist as single atoms."],
+  ["Which is a diatomic element?", ["Br₂", "O₃", "He", "CO"], "Bromine is one of the seven diatomic elements. CO is a compound."],
+  ["S₈ is an example of a…", ["polyatomic element", "diatomic element", "molecular compound", "ionic compound"], "It has eight atoms, all sulfur."],
+  ["Which statement about molecules is true?", ["A molecule can be an element or a compound", "Every molecule contains at least two elements", "No molecule has more than 100 atoms", "Table salt is made of molecules"], "O₂ is a molecule of an element, DNA has billions of atoms, and salt is a lattice of ions."],
+  ["An atom loses 2 electrons. What does it become?", ["A cation with a 2+ charge", "An anion with a 2− charge", "A different element", "A neutral molecule"], "Losing negative electrons leaves extra protons, so the ion is positive."],
+  ["What is an anion?", ["A negative ion formed when an atom gains electrons", "A positive ion formed when an atom loses electrons", "An atom with extra protons", "A molecule with no charge"], "Gaining electrons gives a negative charge."],
+  ["A chlorine atom gains one electron. What is the ion?", ["Chloride ion, Cl⁻", "Chlorine ion, Cl⁺", "Chloride ion, Cl⁺", "Chlorine ion, Cl²⁻"], "Anion names end in -ide, and one extra electron gives a 1− charge."],
+  ["Why does sodium form Na⁺ and not Na²⁺?", ["Losing one electron leaves a full outer shell", "Sodium has only one proton", "Losing electrons adds protons", "Group 1 metals gain electrons"], "Sodium has one outer electron. Losing it leaves a full shell, like neon."],
+  ["Which pair of elements forms an ionic compound?", ["Calcium and fluorine", "Carbon and oxygen", "Nitrogen and hydrogen", "Sulfur and oxygen"], "A metal with a non-metal forms ions. The others are pairs of non-metals."],
+  ["In a molecular compound, the atoms are held together by…", ["sharing electrons", "trading protons", "magnetism between nuclei", "melting together"], "Non-metal atoms share pairs of electrons."],
+  ["Why is the total charge of an ionic compound zero?", ["The ions combine in a ratio where positive and negative charges cancel", "Ions lose their charge when they touch", "Only neutral atoms can join", "All the electrons leave the compound"], "The ratio of ions is set so the charges balance."],
+  ["Using the periodic table, what charge does an oxide ion have?", ["2−", "1−", "2+", "3−"], "Oxygen is in group 16, so it gains 2 electrons."],
+  ["What is the formula of magnesium chloride?", ["MgCl₂", "MgCl", "Mg₂Cl", "Mg₂Cl₂"], "One Mg²⁺ needs two Cl⁻ to balance."],
+  ["What is the formula of aluminum oxide?", ["Al₂O₃", "AlO", "Al₃O₂", "AlO₃"], "2 × (3+) = +6 and 3 × (2−) = −6."],
+  ["What is the IUPAC name of K₂S?", ["potassium sulfide", "dipotassium sulfide", "potassium sulfur", "potassium disulfide"], "Ionic names use no prefixes, and the non-metal ends in -ide."],
+  ["What is the IUPAC name of PCl₃?", ["phosphorus trichloride", "monophosphorus trichloride", "phosphorus chloride", "phosphorus trichlorine"], "Molecular: tri- for 3 chlorine atoms, no mono- on the first element, -ide ending."],
+  ["What is the formula of dinitrogen monoxide?", ["N₂O", "NO₂", "N₂O₂", "NO"], "Di- means 2 nitrogen atoms. Mono- means 1 oxygen atom."],
+  ["Which organization sets the rules for naming compounds?", ["IUPAC", "WHMIS", "GHS", "SDS"], "The International Union of Pure and Applied Chemistry."],
+  ["How many atoms are in one molecule of propane, C₃H₈?", ["11", "3", "8", "24"], "3 carbon + 8 hydrogen = 11 atoms."],
+  ["In the formula CO₂, what does the 2 tell you?", ["There are two oxygen atoms", "There are two carbon atoms", "There are two molecules", "The charge is 2+"], "A subscript counts the atoms of the element just before it."],
+  ["How many oxygen atoms are in Al₂O₃?", ["3", "2", "5", "6"], "The subscript after O is 3."],
+  ["A label shows a flame over a circle. What is the hazard?", ["Oxidizer: it can make a fire burn hotter", "Flammable: it catches fire easily", "Gas under pressure", "Corrosive"], "The circle stands for oxygen supply. Oxidizers feed fires."],
+  ["Which WHMIS pictogram warns that a product can burn skin and eyes?", ["Corrosion", "Exclamation mark", "Gas cylinder", "Flame"], "Corrosive materials cause burns and eye damage."],
+  ["What does the skull and crossbones pictogram mean?", ["It can poison or kill quickly in small amounts", "It causes long-term effects like cancer", "It is a gas under pressure", "It can explode"], "Acute toxicity. Long-term effects use the health hazard pictogram."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain the difference between an element and a compound. Give one example of each.", a: "An element is a pure substance made of only one kind of atom, such as oxygen (O₂) or copper (Cu). A compound is a pure substance made of two or more different elements chemically joined in a fixed ratio, such as water (H₂O). A compound can be broken down only by a chemical change.", k: ["Element: one kind of atom", "Compound: two or more different elements", "Fixed ratio or chemically joined", "Correct example of each"]},
+  {q: "Classify He, Cl₂ and S₈ as monatomic, diatomic or polyatomic. Explain each choice.", a: "He is monatomic because each particle is a single helium atom. Cl₂ is diatomic because each molecule has two chlorine atoms. S₈ is polyatomic because each molecule has eight sulfur atoms. All three are elements because each contains only one kind of atom.", k: ["He monatomic", "Cl₂ diatomic", "S₈ polyatomic", "All are elements"]},
+  {q: "O₂ and CO₂ are both molecules. Explain why only one of them is a compound.", a: "Both are groups of atoms that act as one unit, so both are molecules. O₂ contains only oxygen atoms, so it is a molecule of an element. CO₂ contains carbon and oxygen, two different elements joined together, so it is a compound.", k: ["Both act as one unit", "O₂ has one kind of atom", "CO₂ has two different elements", "Only CO₂ is a compound"]},
+  {q: "Describe how a sodium atom becomes a sodium ion and how a chlorine atom becomes a chloride ion. Use the words cation and anion.", a: "A sodium atom has 11 protons and 11 electrons. It loses 1 electron, leaving 10 electrons and a charge of 1+. This positive ion, Na⁺, is a cation. A chlorine atom has 17 protons and 17 electrons. It gains 1 electron, giving 18 electrons and a charge of 1−. This negative ion, Cl⁻, is an anion called chloride. Both ions now have full outer shells.", k: ["Sodium loses 1 electron", "Na⁺ is a cation", "Chlorine gains 1 electron", "Cl⁻ is an anion named chloride", "Protons do not change"]},
+  {q: "Explain how ionic and molecular compounds differ. Give one example of each.", a: "An ionic compound usually forms from a metal and a non-metal. Electrons move from the metal to the non-metal, making cations and anions that attract and pack into a lattice, such as sodium chloride (NaCl). A molecular compound forms from two or more different non-metals. Their atoms share electrons and form molecules, such as water (H₂O).", k: ["Ionic: metal + non-metal", "Ionic: ions in a lattice", "Molecular: non-metals share electrons", "Correct example of each"]},
+  {q: "Use the periodic table to find the formula of calcium nitride. Show your steps.", a: "Calcium is in group 2, so it forms Ca²⁺. Nitrogen is in group 15, so it forms N³⁻. The smallest total both charges reach is 6. Three Ca²⁺ give +6 and two N³⁻ give −6, so the total is zero. The formula is Ca₃N₂.", k: ["Ca²⁺ from group 2", "N³⁻ from group 15", "Balance to zero (6)", "Ca₃N₂"]},
+  {q: "Name these compounds and say which rules you used: Li₂O, SO₃, MgBr₂, N₂O₅.", a: "Li₂O is lithium oxide and MgBr₂ is magnesium bromide. They are ionic, so the metal keeps its name, the non-metal ends in -ide, and no prefixes are used. SO₃ is sulfur trioxide and N₂O₅ is dinitrogen pentaoxide (often written pentoxide). They are molecular, so prefixes show the number of atoms, with no mono- on the first element.", k: ["lithium oxide", "sulfur trioxide", "magnesium bromide", "dinitrogen pentaoxide or pentoxide", "Ionic: no prefixes; molecular: prefixes"]},
+  {q: "Write the formula for each compound and count the total atoms in one formula: potassium fluoride, carbon tetrachloride, aluminum sulfide, dinitrogen tetraoxide.", a: "Potassium fluoride is KF (2 atoms). Carbon tetrachloride is CCl₄ (5 atoms). Aluminum sulfide is Al₂S₃, since 2 × (3+) balances 3 × (2−) (5 atoms). Dinitrogen tetraoxide is N₂O₄ (6 atoms).", k: ["KF, 2", "CCl₄, 5", "Al₂S₃, 5", "N₂O₄, 6"]},
+  {q: "Your class will use concentrated hydrochloric acid. Its label shows the corrosion pictogram. Explain what this means and give two safety steps.", a: "The corrosion pictogram means the acid can burn skin, seriously damage eyes and corrode metals. Safety steps: wear safety goggles and gloves, and handle it only as your teacher directs. If it splashes, rinse with lots of water right away and tell the teacher. The safety data sheet gives full details.", k: ["Burns skin or damages eyes", "Can corrode metals", "Goggles and gloves", "Rinse with water and report", "Check the SDS"]}
+];
+var LONG = [
+  {q: "Explain how atoms, ions, elements, molecules and compounds are related. Use O₂, NaCl and H₂O as examples.", a: "Atoms are the smallest particles of elements. An element has only one kind of atom. O₂ is an element made of molecules: two oxygen atoms share electrons and act as one unit. When atoms gain or lose electrons they become ions. In NaCl, sodium atoms lose electrons to become Na⁺ cations and chlorine atoms gain them to become Cl⁻ anions. These ions form an ionic compound, which is a compound but not a molecule. H₂O is a molecular compound: hydrogen and oxygen atoms share electrons in molecules, and because it contains two different elements, it is both a molecule and a compound.", k: ["Atoms make up elements", "O₂: molecule of an element", "Ions form by gaining or losing electrons", "NaCl: ionic compound, not molecules", "H₂O: molecule and compound"]},
+  {q: "A classmate says: “Sodium chloride is a molecule made of one sodium atom and one chlorine atom.” Evaluate this claim. What is correct, and what needs fixing?", a: "Part of it is correct: sodium chloride contains sodium and chlorine in a 1 to 1 ratio, as the formula NaCl shows. But it is not a molecule and it is not made of neutral atoms. Sodium gives an electron to chlorine, so the compound is made of Na⁺ cations and Cl⁻ anions. The ions pack in a crystal lattice with no separate units. NaCl describes the ratio of ions (one formula unit), not one molecule. A better statement: sodium chloride is an ionic compound made of sodium and chloride ions in a 1 to 1 ratio.", k: ["1 to 1 ratio is correct", "Made of ions, not neutral atoms", "Lattice, not molecules", "Formula shows a ratio", "Corrected statement"]},
+  {q: "Alberta gas plants clean “sour” natural gas. They separate hydrogen sulfide (H₂S) from methane (CH₄) and turn it into sulfur (S₈). Classify each substance, count its atoms, and explain why a container of hydrogen sulfide carries WHMIS pictograms.", a: "Methane, CH₄, is a molecular compound of carbon and hydrogen, with 5 atoms per molecule. Hydrogen sulfide, H₂S, is a molecular compound of hydrogen and sulfur, with 3 atoms per molecule. Both are compounds of non-metals that share electrons. Sulfur, S₈, is an element: a polyatomic molecule of 8 sulfur atoms. Hydrogen sulfide is a flammable gas and is acutely toxic, so its label shows the flame and the skull and crossbones. Stored in a cylinder, it also shows the gas cylinder.", k: ["CH₄ molecular, 5 atoms", "H₂S molecular, 3 atoms", "S₈ polyatomic element, 8 atoms", "H₂S flammable: flame", "H₂S toxic: skull and crossbones"]},
+  {q: "Why do chemists need IUPAC naming rules? Use examples to explain how a wrong or unclear name could cause confusion or danger.", a: "IUPAC rules give every compound one name that chemists everywhere understand, and the name tells you the formula. Carbon monoxide (CO) and carbon dioxide (CO₂) differ by one prefix, yet carbon monoxide is a poisonous gas and carbon dioxide is the gas we breathe out. Mixing them up on a label or an order could be dangerous. Ionic names such as aluminum oxide let anyone work out Al₂O₃ from the charges. Without shared rules, the same substance could have many local names, and safety data sheets and WHMIS labels would be harder to trust.", k: ["One name, understood worldwide", "Name tells the formula", "CO versus CO₂ example", "Safety link to labels or SDS", "Clear conclusion"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["M1.K1", "Pure substances can be classified as elements or compounds.", "Learn: Lesson 1 (particle boxes) and Lesson 10 (concept map). Sort It: element or compound deck. Flashcards, Quiz, Written Review short answer 1."],
+    ["M1.K2", "An element can be\n• monoatomic: composed of a single atom of the same type, e.g., Rn\n• diatomic: composed of two atoms of the same type, e.g., H2\n• polyatomic: composed of more than two atoms of the same type, e.g., S8", "Learn: Lesson 2 (element explorer and diatomic table). Sort It: monatomic, diatomic or polyatomic deck. Flashcards, Quiz, Written Review short answer 2."],
+    ["M1.K3", "A molecule is a group of atoms that act as a single unit and can range in size, e.g., O2, CO2, DNA.", "Learn: Lesson 3 (size ladder) and Lesson 10. Quiz, Written Review short answer 3, extended 1 and 2."],
+    ["M1.K4", "A compound can be classified as ionic or molecular.", "Learn: Lesson 5 (join two elements). Sort It: ionic or molecular deck. Quiz, Written Review short answer 5."],
+    ["M1.K5", "An ionic compound is composed of oppositely charged ions, which combine in specific ratios resulting in a neutral charge.", "Learn: Lessons 5 and 6. Lab Bench: Investigation 1 (charge balancer). Quiz, Written Review short answer 6, extended 2."],
+    ["M1.K6", "The ratio of atoms in an ionic compound can be determined by using the periodic table.", "Learn: Lesson 6 (periodic table of ion charges, worked example). Lab Bench: Investigations 1 and 3. Quiz, Written Review short answers 6 and 8."],
+    ["M1.K7", "An atom that has gained one or more electrons is a negatively charged ion, referred to as an anion, and an atom that has lost one or more electrons is a positively charged ion, referred to as a cation.", "Learn: Lesson 4 (ion maker). Sort It: cation or anion deck. Flashcards, Quiz, Written Review short answer 4."],
+    ["M1.K8", "A molecular compound is composed of two or more non-metal atoms that share electrons.", "Learn: Lesson 5 (shared pair model). Sort It: ionic or molecular deck. Quiz, Written Review short answer 5, extended 3."],
+    ["M1.K9", "Rules for naming ionic and molecular compounds are established by the International Union of Pure and Applied Chemistry, or IUPAC.", "Learn: Lesson 7 (name builder, prefix table). Lab Bench: Investigation 2. Quiz, Written Review short answer 7, extended 4."],
+    ["M1.K10", "The IUPAC chemical formula for a compound uses the symbol for each element and shows each element’s number of atoms in subscript, if that number is greater than one.", "Learn: Lesson 8 (formula decoder). Lab Bench: Investigations 3 and 4. Quiz, Written Review short answer 8."],
+    ["M1.K11", "Hazards of pure substances can be identified by using the Workplace Hazardous Materials Information System, or WHMIS.", "Learn: Lesson 9 (pictogram rack). Lab Bench: Investigation 5. Sort It: WHMIS deck. Flashcards, Quiz, Written Review short answer 9, extended 3."],
+    ["M1.S1", "Identify monoatomic, diatomic, and polyatomic elements.", "Learn: Lesson 2. Sort It: monatomic, diatomic or polyatomic deck. Quiz, Written Review short answer 2."],
+    ["M1.S2", "Model structures of elements and compounds.", "Learn: Lesson 1 (particle boxes), Lesson 2 (molecule models), Lesson 4 (Bohr model of ions), Lesson 5 (lattice and shared pair models). Lab Bench: Investigation 1 (ion tiles)."],
+    ["M1.S3", "Explain relationships between atoms, elements, ions, molecules, and compounds.", "Learn: Lesson 10 (concept map), with Lessons 3 and 4. Written Review short answer 3, extended 1 and 2."],
+    ["M1.S4", "Name compounds composed of two elements when given the chemical formula.", "Learn: Lesson 7. Lab Bench: Investigation 2 (name it, randomized with worked steps). Quiz, Written Review short answer 7."],
+    ["M1.S5", "Determine the chemical formula of a compound composed of two elements when given the IUPAC name.", "Learn: Lesson 6. Lab Bench: Investigation 1 (challenges) and Investigation 3 (formula it, randomized with worked steps). Quiz, Written Review short answers 6 and 8."],
+    ["M1.S6", "Determine the number of atoms of each element in ionic or molecular compounds.", "Learn: Lesson 8. Lab Bench: Investigation 4 (atom counter). Quiz, Written Review short answer 8, extended 3."],
+    ["M1.S7", "Identify the hazards represented by WHMIS pictograms.", "Learn: Lesson 9. Lab Bench: Investigation 5 (label reader). Sort It: WHMIS deck. Quiz, Written Review short answer 9."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

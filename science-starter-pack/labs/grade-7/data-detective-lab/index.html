@@ -1,0 +1,1218 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/data-detective-lab/"><meta name="description" content="Critical thinking supports valid interpretation of data."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Data Detective Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Lexend:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field notebook for evidence. Observation is blue ink, inference is violet ink, data and evidence are amber. Tabs on a sticky bar, one working panel per tab. */
+:root{
+  --bg:#EEF2EF; --surface:#FFFFFF; --surface-2:#F4F7F5; --ink:#17221F; --muted:#51605B; --line:#CCD6D1;
+  --accent:#0E6E62; --accent-soft:#D6EEE9;
+  --obs:#225FB0; --obs-soft:#DCE8F7; --inf:#6E45A8; --inf-soft:#EAE1F6;
+  --data:#9A5A00; --data-soft:#F8EAD3;
+  --good:#1E7A3C; --good-soft:#DCF1E2; --bad:#B23A2E; --bad-soft:#F8E0DC;
+  --f-display:"Archivo","Arial Narrow","Segoe UI",system-ui,sans-serif;
+  --f-body:"Lexend","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1614; --surface:#17201D; --surface-2:#1C2724; --ink:#E3ECE8; --muted:#9DAEA8; --line:#2C3A36;
+  --accent:#5CC9B6; --accent-soft:#163631;
+  --obs:#7FB0F2; --obs-soft:#182A40; --inf:#BC9BEB; --inf-soft:#2A2040;
+  --data:#EDB45E; --data-soft:#3A2A12;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1614; --surface:#17201D; --surface-2:#1C2724; --ink:#E3ECE8; --muted:#9DAEA8; --line:#2C3A36;
+  --accent:#5CC9B6; --accent-soft:#163631;
+  --obs:#7FB0F2; --obs-soft:#182A40; --inf:#BC9BEB; --inf-soft:#2A2040;
+  --data:#EDB45E; --data-soft:#3A2A12;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);font-stretch:112%;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+button{font:inherit;color:inherit}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font-weight:500;cursor:pointer;font-size:.92rem}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn.obs{background:var(--obs-soft);border-color:var(--obs);color:var(--obs)}
+.btn.inf{background:var(--inf-soft);border-color:var(--inf);color:var(--inf)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input[type=number],input[type=text],textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;max-width:100%}
+textarea{width:100%;min-height:110px;resize:vertical}
+
+/* header */
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{padding-block:26px 18px;display:grid;gap:14px}
+.brand{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:flex-end}
+.brand h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:900;letter-spacing:-.02em;font-stretch:120%}
+.brand h1 span{color:var(--accent)}
+.brand .lede{color:var(--muted);max-width:62ch;margin-top:6px}
+.under{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border-radius:var(--r);padding:10px 14px;max-width:62ch;font-size:.95rem}
+.under b{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:4px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,auto);gap:4px 18px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.stats b{display:block;font-size:1.25rem;color:var(--ink);font-variant-numeric:tabular-nums}
+#themeBtn{justify-self:start}
+
+/* tabs */
+.tabsbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
+.tabs [role=tab]{border:0;background:none;padding:12px 14px;font-weight:500;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;font-size:.95rem}
+.tabs [role=tab][aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:700}
+.tabs [role=tab]:hover{color:var(--ink)}
+main{padding-block:26px 56px}
+[role=tabpanel]{display:grid;gap:22px}
+.intro{color:var(--muted);max-width:66ch}
+
+/* sections */
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.sec-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.sec-head h2{font-size:1.45rem;font-weight:800}
+.step{font-family:var(--f-mono);font-size:.74rem;color:var(--accent);font-weight:600}
+.codes{display:flex;gap:6px;flex-wrap:wrap}
+.code{font-family:var(--f-mono);font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;align-items:start}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.prose{display:grid;gap:10px;max-width:64ch}
+.prose ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.model{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:12px;min-width:0}
+.model h3{font-size:1rem;font-weight:700}
+.note{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+.tag.obs{background:var(--obs-soft);color:var(--obs)}
+.tag.inf{background:var(--inf-soft);color:var(--inf)}
+.tag.qual{background:var(--accent-soft);color:var(--accent)}
+.tag.quant{background:var(--data-soft);color:var(--data)}
+.out{border-left:4px solid var(--accent);background:var(--surface);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.95rem}
+.out.obs{border-color:var(--obs)} .out.inf{border-color:var(--inf)} .out.data{border-color:var(--data)}
+.fb{padding:10px 12px;border-radius:8px;font-size:.93rem}
+.fb.good{background:var(--good-soft);color:var(--ink);border-left:4px solid var(--good)}
+.fb.bad{background:var(--bad-soft);color:var(--ink);border-left:4px solid var(--bad)}
+.formula{font-family:var(--f-mono);background:var(--data-soft);color:var(--ink);padding:8px 12px;border-radius:8px;display:inline-block;font-size:.95rem}
+svg text{font-family:var(--f-body)}
+.svgbox{width:100%;overflow-x:auto}
+.svgbox svg{display:block;width:100%;height:auto;max-width:100%}
+table{border-collapse:collapse;font-size:.9rem;width:100%}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--surface-2);font-weight:700}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.tablebox{overflow-x:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:6px;align-content:start}
+.card h4{font-size:1rem}
+.flip{cursor:pointer;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:6px}
+.flip:hover{border-color:var(--accent)}
+.checks{display:grid;gap:6px;min-width:0}
+.checks>*{min-width:0}
+.checks select,#netType{width:100%}
+[hidden]{display:none!important}
+.checks label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.checks input{margin-top:5px}
+
+/* sort */
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:14px;padding:22px;font-size:1.15rem;min-height:110px;display:grid;place-items:center;text-align:center;max-width:620px;margin:0 auto;width:100%}
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px;margin:0 auto;width:100%}
+.bin{border:2px dashed var(--line);border-radius:14px;padding:16px;background:var(--surface-2);cursor:pointer;font-weight:700;font-family:var(--f-display);font-size:1.1rem;display:grid;gap:4px;text-align:center}
+.bin small{font-family:var(--f-body);font-weight:400;font-size:.8rem;color:var(--muted)}
+.bin.a{border-color:var(--obs);color:var(--obs)} .bin.b{border-color:var(--inf);color:var(--inf)}
+.bin:hover{background:var(--surface)}
+
+/* flashcards */
+.fc{perspective:1000px;max-width:560px;margin:0 auto;width:100%}
+.fc-inner{position:relative;min-height:220px;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:26px;display:grid;place-items:center;text-align:center;cursor:pointer;width:100%}
+.fc-term{font-family:var(--f-display);font-size:1.8rem;font-weight:800;font-stretch:115%}
+.fc-def{font-size:1.05rem}
+.meter{height:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent)}
+
+/* quiz */
+.q{display:grid;gap:10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+details.model-ans{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--surface-2)}
+details.model-ans summary{cursor:pointer;font-weight:700}
+.pill-count{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.cov td:first-child{white-space:nowrap;font-family:var(--f-mono);font-size:.8rem}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+footer .wrap{padding-block:18px 28px;display:grid;gap:4px}
+footer .credit a{color:var(--accent)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">Science 7 · SL1 · Launch: Observation, Inference and Data</div>
+        <h1>Data <span>Detective</span> Lab</h1>
+        <p class="lede">Scientists look closely, measure carefully, and think hard about what their data really shows. Practise each step here, from your first observation to a full scientific explanation.</p>
+      </div>
+      <div class="stats" aria-label="Your progress">
+        <div>Quiz best<b id="stQuiz">–</b></div>
+        <div>Cards known<b id="stCards">0</b></div>
+        <div>Sort best<b id="stSort">–</b></div>
+      </div>
+    </div>
+    <div class="under"><b>Big idea</b><span>Critical thinking supports valid interpretation of data. Students relate interpretation to scientific explanation.</span></div>
+    <button class="btn" id="themeBtn" type="button">Switch theme</button>
+  </div>
+</header>
+
+<nav class="tabsbar" aria-label="Lab sections">
+  <div class="wrap">
+    <div class="tabs" role="tablist" id="tablist">
+      <button role="tab" id="t-learn" aria-controls="learn" aria-selected="true">Learn</button>
+      <button role="tab" id="t-bench" aria-controls="bench" aria-selected="false" tabindex="-1">Lab Bench</button>
+      <button role="tab" id="t-sort" aria-controls="sort" aria-selected="false" tabindex="-1">Sort It</button>
+      <button role="tab" id="t-cards" aria-controls="cards" aria-selected="false" tabindex="-1">Flashcards</button>
+      <button role="tab" id="t-quiz" aria-controls="quiz" aria-selected="false" tabindex="-1">Quiz</button>
+      <button role="tab" id="t-write" aria-controls="write" aria-selected="false" tabindex="-1">Written Review</button>
+      <button role="tab" id="t-cov" aria-controls="cov" aria-selected="false" tabindex="-1">Coverage</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section role="tabpanel" id="learn" aria-labelledby="t-learn">
+  <p class="intro">Seven short lessons in order. Each one has a model to try. Work through them before you head to the Lab Bench.</p>
+
+  <article class="sec" id="L1">
+    <div class="sec-head"><span class="step">Lesson 1</span><h2>Observation: gather information</h2><div class="codes"><span class="code">SL1.K2</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>An <b>observation</b> is information you gather with your <b>senses</b> (sight, hearing, touch, smell) or with <b>tools</b> such as a thermometer, ruler, balance or hand lens.</p>
+        <p>Tools make observations more exact and let you notice things your senses miss. A thermometer gives a number in degrees Celsius. Your hand only tells you "cool" or "warm".</p>
+        <p>A good observation describes only what is there. It does not explain why.</p>
+        <p class="note">Safety: in a science lab you never taste samples, and you smell by gently wafting air toward your nose.</p>
+        <p class="note">Careful, long-term observation is also part of Indigenous knowledge systems. Knowledge keepers on Treaty 6 territory have watched the land for generations, noting things like when lakes freeze, when berries ripen and when animals move.</p>
+      </div>
+      <div class="model">
+        <h3>Observe a jar of North Saskatchewan River water</h3>
+        <p class="note">Choose a sense or tool to make an observation.</p>
+        <div class="row" id="obsTools"></div>
+        <div id="obsOut" class="out obs" aria-live="polite">Pick a sense or tool above.</div>
+        <div class="note" id="obsLog"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L2">
+    <div class="sec-head"><span class="step">Lesson 2</span><h2>Inference: explain what you observe</h2><div class="codes"><span class="code">SL1.K3</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>An <b>inference</b> is an explanation or conclusion based on <b>observations</b> plus your <b>prior knowledge</b> (what you already know).</p>
+        <p class="formula">observation + prior knowledge → inference</p>
+        <p>Two people can make the same observations and different inferences, because they know different things. An inference can also change when new observations arrive. That is why scientists test inferences.</p>
+        <ul><li><span class="tag obs">Observation</span> The sidewalk is wet.</li><li><span class="tag inf">Inference</span> It rained last night.</li></ul>
+      </div>
+      <div class="model">
+        <h3>Tracks in the snow, Whitemud Ravine</h3>
+        <div class="svgbox" id="trackSvg"></div>
+        <div class="row"><button class="btn" id="trkBack" type="button">Back</button><button class="btn primary" id="trkNext" type="button">Next clue</button><button class="btn" id="trkPK" type="button" aria-pressed="false">Add prior knowledge</button></div>
+        <div class="out obs" id="trkObs"></div>
+        <div class="out inf" id="trkInf"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L3">
+    <div class="sec-head"><span class="step">Lesson 3</span><h2>Qualitative and quantitative data</h2><div class="codes"><span class="code">SL1.K4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p><b>Qualitative data</b> describes qualities with words: colour, texture, smell, shape, behaviour. Think <i>quality</i>.</p>
+        <p><b>Quantitative data</b> uses numbers from counting or measuring, usually with units. Think <i>quantity</i>.</p>
+        <p>Both kinds can support a scientific explanation. Quantitative data is easier to compare and graph. Qualitative data can capture things numbers miss, like an animal's behaviour or a strange smell.</p>
+      </div>
+      <div class="model">
+        <h3>Flip each note from words to numbers</h3>
+        <p class="note">Tap a card to switch between its qualitative and quantitative version.</p>
+        <div class="cards" id="qqCards"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L4">
+    <div class="sec-head"><span class="step">Lesson 4</span><h2>Critical thinking with data</h2><div class="codes"><span class="code">SL1.K5</span></div></div>
+    <div class="prose">
+      <p>Interpreting data means thinking critically about what it shows. Scientists use five thinking skills: <b>categorizing and recognizing patterns</b>, <b>predicting outcomes</b>, <b>analyzing relationships</b> such as cause and effect, <b>supporting or contradicting hypotheses</b>, and <b>justifying conclusions</b>.</p>
+      <p>A class timed how long a sugar cube took to dissolve in 200 mL of water at different temperatures. Choose a thinking skill to see it applied.</p>
+    </div>
+    <div class="two">
+      <div class="model"><div class="svgbox" id="ctSvg"></div></div>
+      <div class="model">
+        <div class="row" id="ctBtns"></div>
+        <div class="out data" id="ctOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L5">
+    <div class="sec-head"><span class="step">Lesson 5</span><h2>Scientific explanations</h2><div class="codes"><span class="code">SL1.K1</span><span class="code">SL1.K4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>scientific explanation</b> answers a question about the natural world. It is built on <b>observations</b> and on <b>interpretations of data</b>, not on opinion or guesses.</p>
+        <p>A strong explanation has three parts:</p>
+        <ul><li><b>Claim</b>: your answer to the question.</li><li><b>Evidence</b>: observations and data that support the claim.</li><li><b>Reasoning</b>: the science idea that connects the evidence to the claim.</li></ul>
+        <p>Scientific explanations can change when new evidence appears.</p>
+      </div>
+      <div class="model">
+        <h3>Build up an explanation</h3>
+        <p class="note">Question: Why did the puddles on the school field disappear faster on Tuesday than on Monday?</p>
+        <div class="checks" id="explChecks"></div>
+        <div class="out" id="explOut" aria-live="polite"></div>
+        <div class="meter" aria-hidden="true"><i id="explMeter" style="width:0%"></i></div>
+        <p class="note" id="explRate"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L6">
+    <div class="sec-head"><span class="step">Lesson 6</span><h2>Bias in data</h2><div class="codes"><span class="code">SL1.K6</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p><b>Bias</b> is anything that pushes results in one direction so they no longer give a fair picture. Bias can sneak in when data is <b>collected</b> and when it is <b>interpreted</b>.</p>
+        <ul>
+          <li><b>Sampling bias</b>: the sample does not represent the whole group.</li>
+          <li><b>Measurement bias</b>: a tool or method gives readings that are always off in the same direction.</li>
+          <li><b>Confirmation bias</b>: noticing only the results you expected and ignoring the rest.</li>
+          <li><b>Interest bias</b>: someone who gains from a result interprets data in their own favour.</li>
+        </ul>
+        <p>Scientists reduce bias with large, random samples, checked tools, repeated trials, and by having other people review their work.</p>
+      </div>
+      <div class="model">
+        <h3>Spot the bias</h3>
+        <div id="biasCase"></div>
+        <div class="row" id="biasBtns"></div>
+        <div id="biasFb" aria-live="polite"></div>
+        <div class="row"><button class="btn" id="biasNext" type="button">Next case</button><span class="pill-count" id="biasCount"></span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L7">
+    <div class="sec-head"><span class="step">Lesson 7</span><h2>Careers that interpret data</h2><div class="codes"><span class="code">SL1.K7</span></div></div>
+    <p class="prose">Many jobs use the same skills you are practising: observe, collect data, interpret it, and explain. Here are four careers connected to topics you will study in Science 7. Tap a card to see what data they interpret.</p>
+    <div class="cards" id="careerCards"></div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section role="tabpanel" id="bench" aria-labelledby="t-bench" hidden>
+  <p class="intro">Hands-on practice. Each station uses new random data or cases, so you can repeat it as often as you like.</p>
+
+  <article class="sec" id="B1">
+    <div class="sec-head"><span class="step">Station 1</span><h2>Observation or inference?</h2><div class="codes"><span class="code">SL1.S1</span></div></div>
+    <p class="note">Read the statement. Decide whether it is something observed directly, or an explanation made from observations.</p>
+    <div class="out" id="oiStmt" style="font-size:1.1rem"></div>
+    <div class="row"><button class="btn obs" id="oiObs" type="button">Observation</button><button class="btn inf" id="oiInf" type="button">Inference</button><span class="pill-count" id="oiScore"></span></div>
+    <div id="oiFb" aria-live="polite"></div>
+    <div class="row"><button class="btn" id="oiNext" type="button">Next statement</button></div>
+  </article>
+
+  <article class="sec" id="B2">
+    <div class="sec-head"><span class="step">Station 2</span><h2>Data interpreter: bean seedlings</h2><div class="codes"><span class="code">SL1.S2</span></div></div>
+    <p class="prose">A Grade 7 class grew bean seedlings for 14 days. Five plants got plant food and five got plain water. The class recorded heights in millimetres and wrote notes about each plant.</p>
+    <div class="two">
+      <div class="model">
+        <div class="tablebox" id="beanTable"></div>
+        <div class="svgbox" id="beanSvg"></div>
+        <div class="row"><button class="btn" id="beanNew" type="button">New data set</button></div>
+      </div>
+      <div class="model">
+        <h3>Worked example: the mean</h3>
+        <p class="formula">mean = (sum of values) ÷ (number of values)</p>
+        <p class="note">Example: heights 40, 44, 46, 50, 45 mm. Sum = 225 mm. 225 ÷ 5 = <b>45 mm</b>.</p>
+        <div id="beanQs" class="q"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="B3">
+    <div class="sec-head"><span class="step">Station 3</span><h2>Investigation: melting ice on Edmonton sidewalks</h2><div class="codes"><span class="code">SL1.S3</span><span class="code">SL1.S4</span></div></div>
+    <p class="prose">City crews spread rock salt, sand or other materials on icy sidewalks. You will test which treatment melts ice fastest. Ice cubes of equal size sit on plates under the same desk lamp at room temperature. You time how long each takes to melt completely.</p>
+    <div class="two">
+      <div class="model">
+        <h3>1. Write a hypothesis</h3>
+        <p class="note">A hypothesis is a testable explanation. It leads to a prediction you can check.</p>
+        <div class="checks">
+          <label for="hypA">If the ice cube is covered with</label>
+          <select id="hypA"><option value="salt">rock salt</option><option value="sugar">sugar</option><option value="sand">sand</option><option value="none">nothing</option></select>
+          <label for="hypB">then it will melt</label>
+          <select id="hypB"><option value="fastest">fastest of all four</option><option value="slowest">slowest of all four</option><option value="same">at the same rate as plain ice</option></select>
+          <label for="hypC">because</label>
+          <select id="hypC"><option value="fp">it lowers the temperature at which water freezes</option><option value="dark">it is dark and absorbs more light from the lamp</option><option value="heavy">it is heavy and presses on the ice</option><option value="none">nothing changes the melting</option></select>
+        </div>
+        <div class="out inf" id="hypOut"></div>
+        <div class="row"><button class="btn primary" id="runTrials" type="button">Run 3 trials of each</button><button class="btn" id="resetTrials" type="button">Reset</button></div>
+      </div>
+      <div class="model">
+        <h3>2. Collect and interpret data</h3>
+        <div class="tablebox" id="iceTable"><p class="note">Run the trials to fill the table.</p></div>
+        <div class="svgbox" id="iceSvg"></div>
+        <div id="iceVerdict" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="model" id="cerBox" hidden>
+      <h3>3. Build a scientific explanation</h3>
+      <p class="note">Question: Which treatment melts ice fastest, and why?</p>
+      <div class="checks">
+        <label for="cerClaim"><b>Claim</b></label><select id="cerClaim"></select>
+        <label for="cerEv"><b>Evidence</b></label><select id="cerEv"></select>
+        <label for="cerRe"><b>Reasoning</b></label><select id="cerRe"></select>
+      </div>
+      <div class="row"><button class="btn primary" id="cerCheck" type="button">Check my explanation</button></div>
+      <div id="cerFb" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="sec" id="B4">
+    <div class="sec-head"><span class="step">Station 4</span><h2>Bias simulator: walleye in Pigeon Lake</h2><div class="codes"><span class="code">SL1.S5</span></div></div>
+    <p class="prose">Biologists want the average length of walleye in a lake. They cannot measure every fish, so they catch a sample. How they catch the fish can bias the answer. This lake is a model with 400 virtual fish.</p>
+    <div class="two">
+      <div class="model">
+        <label for="netType"><b>Sampling method</b></label>
+        <select id="netType">
+          <option value="random">Fine-mesh nets set at random spots (catches all sizes)</option>
+          <option value="big">Large-mesh net (small fish slip through)</option>
+          <option value="shore">Only near shore in shallow weeds (young fish stay here)</option>
+          <option value="angler">Fishing contest photos (people mostly post big fish)</option>
+        </select>
+        <label for="sampleN"><b>Sample size: <span id="sampleNv">20</span> fish</b></label>
+        <input type="range" id="sampleN" min="5" max="60" value="20">
+        <div class="row"><button class="btn primary" id="catchBtn" type="button">Take a sample</button><button class="btn" id="revealBtn" type="button" aria-pressed="false">Show true lake average</button></div>
+        <div class="out data" id="fishOut" aria-live="polite"></div>
+      </div>
+      <div class="model"><div class="svgbox" id="fishSvg"></div><p class="note">Bars show how many fish of each length were in your sample. The dashed line is your sample average.</p></div>
+    </div>
+    <div class="fb good" style="max-width:70ch">Discuss: Which method gives a fair estimate? How could a biased estimate lead to a wrong scientific explanation, for example a wrong claim that the walleye population is healthy and full of large adults?</div>
+  </article>
+
+  <article class="sec" id="B5">
+    <div class="sec-head"><span class="step">Station 5</span><h2>Career case files</h2><div class="codes"><span class="code">SL1.S6</span></div></div>
+    <p class="note">Pick a career. Read the data. Interpret it the way a professional would.</p>
+    <div class="row" id="caseBtns"></div>
+    <div id="caseBox" class="model"></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section role="tabpanel" id="sort" aria-labelledby="t-sort" hidden>
+  <p class="intro">Sort each card into the right bin. Missed cards come back at the end of the round.</p>
+  <div class="row" style="justify-content:center" role="group" aria-label="Choose a deck">
+    <button class="btn" id="deckOI" type="button" aria-pressed="true">Observation or inference</button>
+    <button class="btn" id="deckQQ" type="button" aria-pressed="false">Qualitative or quantitative</button>
+  </div>
+  <p class="pill-count" id="sortStatus" style="text-align:center"></p>
+  <div class="sortcard" id="sortCard" aria-live="polite"></div>
+  <div class="bins"><button class="bin a" id="binA" type="button"></button><button class="bin b" id="binB" type="button"></button></div>
+  <div id="sortFb" aria-live="polite" style="max-width:620px;margin:0 auto;width:100%"></div>
+  <div class="row" style="justify-content:center"><button class="btn" id="sortRestart" type="button">Restart round</button></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section role="tabpanel" id="cards" aria-labelledby="t-cards" hidden>
+  <p class="intro">Tap the card or press Space to flip it. Mark each one as known or still learning.</p>
+  <div class="row" style="justify-content:center">
+    <button class="btn" id="fcShuffle" type="button">Shuffle</button>
+    <button class="btn" id="fcOnly" type="button" aria-pressed="false">Still learning only</button>
+    <span class="pill-count" id="fcCount"></span>
+  </div>
+  <div class="fc"><div class="fc-inner" id="fcCard" tabindex="0" role="button" aria-label="Flashcard, press to flip"></div></div>
+  <div class="row" style="justify-content:center">
+    <button class="btn" id="fcPrev" type="button">Previous</button>
+    <button class="btn inf" id="fcLearn" type="button">Still learning</button>
+    <button class="btn primary" id="fcKnow" type="button">I know it</button>
+    <button class="btn" id="fcNext" type="button">Next</button>
+  </div>
+  <div style="max-width:560px;margin:0 auto;width:100%"><div class="meter"><i id="fcMeter" style="width:0%"></i></div></div>
+</section>
+
+<!-- QUIZ -->
+<section role="tabpanel" id="quiz" aria-labelledby="t-quiz" hidden>
+  <p class="intro">Ten questions are drawn from a bank of <span id="qBankN"></span>. Each answer shows an explanation.</p>
+  <div class="sec" id="quizBox"></div>
+</section>
+
+<!-- WRITTEN -->
+<section role="tabpanel" id="write" aria-labelledby="t-write" hidden>
+  <p class="intro">Write your answer first, then open the model answer and tick the key ideas you included. Your drafts stay in this browser only.</p>
+  <h2 style="font-size:1.3rem">Short answer</h2>
+  <div id="shortList" style="display:grid;gap:14px"></div>
+  <h2 style="font-size:1.3rem">Extended response</h2>
+  <div id="longList" style="display:grid;gap:14px"></div>
+</section>
+
+<!-- COVERAGE -->
+<section role="tabpanel" id="cov" aria-labelledby="t-cov" hidden>
+  <p class="intro">For teachers: every knowledge (K) and skills and procedures (S) statement for this understanding, and where the lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  <div class="sec"><div class="tablebox"><table class="cov" id="covTable"></table></div></div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Science 7 · Draft Science (7 to 9) Curriculum, 2027/28 implementation.</span>
+  <span>Progress is saved in this browser only. No sign-in and no data leaves your device.</span>
+  <span><button class="btn" id="resetAll" type="button">Clear my progress</button> <span id="resetMsg" class="note"></span></span>
+</div></footer>
+<script>
+"use strict";
+/* ---------- DATA ---------- */
+const OBS_TOOLS = [
+  {k:"Eyes", t:"qual", o:"The water is light brown and cloudy. Tiny bits float near the top."},
+  {k:"Nose (waft)", t:"qual", o:"The water has a faint earthy smell, like wet soil."},
+  {k:"Hand lens", t:"qual", o:"Small grains of sand and a few bits of plant matter have settled on the bottom."},
+  {k:"Thermometer", t:"quant", o:"The water temperature is 12.5 °C."},
+  {k:"Balance", t:"quant", o:"The jar with water has a mass of 486 g. The empty jar was 236 g, so the water is 250 g."},
+  {k:"Clarity tube", t:"quant", o:"A black mark at the bottom of the tube disappears when the water is 34 cm deep."},
+  {k:"Ears", t:"qual", o:"When the jar is shaken, sand grains make a soft gritty sound against the glass."}
+];
+
+const TRACKS = [
+  {obs:"Two sets of tracks cross fresh snow. One set has large prints with four toes and claw marks. The other has long back feet in pairs.", inf:"Inference without prior knowledge: two animals walked here. That is about all we can say.", infPK:"With prior knowledge: the large prints look like a coyote. The paired long prints look like a snowshoe hare, which hops. Both live in Edmonton's river valley."},
+  {obs:"The tracks come closer together. The coyote prints are now spaced much farther apart.", inf:"Inference: the large animal sped up.", infPK:"With prior knowledge: wider spacing means running. Coyotes chase prey, so the coyote may have been chasing the hare."},
+  {obs:"Both sets of tracks meet in an area of scuffed, flattened snow with a few tufts of white fur.", inf:"Inference: something happened where the tracks meet.", infPK:"With prior knowledge: snowshoe hares have white winter fur. A likely inference is that the coyote caught the hare."},
+  {obs:"New clue: hare tracks continue on the far side of the scuffed area and lead into thick willow bushes. Coyote tracks leave in a different direction.", inf:"The new observation changes the inference.", infPK:"Updated inference: the hare escaped, losing some fur, and hid in the willows. New evidence can change an inference. That is why scientists keep observing and testing."}
+];
+
+const QQ = [
+  {ql:"The bison at Elk Island National Park have thick, shaggy coats.", qn:"The bison's winter coat hair measures about 12 cm long on the hump."},
+  {ql:"The river ice feels thick and solid.", qn:"The ice is 28 cm thick at the test hole."},
+  {ql:"The chinook made the afternoon feel warm.", qn:"The temperature rose from −15 °C to +6 °C in 4 hours."},
+  {ql:"The canola field has bright yellow flowers.", qn:"There are 46 flowers on the tallest plant."},
+  {ql:"The solution turned a deep blue colour.", qn:"The solution's colour sensor reading is 0.82 absorbance units."},
+  {ql:"The chickadees were noisy at the feeder.", qn:"We counted 23 chickadee calls in 5 minutes."}
+];
+
+const CT = {
+  temps:[10,20,30,40,50,60],
+  times:[92,71,55,41,30,22],
+  skills:[
+    {k:"pattern", label:"Categorize and find patterns", txt:"Pattern: every time the water is warmer, the sugar cube dissolves faster. The points form a smooth downward curve. We can group the results into slow (above 60 s) and fast (below 40 s)."},
+    {k:"predict", label:"Predict an outcome", txt:"Prediction: if the pattern continues, water at 70 °C should dissolve the cube in about 15 s. The prediction (dashed point) follows the curve. Predictions inside the tested range are safer than predictions far outside it."},
+    {k:"relate", label:"Analyze a relationship", txt:"Relationship: as temperature goes up, dissolving time goes down. Because the class kept water volume, cube size and stirring the same and changed only temperature, the warmer water is likely the cause of faster dissolving. Without a fair test, two things changing together does not prove cause and effect."},
+    {k:"hyp", label:"Support or contradict a hypothesis", txt:"Hypothesis A: \"If the water is warmer, then the sugar dissolves faster, because water particles move faster.\" The data supports it. Hypothesis B: \"Temperature has no effect on dissolving time.\" The data contradicts it, since time dropped from 92 s to 22 s."},
+    {k:"justify", label:"Justify a conclusion", txt:"Conclusion: warmer water dissolves sugar faster. Justification: across six temperatures the time dropped every step, from 92 s at 10 °C to 22 s at 60 °C, and only temperature was changed. To make this stronger, the class should repeat each trial and average the results."}
+  ]
+};
+
+const EXPL = [
+  {k:"claim", label:"Add a claim", txt:"The puddles disappeared faster on Tuesday because more water evaporated."},
+  {k:"obs", label:"Add observations (qualitative)", txt:"On Tuesday the sky was clear and sunny and a breeze moved the grass. Monday was cloudy and still."},
+  {k:"data", label:"Add measured data (quantitative)", txt:"Puddles measured 3 cm deep each morning. On Monday they lasted 7 hours at 9 °C. On Tuesday they lasted 3 hours at 16 °C with wind of 20 km/h."},
+  {k:"reason", label:"Add reasoning", txt:"Evaporation happens faster when water is warmer and when wind carries water vapour away, so warmer, windier weather explains the faster drying."},
+  {k:"alt", label:"Consider another explanation", txt:"The soil could have soaked up water faster on Tuesday, but the soil was already wet from Monday, so evaporation is the better explanation."}
+];
+
+const BIAS = [
+  {c:"To find out if students like the new cafeteria menu, Jordan only asks people standing in the cafeteria line.", a:"sampling", why:"Sampling bias. People in line already chose to buy the food, so they are more likely to like it. A random sample of all students is fairer."},
+  {c:"A thermometer in the classroom always reads 2 °C higher than the real temperature. The class uses it for a month of weather data.", a:"measurement", why:"Measurement bias. Every reading is off in the same direction. Checking (calibrating) the thermometer against a trusted one fixes this."},
+  {c:"Priya expects that music helps plants grow. She records the tall plants in the music group carefully but skips writing down the short ones.", a:"confirmation", why:"Confirmation bias. She is keeping only the data that matches what she expected. All results must be recorded."},
+  {c:"A company that sells a fertilizer runs its own test and reports that its product works best.", a:"interest", why:"Interest bias. The company gains if the result is good. Independent scientists should repeat the test."},
+  {c:"Counting birds at a feeder only at noon, a student concludes owls do not live near the school.", a:"sampling", why:"Sampling bias. Owls are mostly active at night, so a noon sample misses them. Sampling at different times gives a fairer picture."},
+  {c:"Students measure the length of their shadows, but each person measures from a different spot on their shoe.", a:"measurement", why:"Measurement bias. An inconsistent method changes the results. Everyone should measure the same way."}
+];
+const BIAS_TYPES = {sampling:"Sampling bias", measurement:"Measurement bias", confirmation:"Confirmation bias", interest:"Interest bias"};
+
+const CAREERS = [
+  {k:"pharm", job:"Pharmacist", topic:"Mixtures and solutions", what:"Pharmacists check that medicines are mixed at the right concentration. They read dose charts, compare a patient's mass and age to safe ranges, and explain why a dose is or is not safe.",
+   intro:"A pharmacist prepares a children's liquid medicine. The safe range is 4 to 6 mg of medicine in every 1 mL of solution. Three batches were tested.",
+   table:[["Batch","Medicine (mg)","Volume (mL)"],["A","500","100"],["B","900","150"],["C","350","100"]],
+   qs:[{q:"Which batch is outside the safe range?",o:["Batch A (5 mg/mL)","Batch B (6 mg/mL)","Batch C (3.5 mg/mL)"],a:2,ex:"Concentration = medicine ÷ volume. Batch C is 350 ÷ 100 = 3.5 mg/mL, below 4 mg/mL. It is too dilute to work properly."},
+       {q:"What should the pharmacist conclude about Batch C?",o:["It is safe because it has less medicine","It should not be given until more medicine is dissolved or a new batch is made","Concentration does not matter for liquids"],a:1,ex:"The data shows the batch is too dilute. The justified conclusion is to correct it before use."}]},
+  {k:"eng", job:"Structural engineer", topic:"Structures and simple machines", what:"Structural engineers test how beams and bridges bend under loads. They compare test data to safety limits and explain whether a design is safe.",
+   intro:"An engineer tests three beams for a pedestrian bridge over a ravine in Edmonton. The safety limit is 20 mm of bending at a load of 5000 N.",
+   table:[["Beam","Material","Bending at 5000 N (mm)"],["1","Steel I-beam","8"],["2","Wood beam","26"],["3","Glulam (layered wood)","15"]],
+   qs:[{q:"Which beams pass the safety limit?",o:["Beam 1 only","Beams 1 and 3","All three"],a:1,ex:"Beams 1 (8 mm) and 3 (15 mm) bend less than 20 mm. Beam 2 bends 26 mm, which is too much."},
+       {q:"Why might the engineer choose Beam 3 over Beam 1?",o:["It bends the least","It passes the limit and may suit other factors such as cost, look or using local wood","Wood never fails"],a:1,ex:"Both pass. Data rules out Beam 2, but other factors like cost and resources help choose between safe designs."}]},
+  {k:"hvac", job:"HVAC technician", topic:"Energy and heating", what:"Heating, ventilation and air conditioning technicians read temperature data to find problems in a building's heating system and explain the cause.",
+   intro:"In January a school calls an HVAC technician. The thermostat is set to 21 °C. The technician logs room temperatures at 8:00 a.m.",
+   table:[["Room","Temperature (°C)","Note"],["Gym","20","Fan noise normal"],["Room 104","14","Vent feels cold, frost on window"],["Library","21","Fan noise normal"],["Room 106","20","Fan noise normal"]],
+   qs:[{q:"Which observation points to the problem?",o:["The gym is 20 °C","Room 104 is 14 °C with a cold vent","The library matches the thermostat"],a:1,ex:"Room 104 is much colder than the others and its vent blows cold air. The problem is likely local to that room."},
+       {q:"What is the best inference?",o:["The whole furnace is broken","Something is wrong with the heat supply to Room 104, such as a stuck damper","Edmonton winters are too cold for schools"],a:1,ex:"Other rooms are warm, so the furnace works. The inference that best fits all the data is a problem with that room's air supply."}]},
+  {k:"cons", job:"Conservation biologist", topic:"Ecosystems", what:"Conservation biologists count plants and animals over many years. They look for trends, check for bias in how counts were made, and explain changes to protect species.",
+   intro:"A conservation biologist reviews spring counts of a songbird along the same 2 km survey route in a parkland area near Edmonton. The same method and time of day were used each year.",
+   table:[["Year","Birds counted"],["2016","48"],["2018","44"],["2020","37"],["2022","31"],["2024","26"]],
+   qs:[{q:"What pattern does the data show?",o:["The count is steady","The count is declining","The count is rising"],a:1,ex:"Each survey is lower than the one before, from 48 to 26. That is a declining trend."},
+       {q:"Why does it matter that the method and time of day stayed the same?",o:["It makes the counts fair to compare, so the decline is not caused by a change in method","It makes the birds easier to see","It does not matter"],a:0,ex:"Keeping the method the same reduces bias. Then a change in counts more likely reflects a real change in the bird population."}]}
+];
+
+const OI_POOL = [
+  ["The leaf is 7 cm long.","o","It is measured with a ruler."],
+  ["The leaf fell because the tree is getting ready for winter.","i","This explains why. It uses prior knowledge about trees."],
+  ["The beaker feels warm.","o","It comes from your sense of touch."],
+  ["A chemical reaction is happening in the beaker.","i","This is an explanation for the warmth, not something you sense directly."],
+  ["The dog is wagging its tail.","o","You can see it."],
+  ["The dog is happy.","i","You cannot see happiness. You infer it from the wagging tail."],
+  ["The puddle has a rainbow-coloured film on top.","o","You can see the colours."],
+  ["Oil leaked from a car into the puddle.","i","This explains the film using prior knowledge about oil."],
+  ["The thermometer reads −18 °C.","o","It is a reading from a tool."],
+  ["The car will not start because the battery is too cold.","i","This explains a problem. It is a possible cause."],
+  ["The ice on the pond is cracked near the shore.","o","You can see the cracks."],
+  ["The ice is too thin to walk on.","i","This is a conclusion drawn from cracks and prior knowledge. It needs to be tested safely."],
+  ["There are 14 ants on the sidewalk.","o","It is a count."],
+  ["The ants are carrying food back to their nest.","i","You infer where they are going and why."],
+  ["The milk smells sour.","o","It comes from your sense of smell."],
+  ["The milk has gone bad because bacteria grew in it.","i","This explains the smell using prior knowledge."],
+  ["The mass of the rock is 125 g.","o","It is a reading from a balance."],
+  ["The rock was carried here by a glacier.","i","This is an explanation about the rock's history."],
+  ["The classroom plant's leaves are yellow and drooping.","o","You can see the colour and shape."],
+  ["The plant has not been watered enough.","i","This is one possible explanation for the yellow leaves."],
+  ["Smoke is rising from the forest on the horizon.","o","You can see the smoke."],
+  ["A wildfire started from a lightning strike.","i","This explains the cause of the smoke."],
+  ["The sky is getting dark and the wind is stronger.","o","You can see and feel these changes."],
+  ["A thunderstorm is coming.","i","This is a prediction based on observations and prior knowledge."]
+];
+
+const BEAN_NOTES_FOOD = ["dark green leaves","thick stem","dark green, large leaves","two new leaves","green, upright"];
+const BEAN_NOTES_WATER = ["pale green leaves","thin stem","light green leaves","leaning slightly","green, upright"];
+
+const ICE = {
+  base:{none:40, sand:36, sugar:33, salt:24},
+  names:{none:"Nothing (control)", sand:"Sand", sugar:"Sugar", salt:"Rock salt"}
+};
+
+const SORT_DECKS = {
+  oi:{a:"Observation",as:"gathered with senses or tools",b:"Inference",bs:"explanation from observations",items:[
+    ["The snow is 15 cm deep.","a"],["It snowed overnight.","b"],["The frog's skin is slimy.","a"],["The frog lives near water.","b"],
+    ["The cookie is broken into four pieces.","a"],["Someone stepped on the cookie.","b"],["The water boiled at 100 °C.","a"],
+    ["The stove was turned on high.","b"],["The rock has shiny, flat crystals.","a"],["The rock formed from cooled magma.","b"],
+    ["The lamp is not lit.","a"],["The bulb burned out.","b"],["The mouse ate 3 g of seeds.","a"],["The mouse was hungry.","b"],
+    ["The lake water leaves white crystals when it dries.","a"],["The bird's beak is long and thin.","a"]]},
+  qq:{a:"Qualitative",as:"described with words",b:"Quantitative",bs:"numbers from counting or measuring",items:[
+    ["The rock is grey and rough.","a"],["The rock has a mass of 210 g.","b"],["The solution smells like vinegar.","a"],["The solution's volume is 75 mL.","b"],
+    ["The moose is very large.","a"],["The moose stands 1.9 m tall at the shoulder.","b"],["The beetle is shiny green.","a"],["There are 6 beetles under the log.","b"],
+    ["The river is flowing quickly.","a"],["The river flows at 1.2 m/s.","b"],["The bread is soft and fluffy.","a"],["The bread rose 3 cm.","b"],
+    ["The tea is too hot to drink.","a"],["The tea is 78 °C.","b"],["The wind is gusty.","a"],["Wind gusts reach 60 km/h.","b"]]}
+};
+
+const FLASH = [
+  ["Observation","Information gathered with your senses or with tools."],
+  ["Inference","An explanation or conclusion based on observations and prior knowledge."],
+  ["Prior knowledge","What you already know before you make an observation."],
+  ["Qualitative data","Data described with words, such as colour, texture, smell or behaviour."],
+  ["Quantitative data","Data in numbers from counting or measuring, usually with units."],
+  ["Data","Facts and measurements collected in an investigation."],
+  ["Scientific explanation","An answer to a question about the natural world, based on observations and interpretations of data."],
+  ["Interpretation","Deciding what data means, using critical thinking."],
+  ["Claim","The answer to a question in a scientific explanation."],
+  ["Evidence","The observations and data that support a claim."],
+  ["Reasoning","The science idea that connects the evidence to the claim."],
+  ["Hypothesis","A testable explanation, often written as If… then… because…"],
+  ["Prediction","A statement of what you expect to happen, based on a pattern or hypothesis."],
+  ["Pattern","A trend or regularity that repeats in data."],
+  ["Categorizing","Sorting data or objects into groups that share features."],
+  ["Cause and effect","A relationship where one change makes another change happen."],
+  ["Conclusion","A statement of what the results show, justified by the data."],
+  ["Bias","Anything that pushes results in one direction so they are no longer a fair picture."],
+  ["Sampling bias","When the sample does not represent the whole group."],
+  ["Confirmation bias","Noticing or keeping only the results you expected."],
+  ["Mean","The average: sum of values ÷ number of values."],
+  ["Fair test","An investigation where only one variable is changed and the others are kept the same."]
+];
+
+const QUIZ = [
+  {q:"Which statement is an observation?",o:["The plant is dying","The plant has 5 yellow leaves","The plant needs fertilizer","The plant is too cold"],a:1,ex:"Counting yellow leaves uses your senses. The others are explanations, which are inferences."},
+  {q:"Which statement is an inference?",o:["The water is 22 °C","The snow is melting because the chinook brought warm air","The snowbank is 40 cm tall","The snow is wet"],a:1,ex:"It explains why the snow is melting using prior knowledge about chinooks."},
+  {q:"An inference is based on…",o:["observations only","prior knowledge only","observations and prior knowledge","guesses and opinions"],a:2,ex:"An inference combines what you observe with what you already know."},
+  {q:"Which tool would give quantitative data about a liquid's temperature?",o:["Your hand","A thermometer","A hand lens","Your eyes"],a:1,ex:"A thermometer gives a number with units (°C), which is quantitative."},
+  {q:"Which is qualitative data?",o:["The bison weighs 700 kg","The bison has a dark brown coat","The herd has 40 calves","The bison ran 50 km/h"],a:1,ex:"Colour is described with words, so it is qualitative."},
+  {q:"Which is quantitative data?",o:["The leaves are smooth","The soil smells earthy","The seedling is 12 cm tall","The flower is purple"],a:2,ex:"12 cm is a measured number with a unit."},
+  {q:"Scientific explanations are based on…",o:["what most people believe","observations and interpretations of data","one person's opinion","whatever sounds most interesting"],a:1,ex:"Science builds explanations from evidence: observations and interpreted data."},
+  {q:"In a scientific explanation, the evidence is…",o:["the answer to the question","the observations and data that support the claim","the science idea that links ideas","the title"],a:1,ex:"Evidence is the data and observations. The claim is the answer, and reasoning links them."},
+  {q:"A student notices that every time the water is warmer, sugar dissolves faster. Which critical-thinking skill is this?",o:["Recognizing a pattern","Calculating a mean","Reducing bias","Calibrating a tool"],a:0,ex:"Seeing a trend that repeats in data is recognizing a pattern."},
+  {q:"Data shows dissolving time drops as temperature rises from 10 °C to 60 °C. What is a reasonable prediction for 70 °C?",o:["Much longer than at 10 °C","A little shorter than at 60 °C","Exactly the same as at 10 °C","Impossible to say anything"],a:1,ex:"Following the pattern, the time should be a bit shorter than at 60 °C."},
+  {q:"A hypothesis states that salt makes ice melt faster. The salted ice cubes melted first in all three trials. The data…",o:["contradicts the hypothesis","supports the hypothesis","proves the hypothesis is true forever","has nothing to do with the hypothesis"],a:1,ex:"The results match the prediction, so they support the hypothesis. More testing could still change it."},
+  {q:"Two things change together in a data set. When can you more confidently say one causes the other?",o:["When the graph is colourful","When a fair test changed only one variable and kept the others the same","When one friend agrees","Never"],a:1,ex:"A fair test controls other variables, which makes a cause and effect relationship more likely."},
+  {q:"Which is the best way to justify a conclusion?",o:["Say it is obvious","Refer to specific data that supports it","Use a lot of exclamation marks","Repeat the claim"],a:1,ex:"A justified conclusion points to specific evidence, such as measured values."},
+  {q:"Jordan surveys only students in the cafeteria line about the cafeteria food. This is an example of…",o:["sampling bias","measurement bias","a fair test","a hypothesis"],a:0,ex:"The sample is not representative of all students."},
+  {q:"A scale always reads 5 g too high. This causes…",o:["sampling bias","measurement bias","confirmation bias","no problem"],a:1,ex:"A tool that is always off in one direction causes measurement bias."},
+  {q:"A scientist keeps only the results that match what she expected. This is…",o:["confirmation bias","good practice","a prediction","random sampling"],a:0,ex:"Ignoring results that do not fit expectations is confirmation bias."},
+  {q:"Which helps reduce bias?",o:["Using a small sample of friends","Random sampling and repeated trials","Changing many variables at once","Skipping data that looks strange"],a:1,ex:"Random samples and repeated trials give a fairer picture."},
+  {q:"Heights of 5 seedlings are 10, 12, 14, 12 and 12 cm. What is the mean?",o:["10 cm","12 cm","14 cm","60 cm"],a:1,ex:"Sum = 60 cm. 60 ÷ 5 = 12 cm."},
+  {q:"Which career most often interprets data about the concentration of medicine solutions?",o:["Pharmacist","HVAC technician","Structural engineer","Conservation biologist"],a:0,ex:"Pharmacists check that medicine solutions have a safe, correct concentration."},
+  {q:"A structural engineer tests how much a beam bends under a load. What is the engineer doing?",o:["Collecting and interpreting quantitative data to judge safety","Making a guess","Only making qualitative observations","Testing a recipe"],a:0,ex:"Measured bending is quantitative data that is compared to a safety limit."},
+  {q:"An HVAC technician finds one cold room while all other rooms are warm. What is the best inference?",o:["The whole furnace is broken","There is a problem with the heat supply to that room","The thermostat is perfect","It is summer"],a:1,ex:"Since other rooms are warm, the furnace likely works. The problem is local to that room."},
+  {q:"A conservation biologist sees bird counts fall every survey for 8 years using the same method. This supports…",o:["a declining population","a growing population","a measurement error","nothing"],a:0,ex:"A steady drop with a consistent method suggests a real decline."},
+  {q:"Two students see the same tracks in the snow. One infers a coyote chased a hare, the other just says two animals passed. Why might they differ?",o:["One student is lying","They have different prior knowledge","Observations always differ","Inferences are always wrong"],a:1,ex:"Inferences depend on prior knowledge, which differs between people."},
+  {q:"What can happen to an inference when new observations are made?",o:["It can never change","It may be supported or need to change","It becomes an observation","It becomes a law"],a:1,ex:"New evidence can support an inference or show it needs to be revised."},
+  {q:"Which is the best hypothesis?",o:["Plants are nice","If plants get more light, then they will grow taller, because light is needed to make food","Plants grow","I like tall plants"],a:1,ex:"A good hypothesis is testable and includes an explanation (because…)."},
+  {q:"Why should scientists repeat trials?",o:["To make the work take longer","To check that results are reliable and not a one-time accident","To change the hypothesis each time","To avoid making observations"],a:1,ex:"Repeating trials shows whether results are consistent, which strengthens interpretation."}
+];
+
+const SHORT = [
+  {p:"Explain the difference between an observation and an inference. Give one example of each about a winter scene.",m:"An observation is information gathered with the senses or tools, such as \"there are footprints in the snow.\" An inference is an explanation based on observations and prior knowledge, such as \"a person walked through the yard this morning.\"",k:["Observation uses senses or tools","Inference explains, using observations and prior knowledge","Correct observation example","Correct inference example"]},
+  {p:"What is the difference between qualitative and quantitative data? Give an example of each for a sample of soil.",m:"Qualitative data describes with words, like \"the soil is dark brown and crumbly.\" Quantitative data uses numbers from measuring or counting, like \"the soil sample has a mass of 150 g.\"",k:["Qualitative uses words","Quantitative uses numbers with units","Soil qualitative example","Soil quantitative example"]},
+  {p:"Why is a thermometer reading more useful than touching water with your hand?",m:"A thermometer gives an exact number in °C that can be compared and recorded. A hand only gives a rough feeling of warm or cool, and different people may feel it differently.",k:["Tools give exact, measurable data","Senses are less precise or vary between people","Numbers can be compared"]},
+  {p:"Name the three parts of a strong scientific explanation and describe each.",m:"Claim: the answer to the question. Evidence: the observations and data that support the claim. Reasoning: the science idea that explains why the evidence supports the claim.",k:["Claim described","Evidence described","Reasoning described"]},
+  {p:"How does a prediction differ from a hypothesis?",m:"A hypothesis is a testable explanation, often written as If… then… because. A prediction is what you expect to observe if the hypothesis is correct. Testing the prediction lets you support or contradict the hypothesis.",k:["Hypothesis is a testable explanation","Prediction is the expected result","Testing a prediction checks the hypothesis"]},
+  {p:"Data shows two things changing together. Why does this not always prove cause and effect?",m:"Another factor could be causing both changes, or it could be coincidence. A fair test, where only one variable is changed and others are controlled, gives stronger evidence of cause and effect.",k:["Another factor could be responsible","A fair test controls other variables","Only one variable changes"]},
+  {p:"Describe one way bias can affect how data is collected, and one way it can affect how data is interpreted.",m:"Collection: a sample that only includes one group, like measuring fish caught with a large-mesh net, gives sampling bias. Interpretation: confirmation bias happens when a person only pays attention to results that match what they expected.",k:["A collection bias example","An interpretation bias example","Explains how each makes results unfair"]},
+  {p:"List two ways scientists reduce bias in investigations.",m:"Use large random samples, check (calibrate) tools, repeat trials, record all results, and have other scientists review the work. Any two are fine.",k:["First correct method","Second correct method"]},
+  {p:"Choose a science-related career and explain how that person uses data interpretation in their work.",m:"Example: a conservation biologist counts animals over many years, looks for patterns like a decline, checks that counting methods were consistent, and explains the cause so the species can be protected.",k:["Names a career","Describes data collected","Describes how it is interpreted or explained"]}
+];
+
+const LONG = [
+  {p:"Your class finds that ice cubes covered in salt melted in about 24 minutes, sugar in 33 minutes, sand in 36 minutes and plain ice in 40 minutes. Write a full scientific explanation (claim, evidence, reasoning) for which treatment melts ice fastest. Then describe how you would make the investigation more reliable.",
+   k:["Claim: salt melts ice fastest","Evidence uses specific times from the data","Reasoning: salt lowers the temperature at which water freezes","Suggests repeated trials, same size cubes, same lamp distance or other controls","Mentions possible bias or sources of error"]},
+  {p:"A town council wants to know if a local river is healthy. Plan how you would collect both qualitative and quantitative data. Explain how each type of data would help you build a scientific explanation, and how you would avoid bias.",
+   k:["At least two qualitative observations planned","At least two quantitative measurements planned with tools","Explains how both types support an explanation","Describes a fair or random sampling plan","Mentions repeating measurements or checking tools"]},
+  {p:"Explain how critical thinking turns raw data into a valid conclusion. Use all five thinking skills (patterns, predicting, relationships, hypotheses, justifying) with an example of your own.",
+   k:["Pattern described in the example","Prediction made from the pattern","Relationship or cause and effect analyzed","Hypothesis supported or contradicted","Conclusion justified with specific data"]},
+  {p:"A news story claims a new sports drink makes students run faster. The study was paid for by the company and tested 6 students on the school team. Evaluate this claim using what you know about bias and scientific explanations.",
+   k:["Identifies interest bias from the company","Identifies small or unrepresentative sample","Asks whether a fair test and control group were used","Suggests how an unbiased study would be designed","States a justified judgment about the claim"]}
+];
+
+const COVERAGE = [
+  ["SL1.K1","Scientific explanations are based on observations and on interpretations of data.","Learn: Lesson 5; Lab Bench: Station 3 (step 3); Quiz; Written Review"],
+  ["SL1.K2","Observation uses senses or tools to gather information.","Learn: Lesson 1; Flashcards; Quiz"],
+  ["SL1.K3","Inference is an explanation based on observations and prior knowledge.","Learn: Lesson 2; Sort It; Quiz"],
+  ["SL1.K4","Both qualitative and quantitative data can support scientific explanations.","Learn: Lessons 3 and 5; Sort It (second deck); Quiz"],
+  ["SL1.K5","Critical-thinking skills in data interpretation: categorizing and recognizing patterns; predicting outcomes; analyzing relationships, e.g., cause and effect; supporting or contradicting hypotheses; justifying conclusions.","Learn: Lesson 4; Lab Bench: Stations 2 and 3; Written Review (extended 3)"],
+  ["SL1.K6","Biases can influence the collection and interpretation of data.","Learn: Lesson 6; Lab Bench: Station 4; Quiz"],
+  ["SL1.K7","Science-related careers apply interpretation and scientific explanation: pharmacist, structural engineer, HVAC technician, conservation biologist.","Learn: Lesson 7; Lab Bench: Station 5; Quiz"],
+  ["SL1.S1","Differentiate between observation and inference.","Lab Bench: Station 1; Sort It; Learn: Lesson 2"],
+  ["SL1.S2","Interpret qualitative and quantitative data.","Lab Bench: Station 2; Learn: Lesson 3"],
+  ["SL1.S3","Discuss how predictions and hypotheses contribute to scientific explanations.","Lab Bench: Station 3 (steps 1 and 2); Learn: Lesson 4; Written Review"],
+  ["SL1.S4","Develop a scientific explanation based on interpretation of data.","Lab Bench: Station 3 (step 3); Learn: Lesson 5; Written Review (extended 1)"],
+  ["SL1.S5","Discuss how bias can affect scientific explanations.","Lab Bench: Station 4; Learn: Lesson 6; Written Review (extended 4)"],
+  ["SL1.S6","Explore how a science-related career applies interpretation and scientific explanation.","Lab Bench: Station 5; Learn: Lesson 7; Written Review"]
+];
+/* ---------- HELPERS ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "rb-sl1-data-detective";
+let store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { store = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const rnd = (a, b) => a + Math.random() * (b - a);
+const ri = (a, b) => Math.floor(rnd(a, b + 1));
+function fb(el, ok, html) { el.innerHTML = '<div class="fb ' + (ok ? "good" : "bad") + '">' + html + "</div>"; }
+const NS = "http://www.w3.org/2000/svg";
+
+function updateStats() {
+  $("stQuiz").textContent = store.quizBest != null ? store.quizBest + "/10" : "–";
+  const known = Object.values(store.fc || {}).filter(v => v === "k").length;
+  $("stCards").textContent = known + "/" + FLASH.length;
+  $("stSort").textContent = store.sortBest != null ? store.sortBest + "%" : "–";
+}
+
+/* ---------- THEME ---------- */
+(function () {
+  const root = document.documentElement;
+  if (store.theme) root.setAttribute("data-theme", store.theme);
+  $("themeBtn").addEventListener("click", () => {
+    const cur = root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next); store.theme = next; save();
+  });
+})();
+
+/* ---------- TABS ---------- */
+(function () {
+  const tabs = [...document.querySelectorAll('[role=tab]')];
+  function select(tab, focus) {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+      $(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) tab.focus();
+    store.tab = tab.id; save();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", e => {
+      let n = null;
+      if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+      if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (e.key === "Home") n = tabs[0];
+      if (e.key === "End") n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); select(n, true); }
+    });
+  });
+  const saved = store.tab && $(store.tab);
+  if (saved) select(saved);
+})();
+
+/* ---------- LESSON 1: observation tools ---------- */
+(function () {
+  const seen = new Set();
+  OBS_TOOLS.forEach(t => {
+    const b = document.createElement("button");
+    b.className = "btn"; b.type = "button"; b.textContent = t.k;
+    b.addEventListener("click", () => {
+      seen.add(t.k);
+      $("obsOut").innerHTML = '<span class="tag ' + (t.t === "qual" ? "qual" : "quant") + '">' + (t.t === "qual" ? "Qualitative" : "Quantitative") + "</span> " + esc(t.o);
+      $("obsLog").textContent = "Observations made: " + seen.size + " of " + OBS_TOOLS.length + ". Notice that each one only describes. None explains why.";
+    });
+    $("obsTools").appendChild(b);
+  });
+})();
+
+/* ---------- LESSON 2: tracks ---------- */
+(function () {
+  let step = 0, pk = false;
+  function prints(x, y, kind, op) {
+    // kind c = coyote (single oval prints), h = hare (pairs of long prints)
+    if (kind === "c") return `<ellipse cx="${x}" cy="${y}" rx="5" ry="7" fill="var(--obs)" opacity="${op}"/>`;
+    return `<ellipse cx="${x}" cy="${y-6}" rx="3.5" ry="9" fill="var(--inf)" opacity="${op}"/><ellipse cx="${x+9}" cy="${y-6}" rx="3.5" ry="9" fill="var(--inf)" opacity="${op}"/><circle cx="${x+4}" cy="${y+9}" r="2.6" fill="var(--inf)" opacity="${op}"/>`;
+  }
+  function draw() {
+    let s = `<svg viewBox="0 0 420 220" role="img" aria-label="Diagram of animal tracks in snow, clue ${step + 1} of 4"><rect x="0" y="0" width="420" height="220" rx="10" fill="var(--surface)" stroke="var(--line)"/>`;
+    // coyote path from left bottom to centre
+    const cGap = step >= 1 ? [0, 30, 70, 120, 175] : [0, 30, 60];
+    cGap.forEach((d, i) => { s += prints(20 + d, 190 - i * 18, "c", 1); });
+    // hare path from top left to centre
+    [0, 1, 2, 3].forEach(i => { s += prints(40 + i * 40, 40 + i * 14, "h", 1); });
+    if (step >= 2) {
+      s += `<ellipse cx="225" cy="110" rx="34" ry="22" fill="var(--surface-2)" stroke="var(--muted)" stroke-dasharray="4 3"/>`;
+      s += `<text x="225" y="114" text-anchor="middle" font-size="11" fill="var(--muted)">scuffed snow</text>`;
+      [[210, 98], [240, 120], [232, 96]].forEach(p => s += `<path d="M${p[0]} ${p[1]} l4 -3 l2 4 z" fill="var(--ink)"/>`);
+    }
+    if (step >= 3) {
+      [0, 1, 2].forEach(i => s += prints(275 + i * 36, 96 - i * 16, "h", 1));
+      s += `<g fill="var(--good)" opacity=".85"><circle cx="390" cy="40" r="14"/><circle cx="372" cy="30" r="11"/><circle cx="400" cy="22" r="10"/></g><text x="380" y="72" text-anchor="middle" font-size="11" fill="var(--muted)">willows</text>`;
+      [0, 1, 2].forEach(i => s += prints(270 + i * 26, 140 + i * 18, "c", 1));
+    }
+    s += `<text x="12" y="212" font-size="11" fill="var(--obs)">● large single prints</text><text x="150" y="212" font-size="11" fill="var(--inf)">● paired long prints</text></svg>`;
+    $("trackSvg").innerHTML = s;
+    const T = TRACKS[step];
+    $("trkObs").innerHTML = '<span class="tag obs">Clue ' + (step + 1) + " observation</span> " + esc(T.obs);
+    $("trkInf").innerHTML = '<span class="tag inf">Inference</span> ' + esc(pk ? T.infPK : T.inf);
+    $("trkBack").disabled = step === 0; $("trkNext").disabled = step === TRACKS.length - 1;
+  }
+  $("trkNext").onclick = () => { if (step < TRACKS.length - 1) { step++; draw(); } };
+  $("trkBack").onclick = () => { if (step > 0) { step--; draw(); } };
+  $("trkPK").onclick = () => { pk = !pk; $("trkPK").setAttribute("aria-pressed", pk); $("trkPK").textContent = pk ? "Remove prior knowledge" : "Add prior knowledge"; draw(); };
+  draw();
+})();
+
+/* ---------- LESSON 3: qual/quant cards ---------- */
+(function () {
+  QQ.forEach(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "flip"; let q = false;
+    const render = () => { b.innerHTML = '<span class="tag ' + (q ? "quant" : "qual") + '">' + (q ? "Quantitative" : "Qualitative") + "</span><span>" + esc(q ? c.qn : c.ql) + "</span>"; b.setAttribute("aria-label", (q ? "Quantitative: " : "Qualitative: ") + (q ? c.qn : c.ql) + ". Press to flip."); };
+    b.onclick = () => { q = !q; render(); };
+    render(); $("qqCards").appendChild(b);
+  });
+})();
+
+/* ---------- LESSON 4: critical thinking chart ---------- */
+(function () {
+  const W = 440, H = 280, L = 52, R = 20, T = 18, B = 46;
+  const xs = t => L + (t - 0) / 80 * (W - L - R);
+  const ys = v => H - B - v / 100 * (H - T - B);
+  let active = null;
+  function draw() {
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of dissolving time against water temperature. Time falls from 92 seconds at 10 degrees to 22 seconds at 60 degrees.">`;
+    for (let v = 0; v <= 100; v += 20) s += `<line x1="${L}" x2="${W - R}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--line)"/><text x="${L - 8}" y="${ys(v) + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${v}</text>`;
+    for (let t = 0; t <= 80; t += 10) s += `<text x="${xs(t)}" y="${H - B + 16}" text-anchor="middle" font-size="11" fill="var(--muted)">${t}</text>`;
+    s += `<line x1="${L}" x2="${W - R}" y1="${ys(0)}" y2="${ys(0)}" stroke="var(--muted)"/><line x1="${L}" x2="${L}" y1="${T}" y2="${ys(0)}" stroke="var(--muted)"/>`;
+    s += `<text x="${(L + W - R) / 2}" y="${H - 8}" text-anchor="middle" font-size="12" fill="var(--ink)">Water temperature (°C)</text>`;
+    s += `<text transform="translate(14 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle" font-size="12" fill="var(--ink)">Time to dissolve (s)</text>`;
+    if (active === "pattern" || active === "justify" || active === "relate") {
+      s += `<polyline fill="none" stroke="var(--data)" stroke-width="2" opacity=".6" points="${CT.temps.map((t, i) => xs(t) + "," + ys(CT.times[i])).join(" ")}"/>`;
+    }
+    if (active === "pattern") {
+      s += `<rect x="${xs(5)}" y="${ys(100)}" width="${xs(25) - xs(5)}" height="${ys(60) - ys(100)}" fill="var(--bad-soft)" opacity=".7"/><text x="${xs(15)}" y="${ys(96)}" text-anchor="middle" font-size="11" fill="var(--bad)">slow</text>`;
+      s += `<rect x="${xs(35)}" y="${ys(40)}" width="${xs(65) - xs(35)}" height="${ys(15) - ys(40)}" fill="var(--good-soft)" opacity=".7"/><text x="${xs(50)}" y="${ys(44)}" text-anchor="middle" font-size="11" fill="var(--good)">fast</text>`;
+    }
+    if (active === "predict") {
+      s += `<line x1="${xs(60)}" y1="${ys(22)}" x2="${xs(70)}" y2="${ys(15)}" stroke="var(--data)" stroke-dasharray="4 3" stroke-width="2"/><circle cx="${xs(70)}" cy="${ys(15)}" r="7" fill="var(--surface)" stroke="var(--data)" stroke-width="2" stroke-dasharray="3 2"/><text x="${xs(70)}" y="${ys(15) - 12}" text-anchor="middle" font-size="11" fill="var(--data)">≈15 s?</text>`;
+    }
+    if (active === "relate") s += `<text x="${xs(42)}" y="${ys(80)}" font-size="12" fill="var(--data)">temperature ↑  time ↓</text>`;
+    if (active === "hyp") s += `<text x="${xs(30)}" y="${ys(85)}" font-size="12" fill="var(--good)">✓ supports Hypothesis A</text><text x="${xs(30)}" y="${ys(76)}" font-size="12" fill="var(--bad)">✗ contradicts Hypothesis B</text>`;
+    CT.temps.forEach((t, i) => {
+      s += `<circle cx="${xs(t)}" cy="${ys(CT.times[i])}" r="5.5" fill="var(--data)"/>`;
+      if (active === "justify") s += `<text x="${xs(t) + 8}" y="${ys(CT.times[i]) - 6}" font-size="11" fill="var(--ink)">${CT.times[i]} s</text>`;
+    });
+    s += "</svg>";
+    $("ctSvg").innerHTML = s;
+  }
+  CT.skills.forEach(k => {
+    const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.textContent = k.label; b.setAttribute("aria-pressed", "false");
+    b.onclick = () => { active = k.k; [...$("ctBtns").children].forEach(c => c.setAttribute("aria-pressed", c === b)); $("ctOut").textContent = k.txt; draw(); };
+    $("ctBtns").appendChild(b);
+  });
+  $("ctOut").textContent = "Data: 10 °C: 92 s, 20 °C: 71 s, 30 °C: 55 s, 40 °C: 41 s, 50 °C: 30 s, 60 °C: 22 s. Pick a skill.";
+  draw();
+})();
+
+/* ---------- LESSON 5: explanation builder ---------- */
+(function () {
+  const on = {};
+  const rates = ["Not an explanation yet. Start with a claim.", "A claim alone is just an answer. Add evidence.", "Getting there. Evidence makes it scientific.", "Good. Claim, evidence and data together.", "Strong scientific explanation.", "Excellent. It even rules out another explanation."];
+  EXPL.forEach(e => {
+    const id = "ex-" + e.k;
+    const lab = document.createElement("label"); lab.setAttribute("for", id);
+    lab.innerHTML = `<input type="checkbox" id="${id}"> <span>${esc(e.label)}</span>`;
+    lab.querySelector("input").onchange = ev => { on[e.k] = ev.target.checked; render(); };
+    $("explChecks").appendChild(lab);
+  });
+  function render() {
+    const parts = EXPL.filter(e => on[e.k]).map(e => esc(e.txt));
+    $("explOut").innerHTML = parts.length ? parts.join(" ") : '<span class="note">Your explanation appears here.</span>';
+    const n = parts.length; $("explMeter").style.width = (n / EXPL.length * 100) + "%"; $("explRate").textContent = rates[n];
+  }
+  render();
+})();
+
+/* ---------- LESSON 6: bias cases ---------- */
+(function () {
+  let i = 0, done = 0;
+  function show() {
+    const c = BIAS[i];
+    $("biasCase").innerHTML = '<p class="out">' + esc(c.c) + '</p><p class="note">Which kind of bias is this?</p>';
+    $("biasBtns").innerHTML = ""; $("biasFb").innerHTML = "";
+    Object.entries(BIAS_TYPES).forEach(([k, v]) => {
+      const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.textContent = v;
+      b.onclick = () => { fb($("biasFb"), k === c.a, (k === c.a ? "Correct. " : "Not quite. ") + esc(c.why)); if (k === c.a) done++; $("biasCount").textContent = "Case " + (i + 1) + " of " + BIAS.length; };
+      $("biasBtns").appendChild(b);
+    });
+    $("biasCount").textContent = "Case " + (i + 1) + " of " + BIAS.length;
+  }
+  $("biasNext").onclick = () => { i = (i + 1) % BIAS.length; show(); };
+  show();
+})();
+
+/* ---------- LESSON 7: careers ---------- */
+(function () {
+  CAREERS.forEach(c => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "flip"; let open = false;
+    const r = () => { b.innerHTML = `<span class="eyebrow">${esc(c.topic)}</span><h4>${esc(c.job)}</h4>` + (open ? `<span>${esc(c.what)}</span>` : '<span class="note">Tap to see the data they interpret.</span>'); b.setAttribute("aria-expanded", open); };
+    b.onclick = () => { open = !open; r(); }; r(); $("careerCards").appendChild(b);
+  });
+})();
+
+/* ---------- STATION 1 ---------- */
+(function () {
+  let order = shuffle(OI_POOL), i = 0, right = 0, tries = 0, answered = false;
+  function show() { const it = order[i]; $("oiStmt").textContent = it[0]; $("oiFb").innerHTML = ""; answered = false; }
+  function ans(x) {
+    if (answered) return; answered = true; tries++;
+    const it = order[i], ok = it[1] === x; if (ok) right++;
+    fb($("oiFb"), ok, (ok ? "Correct: " : "Not quite. It is " + (it[1] === "o" ? "an observation" : "an inference") + ". ") + esc(it[2]));
+    $("oiScore").textContent = right + " correct of " + tries;
+  }
+  $("oiObs").onclick = () => ans("o"); $("oiInf").onclick = () => ans("i");
+  $("oiNext").onclick = () => { i++; if (i >= order.length) { order = shuffle(OI_POOL); i = 0; } show(); };
+  show();
+})();
+
+/* ---------- STATION 2: beans ---------- */
+(function () {
+  let food, water;
+  function gen() {
+    const mf = ri(60, 85), mw = ri(42, 58);
+    food = Array.from({ length: 5 }, () => mf + ri(-8, 8));
+    water = Array.from({ length: 5 }, () => mw + ri(-7, 7));
+    render();
+  }
+  const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+  function render() {
+    const nf = shuffle(BEAN_NOTES_FOOD), nw = shuffle(BEAN_NOTES_WATER);
+    let t = '<table><caption class="note" style="text-align:left;caption-side:top;padding-bottom:4px">Height after 14 days</caption><tr><th>Plant</th><th class="num">Plant food (mm)</th><th>Notes</th><th class="num">Water only (mm)</th><th>Notes</th></tr>';
+    for (let i = 0; i < 5; i++) t += `<tr><td>${i + 1}</td><td class="num">${food[i]}</td><td>${nf[i]}</td><td class="num">${water[i]}</td><td>${nw[i]}</td></tr>`;
+    t += "</table>"; $("beanTable").innerHTML = t;
+    // bar chart of means
+    const mf = mean(food), mw = mean(water), W = 320, H = 170, max = 100;
+    const y = v => 140 - v / max * 120;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart of mean heights">`;
+    [0, 25, 50, 75, 100].forEach(v => s += `<line x1="40" x2="${W - 10}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="34" y="${y(v) + 4}" font-size="10" text-anchor="end" fill="var(--muted)">${v}</text>`);
+    s += `<rect x="80" y="${y(mf)}" width="70" height="${140 - y(mf)}" fill="var(--accent)"/><rect x="200" y="${y(mw)}" width="70" height="${140 - y(mw)}" fill="var(--data)"/>`;
+    s += `<text x="115" y="158" font-size="11" text-anchor="middle" fill="var(--ink)">Plant food</text><text x="235" y="158" font-size="11" text-anchor="middle" fill="var(--ink)">Water only</text>`;
+    s += `<text x="115" y="${y(mf) - 5}" font-size="11" text-anchor="middle" fill="var(--ink)">mean ?</text><text x="235" y="${y(mw) - 5}" font-size="11" text-anchor="middle" fill="var(--ink)">mean ?</text>`;
+    s += `<text x="10" y="12" font-size="10" fill="var(--muted)">mm</text></svg>`;
+    $("beanSvg").innerHTML = s;
+    const qs = $("beanQs"); qs.innerHTML = "";
+    const items = [
+      { q: "1. Calculate the mean height of the plant food group (mm).", a: mf, tol: 0.15, ex: `Sum = ${food.join(" + ")} = ${food.reduce((x, y) => x + y, 0)} mm. ${food.reduce((x, y) => x + y, 0)} ÷ 5 = ${mf.toFixed(1)} mm.` },
+      { q: "2. Calculate the mean height of the water only group (mm).", a: mw, tol: 0.15, ex: `Sum = ${water.join(" + ")} = ${water.reduce((x, y) => x + y, 0)} mm. ${water.reduce((x, y) => x + y, 0)} ÷ 5 = ${mw.toFixed(1)} mm.` },
+      { q: "3. How much taller, on average, is the plant food group (mm)?", a: mf - mw, tol: 0.25, ex: `${mf.toFixed(1)} − ${mw.toFixed(1)} = ${(mf - mw).toFixed(1)} mm.` }
+    ];
+    items.forEach((it, k) => {
+      const d = document.createElement("div"); d.className = "q";
+      d.innerHTML = `<label for="bq${k}">${it.q}</label><div class="row"><input type="number" step="0.1" id="bq${k}" style="width:8em"><button class="btn" type="button">Check</button></div><div aria-live="polite"></div>`;
+      d.querySelector("button").onclick = () => { const v = parseFloat(d.querySelector("input").value); const ok = Math.abs(v - it.a) <= it.tol; fb(d.lastElementChild, ok, (ok ? "Correct. " : "Check again. ") + it.ex); };
+      qs.appendChild(d);
+    });
+    const qd = document.createElement("div"); qd.className = "q";
+    qd.innerHTML = `<p>4. Which statement uses <b>qualitative</b> data to support the claim that plant food helps beans grow?</p><div class="opts"></div><div aria-live="polite"></div>`;
+    const opts = shuffle([["Plants with plant food had darker green leaves and thicker stems.", true], [`The plant food group's mean was ${mf.toFixed(1)} mm.`, false], ["Five plants were in each group.", false]]);
+    opts.forEach(([t, ok]) => { const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.textContent = t; b.onclick = () => fb(qd.lastElementChild, ok, ok ? "Correct. Colour and stem thickness are described in words, so they are qualitative. Both kinds of data point the same way." : "That is quantitative or not evidence. Look for data described in words."); qd.querySelector(".opts").appendChild(b); });
+    qs.appendChild(qd);
+    const q5 = document.createElement("p"); q5.className = "note";
+    q5.textContent = "Think: Is 5 plants per group enough? What would make you more confident that plant food caused the difference?";
+    qs.appendChild(q5);
+  }
+  $("beanNew").onclick = gen; gen();
+})();
+
+/* ---------- STATION 3: ice investigation ---------- */
+(function () {
+  const keys = ["none", "sand", "sugar", "salt"];
+  let data = null;
+  function hypText() {
+    const A = $("hypA"), B = $("hypB"), C = $("hypC");
+    return `If the ice cube is covered with ${A.options[A.selectedIndex].text}, then it will melt ${B.options[B.selectedIndex].text}, because ${C.options[C.selectedIndex].text}.`;
+  }
+  function showHyp() { $("hypOut").innerHTML = '<span class="tag inf">Your hypothesis</span> ' + esc(hypText()) + '<br><span class="note">Prediction to test: the ' + esc($("hypA").options[$("hypA").selectedIndex].text) + " cube will melt " + esc($("hypB").options[$("hypB").selectedIndex].text) + ".</span>"; }
+  ["hypA", "hypB", "hypC"].forEach(id => $(id).onchange = showHyp); showHyp();
+  function run() {
+    data = {};
+    keys.forEach(k => data[k] = [0, 1, 2].map(() => Math.round(ICE.base[k] + rnd(-2.5, 2.5))));
+    const avg = k => data[k].reduce((a, b) => a + b, 0) / 3;
+    let t = '<table><tr><th>Treatment</th><th class="num">Trial 1</th><th class="num">Trial 2</th><th class="num">Trial 3</th><th class="num">Mean (min)</th><th>Notes</th></tr>';
+    const notes = { none: "clear ice, water pools slowly", sand: "sand sinks into ice, slight dimples", sugar: "sticky syrup forms", salt: "pits and channels form quickly, crackling" };
+    keys.forEach(k => t += `<tr><td>${ICE.names[k]}</td>${data[k].map(v => `<td class="num">${v}</td>`).join("")}<td class="num"><b>${avg(k).toFixed(1)}</b></td><td>${notes[k]}</td></tr>`);
+    t += "</table>"; $("iceTable").innerHTML = t;
+    const W = 360, H = 200, y = v => 160 - v / 50 * 140;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart of mean melting times">`;
+    [0, 10, 20, 30, 40, 50].forEach(v => s += `<line x1="40" x2="${W - 8}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="34" y="${y(v) + 4}" font-size="10" text-anchor="end" fill="var(--muted)">${v}</text>`);
+    keys.forEach((k, i) => { const a = avg(k), x = 56 + i * 76; s += `<rect x="${x}" y="${y(a)}" width="52" height="${160 - y(a)}" fill="${k === "salt" ? "var(--accent)" : "var(--data)"}"/><text x="${x + 26}" y="${y(a) - 5}" font-size="11" text-anchor="middle" fill="var(--ink)">${a.toFixed(1)}</text><text x="${x + 26}" y="176" font-size="11" text-anchor="middle" fill="var(--ink)">${ICE.names[k].split(" ")[0] === "Nothing" ? "Nothing" : ICE.names[k]}</text>`; });
+    s += `<text x="8" y="12" font-size="10" fill="var(--muted)">minutes to melt</text></svg>`;
+    $("iceSvg").innerHTML = s;
+    // verdict
+    const A = $("hypA").value, B = $("hypB").value, C = $("hypC").value;
+    const sorted = keys.slice().sort((p, q) => avg(p) - avg(q));
+    let supported;
+    if (B === "fastest") supported = sorted[0] === A;
+    else if (B === "slowest") supported = sorted[3] === A;
+    else supported = Math.abs(avg(A) - avg("none")) < 2;
+    let reasonNote = "";
+    if (supported && C !== "fp" && A === "salt") reasonNote = " The prediction matched, but check your 'because'. The data does not show that salt works by being dark or heavy. Science tells us salt lowers the freezing point of water.";
+    if (supported && A === "none" && B === "same") reasonNote = " A control compared with itself always matches. Try a hypothesis about a treatment.";
+    fb($("iceVerdict"), supported, (supported ? "<b>The data supports your hypothesis.</b> " : "<b>The data contradicts your hypothesis.</b> ") + `Fastest: ${ICE.names[sorted[0]]} (${avg(sorted[0]).toFixed(1)} min). Slowest: ${ICE.names[sorted[3]]} (${avg(sorted[3]).toFixed(1)} min).` + reasonNote + (supported ? "" : " A contradicted hypothesis is still useful. It tells you to revise your explanation and test again."));
+    // CER options
+    $("cerBox").hidden = false;
+    const fill = (id, arr) => { $(id).innerHTML = '<option value="">Choose…</option>' + shuffle(arr).map(([t, v]) => `<option value="${v}">${esc(t)}</option>`).join(""); };
+    fill("cerClaim", [["Rock salt melts ice fastest.", 1], ["Sand melts ice fastest.", 0], ["All treatments melt ice at the same rate.", 0]]);
+    fill("cerEv", [[`Salt ice melted in a mean of ${avg("salt").toFixed(1)} min, compared to ${avg("none").toFixed(1)} min for plain ice, across 3 trials each.`, 1], ["Salt is white and sand is brown.", 0], ["City crews use salt, so it must be best.", 0]]);
+    fill("cerRe", [["Salt dissolves into the thin layer of water on the ice and lowers the temperature at which water freezes, so the ice melts faster.", 1], ["Salt is heavy and crushes the ice.", 0], ["Salt makes the ice warmer by giving off heat.", 0]]);
+    $("cerFb").innerHTML = "";
+  }
+  $("runTrials").onclick = run;
+  $("resetTrials").onclick = () => { $("iceTable").innerHTML = '<p class="note">Run the trials to fill the table.</p>'; $("iceSvg").innerHTML = ""; $("iceVerdict").innerHTML = ""; $("cerBox").hidden = true; };
+  $("cerCheck").onclick = () => {
+    const v = ["cerClaim", "cerEv", "cerRe"].map(id => $(id).value);
+    if (v.includes("")) { fb($("cerFb"), false, "Choose a claim, evidence and reasoning first."); return; }
+    const names = ["claim", "evidence", "reasoning"], bad = names.filter((n, i) => v[i] !== "1");
+    if (!bad.length) fb($("cerFb"), true, "Strong explanation. Your claim answers the question, your evidence uses measured data from repeated trials, and your reasoning uses a science idea to connect them.");
+    else fb($("cerFb"), false, "Revise your " + bad.join(" and ") + ". Evidence should be measured data from your trials. Reasoning should be a science idea, not an opinion or a description.");
+  };
+})();
+
+/* ---------- STATION 4: bias simulator ---------- */
+(function () {
+  // build population: 400 walleye, lengths in cm, roughly 15 to 65
+  const pop = [];
+  function gauss() { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  for (let i = 0; i < 400; i++) pop.push(Math.max(15, Math.min(65, Math.round(38 + 10 * gauss()))));
+  const trueMean = pop.reduce((a, b) => a + b, 0) / pop.length;
+  let reveal = false, last = null;
+  function sample(method, n) {
+    let pool;
+    if (method === "random") pool = pop;
+    else if (method === "big") pool = pop.filter(l => l >= 40);
+    else if (method === "shore") pool = pop.filter(l => l <= 32);
+    else pool = pop.filter(l => l >= 48);
+    return shuffle(pool).slice(0, n);
+  }
+  function draw() {
+    const W = 380, H = 210, L = 34, Bm = 36;
+    const bins = []; for (let b = 15; b < 65; b += 5) bins.push(b);
+    const counts = bins.map(b => last ? last.filter(l => l >= b && l < b + 5 || (b === 60 && l === 65)).length : 0);
+    const maxC = Math.max(5, ...counts);
+    const x = v => L + (v - 15) / 50 * (W - L - 10), y = c => H - Bm - c / maxC * (H - Bm - 16);
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Histogram of sampled fish lengths">`;
+    for (let c = 0; c <= maxC; c += Math.ceil(maxC / 5)) s += `<line x1="${L}" x2="${W - 10}" y1="${y(c)}" y2="${y(c)}" stroke="var(--line)"/><text x="${L - 6}" y="${y(c) + 4}" font-size="10" text-anchor="end" fill="var(--muted)">${c}</text>`;
+    bins.forEach((b, i) => { if (counts[i]) s += `<rect x="${x(b) + 1}" y="${y(counts[i])}" width="${x(b + 5) - x(b) - 2}" height="${y(0) - y(counts[i])}" fill="var(--data)"/>`; });
+    for (let v = 15; v <= 65; v += 10) s += `<text x="${x(v)}" y="${H - Bm + 14}" font-size="10" text-anchor="middle" fill="var(--muted)">${v}</text>`;
+    s += `<text x="${(L + W) / 2}" y="${H - 6}" font-size="11" text-anchor="middle" fill="var(--ink)">Fish length (cm)</text>`;
+    if (last && last.length) { const m = last.reduce((a, b) => a + b, 0) / last.length; s += `<line x1="${x(m)}" x2="${x(m)}" y1="10" y2="${y(0)}" stroke="var(--ink)" stroke-dasharray="5 4" stroke-width="2"/><text x="${x(m) + 4}" y="20" font-size="11" fill="var(--ink)">sample ${m.toFixed(1)}</text>`; }
+    if (reveal) s += `<line x1="${x(trueMean)}" x2="${x(trueMean)}" y1="26" y2="${y(0)}" stroke="var(--good)" stroke-width="3"/><text x="${x(trueMean) + 4}" y="36" font-size="11" fill="var(--good)">true ${trueMean.toFixed(1)}</text>`;
+    s += "</svg>"; $("fishSvg").innerHTML = s;
+  }
+  function report() {
+    if (!last) { $("fishOut").textContent = "Take a sample to estimate the average walleye length."; return; }
+    const m = last.reduce((a, b) => a + b, 0) / last.length, diff = m - trueMean;
+    const method = $("netType").value;
+    const why = { random: "Random sampling with nets that catch every size gives a fair picture. Larger samples land closer to the true average.", big: "Small fish escape the large mesh, so the sample only has big fish. The average is pushed too high. This is sampling bias from the tool.", shore: "Young, small fish shelter in the shallow weeds. Sampling only there pushes the average too low.", angler: "People share photos of their biggest catches. The data is biased toward large fish, so the average is far too high." }[method];
+    $("fishOut").innerHTML = `Sample of ${last.length} fish. Sample average: <b>${m.toFixed(1)} cm</b>.` + (reveal ? ` True lake average: <b>${trueMean.toFixed(1)} cm</b> (off by ${diff >= 0 ? "+" : ""}${diff.toFixed(1)} cm).` : " Press Show true lake average to compare.") + "<br>" + why;
+  }
+  $("sampleN").oninput = () => $("sampleNv").textContent = $("sampleN").value;
+  $("catchBtn").onclick = () => { last = sample($("netType").value, +$("sampleN").value); draw(); report(); };
+  $("revealBtn").onclick = () => { reveal = !reveal; $("revealBtn").setAttribute("aria-pressed", reveal); $("revealBtn").textContent = reveal ? "Hide true lake average" : "Show true lake average"; draw(); report(); };
+  $("netType").onchange = () => { last = null; draw(); report(); };
+  last = sample("random", 20); draw(); report();
+})();
+
+/* ---------- STATION 5: careers ---------- */
+(function () {
+  function show(c) {
+    [...$("caseBtns").children].forEach(b => b.setAttribute("aria-pressed", b.dataset.k === c.k));
+    let h = `<h3>${esc(c.job)} <span class="eyebrow">${esc(c.topic)}</span></h3><p>${esc(c.intro)}</p><div class="tablebox"><table><tr>${c.table[0].map(x => `<th>${esc(x)}</th>`).join("")}</tr>${c.table.slice(1).map(r => `<tr>${r.map(x => `<td>${esc(x)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+    $("caseBox").innerHTML = h;
+    c.qs.forEach(q => {
+      const d = document.createElement("div"); d.className = "q";
+      d.innerHTML = `<p><b>${esc(q.q)}</b></p><div class="opts"></div><div aria-live="polite"></div>`;
+      q.o.forEach((o, i) => { const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.textContent = o; b.onclick = () => fb(d.lastElementChild, i === q.a, (i === q.a ? "Correct. " : "Not quite. ") + esc(q.ex)); d.querySelector(".opts").appendChild(b); });
+      $("caseBox").appendChild(d);
+    });
+    const w = document.createElement("p"); w.className = "note"; w.textContent = "How this career interprets data: " + c.what; $("caseBox").appendChild(w);
+  }
+  CAREERS.forEach(c => { const b = document.createElement("button"); b.className = "btn"; b.type = "button"; b.dataset.k = c.k; b.textContent = c.job; b.onclick = () => show(c); $("caseBtns").appendChild(b); });
+  show(CAREERS[0]);
+})();
+
+/* ---------- SORT IT ---------- */
+(function () {
+  let deck = "oi", queue = [], first = 0, total = 0, firstTry = new Set(), current = null;
+  function start() {
+    const D = SORT_DECKS[deck];
+    queue = shuffle(D.items); total = queue.length; first = 0; firstTry = new Set();
+    $("binA").innerHTML = esc(D.a) + "<small>" + esc(D.as) + "</small>";
+    $("binB").innerHTML = esc(D.b) + "<small>" + esc(D.bs) + "</small>";
+    $("deckOI").setAttribute("aria-pressed", deck === "oi"); $("deckQQ").setAttribute("aria-pressed", deck === "qq");
+    $("sortFb").innerHTML = ""; next();
+  }
+  function next() {
+    current = queue.shift();
+    if (!current) {
+      const pct = Math.round(first / total * 100);
+      $("sortCard").innerHTML = `<div><b>Round complete.</b><br>First-try score: ${first} of ${total} (${pct}%)</div>`;
+      $("sortStatus").textContent = "";
+      if (store.sortBest == null || pct > store.sortBest) { store.sortBest = pct; save(); updateStats(); }
+      $("binA").disabled = $("binB").disabled = true; return;
+    }
+    $("binA").disabled = $("binB").disabled = false;
+    $("sortCard").textContent = current[0];
+    $("sortStatus").textContent = (total - queue.length - 1) + " sorted · " + (queue.length + 1) + " left";
+  }
+  function pick(x) {
+    if (!current) return;
+    const D = SORT_DECKS[deck], ok = current[1] === x;
+    const tried = firstTry.has(current[0]);
+    if (ok && !tried) first++;
+    firstTry.add(current[0]);
+    if (!ok) queue.push(current);
+    fb($("sortFb"), ok, ok ? "Correct: " + esc(current[0]) + " → " + esc(x === "a" ? D.a : D.b) : "Not quite. That one is " + esc(current[1] === "a" ? D.a : D.b) + ". It will come back later.");
+    next();
+  }
+  $("binA").onclick = () => pick("a"); $("binB").onclick = () => pick("b");
+  $("deckOI").onclick = () => { deck = "oi"; start(); }; $("deckQQ").onclick = () => { deck = "qq"; start(); };
+  $("sortRestart").onclick = start;
+  start();
+})();
+
+/* ---------- FLASHCARDS ---------- */
+(function () {
+  store.fc = store.fc || {};
+  let order = FLASH.map((_, i) => i), i = 0, flipped = false, only = false;
+  const list = () => only ? order.filter(k => store.fc[FLASH[k][0]] !== "k") : order;
+  function render() {
+    const L = list();
+    if (!L.length) { $("fcCard").innerHTML = '<div><b>Every card is marked known.</b><br><span class="note">Turn off "Still learning only" to review them all.</span></div>'; $("fcCount").textContent = ""; }
+    else {
+      if (i >= L.length) i = 0;
+      const [t, d] = FLASH[L[i]], st = store.fc[t];
+      $("fcCard").innerHTML = flipped ? `<div class="fc-def">${esc(d)}</div>` : `<div><div class="fc-term">${esc(t)}</div>${st ? `<span class="tag ${st === "k" ? "qual" : "inf"}">${st === "k" ? "Known" : "Still learning"}</span>` : ""}</div>`;
+      $("fcCard").setAttribute("aria-label", (flipped ? "Definition: " + d : "Term: " + t) + ". Press Space to flip.");
+      $("fcCount").textContent = "Card " + (i + 1) + " of " + L.length;
+    }
+    const known = Object.values(store.fc).filter(v => v === "k").length;
+    $("fcMeter").style.width = (known / FLASH.length * 100) + "%";
+    updateStats();
+  }
+  const flip = () => { flipped = !flipped; render(); };
+  $("fcCard").onclick = flip;
+  $("fcCard").onkeydown = e => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); } if (e.key === "ArrowRight") $("fcNext").click(); if (e.key === "ArrowLeft") $("fcPrev").click(); };
+  const mark = v => { const L = list(); if (!L.length) return; store.fc[FLASH[L[i]][0]] = v; save(); flipped = false; if (!only || v !== "k") i++; render(); };
+  $("fcKnow").onclick = () => mark("k"); $("fcLearn").onclick = () => mark("l");
+  $("fcNext").onclick = () => { i++; flipped = false; render(); };
+  $("fcPrev").onclick = () => { const L = list(); i = (i - 1 + Math.max(L.length, 1)) % Math.max(L.length, 1); flipped = false; render(); };
+  $("fcShuffle").onclick = () => { order = shuffle(order); i = 0; flipped = false; render(); };
+  $("fcOnly").onclick = () => { only = !only; $("fcOnly").setAttribute("aria-pressed", only); i = 0; flipped = false; render(); };
+  render();
+})();
+
+/* ---------- QUIZ ---------- */
+(function () {
+  $("qBankN").textContent = QUIZ.length;
+  let round = [], qi = 0, score = 0;
+  function start() { round = shuffle(QUIZ).slice(0, 10); qi = 0; score = 0; show(); }
+  function show() {
+    const box = $("quizBox");
+    if (qi >= round.length) {
+      const best = store.quizBest == null || score > store.quizBest;
+      if (best) { store.quizBest = score; save(); updateStats(); }
+      box.innerHTML = `<h2 style="font-size:1.4rem">Round complete: ${score} / 10</h2><p>${score >= 8 ? "Excellent interpreting." : score >= 6 ? "Good work. Review the explanations for the ones you missed." : "Revisit the Learn tab, then try another round."}</p><p class="note">Best score: ${store.quizBest}/10</p><div class="row"><button class="btn primary" id="qAgain" type="button">New round</button></div>`;
+      $("qAgain").onclick = start; $("qAgain").focus(); return;
+    }
+    const Q = round[qi], opts = shuffle(Q.o.map((t, k) => [t, k === Q.a]));
+    box.innerHTML = `<div class="q"><span class="pill-count">Question ${qi + 1} of 10 · Score ${score}</span><h3 style="font-size:1.15rem;font-family:var(--f-body);font-stretch:100%">${esc(Q.q)}</h3><div class="opts" id="qOpts"></div><div id="qFb" aria-live="polite"></div><div class="row"><button class="btn primary" id="qNext" type="button" hidden>Next</button></div></div>`;
+    opts.forEach(([t, ok]) => {
+      const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.textContent = t;
+      b.onclick = () => {
+        [...$("qOpts").children].forEach(x => { x.disabled = true; if (x.dataset.ok === "1") x.classList.add("right"); });
+        if (ok) score++; else b.classList.add("wrong");
+        fb($("qFb"), ok, (ok ? "Correct. " : "Not quite. ") + esc(Q.ex));
+        $("qNext").hidden = false; $("qNext").focus();
+      };
+      b.dataset.ok = ok ? "1" : "0"; $("qOpts").appendChild(b);
+    });
+    $("qNext").onclick = () => { qi++; show(); };
+  }
+  start();
+})();
+
+/* ---------- WRITTEN REVIEW ---------- */
+(function () {
+  store.wr = store.wr || {}; store.wc = store.wc || {};
+  function block(item, id, long) {
+    const d = document.createElement("article"); d.className = "sec";
+    const checks = item.k.map((k, j) => `<label for="${id}c${j}"><input type="checkbox" id="${id}c${j}" ${store.wc[id + "c" + j] ? "checked" : ""}> <span>${esc(k)}</span></label>`).join("");
+    d.innerHTML = `<div class="sec-head"><span class="step">${long ? "Extended" : "Short"} ${id.replace(/\D/g, "")}</span></div><p><b>${esc(item.p)}</b></p><label class="note" for="${id}t">Your answer</label><textarea id="${id}t">${esc(store.wr[id] || "")}</textarea>` +
+      (item.m ? `<details class="model-ans"><summary>Model answer</summary><p style="margin-top:8px">${esc(item.m)}</p></details>` : "") +
+      `<details class="model-ans"${item.m ? "" : ""}><summary>${long ? "Key ideas a strong response includes" : "Key-idea checklist"}</summary><div class="checks" style="margin-top:8px">${checks}</div></details>`;
+    d.querySelector("textarea").oninput = e => { store.wr[id] = e.target.value; save(); };
+    d.querySelectorAll("input[type=checkbox]").forEach(cb => cb.onchange = () => { store.wc[cb.id] = cb.checked; save(); });
+    return d;
+  }
+  SHORT.forEach((s, i) => $("shortList").appendChild(block(s, "s" + (i + 1), false)));
+  LONG.forEach((s, i) => $("longList").appendChild(block(s, "e" + (i + 1), true)));
+})();
+
+/* ---------- COVERAGE ---------- */
+$("covTable").innerHTML = "<tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr>" + COVERAGE.map(r => `<tr><td>${r[0]}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
+
+/* ---------- RESET ---------- */
+(function () {
+  let armed = false;
+  $("resetAll").onclick = () => {
+    if (!armed) { armed = true; $("resetAll").textContent = "Press again to confirm"; $("resetMsg").textContent = ""; setTimeout(() => { armed = false; $("resetAll").textContent = "Clear my progress"; }, 4000); return; }
+    const theme = store.theme; store = theme ? { theme } : {}; save(); $("resetMsg").textContent = "Progress cleared. Reloading the lab view…";
+    setTimeout(() => location.reload(), 600);
+  };
+})();
+updateStats();
+</script>
+
+</body></html>

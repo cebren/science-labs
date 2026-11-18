@@ -1,0 +1,974 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/claim-check-lab/"><meta name="description" content="Biased or selective data undermines scientific understandings."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Claim Check Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a case-file workbench. Sticky tab bar, one column of evidence panels, each idea paired with a working model. Grade 9 green with an amber "bias flag". */
+:root{
+  --bg:#EDF2EE; --surface:#FFFFFF; --surface-2:#F3F7F4; --ink:#14211A; --muted:#536158; --line:#CFDAD2;
+  --accent:#2E7A4F; --accent-soft:#DFF0E5; --on-accent:#FFFFFF;
+  --flag:#A9520A; --flag-soft:#FBE9D6; --bad:#B3261E; --bad-soft:#F8E0DE; --info:#1D5FA8; --info-soft:#DFEAF6;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1511; --surface:#151E19; --surface-2:#1A251F; --ink:#E3ECE6; --muted:#9AAAA0; --line:#2A3830;
+  --accent:#74C995; --accent-soft:#16301F; --on-accent:#0E1511;
+  --flag:#F0A85A; --flag-soft:#3A2814; --bad:#F08A80; --bad-soft:#3A1A18; --info:#7DB0F0; --info-soft:#18283C;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1511; --surface:#151E19; --surface-2:#1A251F; --ink:#E3ECE6; --muted:#9AAAA0; --line:#2A3830;
+  --accent:#74C995; --accent-soft:#16301F; --on-accent:#0E1511;
+  --flag:#F0A85A; --flag-soft:#3A2814; --bad:#F08A80; --bad-soft:#3A1A18; --info:#7DB0F0; --info-soft:#18283C;
+  color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--info);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;justify-content:space-between}
+.brand{display:grid;gap:6px;min-width:0;flex:1 1 380px}
+.brand h1{font-size:clamp(2rem,5.5vw,3rem);font-weight:800;letter-spacing:-.025em}
+.brand h1 .stamp{display:inline-block;font-family:var(--f-mono);font-size:.32em;font-weight:600;letter-spacing:.1em;border:2px solid var(--flag);color:var(--flag);padding:3px 8px;border-radius:4px;transform:rotate(-4deg) translateY(-.6em);margin-left:.4em;vertical-align:middle}
+.brand p{color:var(--muted);max-width:60ch}
+.tile{width:74px;height:82px;border:2px solid var(--accent);background:var(--accent-soft);border-radius:6px;display:grid;grid-template-rows:auto 1fr auto;padding:4px 6px;color:var(--accent);flex:0 0 auto}
+.tile .num{font-family:var(--f-mono);font-size:.66rem;font-weight:600}
+.tile .sym{font-family:var(--f-display);font-size:1.9rem;font-weight:800;line-height:1;align-self:center;justify-self:center}
+.tile .gr{font-family:var(--f-mono);font-size:.58rem;text-align:center;text-transform:uppercase;letter-spacing:.06em}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:0;background:none;font:inherit;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);background:var(--surface-2)}
+nav.tabs button[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+main{padding-block:26px 56px}
+section.panel{display:grid;gap:22px}
+.intro{color:var(--muted);max-width:68ch}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.block h2{font-size:1.45rem;font-weight:800}
+.block h3{font-size:1.1rem;font-weight:700}
+.block .tag{font-family:var(--f-mono);font-size:.7rem;color:var(--accent);letter-spacing:.06em}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.two > *{min-width:0}
+.prose{display:grid;gap:10px;max-width:66ch}
+.prose ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.callout{border-left:4px solid var(--flag);background:var(--flag-soft);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.95rem}
+.callout.info{border-color:var(--info);background:var(--info-soft)}
+.callout.good{border-color:var(--accent);background:var(--accent-soft)}
+.model{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:10px;min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-weight:700;font-size:.9rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:999px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn:disabled{opacity:.5;cursor:default}
+.small{font-size:.86rem;color:var(--muted)}
+.stat{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.9rem}
+.stat b{font-size:1.15rem;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.stats > div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stats span{font-size:.75rem;color:var(--muted)}
+.stats b{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:1.15rem}
+svg{display:block;max-width:100%;height:auto}
+svg text{fill:var(--ink);font-family:var(--f-mono);font-size:11px}
+.s-muted{fill:var(--muted)} .s-line{stroke:var(--line)} .s-ink{stroke:var(--ink)}
+.f-accent{fill:var(--accent)} .f-flag{fill:var(--flag)} .f-bad{fill:var(--bad)} .f-surface{fill:var(--surface)} .f-line{fill:var(--line)} .f-info{fill:var(--info)} .f-soft{fill:var(--accent-soft)} .f-s2{fill:var(--surface-2)}
+.scroll{overflow-x:auto}
+input[type=range]{width:100%;accent-color:var(--accent)}
+input[type=number],select{font:inherit;padding:6px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.feedback{padding:10px 14px;border-radius:8px;font-size:.95rem}
+.feedback.ok{background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent)}
+.feedback.no{background:var(--bad-soft);color:var(--ink);border:1px solid var(--bad)}
+.choices{display:grid;gap:8px}
+.choice{text-align:left;font:inherit;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 14px;border-radius:10px;cursor:pointer}
+.choice:hover:not(:disabled){border-color:var(--accent)}
+.choice.right{border-color:var(--accent);background:var(--accent-soft)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice:disabled{cursor:default}
+.case{border:1.5px dashed var(--line);border-radius:10px;padding:14px;background:var(--surface);display:grid;gap:8px}
+.case .label{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--flag)}
+.checks{display:grid;gap:8px}
+.check{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.yn{display:flex;gap:4px}
+.yn button{font:inherit;font-size:.82rem;font-weight:700;border:1.5px solid var(--line);background:var(--surface-2);color:var(--ink);padding:4px 10px;border-radius:6px;cursor:pointer}
+.yn button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.check.ok{border-color:var(--accent)} .check.no{border-color:var(--bad)}
+.verdict{font-family:var(--f-display);font-weight:800;font-size:1.2rem}
+.toolq{display:grid;gap:6px}
+.toolq button{text-align:left;font:inherit;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 12px;border-radius:8px;cursor:pointer;display:grid;gap:4px}
+.toolq button span{font-weight:400;color:var(--muted)}
+.toolq button[aria-expanded="true"]{border-color:var(--flag)}
+.toolq button[aria-expanded="true"] span{color:var(--ink)}
+/* sort */
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);border-radius:10px;padding:10px;min-height:110px;display:grid;align-content:start;gap:6px;background:var(--surface);font:inherit;color:var(--ink);text-align:left;cursor:pointer}
+.bin.armed{border-color:var(--accent);border-style:solid}
+.bin h4{font-size:1rem}
+.bin .chip{font-size:.82rem;padding:4px 8px;border-radius:6px;background:var(--accent-soft)}
+.bin .chip.miss{background:var(--bad-soft)}
+.tray{display:flex;flex-wrap:wrap;gap:8px}
+.item{font:inherit;font-size:.92rem;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer;max-width:100%}
+.item[aria-pressed="true"]{border-color:var(--flag);background:var(--flag-soft)}
+/* cards */
+.card3d{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);min-height:220px;display:grid;place-items:center;text-align:center;padding:24px;cursor:pointer;font:inherit;color:var(--ink);width:100%}
+.card3d .term{font-family:var(--f-display);font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800}
+.card3d .def{font-size:1.05rem;max-width:52ch}
+.progress{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent)}
+/* written */
+details.w{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:12px 14px}
+details.w summary{cursor:pointer;font-weight:700}
+details.w .inner{display:grid;gap:10px;margin-top:10px}
+details.w textarea{font:inherit;width:100%;min-height:90px;padding:10px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink)}
+.model-ans{border-left:4px solid var(--accent);background:var(--accent-soft);padding:10px 12px;border-radius:0 8px 8px 0}
+.kl{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.kl label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+table.cov{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+table.cov th,table.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.cov th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+table.cov td:first-child{font-family:var(--f-mono);color:var(--accent);white-space:nowrap}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.68rem;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin:1px 2px 1px 0;white-space:nowrap}
+.dotgrid circle{transition:r .2s}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:16px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+footer .credit a{color:var(--accent)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="eyebrow">Science 9 · Launch: Scientific Literacy · SL2</div>
+      <h1>Claim Check Lab <span class="stamp" aria-hidden="true">BIAS?</span></h1>
+      <p>Biased or selective data undermines scientific understandings. Learn to spot survivorship bias, selection bias and misleading graphs, then test claims the way scientists do.</p>
+    </div>
+    <div class="tile" aria-hidden="true"><span class="num">SL2</span><span class="sym">Cb</span><span class="gr">Sci 9</span></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="tab-learn" aria-controls="learn" data-t="learn">Learn</button>
+    <button role="tab" id="tab-bench" aria-controls="bench" data-t="bench">Lab Bench</button>
+    <button role="tab" id="tab-sort" aria-controls="sort" data-t="sort">Sort It</button>
+    <button role="tab" id="tab-cards" aria-controls="cards" data-t="cards">Flashcards</button>
+    <button role="tab" id="tab-quiz" aria-controls="quiz" data-t="quiz">Quiz</button>
+    <button role="tab" id="tab-written" aria-controls="written" data-t="written">Written Review</button>
+    <button role="tab" id="tab-coverage" aria-controls="coverage" data-t="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="tab-learn">
+  <p class="intro">Five short sections, in order. Read each one, then play with the model beside it.</p>
+
+  <article class="block" id="L1">
+    <span class="tag">1 · CLAIMS AND EVIDENCE · SL2.K2</span>
+    <h2>What makes a claim scientific?</h2>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>claim</b> is a statement that something is true. Anyone can make one. In science, a claim is accepted only when it fits the available <b>evidence</b>, and only when that evidence was collected and treated fairly.</p>
+        <p>A <b>scientific theory</b> is a well-tested explanation of how part of the natural world works. It is supported by many lines of evidence from many independent investigations. Cell theory, germ theory and plate tectonics are examples. In everyday talk "theory" can mean a guess, but in science a theory is one of the strongest kinds of understanding we have.</p>
+        <p>An <b>unscientific claim</b> may sound scientific, with lab coats, big words or graphs, but it does not match the evidence, or it depends on biased treatment of data such as picking only the results that agree. The scientific community does not accept these claims.</p>
+        <div class="callout info">Scientific theories can still change. When strong new evidence appears, scientists test it and revise the explanation. Unscientific claims usually stay the same no matter what the evidence shows.</div>
+      </div>
+      <div class="model" id="lensModel">
+        <h3>Evidence profile</h3>
+        <p class="small">Pick a claim to see how it holds up against five checks.</p>
+        <div class="row" id="lensBtns"></div>
+        <div id="lensOut"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="block" id="L2">
+    <span class="tag">2 · SURVIVORSHIP BIAS · SL2.K1</span>
+    <h2>Counting only the winners</h2>
+    <div class="two">
+      <div class="prose">
+        <p><b>Survivorship bias</b> happens when we pay attention to successful outcomes because they are easy to see, and overlook the failures because they have disappeared from view.</p>
+        <p>During World War II, mathematician Abraham Wald studied damage on aircraft that came back from missions. Many returning planes had bullet holes in the wings and body. The obvious idea was to add armour there. Wald pointed out the problem: the planes that were hit in the engines mostly <i>did not come back</i>, so their damage was never counted. The places with few holes on returning planes were the most dangerous places to be hit.</p>
+        <p>Everyday examples: "Old houses were built better," when the weak old houses were torn down long ago. "That famous player quit school and got rich," while thousands who did the same are never interviewed.</p>
+      </div>
+      <div class="model">
+        <h3>Plane damage model</h3>
+        <div class="row" role="group" aria-label="Which planes to show">
+          <button class="btn" id="planeRet" aria-pressed="true">Planes that returned</button>
+          <button class="btn" id="planeAll" aria-pressed="false">All planes that flew</button>
+          <button class="btn" id="planeNew">New mission</button>
+        </div>
+        <svg id="planeSvg" viewBox="0 0 320 230" role="img" aria-label="Top view of a plane with bullet hole marks"></svg>
+        <div class="stats" id="planeStats"></div>
+        <p class="small" id="planeNote"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="block" id="L3">
+    <span class="tag">3 · SELECTION BIAS · SL2.K4</span>
+    <h2>Who got picked?</h2>
+    <div class="two">
+      <div class="prose">
+        <p>Scientists usually cannot measure a whole <b>population</b>, so they study a <b>sample</b>. The sample is useful only if it is <b>representative</b>, meaning it is like the whole population in the ways that matter.</p>
+        <p><b>Selection bias</b> happens when the way participants or data are chosen makes the sample different from the population. A common cause is choosing people or data that are not random: asking only your friends, only volunteers, or only people standing in one place.</p>
+        <p>In a <b>random sample</b>, every member of the population has an equal chance of being picked. Random samples still vary a little by chance, but they do not lean one way on purpose or by accident.</p>
+      </div>
+      <div class="model">
+        <h3>Hockey survey model</h3>
+        <p class="small">400 Grade 9 students in a simulated Edmonton school district. Filled dots play on a hockey team. Choose how to pick 40 students.</p>
+        <div class="row" role="group" aria-label="Sampling method">
+          <button class="btn" data-m="random" aria-pressed="true">Random draw</button>
+          <button class="btn" data-m="arena" aria-pressed="false">Ask at the arena</button>
+          <button class="btn" data-m="library" aria-pressed="false">Ask in the library</button>
+        </div>
+        <svg id="popSvg" class="dotgrid" viewBox="0 0 330 330" role="img" aria-label="Grid of 400 student dots; sampled dots are outlined"></svg>
+        <div class="stats" id="popStats"></div>
+        <p class="small" id="popNote"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="block" id="L4">
+    <span class="tag">4 · MISLEADING GRAPHS · SL2.K3</span>
+    <h2>Data dressed up to fool you</h2>
+    <div class="two">
+      <div class="prose">
+        <p>Real data can be shown in ways that seem to support an unscientific claim. Two common tricks:</p>
+        <ul>
+          <li><b>An inappropriate scale.</b> A bar graph whose axis starts high, not at zero, makes small differences look huge. This is called a truncated axis.</li>
+          <li><b>Selective reporting.</b> Showing only the data that agrees, such as a short time window, a few chosen sites, or only the trials that worked. This is selection bias in how results are reported, often called cherry-picking.</li>
+        </ul>
+        <p>To compare bars fairly, compare the actual values. For bar heights the honest comparison is the ratio of the values:</p>
+        <p class="mono">actual ratio = B ÷ A</p>
+        <p>On a graph whose axis starts at <span class="mono">s</span>, the bars you see only show the part above <span class="mono">s</span>:</p>
+        <p class="mono">apparent ratio = (B − s) ÷ (A − s)</p>
+        <p class="small">Worked example: A = 62 %, B = 66 %, s = 60. Actual ratio = 66 ÷ 62 ≈ 1.06. Apparent ratio = (66 − 60) ÷ (62 − 60) = 6 ÷ 2 = 3. The graph makes B look 3 times bigger when it is only about 6 % bigger.</p>
+      </div>
+      <div class="model">
+        <h3>Axis slider</h3>
+        <p class="small">Example data: students who said they enjoy science at two schools.</p>
+        <svg id="axisSvg" viewBox="0 0 320 220" role="img" aria-label="Bar graph of two schools"></svg>
+        <label for="axisStart" class="small">Axis starts at <b id="axisVal" class="mono">0</b> %</label>
+        <input type="range" id="axisStart" min="0" max="61" step="1" value="0">
+        <div class="stats" id="axisStats"></div>
+        <hr style="border:0;border-top:1px solid var(--line);width:100%">
+        <h3>Window picker</h3>
+        <p class="small">Example data: a measurement that rises slowly over 40 years with ups and downs.</p>
+        <div class="row" role="group" aria-label="Time window">
+          <button class="btn" id="winShort" aria-pressed="true">Show a chosen 4 years</button>
+          <button class="btn" id="winAll" aria-pressed="false">Show all 40 years</button>
+        </div>
+        <svg id="winSvg" viewBox="0 0 320 180" role="img" aria-label="Line graph over time"></svg>
+        <p class="small" id="winNote"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="block" id="L5">
+    <span class="tag">5 · CRITICAL THINKING · SL2.K5</span>
+    <h2>Your claim-checking toolkit</h2>
+    <div class="two">
+      <div class="prose">
+        <p><b>Critical thinking</b> means questioning a claim carefully and fairly before you accept or reject it. It is not the same as rejecting everything. It means asking for evidence and checking how the evidence was gathered.</p>
+        <p>Use these six questions on any claim, from an ad, a video, a news story or a classmate. Tap each question beside the ad to see what it uncovers.</p>
+        <div class="callout good">A strong conclusion names the evidence, explains how the data was chosen, and admits what is still unknown.</div>
+      </div>
+      <div class="model">
+        <div class="case">
+          <span class="label">Exhibit: an ad</span>
+          <p><b>"FocusFuel Gum: 9 out of 10 students who chewed it all year say their marks went up!"</b></p>
+          <p class="small">Fine print: survey of 50 customers who renewed their subscription for a second year.</p>
+        </div>
+        <div class="toolq" id="toolq"></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="tab-bench" hidden>
+  <p class="intro">Five stations. Run the simulations, change the settings, and check your thinking with new practice each time.</p>
+
+  <article class="block">
+    <span class="tag">STATION A · BIAS DETECTIVE · SL2.S2 · SL2.K3</span>
+    <h2>Which problem is in the data?</h2>
+    <p class="small">Read the case. Decide whether the data shows survivorship bias, selection bias, a misleading scale, or is fair.</p>
+    <div class="row"><span class="stat">Case <b id="detN">1</b> · score <b id="detScore">0</b>/<b id="detTot">0</b></span></div>
+    <div class="case" id="detCase"></div>
+    <div class="choices" id="detChoices"></div>
+    <div id="detFb"></div>
+    <div class="row"><button class="btn primary" id="detNext">Next case</button></div>
+  </article>
+
+  <article class="block">
+    <span class="tag">STATION B · SAMPLE BUILDER · SL2.S1 · SL2.S2</span>
+    <h2>Does a bigger sample fix bias?</h2>
+    <div class="two">
+      <div class="prose">
+        <p>A simulated district has 2000 Grade 9 students. You want the average daily screen time. The true average is shown as a line, but a real researcher would not know it.</p>
+        <p>Pick a method and a sample size, then run many surveys. Each dot is one survey's average.</p>
+        <div class="row">
+          <label for="sbMethod" class="small">Method</label>
+          <select id="sbMethod">
+            <option value="random">Random draw from the full class lists</option>
+            <option value="club">Ask the esports club</option>
+            <option value="online">Online poll, volunteers only</option>
+            <option value="morning">Ask at 7:45 a.m. track practice</option>
+          </select>
+        </div>
+        <label for="sbSize" class="small">Sample size: <b id="sbSizeVal" class="mono">40</b> students</label>
+        <input type="range" id="sbSize" min="10" max="300" step="10" value="40">
+        <div class="row"><button class="btn primary" id="sbRun1">Run 1 survey</button><button class="btn" id="sbRun30">Run 30 surveys</button><button class="btn" id="sbClear">Clear</button></div>
+      </div>
+      <div class="model">
+        <svg id="sbSvg" viewBox="0 0 320 170" role="img" aria-label="Dot plot of survey averages"></svg>
+        <div class="stats" id="sbStats"></div>
+        <p class="small" id="sbNote"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="block">
+    <span class="tag">STATION C · SURVIVOR STREET · SL2.S1 · SL2.K1</span>
+    <h2>Were old houses really built better?</h2>
+    <div class="two">
+      <div class="prose">
+        <p>In this simulation, 300 houses were built in 1925 in an Edmonton neighbourhood. About 30 % were sturdy and 70 % were basic. Each decade, a sturdy house has a 97 % chance of still standing, and a basic house an 80 % chance. Slide time forward.</p>
+        <label for="ssYears" class="small">Year: <b id="ssYearVal" class="mono">1925</b></label>
+        <input type="range" id="ssYears" min="0" max="100" step="10" value="0">
+        <div class="row"><button class="btn" id="ssNew">Build a new neighbourhood</button></div>
+        <div class="callout" id="ssNote"></div>
+      </div>
+      <div class="model">
+        <svg id="ssSvg" viewBox="0 0 300 200" role="img" aria-label="Grid of houses; standing houses are filled"></svg>
+        <div class="row small"><span><svg width="12" height="12" style="display:inline" aria-hidden="true"><rect width="12" height="12" class="f-accent"/></svg> sturdy</span><span><svg width="12" height="12" style="display:inline" aria-hidden="true"><rect width="12" height="12" class="f-flag"/></svg> basic</span><span><svg width="12" height="12" style="display:inline" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="none" class="s-line" stroke-width="1.5"/></svg> torn down</span></div>
+        <div class="stats" id="ssStats"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="block">
+    <span class="tag">STATION D · SCALE FIXER · SL2.S2 · SL2.K3</span>
+    <h2>Find the real difference</h2>
+    <div class="two">
+      <div class="prose">
+        <p>Each graph has an axis that does not start at zero. Work out the actual ratio B ÷ A from the labels, to two decimal places.</p>
+        <p class="mono">actual ratio = B ÷ A &nbsp; · &nbsp; apparent ratio = (B − s) ÷ (A − s)</p>
+        <div id="sfQ"></div>
+        <div class="row">
+          <label for="sfIn" class="small">B ÷ A =</label>
+          <input type="number" id="sfIn" step="0.01" style="width:7em">
+          <button class="btn primary" id="sfCheck">Check</button>
+          <button class="btn" id="sfNext">New graph</button>
+        </div>
+        <div id="sfFb"></div>
+        <p class="stat">Solved <b id="sfScore">0</b></p>
+      </div>
+      <div class="model"><svg id="sfSvg" viewBox="0 0 320 220" role="img" aria-label="Bar graph with a truncated axis"></svg></div>
+    </div>
+  </article>
+
+  <article class="block">
+    <span class="tag">STATION E · CLAIM CHECKER · SL2.S3 · SL2.K2 · SL2.K5</span>
+    <h2>Scientific theory or unscientific claim?</h2>
+    <p class="small">Pick a claim. Answer each check with Yes or No, then compare with the evidence.</p>
+    <div class="row"><label for="ccPick" class="small">Claim</label><select id="ccPick" style="max-width:100%"></select></div>
+    <div class="case"><span class="label">Claim</span><p id="ccText"></p><p class="small" id="ccInfo"></p></div>
+    <div class="checks" id="ccChecks"></div>
+    <div class="row"><button class="btn primary" id="ccGo">Compare with the evidence</button></div>
+    <div id="ccOut"></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="tab-sort" hidden>
+  <p class="intro">Tap a card, then tap the bin it belongs in. Keyboard: Tab to a card, press Enter, then Tab to a bin and press Enter.</p>
+  <div class="row" role="group" aria-label="Choose a deck">
+    <button class="btn" data-deck="bias" aria-pressed="true">Which bias?</button>
+    <button class="btn" data-deck="claim" aria-pressed="false">Theory or unscientific claim?</button>
+    <button class="btn" id="sortReset">Shuffle and restart</button>
+  </div>
+  <div class="block">
+    <div class="row"><span class="stat">Sorted <b id="sortDone">0</b>/<b id="sortTotal">0</b> · correct <b id="sortRight">0</b></span></div>
+    <div class="tray" id="tray"></div>
+    <div class="bins" id="bins"></div>
+    <div id="sortFb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="tab-cards" hidden>
+  <p class="intro">Tap the card to flip it. Mark each one as known or still learning. Your progress stays in this browser.</p>
+  <div class="row"><span class="stat">Known <b id="fcKnown">0</b>/<b id="fcTotal">0</b></span><button class="btn" id="fcFilter" aria-pressed="false">Only still learning</button></div>
+  <div class="progress"><i id="fcBar" style="width:0%"></i></div>
+  <button class="card3d" id="fcCard" aria-live="polite"></button>
+  <div class="row" style="justify-content:space-between">
+    <button class="btn" id="fcPrev">Previous</button>
+    <div class="row"><button class="btn" id="fcLearn">Still learning</button><button class="btn primary" id="fcKnow">I know it</button></div>
+    <button class="btn" id="fcNext">Next</button>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="tab-quiz" hidden>
+  <p class="intro">Ten questions are drawn from a bank each round. Read the explanation after every answer.</p>
+  <div class="block" id="quizBox"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="tab-written" hidden>
+  <p class="intro">Write your answer first, then open the model answer and tick the key ideas you included. Drafts stay in this browser.</p>
+  <h2 style="font-size:1.3rem">Short answer</h2>
+  <div class="checks" id="wShort"></div>
+  <h2 style="font-size:1.3rem">Extended response</h2>
+  <div class="checks" id="wLong"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="tab-coverage" hidden>
+  <div class="block">
+    <h2>Teacher coverage panel</h2>
+    <p class="small">Science 9 · Launch: Scientific Literacy · SL2 Claims, data and bias. Outcome: Students analyze claims and data for bias. Understanding: Biased or selective data undermines scientific understandings. Codes are labels added for this collection for the unnumbered draft (September 2026).</p>
+    <div class="scroll"><table class="cov" id="covTable"></table></div>
+    <div class="callout info" id="covNote"></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p><span>Grade 9 · Treaty 6 territory</span><span>Progress saves only in this browser. No sign-in and no data leaves your device.</span><span class="mono">Example and simulated data are labelled; they are for practice, not real statistics.</span></div></footer>
+<script>
+var CHECKS = [
+  "Testable: could an observation show it is wrong?",
+  "Supported by many independent investigations?",
+  "Uses all the data, including results that do not fit?",
+  "Has it held up when other scientists tested it?",
+  "Fits with other well-supported evidence?"
+];
+var CLAIMS = [
+  {name:"Germ theory of disease", text:"Many diseases are caused by microorganisms such as bacteria and viruses that pass from one host to another.", ans:[1,1,1,1,1], sci:true,
+   info:"Built on work by many scientists in many countries, including Louis Pasteur and Robert Koch. Tested again and again with microscopes, experiments and vaccine and hygiene studies.",
+   why:"It makes testable predictions, such as handwashing reducing infections, and those predictions keep holding up in independent studies."},
+  {name:"Plate tectonics", text:"Earth's outer layer is broken into plates that move slowly, causing earthquakes, volcanoes and mountain building.", ans:[1,1,1,1,1], sci:true,
+   info:"Evidence includes matching rocks and fossils across oceans, sea-floor magnetic stripes, earthquake patterns and GPS measurements of plate motion today.",
+   why:"Many separate kinds of evidence agree, and the theory was accepted only after decades of testing. It replaced an older idea when the evidence demanded it."},
+  {name:"Cell theory", text:"All living things are made of one or more cells, cells are the basic unit of life, and new cells come from existing cells.", ans:[1,1,1,1,1], sci:true,
+   info:"Supported by centuries of microscope observations of plants, animals, fungi and microorganisms by scientists around the world.",
+   why:"Any organism not made of cells would contradict it. None has been found, and it fits everything else known about life."},
+  {name:"Full moon emergency rush", text:"Hospital emergency rooms get much busier on full-moon nights because the Moon changes how people act.", ans:[1,0,0,0,0], sci:false,
+   info:"Researchers have compared hospital records for many full-moon and non-full-moon nights. Reviews of these studies find no reliable effect.",
+   why:"The claim can be tested, and when tested with all the data it does not hold up. People remember busy full-moon shifts and forget busy ordinary nights, which is selective attention to data."},
+  {name:"Balance bracelet", text:"A bracelet with a special hologram improves your balance and strength.", ans:[1,0,0,0,0], sci:false,
+   info:"Sales demos showed people doing better with the bracelet on. Blind tests, where people did not know which bracelet was real, found no difference.",
+   why:"The only support came from demos chosen by the seller. Fair, controlled tests by others did not support it."},
+  {name:"Crystal water", text:"Water stored with crystals gains a healing energy that cures any illness, but no instrument can detect the energy.", ans:[0,0,0,0,0], sci:false,
+   info:"Supported only by testimonials from satisfied customers.",
+   why:"If no observation could ever show it is wrong, it cannot be tested, so it cannot be scientific. Testimonials are chosen stories, not fair data."},
+  {name:"Astrology personality", text:"The position of the planets on your birthday decides your personality.", ans:[1,0,0,0,0], sci:false,
+   info:"Large studies have compared personality tests with birth dates and found no link beyond chance.",
+   why:"The claim makes predictions that can be tested, but careful tests do not support it, and it does not fit what is known about how planets affect Earth."}
+];
+var LENS = [0,3,5];
+
+var CASES = [
+  {t:"A magazine interviews ten famous rock stars. All ten quit music lessons as kids. The headline says: \"Music lessons don't matter for success.\"", a:"surv",
+   e:"Survivorship bias. Only the people who became famous were interviewed. Thousands who quit lessons and never succeeded are invisible."},
+  {t:"To find out if Edmontonians want more bike lanes, a group surveys 200 people at a bike shop on Whyte Avenue. 92 % say yes.", a:"sel",
+   e:"Selection bias. People at a bike shop are more likely to cycle, so the sample is not representative of all Edmontonians."},
+  {t:"An ad graph compares sugar in two cereals: 10 g and 11 g. The vertical axis starts at 9.5 g, so the bar for 11 g looks three times taller.", a:"scale",
+   e:"Misleading scale. The truncated axis turns a 10 % difference into what looks like a 300 % difference."},
+  {t:"\"Appliances were made better in the 1970s. My grandpa's 1974 fridge still works!\"", a:"surv",
+   e:"Survivorship bias. Most 1970s fridges broke and were thrown out long ago. You only see the few that survived."},
+  {t:"A radio show asks listeners to call in and vote on whether daylight saving time should end. 80 % of callers want it gone.", a:"sel",
+   e:"Selection bias. Callers choose themselves. People with strong opinions are more likely to call, so the sample is not random."},
+  {t:"Researchers use a complete list of Alberta households and a computer to randomly pick 1500 of them for a survey on home heating.", a:"fair",
+   e:"Fair. Every household had an equal chance to be chosen, so the sample should be representative, apart from small chance differences."},
+  {t:"A fitness app reports its users lost an average of 6 kg. The data comes only from people still using the app after six months.", a:"surv",
+   e:"Survivorship bias. People who gave up, often because it was not working for them, are left out of the result."},
+  {t:"A new allergy medicine is tested only on healthy adults aged 20 to 30. The company says it works for everyone, including children and seniors.", a:"sel",
+   e:"Selection bias. The participants do not represent the people the claim is about."},
+  {t:"A news graphic shows the North Saskatchewan River at 2.10 m and 2.20 m. The axis runs from 2.05 m to 2.25 m, so it looks like the river tripled.", a:"scale",
+   e:"Misleading scale. The real change is 0.10 m, about 5 %. The narrow axis range exaggerates it."},
+  {t:"A coach notices that every player on the national team started skating before age four, and says starting early guarantees making the team.", a:"surv",
+   e:"Survivorship bias. Many kids also started early and did not make the team. They are not part of the coach's data."},
+  {t:"A teacher draws 30 names from a hat holding the names of all 300 students to survey them about lunch options.", a:"fair",
+   e:"Fair. It is a random sample from the whole population, so no group is favoured."},
+  {t:"Scientists estimate the average fish size in a lake using a net with large holes, then report it as the average for all fish in the lake.", a:"sel",
+   e:"Selection bias. The net lets small fish escape, so the data collected is not representative of the whole fish population."},
+  {t:"A graph of a town's population shows 9000 people in 2015 and 9900 in 2025. The axis starts at zero and the bars are labelled.", a:"fair",
+   e:"Fair. The axis starts at zero, so the bar heights match the real 10 % increase."},
+  {t:"Two graphs are shown side by side to compare snowfall at two towns. One axis goes from 0 to 50 cm and the other from 0 to 200 cm, so the bars look the same height.", a:"scale",
+   e:"Misleading scale. Graphs being compared must use the same scale, or equal-looking bars can hide a fourfold difference."}
+];
+var CASE_OPTS = [["surv","Survivorship bias"],["sel","Selection bias"],["scale","Misleading scale"],["fair","Fair data"]];
+
+var SORT = {
+  bias:{bins:[["surv","Survivorship bias"],["sel","Selection bias"],["scale","Misleading scale"]], items:[
+    ["Only bands that got famous are asked how they practised.","surv"],
+    ["A book lists the habits shared by companies that lasted 50 years.","surv"],
+    ["Counting bullet holes only on the planes that came back.","surv"],
+    ["Saying old furniture was stronger because antique chairs still exist.","surv"],
+    ["A survey about bus service handed out only at a car dealership.","sel"],
+    ["A phone-in poll where listeners decide whether to call.","sel"],
+    ["Testing a sunscreen only on people who never sunburn.","sel"],
+    ["Measuring lake fish with a net that lets small fish escape.","sel"],
+    ["A bar graph with an axis starting at 95 to compare 96 and 98.","scale"],
+    ["Two graphs side by side with different vertical axis ranges.","scale"],
+    ["Stretching a graph's vertical axis so a small rise looks like a spike.","scale"],
+    ["A picture graph where a value twice as big is drawn twice as tall and twice as wide.","scale"]
+  ]},
+  claim:{bins:[["sci","Scientific theory"],["uns","Unscientific claim"]], items:[
+    ["Cell theory","sci"],["Germ theory of disease","sci"],["Plate tectonics","sci"],["Atomic theory","sci"],["Evolution by natural selection","sci"],["Big Bang theory","sci"],
+    ["A magnet in your shoe cures headaches, based on five customer reviews.","uns"],
+    ["Your blood type decides your personality.","uns"],
+    ["Full moons make people act wild.","uns"],
+    ["Foot pads pull toxins out of your body, shown by the pad turning brown.","uns"],
+    ["A drink \"proven\" by one company-funded study that no one else could repeat.","uns"],
+    ["The planets on your birthday predict your week.","uns"]
+  ]}
+};
+
+var CARDS = [
+  ["Claim","A statement that something is true. In science, a claim must be supported by fairly collected evidence."],
+  ["Evidence","Observations and data used to support or reject a claim."],
+  ["Data","Information collected by observing or measuring. It can be qualitative (descriptions) or quantitative (numbers)."],
+  ["Bias","A tendency that pushes results or conclusions in one direction, away from what is true."],
+  ["Survivorship bias","Focusing on successful outcomes because they are visible, while failures are ignored or overlooked because they are hard to see."],
+  ["Selection bias","When the way participants or data are chosen makes the sample different from the population being studied, often because selection was not random."],
+  ["Population","The whole group a study wants to learn about."],
+  ["Sample","The smaller part of the population that is actually studied."],
+  ["Random sample","A sample in which every member of the population has an equal chance of being picked."],
+  ["Representative sample","A sample that is like the whole population in the ways that matter for the question."],
+  ["Self-selected sample","A sample made of volunteers who chose to take part, such as an online poll. A common cause of selection bias."],
+  ["Cherry-picking","Reporting only the data that supports a claim and leaving out data that does not."],
+  ["Truncated axis","A graph axis that starts above zero. It can make small differences look large."],
+  ["Inappropriate scale","A graph scale chosen in a way that distorts how big a difference or change looks."],
+  ["Scientific theory","A well-tested explanation of part of the natural world, supported by many lines of evidence from many independent investigations."],
+  ["Hypothesis","A testable prediction or possible explanation that an investigation can support or contradict."],
+  ["Unscientific claim","A claim presented as scientific that does not match the evidence or depends on biased treatment of data."],
+  ["Testable","A claim is testable if some possible observation could show it is wrong."],
+  ["Peer review","Checking of a scientist's work by other experts before it is published."],
+  ["Anecdote","A personal story. Anecdotes can suggest ideas but are not fair evidence for a claim."],
+  ["Critical thinking","Carefully and fairly questioning claims and evidence before accepting or rejecting them."]
+];
+
+var QUIZ = [
+  {q:"Which best describes survivorship bias?", o:["Studying only successful cases because the failures are hard to see","Choosing a sample at random","Using a graph axis that starts at zero","Repeating an experiment many times"], a:0, e:"Survivorship bias focuses on visible successes while failures drop out of view."},
+  {q:"A survey on a new hockey arena is handed out only at an Oilers game. What problem does this create?", o:["Survivorship bias","Selection bias","A misleading scale","No problem, the sample is large"], a:1, e:"People at a hockey game are more likely to support an arena, so the sample does not represent the whole city."},
+  {q:"In a random sample, every member of the population...", o:["has already volunteered","has an equal chance of being picked","is surveyed","agrees with the hypothesis"], a:1, e:"Random means equal chance for everyone, which keeps any group from being favoured."},
+  {q:"Abraham Wald suggested adding armour where returning planes had the fewest holes. Why?", o:["Those parts were the lightest","Planes hit in those places mostly did not return","Bullets cannot hit those parts","The engines were already armoured"], a:1, e:"Missing damage on returning planes meant hits there were usually fatal, so those planes never came back to be counted."},
+  {q:"A bar graph's axis starts at 80. Bar A is 82 and bar B is 88. How many times taller does B look than A?", o:["About 1.07 times","2 times","4 times","8 times"], a:2, e:"Apparent ratio = (88 − 80) ÷ (82 − 80) = 8 ÷ 2 = 4. The actual ratio is 88 ÷ 82 ≈ 1.07."},
+  {q:"Which is the honest way to compare two bar values A and B?", o:["Compare the heights above the lowest gridline","Calculate B ÷ A from the labelled values","Count the gridlines between the bars","Compare the bar widths"], a:1, e:"The actual ratio uses the real values, not the visible bar lengths."},
+  {q:"Which statement about a scientific theory is correct?", o:["It is a guess that has not been tested","It becomes a law once it is proven","It is a well-tested explanation supported by many lines of evidence","It can never change"], a:2, e:"In science, a theory is a strong, well-supported explanation. It can be revised if strong new evidence appears."},
+  {q:"Why is the scientific community unlikely to accept a claim supported only by customer testimonials?", o:["Testimonials are chosen stories, not fairly collected data","Customers are always dishonest","Scientists never read reviews","Testimonials are too short"], a:0, e:"Testimonials are usually picked because they are positive. Unhappy customers rarely appear, so the data is biased."},
+  {q:"A researcher doubles a sample from 100 to 200 people, but still surveys only volunteers from a fan website. What happens?", o:["The bias disappears","The bias stays, but the estimate varies less","The estimate becomes random","The sample becomes representative"], a:1, e:"A bigger sample reduces chance variation, but a biased method keeps pointing to the wrong answer."},
+  {q:"Which question best checks for selection bias?", o:["Who was included in the data, and who was left out?","What colour is the graph?","How long is the report?","Is the scientist famous?"], a:0, e:"Selection bias is about how participants or data were chosen."},
+  {q:"\"All the old bridges still standing were built with stone, so stone bridges last forever.\" Which bias is this?", o:["Selection bias from volunteers","Survivorship bias","A misleading scale","No bias"], a:1, e:"Bridges that collapsed or were replaced are missing from the data."},
+  {q:"A company shows temperature data only for the three coldest winters in a row to argue that the climate is not warming. This is an example of...", o:["Random sampling","Cherry-picking a time window","A fair test","Peer review"], a:1, e:"Picking a short window that agrees with the claim ignores the long-term record."},
+  {q:"Which claim is NOT testable?", o:["Plants grow taller with more light","This charm works, but only when no one is measuring it","Salt water freezes at a lower temperature than fresh water","Heavier carts need more force to speed up"], a:1, e:"If no observation could ever show a claim is wrong, it cannot be tested scientifically."},
+  {q:"A scientist finds strong new evidence that does not fit a theory. What usually happens in science?", o:["The evidence is ignored","The theory is tested further and may be revised","The scientist is banned","The theory becomes a law"], a:1, e:"Science is self-correcting. Theories are revised when evidence demands it."},
+  {q:"Which sample is most likely to represent all Grade 9 students in Edmonton Public Schools?", o:["Students in one school's science club","Students who answer an optional online poll","Students randomly chosen from district class lists","Students at a basketball tournament"], a:2, e:"Random selection from the whole population gives everyone an equal chance."},
+  {q:"A news graph uses an axis from 2.05 m to 2.25 m to show a river rising from 2.10 m to 2.20 m. What is the actual percent increase?", o:["About 5 %","50 %","100 %","200 %"], a:0, e:"(2.20 − 2.10) ÷ 2.10 ≈ 0.048, about 5 %. The narrow axis makes it look like the river tripled."},
+  {q:"Which is the best example of critical thinking about an ad?", o:["Believe it because it has a graph","Reject it because all ads lie","Ask what evidence supports it and how that evidence was chosen","Share it so others can decide"], a:2, e:"Critical thinking questions the evidence fairly. It neither accepts nor rejects without checking."},
+  {q:"Why do scientists use control groups and blind tests when checking a product claim?", o:["To make the study longer","To reduce bias, so any difference is due to the product","To guarantee the product works","To avoid collecting data"], a:1, e:"Blind tests and controls stop expectations and other factors from shaping the results."},
+  {q:"A website lists 20 people who became rich after dropping out of school. What data would you need to judge the claim that dropping out leads to success?", o:["More success stories","Data on all dropouts, including those who did not become rich","The ages of the 20 people","The website's design"], a:1, e:"To avoid survivorship bias you need the failures as well as the successes."},
+  {q:"Which pair correctly matches the bias with its cause?", o:["Selection bias: failures disappear from view","Survivorship bias: participants are not randomly chosen","Selection bias: participants or data are not chosen fairly or randomly","Misleading scale: the sample is too small"], a:2, e:"Selection bias comes from how participants or data are chosen. Survivorship bias is about failures dropping out of view."},
+  {q:"A biased sample of 1000 people and a random sample of 100 people disagree. Which result is usually more trustworthy?", o:["The biased sample, because it is bigger","The random sample, because it is representative","Neither result tells you anything","Whichever result came first"], a:1, e:"Size cannot fix a biased method. A smaller random sample is usually closer to the truth."},
+  {q:"Survivorship bias is actually a special kind of which broader problem?", o:["Selection bias","A misleading scale","Rounding error","Peer review"], a:0, e:"Survivorship bias is a type of selection bias: the data is limited to cases that survived some process."}
+];
+
+var WSHORT = [
+  {q:"Define survivorship bias and give an example that is not from this lab.", m:"Survivorship bias happens when attention goes to successful outcomes because they are visible, while failures are overlooked because they are hard to see. Example: saying a restaurant strategy works because the restaurants that use it and are still open are busy, without counting the restaurants that used it and closed.", k:["Focus on visible successes","Failures are ignored or not visible","A clear example where failures are missing"]},
+  {q:"Define selection bias. Explain how random selection helps prevent it.", m:"Selection bias happens when the way participants or data are chosen makes the sample different from the population being studied. In random selection every member has an equal chance of being chosen, so no group is favoured and the sample is more likely to be representative.", k:["How participants or data are chosen","Sample does not represent the population","Random means equal chance","Random sampling makes a representative sample more likely"]},
+  {q:"A chess club surveys its own members and finds that 95 % of students enjoy board games. They conclude that 95 % of all students at their school enjoy board games. Explain the problem.", m:"This is selection bias. Chess club members chose to join a board-game club, so they are much more likely to enjoy board games than students in general. The sample is not representative of the school, so the 95 % cannot be applied to all students.", k:["Names selection bias","Club members are not like all students","Conclusion cannot be applied to the whole school"]},
+  {q:"A bar graph's axis starts at 48. It compares 50 and 54. How many times bigger does 54 look? What is the actual ratio?", m:"Apparent ratio = (54 − 48) ÷ (50 − 48) = 6 ÷ 2 = 3, so 54 looks 3 times bigger. Actual ratio = 54 ÷ 50 = 1.08, so 54 is only 8 % bigger.", k:["Apparent ratio of 3 with working","Actual ratio of 1.08","States the graph exaggerates the difference"]},
+  {q:"Explain why Abraham Wald recommended armouring the parts of planes that had the fewest bullet holes.", m:"Wald only had data from planes that returned. Planes hit in places like the engines mostly did not return, so their holes were never counted. Few holes in those areas on returning planes meant hits there were usually deadly, so those areas needed armour.", k:["Data came only from returning planes","Planes hit in some areas did not return","Few holes means those hits were fatal","Recommends armour where holes are missing"]},
+  {q:"Give two differences between a scientific theory and an unscientific claim.", m:"A scientific theory is supported by many lines of evidence from many independent investigations, while an unscientific claim does not match the evidence or depends on biased data. A theory is testable and is revised when strong new evidence appears, while an unscientific claim is often untestable or stays the same despite evidence.", k:["Evidence from many independent investigations","Unscientific claims ignore or bias the evidence","Testability or willingness to change"]},
+  {q:"A survey uses only volunteers from a fan website. The researcher says a bigger sample will fix the problem. Do you agree? Explain.", m:"No. A bigger sample only reduces chance variation. If the method is biased, every extra volunteer is chosen in the same biased way, so the estimate stays wrong, just more consistently wrong. The method needs to change, for example to random selection.", k:["Disagrees","Size reduces chance variation, not bias","Biased method keeps giving the wrong centre","Suggests random selection"]},
+  {q:"Explain how choosing a short time window can make data seem to support an unscientific claim.", m:"Data that goes up and down can be cut to show only a few years that move in one direction. If those years are chosen because they agree with the claim, the long-term pattern is hidden. This is selective reporting, a kind of selection bias in the data.", k:["Data has short-term ups and downs","A chosen window can hide the long-term trend","Names cherry-picking or selection bias"]},
+  {q:"List three critical-thinking questions you would ask about a health claim in an online ad.", m:"Possible questions: What evidence supports the claim? How were the people or data chosen, and who was left out? Were failures counted, or only successes? Is the graph's scale fair? Has the claim been tested by independent scientists? Who gains if I believe it?", k:["A question about evidence","A question about how data was selected","A question about independent testing or who benefits"]}
+];
+var WLONG = [
+  {q:"A company posts a video of 10 customers who stand on one foot longer while wearing its balance bracelet. It claims the bracelet is scientifically proven. Analyze the claim using critical thinking, name any biases, and design a fair test.", m:"The 10 customers were chosen by the company, so this is selection bias, and we do not see customers whose balance did not improve, which is like survivorship bias. People who know they are wearing the bracelet may try harder. A fair test would use a large random group, give half the real bracelet and half an identical fake, and make it blind so neither participants nor testers know which is which. Each person would be measured with and without a bracelet in random order. If the results show no difference, the claim is not supported. The results should be repeated by independent scientists.", k:["Identifies selection bias in the chosen customers","Notes missing failures or expectations","Describes a control group with a look-alike bracelet","Uses random assignment and blinding","Calls for independent repetition"]},
+  {q:"Your school's student council wants to know if students support a later school start time. Design a survey that avoids selection bias and explain each choice.", m:"Start from a complete list of all students at the school in Grades 7 to 9. Use a random number generator to choose, for example, 60 students, possibly 20 from each grade so every grade is represented. Ask the same neutral question to each person, such as \"Would you prefer school to start at 8:30 or 9:15?\". Avoid an optional poll, because only students with strong opinions would answer. Avoid surveying at one place or time, like before-school sports, because those students may have different routines. Report how many were asked and how many answered.", k:["Uses the whole population list","Random selection, possibly by grade","Avoids volunteer or one-location sampling","Neutral question","Reports sample size and response"]},
+  {q:"A news article says: \"Most of Alberta's most successful entrepreneurs never finished university, so university is not needed to succeed in business.\" Explain the bias and what data would be needed to judge the claim.", m:"This is survivorship bias. The article only looks at the most successful entrepreneurs, who are visible. It ignores the many people who did not finish university and whose businesses failed or never started. To judge the claim you would need data on all people who started businesses, both with and without university, and compare the success rate of each group. You would also want a random or complete sample rather than a list of famous examples.", k:["Names survivorship bias","Explains failures are missing","Needs data on everyone, including failures","Compare rates for both groups","Random or complete sample"]},
+  {q:"Explain why the scientific community accepts plate tectonics but does not accept astrology as an explanation of personality. Refer to evidence, testing and the treatment of data.", m:"Plate tectonics is supported by many independent lines of evidence: matching rocks and fossils across oceans, sea-floor magnetic stripes, earthquake and volcano patterns, and GPS measurements of plate movement. It has been tested repeatedly and fits other knowledge. It was accepted after scientists revised an older view. Astrology makes testable predictions, but large studies comparing birth dates and personality find no link beyond chance. Support for astrology comes from remembered hits and ignored misses, which is a biased treatment of data. So one fits the evidence and the other does not.", k:["Several independent lines of evidence for plate tectonics","Repeated testing and revision","Astrology tested and not supported","Names biased treatment of data in astrology","Clear conclusion about acceptance"]}
+];
+
+var COVER = [
+  ["SL2.K1","Survivorship bias occurs when attention is placed on successful outcomes because they are visible and easier to evaluate, while failures are ignored or overlooked due to lack of visibility.",["Learn 2","Bench C","Sort It","Flashcards","Quiz","Written"]],
+  ["SL2.K2","Claims that are presented as scientific but do not align with available evidence or are based on biased treatment of data are not accepted by the scientific community.",["Learn 1","Bench E","Sort It","Quiz","Written"]],
+  ["SL2.K3","Data and evidence can be represented in ways that appear to support unscientific claims, including reporting influenced by selection bias or the use of an inappropriate scale.",["Learn 4","Bench A","Bench D","Sort It","Quiz","Written"]],
+  ["SL2.K4","Selection bias occurs when research participants or data are not randomly selected.",["Learn 3","Bench B","Bench A","Flashcards","Quiz","Written"]],
+  ["SL2.K5","Critical-thinking skills can be used to analyze claims.",["Learn 5","Bench E","Quiz","Written"]],
+  ["SL2.S1","Describe how survivorship bias and selection bias could lead to misleading or inaccurate conclusions.",["Bench B","Bench C","Written"]],
+  ["SL2.S2","Interpret data for evidence of survivorship bias and selection bias.",["Bench A","Bench B","Bench C","Bench D","Sort It"]],
+  ["SL2.S3","Differentiate between scientific theories and unscientific claims.",["Learn 1","Bench E","Sort It","Quiz","Written"]]
+];
+(function(){
+"use strict";
+var KEY="claimcheck-sl2-v1";
+var S={tab:"learn",known:[],best:null,drafts:{},ticks:{}};
+try{var raw=localStorage.getItem(KEY); if(raw){var p=JSON.parse(raw); for(var k in p) S[k]=p[k];}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function $(id){return document.getElementById(id);}
+function rnd(a,b){return a+Math.random()*(b-a);}
+function ri(a,b){return Math.floor(rnd(a,b+1));}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function el(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs){if(k==="class")e.className=attrs[k];else e.setAttribute(k,attrs[k]);}if(html!=null)e.innerHTML=html;return e;}
+var NS="http://www.w3.org/2000/svg";
+function sv(tag,attrs,text){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;return e;}
+function clear(n){while(n.firstChild)n.removeChild(n.firstChild);}
+function pressGroup(btns,on){btns.forEach(function(b){b.setAttribute("aria-pressed",b===on?"true":"false");});}
+function randn(){var u=1-Math.random(),v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function fmt(x,d){return x.toFixed(d);}
+
+/* ---------- tabs ---------- */
+var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+function showTab(t,focus){
+  tabs.forEach(function(b){var on=b.dataset.t===t;b.setAttribute("aria-selected",on?"true":"false");b.tabIndex=on?0:-1;$(b.dataset.t).hidden=!on;if(on&&focus)b.focus();});
+  S.tab=t;save();
+}
+tabs.forEach(function(b,i){
+  b.addEventListener("click",function(){showTab(b.dataset.t);});
+  b.addEventListener("keydown",function(e){var n=null;if(e.key==="ArrowRight")n=(i+1)%tabs.length;else if(e.key==="ArrowLeft")n=(i-1+tabs.length)%tabs.length;else if(e.key==="Home")n=0;else if(e.key==="End")n=tabs.length-1;if(n!==null){e.preventDefault();showTab(tabs[n].dataset.t,true);}});
+});
+showTab(tabs.some(function(b){return b.dataset.t===S.tab;})?S.tab:"learn");
+
+/* ---------- Learn 1: evidence profile ---------- */
+(function(){
+  var box=$("lensBtns"),out=$("lensOut"),btns=[];
+  function show(ci,btn){
+    pressGroup(btns,btn);var c=CLAIMS[ci];
+    var h='<div class="case"><span class="label">'+c.name+'</span><p>'+c.text+'</p></div><div class="checks">';
+    CHECKS.forEach(function(q,i){var y=c.ans[i];h+='<div class="check '+(y?"ok":"no")+'"><span>'+q+'</span><b class="mono">'+(y?"YES":"NO")+'</b></div>';});
+    h+='</div><p class="verdict" style="color:var('+(c.sci?"--accent":"--bad")+')">'+(c.sci?"Scientific theory":"Unscientific claim")+'</p><p class="small">'+c.why+'</p>';
+    out.innerHTML=h;
+  }
+  LENS.forEach(function(ci,j){var b=el("button",{class:"btn","aria-pressed":"false"},CLAIMS[ci].name);b.addEventListener("click",function(){show(ci,b);});box.appendChild(b);btns.push(b);});
+  show(LENS[0],btns[0]);
+})();
+
+/* ---------- Learn 2: planes ---------- */
+(function(){
+  var svg=$("planeSvg"),mode="ret",planes=[];
+  var ENG=[[85,107],[235,107]];
+  var SURV={engine:.25,cockpit:.35,body:.9,wing:.92,tail:.82};
+  var NAMES={engine:"Engines",cockpit:"Cockpit",body:"Body",wing:"Wings",tail:"Tail"};
+  function region(x,y){
+    for(var i=0;i<2;i++){var dx=x-ENG[i][0],dy=y-ENG[i][1];if(dx*dx+dy*dy<=14*14)return "engine";}
+    if(x>=145&&x<=175&&y>=20&&y<=210){if(y<55)return "cockpit";if(y>180)return "tail";return "body";}
+    if(y>=92&&y<=122&&x>=20&&x<=300)return "wing";
+    if(y>=186&&y<=204&&x>=110&&x<=210)return "tail";
+    return null;
+  }
+  function sample(){for(;;){var x=rnd(20,300),y=rnd(20,210),r=region(x,y);if(r)return {x:x,y:y,r:r};}}
+  function mission(){planes=[];for(var i=0;i<60;i++){var n=ri(2,5),hits=[],ok=true;for(var j=0;j<n;j++){var h=sample();hits.push(h);if(Math.random()>SURV[h.r])ok=false;}planes.push({hits:hits,ret:ok});}}
+  function draw(){
+    clear(svg);
+    var g=sv("g",{});
+    g.appendChild(sv("rect",{x:20,y:92,width:280,height:30,rx:12,class:"f-s2 s-ink","stroke-width":1.2}));
+    g.appendChild(sv("rect",{x:110,y:186,width:100,height:18,rx:6,class:"f-s2 s-ink","stroke-width":1.2}));
+    g.appendChild(sv("rect",{x:145,y:20,width:30,height:190,rx:15,class:"f-s2 s-ink","stroke-width":1.2}));
+    ENG.forEach(function(e){g.appendChild(sv("circle",{cx:e[0],cy:e[1],r:14,class:"f-line s-ink","stroke-width":1.2}));});
+    g.appendChild(sv("path",{d:"M148 55 H172",class:"s-ink","stroke-width":1,"stroke-dasharray":"3 3"}));
+    svg.appendChild(g);
+    var counts={engine:0,cockpit:0,body:0,wing:0,tail:0},returned=0;
+    planes.forEach(function(p){if(p.ret)returned++;if(mode==="ret"&&!p.ret)return;p.hits.forEach(function(h){counts[h.r]++;svg.appendChild(sv("circle",{cx:fmt(h.x,1),cy:fmt(h.y,1),r:2.6,class:p.ret?"f-flag":"f-bad"}));});});
+    var st=$("planeStats");st.innerHTML='<div><span>Planes returned</span><b>'+returned+' / 60</b></div>';
+    ["engine","cockpit","wing","body","tail"].forEach(function(r){st.innerHTML+='<div><span>Holes seen: '+NAMES[r]+'</span><b>'+counts[r]+'</b></div>';});
+    $("planeNote").textContent=mode==="ret"?"Orange dots are the only damage the ground crew can see. Notice how few holes are on the engines and cockpit.":"Red dots are hits on planes that never came back. Engine and cockpit hits were the ones that brought planes down.";
+  }
+  $("planeRet").addEventListener("click",function(){mode="ret";pressGroup([$("planeRet"),$("planeAll")],$("planeRet"));draw();});
+  $("planeAll").addEventListener("click",function(){mode="all";pressGroup([$("planeRet"),$("planeAll")],$("planeAll"));draw();});
+  $("planeNew").addEventListener("click",function(){mission();draw();});
+  mission();draw();
+})();
+
+/* ---------- Learn 3: population ---------- */
+(function(){
+  var svg=$("popSvg"),pop=[],method="random",btns=[].slice.call(document.querySelectorAll("#L3 [data-m]"));
+  for(var i=0;i<400;i++)pop.push(Math.random()<.25);
+  var trueP=pop.filter(Boolean).length/4;
+  function draw(sel){
+    clear(svg);var set={};sel.forEach(function(i){set[i]=1;});
+    for(var i=0;i<400;i++){var x=15+(i%20)*15+5,y=15+Math.floor(i/20)*15+5,h=pop[i];
+      var c=sv("circle",{cx:x,cy:y,r:set[i]?6:4.2,class:h?"f-accent":"f-surface"});
+      c.setAttribute("class",(h?"f-accent":"f-surface")+(set[i]?" s-ink":" s-line"));c.setAttribute("stroke-width",set[i]?2:1);
+      svg.appendChild(c);}
+  }
+  function pick(){
+    var w=pop.map(function(h){return method==="arena"?(h?8:1):method==="library"?(h?.4:1):1;});
+    var chosen=[],idx=pop.map(function(_,i){return i;});
+    for(var n=0;n<40;n++){var tot=0;idx.forEach(function(i){tot+=w[i];});var r=Math.random()*tot,acc=0;for(var k=0;k<idx.length;k++){acc+=w[idx[k]];if(r<=acc){chosen.push(idx[k]);idx.splice(k,1);break;}}}
+    draw(chosen);
+    var est=chosen.filter(function(i){return pop[i];}).length/40*100;
+    $("popStats").innerHTML='<div><span>True share (all 400)</span><b>'+fmt(trueP,1)+' %</b></div><div><span>Sample estimate</span><b>'+fmt(est,1)+' %</b></div><div><span>Off by</span><b>'+(est-trueP>=0?"+":"")+fmt(est-trueP,1)+'</b></div>';
+    $("popNote").textContent=method==="random"?"Press Random draw again: the estimate wobbles a little around the true value, sometimes high and sometimes low. That is chance, not bias.":method==="arena"?"Hockey players are far more likely to be at the arena, so this sample almost always overestimates. That is selection bias.":"Hockey players are often at practice, not in the library, so this sample tends to underestimate. That is selection bias too.";
+  }
+  btns.forEach(function(b){b.addEventListener("click",function(){method=b.dataset.m;pressGroup(btns,b);pick();});});
+  pick();
+})();
+
+/* ---------- Learn 4: axis slider + window ---------- */
+function barChart(svg,A,B,s,labels,unit,top){
+  clear(svg);var x0=48,x1=300,y0=180,y1=20,maxV=top;
+  function Y(v){return y0-(v-s)/(maxV-s)*(y0-y1);}
+  var step=niceStep((maxV-s)/5);
+  for(var t=Math.ceil(s/step)*step;t<=maxV+1e-9;t+=step){var y=Y(t);svg.appendChild(sv("line",{x1:x0,x2:x1,y1:y,y2:y,class:"s-line"}));svg.appendChild(sv("text",{x:x0-6,y:y+4,"text-anchor":"end"},round(t)));}
+  svg.appendChild(sv("line",{x1:x0,x2:x0,y1:y1,y2:y0,class:"s-ink"}));
+  svg.appendChild(sv("line",{x1:x0,x2:x1,y1:y0,y2:y0,class:"s-ink"}));
+  [[A,labels[0],"f-accent",90],[B,labels[1],"f-flag",200]].forEach(function(b){var y=Y(b[0]);svg.appendChild(sv("rect",{x:b[3],y:y,width:60,height:Math.max(0,y0-y),class:b[2]}));svg.appendChild(sv("text",{x:b[3]+30,y:y-6,"text-anchor":"middle"},round(b[0])+unit));svg.appendChild(sv("text",{x:b[3]+30,y:y0+16,"text-anchor":"middle"},b[1]));});
+  if(s>0)svg.appendChild(sv("text",{x:x0+4,y:y0-4,class:"s-muted","font-size":"10"},"axis starts at "+round(s)));
+}
+function niceStep(r){var p=Math.pow(10,Math.floor(Math.log10(r))),m=r/p;return (m<1.5?1:m<3.5?2:m<7.5?5:10)*p;}
+function round(v){return Math.abs(v-Math.round(v))<1e-9?String(Math.round(v)):String(+v.toFixed(2));}
+(function(){
+  var A=62,B=66,inp=$("axisStart");
+  function upd(){var s=+inp.value;$("axisVal").textContent=s;barChart($("axisSvg"),A,B,s,["School A","School B"],"%",70);
+    var ap=(B-s)/(A-s);$("axisStats").innerHTML='<div><span>Actual ratio B ÷ A</span><b>'+fmt(B/A,2)+'</b></div><div><span>Apparent ratio</span><b>'+fmt(ap,2)+'</b></div><div><span>B looks bigger by</span><b>'+Math.round((ap-1)*100)+' %</b></div>';}
+  inp.addEventListener("input",upd);upd();
+  // window demo
+  var data=[],seed=[0.3,-0.5,0.8,-0.2,0.1,-0.9,0.6,0.2,-0.4,0.9,-0.6,0.0,0.5,-0.3,0.7,-0.8,0.4,0.1,-0.5,0.6,-0.1,0.3,-0.7,0.8,0.2,-0.4,0.5,0.9,0.4,-0.2,-0.6,-0.9,0.3,0.6,-0.3,0.7,0.1,-0.2,0.5,0.4];
+  for(var i=0;i<40;i++)data.push(10+0.05*i+seed[i]*0.9);
+  var a0=27,a1=31;
+  var bs=[$("winShort"),$("winAll")],mode="short";
+  function draw(){
+    var svg=$("winSvg");clear(svg);var lo=mode==="all"?0:a0,hi=mode==="all"?39:a1;
+    var vals=data.slice(lo,hi+1),mn=Math.min.apply(null,vals)-0.3,mx=Math.max.apply(null,vals)+0.3;
+    var x0=40,x1=305,y0=150,y1=15;
+    function X(i){return x0+(i-lo)/(hi-lo)*(x1-x0);} function Y(v){return y0-(v-mn)/(mx-mn)*(y0-y1);}
+    svg.appendChild(sv("line",{x1:x0,x2:x0,y1:y1,y2:y0,class:"s-ink"}));svg.appendChild(sv("line",{x1:x0,x2:x1,y1:y0,y2:y0,class:"s-ink"}));
+    var d="";for(var i=lo;i<=hi;i++)d+=(i===lo?"M":"L")+fmt(X(i),1)+" "+fmt(Y(data[i]),1);
+    svg.appendChild(sv("path",{d:d,fill:"none",class:"s-ink","stroke-width":2,style:"stroke:var(--info)"}));
+    if(mode==="all"){var m0=10,m1=10+0.05*39;svg.appendChild(sv("line",{x1:X(0),y1:Y(m0),x2:X(39),y2:Y(m1),"stroke-dasharray":"5 4","stroke-width":1.5,style:"stroke:var(--accent)"}));
+      svg.appendChild(sv("rect",{x:X(a0),y:y1,width:X(a1)-X(a0),height:y0-y1,style:"fill:var(--flag-soft);opacity:.6"}));}
+    svg.appendChild(sv("text",{x:x0,y:y0+16},"Year "+(lo+1)));svg.appendChild(sv("text",{x:x1,y:y0+16,"text-anchor":"end"},"Year "+(hi+1)));
+    svg.appendChild(sv("text",{x:x0-4,y:y1+8,"text-anchor":"end"},fmt(mx,1)));svg.appendChild(sv("text",{x:x0-4,y:y0,"text-anchor":"end"},fmt(mn,1)));
+    $("winNote").textContent=mode==="short"?"These four years go down, so someone could claim the measurement is falling. But who chose this window, and why?":"The full record shows a slow rise (dashed trend line). The shaded years were cherry-picked because they happened to fall.";
+  }
+  bs[0].addEventListener("click",function(){mode="short";pressGroup(bs,bs[0]);draw();});
+  bs[1].addEventListener("click",function(){mode="all";pressGroup(bs,bs[1]);draw();});
+  draw();
+})();
+
+/* ---------- Learn 5: toolkit ---------- */
+(function(){
+  var T=[
+    ["What evidence is given?","Only what customers say about their own marks. No measured marks, no comparison group."],
+    ["How was the data selected?","Only 50 customers, chosen by the company. Not a random sample of students who tried the gum."],
+    ["Are failures missing?","Yes. Only customers who renewed for a second year were asked. Students who quit because it did nothing were left out. That is survivorship bias."],
+    ["Is there a fair comparison?","No group of similar students who did not chew the gum. Marks often rise as students learn, gum or no gum."],
+    ["Has anyone independent tested it?","No independent study is mentioned. A fair test would be repeated by scientists who do not sell the product."],
+    ["Who gains if I believe it?","The company selling FocusFuel. That does not make the claim false, but it is a reason to check the evidence carefully."]
+  ];
+  var box=$("toolq");
+  T.forEach(function(t){var b=el("button",{"aria-expanded":"false"},t[0]+'<span>Tap to check</span>');var sp=b.querySelector("span");b.addEventListener("click",function(){var o=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",o?"false":"true");sp.textContent=o?"Tap to check":t[1];});box.appendChild(b);});
+})();
+
+/* ---------- Bench A: detective ---------- */
+(function(){
+  var order=shuffle(CASES),i=0,score=0,tot=0,answered=false;
+  function show(){
+    answered=false;var c=order[i%order.length];$("detN").textContent=(i%order.length)+1;
+    $("detCase").innerHTML='<span class="label">Case file</span><p>'+c.t+'</p>';$("detFb").innerHTML="";
+    var ch=$("detChoices");clear(ch);
+    CASE_OPTS.forEach(function(o){var b=el("button",{class:"choice"},o[1]);b.addEventListener("click",function(){if(answered)return;answered=true;tot++;var ok=o[0]===c.a;if(ok)score++;
+      [].slice.call(ch.children).forEach(function(x,k){x.disabled=true;if(CASE_OPTS[k][0]===c.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+      $("detFb").innerHTML='<div class="feedback '+(ok?"ok":"no")+'"><b>'+(ok?"Correct. ":"Not quite. ")+'</b>'+c.e+'</div>';$("detScore").textContent=score;$("detTot").textContent=tot;});ch.appendChild(b);});
+  }
+  $("detNext").addEventListener("click",function(){i++;if(i%order.length===0)order=shuffle(CASES);show();});
+  show();
+})();
+
+/* ---------- Bench B: sample builder ---------- */
+(function(){
+  var pop=[];
+  for(var i=0;i<2000;i++){var r=Math.random(),g=r<.3,a=!g&&r<.45;var h=3.4+1.1*randn()+(g?2.2:0)-(a?1.2:0);pop.push({g:g,a:a,h:Math.max(.3,Math.min(10,h))});}
+  var trueM=pop.reduce(function(s,p){return s+p.h;},0)/2000;
+  var ests=[];
+  var NOTE={random:"Random draws scatter around the true average. Bigger samples cluster more tightly around it.",
+    club:"Esports club members are all gamers, so every survey lands well above the true average. A bigger sample makes the dots cluster tighter, but around the wrong value.",
+    online:"Volunteers who answer an online poll are more often heavy screen users here, so the estimates lean high even with a large sample.",
+    morning:"Students at early track practice spend less time on screens in this simulation, so the estimates land too low."};
+  function weight(p,m){return m==="club"?(p.g?1:0):m==="morning"?(p.a?1:0):m==="online"?(p.g?3:1):1;}
+  function survey(){
+    var m=$("sbMethod").value,n=+$("sbSize").value;
+    var pool=pop.filter(function(p){return weight(p,m)>0;});n=Math.min(n,pool.length);
+    var chosen=[];
+    if(m==="online"){var w=pool.map(function(p){return weight(p,m)*Math.random();});var idx=pool.map(function(_,i){return i;});
+      // weighted sampling without replacement (Efraimidis-Spirakis keys)
+      var keys=idx.map(function(i){return [Math.pow(Math.random(),1/weight(pool[i],m)),i];}).sort(function(a,b){return b[0]-a[0];});
+      for(var k=0;k<n;k++)chosen.push(pool[keys[k][1]]);}
+    else chosen=shuffle(pool).slice(0,n);
+    var mean=chosen.reduce(function(s,p){return s+p.h;},0)/n;ests.push({v:mean,m:m});
+  }
+  function draw(){
+    var svg=$("sbSvg");clear(svg);var x0=20,x1=305,y0=140,lo=1,hi=7;
+    function X(v){return x0+(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*(x1-x0);}
+    svg.appendChild(sv("line",{x1:x0,x2:x1,y1:y0,y2:y0,class:"s-ink"}));
+    for(var t=lo;t<=hi;t++){svg.appendChild(sv("line",{x1:X(t),x2:X(t),y1:y0,y2:y0+4,class:"s-ink"}));svg.appendChild(sv("text",{x:X(t),y:y0+16,"text-anchor":"middle"},t+" h"));}
+    var stacks={};
+    ests.forEach(function(e,i){var b=Math.round(X(e.v)/6);stacks[b]=(stacks[b]||0)+1;var y=y0-4-(stacks[b]-1)*6.5;if(y<14)y=14;svg.appendChild(sv("circle",{cx:b*6,cy:y,r:3,class:i===ests.length-1?"f-flag":"f-info"}));});
+    svg.appendChild(sv("line",{x1:X(trueM),x2:X(trueM),y1:10,y2:y0,"stroke-dasharray":"4 3","stroke-width":2,style:"stroke:var(--accent)"}));
+    svg.appendChild(sv("text",{x:X(trueM)+4,y:12},"true average "+fmt(trueM,2)+" h"));
+    var st=$("sbStats");
+    if(!ests.length){st.innerHTML='<div><span>Surveys run</span><b>0</b></div>';$("sbNote").textContent="Run a survey to see where its average lands.";return;}
+    var vs=ests.map(function(e){return e.v;}),avg=vs.reduce(function(a,b){return a+b;},0)/vs.length;
+    st.innerHTML='<div><span>Surveys run</span><b>'+ests.length+'</b></div><div><span>Latest estimate</span><b>'+fmt(vs[vs.length-1],2)+' h</b></div><div><span>Average of estimates</span><b>'+fmt(avg,2)+' h</b></div><div><span>Spread (high − low)</span><b>'+fmt(Math.max.apply(null,vs)-Math.min.apply(null,vs),2)+' h</b></div>';
+    $("sbNote").textContent=NOTE[$("sbMethod").value]+" Tip: clear the plot when you change the method or size so you compare one setting at a time.";
+  }
+  $("sbSize").addEventListener("input",function(){$("sbSizeVal").textContent=this.value;});
+  $("sbRun1").addEventListener("click",function(){survey();draw();});
+  $("sbRun30").addEventListener("click",function(){for(var i=0;i<30;i++)survey();draw();});
+  $("sbClear").addEventListener("click",function(){ests=[];draw();});
+  $("sbMethod").addEventListener("change",function(){ests=[];draw();});
+  draw();
+})();
+
+/* ---------- Bench C: survivor street ---------- */
+(function(){
+  var houses=[];
+  function build(){houses=[];for(var i=0;i<300;i++){var st=Math.random()<.3,p=st?.97:.8,d=11;for(var k=1;k<=10;k++){if(Math.random()>p){d=k;break;}}houses.push({st:st,die:d});}}
+  function draw(){
+    var dec=+$("ssYears").value/10;$("ssYearVal").textContent=1925+dec*10;
+    var svg=$("ssSvg");clear(svg);var standing=0,sturdyS=0,sturdy0=0;
+    houses.forEach(function(h,i){var x=4+(i%20)*14.7,y=4+Math.floor(i/20)*13;var alive=h.die>dec;if(h.st)sturdy0++;
+      if(alive){standing++;if(h.st)sturdyS++;svg.appendChild(sv("rect",{x:fmt(x,1),y:y,width:11,height:10,rx:1.5,class:h.st?"f-accent":"f-flag"}));}
+      else svg.appendChild(sv("rect",{x:fmt(x+.75,1),y:y+.75,width:9.5,height:8.5,rx:1.5,fill:"none",class:"s-line","stroke-width":1.2}));});
+    var pNow=standing?sturdyS/standing*100:0,p0=sturdy0/3;
+    $("ssStats").innerHTML='<div><span>Houses standing</span><b>'+standing+' / 300</b></div><div><span>Sturdy in 1925</span><b>'+fmt(p0,0)+' %</b></div><div><span>Sturdy among standing</span><b>'+fmt(pNow,0)+' %</b></div>';
+    $("ssNote").textContent=dec===0?"In 1925 most houses are basic. Slide forward in time.":"A visitor in "+(1925+dec*10)+" sees that "+fmt(pNow,0)+" % of the 1925 houses still standing are sturdy and concludes builders used to be better. But in 1925 only "+fmt(p0,0)+" % were sturdy. The basic houses were torn down and are no longer visible. That is survivorship bias.";
+  }
+  $("ssYears").addEventListener("input",draw);
+  $("ssNew").addEventListener("click",function(){build();draw();});
+  build();draw();
+})();
+
+/* ---------- Bench D: scale fixer ---------- */
+(function(){
+  var CTX=[["Battery life of two phone models"," h",8,20,1],["Daily visitors on two river valley trails (hundreds)","",20,60,1],["Canola yield on two fields (bushels per acre)","",40,60,1],["Average mark with two study apps","%",60,85,1],["Snowfall at two Alberta towns in March"," cm",15,40,1]];
+  var q,solved=0;
+  function make(){var c=CTX[ri(0,CTX.length-1)];var A=ri(c[2],c[3]);var B=Math.round(A*rnd(1.04,1.25));if(B===A)B=A+1;
+    var s=Math.max(0,Math.floor(A-(A*rnd(.04,.12))));if(s>=A)s=A-1;
+    q={A:A,B:B,s:s,c:c};var top=B+Math.max(1,Math.ceil((B-s)*.2));
+    barChart($("sfSvg"),A,B,s,["A","B"],c[1],top);
+    $("sfQ").innerHTML='<p class="small"><b>'+c[0]+'.</b> Graph labels: A = '+A+c[1]+', B = '+B+c[1]+', axis starts at '+s+'.</p>';
+    $("sfIn").value="";$("sfFb").innerHTML="";}
+  $("sfCheck").addEventListener("click",function(){var v=parseFloat($("sfIn").value),r=q.B/q.A,ap=(q.B-q.s)/(q.A-q.s);
+    if(isNaN(v)){$("sfFb").innerHTML='<div class="feedback no">Type a number such as 1.12 first.</div>';return;}
+    var ok=Math.abs(v-r)<=0.011;if(ok){solved++;$("sfScore").textContent=solved;}
+    $("sfFb").innerHTML='<div class="feedback '+(ok?"ok":"no")+'"><b>'+(ok?"Correct. ":"Check again. ")+'</b>Actual ratio = '+q.B+' ÷ '+q.A+' = '+fmt(r,2)+'. Apparent ratio = ('+q.B+' − '+q.s+') ÷ ('+q.A+' − '+q.s+') = '+fmt(ap,2)+'. The graph makes B look '+fmt(ap,1)+' times as big when it is only '+Math.round((r-1)*100)+' % bigger.</div>';});
+  $("sfNext").addEventListener("click",make);
+  $("sfIn").addEventListener("keydown",function(e){if(e.key==="Enter")$("sfCheck").click();});
+  make();
+})();
+
+/* ---------- Bench E: claim checker ---------- */
+(function(){
+  var pick=$("ccPick"),cur=0,ans=[];
+  CLAIMS.forEach(function(c,i){pick.appendChild(el("option",{value:i},c.name));});
+  function load(){cur=+pick.value;var c=CLAIMS[cur];ans=CHECKS.map(function(){return null;});$("ccText").textContent=c.text;$("ccInfo").textContent="What we know: "+c.info;$("ccOut").innerHTML="";
+    var box=$("ccChecks");clear(box);
+    CHECKS.forEach(function(q,i){var row=el("div",{class:"check"});row.appendChild(el("span",null,q));var yn=el("div",{class:"yn",role:"group","aria-label":q});
+      [["Yes",1],["No",0]].forEach(function(o){var b=el("button",{"aria-pressed":"false"},o[0]);b.addEventListener("click",function(){ans[i]=o[1];[].slice.call(yn.children).forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});row.classList.remove("ok","no");});yn.appendChild(b);});
+      row.appendChild(yn);box.appendChild(row);});}
+  pick.addEventListener("change",load);
+  $("ccGo").addEventListener("click",function(){var c=CLAIMS[cur],rows=$("ccChecks").children,match=0;
+    if(ans.some(function(a){return a===null;})){$("ccOut").innerHTML='<div class="feedback no">Answer all five checks first.</div>';return;}
+    for(var i=0;i<rows.length;i++){var ok=ans[i]===c.ans[i];if(ok)match++;rows[i].classList.remove("ok","no");rows[i].classList.add(ok?"ok":"no");}
+    $("ccOut").innerHTML='<div class="feedback '+(match===5?"ok":"no")+'"><p>You matched '+match+' of 5 checks. Expert answers: '+c.ans.map(function(a){return a?"Yes":"No";}).join(", ")+'.</p><p class="verdict" style="color:var('+(c.sci?"--accent":"--bad")+')">'+(c.sci?"Scientific theory":"Unscientific claim")+'</p><p>'+c.why+'</p></div>';});
+  load();
+})();
+
+/* ---------- Sort It ---------- */
+(function(){
+  var deck="bias",items=[],armed=null,done=0,right=0;
+  var dbtns=[].slice.call(document.querySelectorAll("[data-deck]"));
+  function start(){var d=SORT[deck];items=shuffle(d.items);done=0;right=0;armed=null;
+    var tray=$("tray"),bins=$("bins");clear(tray);clear(bins);$("sortFb").innerHTML="";
+    items.forEach(function(it){var b=el("button",{class:"item","aria-pressed":"false"},it[0]);b._it=it;b.addEventListener("click",function(){armed=b;[].slice.call(tray.children).forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});[].slice.call(bins.children).forEach(function(x){x.classList.add("armed");});});tray.appendChild(b);});
+    d.bins.forEach(function(bn){var b=el("button",{class:"bin"},'<h4>'+bn[1]+'</h4>');b.setAttribute("aria-label","Place card in "+bn[1]);b.addEventListener("click",function(){if(!armed)return;var it=armed._it,ok=it[1]===bn[0];done++;if(ok)right++;
+      var chip=el("span",{class:"chip"+(ok?"":" miss")},it[0]+(ok?"":" ✗"));b.appendChild(chip);armed.remove();armed=null;[].slice.call(bins.children).forEach(function(x){x.classList.remove("armed");});
+      var correct=d.bins.filter(function(x){return x[0]===it[1];})[0][1];
+      $("sortFb").innerHTML='<div class="feedback '+(ok?"ok":"no")+'">'+(ok?"Correct.":"That one belongs in "+correct+".")+'</div>';
+      upd();var nx=$("tray").firstChild;if(nx)nx.focus();
+      if(done===items.length)$("sortFb").innerHTML+='<div class="feedback ok" style="margin-top:8px"><b>Deck complete.</b> '+right+' of '+items.length+' correct. Shuffle to try again.</div>';});bins.appendChild(b);});
+    upd();}
+  function upd(){$("sortDone").textContent=done;$("sortTotal").textContent=items.length;$("sortRight").textContent=right;}
+  dbtns.forEach(function(b){b.addEventListener("click",function(){deck=b.dataset.deck;pressGroup(dbtns,b);start();});});
+  $("sortReset").addEventListener("click",start);
+  start();
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var i=0,flip=false,only=false;
+  function list(){return CARDS.map(function(c,k){return k;}).filter(function(k){return !only||S.known.indexOf(k)<0;});}
+  function show(){var L=list();var card=$("fcCard");
+    $("fcKnown").textContent=S.known.length;$("fcTotal").textContent=CARDS.length;$("fcBar").style.width=(S.known.length/CARDS.length*100)+"%";
+    if(!L.length){card.innerHTML='<div><div class="term">All known</div><p class="def">Turn off "Only still learning" to review every card.</p></div>';return;}
+    if(i>=L.length)i=0;var k=L[i],c=CARDS[k],kn=S.known.indexOf(k)>=0;
+    card.innerHTML=flip?'<div><p class="eyebrow">'+c[0]+'</p><p class="def">'+c[1]+'</p></div>':'<div><p class="eyebrow">Card '+(i+1)+' of '+L.length+(kn?' · known':'')+'</p><div class="term">'+c[0]+'</div><p class="small">Tap to flip</p></div>';
+    card.setAttribute("aria-label",(flip?"Definition: ":"Term: ")+(flip?c[1]:c[0]));}
+  function cur(){var L=list();return L.length?L[i%L.length]:null;}
+  $("fcCard").addEventListener("click",function(){flip=!flip;show();});
+  $("fcNext").addEventListener("click",function(){i++;flip=false;show();});
+  $("fcPrev").addEventListener("click",function(){var L=list();i=(i-1+Math.max(1,L.length))%Math.max(1,L.length);flip=false;show();});
+  $("fcKnow").addEventListener("click",function(){var k=cur();if(k===null)return;if(S.known.indexOf(k)<0)S.known.push(k);save();if(!only)i++;flip=false;show();});
+  $("fcLearn").addEventListener("click",function(){var k=cur();if(k===null)return;S.known=S.known.filter(function(x){return x!==k;});save();i++;flip=false;show();});
+  $("fcFilter").addEventListener("click",function(){only=!only;this.setAttribute("aria-pressed",only?"true":"false");i=0;flip=false;show();});
+  show();
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var box=$("quizBox"),round=[],qi=0,score=0;
+  function start(){round=shuffle(QUIZ).slice(0,10);qi=0;score=0;show();}
+  function show(){
+    if(qi>=round.length){if(S.best===null||score>S.best){S.best=score;save();}
+      box.innerHTML='<h2>Round complete</h2><p class="verdict">'+score+' / 10</p><p class="small">Best score in this browser: '+S.best+' / 10. Each new round draws a different mix from '+QUIZ.length+' questions.</p><div class="row"><button class="btn primary" id="qAgain">New round</button></div>';
+      $("qAgain").addEventListener("click",start);$("qAgain").focus();return;}
+    var q=round[qi];var opts=shuffle(q.o.map(function(t,k){return [t,k];}));
+    box.innerHTML='<div class="row"><span class="stat">Question <b>'+(qi+1)+'</b> of 10 · score <b>'+score+'</b></span>'+(S.best!==null?'<span class="small">Best: '+S.best+' / 10</span>':'')+'</div><h3 id="qText">'+q.q+'</h3><div class="choices" id="qCh"></div><div id="qFb"></div>';
+    var ch=$("qCh");
+    opts.forEach(function(o){var b=el("button",{class:"choice"},o[0]);b.addEventListener("click",function(){var ok=o[1]===q.a;if(ok)score++;
+      [].slice.call(ch.children).forEach(function(x,j){x.disabled=true;if(opts[j][1]===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+      $("qFb").innerHTML='<div class="feedback '+(ok?"ok":"no")+'"><b>'+(ok?"Correct. ":"Not quite. ")+'</b>'+q.e+'</div><div class="row" style="margin-top:10px"><button class="btn primary" id="qNext">'+(qi===9?"See results":"Next question")+'</button></div>';
+      $("qNext").addEventListener("click",function(){qi++;show();});$("qNext").focus();});ch.appendChild(b);});
+  }
+  start();
+})();
+
+/* ---------- Written ---------- */
+(function(){
+  function build(list,boxId,pre){var box=$(boxId);
+    list.forEach(function(w,i){var id=pre+i;var d=el("details",{class:"w"});
+      var h='<summary>'+(i+1)+'. '+w.q+'</summary><div class="inner"><label class="small" for="ta-'+id+'">Your answer</label><textarea id="ta-'+id+'"></textarea><details><summary class="small">Show model answer and key ideas</summary><div class="inner"><div class="model-ans">'+w.m+'</div><ul class="kl">';
+      w.k.forEach(function(k,j){h+='<li><label><input type="checkbox" id="ck-'+id+'-'+j+'"> '+k+'</label></li>';});
+      h+='</ul></div></details></div>';d.innerHTML=h;box.appendChild(d);
+      var ta=d.querySelector("textarea");ta.value=S.drafts[id]||"";ta.addEventListener("input",function(){S.drafts[id]=ta.value;save();});
+      w.k.forEach(function(k,j){var cb=$("ck-"+id+"-"+j);cb.checked=!!S.ticks[id+"-"+j];cb.addEventListener("change",function(){S.ticks[id+"-"+j]=cb.checked;save();});});
+    });}
+  build(WSHORT,"wShort","s");build(WLONG,"wLong","l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var h='<thead><tr><th>Code</th><th>Statement</th><th>Taught in</th></tr></thead><tbody>';
+  COVER.forEach(function(c){h+='<tr><td>'+c[0]+'</td><td>'+c[1]+'</td><td>'+c[2].map(function(t){return '<span class="pill">'+t+'</span>';}).join(" ")+'</td></tr>';});
+  $("covTable").innerHTML=h+'</tbody>';
+  $("covNote").innerHTML='<b>Wording note for SL2.K4.</b> Non-random selection is the most common cause of selection bias, but not every non-random sample is biased, and random samples can still be unrepresentative by chance. This lab teaches the fuller definition: selection bias happens when the way participants or data are chosen makes the sample differ from the population being studied. It also notes that survivorship bias (K1) is a special case of selection bias.';
+})();
+})();
+</script>
+
+</body></html>

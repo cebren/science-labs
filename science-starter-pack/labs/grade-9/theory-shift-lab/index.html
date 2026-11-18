@@ -1,0 +1,959 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/theory-shift-lab/"><meta name="description" content="Understandings of phenomena can change over time."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Theory Shift Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Martian+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a journal editor's desk. Indigo is the reviewer's pen. Theory changes are decision stamps: amber Restricted, teal Revised, crimson Replaced. Sticky tab bar, one working panel per tab. */
+:root{
+  --bg:#EEF0F4; --surface:#FFFFFF; --surface-2:#F5F6FA; --ink:#191D2B; --muted:#545B70; --line:#D3D7E2;
+  --accent:#3442A8; --accent-soft:#E1E4F6;
+  --rs:#9A5B00; --rs-soft:#F7EAD2; --rv:#0B7468; --rv-soft:#D5EFEB; --rp:#B03140; --rp-soft:#F7DDE0;
+  --good:#1E7A3C; --good-soft:#DCF1E2; --bad:#B5302A; --bad-soft:#F8E0DC;
+  --f-display:"Familjen Grotesk","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"Martian Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#10131C; --surface:#181C28; --surface-2:#1E2331; --ink:#E5E8F2; --muted:#A0A7BC; --line:#2D3346;
+  --accent:#95A2F5; --accent-soft:#232A4D;
+  --rs:#E9B35F; --rs-soft:#3A2B12; --rv:#5CCBBC; --rv-soft:#123430; --rp:#F08A97; --rp-soft:#3E1C22;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#10131C; --surface:#181C28; --surface-2:#1E2331; --ink:#E5E8F2; --muted:#A0A7BC; --line:#2D3346;
+  --accent:#95A2F5; --accent-soft:#232A4D;
+  --rs:#E9B35F; --rs-soft:#3A2B12; --rv:#5CCBBC; --rv-soft:#123430; --rp:#F08A97; --rp-soft:#3E1C22;
+  --good:#6FD18E; --good-soft:#153222; --bad:#F08A7E; --bad-soft:#3D1D19;
+  color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+button{font:inherit;color:inherit}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 15px;font-weight:600;cursor:pointer;font-size:.93rem}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+select,input[type=number],input[type=text],textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;max-width:100%}
+textarea{width:100%;min-height:100px;resize:vertical}
+label.lbl{display:grid;gap:4px;font-weight:600;font-size:.9rem}
+
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{padding-block:26px 18px;display:grid;gap:14px}
+.brand{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:flex-end}
+.brand h1{font-size:clamp(2.1rem,6vw,3.2rem);font-weight:700;letter-spacing:-.025em}
+.brand .lede{color:var(--muted);max-width:60ch;margin-top:6px}
+.stamps{display:flex;gap:10px;flex-wrap:wrap}
+.stamp{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border:2px solid currentColor;border-radius:4px;display:inline-block}
+.stamp.rs{color:var(--rs);transform:rotate(-3deg)}
+.stamp.rv{color:var(--rv);transform:rotate(2deg)}
+.stamp.rp{color:var(--rp);transform:rotate(-1.5deg)}
+.under{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border-radius:var(--r);padding:10px 14px;max-width:64ch;font-size:.97rem}
+.under b{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:5px;white-space:nowrap}
+.stats{display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--f-mono);font-size:.7rem;color:var(--muted);align-items:end}
+.stats b{display:block;font-size:1.2rem;color:var(--ink);font-variant-numeric:tabular-nums}
+
+.tabsbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
+.tabs [role=tab]{border:0;background:none;padding:12px 14px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;font-size:.95rem}
+.tabs [role=tab][aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs [role=tab]:hover{color:var(--ink)}
+main{padding-block:26px 56px}
+[role=tabpanel]{display:grid;gap:22px}
+.intro{color:var(--muted);max-width:66ch}
+
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.sec-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.sec-head h2{font-size:1.45rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.7rem;color:var(--accent);font-weight:600}
+.codes{display:flex;gap:6px;flex-wrap:wrap}
+.code{font-family:var(--f-mono);font-size:.62rem;font-weight:600;padding:2px 7px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:20px;align-items:start}
+@media (max-width:780px){.two{grid-template-columns:minmax(0,1fr)}}
+.prose{display:grid;gap:10px;max-width:64ch}
+.prose ul,.prose ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.model{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:12px;min-width:0}
+.model h3{font-size:1.02rem;font-weight:700}
+.note{font-size:.9rem;color:var(--muted)}
+.flag{border-left:4px solid var(--rs);background:var(--rs-soft);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.93rem}
+.fb{padding:10px 12px;border-radius:8px;font-size:.94rem}
+.fb.ok{background:var(--good-soft);color:var(--ink);border:1px solid var(--good)}
+.fb.no{background:var(--bad-soft);color:var(--ink);border:1px solid var(--bad)}
+.fb.info{background:var(--accent-soft);border:1px solid var(--accent)}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:.62rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:4px}
+.chip.rs{background:var(--rs-soft);color:var(--rs)} .chip.rv{background:var(--rv-soft);color:var(--rv)} .chip.rp{background:var(--rp-soft);color:var(--rp)}
+.chip.a{background:var(--accent-soft);color:var(--accent)}
+.formula{font-family:var(--f-mono);font-size:.9rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+/* evidence model */
+.ev-grid{display:grid;gap:8px}
+.ev{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:9px 11px;cursor:pointer;font-size:.92rem}
+.ev .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--muted);margin-top:5px}
+.ev[aria-pressed="true"]{border-color:var(--accent)}
+.ev[aria-pressed="true"] .dot{background:var(--accent);border-color:var(--accent)}
+.scale{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.68rem}
+.bar{height:12px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden;display:flex}
+.bar i{display:block;height:100%;transition:width .3s}
+
+/* stepper */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px}
+.steps button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px;text-align:left;cursor:pointer;font-size:.86rem;display:grid;gap:2px}
+.steps button span{font-family:var(--f-mono);font-size:.6rem;color:var(--muted)}
+.steps button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+
+/* timeline */
+.tl{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.tl li{display:grid;grid-template-columns:4.2em minmax(0,1fr);gap:10px;font-size:.92rem;padding:6px 0;border-bottom:1px dashed var(--line)}
+.tl li b{font-family:var(--f-mono);font-size:.72rem;color:var(--accent);padding-top:3px}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--rp);transition:width .4s}
+
+/* manuscripts */
+.ms{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:10px;min-width:0;box-shadow:0 1px 0 var(--line),0 4px 0 -2px var(--surface-2),0 5px 0 -2px var(--line)}
+.ms h3{font-size:1.15rem}
+.ms table,.tbl{border-collapse:collapse;font-size:.88rem;width:100%}
+.ms th,.ms td,.tbl th,.tbl td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.ms th,.tbl th{background:var(--surface-2);font-weight:600}
+.ms td.n{font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:.8rem}
+.scroll{overflow-x:auto;max-width:100%}
+.checks{display:grid;gap:6px}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem;cursor:pointer}
+.checks input{margin-top:5px}
+.issue-ok{color:var(--good);font-weight:700} .issue-miss{color:var(--bad);font-weight:700}
+
+/* cards grid */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
+.cardx{border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:12px;display:grid;gap:6px;align-content:start}
+.cardx h4{font-size:1.02rem}
+.tools{display:flex;flex-wrap:wrap;gap:6px}
+
+/* sort */
+.sortcard{font-size:1.1rem;font-weight:600;background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:18px;min-height:90px;display:flex;align-items:center}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.bins button{border:2px dashed var(--line);background:var(--surface-2);border-radius:var(--r);padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bins button:hover{border-color:var(--accent)}
+.bins button small{font-weight:400;font-size:.8rem;color:var(--muted)}
+
+/* flashcards */
+.flash{perspective:1000px;min-height:210px}
+.flash-inner{position:relative;min-height:210px;border:0;background:none;width:100%;cursor:pointer;padding:0;text-align:left}
+.face{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:22px;min-height:210px;display:grid;align-content:center;gap:8px}
+.face.back{background:var(--accent-soft)}
+.face .term{font-family:var(--f-display);font-size:1.8rem;font-weight:700}
+
+/* quiz */
+.opts{display:grid;gap:8px}
+.opts button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:.97rem}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button.right{border-color:var(--good);background:var(--good-soft)}
+.opts button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opts button:disabled{cursor:default}
+.progress{height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent)}
+
+details.model-ans{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--surface-2)}
+details.model-ans summary{cursor:pointer;font-weight:600}
+.cov td code{font-family:var(--f-mono);font-size:.72rem;color:var(--accent);white-space:nowrap}
+.cov td{white-space:pre-line}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:16px 28px;font-size:.85rem;color:var(--muted);display:grid;gap:4px}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">Science 9 · SL1 · Launch: Scientific Literacy</div>
+        <h1>Theory Shift Lab</h1>
+        <p class="lede">How do scientists decide which explanation to trust, and what happens when new evidence does not fit? Review real cases, judge experiments like a peer reviewer, and watch theories get restricted, revised or replaced.</p>
+      </div>
+      <div class="stamps" aria-hidden="true"><span class="stamp rs">Restricted</span><span class="stamp rv">Revised</span><span class="stamp rp">Replaced</span></div>
+    </div>
+    <div class="under"><b>Big idea</b><span>Understandings of phenomena can change over time.</span></div>
+    <div class="row" style="justify-content:space-between">
+      <div class="stats" aria-label="Your progress">
+        <span>Quiz best<b id="stQuiz">0/10</b></span>
+        <span>Cards known<b id="stCards">0</b></span>
+        <span>Sort best<b id="stSort">0%</b></span>
+        <span>Reviews filed<b id="stRev">0</b></span>
+      </div>
+      <button class="btn" id="themeBtn" type="button" aria-label="Change colour theme">Theme: Auto</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabsbar" aria-label="Lab sections">
+  <div class="wrap">
+    <div class="tabs" role="tablist" id="tablist">
+      <button role="tab" id="t-learn" aria-controls="learn" aria-selected="true">Learn</button>
+      <button role="tab" id="t-bench" aria-controls="bench" aria-selected="false" tabindex="-1">Lab Bench</button>
+      <button role="tab" id="t-sort" aria-controls="sort" aria-selected="false" tabindex="-1">Sort It</button>
+      <button role="tab" id="t-cards" aria-controls="cards" aria-selected="false" tabindex="-1">Flashcards</button>
+      <button role="tab" id="t-quiz" aria-controls="quiz" aria-selected="false" tabindex="-1">Quiz</button>
+      <button role="tab" id="t-write" aria-controls="write" aria-selected="false" tabindex="-1">Written Review</button>
+      <button role="tab" id="t-cov" aria-controls="cov" aria-selected="false" tabindex="-1">Coverage</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section role="tabpanel" id="learn" aria-labelledby="t-learn">
+  <p class="intro">Six short sections, in order. Each one pairs a few paragraphs with something to try. Work through them top to bottom before the Lab Bench.</p>
+
+  <article class="sec" id="L1">
+    <div class="sec-head"><span class="step">1 of 6</span><h2>When two explanations both fit</h2><div class="codes"><span class="code">SL1.K1</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>phenomenon</b> is something in nature we can observe, like a rainbow or a mass extinction. Scientists try to explain it. Sometimes two different explanations both fit the evidence we have so far.</p>
+        <p>About 66 million years ago, the non-bird dinosaurs died out. Two explanations were debated for decades: a giant <b>asteroid impact</b>, or huge <b>volcanic eruptions</b> in India called the Deccan Traps. Both could, in theory, change the climate enough to cause mass extinction.</p>
+        <p>When more than one explanation seems valid, arguing harder does not settle it. Scientists need <b>new evidence</b>, ideally evidence that one explanation predicts and the other does not.</p>
+        <p>The boundary layer of clay from that moment in Earth's history can be seen in Alberta's badlands, in the Red Deer River valley near Drumheller. The Royal Tyrrell Museum studies the dinosaurs found below it.</p>
+      </div>
+      <div class="model" aria-labelledby="evTitle">
+        <h3 id="evTitle">Evidence board: what ended the dinosaurs?</h3>
+        <p class="note">Tap each piece of evidence to add it to the board. Watch which explanation it supports.</p>
+        <div class="ev-grid" id="evGrid"></div>
+        <div class="scale"><span>Impact</span><div class="bar" id="evBar"><i style="background:var(--accent);width:50%"></i><i style="background:var(--rs);width:50%"></i></div><span>Volcanoes</span></div>
+        <div class="fb info" id="evOut" aria-live="polite">No evidence on the board yet. Both explanations look possible.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L2">
+    <div class="sec-head"><span class="step">2 of 6</span><h2>What makes a theory accepted</h2><div class="codes"><span class="code">SL1.K2</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>A <b>scientific theory</b> is a well-tested explanation of why or how a phenomenon happens. It is much more than a guess. When scientists compare explanations, the accepted theory is the one that is:</p>
+        <ul>
+          <li><b>Most supported</b>: it agrees with the most evidence from many tests, repeated by different people.</li>
+          <li><b>Most comprehensive</b>: it explains the widest range of observations, and it makes predictions that turn out true.</li>
+          <li><b>Simplest</b>: it needs the fewest extra assumptions or special exceptions.</li>
+        </ul>
+        <p>Evidence comes first. Simplicity is used to choose between explanations that fit the evidence equally well.</p>
+      </div>
+      <div class="model">
+        <h3>Explanation showdown</h3>
+        <div class="tools" role="group" aria-label="Choose a phenomenon" id="sdBtns"></div>
+        <div id="sdOut"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L3">
+    <div class="sec-head"><span class="step">3 of 6</span><h2>Peer review: experts check the work</h2><div class="codes"><span class="code">SL1.K3</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p><b>Peer review</b> means other experts in the same field check a scientist's work before it is published in a scientific journal. Reviewers look closely at two things:</p>
+        <ul>
+          <li><b>Investigation techniques</b>: Was the experiment controlled? Was only one variable changed? Were there enough trials and a big enough sample? Were measurements careful?</li>
+          <li><b>Analysis and interpretation of data</b>: Are the calculations correct? Do the graphs show the data fairly? Does the conclusion match what the data actually shows?</li>
+        </ul>
+        <p>Peer review is how scientists check whether work is valid, and the evidence behind every accepted theory has been through it many times. It is a strong filter, but it is not perfect. Reviewers can miss mistakes or reject a good idea. That is why other scientists also repeat important experiments.</p>
+        <p class="flag">In 1963, Canadian geophysicist Lawrence Morley sent a paper explaining magnetic stripes on the seafloor to two journals. Both rejected it. Similar work by Fred Vine and Drummond Matthews was published that year, and the idea became key evidence for plate tectonics.</p>
+      </div>
+      <div class="model">
+        <h3>The path of a scientific paper</h3>
+        <div class="steps" id="prSteps" role="group" aria-label="Peer review steps"></div>
+        <div class="fb info" id="prOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L4">
+    <div class="sec-head"><span class="step">4 of 6</span><h2>New tools reveal new evidence</h2><div class="codes"><span class="code">SL1.K4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>Our senses can only detect so much. New <b>technologies</b> (like telescopes and DNA sequencers) and new <b>methods</b> (like a better way to date rocks) let scientists observe things no one could see before.</p>
+        <p>New evidence can support a theory, or it can contradict it. When it contradicts a theory, the theory or model may need to change.</p>
+        <p>Many of these tools came from people around the world. Canadians played a part too: Lawrence Morley and J. Tuzo Wilson helped turn seafloor measurements into the theory of plate tectonics.</p>
+      </div>
+      <div class="model">
+        <h3>Tool explorer</h3>
+        <div class="tools" role="group" aria-label="Choose a technology" id="tkBtns"></div>
+        <div id="tkOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L5">
+    <div class="sec-head"><span class="step">5 of 6</span><h2>Restricted, revised or replaced</h2><div class="codes"><span class="code">SL1.K5</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>One odd result does not overturn a theory. It could be a mistake. But if <b>substantial contradictory evidence</b> builds up over time, from many tests by many people, scientists change the theory in one of three ways:</p>
+        <ul>
+          <li><span class="chip rs">Restricted</span> The theory still works, but only within a certain range of conditions. Outside that range, a different theory is needed.</li>
+          <li><span class="chip rv">Revised</span> The theory keeps its main idea but is changed to include the new evidence.</li>
+          <li><span class="chip rp">Replaced</span> The theory is dropped, and a new theory that explains the evidence better takes its place.</li>
+        </ul>
+      </div>
+      <div class="model">
+        <h3>Evidence pressure</h3>
+        <div class="tools" role="group" aria-label="Choose a case" id="epBtns"></div>
+        <p id="epOld" class="note"></p>
+        <ol class="tl" id="epList"></ol>
+        <div class="scale"><span>Contradiction</span><div class="meter"><i id="epMeter" style="width:0%"></i></div><span id="epPct">0%</span></div>
+        <div class="row"><button class="btn primary" id="epAdd" type="button">Add the next evidence</button><button class="btn" id="epReset" type="button">Start over</button></div>
+        <div id="epOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="L6">
+    <div class="sec-head"><span class="step">6 of 6</span><h2>Careers that explain phenomena</h2><div class="codes"><span class="code">SL1.K6</span></div></div>
+    <div class="prose">
+      <p>Many careers use scientific knowledge every day. People in these jobs observe problems, gather data, test ideas and improve how we explain things. Here are four from the curriculum, each with an Alberta connection. Tap a card to see a day on the job.</p>
+    </div>
+    <div class="grid3" id="careerCards"></div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section role="tabpanel" id="bench" aria-labelledby="t-bench" hidden>
+  <p class="intro">Four workstations. Each one practises a skill from the curriculum. Your work saves in this browser only.</p>
+
+  <article class="sec" id="B1">
+    <div class="sec-head"><span class="step">Station A</span><h2>Theory scorecard</h2><div class="codes"><span class="code">SL1.S1</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <h3>Worked example</h3>
+        <p>Three explanations try to explain 12 observations about why a pond near Elk Island freezes later some years.</p>
+        <div class="scroll"><table class="tbl"><thead><tr><th>Explanation</th><th>Observations explained</th><th>Supporting studies</th><th>Extra assumptions</th></tr></thead>
+        <tbody><tr><td>A</td><td>12 of 12</td><td>5</td><td>3</td></tr><tr><td>B</td><td>12 of 12</td><td>5</td><td>1</td></tr><tr><td>C</td><td>12 of 12</td><td>5</td><td>2</td></tr></tbody></table></div>
+        <p>All three explain everything (equally comprehensive) and have the same support. The only difference is extra assumptions. <b>B</b> needs the fewest, so B is the <b>simplest</b> and would be accepted.</p>
+      </div>
+      <div class="model">
+        <h3>Practice: you be the judge</h3>
+        <p class="note" id="scCtx"></p>
+        <div class="scroll" id="scTable"></div>
+        <label class="lbl" for="scPick">Which explanation would scientists accept?<select id="scPick"><option value="">Choose</option><option>A</option><option>B</option><option>C</option></select></label>
+        <label class="lbl" for="scWhy">Which quality decides it?<select id="scWhy"><option value="">Choose</option><option value="comp">Most comprehensive</option><option value="sup">Most supported</option><option value="simp">Simplest</option></select></label>
+        <div class="row"><button class="btn primary" id="scCheck" type="button">Check</button><button class="btn" id="scNew" type="button">New scenario</button><span class="note mono" id="scScore"></span></div>
+        <div id="scFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="B2">
+    <div class="sec-head"><span class="step">Station B</span><h2>Peer review desk</h2><div class="codes"><span class="code">SL1.S2</span></div></div>
+    <p class="prose">Grade 9 teams have sent their controlled experiments to the <i>Journal of Student Science</i>. Read each manuscript like a reviewer. Tick every problem you find, then make a recommendation to the editor.</p>
+    <div class="tools" role="group" aria-label="Choose a manuscript" id="msBtns"></div>
+    <div class="two">
+      <div id="msPaper"></div>
+      <div class="model">
+        <h3>Reviewer form</h3>
+        <div id="msChecks" class="checks"></div>
+        <label class="lbl" for="msDec">Recommendation<select id="msDec"><option value="">Choose</option><option value="accept">Accept</option><option value="minor">Minor revisions</option><option value="major">Major revisions</option><option value="reject">Reject</option></select></label>
+        <label class="lbl" for="msNote">Comment to the authors (optional)<textarea id="msNote" placeholder="Be specific and kind. Say what to fix and why."></textarea></label>
+        <button class="btn primary" id="msSubmit" type="button">Submit review</button>
+        <div id="msFb" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <h3>Reviewer math: checking an average</h3>
+        <p>Reviewers recalculate key numbers. The <b>mean</b> (average) of repeated trials and the <b>range</b> (spread) are the most common.</p>
+        <div class="formula">x̄ = (x₁ + x₂ + … + xₙ) ÷ n<br>range = largest value − smallest value</div>
+        <p><b>Worked example:</b> trials of 14.2 s, 15.0 s and 14.5 s. Mean = (14.2 + 15.0 + 14.5) ÷ 3 = 43.7 ÷ 3 = 14.6 s (rounded). Range = 15.0 − 14.2 = 0.8 s. A small range means the trials agree well.</p>
+      </div>
+      <div class="model">
+        <h3>Practice: is the author's mean right?</h3>
+        <div id="avgQ"></div>
+        <label class="lbl" for="avgIn">Your mean (round to 1 decimal place)<input type="number" step="0.1" id="avgIn" inputmode="decimal"></label>
+        <div class="row"><button class="btn" type="button" id="avgYes">Author is correct</button><button class="btn" type="button" id="avgNo">Author made an error</button></div>
+        <div class="row"><button class="btn" type="button" id="avgNew">New data set</button><span class="note mono" id="avgScore"></span></div>
+        <div id="avgFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="B3">
+    <div class="sec-head"><span class="step">Station C</span><h2>Theory case file</h2><div class="codes"><span class="code">SL1.S3</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>Pick a theory that was restricted, revised or replaced. Use the research leads to look it up in your textbook, a library database, or a trusted site such as a university, museum or science agency. Then fill in the case file in your own words.</p>
+        <label class="lbl" for="cfPick">Case<select id="cfPick"></select></label>
+        <div id="cfLeads"></div>
+        <p class="note">Good sources name an author or organization, give a date, and explain their evidence. Compare at least two sources.</p>
+      </div>
+      <div class="model">
+        <h3>Case file</h3>
+        <label class="lbl" for="cfOld">The original theory or model<textarea id="cfOld"></textarea></label>
+        <label class="lbl" for="cfEv">Contradictory evidence that built up over time<textarea id="cfEv"></textarea></label>
+        <label class="lbl" for="cfTech">New technology or method involved<textarea id="cfTech"></textarea></label>
+        <label class="lbl" for="cfNew">How the theory changed, and who contributed<textarea id="cfNew"></textarea></label>
+        <label class="lbl" for="cfSrc">Sources you used<textarea id="cfSrc" style="min-height:70px"></textarea></label>
+        <label class="lbl" for="cfType">Type of change<select id="cfType"><option value="">Choose</option><option value="rs">Restricted</option><option value="rv">Revised</option><option value="rp">Replaced</option></select></label>
+        <div class="row"><button class="btn primary" id="cfCheck" type="button">Check my file</button><span class="note" id="cfSaved"></span></div>
+        <div id="cfFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="sec" id="B4">
+    <div class="sec-head"><span class="step">Station D</span><h2>Career match</h2><div class="codes"><span class="code">SL1.S4</span></div></div>
+    <div class="two">
+      <div class="prose">
+        <p>Each career below works on real phenomena. Read the situation and decide who would investigate it. Then read how that person's work could improve our explanation.</p>
+        <p class="note">To explore further, look up the career on the alis.alberta.ca career site, which lists Alberta wages, training and outlook.</p>
+      </div>
+      <div class="model">
+        <div class="fb info" id="cmQ"></div>
+        <div class="tools" role="group" aria-label="Careers" id="cmBtns"></div>
+        <div class="row"><button class="btn" id="cmNew" type="button">Next situation</button><span class="note mono" id="cmScore"></span></div>
+        <div id="cmFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section role="tabpanel" id="sort" aria-labelledby="t-sort" hidden>
+  <p class="intro">Pick a deck. Read each card, then tap the bin where it belongs. You get feedback after every card.</p>
+  <div class="tools" role="group" aria-label="Choose a deck" id="sortDecks"></div>
+  <article class="sec">
+    <div class="row" style="justify-content:space-between"><span class="eyebrow" id="sortProg"></span><span class="eyebrow" id="sortScore"></span></div>
+    <div class="sortcard" id="sortCard" aria-live="polite"></div>
+    <div class="bins" id="sortBins"></div>
+    <div id="sortFb" aria-live="polite"></div>
+  </article>
+</section>
+
+<!-- CARDS -->
+<section role="tabpanel" id="cards" aria-labelledby="t-cards" hidden>
+  <p class="intro">Tap the card or press Space to flip it. Mark each one so you know what to review.</p>
+  <div class="row"><button class="btn" id="fcAll" type="button" aria-pressed="true">All cards</button><button class="btn" id="fcLearn" type="button" aria-pressed="false">Still learning only</button><span class="note mono" id="fcCount"></span></div>
+  <div class="flash"><button class="flash-inner" id="fcCard" type="button" aria-label="Flip card"></button></div>
+  <div class="row"><button class="btn" id="fcPrev" type="button">Previous</button><button class="btn" id="fcNext" type="button">Next</button><button class="btn" id="fcKnown" type="button" style="border-color:var(--good)">I know this</button><button class="btn" id="fcStill" type="button" style="border-color:var(--rs)">Still learning</button><button class="btn" id="fcShuffle" type="button">Shuffle</button></div>
+</section>
+
+<!-- QUIZ -->
+<section role="tabpanel" id="quiz" aria-labelledby="t-quiz" hidden>
+  <p class="intro">Ten questions drawn from a bank of 24. Each answer comes with an explanation.</p>
+  <article class="sec" id="quizBox"></article>
+</section>
+
+<!-- WRITE -->
+<section role="tabpanel" id="write" aria-labelledby="t-write" hidden>
+  <p class="intro">Write your answer first, then open the model answer and tick the key ideas you included. Your drafts save in this browser.</p>
+  <h2 style="font-size:1.3rem">Short answer</h2>
+  <div id="shortList" style="display:grid;gap:14px"></div>
+  <h2 style="font-size:1.3rem">Extended response</h2>
+  <div id="longList" style="display:grid;gap:14px"></div>
+</section>
+
+<!-- COVERAGE -->
+<section role="tabpanel" id="cov" aria-labelledby="t-cov" hidden>
+  <article class="sec">
+    <div class="sec-head"><h2>Coverage for teachers</h2></div>
+    <p class="prose">Science 9, Launch: Scientific Literacy. Outcome: Students relate understandings of phenomena to scientific theories. Understanding: Understandings of phenomena can change over time. Codes are labels added for this collection for the unnumbered draft (September 2026).</p>
+    <div class="scroll"><table class="tbl cov" id="covTable"></table></div>
+    <div class="flag" id="covNotes"></div>
+  </article>
+</section>
+</main>
+
+<footer><div class="wrap"><p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p><span>Edmonton, Treaty 6 territory · 2027/28 curriculum</span><span>Progress is saved only in this browser. Nothing is sent anywhere.</span></div></footer>
+<script>
+"use strict";
+const EVIDENCE=[
+ {t:"Iridium layer (1980)",d:"A thin clay layer at the boundary, found around the world, is rich in iridium. This metal is rare in Earth's crust but common in asteroids.",imp:2,vol:0},
+ {t:"Shocked quartz",d:"Grains of quartz in the layer have tiny crossing lines. These form only under sudden, extreme pressure, like an impact.",imp:2,vol:0},
+ {t:"Deccan Traps lava",d:"Thick stacks of lava rock in India show enormous eruptions that went on for hundreds of thousands of years around the same time.",imp:0,vol:2},
+ {t:"Chicxulub crater (1991)",d:"A buried crater about 180 km wide in Mexico's Yucatán Peninsula matches the age of the boundary. Canadian scientist Alan Hildebrand, now at the University of Calgary, helped identify it.",imp:3,vol:0},
+ {t:"Stress before the boundary",d:"Some rock and fossil records show climate changes and stressed ecosystems before the extinction itself.",imp:0,vol:1},
+ {t:"Better dating methods (2013 on)",d:"Precise dating shows the impact and the extinction happened at almost the same moment in geologic time. Dating of the lava also shows big eruptions near that time.",imp:2,vol:1}
+];
+const SHOWDOWN=[
+ {k:"Planet motion",a:"Earth-centred model (Ptolemy, about 150 CE)",b:"Sun-centred model with elliptical orbits (Copernicus 1543, Kepler 1609)",
+  rows:[["Most supported","Galileo's telescope showed Venus going through a full set of phases. The Earth-centred model could not produce that. Stellar parallax, measured by Friedrich Bessel in 1838, showed Earth really moves."],
+        ["Most comprehensive","Kepler's orbits, explained by Newton's gravity, describe planets, moons and comets with one set of rules. They predicted the 1758 return of Halley's comet."],
+        ["Simplest","The Earth-centred model needed many circles on circles (epicycles) to match planet paths. Ellipses around the Sun need none."]],
+  win:"The Sun-centred model replaced the Earth-centred model."},
+ {k:"Burning",a:"Phlogiston theory: burning things release a substance called phlogiston",b:"Oxygen theory: burning combines a substance with oxygen (Antoine Lavoisier and Marie-Anne Paulze Lavoisier, France, 1770s)",
+  rows:[["Most supported","Careful weighing showed metals gain mass when they burn. Phlogiston theory could only explain this if phlogiston had negative mass."],
+        ["Most comprehensive","Oxygen theory also explains rusting and breathing, and why a flame goes out in a sealed jar."],
+        ["Simplest","No mystery substance with strange properties is needed."]],
+  win:"Oxygen theory replaced phlogiston theory."},
+ {k:"Disease",a:"Miasma theory: disease comes from bad air from rotting matter",b:"Germ theory: specific microorganisms cause specific diseases (Louis Pasteur, Robert Koch, 1860s to 1880s)",
+  rows:[["Most supported","In 1854 John Snow traced a London cholera outbreak to one water pump. Koch linked specific bacteria to anthrax and tuberculosis."],
+        ["Most comprehensive","Germ theory explains spread through water, touch and air, and why handwashing, vaccines and later antibiotics work."],
+        ["Simplest","One idea, a living cause that can be seen with a microscope, explains many different diseases."]],
+  win:"Germ theory replaced miasma theory. Miasma ideas did lead to cleaner cities, which helped by accident."}
+];
+const PR_STEPS=[
+ ["Investigate","A scientist or team plans a controlled investigation and collects data."],
+ ["Write","They write a paper that describes the question, methods, data, analysis and conclusion in enough detail for others to repeat it."],
+ ["Submit","The paper goes to a scientific journal. An editor checks that it fits the journal and is complete."],
+ ["Review","Two or three experts in the field (the peers) examine the investigation techniques and the analysis and interpretation of the data. They often stay anonymous."],
+ ["Decide","Reviewers recommend: accept, revise (minor or major) or reject. Authors fix problems and resubmit. This can loop several times."],
+ ["Publish and repeat","Once published, other scientists read it, test it and try to repeat it. Results that hold up across many studies become evidence for or against theories."]
+];
+const TOOLS=[
+ {k:"Telescope",y:"1609 to 1610",who:"Galileo Galilei, Italy",saw:"Four moons orbiting Jupiter and a full set of phases on Venus.",effect:"Showed that not everything orbits Earth. Strong evidence for the Sun-centred model.",ch:"rp"},
+ {k:"Microscope",y:"1670s",who:"Antonie van Leeuwenhoek, Netherlands",saw:"Tiny living things in pond water, teeth scrapings and blood.",effect:"Two centuries later, better microscopes helped germ theory replace miasma theory and supported cell theory.",ch:"rp"},
+ {k:"Radiometric dating",y:"early 1900s on",who:"Built on radioactivity research by Marie Curie and Pierre Curie in Paris, and Ernest Rutherford at McGill University in Montréal",saw:"How much of a radioactive element in a rock has decayed, which works like a clock.",effect:"Earth's age was revised from millions of years to about 4.5 billion years.",ch:"rv"},
+ {k:"Sonar and magnetometers",y:"1950s to 1960s",who:"Marie Tharp and Bruce Heezen (USA); Lawrence Morley and J. Tuzo Wilson (Canada); Fred Vine and Drummond Matthews (UK)",saw:"Mountain ridges down the middle of the oceans and striped magnetic patterns on the seafloor.",effect:"The idea of fixed continents was replaced, and continental drift was revised into plate tectonics.",ch:"rp"},
+ {k:"DNA sequencing",y:"1977 on",who:"Frederick Sanger (UK) and many labs worldwide",saw:"The exact order of the bases in genes, so species can be compared directly.",effect:"Classification of living things was revised. For example, whales turned out to be close relatives of hippos.",ch:"rv"},
+ {k:"Space telescopes",y:"1990 on",who:"Hubble (NASA and ESA), and the James Webb Space Telescope, which carries Canadian instruments",saw:"Very distant galaxies and exploding stars far beyond what ground telescopes can see.",effect:"In 1998, supernova data showed the universe's expansion is speeding up, and models of the universe were revised.",ch:"rv"}
+];
+const CASES=[
+ {k:"Newton's laws",old:"Newton's laws of motion (1687) describe how forces move objects. For 200 years they predicted motion almost perfectly.",type:"rs",
+  ev:[["1859","Urbain Le Verrier, a French astronomer, shows Mercury's orbit shifts slightly more than Newton's laws predict."],
+      ["1887","The Michelson and Morley experiment finds the speed of light is the same no matter how Earth moves."],
+      ["1905","Albert Einstein's special relativity explains motion at speeds close to the speed of light."],
+      ["1919","During a solar eclipse, starlight is seen bending near the Sun, as Einstein's general relativity predicted. It also explains Mercury's orbit."],
+      ["Today","GPS satellites must correct their clocks by about 38 microseconds per day because of relativity, or positions would drift by kilometres."]],
+  out:"Newton's laws still work extremely well at everyday speeds. Engineers use them for bridges, cars and rocket launches. They are restricted to speeds much slower than light and to gravity much weaker than near a black hole."},
+ {k:"The atom",old:"John Dalton (1808): matter is made of atoms, which are tiny solid balls that cannot be divided.",type:"rv",
+  ev:[["1897","J. J. Thomson discovers the electron, a particle much smaller than an atom. Atoms can be divided."],
+      ["1898 to 1907","At McGill University in Montréal, Ernest Rutherford shows radioactive atoms break apart and change into other elements."],
+      ["1911","The gold foil experiment: a few particles bounce straight back. Rutherford concludes atoms have a tiny, dense nucleus."],
+      ["1913","Niels Bohr places electrons in energy levels around the nucleus."],
+      ["1932","James Chadwick discovers the neutron in the nucleus."]],
+  out:"The main idea, that all matter is made of atoms, survived. The model of what an atom looks like was revised many times to fit each new piece of evidence."},
+ {k:"Spontaneous generation",old:"For about 2,000 years, many people believed living things could form from non-living matter, like maggots from rotting meat.",type:"rp",
+  ev:[["1668","Francesco Redi covers jars of meat. Maggots appear only where flies can land."],
+      ["1670s","Microscopes reveal microorganisms everywhere, so some argue tiny life still forms on its own."],
+      ["1768","Lazzaro Spallanzani boils broth and seals the flask. It stays free of microorganisms."],
+      ["1859","Louis Pasteur's swan-neck flasks let air in but trap dust. The broth stays clear until the neck is broken."]],
+  out:"Spontaneous generation was replaced by biogenesis: living things come only from other living things."},
+ {k:"Fixed continents",old:"Into the early 1900s, most geologists thought the continents and oceans had always been in the same places.",type:"rp",
+  ev:[["1912","Alfred Wegener points to matching coastlines, fossils and rock layers on continents now separated by oceans. Many reject his idea because he has no mechanism."],
+      ["1950s","Marie Tharp and Bruce Heezen turn sonar data into maps that show a long rift valley along the Mid-Atlantic Ridge."],
+      ["1963","Magnetic stripes on the seafloor (Lawrence Morley; Fred Vine and Drummond Matthews) show new seafloor forming at ridges."],
+      ["1965","J. Tuzo Wilson of the University of Toronto describes transform faults, joining ridges and trenches into a system of plates."],
+      ["1960s","Worldwide earthquake maps trace the edges of the plates."]],
+  out:"The idea of fixed continents was replaced by plate tectonics. Wegener's continental drift was revised into plate tectonics, which supplied the missing mechanism."},
+ {k:"Stomach ulcers",old:"Until the 1980s, doctors taught that most stomach ulcers were caused by stress and spicy food.",type:"rp",
+  ev:[["1982","Robin Warren and Barry Marshall in Australia find spiral bacteria, Helicobacter pylori, in the stomachs of ulcer patients. Many doctors doubt it."],
+      ["1984","Marshall drinks a culture of the bacteria and develops stomach inflammation, which clears up with treatment."],
+      ["1990s","Large trials show antibiotics cure most ulcers, and they rarely come back."],
+      ["2005","Warren and Marshall receive the Nobel Prize in Physiology or Medicine."]],
+  out:"The stress explanation was replaced. Most ulcers are caused by H. pylori infection or by some pain medicines. Stress can make symptoms worse but is not the main cause."}
+];
+const CAREERS=[
+ {k:"elec",n:"Electrician",area:"Electricity",ab:"In Alberta, electricians train through a four-year apprenticeship and can earn a Red Seal. Many now install solar and battery systems.",day:"A breaker keeps tripping. The electrician forms hypotheses (an overloaded circuit or a damaged wire), tests each with a meter, and uses the data to explain and fix the fault.",adv:"Measurements from the field show which wiring methods hold up, and that evidence shapes the electrical code."},
+ {k:"ag",n:"Agricultural engineer",area:"Agriculture",ab:"Southern Alberta has most of Canada's irrigated farmland, and engineers design the canals, pivots and drainage that serve it.",day:"One corner of a canola field yields less every year. The engineer collects soil moisture readings and drone images, tests explanations like poor drainage or compacted soil, and designs a fix.",adv:"Sensor data from thousands of fields improves models of how water, soil and crops interact."},
+ {k:"law",n:"Space lawyer",area:"Space exploration",ab:"Canada signed the Outer Space Treaty in 1967 and the Artemis Accords in 2020. McGill University in Montréal has a well-known institute of air and space law.",day:"A piece of an old satellite damages another one. The lawyer uses tracking data and orbital science to work out where the debris came from and who is responsible.",adv:"Legal cases need clear scientific evidence, which pushes better tracking and explanations of how debris moves."},
+ {k:"h2",n:"Hydrogen systems technician",area:"Innovation",ab:"Alberta produces more hydrogen than any other province, and the Edmonton region runs a hydrogen hub that tests hydrogen trucks and buses.",day:"A fuel cell truck loses power on cold mornings. The technician logs pressure, temperature and power data, compares warm and cold runs, and reports the pattern.",adv:"Field data on how hydrogen equipment behaves in a prairie winter helps engineers revise their designs."}
+];
+const MATCH=[
+ ["A new house's breaker trips whenever the kettle and microwave run together.","elec","Testing the circuit's current confirms the overload explanation and guides safer wiring."],
+ ["Canola in a low corner of a field near Vegreville grows poorly every wet spring.","ag","Soil moisture data can confirm a drainage problem, and a drainage design tests that explanation."],
+ ["Two countries disagree about who caused a satellite collision.","law","Orbital tracking evidence is used to explain what happened and decide responsibility."],
+ ["A hydrogen fuel cell truck on the Edmonton to Calgary route loses power on very cold mornings.","h2","Logged temperature and power data show how cold affects the fuel cell, which improves the explanation and the design."],
+ ["Grain at the bottom of a bin is spoiling even though the top looks fine.","ag","Temperature and moisture probes reveal how air moves through the grain, which explains the spoilage and guides a better aeration system."],
+ ["A school's new solar panels produce less electricity than expected in winter.","elec","Measuring output against sunlight and snow cover explains the drop and checks the system is wired correctly."],
+ ["A company wants to mine an asteroid and asks whether international rules allow it.","law","The lawyer needs to understand what is physically possible in space to explain how treaties apply."],
+ ["A pressure sensor at a hydrogen fuelling station shows a slow drop overnight.","h2","Leak tests and temperature records separate a real leak from gas cooling overnight, which is a real gas behaviour."]
+];
+const ISSUES=[
+ ["noControl","Techniques","No control or comparison group"],
+ ["extraVar","Techniques","More than one variable changed"],
+ ["fewTrials","Techniques","Too few trials (tests not repeated)"],
+ ["smallSample","Techniques","Sample size too small"],
+ ["measure","Techniques","Measurement method unclear or inconsistent"],
+ ["math","Analysis","Calculation error in the data"],
+ ["mismatch","Analysis","Conclusion does not match the data"],
+ ["overreach","Analysis","Conclusion goes beyond what was tested"]
+];
+const PAPERS=[
+ {id:"MS-0412",t:"Does road salt melt sidewalk ice faster?",by:"Team Aurora",
+  q:"Does road salt make ice melt faster than sand or nothing at all?",hyp:"If salt is added to ice, then it will melt fastest.",
+  m:["Three trays of ice, all frozen overnight in the same freezer.","Tray 1 got 10 g of road salt. Tray 2 got 10 g of sand. Tray 3 got nothing.","Tray 1 was set on the sunny classroom windowsill. Trays 2 and 3 were set in the hallway.","We timed how long until no solid ice was left. Each tray was tested once."],
+  head:["Tray","Time to melt (min)"],rows:[["Salt","18"],["Sand","41"],["Nothing","44"]],
+  concl:"Road salt melts ice 2.4 times faster than nothing in all winter weather, so the city should only use salt.",
+  need:["extraVar","fewTrials","overreach"],ok:["smallSample"],dec:["major"],
+  notes:{extraVar:"The salt tray sat in sunlight while the others were in the hallway. Sunlight and salt both changed, so we cannot tell which caused faster melting.",fewTrials:"Each tray was tested only once. Repeat at least three trials and average them.",overreach:"The test was done indoors at one temperature. It says nothing about all winter weather. Ordinary road salt works poorly in deep cold, below about −10 °C.",smallSample:"One tray per group is a small sample, so more trays would help too."},
+  decNote:"The design has a fixable but serious flaw. Major revisions: redo it with all trays in the same place and repeat the trials."},
+ {id:"MS-0418",t:"Fertilizer and canola seedling height",by:"Team Prairie Gold",
+  q:"How does the amount of fertilizer affect canola seedling height after 14 days?",hyp:"If more fertilizer is added, then seedlings will grow taller, up to a point.",
+  m:["12 pots, same soil, same seed lot, same light shelf, 50 mL of water each day.","4 pots each got 0 g, 5 g or 10 g of fertilizer. The 0 g pots are the control.","After 14 days we measured each seedling from soil to tip with the same ruler."],
+  head:["Fertilizer","Pot 1 (cm)","Pot 2 (cm)","Pot 3 (cm)","Pot 4 (cm)","Mean (cm)"],rows:[["0 g","6.1","5.8","6.3","6.0","6.1"],["5 g","8.2","8.6","7.9","8.5","8.3"],["10 g","9.4","9.0","9.8","9.2","10.4"]],
+  concl:"Within the amounts we tested, more fertilizer produced taller canola seedlings after 14 days.",
+  need:["math"],ok:[],dec:["minor"],
+  notes:{math:"The 10 g mean is wrong. (9.4 + 9.0 + 9.8 + 9.2) ÷ 4 = 37.4 ÷ 4 = 9.35, about 9.4 cm, not 10.4 cm. The conclusion still holds once it is fixed."},
+  decNote:"A well-designed study with one calculation error. Minor revisions: fix the mean."},
+ {id:"MS-0425",t:"Music makes wheat grow taller",by:"Team Sound Wave",
+  q:"Does playing music to wheat plants make them grow faster?",hyp:"If wheat hears music, then it will grow faster.",
+  m:["One wheat plant was kept in a room with music playing. One wheat plant was kept in a quiet room.","After 3 weeks we looked at both plants and decided which looked taller."],
+  head:["Plant","Result after 3 weeks"],rows:[["Music","Looked taller"],["Quiet","Looked shorter"]],
+  concl:"Music causes all plants to grow faster.",
+  need:["smallSample","measure","overreach"],ok:["fewTrials","extraVar"],dec:["reject","major"],
+  notes:{smallSample:"One plant per group. Natural differences between two plants could explain the result.",measure:"Height was judged by eye, not measured with a ruler.",overreach:"Only wheat was tested, but the conclusion claims all plants.",fewTrials:"The test was not repeated.",extraVar:"Two different rooms may differ in light or temperature, too."},
+  decNote:"Too many basic problems to fix with small changes. Reject, or at least major revisions with a new design."},
+ {id:"MS-0431",t:"Which mitten fabric keeps hands warmest?",by:"Team Chinook",
+  q:"Which fabric slows heat loss the most: wool, fleece or cotton?",hyp:"If a warm bottle is wrapped in wool, then it will lose the least heat.",
+  m:["Four identical 500 mL bottles filled with 50 °C water.","Three were wrapped in one layer of wool, fleece or cotton of equal thickness. One bottle had no wrap as a control.","All sat on the same table for 20 minutes. We measured the temperature drop with the same thermometer.","We did 3 trials for each and calculated the mean."],
+  head:["Wrap","Trial 1 (°C)","Trial 2 (°C)","Trial 3 (°C)","Mean drop (°C)"],rows:[["None","14.0","13.6","14.2","13.9"],["Cotton","10.2","10.8","10.5","10.5"],["Fleece","7.4","7.9","7.6","7.6"],["Wool","7.1","7.0","7.5","7.2"]],
+  concl:"In our test with dry fabric, wool slowed heat loss the most, but only slightly more than fleece. We did not test wet fabric, which matters on snowy days.",
+  need:[],ok:["smallSample"],dec:["accept","minor"],
+  notes:{smallSample:"More trials would make the small wool and fleece difference more convincing, but this is a suggestion, not a flaw."},
+  decNote:"This is a sound controlled experiment with careful analysis and an honest conclusion. Accept, or minor revisions at most."},
+ {id:"MS-0437",t:"Chocolate milk and skating speed",by:"Team Breakaway",
+  q:"Does drinking chocolate milk before skating make hockey players faster?",hyp:"If players drink chocolate milk, then they will skate a lap faster.",
+  m:["Six players drank chocolate milk on Monday morning, then skated one timed lap.","The same six drank water on Thursday afternoon, right after a hard practice, then skated one timed lap."],
+  head:["Player","Chocolate milk (s)","Water (s)"],rows:[["1","15.1","15.4"],["2","14.6","14.5"],["3","15.8","16.0"],["4","14.9","14.8"],["5","15.3","15.6"],["6","15.0","15.1"]],
+  concl:"Chocolate milk makes players much faster.",
+  need:["extraVar","mismatch"],ok:["fewTrials"],dec:["major"],
+  notes:{extraVar:"The water lap came right after a hard practice, on a different day and time. Tiredness changed too.",mismatch:"The mean times are 15.1 s and 15.2 s, a difference of about 0.1 s. Two players were actually faster with water. The data does not show players were much faster.",fewTrials:"Each player skated one lap per condition. More trials would help."},
+  decNote:"Major revisions: run both conditions at the same time of day with rested players, repeat trials, and match the conclusion to the data."}
+];
+const CASEFILES=[
+ {k:"Newton's laws and relativity",type:"rs",leads:["Search: Mercury perihelion Newton Einstein","Search: GPS relativity correction","Look for: what Newton's laws still do well today"],key:"Newton's laws still work at everyday speeds. Relativity is needed near light speed and in very strong gravity, so Newton's laws were restricted."},
+ {k:"Models of the atom",type:"rv",leads:["Search: Dalton Thomson Rutherford Bohr atomic model","Search: Rutherford McGill radioactivity","Look for: which part of Dalton's idea survived"],key:"Atoms still exist and make up matter, but the model gained electrons, a nucleus and energy levels. Revised."},
+ {k:"Spontaneous generation",type:"rp",leads:["Search: Redi meat experiment","Search: Pasteur swan neck flask","Look for: the name of the theory that took its place"],key:"Controlled experiments showed life comes only from life. Spontaneous generation was replaced by biogenesis."},
+ {k:"Fixed continents and plate tectonics",type:"rp",leads:["Search: Wegener continental drift evidence","Search: Marie Tharp seafloor map","Search: Lawrence Morley magnetic stripes; J. Tuzo Wilson"],key:"Sonar and magnetometer evidence showed seafloor spreading. Fixed continents were replaced by plate tectonics, which revised Wegener's drift idea."},
+ {k:"Earth-centred universe",type:"rp",leads:["Search: Ptolemy epicycles","Search: Galileo phases of Venus","Look for: how Kepler changed Copernicus's circles"],key:"Telescope evidence and Kepler's ellipses fit far better. The Earth-centred model was replaced by the Sun-centred model."},
+ {k:"Causes of stomach ulcers",type:"rp",leads:["Search: Marshall Warren Helicobacter pylori","Look for: why many doctors doubted them at first","Look for: how treatment changed"],key:"Evidence linked most ulcers to H. pylori bacteria. The stress and diet explanation was replaced."},
+ {k:"Cell theory",type:"rv",leads:["Search: Schleiden Schwann cell theory 1839","Search: Virchow Remak all cells come from cells","Look for: what the third part of cell theory added"],key:"Early cell theory said cells could form from non-living material. Evidence showed all cells come from existing cells, so the theory was revised."},
+ {k:"The age of Earth",type:"rv",leads:["Search: Kelvin age of Earth estimate","Search: radiometric dating age of Earth 4.5 billion","Look for: how radioactivity changed the estimate"],key:"Estimates of tens of millions of years were revised to about 4.5 billion years once radiometric dating was developed."}
+];
+const SORTS=[
+ {k:"Restrict, revise or replace",bins:[["rs","Restricted","still works, but only in a range"],["rv","Revised","main idea kept, changed"],["rp","Replaced","dropped for a new theory"]],
+  items:[
+   ["Newton's laws work for cars and rockets, but not for particles moving close to the speed of light.","rs","Newton's laws are still used within a range of conditions. That is a restriction."],
+   ["Dalton's solid-ball atom gained electrons, a nucleus and energy levels.","rv","Atoms still exist. The model changed to include new evidence."],
+   ["The Earth-centred model gave way to the Sun-centred model.","rp","The old model was dropped completely."],
+   ["Spontaneous generation was dropped in favour of biogenesis.","rp","A new theory took its place."],
+   ["Phlogiston theory was dropped after Lavoisier's oxygen experiments.","rp","Oxygen theory replaced it."],
+   ["Cell theory gained the idea that all cells come from existing cells.","rv","The theory kept its main idea and added a new part."],
+   ["Simple gas laws predict gas behaviour well at normal pressures, but not at very high pressures or very low temperatures.","rs","The laws still work, but only within a range of conditions."],
+   ["The idea that stress causes most ulcers was dropped for a bacterial cause.","rp","A new explanation took over."],
+   ["Earth's estimated age changed from millions of years to about 4.5 billion years.","rv","The idea of an ancient Earth stayed. The number was revised with radiometric dating."],
+   ["Everyday physics describes a thrown baseball well, but not an electron inside an atom.","rs","Classical physics is restricted to objects much bigger than atoms."],
+   ["Continental drift kept the idea of moving continents and gained a mechanism: plates and seafloor spreading.","rv","Plate tectonics revised Wegener's continental drift. (The idea of fixed continents was the one replaced.)"]
+  ]},
+ {k:"Technique or analysis",bins:[["tech","Investigation techniques","how the data was collected"],["ana","Analysis and interpretation","what was done with the data"]],
+  items:[
+   ["Was a control group used?","tech","A control group is part of the investigation design."],
+   ["Was only one variable changed at a time?","tech","This is about how the experiment was set up."],
+   ["Were there enough repeated trials?","tech","Repeating trials is part of collecting reliable data."],
+   ["Was the sample size large enough?","tech","Sample size is chosen when planning the investigation."],
+   ["Were the instruments used the same way every time?","tech","Measurement method is an investigation technique."],
+   ["Were the controlled variables kept the same?","tech","Keeping conditions the same is part of the technique."],
+   ["Was the mean calculated correctly?","ana","Calculations are part of analyzing data."],
+   ["Does the graph have a fair scale and clear labels?","ana","Graphing is how data is analyzed and shown."],
+   ["Does the conclusion match the data?","ana","Interpreting data means drawing a fair conclusion from it."],
+   ["Were unusual results explained instead of simply deleted?","ana","Deciding what to do with outliers is part of analysis."],
+   ["Does the conclusion claim more than was tested?","ana","Interpretation must stay within the evidence."]
+  ]},
+ {k:"Quality of a theory",bins:[["sup","Most supported","agrees with the most evidence"],["comp","Most comprehensive","explains the widest range"],["simp","Simplest","fewest extra assumptions"]],
+  items:[
+   ["Repeated in hundreds of labs in different countries with the same result.","sup","Many independent tests means strong support."],
+   ["Passed every new test, including measurements from new instruments.","sup","Surviving new tests adds support."],
+   ["Backed by fossil, rock and seafloor evidence from many places.","sup","Many lines of evidence agree."],
+   ["Explains how earthquakes, volcanoes and mountain ranges are connected.","comp","One theory covers many different phenomena."],
+   ["Explains rusting and breathing as well as burning.","comp","It explains a wider range of observations."],
+   ["Explains why disease spreads through water, touch and air.","comp","One idea accounts for many observations."],
+   ["Needs no circles on circles to explain planet paths.","simp","Fewer extra parts means simpler."],
+   ["Does not need a mystery substance with negative mass.","simp","Fewer strange assumptions means simpler."],
+   ["Uses one rule instead of a separate exception for each case.","simp","Fewer exceptions means simpler."]
+  ]}
+];
+const CARDS=[
+ ["Phenomenon","Something in nature that can be observed, like an eclipse, a rainbow or a mass extinction."],
+ ["Scientific explanation","A description of how or why a phenomenon happens, based on observations and interpretation of data."],
+ ["Evidence","Observations and data that support or contradict an explanation."],
+ ["Hypothesis","A testable prediction or possible explanation, often written as an if…then statement."],
+ ["Scientific theory","A well-tested explanation of a phenomenon, supported by many lines of evidence."],
+ ["Scientific law","A statement or formula that describes what happens under certain conditions. It does not explain why."],
+ ["Accepted theory","The simplest, most supported and most comprehensive explanation of a phenomenon."],
+ ["Most supported","Agrees with the most evidence from many repeated tests by different scientists."],
+ ["Most comprehensive","Explains the widest range of observations and makes predictions that come true."],
+ ["Simplest","Needs the fewest extra assumptions or special exceptions."],
+ ["Peer review","Experts in the same field check a scientist's investigation techniques and data analysis before the work is published."],
+ ["Scientific journal","A publication where scientists share peer-reviewed research."],
+ ["Controlled experiment","A test where only one variable is changed on purpose and all other conditions are kept the same."],
+ ["Manipulated variable","The variable the scientist changes on purpose. Also called the independent variable."],
+ ["Responding variable","The variable that is measured to see the effect. Also called the dependent variable."],
+ ["Controlled variables","Conditions kept the same so they cannot affect the result."],
+ ["Control group","A group that does not get the change being tested, used for comparison."],
+ ["Trial","One run of an experiment. Repeating trials makes results more reliable."],
+ ["Sample size","How many individuals or objects are tested in each group."],
+ ["Replication","Repeating another scientist's investigation to see if the results hold up."],
+ ["Mean","The average: add the values, then divide by how many there are."],
+ ["Contradictory evidence","Evidence that does not fit what a theory predicts."],
+ ["Restricted theory","A theory that still works, but only within a certain range of conditions."],
+ ["Revised theory","A theory that keeps its main idea but is changed to include new evidence."],
+ ["Replaced theory","A theory that is dropped and replaced by a new theory that explains the evidence better."],
+ ["Model","A simplified representation, like a diagram or simulation, used to explain or predict a phenomenon."]
+];
+const QUIZ=[
+ ["Two explanations both fit all the current evidence about a phenomenon. What do scientists need?",["New evidence that could tell the explanations apart","A vote among scientists","To accept whichever explanation is older","To combine both into one explanation"],0,"When more than one explanation appears valid, new evidence is needed, ideally evidence one explanation predicts and the other does not."],
+ ["Which is NOT one of the qualities of an accepted scientific theory?",["It is the most popular with the public","It is the most supported by evidence","It is the most comprehensive","It is the simplest"],0,"Popularity is not evidence. Accepted theories are the simplest, most supported and most comprehensive."],
+ ["A theory explains burning, rusting and breathing. Which quality does this show?",["Comprehensive","Simplest","Restricted","Replaced"],0,"Explaining a wide range of observations makes a theory comprehensive."],
+ ["Explanation X and Explanation Y fit the same evidence equally well. X needs four extra assumptions and Y needs one. Which is preferred?",["Y, because it is simpler","X, because it is more detailed","Neither can ever be chosen","Both must be rejected"],0,"When evidence is equal, scientists prefer the simplest explanation."],
+ ["In peer review, who checks the work?",["Other experts in the same field","The scientist's family","Anyone on social media","Only the scientist who did it"],0,"Peers are experts in the same field."],
+ ["Which question checks an investigation technique?",["Was a control group used?","Is the mean calculated correctly?","Does the conclusion match the graph?","Were outliers explained?"],0,"Control groups are part of how data is collected. The others are about analysis and interpretation."],
+ ["Which question checks the analysis and interpretation of data?",["Does the conclusion match the data?","Were there enough trials?","Was the sample size large enough?","Was only one variable changed?"],0,"Drawing a conclusion from data is interpretation. The others are techniques."],
+ ["Which statement about peer review is most accurate?",["It is a strong check on quality, but reviewers can still miss mistakes","It proves a result is true forever","It is only needed for theories, not experiments","It replaces the need to repeat experiments"],0,"Peer review is an important filter, but it is not perfect. Replication by other scientists matters too."],
+ ["Lawrence Morley's 1963 paper on seafloor magnetic stripes was rejected by two journals. What does this show?",["Peer review can sometimes reject good ideas","Morley's idea was wrong","Peer review never makes mistakes","Canadian science is not peer reviewed"],0,"His idea was later accepted as key evidence for plate tectonics. Peer review is human and can make mistakes."],
+ ["Galileo's telescope showed Venus has a full set of phases. Why did this matter?",["The Earth-centred model could not explain it","It proved Venus has an atmosphere","It showed Venus orbits Earth","It measured the distance to Venus"],0,"New technology revealed evidence that contradicted the Earth-centred model."],
+ ["Which technology provided evidence for seafloor spreading?",["Sonar and magnetometers","The microscope","The thermometer","DNA sequencing"],0,"Sonar mapped ridges and magnetometers found magnetic stripes on the seafloor."],
+ ["Radiometric dating changed estimates of Earth's age to about…",["4.5 billion years","6,000 years","45 million years","450 billion years"],0,"Radiometric dating measures radioactive decay in rocks, giving about 4.5 billion years."],
+ ["Newton's laws still work for bridges and rockets but not near the speed of light. The theory has been…",["Restricted","Revised","Replaced","Rejected"],0,"It still works, but only within a range of conditions."],
+ ["The atomic model kept the idea that matter is made of atoms but added electrons and a nucleus. The theory was…",["Revised","Restricted","Replaced","Proved"],0,"The main idea stayed and the model changed to include new evidence."],
+ ["Spontaneous generation was dropped and biogenesis took its place. Spontaneous generation was…",["Replaced","Restricted","Revised","Confirmed"],0,"A new theory took its place."],
+ ["A single experiment gives a result that contradicts a well-accepted theory. What usually happens first?",["Scientists check and repeat the experiment","The theory is immediately replaced","The result is ignored forever","The theory is restricted"],0,"One result could be an error. Theories change only when substantial contradictory evidence builds up over time."],
+ ["Which best describes a scientific theory?",["A well-tested explanation supported by much evidence","A wild guess","A fact that can never change","A law that describes but does not explain"],0,"Theories are well-tested explanations, and they can still change with new evidence."],
+ ["An electrician tests a circuit to find out why a breaker keeps tripping. This applies knowledge of…",["Electricity","Space law","Genetics","Plate tectonics"],0,"Electricians use knowledge of current and circuits to explain faults."],
+ ["Which career applies knowledge of orbits and space debris to write rules for space activities?",["Space lawyer","Hydrogen systems technician","Agricultural engineer","Electrician"],0,"Space lawyers need scientific evidence to apply space treaties."],
+ ["An agricultural engineer in southern Alberta most likely works on…",["Irrigation and drainage systems for crops","Rewiring houses","Satellite treaties","Fuel cells in trucks"],0,"Southern Alberta has most of Canada's irrigated farmland."],
+ ["A hydrogen systems technician logs how a fuel cell performs on cold mornings. How does this help science?",["The data helps engineers explain the problem and revise designs","It proves hydrogen is unsafe","It replaces the need for engineers","It has no scientific value"],0,"Field data improves explanations of how equipment behaves."],
+ ["Trials of 12.0 s, 13.0 s and 14.0 s were recorded. What is the mean?",["13.0 s","39.0 s","12.0 s","2.0 s"],0,"Mean = (12.0 + 13.0 + 14.0) ÷ 3 = 39.0 ÷ 3 = 13.0 s."],
+ ["A team tested one plant with music and one without. What is the biggest technique problem?",["The sample size is too small","The mean is wrong","The graph has no title","The conclusion is too careful"],0,"One plant per group cannot separate the effect of music from natural differences between plants."],
+ ["Why did many scientists reject Wegener's continental drift in 1912?",["He could not explain what moved the continents","He had no evidence at all","Continents had already been proven fixed","He did not publish it"],0,"He had evidence but no mechanism. Seafloor evidence in the 1950s and 1960s supplied it."]
+];
+const SHORT=[
+ ["What is needed when two scientific explanations of a phenomenon both appear to be valid? Explain why.","New evidence is needed. Ideally it is evidence that one explanation predicts and the other does not, so it can show which one fits better. For example, finding the Chicxulub crater was strong evidence for the asteroid impact explanation of the dinosaur extinction.",["New evidence is needed","Evidence should tell the explanations apart","An example"]],
+ ["List the three qualities of an accepted scientific theory.","An accepted theory is the most supported by evidence, the most comprehensive (it explains the widest range of observations) and the simplest (it needs the fewest extra assumptions).",["Most supported","Most comprehensive","Simplest"]],
+ ["What is peer review, and what two things do reviewers examine?","Peer review is when experts in the same field check a scientist's work before it is published. They examine the investigation techniques and the analysis and interpretation of the data.",["Experts in the same field","Investigation techniques","Analysis and interpretation of data"]],
+ ["Give one reason peer review does not make a result certain.","Reviewers are people and can miss errors or reject good ideas, as happened to Lawrence Morley in 1963. That is why other scientists also repeat experiments.",["Reviewers can make mistakes","Replication is still needed"]],
+ ["Explain how a new technology can lead to a theory being changed. Use an example.","A new technology can reveal evidence no one could observe before. If that evidence contradicts a theory, the theory may change. For example, Galileo's telescope showed Venus has phases, which the Earth-centred model could not explain, and it was replaced.",["Technology reveals new evidence","Evidence contradicts the theory","A specific example"]],
+ ["What is the difference between a restricted theory and a replaced theory?","A restricted theory still works but only within a certain range of conditions, like Newton's laws at everyday speeds. A replaced theory is dropped and a new theory takes its place, like spontaneous generation being replaced by biogenesis.",["Restricted still works in a range","Replaced is dropped for a new theory","Examples of each"]],
+ ["Why does one contradictory result usually not overturn a theory?","One result could come from an error in technique or analysis. A theory changes only when substantial contradictory evidence builds up over time from many tests.",["One result could be an error","Substantial evidence over time is needed"]],
+ ["A student tested salt on ice once, with the salt tray in sunlight and other trays in the hallway. Give two pieces of peer review feedback.","Two variables changed (salt and sunlight), so all trays should be in the same place. Each tray was tested only once, so the test should be repeated with at least three trials.",["Identifies more than one variable changed","Identifies too few trials","Says how to fix it"]],
+ ["Choose one career from this unit. Describe how it applies knowledge of a phenomenon.","Example: An agricultural engineer studies how water moves through soil. They collect soil moisture data to explain why part of a field grows poorly, then design drainage to fix it, which tests their explanation.",["Names the career","Names the phenomenon","Describes collecting data or testing an explanation"]]
+];
+const LONG=[
+ ["Research a scientific theory that was restricted, revised or replaced. Describe the original theory, the evidence that challenged it, any new technology involved, and how the theory changed. Explain which type of change it was.",["Clearly states the original theory","Describes contradictory evidence that built up over time","Names a technology or method that revealed evidence","Correctly classifies the change as restricted, revised or replaced, with a reason","Names at least one scientist or group who contributed"]],
+ ["You are a peer reviewer. Choose one manuscript from the Peer Review Desk and write a review. Describe its strengths, the problems with investigation techniques and with data analysis, and your recommendation to the editor.",["Names at least one strength","Identifies technique problems with reasons","Identifies analysis or interpretation problems with reasons","Gives a recommendation that fits the problems","Suggests specific fixes"]],
+ ["Scientists once disagreed about what ended the dinosaurs. Explain how this debate shows that understandings of phenomena can change over time. Use the qualities of an accepted theory in your answer.",["Describes both explanations","Explains why new evidence was needed","Uses specific evidence such as iridium, shocked quartz or the crater","Applies supported, comprehensive or simplest","Notes that research continues"]],
+ ["Some people say, \"Scientists keep changing their minds, so we can't trust science.\" Write a response that explains why changing theories is a strength of science.",["Explains that theories change when substantial evidence builds up","Mentions peer review and replication as checks","Uses at least one example","Explains that restricted theories are often still useful","Clear position with reasons"]]
+];
+const COV={
+ K:[["SL1.K1","When multiple scientific explanations of phenomena appear to be valid, new evidence is needed.","Learn 1 (evidence board), Quiz, Written"],
+    ["SL1.K2","Accepted scientific theories are the simplest, most supported, and most comprehensive explanations of phenomena.","Learn 2 (showdown), Lab Bench A, Sort It deck 3, Flashcards, Quiz"],
+    ["SL1.K3","Peer review confirms the validity of scientific work, e.g., scientific theories, and includes\n• examination of investigation techniques\n• analysis and interpretation of data","Learn 3 (paper path), Lab Bench B, Sort It deck 2, Quiz, Written"],
+    ["SL1.K4","New technologies and methods can reveal new evidence that can lead to a scientific theory or model being changed.","Learn 4 (tool explorer), Learn 5, Quiz, Written"],
+    ["SL1.K5","If substantial contradictory evidence is collected over time, a scientific theory can be\n• restricted to a specific range of conditions\n• revised to include the new evidence\n• replaced with a new theory","Learn 5 (evidence pressure), Lab Bench C, Sort It deck 1, Flashcards, Quiz"],
+    ["SL1.K6","Science-related careers apply knowledge of phenomena in areas such as\n• electricity, e.g., electrician\n• agriculture, e.g., agricultural engineer\n• space exploration, e.g., space lawyer\n• innovation, e.g., hydrogen systems technician","Learn 6 (career cards), Lab Bench D, Quiz"]],
+ S:[["SL1.S1","Describe qualities of an accepted scientific theory.","Lab Bench A (theory scorecard), Written short answer 2"],
+    ["SL1.S2","Engage in peer review of a controlled experiment.","Lab Bench B (peer review desk, reviewer math), Written extended 2"],
+    ["SL1.S3","Research information about a scientific theory that has been restricted, revised, or replaced.","Lab Bench C (theory case file), Written extended 1"],
+    ["SL1.S4","Explore how a science-related career can advance explanations of phenomena.","Learn 6, Lab Bench D (career match), Written short answer 9"]],
+ notes:"Accuracy note for SL1.K3: the draft says peer review \"confirms the validity\" of scientific work. Peer review checks and evaluates validity, but it cannot guarantee a result is correct, and theories rest on many peer-reviewed studies rather than being reviewed as a single item. The lab teaches peer review as a strong but imperfect check, followed by replication."
+};
+const $=s=>document.querySelector(s);
+const el=(t,a,h)=>{const e=document.createElement(t);if(a)for(const k in a){if(k==="class")e.className=a[k];else if(k==="text")e.textContent=a[k];else e.setAttribute(k,a[k]);}if(h!==undefined)e.innerHTML=h;return e;};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const KEY="rb-theoryshift-v1";
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){S={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}stats();}
+const CH={rs:["Restricted","rs"],rv:["Revised","rv"],rp:["Replaced","rp"]};
+function stats(){
+ $("#stQuiz").textContent=(S.quizBest||0)+"/10";
+ $("#stCards").textContent=Object.values(S.known||{}).filter(Boolean).length+"/"+CARDS.length;
+ $("#stSort").textContent=(S.sortBest||0)+"%";
+ $("#stRev").textContent=Object.keys(S.reviews||{}).length+"/"+PAPERS.length;
+}
+
+/* theme */
+const THEMES=["auto","light","dark"];
+function applyTheme(){const t=S.theme||"auto";if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t);$("#themeBtn").textContent="Theme: "+t[0].toUpperCase()+t.slice(1);}
+$("#themeBtn").addEventListener("click",()=>{S.theme=THEMES[(THEMES.indexOf(S.theme||"auto")+1)%3];save();applyTheme();});
+
+/* tabs */
+const tabs=[...document.querySelectorAll('[role=tab]')];
+function openTab(t,focus){tabs.forEach(b=>{const on=b===t;b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute("aria-controls")).hidden=!on;});if(focus)t.focus();S.tab=t.id;save();}
+tabs.forEach((b,i)=>{b.addEventListener("click",()=>openTab(b));b.addEventListener("keydown",e=>{let j=null;if(e.key==="ArrowRight")j=(i+1)%tabs.length;if(e.key==="ArrowLeft")j=(i-1+tabs.length)%tabs.length;if(e.key==="Home")j=0;if(e.key==="End")j=tabs.length-1;if(j!==null){e.preventDefault();openTab(tabs[j],true);}});});
+
+/* L1 evidence board */
+const evOn=new Set();
+EVIDENCE.forEach((e,i)=>{const b=el("button",{class:"ev",type:"button","aria-pressed":"false"},`<span class="dot"></span><span><b>${esc(e.t)}</b><br><span class="note">${esc(e.d)}</span></span>`);b.addEventListener("click",()=>{evOn.has(i)?evOn.delete(i):evOn.add(i);b.setAttribute("aria-pressed",evOn.has(i));evUpdate();});$("#evGrid").append(b);});
+function evUpdate(){let a=1,v=1;evOn.forEach(i=>{a+=EVIDENCE[i].imp;v+=EVIDENCE[i].vol;});const p=Math.round(100*a/(a+v));const bars=$("#evBar").children;bars[0].style.width=p+"%";bars[1].style.width=(100-p)+"%";
+ let m;if(!evOn.size)m="No evidence on the board yet. Both explanations look possible.";
+ else if(evOn.size===EVIDENCE.length)m="<b>All evidence in.</b> Most scientists now accept the asteroid impact as the main cause of the extinction. Many still study whether the eruptions added stress to ecosystems. New evidence settled most of the debate, and new evidence could still refine it.";
+ else if(p>=70)m="The board now leans strongly toward the impact. Add the rest to see the full picture.";
+ else if(p<=40)m="So far the board leans toward volcanoes. Is there evidence that only an impact would leave behind?";
+ else m="The evidence so far fits both explanations. Scientists needed evidence that only one of them predicts.";
+ $("#evOut").innerHTML=m;}
+
+/* L2 showdown */
+function sd(i){const d=SHOWDOWN[i];[...$("#sdBtns").children].forEach((b,j)=>b.setAttribute("aria-pressed",i===j));
+ $("#sdOut").innerHTML=`<div class="grid3" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))"><div class="cardx"><span class="chip rp">Older explanation</span><b>${esc(d.a)}</b></div><div class="cardx"><span class="chip a">Accepted explanation</span><b>${esc(d.b)}</b></div></div>`+
+ d.rows.map(r=>`<div class="cardx" style="margin-top:8px"><h4>${esc(r[0])}</h4><p class="note">${esc(r[1])}</p></div>`).join("")+`<p class="fb ok" style="margin-top:8px">${esc(d.win)}</p>`;}
+SHOWDOWN.forEach((d,i)=>{const b=el("button",{class:"btn",type:"button","aria-pressed":"false",text:d.k});b.addEventListener("click",()=>sd(i));$("#sdBtns").append(b);});sd(0);
+
+/* L3 peer review steps */
+function pr(i){[...$("#prSteps").children].forEach((b,j)=>b.setAttribute("aria-pressed",i===j));$("#prOut").innerHTML=`<b>${esc(PR_STEPS[i][0])}.</b> ${esc(PR_STEPS[i][1])}`;}
+PR_STEPS.forEach((s,i)=>{const b=el("button",{type:"button","aria-pressed":"false"},`<span>STEP ${i+1}</span>${esc(s[0])}`);b.addEventListener("click",()=>pr(i));$("#prSteps").append(b);});pr(3);
+
+/* L4 tools */
+function tk(i){const t=TOOLS[i];[...$("#tkBtns").children].forEach((b,j)=>b.setAttribute("aria-pressed",i===j));
+ $("#tkOut").innerHTML=`<div class="cardx"><div class="row"><h4>${esc(t.k)}</h4><span class="code">${esc(t.y)}</span><span class="chip ${CH[t.ch][1]}">${CH[t.ch][0]}</span></div><p class="note"><b>Who:</b> ${esc(t.who)}</p><p><b>What it revealed:</b> ${esc(t.saw)}</p><p><b>What changed:</b> ${esc(t.effect)}</p></div>`;}
+TOOLS.forEach((t,i)=>{const b=el("button",{class:"btn",type:"button","aria-pressed":"false",text:t.k});b.addEventListener("click",()=>tk(i));$("#tkBtns").append(b);});tk(0);
+
+/* L5 evidence pressure */
+let ep=0,epN=0;
+function epDraw(){const c=CASES[ep];[...$("#epBtns").children].forEach((b,j)=>b.setAttribute("aria-pressed",ep===j));
+ $("#epOld").innerHTML=`<b>Original idea:</b> ${esc(c.old)}`;
+ $("#epList").innerHTML=c.ev.slice(0,epN).map(e=>`<li><b>${esc(e[0])}</b><span>${esc(e[1])}</span></li>`).join("");
+ const p=Math.round(100*epN/c.ev.length);$("#epMeter").style.width=p+"%";$("#epPct").textContent=p+"%";
+ $("#epAdd").disabled=epN>=c.ev.length;
+ $("#epOut").innerHTML=epN>=c.ev.length?`<div class="cardx"><span class="stamp ${CH[c.type][1]}" style="justify-self:start">${CH[c.type][0]}</span><p>${esc(c.out)}</p></div>`:(epN?`<p class="note">Evidence is building. Keep going.</p>`:`<p class="note">Add evidence one piece at a time, in the order it was found.</p>`);}
+CASES.forEach((c,i)=>{const b=el("button",{class:"btn",type:"button","aria-pressed":"false",text:c.k});b.addEventListener("click",()=>{ep=i;epN=0;epDraw();});$("#epBtns").append(b);});
+$("#epAdd").addEventListener("click",()=>{epN++;epDraw();});$("#epReset").addEventListener("click",()=>{epN=0;epDraw();});epDraw();
+
+/* L6 careers */
+CAREERS.forEach(c=>{const d=el("details",{class:"cardx"});d.innerHTML=`<summary><b>${esc(c.n)}</b> <span class="chip a">${esc(c.area)}</span></summary><p class="note" style="margin-top:6px">${esc(c.ab)}</p><p><b>On the job:</b> ${esc(c.day)}</p><p><b>How it advances explanations:</b> ${esc(c.adv)}</p>`;$("#careerCards").append(d);});
+
+/* B1 scorecard */
+const CTX=["Why ice on a pond near Elk Island forms later some years","Why chickadees at a backyard feeder in Sherwood Park visit less in some weeks","Why one end of a school garden bed dries out faster","Why the North Saskatchewan River breaks up earlier in some springs","Why some canola plants in a test plot flower early","Why frost forms on some car windows but not others on the same street"];
+let sc=null,scR=0,scT=0;
+function scNew(){const q=["comp","sup","simp"][rnd(0,2)];const N=rnd(8,15);const base={comp:N-rnd(0,1),sup:rnd(3,8),simp:rnd(1,3)};const order=shuffle([0,1,2]);const rows=[];
+ for(let k=0;k<3;k++){const r={comp:base.comp,sup:base.sup,simp:base.simp};const g=order.indexOf(k);
+  if(q==="comp")r.comp=base.comp-[0,rnd(2,4),rnd(5,6)][g];
+  if(q==="sup")r.sup=base.sup-[0,rnd(1,2),rnd(3,3)][g];
+  if(q==="simp")r.simp=base.simp+[0,rnd(1,2),rnd(3,4)][g];
+  rows.push(r);}
+ const win="ABC"[order.indexOf(0)];sc={q,win,N,rows};
+ $("#scCtx").textContent="Practice scenario: "+CTX[rnd(0,CTX.length-1)]+" ("+N+" observations).";
+ $("#scTable").innerHTML=`<table class="tbl"><thead><tr><th>Explanation</th><th>Observations explained</th><th>Supporting studies</th><th>Extra assumptions</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${"ABC"[i]}</td><td class="mono">${Math.max(r.comp,1)} of ${N}</td><td class="mono">${Math.max(r.sup,0)}</td><td class="mono">${r.simp}</td></tr>`).join("")}</tbody></table>`;
+ $("#scPick").value="";$("#scWhy").value="";$("#scFb").innerHTML="";}
+$("#scNew").addEventListener("click",scNew);
+$("#scCheck").addEventListener("click",()=>{if(!sc)return;const p=$("#scPick").value,w=$("#scWhy").value;if(!p||!w){$("#scFb").innerHTML='<p class="fb info">Choose an explanation and a quality first.</p>';return;}
+ const ok=p===sc.win&&w===sc.q;scT++;if(ok)scR++;const name={comp:"most comprehensive",sup:"most supported",simp:"simplest"}[sc.q];
+ const why={comp:"All three have the same support and the same number of extra assumptions, so the one that explains the most observations wins.",sup:"All three explain the same observations with the same assumptions, so the one backed by the most studies wins.",simp:"All three explain the same observations with the same support, so the one with the fewest extra assumptions wins."}[sc.q];
+ $("#scFb").innerHTML=`<p class="fb ${ok?"ok":"no"}">${ok?"Correct.":"Not quite."} Explanation <b>${sc.win}</b> is accepted because it is the ${name}. ${why}</p>`;$("#scScore").textContent=scR+" of "+scT+" correct";});
+scNew();
+
+/* B2 peer review desk */
+let ms=0;
+function msDraw(){const p=PAPERS[ms];[...$("#msBtns").children].forEach((b,j)=>b.setAttribute("aria-pressed",ms===j));
+ $("#msPaper").innerHTML=`<div class="ms"><div class="row" style="justify-content:space-between"><span class="eyebrow">Journal of Student Science</span><span class="eyebrow">${esc(p.id)}</span></div><h3>${esc(p.t)}</h3><p class="note">${esc(p.by)}</p>
+ <p><b>Question:</b> ${esc(p.q)}</p><p><b>Hypothesis:</b> ${esc(p.hyp)}</p><div><b>Method</b><ol style="margin:4px 0 0;padding-left:1.2em">${p.m.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>
+ <div class="scroll"><table><thead><tr>${p.head.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${p.rows.map(r=>`<tr>${r.map((c,i)=>`<td class="${i?"n":""}">${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+ <p><b>Conclusion:</b> ${esc(p.concl)}</p></div>`;
+ const prev=(S.reviews||{})[p.id];
+ $("#msChecks").innerHTML=["Techniques","Analysis"].map(g=>`<p class="eyebrow">${g==="Techniques"?"Investigation techniques":"Analysis and interpretation"}</p>`+ISSUES.filter(x=>x[1]===g).map(x=>`<label><input type="checkbox" value="${x[0]}" id="is-${x[0]}"> ${esc(x[2])}</label>`).join("")).join("")+`<label><input type="checkbox" value="none" id="is-none"> No major problems found</label>`;
+ $("#msDec").value="";$("#msNote").value=prev?prev.note||"":"";$("#msFb").innerHTML=prev?`<p class="note">You reviewed this one before (score ${prev.score}%). You can review it again.</p>`:"";}
+PAPERS.forEach((p,i)=>{const b=el("button",{class:"btn",type:"button","aria-pressed":"false",text:p.id});b.addEventListener("click",()=>{ms=i;msDraw();});$("#msBtns").append(b);});
+$("#msSubmit").addEventListener("click",()=>{const p=PAPERS[ms];const picked=[...$("#msChecks").querySelectorAll("input:checked")].map(x=>x.value).filter(v=>v!=="none");const none=$("#is-none").checked;const dec=$("#msDec").value;
+ if(!dec){$("#msFb").innerHTML='<p class="fb info">Choose a recommendation before you submit.</p>';return;}
+ let hit=0,lines=[];
+ const wrong=picked.filter(x=>!p.need.includes(x)&&!p.ok.includes(x)).length;
+
+ ISSUES.forEach(([id,,label])=>{const need=p.need.includes(id),ok=p.ok.includes(id),got=picked.includes(id);
+  if(need&&got){hit++;lines.push(`<li><span class="issue-ok">Found:</span> ${esc(label)}. ${esc(p.notes[id])}</li>`);}
+  else if(need){lines.push(`<li><span class="issue-miss">Missed:</span> ${esc(label)}. ${esc(p.notes[id])}</li>`);}
+  else if(got&&ok){lines.push(`<li><span class="issue-ok">Fair point:</span> ${esc(label)}. ${esc(p.notes[id]||"")}</li>`);}
+  else if(got){lines.push(`<li><span class="issue-miss">Not a problem here:</span> ${esc(label)}. Look again at the method and data.</li>`);}});
+ if(!p.need.length&&!wrong)hit=1;
+ const total=Math.max(p.need.length,1);const decOk=p.dec.includes(dec);
+ const score=Math.max(0,Math.round(100*(hit/total*0.7+(decOk?0.3:0))-wrong*10));
+ S.reviews=S.reviews||{};S.reviews[p.id]={score,note:$("#msNote").value};save();
+ $("#msFb").innerHTML=`<div class="fb ${score>=70?"ok":"no"}"><b>Editor's report: ${score}%</b><ul style="margin:6px 0;padding-left:1.2em;display:grid;gap:4px">${lines.join("")||"<li>No problems flagged.</li>"}</ul><p><b>Recommendation:</b> ${decOk?"Your choice matches the editor.":"The editor disagrees."} ${esc(p.decNote)}</p></div>`;});
+msDraw();
+
+let av=null,avR=0,avT=0;
+function avNew(){const n=rnd(3,5);const vals=[];const base=rnd(80,200)/10;for(let i=0;i<n;i++)vals.push(Math.round((base+rnd(-12,12)/10)*10)/10);
+ const sum=vals.reduce((a,b)=>a+b,0);const mean=Math.round(sum/n*10)/10;const err=Math.random()<0.5;let shown=mean;
+ if(err){const k=rnd(0,2);shown=k===0?Math.round(sum/(n-1)*10)/10:k===1?Math.round((mean+rnd(3,9)/10)*10)/10:Math.round((mean-rnd(3,9)/10)*10)/10;}
+ const unit=["s","cm","°C","g"][rnd(0,3)];av={vals,mean,shown,err,unit,n,sum:Math.round(sum*10)/10};
+ $("#avgQ").innerHTML=`<p>Trials: <b class="mono">${vals.map(v=>v.toFixed(1)+" "+unit).join(", ")}</b></p><p>The author reports a mean of <b class="mono">${shown.toFixed(1)} ${unit}</b>.</p>`;
+ $("#avgIn").value="";$("#avgFb").innerHTML="";}
+function avCheck(says){if(!av)return;const v=parseFloat($("#avgIn").value);const meanOk=!isNaN(v)&&Math.abs(v-av.mean)<0.051;const callOk=says===!av.err;avT++;if(meanOk&&callOk)avR++;
+ const rng=(Math.max(...av.vals)-Math.min(...av.vals)).toFixed(1);
+ $("#avgFb").innerHTML=`<p class="fb ${meanOk&&callOk?"ok":"no"}">${meanOk?"Your mean is right.":"Check your mean."} ${callOk?"Your call is right.":"Your call is not right."}<br><span class="mono">x̄ = ${av.sum.toFixed(1)} ÷ ${av.n} = ${av.mean.toFixed(1)} ${av.unit}</span>. The author ${av.err?"made an error":"is correct"}. Range = ${rng} ${av.unit}.</p>`;
+ $("#avgScore").textContent=avR+" of "+avT+" correct";}
+$("#avgYes").addEventListener("click",()=>avCheck(true));$("#avgNo").addEventListener("click",()=>avCheck(false));$("#avgNew").addEventListener("click",avNew);avNew();
+
+/* B3 case file */
+const CF=["cfOld","cfEv","cfTech","cfNew","cfSrc","cfType"];
+CASEFILES.forEach((c,i)=>$("#cfPick").append(el("option",{value:i,text:c.k})));
+function cfLoad(){const i=+$("#cfPick").value;const c=CASEFILES[i];$("#cfLeads").innerHTML=`<div class="cardx"><h4>Research leads</h4><ul style="margin:0;padding-left:1.2em">${c.leads.map(l=>`<li>${esc(l)}</li>`).join("")}</ul></div>`;
+ const d=(S.cf||{})[i]||{};CF.forEach(f=>$("#"+f).value=d[f]||"");$("#cfFb").innerHTML="";$("#cfSaved").textContent="";}
+function cfSave(){const i=+$("#cfPick").value;S.cf=S.cf||{};S.cf[i]={};CF.forEach(f=>S.cf[i][f]=$("#"+f).value);S.cfLast=i;save();$("#cfSaved").textContent="Saved in this browser";}
+$("#cfPick").addEventListener("change",()=>{S.cfLast=+$("#cfPick").value;save();cfLoad();});
+CF.forEach(f=>$("#"+f).addEventListener("input",cfSave));$("#cfType").addEventListener("change",cfSave);
+$("#cfCheck").addEventListener("click",()=>{const c=CASEFILES[+$("#cfPick").value];const t=$("#cfType").value;const empty=CF.slice(0,5).filter(f=>$("#"+f).value.trim().length<15).length;
+ let m=t?(t===c.type?`<b>Type of change: correct.</b> `:`<b>Type of change: look again.</b> Most sources describe this as ${CH[c.type][0].toLowerCase()}. `):"Choose a type of change. ";
+ m+=esc(c.key);m+=empty?` <br>You have ${empty} section${empty>1?"s":""} that need more detail.`:" <br>Every section has detail. Compare your sources once more before you hand it in.";
+ $("#cfFb").innerHTML=`<p class="fb ${t===c.type&&!empty?"ok":"info"}">${m}</p>`;});
+$("#cfPick").value=S.cfLast||0;cfLoad();
+
+/* B4 career match */
+let cm=0,cmOrder=shuffle([...MATCH.keys()]),cmR=0,cmT=0,cmDone=false;
+CAREERS.forEach(c=>{const b=el("button",{class:"btn",type:"button",text:c.n});b.addEventListener("click",()=>{if(cmDone)return;const m=MATCH[cmOrder[cm%cmOrder.length]];const ok=c.k===m[1];cmT++;if(ok)cmR++;cmDone=true;
+ $("#cmFb").innerHTML=`<p class="fb ${ok?"ok":"no"}">${ok?"Yes.":"Not this time. It is the "+esc(CAREERS.find(x=>x.k===m[1]).n.toLowerCase())+"."} ${esc(m[2])}</p>`;$("#cmScore").textContent=cmR+" of "+cmT+" correct";});$("#cmBtns").append(b);});
+function cmShow(){const m=MATCH[cmOrder[cm%cmOrder.length]];$("#cmQ").innerHTML=`<b>Situation:</b> ${esc(m[0])}`;$("#cmFb").innerHTML="";cmDone=false;}
+$("#cmNew").addEventListener("click",()=>{cm++;cmShow();});cmShow();
+
+/* Sort It */
+let sd_=0,sq=[],si=0,sr=0,sAns=false;
+function sortStart(i){sd_=i;sq=shuffle(SORTS[i].items);si=0;sr=0;[...$("#sortDecks").children].forEach((b,j)=>b.setAttribute("aria-pressed",i===j));
+ $("#sortBins").innerHTML="";SORTS[i].bins.forEach(([k,n,sub])=>{const b=el("button",{type:"button"},`${esc(n)}<small>${esc(sub)}</small>`);b.addEventListener("click",()=>sortPick(k));$("#sortBins").append(b);});sortShow();}
+function sortShow(){$("#sortFb").innerHTML="";sAns=false;
+ if(si>=sq.length){const pct=Math.round(100*sr/sq.length);if(pct>(S.sortBest||0)){S.sortBest=pct;save();}
+  $("#sortCard").textContent=`Deck done: ${sr} of ${sq.length} (${pct}%).`;$("#sortProg").textContent="Finished";
+  const again=el("button",{class:"btn primary",type:"button",text:"Play this deck again"});again.addEventListener("click",()=>sortStart(sd_));$("#sortFb").append(again);[...$("#sortBins").children].forEach(b=>b.disabled=true);return;}
+ [...$("#sortBins").children].forEach(b=>b.disabled=false);
+ $("#sortCard").textContent=sq[si][0];$("#sortProg").textContent=`Card ${si+1} of ${sq.length}`;$("#sortScore").textContent=`Score ${sr}`;}
+function sortPick(k){if(sAns)return;sAns=true;const it=sq[si];const ok=k===it[1];if(ok)sr++;const name=SORTS[sd_].bins.find(b=>b[0]===it[1])[1];
+ $("#sortFb").innerHTML=`<p class="fb ${ok?"ok":"no"}">${ok?"Correct.":"It belongs in "+esc(name)+"."} ${esc(it[2])}</p>`;$("#sortScore").textContent=`Score ${sr}`;
+ const nx=el("button",{class:"btn primary",type:"button",text:"Next card"});nx.addEventListener("click",()=>{si++;sortShow();});$("#sortFb").append(nx);nx.focus();}
+SORTS.forEach((d,i)=>{const b=el("button",{class:"btn",type:"button","aria-pressed":"false",text:d.k});b.addEventListener("click",()=>sortStart(i));$("#sortDecks").append(b);});sortStart(0);
+
+/* Flashcards */
+S.known=S.known||{};let fcList=[...CARDS.keys()],fci=0,fcBack=false,fcOnly=false;
+function fcFilter(){fcList=[...CARDS.keys()].filter(i=>!fcOnly||!S.known[i]);if(fci>=fcList.length)fci=0;fcDraw();}
+function fcDraw(){fcBack=false;if(!fcList.length){$("#fcCard").innerHTML=`<div class="face"><p class="term">All known</p><p>Every card is marked known. Switch to All cards to review.</p></div>`;$("#fcCount").textContent="";return;}
+ const c=CARDS[fcList[fci]];const k=S.known[fcList[fci]];$("#fcCard").innerHTML=`<div class="face"><span class="eyebrow">Term ${k?"· known":""}</span><p class="term">${esc(c[0])}</p><p class="note">Tap to see the meaning</p></div>`;
+ $("#fcCount").textContent=`${fci+1} of ${fcList.length}`;}
+function fcFlip(){if(!fcList.length)return;fcBack=!fcBack;const c=CARDS[fcList[fci]];$("#fcCard").innerHTML=fcBack?`<div class="face back"><span class="eyebrow">${esc(c[0])}</span><p style="font-size:1.2rem">${esc(c[1])}</p></div>`:`<div class="face"><span class="eyebrow">Term</span><p class="term">${esc(c[0])}</p><p class="note">Tap to see the meaning</p></div>`;}
+$("#fcCard").addEventListener("click",fcFlip);
+$("#fcNext").addEventListener("click",()=>{if(fcList.length){fci=(fci+1)%fcList.length;fcDraw();}});
+$("#fcPrev").addEventListener("click",()=>{if(fcList.length){fci=(fci-1+fcList.length)%fcList.length;fcDraw();}});
+$("#fcKnown").addEventListener("click",()=>{if(!fcList.length)return;S.known[fcList[fci]]=true;save();if(fcOnly)fcFilter();else{fci=(fci+1)%fcList.length;fcDraw();}});
+$("#fcStill").addEventListener("click",()=>{if(!fcList.length)return;S.known[fcList[fci]]=false;save();fci=(fci+1)%fcList.length;fcDraw();});
+$("#fcShuffle").addEventListener("click",()=>{fcList=shuffle(fcList);fci=0;fcDraw();});
+$("#fcAll").addEventListener("click",()=>{fcOnly=false;$("#fcAll").setAttribute("aria-pressed",true);$("#fcLearn").setAttribute("aria-pressed",false);fcFilter();});
+$("#fcLearn").addEventListener("click",()=>{fcOnly=true;$("#fcAll").setAttribute("aria-pressed",false);$("#fcLearn").setAttribute("aria-pressed",true);fcFilter();});
+fcDraw();
+
+/* Quiz */
+let qz=[],qi=0,qs=0;
+function qStart(){qz=shuffle(QUIZ).slice(0,10).map(q=>{const o=shuffle(q[1].map((t,i)=>({t,ok:i===q[2]})));return{q:q[0],o,ex:q[3]};});qi=0;qs=0;qShow();}
+function qShow(){const box=$("#quizBox");
+ if(qi>=qz.length){if(qs>(S.quizBest||0)){S.quizBest=qs;save();}box.innerHTML=`<h2>Round complete: ${qs} of 10</h2><p>${qs>=8?"Strong work. You are ready for the written review.":qs>=5?"Good start. Review the Learn sections for the questions you missed.":"Go back through Learn and the Sort It decks, then try again."}</p><p class="note">Best score: ${S.quizBest||0} of 10</p>`;const b=el("button",{class:"btn primary",type:"button",text:"New round"});b.addEventListener("click",qStart);box.append(b);b.focus();return;}
+ const q=qz[qi];box.innerHTML=`<div class="progress"><i style="width:${qi*10}%"></i></div><div class="row" style="justify-content:space-between"><span class="eyebrow">Question ${qi+1} of 10</span><span class="eyebrow">Score ${qs}</span></div><h3 style="font-size:1.2rem">${esc(q.q)}</h3><div class="opts" id="qOpts"></div><div id="qFb" aria-live="polite"></div>`;
+ q.o.forEach(o=>{const b=el("button",{type:"button",text:o.t});b.addEventListener("click",()=>{[...$("#qOpts").children].forEach((x,j)=>{x.disabled=true;if(q.o[j].ok)x.classList.add("right");});if(o.ok)qs++;else b.classList.add("wrong");
+  $("#qFb").innerHTML=`<p class="fb ${o.ok?"ok":"no"}">${o.ok?"Correct.":"Not quite."} ${esc(q.ex)}</p>`;const n=el("button",{class:"btn primary",type:"button",text:qi<9?"Next question":"See results"});n.style.marginTop="8px";n.addEventListener("click",()=>{qi++;qShow();});$("#qFb").append(n);n.focus();});$("#qOpts").append(b);});}
+qStart();
+
+/* Written */
+S.w=S.w||{};
+function wBox(id,prompt,model,checks,long){const d=el("article",{class:"sec"});const v=S.w[id]||"";
+ d.innerHTML=`<p><b>${long?"Extended":"Short"} ${id.slice(1)}.</b> ${esc(prompt)}</p><label class="lbl" for="w-${id}">Your answer<textarea id="w-${id}" style="min-height:${long?180:100}px">${esc(v)}</textarea></label>
+ <details class="model-ans"><summary>${long?"Success criteria":"Model answer and key ideas"}</summary>${model?`<p style="margin:8px 0">${esc(model)}</p>`:""}<div class="checks" style="margin-top:8px">${checks.map((c,i)=>`<label><input type="checkbox" id="wc-${id}-${i}" ${(S.w[id+"c"]||[])[i]?"checked":""}> ${esc(c)}</label>`).join("")}</div></details>`;
+ d.querySelector("textarea").addEventListener("input",e=>{S.w[id]=e.target.value;save();});
+ d.querySelectorAll("input[type=checkbox]").forEach((c,i)=>c.addEventListener("change",()=>{const a=S.w[id+"c"]||[];a[i]=c.checked;S.w[id+"c"]=a;save();}));return d;}
+SHORT.forEach((s,i)=>$("#shortList").append(wBox("s"+(i+1),s[0],s[1],s[2],false)));
+LONG.forEach((s,i)=>$("#longList").append(wBox("e"+(i+1),s[0],"",s[1],true)));
+
+/* Coverage */
+$("#covTable").innerHTML=`<thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody>${COV.K.concat(COV.S).map(r=>`<tr><td><code>${esc(r[0])}</code></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("")}</tbody>`;
+$("#covNotes").textContent=COV.notes;
+
+applyTheme();stats();
+const st=S.tab&&document.getElementById(S.tab);if(st)openTab(st);
+</script>
+
+</body></html>

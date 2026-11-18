@@ -1,0 +1,1552 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/disturbance-and-succession-lab/"><meta name="description" content="Ecosystems can maintain stability despite disturbances."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Disturbance and Succession Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field-station notebook after a disturbance. Sticky tab strip, then lessons that pair a short reading column with a live model. Ember marks disturbance, green marks regrowth, blue marks water and data. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --ash:#5E6862; --ash-soft:#E6E9E6; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --age1:#DCEBCB; --age2:#9FCB8E; --age3:#4E9A5F; --age4:#2B6440;
+  --sky:#E3EEF2; --ground:#D8E3CC; --soil:#B79F7E; --rock:#A3ACA6; --bark:#5B4A3A; --bloom:#B4407A; --lichen:#C8A93A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --ash:#B3BDB7; --ash-soft:#252D29; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --age1:#2A3A26; --age2:#3F6B44; --age3:#5E9E6C; --age4:#94CFA0;
+  --sky:#15252B; --ground:#1F2D22; --soil:#4A3E2F; --rock:#55605A; --bark:#8C7660; --bloom:#E07AAE; --lichen:#B39A3C;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --ash:#B3BDB7; --ash-soft:#252D29; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --age1:#2A3A26; --age2:#3F6B44; --age3:#5E9E6C; --age4:#94CFA0;
+  --sky:#15252B; --ground:#1F2D22; --soil:#4A3E2F; --rock:#55605A; --bark:#8C7660; --bloom:#E07AAE; --lichen:#B39A3C;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Life Science: Ecosystems · LS3</div>
+    <h1><span class="fi">Disturbance</span> and <span class="lf">Succession</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Ecosystems can maintain stability despite disturbances. A fire, flood or bulldozer can knock an ecosystem back. Living things then return in a pattern, and people can help or harm that recovery.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with what a disturbance is, watch an ecosystem rebuild itself, then look at why biodiversity is falling and how people can care for ecosystems.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Knocked down, then back up</span>
+      <div class="codes"><span class="code">LS3.K2</span><span class="code">Understanding</span></div>
+      <h3>What is a disturbance?</h3>
+      <p>A <b>disturbance</b> is an event that suddenly changes an ecosystem. It kills or removes living things, or changes their habitat. Disturbances can be small, like one tree blowing down, or huge, like a wildfire that burns thousands of hectares.</p>
+      <p>Disturbances come from three main sources:</p>
+      <ul>
+        <li><b>Geological processes:</b> landslides, rockfalls, earthquakes, volcanic eruptions, and rivers cutting new channels.</li>
+        <li><b>Extreme weather events:</b> floods, droughts, tornadoes, hailstorms, ice storms, and wildfires started by lightning.</li>
+        <li><b>Human activity:</b> clearing land for farms, roads and homes, mining, draining wetlands, pollution, and bringing in species from elsewhere.</li>
+      </ul>
+      <p>An ecosystem is <b>stable</b> when it can keep its structure, biodiversity and processes over time. Stability does not mean nothing ever changes. It means the ecosystem can take a hit and recover. Ecosystems with many species usually recover better, because if one species is lost, others can fill its role.</p>
+      <div class="key"><b>Remember:</b> a stable ecosystem bends and bounces back. Most natural disturbances are part of how ecosystems work. Trouble comes when disturbances are too big, too frequent, or permanent.</div>
+    </div>
+    <div class="model">
+      <h4>Model: Alberta disturbances</h4>
+      <div class="chips" id="distChips" role="group" aria-label="Disturbance source"></div>
+      <div class="detail" id="distDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Rebuilding in a pattern</span>
+      <div class="codes"><span class="code">LS3.K1</span></div>
+      <h3>Ecological succession</h3>
+      <p><b>Ecological succession</b> is the pattern of change in the species and habitat of an area over time. After a disturbance, the first living things to arrive change the place. Those changes make room for new species, which change the place again.</p>
+      <p><b>Primary succession</b> starts where there is no soil at all: bare rock left by a retreating glacier, a fresh lava flow, or a new landslide surface. The first arrivals are <b>pioneer species</b> such as lichens and mosses. They help break down rock, and when they die they add organic matter. Slowly, soil forms. This can take hundreds of years.</p>
+      <p><b>Secondary succession</b> starts where a disturbance removed most living things but left the soil behind, along with roots and seeds. Examples are a burned forest, a flooded field, or a farm field that is no longer used. It is much faster than primary succession.</p>
+      <p>At the Columbia Icefield in Jasper National Park, the Athabasca Glacier has pulled back more than a kilometre since the late 1800s. Walking up the trail, you pass from forest to shrubs to mosses to bare rock: you are walking backward through primary succession.</p>
+      <p class="note">Succession is predictable in its general pattern: small, fast-growing plants first, then shrubs, then trees. The exact species and timing vary from place to place, and another disturbance can restart the clock.</p>
+    </div>
+    <div class="model">
+      <h4>Model: drag the years forward</h4>
+      <div class="chips" id="sucChips" role="group" aria-label="Type of succession"></div>
+      <label class="field" for="sucYears">Years after the disturbance: <span id="sucOut" class="mono">0</span>
+        <input type="range" id="sucYears" min="0" max="6" step="1" value="0"></label>
+      <div class="svgbox"><svg id="sucSvg" viewBox="0 0 640 260" role="img" aria-label="Scene showing the current stage of succession"></svg></div>
+      <div class="detail" id="sucDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Bending versus breaking</span>
+      <div class="codes"><span class="code">LS3.K2</span><span class="code">LS3.K1</span></div>
+      <h3>How stability survives a disturbance</h3>
+      <p>Picture an ecosystem's health as a line on a graph. A disturbance makes the line drop. Then succession pulls it back up. Two things decide what the graph looks like:</p>
+      <ul>
+        <li><b>How big the disturbance is.</b> A windstorm that drops a few trees is a small dip. A severe fire is a deep one.</li>
+        <li><b>How much biodiversity the ecosystem has.</b> More species means more backups. Some species survive the event, some seeds wait in the soil, and some animals move back in from nearby. Recovery is faster.</li>
+      </ul>
+      <p>Some disturbances are so large or so lasting that the ecosystem cannot return to what it was. A wetland drained and paved for a parking lot is not going to rebuild itself. In that case, the area becomes a different system.</p>
+    </div>
+    <div class="model">
+      <h4>Model: recovery curve</h4>
+      <label class="field" for="sevSlider">Disturbance size: <span id="sevOut" class="mono"></span>
+        <input type="range" id="sevSlider" min="10" max="90" step="10" value="50"></label>
+      <label class="field" for="bioSlider">Biodiversity: <span id="bioOut" class="mono"></span>
+        <input type="range" id="bioSlider" min="1" max="10" step="1" value="6"></label>
+      <div class="checks2"><label for="permChk"><input type="checkbox" id="permChk"> The disturbance is permanent (land is cleared and stays cleared)</label></div>
+      <div class="svgbox"><svg id="recSvg" viewBox="0 0 640 260" role="img" aria-label="Graph of ecosystem health over 60 years"></svg></div>
+      <div class="stats" id="recStats" aria-live="polite"></div>
+      <p class="hint">This is a simple model to show the idea, not real measurements.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · The global picture</span>
+      <div class="codes"><span class="code">LS3.K3</span></div>
+      <h3>Why biodiversity is declining</h3>
+      <p>Around the world, biodiversity is falling, and the loss is speeding up. The Living Planet Index tracks thousands of wildlife populations. Since 1970, the monitored populations have dropped by about 73 percent on average. A 2019 United Nations science report estimated that about one million plant and animal species are at risk of extinction.</p>
+      <p>Four main causes are behind the decline:</p>
+      <ul>
+        <li><b>Habitat destruction:</b> forests, wetlands and grasslands are cleared, drained or broken into small pieces. Much of Alberta's native prairie has been plowed or built on.</li>
+        <li><b>Pollution:</b> fertilizer runoff feeds algae blooms in lakes, and plastics, pesticides and oil harm wildlife.</li>
+        <li><b>Invasive species:</b> species brought from somewhere else outcompete or prey on local species. Prussian carp now spread through Alberta rivers. Alberta inspects boats to keep zebra and quagga mussels out.</li>
+        <li><b>Climate change:</b> warming shifts where species can live. Warmer winters helped mountain pine beetle spread east into Alberta's pine forests.</li>
+      </ul>
+      <p class="note">Scientists also name overexploitation, such as overfishing and overhunting, as a major cause worldwide.</p>
+    </div>
+    <div class="model">
+      <h4>Model: add pressures to a wetland</h4>
+      <p class="hint">Turn pressures on and off. Watch how many species the wetland keeps. Pressures add up.</p>
+      <div class="chips" id="pressChips" role="group" aria-label="Pressures on the wetland"></div>
+      <div class="bars" id="pressBars" aria-live="polite"></div>
+      <div class="detail" id="pressDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Losing species</span>
+      <div class="codes"><span class="code">LS3.K4</span></div>
+      <h3>Endangered, extirpated, extinct</h3>
+      <p>Biodiversity drops when species slide toward disappearing. Scientists use clear words for how much trouble a species is in:</p>
+      <ul>
+        <li><b>Endangered:</b> the species is likely to disappear soon if nothing changes.</li>
+        <li><b>Extirpated:</b> the species no longer lives in the wild in one area, such as Canada or Alberta, but still lives somewhere else.</li>
+        <li><b>Extinct:</b> the species no longer exists anywhere on Earth.</li>
+      </ul>
+      <p>In Canada, a committee of scientists called COSEWIC assesses species. It also uses <b>threatened</b> (likely to become endangered) and <b>special concern</b> (sensitive and worth watching).</p>
+      <p>Extinction is permanent. Extirpation can sometimes be reversed by bringing a species back from where it still lives. Even before a species disappears, a shrinking population loses genetic diversity, so it has fewer ways to adapt to change.</p>
+    </div>
+    <div class="model">
+      <h4>Model: species status ladder</h4>
+      <div class="chips" id="spChips" role="group" aria-label="Choose a species"></div>
+      <div class="ladder" id="ladder" aria-hidden="true"></div>
+      <div class="detail" id="spDetail" aria-live="polite"></div>
+      <p class="hint">Statuses can change. Check the Species at Risk Public Registry for the latest.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Everyone's job</span>
+      <div class="codes"><span class="code">LS3.K5</span></div>
+      <h3>Caring for ecosystems</h3>
+      <p>Caring for ecosystems is a <b>shared responsibility</b>. Governments, scientists, landowners, First Nations and Métis communities, farmers, companies, schools and volunteers each hold a piece. Good care usually has three parts:</p>
+      <ul>
+        <li><b>Collaboration:</b> groups plan and work together, because animals and water cross property lines.</li>
+        <li><b>Monitoring data:</b> people count species and test water year after year, so they can tell whether things are getting better or worse.</li>
+        <li><b>Interventions:</b> actions that help, such as <b>species relocation</b> (moving animals to restore a population), <b>habitat conservation</b> (protecting land from being cleared), and <b>protecting water resources</b> (keeping rivers, lakes and wetlands clean and full).</li>
+      </ul>
+      <p>In 2017, Parks Canada moved 16 plains bison from Elk Island National Park, east of Edmonton, to Banff National Park. Many First Nations have long worked to bring bison back to the land, and several Indigenous Guardian programs in Alberta now help monitor wildlife and water.</p>
+    </div>
+    <div class="model">
+      <h4>Model: three kinds of intervention</h4>
+      <div class="chips" id="intChips" role="group" aria-label="Choose an intervention"></div>
+      <div class="detail" id="intDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Working forests</span>
+      <div class="codes"><span class="code">LS3.K6</span></div>
+      <h3>Forest management</h3>
+      <p>More than half of Alberta is covered by forest, much of it boreal forest. Fire is a natural part of this ecosystem. Lodgepole pine and jack pine even have cones that are sealed shut with resin and open in the heat of a fire, dropping seeds onto fresh ash.</p>
+      <p>Forest managers try to get wood, protect communities and keep the forest healthy at the same time. They use practices such as:</p>
+      <ul>
+        <li><b>Selective harvesting:</b> cutting only some trees and leaving the rest standing.</li>
+        <li><b>Reduced impact logging:</b> careful planning of roads and cutting to protect soil, streams and young trees.</li>
+        <li><b>Reforestation:</b> planting or seeding trees after harvest. In Alberta, companies that harvest on public land must regrow the forest.</li>
+        <li><b>Controlled burning:</b> trained crews set small, planned fires in safe weather to clear dead fuel and renew habitat.</li>
+        <li><b>Wildfire risk reduction:</b> thinning trees, clearing deadfall and making fuel breaks near towns. FireSmart is Alberta's program for this.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Model: what each practice does</h4>
+      <div class="chips" id="fmChips" role="group" aria-label="Choose a forest practice"></div>
+      <div class="bars" id="fmBars" aria-live="polite"></div>
+      <div class="detail" id="fmDetail" aria-live="polite"></div>
+      <p class="hint">Bars compare each practice with leaving the forest alone (middle line). They are rough ratings for discussion, not measurements.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Disturb an ecosystem, rebuild one, read real-style monitoring data, run a forest for 60 years, and plan how to care for a place.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 1 · LS3.S1</span>
+      <h3>Disturbance detective</h3>
+      <p>Read the event. Decide what kind of disturbance it is and what kind of succession would follow. Each round gives a new event.</p>
+      <div class="detail" id="ddCard" aria-live="polite"></div>
+      <label class="field" for="ddType">Source of the disturbance
+        <select id="ddType"><option value="">Choose one</option><option value="0">Geological process</option><option value="1">Extreme weather event</option><option value="2">Human activity</option></select></label>
+      <label class="field" for="ddSuc">What follows?
+        <select id="ddSuc"><option value="">Choose one</option><option value="p">Primary succession (no soil left)</option><option value="s">Secondary succession (soil left)</option><option value="n">Little natural recovery while the change stays</option></select></label>
+      <div class="row"><button class="btn" id="ddCheck" type="button">Check</button><button class="btn ghost" id="ddNext" type="button">New event</button></div>
+      <p class="fb" id="ddFb" aria-live="polite"></p>
+      <p class="hint mono" id="ddScore"></p>
+    </div>
+    <div class="model">
+      <h4>Explore: same disturbance, different ecosystems</h4>
+      <p class="hint">A severe storm hits two Alberta wetlands. Choose how many species each one has, then run the storm.</p>
+      <label class="field" for="wetA">Wetland A species: <span id="wetAOut" class="mono"></span><input type="range" id="wetA" min="4" max="40" step="2" value="34"></label>
+      <label class="field" for="wetB">Wetland B species: <span id="wetBOut" class="mono"></span><input type="range" id="wetB" min="4" max="40" step="2" value="10"></label>
+      <div class="row"><button class="btn" id="stormRun" type="button">Run the storm</button></div>
+      <div class="svgbox"><svg id="stormSvg" viewBox="0 0 640 240" role="img" aria-label="Recovery of two wetlands after the same storm"></svg></div>
+      <p class="detail" id="stormOut" aria-live="polite">Press Run the storm to compare.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 2 · LS3.S3</span>
+      <h3>Succession sequencer</h3>
+      <p>The stages are mixed up. Tap them in the order they happen, from right after the disturbance to the oldest community.</p>
+      <div class="chips" id="seqChips" role="group" aria-label="Choose a place"></div>
+      <p class="detail" id="seqIntro"></p>
+      <div class="seq" id="seqBtns"></div>
+      <p class="fb" id="seqFb" aria-live="polite"></p>
+    </div>
+    <div class="model">
+      <h4>Your sequence</h4>
+      <ol class="placed" id="seqPlaced"></ol>
+      <div class="row"><button class="btn ghost" id="seqReset" type="button">Start over</button></div>
+      <p class="hint">Describe it: when you finish, explain in your own words why each stage makes the next one possible.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 3 · LS3.S5 · LS3.S2</span>
+      <h3>Wetland monitoring data</h3>
+      <p>Volunteers surveyed a wetland on the edge of a growing town near Edmonton every four years. They counted how many species of each group they found. <b>These are example data made up for practice.</b></p>
+      <div class="tablebox"><table class="dt" id="wetTable"><caption class="sr">Species found in each survey year</caption></table></div>
+      <div class="detail" id="wetEvents"></div>
+      <h4>Calculate percent change</h4>
+      <div class="formula">percent change = (new value − old value) ÷ old value × 100</div>
+      <div class="worked" id="pcWorked"></div>
+      <div class="detail" id="pcQ" aria-live="polite"></div>
+      <label class="field" for="pcAns">Your answer (percent, to the nearest whole number)<input type="number" id="pcAns" step="1"></label>
+      <div class="row"><button class="btn" id="pcCheck" type="button">Check</button><button class="btn ghost" id="pcNew" type="button">New question</button></div>
+      <p class="fb" id="pcFb" aria-live="polite"></p>
+    </div>
+    <div class="model">
+      <h4>Graph the data</h4>
+      <div class="chips" id="wetChips" role="group" aria-label="Choose a species group"></div>
+      <div class="svgbox"><svg id="wetSvg" viewBox="0 0 640 300" role="img" aria-label="Line graph of species counts by survey year"></svg></div>
+      <h4>Evaluate the data</h4>
+      <div id="evalQs" class="seq"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 4 · LS3.S4 · LS3.K6</span>
+      <h3>Forest manager: 60 years</h3>
+      <p>You manage a boreal forest beside a small town. Pick your practices, then run 60 years. Lightning will strike at random, just like real fire seasons. Run it a few times and compare.</p>
+      <div class="checks2" id="fmChecks"></div>
+      <label class="field" for="harvestSel">Harvest plan
+        <select id="harvestSel"><option value="none">No harvest</option><option value="clear">Clear-cut large blocks</option><option value="select">Selective harvesting</option></select></label>
+      <div class="row"><button class="btn" id="fmRun" type="button">Run 60 years</button></div>
+      <div class="stats" id="fmStats" aria-live="polite"></div>
+      <p class="detail" id="fmOut" aria-live="polite"></p>
+    </div>
+    <div class="model">
+      <h4>Forest map after the run</h4>
+      <div class="forest" id="forestGrid" role="img" aria-label="Forest map"></div>
+      <div class="legend" id="forestLegend"></div>
+      <p class="hint">Each square is a patch of forest. A mix of young, middle-aged and old patches gives the most kinds of habitat.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 5 · LS3.S4 · LS3.K5</span>
+      <h3>Stewardship planner</h3>
+      <p>Choose a place that needs care. Pick the three actions you think would help most, then check your plan.</p>
+      <div class="chips" id="planChips" role="group" aria-label="Choose a place"></div>
+      <p class="detail" id="planIntro"></p>
+      <div class="checks2" id="planOpts"></div>
+      <div class="row"><button class="btn" id="planCheck" type="button">Check my plan</button></div>
+    </div>
+    <div class="model">
+      <h4>Feedback</h4>
+      <div class="detail" id="planFb" aria-live="polite">Pick three actions and press Check my plan.</div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 LS3, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>LS3.K1:</b> succession is taught as predictable in its general pattern (pioneers, then herbs, shrubs and trees), with exact species and timing varying. Secondary succession is defined as following a disturbance that removes most organisms but leaves soil, roots and seeds, which is more precise than "existing areas undergo change".</li>
+      <li><b>LS3.K3:</b> the four named causes are taught. Overexploitation is mentioned once as a fifth major global driver (IPBES 2019). The Living Planet Index figure (73 percent average decline of monitored populations since 1970, 2024 report) and the IPBES estimate of about one million species at risk should be checked against the latest reports before sharing.</li>
+      <li><b>LS3.K4:</b> COSEWIC's threatened and special concern categories are added as context. Species examples (whooping crane, swift fox, greater sage-grouse, plains bison, passenger pigeon) reflect statuses as known in 2026; please verify on the Species at Risk Public Registry.</li>
+      <li><b>LS3.K5:</b> First Nations and Métis roles are described generally (bison restoration efforts and Indigenous Guardian programs) without naming specific community knowledge. Please review the wording, and consider inviting a local Knowledge Keeper or Guardian program to speak.</li>
+      <li><b>LS3.K6:</b> controlled burning is taught as planned fire by trained crews. Indigenous cultural burning is not detailed here; it would be best taught with community partners.</li>
+      <li><b>LS3.S5:</b> the wetland data set is invented for practice and labelled as such on the page. The 2016 survey deliberately uses half the effort so students can spot a data-collection bias.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-ls3-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: disturbance sources ---------- */
+var DIST = [
+  {label: "Geological processes", tag: "Geological", items: [
+    ["Frank Slide, 1903", "A huge mass of limestone broke off Turtle Mountain in the Crowsnest Pass and buried part of the town of Frank. The boulder field is still mostly bare more than a century later. Plants are colonizing it very slowly, because there is almost no soil."],
+    ["River valley slumps", "Along the North Saskatchewan River valley in Edmonton, wet slopes sometimes slump and slide, carrying soil and trees downhill."],
+    ["Volcanic eruptions (worldwide)", "Lava and ash bury the land. In 1980, Mount St. Helens in Washington State flattened forests for kilometres around."]
+  ]},
+  {label: "Extreme weather", tag: "Weather", items: [
+    ["Southern Alberta floods, 2013", "Heavy June rain sent the Bow, Elbow and Highwood rivers over their banks. Floods tore away riverbanks and dropped mud and gravel on meadows."],
+    ["Lightning wildfires", "Lightning starts many of the fires in Alberta's boreal forest each summer. Fire is a natural disturbance there, and many boreal plants recover quickly after it."],
+    ["Edmonton tornado, 1987", "A powerful tornado cut a path through the east side of the city, snapping trees and destroying buildings."],
+    ["Drought", "Several dry years in a row can shrink prairie ponds and sloughs, leaving ducks and frogs without water."]
+  ]},
+  {label: "Human activity", tag: "Human", items: [
+    ["Draining wetlands", "Wetlands are drained to make room for crops, roads and homes. The animals and plants that need standing water lose their habitat."],
+    ["Clearing land", "Forest and prairie are cleared for farms, subdivisions and industry. Roads split habitat into small pieces."],
+    ["Surface mining", "Oil sands surface mines remove forest, wetland and soil. Companies must reclaim the land afterward, which takes many decades."],
+    ["Moving species around", "People carry plants, fish and insects to new places by accident or on purpose. Some become invasive."]
+  ]}
+];
+chipGroup($("distChips"), DIST, "fi", function(d){
+  var box = $("distDetail"); clear(box);
+  box.appendChild(el("span", {"class": "tagline"}, d.label));
+  d.items.forEach(function(it){ box.appendChild(el("h5", null, it[0])); box.appendChild(el("p", null, it[1])); });
+}, 0);
+
+/* ---------- Lesson 2: succession scene ---------- */
+var SUC = {
+  primary: {label: "Primary: glacier forefield", stages: [
+    {yr: "0 years", name: "Bare rock and gravel", txt: "The glacier has just melted back. There is only rock and gravel. No soil, no seeds, no roots.", soil: 0, lichen: 0, moss: 0, herb: 0, shrub: 0, decid: 0, con: 0, conH: 0},
+    {yr: "about 5 to 20 years", name: "Pioneers: lichens and mosses", txt: "Lichens and mosses arrive as tiny spores carried by wind. They grip bare rock and slowly break it down. When they die, they add the first organic matter. These are pioneer species.", soil: 3, lichen: 10, moss: 6, herb: 0, shrub: 0, decid: 0, con: 0, conH: 0},
+    {yr: "about 20 to 50 years", name: "Small flowering plants", txt: "A thin soil lets small plants grow, such as mountain avens. Mountain avens have helper bacteria on their roots that add nitrogen to the soil, which helps later plants grow.", soil: 8, lichen: 6, moss: 8, herb: 10, shrub: 0, decid: 0, con: 0, conH: 0},
+    {yr: "about 50 to 100 years", name: "Willows and shrubs", txt: "Deeper soil holds more water. Willows and other shrubs move in and shade out some of the small plants. Birds and small mammals arrive.", soil: 14, lichen: 2, moss: 6, herb: 8, shrub: 7, decid: 0, con: 0, conH: 0},
+    {yr: "about 100 to 150 years", name: "Young spruce and fir", txt: "Spruce and fir seedlings grow up through the shrubs. The ground gets shadier.", soil: 20, lichen: 1, moss: 6, herb: 5, shrub: 6, decid: 0, con: 5, conH: 45},
+    {yr: "about 150 to 300 years", name: "Young conifer forest", txt: "Trees close their canopy. Shade-loving plants and mosses carpet the forest floor. Soil keeps building as needles fall and decompose.", soil: 26, lichen: 0, moss: 8, herb: 3, shrub: 3, decid: 0, con: 9, conH: 80},
+    {yr: "300 years and more", name: "Mature subalpine forest", txt: "A tall spruce and fir forest with deep soil. It can stay like this for a long time, until the next disturbance resets part of it.", soil: 30, lichen: 0, moss: 8, herb: 2, shrub: 2, decid: 0, con: 11, conH: 120}
+  ]},
+  secondary: {label: "Secondary: boreal forest after fire", stages: [
+    {yr: "0 years", name: "Burned forest", txt: "A wildfire has killed most trees. The soil is still there, with living roots, buried seeds, and pine cones that the heat has opened.", soil: 30, snag: 8, lichen: 0, moss: 0, herb: 0, shrub: 0, decid: 0, decidH: 0, con: 0, conH: 0},
+    {yr: "1 to 2 years", name: "Fireweed and grasses", txt: "Fireweed and grasses sprout from seeds and roots within weeks. Pink fireweed is often the first colour on a burn. Jack pine and lodgepole pine seeds land on the ash.", soil: 30, snag: 8, herb: 14, shrub: 0, decid: 0, decidH: 0, con: 0, conH: 0},
+    {yr: "3 to 10 years", name: "Aspen suckers and shrubs", txt: "Trembling aspen sends up thousands of new shoots, called suckers, from roots that survived underground. Shrubs and pine seedlings grow. Moose and snowshoe hares come to feed.", soil: 30, snag: 6, herb: 10, shrub: 6, decid: 8, decidH: 25, con: 3, conH: 12},
+    {yr: "10 to 30 years", name: "Young aspen and pine", txt: "A thick young forest of aspen and pine. Many young trees die as they compete for light.", soil: 30, snag: 3, herb: 5, shrub: 5, decid: 8, decidH: 60, con: 4, conH: 40},
+    {yr: "30 to 70 years", name: "Spruce grows underneath", txt: "Aspen and pine are tall now. White spruce seedlings grow slowly in the shade below them.", soil: 30, snag: 1, herb: 4, shrub: 4, decid: 7, decidH: 95, con: 5, conH: 50},
+    {yr: "70 to 120 years", name: "Mixedwood forest", txt: "Aspen and spruce share the canopy. This mixedwood forest has many kinds of habitat.", soil: 30, snag: 0, herb: 3, shrub: 3, decid: 5, decidH: 110, con: 6, conH: 105},
+    {yr: "120 years and more", name: "Older spruce forest", txt: "Spruce becomes more common as old aspens die. Dead wood builds up, which is fuel for the next fire. Then the cycle can start again.", soil: 30, snag: 0, herb: 2, shrub: 2, decid: 3, decidH: 100, con: 10, conH: 130}
+  ]}
+};
+var sucType = "primary";
+function drawScene(svg, st, secondary){
+  clear(svg);
+  var W = 640, G = 220;
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: W, height: 260, style: "fill:var(--sky)"}));
+  svg.appendChild(sv("rect", {x: 0, y: G, width: W, height: 40, style: "fill:var(--rock)"}));
+  if (st.soil) svg.appendChild(sv("rect", {x: 0, y: G - st.soil * 0.5, width: W, height: st.soil * 0.5 + 8, style: "fill:var(--soil)"}));
+  if (!st.soil) { for (var r = 0; r < 14; r++) svg.appendChild(sv("ellipse", {cx: 20 + r * 46, cy: G - 4, rx: 16, ry: 9, style: "fill:var(--rock);stroke:var(--line)"})); }
+  var top = G - (st.soil || 0) * 0.5;
+  function xs(n, off){ var a = []; for (var i = 0; i < n; i++) a.push(Math.round(30 + (i + 0.5) * (580 / n) + off)); return a; }
+  xs(st.lichen || 0, 7).forEach(function(x){ svg.appendChild(sv("ellipse", {cx: x, cy: top - 3, rx: 8, ry: 4, style: "fill:var(--lichen)"})); });
+  xs(st.moss || 0, -11).forEach(function(x){ svg.appendChild(sv("ellipse", {cx: x, cy: top - 3, rx: 10, ry: 5, style: "fill:var(--age3)"})); });
+  xs(st.snag || 0, 20).forEach(function(x){ svg.appendChild(sv("rect", {x: x - 3, y: top - 90, width: 6, height: 90, style: "fill:var(--bark)"})); });
+  xs(st.herb || 0, 3).forEach(function(x, i){
+    svg.appendChild(sv("rect", {x: x - 1, y: top - 22, width: 2, height: 22, style: "fill:var(--leaf)"}));
+    svg.appendChild(sv("circle", {cx: x, cy: top - 24, r: 4, style: secondary ? "fill:var(--bloom)" : (i % 2 ? "fill:var(--surface)" : "fill:var(--lichen)")}));
+  });
+  xs(st.shrub || 0, -18).forEach(function(x){ svg.appendChild(sv("ellipse", {cx: x, cy: top - 16, rx: 22, ry: 17, style: "fill:var(--age2)"})); });
+  xs(st.decid || 0, 26).forEach(function(x){
+    var h = st.decidH || 30;
+    svg.appendChild(sv("rect", {x: x - 3, y: top - h, width: 6, height: h, style: "fill:var(--rock)"}));
+    svg.appendChild(sv("ellipse", {cx: x, cy: top - h, rx: 10 + h * 0.15, ry: 10 + h * 0.2, style: "fill:var(--age2)"}));
+  });
+  xs(st.con || 0, -30).forEach(function(x){
+    var h = st.conH || 30;
+    svg.appendChild(sv("rect", {x: x - 2, y: top - 10, width: 4, height: 10, style: "fill:var(--bark)"}));
+    svg.appendChild(sv("polygon", {points: (x - h * 0.16) + "," + (top - 8) + " " + x + "," + (top - 8 - h) + " " + (x + h * 0.16) + "," + (top - 8), style: "fill:var(--age4)"}));
+  });
+  svg.appendChild(sv("text", {x: 12, y: 22, "class": "lbl"}, st.yr));
+  svg.appendChild(sv("text", {x: 12, y: 40, "class": "small"}, st.name));
+  if (st.soil) svg.appendChild(sv("text", {x: W - 12, y: 252, "class": "small", "text-anchor": "end"}, "soil above rock"));
+}
+function renderSuc(){
+  var i = +$("sucYears").value, set = SUC[sucType], st = set.stages[i];
+  $("sucOut").textContent = st.yr;
+  drawScene($("sucSvg"), st, sucType === "secondary");
+  $("sucSvg").setAttribute("aria-label", set.label + ", " + st.yr + ": " + st.name);
+  detail($("sucDetail"), st.name, [st.txt], "Stage " + (i + 1) + " of 7 · " + st.yr);
+}
+chipGroup($("sucChips"), [{label: "Primary succession", k: "primary"}, {label: "Secondary succession", k: "secondary"}], "lf", function(it){ sucType = it.k; renderSuc(); }, 0);
+$("sucYears").addEventListener("input", renderSuc);
+
+/* ---------- Recovery model (lesson 3 and bench) ---------- */
+function recovery(sev, bio, perm){
+  var h0 = Math.max(5, 100 - Math.min(95, sev * (1.1 - bio * 0.04)));
+  var T = 100, note = "";
+  if (perm) { T = Math.max(5, 100 - sev * 0.85); note = "perm"; }
+  else if (sev >= 70 && bio <= 3) { T = 72; note = "shift"; }
+  var k = perm ? 0.5 : 0.035 + 0.022 * bio;
+  var pts = [];
+  for (var t = 0; t <= 60; t++) {
+    var h = t < 5 ? 100 : T - (T - h0) * Math.exp(-k * (t - 5));
+    pts.push(h);
+  }
+  var rec = null;
+  for (var t2 = 5; t2 <= 60; t2++) if (pts[t2] >= 90) { rec = t2 - 5; break; }
+  return {pts: pts, low: h0, end: pts[60], rec: rec, note: note};
+}
+function plotLines(svg, series, opts){
+  clear(svg);
+  var W = 640, H = opts.h || 260, L = 46, R = 16, Tp = 16, B = 36;
+  var pw = W - L - R, ph = H - Tp - B;
+  var xmax = opts.xmax, ymax = opts.ymax;
+  function X(v){ return L + v / xmax * pw; }
+  function Y(v){ return Tp + ph - v / ymax * ph; }
+  opts.yticks.forEach(function(v){
+    svg.appendChild(sv("line", {x1: L, x2: W - R, y1: Y(v), y2: Y(v), "class": "grid"}));
+    svg.appendChild(sv("text", {x: L - 6, y: Y(v) + 4, "class": "small", "text-anchor": "end"}, String(v)));
+  });
+  opts.xticks.forEach(function(v){ svg.appendChild(sv("text", {x: X(v), y: H - B + 16, "class": "small", "text-anchor": "middle"}, String(v))); });
+  svg.appendChild(sv("line", {x1: L, x2: W - R, y1: Y(0), y2: Y(0), "class": "axis"}));
+  svg.appendChild(sv("text", {x: L + pw / 2, y: H - 4, "class": "small", "text-anchor": "middle"}, opts.xlabel));
+  if (opts.marks) opts.marks.forEach(function(m){
+    svg.appendChild(sv("line", {x1: X(m.x), x2: X(m.x), y1: Tp, y2: Tp + ph, style: "stroke:var(--fire);stroke-width:1.5;stroke-dasharray:4 4"}));
+    if (m.label) svg.appendChild(sv("text", {x: X(m.x) + 4, y: Tp + 12, "class": "small"}, m.label));
+  });
+  series.forEach(function(s){
+    var d = s.pts.map(function(p, i){ var x = s.xs ? s.xs[i] : i; return (i ? "L" : "M") + X(x).toFixed(1) + " " + Y(p).toFixed(1); }).join(" ");
+    svg.appendChild(sv("path", {d: d, style: "fill:none;stroke:" + s.color + ";stroke-width:3" + (s.dash ? ";stroke-dasharray:6 5" : "")}));
+    if (s.dots) s.pts.forEach(function(p, i){ svg.appendChild(sv("circle", {cx: X(s.xs[i]), cy: Y(p), r: s.flag === i ? 6 : 4, style: "fill:" + (s.flag === i ? "var(--fire)" : s.color) + ";stroke:var(--surface);stroke-width:2"})); });
+    if (s.label) { var lp = s.pts[s.pts.length - 1]; svg.appendChild(sv("text", {x: X(s.xs ? s.xs[s.xs.length - 1] : s.pts.length - 1) - 4, y: Y(lp) - 8, "class": "lbl", "text-anchor": "end", style: "fill:" + s.color}, s.label)); }
+  });
+}
+var SEVW = ["", "tiny", "small", "small", "medium", "medium", "large", "large", "severe", "severe"];
+function renderRec(){
+  var sev = +$("sevSlider").value, bio = +$("bioSlider").value, perm = $("permChk").checked;
+  $("sevOut").textContent = SEVW[sev / 10] + " (" + sev + ")";
+  $("bioOut").textContent = bio <= 3 ? "low (" + bio + ")" : bio <= 7 ? "medium (" + bio + ")" : "high (" + bio + ")";
+  var r = recovery(sev, bio, perm);
+  plotLines($("recSvg"), [{pts: r.pts, color: "var(--leaf)"}], {xmax: 60, ymax: 100, yticks: [0, 25, 50, 75, 100], xticks: [0, 10, 20, 30, 40, 50, 60], xlabel: "Years", marks: [{x: 5, label: "disturbance"}]});
+  var box = $("recStats"); clear(box);
+  [["Lowest health", Math.round(r.low)], ["Health after 60 years", Math.round(r.end)], ["Years to reach 90", r.rec == null ? "not reached" : r.rec]].forEach(function(s){
+    var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, s[0])); d.appendChild(el("b", null, String(s[1]))); box.appendChild(d);
+  });
+  var msg = r.note === "perm" ? "A permanent change: the ecosystem cannot rebuild while the land stays cleared." : r.note === "shift" ? "A severe hit to a low-diversity ecosystem: it settles into a different, poorer state." : r.rec != null && r.rec <= 15 ? "The ecosystem bounces back quickly. That is stability." : "The ecosystem recovers, but slowly.";
+  box.appendChild(el("p", {"class": "hint", style: "grid-column:1/-1"}, msg));
+}
+["sevSlider", "bioSlider"].forEach(function(id){ $(id).addEventListener("input", renderRec); });
+$("permChk").addEventListener("change", renderRec);
+renderRec();
+
+/* ---------- Lesson 4: pressures ---------- */
+var GROUPS = [["Amphibians", 6], ["Waterbirds", 22], ["Wetland plants", 16], ["Insects", 14], ["Fish", 4]];
+var PRESS = [
+  {label: "Habitat destruction", f: [0.6, 0.6, 0.6, 0.65, 0.6], t: "Half the wetland is drained and filled for houses. Every group loses space, food and nesting sites."},
+  {label: "Pollution", f: [0.6, 0.9, 0.8, 0.7, 0.5], t: "Fertilizer from lawns and fields washes in. Algae bloom, then rot and use up oxygen, so fish and frog eggs suffer."},
+  {label: "Invasive species", f: [0.9, 0.95, 0.8, 0.9, 0.5], t: "Prussian carp reach the creek. They breed fast and compete with native fish. An invasive plant crowds the shallows."},
+  {label: "Climate change", f: [0.7, 0.85, 0.9, 0.85, 0.9], t: "Hotter, drier summers shrink the water. Frogs need water long enough for tadpoles to change into adults."}
+];
+var pressOn = [false, false, false, false];
+function renderPress(){
+  var box = $("pressBars"); clear(box);
+  var total = 0, max = 0;
+  GROUPS.forEach(function(g, gi){
+    var v = g[1];
+    PRESS.forEach(function(p, pi){ if (pressOn[pi]) v *= p.f[gi]; });
+    v = Math.round(v); total += v; max += g[1];
+    var row = el("div", {"class": "barrow"});
+    row.appendChild(el("span", null, g[0]));
+    var tr = el("div", {"class": "track"}), i = el("i", {"class": v / g[1] < 0.6 ? "warn" : ""}); i.style.width = (v / g[1] * 100) + "%"; tr.appendChild(i); row.appendChild(tr);
+    row.appendChild(el("b", null, v + "/" + g[1]));
+    box.appendChild(row);
+  });
+  var n = pressOn.filter(Boolean).length;
+  var lines = PRESS.filter(function(p, i){ return pressOn[i]; }).map(function(p){ return p.label + ": " + p.t; });
+  detail($("pressDetail"), "Species left: " + total + " of " + max, lines.length ? lines.concat([n > 1 ? "Notice how the pressures stack. Together they remove more than any one alone." : "Try adding a second pressure."]) : ["No pressures are on. The wetland keeps all its species. Turn on a pressure to see what happens."]);
+}
+(function(){
+  var c = $("pressChips");
+  PRESS.forEach(function(p, i){
+    var b = el("button", {"class": "chip fi", type: "button", "aria-pressed": "false"}, p.label);
+    b.addEventListener("click", function(){ pressOn[i] = !pressOn[i]; b.setAttribute("aria-pressed", pressOn[i] ? "true" : "false"); renderPress(); });
+    c.appendChild(b);
+  });
+  renderPress();
+})();
+
+/* ---------- Lesson 5: status ladder ---------- */
+var RUNGS = [["Special concern", "Sensitive; worth watching"], ["Threatened", "Likely to become endangered"], ["Endangered", "Likely to disappear soon"], ["Extirpated", "Gone from the wild here, alive elsewhere"], ["Extinct", "Gone from Earth forever"]];
+var SPECIES = [
+  {label: "Whooping crane", s: 2, t: "The tallest bird in North America. By the 1940s only about 15 to 20 wild birds were left. The only natural wild flock nests in Wood Buffalo National Park, on the border of Alberta and the Northwest Territories. Protecting its nesting and winter habitat has helped the flock grow to several hundred birds. It is still endangered."},
+  {label: "Greater sage-grouse", s: 2, t: "Lives in sagebrush grassland in the far southeast corner of Alberta. Its numbers fell sharply as its habitat was lost and broken up by roads and development."},
+  {label: "Swift fox", s: 1, t: "A small prairie fox. It disappeared from the Canadian prairies by the late 1930s and was listed as extirpated in Canada in 1978. Reintroductions began in 1983, and swift foxes now live wild again in southeast Alberta and southwest Saskatchewan. Its status improved to threatened. Extirpation can sometimes be undone.", was: 3},
+  {label: "Westslope cutthroat trout", s: 1, t: "A native trout of cold mountain streams in southwest Alberta. Habitat damage and invasive trout that breed with it or compete with it have shrunk pure populations."},
+  {label: "Greater prairie-chicken", s: 3, t: "Once lived on the prairies of Alberta, Saskatchewan and Manitoba. It no longer lives in the wild in Canada, but it still lives in parts of the United States. That makes it extirpated in Canada, not extinct."},
+  {label: "Passenger pigeon", s: 4, t: "Once perhaps the most common bird in North America, flying in flocks of millions. Overhunting and forest clearing wiped it out. The last one died in a zoo in 1914. It is extinct."}
+];
+chipGroup($("spChips"), SPECIES, "", function(sp){
+  var lad = $("ladder"); clear(lad);
+  RUNGS.forEach(function(r, i){
+    var d = el("div", {"class": "rung" + (i === sp.s ? " on" : "")});
+    d.appendChild(el("b", null, r[0] + (sp.was === i ? " (past)" : "")));
+    d.appendChild(el("span", null, r[1]));
+    lad.appendChild(d);
+  });
+  detail($("spDetail"), sp.label, [sp.t], "Status: " + RUNGS[sp.s][0]);
+}, 0);
+
+/* ---------- Lesson 6: interventions ---------- */
+var INTS = [
+  {label: "Species relocation", who: "Parks Canada, Elk Island and Banff national parks, First Nations partners, scientists.", data: "Bison are fitted with tracking collars, and herd size and calf numbers are counted each year.", t: "In 2017, 16 plains bison were moved from Elk Island National Park to a remote valley in Banff National Park, bringing wild bison back to the area for the first time in more than a century. Swift fox reintroductions on the prairies are another example."},
+  {label: "Habitat conservation", who: "Governments, land trusts, ranchers, counties and conservation groups.", data: "Surveys track which species use the protected land and how its plants change.", t: "Protected areas such as Elk Island National Park and the Beaver Hills Biosphere east of Edmonton keep habitat from being cleared. Ranchers can also sign conservation agreements that keep native grassland unplowed while it is still grazed."},
+  {label: "Protecting water resources", who: "Watershed groups, farmers, towns, Indigenous Guardian programs, the province.", data: "Water is tested for nutrients, temperature and clarity, and fish and insects are counted.", t: "Fencing cattle back from streams and planting willows along banks keeps soil out of the water. Boat inspections keep invasive mussels out of Alberta lakes. Restoring drained wetlands stores water and filters it."}
+];
+chipGroup($("intChips"), INTS, "wa", function(it){
+  detail($("intDetail"), it.label, [it.t, "Who works together: " + it.who, "Monitoring data: " + it.data]);
+}, 0);
+
+/* ---------- Lesson 7: forest practices ---------- */
+var FMP = [
+  {label: "Selective harvesting", r: [1, 0, 1, -1], t: "Only some trees are cut. Older trees, shelter and seed trees stay, so wildlife keeps more of its habitat. Machines still disturb some soil."},
+  {label: "Reduced impact logging", r: [1, 0, 0, 0], t: "Roads and skid trails are planned to be few and short. Trees are felled away from streams, buffers are left along water, and work is often done in winter on frozen ground to protect soil."},
+  {label: "Reforestation", r: [2, 0, 1, 1], t: "Seedlings are planted, or natural seeding is helped, after harvest or fire. Roots hold the soil and a new forest starts sooner."},
+  {label: "Controlled burning", r: [0, 2, 2, 0], t: "A planned, small fire in safe weather burns dead wood and old grass. It lowers the fuel for future wildfires and creates young, open habitat that many plants and animals need."},
+  {label: "Wildfire risk reduction", r: [0, 2, -1, 0], t: "FireSmart work near towns: thinning trees, removing dead branches and deadfall, and making fuel breaks. It protects people and homes, though thinned patches have a bit less cover for wildlife."}
+];
+var FMA = ["Wood supply", "Community safety", "Habitat variety", "Soil and water"];
+chipGroup($("fmChips"), FMP, "lf", function(p){
+  var box = $("fmBars"); clear(box);
+  FMA.forEach(function(a, i){
+    var v = p.r[i];
+    var row = el("div", {"class": "barrow"});
+    row.appendChild(el("span", null, a));
+    var tr = el("div", {"class": "track"}); tr.style.background = "linear-gradient(90deg,transparent calc(50% - 1px),var(--muted) calc(50% - 1px),var(--muted) calc(50% + 1px),transparent calc(50% + 1px)),var(--surface)";
+    var i2 = el("i", {"class": v < 0 ? "warn" : ""}); i2.style.width = ((v + 2) / 4 * 100) + "%"; tr.appendChild(i2); row.appendChild(tr);
+    row.appendChild(el("b", null, v > 0 ? "+" + v : String(v)));
+    box.appendChild(row);
+  });
+  detail($("fmDetail"), p.label, [p.t]);
+}, 0);
+
+/* ---------- Bench 1: disturbance detective ---------- */
+var EVENTS = [
+  ["Lightning starts a fire that burns a stand of jack pine in northern Alberta. The soil is scorched but still there.", 1, "s", "Lightning fire is an extreme weather event. Soil, roots and seeds remain, so secondary succession follows."],
+  ["A huge rockslide covers a valley floor with broken limestone boulders, like the Frank Slide of 1903.", 0, "p", "A rockslide is a geological process. The boulders have no soil, so primary succession must start from bare rock."],
+  ["A developer drains a wetland and paves it for a parking lot.", 2, "n", "This is human activity. While the pavement stays, the wetland cannot rebuild."],
+  ["Heavy June rain makes a river flood a meadow and leave a layer of mud.", 1, "s", "A flood is an extreme weather event. Soil and many roots and seeds remain under the mud, so secondary succession follows."],
+  ["A volcano erupts and fresh lava covers the land.", 0, "p", "An eruption is a geological process. Cooled lava is bare rock, so primary succession starts."],
+  ["A tornado flattens a strip of aspen forest.", 1, "s", "A tornado is an extreme weather event. Soil and aspen roots survive, and new suckers sprout."],
+  ["A farmer stops planting a field and leaves it alone for good.", 2, "s", "Farming is human activity. The soil is still there, so weeds, grasses, shrubs and then trees return: secondary succession."],
+  ["A surface mine removes forest, soil and rock to reach oil sands.", 2, "n", "Mining is human activity. While mining continues, the land cannot recover. Reclamation later puts soil back so succession can start."],
+  ["An earthquake triggers a landslide that strips a mountain slope down to bedrock.", 0, "p", "Earthquakes and landslides are geological processes. Bare bedrock means primary succession."],
+  ["Three dry summers in a row shrink a prairie slough to cracked mud.", 1, "s", "Drought is an extreme weather event. When rain returns, plants regrow from seeds in the soil: secondary succession."],
+  ["A logging company clear-cuts a block of forest and leaves the soil in place.", 2, "s", "Logging is human activity. With soil left, the forest regrows by secondary succession, faster if it is reforested."],
+  ["A new highway is built across a grassland.", 2, "n", "Building a road is human activity. The paved strip stays cleared, and it also splits the habitat in two."]
+];
+(function(){
+  var cur = null, order = shuffle(EVENTS), idx = 0, right = 0, tries = 0;
+  var TYPES = ["Geological process", "Extreme weather event", "Human activity"];
+  var SUCN = {p: "primary succession", s: "secondary succession", n: "little natural recovery while the change stays"};
+  function next(){
+    cur = order[idx % order.length]; idx++;
+    detail($("ddCard"), "Event " + idx, [cur[0]]);
+    $("ddType").value = ""; $("ddSuc").value = ""; $("ddFb").textContent = ""; $("ddFb").className = "fb";
+  }
+  $("ddCheck").addEventListener("click", function(){
+    var t = $("ddType").value, s = $("ddSuc").value, fb = $("ddFb");
+    if (t === "" || s === "") { fb.textContent = "Choose an answer in both boxes first."; fb.className = "fb no"; return; }
+    var ok = +t === cur[1] && s === cur[2];
+    tries++; if (ok) right++;
+    fb.textContent = (ok ? "Correct. " : "Not quite. Answer: " + TYPES[cur[1]] + ", " + SUCN[cur[2]] + ". ") + cur[3];
+    fb.className = "fb " + (ok ? "ok" : "no");
+    $("ddScore").textContent = "Score " + right + " of " + tries;
+  });
+  $("ddNext").addEventListener("click", next);
+  next();
+})();
+function renderStorm(){
+  var a = +$("wetA").value, b = +$("wetB").value;
+  $("wetAOut").textContent = a; $("wetBOut").textContent = b;
+}
+["wetA", "wetB"].forEach(function(id){ $(id).addEventListener("input", renderStorm); });
+renderStorm();
+function runStorm(){
+  var a = +$("wetA").value, b = +$("wetB").value;
+  var ra = recovery(60, a / 4, false), rb = recovery(60, b / 4, false);
+  plotLines($("stormSvg"), [{pts: ra.pts, color: "var(--leaf)", label: "A"}, {pts: rb.pts, color: "var(--water)", dash: true, label: "B"}], {h: 240, xmax: 60, ymax: 100, yticks: [0, 50, 100], xticks: [0, 10, 20, 30, 40, 50, 60], xlabel: "Years", marks: [{x: 5, label: "storm"}]});
+  function d(r){ return r.rec == null ? "did not get back to 90 within 60 years" : "got back to 90 in about " + r.rec + " years"; }
+  $("stormOut").textContent = "Wetland A (" + a + " species) dropped to " + Math.round(ra.low) + " and " + d(ra) + ". Wetland B (" + b + " species) dropped to " + Math.round(rb.low) + " and " + d(rb) + ". " + (a > b ? "The more diverse wetland held up better and recovered faster." : a < b ? "The more diverse wetland (B) held up better and recovered faster." : "With equal diversity, they recover the same way.");
+}
+$("stormRun").addEventListener("click", runStorm);
+runStorm();
+
+/* ---------- Bench 2: sequencer ---------- */
+var SEQS = [
+  {label: "Glacier forefield", intro: "A glacier in the Rockies has melted back, leaving bare rock and gravel.", stages: SUC.primary.stages.map(function(s){ return [s.name, s.yr]; })},
+  {label: "Boreal forest after fire", intro: "A wildfire has burned a boreal forest north of Edmonton. The soil remains.", stages: SUC.secondary.stages.map(function(s){ return [s.name, s.yr]; })},
+  {label: "Abandoned farm field", intro: "A field in the aspen parkland is no longer farmed. The plowed soil is left alone.", stages: [["Bare plowed soil", "0 years"], ["Weeds and wildflowers", "1 to 2 years"], ["Grasses and other long-lived plants", "3 to 10 years"], ["Shrubs such as wild rose and saskatoon", "10 to 25 years"], ["Young aspen trees", "20 to 40 years"], ["Aspen woodland", "40 years and more"]]}
+];
+(function(){
+  var set, placed, mixed;
+  function start(s){
+    set = s; placed = []; mixed = shuffle(s.stages.map(function(x, i){ return i; }));
+    $("seqIntro").textContent = s.intro;
+    $("seqFb").textContent = ""; render();
+  }
+  function render(){
+    var box = $("seqBtns"); clear(box);
+    mixed.forEach(function(i){
+      var st = set.stages[i];
+      var b = el("button", {"class": "seqbtn", type: "button"});
+      b.appendChild(el("span", null, st[0]));
+      if (placed.indexOf(i) > -1) { b.disabled = true; b.appendChild(el("small", null, "Placed " + (placed.indexOf(i) + 1) + " · " + st[1])); }
+      b.addEventListener("click", function(){
+        var want = placed.length;
+        if (i === want) {
+          placed.push(i);
+          $("seqFb").textContent = placed.length === set.stages.length ? "Complete. You rebuilt the whole sequence." : "Yes. " + st[0] + " comes next (" + st[1] + ").";
+          $("seqFb").className = "fb ok";
+        } else {
+          $("seqFb").textContent = "Not yet. Think about what has to be in place before " + st[0].toLowerCase() + " can grow.";
+          $("seqFb").className = "fb no";
+        }
+        render();
+        var nb = $("seqBtns").querySelector("button:not(:disabled)"); if (nb) nb.focus();
+      });
+      box.appendChild(b);
+    });
+    var ol = $("seqPlaced"); clear(ol);
+    if (!placed.length) ol.appendChild(el("li", null, "Nothing placed yet."));
+    placed.forEach(function(i, n){ ol.appendChild(el("li", null, (n + 1) + ". " + set.stages[i][0] + " (" + set.stages[i][1] + ")")); });
+  }
+  $("seqReset").addEventListener("click", function(){ start(set); });
+  chipGroup($("seqChips"), SEQS, "lf", function(s){ start(s); }, 0);
+})();
+
+/* ---------- Bench 3: wetland data ---------- */
+var YEARS = [2000, 2004, 2008, 2012, 2016, 2020, 2024];
+var VISITS = [6, 6, 6, 6, 3, 6, 6];
+var WET = [
+  {label: "Amphibians", v: [5, 5, 4, 3, 3, 2, 3]},
+  {label: "Waterbirds", v: [24, 23, 19, 17, 14, 12, 14]},
+  {label: "Wetland plants", v: [18, 18, 15, 14, 11, 9, 11]},
+  {label: "Dragonflies", v: [14, 13, 11, 10, 7, 6, 8]},
+  {label: "Fish", v: [4, 4, 4, 2, 2, 2, 2]}
+];
+var TOTAL = {label: "All species", v: YEARS.map(function(y, i){ return WET.reduce(function(s, g){ return s + g.v[i]; }, 0); })};
+var EVTS = [[2006, "Part of the wetland is drained for a new subdivision."], [2010, "Prussian carp are found in the creek that feeds the wetland."], [2014, "An algae bloom follows fertilizer runoff from lawns and a nearby field."], [2016, "Only 3 survey visits instead of the usual 6 (not enough volunteers)."], [2019, "A very dry summer shrinks the open water."], [2021, "The town and a local conservation group plant a buffer of native plants and restore a pond edge."]];
+(function(){
+  var t = $("wetTable");
+  var thead = el("thead"), hr = el("tr"); hr.appendChild(el("th", {scope: "col"}, "Group"));
+  YEARS.forEach(function(y){ hr.appendChild(el("th", {scope: "col"}, String(y))); });
+  thead.appendChild(hr); t.appendChild(thead);
+  var tb = el("tbody");
+  WET.concat([TOTAL]).forEach(function(g){
+    var tr = el("tr", {"class": g === TOTAL ? "tot" : ""}); tr.appendChild(el("th", {scope: "row"}, g.label));
+    g.v.forEach(function(v){ tr.appendChild(el("td", null, String(v))); }); tb.appendChild(tr);
+  });
+  var vr = el("tr"); vr.appendChild(el("th", {scope: "row"}, "Survey visits"));
+  VISITS.forEach(function(v){ vr.appendChild(el("td", {"class": v < 6 ? "flag" : ""}, String(v))); }); tb.appendChild(vr);
+  t.appendChild(tb);
+  var ev = $("wetEvents"); ev.appendChild(el("h5", null, "Field notes"));
+  var ul = el("ul"); EVTS.forEach(function(e){ ul.appendChild(el("li", null, e[0] + ": " + e[1])); }); ev.appendChild(ul);
+  var w = $("pcWorked");
+  w.appendChild(el("b", null, "Worked example: all species, 2000 to 2020"));
+  w.appendChild(el("span", {"class": "mono"}, "(31 − 65) ÷ 65 × 100 = −34 ÷ 65 × 100 = −52.3"));
+  w.appendChild(el("span", null, "The total fell by about 52 percent. A negative answer means a decrease."));
+})();
+chipGroup($("wetChips"), [TOTAL].concat(WET), "wa", function(g){
+  var max = Math.max.apply(null, g.v), ymax = max > 40 ? 70 : max > 15 ? 25 : max > 8 ? 10 : 6;
+  var yt = ymax === 70 ? [0, 20, 40, 60] : ymax === 25 ? [0, 5, 10, 15, 20, 25] : ymax === 10 ? [0, 2, 4, 6, 8, 10] : [0, 2, 4, 6];
+  plotLines($("wetSvg"), [{pts: g.v, xs: YEARS.map(function(y){ return y - 2000; }), color: "var(--water)", dots: true, flag: 4}], {h: 300, xmax: 26, ymax: ymax, yticks: yt, xticks: [0, 4, 8, 12, 16, 20, 24], xlabel: "Years since 2000 (red dot: 2016, half the survey effort)", marks: EVTS.map(function(e){ return {x: e[0] - 2000}; })});
+  $("wetSvg").setAttribute("aria-label", g.label + " by year: " + YEARS.map(function(y, i){ return y + " " + g.v[i]; }).join(", "));
+}, 0);
+var EVALQ = [
+  ["The total fell from 63 to 53 species between 2004 and 2008. Which field note best explains this?", ["Part of the wetland was drained for a subdivision in 2006.", "The 2019 dry summer.", "The 2021 restoration.", "Fewer survey visits in 2016."], "Habitat destruction in 2006 falls between those two surveys and affects every group."],
+  ["Fish dropped from 4 species to 2 between 2008 and 2012. What is the most likely cause?", ["Prussian carp arrived in 2010 and competed with native fish.", "The restoration in 2021.", "Waterbirds ate all the fish.", "The surveyors stopped counting fish."], "An invasive fish that arrived in that period is the best match."],
+  ["Why should you be careful about the 2016 numbers?", ["Only half the usual survey visits were made, so some species may have been missed.", "2016 was the hottest year.", "The 2016 numbers are higher than all others.", "Nothing; they are as reliable as other years."], "Less effort finds fewer species. Some of the 2016 drop may be due to how the data were collected, not real loss."],
+  ["What do the 2024 numbers suggest about the 2021 restoration?", ["Several groups started to recover, but not back to 2000 levels.", "The wetland fully recovered.", "Restoration made things worse.", "Restoration had no effect on any group."], "Amphibians, birds, plants and dragonflies rose from 2020 to 2024, but the total (38) is still far below 65."],
+  ["Which conclusion do the data support best?", ["Biodiversity declined as habitat loss, invasive species and pollution added up, and care can help it recover.", "Climate change alone caused every loss.", "The wetland was never healthy.", "Biodiversity cannot change once it falls."], "Several causes line up with drops at different times, and the recovery after 2021 shows action helps."]
+];
+(function(){
+  var box = $("evalQs");
+  EVALQ.forEach(function(q, qi){
+    var d = el("div", {"class": "detail"});
+    d.appendChild(el("h5", null, (qi + 1) + ". " + q[0]));
+    var fb = el("p", {"class": "expl", "aria-live": "polite"});
+    var opts = shuffle(q[1].map(function(t, i){ return {t: t, ok: i === 0}; }));
+    var btns = [];
+    opts.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (opts[j].ok) x.classList.add("right"); });
+        if (!o.ok) b.classList.add("wrong");
+        fb.textContent = (o.ok ? "Correct. " : "Not quite. ") + q[2];
+      });
+      btns.push(b); d.appendChild(b);
+    });
+    d.appendChild(fb); box.appendChild(d);
+  });
+})();
+(function(){
+  var cur;
+  function newQ(){
+    var g = pick([TOTAL].concat(WET).filter(function(x){ return x.label !== "Fish"; }));
+    var a = Math.floor(Math.random() * 6), b = a + 1 + Math.floor(Math.random() * (6 - a));
+    if (g.v[a] === g.v[b]) { b = Math.min(6, b + 1); if (g.v[a] === g.v[b]) a = 0; }
+    cur = {g: g, a: a, b: b, ans: (g.v[b] - g.v[a]) / g.v[a] * 100};
+    detail($("pcQ"), "Question", ["Find the percent change in " + g.label.toLowerCase() + " from " + YEARS[a] + " (" + g.v[a] + ") to " + YEARS[b] + " (" + g.v[b] + ")."]);
+    $("pcAns").value = ""; $("pcFb").textContent = ""; $("pcFb").className = "fb";
+  }
+  $("pcCheck").addEventListener("click", function(){
+    var v = parseFloat($("pcAns").value), fb = $("pcFb");
+    if (isNaN(v)) { fb.textContent = "Type a number first. Use a minus sign for a decrease."; fb.className = "fb no"; return; }
+    var ok = Math.abs(v - cur.ans) <= 1;
+    var work = "(" + cur.g.v[cur.b] + " − " + cur.g.v[cur.a] + ") ÷ " + cur.g.v[cur.a] + " × 100 = " + (Math.round(cur.ans * 10) / 10);
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + work + " percent.";
+    fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $("pcNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 4: forest manager ---------- */
+var FM_OPTS = [["ril", "Reduced impact logging"], ["refo", "Reforestation after harvest"], ["burn", "Controlled burning"], ["smart", "Wildfire risk reduction near the town (FireSmart)"]];
+(function(){
+  var box = $("fmChecks");
+  FM_OPTS.forEach(function(o){
+    var l = el("label", {"for": "fm-" + o[0]}); var c = el("input", {type: "checkbox", id: "fm-" + o[0]});
+    l.appendChild(c); l.appendChild(document.createTextNode(o[1])); box.appendChild(l);
+  });
+  var lg = $("forestLegend");
+  [["var(--age1)", "Young (0 to 20 years)"], ["var(--age2)", "Growing (21 to 60)"], ["var(--age3)", "Mature (61 to 100)"], ["var(--age4)", "Old (over 100)"], ["var(--fire)", "Burned by wildfire this run"], ["var(--soil)", "Recently harvested, not regrowing yet"], ["var(--ash)", "Town"]].forEach(function(x){
+    var s = el("span"); var i = el("i"); i.style.background = x[0]; s.appendChild(i); s.appendChild(document.createTextNode(x[1])); lg.appendChild(s);
+  });
+})();
+var CW = 12, CH = 8;
+function isTown(x, y){ return x >= 10 && y >= 6; }
+function nearTown(x, y, d){ return x >= 10 - d && y >= 6 - d && !isTown(x, y); }
+function runForest(){
+  var ril = $("fm-ril").checked, refo = $("fm-refo").checked, burn = $("fm-burn").checked, smart = $("fm-smart").checked, hv = $("harvestSel").value;
+  var cells = [];
+  for (var y = 0; y < CH; y++) for (var x = 0; x < CW; x++) cells.push({x: x, y: y, age: 20 + Math.floor(Math.random() * 120), burned: false, cut: 0, town: isTown(x, y), treated: smart && nearTown(x, y, 2)});
+  function at(x, y){ return (x < 0 || y < 0 || x >= CW || y >= CH) ? null : cells[y * CW + x]; }
+  var wood = 0, burnedTotal = 0, threats = 0, soilDam = 0, rx = 0;
+  for (var dec = 0; dec < 6; dec++) {
+    cells.forEach(function(c){ if (c.town) return; if (c.cut > 0) { c.cut--; } else c.age += 10; });
+    if (hv === "clear") {
+      for (var b = 0; b < 2; b++) {
+        var bx = Math.floor(Math.random() * 9), by = Math.floor(Math.random() * 6);
+        for (var dy = 0; dy < 2; dy++) for (var dx = 0; dx < 3; dx++) { var c = at(bx + dx, by + dy); if (c && !c.town && c.age >= 70) { c.age = 0; wood += 1; if (!ril) soilDam++; c.cut = refo ? 0 : 1; c.burned = false; } }
+      }
+    } else if (hv === "select") {
+      shuffle(cells.filter(function(c){ return !c.town && c.age >= 80; })).slice(0, 8).forEach(function(c){ c.age = Math.max(30, c.age - 40); wood += 0.5; if (!ril && Math.random() < 0.3) soilDam++; });
+    }
+    if (burn) {
+      shuffle(cells.filter(function(c){ return !c.town && c.age >= 70 && !nearTown(c.x, c.y, 1); })).slice(0, 4).forEach(function(c){ c.age = 0; rx++; });
+    }
+    var strikes = 1 + Math.floor(Math.random() * 2);
+    for (var s = 0; s < strikes; s++) {
+      var start = pick(cells.filter(function(c){ return !c.town; }));
+      if (start.age < 15 && Math.random() < 0.7) continue;
+      var queue = [start], seen = {}; seen[start.y * CW + start.x] = 1; var threatened = false;
+      while (queue.length) {
+        var f = queue.shift();
+        f.age = 0; f.burned = true; f.cut = 0; burnedTotal++;
+        [[1,0],[-1,0],[0,1],[0,-1]].forEach(function(d){
+          var n = at(f.x + d[0], f.y + d[1]); if (!n) return;
+          if (n.town) { threatened = true; return; }
+          var k = n.y * CW + n.x; if (seen[k]) return; seen[k] = 1;
+          var p = n.age >= 80 ? 0.55 : n.age >= 40 ? 0.38 : n.age >= 15 ? 0.15 : 0.03;
+          if (n.treated) p *= 0.15;
+          if (Math.random() < p) queue.push(n);
+        });
+      }
+      if (threatened) threats++;
+    }
+  }
+  var grid = $("forestGrid"); clear(grid);
+  var classes = [0, 0, 0, 0];
+  cells.forEach(function(c){
+    var col;
+    if (c.town) col = "var(--ash)";
+    else if (c.burned && c.age <= 10) col = "var(--fire)";
+    else if (c.cut > 0) col = "var(--soil)";
+    else { var a = c.age; var k = a <= 20 ? 0 : a <= 60 ? 1 : a <= 100 ? 2 : 3; classes[k]++; col = "var(--age" + (k + 1) + ")"; }
+    var i = el("i"); i.style.background = col; grid.appendChild(i);
+  });
+  var forestCells = cells.filter(function(c){ return !c.town; }).length;
+  var variety = classes.filter(function(n){ return n >= forestCells * 0.08; }).length;
+  grid.setAttribute("aria-label", "Forest map after 60 years: " + classes[0] + " young, " + classes[1] + " growing, " + classes[2] + " mature and " + classes[3] + " old patches. " + burnedTotal + " patches burned in wildfires.");
+  var st = $("fmStats"); clear(st);
+  [["Wood harvested", Math.round(wood) + " units"], ["Wildfire patches burned", burnedTotal], ["Fires that reached the town edge", threats], ["Habitat variety", variety + " of 4 age classes"], ["Soil damage patches", soilDam], ["Planned burns", rx]].forEach(function(s){
+    var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, s[0])); d.appendChild(el("b", null, String(s[1]))); st.appendChild(d);
+  });
+  var msgs = [];
+  if (threats > 0 && !smart) msgs.push("Wildfire reached the edge of town. Try wildfire risk reduction near the town.");
+  if (threats === 0) msgs.push("The town stayed safe this run.");
+  if (smart && threats > 0) msgs.push("Fire reached the town edge, but the treated buffer slows it down. Fire risk is lowered, never zero.");
+  if (hv === "clear" && !refo) msgs.push("Some cut blocks are still bare soil. Reforestation would start the new forest sooner.");
+  if (hv !== "none" && !ril && soilDam > 0) msgs.push("Harvest damaged soil in " + soilDam + " patches. Reduced impact logging protects soil and streams.");
+  if (variety >= 3) msgs.push("Your forest has a good mix of ages, which means many kinds of habitat.");
+  else msgs.push("Most of your forest is the same age. A mix of ages supports more species.");
+  $("fmOut").textContent = msgs.join(" ");
+}
+$("fmRun").addEventListener("click", runForest);
+runForest();
+
+/* ---------- Bench 5: stewardship planner ---------- */
+var PLANS = [
+  {label: "Ranch creek", intro: "A creek runs through ranch land. Cattle drink right at the banks, which are crumbling. The water is muddy, and trout numbers are falling.", opts: [
+    ["Fence the banks and give cattle a water trough away from the creek", 2, "Protects water resources. Banks stop crumbling and the water clears."],
+    ["Plant willows along the banks to hold the soil", 2, "Roots hold soil, and shade keeps the water cool for trout."],
+    ["Test the water and count trout every year with the rancher and a watershed group", 2, "Monitoring data and collaboration show whether the plan is working."],
+    ["Stock the creek with a non-native fish for anglers", 0, "This risks adding an invasive species that competes with native trout."],
+    ["Dig a straight ditch so the water drains faster", 0, "Straightening a creek speeds erosion and destroys pools that fish need."],
+    ["Spray the banks to remove all plants", 0, "Without plants, even more soil washes into the creek."]
+  ]},
+  {label: "Lake with boaters", intro: "A lake popular with boaters has no zebra or quagga mussels yet, but the mussels are spreading in other parts of North America.", opts: [
+    ["Inspect boats and teach every boater to clean, drain and dry", 2, "Prevention is the best protection. Once mussels are in a lake they are almost impossible to remove."],
+    ["Sample the water for mussel larvae every summer", 2, "Monitoring catches an invasion early, when it is easier to respond."],
+    ["Run a campaign with the lake association, the town and nearby First Nations", 2, "Collaboration reaches more boaters and shares the work."],
+    ["Add new boat launches with no checks", 0, "More unchecked boats means more chances for mussels to arrive."],
+    ["Bring in a fish from another continent to eat mussels", 0, "This would add a new invasive species instead of solving the problem."],
+    ["Drain the lake", 0, "This would destroy the ecosystem you are trying to protect."]
+  ]},
+  {label: "Southeast grassland", intro: "A native grassland in southeast Alberta, where swift foxes and burrowing owls have become rare.", opts: [
+    ["Sign conservation agreements so ranchers keep the grassland unplowed and grazed", 2, "Habitat conservation. Native grassland grazed by cattle can still support prairie wildlife."],
+    ["Release captive-raised swift foxes where habitat is good", 2, "Species relocation, like the reintroductions that brought swift foxes back to Canada."],
+    ["Count foxes and owls each year with ranchers, scientists and volunteers", 2, "Monitoring data and collaboration show whether numbers are rising."],
+    ["Plow the grassland for crops", 0, "Plowing destroys the native habitat these species need."],
+    ["Plant a tree farm on the grassland", 0, "Grassland species need open land. Trees also give hiding spots to predators."],
+    ["Build a new road across the middle", 0, "Roads split habitat and bring traffic that kills wildlife."]
+  ]}
+];
+(function(){
+  var plan;
+  function start(p){
+    plan = p; $("planIntro").textContent = p.intro;
+    var box = $("planOpts"); clear(box);
+    shuffle(p.opts.map(function(o, i){ return i; })).forEach(function(i){
+      var o = p.opts[i], id = "plan-" + PLANS.indexOf(p) + "-" + i;
+      var l = el("label", {"for": id}); var c = el("input", {type: "checkbox", id: id, "data-i": String(i)});
+      c.addEventListener("change", function(){
+        var on = box.querySelectorAll("input:checked");
+        if (on.length > 3) { c.checked = false; $("planFb").textContent = "Pick only three actions."; }
+      });
+      l.appendChild(c); l.appendChild(document.createTextNode(o[0])); box.appendChild(l);
+    });
+    $("planFb").textContent = "Pick three actions and press Check my plan.";
+  }
+  $("planCheck").addEventListener("click", function(){
+    var on = Array.prototype.slice.call($("planOpts").querySelectorAll("input:checked")).map(function(c){ return +c.getAttribute("data-i"); });
+    var fb = $("planFb"); clear(fb);
+    if (on.length !== 3) { fb.textContent = "Choose exactly three actions first. You have " + on.length + "."; return; }
+    var score = 0;
+    fb.appendChild(el("h5", null, "Your plan"));
+    on.forEach(function(i){ var o = plan.opts[i]; score += o[1]; fb.appendChild(el("p", null, (o[1] ? "Helps: " : "Harms: ") + o[0] + ". " + o[2])); });
+    fb.appendChild(el("p", {"class": "fb " + (score === 6 ? "ok" : "no")}, score === 6 ? "Strong plan: it combines an intervention, monitoring and collaboration." : "Swap out any action that harms the ecosystem. The best plans act, measure and work together."));
+    store.plans = store.plans || {}; store.plans[plan.label] = Math.max(store.plans[plan.label] || 0, score); save();
+  });
+  chipGroup($("planChips"), PLANS, "wa", function(p){ start(p); }, 0);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Disturbance source", bins: ["Geological process", "Extreme weather", "Human activity"], items: [
+    ["Rockslide in the Crowsnest Pass", 0, "Rockslides are geological processes."],
+    ["Hailstorm shreds a shelterbelt", 1, "Hail is an extreme weather event."],
+    ["Wetland drained for a subdivision", 2, "Draining land is human activity."],
+    ["Riverbank slumps after spring melt", 0, "Slope failure is a geological process."],
+    ["Three-year drought on the prairie", 1, "Drought is extreme weather."],
+    ["Oil sands surface mine", 2, "Mining is human activity."],
+    ["Lightning-caused forest fire", 1, "Lightning fires come from weather."],
+    ["Volcanic eruption", 0, "Eruptions are geological processes."],
+    ["Highway built across grassland", 2, "Road building is human activity."],
+    ["River floods after heavy rain", 1, "Floods from heavy rain are extreme weather."]
+  ]},
+  {label: "Primary or secondary", bins: ["Primary succession", "Secondary succession"], items: [
+    ["Bare rock left by a melting glacier", 0, "No soil, so succession starts from scratch."],
+    ["Forest after a wildfire, soil intact", 1, "Soil, roots and seeds remain."],
+    ["New lava flow", 0, "Cooled lava is bare rock."],
+    ["Abandoned wheat field", 1, "The soil is still there."],
+    ["Boulder field from a rockslide", 0, "Bare rock with no soil."],
+    ["Clear-cut forest block", 1, "Soil remains after logging."],
+    ["Meadow covered by flood mud", 1, "Soil and seeds lie under the mud."],
+    ["Gravel bar newly exposed in a river", 0, "Fresh gravel has no soil yet."]
+  ]},
+  {label: "Species status", bins: ["Endangered", "Extirpated", "Extinct"], items: [
+    ["Passenger pigeon", 2, "The last one died in 1914."],
+    ["Whooping crane", 0, "Still alive in the wild, but at risk."],
+    ["Greater prairie-chicken in Canada", 1, "Gone from the wild in Canada, still alive in the United States."],
+    ["Greater sage-grouse", 0, "Rare in southeast Alberta and at risk."],
+    ["A species gone from Alberta that still lives in Montana", 1, "That is the meaning of extirpated."],
+    ["Dodo", 2, "This bird from the island of Mauritius has not existed since the 1600s."],
+    ["A species likely to disappear soon without help", 0, "That is the meaning of endangered."],
+    ["Rocky Mountain locust", 2, "Huge swarms once crossed the prairies. None have been seen alive since the early 1900s."]
+  ]},
+  {label: "Cause of decline", bins: ["Habitat destruction", "Pollution", "Invasive species", "Climate change"], items: [
+    ["Prairie plowed for crops", 0, "Native habitat is removed."],
+    ["Fertilizer runoff causes an algae bloom", 1, "Excess nutrients pollute the water."],
+    ["Prussian carp spread through rivers", 2, "A species from elsewhere outcompetes native fish."],
+    ["Warmer winters let pine beetles survive", 3, "Rising temperatures shift where species can live."],
+    ["Wetland filled in for a mall", 0, "Habitat is destroyed."],
+    ["Oil spill in a river", 1, "A pollutant harms wildlife."],
+    ["Zebra mussels clog a lake", 2, "An invasive species takes over."],
+    ["Glaciers shrink and streams warm", 3, "A warming climate changes cold-water habitat."],
+    ["Plastic litter tangles birds", 1, "Plastic is pollution."],
+    ["Forest split by roads and well sites", 0, "Breaking habitat into small pieces is habitat destruction."]
+  ]},
+  {label: "Forest practice", bins: ["Selective harvesting", "Reforestation", "Controlled burning", "Wildfire risk reduction"], items: [
+    ["Cut only some trees and leave the rest", 0, "That is selective harvesting."],
+    ["Plant seedlings after a harvest", 1, "That is reforestation."],
+    ["Crews set a small planned fire in safe weather", 2, "That is controlled burning."],
+    ["Clear deadfall and thin trees around a town", 3, "That is wildfire risk reduction (FireSmart)."],
+    ["Leave seed trees and wildlife trees standing", 0, "Leaving some trees standing is part of selective harvesting."],
+    ["Seed a burned area that is regrowing slowly", 1, "Helping a forest regrow is reforestation."],
+    ["Burn old grass in a park to renew habitat", 2, "A planned burn is controlled burning."],
+    ["Build a fuel break between forest and homes", 3, "Fuel breaks reduce wildfire risk."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Disturbance", "An event that suddenly changes an ecosystem by killing or removing living things or changing their habitat."],
+  ["Ecosystem stability", "The capacity of an ecosystem to keep its structure, biodiversity and processes over time, including recovering after disturbances."],
+  ["Ecological succession", "The predictable pattern of change in the species and habitat of an area over time."],
+  ["Primary succession", "Succession that starts where there is no soil, such as bare rock after a glacier melts back or a lava flow."],
+  ["Secondary succession", "Succession that starts after a disturbance removes most living things but leaves the soil, such as after a forest fire."],
+  ["Pioneer species", "The first species to grow in a bare area, such as lichens and mosses. They help start soil formation."],
+  ["Geological process", "A natural Earth process such as a landslide, earthquake or volcanic eruption."],
+  ["Extreme weather event", "Unusually severe weather such as a flood, drought, tornado or lightning storm."],
+  ["Biodiversity", "The variety of life: genetic diversity within a species, species diversity, and ecosystem diversity."],
+  ["Habitat destruction", "Clearing, draining or breaking up the places where species live. The biggest cause of biodiversity loss."],
+  ["Pollution", "Harmful substances added to air, water or land, such as fertilizer runoff, oil or plastic."],
+  ["Invasive species", "A species brought from somewhere else that spreads and harms local species. Example: Prussian carp in Alberta."],
+  ["Climate change", "Long-term change in Earth's climate, now mainly warming caused by human activity. It shifts where species can live."],
+  ["Endangered", "A species likely to disappear soon if nothing changes. Example: whooping crane."],
+  ["Threatened", "A species likely to become endangered if nothing changes. Example: swift fox."],
+  ["Extirpated", "A species that no longer lives in the wild in one area but still lives elsewhere. Example: greater prairie-chicken in Canada."],
+  ["Extinct", "A species that no longer exists anywhere on Earth. Example: passenger pigeon."],
+  ["Species relocation", "Moving animals or plants to a place to restore or protect a population. Example: plains bison moved to Banff in 2017."],
+  ["Habitat conservation", "Protecting land and water from being cleared or damaged, for example in parks or with conservation agreements."],
+  ["Protecting water resources", "Keeping rivers, lakes, wetlands and groundwater clean and full, for example with streambank fencing or boat inspections."],
+  ["Monitoring", "Collecting data again and again over time, such as species counts or water tests, to see if an ecosystem is changing."],
+  ["Selective harvesting", "Cutting only some trees in a forest and leaving the rest standing."],
+  ["Reduced impact logging", "Careful planning of roads and cutting to protect soil, streams and remaining trees during harvest."],
+  ["Reforestation", "Planting or seeding trees to regrow a forest after harvest or fire."],
+  ["Controlled burning", "A planned, small fire set by trained crews in safe weather to reduce fuel and renew habitat."],
+  ["Wildfire risk reduction", "Thinning trees, clearing deadfall and making fuel breaks to protect communities. In Alberta this is called FireSmart."],
+  ["Percent change", "(new value − old value) ÷ old value × 100. A negative answer is a decrease."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is ecological succession?", ["The predictable pattern of change in the species and habitat of an area over time", "The sudden death of all living things in an area", "The movement of energy through a food chain", "The way rocks form underground"], "Succession is the step-by-step change in which species live in an area, often after a disturbance."],
+  ["Which starts primary succession?", ["Bare rock exposed by a retreating glacier", "A forest fire that leaves the soil", "A farm field that is no longer used", "A flood that covers a meadow in mud"], "Primary succession starts where there is no soil at all."],
+  ["Why is secondary succession usually faster than primary succession?", ["Soil, roots and seeds are already there.", "There are no plants to compete with.", "The Sun is stronger after a disturbance.", "Lichens grow faster in burned areas."], "With soil already in place, plants can regrow right away."],
+  ["What are pioneer species?", ["The first organisms to grow in a bare area, such as lichens and mosses", "The largest trees in a mature forest", "Animals that move in after trees grow", "Species brought in by people"], "Pioneers break down rock and add organic matter, starting soil."],
+  ["A boreal forest burns. Which plant is often one of the first to appear?", ["Fireweed", "Old white spruce", "Mountain avens on bare rock", "Cattails"], "Fireweed sprouts quickly on burned ground, often within the first year."],
+  ["How do aspen trees come back so quickly after a fire?", ["They send up new shoots (suckers) from roots that survived underground.", "Their seeds can only sprout in ash.", "They do not burn.", "People plant them all."], "Aspen roots often survive fire and sprout thousands of suckers."],
+  ["Which is an example of a disturbance caused by a geological process?", ["The Frank Slide of 1903", "The 2013 southern Alberta floods", "Draining a wetland for houses", "A hailstorm"], "A rockslide is a geological process."],
+  ["Which is an example of a disturbance caused by an extreme weather event?", ["A tornado flattening a strip of forest", "An earthquake", "A surface mine", "A volcanic eruption"], "Tornadoes are extreme weather."],
+  ["Which is a disturbance caused by human activity?", ["Clearing prairie to build a subdivision", "A lightning fire", "A river flood after heavy rain", "A landslide after an earthquake"], "Clearing land is human activity."],
+  ["What does ecosystem stability mean?", ["The ability of an ecosystem to keep its structure, biodiversity and processes over time", "An ecosystem where nothing ever changes", "An ecosystem with only one species", "An ecosystem that has never been disturbed"], "Stable ecosystems can absorb disturbances and recover."],
+  ["Two wetlands are hit by the same storm. Wetland A has 35 species and wetland B has 8. Which is most likely to recover faster?", ["Wetland A, because more species can fill roles that are lost", "Wetland B, because it has less to lose", "Both recover at exactly the same rate", "Neither can recover"], "Higher biodiversity usually means faster recovery and more stability."],
+  ["Which list names the four causes of biodiversity decline in this lesson?", ["Habitat destruction, pollution, invasive species, climate change", "Photosynthesis, respiration, decomposition, emission", "Floods, droughts, tornadoes, hail", "Predation, competition, mutualism, parasitism"], "These four are major causes of biodiversity loss worldwide."],
+  ["How is global biodiversity changing?", ["It is declining, and the rate of decline is increasing.", "It is steady.", "It is increasing quickly.", "It is declining, but more slowly each year."], "Scientists report biodiversity falling at an increasing rate."],
+  ["Prussian carp spreading through Alberta rivers is an example of which cause of biodiversity decline?", ["Invasive species", "Climate change", "Habitat destruction", "Pollution"], "Prussian carp are not native to Alberta and compete with native fish."],
+  ["Fertilizer runoff leads to an algae bloom in a lake. Which cause of decline is this?", ["Pollution", "Invasive species", "Climate change", "Succession"], "Excess nutrients are a form of water pollution."],
+  ["What does extirpated mean?", ["No longer living in the wild in one area, but still living elsewhere", "No longer existing anywhere on Earth", "Likely to disappear soon", "Increasing in number"], "Extirpation is local loss. Extinction is total loss."],
+  ["The passenger pigeon no longer exists anywhere. What is its status?", ["Extinct", "Extirpated", "Endangered", "Threatened"], "The last passenger pigeon died in 1914."],
+  ["The greater prairie-chicken no longer lives in the wild in Canada but survives in the United States. What is its status in Canada?", ["Extirpated", "Extinct", "Endangered", "Not at risk"], "Gone from one area but alive elsewhere means extirpated."],
+  ["Swift foxes were brought back to the Alberta prairies after disappearing from Canada. What kind of intervention is this?", ["Species relocation", "Habitat destruction", "Controlled burning", "Pollution control"], "Moving animals to restore a population is species relocation."],
+  ["Why is monitoring data important when caring for an ecosystem?", ["It shows whether a population or ecosystem is getting better or worse over time.", "It replaces the need for any action.", "It always proves the plan worked.", "It is only useful for scientists in other countries."], "Repeated measurements tell people whether their actions are helping."],
+  ["A rancher fences cattle away from a creek and plants willows on its banks. Which intervention is this?", ["Protecting water resources", "Species relocation", "Selective harvesting", "Controlled burning"], "Keeping banks stable and the water clean protects water resources."],
+  ["Why do forest managers sometimes use controlled burning?", ["To reduce dead fuel and renew habitat in a planned, safe way", "To clear land for parking lots", "To get rid of all trees permanently", "To add pollution to the air on purpose"], "Planned fires lower the risk of large wildfires and renew habitat."],
+  ["Which practice leaves most trees standing while still harvesting wood?", ["Selective harvesting", "Clear-cutting", "Reforestation", "Wildfire risk reduction"], "Selective harvesting cuts only some trees."],
+  ["A wetland had 65 species in 2000 and 39 in 2020. What is the percent change?", ["−40%", "−26%", "+40%", "−60%"], "(39 − 65) ÷ 65 × 100 = −26 ÷ 65 × 100 = −40%."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Compare primary and secondary succession. Give an Alberta example of each.", a: "Primary succession starts where there is no soil, such as bare rock left by the retreating Athabasca Glacier. Pioneer species such as lichens and mosses must start soil formation, so it takes hundreds of years. Secondary succession starts where a disturbance removed most living things but left the soil, such as a boreal forest after a wildfire. Plants regrow from roots and seeds, so it is much faster.", k: ["Primary: no soil", "Secondary: soil remains", "Secondary is faster, with a reason", "One Alberta example of each"]},
+  {q: "Describe the role of pioneer species in primary succession.", a: "Pioneer species such as lichens and mosses are the first to grow on bare rock. They break the rock down slowly and add organic matter when they die. This builds a thin soil that lets small plants grow next.", k: ["Names lichens or mosses", "Break down rock", "Add organic matter", "Make it possible for later plants"]},
+  {q: "Name the three sources of disturbance and give one example of each.", a: "Geological processes, such as the Frank Slide rockslide. Extreme weather events, such as the 2013 southern Alberta floods or a lightning wildfire. Human activity, such as draining a wetland for a subdivision.", k: ["Geological with example", "Extreme weather with example", "Human activity with example"]},
+  {q: "Explain how biodiversity helps an ecosystem stay stable after a disturbance.", a: "When an ecosystem has many species, losing some of them does not remove a whole role, because other species can fill it. Some species survive the disturbance, seeds wait in the soil, and animals move back in from nearby. So the ecosystem drops less and recovers faster.", k: ["More species means backups", "Other species fill lost roles", "Smaller drop or faster recovery"]},
+  {q: "Choose two causes of declining biodiversity and explain how each harms an Alberta ecosystem.", a: "Habitat destruction: draining wetlands for houses removes the water that frogs, ducks and dragonflies need to breed. Invasive species: Prussian carp spread through Alberta rivers and compete with native fish for food and space.", k: ["Names two of the four causes", "Explains how each causes harm", "Uses Alberta examples"]},
+  {q: "What is the difference between endangered, extirpated and extinct? Give an example of each.", a: "Endangered means likely to disappear soon, like the whooping crane. Extirpated means gone from the wild in one area but alive elsewhere, like the greater prairie-chicken in Canada. Extinct means gone from Earth forever, like the passenger pigeon.", k: ["Endangered defined with example", "Extirpated defined with example", "Extinct defined with example"]},
+  {q: "Why is caring for ecosystems called a shared responsibility?", a: "Animals, water and seeds move across property lines, towns and provinces, so no single group can protect an ecosystem alone. Governments, landowners, First Nations and Métis communities, scientists, companies and volunteers each control or know about part of the land, so they need to collaborate and share monitoring data.", k: ["Ecosystems cross boundaries", "Names several groups", "Mentions collaboration or shared data"]},
+  {q: "Describe two forest management practices and how each supports ecosystem stability.", a: "Reforestation: planting seedlings after harvest starts the new forest sooner and holds soil in place. Controlled burning: planned small fires remove dead fuel, lowering the risk of a huge wildfire, and create young habitat that many species need.", k: ["Names two practices from the list", "Describes each correctly", "Links each to stability"]},
+  {q: "A survey found 48 bird species in 2010 and 36 in 2020. Calculate the percent change and say what it means.", a: "(36 − 48) ÷ 48 × 100 = −12 ÷ 48 × 100 = −25%. Bird species fell by 25 percent over ten years, a decline in biodiversity.", k: ["Uses the formula correctly", "Answer: −25%", "Interprets it as a decrease"]}
+];
+var LONG = [
+  {q: "A lightning fire burns 5 000 hectares of boreal forest north of Edmonton. Describe how the area would change over the next 150 years. Name the type of succession and explain why it happens in that order.", a: "This is secondary succession, because the soil, roots and seeds survive. In the first year or two, fireweed and grasses sprout, and jack pine or lodgepole pine seeds fall from cones opened by the heat. Within 3 to 10 years, aspen sends up suckers from surviving roots and shrubs grow, which brings moose and hares. By 10 to 30 years a dense young forest of aspen and pine forms. Over the next decades, white spruce grows slowly in the shade underneath, and by about 70 to 120 years a mixedwood forest forms. Later spruce becomes more common. Each stage changes light, soil and shelter in ways that let the next species succeed.", k: ["Names secondary succession with a reason", "At least four stages in the correct order", "Realistic boreal species", "Explains how each stage enables the next", "Approximate time scale"]},
+  {q: "Use the wetland monitoring data in the Lab Bench to evaluate the claim: \"The wetland lost biodiversity only because of the 2019 drought.\"", a: "The claim is not supported. The total number of species was already falling well before 2019: from 65 in 2000 to 53 in 2008, after part of the wetland was drained, and to 46 in 2012, after Prussian carp arrived and fish dropped from 4 to 2 species. It fell again after the 2014 algae bloom. The 2016 count of 37 may be too low because only half the usual surveys were done. The drought may have added to the decline by 2020, but several causes acted over 20 years. After the 2021 restoration, several groups started to recover, which also shows the loss was not permanent.", k: ["States whether the claim is supported", "Uses specific numbers from the data", "Links drops to other events", "Notes the 2016 survey effort problem", "Mentions recovery after restoration"]},
+  {q: "Design a plan to care for a local ecosystem near your school (for example a ravine, creek, wetland or park). Include at least one intervention, a way to collect monitoring data, and who you would collaborate with.", a: "Example: a ravine creek in Edmonton's river valley with litter, eroding banks and invasive plants. Intervention: with the city, pull invasive plants and plant native willows and shrubs along the banks to protect the water. Monitoring: each spring and fall, students photograph the same spots, count bird species, and test water clarity and temperature, recording results in a shared spreadsheet. Collaboration: the city parks department, a local stewardship group, nearby families, and a First Nations or Métis knowledge keeper invited to share perspectives on caring for the land. Success would be fewer invasive plants, stable banks and steady or rising bird counts.", k: ["Names a real local ecosystem and its problem", "At least one intervention from the lesson", "A clear monitoring method", "Names collaborators", "Says how success would be measured"]},
+  {q: "Some people say wildfires should always be put out as fast as possible. Using what you know about disturbance, succession and forest management, explain whether you agree.", a: "Fires near towns must be fought to protect people. However, fire is a natural disturbance in Alberta's boreal forest. Many species depend on it: lodgepole and jack pine cones open in heat, and aspen and fireweed regrow quickly. Putting out every fire lets dead fuel build up, so the next fire can be bigger and harder to stop. Forest managers therefore use controlled burning and wildfire risk reduction, so fire can play its role while communities stay safer. A balanced approach supports both ecosystem stability and safety.", k: ["Takes a clear position", "Explains fire as a natural disturbance", "Uses succession or adapted species as evidence", "Mentions fuel build-up", "Refers to controlled burning or FireSmart"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["LS3.K1", "Ecological succession is the predictable pattern of change in the types of species and habitat of an area when new areas become available for occupation (primary succession) or when existing areas undergo change (secondary succession).", "Learn: Lesson 2 (succession scene with year slider, primary and secondary) and Lesson 3. Lab Bench: Investigations 1 and 2. Sort It: primary or secondary deck. Quiz, Flashcards, Written Review."],
+    ["LS3.K2", "Disturbances that can impact ecosystem stability include\n• geological processes\n• extreme weather events\n• human activity", "Learn: Lesson 1 (Alberta disturbances by source) and Lesson 3 (recovery curve). Lab Bench: Investigation 1. Sort It: disturbance source deck. Quiz."],
+    ["LS3.K3", "Biodiversity is declining on a global scale at an increasing rate due to habitat destruction, pollution, invasive species, and climate change.", "Learn: Lesson 4 (global figures, wetland pressures model). Lab Bench: Investigation 3. Sort It: cause of decline deck. Quiz, Written Review."],
+    ["LS3.K4", "Biodiversity can be reduced when species become endangered, extirpated, or extinct.", "Learn: Lesson 5 (species status ladder with Alberta species). Sort It: species status deck. Quiz, Flashcards, Written Review."],
+    ["LS3.K5", "Caring for ecosystems is a shared responsibility that can involve collaboration, monitoring data, and interventions such as\n• species relocation\n• habitat conservation\n• protecting water resources", "Learn: Lesson 6 (three interventions with collaborators and monitoring). Lab Bench: Investigations 3 and 5. Quiz, Written Review."],
+    ["LS3.K6", "Forest management supports ecosystem stability by using practices such as\n• selective harvesting\n• reduced impact logging\n• reforestation\n• controlled burning\n• wildfire risk reduction", "Learn: Lesson 7 (practice ratings). Lab Bench: Investigation 4 (60-year forest simulation). Sort It: forest practice deck. Quiz, Flashcards, Written Review."],
+    ["LS3.S1", "Explore how ecosystem stability can be disturbed.", "Lab Bench: Investigation 1 (disturbance detective and storm comparison). Learn: Lessons 1 and 3."],
+    ["LS3.S2", "Discuss factors that contribute to declining biodiversity in an ecosystem.", "Learn: Lesson 4 (stacking pressures). Lab Bench: Investigation 3 (field notes linked to data). Written Review: short answer 5."],
+    ["LS3.S3", "Describe ecological succession in ecosystems.", "Lab Bench: Investigation 2 (sequencer for three places). Learn: Lesson 2. Written Review: short answers 1 and 2, extended 1."],
+    ["LS3.S4", "Discuss possible ways to care for an ecosystem.", "Lab Bench: Investigations 4 and 5 (forest manager, stewardship planner). Learn: Lessons 6 and 7. Written Review: extended 3 and 4."],
+    ["LS3.S5", "Evaluate data collected from an ecosystem with decreasing biodiversity.", "Lab Bench: Investigation 3 (wetland table and graph, percent change practice, five evaluation questions including survey bias). Written Review: short answer 9, extended 2."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

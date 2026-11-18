@@ -1,0 +1,1601 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/ai-impact-lab/"><meta name="description" content="AI impacts human tasks in a variety of ways."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>AI Impact Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an AI workshop bench. Lessons pair a short reading column with a live model: a leaf sorter, a robot that learns, a next-word generator, a chatbot, a video feed and a galaxy classifier. Grade 8 blue marks codes and eyebrows; violet marks AI output. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --acc:#1D5FA8;
+  --b-mo:#1F5FA6; --b-mo-soft:#DFEAF7; --b-pen:#2D7546; --b-pen-soft:#DDEFE3; --b-out:#6B3FA0; --b-out-soft:#ECE3F6;
+  --b-ctl:#8A4B12; --b-ctl-soft:#F6E8D8; --b-math:#0F6E6A; --b-math-soft:#D9F0EE;
+  --grid:#DCE3DD; --trail:#2D7546; --bot:#B0431B; --flag:#1F5FA6; --target:#9DB7A6;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --acc:#7DB0F0;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --acc:#7DB0F0;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+:root{ --board:#1E2B3A; --sky-ink:#F3F5F0 }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --board:#0B1219; --sky-ink:#E3ECE6 }}
+:root[data-theme="dark"]{ --board:#0B1219; --sky-ink:#E3ECE6 }
+
+/* ---- AI Impact Lab additions ---- */
+header h1 .c1{color:var(--acc)} header h1 .c2{color:var(--b-out)}
+:focus-visible{outline-color:var(--acc)}
+a{color:var(--acc)}
+.credit a{color:var(--acc)}
+.panel>*,.model>*,.text>*{min-width:0}
+.twocol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:640px){.twocol{grid-template-columns:minmax(0,1fr)}}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.trio{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:4px;font-size:.92rem;min-width:0}
+.box b.k{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc)}
+.badge{display:inline-block;font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--acc)}
+.made{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+svg .pA{fill:var(--leaf)} svg .pB{fill:var(--b-out)} svg .pN{fill:var(--muted)} svg .pU{fill:var(--fire)}
+svg .cen{fill:none;stroke:var(--ink);stroke-width:2.5}
+svg .nnl{stroke:var(--fire);stroke-width:1.5;stroke-dasharray:4 3}
+svg .cell{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+svg .cell.stairs{fill:var(--bad-soft);stroke:var(--bad)}
+svg .cell.goal{fill:var(--leaf-soft);stroke:var(--good)}
+svg .cell.wall{fill:var(--line)}
+svg .arrow{fill:var(--acc)}
+svg .path{fill:none;stroke:var(--fire);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+svg .bot{fill:var(--fire)}
+svg .gal{fill:var(--ink)}
+svg .sky{fill:var(--board)}
+svg .star{fill:var(--sky-ink)}
+.chat{display:grid;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;max-height:18em;overflow:auto}
+.msg{max-width:85%;padding:8px 12px;border-radius:12px;font-size:.93rem}
+.msg.me{justify-self:end;background:var(--b-mo-soft);border:1px solid var(--line)}
+.msg.bot{justify-self:start;background:var(--surface-2);border:1px solid var(--line)}
+.msg small{display:block;font-family:var(--f-mono);font-size:.7rem;color:var(--muted);margin-top:4px}
+.sendrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
+.gen{font-family:var(--f-display);font-size:1.25rem;font-weight:700;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;min-height:3em}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,140px),1fr));gap:8px}
+.vid{border:1px solid var(--line);border-left:6px solid var(--tc);background:var(--surface);border-radius:8px;padding:10px;text-align:left;cursor:pointer;display:grid;gap:4px;min-height:5.2em}
+.vid:hover{border-color:var(--tc)}
+.vid span{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--tc)}
+.vid b{font-size:.9rem;line-height:1.25}
+.t0{--tc:var(--water)} .t1{--tc:var(--fire)} .t2{--tc:var(--leaf)} .t3{--tc:var(--b-out)} .t4{--tc:var(--mix)} .t5{--tc:var(--b-math)}
+.barrow .track i.t0{background:var(--water)} .barrow .track i.t1{background:var(--fire)} .barrow .track i.t2{background:var(--leaf)}
+.barrow .track i.t3{background:var(--b-out)} .barrow .track i.t4{background:var(--mix)} .barrow .track i.t5{background:var(--b-math)}
+.taskrow{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px}
+.taskrow p{font-weight:700}
+.taskrow .chips .chip{font-size:.82rem;padding:5px 10px}
+.taskrow .expl{font-size:.88rem}
+.issue{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:8px}
+.verdict{border-radius:8px;padding:10px 12px;font-size:.95rem;background:var(--surface);border:1px solid var(--line)}
+.verdict.ok{background:var(--leaf-soft);border-color:var(--good)}
+.verdict.no{background:var(--bad-soft);border-color:var(--bad)}
+.verdict.mid{background:var(--surface)}
+.cmp{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px}
+.cmp th,.cmp td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.cmp th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.cmp td:first-child{font-weight:700}
+.big{font-family:var(--f-display);font-size:1.6rem;font-weight:800}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Computer Science · CS2</div>
+    <h1><span class="c1">AI</span> <span class="c2">Impact</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> AI impacts human tasks in a variety of ways. In this lab you will train a leaf sorter, watch a robot learn by trial and error, build a tiny text generator, test a chatbot, explore a video feed, and look at how AI is changing science, jobs and fairness.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Ten short lessons in order. Each one has a model to try. <b>Artificial intelligence (AI)</b> means computer systems that do tasks that usually need human thinking, like recognizing pictures, understanding speech or making predictions. All numbers in the models are made up for practice.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · AI and efficiency</span>
+      <div class="codes"><span class="code">CS2.K1</span></div>
+      <h3>AI can help people work more efficiently</h3>
+      <p>A task is done more <b>efficiently</b> when it takes less time, effort or energy for the same result. AI helps in three main ways.</p>
+      <p><b>Information processing:</b> AI can sort, search and summarize huge amounts of data, like thousands of photos, much faster than a person.</p>
+      <p><b>Decision making:</b> AI can compare many options and suggest a choice, like the best order to plow streets after a snowfall. People still make the final call.</p>
+      <p><b>Task completion:</b> AI can carry out parts of a job, like writing captions for a video or steering a tractor in straight rows.</p>
+      <div class="key"><b>Remember:</b> AI usually helps people rather than replacing them. A person checks the work, handles the unusual cases and is responsible for the result.</div>
+    </div>
+    <div class="model">
+      <h4>Model: where does AI save time?</h4>
+      <p class="hint">Pick a task. See which kind of help AI gives, what the person still does, and a made-up time comparison.</p>
+      <div class="chips" id="l1Chips" role="group" aria-label="Choose a task"></div>
+      <div class="detail" id="l1Detail" aria-live="polite"></div>
+      <div class="bars" id="l1Bars"></div>
+      <p class="made">Times are made-up estimates for practice</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Machine learning with and without labels</span>
+      <div class="codes"><span class="code">CS2.K2</span></div>
+      <h3>Supervised and unsupervised learning</h3>
+      <p><b>Machine learning</b> is a kind of AI where a computer learns patterns from data instead of following only rules a person wrote.</p>
+      <p>In <b>supervised learning</b>, the AI is given <b>labelled examples</b>: data with the right answer attached. Here, each leaf is labelled aspen or willow. The AI uses the examples to label a new leaf it has never seen.</p>
+      <p>In <b>unsupervised learning</b>, there are no labels. The AI looks for <b>patterns</b> and groups similar data together. It can find two groups of leaves, but it cannot name them. A person decides what each group means.</p>
+      <div class="key"><b>Remember:</b> labels in, labels out (supervised). No labels, find groups (unsupervised).</div>
+    </div>
+    <div class="model">
+      <h4>Model: leaf sorter</h4>
+      <div class="chips" id="l2Mode" role="group" aria-label="Type of learning"></div>
+      <div class="svgbox" id="l2Svg"></div>
+      <div id="l2Sup" class="twocol">
+        <label class="field" for="l2Len">New leaf length: <span id="l2LenV" class="num"></span>
+          <input type="range" id="l2Len" min="1" max="13" step="0.5" value="6"></label>
+        <label class="field" for="l2Wid">New leaf width: <span id="l2WidV" class="num"></span>
+          <input type="range" id="l2Wid" min="0.5" max="7" step="0.5" value="3"></label>
+      </div>
+      <div id="l2Uns" class="row" hidden>
+        <button class="btn" id="l2Step" type="button">Next step</button>
+        <button class="btn ghost" id="l2Reset" type="button">Start over</button>
+      </div>
+      <div class="detail" id="l2Out" aria-live="polite"></div>
+      <p class="made">Leaf measurements are made up for practice</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Learning by trial and error</span>
+      <div class="codes"><span class="code">CS2.K2</span></div>
+      <h3>Reinforcement learning</h3>
+      <p>In <b>reinforcement learning</b>, nobody gives the AI the right answers. The AI tries actions and gets a <b>reward</b> (points added) for good results and a <b>penalty</b> (points taken away) for bad ones. Over many tries it learns which actions earn the most reward.</p>
+      <p>This delivery robot must reach its charger. Each move costs 1 point, so short routes are better. Reaching the charger earns 10 points. Rolling onto the stairs costs 10 points and ends the try.</p>
+      <p>At first the robot moves almost at random. Train it and watch the arrows. Each arrow shows the move the robot now thinks is best from that square.</p>
+      <div class="key"><b>Remember:</b> reinforcement learning means trial and error with rewards and penalties. Game-playing AI and some robots learn this way.</div>
+    </div>
+    <div class="model">
+      <h4>Model: train a delivery robot</h4>
+      <div class="svgbox fit" id="l3Svg"></div>
+      <div class="row">
+        <button class="btn" id="l3One" type="button">Train 1 try</button>
+        <button class="btn" id="l3Many" type="button">Train 25 tries</button>
+        <button class="btn ghost" id="l3Reset" type="button">Reset robot</button>
+      </div>
+      <div class="stats" id="l3Stats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Where bias comes from</span>
+      <div class="codes"><span class="code">CS2.K3</span></div>
+      <h3>Bias can enter an AI system in four ways</h3>
+      <p><b>Bias</b> in AI means the system gives results that are unfair or less accurate for some people or situations. It can come from:</p>
+      <p><b>Developers:</b> the people who build the AI choose what it should do, what data to collect and who to test it with.</p>
+      <p><b>Data sets:</b> if the training data has many more examples of some groups than others, the AI learns those groups best.</p>
+      <p><b>Algorithms:</b> the steps and goals in the program. An algorithm that aims for the best average score can still do poorly for a small group.</p>
+      <p><b>User input:</b> what users type, click and rate can teach the AI. If many users feed it unfair or one-sided input, it can learn that too.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a voice assistant’s training data</h4>
+      <p class="hint">A voice assistant learns from recordings of people speaking. Change how many recordings come from speakers with accent A or accent B. Watch how well it understands each group.</p>
+      <label class="field" for="l4Mix">Recordings from accent A speakers: <span id="l4MixV" class="num"></span>
+        <input type="range" id="l4Mix" min="10" max="90" step="5" value="85"></label>
+      <div class="bars" id="l4Bars"></div>
+      <div class="detail" id="l4Out" aria-live="polite"></div>
+      <div class="chips" id="l4Src" role="group" aria-label="Sources of bias"></div>
+      <div class="detail" id="l4Src2" aria-live="polite"></div>
+      <p class="made">Accuracy values come from a made-up model</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Generative AI</span>
+      <div class="codes"><span class="code">CS2.K4</span></div>
+      <h3>Generative AI makes new content</h3>
+      <p><b>Generative AI</b> produces new digital content such as <b>text, images, videos and music</b>. It learns patterns from a huge number of examples. Then it builds something new, one small piece at a time, by predicting what is likely to come next.</p>
+      <p>A text generator predicts the next word. An image generator predicts pixels. A music generator predicts notes or sounds.</p>
+      <p>The model here learned from only twelve sentences about Alberta weather. Real text generators learn from billions of sentences, but the idea of predicting the next piece is the same.</p>
+      <div class="key"><b>Remember:</b> generative AI predicts what is likely, not what is true. Its content can sound right and still be wrong, so check it.</div>
+    </div>
+    <div class="model">
+      <h4>Model: a tiny next-word generator</h4>
+      <div class="chips" id="l5Start" role="group" aria-label="First word"></div>
+      <div class="gen" id="l5Text" aria-live="polite"></div>
+      <div class="bars" id="l5Bars"></div>
+      <div class="row">
+        <button class="btn" id="l5Next" type="button">Add next word</button>
+        <button class="btn ghost" id="l5Top" type="button">Add most likely word</button>
+      </div>
+      <details><summary>See the twelve training sentences</summary><ul id="l5Train" class="hint"></ul></details>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Chatbots</span>
+      <div class="codes"><span class="code">CS2.K5</span></div>
+      <h3>Chatbots hold conversations in real time</h3>
+      <p>A <b>chatbot</b> is a program that simulates a conversation with online users. It takes a question, works out what the person is asking, and gives an answer in <b>real time</b>, which means right away.</p>
+      <p>Simple chatbots look for <b>keywords</b> and pick a stored answer. AI chatbots use a <b>language model</b> trained on huge amounts of text, so they can handle questions worded in many different ways and write new replies.</p>
+      <p>A chatbot does not understand the way a person does. It finds patterns in words. It can give a confident answer that is wrong, so important answers should be checked.</p>
+    </div>
+    <div class="model">
+      <h4>Model: science fair helper bot</h4>
+      <p class="hint">This is a simple keyword chatbot. Ask about the date, place, rules, judging or how to sign up. Then try wording a question in an unusual way.</p>
+      <div class="chat" id="l6Chat" aria-live="polite"></div>
+      <div class="sendrow">
+        <label class="field" for="l6In">Your question<input type="text" id="l6In" autocomplete="off"></label>
+        <button class="btn" id="l6Send" type="button">Send</button>
+      </div>
+      <div class="chips" id="l6Ex" role="group" aria-label="Example questions"></div>
+      <p class="made">The science fair details are made up</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Recommendation algorithms</span>
+      <div class="codes"><span class="code">CS2.K6</span></div>
+      <h3>Your feed learns from what you do</h3>
+      <p>A <b>recommendation algorithm</b> is an AI program that predicts content you may like. It uses your <b>previous online activity</b>: what you watched, clicked, liked, searched and how long you stayed.</p>
+      <p>Streaming apps, online stores and social media all use them. They can help you find things you enjoy. They can also narrow what you see. When a feed shows more and more of the same thing, people call it a <b>filter bubble</b>.</p>
+      <p>Tap videos in the feed below. Watch how the mix changes.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a video feed</h4>
+      <div class="feed" id="l7Feed"></div>
+      <div class="bars" id="l7Bars"></div>
+      <div class="stats" id="l7Stats" aria-live="polite"></div>
+      <button class="btn ghost" id="l7Reset" type="button">Start a fresh feed</button>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · AI in science</span>
+      <div class="codes"><span class="code">CS2.K7</span></div>
+      <h3>Scientists leverage AI</h3>
+      <p><b>Data analysis:</b> AI finds patterns in data sets too big to check by hand, like sorting photos from wildlife cameras or finding signals in medical scans.</p>
+      <p><b>Climate modelling:</b> climate models are computer programs that simulate the atmosphere, oceans and land. AI can speed up parts of these models and help find patterns in weather and climate data.</p>
+      <p><b>Classifying galaxies:</b> telescopes take pictures of millions of galaxies. Volunteers in citizen science projects such as Galaxy Zoo have labelled galaxies by shape, and those labels help train AI to sort the rest.</p>
+      <p>Galaxies are often sorted by shape: <b>spiral</b> (arms that wind out from the centre), <b>elliptical</b> (smooth oval) or <b>irregular</b> (no clear shape).</p>
+    </div>
+    <div class="model">
+      <h4>Model: you and the AI classify galaxies</h4>
+      <div class="svgbox fit" id="l8Svg"></div>
+      <div class="chips" id="l8Pick" role="group" aria-label="Galaxy shape"></div>
+      <div class="detail" id="l8Out" aria-live="polite"></div>
+      <div class="row"><button class="btn" id="l8Next" type="button">Next galaxy</button><span class="hint mono" id="l8Score"></span></div>
+      <p class="made">Galaxies are drawn models, not real telescope images</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · AI and jobs</span>
+      <div class="codes"><span class="code">CS2.K8</span></div>
+      <h3>AI is changing work</h3>
+      <p>AI impacts jobs in three main ways.</p>
+      <p><b>Automating repetitive tasks:</b> jobs with steps that repeat the same way, like sorting, data entry or driving a fixed route, can be done partly by machines.</p>
+      <p><b>New career opportunities:</b> people are needed to build, train, test, repair and supervise AI systems.</p>
+      <p><b>Changing skills:</b> many workers now need to use AI tools, check AI results, and focus on skills AI does poorly, like caring for people, solving new problems and working in teams.</p>
+    </div>
+    <div class="model">
+      <h4>Model: one job, three changes</h4>
+      <div class="chips" id="l9Chips" role="group" aria-label="Choose a job"></div>
+      <div class="trio" id="l9Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 10 · Ethics of AI</span>
+      <div class="codes"><span class="code">CS2.K9</span></div>
+      <h3>Using AI raises questions of right and wrong</h3>
+      <p><b>Ethics</b> means thinking about what is fair, right and responsible. AI raises five big ethical questions.</p>
+      <div class="issue" id="l10Issues"></div>
+      <p class="note">Some First Nations in Canada follow the OCAP principles (ownership, control, access and possession) so that their communities decide how data about them is collected and used.</p>
+    </div>
+    <div class="model">
+      <h4>Model: name the ethical issue</h4>
+      <p class="hint">Read the situation. Tap the ethical issue it raises most.</p>
+      <div class="detail" id="l10Case" aria-live="polite"></div>
+      <div class="chips" id="l10Pick" role="group" aria-label="Ethical issues"></div>
+      <div class="feedback" id="l10Fb" aria-live="polite"></div>
+      <div class="row"><button class="btn" id="l10Next" type="button">Next situation</button></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Each one gives you new practice every time. All data here is made up for practice.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 1 · Time saved with AI</span>
+      <div class="codes"><span class="code">CS2.K1</span></div>
+      <h3>How much time does AI save?</h3>
+      <p>A wildlife biologist has trail camera photos to check. The AI sorts them all, then flags some for a person to check.</p>
+      <div class="formula">time = number of items × time per item</div>
+      <div class="formula">time saved = time by hand − time with AI help</div>
+      <div class="worked" id="b1Worked"></div>
+    </div>
+    <div class="model">
+      <h4>Your turn</h4>
+      <div class="detail" id="b1Q"></div>
+      <div class="twocol">
+        <label class="field" for="b1Ans">Time saved (minutes)<input type="number" id="b1Ans" step="any" inputmode="decimal"></label>
+        <div class="row" style="align-self:end"><button class="btn" id="b1Check" type="button">Check</button><button class="btn ghost" id="b1New" type="button">New problem</button></div>
+      </div>
+      <div class="verdict mid" id="b1Fb" aria-live="polite">Work out the time saved, then check.</div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 2 · Compare types of machine learning</span>
+      <div class="codes"><span class="code">CS2.S1</span><span class="code">CS2.K2</span></div>
+      <h3>Which type of learning fits?</h3>
+      <div class="tablebox"><table class="cmp">
+        <thead><tr><th>Type</th><th>What it gets</th><th>How it learns</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Supervised</td><td>Labelled examples</td><td>Matches new data to the labels it learned</td><td>Photos labelled “moose” or “deer”</td></tr>
+          <tr><td>Unsupervised</td><td>Data with no labels</td><td>Finds patterns and groups similar items</td><td>Grouping shoppers by what they buy</td></tr>
+          <tr><td>Reinforcement</td><td>Rewards and penalties</td><td>Trial and error, keeps what earns reward</td><td>A robot learning to walk</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="model">
+      <h4>Your turn: name the type</h4>
+      <div class="detail" id="b2Q" aria-live="polite"></div>
+      <div class="chips" id="b2Pick" role="group" aria-label="Type of machine learning"></div>
+      <div class="feedback" id="b2Fb" aria-live="polite"></div>
+      <div class="row"><button class="btn" id="b2Next" type="button">Next situation</button><span class="hint mono" id="b2Score"></span></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 3 · Bias audit</span>
+      <div class="codes"><span class="code">CS2.S2</span><span class="code">CS2.K3</span><span class="code">CS2.K9</span></div>
+      <h3>Audit a bird song app</h3>
+      <p>A bird song app listens to a recording and names the bird. The developers tested it with recordings from three places. Your job is to check whether it works equally well everywhere.</p>
+      <div class="formula">accuracy = correct ÷ total × 100%</div>
+      <div class="worked" id="b3Worked"></div>
+    </div>
+    <div class="model">
+      <h4>Your turn: test results</h4>
+      <div class="tablebox"><table class="dt" id="b3Table"><thead><tr><th>Recorded in</th><th>Training clips</th><th>Test clips</th><th>Correct</th></tr></thead><tbody></tbody></table></div>
+      <label class="field" for="b3Ans">Accuracy for the place with the lowest accuracy (%)<input type="number" id="b3Ans" step="any" inputmode="decimal"></label>
+      <label class="field" for="b3Src">Most likely source of the bias
+        <select id="b3Src"><option value="">Choose one</option><option value="data">Data set</option><option value="user">User input</option><option value="dev">Developers chose the colour of the app</option><option value="none">There is no bias</option></select></label>
+      <label class="field" for="b3Fix">Best fix
+        <select id="b3Fix"><option value="">Choose one</option><option value="more">Collect more training clips from that place</option><option value="hide">Stop showing results for that place</option><option value="faster">Make the app run faster</option><option value="ads">Add a warning only in the app store</option></select></label>
+      <div class="row"><button class="btn" id="b3Check" type="button">Check</button><button class="btn ghost" id="b3New" type="button">New data</button></div>
+      <div class="verdict mid" id="b3Fb" aria-live="polite">Calculate, choose, then check.</div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 4 · Feed experiment</span>
+      <div class="codes"><span class="code">CS2.S3</span><span class="code">CS2.K6</span></div>
+      <h3>How does a feed shape what you see?</h3>
+      <p>Choose a way of tapping. The simulator taps 30 videos for you, using the same algorithm as Lesson 7. Compare the results of different strategies.</p>
+      <p><b>Variety</b> counts how many of the 6 topics are in the final feed of 12 videos. <b>Top topic share</b> is the percent of the final feed taken by the most common topic.</p>
+      <div class="check-list" id="b4Reflect"></div>
+    </div>
+    <div class="model">
+      <h4>Run the experiment</h4>
+      <label class="field" for="b4Strat">Tapping strategy
+        <select id="b4Strat">
+          <option value="first">Always tap the first video</option>
+          <option value="hockey">Tap hockey whenever it appears</option>
+          <option value="random">Tap a random video</option>
+          <option value="new">Tap the topic you have seen least</option>
+        </select></label>
+      <div class="row"><button class="btn" id="b4Run" type="button">Run 30 taps</button><button class="btn ghost" id="b4Clear" type="button">Clear results</button></div>
+      <div class="bars" id="b4Bars"></div>
+      <div class="tablebox"><table class="dt" id="b4Table"><thead><tr><th>Strategy</th><th>Variety</th><th>Top topic</th><th>Top share</th></tr></thead><tbody></tbody></table></div>
+      <div class="verdict mid" id="b4Fb" aria-live="polite">Run each strategy at least once.</div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 5 · Reshaping the workforce</span>
+      <div class="codes"><span class="code">CS2.S4</span><span class="code">CS2.K8</span></div>
+      <h3>Sort the tasks in a job</h3>
+      <p>Pick a job. For each task, decide whether AI is likely to <b>automate</b> it, <b>assist</b> a person with it, or whether it stays <b>human-led</b>. Then compare with one reasonable answer. People can disagree, so the reasons matter most.</p>
+      <div class="detail" id="b5Sum" aria-live="polite"></div>
+    </div>
+    <div class="model">
+      <h4>Your turn</h4>
+      <div class="chips" id="b5Jobs" role="group" aria-label="Choose a job"></div>
+      <div id="b5Tasks" class="bars"></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 CS2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>CS2.K5:</b> “understand questions” is taught with care. Chatbots process text and find patterns of meaning; they do not understand the way people do, and AI chatbots can give confident wrong answers. The lab’s model is a simple keyword chatbot (not AI) to show the idea, and the text explains that AI chatbots use a language model. Some chatbots are rule based and do not use AI at all.</li>
+      <li><b>CS2.K6:</b> recommendation algorithms are taught as using the person’s previous activity, as the statement says. Many also use the activity of similar users and information about the content itself, and not every recommender uses machine learning. The feed model uses only the person’s taps.</li>
+      <li><b>CS2.K2:</b> a penalty is taught as a negative reward. The leaf sorter uses a nearest neighbour method (supervised) and a k-means style grouping (unsupervised); these names are not taught to students.</li>
+      <li><b>CS2.K3:</b> algorithm bias is taught as design choices in the steps and goals (for example, aiming for the best average). User input includes feedback loops, where what users click and rate trains the system.</li>
+      <li><b>CS2.K8:</b> no job loss statistics are given. The mine haul truck example (some Alberta oil sands mines use self-driving haul trucks supervised from control rooms) is described generally; please verify wording.</li>
+      <li><b>CS2.K7:</b> Galaxy Zoo is described generally as a citizen science project whose volunteer labels help train AI. Galaxy pictures in the lab are drawn models.</li>
+      <li><b>CS2.K9:</b> one sentence names the OCAP principles of First Nations data governance under privacy. Please review the wording. Deepfakes and privacy can be sensitive topics; scenarios avoid real people.</li>
+      <li><b>Data:</b> all times, accuracies, training counts, feed results and the science fair details are made up or simplified for practice and labelled as such.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-cs2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function stat(box, label, val){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, label)); d.appendChild(el("b", null, val)); box.appendChild(d); }
+function bar(box, label, v, max, cls, valText){
+  var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, label));
+  var t = el("div", {"class": "track"}); var i = el("i"); if (cls) i.className = cls; i.style.width = Math.max(2, Math.min(100, v / max * 100)) + "%"; t.appendChild(i); r.appendChild(t);
+  r.appendChild(el("b", null, valText != null ? valText : String(v))); box.appendChild(r);
+}
+function verdict(box, kind, text){ box.className = "verdict " + kind; box.textContent = text; }
+function r1(x){ return Math.round(x * 10) / 10; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: efficiency ---------- */
+(function(){
+  var T = [
+    {label: "Trail camera photos", kind: "Information processing", ai: "The AI scans 20 000 trail camera photos and flags the 2 000 that seem to show an animal.", human: "A biologist checks the flagged photos and names the species when the AI is unsure.", h: 1000, a: 110},
+    {label: "Snow plow routes", kind: "Decision making", ai: "The AI compares snowfall, traffic and bus routes and suggests which streets to clear first.", human: "City staff approve the plan and change it for emergencies like an ambulance call.", h: 240, a: 40},
+    {label: "Video captions", kind: "Task completion", ai: "The AI listens to a 30 minute science video and writes the captions.", human: "A person reads the captions and fixes names and science words the AI got wrong.", h: 180, a: 35},
+    {label: "Crop field scan", kind: "Information processing", ai: "The AI checks drone pictures of a canola field and marks patches with weeds.", human: "The farmer walks to the marked patches and decides how to treat them.", h: 300, a: 60},
+    {label: "Library returns", kind: "Task completion", ai: "A sorting machine reads each book’s label and drops it in the right bin.", human: "A library worker handles damaged books and labels the machine cannot read.", h: 120, a: 15}
+  ];
+  chipGroup($("l1Chips"), T, "", function(t){
+    detail($("l1Detail"), t.label, ["AI does: " + t.ai, "The person does: " + t.human], t.kind);
+    var b = $("l1Bars"); clear(b);
+    bar(b, "By hand", t.h, t.h, "warn", t.h + " min");
+    bar(b, "With AI help", t.a, t.h, "", t.a + " min");
+  }, 0);
+})();
+
+/* ---------- Lesson 2: leaf sorter ---------- */
+var LEAVES = [
+  [4.0,3.6,0],[5.2,4.6,0],[6.1,5.4,0],[4.6,4.4,0],[5.6,4.8,0],[3.8,3.2,0],[6.6,5.9,0],[5.0,4.1,0],[4.4,3.7,0],[6.0,5.0,0],
+  [8.0,1.6,1],[9.5,1.8,1],[10.6,2.2,1],[7.2,1.4,1],[11.4,2.0,1],[8.8,1.2,1],[9.9,2.4,1],[7.6,1.9,1],[10.2,1.5,1],[12.0,2.3,1]
+];
+(function(){
+  var W = 520, H = 330, L = 50, R = 16, T = 16, B = 46;
+  function X(v){ return L + v / 14 * (W - L - R); }
+  function Y(v){ return H - B - v / 8 * (H - T - B); }
+  var mode = "sup", cents = null, assign = null, step = 0;
+  var svgBox = $("l2Svg");
+  function axes(s){
+    for (var i = 0; i <= 14; i += 2) { s.appendChild(sv("line", {x1: X(i), x2: X(i), y1: T, y2: H - B, "class": "grid"})); s.appendChild(sv("text", {x: X(i), y: H - B + 18, "text-anchor": "middle", "class": "small"}, String(i))); }
+    for (var j = 0; j <= 8; j += 2) { s.appendChild(sv("line", {x1: L, x2: W - R, y1: Y(j), y2: Y(j), "class": "grid"})); s.appendChild(sv("text", {x: L - 8, y: Y(j) + 4, "text-anchor": "end", "class": "small"}, String(j))); }
+    s.appendChild(sv("text", {x: (L + W - R) / 2, y: H - 8, "text-anchor": "middle", "class": "lbl"}, "Leaf length (cm)"));
+    s.appendChild(sv("text", {x: 14, y: (T + H - B) / 2, "text-anchor": "middle", "class": "lbl", transform: "rotate(-90 14 " + ((T + H - B) / 2) + ")"}, "Width (cm)"));
+  }
+  function draw(){
+    clear(svgBox);
+    var s = sv("svg", {viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": mode === "sup" ? "Scatter plot of 20 labelled leaves and one new leaf" : "Scatter plot of 20 unlabelled leaves being grouped"});
+    axes(s);
+    var out = $("l2Out");
+    if (mode === "sup") {
+      var nl = +$("l2Len").value, nw = +$("l2Wid").value;
+      $("l2LenV").textContent = nl + " cm"; $("l2WidV").textContent = nw + " cm";
+      var d = LEAVES.map(function(p, i){ return {i: i, d: Math.hypot(p[0] - nl, (p[1] - nw) * 1.5)}; }).sort(function(a, b){ return a.d - b.d; }).slice(0, 3);
+      d.forEach(function(n){ var p = LEAVES[n.i]; s.appendChild(sv("line", {x1: X(nl), y1: Y(nw), x2: X(p[0]), y2: Y(p[1]), "class": "nnl"})); });
+      LEAVES.forEach(function(p){ s.appendChild(sv("circle", {cx: X(p[0]), cy: Y(p[1]), r: 7, "class": p[2] ? "pB" : "pA"})); });
+      s.appendChild(sv("rect", {x: X(nl) - 8, y: Y(nw) - 8, width: 16, height: 16, "class": "pU"}));
+      s.appendChild(sv("circle", {cx: W - R - 120, cy: T + 12, r: 6, "class": "pA"})); s.appendChild(sv("text", {x: W - R - 108, y: T + 16, "class": "small"}, "Aspen"));
+      s.appendChild(sv("circle", {cx: W - R - 60, cy: T + 12, r: 6, "class": "pB"})); s.appendChild(sv("text", {x: W - R - 48, y: T + 16, "class": "small"}, "Willow"));
+      var votes = d.filter(function(n){ return LEAVES[n.i][2] === 1; }).length;
+      var lab = votes >= 2 ? "willow" : "aspen";
+      detail(out, "Prediction: " + lab, ["The AI found the 3 labelled leaves closest to the new leaf (dashed lines). " + (3 - votes) + " are aspen and " + votes + " are willow, so it labels the new leaf " + lab + ".", "It learned from labelled examples. That is supervised learning."], "Supervised");
+    } else {
+      if (!cents) { cents = [[2, 7], [3, 6.5]]; assign = null; step = 0; }
+      LEAVES.forEach(function(p, i){
+        var c = assign ? (assign[i] ? "pB" : "pA") : "pN";
+        s.appendChild(sv("circle", {cx: X(p[0]), cy: Y(p[1]), r: 7, "class": c}));
+      });
+      cents.forEach(function(c, k){ s.appendChild(sv("circle", {cx: X(c[0]), cy: Y(c[1]), r: 12, "class": "cen"})); s.appendChild(sv("text", {x: X(c[0]) + 15, y: Y(c[1]) - 10, "class": "lbl"}, k ? "Group B" : "Group A")); });
+      var msg;
+      if (step === 0) msg = ["The leaves have no labels. The AI places two group centres (circles) and will improve them step by step.", "Press Next step."];
+      else if (step % 2 === 1) msg = ["Step " + step + ": each leaf joins the nearest centre."];
+      else msg = ["Step " + step + ": each centre moves to the middle of its group."];
+      if (step >= 4) msg.push("The groups have settled. The AI found two groups but has no names for them. A person can look and say group " + (assign && assign[10] ? "B" : "A") + " looks like willow.");
+      detail(out, "Finding groups", msg, "Unsupervised");
+    }
+    svgBox.appendChild(s);
+  }
+  function kstep(){
+    step++;
+    if (step % 2 === 1) {
+      assign = LEAVES.map(function(p){ var d0 = Math.hypot(p[0] - cents[0][0], (p[1] - cents[0][1]) * 1.5), d1 = Math.hypot(p[0] - cents[1][0], (p[1] - cents[1][1]) * 1.5); return d1 < d0 ? 1 : 0; });
+    } else {
+      [0, 1].forEach(function(k){
+        var g = LEAVES.filter(function(p, i){ return assign[i] === k; });
+        if (g.length) cents[k] = [g.reduce(function(s, p){ return s + p[0]; }, 0) / g.length, g.reduce(function(s, p){ return s + p[1]; }, 0) / g.length];
+      });
+    }
+    draw();
+  }
+  chipGroup($("l2Mode"), [{label: "Supervised", v: "sup"}, {label: "Unsupervised", v: "uns"}], "", function(it){
+    mode = it.v; $("l2Sup").hidden = mode !== "sup"; $("l2Uns").hidden = mode === "sup"; draw();
+  }, 0);
+  $("l2Len").addEventListener("input", draw); $("l2Wid").addEventListener("input", draw);
+  $("l2Step").addEventListener("click", function(){ if (step < 6) kstep(); });
+  $("l2Reset").addEventListener("click", function(){ cents = null; draw(); });
+})();
+
+/* ---------- Lesson 3: reinforcement ---------- */
+(function(){
+  var N = 5, START = [0, 4], GOAL = [4, 0], STAIRS = [[2, 1], [2, 2], [1, 3]], WALLS = [[3, 3]];
+  var A = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+  var Q, tries, lastPath, lastReward, wins, recent;
+  function isIn(list, x, y){ return list.some(function(c){ return c[0] === x && c[1] === y; }); }
+  function reset(){ Q = []; for (var i = 0; i < N * N; i++) Q.push([0, 0, 0, 0]); tries = 0; lastPath = null; lastReward = null; wins = 0; recent = []; draw(); }
+  function episode(){
+    var x = START[0], y = START[1], path = [[x, y]], total = 0, eps = Math.max(0.05, 0.6 - tries * 0.02), done = false, steps = 0, win = false;
+    while (!done && steps < 40) {
+      var s = y * N + x, a;
+      if (Math.random() < eps) a = rint(0, 3);
+      else { var m = Math.max.apply(null, Q[s]); var best = [0, 1, 2, 3].filter(function(k){ return Q[s][k] === m; }); a = pick(best); }
+      var nx = x + A[a][0], ny = y + A[a][1], r = -1;
+      if (nx < 0 || ny < 0 || nx >= N || ny >= N || isIn(WALLS, nx, ny)) { nx = x; ny = y; }
+      if (nx === GOAL[0] && ny === GOAL[1]) { r = 10; done = true; win = true; }
+      else if (isIn(STAIRS, nx, ny)) { r = -10; done = true; }
+      var s2 = ny * N + nx, future = done ? 0 : Math.max.apply(null, Q[s2]);
+      Q[s][a] += 0.5 * (r + 0.9 * future - Q[s][a]);
+      total += r; x = nx; y = ny; path.push([x, y]); steps++;
+    }
+    tries++; lastPath = path; lastReward = total; if (win) wins++;
+    recent.push(win ? 1 : 0); if (recent.length > 10) recent.shift();
+  }
+  function draw(){
+    var box = $("l3Svg"); clear(box);
+    var C = 60, P = 10, S = N * C + 2 * P;
+    var s = sv("svg", {viewBox: "0 0 " + S + " " + S, role: "img", "aria-label": "5 by 5 grid. The robot starts bottom left. The charger is top right. Stairs squares end the try."});
+    for (var y = 0; y < N; y++) for (var x = 0; x < N; x++) {
+      var cls = "cell"; if (isIn(STAIRS, x, y)) cls += " stairs"; if (x === GOAL[0] && y === GOAL[1]) cls += " goal"; if (isIn(WALLS, x, y)) cls += " wall";
+      s.appendChild(sv("rect", {x: P + x * C, y: P + y * C, width: C, height: C, "class": cls}));
+      var cx = P + x * C + C / 2, cy = P + y * C + C / 2;
+      if (isIn(STAIRS, x, y)) s.appendChild(sv("text", {x: cx, y: cy + 4, "text-anchor": "middle", "class": "small"}, "stairs"));
+      else if (x === GOAL[0] && y === GOAL[1]) s.appendChild(sv("text", {x: cx, y: cy + 4, "text-anchor": "middle", "class": "small"}, "charger"));
+      else if (isIn(WALLS, x, y)) s.appendChild(sv("text", {x: cx, y: cy + 4, "text-anchor": "middle", "class": "small"}, "wall"));
+      else if (tries > 0) {
+        var q = Q[y * N + x], m = Math.max.apply(null, q);
+        if (q.some(function(v){ return v !== 0; })) {
+          var a = q.indexOf(m), dx = A[a][0], dy = A[a][1];
+          var tip = [cx + dx * 18, cy + dy * 18], b1 = [cx - dx * 6 - dy * 9, cy - dy * 6 + dx * 9], b2 = [cx - dx * 6 + dy * 9, cy - dy * 6 - dx * 9];
+          s.appendChild(sv("polygon", {points: tip.join(",") + " " + b1.join(",") + " " + b2.join(","), "class": "arrow"}));
+        }
+      }
+    }
+    if (lastPath) {
+      s.appendChild(sv("polyline", {points: lastPath.map(function(p){ return (P + p[0] * C + C / 2) + "," + (P + p[1] * C + C / 2); }).join(" "), "class": "path"}));
+      var e = lastPath[lastPath.length - 1];
+      s.appendChild(sv("circle", {cx: P + e[0] * C + C / 2, cy: P + e[1] * C + C / 2, r: 11, "class": "bot"}));
+    } else s.appendChild(sv("circle", {cx: P + START[0] * C + C / 2, cy: P + START[1] * C + C / 2, r: 11, "class": "bot"}));
+    box.appendChild(s);
+    var st = $("l3Stats"); clear(st);
+    stat(st, "Tries", String(tries));
+    stat(st, "Last try score", lastReward == null ? "none yet" : String(lastReward));
+    stat(st, "Reached charger (last 10)", recent.length ? recent.reduce(function(a, b){ return a + b; }, 0) + " of " + recent.length : "none yet");
+  }
+  $("l3One").addEventListener("click", function(){ episode(); draw(); });
+  $("l3Many").addEventListener("click", function(){ for (var i = 0; i < 25; i++) episode(); draw(); });
+  $("l3Reset").addEventListener("click", reset);
+  reset();
+})();
+
+/* ---------- Lesson 4: bias ---------- */
+(function(){
+  function draw(){
+    var p = +$("l4Mix").value / 100;
+    $("l4MixV").textContent = Math.round(p * 100) + "% (accent B: " + Math.round((1 - p) * 100) + "%)";
+    var a = Math.round(62 + 34 * Math.sqrt(p)), b = Math.round(62 + 34 * Math.sqrt(1 - p));
+    var box = $("l4Bars"); clear(box);
+    bar(box, "Accent A", a, 100, "", a + "%"); bar(box, "Accent B", b, 100, Math.abs(a - b) > 8 ? "warn" : "", b + "%");
+    var gap = Math.abs(a - b);
+    detail($("l4Out"), gap > 8 ? "Gap of " + gap + " points" : "Close to fair", [gap > 8 ? "The assistant understands the group it heard most often much better. The bias came from the data set, but developers decided what to collect." : "With a more even mix, both groups are understood about equally well. Fair data is one of the best fixes for bias."], "Accuracy check");
+  }
+  $("l4Mix").addEventListener("input", draw); draw();
+  var SRC = [
+    {label: "Developers", t: "A team tests a new hiring app only on people like themselves. They never notice that it rates other applicants lower."},
+    {label: "Data sets", t: "A plant disease app is trained mostly on photos taken in bright sun. It makes more mistakes on cloudy day photos."},
+    {label: "Algorithms", t: "A homework helper is designed to give the answer most people chose before. Rare but correct answers get pushed out."},
+    {label: "User input", t: "Users of a chatbot keep rating rude jokes about one group as funny. The chatbot learns to tell more of them."}
+  ];
+  chipGroup($("l4Src"), SRC, "", function(s){ detail($("l4Src2"), s.label, [s.t], "Example of bias"); }, 1);
+})();
+
+/* ---------- Lesson 5: next word ---------- */
+(function(){
+  var SENT = [
+    "the snow falls in edmonton .", "the snow melts in april .", "the wind blows across the prairie .", "the river freezes in winter .",
+    "the sun shines on the prairie .", "the snow falls on the river .", "the wind blows the snow .", "a chinook melts the snow .",
+    "a chinook blows in calgary .", "the sun melts the snow in april .", "the river flows through edmonton .", "a storm blows across the prairie ."
+  ];
+  var big = {};
+  SENT.forEach(function(s){ var w = s.split(" "); for (var i = 0; i < w.length - 1; i++) { big[w[i]] = big[w[i]] || {}; big[w[i]][w[i + 1]] = (big[w[i]][w[i + 1]] || 0) + 1; } });
+  var tl = $("l5Train"); SENT.forEach(function(s){ tl.appendChild(el("li", null, s.replace(" .", "."))); });
+  var words = [];
+  function opts(){ var w = words[words.length - 1]; var o = big[w] || {}; var tot = 0; for (var k in o) tot += o[k]; return {o: o, tot: tot}; }
+  function draw(){
+    var done = words[words.length - 1] === "." || words.length >= 14;
+    var txt = words.join(" ").replace(" .", ".");
+    $("l5Text").textContent = txt.charAt(0).toUpperCase() + txt.slice(1);
+    var b = $("l5Bars"); clear(b);
+    if (done) { b.appendChild(el("p", {"class": "hint"}, "The sentence is finished. Pick a first word to start again. Did it make a sentence that was not in the training text?")); }
+    else {
+      var x = opts(), keys = Object.keys(x.o).sort(function(a, c){ return x.o[c] - x.o[a]; });
+      b.appendChild(el("p", {"class": "hint"}, "Words that came after “" + words[words.length - 1] + "” in training, with their chances:"));
+      keys.forEach(function(k){ var pc = Math.round(x.o[k] / x.tot * 100); bar(b, k === "." ? "(end)" : k, pc, 100, "", pc + "%"); });
+    }
+    $("l5Next").disabled = done; $("l5Top").disabled = done;
+  }
+  function add(top){
+    var x = opts(), keys = Object.keys(x.o), w;
+    if (!keys.length) return;
+    if (top) { w = keys.sort(function(a, c){ return x.o[c] - x.o[a]; })[0]; }
+    else { var r = Math.random() * x.tot; for (var i = 0; i < keys.length; i++) { r -= x.o[keys[i]]; if (r < 0) { w = keys[i]; break; } } if (!w) w = keys[0]; }
+    words.push(w); draw();
+  }
+  chipGroup($("l5Start"), [{label: "the"}, {label: "a"}], "", function(it){ words = [it.label]; draw(); }, 0);
+  $("l5Next").addEventListener("click", function(){ add(false); });
+  $("l5Top").addEventListener("click", function(){ add(true); });
+})();
+
+/* ---------- Lesson 6: chatbot ---------- */
+(function(){
+  var INT = [
+    {k: ["when", "date", "day", "time"], a: "The science fair is on Thursday, March 4, from 1:00 to 3:00 in the afternoon."},
+    {k: ["where", "place", "room", "location", "gym"], a: "The science fair is in the school gym."},
+    {k: ["rule", "rules", "size", "poster", "board", "allowed"], a: "Display boards can be up to 90 cm wide. No open flames or living animals."},
+    {k: ["judge", "judging", "judges", "marks", "score", "graded"], a: "Judges score your question, method, data and how well you explain it."},
+    {k: ["sign", "register", "join", "enter", "signup"], a: "Sign up with your science teacher by February 12."}
+  ];
+  var chat = $("l6Chat");
+  function say(text, who, note){ var m = el("div", {"class": "msg " + who}, text); if (note) m.appendChild(el("small", null, note)); chat.appendChild(m); chat.scrollTop = chat.scrollHeight; }
+  function answer(q){
+    var w = q.toLowerCase().replace(/[^a-z\s]/g, " ").split(/\s+/).filter(Boolean), best = null, bestN = 0, hits = [];
+    INT.forEach(function(it){ var h = w.filter(function(x){ return it.k.indexOf(x) > -1; }); if (h.length > bestN) { bestN = h.length; best = it; hits = h; } });
+    if (best) say(best.a, "bot", "Matched keyword: " + hits.join(", "));
+    else say("Sorry, I am not sure. Try asking about the date, place, rules, judging or how to sign up.", "bot", "No keyword matched");
+  }
+  function send(){ var v = $("l6In").value.trim(); if (!v) return; say(v, "me"); answer(v); $("l6In").value = ""; }
+  $("l6Send").addEventListener("click", send);
+  $("l6In").addEventListener("keydown", function(e){ if (e.key === "Enter") { e.preventDefault(); send(); } });
+  say("Hi! I am the science fair helper. What would you like to know?", "bot");
+  ["When is the fair?", "How big can my poster be?", "Who decides the winners?", "Can I bring my pet snake?"].forEach(function(q){
+    var b = el("button", {"class": "chip", type: "button"}, q); b.addEventListener("click", function(){ say(q, "me"); answer(q); }); $("l6Ex").appendChild(b);
+  });
+})();
+
+/* ---------- Feed engine (Lesson 7 and Investigation 4) ---------- */
+var TOPICS = ["Hockey", "Cooking", "Nature", "Music", "Gaming", "Science"];
+var TITLES = [
+  ["Best saves this week", "Learning to skate backward", "Outdoor rink build", "Slap shot slow motion"],
+  ["Five minute bannock", "Perfect pancakes", "Campfire chili", "Easy fruit smoothie"],
+  ["Moose at sunrise", "Northern lights time lapse", "Prairie storm chasing", "Beaver dam up close"],
+  ["Guitar in ten minutes", "Fiddle tune practice", "Drum beat basics", "Choir warm-ups"],
+  ["Speedrun tricks", "Building a castle in a block game", "Puzzle game secrets", "Retro game review"],
+  ["Volcano in a bottle", "Why the sky is blue", "Robot arm build", "Microscope pond life"]
+];
+function Feed(){ this.w = [1, 1, 1, 1, 1, 1]; this.seen = [0, 0, 0, 0, 0, 0]; }
+Feed.prototype.make = function(n){
+  var self = this, out = [];
+  for (var i = 0; i < n; i++) {
+    var ws = self.w.map(function(v){ return v * v; }), tot = ws.reduce(function(a, b){ return a + b; }, 0), r = Math.random() * tot, t = 0;
+    for (var k = 0; k < 6; k++) { r -= ws[k]; if (r < 0) { t = k; break; } }
+    out.push(t);
+  }
+  out.forEach(function(t){ self.seen[t]++; });
+  return out;
+};
+Feed.prototype.tap = function(t){ this.w[t] += 1; for (var k = 0; k < 6; k++) if (k !== t) this.w[k] = Math.max(0.35, this.w[k] * 0.93); };
+function mixBars(box, items){
+  clear(box);
+  var c = [0, 0, 0, 0, 0, 0]; items.forEach(function(t){ c[t]++; });
+  c.forEach(function(v, k){ var pc = Math.round(v / items.length * 100); bar(box, TOPICS[k], pc, 100, "t" + k, pc + "%"); });
+  var variety = c.filter(function(v){ return v > 0; }).length, top = c.indexOf(Math.max.apply(null, c));
+  return {variety: variety, top: top, share: Math.round(c[top] / items.length * 100)};
+}
+(function(){
+  var f, items, taps;
+  function draw(){
+    var box = $("l7Feed"); clear(box);
+    items.forEach(function(t, i){
+      var b = el("button", {"class": "vid t" + t, type: "button", "aria-label": "Watch " + TOPICS[t] + " video: " + TITLES[t][i % 4]});
+      b.appendChild(el("span", null, TOPICS[t])); b.appendChild(el("b", null, TITLES[t][(i + taps) % 4]));
+      b.addEventListener("click", function(){ f.tap(t); taps++; items = f.make(6); draw(); });
+      box.appendChild(b);
+    });
+    var m = mixBars($("l7Bars"), items), st = $("l7Stats"); clear(st);
+    stat(st, "Videos tapped", String(taps)); stat(st, "Topics in this feed", m.variety + " of 6");
+  }
+  function reset(){ f = new Feed(); taps = 0; items = [0, 1, 2, 3, 4, 5]; draw(); }
+  $("l7Reset").addEventListener("click", reset);
+  reset();
+})();
+
+/* ---------- Lesson 8: galaxies ---------- */
+(function(){
+  var KINDS = ["Spiral", "Elliptical", "Irregular"], cur, seed, guessed, score = {you: 0, ai: 0, n: 0};
+  function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  function draw(){
+    var box = $("l8Svg"); clear(box);
+    var s = sv("svg", {viewBox: "0 0 300 200", role: "img", "aria-label": "A drawn galaxy. Decide its shape."});
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 300, height: 200, rx: 8, "class": "sky"}));
+    for (var i = 0; i < 30; i++) s.appendChild(sv("circle", {cx: rnd() * 300, cy: rnd() * 200, r: rnd() * 1.2 + 0.3, "class": "star"}));
+    var cx = 150, cy = 100, g = sv("g", {transform: "rotate(" + Math.round(rnd() * 180) + " 150 100)"});
+    if (cur === 0) {
+      g.appendChild(sv("ellipse", {cx: cx, cy: cy, rx: 14, ry: 12, "class": "star"}));
+      for (var arm = 0; arm < 2; arm++) for (var t = 0; t < 70; t++) {
+        var a = t / 70 * 3.2 * Math.PI + arm * Math.PI, r = 10 + t * 1.05;
+        g.appendChild(sv("circle", {cx: cx + Math.cos(a) * r + (rnd() - 0.5) * 6, cy: cy + Math.sin(a) * r * 0.75 + (rnd() - 0.5) * 6, r: 2.2 - t / 50, "class": "star", opacity: 0.9}));
+      }
+    } else if (cur === 1) {
+      var rx = 40 + rnd() * 30, ry = 25 + rnd() * 20;
+      for (var k = 5; k >= 1; k--) g.appendChild(sv("ellipse", {cx: cx, cy: cy, rx: rx * k / 5, ry: ry * k / 5, "class": "star", opacity: 0.18}));
+    } else {
+      for (var b = 0; b < 7; b++) { var bx = cx + (rnd() - 0.5) * 120, by = cy + (rnd() - 0.5) * 80; for (var q = 0; q < 12; q++) g.appendChild(sv("circle", {cx: bx + (rnd() - 0.5) * 30, cy: by + (rnd() - 0.5) * 24, r: rnd() * 3 + 1, "class": "star", opacity: 0.7})); }
+    }
+    s.appendChild(g); box.appendChild(s);
+  }
+  function next(){ cur = rint(0, 2); seed = rint(1, 99999); guessed = false; draw(); detail($("l8Out"), null, ["What shape is this galaxy? Tap your answer."]); }
+  chipGroup($("l8Pick"), KINDS.map(function(k){ return {label: k}; }), "", function(it, i){
+    if (guessed) return; guessed = true; score.n++;
+    var ok = i === cur; if (ok) score.you++;
+    var aiOk = Math.random() < 0.9, aiGuess = aiOk ? cur : (cur + 1) % 3, conf = aiOk ? rint(82, 98) : rint(51, 64); if (aiOk) score.ai++;
+    detail($("l8Out"), "It is " + KINDS[cur].toLowerCase(), [(ok ? "You are right." : "You chose " + it.label.toLowerCase() + ".") + " The AI model says " + KINDS[aiGuess].toLowerCase() + " (" + conf + "% sure).", aiOk ? "The AI learned from galaxies that people had already labelled." : "The AI was wrong and not very sure. Scientists check low-confidence results by eye."]);
+    $("l8Score").textContent = "You " + score.you + " of " + score.n + " · AI " + score.ai + " of " + score.n;
+  });
+  $("l8Next").addEventListener("click", function(){ document.querySelectorAll("#l8Pick .chip").forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); next(); });
+  next();
+})();
+
+/* ---------- Lesson 9: jobs ---------- */
+(function(){
+  var J = [
+    {label: "Pharmacist", a: "Software checks every prescription for drug combinations that could be harmful.", n: "Pharmacy software specialists and people who test health AI tools.", s: "Spends more time talking with patients and checking flagged results."},
+    {label: "Mine haul truck driver", a: "Some Alberta oil sands mines use self-driving haul trucks on set routes.", n: "Control room operators, fleet technicians and sensor repair workers.", s: "Workers learn to monitor many trucks on screens and respond to alerts."},
+    {label: "Graphic designer", a: "Generative AI can make quick draft images and remove backgrounds.", n: "Designers who guide AI tools and check images for copyright problems.", s: "Focus moves to ideas, taste, client needs and editing AI drafts."},
+    {label: "Farmer", a: "GPS-guided tractors steer straight rows; AI spots weeds in drone photos.", n: "Precision agriculture technicians and drone pilots.", s: "Farmers read data maps and decide which fields need attention."},
+    {label: "Customer service agent", a: "Chatbots answer common questions like store hours at any time of day.", n: "People who design and improve chatbot conversations.", s: "Agents handle the hard or upset cases that need a human."}
+  ];
+  chipGroup($("l9Chips"), J, "", function(j){
+    var o = $("l9Out"); clear(o);
+    [["Automating tasks", j.a], ["New careers", j.n], ["Changing skills", j.s]].forEach(function(p){ var d = el("div", {"class": "box"}); d.appendChild(el("b", {"class": "k"}, p[0])); d.appendChild(el("p", null, p[1])); o.appendChild(d); });
+  }, 0);
+})();
+
+/* ---------- Lesson 10: ethics ---------- */
+var ISSUES = [
+  ["Privacy and security", "Who collects your data, how it is used, and whether it is kept safe."],
+  ["Fairness and bias", "Whether AI treats all people and groups fairly."],
+  ["Misinformation and deepfakes", "False content, including fake video or audio of a real person made with AI."],
+  ["Decision making and accountability", "Who is responsible when an AI helps make a decision that turns out wrong."],
+  ["Influence on behaviour", "How what an algorithm shows us changes what we watch, buy, believe or do."]
+];
+(function(){
+  var box = $("l10Issues");
+  ISSUES.forEach(function(i){ var d = el("div", {"class": "box"}); d.appendChild(el("b", {"class": "k"}, i[0])); d.appendChild(el("p", null, i[1])); box.appendChild(d); });
+  var CASES = [
+    ["A fitness app sells the locations where users run to advertisers without asking.", 0, "Personal data was shared without permission. That is privacy."],
+    ["A fake video shows a mayor announcing that school is cancelled. It spreads fast.", 2, "A realistic fake video of a real person is a deepfake."],
+    ["A face unlock feature works well for some skin tones and poorly for others.", 1, "It does not work equally well for all people. That is fairness and bias."],
+    ["A self-driving shuttle takes a wrong turn and damages a fence. Nobody agrees who should pay.", 3, "The question is who is responsible for an AI decision."],
+    ["After a week of watching extreme stunt videos, a student’s feed shows almost nothing else and he starts trying risky stunts.", 4, "The algorithm’s output is shaping what she sees and does."],
+    ["A smart speaker records family conversations, and the recordings are stolen in a hack.", 0, "Data that was collected was not kept secure."],
+    ["An AI writes a news story that sounds real but includes a made-up quote.", 2, "False content made by AI is misinformation."],
+    ["A school uses an AI to choose students for a program, and no person checks its choices.", 3, "Important decisions need a person who is accountable and can check the result."]
+  ];
+  var order = shuffle(CASES), i = 0, answered = false;
+  function show(){ var c = order[i % order.length]; answered = false; detail($("l10Case"), null, [c[0]], "Situation " + (i % order.length + 1) + " of " + order.length); $("l10Fb").className = "feedback"; $("l10Fb").textContent = ""; document.querySelectorAll("#l10Pick .chip").forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); }
+  chipGroup($("l10Pick"), ISSUES.map(function(x){ return {label: x[0]}; }), "", function(it, k){
+    var c = order[i % order.length];
+    if (k === c[1]) { $("l10Fb").className = "feedback ok"; $("l10Fb").textContent = "Yes. " + c[2]; }
+    else { $("l10Fb").className = "feedback no"; $("l10Fb").textContent = "That could be part of it, but the main issue is another one. Try again."; }
+  });
+  $("l10Next").addEventListener("click", function(){ i++; show(); });
+  show();
+})();
+
+/* ---------- Bench 1: time saved ---------- */
+(function(){
+  var p;
+  function make(){
+    var n = pick([6000, 8000, 10000, 12000, 15000, 20000]), th = pick([2, 3, 4]), pct = pick([5, 10, 15, 20]), aiMin = pick([5, 10, 15]);
+    var hand = n * th / 60, flagged = n * pct / 100, check = flagged * th / 60, withAI = aiMin + check;
+    return {n: n, th: th, pct: pct, aiMin: aiMin, hand: hand, flagged: flagged, check: check, withAI: withAI, saved: hand - withAI};
+  }
+  function worked(){
+    var w = $("b1Worked"); clear(w);
+    w.appendChild(el("b", null, "Worked example"));
+    ["10 000 photos. A person takes 3 s per photo. The AI takes 10 min and flags 10% for a person to check.",
+     "By hand: 10 000 × 3 s = 30 000 s = 500 min.",
+     "Flagged: 10% of 10 000 = 1 000 photos. Checking: 1 000 × 3 s = 3 000 s = 50 min.",
+     "With AI help: 10 min + 50 min = 60 min.",
+     "Time saved: 500 min − 60 min = 440 min (more than 7 hours)."].forEach(function(t){ w.appendChild(el("p", null, t)); });
+  }
+  function show(){
+    p = make();
+    detail($("b1Q"), "Problem", [p.n.toLocaleString("en-CA") + " photos. A person takes " + p.th + " s per photo. The AI takes " + p.aiMin + " min and flags " + p.pct + "% for a person to check. How many minutes does AI help save?"]);
+    $("b1Ans").value = ""; verdict($("b1Fb"), "mid", "Work out the time saved, then check.");
+  }
+  $("b1Check").addEventListener("click", function(){
+    var v = parseFloat($("b1Ans").value);
+    if (isNaN(v)) { verdict($("b1Fb"), "no", "Type a number of minutes first."); return; }
+    var steps = "By hand " + r1(p.hand) + " min. Flagged " + p.flagged + " photos, checking " + r1(p.check) + " min. With AI " + r1(p.withAI) + " min. Saved " + r1(p.saved) + " min.";
+    if (Math.abs(v - p.saved) <= Math.max(1, p.saved * 0.01)) verdict($("b1Fb"), "ok", "Correct. " + steps);
+    else verdict($("b1Fb"), "no", "Not quite. " + steps + " Remember to change seconds to minutes by dividing by 60.");
+  });
+  $("b1New").addEventListener("click", show);
+  worked(); show();
+})();
+
+/* ---------- Bench 2: which type ---------- */
+(function(){
+  var TYPES = ["Supervised", "Unsupervised", "Reinforcement"];
+  var S = [
+    ["An app learns to spot ripe tomatoes from 5 000 photos labelled “ripe” or “not ripe”.", 0, "The photos come with labels, so it is supervised."],
+    ["A music service groups listeners who play similar songs, without being told any groups.", 1, "No labels. It finds groups on its own, so it is unsupervised."],
+    ["A computer plays thousands of chess games and gets points for winning.", 2, "Trial and error with a reward for winning is reinforcement learning."],
+    ["An email filter learns from emails people marked “spam” or “not spam”.", 0, "Each example email has a label, so it is supervised."],
+    ["A robot dog falls many times and is rewarded each time it stays upright longer.", 2, "Rewards for better tries make it reinforcement learning."],
+    ["A bank looks for unusual patterns in millions of purchases, with no examples marked as fraud.", 1, "Finding unusual patterns without labels is unsupervised."],
+    ["A wildlife AI learns animal names from camera photos that biologists already named.", 0, "Biologists provided the labels, so it is supervised."],
+    ["A store groups its customers by what they buy so it can plan sales.", 1, "Grouping similar shoppers with no labels is unsupervised."],
+    ["A self-parking car in a simulator loses points for bumping the curb and gains points for parking straight.", 2, "Rewards and penalties during practice make it reinforcement learning."],
+    ["A reading app learns which words are nouns from sentences where every noun is marked.", 0, "The marked nouns are labels, so it is supervised."],
+    ["Astronomers let an AI sort thousands of unlabelled star readings into groups that behave alike.", 1, "No labels and grouping by similarity means unsupervised."],
+    ["A video game character learns to finish a level faster by getting a bonus for each second saved.", 2, "The bonus is a reward that guides trial and error."]
+  ];
+  var order = shuffle(S), i = 0, sc = {r: 0, n: 0}, tried = false;
+  function show(){ var c = order[i % order.length]; tried = false; detail($("b2Q"), null, [c[0]], "Situation " + (i % order.length + 1) + " of " + order.length); $("b2Fb").className = "feedback"; $("b2Fb").textContent = ""; document.querySelectorAll("#b2Pick .chip").forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); }
+  chipGroup($("b2Pick"), TYPES.map(function(t){ return {label: t}; }), "", function(it, k){
+    var c = order[i % order.length];
+    if (!tried) { sc.n++; if (k === c[1]) sc.r++; tried = true; $("b2Score").textContent = "Right first try: " + sc.r + " of " + sc.n; }
+    if (k === c[1]) { $("b2Fb").className = "feedback ok"; $("b2Fb").textContent = "Yes: " + TYPES[k] + ". " + c[2]; }
+    else { $("b2Fb").className = "feedback no"; $("b2Fb").textContent = "Not " + TYPES[k] + ". Ask: are there labels, or rewards, or neither?"; }
+  });
+  $("b2Next").addEventListener("click", function(){ i++; show(); });
+  show();
+})();
+
+/* ---------- Bench 3: bias audit ---------- */
+(function(){
+  var PL = ["Forest", "Farmland", "City"], d;
+  function worked(){
+    var w = $("b3Worked"); clear(w);
+    w.appendChild(el("b", null, "Worked example"));
+    ["Forest: 180 correct out of 200 test clips. 180 ÷ 200 × 100% = 90%.",
+     "City: 105 correct out of 150 test clips. 105 ÷ 150 × 100% = 70%.",
+     "The city accuracy is 20 points lower. The training data had only 300 city clips but 4 000 forest clips. The bias came mainly from the data set.",
+     "Fix: collect many more city recordings (with traffic noise) and test again. Tell users the app is less reliable in cities until then."].forEach(function(t){ w.appendChild(el("p", null, t)); });
+  }
+  function make(){
+    var low = rint(0, 2), rows = [];
+    PL.forEach(function(p, k){
+      var train = k === low ? rint(2, 6) * 100 : rint(30, 50) * 100, test = pick([100, 120, 150, 200, 250]);
+      var acc = k === low ? rint(60, 72) / 100 : rint(86, 94) / 100;
+      rows.push({p: p, train: train, test: test, correct: Math.round(test * acc)});
+    });
+    return {rows: rows, low: low};
+  }
+  function show(){
+    d = make(); var tb = $("b3Table").querySelector("tbody"); clear(tb);
+    d.rows.forEach(function(r){ var tr = el("tr"); [r.p, r.train.toLocaleString("en-CA"), r.test, r.correct].forEach(function(v){ tr.appendChild(el("td", null, String(v))); }); tb.appendChild(tr); });
+    $("b3Ans").value = ""; $("b3Src").value = ""; $("b3Fix").value = ""; verdict($("b3Fb"), "mid", "Calculate, choose, then check.");
+  }
+  $("b3Check").addEventListener("click", function(){
+    var r = d.rows[d.low], acc = r.correct / r.test * 100, v = parseFloat($("b3Ans").value), msgs = [], ok = true;
+    if (isNaN(v) || Math.abs(v - acc) > 1) { ok = false; msgs.push("Accuracy: " + r.p + " is lowest at " + r.correct + " ÷ " + r.test + " × 100% = " + r1(acc) + "%."); }
+    else msgs.push("Accuracy: " + r1(acc) + "% for " + r.p + " is right.");
+    if ($("b3Src").value !== "data") { ok = false; msgs.push("Source: " + r.p + " had far fewer training clips than the other places, so the data set is the main source."); }
+    else msgs.push("Source: yes, the data set had few " + r.p.toLowerCase() + " clips.");
+    if ($("b3Fix").value !== "more") { ok = false; msgs.push("Fix: the best fix is more training clips from " + r.p.toLowerCase() + " recordings, then test again."); }
+    else msgs.push("Fix: yes, more training data from that place.");
+    verdict($("b3Fb"), ok ? "ok" : "no", msgs.join(" "));
+  });
+  $("b3New").addEventListener("click", show);
+  worked(); show();
+})();
+
+/* ---------- Bench 4: feed experiment ---------- */
+(function(){
+  var NAMES = {first: "Tap first video", hockey: "Tap hockey", random: "Tap random", "new": "Tap least seen"};
+  var results = [];
+  var R = [
+    "Which strategy gave the least variety? Why did the algorithm narrow the feed?",
+    "Which strategy kept the most variety? What does that tell you about how to avoid a filter bubble?",
+    "Think of an app you use. How might its recommendations change what you watch, buy or believe?"
+  ];
+  R.forEach(function(t, k){ var l = el("label", {"for": "b4r" + k}), c = el("input", {type: "checkbox", id: "b4r" + k}); l.appendChild(c); l.appendChild(document.createTextNode(t)); $("b4Reflect").appendChild(l); });
+  function run(strat){
+    var f = new Feed(), items = [0, 1, 2, 3, 4, 5], tapped = [0, 0, 0, 0, 0, 0];
+    for (var n = 0; n < 30; n++) {
+      var t;
+      if (strat === "first") t = items[0];
+      else if (strat === "hockey") t = items.indexOf(0) > -1 ? 0 : items[0];
+      else if (strat === "random") t = pick(items);
+      else { t = items.slice().sort(function(a, b){ return tapped[a] - tapped[b]; })[0]; }
+      tapped[t]++; f.tap(t); items = f.make(6);
+    }
+    var fin = f.make(12);
+    return mixBars($("b4Bars"), fin);
+  }
+  function table(){
+    var tb = $("b4Table").querySelector("tbody"); clear(tb);
+    results.forEach(function(r){ var tr = el("tr"); [NAMES[r.s], r.m.variety + " of 6", TOPICS[r.m.top], r.m.share + "%"].forEach(function(v){ tr.appendChild(el("td", null, v)); }); tb.appendChild(tr); });
+  }
+  $("b4Run").addEventListener("click", function(){
+    var s = $("b4Strat").value, m = run(s); results.push({s: s, m: m}); if (results.length > 8) results.shift(); table();
+    var kinds = {}; results.forEach(function(r){ kinds[r.s] = 1; });
+    verdict($("b4Fb"), "mid", "Final feed: " + m.variety + " of 6 topics, " + TOPICS[m.top] + " takes " + m.share + "%. " + (Object.keys(kinds).length < 4 ? "Try the other strategies too." : "Compare: tapping the same kind of video narrows the feed. Tapping new topics keeps it varied."));
+  });
+  $("b4Clear").addEventListener("click", function(){ results = []; table(); clear($("b4Bars")); verdict($("b4Fb"), "mid", "Run each strategy at least once."); });
+})();
+
+/* ---------- Bench 5: workforce ---------- */
+(function(){
+  var CH = ["Automate", "Assist", "Human-led"];
+  var JOBS = [
+    {label: "Pharmacy", tasks: [
+      ["Count pills into bottles", 0, "A counting machine does this repetitive task well."],
+      ["Check for harmful drug combinations", 1, "Software flags problems, and the pharmacist decides what to do."],
+      ["Talk with a worried patient about side effects", 2, "Care, trust and judgment need a person."],
+      ["Print labels and keep records", 0, "Routine data tasks are easy to automate."]]},
+    {label: "Newsroom", tasks: [
+      ["Write a first draft of a sports score summary", 1, "AI can draft it, but an editor checks facts."],
+      ["Interview a witness at a flood", 2, "Being there, asking follow-up questions and building trust is human work."],
+      ["Write captions for video clips", 0, "Speech-to-text tools do most of this, with spot checks."],
+      ["Decide which stories are important today", 2, "Editors are accountable for news choices."]]},
+    {label: "Farm", tasks: [
+      ["Steer the tractor in straight rows", 0, "GPS guidance can steer on its own."],
+      ["Spot weeds in drone photos", 1, "AI marks weed patches; the farmer decides on treatment."],
+      ["Choose which crop to plant next year", 2, "It depends on prices, soil, family plans and judgment, though data can help."],
+      ["Record rainfall every day", 0, "A weather station sensor can log it automatically."]]},
+    {label: "School office", tasks: [
+      ["Send attendance reminder messages", 0, "A system can send them on a schedule."],
+      ["Answer common questions like the bell times", 1, "A chatbot can answer, with staff for anything unusual."],
+      ["Comfort a student who feels sick", 2, "Caring for people needs a human."],
+      ["Plan the timetable for next year", 1, "Software can suggest timetables; staff make the final choices."]]}
+  ];
+  var ans = {}, job;
+  function summary(){
+    var counts = [0, 0, 0], tot = job.tasks.length, done = 0;
+    job.tasks.forEach(function(t, k){ if (ans[k] != null) { done++; counts[t[1]]++; } });
+    if (done < tot) { detail($("b5Sum"), "In progress", ["Sorted " + done + " of " + tot + " tasks."]); return; }
+    var match = job.tasks.filter(function(t, k){ return ans[k] === t[1]; }).length;
+    detail($("b5Sum"), job.label + " summary", [
+      "You matched " + match + " of " + tot + " with one reasonable answer.",
+      "In this job: " + counts[0] + " task(s) automated, " + counts[1] + " assisted, " + counts[2] + " human-led. AI changes the job more than it removes it.",
+      "New skills workers need: using AI tools, checking AI results, and the human skills AI does poorly."
+    ]);
+  }
+  function draw(){
+    var box = $("b5Tasks"); clear(box);
+    job.tasks.forEach(function(t, k){
+      var row = el("div", {"class": "taskrow"}); row.appendChild(el("p", null, t[0]));
+      var chips = el("div", {"class": "chips", role: "group", "aria-label": "Sort: " + t[0]}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+      chipGroup(chips, CH.map(function(c){ return {label: c}; }), "", function(it, i){
+        ans[k] = i; ex.textContent = (i === t[1] ? "Matches. " : "One reasonable answer is " + CH[t[1]].toLowerCase() + ". ") + t[2]; summary();
+      });
+      row.appendChild(chips); row.appendChild(ex); box.appendChild(row);
+    });
+    summary();
+  }
+  chipGroup($("b5Jobs"), JOBS, "", function(j){ job = j; ans = {}; draw(); }, 0);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Type of machine learning", bins: ["Supervised", "Unsupervised", "Reinforcement"], items: [
+    ["Learns from photos labelled cat or dog", 0, "Labelled examples."],
+    ["Groups songs that sound alike, with no labels", 1, "Finds patterns without labels."],
+    ["Earns points for winning a game", 2, "Rewards guide trial and error."],
+    ["Learns from emails marked spam", 0, "Each email has a label."],
+    ["Finds groups of customers who shop alike", 1, "No labels, finds groups."],
+    ["A robot loses points when it bumps a wall", 2, "A penalty is part of reinforcement learning."],
+    ["Learns bird names from recordings experts named", 0, "Experts gave the labels."],
+    ["A drone learns to hover steadily by trial and error", 2, "Trial and error with feedback."]
+  ]},
+  {label: "Source of bias", bins: ["Developers", "Data set", "Algorithm", "User input"], items: [
+    ["A face app was trained mostly on photos of adults, so it struggles with children", 1, "The training data left out a group."],
+    ["The team only tested the app with people who speak English", 0, "Developers chose who to test with."],
+    ["The program was set to show whatever gets the most clicks", 2, "The goal built into the steps causes the bias."],
+    ["Many users rated unfair answers as helpful, so the chatbot gave more of them", 3, "Users taught it through their ratings."],
+    ["A map app has almost no data about rural roads", 1, "The data set is missing places."],
+    ["The designers decided not to include an option for people who use wheelchairs", 0, "A design choice by the developers."],
+    ["People flood a review site with fake one-star reviews of a restaurant", 3, "User input skewed the results."],
+    ["The algorithm aims for the best average score and ignores small groups", 2, "Aiming for the average can hide a group that does poorly."]
+  ]},
+  {label: "Ethical issue", bins: ["Privacy", "Fairness", "Misinformation", "Accountability", "Influence"], items: [
+    ["An app shares your location without asking", 0, "Your data is used without permission."],
+    ["A fake video makes a real person say things they never said", 2, "That is a deepfake."],
+    ["A loan AI gives lower scores to one neighbourhood", 1, "Some people are treated unfairly."],
+    ["Nobody knows who to blame when a robot vacuum breaks a vase", 3, "Who is responsible?"],
+    ["Autoplay keeps a viewer watching for hours", 4, "The algorithm shapes what people do."],
+    ["A hacker steals voice recordings from a smart speaker", 0, "The data was not kept secure."],
+    ["An AI writes a fake science news story", 2, "False content spreads."],
+    ["A feed shows one side of a debate again and again", 4, "It can shape what people believe."]
+  ]},
+  {label: "How AI makes work efficient", bins: ["Information processing", "Decision making", "Task completion"], items: [
+    ["Searching 1 million pages for a fact in seconds", 0, "Handling huge amounts of information."],
+    ["Suggesting the fastest bus route", 1, "Choosing between options."],
+    ["Writing captions for a video", 2, "Doing a part of the job."],
+    ["Sorting trail camera photos with animals", 0, "Processing many images."],
+    ["Recommending which field to spray first", 1, "Helping choose."],
+    ["Steering a tractor in straight rows", 2, "Carrying out the task."]
+  ]},
+  {label: "AI and jobs", bins: ["Automates a task", "New career", "Changing skill"], items: [
+    ["A machine counts pills in a pharmacy", 0, "A repetitive task done by a machine."],
+    ["Drone pilot for crop scans", 1, "A job that grew with the technology."],
+    ["A designer learns to edit AI draft images", 2, "Workers adapt their skills."],
+    ["Self-driving haul trucks on set routes", 0, "Driving a fixed route can be automated."],
+    ["Person who tests chatbots for errors", 1, "AI creates new kinds of work."],
+    ["An agent learns to check chatbot answers", 2, "A new skill for an existing job."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, i, score;
+  function card(){
+    clear(area);
+    if (i >= order.length) {
+      area.appendChild(el("div", {"class": "sortcard"}, "Deck done: " + score + " of " + order.length + " right on the first try."));
+      var b = el("button", {"class": "btn", type: "button"}, "Play again"); b.addEventListener("click", function(){ start(deck); }); area.appendChild(b);
+      return;
+    }
+    var it = order[i], tried = false;
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + (i + 1) + " of " + order.length + " · Score " + score));
+    var c = el("div", {"class": "sortcard"}, it[0]); area.appendChild(c);
+    var bins = el("div", {"class": "bins"}), fb = el("div", {"class": "feedback", "aria-live": "polite"});
+    deck.bins.forEach(function(name, j){
+      var b = el("button", {"class": "bin", type: "button"}, name);
+      b.addEventListener("click", function(){
+        if (j === it[1]) {
+          if (!tried) score++;
+          fb.className = "feedback ok"; fb.textContent = "Yes: " + name + ". " + it[2];
+          Array.prototype.forEach.call(bins.children, function(x){ x.disabled = true; });
+          var n = el("button", {"class": "btn", type: "button"}, "Next card"); n.addEventListener("click", function(){ i++; card(); });
+          area.appendChild(n); n.focus();
+        } else { tried = true; fb.className = "feedback no"; fb.textContent = "Not " + name + ". Try again."; }
+      });
+      bins.appendChild(b);
+    });
+    area.appendChild(bins); area.appendChild(fb);
+  }
+  function start(d){ deck = d; order = shuffle(d.items); i = 0; score = 0; card(); }
+  chipGroup($("deckChips"), DECKS, "", start, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Artificial intelligence (AI)", "Computer systems that do tasks that usually need human thinking, like recognizing images or making predictions."],
+  ["Efficiency", "Getting the same result with less time, effort or energy."],
+  ["Information processing", "Sorting, searching and summarizing data. AI can do this with huge amounts of data quickly."],
+  ["Decision making (AI)", "AI compares options and suggests a choice. A person stays responsible."],
+  ["Task completion (AI)", "AI carries out part of a job, like writing captions."],
+  ["Machine learning", "A kind of AI that learns patterns from data instead of only following rules a person wrote."],
+  ["Supervised learning", "Machine learning from labelled examples, data with the right answer attached."],
+  ["Unsupervised learning", "Machine learning that finds patterns and groups in data without labels."],
+  ["Reinforcement learning", "Machine learning by trial and error, with rewards and penalties."],
+  ["Labelled example", "A piece of data with the correct answer attached, like a photo tagged “moose”."],
+  ["Reward and penalty", "Points added for good results and taken away for bad ones in reinforcement learning."],
+  ["Bias (in AI)", "When an AI gives unfair or less accurate results for some people or situations."],
+  ["Data set", "The collection of data used to train or test an AI."],
+  ["Algorithm", "The ordered steps a program follows, including the goals it aims for."],
+  ["Generative AI", "AI that produces new content such as text, images, videos and music by predicting what comes next."],
+  ["Chatbot", "A program that simulates a conversation and answers questions in real time."],
+  ["Real time", "Happening right away, as the user is waiting."],
+  ["Recommendation algorithm", "An AI program that predicts content a person may like based on their previous online activity."],
+  ["Filter bubble", "When a feed shows more and more of the same kind of content, so a person sees less variety."],
+  ["Automation", "Using machines or software to do a task with little human help."],
+  ["Deepfake", "A realistic fake video, image or audio of a real person, made with AI."],
+  ["Misinformation", "False or misleading information, whether shared on purpose or by mistake."],
+  ["Accountability", "Being responsible for a decision and its results."],
+  ["Privacy", "A person’s right to control information about themselves."],
+  ["Ethics", "Thinking about what is fair, right and responsible."]
+];
+(function(){
+  store.fc = store.fc || {};
+  var only = false, list, i = 0, flipped = false;
+  function rebuild(keep){ var all = CARDS.map(function(c, k){ return k; }); list = only ? all.filter(function(k){ return store.fc[k] !== "know"; }) : (keep && list ? list : all); if (i >= list.length) i = 0; }
+  function draw(){
+    var known = CARDS.filter(function(c, k){ return store.fc[k] === "know"; }).length;
+    $("fcBar").style.width = (known / CARDS.length * 100) + "%";
+    $("fcCount").textContent = known + " of " + CARDS.length + " known" + (list.length ? " · card " + (i + 1) + " of " + list.length : "");
+    var c = $("fcCard"); clear(c);
+    if (!list.length) { c.appendChild(el("span", {"class": "term"}, "All known!")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards to review.")); return; }
+    var k = list[i], cd = CARDS[k];
+    c.appendChild(el("span", {"class": "tag"}, flipped ? "Definition" : "Term" + (store.fc[k] === "know" ? " · known" : store.fc[k] === "still" ? " · still learning" : "")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? cd[1] : cd[0]));
+    c.setAttribute("aria-label", (flipped ? "Definition: " + cd[1] : "Term: " + cd[0]) + ". Press to flip.");
+  }
+  function mark(v){ if (!list.length) return; store.fc[list[i]] = v; save(); flipped = false; if (only && v === "know") rebuild(); else i = (i + 1) % list.length; draw(); }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("fcKnow").addEventListener("click", function(){ mark("know"); });
+  $("fcStill").addEventListener("click", function(){ mark("still"); });
+  $("fcPrev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("fcShuffle").addEventListener("click", function(){ list = shuffle(list); i = 0; flipped = false; draw(); });
+  $("fcReset").addEventListener("click", function(){ store.fc = {}; save(); rebuild(); draw(); });
+  $("fcAll").addEventListener("click", function(){ only = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); rebuild(); i = 0; draw(); });
+  $("fcLearning").addEventListener("click", function(){ only = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); rebuild(); i = 0; draw(); });
+  rebuild(); draw();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["An AI sorts 20 000 trail camera photos in minutes. Which kind of efficiency is this?", ["Information processing", "Decision making", "Task completion", "Reinforcement"], "Sorting and searching large amounts of data is information processing."],
+  ["An AI suggests which streets to plow first. Who should make the final call?", ["City staff", "The AI alone", "The snowplow", "Nobody"], "AI supports decisions; people stay responsible."],
+  ["Which describes supervised learning?", ["Learning from labelled examples", "Finding groups with no labels", "Learning by rewards and penalties", "Following only rules a person wrote"], "Supervised learning uses data with the right answers attached."],
+  ["Which describes unsupervised learning?", ["Finding patterns in data without labels", "Learning from labelled examples", "Learning by trial and error", "Copying a person’s answers"], "Unsupervised learning finds groups on its own."],
+  ["A robot gets points for reaching its charger and loses points for hitting the stairs. This is…", ["reinforcement learning", "supervised learning", "unsupervised learning", "a recommendation algorithm"], "Rewards and penalties guide trial and error."],
+  ["In the leaf sorter, why could the unsupervised AI not name its groups?", ["It was never given labels", "It ran too slowly", "The leaves were too small", "It used rewards"], "Without labels it can find groups but not names. A person decides what they mean."],
+  ["A voice assistant trained mostly on one accent understands other accents poorly. The main source of bias is…", ["the data set", "the user’s phone", "the colour of the app", "the microphone brand"], "The training data did not include enough of other accents."],
+  ["Users keep rating unfair chatbot answers as helpful, and the chatbot gives more of them. Which source of bias is this?", ["User input", "Developers", "Data set", "Hardware"], "What users rate can train the system."],
+  ["An algorithm designed to get the best average score can still…", ["do poorly for a small group", "never make mistakes", "remove all bias", "work without data"], "A good average can hide a group that is served badly."],
+  ["Which is an example of generative AI?", ["An app that writes a new song", "A calculator adding numbers", "A thermostat turning on heat", "A light switch"], "Generative AI produces new content such as music, text, images and video."],
+  ["How does a text generator build a sentence?", ["It predicts the next word again and again", "It copies one sentence from the internet", "It asks a person for each word", "It picks words in alphabetical order"], "It predicts what is likely to come next, one piece at a time."],
+  ["Why should you check facts from generative AI?", ["It predicts what is likely, not what is true", "It always lies", "It cannot write sentences", "It only works offline"], "Likely text can still be wrong."],
+  ["What does “real time” mean for a chatbot?", ["It answers right away", "It answers the next day", "It only works at noon", "It uses a real clock"], "Real time means the reply comes while you wait."],
+  ["A simple keyword chatbot fails when…", ["a question uses words it was not given", "you type a question", "the question is short", "you say hello"], "If no keyword matches, it cannot answer."],
+  ["A recommendation algorithm predicts content you may like based on…", ["your previous online activity", "the weather", "random chance only", "your shoe size"], "What you watched, clicked and liked shapes what it suggests."],
+  ["A feed that shows more and more of the same kind of video can create a…", ["filter bubble", "deepfake", "data set", "chatbot"], "Narrowing what you see is called a filter bubble."],
+  ["Which strategy kept the most variety in the feed experiment?", ["Tapping the topic you had seen least", "Always tapping the first video", "Tapping hockey every time", "Never scrolling"], "Choosing new topics tells the algorithm you like variety."],
+  ["Volunteer labels in projects like Galaxy Zoo help scientists…", ["train AI to classify galaxies", "build telescopes", "make galaxies brighter", "replace astronomers"], "Labelled galaxy images are training data for supervised learning."],
+  ["Which is a way scientists use AI?", ["Climate modelling", "Making it rain", "Changing the speed of light", "Stopping earthquakes"], "AI can speed up and improve parts of climate models."],
+  ["Which job task is most likely to be automated?", ["Counting pills into bottles", "Comforting a worried patient", "Deciding today’s top news story", "Interviewing a flood witness"], "Repetitive tasks are easiest to automate."],
+  ["Which is a new career created by AI?", ["Chatbot conversation designer", "Blacksmith", "Town crier", "Lamplighter"], "People are needed to design, test and improve AI systems."],
+  ["A fake video shows a real person saying something they never said. This is…", ["a deepfake", "a recommendation", "an algorithm", "a data set"], "Deepfakes are realistic fakes made with AI."],
+  ["An app sells your running routes without asking. The ethical issue is…", ["privacy and security", "accountability", "misinformation", "fairness"], "Your personal data was used without permission."],
+  ["A self-driving shuttle damages a fence and nobody agrees who should pay. The issue is…", ["decision making and accountability", "privacy", "deepfakes", "filter bubbles"], "Who is responsible for an AI’s decision?"],
+  ["Which statement about AI and jobs is most accurate?", ["AI changes many jobs and the skills they need", "AI will remove every job", "AI has no effect on work", "Only scientists use AI"], "AI automates some tasks, creates new careers and changes skills."]
+];
+(function(){
+  var area = $("quizArea");
+  function newRound(){
+    clear(area);
+    var qs = shuffle(QUIZ).slice(0, 10), score = 0, answered = 0;
+    var head = el("p", {"class": "hint mono", "aria-live": "polite"}, "Score: 0 of 10"); area.appendChild(head);
+    qs.forEach(function(q, n){
+      var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, (n + 1) + ". " + q[0]));
+      var opts = el("div", {"class": "opts"}), fb = el("p", {"class": "expl", "aria-live": "polite"});
+      shuffle(q[1].map(function(t, k){ return [t, k === 0]; })).forEach(function(p){
+        var b = el("button", {"class": "opt", type: "button"}, p[0]); b._ok = p[1];
+        b.addEventListener("click", function(){
+          Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (x._ok) x.classList.add("right"); });
+          if (p[1]) score++; else b.classList.add("wrong");
+          answered++; fb.textContent = (p[1] ? "Correct. " : "Not quite. ") + q[2];
+          head.textContent = "Score: " + score + " of 10" + (answered === 10 ? " · round complete" : "");
+          if (answered === 10) { store.best = Math.max(store.best || 0, score); save(); head.textContent += " · best " + store.best; }
+        });
+        opts.appendChild(b);
+      });
+      d.appendChild(opts); d.appendChild(fb); area.appendChild(d);
+    });
+    var nb = el("button", {"class": "btn", type: "button"}, "New round"); nb.addEventListener("click", function(){ newRound(); window.scrollTo({top: 0}); }); area.appendChild(nb);
+  }
+  newRound();
+  $("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Describe three ways AI can increase efficiency. Give an example of each.", a: "Information processing: AI sorts thousands of trail camera photos quickly. Decision making: AI suggests which streets to plow first. Task completion: AI writes captions for a video. In each case a person still checks the work.", k: ["Information processing with example", "Decision making with example", "Task completion with example", "People still check"]},
+  {q: "Compare supervised and unsupervised learning.", a: "Supervised learning uses labelled examples, so the AI learns to give the right label to new data, like naming a leaf aspen or willow. Unsupervised learning uses data with no labels, so the AI finds patterns and groups similar items, but a person must decide what the groups mean.", k: ["Supervised uses labels", "Unsupervised has no labels", "Unsupervised finds groups", "Example for each"]},
+  {q: "Explain how reinforcement learning works, using the delivery robot.", a: "The robot tries moves and gets a reward of 10 for reaching the charger, a penalty of 10 for the stairs and loses 1 point each step. Over many tries it keeps the moves that earn the most reward, so it learns a short, safe route.", k: ["Trial and error", "Rewards and penalties", "Improves over many tries", "Example from the robot"]},
+  {q: "Name the four ways bias can enter an AI system and give one example.", a: "Bias can come from developers, data sets, algorithms and user input. For example, a voice assistant trained mostly on one accent understands other accents less well because of its data set.", k: ["Developers", "Data sets", "Algorithms", "User input", "One clear example"]},
+  {q: "How does generative AI create new content? Why should its output be checked?", a: "Generative AI learns patterns from many examples, then builds new content one piece at a time by predicting what is likely to come next, like the next word. It predicts what is likely, not what is true, so it can produce content that sounds right but is wrong.", k: ["Learns patterns from examples", "Predicts the next piece", "Text, images, video or music", "Likely is not the same as true"]},
+  {q: "What can a chatbot do, and what is one limit?", a: "A chatbot simulates a conversation, works out what a user is asking and answers in real time. One limit is that it does not understand like a person. A keyword chatbot fails if the words are unusual, and an AI chatbot can give a confident wrong answer.", k: ["Simulates conversation", "Answers in real time", "A clear limit"]},
+  {q: "Explain how a recommendation algorithm decides what to show you.", a: "It records your previous online activity, such as what you watched, clicked and liked. It predicts you will like similar content, so it shows more of it. The more you tap one kind of video, the more of that kind it shows.", k: ["Uses previous activity", "Predicts what you will like", "Shows more of the same"]},
+  {q: "Describe two ways scientists use AI.", a: "Scientists use AI for data analysis, such as sorting wildlife camera photos, and to classify galaxies in space images after training on labels made by volunteers. AI also helps with climate modelling by speeding up parts of the models.", k: ["Two clear uses", "Example for each", "Connects to large data sets"]},
+  {q: "Give one example each of AI automating a task, creating a career and changing skills.", a: "Automating: machines count pills in a pharmacy. New career: drone pilots who scan crops. Changing skills: graphic designers learn to edit AI draft images.", k: ["Automation example", "New career example", "Changing skills example"]},
+  {q: "Choose one ethical issue of AI and explain it with an example.", a: "Misinformation and deepfakes: AI can make a realistic fake video of a real person saying something they never said. People may believe it and share it, so it is important to check sources before sharing.", k: ["Names an issue", "Explains why it matters", "Gives an example", "Suggests a response"]}
+];
+var LONG = [
+  {q: "Your school wants to use an AI tool that suggests which students need extra help in math. Evaluate the idea. Discuss efficiency, bias and accountability.", a: "The tool could save teachers time by processing quiz data quickly and spotting patterns early. But it could be biased if it was trained on data from schools unlike ours, or if the algorithm only looks at test scores. It should be tested to see if it works equally well for all groups. A teacher should check every suggestion and be accountable for the final decision, and students’ data must be kept private.", k: ["Efficiency benefit", "Possible source of bias", "Testing for fairness", "Teacher accountable", "Privacy", "Clear conclusion"]},
+  {q: "Reflect on how recommendation algorithms influence you. Use your feed experiment results and suggest ways to keep your feed balanced.", a: "In the experiment, tapping the same topic made one topic take most of the feed and variety dropped. My own apps probably do the same, showing me more of what I already watch. This can affect what I believe and how much time I spend. To keep balance I can search for new topics, use the not interested button, follow a wide range of creators and take breaks.", k: ["Uses experiment results", "Explains the narrowing", "Personal reflection", "Effect on behaviour or beliefs", "Practical strategies"]},
+  {q: "Some people say AI will take everyone’s jobs. Do you agree? Use examples of automation, new careers and changing skills.", a: "I do not fully agree. AI automates repetitive tasks, like self-driving haul trucks on set routes or counting pills. But it also creates careers such as drone pilots, chatbot designers and fleet technicians. Many jobs change instead of disappearing: pharmacists spend more time with patients and designers edit AI drafts. People who learn to work with AI and build human skills will be in demand.", k: ["Clear position", "Automation example", "New career example", "Changing skills example", "Balanced reasoning"]},
+  {q: "Design a short code of ethics for students who use generative AI for school work. Give at least four rules and explain each.", a: "1. Say when you used AI, so your teacher knows what is your work. 2. Check facts against trusted sources, because AI predicts what is likely, not what is true. 3. Never make fake images or audio of real people, because deepfakes can hurt them. 4. Do not type private information into AI tools, to protect your privacy. 5. You are responsible for what you hand in, even if AI helped.", k: ["At least four rules", "Honesty about AI use", "Checking for misinformation", "Privacy", "Accountability", "Each rule explained"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i, d = el("details"), done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id}); ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details"); reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"}); mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){ var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j); store.wr[id] = s; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["CS2.K1", "AI systems can increase efficiency by facilitating\n• information processing\n• decision making\n• task completion", "Learn: Lesson 1. Lab Bench: Investigation 1. Sort It: efficiency deck."],
+    ["CS2.K2", "Types of machine learning include\n• supervised learning, where labelled examples are provided\n• unsupervised learning, where AI finds patterns in data without labelled examples\n• reinforcement learning, where AI improves through trial and error with rewards and penalties", "Learn: Lessons 2 and 3. Lab Bench: Investigation 2. Sort It: machine learning deck."],
+    ["CS2.K3", "Bias in a machine that uses AI can be introduced by\n• developers\n• data sets\n• algorithms\n• user input", "Learn: Lesson 4. Lab Bench: Investigation 3. Sort It: source of bias deck."],
+    ["CS2.K4", "Generative AI can produce digital content such as images, text, videos, and music.", "Learn: Lesson 5. Quiz, Written Review."],
+    ["CS2.K5", "A chatbot can simulate conversations with online users, understand questions, and give answers in real time, by using AI.", "Learn: Lesson 6 (see teacher note)."],
+    ["CS2.K6", "Recommendation algorithms are AI programs that predict content an individual may like based on that individual’s previous online activity.", "Learn: Lesson 7. Lab Bench: Investigation 4."],
+    ["CS2.K7", "Scientists leverage AI in a variety of ways, such as\n• data analysis\n• climate modelling\n• classifying galaxies in space images", "Learn: Lesson 8 (and Lesson 1 photo example)."],
+    ["CS2.K8", "AI can impact jobs by automating repetitive tasks, providing new career opportunities, and changing the skills needed for future work.", "Learn: Lesson 9. Lab Bench: Investigation 5. Sort It: jobs deck."],
+    ["CS2.K9", "The use of AI has ethical implications, such as\n• privacy and security\n• fairness and bias\n• misinformation and deepfakes\n• decision making and accountability\n• the influence of algorithm output on user behaviour", "Learn: Lesson 10. Lab Bench: Investigation 3. Sort It: ethical issue deck. Written Review."],
+    ["CS2.S1", "Compare types of machine learning.", "Lab Bench: Investigation 2 (comparison table and practice). Learn: Lessons 2 and 3. Written Review short answer 2."],
+    ["CS2.S2", "Explore AI, considering ethics and bias.", "Lab Bench: Investigation 3 (bias audit). Learn: Lessons 4 and 10. Written Review extended 1 and 4."],
+    ["CS2.S3", "Reflect on how recommendation algorithms influence individuals.", "Lab Bench: Investigation 4 (feed experiment and reflection). Learn: Lesson 7. Written Review extended 2."],
+    ["CS2.S4", "Examine ways AI is reshaping the workforce.", "Lab Bench: Investigation 5 (job task sort). Learn: Lesson 9. Written Review extended 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr"); tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2])); tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

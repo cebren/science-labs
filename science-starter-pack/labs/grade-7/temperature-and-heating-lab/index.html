@@ -1,0 +1,1445 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/temperature-and-heating-lab/"><meta name="description" content="Objects or systems experience temperature changes because of energy transfer."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Temperature and Heating Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a heat-flow notebook. Sticky tab strip, then lessons that pair a short reading column with a model: a particle box, two tubes reaching equilibrium, animated conduction, convection and radiation, technology and insulation cards, and Earth's energy budget. Ember marks hotter, river blue marks colder, amber marks radiation. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ---- Temperature and Heating additions: ember for hotter, river blue for colder, amber for radiation ---- */
+:root{ --hot:#B0431B; --hot-soft:#FAE5DB; --cold:#1C6A8A; --cold-soft:#DCEDF4; --ray:#8A5A00; --ray-soft:#FBEFD2; --sky:#E6F0F5; --ground:#7A6A4F; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --hot:#F2916A; --hot-soft:#3A1E14; --cold:#6DC1E0; --cold-soft:#132C38; --ray:#F0C060; --ray-soft:#3A2E10; --sky:#14232B; --ground:#A89270; }}
+:root[data-theme="dark"]{ --hot:#F2916A; --hot-soft:#3A1E14; --cold:#6DC1E0; --cold-soft:#132C38; --ray:#F0C060; --ray-soft:#3A2E10; --sky:#14232B; --ground:#A89270; }
+header h1 .hot{color:var(--hot)} header h1 .cold{color:var(--cold)}
+.inv{display:grid;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.inv{padding:18px}}
+.inv h3{font-size:1.3rem;font-weight:700}
+.inv .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+.map{display:grid;gap:10px;align-content:start;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.inline{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.inline .field{flex:1 1 140px}
+.inline input,.inline select{width:100%}
+.inv>*,.two>*,.map>*{min-width:0}
+canvas.sim{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.readout{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;font-family:var(--f-mono);font-size:.86rem;color:var(--muted)}
+.readout b{color:var(--ink);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meterbar{height:12px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meterbar i{display:block;height:100%;background:var(--hot);border-radius:6px;transition:width .3s ease}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:end}
+.tcell{display:grid;gap:6px;justify-items:center;text-align:center;font-size:.88rem}
+.tube{width:44px;height:150px;border-radius:22px;border:2px solid var(--line);background:var(--surface);position:relative;overflow:hidden}
+.tube i{position:absolute;left:0;right:0;bottom:0;background:var(--hot);transition:height .2s linear,background-color .2s linear}
+.tcell b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.flow{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);text-align:center;padding-bottom:60px;max-width:7em}
+.flow b{display:block;font-size:1.6rem;color:var(--hot)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag2{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line)}
+.tag2.cd{background:var(--hot-soft);color:var(--hot)} .tag2.cv{background:var(--cold-soft);color:var(--cold)} .tag2.rd{background:var(--ray-soft);color:var(--ray)}
+svg .hit{cursor:pointer}
+svg .hit:focus{outline:none}
+svg .hit:focus-visible .ring,svg .hit.on .ring{stroke:var(--ink);stroke-width:2;stroke-dasharray:4 3}
+svg .ring{fill:transparent;stroke:transparent}
+.legend2{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--muted)}
+.legend2 span{display:inline-flex;gap:6px;align-items:center}
+.legend2 i{display:inline-block;width:14px;height:4px;border-radius:2px}
+.chk{display:flex;gap:8px;align-items:center;font-size:.9rem;font-weight:700}
+.credit a{color:var(--cold)}
+.panel>*{min-width:0}
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button.right{background:var(--leaf-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.choice2 button:disabled{cursor:default;color:var(--ink)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Energy: Heat and Temperature · EN2</div>
+    <h1><span class="hot">Temperature</span> and <span class="cold">Heating</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Objects or systems experience temperature changes because of energy transfer. When something warms up or cools down, energy has moved into it or out of it. This lab shows what temperature really measures, the three ways heating happens, and how Earth’s temperature depends on the Sun’s radiation.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. Start with what temperature measures, then see how heating moves energy, the three ways it happens, how we use it and slow it, and how it sets Earth’s temperature.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Particles in motion</span>
+      <div class="codes"><span class="code">EN2.K1</span><span class="code">EN2.K2</span></div>
+      <h3>What temperature measures</h3>
+      <p>All matter is made of tiny <b>particles</b> that never stop moving. In a solid they jiggle in place. In a liquid or a gas they move around and bump into each other.</p>
+      <p>Moving particles have <b>energy of motion</b>. Some particles move fast and some move slowly. <b>Temperature</b> is a measure of their <b>average</b> energy of motion.</p>
+      <p>The faster the particles move, the greater their average energy of motion, and the higher the temperature. We use temperature to describe how hot or cold something is. In Canada we measure it in <b>degrees Celsius</b> (°C).</p>
+      <p class="note">Temperature is an average, not a total. A bathtub of warm water has a lower temperature than a cup of hot cocoa, but it holds far more energy in total because it has so many more particles.</p>
+      <div class="key"><b>Remember:</b> higher temperature means faster particles on average.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the particle box</h4>
+      <p class="hint">Move the slider to change the temperature. Watch how fast the particles move.</p>
+      <canvas class="sim" id="pCanvas" role="img" aria-label="Particles in a box"></canvas>
+      <label class="field" for="pTemp">Temperature: <span id="pOut" class="mono">20 °C</span>
+        <input type="range" id="pTemp" min="-40" max="100" step="1" value="20"></label>
+      <div class="readout"><span>Average speed compared with room temperature <b id="pSpeed">1.00×</b></span></div>
+      <div class="meterbar" aria-hidden="true"><i id="pBar"></i></div>
+      <div class="detail" id="pDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Hotter to colder</span>
+      <div class="codes"><span class="code">EN2.K3</span></div>
+      <h3>Heating is energy on the move</h3>
+      <p><b>Heating</b> is the transfer of energy from a higher‑temperature object or system to a lower‑temperature one.</p>
+      <p>When a hot mug touches cold hands, the fast particles in the mug bump the slower particles in your hands and speed them up. The mug cools down. Your hands warm up.</p>
+      <p>On its own, heating always goes from hotter to colder. It keeps going until both reach the same temperature. Scientists call this <b>thermal equilibrium</b>.</p>
+      <p>Cold is not a thing that flows. A metal railing on a −25 °C morning feels cold because energy leaves your warm hand and moves into the railing.</p>
+      <p class="note">A fridge or a heat pump can move energy from a colder place to a warmer one, but only because it uses electricity to do work. Without that help, heating goes from hotter to colder.</p>
+      <div class="key"><b>Remember:</b> energy moves from higher temperature to lower temperature until the temperatures are equal.</div>
+    </div>
+    <div class="model">
+      <h4>Model: put them in contact</h4>
+      <p class="hint">Set two equal amounts of water to different temperatures. Then let them touch.</p>
+      <div class="inline">
+        <label class="field" for="eqA">Water A (°C)<input type="range" id="eqA" min="0" max="100" step="1" value="80"></label>
+        <label class="field" for="eqB">Water B (°C)<input type="range" id="eqB" min="0" max="100" step="1" value="10"></label>
+      </div>
+      <div class="pair">
+        <div class="tcell"><span>Water A</span><div class="tube" aria-hidden="true"><i id="eqTA"></i></div><b id="eqVA">80 °C</b></div>
+        <div class="flow" id="eqFlow" aria-live="polite"><b>→</b>energy</div>
+        <div class="tcell"><span>Water B</span><div class="tube" aria-hidden="true"><i id="eqTB"></i></div><b id="eqVB">10 °C</b></div>
+      </div>
+      <div class="row">
+        <button class="btn" id="eqGo" type="button">Let them touch</button>
+        <button class="btn ghost" id="eqReset" type="button">Reset</button>
+      </div>
+      <div class="detail" id="eqDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Three ways</span>
+      <div class="codes"><span class="code">EN2.K4</span><span class="code">EN2.S1</span></div>
+      <h3>Conduction, convection and radiation</h3>
+      <p>Heating happens in three ways.</p>
+      <p><b>Conduction</b> happens when objects touch. Fast particles bump into their slower neighbours and pass energy along, like a line of people passing a bucket. It works best in solids, and metals are very good at it.</p>
+      <p><b>Convection</b> happens in liquids and gases, which can flow. Warmed fluid spreads out, becomes less dense and rises. Cooler, denser fluid sinks to take its place. This makes a loop called a <b>convection current</b>, which carries energy around.</p>
+      <p><b>Radiation</b> is energy that travels as waves, such as light and infrared. It needs no particles at all, so it can cross empty space. That is how the Sun’s energy reaches Earth.</p>
+      <div class="key"><b>Remember:</b> conduction needs touching, convection needs a flowing fluid, and radiation needs nothing in between.</div>
+    </div>
+    <div class="model">
+      <h4>Model: watch each process</h4>
+      <div class="chips" id="hpChips" role="group" aria-label="Choose a heating process"></div>
+      <canvas class="sim" id="hpCanvas" role="img" aria-label="Heating process animation"></canvas>
+      <div class="detail" id="hpDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Heating at work</span>
+      <div class="codes"><span class="code">EN2.K5</span><span class="code">EN2.S2</span></div>
+      <h3>Technologies that use heating</h3>
+      <p>People design technologies around each way of heating.</p>
+      <p>An <b>electric stove</b> uses <b>conduction</b>. The hot element touches the pot, and the pot touches the food.</p>
+      <p>A <b>hot‑air balloon</b> uses <b>convection</b>. A burner warms the air inside the balloon. Warm air is less dense than the cooler air outside, so it rises and lifts the balloon.</p>
+      <p>A <b>microwave oven</b> uses <b>radiation</b>. Microwaves are absorbed mostly by the water in food, which warms up. Conduction then spreads that energy deeper into the food.</p>
+      <p>Most real technologies use more than one process, but one is usually the main one. Tap a technology to see how it works.</p>
+    </div>
+    <div class="model">
+      <h4>Model: technology cards</h4>
+      <div class="chips" id="techChips" role="group" aria-label="Choose a technology"></div>
+      <div class="detail" id="techDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Slowing the flow</span>
+      <div class="codes"><span class="code">EN2.K6</span><span class="code">EN2.S3</span></div>
+      <h3>Insulation slows heat transfer</h3>
+      <p>An <b>insulator</b> is a material that slows the rate of heat transfer. A <b>conductor</b>, such as a metal, lets energy move through it quickly.</p>
+      <p>Insulation does not stop heating. It slows it down, so hot things stay hot longer and cold things stay cold longer.</p>
+      <p>Many insulators work by trapping air. Still air is a poor conductor, and when it cannot flow it cannot carry energy by convection. Shiny surfaces also help by reflecting radiation.</p>
+      <p>Nature uses insulation too. A whale’s thick layer of <b>blubber</b> keeps its body warm in icy ocean water. Technology uses it in coolers, vacuum bottles, house walls and winter parkas.</p>
+      <div class="key"><b>Remember:</b> insulation slows the rate of energy transfer. It never adds cold or heat.</div>
+    </div>
+    <div class="model">
+      <h4>Model: insulation in nature and technology</h4>
+      <div class="chips" id="insChips" role="group" aria-label="Choose an example of insulation"></div>
+      <div class="detail" id="insDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Earth’s energy budget</span>
+      <div class="codes"><span class="code">EN2.K7</span><span class="code">EN2.K8</span><span class="code">EN2.K9</span><span class="code">EN2.S4</span></div>
+      <h3>How the Sun sets Earth’s temperature</h3>
+      <p>Radiation from the Sun travels through space to Earth. Think of it as 100 units of energy arriving.</p>
+      <p>About 30 units are <b>reflected</b> straight back to space by clouds, air, snow and ice. About 20 units are <b>absorbed</b> by the atmosphere. About 50 units are absorbed by Earth’s surface, which warms up.</p>
+      <p>The warm surface gives energy back mostly as invisible <b>infrared radiation</b>. Some also leaves by evaporating water and by rising warm air. <b>Greenhouse gases</b> in the atmosphere, such as water vapour and carbon dioxide, absorb some of this infrared and send part of it back down. This keeps Earth warmer than it would be without them.</p>
+      <p>So Earth’s temperature depends on how much radiation is absorbed and how much is reflected. More reflection, such as from fresh snow, means cooling. More absorption, such as from dark ground or more greenhouse gases, means warming.</p>
+      <div class="key"><b>Remember:</b> Earth’s temperature depends on the balance of radiation absorbed and reflected by the atmosphere and the surface.</div>
+    </div>
+    <div class="model">
+      <h4>Model: follow the sunlight</h4>
+      <p class="hint">Tap or focus an arrow to read about it. Numbers are rounded, out of 100 units of sunlight.</p>
+      <div class="svgbox"><svg id="ebSvg" viewBox="0 0 640 340" aria-label="Earth energy budget diagram"></svg></div>
+      <div class="detail" id="ebDetail" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Mix water to reach equilibrium, test which cup keeps cocoa hot, run Earth’s thermostat and explain real heating events. Practice questions change every time.</p>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 1 · Mixing water</span>
+    <div class="codes"><span class="code">EN2.K3</span><span class="code">EN2.S1</span></div>
+    <h3>Where do the temperatures meet?</h3>
+    <p>When hot water and cold water mix, energy moves from the hot water to the cold water until they reach one temperature. If no energy escapes, the final temperature is a weighted average. You do not need to memorize this formula.</p>
+    <p class="formula">T<sub>final</sub> = (m<sub>1</sub> × T<sub>1</sub> + m<sub>2</sub> × T<sub>2</sub>) ÷ (m<sub>1</sub> + m<sub>2</sub>)</p>
+    <div class="two">
+      <div class="map">
+        <h4>Worked example</h4>
+        <div class="inline">
+          <label class="field" for="b1m1">Hot mass (g)<input type="number" id="b1m1" value="200" min="1" step="any"></label>
+          <label class="field" for="b1t1">Hot temp (°C)<input type="number" id="b1t1" value="80" step="any"></label>
+        </div>
+        <div class="inline">
+          <label class="field" for="b1m2">Cold mass (g)<input type="number" id="b1m2" value="100" min="1" step="any"></label>
+          <label class="field" for="b1t2">Cold temp (°C)<input type="number" id="b1t2" value="20" step="any"></label>
+        </div>
+        <div class="worked" id="b1Work" aria-live="polite"></div>
+      </div>
+      <div class="map">
+        <h4>Practice</h4>
+        <div class="worked" id="b1Q"></div>
+        <div class="inline">
+          <label class="field" for="b1A">Final temperature (°C)<input type="number" id="b1A" step="any"></label>
+          <button class="btn" id="b1Check" type="button">Check</button>
+          <button class="btn ghost" id="b1New" type="button">New problem</button>
+        </div>
+        <p class="fb" id="b1Fb" aria-live="polite"></p>
+        <p class="hint mono" id="b1Score"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 2 · Keep the cocoa hot</span>
+    <div class="codes"><span class="code">EN2.S3</span><span class="code">EN2.K6</span></div>
+    <h3>Which container slows heat transfer best?</h3>
+    <p>Pour 80 °C cocoa into a container and measure its temperature for 30 minutes. Change one variable at a time so each test is fair. Each run is added to the graph and the table.</p>
+    <div class="two">
+      <div class="map">
+        <div class="inline">
+          <label class="field" for="b2Cup">Container<select id="b2Cup"></select></label>
+          <label class="field" for="b2Air">Where<select id="b2Air"><option value="20">Kitchen, 20 °C</option><option value="-20">Outside in January, −20 °C</option></select></label>
+        </div>
+        <label class="chk" for="b2Lid"><input type="checkbox" id="b2Lid"> Put a lid on it</label>
+        <div class="row">
+          <button class="btn" id="b2Run" type="button">Run 30 minutes</button>
+          <button class="btn ghost" id="b2Clear" type="button">Clear results</button>
+        </div>
+        <p class="fb" id="b2Fb" aria-live="polite"></p>
+        <p class="hint">Data come from a simple cooling model and are made up for practice.</p>
+      </div>
+      <div class="map">
+        <div class="svgbox fit"><svg id="b2Svg" viewBox="0 0 520 270" role="img" aria-label="Cooling curves graph"></svg></div>
+        <div class="legend2" id="b2Legend"></div>
+      </div>
+    </div>
+    <div class="tablebox"><table class="dt" id="b2Table"><thead><tr><th>Run</th><th>Container</th><th>Lid</th><th>Air (°C)</th><th>0 min</th><th>10 min</th><th>20 min</th><th>30 min</th><th>Drop</th></tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 3 · Earth’s thermostat</span>
+    <div class="codes"><span class="code">EN2.S4</span><span class="code">EN2.K7</span><span class="code">EN2.K8</span><span class="code">EN2.K9</span></div>
+    <h3>How do reflection and greenhouse gases change Earth’s temperature?</h3>
+    <p>This model balances the Sun’s radiation coming in with infrared radiation going out. Change how much sunlight is reflected and how strongly greenhouse gases hold infrared in. Then read Earth’s average temperature.</p>
+    <div class="chips" id="b3Chips" role="group" aria-label="Choose a scenario"></div>
+    <div class="two">
+      <div class="map">
+        <label class="field" for="b3Ref">Sunlight reflected: <span id="b3RefOut" class="mono">30 of 100</span>
+          <input type="range" id="b3Ref" min="15" max="50" step="1" value="30"></label>
+        <label class="field" for="b3Gh">Greenhouse effect strength: <span id="b3GhOut" class="mono">today</span>
+          <input type="range" id="b3Gh" min="0" max="95" step="1" value="78"></label>
+        <div class="stats">
+          <div class="stat"><span>Reflected</span><b id="b3R">30</b></div>
+          <div class="stat"><span>Absorbed</span><b id="b3A">70</b></div>
+          <div class="stat"><span>Average temperature</span><b id="b3T">15 °C</b></div>
+        </div>
+      </div>
+      <div class="map">
+        <div class="worked" id="b3Explain" aria-live="polite"></div>
+        <p class="hint">A simplified model. Real climate also depends on clouds, oceans, ice and much more.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 4 · Explain the heating</span>
+    <div class="codes"><span class="code">EN2.S1</span><span class="code">EN2.S2</span><span class="code">EN2.K3</span><span class="code">EN2.K4</span></div>
+    <h3>Which process, and which way does energy move?</h3>
+    <div class="worked" id="b4Q"></div>
+    <p class="tagline">1. Main process</p>
+    <div class="choice2" id="b4P"></div>
+    <p class="tagline">2. Direction of energy transfer</p>
+    <div class="choice2" id="b4D"></div>
+    <p class="fb" id="b4Fb" aria-live="polite"></p>
+    <div class="row"><button class="btn ghost" id="b4New" type="button">Next event</button><span class="hint mono" id="b4Score"></span></div>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 EN2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>EN2.K1 and K2:</b> temperature is taught as a measure of the average energy of motion of particles, kept separate from the total energy of an object (a warm bathtub holds more energy than a hot cup of cocoa but has a lower temperature). The speed readout scales with the square root of absolute temperature, so average speed changes less than students might expect; the animation exaggerates the change so it is visible. The Kelvin scale is not named.</li>
+      <li><b>EN2.K3:</b> heating is taught as happening on its own from higher to lower temperature until thermal equilibrium. Students are told that cold does not flow. Fridges and heat pumps are mentioned once as devices that use work to move energy from colder to warmer. Investigation 1 adds a weighted-average mixing calculation as a worked example, assuming no energy escapes.</li>
+      <li><b>EN2.K5:</b> each technology is taught by its main process. An electric coil also glows and radiates, but contact conduction is the main transfer to the pot. The hot-air balloon is taught as heated air becoming less dense and rising, the same idea that drives convection currents. Microwaves are taught as absorbed mainly by water in food, with conduction then spreading energy inward.</li>
+      <li><b>EN2.K6:</b> insulation is taught as slowing the rate of transfer, never stopping it or adding cold. Trapped still air (limits conduction and convection) and shiny surfaces (reflect radiation) are named as the main ideas.</li>
+      <li><b>EN2.K7 to K9 and S4:</b> budget numbers are rounded from published global averages: about 30 of 100 units reflected, about 20 absorbed by the atmosphere and about 50 by the surface. The draft says most absorbed energy “radiates back up”; the lab teaches that the surface gives energy back mostly as infrared radiation, with evaporation and rising warm air also named. Greenhouse gases are named with water vapour and carbon dioxide as examples. Climate change is mentioned only as more absorption meaning warming.</li>
+      <li><b>Model numbers:</b> Earth’s thermostat is a one-layer energy balance model (about −18 °C with no greenhouse effect and about 15 °C with today’s values). Cocoa cooling data come from a simple cooling model with made-up rate values. Reflection values for snow, forest, asphalt and ocean are rounded typical values.</li>
+      <li><b>Alberta examples:</b> Edmonton winter mornings, block heaters, furnaces, outdoor rinks, bison winter coats, hot-air balloons over the river valley and prairie snow cover are everyday contexts only. Water boiling at about 98 °C in Edmonton matches the Matter lab.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-en2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+function fitCanvas(cv, ratio){
+  var w = cv.clientWidth; if (!w) return null;
+  var dpr = window.devicePixelRatio || 1, h = Math.round(w * ratio);
+  if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+  var ctx = cv.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return {ctx: ctx, w: w, h: h};
+}
+function tempColor(T){ return T >= 45 ? css("--hot") : T <= 10 ? css("--cold") : css("--mix"); }
+var animators = [];
+function loop(ts){ animators.forEach(function(f){ try { f(ts); } catch(e) {} }); requestAnimationFrame(loop); }
+
+/* ---------- Lesson 1: particle box ---------- */
+(function(){
+  var cv = $("pCanvas"), sl = $("pTemp"), ps = [], last = 0;
+  var r = rng(7);
+  for (var i = 0; i < 34; i++) ps.push({x: 0.05 + r() * 0.9, y: 0.05 + r() * 0.9, a: r() * Math.PI * 2});
+  var EX = [[-40, "Coldest Edmonton nights", "Particles still move at −40 °C. They are just slower."], [-25, "A cold January morning in Edmonton", "A metal railing at this temperature pulls energy out of your hand fast."], [0, "Water freezes", "Water particles slow enough to lock into ice crystals."], [20, "Room temperature", "Our reference point: average speed 1.00×."], [37, "Human body temperature", "Your body stays near 37 °C by balancing the energy it makes and loses."], [60, "Hot tap water", "Hot enough to scald skin in a few seconds."], [80, "Hot cocoa", "Fast particles here will warm your cold hands."], [98, "Water boils in Edmonton", "About 98 °C, because Edmonton is high above sea level."], [100, "Water boils at sea level", "Particles move fast enough to escape as a gas."]];
+  function speed(T){ return Math.sqrt((T + 273.15) / 293.15); }
+  function update(){
+    var T = +sl.value, s = speed(T);
+    $("pOut").textContent = T + " °C";
+    $("pSpeed").textContent = s.toFixed(2) + "×";
+    $("pBar").style.width = Math.min(100, (s / 1.15) * 100) + "%";
+    $("pBar").style.background = tempColor(T);
+    var best = EX[0]; EX.forEach(function(e){ if (Math.abs(e[0] - T) < Math.abs(best[0] - T)) best = e; });
+    detail($("pDetail"), best[1] + " (" + best[0] + " °C)", [best[2]], "Nearest example");
+    cv.setAttribute("aria-label", "Particles in a box at " + T + " °C, moving at " + s.toFixed(2) + " times their room temperature speed");
+    if (reduced) draw(0);
+  }
+  function draw(dt){
+    var f = fitCanvas(cv, 0.55); if (!f) return;
+    var c = f.ctx, w = f.w, h = f.h, T = +sl.value, s = speed(T), v = 0.45 * s * s * s;
+    c.fillStyle = css("--surface"); c.fillRect(0, 0, w, h);
+    c.strokeStyle = css("--line"); c.lineWidth = 2; c.strokeRect(4, 4, w - 8, h - 8);
+    var col = tempColor(T), rad = Math.max(4, w / 70);
+    ps.forEach(function(p){
+      p.x += Math.cos(p.a) * v * dt * 0.3; p.y += Math.sin(p.a) * v * dt * 0.3 * w / h;
+      if (p.x < 0.03) { p.x = 0.03; p.a = Math.PI - p.a; } if (p.x > 0.97) { p.x = 0.97; p.a = Math.PI - p.a; }
+      if (p.y < 0.04) { p.y = 0.04; p.a = -p.a; } if (p.y > 0.96) { p.y = 0.96; p.a = -p.a; }
+      var x = p.x * w, y = p.y * h;
+      if (reduced) { c.strokeStyle = col; c.lineWidth = 2; c.beginPath(); c.moveTo(x, y); c.lineTo(x - Math.cos(p.a) * 18 * s * s, y - Math.sin(p.a) * 18 * s * s); c.stroke(); }
+      c.fillStyle = col; c.beginPath(); c.arc(x, y, rad, 0, Math.PI * 2); c.fill();
+    });
+  }
+  sl.addEventListener("input", update);
+  animators.push(function(ts){ var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0; last = ts; if (!reduced) draw(dt); });
+  update(); draw(0);
+})();
+
+/* ---------- Lesson 2: thermal equilibrium ---------- */
+(function(){
+  var a = $("eqA"), b = $("eqB"), tA, tB, timer = null;
+  function show(){
+    $("eqVA").textContent = tA.toFixed(1).replace(/\.0$/, "") + " °C";
+    $("eqVB").textContent = tB.toFixed(1).replace(/\.0$/, "") + " °C";
+    $("eqTA").style.height = tA + "%"; $("eqTA").style.background = tempColor(tA);
+    $("eqTB").style.height = tB + "%"; $("eqTB").style.background = tempColor(tB);
+    var f = $("eqFlow"); clear(f);
+    var diff = tA - tB;
+    if (Math.abs(diff) < 0.3) { f.appendChild(el("b", null, "=")); f.appendChild(document.createTextNode("no net transfer")); }
+    else { f.appendChild(el("b", null, diff > 0 ? "→" : "←")); f.appendChild(document.createTextNode("energy moves " + (diff > 0 ? "A to B" : "B to A"))); }
+  }
+  function reset(){
+    if (timer) { clearInterval(timer); timer = null; }
+    tA = +a.value; tB = +b.value; show();
+    detail($("eqDetail"), "Ready", ["Water A is " + tA + " °C and water B is " + tB + " °C. Predict the final temperature, then let them touch."]);
+  }
+  function finish(){
+    var avg = (+a.value + +b.value) / 2;
+    tA = avg; tB = avg; show();
+    detail($("eqDetail"), "Thermal equilibrium at " + fmt(avg, 1) + " °C", ["Energy moved from the hotter water to the colder water until both reached the same temperature. With equal amounts of water, they meet halfway.", "The hotter water lost exactly as much energy as the colder water gained."]);
+  }
+  $("eqGo").addEventListener("click", function(){
+    reset();
+    if (Math.abs(tA - tB) < 0.3) { detail($("eqDetail"), "Already equal", ["Both are the same temperature, so there is no heating between them."]); return; }
+    if (reduced) { finish(); return; }
+    detail($("eqDetail"), "Heating in progress", ["Energy is moving from the hotter water to the colder water."]);
+    timer = setInterval(function(){
+      var avg = (tA + tB) / 2; tA += (avg - tA) * 0.12; tB += (avg - tB) * 0.12; show();
+      if (Math.abs(tA - tB) < 0.3) { clearInterval(timer); timer = null; finish(); }
+    }, 80);
+  });
+  $("eqReset").addEventListener("click", reset);
+  a.addEventListener("input", reset); b.addEventListener("input", reset);
+  reset();
+})();
+
+/* ---------- Lesson 3: three processes ---------- */
+(function(){
+  var cv = $("hpCanvas"), mode = 0, t0 = 0;
+  var INFO = [
+    {label: "Conduction", t: "Conduction: passing it along by touch", p: ["One end of a metal rod sits in a flame. Particles at that end vibrate faster and bump their neighbours. The energy passes along the rod, particle by particle, until the far end is hot too.", "Example: the handle of a metal spoon in hot soup gets warm."], aria: "A metal rod heated at the left end. Particles near the flame vibrate fast, and the fast vibration spreads along the rod."},
+    {label: "Convection", t: "Convection: a moving loop of fluid", p: ["Water at the bottom of the pot is warmed by the burner. It spreads out, becomes less dense and rises. At the top it cools, becomes denser and sinks at the sides. The loop is a convection current.", "Example: warm air from a furnace vent rises and circulates around a room."], aria: "A pot of water over a burner. Warm water rises in the middle and cooler water sinks at the sides in two loops."},
+    {label: "Radiation", t: "Radiation: waves across empty space", p: ["The Sun or a campfire gives off waves of light and infrared. The waves cross empty space with no particles needed. When they are absorbed by an object, the object warms up.", "Example: you feel the warmth of a campfire on your face without touching it."], aria: "Waves travel from the Sun across empty space and warm a rock."}
+  ];
+  function draw(t){
+    var f = fitCanvas(cv, 0.5); if (!f) return;
+    var c = f.ctx, w = f.w, h = f.h;
+    c.fillStyle = css("--surface"); c.fillRect(0, 0, w, h);
+    c.font = "13px " + css("--f-body"); c.fillStyle = css("--muted");
+    if (mode === 0) {
+      var n = 12, y = h * 0.5, x0 = w * 0.16, gap = (w * 0.78) / (n - 1);
+      c.fillStyle = css("--hot"); c.beginPath(); c.moveTo(x0 - 30, y + 40); c.quadraticCurveTo(x0 - 50, y, x0 - 22, y - 20); c.quadraticCurveTo(x0 - 18, y + 5, x0 - 6, y - 12); c.quadraticCurveTo(x0 + 4, y + 20, x0 - 10, y + 40); c.closePath(); c.fill();
+      c.fillStyle = css("--line"); c.fillRect(x0 - 20, y - 14, w * 0.82, 28);
+      var front = ((t / 1000) % 7) / 5;
+      for (var i = 0; i < n; i++) {
+        var heat = Math.max(0, Math.min(1, front * 1.4 - i / n)), amp = 1 + heat * 5;
+        var jx = Math.sin(t / 40 + i * 1.7) * amp, jy = Math.cos(t / 33 + i * 2.3) * amp;
+        c.fillStyle = heat > 0.5 ? css("--hot") : heat > 0.15 ? css("--mix") : css("--cold");
+        c.beginPath(); c.arc(x0 + i * gap + jx, y + jy, Math.max(5, w / 60), 0, Math.PI * 2); c.fill();
+      }
+      c.fillStyle = css("--muted"); c.fillText("flame", x0 - 46, y + 60); c.fillText("metal rod: energy passes from particle to particle →", x0 + 10, y - 28);
+    } else if (mode === 1) {
+      var px = w * 0.2, pw = w * 0.6, py = h * 0.12, ph = h * 0.66;
+      c.strokeStyle = css("--ink"); c.lineWidth = 3; c.beginPath(); c.moveTo(px, py); c.lineTo(px, py + ph); c.lineTo(px + pw, py + ph); c.lineTo(px + pw, py); c.stroke();
+      c.fillStyle = css("--hot"); c.fillRect(px + pw * 0.3, py + ph + 8, pw * 0.4, 10);
+      c.fillStyle = css("--muted"); c.fillText("burner", px + pw * 0.4, py + ph + 34);
+      for (var k = 0; k < 28; k++) {
+        var side = k % 2 ? 1 : -1, ph2 = (k / 28) * Math.PI * 2 + t / 1100;
+        var cx = px + pw / 2 + side * pw / 4, rx = pw / 5.2, ry = ph / 2.6, cy = py + ph / 2;
+        var ang = side > 0 ? ph2 : -ph2;
+        var x = cx - side * Math.cos(ang) * rx, yy = cy + Math.sin(ang) * ry;
+        var warm = (yy - py) / ph;
+        c.fillStyle = warm > 0.6 ? css("--hot") : warm > 0.35 ? css("--mix") : css("--cold");
+        c.beginPath(); c.arc(x, yy, Math.max(4, w / 80), 0, Math.PI * 2); c.fill();
+      }
+      c.fillStyle = css("--muted"); c.fillText("warm water rises in the middle, cool water sinks at the sides", px - w * 0.12, py - 6 > 12 ? py - 6 : 12);
+    } else {
+      var sx = w * 0.12, sy = h * 0.5;
+      c.fillStyle = css("--ray"); c.beginPath(); c.arc(sx, sy, h * 0.16, 0, Math.PI * 2); c.fill();
+      c.fillStyle = css("--ground"); c.fillRect(w * 0.82, sy - h * 0.14, w * 0.12, h * 0.28);
+      c.strokeStyle = css("--ray"); c.lineWidth = 2;
+      for (var j = -1; j <= 1; j++) {
+        c.beginPath();
+        for (var x2 = sx + h * 0.2; x2 < w * 0.8; x2 += 3) {
+          var yy2 = sy + j * h * 0.18 + Math.sin((x2 - t / 8) / 12) * 7;
+          if (x2 === sx + h * 0.2) c.moveTo(x2, yy2); else c.lineTo(x2, yy2);
+        }
+        c.stroke();
+      }
+      c.fillStyle = css("--muted"); c.fillText("Sun", sx - 12, sy + h * 0.16 + 18); c.fillText("rock warms", w * 0.8, sy + h * 0.14 + 18); c.fillText("empty space: no particles needed", w * 0.32, h * 0.12);
+    }
+  }
+  chipGroup($("hpChips"), INFO, "", function(it, i){ mode = i; detail($("hpDetail"), it.t, it.p); cv.setAttribute("aria-label", it.aria); draw(reduced ? 3000 : performance.now()); }, 0);
+  animators.push(function(ts){ if (!reduced) draw(ts); });
+})();
+
+/* ---------- Lesson 4: technologies ---------- */
+(function(){
+  var P = {cd: "Conduction", cv: "Convection", rd: "Radiation"};
+  var TECH = [
+    {label: "Electric stove", m: "cd", t: "Electric stove: conduction", p: ["Electricity heats the metal element. The hot element touches the pot, and energy moves into the pot by conduction. The pot then heats the food it touches.", "The glowing element also gives off some radiation, but touch is the main way the pot is heated."]},
+    {label: "Hot-air balloon", m: "cv", t: "Hot-air balloon: convection", p: ["A propane burner heats the air inside the balloon. The warm air spreads out and becomes less dense than the cooler air outside, so it rises and lifts the basket.", "This is the same idea that drives a convection current. When the air inside cools, the balloon sinks, so the pilot fires the burner again."]},
+    {label: "Microwave oven", m: "rd", t: "Microwave oven: radiation", p: ["The oven makes microwaves, a kind of radiation. Water in the food absorbs them, so its particles move faster and the food warms.", "Conduction then spreads energy from the warm outer layers deeper into the food. That is why the instructions say to let food stand."]},
+    {label: "Forced-air furnace", m: "cv", t: "Furnace: convection", p: ["A furnace warms air, and a fan blows it through vents into each room of an Alberta house. The warm air rises, cools, sinks and returns to the furnace.", "A fan pushing the fluid is called forced convection."]},
+    {label: "Block heater", m: "cd", t: "Block heater: conduction", p: ["On a −30 °C night, an electric element inside the engine warms the coolant and metal it touches. Energy spreads through the engine block by conduction.", "Warm oil flows more easily, so the car starts in the morning."]},
+    {label: "Radiant heater at a rink", m: "rd", t: "Radiant heater: radiation", p: ["Glowing heaters above some outdoor rink shelters send infrared radiation down to skaters. You feel warm even though the air around you stays cold.", "Radiation warms the objects that absorb it, not the air it passes through."]}
+  ];
+  chipGroup($("techChips"), TECH, "", function(it){
+    var box = $("techDetail"); detail(box, it.t, it.p, "Main process");
+    var tg = el("div", {"class": "tags"}); tg.appendChild(el("span", {"class": "tag2 " + it.m}, P[it.m])); box.insertBefore(tg, box.children[1]);
+  }, 0);
+})();
+
+/* ---------- Lesson 5: insulation ---------- */
+(function(){
+  var INS = [
+    {label: "Whale blubber", kind: "Nature", s: ["cd"], t: "Whale blubber", p: ["A thick layer of fat under a whale’s skin conducts energy slowly. It keeps the whale’s warm body from losing energy too fast to icy ocean water."]},
+    {label: "Bison winter coat", kind: "Nature", s: ["cd", "cv"], t: "Bison winter coat", p: ["Bison on the prairie grow thick, woolly winter coats. The hair traps still air. Snow can even sit on a bison’s back without melting, which shows how little energy escapes."]},
+    {label: "Snow cover", kind: "Nature", s: ["cd", "cv"], t: "A blanket of snow", p: ["Fluffy snow is mostly trapped air. It slows energy loss from the ground, so soil, roots and small animals under the snow stay much warmer than the winter air above."]},
+    {label: "Fluffed feathers", kind: "Nature", s: ["cd", "cv"], t: "A chickadee’s feathers", p: ["On cold days, chickadees fluff up their feathers. This traps a thicker layer of still air around the body and slows energy loss."]},
+    {label: "Cooler", kind: "Technology", s: ["cd", "cv"], t: "Cooler", p: ["Foam walls full of trapped air bubbles slow energy moving from the warm outside air into the cold drinks. A tight lid stops warm air from flowing in."]},
+    {label: "Vacuum bottle", kind: "Technology", s: ["cd", "cv", "rd"], t: "Vacuum bottle", p: ["Two walls with almost no air between them. With no particles, there is almost no conduction or convection. Shiny walls reflect radiation. A lid stops warm air escaping."]},
+    {label: "House insulation", kind: "Technology", s: ["cd", "cv"], t: "Wall and attic insulation", p: ["Fibreglass or foam inside walls and attics traps air. It slows energy loss from a warm house to the cold winter air, so the furnace runs less."]},
+    {label: "Triple-pane window", kind: "Technology", s: ["cd", "cv"], t: "Triple-pane window", p: ["Three layers of glass with sealed gas between them. The thin gas layers conduct energy slowly, which matters during long Alberta winters."]}
+  ];
+  var N = {cd: "slows conduction", cv: "slows convection", rd: "reflects radiation"};
+  chipGroup($("insChips"), INS, "", function(it){
+    var box = $("insDetail"); detail(box, it.t, it.p, it.kind);
+    var tg = el("div", {"class": "tags"}); it.s.forEach(function(s){ tg.appendChild(el("span", {"class": "tag2 " + s}, N[s])); }); box.appendChild(tg);
+  }, 0);
+})();
+
+/* ---------- Lesson 6: Earth's energy budget ---------- */
+(function(){
+  var svg = $("ebSvg");
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 640, height: 340, fill: "var(--surface)"}));
+  svg.appendChild(sv("rect", {x: 0, y: 92, width: 640, height: 92, fill: "var(--sky)"}));
+  svg.appendChild(sv("rect", {x: 0, y: 270, width: 640, height: 70, fill: "var(--ground)"}));
+  svg.appendChild(sv("circle", {cx: 40, cy: 34, r: 24, fill: "var(--ray)"}));
+  svg.appendChild(sv("text", {x: 70, y: 22, "class": "small"}, "Sun: 100 units in"));
+  svg.appendChild(sv("text", {x: 560, y: 22, "class": "small"}, "Space"));
+  svg.appendChild(sv("text", {x: 520, y: 112, "class": "small"}, "Atmosphere"));
+  svg.appendChild(sv("text", {x: 540, y: 330, "class": "small", fill: "var(--surface)"}, "Surface"));
+  function arrow(g, x1, y1, x2, y2, col, wd){
+    var dx = x2 - x1, dy = y2 - y1, L = Math.sqrt(dx * dx + dy * dy), ux = dx / L, uy = dy / L, hl = 14, hw = wd / 2 + 7;
+    var bx = x2 - ux * hl, by = y2 - uy * hl;
+    g.appendChild(sv("line", {x1: x1, y1: y1, x2: bx, y2: by, stroke: col, "stroke-width": wd, "stroke-linecap": "round"}));
+    g.appendChild(sv("polygon", {points: x2 + "," + y2 + " " + (bx - uy * hw) + "," + (by + ux * hw) + " " + (bx + uy * hw) + "," + (by - ux * hw), fill: col}));
+  }
+  var A = [
+    {x1: 90, y1: 40, x2: 130, y2: 130, x3: 170, y3: 40, col: "var(--ray)", w: 10, lx: 112, ly: 155, lab: "≈23", t: "Reflected by clouds and air (about 23)", p: ["Some sunlight bounces off clouds, dust and the air itself and goes straight back to space. This energy never warms Earth."]},
+    {x1: 220, y1: 40, x2: 240, y2: 150, col: "var(--ray)", w: 10, lx: 250, ly: 150, lab: "≈20", t: "Absorbed by the atmosphere (about 20)", p: ["Gases, water droplets and dust in the atmosphere absorb some sunlight. This warms the atmosphere."]},
+    {x1: 300, y1: 40, x2: 330, y2: 262, x3: 360, y3: 40, col: "var(--ray)", w: 5, lx: 368, ly: 60, lab: "≈7", t: "Reflected by the surface (about 7)", p: ["Bright surfaces such as snow and ice reflect sunlight back to space. Fresh snow on the prairie reflects most of the sunlight that hits it."]},
+    {x1: 400, y1: 40, x2: 420, y2: 262, col: "var(--ray)", w: 18, lx: 432, ly: 230, lab: "≈50", t: "Absorbed by the surface (about 50)", p: ["About half of the sunlight is absorbed by land and oceans. The surface warms up. Dark surfaces such as forests, water and asphalt absorb the most."]},
+    {x1: 480, y1: 266, x2: 480, y2: 120, col: "var(--hot)", w: 14, lx: 490, ly: 250, lab: "IR", t: "The surface gives energy back (mostly infrared)", p: ["The warm surface gives off invisible infrared radiation. Some energy also leaves by evaporating water and by rising warm air.", "Most of the energy the surface absorbs eventually leaves it again."]},
+    {x1: 540, y1: 140, x2: 540, y2: 262, col: "var(--hot)", w: 9, lx: 550, ly: 210, lab: "back", t: "Greenhouse gases send some back down", p: ["Water vapour, carbon dioxide and other greenhouse gases absorb some of the infrared and give it off in all directions. Part comes back down and warms the surface again.", "This greenhouse effect keeps Earth’s average temperature near 15 °C instead of about −18 °C."]},
+    {x1: 600, y1: 140, x2: 600, y2: 40, col: "var(--hot)", w: 9, lx: 560, ly: 70, lab: "out", t: "Infrared escapes to space", p: ["Some infrared leaves the atmosphere and escapes to space. When energy out balances energy in, Earth’s temperature stays steady. If less escapes, Earth warms."]}
+  ];
+  var groups = [];
+  A.forEach(function(a, i){
+    var g = sv("g", {"class": "hit", tabindex: "0", role: "button", "aria-label": a.t});
+    var minx = Math.min(a.x1, a.x2, a.x3 || a.x1) - 14, maxx = Math.max(a.x1, a.x2, a.x3 || a.x1) + 14, miny = Math.min(a.y1, a.y2, a.y3 || a.y1) - 6, maxy = Math.max(a.y1, a.y2, a.y3 || a.y1) + 6;
+    g.appendChild(sv("rect", {"class": "ring", x: minx, y: miny, width: maxx - minx, height: maxy - miny, rx: 8}));
+    if (a.x3) { g.appendChild(sv("line", {x1: a.x1, y1: a.y1, x2: a.x2, y2: a.y2, stroke: a.col, "stroke-width": a.w, "stroke-linecap": "round"})); arrow(g, a.x2, a.y2, a.x3, a.y3, a.col, a.w); }
+    else arrow(g, a.x1, a.y1, a.x2, a.y2, a.col, a.w);
+    g.appendChild(sv("text", {x: a.lx, y: a.ly, "class": "lbl"}, a.lab));
+    function pickIt(){ groups.forEach(function(x){ x.classList.remove("on"); x.setAttribute("aria-pressed", "false"); }); g.classList.add("on"); g.setAttribute("aria-pressed", "true"); detail($("ebDetail"), a.t, a.p); }
+    g.addEventListener("click", pickIt);
+    g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pickIt(); } });
+    g.setAttribute("aria-pressed", "false");
+    svg.appendChild(g); groups.push({el: g});
+  });
+  groups = groups.map(function(x){ return x.el; });
+  detail($("ebDetail"), "Start with the Sun", ["Sunlight arrives as 100 units. Follow each arrow to see where it goes. Yellow arrows are sunlight. Red arrows are infrared given off by the warm surface and atmosphere."]);
+})();
+
+/* ---------- Bench 1: mixing water ---------- */
+(function(){
+  function tf(m1, t1, m2, t2){ return (m1 * t1 + m2 * t2) / (m1 + m2); }
+  function work(){
+    var m1 = +$("b1m1").value, t1 = +$("b1t1").value, m2 = +$("b1m2").value, t2 = +$("b1t2").value, box = $("b1Work"); clear(box);
+    if (!(m1 > 0) || !(m2 > 0)) { box.appendChild(el("p", null, "Enter masses greater than zero.")); return; }
+    var T = tf(m1, t1, m2, t2);
+    box.appendChild(el("p", null, "T final = (" + fmt(m1) + " × " + fmt(t1) + " + " + fmt(m2) + " × " + fmt(t2) + ") ÷ (" + fmt(m1) + " + " + fmt(m2) + ")"));
+    box.appendChild(el("p", null, "= " + fmt(m1 * t1 + m2 * t2) + " ÷ " + fmt(m1 + m2) + " = " + fmt(T, 1) + " °C"));
+    box.appendChild(el("p", {"class": "hint"}, "The answer is closer to " + (m1 > m2 ? "the hot" : m1 < m2 ? "the cold" : "neither") + " temperature" + (m1 === m2 ? " because the masses are equal, so it is exactly halfway." : " because there is more of that water.")));
+  }
+  ["b1m1", "b1t1", "b1m2", "b1t2"].forEach(function(id){ $(id).addEventListener("input", work); });
+  work();
+  var q, right = 0, tries = 0;
+  function newQ(){
+    q = {m1: rint(2, 10) * 50, t1: rint(50, 90), m2: rint(2, 10) * 50, t2: rint(2, 25)};
+    q.ans = tf(q.m1, q.t1, q.m2, q.t2);
+    var box = $("b1Q"); clear(box);
+    box.appendChild(el("p", null, q.m1 + " g of water at " + q.t1 + " °C is mixed with " + q.m2 + " g of water at " + q.t2 + " °C. What is the final temperature? Round to one decimal place."));
+    $("b1A").value = ""; $("b1Fb").textContent = ""; $("b1Fb").className = "fb";
+  }
+  $("b1Check").addEventListener("click", function(){
+    var v = parseFloat($("b1A").value), fb = $("b1Fb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    tries++;
+    if (Math.abs(v - q.ans) <= 0.5) { right++; fb.textContent = "Correct: " + fmt(q.ans, 1) + " °C. Energy moved from the hot water to the cold water until they matched."; fb.className = "fb ok"; }
+    else { fb.textContent = "Not quite. (" + q.m1 + " × " + q.t1 + " + " + q.m2 + " × " + q.t2 + ") ÷ " + (q.m1 + q.m2) + " = " + fmt(q.ans, 1) + " °C."; fb.className = "fb no"; }
+    $("b1Score").textContent = right + " of " + tries + " correct";
+  });
+  $("b1New").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 2: keep the cocoa hot ---------- */
+(function(){
+  var CUPS = [["Aluminum can", 0.060], ["Ceramic mug", 0.035], ["Foam cup", 0.018], ["Vacuum bottle", 0.004]];
+  var sel = $("b2Cup");
+  CUPS.forEach(function(c, i){ var o = el("option", {value: i}, c[0]); if (i === 1) o.selected = true; sel.appendChild(o); });
+  var runs = [], COLS = ["--pa", "--pb", "--pc", "--pd", "--pe", "--hot"];
+  function temp(r, t){ return r.air + (80 - r.air) * Math.exp(-r.k * t); }
+  function draw(){
+    var s = $("b2Svg"); clear(s);
+    var ymin = runs.some(function(r){ return r.air < 0; }) ? -20 : 20, ymax = 90;
+    function X(t){ return 50 + t / 30 * 450; } function Y(v){ return 230 - (v - ymin) / (ymax - ymin) * 210; }
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 270, fill: "var(--surface)"}));
+    for (var v = ymin; v <= 80; v += 20) { s.appendChild(sv("line", {x1: 50, x2: 500, y1: Y(v), y2: Y(v), "class": "grid"})); s.appendChild(sv("text", {x: 42, y: Y(v) + 4, "class": "small", "text-anchor": "end"}, v + "")); }
+    for (var t = 0; t <= 30; t += 5) s.appendChild(sv("text", {x: X(t), y: 248, "class": "small", "text-anchor": "middle"}, t + ""));
+    s.appendChild(sv("line", {x1: 50, x2: 500, y1: 230, y2: 230, "class": "axis"}));
+    s.appendChild(sv("line", {x1: 50, x2: 50, y1: 20, y2: 230, "class": "axis"}));
+    s.appendChild(sv("text", {x: 275, y: 266, "class": "small", "text-anchor": "middle"}, "Time (min)"));
+    s.appendChild(sv("text", {x: 12, y: 14, "class": "small"}, "Temperature (°C)"));
+    var lg = $("b2Legend"); clear(lg);
+    runs.forEach(function(r, i){
+      var d = "";
+      for (var t2 = 0; t2 <= 30; t2++) d += (t2 ? " L" : "M") + X(t2).toFixed(1) + " " + Y(temp(r, t2)).toFixed(1);
+      s.appendChild(sv("path", {d: d, fill: "none", stroke: "var(" + COLS[i] + ")", "stroke-width": 3}));
+      s.appendChild(sv("circle", {cx: X(30), cy: Y(temp(r, 30)), r: 4, fill: "var(" + COLS[i] + ")"}));
+      var sp = el("span"); var ii = el("i"); ii.style.background = "var(" + COLS[i] + ")"; sp.appendChild(ii); sp.appendChild(document.createTextNode("Run " + (i + 1))); lg.appendChild(sp);
+    });
+    if (!runs.length) s.appendChild(sv("text", {x: 275, y: 130, "class": "small", "text-anchor": "middle"}, "Run a test to draw a cooling curve."));
+    s.setAttribute("aria-label", "Cooling curves for " + runs.length + " runs. Details are in the table below.");
+    var tb = document.querySelector("#b2Table tbody"); clear(tb);
+    runs.forEach(function(r, i){
+      var tr = el("tr");
+      [i + 1, r.name, r.lid ? "Yes" : "No", r.air, "80.0", fmt(temp(r, 10), 1), fmt(temp(r, 20), 1), fmt(temp(r, 30), 1), fmt(80 - temp(r, 30), 1)].forEach(function(v){ tr.appendChild(el("td", null, v + "")); });
+      tb.appendChild(tr);
+    });
+  }
+  $("b2Run").addEventListener("click", function(){
+    if (runs.length >= 6) { $("b2Fb").textContent = "Six runs is the limit. Clear results to start again."; $("b2Fb").className = "fb no"; return; }
+    var c = CUPS[+sel.value], lid = $("b2Lid").checked, air = +$("b2Air").value;
+    var r = {name: c[0], lid: lid, air: air, k: c[1] * (lid ? 0.6 : 1)};
+    runs.push(r); draw();
+    var drop = 80 - temp(r, 30);
+    $("b2Fb").textContent = "Run " + runs.length + ": " + c[0] + (lid ? " with a lid" : " without a lid") + " dropped " + fmt(drop, 1) + " °C in 30 minutes. For a fair test, change only one variable from your last run.";
+    $("b2Fb").className = "fb";
+  });
+  $("b2Clear").addEventListener("click", function(){ runs = []; draw(); $("b2Fb").textContent = ""; });
+  draw();
+})();
+
+/* ---------- Bench 3: Earth's thermostat ---------- */
+(function(){
+  var S = 1361, SIG = 5.67e-8;
+  function T(a, e){ return Math.pow((S * (1 - a) / 4) / (SIG * (1 - e / 2)), 0.25) - 273.15; }
+  var SC = [
+    {label: "Today", r: 30, g: 78, p: "About 30 of 100 units are reflected and greenhouse gases are at about today’s level. The model gives about 15 °C, close to Earth’s real average."},
+    {label: "No greenhouse gases", r: 30, g: 0, p: "With no greenhouse gases, all the surface’s infrared would escape. The model drops to about −18 °C. The greenhouse effect is what makes Earth livable."},
+    {label: "More snow and ice", r: 36, g: 78, p: "More bright snow and ice reflect more sunlight. Less is absorbed, so Earth cools."},
+    {label: "Less snow and ice", r: 26, g: 78, p: "When bright ice melts, darker ground and ocean are exposed. They absorb more sunlight, so Earth warms. Warming melts more ice, which adds to the warming."},
+    {label: "More greenhouse gases", r: 30, g: 82, p: "More greenhouse gases absorb more infrared and send more back down. Less escapes to space, so Earth warms until a new balance is reached."}
+  ];
+  var setChip;
+  function upd(fromChip){
+    var r = +$("b3Ref").value, g = +$("b3Gh").value, t = T(r / 100, g / 100);
+    $("b3RefOut").textContent = r + " of 100";
+    $("b3GhOut").textContent = g === 0 ? "none" : g === 78 ? "today" : g < 78 ? "weaker than today" : "stronger than today";
+    $("b3R").textContent = r; $("b3A").textContent = 100 - r; $("b3T").textContent = fmt(t, 1) + " °C";
+    if (!fromChip) {
+      var box = $("b3Explain"); clear(box);
+      box.appendChild(el("p", null, "Worked reading: " + (100 - r) + " of 100 units are absorbed. Earth warms until the infrared escaping to space balances the sunlight absorbed. Here that happens at about " + fmt(t, 1) + " °C."));
+      box.appendChild(el("p", {"class": "hint"}, "Compared with today (15 °C): " + (t > 15.3 ? "warmer, because more energy is absorbed or held in." : t < 14.7 ? "cooler, because more is reflected or more infrared escapes." : "about the same.")));
+    }
+  }
+  setChip = chipGroup($("b3Chips"), SC, "", function(it){
+    $("b3Ref").value = it.r; $("b3Gh").value = it.g; upd(true);
+    var box = $("b3Explain"); clear(box);
+    box.appendChild(el("h5", null, it.label + ": about " + fmt(T(it.r / 100, it.g / 100), 1) + " °C"));
+    box.appendChild(el("p", null, it.p));
+  }, 0);
+  ["b3Ref", "b3Gh"].forEach(function(id){ $(id).addEventListener("input", function(){ $("b3Chips").querySelectorAll(".chip").forEach(function(b){ b.setAttribute("aria-pressed", "false"); }); upd(false); }); });
+})();
+
+/* ---------- Bench 4: explain the heating ---------- */
+(function(){
+  var P = ["Conduction", "Convection", "Radiation"];
+  var EV = [
+    ["You grab a metal railing on a −25 °C morning and your hand feels cold.", 0, ["From your hand to the railing", "From the railing to your hand"], "Your warm hand touches the colder metal, so energy is conducted out of your hand. Cold does not flow in."],
+    ["Warm air from a furnace vent rises and spreads through a room.", 1, ["From the warm furnace air to the cooler room", "From the cool room to the furnace air"], "The warm air flows and carries energy around the room in a convection current."],
+    ["Sunlight warms your face on a clear winter day.", 2, ["From the Sun to your face", "From your face to the Sun"], "Radiation crosses empty space from the much hotter Sun."],
+    ["The handle of a metal spoon in hot soup gets hot.", 0, ["From the soup through the spoon to the handle", "From the handle through the spoon to the soup"], "Particles pass energy along the metal by conduction."],
+    ["You warm your hands in front of a campfire without touching it.", 2, ["From the fire to your hands", "From your hands to the fire"], "Infrared radiation travels from the hotter fire to your hands."],
+    ["An ice cube melts on a kitchen counter.", 0, ["From the counter to the ice", "From the ice to the counter"], "The warmer counter touches the colder ice, so energy is conducted into the ice. The air also warms it a little."],
+    ["A microwave oven heats a bowl of leftover soup.", 2, ["From the microwaves to the soup", "From the soup to the microwaves"], "Water in the soup absorbs microwave radiation."],
+    ["A burner heats the air inside a hot-air balloon, and the warm air rises.", 1, ["From the burner flame to the air inside", "From the air inside to the burner flame"], "The warmed air becomes less dense and rises, the same idea that drives convection."],
+    ["A block heater warms the oil in a car engine overnight.", 0, ["From the heater element to the oil and metal", "From the oil and metal to the heater element"], "The hot element touches the engine parts and conducts energy into them."],
+    ["A frying pan on an electric stove cooks an egg.", 0, ["From the pan to the egg", "From the egg to the pan"], "The egg touches the hotter pan, so energy is conducted into it."],
+    ["A hot mug of cocoa warms the air above it, and that air rises.", 1, ["From the cocoa to the air", "From the air to the cocoa"], "Warmed air rises and cooler air moves in: a convection current."],
+    ["A dark car seat gets hot in the summer sun.", 2, ["From the Sun to the seat", "From the seat to the Sun"], "The dark seat absorbs radiation from the Sun."]
+  ];
+  var cur, order = shuffle(EV), pos = 0, gotP, gotD, right = 0, done = 0;
+  function finish(){
+    if (gotP == null || gotD == null) return;
+    done++; var ok = gotP && gotD; if (ok) right++;
+    $("b4Fb").textContent = (ok ? "Both correct. " : "Check again: " + P[cur[1]] + ", " + cur[2][0].toLowerCase() + ". ") + cur[3];
+    $("b4Fb").className = "fb " + (ok ? "ok" : "no");
+    $("b4Score").textContent = right + " of " + done + " fully correct";
+  }
+  function grp(box, opts, rightIdx, setter){
+    clear(box); var btns = [];
+    opts.forEach(function(o){
+      var b = el("button", {type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (opts[j].i === rightIdx) x.classList.add("right"); });
+        if (o.i !== rightIdx) b.classList.add("wrong");
+        setter(o.i === rightIdx); finish();
+      });
+      box.appendChild(b); btns.push(b);
+    });
+  }
+  function next(){
+    cur = order[pos % order.length]; pos++; if (pos % order.length === 0) order = shuffle(EV);
+    gotP = null; gotD = null;
+    var q = $("b4Q"); clear(q); q.appendChild(el("p", null, cur[0]));
+    grp($("b4P"), P.map(function(t, i){ return {t: t, i: i}; }), cur[1], function(v){ gotP = v; });
+    grp($("b4D"), shuffle(cur[2].map(function(t, i){ return {t: t, i: i}; })), 0, function(v){ gotD = v; });
+    $("b4Fb").textContent = ""; $("b4Fb").className = "fb";
+  }
+  $("b4New").addEventListener("click", next);
+  next();
+})();
+requestAnimationFrame(loop);
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Conduction, convection or radiation?", bins: ["Conduction", "Convection", "Radiation"], items: [
+    ["A metal spoon handle gets hot in soup", 0, "Energy passes along the metal by particles bumping into each other."],
+    ["Warm air rises from a furnace vent", 1, "Warm air flows upward and carries energy with it."],
+    ["Sunlight warms a dark rock", 2, "Energy travels from the Sun as waves."],
+    ["Your feet get cold on an icy floor", 0, "Your feet touch the colder floor and lose energy by contact."],
+    ["Water circulates in a pot on the stove", 1, "Warm water rises and cool water sinks in a loop."],
+    ["You feel warmth from a campfire across the circle", 2, "Infrared radiation reaches you without touching."],
+    ["An egg cooks in a hot frying pan", 0, "The pan and egg are touching."],
+    ["A hot-air balloon rises as the burner fires", 1, "Warmed air becomes less dense and rises."],
+    ["A microwave oven warms leftovers", 2, "Water in the food absorbs microwaves."],
+    ["Wind carries warm air from a sunny parking lot across a park", 1, "Moving air carries energy from place to place."],
+    ["A block heater warms engine oil", 0, "The hot element touches the oil and metal."],
+    ["Energy from the Sun crosses empty space to Earth", 2, "Only radiation can cross empty space."]
+  ]},
+  {label: "Which way does energy move?", bins: ["From the first to the second", "From the second to the first", "No heating: same temperature"], items: [
+    ["Hot cocoa (80 °C) and your cold hands (25 °C)", 0, "Energy moves from the hotter cocoa to your colder hands."],
+    ["An ice cube (0 °C) and warm lemonade (20 °C)", 1, "The warmer lemonade heats the colder ice."],
+    ["A snowbank (−10 °C) and your warm glove (30 °C)", 1, "Your glove is warmer, so energy leaves it."],
+    ["Two cups of water, both at 22 °C", 2, "At the same temperature there is no net heating."],
+    ["A furnace flame and the air in the furnace", 0, "The flame is far hotter than the air."],
+    ["A popsicle (−5 °C) and your tongue (35 °C)", 1, "Your tongue is warmer, so it loses energy to the popsicle."],
+    ["Pavement in July (45 °C) and your bare feet (30 °C)", 0, "The hot pavement heats your feet."],
+    ["A car in the garage and the garage air after a whole night", 2, "After a long time they reach the same temperature: thermal equilibrium."],
+    ["Lake water (4 °C) and a swimmer (37 °C)", 1, "The swimmer is warmer and loses energy to the lake."]
+  ]},
+  {label: "Conductor or insulator?", bins: ["Good conductor (transfers quickly)", "Insulator (slows transfer)"], items: [
+    ["Copper bottom of a pot", 0, "Metals pass energy along quickly."],
+    ["Foam in a cooler", 1, "Trapped air bubbles slow energy transfer."],
+    ["Steel spoon", 0, "Metal is a good conductor, which is why the handle gets hot."],
+    ["Wool mittens", 1, "Wool fibres trap still air."],
+    ["Fibreglass in an attic", 1, "It traps air and slows energy loss from the house."],
+    ["Aluminum foil", 0, "Aluminum conducts energy quickly."],
+    ["Whale blubber", 1, "Fat conducts energy slowly."],
+    ["Fluffy snow on the ground", 1, "Snow is mostly trapped air."],
+    ["Cast iron frying pan", 0, "Iron is a metal and conducts energy well."],
+    ["Down feathers in a parka", 1, "Feathers trap a thick layer of still air."]
+  ]},
+  {label: "Mostly reflected or mostly absorbed?", bins: ["Mostly reflects sunlight", "Mostly absorbs sunlight"], items: [
+    ["Fresh snow on a prairie field", 0, "Fresh snow reflects most of the sunlight that hits it."],
+    ["Open ocean water", 1, "Dark water absorbs most sunlight."],
+    ["An asphalt parking lot", 1, "Dark asphalt absorbs most sunlight and gets hot."],
+    ["The bright tops of thick clouds", 0, "Clouds reflect a lot of sunlight back to space."],
+    ["A dark spruce forest", 1, "Dark green needles absorb most sunlight."],
+    ["Sea ice in the Arctic", 0, "Bright ice reflects much of the sunlight."],
+    ["A black T-shirt in the sun", 1, "Dark fabric absorbs most sunlight."],
+    ["A white roof", 0, "White surfaces reflect most sunlight."],
+    ["Freshly ploughed dark soil", 1, "Dark soil absorbs most sunlight."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Particles", "The tiny pieces that make up all matter. They are always moving."],
+  ["Energy of motion", "The energy an object or particle has because it is moving. Faster means more."],
+  ["Temperature", "A measure of the average energy of motion of the particles in an object or system. It tells how hot or cold something is."],
+  ["Degrees Celsius (°C)", "The temperature scale used in Canada. Water freezes at 0 °C and boils at about 100 °C at sea level."],
+  ["Thermometer", "A tool that measures temperature."],
+  ["Heating", "The transfer of energy from a higher-temperature object or system to a lower-temperature one."],
+  ["Thermal equilibrium", "When two objects in contact reach the same temperature, so there is no more net heating."],
+  ["Conduction", "Heating by direct contact. Particles bump their neighbours and pass energy along. Best in solids, especially metals."],
+  ["Convection", "Heating by a flowing liquid or gas. Warm fluid rises and cool fluid sinks, carrying energy."],
+  ["Convection current", "The loop made when warm fluid rises and cooler, denser fluid sinks."],
+  ["Radiation", "Energy that travels as waves, such as light and infrared. It can cross empty space."],
+  ["Infrared radiation", "Invisible radiation given off by warm objects. You feel it as warmth from a fire."],
+  ["Conductor", "A material that lets energy transfer through it quickly, such as a metal."],
+  ["Insulator", "A material that slows the rate of heat transfer, such as foam, wool or trapped air."],
+  ["Insulation", "Material used to slow heat transfer, in nature (whale blubber) or in technology (a cooler)."],
+  ["Blubber", "A thick layer of fat under the skin of whales and seals that insulates their bodies."],
+  ["Density", "How much mass is packed into a volume. Warm fluids are less dense, so they rise."],
+  ["Reflection", "When radiation bounces off a surface instead of being absorbed."],
+  ["Absorption", "When radiation is taken in by a material, which warms up."],
+  ["Atmosphere", "The layer of gases around Earth."],
+  ["Greenhouse gases", "Gases such as water vapour and carbon dioxide that absorb infrared and send some back toward Earth’s surface."],
+  ["Greenhouse effect", "The warming of Earth’s surface because greenhouse gases hold in some infrared. Without it, Earth would average about −18 °C."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Temperature is a measure of…", ["the average energy of motion of particles", "the total energy in an object", "how much matter an object has", "how fast an object moves across a room"], "Temperature measures the average energy of motion of the particles."],
+  ["The particles in an object speed up. What happens to its temperature?", ["It rises", "It falls", "It stays the same", "It drops to 0 °C"], "Faster particles mean more average energy of motion, so a higher temperature."],
+  ["A warm bathtub (40 °C) and a hot cup of cocoa (80 °C). Which has the higher temperature?", ["The cocoa", "The bathtub", "They are the same", "You cannot compare them"], "Temperature is an average. The cocoa’s particles move faster on average, even though the tub holds more energy in total."],
+  ["Which statement about particles at −30 °C is true?", ["They still move, just more slowly", "They have stopped moving", "They move faster than at 20 °C", "They have no energy"], "Particles are always moving. Colder means slower on average."],
+  ["What is heating?", ["Energy transfer from a higher-temperature object to a lower-temperature one", "Cold moving into a warm object", "Creating new energy", "Any change in colour"], "Heating always moves energy from hotter to colder on its own."],
+  ["Your hand touches a cold metal railing. Why does it feel cold?", ["Energy moves from your hand into the railing", "Cold flows from the railing into your hand", "The railing has no particles", "Metal makes cold"], "Cold does not flow. Your hand loses energy to the colder metal."],
+  ["Two equal amounts of water at 70 °C and 10 °C are mixed. The final temperature is about…", ["40 °C", "80 °C", "10 °C", "60 °C"], "Equal amounts meet halfway: (70 + 10) ÷ 2 = 40 °C."],
+  ["When does heating between two touching objects stop?", ["When they reach the same temperature", "When the hotter one reaches 0 °C", "Never", "When the colder one boils"], "At thermal equilibrium, there is no more net transfer."],
+  ["Which process can transfer energy through empty space?", ["Radiation", "Conduction", "Convection", "None of them"], "Radiation needs no particles, so it can cross space."],
+  ["Which process works mainly in liquids and gases?", ["Convection", "Conduction", "Radiation", "Reflection"], "Convection needs a fluid that can flow."],
+  ["A metal spoon handle gets hot in hot soup. This is…", ["conduction", "convection", "radiation", "reflection"], "Energy passes along the metal by particles bumping."],
+  ["In a pot of water on a stove, warm water rises because it is…", ["less dense than the cooler water", "heavier than the cooler water", "colder than the water above", "pulled up by the lid"], "Warm water spreads out and becomes less dense, so it rises."],
+  ["An electric stove heats a pot mainly by…", ["conduction", "convection", "radiation", "insulation"], "The hot element touches the pot."],
+  ["A hot-air balloon rises because…", ["the heated air inside is less dense than the air outside", "the burner pushes it up like a rocket", "hot air has no mass", "radiation lifts it"], "Warm air is less dense, the same idea that drives convection."],
+  ["A microwave oven heats food mainly by…", ["radiation absorbed by water in the food", "conduction from the hot oven walls", "convection of hot air from a burner", "insulation"], "Microwaves are a kind of radiation, mostly absorbed by water."],
+  ["What does insulation do?", ["Slows the rate of heat transfer", "Stops all heat transfer forever", "Adds cold to an object", "Creates energy"], "Insulation slows heating. It does not stop it or add cold."],
+  ["Why does a whale have thick blubber?", ["To slow energy loss to cold ocean water", "To absorb sunlight", "To conduct heat out quickly", "To make the whale denser"], "Blubber is natural insulation."],
+  ["Many insulators, such as foam and wool, work mainly by…", ["trapping still air", "being made of metal", "giving off radiation", "being very heavy"], "Still trapped air conducts poorly and cannot form convection currents."],
+  ["About how much of the sunlight reaching Earth is reflected back to space?", ["About 30 of every 100 units", "About 90 of every 100 units", "None of it", "About 5 of every 100 units"], "Clouds, air, snow and ice reflect about 30 units."],
+  ["Where is most of the Sun’s incoming energy absorbed?", ["By Earth’s surface", "By the Moon", "By clouds only", "By outer space"], "About 50 of 100 units are absorbed by land and ocean."],
+  ["How does Earth’s warm surface give most of its energy back?", ["As infrared radiation", "As visible light", "By conduction into space", "It keeps all of it"], "The surface gives off infrared, which greenhouse gases partly absorb."],
+  ["What do greenhouse gases do?", ["Absorb some infrared and send part of it back down", "Reflect all sunlight away", "Make the Sun hotter", "Stop all sunlight reaching Earth"], "This greenhouse effect keeps Earth warmer than it would be without them."],
+  ["Fresh snow covers the prairies. What happens to the amount of sunlight absorbed there?", ["It decreases, because snow reflects most sunlight", "It increases", "It stays the same", "It doubles"], "Bright snow reflects most sunlight, so less is absorbed."],
+  ["Sea ice melts and exposes dark ocean. What happens?", ["More sunlight is absorbed and the area warms", "More sunlight is reflected and it cools", "Nothing changes", "Infrared stops leaving Earth"], "Dark water absorbs much more than bright ice."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain what temperature measures, using the word particles.", a: "All matter is made of particles that are always moving. Temperature is a measure of the average energy of motion of those particles. When the particles move faster on average, the temperature is higher.", k: ["Matter is made of moving particles", "Temperature measures average energy of motion", "Faster particles mean higher temperature"]},
+  {q: "A bathtub of warm water and a cup of hot cocoa: which has the higher temperature, and which holds more energy in total? Explain.", a: "The cocoa has the higher temperature because its particles move faster on average. The bathtub holds more energy in total because it has far more particles. Temperature is an average, not a total.", k: ["Cocoa has higher temperature", "Bathtub has more total energy", "Temperature is an average"]},
+  {q: "Your friend says, “Close the door, you’re letting the cold in.” Explain what is really happening using the idea of heating.", a: "Cold does not move. Heating moves energy from higher temperature to lower temperature. Warm air from inside the house escapes outside and cold outdoor air takes its place, so the house loses energy to the colder outdoors.", k: ["Cold does not flow", "Energy moves from hotter to colder", "The warm house loses energy to outside"]},
+  {q: "Describe what happens when 200 g of 80 °C water is mixed with 200 g of 20 °C water. Include the final temperature.", a: "Energy moves from the hot water to the cold water. The hot water cools and the cold water warms until both reach the same temperature, thermal equilibrium. With equal amounts, they meet halfway at 50 °C.", k: ["Energy moves hot to cold", "Both reach the same temperature", "Final temperature 50 °C"]},
+  {q: "Compare conduction and convection. Give one example of each.", a: "Conduction is heating by contact, as particles bump their neighbours and pass energy along. It works best in solids. Example: a spoon handle getting hot in soup. Convection is heating by a flowing liquid or gas, where warm fluid rises and cool fluid sinks. Example: warm air from a furnace vent circulating through a room.", k: ["Conduction by contact", "Convection by flowing fluid", "Correct example of each"]},
+  {q: "Explain why radiation is the only way the Sun’s energy can reach Earth.", a: "Space between the Sun and Earth is almost empty, with very few particles. Conduction and convection both need particles. Radiation travels as waves and needs no particles, so it can cross empty space.", k: ["Space is nearly empty", "Conduction and convection need particles", "Radiation needs no particles"]},
+  {q: "Choose one technology (electric stove, hot-air balloon or microwave oven). Explain which heating process it uses and how.", a: "A hot-air balloon uses convection. A burner heats the air inside the balloon. The warm air spreads out, becomes less dense than the cooler air outside and rises, lifting the balloon.", k: ["Names the correct process", "Describes how energy moves", "Uses a key idea such as contact, density or waves"]},
+  {q: "How does a vacuum bottle keep soup hot? Name the processes it slows.", a: "A vacuum bottle has two walls with almost no air between them. Without particles there is almost no conduction or convection across the gap. The shiny walls reflect radiation back in. The lid stops warm air escaping. It slows heat transfer, so the soup stays hot longer.", k: ["Vacuum stops conduction and convection", "Shiny walls reflect radiation", "Slows transfer rather than stopping it"]},
+  {q: "Explain how Earth’s temperature depends on radiation from the Sun. Use the words absorbed and reflected.", a: "Of the sunlight that reaches Earth, about 30% is reflected back to space by clouds, air, snow and ice. The rest is absorbed by the atmosphere and the surface, which warm up. The surface gives energy back as infrared, and greenhouse gases send some of it back down. More absorption warms Earth; more reflection cools it.", k: ["Some sunlight is reflected", "Some is absorbed by the atmosphere and surface", "Surface gives off infrared", "More absorption warms, more reflection cools"]}
+];
+var LONG = [
+  {q: "Design a fair investigation to find which material makes the best insulator for a lunch container: foam, wool or aluminum foil. Describe your variables, steps and how you would decide the winner.", a: "Manipulated variable: the wrapping material. Responding variable: the temperature of the water after 30 minutes. Controlled variables: the same container, the same amount of water (for example 250 mL), the same starting temperature (for example 70 °C), the same room and the same time. Steps: wrap three identical containers, pour in hot water, put on lids, measure the temperature every 5 minutes for 30 minutes and repeat the test. The best insulator is the material whose water drops the least, because it slows heat transfer the most.", k: ["Manipulated and responding variables named", "Controlled variables listed", "Repeated measurements over time", "Winner is the smallest temperature drop", "Links result to slowing heat transfer"]},
+  {q: "A family in Edmonton wants to lower their winter heating bill. Explain how energy leaves their house by conduction, convection and radiation, and suggest one way to slow each.", a: "Conduction: energy passes through walls, windows and the roof to the cold outside. Thicker attic insulation or triple-pane windows slow it. Convection: warm air escapes through gaps around doors and windows while cold air leaks in. Weatherstripping and caulking slow it. Radiation: warm walls and windows give off infrared to the cold outdoors. Heavy curtains at night and windows with reflective coatings slow it. Slowing transfer means the furnace runs less.", k: ["Conduction path and fix", "Convection path and fix", "Radiation path and fix", "Explains insulation slows, not stops", "Links to furnace running less"]},
+  {q: "Explain how Earth’s atmosphere and surface work together to set Earth’s temperature. Then predict what would happen if large areas of Arctic sea ice melted.", a: "About 30% of incoming sunlight is reflected by clouds, air, snow and ice. The atmosphere absorbs about 20% and the surface absorbs about 50%. The warm surface gives energy back mostly as infrared radiation. Greenhouse gases absorb some of that infrared and send part back down, keeping Earth near 15 °C. If sea ice melted, the dark ocean underneath would absorb much more sunlight than the bright ice did. Less would be reflected, so the region would warm, which could melt even more ice.", k: ["Reflection and absorption described with rough amounts", "Surface gives off infrared", "Greenhouse gases send some back", "Melting ice means less reflection", "Prediction of warming"]},
+  {q: "Choose two technologies that use different heating processes. For each, explain the process and why it suits the job. Then explain why most real devices use more than one process.", a: "A forced-air furnace uses convection: it heats air and a fan blows the warm air through vents, so the whole house warms evenly. A frying pan on an electric stove uses conduction: the hot element touches the pan, and the pan touches the food, which suits cooking. Most devices use more than one process. For example, the glowing stove element also radiates, and the warm pan heats the air above it by convection. One process is usually the main one.", k: ["Two technologies with correct processes", "Explains why each process suits the job", "Notes that devices often use more than one process", "Uses the idea of a main process"]}
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+ [
+  "EN2.K1",
+  "Temperature is a measure of the average energy of motion of the particles in an object or a system and can be used to describe hotness or coldness.",
+  "Learn: Lesson 1 (particle box). Quiz, Flashcards, Written Review short answers 1 and 2."
+ ],
+ [
+  "EN2.K2",
+  "The faster the particles in an object or system move, the greater their average energy of motion and the higher the temperature.",
+  "Learn: Lesson 1 (particle box speed readout). Quiz, Written Review short answer 1."
+ ],
+ [
+  "EN2.K3",
+  "Heating is the transfer of energy that occurs from a higher-temperature object or system to a lower-temperature object or system.",
+  "Learn: Lesson 2 (put them in contact). Lab Bench: Investigations 1 and 4. Sort It: which way does energy move deck. Quiz, Written Review short answers 3 and 4."
+ ],
+ [
+  "EN2.K4",
+  "Heating occurs through the processes of\n• conduction\n• convection\n• radiation",
+  "Learn: Lesson 3 (watch each process). Lab Bench: Investigation 4. Sort It: conduction, convection or radiation deck. Quiz, Flashcards, Written Review short answers 5 and 6."
+ ],
+ [
+  "EN2.K5",
+  "Conduction, convection, and radiation can be used in technologies, such as\n• electric stoves, which use conduction\n• hot-air balloons, which use convection\n• microwave ovens, which use radiation",
+  "Learn: Lesson 4 (technology cards: electric stove, hot-air balloon, microwave oven and Alberta examples). Lab Bench: Investigation 4. Quiz, Written Review short answer 7, extended 4."
+ ],
+ [
+  "EN2.K6",
+  "Insulation is used to slow rates of heat transfer and can be found in systems such as\n• nature, e.g., whale blubber\n• technologies, e.g., cooler",
+  "Learn: Lesson 5 (insulation in nature and technology, including whale blubber and coolers). Lab Bench: Investigation 2. Sort It: conductor or insulator deck. Quiz, Flashcards, Written Review short answer 8."
+ ],
+ [
+  "EN2.K7",
+  "Some of the radiation from the Sun and from space is reflected or absorbed by Earth’s atmosphere and surface.",
+  "Learn: Lesson 6 (follow the sunlight diagram). Lab Bench: Investigation 3. Sort It: reflected or absorbed deck. Quiz, Written Review short answer 9, extended 3."
+ ],
+ [
+  "EN2.K8",
+  "Most energy absorbed by Earth’s surface eventually radiates back up, contributing to further absorption and reflection in the atmosphere.",
+  "Learn: Lesson 6 (surface infrared and greenhouse gas arrows). Lab Bench: Investigation 3. Quiz, Flashcards, Written Review extended 3."
+ ],
+ [
+  "EN2.K9",
+  "The absorption and reflection of radiation by Earth’s atmosphere and surface affect the temperature of Earth.",
+  "Learn: Lesson 6. Lab Bench: Investigation 3 (Earth’s thermostat scenarios). Quiz, Written Review short answer 9, extended 3."
+ ],
+ [
+  "EN2.S1",
+  "Explain how heating occurs through conduction, convection, and radiation.",
+  "Learn: Lessons 2 and 3. Lab Bench: Investigation 1 (mixing water worked example and randomized practice) and Investigation 4 (explain the heating). Written Review short answers 4 to 6."
+ ],
+ [
+  "EN2.S2",
+  "Discuss how the processes of conduction, convection, or radiation are used in various technologies.",
+  "Learn: Lesson 4. Lab Bench: Investigation 4. Written Review short answer 7, extended 4."
+ ],
+ [
+  "EN2.S3",
+  "Investigate systems that minimize energy transfer.",
+  "Learn: Lesson 5. Lab Bench: Investigation 2 (keep the cocoa hot virtual investigation). Written Review short answer 8, extended 1 and 2."
+ ],
+ [
+  "EN2.S4",
+  "Describe how Earth’s temperature is affected by radiation from the Sun.",
+  "Learn: Lesson 6. Lab Bench: Investigation 3 (Earth’s thermostat). Written Review short answer 9, extended 3."
+ ]
+];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

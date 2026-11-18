@@ -1,0 +1,845 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/variation-and-inheritance-lab/"><meta name="description" content="Genetic traits of organisms are determined by DNA."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Variation and Inheritance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: a stained-slide lab bench. Sticky tab rail, one working panel at a time, karyotype banding as the page's signature. */
+:root{
+  --bg:#EEF2EE; --surface:#FFFFFF; --sunk:#E2E9E3; --ink:#13302A; --muted:#4E6560; --line:#C9D6CE;
+  --stain:#A8295F; --stain-soft:#F6DCE7; --amber:#B86E0C; --amber-soft:#F8E8CF;
+  --good:#1F7A4D; --good-soft:#D9F0E3; --bad:#B23A2B; --bad-soft:#F7DEDA;
+  --dom:#2D63C8; --rec:#7B3FB5;
+  --display:'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+  --body:'Atkinson Hyperlegible', Verdana, sans-serif;
+  --mono:'IBM Plex Mono', 'Courier New', monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1916; --surface:#16241F; --sunk:#1D2E28; --ink:#E4EEE9; --muted:#9DB4AC; --line:#2E4840;
+  --stain:#E46C9F; --stain-soft:#3B1F2C; --amber:#E8A447; --amber-soft:#3A2A14;
+  --good:#5BC98E; --good-soft:#163829; --bad:#F08473; --bad-soft:#3E1F1A;
+  --dom:#6E9CF0; --rec:#B98BEA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1916; --surface:#16241F; --sunk:#1D2E28; --ink:#E4EEE9; --muted:#9DB4AC; --line:#2E4840;
+  --stain:#E46C9F; --stain-soft:#3B1F2C; --amber:#E8A447; --amber-soft:#3A2A14;
+  --good:#5BC98E; --good-soft:#163829; --bad:#F08473; --bad-soft:#3E1F1A;
+  --dom:#6E9CF0; --rec:#B98BEA; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+.mono{font-family:var(--mono)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--stain);outline-offset:2px;border-radius:6px}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stain)}
+
+/* header */
+header.top{padding-block:28px 18px;display:grid;gap:14px}
+.karyo{width:100%;height:58px;display:block}
+header.top h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:800;letter-spacing:-.02em}
+header.top .sub{color:var(--muted);max-width:62ch}
+
+/* tabs */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-bottom:24px}
+nav.tabs .rail{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:thin}
+nav.tabs a{flex:none;text-decoration:none;color:var(--muted);font-weight:700;padding:8px 14px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+nav.tabs a:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+
+section.panel{display:grid;gap:22px}
+.lede{color:var(--muted);max-width:66ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);padding:7px 14px;border-radius:999px;font-weight:700;font-size:.95rem}
+.chip[aria-pressed="true"]{background:var(--stain);border-color:var(--stain);color:#fff}
+.btn{border:none;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-weight:700}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.stain{background:var(--stain);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.note{font-size:.9rem;color:var(--muted)}
+
+/* learn */
+.learn-grid{display:grid;grid-template-columns:240px 1fr;gap:22px;align-items:start}
+.topic-list{display:grid;gap:6px;position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:4px}
+.topic a:not(.btn){color:var(--stain);font-weight:700}
+.topic-list button{text-align:left;background:transparent;border:1px solid transparent;border-radius:10px;padding:10px 12px;font-weight:700;color:var(--muted);display:flex;gap:10px;align-items:baseline}
+.topic-list .grp{display:grid;gap:2px;padding:14px 4px 4px;border-top:1px solid var(--line);margin-top:6px}
+.topic-list .grp:first-child{border-top:none;margin-top:0;padding-top:0}
+.topic-list .gn{font-family:var(--display);font-weight:800;color:var(--ink)}
+.topic-list .gd{font-size:.82rem;color:var(--muted);line-height:1.35}
+.topic-list button .n{font-family:var(--mono);font-size:.8rem;color:var(--stain)}
+.topic-list button[aria-current="true"]{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.topic-list button.grp{display:grid;gap:2px;border:1px solid transparent;border-top-color:var(--line);border-radius:10px;margin-top:8px;padding:12px}
+.topic-list button.grp:first-child{border-top-color:transparent;margin-top:0}
+.topic-list button.grp .gn{color:var(--stain)}
+.topic-list button.grp[aria-current="true"]{background:var(--stain-soft);border-color:var(--stain)}
+details.reveal{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+details.reveal summary{cursor:pointer;list-style:none;display:grid;gap:2px;padding:18px 22px 18px 58px;position:relative}
+details.reveal summary::-webkit-details-marker{display:none}
+details.reveal summary::before{content:'+';position:absolute;left:20px;top:22px;width:26px;height:26px;border-radius:50%;background:var(--stain);color:#fff;display:grid;place-items:center;font-weight:700;line-height:1}
+details.reveal[open] summary::before{content:'\2212'}
+details.reveal[open]{border-color:var(--stain)}
+.rk{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stain)}
+.rh{font-family:var(--display);font-weight:700;font-size:1.1rem}
+.rb{padding:0 22px 20px 58px}
+.rb ul{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.theme{font-family:var(--display);font-size:1.35rem;font-weight:700;line-height:1.3}
+dl.cons{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:0}
+dl.cons div{background:var(--sunk);border-radius:10px;padding:10px 12px;min-width:0}
+dl.cons dt{font-weight:700}
+dl.cons dd{margin:0;color:var(--muted);font-size:.95rem}
+.linkbtn{background:none;border:none;padding:0;color:inherit;text-decoration:underline;font:inherit;letter-spacing:inherit;text-transform:inherit;font-weight:700;cursor:pointer}
+.learn-acc{display:grid;gap:28px;max-width:900px}
+.ogroup{display:grid;gap:8px}
+.ohead{display:grid;gap:4px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+details.acc{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+details.acc>summary{cursor:pointer;list-style:none;display:flex;gap:12px;align-items:baseline;padding:14px 48px 14px 16px;position:relative;font-weight:700;font-size:1.05rem}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:'+';position:absolute;right:16px;top:12px;font-size:1.4rem;line-height:1;color:var(--stain);font-weight:700}
+details.acc[open]>summary::after{content:'\2212'}
+details.acc>summary .n{font-family:var(--mono);font-size:.85rem;color:var(--stain);flex:none;min-width:1.6em}
+details.acc[open]{border-color:var(--stain)}
+details.acc.ov{background:var(--stain-soft);border-color:var(--stain)}
+.accb{padding:4px 16px 18px;display:grid;gap:14px;min-width:0}
+.accb .card{padding:18px}
+.accb details.reveal{background:var(--surface)}
+.topic{display:grid;gap:18px;min-width:0}
+.topic .card{display:grid;gap:12px;min-width:0}
+.topic ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.term{font-weight:700;color:var(--stain)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);font-weight:700;background:var(--sunk)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span.step{background:var(--sunk);border-radius:8px;padding:6px 10px;font-weight:700;font-size:.92rem}
+.flow span.arr{color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two>div{min-width:0}
+.check{background:var(--amber-soft);border:1px solid var(--amber);border-radius:var(--r);padding:18px;display:grid;gap:10px}
+.check .opts{display:flex;flex-wrap:wrap;gap:8px}
+.check .opts button{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 12px;font-weight:700}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.diagram{overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:560px;height:auto}
+.fix{font-size:.88rem;border-left:3px solid var(--amber);padding-left:10px;color:var(--muted)}
+
+/* punnett */
+.pun-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.parent-pick{display:grid;gap:10px}
+.parent-pick .row button{font-family:var(--mono);font-size:1.05rem}
+.psq{display:grid;grid-template-columns:64px 1fr 1fr;gap:6px;max-width:420px}
+.psq div{display:grid;place-items:center;border-radius:10px;min-height:64px;font-family:var(--mono);font-weight:600;font-size:1.15rem}
+.psq .hd{background:var(--sunk);color:var(--muted)}
+.psq .cell{background:var(--surface);border:1px solid var(--line);gap:2px;padding:6px}
+.psq .cell svg{width:30px;height:30px}
+.ratios{display:grid;gap:10px}
+.bar{height:16px;border-radius:999px;background:var(--sunk);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem}
+.legend b{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:6px}
+.bigstat{font-family:var(--display);font-size:2rem;font-weight:800}
+
+/* selection */
+.sim{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px;align-items:start}
+canvas#field{width:100%;height:auto;aspect-ratio:16/10;border-radius:var(--r);border:1px solid var(--line);display:block;cursor:crosshair;max-width:100%}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--sunk);border-radius:10px;padding:10px 12px}
+.stat .v{font-family:var(--display);font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums}
+.stat .k{font-size:.82rem;color:var(--muted)}
+#chart{width:100%;height:auto;display:block}
+
+/* sort */
+.sort-card{min-height:150px;display:grid;place-items:center;text-align:center;font-family:var(--display);font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:700;padding:28px}
+.sort-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sort-btns button{padding:16px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-weight:700;font-size:1.05rem}
+.sort-btns button:hover{border-color:var(--stain)}
+
+/* flashcards */
+.flash{perspective:1200px;max-width:640px;width:100%;margin:0 auto}
+.flash .inner{position:relative;min-height:240px;transition:transform .45s;transform-style:preserve-3d}
+.flash.flipped .inner{transform:rotateY(180deg)}
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:28px;text-align:center}
+.flash .face.back{transform:rotateY(180deg);background:var(--stain-soft)}
+.flash .word{font-family:var(--display);font-size:clamp(1.6rem,5vw,2.4rem);font-weight:800}
+.flash .def{font-size:1.08rem;max-width:48ch}
+.progress{height:8px;background:var(--sunk);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--good)}
+.center{justify-content:center}
+
+/* quiz */
+.q{display:grid;gap:14px}
+.q .opts{display:grid;gap:8px}
+.q .opts button{text-align:left;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-weight:700}
+.q .opts button.right{background:var(--good-soft);border-color:var(--good)}
+.q .opts button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.why{background:var(--sunk);border-radius:10px;padding:12px 14px}
+
+/* practice */
+.pq{display:grid;gap:10px}
+.pq textarea{width:100%;min-height:96px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px;font:inherit}
+.model{background:var(--good-soft);border-radius:10px;padding:12px 14px}
+ol.essays{display:grid;gap:12px;margin:0;padding-left:1.3em}
+
+footer{margin-top:40px;color:var(--muted);font-size:.85rem}
+footer .credit{margin-bottom:6px}footer .credit a{color:var(--stain)}
+
+@media (max-width:820px){
+  .rb{padding:0 18px 18px}
+  details.reveal summary{padding-right:18px}
+  .learn-grid,.pun-wrap,.sim,.two{grid-template-columns:1fr}
+  .topic-list{position:static;max-height:none}
+}
+@media (prefers-reduced-motion:reduce){.flash .inner{transition:none}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <svg class="karyo" id="karyo" viewBox="0 0 1000 58" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <p class="eyebrow">Science 9 · Life Science review</p>
+  <h1>Variation and Inheritance Lab</h1>
+  <p class="sub">Learn, test and review DNA, reproduction, inheritance, natural selection, artificial selection and biodiversity. Try the Punnett square builder and the moth selection simulation, then check yourself with flashcards and the quiz.</p>
+</header>
+
+<nav class="tabs" aria-label="Sections"><div class="rail">
+  <a href="#learn">Learn</a>
+  <a href="#punnett">Punnett Lab</a>
+  <a href="#selection">Selection Sim</a>
+  <a href="#sort">Sort It</a>
+  <a href="#cards">Flashcards</a>
+  <a href="#quiz">Quiz</a>
+  <a href="#practice">Short Answer</a>
+</div></nav>
+
+<!-- LEARN -->
+<section class="panel" id="p-learn">
+  <div><h2>Learn the big ideas</h2><p class="lede">Topics follow the unit order: the launch, then LS1 (DNA), LS2 (reproduction and evolution) and LS3 (inheritance). Click any overview or topic to open it in place, and click again to close it. Each outcome has an overview with its key theme, takeaways and key concepts, and each topic ends with a quick check.</p></div>
+  <div class="row"><button class="btn ghost" id="learnAll">Expand all</button></div>
+  <div class="learn-acc" id="topicList"></div>
+</section>
+
+<!-- PUNNETT -->
+<section class="panel" id="p-punnett" hidden>
+  <div><h2>Punnett Lab</h2><p class="lede">Our creature has one skin-colour gene. <span class="mono">B</span> (blue skin) is dominant over <span class="mono">b</span> (purple skin). Pick each parent's genotype and watch the predicted offspring.</p></div>
+  <div class="pun-wrap">
+    <div class="card" style="display:grid;gap:18px">
+      <div class="parent-pick"><h3>Parent 1</h3><div class="row" id="p1"></div></div>
+      <div class="parent-pick"><h3>Parent 2</h3><div class="row" id="p2"></div></div>
+      <div id="psq" class="psq" aria-live="polite"></div>
+    </div>
+    <div class="card ratios" id="ratios"></div>
+  </div>
+  <div class="card" style="display:grid;gap:12px">
+    <h3>Predict it first</h3>
+    <p id="pxQ"></p>
+    <div class="row" id="pxOpts"></div>
+    <p class="fb" id="pxFb" aria-live="polite"></p>
+    <div><button class="btn ghost" id="pxNew">New cross</button></div>
+  </div>
+</section>
+
+<!-- SELECTION -->
+<section class="panel" id="p-selection" hidden>
+  <div><h2>Selection Sim: moths on bark</h2><p class="lede">Birds hunt by sight. Moths that stand out get eaten more often; survivors pass their colour to offspring. Hunt the moths yourself by clicking them, or let the birds hunt. Then change the habitat and watch the population shift back.</p></div>
+  <div class="sim">
+    <div style="display:grid;gap:12px;min-width:0">
+      <canvas id="field" width="800" height="500" aria-label="Moths resting on tree bark. Click a moth to eat it."></canvas>
+      <div class="row">
+        <button class="chip" id="envDark" aria-pressed="true">Sooty bark</button>
+        <button class="chip" id="envLight" aria-pressed="false">Pale birch</button>
+        <span class="note" id="huntNote">You are the bird: eat 12 moths, then the survivors breed.</span>
+      </div>
+      <div class="row">
+        <button class="btn stain" id="autoGen">Let birds hunt (1 generation)</button>
+        <button class="btn ghost" id="auto5">Run 5 generations</button>
+        <button class="btn ghost" id="resetSim">Reset</button>
+      </div>
+    </div>
+    <div class="card" style="display:grid;gap:14px">
+      <div class="stats">
+        <div class="stat"><div class="v" id="sGen">0</div><div class="k">Generation</div></div>
+        <div class="stat"><div class="v" id="sGrey">50%</div><div class="k">Grey moths</div></div>
+        <div class="stat"><div class="v" id="sWhite">50%</div><div class="k">White moths</div></div>
+        <div class="stat"><div class="v" id="sEaten">0/12</div><div class="k">Eaten this generation</div></div>
+      </div>
+      <h3>% grey moths by generation</h3>
+      <svg id="chart" viewBox="0 0 320 170" role="img" aria-label="Line chart of percent grey moths per generation"></svg>
+      <p class="note">Notice: no single moth changed colour. The <b>population</b> changed because some colours survived and reproduced more. That is evolution by natural selection.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="p-sort" hidden>
+  <div><h2>Sort It</h2><p class="lede">Pick a deck, then sort each card. Every answer comes with a reason.</p></div>
+  <div class="row" id="sortDecks"></div>
+  <div class="card sort-card" id="sortCard" aria-live="polite"></div>
+  <div class="sort-btns" id="sortBtns"></div>
+  <p class="fb" id="sortFb" aria-live="polite"></p>
+  <p class="note" id="sortScore"></p>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="p-cards" hidden>
+  <div><h2>Flashcards</h2><p class="lede">Tap the card to flip it. Mark each term so you can focus on the ones you are still learning. Your marks are saved in this browser.</p></div>
+  <div class="row center" id="fcChunks"><button class="chip" data-fc="all" aria-pressed="true">Whole unit</button><button class="chip" data-fc="LS1" aria-pressed="false">LS1: DNA</button><button class="chip" data-fc="LS2" aria-pressed="false">LS2: Reproduction and evolution</button><button class="chip" data-fc="LS3" aria-pressed="false">LS3: Inheritance</button><button class="chip" data-fc="EXT" aria-pressed="false">Extension</button></div>
+  <div class="row center">
+    <button class="chip" id="fcAll" aria-pressed="true">All terms</button>
+    <button class="chip" id="fcLearning" aria-pressed="false">Still learning</button>
+    <button class="btn ghost" id="fcShuffle">Shuffle</button>
+  </div>
+  <div class="flash" id="flash" tabindex="0" role="button" aria-label="Flashcard. Press to flip.">
+    <div class="inner"><div class="face front"><div class="word" id="fcWord"></div></div><div class="face back"><p class="def" id="fcDef"></p></div></div>
+  </div>
+  <div class="row center">
+    <button class="btn ghost" id="fcPrev">Previous</button>
+    <button class="btn ghost" id="fcLearn">Still learning</button>
+    <button class="btn" id="fcKnow">Got it</button>
+    <button class="btn ghost" id="fcNext">Next</button>
+  </div>
+  <div style="max-width:640px;width:100%;margin:0 auto;display:grid;gap:6px">
+    <div class="progress"><i id="fcBar" style="width:0%"></i></div>
+    <p class="note" id="fcCount"></p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="p-quiz" hidden>
+  <div><h2>Quiz</h2><p class="lede">Pick a chunk to match your formative, or take the whole unit. Up to 12 questions are drawn at random, and each answer is explained.</p></div>
+  <div class="row" id="qChunks"><button class="chip" data-q="all" aria-pressed="true">Whole unit</button><button class="chip" data-q="LS1" aria-pressed="false">LS1: DNA</button><button class="chip" data-q="LS2" aria-pressed="false">LS2: Reproduction and evolution</button><button class="chip" data-q="LS3" aria-pressed="false">LS3: Inheritance</button><button class="chip" data-q="EXT" aria-pressed="false">Extension</button></div>
+  <div class="card q" id="quizBox"></div>
+</section>
+
+<!-- PRACTICE -->
+<section class="panel" id="p-practice" hidden>
+  <div><h2>Short-answer practice</h2><p class="lede">Questions follow the unit order. Write your answer first, then compare it with the model answer and the checklist. Your drafts are saved in this browser.</p></div>
+  <div id="pqList" style="display:grid;gap:16px"></div>
+  <div class="card" style="display:grid;gap:12px">
+    <h3>Essay practice</h3>
+    <p class="note">These ask you to connect ideas. Plan with three parts: the key idea, an example from class, and why it matters.</p>
+    <ol class="essays" id="essays"></ol>
+  </div>
+</section>
+
+<footer><p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>Built for Science 9. Content follows the class briefing document and study guide.</footer>
+</div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fixVars=root=>{root.querySelectorAll('[fill^="var("],[stroke^="var("]').forEach(el=>{['fill','stroke'].forEach(a=>{const v=el.getAttribute(a);if(v&&v.startsWith('var(')){el.style[a]=v;el.removeAttribute(a)}})})};
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)fixVars(n)}))).observe(document.body,{childList:true,subtree:true});
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* karyotype banner: 23 chromosome pairs with bands */
+(function(){
+  const svg=$('#karyo');let out='';const n=23;const slot=1000/n;
+  for(let i=0;i<n;i++){
+    const h=52-i*1.4; const y=(58-h)/2;
+    for(let k=0;k<2;k++){
+      const x=i*slot+slot*0.18+k*slot*0.34; const w=slot*0.26;
+      out+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w/2}" fill="var(--sunk)" stroke="var(--line)"/>`;
+      const seed=(i*7+3)%5;
+      for(let b=0;b<4;b++){const by=y+h*(0.15+0.2*b+0.03*((seed+b)%3));out+=`<rect x="${x}" y="${by}" width="${w}" height="${h*0.06}" fill="${(i+b)%4===0?'var(--stain)':'var(--muted)'}" opacity="${(i+b)%4===0?0.9:0.35}"/>`}
+      out+=`<rect x="${x}" y="${y+h*0.38}" width="${w}" height="2" fill="var(--bg)"/>`;
+    }
+  }
+  svg.innerHTML=out;
+})();
+
+/* ---------- routing ---------- */
+const panels=['learn','punnett','selection','sort','cards','quiz','practice'];
+function route(){
+  let h=(location.hash||'#learn').slice(1); if(!panels.includes(h)) h='learn';
+  panels.forEach(p=>{$('#p-'+p).hidden=p!==h});
+  document.querySelectorAll('nav.tabs a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+h?'page':'false'));
+  if(h==='selection') drawField();
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- LEARN ---------- */
+const GROUPS={L:{n:'Unit launch',d:'What is variation?'},LS1:{n:'LS1',d:'Genetic traits of organisms are determined by DNA.'},LS2:{n:'LS2',d:'Genetic variation can lead to evolutionary change in populations.'},LS3:{n:'LS3',d:'Genetic inheritance can be used to predict traits from one generation to the next.'},EXT:{n:'Extension',d:'From the current program; not in the draft Grade 9 outcomes.'}};
+const TOPICS=[
+{g:'L',t:'What is variation?',html:`
+<div class="card"><p class="eyebrow">Unit launch</p><h3>No two of us are exactly alike</h3><p><span class="term">Variation</span> is the difference in traits among individuals of the same species. Look around the class: height, hair colour, earlobes, blood type. Some traits sort into groups and some spread across a range.</p></div>
+<div class="two">
+<div class="card"><h3>Discrete variation</h3><p>Clear categories with nothing in between: blood type, widow's peak, attached or detached earlobes, tongue rolling.</p></div>
+<div class="card"><h3>Continuous variation</h3><p>A range of values: height, mass, hand span, skin colour, hair colour.</p></div>
+</div>
+<div class="card"><h3>Class trait survey</h3><p>Survey your class for three discrete traits and two continuous ones. Discrete data suits a bar graph of categories; continuous data suits a histogram of ranges. Practise sorting traits in <a href="#sort">Sort It</a>.</p></div>`,
+check:{q:'Which trait shows continuous variation?',o:['Blood type','Tongue rolling','Hand span'],a:2,w:'Hand span can be any value across a range, so it is continuous.'}},
+
+{g:'LS1',t:'DNA: structure and function',html:`
+<div class="card"><p class="eyebrow">The code</p><h3>DNA is the instruction manual</h3>
+<p><span class="term">DNA</span> (deoxyribonucleic acid) holds the genetic code needed to build every type of cell, to grow and repair the body, and to reproduce. It is shaped like a twisted ladder called a <span class="term">double helix</span>: two long strands joined by paired rungs.</p></div>
+<div class="card"><h3>Model it</h3><p>Build a DNA model that shows the two twisting strands and the paired rungs. In the strawberry DNA extraction, soap breaks open the cells, salt helps the DNA clump, and cold alcohol makes the long white strands visible, so you can see DNA with your own eyes.</p></div>`,
+check:{q:'What shape is DNA?',o:['A single straight strand','A double helix','A ring of beads'],a:1,w:'DNA is a double helix, like a twisted ladder.'}},
+
+{g:'LS1',t:'DNA, genes, chromosomes and traits',html:`
+<div class="card diagram"><p class="eyebrow">From big to small</p>
+<svg viewBox="0 0 720 190" role="img" aria-label="Nucleus contains 23 pairs of chromosomes, each made of coiled DNA double helix, which contains genes">
+<rect x="0" y="0" width="720" height="190" fill="var(--surface)"/>
+<circle cx="80" cy="85" r="60" fill="var(--sunk)" stroke="var(--line)" stroke-width="2"/>
+<g fill="var(--stain)"><rect x="55" y="60" width="10" height="44" rx="5"/><rect x="68" y="60" width="10" height="44" rx="5"/><rect x="88" y="66" width="9" height="36" rx="4.5"/><rect x="100" y="66" width="9" height="36" rx="4.5"/></g>
+<text x="80" y="172" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="700">Nucleus</text>
+<path d="M150 85 h40" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah)"/>
+<g transform="translate(210 30)"><rect x="0" y="0" width="22" height="110" rx="11" fill="var(--sunk)" stroke="var(--ink)" stroke-width="2"/><rect x="28" y="0" width="22" height="110" rx="11" fill="var(--sunk)" stroke="var(--ink)" stroke-width="2"/><rect x="0" y="62" width="22" height="12" fill="var(--amber)"/><rect x="28" y="62" width="22" height="12" fill="var(--amber)"/></g>
+<text x="235" y="172" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="700">Chromosome pair</text>
+<path d="M290 85 h40" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah)"/>
+<g transform="translate(350 35)" fill="none" stroke-width="3"><path d="M0 0 C40 25,40 75,0 100" stroke="var(--dom)"/><path d="M40 0 C0 25,0 75,40 100" stroke="var(--rec)"/><g stroke="var(--muted)" stroke-width="2"><path d="M8 14 h24"/><path d="M14 30 h12"/><path d="M14 70 h12"/><path d="M8 86 h24"/></g></g>
+<text x="370" y="172" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="700">DNA double helix</text>
+<path d="M420 85 h40" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah)"/>
+<g transform="translate(480 62)"><rect x="0" y="0" width="210" height="44" rx="8" fill="var(--sunk)" stroke="var(--line)"/><rect x="70" y="0" width="70" height="44" fill="var(--amber)"/><text x="105" y="28" text-anchor="middle" fill="#1A1A1A" font-size="15" font-weight="700">gene</text></g>
+<text x="585" y="172" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="700">Gene → protein → trait</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--muted)"/></marker></defs>
+</svg></div>
+<div class="two">
+<div class="card"><h3>Chromosomes and karyotypes</h3><p>Long DNA strands coil tightly into <span class="term">chromosomes</span>. Human body cells usually have <b>23 pairs (46 chromosomes)</b>, one of each pair from each parent. A <span class="term">karyotype</span> is a picture of a person's chromosomes lined up in pairs by size, used to spot a missing or extra chromosome.</p></div>
+<div class="card"><h3>Genes and traits</h3><p>A <span class="term">gene</span> is a segment of DNA that controls how a protein is made. Proteins build and run the body, so they shape traits like eye colour or plant height.</p></div>
+</div>`,
+check:{q:'Put these in order from largest to smallest.',o:['Gene → DNA → chromosome','Chromosome → DNA → gene','DNA → gene → chromosome'],a:1,w:'A chromosome is coiled DNA, and a gene is one segment of that DNA.'}},
+
+{g:'LS1',t:'DNA as identification',html:`
+<div class="card"><h3>A unique sequence</h3><p>Every species, and every individual, has its own DNA sequence. Identical twins are the exception: their DNA is nearly identical.</p></div>
+<div class="two">
+<div class="card"><h3>Forensics</h3><p><span class="term">DNA profiling</span> compares DNA left at a scene, such as from hair or skin cells, with DNA from known people.</p></div>
+<div class="card"><h3>Species ID</h3><p>Short DNA sequences can identify a species, for example to check that fish sold in a store is really the species on the label.</p></div>
+</div>`,
+check:{q:'Why can DNA struggle to tell identical twins apart?',o:['Twins have no DNA','Their DNA is nearly identical','Their DNA changes every day'],a:1,w:'Identical twins come from one fertilized egg, so their DNA is nearly the same.'}},
+
+{g:'LS1',t:'Alleles and mutations',html:`
+<div class="card"><h3>Alleles</h3><p><span class="term">Alleles</span> are different forms of the same gene. One allele of a pea plant's flower colour gene gives purple flowers and another gives white.</p></div>
+<div class="card"><h3>Mutations</h3><p>A <span class="term">mutation</span> is a change in the DNA sequence, caused by copying errors or by environmental factors such as UV light. Mutations can be:</p>
+<ul><li><b>Advantageous:</b> help survival or reproduction.</li><li><b>Harmful:</b> damage how the body works or cause disease.</li><li><b>Neutral:</b> make no difference to survival.</li></ul></div>`,
+check:{q:'A mutation that has no effect on survival is…',o:['Advantageous','Harmful','Neutral'],a:2,w:'Neutral mutations neither help nor harm.'}},
+
+{g:'LS1',t:'Sex cell vs body cell mutations',html:`
+<div class="card"><h3>Where a mutation happens matters</h3>
+<div class="tbl"><table><tr><th>Where it happens</th><th>Passed to offspring?</th><th>Possible result</th></tr>
+<tr><td>Sex cells (sperm or egg)</td><td>Yes</td><td>New variation in future generations</td></tr>
+<tr><td>Body (somatic) cells</td><td>No</td><td>Can cause disease, such as skin cancer, in that individual</td></tr></table></div></div>
+<div class="card"><h3>Mutation research</h3><p>Choose a mutation, such as sickle cell or lactose tolerance. Find its cause, its effect, whether it is helpful, harmful or neutral, and whether it can be inherited.</p></div>`,
+check:{q:'UV light causes a mutation in a skin cell. Can the person\'s children inherit it?',o:['Yes, all mutations are inherited','No, body cell mutations are not inherited','Only if it is advantageous'],a:1,w:'Only mutations in sex cells reach offspring. A skin cell is a body cell.'}},
+
+{g:'LS2',t:'Reproduction and asexual reproduction',html:`
+<div class="card"><p class="eyebrow">Passing on DNA</p><h3>Reproduction transmits DNA</h3><p>Reproduction is how organisms pass their DNA to offspring. In <span class="term">asexual reproduction</span>, one parent makes offspring that are genetically identical copies (clones), made by mitosis.</p>
+<ul><li><span class="term">Binary fission:</span> a bacterium copies its DNA and splits into two identical cells.</li>
+<li><span class="term">Budding:</span> a small bud grows off the parent and breaks off (yeast, hydra).</li>
+<li><span class="term">Spores:</span> tough single cells spread by wind, water or animals (moulds, fungi).</li>
+<li><span class="term">Vegetative reproduction:</span> new plants grow from runners (strawberries), stem cuttings or tubers (potatoes), thanks to fast-dividing meristem cells.</li>
+<li><span class="term">Cloning:</span> making an exact genetic copy.</li></ul></div>`,
+check:{q:'Bacteria usually reproduce by…',o:['Binary fission','Pollination','Meiosis'],a:0,w:'One bacterium copies its DNA and splits into two identical cells.'}},
+
+{g:'LS2',t:'Sexual reproduction and meiosis',html:`
+<div class="card"><h3>One chromosome from each pair</h3><p>In <span class="term">sexual reproduction</span>, each parent makes sex cells (gametes) by <span class="term">meiosis</span>. Each gamete carries one chromosome from each pair: 23 in humans. At fertilization the two join, so the offspring has 23 pairs again.</p></div>
+<div class="card"><h3>Mitosis vs meiosis</h3>
+<div class="tbl"><table><tr><th>Feature</th><th>Mitosis</th><th>Meiosis</th></tr>
+<tr><td>Job</td><td>Growth, repair, asexual reproduction</td><td>Makes sex cells (gametes)</td></tr>
+<tr><td>Where</td><td>Body cells</td><td>Reproductive organs</td></tr>
+<tr><td>Divisions</td><td>1</td><td>2</td></tr>
+<tr><td>Daughter cells</td><td>2, identical to the parent</td><td>4, all genetically different</td></tr>
+<tr><td>DNA in each</td><td>Full set (2n)</td><td>Half set (n)</td></tr></table></div></div>
+<div class="card"><h3>From sex cells to embryo</h3><div class="flow"><span class="step">Sperm (n) + egg (n)</span><span class="arr">→ fertilization →</span><span class="step">Zygote (2n)</span><span class="arr">→ mitosis →</span><span class="step">Blastocyst</span><span class="arr">→ differentiation →</span><span class="step">Embryo</span></div></div>
+<div class="two">
+<div class="card"><h3>Plants</h3><ul><li><span class="term">Flowering plants:</span> pollen from the stamen reaches the stigma, a pollen tube grows to the ovary, and seeds form inside fruit.</li><li><span class="term">Conifers:</span> wind carries pollen from male to female cones; seeds form with no flower or fruit.</li></ul></div>
+<div class="card"><h3>Animals</h3><ul><li><span class="term">External fertilization:</span> eggs and sperm released into water (herring), so huge numbers are needed.</li><li><span class="term">Internal fertilization:</span> inside the female, so fewer gametes are needed.</li></ul></div>
+</div>`,
+check:{q:'Why do human sex cells carry 23 chromosomes instead of 46?',o:['So the zygote ends up with 46','Because they are body cells','Because they come from mitosis'],a:0,w:'Two gametes of 23 join to restore 23 pairs.'}},
+
+{g:'LS2',t:'Comparing sexual and asexual reproduction',html:`
+<div class="card"><h3>Trade-offs</h3>
+<div class="tbl"><table><tr><th></th><th>Asexual</th><th>Sexual</th></tr>
+<tr><td>Parents</td><td>One</td><td>Two</td></tr>
+<tr><td>Variation</td><td>Little; mainly from mutations</td><td>High; meiosis and fertilization mix DNA</td></tr>
+<tr><td>Advantages</td><td>Fast; no mate needed; successful traits copied exactly</td><td>Some individuals may survive change</td></tr>
+<tr><td>Disadvantages</td><td>A new disease or climate change can wipe out the population</td><td>Needs a mate; uses lots of energy</td></tr></table></div></div>
+<div class="two">
+<div class="card"><h3>Species that do both</h3><p>Strawberries grow runners and make seeds. Potatoes grow from tubers and from seeds. Yeast buds but can also reproduce sexually. Aphids clone themselves in summer and reproduce sexually in fall.</p></div>
+<div class="card"><h3>Mixing DNA without new cells</h3><p><span class="term">Bacterial conjugation</span> passes DNA between bacteria through a bridge. It adds variation, but it is not reproduction because the number of cells does not go up. <span class="term">Zygospores</span> form when hyphae from two mould colonies join.</p></div>
+</div>`,
+check:{q:'Why is bacterial conjugation not counted as reproduction?',o:['It makes clones','The number of cells does not increase','It only happens in plants'],a:1,w:'Conjugation swaps DNA between two bacteria, but no new cells are made.'}},
+
+{g:'LS2',t:'Causes of variation',html:`
+<div class="card"><h3>Genes, environment, or both</h3><p><span class="term">Genetic variation</span> is the difference in DNA among individuals in a population. A trait's variation can come from:</p>
+<ul><li><b>Genes:</b> blood type is set by the alleles you inherit.</li><li><b>Environment:</b> a scar comes from an injury, not DNA.</li><li><b>Both:</b> height depends on genes and on nutrition.</li></ul></div>
+<div class="card"><h3>Why variation matters</h3><p>Populations with lots of genetic variation are more likely to have some individuals that survive a disease or a change in climate, such as some people resisting the 1918 influenza.</p></div>`,
+check:{q:'A person\'s height is affected by…',o:['Genes only','Environment only','Both genes and environment'],a:2,w:'Genes set a range, and nutrition and health affect where a person ends up.'}},
+
+{g:'LS2',t:'Adaptations and natural selection',html:`
+<div class="card"><p class="eyebrow">Adaptations</p><h3>Traits that help survival</h3><p>An <span class="term">adaptation</span> is an inherited trait that helps an organism survive and reproduce in its habitat.</p>
+<ul><li><b>Structural:</b> body features, like shorebird beaks shaped for lugworms, cockles or tiny shrimp.</li><li><b>Behavioural:</b> actions such as migration, mating displays and hunting techniques.</li></ul></div>
+<div class="card"><h3>How natural selection works</h3><div class="flow"><span class="step">1. Overproduction</span><span class="arr">→</span><span class="step">2. Variation</span><span class="arr">→</span><span class="step">3. Selection pressure</span><span class="arr">→</span><span class="step">4. Survivors reproduce</span><span class="arr">→</span><span class="step">Population changes</span></div>
+<p>Organisms make more offspring than can survive. Individuals vary. Predators, climate and food limits favour some traits. Survivors pass those traits on.</p></div>
+<div class="card"><h3>Antibiotic resistance</h3><p>When antibiotics are used, a few bacteria with a resistance mutation survive. They reproduce, so the next population is mostly resistant. Nobody chose those bacteria; the drug was the selection pressure.</p></div>`,
+check:{q:'In antibiotic resistance, what is the selection pressure?',o:['The antibiotic','The doctor\'s choice of bacteria','The bacteria\'s wish to survive'],a:0,w:'The drug kills bacteria without resistance, so resistant ones are left to reproduce.'}},
+
+{g:'LS2',t:'Natural selection simulation',html:`
+<div class="card"><h3>Evolution happens to populations</h3><p>Grey and white moths rest on dark bark. Birds spot white moths more easily, so grey moths survive and reproduce more, and grey becomes common. Change the bark and the trend reverses.</p>
+<p class="fix"><b>Key idea:</b> evolution is a change in a <b>population</b> over generations. No individual moth changes colour, and individuals do not evolve during their lifetime.</p>
+<div><a class="btn stain" href="#selection" style="display:inline-block;text-decoration:none">Open the Selection Sim</a></div></div>
+<div class="card"><h3>Speciation</h3><p>When populations of one ancestor are separated and face different pressures for long enough, they can become separate species that no longer interbreed. Modern cat species share a common ancestor.</p></div>`,
+check:{q:'In the simulation, what changes over generations?',o:['The colour of each moth','The share of each colour in the population','The colour of the birds'],a:1,w:'Individual moths keep their colour; the population\'s mix changes.'}},
+
+{g:'LS2',t:'Darwin and how theories change',html:`
+<div class="two">
+<div class="card"><h3>Lamarck's idea</h3><p>In the early 1800s, Jean-Baptiste Lamarck proposed that organisms change during their lives and pass those changes on: a giraffe stretches its neck, so its calf has a longer neck.</p></div>
+<div class="card"><h3>Darwin's theory</h3><p>Charles Darwin studied variation in living things, including finches and tortoises on the Galápagos Islands. In 1859 he published <i>On the Origin of Species</i>: individuals vary, and those with helpful inherited traits survive and reproduce more.</p></div>
+</div>
+<div class="card"><h3>A theory replaced</h3><p>Evidence did not support Lamarck: traits gained in a lifetime, like strong muscles or a scar, are not inherited. Darwin's theory explained more of the evidence, so it replaced Lamarck's. Later, the discovery of genes and DNA explained how traits are passed on. This is how science works: theories are revised or replaced when new evidence appears.</p></div>`,
+check:{q:'Why was Lamarck\'s idea replaced?',o:['Darwin was more famous','Evidence showed traits gained in a lifetime are not inherited','Lamarck had no ideas about giraffes'],a:1,w:'Scientific theories change when the evidence supports a better explanation.'}},
+
+{g:'LS2',t:'Artificial selection in Alberta',html:`
+<div class="card"><p class="eyebrow">Humans choose</p><h3>Artificial selection</h3><p>People breed plants and animals with traits they want.</p>
+<ul><li><b>Selective breeding:</b> cattle for meat or milk, racehorses for speed, Portuguese water dogs for swimming.</li>
+<li><b>Cross-breeding:</b> mating two varieties to make a hybrid.</li>
+<li><b>Outcrossing:</b> trading animals between zoos or reserves to add genetic diversity.</li>
+<li><b>Crop selection:</b> saving seed from the best plants, such as wheat that handles cold or matures before the first frost.</li>
+<li><b>Grafting:</b> joining a branch of one plant onto the roots of another, like several apple varieties on one tree.</li></ul></div>
+<div class="card"><h3>The canola story</h3><p><b>Canola</b> was bred in Canada from rapeseed in the 1970s to make a healthy edible oil. It is now one of Alberta's biggest crops.</p></div>`,
+check:{q:'Which is an example of artificial selection?',o:['Finch beaks changing on an island','Farmers breeding canola for better oil','Bacteria becoming antibiotic resistant'],a:1,w:'In artificial selection, people choose which organisms breed.'}},
+
+{g:'LS3',t:'Inheritance: genotype and phenotype',html:`
+<div class="card"><h3>Like a parent, unlike a parent, or a blend</h3><p>Offspring can share a trait with a parent, look different from both, or show a blend. Which happens depends on the alleles each parent passes on.</p></div>
+<div class="two">
+<div class="card"><h3>Genotype</h3><p>The alleles an organism has, such as <span class="mono">BB</span>, <span class="mono">Bb</span> or <span class="mono">bb</span>.</p></div>
+<div class="card"><h3>Phenotype</h3><p>The trait you can observe, such as blue skin or purple skin.</p></div>
+</div>`,
+check:{q:'Which is a phenotype?',o:['Bb','Purple skin','bb'],a:1,w:'Phenotype is the observable trait; Bb and bb are genotypes.'}},
+
+{g:'LS3',t:'Dominant and recessive alleles',html:`
+<div class="card"><h3>Single gene inheritance</h3><p>Some traits are controlled by one gene. Each parent passes on one allele, and the pair decides the trait.</p>
+<div class="tbl"><table><tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>Dominant allele</td><td>Shows whenever at least one copy is present</td><td class="mono">B</td></tr>
+<tr><td>Recessive allele</td><td>Shows only with two copies</td><td class="mono">b</td></tr>
+<tr><td>Homozygous dominant</td><td>Two dominant alleles</td><td class="mono">BB</td></tr>
+<tr><td>Heterozygous</td><td>One of each</td><td class="mono">Bb</td></tr>
+<tr><td>Homozygous recessive</td><td>Two recessive alleles</td><td class="mono">bb</td></tr></table></div></div>`,
+check:{q:'An organism with genotype Bb shows…',o:['The dominant trait','The recessive trait','Half of each'],a:0,w:'One dominant allele is enough for the dominant trait to show.'}},
+
+{g:'LS3',t:'Punnett squares',html:`
+<div class="card"><h3>Predicting a cross</h3><p>A <span class="term">Punnett square</span> lists one parent's alleles across the top and the other's down the side. Each box is one possible offspring with a 25% chance.</p>
+<p>For <span class="mono">Bb × Bb</span>: genotype ratio <b class="mono">1 BB : 2 Bb : 1 bb</b>, phenotype ratio <b>3 blue : 1 purple</b> (75% : 25%). A <span class="mono">BB × bb</span> cross gives 100% <span class="mono">Bb</span>, all blue.</p>
+<div><a class="btn stain" href="#punnett" style="display:inline-block;text-decoration:none">Open the Punnett Lab</a></div></div>`,
+check:{q:'In a Bb × Bb cross, what percent of offspring are expected to be purple (bb)?',o:['0%','25%','75%'],a:1,w:'One box out of four is bb.'}},
+
+{g:'LS3',t:'Complex multi-gene traits',html:`
+<div class="card"><h3>Most traits use many genes</h3><p>Eye colour, hair colour and height are <span class="term">complex traits</span>: many genes work together, often with the environment. That is why they come in so many shades and sizes, and why one Punnett square cannot predict them exactly.</p></div>`,
+check:{q:'Why can\'t one Punnett square predict a baby\'s exact eye colour?',o:['Eye colour is controlled by many genes','Eyes have no DNA','Eye colour is always recessive'],a:0,w:'Punnett squares work for single-gene traits.'}},
+
+{g:'LS3',t:'Ethics in genetics',html:`
+<div class="card"><h3>Changing DNA directly</h3><p><span class="term">Genetic engineering</span> changes an organism's DNA directly. Tools like CRISPR can edit genes precisely.</p>
+<div class="tbl"><table><tr><th>Method</th><th>How it works</th><th>Pros</th><th>Cons</th></tr>
+<tr><td>Bacterial overproduction</td><td>A human gene, like the insulin gene, is put into a bacterial plasmid</td><td>Fast, efficient, few ethical concerns</td><td>Bacteria cannot make some complex proteins</td></tr>
+<tr><td>Transgenic animals</td><td>A foreign gene is added so a protein appears in milk, such as human lactoferrin</td><td>Makes complex proteins; milking does not harm the animal</td><td>Complex process; serious ethical concerns</td></tr></table></div></div>
+<div class="card"><h3>Big questions</h3><ul><li><b>DNA modification:</b> is it safe and right to edit wild or farm organisms, or people?</li><li><b>Ownership:</b> who owns gene sequences, seed strains and genetic data?</li><li><b>Consent and sharing:</b> who may store or share your DNA profile, such as ancestry companies, police databases or insurers?</li></ul></div>
+<div class="card"><h3>Career spotlight</h3><p>Agricultural engineers design equipment and systems for farming, from precision seeders to monitoring sensors, and help apply crop and livestock research in the field.</p></div>`,
+check:{q:'Which is an ethical question about genetics?',o:['How many chromosomes do humans have?','Should a company be allowed to own a gene sequence?','What shape is DNA?'],a:1,w:'Ethical questions ask what we should do, not just what is true.'}},
+
+{g:'EXT',t:'Biodiversity and conservation',html:`
+<div class="card"><h3>Status words</h3><div class="flow"><span class="step">Healthy</span><span class="arr">→</span><span class="step">Endangered</span><span class="arr">→</span><span class="step">Extirpated</span><span class="arr">→</span><span class="step">Extinct</span></div>
+<ul><li><span class="term">Endangered:</span> numbers have fallen so far the species is close to extinction.</li><li><span class="term">Extirpated:</span> gone from one area but still living elsewhere.</li><li><span class="term">Extinct:</span> gone everywhere on Earth.</li></ul></div>
+<div class="two">
+<div class="card"><h3>Human causes of loss</h3><ul><li>Habitat loss and deforestation</li><li>Overhunting and poaching</li><li>Invasive species</li><li>Climate change and pollution</li><li>Illegal wildlife trade</li></ul></div>
+<div class="card"><h3>Ways to protect it</h3><ul><li>Laws and international treaties</li><li>Parks and protected areas</li><li>Zoos and captive breeding</li><li>Seed banks that store seeds cold</li><li>Valuing species we have not studied yet</li></ul></div>
+</div>
+<div class="card"><p>The Pacific yew was once treated as a useless tree, until scientists found Taxol, a cancer drug, in its bark. Losing a species can mean losing a cure we never knew about.</p></div>`,
+check:{q:'Swift foxes disappeared from Alberta but still lived in the United States. What was their status in Alberta?',o:['Extinct','Extirpated','Endangered everywhere'],a:1,w:'Extirpated means gone from one region but surviving elsewhere. Swift foxes were later reintroduced to the Prairies.'}}
+];
+const SUMMARY={
+L:{theme:'Living things of the same species vary, and we can describe and measure that variation.',
+ take:['No two individuals are exactly alike, even within one species.','Some traits fall into clear categories (discrete); others spread across a range (continuous).','Discrete data suits a bar graph; continuous data suits a histogram.','The unit asks two big questions: what causes variation, and how is it passed on?'],
+ con:[['Variation','Differences in traits among individuals of the same species.'],['Trait','A characteristic, such as height or blood type.'],['Discrete variation','Distinct categories with nothing in between.'],['Continuous variation','A range of possible values.']]},
+LS1:{theme:'DNA is the code that determines an organism\'s genetic traits.',
+ take:['DNA is a double helix that holds the instructions to build cells, grow, repair and reproduce.','DNA coils into chromosomes; human body cells have 23 pairs, one of each pair from each parent.','Genes are segments of DNA that control which proteins are made, and proteins shape traits.','A DNA sequence identifies a species and an individual; identical twins are the exception.','Alleles are versions of a gene, which is why traits vary.','Mutations change DNA and can be helpful, harmful or neutral. Only sex cell mutations can be inherited.'],
+ con:[['DNA','The double helix molecule that carries genetic instructions.'],['Chromosome','Tightly coiled DNA; 23 pairs in human body cells.'],['Karyotype','A picture of chromosomes lined up in pairs.'],['Gene','A DNA segment that codes for a protein.'],['Allele','One version of a gene.'],['Mutation','A change in the DNA sequence.'],['Sex cell vs body cell','Sex cell mutations can be inherited; body cell mutations cannot.'],['DNA profiling','Comparing DNA samples to identify people or species.']]},
+LS2:{theme:'Reproduction copies or mixes DNA, and the variation it creates lets populations evolve over generations.',
+ take:['Reproduction passes DNA from parents to offspring.','Asexual reproduction uses one parent, is fast, and makes identical offspring.','Sexual reproduction uses two parents; meiosis and fertilization mix DNA, so offspring vary.','Variation comes from genes, the environment, or both.','Natural selection: individuals with helpful adaptations survive and reproduce more, so those traits become common.','Evolution is a change in a population over generations, not in one individual\'s lifetime.','Darwin\'s theory replaced Lamarck\'s because it fit the evidence better.','People use artificial selection to breed traits they want, such as canola.'],
+ con:[['Asexual reproduction','One parent; offspring are clones.'],['Binary fission and budding','Ways bacteria and yeast reproduce asexually.'],['Sexual reproduction','Two parents\' gametes join.'],['Meiosis','Cell division that makes four varied sex cells with half the DNA.'],['Mitosis','Cell division that makes two identical cells.'],['Adaptation','An inherited trait that helps survival and reproduction.'],['Natural selection','Survival and reproduction of the best suited, generation after generation.'],['Selection pressure','A factor, such as predators or antibiotics, that affects who survives.'],['Evolution','Change in a population\'s inherited traits over generations.'],['Artificial selection','People choosing which organisms breed.']]},
+LS3:{theme:'Inheritance follows patterns, so we can predict the traits of the next generation.',
+ take:['Each parent passes on one allele for each gene.','Genotype is the alleles; phenotype is the trait you can observe.','A dominant allele shows with one copy; a recessive trait needs two copies.','Punnett squares predict chances: Bb × Bb gives 1 BB : 2 Bb : 1 bb and 3 dominant : 1 recessive.','Most traits, like eye colour and height, are complex and controlled by many genes.','Genetic technology raises ethical questions about modifying DNA, owning genetic information and consent to share it.'],
+ con:[['Genotype','The alleles an organism has (BB, Bb, bb).'],['Phenotype','The observable trait.'],['Dominant allele','Shows when at least one copy is present.'],['Recessive allele','Shows only with two copies.'],['Homozygous','Two identical alleles.'],['Heterozygous','Two different alleles.'],['Punnett square','A grid that predicts offspring genotypes and phenotypes.'],['Complex trait','A trait controlled by many genes.'],['Genetic engineering','Directly changing an organism\'s DNA.']]},
+EXT:{theme:'Human actions affect biodiversity, and conservation helps protect it.',
+ take:['Species can move from endangered to extirpated to extinct.','Habitat loss, overhunting, invasive species, climate change and illegal trade drive losses.','Laws, protected areas, captive breeding and seed banks help protect species and genetic diversity.','Every species may hold value we have not discovered yet, like the Pacific yew and Taxol.'],
+ con:[['Endangered','At risk of extinction.'],['Extirpated','Gone from one area, alive elsewhere.'],['Extinct','Gone everywhere.'],['Seed bank','Cold storage that preserves plant genetic diversity.']]}
+};
+function overviewHTML(g){const S=SUMMARY[g];
+  return `<p class="note">Try to answer each one in your head first, then click to check.</p>
+  <details class="reveal"><summary><span class="rk">Key theme</span><span class="rh">What is the one big idea?</span></summary><div class="rb"><p class="theme">${esc(S.theme)}</p></div></details>
+  <details class="reveal"><summary><span class="rk">Takeaways</span><span class="rh">What should you remember? (${S.take.length})</span></summary><div class="rb"><ul>${S.take.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></details>
+  <details class="reveal"><summary><span class="rk">Key concepts</span><span class="rh">Which terms do you need to know? (${S.con.length})</span></summary><div class="rb"><dl class="cons">${S.con.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></details>`}
+function topicHTML(i){const t=TOPICS[i],c=t.check;
+  return `${t.html}<div class="check" data-t="${i}"><p class="eyebrow" style="color:var(--amber)">Quick check</p><p><b>${esc(c.q)}</b></p>
+  <div class="opts">${c.o.map((o,j)=>`<button data-i="${j}">${esc(o)}</button>`).join('')}</div><p class="fb" aria-live="polite"></p></div>`}
+function renderLearn(){
+  let h='',last='';
+  TOPICS.forEach((t,i)=>{
+    if(t.g!==last){if(last)h+='</div>';last=t.g;const G=GROUPS[t.g];
+      h+=`<div class="ogroup"><div class="ohead"><p class="eyebrow">${esc(G.n)}</p><h3>${esc(G.d)}</h3></div>
+      <details class="acc ov"><summary><span class="n">★</span><span>${esc(G.n)} overview: key theme, takeaways, key concepts</span></summary><div class="accb">${overviewHTML(t.g)}</div></details>`}
+    h+=`<details class="acc"><summary><span class="n">${String(i+1).padStart(2,'0')}</span><span>${esc(t.t)}</span></summary><div class="accb topic">${topicHTML(i)}</div></details>`});
+  h+='</div>';
+  $('#topicList').innerHTML=h;
+}
+$('#learnAll').addEventListener('click',()=>{const ds=[...$('#topicList').querySelectorAll('details')];const open=!ds.every(d=>d.open);ds.forEach(d=>d.open=open);$('#learnAll').textContent=open?'Collapse all':'Expand all'});
+$('#topicList').addEventListener('click',e=>{
+  const b=e.target.closest('.check .opts button');if(!b)return;const box=b.closest('.check');const c=TOPICS[+box.dataset.t].check;const ok=+b.dataset.i===c.a;
+  const fb=box.querySelector('.fb');fb.className='fb '+(ok?'ok':'no');fb.textContent=(ok?'Correct. ':'Not quite. ')+c.w;
+});
+
+/* ---------- PUNNETT ---------- */
+const GTS=['BB','Bb','bb'];let P1='Bb',P2='Bb';
+const blob=(dom)=>`<svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 3c7 0 12 5 12 12s-4 12-12 12S3 22 3 15 8 3 15 3z" fill="${dom?'var(--dom)':'var(--rec)'}"/><circle cx="11" cy="13" r="2" fill="#fff"/><circle cx="19" cy="13" r="2" fill="#fff"/></svg>`;
+function sortG(a,b){const s=[a,b].sort((x,y)=>(x===x.toUpperCase()?0:1)-(y===y.toUpperCase()?0:1));return s.join('')}
+function cross(a,b){const r=[];for(const x of a)for(const y of b)r.push(sortG(x,y));return r}
+function pickRow(el,cur,set){el.innerHTML=GTS.map(g=>`<button class="chip" aria-pressed="${g===cur}" data-g="${g}">${g}</button>`).join('');
+  el.onclick=e=>{const b=e.target.closest('button');if(!b)return;set(b.dataset.g);renderPunnett()}}
+function renderPunnett(){
+  pickRow($('#p1'),P1,g=>P1=g);pickRow($('#p2'),P2,g=>P2=g);
+  let h=`<div></div><div class="hd">${P1[0]}</div><div class="hd">${P1[1]}</div>`;
+  for(const y of P2){h+=`<div class="hd">${y}</div>`;for(const x of P1){const g=sortG(x,y);const dom=g.includes('B');h+=`<div class="cell" aria-label="${g}, ${dom?'blue':'purple'} skin">${blob(dom)}<span>${g}</span></div>`}}
+  $('#psq').innerHTML=h;
+  const kids=cross(P1,P2);const c={BB:0,Bb:0,bb:0};kids.forEach(k=>c[k]++);const blue=c.BB+c.Bb;
+  $('#ratios').innerHTML=`<h3>Predicted offspring</h3>
+  <div><p class="note">Genotype ratio (BB : Bb : bb)</p><p class="bigstat mono">${c.BB} : ${c.Bb} : ${c.bb}</p>
+  <div class="bar"><i style="width:${c.BB*25}%;background:var(--dom)"></i><i style="width:${c.Bb*25}%;background:var(--amber)"></i><i style="width:${c.bb*25}%;background:var(--rec)"></i></div>
+  <div class="legend"><span><b style="background:var(--dom)"></b>BB ${c.BB*25}%</span><span><b style="background:var(--amber)"></b>Bb ${c.Bb*25}%</span><span><b style="background:var(--rec)"></b>bb ${c.bb*25}%</span></div></div>
+  <div><p class="note">Phenotype ratio (blue : purple)</p><p class="bigstat">${blue} : ${4-blue}</p>
+  <div class="bar"><i style="width:${blue*25}%;background:var(--dom)"></i><i style="width:${(4-blue)*25}%;background:var(--rec)"></i></div>
+  <div class="legend"><span><b style="background:var(--dom)"></b>Blue skin ${blue*25}%</span><span><b style="background:var(--rec)"></b>Purple skin ${(4-blue)*25}%</span></div></div>
+  <p class="note">Each box is a 25% chance for one offspring. Real litters can differ from the prediction, just like flipping a coin four times will not always give two heads.</p>`;
+}
+let px={};
+function newPx(){
+  const a=GTS[Math.floor(Math.random()*3)],b=GTS[Math.floor(Math.random()*3)];const kids=cross(a,b);const purple=kids.filter(k=>k==='bb').length*25;
+  px={a,b,ans:purple};$('#pxQ').innerHTML=`Cross <b class="mono">${a} × ${b}</b>. What percent of offspring are expected to have <b>purple</b> skin?`;
+  $('#pxOpts').innerHTML=[0,25,50,75,100].map(v=>`<button class="chip" data-v="${v}">${v}%</button>`).join('');$('#pxFb').textContent='';$('#pxFb').className='fb';
+}
+$('#pxOpts').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const ok=+b.dataset.v===px.ans;
+  $('#pxFb').className='fb '+(ok?'ok':'no');$('#pxFb').textContent=ok?`Correct: ${px.ans}%. Purple needs bb, two recessive alleles.`:`Not quite. The answer is ${px.ans}%. Load ${px.a} × ${px.b} into the builder above to see why.`;
+  if(!ok){P1=px.a;P2=px.b;renderPunnett()}});
+$('#pxNew').addEventListener('click',newPx);
+
+/* ---------- SELECTION SIM ---------- */
+const cv=$('#field'),cx=cv.getContext('2d');const W=800,H=500,POP=30,EAT=12;
+let env='dark',moths=[],gen=0,eaten=0,hist=[];
+function makeMoth(color){return{x:30+Math.random()*(W-60),y:30+Math.random()*(H-60),a:Math.random()*Math.PI*2,color}}
+function resetSim(){moths=[];for(let i=0;i<POP;i++)moths.push(makeMoth(i%2?'grey':'white'));gen=0;eaten=0;hist=[pct()];updateStats();drawField();drawChart()}
+function pct(){return moths.length?Math.round(100*moths.filter(m=>m.color==='grey').length/moths.length):0}
+let bark=null;
+function makeBark(){bark=[];for(let i=0;i<70;i++)bark.push({x:Math.random()*W,w:2+Math.random()*10,l:0.2+Math.random()*0.5,y:Math.random()*H})}
+function drawField(){
+  if(!bark)makeBark();
+  cx.fillStyle=env==='dark'?'#3B403A':'#E6E8E1';cx.fillRect(0,0,W,H);
+  for(const b of bark){cx.fillStyle=env==='dark'?'rgba(20,22,19,.55)':'rgba(40,40,36,.55)';cx.fillRect(b.x,b.y,b.w*(env==='dark'?1:2.2),H*b.l)}
+  for(const m of moths){cx.save();cx.translate(m.x,m.y);cx.rotate(m.a);
+    const f=m.color==='grey'?(env==='dark'?'#4C524B':'#5E625C'):'#F1F1EA';
+    cx.fillStyle=f;cx.beginPath();cx.ellipse(-9,0,11,7,-.4,0,Math.PI*2);cx.ellipse(9,0,11,7,.4,0,Math.PI*2);cx.fill();
+    cx.fillStyle=m.color==='grey'?'#2C2F2B':'#B9B9B0';cx.fillRect(-2,-8,4,16);cx.restore()}
+}
+function visible(m){return (env==='dark'&&m.color==='white')||(env==='light'&&m.color==='grey')}
+function breed(){
+  const parents=moths.slice();const next=[];
+  while(next.length<POP){const p=parents[Math.floor(Math.random()*parents.length)];let c=p.color;if(Math.random()<0.03)c=c==='grey'?'white':'grey';next.push(makeMoth(c))}
+  moths=next;gen++;eaten=0;hist.push(pct());if(hist.length>40)hist.shift();updateStats();drawField();drawChart();
+}
+function birdsHunt(){let n=EAT-eaten;while(n>0&&moths.length>1){const w=moths.map(m=>visible(m)?4:1);const tot=w.reduce((a,b)=>a+b,0);let r=Math.random()*tot,i=0;for(;i<w.length;i++){r-=w[i];if(r<=0)break}moths.splice(Math.min(i,moths.length-1),1);n--}breed()}
+function updateStats(){$('#sGen').textContent=gen;const g=pct();$('#sGrey').textContent=g+'%';$('#sWhite').textContent=(100-g)+'%';$('#sEaten').textContent=eaten+'/'+EAT}
+function drawChart(){
+  const L=34,R=310,T=10,B=140;const n=Math.max(hist.length-1,1);
+  let s=`<rect x="0" y="0" width="320" height="170" fill="var(--surface)"/>`;
+  [0,50,100].forEach(v=>{const y=B-(B-T)*v/100;s+=`<line x1="${L}" x2="${R}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--muted)">${v}%</text>`});
+  const pts=hist.map((v,i)=>`${L+(R-L)*i/n},${B-(B-T)*v/100}`).join(' ');
+  s+=`<polyline points="${pts}" fill="none" stroke="var(--stain)" stroke-width="3" stroke-linejoin="round"/>`;
+  const lx=L+(R-L)*(hist.length-1)/n,ly=B-(B-T)*hist[hist.length-1]/100;s+=`<circle cx="${lx}" cy="${ly}" r="4.5" fill="var(--stain)"/>`;
+  s+=`<text x="${L}" y="162" font-size="11" fill="var(--muted)">first gen shown</text><text x="${R}" y="162" text-anchor="end" font-size="11" fill="var(--muted)">now (gen ${gen})</text>`;
+  $('#chart').innerHTML=s;
+}
+cv.addEventListener('click',e=>{
+  const r=cv.getBoundingClientRect();const x=(e.clientX-r.left)*W/r.width,y=(e.clientY-r.top)*H/r.height;
+  let best=-1,bd=24*24;moths.forEach((m,i)=>{const d=(m.x-x)**2+(m.y-y)**2;if(d<bd){bd=d;best=i}});
+  if(best<0)return;moths.splice(best,1);eaten++;updateStats();drawField();if(eaten>=EAT)setTimeout(breed,350);
+});
+function setEnv(v){env=v;$('#envDark').setAttribute('aria-pressed',v==='dark');$('#envLight').setAttribute('aria-pressed',v==='light');drawField()}
+$('#envDark').onclick=()=>setEnv('dark');$('#envLight').onclick=()=>setEnv('light');
+$('#autoGen').onclick=birdsHunt;$('#auto5').onclick=()=>{for(let i=0;i<5;i++)birdsHunt()};$('#resetSim').onclick=resetSim;
+
+/* ---------- SORT IT ---------- */
+const DECKS={
+ variation:{name:'Discrete or continuous?',a:'Discrete',b:'Continuous',items:[
+  ['Blood type','a','Blood types fall into set groups: A, B, AB or O.'],['Height','b','Height can be any value across a range.'],['Tongue rolling','a','You can or cannot roll your tongue.'],['Hand span','b','Hand span is measured on a range.'],['Attached or detached earlobes','a','Two distinct categories.'],['Body mass','b','Mass varies across a range.'],['Widow\'s peak','a','You have one or you don\'t.'],['Hair colour','b','Hair colour comes in many shades because many genes control it.']]},
+ repro:{name:'Asexual or sexual?',a:'Asexual',b:'Sexual',items:[
+  ['Bacterium splitting in two','a','Binary fission makes two identical cells from one parent.'],['Yeast budding','a','The bud is a copy of one parent.'],['Strawberry runners','a','Vegetative reproduction copies the parent plant.'],['Pollen landing on a stigma','b','Pollination brings male and female gametes together.'],['Herring releasing eggs and sperm','b','External fertilization joins two parents\' gametes.'],['Mould releasing spores','a','Asexual spores carry one parent\'s DNA.'],['Pine pollen blowing to a female cone','b','Conifers reproduce sexually using cones.'],['Potato sprouting from a tuber','a','The new plant is a clone of the parent.']]},
+ mutation:{name:'Inherited or not inherited?',a:'Can be inherited',b:'Not inherited',items:[
+  ['A mutation in a sperm cell','a','Sex cell mutations can reach offspring.'],['Sunburn damage to skin cell DNA','b','Skin cells are body cells.'],['A mutation in an egg cell','a','Eggs are sex cells.'],['A mutation in a lung cell from smoking','b','Lung cells are body cells, so the mutation stays in that person.'],['A mutation in a cell that will become a sperm cell','a','It ends up in a gamete.'],['A scar from an injury','b','A scar is not a DNA change in sex cells at all.']]},
+ selection:{name:'Natural or artificial selection?',a:'Natural',b:'Artificial',items:[
+  ['Grey moths surviving on dark bark','a','Predators, not people, did the selecting.'],['Breeding canola for healthier oil','b','People chose which plants to breed.'],['Bacteria becoming resistant to antibiotics','a','The drug is a selection pressure; nobody chose which bacteria to breed.'],['Breeding racehorses for speed','b','People picked the parents.'],['Galápagos finch beaks changing with food supply','a','Food available on the island selected beak shapes.'],['Saving seed from the coldest-hardy wheat','b','Farmers selected the plants.'],['Breeding Portuguese water dogs for swimming','b','Humans selected the trait.']]}
+};
+let deckKey='variation',sortQ=[],sortI=0,sortRight=0;
+function renderDecks(){$('#sortDecks').innerHTML=Object.entries(DECKS).map(([k,d])=>`<button class="chip" aria-pressed="${k===deckKey}" data-k="${k}">${esc(d.name)}</button>`).join('')}
+function startDeck(){sortQ=shuffle(DECKS[deckKey].items);sortI=0;sortRight=0;renderDecks();showSort()}
+function showSort(){const d=DECKS[deckKey];$('#sortFb').textContent='';$('#sortFb').className='fb';
+  if(sortI>=sortQ.length){$('#sortCard').textContent=`Done: ${sortRight} of ${sortQ.length} correct`;$('#sortBtns').innerHTML=`<button data-again="1">Play again</button><button data-next="1">Next deck</button>`;$('#sortScore').textContent='';return}
+  $('#sortCard').textContent=sortQ[sortI][0];$('#sortBtns').innerHTML=`<button data-c="a">${esc(d.a)}</button><button data-c="b">${esc(d.b)}</button>`;$('#sortScore').textContent=`Card ${sortI+1} of ${sortQ.length} · ${sortRight} correct so far`}
+$('#sortDecks').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;deckKey=b.dataset.k;startDeck()});
+$('#sortBtns').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.again){startDeck();return}if(b.dataset.next){const ks=Object.keys(DECKS);deckKey=ks[(ks.indexOf(deckKey)+1)%ks.length];startDeck();return}
+  if($('#sortFb').textContent)return;const it=sortQ[sortI];const ok=b.dataset.c===it[1];if(ok)sortRight++;
+  $('#sortFb').className='fb '+(ok?'ok':'no');$('#sortFb').textContent=(ok?'Correct. ':'Not quite. ')+it[2];sortI++;setTimeout(showSort,1600)});
+
+/* ---------- FLASHCARDS ---------- */
+const GLOSS=[
+['Adaptation','An inherited structural or behavioural trait that helps an organism survive and reproduce in its environment.'],
+['Allele','One of two or more forms of a gene, each producing a different version of a trait.'],
+['Angiosperm','A flowering plant whose seeds develop inside a fruit, such as an apple tree.'],
+['Artificial selection','People choosing which plants or animals breed so that desired traits are passed on.'],
+['Asexual reproduction','Reproduction with one parent; offspring are genetically identical to it.'],
+['Bacterial conjugation','Transfer of DNA between two bacteria through a bridge. It adds variation but does not increase the number of cells.'],
+['Binary fission','A single-celled organism copies its DNA and splits into two identical cells.'],
+['Blastocyst','An early embryo stage: a hollow ball of cells formed by mitosis of the zygote.'],
+['Budding','A new individual grows as a bud on the parent and then breaks off.'],
+['Chromosome','A structure of tightly coiled DNA and protein; human body cells have 23 pairs.'],
+['Continuous variation','A trait that varies across a range of values, such as height.'],
+['Discrete variation','A trait that falls into distinct categories, such as blood type.'],
+['DNA','The double helix molecule that carries the genetic instructions for growth, repair and reproduction.'],
+['Dominant trait','A trait that shows whenever at least one dominant allele is present (BB or Bb).'],
+['Embryo','An organism in its early stages of development, after the zygote divides and cells begin to specialize.'],
+['Endangered','A species whose numbers have fallen so low it is at risk of extinction.'],
+['Evolution','Change in the inherited traits of a population over many generations, mainly through natural selection.'],
+['Extinct','A species that no longer exists anywhere on Earth.'],
+['Extirpated','A species gone from one area that still survives elsewhere.'],
+['Gamete','A sex cell (sperm or egg) with half the usual genetic material (n).'],
+['Gene','A segment of DNA that controls how a protein is made, which affects a trait.'],
+['Genetic engineering','Directly changing an organism\'s DNA, such as putting the human insulin gene into bacteria.'],
+['Genotype','The alleles an organism has, such as BB, Bb or bb.'],
+['Grafting','Joining part of one plant onto another so they grow together.'],
+['Gymnosperm','A seed plant, such as a conifer, whose seeds form on cones rather than in fruit.'],
+['Heterozygous','Having two different alleles for a gene (Bb).'],
+['Homozygous','Having two identical alleles for a gene (BB or bb).'],
+['Meiosis','Cell division in reproductive organs: two divisions that make four genetically different sex cells with half the DNA.'],
+['Meristem cells','Fast-dividing unspecialized plant cells at growing tips that allow growth and vegetative reproduction.'],
+['Mitosis','Cell division that makes two cells identical to the parent, for growth and repair.'],
+['Mutation','A change in the DNA sequence, from copying errors or environmental causes.'],
+['Natural selection','Organisms best suited to their environment survive and reproduce more, passing on their helpful traits.'],
+['Phenotype','The observable traits of an organism, from its genotype and its environment.'],
+['Punnett square','A grid used to predict the possible genotypes and phenotypes of offspring from a cross.'],
+['Recessive trait','A trait that shows only when two recessive alleles are present (bb).'],
+['Sexual reproduction','Reproduction in which two parents\' gametes join, producing genetically varied offspring.'],
+['Speciation','The formation of new species from a common ancestor.'],
+['Species','A group of organisms that can interbreed in nature and produce fertile offspring.'],
+['Spores','Tough reproductive cells that spread widely and survive harsh conditions.'],
+['Transgenic animal','An animal whose DNA includes a gene inserted from another species.'],
+['Vegetative reproduction','Asexual plant reproduction from runners, cuttings or tubers instead of seeds.'],
+['Zygote','The cell (2n) formed when a sperm and an egg join at fertilization.']];
+const GTAG={};'Allele|Chromosome|DNA|Gene|Mutation'.split('|').forEach(w=>GTAG[w]='LS1');'Continuous variation|Discrete variation|Dominant trait|Genotype|Heterozygous|Homozygous|Phenotype|Punnett square|Recessive trait|Genetic engineering|Transgenic animal'.split('|').forEach(w=>GTAG[w]='LS3');'Endangered|Extinct|Extirpated'.split('|').forEach(w=>GTAG[w]='EXT');const gtag=w=>GTAG[w]||'LS2';
+let fcChunk='all';
+let known=store.get('vl-known',{});let fcOrder=GLOSS.map((_,i)=>i),fcMode='all',fcI=0;
+function fcList(){return fcOrder.filter(i=>(fcChunk==='all'||gtag(GLOSS[i][0])===fcChunk)&&(fcMode==='all'||!known[GLOSS[i][0]]))}
+function showFc(){const L=fcList();const fl=$('#flash');fl.classList.remove('flipped');
+  if(!L.length){$('#fcWord').textContent='No cards left here';$('#fcDef').textContent='Every term in this set is marked "Got it". Switch to All terms to review again.';}
+  else{fcI=(fcI+L.length)%L.length;const g=GLOSS[L[fcI]];$('#fcWord').textContent=g[0];$('#fcDef').textContent=g[1]}
+  const k=GLOSS.filter(g=>known[g[0]]).length;$('#fcBar').style.width=(100*k/GLOSS.length)+'%';
+  $('#fcCount').textContent=`${k} of ${GLOSS.length} terms marked "Got it"${L.length?` · card ${fcI+1} of ${L.length}`:''}`}
+const flip=()=>$('#flash').classList.toggle('flipped');
+$('#flash').addEventListener('click',flip);$('#flash').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+$('#fcNext').onclick=()=>{fcI++;showFc()};$('#fcPrev').onclick=()=>{fcI--;showFc()};
+function mark(v){const L=fcList();if(!L.length)return;const w=GLOSS[L[fcI]][0];if(v)known[w]=1;else delete known[w];store.set('vl-known',known);if(!(v&&fcMode==='learning'))fcI++;showFc()}
+$('#fcKnow').onclick=()=>mark(true);$('#fcLearn').onclick=()=>mark(false);
+$('#fcShuffle').onclick=()=>{fcOrder=shuffle(fcOrder);fcI=0;showFc()};
+function setFcMode(m){fcMode=m;fcI=0;$('#fcAll').setAttribute('aria-pressed',m==='all');$('#fcLearning').setAttribute('aria-pressed',m==='learning');showFc()}
+$('#fcChunks').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;fcChunk=b.dataset.fc;fcI=0;document.querySelectorAll('#fcChunks button').forEach(x=>x.setAttribute('aria-pressed',x===b));showFc()});
+$('#fcAll').onclick=()=>setFcMode('all');$('#fcLearning').onclick=()=>setFcMode('learning');
+
+/* ---------- QUIZ ---------- */
+const BANK=[
+['What shape is a DNA molecule?',['Single strand','Double helix','Triple helix','Ring'],1,'DNA is a double helix, like a twisted ladder.'],
+['How many chromosomes are in a typical human body cell?',['23','46','92','48'],1,'46 chromosomes, arranged in 23 pairs.'],
+['What is a gene?',['A whole chromosome','A segment of DNA that controls making a protein','A type of cell','A sex cell'],1,'Genes are DNA segments that code for proteins, which affect traits.'],
+['Different forms of the same gene are called…',['Alleles','Chromosomes','Gametes','Zygotes'],0,'Alleles are versions of a gene.'],
+['A mutation happens in a lung cell. What is true?',['It will be passed to offspring','It cannot be passed to offspring','It always helps the organism','It changes every cell in the body'],1,'Body cell mutations are not inherited.'],
+['Mitosis produces…',['2 identical cells','4 identical cells','4 different cells','2 different sex cells'],0,'Mitosis gives two identical daughter cells for growth and repair.'],
+['Compared with the parent cell, a cell made by meiosis has…',['The same DNA','Double the DNA','Half the DNA','No DNA'],2,'Sex cells carry half the DNA (n), so fertilization restores the full set.'],
+['Bacteria usually reproduce by…',['Budding','Binary fission','Conjugation','Pollination'],1,'Binary fission splits one bacterium into two. Conjugation swaps DNA but makes no new cells.'],
+['Strawberry runners are an example of…',['Vegetative reproduction','External fertilization','Pollination','Meiosis'],0,'Runners grow new plants from the parent plant, so the new plants are clones.'],
+['The main advantage of sexual reproduction is…',['Speed','No mate needed','Genetic variation','Less energy used'],2,'Mixing DNA from two parents creates variation, which helps populations survive change.'],
+['The biggest risk for an asexual population is…',['Too much variation','A new disease could affect all of them','Needing a mate','Making too few gametes'],1,'Clones share the same weaknesses.'],
+['Which trait shows discrete variation?',['Height','Blood type','Hand span','Mass'],1,'Blood type falls into set categories.'],
+['An organism with genotype Bb is…',['Homozygous dominant','Heterozygous','Homozygous recessive','Mutated'],1,'Two different alleles means heterozygous.'],
+['In a Bb × Bb cross, what percent of offspring are expected to show the recessive trait?',['0%','25%','50%','75%'],1,'Only bb shows the recessive trait: 1 box out of 4.'],
+['A BB parent is crossed with a bb parent. The offspring are…',['All BB','All Bb','Half BB, half bb','All bb'],1,'Every offspring gets one B and one b.'],
+['Phenotype means…',['The alleles an organism has','The observable trait','A kind of mutation','A cell division'],1,'Phenotype is what you can see or measure.'],
+['Which is NOT part of natural selection?',['More offspring are born than can survive','Individuals vary','Individuals change their genes during life to fit the environment','Survivors pass on traits'],2,'Individuals do not change their genes to fit; populations change over generations.'],
+['Darwin made many key observations in…',['Iceland','The Galápagos Islands','Antarctica','The Rocky Mountains'],1,'Galápagos species, such as finches, helped shape his ideas.'],
+['Canola is an example of…',['Natural selection','Artificial selection','Extinction','Binary fission'],1,'People bred canola from rapeseed for a healthier oil.'],
+['A species is gone from Alberta but still lives in other places. It is…',['Extinct','Extirpated','Endangered','Invasive'],1,'Extirpated means gone from one area only.'],
+['Seed banks protect biodiversity by…',['Destroying invasive plants','Storing seeds to preserve plant genetic diversity','Cloning animals','Making new species'],1,'Stored seeds keep plant genetic variety safe for the future.'],
+['Putting the human insulin gene into bacteria is an example of…',['Genetic engineering','Grafting','Cross-breeding','Natural selection'],0,'Directly changing DNA is genetic engineering.'],
+['In a flower, pollen is made by the…',['Stigma','Ovary','Stamen','Seed'],2,'The stamen (anther) makes pollen; the stigma receives it.'],
+['Why do herring release huge numbers of eggs and sperm?',['External fertilization succeeds less often','They reproduce asexually','Their eggs have no DNA','To avoid meiosis'],0,'In open water most gametes never meet, so many are needed.']];
+const QTAG='LS1 LS1 LS1 LS1 LS1 LS2 LS2 LS2 LS2 LS2 LS2 LS3 LS3 LS3 LS3 LS3 LS2 LS2 LS2 EXT EXT LS3 LS2 LS2'.split(' ');
+BANK.forEach((q,i)=>q.push(QTAG[i]));
+[
+['The only people whose DNA is nearly identical are…',['Siblings','Parents and children','Identical twins','Cousins'],2,'Identical twins come from one fertilized egg.','LS1'],
+['A karyotype is…',['A type of mutation','A picture of a person\'s chromosomes arranged in pairs','A protein made by a gene','A kind of sex cell'],1,'Karyotypes help spot missing or extra chromosomes.','LS1'],
+['Comparing DNA from a crime scene with a suspect\'s DNA is called…',['DNA profiling','Cloning','Grafting','Meiosis'],0,'DNA profiling matches DNA samples to people.','LS1'],
+['A mutation with no effect on survival is…',['Advantageous','Harmful','Neutral','Dominant'],2,'Neutral mutations neither help nor harm.','LS1'],
+['Genes affect traits by…',['Controlling which proteins are made','Making new chromosomes','Changing blood type daily','Splitting cells in two'],0,'Proteins build and run the body, so they shape traits.','LS1'],
+['DNA is coiled tightly into structures called…',['Ribosomes','Chromosomes','Gametes','Spores'],1,'Chromosomes are tightly coiled DNA.','LS1'],
+['Lamarck thought giraffes got long necks because…',['Long-necked giraffes survived and reproduced more','Each giraffe stretched its neck and passed that on','A mutation happened in one giraffe','People bred them'],1,'Evidence showed traits gained in a lifetime are not inherited, so his idea was replaced.','LS2'],
+['Which genotype shows the recessive phenotype?',['BB','Bb','bb','All of them'],2,'Recessive traits need two recessive alleles.','LS3'],
+['Two blue-skinned Bb parents have a purple-skinned child. How?',['A mutation must have happened','Each parent passed on a b allele','Blue is recessive','The child is a clone'],1,'Bb × Bb gives a 25% chance of bb.','LS3'],
+['Why can\'t one Punnett square predict a baby\'s exact eye colour?',['Eye colour is controlled by many genes','Eye colour has no genes','Eye colour is set by the environment only','Punnett squares only work for plants'],0,'Punnett squares model single-gene traits.','LS3'],
+['Which is an ethical question about genetics?',['How many chromosomes do humans have?','Who should be allowed to see your DNA test results?','What shape is DNA?','What does meiosis produce?'],1,'Ethical questions ask what we should do.','LS3'],
+['Your genotype is…',['The traits you can see','The alleles you have','Your blood type only','Your height'],1,'Genotype is the set of alleles; phenotype is the observable trait.','LS3']
+].forEach(q=>BANK.push(q));
+let qChunk='all';
+let quiz=[],qi=0,qScore=0,answered=false;
+function startQuiz(){quiz=shuffle(BANK.filter(q=>qChunk==='all'||q[4]===qChunk)).slice(0,12).map(q=>{const order=shuffle(q[1].map((_,i)=>i));return{q:q[0],o:order.map(i=>q[1][i]),a:order.indexOf(q[2]),w:q[3]}});qi=0;qScore=0;showQ()}
+function showQ(){answered=false;const bk='vl-best-'+qChunk;const best=store.get(bk,null);
+  if(qi>=quiz.length){if(best===null||qScore>best)store.set(bk,qScore);const nb=store.get(bk,qScore);
+    $('#quizBox').innerHTML=`<p class="eyebrow">Finished</p><p class="bigstat">${qScore} / ${quiz.length}</p><p>${qScore>=quiz.length*0.83?'Strong work. Try another set to see new questions.':qScore>=quiz.length*0.58?'Good progress. Review the topics you missed in Learn, then try again.':'Keep going. Revisit Learn and the flashcards, then take another set.'}</p><p class="note">Best score in this browser for this set: ${nb} / ${quiz.length}</p><div><button class="btn" id="qAgain">New set</button></div>`;
+    $('#qAgain').onclick=startQuiz;return}
+  const q=quiz[qi];$('#quizBox').innerHTML=`<p class="note">Question ${qi+1} of ${quiz.length} · Score ${qScore}${best!==null?` · Best ${best}/${quiz.length}`:''}</p><h3>${esc(q.q)}</h3><div class="opts">${q.o.map((o,i)=>`<button data-i="${i}">${esc(o)}</button>`).join('')}</div><div id="qWhy" aria-live="polite"></div>`}
+$('#quizBox').addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b||answered)return;answered=true;const q=quiz[qi];const i=+b.dataset.i;const ok=i===q.a;if(ok)qScore++;
+  b.classList.add(ok?'right':'wrong');if(!ok)$('#quizBox').querySelectorAll('.opts button')[q.a].classList.add('right');
+  $('#qWhy').innerHTML=`<div class="why"><b>${ok?'Correct.':'Not quite.'}</b> ${esc(q.w)}</div><div style="margin-top:12px"><button class="btn" id="qNext">${qi+1<quiz.length?'Next question':'See score'}</button></div>`;
+  $('#qNext').onclick=()=>{qi++;showQ()};$('#qNext').focus()});
+
+$('#qChunks').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;qChunk=b.dataset.q;document.querySelectorAll('#qChunks button').forEach(x=>x.setAttribute('aria-pressed',x===b));startQuiz()});
+/* ---------- PRACTICE ---------- */
+const PQ=[
+['How do mutations in sex cells differ from mutations in body cells in terms of inheritance?','Mutations in sex cells (gametes) can be inherited by offspring and passed into future generations. Mutations in body cells affect only that individual and cannot be inherited, though they can lead to conditions such as cancer.',['Names sex cells vs body cells','Says which can be inherited','Gives an effect such as cancer']],
+['Describe how DNA, genes and chromosomes are organized in a human body cell.','DNA is a double helix that holds the genetic code. Long DNA strands coil tightly into chromosomes, which come in 23 pairs in human body cells. Genes are segments of DNA on the chromosomes that hold instructions for making proteins that affect traits.',['Double helix','Chromosomes are coiled DNA, 23 pairs','Genes are segments that code for proteins']],
+['Compare the results of mitosis and meiosis in number of cells and whether they are identical.','Mitosis is one division that makes two identical cells with the full set of DNA (2n). Meiosis is two divisions that make four genetically different sex cells, each with half the DNA (n).',['2 vs 4 cells','Identical vs different','Full vs half DNA']],
+['Explain the difference between discrete and continuous variation, with one example of each.','Discrete variation has distinct categories with nothing in between, such as blood type or tongue rolling. Continuous variation covers a range of values, such as height or hand span.',['Defines both','Gives a correct example of each']],
+['Why does sexual reproduction produce more genetic variation than asexual reproduction?','Sexual reproduction combines gametes from two parents, and meiosis mixes genetic material, so each offspring is a new combination. Asexual reproduction copies one parent, so variation comes only from occasional mutations.',['Two parents','Meiosis mixes DNA','Asexual relies on mutations']],
+['Outline the steps of natural selection that lead to evolution.','Populations produce more offspring than can survive. Individuals vary. Those with helpful traits are more likely to survive the selection pressures and reproduce, passing on those traits. Over many generations the helpful traits become more common, so the population evolves.',['Overproduction','Variation','Survival and reproduction','Change over generations']],
+['What did Charles Darwin contribute, and where did he make key observations?','Darwin developed the theory of evolution by natural selection and published it in 1859. Many key observations came from plants and animals on the Galápagos Islands.',['Natural selection','1859','Galápagos Islands']],
+['What is artificial selection, and how has it been used in Alberta agriculture?','Artificial selection is people choosing which plants or animals breed to pass on desired traits. In Alberta it is seen in canola, bred in Canada for a healthier oil, and in wheat varieties that handle cold and mature quickly, as well as in cattle.',['Humans choose the parents','Canola example','Wheat or cattle example']],
+['Explain the difference between genotype and phenotype.','Genotype is the set of alleles an organism has, such as BB, Bb or bb. Phenotype is the observable trait that results, such as blue or purple skin.',['Genotype = alleles','Phenotype = observable trait','Example of each']],
+['Compare the ethical concerns of bacterial overproduction and transgenic animals.','Putting genes like the insulin gene into bacteria raises few ethical concerns because bacteria are simple single-celled organisms. Transgenic animals raise more concerns about animal welfare, how far genetic change should go, and safety.',['Bacteria: few concerns, and why','Transgenic animals: welfare and other concerns']]];
+const drafts=store.get('vl-drafts',{});
+const PQO=[[3,'Unit launch'],[1,'LS1'],[0,'LS1'],[2,'LS2'],[4,'LS2'],[5,'LS2'],[6,'LS2'],[7,'LS2'],[8,'LS3'],[9,'LS3']];
+$('#pqList').innerHTML=PQO.map(([i,lab],k)=>{const p=PQ[i];return `<div class="card pq"><p class="eyebrow">Question ${k+1} · ${lab}</p><h3>${esc(p[0])}</h3><label class="note" for="pq${i}">Your answer</label><textarea id="pq${i}" data-i="${i}">${esc(drafts[i]||'')}</textarea><div><button class="btn ghost" data-show="${i}">Show model answer</button></div><div class="model" id="pm${i}" hidden><p><b>Model answer:</b> ${esc(p[1])}</p><p class="note" style="margin-top:8px"><b>Check that you included:</b> ${p[2].map(esc).join(' · ')}</p></div></div>`}).join('');
+$('#pqList').addEventListener('click',e=>{const b=e.target.closest('[data-show]');if(!b)return;const m=$('#pm'+b.dataset.show);m.hidden=!m.hidden;b.textContent=m.hidden?'Show model answer':'Hide model answer'});
+$('#pqList').addEventListener('input',e=>{const t=e.target.closest('textarea');if(!t)return;drafts[t.dataset.i]=t.value;store.set('vl-drafts',drafts)});
+$('#essays').innerHTML=[
+['Environmental resilience and variation','Explain how genetic variation protects a population against environmental change and disease. Compare a population of asexual clones with a sexually reproducing population during a major disturbance.'],
+['Natural vs artificial selection','Compare what drives each process and what results over time. Use examples such as Galápagos finches, canola or wheat, and domestic animals.'],
+['Single-gene inheritance','Explain a monohybrid cross with a Punnett square: how dominant and recessive alleles interact, how genotype decides phenotype, and where the 1:2:1 and 3:1 ratios come from.'],
+['From DNA to traits','Trace genetic material from the double helix to paired chromosomes, explain how instructions become traits through proteins, and compare the effects of mutations in body cells and sex cells.'],
+['Bioethics','Evaluate the ethical, legal and social questions raised by genetic technology: transgenic animals, ownership of DNA profiles, consent and database sharing. Weigh benefits against limits.']].map(e=>`<li><b>${esc(e[0])}.</b> ${esc(e[1])}</li>`).join('');
+
+/* ---------- init ---------- */
+renderLearn();renderPunnett();newPx();resetSim();renderDecks();startDeck();showFc();startQuiz();route();
+})();
+</script>
+
+</body></html>

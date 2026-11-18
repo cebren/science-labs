@@ -1,0 +1,1241 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/energy-stores-lab/"><meta name="description" content="Energy can be transferred between energy stores."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Energy Stores Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an energy ledger with eight coloured stores. Sticky tab strip, then lessons that pair a reading column with a model: a toboggan bar chart, a store gallery, pathway chains, a hoist and an Alberta energy chain. Each store keeps one colour everywhere it appears. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F4F6F8; --ink:#16212B; --muted:#4F5D6A; --line:#CDD6DF;
+  --g8:#1D5FA8; --g8-soft:#DFEAF6; --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC; --path:#3F4A55; --path-soft:#E6EAEE;
+  --s-thermal:#C2410C; --s-kinetic:#1D6FB8; --s-elastic:#7C3AAE; --s-grav:#2E7A4F; --s-chem:#A16207; --s-mag:#B4307A; --s-elec:#4B5BC4; --s-nuc:#5F7317;
+  --snow:#F7FAFC; --sky:#DCEBF7; --hill:#B9CBD9;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1C2530; --ink:#E4EAF0; --muted:#9FADBA; --line:#2C3743;
+  --g8:#7DB0F0; --g8-soft:#18283C; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --path:#B8C3CE; --path-soft:#26303A;
+  --s-thermal:#F59A6B; --s-kinetic:#6FB2F0; --s-elastic:#C09AE8; --s-grav:#74C995; --s-chem:#E3B04B; --s-mag:#EE8CC0; --s-elec:#9AA6F0; --s-nuc:#B8CF5A;
+  --snow:#1E2A33; --sky:#14222E; --hill:#2E4050;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1C2530; --ink:#E4EAF0; --muted:#9FADBA; --line:#2C3743;
+  --g8:#7DB0F0; --g8-soft:#18283C; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --path:#B8C3CE; --path-soft:#26303A;
+  --s-thermal:#F59A6B; --s-kinetic:#6FB2F0; --s-elastic:#C09AE8; --s-grav:#74C995; --s-chem:#E3B04B; --s-mag:#EE8CC0; --s-elec:#9AA6F0; --s-nuc:#B8CF5A;
+  --snow:#1E2A33; --sky:#14222E; --hill:#2E4050;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g8)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g8);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g8)}
+.storebar{display:flex;gap:4px;max-width:420px}
+.storebar i{flex:1;height:6px;border-radius:3px}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.inv{grid-template-columns:minmax(0,1fr)}
+.inv .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}.inv{padding:18px}.inv .two{grid-template-columns:minmax(0,1fr)}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g8)}
+.model,.map{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g8-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g8)}
+.formula{font-family:var(--f-mono);font-size:.92rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row,.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.inline input,.inline select{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-size:1.02rem}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g8)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700;min-height:1.4em}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+
+/* store swatches and bars */
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:3px;margin-right:6px;vertical-align:-.05em;background:var(--c)}
+[data-s="thermal"]{--c:var(--s-thermal)} [data-s="kinetic"]{--c:var(--s-kinetic)} [data-s="elastic"]{--c:var(--s-elastic)} [data-s="grav"]{--c:var(--s-grav)}
+[data-s="chem"]{--c:var(--s-chem)} [data-s="mag"]{--c:var(--s-mag)} [data-s="elec"]{--c:var(--s-elec)} [data-s="nuc"]{--c:var(--s-nuc)}
+.bars{display:grid;gap:8px}
+.barrow{display:grid;grid-template-columns:7.5em minmax(0,1fr) 4.6em;gap:8px;align-items:center;font-size:.86rem}
+.barrow .track{height:16px;border-radius:8px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--c);border-radius:8px;transition:width .45s ease}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+.barrow.total{border-top:1px solid var(--line);padding-top:6px}
+.barrow.total .track i{background:var(--ink)}
+@media (max-width:480px){.barrow{grid-template-columns:6.4em minmax(0,1fr) 4.2em}}
+
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+@media (max-width:520px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stile{border:1px solid var(--line);border-top:5px solid var(--c);background:var(--surface);border-radius:8px;padding:8px;text-align:left;cursor:pointer;display:grid;gap:2px;min-width:0}
+.stile b{font-family:var(--f-display);font-size:.98rem}
+.stile small{font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
+.stile[aria-pressed="true"]{background:var(--surface-2);outline:2px solid var(--c);outline-offset:-1px}
+
+/* chains */
+.chain{display:grid;gap:6px}
+.node{display:grid;gap:2px;border-radius:8px;padding:8px 12px;font-size:.92rem}
+.node.store{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c)}
+.node.store b{font-family:var(--f-display)}
+.node.path{background:var(--path-soft);color:var(--ink);margin-left:22px;border:1px dashed var(--path);font-size:.86rem}
+.node.path::before{content:"↓ pathway";font-family:var(--f-mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.node.spread{background:transparent;border:1px dashed var(--line);color:var(--muted);font-size:.85rem}
+.node.dim{opacity:.35}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);font-weight:700}
+.choice2 button.right{background:var(--good-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g8)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--g8)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Energy: Stores, Static and Waves · EN1</div>
+    <h1><span class="ac">Energy Stores</span> Lab</h1>
+    <div class="storebar" aria-hidden="true"><i data-s="thermal" style="background:var(--c)"></i><i data-s="kinetic" style="background:var(--c)"></i><i data-s="elastic" style="background:var(--c)"></i><i data-s="grav" style="background:var(--c)"></i><i data-s="chem" style="background:var(--c)"></i><i data-s="mag" style="background:var(--c)"></i><i data-s="elec" style="background:var(--c)"></i><i data-s="nuc" style="background:var(--c)"></i></div>
+    <p class="under"><b>Understanding:</b> Energy can be transferred between energy stores. Scientists track energy in eight kinds of stores. Energy moves from one store to another along four pathways, and the total never changes.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Five short lessons in order. First see why an energy store is a model. Then meet the eight stores and the four pathways, link store changes to work, and follow energy through real Alberta chains.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · A way of keeping track</span>
+      <div class="codes"><span class="code">EN1.K1</span></div>
+      <h3>An energy store is a model</h3>
+      <p>Energy is a quantity measured in joules (J). It is not a substance you can see or hold. So how do scientists keep track of it? They use a model called <b>energy stores</b>.</p>
+      <p>An <b>energy store</b> is a label for where the energy in a system is, and how much is there. A moving toboggan has energy in its <b>kinetic store</b>. The same toboggan at the top of a hill has energy in its <b>gravitational store</b>.</p>
+      <p>A store is not a real box or tank inside an object. It is a bookkeeping tool. We work out how much is in each store from things we can measure, such as speed, height, stretch or temperature.</p>
+      <p>Adding up all the stores tells you how much energy the system has. As things happen, energy shifts from store to store, but the total stays the same unless energy enters or leaves the system.</p>
+      <div class="key"><b>Remember:</b> an energy store is a model for tracking how much energy a system has and where it is. The stores change, but the total is conserved.</div>
+    </div>
+    <div class="model">
+      <h4>Model: a toboggan run in five snapshots</h4>
+      <p class="hint">System: rider, toboggan, Earth, the snowy hill and the air. Move the slider to step down the hill. The bars show how much energy is in each store.</p>
+      <div class="svgbox"><svg id="tobSvg" viewBox="0 0 360 150" role="img" aria-label="Toboggan on a hill"></svg></div>
+      <label class="field" for="tobS">Snapshot: <span id="tobOut" class="mono">Top of the hill</span>
+        <input type="range" id="tobS" min="0" max="4" step="1" value="0"></label>
+      <div class="bars" id="tobBars" aria-live="polite"></div>
+      <p class="hint">Rider and toboggan 60 kg, hill 10 m high. Numbers are made up for practice and rounded.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Eight stores</span>
+      <div class="codes"><span class="code">EN1.K3</span><span class="code">EN1.S1</span><span class="code">EN1.S2</span></div>
+      <h3>The eight types of energy store</h3>
+      <p>Each store is linked to something you can observe or measure:</p>
+      <ul>
+        <li><b>Thermal:</b> how hot something is and how much material there is.</li>
+        <li><b>Kinetic:</b> how fast something moves and its mass.</li>
+        <li><b>Elastic:</b> how much something is stretched, squashed, bent or twisted.</li>
+        <li><b>Gravitational:</b> how high something is lifted above the ground.</li>
+        <li><b>Chemical:</b> fuels, food and batteries, which can react, often with oxygen.</li>
+        <li><b>Magnetic:</b> magnets held apart while they attract, or pushed together while they repel.</li>
+        <li><b>Electrostatic:</b> electric charges held apart while they attract, or pushed together while they repel.</li>
+        <li><b>Nuclear:</b> the nuclei, or centres, of atoms, as in the Sun or uranium.</li>
+      </ul>
+      <p class="note">Light, sound and electricity are not stores. They are ways energy travels between stores. You will meet them in Lesson 3.</p>
+    </div>
+    <div class="model">
+      <h4>Model: store gallery</h4>
+      <p class="hint">Tap a store to see what it depends on and Alberta examples.</p>
+      <div class="gallery" id="gallery" role="group" aria-label="Eight energy stores"></div>
+      <div class="detail" id="galDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Four pathways</span>
+      <div class="codes"><span class="code">EN1.K4</span><span class="code">EN1.S3</span></div>
+      <h3>Energy moves between stores along pathways</h3>
+      <p>Energy cannot jump from one store to another by magic. It is transferred along a <b>pathway</b>. There are four:</p>
+      <ul>
+        <li><b>Mechanical work:</b> a force moves an object, such as a push, a pull or a twist.</li>
+        <li><b>Electrical:</b> an electric current does work as it flows through a circuit.</li>
+        <li><b>Heating:</b> energy moves from a hotter object to a colder one, by touch (conduction) or by moving fluids (convection).</li>
+        <li><b>Radiation:</b> energy carried by waves, such as light and infrared. Sound waves are often counted here too.</li>
+      </ul>
+      <p>To describe a transfer, name three things: the store that empties, the pathway, and the store that fills.</p>
+      <div class="key"><b>Sentence frame:</b> Energy is transferred from the ______ store of ______, by ______, to the ______ store of ______.</div>
+    </div>
+    <div class="model">
+      <h4>Model: pick a device</h4>
+      <div class="chips" id="devChips" role="group" aria-label="Choose a device"></div>
+      <div class="chain" id="devChain" aria-live="polite"></div>
+      <p class="hint" id="devSentence"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Store changes and work</span>
+      <div class="codes"><span class="code">EN1.K2</span></div>
+      <h3>A change in a store tells you how much work was done</h3>
+      <p>When a force moves an object, it does <b>work</b>. The work done is the amount of energy transferred:</p>
+      <p class="formula">work = force × distance<br>W = F × d &nbsp;(N × m = J)</p>
+      <p>That energy has to end up in a store. When a hoist lifts a hay bale at a steady speed, the work done on the bale equals the increase in its gravitational store. So if you can measure the change in a store, you know how much work was done.</p>
+      <p class="formula">increase in gravitational store = weight × height<br>ΔE<sub>g</sub> = m × g × h &nbsp;(g ≈ 9.8 N/kg on Earth)</p>
+      <p class="note">Work is one pathway, so this link works when energy is transferred by a force. A store can also change by heating or radiation. A pot of water warming on a stove gains thermal energy without any work being done on it.</p>
+      <p class="hint">You do not need to memorize these formulas. They show how the numbers fit together.</p>
+    </div>
+    <div class="model">
+      <h4>Model: hoist a load</h4>
+      <div class="chips" id="hoistChips" role="group" aria-label="Choose a load"></div>
+      <label class="field" for="hoistH">Lift height: <span id="hoistHOut" class="mono">4 m</span>
+        <input type="range" id="hoistH" min="1" max="12" step="1" value="4"></label>
+      <div class="svgbox"><svg id="hoistSvg" viewBox="0 0 360 170" role="img" aria-label="Hoist lifting a load"></svg></div>
+      <div class="worked" id="hoistWork" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Follow the energy</span>
+      <div class="codes"><span class="code">EN1.S3</span><span class="code">EN1.K4</span><span class="code">EN1.K3</span></div>
+      <h3>Energy chains in Alberta</h3>
+      <p>Most real events link several transfers into a chain. Water held behind a dam on the Bow River has energy in its gravitational store. As it falls, it turns a turbine. A generator sends energy along wires as an electrical pathway, and a kettle in a kitchen warms up.</p>
+      <p>At every step, some energy spreads into the <b>thermal store of the surroundings</b>, mostly through friction and heating. The energy is not destroyed. It becomes spread out and hard to use again. This is why no machine passes on all the energy it receives as useful energy.</p>
+      <div class="key"><b>Big idea:</b> the total energy is the same at the end of a chain as at the start. It is just in different stores.</div>
+    </div>
+    <div class="model">
+      <h4>Model: step through a chain</h4>
+      <div class="chips" id="chainChips" role="group" aria-label="Choose a chain"></div>
+      <div class="chain" id="chainView"></div>
+      <div class="row">
+        <button class="btn ghost" id="chainBack" type="button">Back</button>
+        <button class="btn" id="chainNext" type="button">Next step</button>
+      </div>
+      <p class="hint" id="chainStatus" aria-live="polite"></p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Spot the stores, calculate work and store changes, run a ramp experiment and build your own energy chain. Practice changes every time.</p>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 1 · Store spotter</span>
+    <div class="codes"><span class="code">EN1.S1</span><span class="code">EN1.S2</span></div>
+    <h3>Which store empties and which store fills?</h3>
+    <div class="worked" id="b1Q"></div>
+    <div class="two">
+      <div class="map"><span class="tagline">Store that empties</span><div class="choice2" id="b1From" role="group" aria-label="Store that empties"></div></div>
+      <div class="map"><span class="tagline">Store that fills</span><div class="choice2" id="b1To" role="group" aria-label="Store that fills"></div></div>
+    </div>
+    <div class="row"><button class="btn" id="b1Check" type="button">Check</button><button class="btn ghost" id="b1New" type="button">New scenario</button></div>
+    <p class="fb" id="b1Fb" aria-live="polite"></p>
+    <p class="hint mono" id="b1Score"></p>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 2 · Work and stores calculator</span>
+    <div class="codes"><span class="code">EN1.K2</span></div>
+    <h3>How much work changes a store?</h3>
+    <div class="two">
+      <div class="map">
+        <span class="tagline">Calculator</span>
+        <div class="inline">
+          <label class="field" for="b2M">Mass (kg)<input type="number" id="b2M" value="25" min="0" step="any"></label>
+          <label class="field" for="b2H">Height lifted (m)<input type="number" id="b2H" value="3" min="0" step="any"></label>
+        </div>
+        <div class="worked" id="b2Work" aria-live="polite"></div>
+      </div>
+      <div class="map">
+        <div class="worked" id="b2Q"></div>
+        <div class="inline">
+          <label class="field" for="b2A"><span id="b2Lab">Your answer</span><input type="number" id="b2A" step="any"></label>
+          <button class="btn" id="b2Check" type="button">Check</button>
+          <button class="btn ghost" id="b2New" type="button">New problem</button>
+        </div>
+        <p class="fb" id="b2Fb" aria-live="polite"></p>
+        <p class="hint mono" id="b2Score"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 3 · Ramp run (virtual)</span>
+    <div class="codes"><span class="code">EN1.K2</span><span class="code">EN1.K4</span><span class="code">EN1.S3</span></div>
+    <h3>Where does the gravitational store go?</h3>
+    <p>A 0.50 kg cart rolls down a ramp. At the bottom a sensor measures its speed. Compare the drop in its gravitational store with the gain in its kinetic store. Any difference went somewhere else.</p>
+    <p class="formula">ΔE<sub>g</sub> = m × g × h &nbsp;&nbsp; E<sub>k</sub> = ½ × m × v²</p>
+    <div class="two">
+      <div class="map">
+        <div class="chips" id="b3Surf" role="group" aria-label="Ramp surface"></div>
+        <label class="field" for="b3H">Release height: <span id="b3HOut" class="mono">0.60 m</span>
+          <input type="range" id="b3H" min="0.2" max="1.2" step="0.1" value="0.6"></label>
+        <div class="row"><button class="btn" id="b3Run" type="button">Run trial</button><button class="btn ghost" id="b3Clear" type="button">Clear table</button></div>
+        <div class="svgbox"><svg id="b3Svg" viewBox="0 0 360 140" role="img" aria-label="Cart on a ramp"></svg></div>
+      </div>
+      <div class="map">
+        <div class="tablebox"><table class="dt" id="b3Table"><thead><tr><th>Surface</th><th>h (m)</th><th>v (m/s)</th><th>Lost from gravitational (J)</th><th>Gained in kinetic (J)</th><th>To thermal (J)</th></tr></thead><tbody></tbody></table></div>
+        <div class="detail" id="b3Read" aria-live="polite"></div>
+        <p class="hint">Simulated practice data. Speeds include small random measurement error.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv">
+    <span class="step">Investigation 4 · Build a chain</span>
+    <div class="codes"><span class="code">EN1.S3</span><span class="code">EN1.K4</span></div>
+    <h3>Describe the transfer in three parts</h3>
+    <div class="worked" id="b4Q"></div>
+    <div class="inline">
+      <label class="field" for="b4From">Store that empties<select id="b4From"></select></label>
+      <label class="field" for="b4Path">Pathway<select id="b4Path"></select></label>
+      <label class="field" for="b4To">Store that fills<select id="b4To"></select></label>
+    </div>
+    <div class="row"><button class="btn" id="b4Check" type="button">Check</button><button class="btn ghost" id="b4New" type="button">New scenario</button></div>
+    <p class="fb" id="b4Fb" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 EN1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>EN1.K1:</b> the draft says a store represents how much energy is “available” within a system. The lab teaches that stores track how much energy a system has and where it is. Not all of it is usable: energy spread into the thermal store of the surroundings is still there but hard to use again (Lesson 5). Stores are presented as a bookkeeping model, not physical containers.</li>
+      <li><b>EN1.K2:</b> the draft says a change in stores “can indicate the amount of work done”. The lab teaches this for transfers by a force: when a hoist lifts a load at steady speed, work done equals the increase in the gravitational store. It also states that heating and radiation change stores without work, so K2 does not contradict K4. W = F × d is carried from Science 7 F2; ΔE<sub>g</sub> = mgh and E<sub>k</sub> = ½mv² appear only as context with worked examples (g = 9.8 N/kg).</li>
+      <li><b>EN1.K3:</b> the chemical store is described as belonging to fuel or food together with oxygen where a reaction needs it. The nuclear store is shown in the Sun (fusion) and uranium (fission), named only. Magnetic and electrostatic stores are taught as attracting things held apart or repelling things pushed together.</li>
+      <li><b>EN1.K4:</b> the four pathways follow the draft (heating, radiation, mechanical work, electrical). Heating is taught as conduction and convection, and radiation as waves such as light and infrared, with sound often grouped with radiation in this model. Science 7 EN2 listed radiation as a heating process; the lab notes that this model lists it as its own pathway. Light, sound and electricity are taught as pathways, not stores.</li>
+      <li><b>Numbers:</b> toboggan values, hoist loads, ramp data (friction losses of about 3%, 12% and 30%) and all practice problems are made up for practice and labelled. Alberta examples (Bow River hydro dams, southern Alberta wind farms, the Edmonton LRT, a furnace, a campfire, archery) are general everyday contexts only. The statements do not name First Nations, Métis, Inuit or Francophone contributions, so none are added.</li>
+      <li><b>Not taught:</b> calculation of thermal, elastic, chemical, magnetic, electrostatic or nuclear store amounts, and efficiency as a percentage (mentioned only as “not all useful”). Static electricity is left for EN2 and waves for EN3.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-en1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); if (s.indexOf(".") > -1) s = s.replace(/0+$/, "").replace(/\.$/, ""); return s; }
+function grp(x){ var s = String(x); var p = s.split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+var G = 9.8;
+
+/* ---------- Shared data ---------- */
+var STORES = [
+  {id: "thermal", name: "Thermal", dep: "Temperature and amount of material", more: "A hotter object, or more material at the same temperature, has more energy in its thermal store. The particles move faster when it is hotter.", ex: ["Hot cocoa in a Thermos on a ski trip", "Warm air inside a house in January", "A hot curling iron"]},
+  {id: "kinetic", name: "Kinetic", dep: "Mass and speed", more: "Anything that moves has energy in its kinetic store. More mass or more speed means more energy. Speed matters most: double the speed gives four times the energy.", ex: ["An Edmonton LRT train moving along the line", "A curling stone sliding toward the house", "Wind blowing across the prairie"]},
+  {id: "elastic", name: "Elastic", dep: "How much it is stretched, squashed, bent or twisted", more: "An object that has been pulled out of shape and can spring back has energy in its elastic store. More stretch means more energy.", ex: ["A drawn bow just before release", "A hockey stick bending during a slap shot", "A squashed spring in a pogo stick"]},
+  {id: "grav", name: "Gravitational", dep: "Mass and height above the ground", more: "Lifting an object away from Earth fills its gravitational store. More mass or more height means more energy. Strictly, this store belongs to the object and Earth together.", ex: ["Water held behind a dam on the Bow River", "A skier at the top of a run in the Rockies", "A book on a high shelf"]},
+  {id: "chem", name: "Chemical", dep: "Fuels, food and batteries that can react", more: "Energy is stored in substances that can take part in chemical reactions. Many of these reactions need oxygen, so the store belongs to the fuel or food together with the oxygen.", ex: ["Natural gas and oxygen in a home furnace", "A granola bar in your backpack", "A charged phone battery"]},
+  {id: "mag", name: "Magnetic", dep: "Magnets held apart or pushed together", more: "Two magnets that attract have more energy in their magnetic store when they are held apart. Two magnets that repel have more when they are pushed together.", ex: ["Two fridge magnets held a few centimetres apart", "A magnet held just above a steel paper clip", "Two north poles pushed toward each other"]},
+  {id: "elec", name: "Electrostatic", dep: "Electric charges held apart or pushed together", more: "Charges that attract have more energy when held apart. Charges that repel have more when pushed together. You will study this more in the static electricity lab.", ex: ["A balloon rubbed on your hair, held away from it", "A thundercloud over the prairie before lightning", "Your charged hand reaching for a doorknob on a dry winter day"]},
+  {id: "nuc", name: "Nuclear", dep: "The nuclei (centres) of atoms", more: "The nucleus at the centre of an atom holds a huge amount of energy. It is released when nuclei join (fusion, as in the Sun) or split (fission, as in uranium fuel).", ex: ["The Sun, where hydrogen nuclei fuse", "Uranium fuel in a nuclear power station"]}
+];
+var SMAP = {}; STORES.forEach(function(s){ SMAP[s.id] = s; });
+var PATHS = ["Mechanical work", "Electrical", "Heating", "Radiation"];
+
+function bars(box, rows, max, totalLabel){
+  clear(box);
+  var tot = 0;
+  rows.forEach(function(r){
+    tot += r.v;
+    var row = el("div", {"class": "barrow", "data-s": r.s});
+    var lab = el("span"); lab.appendChild(el("span", {"class": "sw", "data-s": r.s, "aria-hidden": "true"})); lab.appendChild(document.createTextNode(r.label || SMAP[r.s].name));
+    row.appendChild(lab);
+    var tr = el("span", {"class": "track"}); var i = el("i"); i.style.width = Math.max(0, Math.min(100, r.v / max * 100)) + "%"; tr.appendChild(i); row.appendChild(tr);
+    row.appendChild(el("b", null, grp(Math.round(r.v)) + " J"));
+    box.appendChild(row);
+  });
+  if (totalLabel) {
+    var t = el("div", {"class": "barrow total"});
+    t.appendChild(el("span", null, totalLabel));
+    var tr2 = el("span", {"class": "track"}); var i2 = el("i"); i2.style.width = Math.min(100, tot / max * 100) + "%"; tr2.appendChild(i2); t.appendChild(tr2);
+    t.appendChild(el("b", null, grp(Math.round(tot)) + " J"));
+    box.appendChild(t);
+  }
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: toboggan ---------- */
+(function(){
+  var SNAP = [
+    {label: "Top of the hill", g: 5880, k: 0, t: 0, x: 34, y: 30, say: "All 5880 J is in the gravitational store. Nothing is moving yet."},
+    {label: "Halfway down", g: 2940, k: 2640, t: 300, x: 124, y: 74, say: "Half the height is gone, so half the gravitational store is gone. Most went to the kinetic store. Friction with the snow sent a little to the thermal store."},
+    {label: "Bottom of the hill", g: 0, k: 5280, t: 600, x: 222, y: 116, say: "The gravitational store is empty. The toboggan is at top speed, so the kinetic store is at its biggest."},
+    {label: "Sliding on the flat", g: 0, k: 2600, t: 3280, x: 282, y: 116, say: "Friction slows the toboggan. Energy moves from the kinetic store to the thermal store of the runners, the snow and the air."},
+    {label: "Stopped", g: 0, k: 0, t: 5880, x: 336, y: 116, say: "All the energy is now in the thermal store, spread through snow, runners and air. It was never destroyed. The total is still 5880 J."}
+  ];
+  var svg = $("tobSvg");
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 360, height: 150, fill: "var(--sky)"}));
+  svg.appendChild(sv("path", {d: "M0 150 L0 36 L20 36 C80 50 160 100 222 124 L360 124 L360 150 Z", fill: "var(--snow)", stroke: "var(--hill)", "stroke-width": 3}));
+  svg.appendChild(sv("text", {x: 6, y: 20, "class": "small"}, "10 m"));
+  svg.appendChild(sv("text", {x: 300, y: 142, "class": "small"}, "flat run-out"));
+  var tob = sv("g");
+  tob.appendChild(sv("rect", {x: -14, y: -4, width: 28, height: 6, rx: 3, fill: "var(--s-kinetic)"}));
+  tob.appendChild(sv("circle", {cx: 2, cy: -11, r: 6, fill: "var(--s-thermal)"}));
+  svg.appendChild(tob);
+  function draw(){
+    var s = SNAP[+$("tobS").value];
+    $("tobOut").textContent = s.label;
+    tob.setAttribute("transform", "translate(" + s.x + " " + s.y + ")");
+    svg.setAttribute("aria-label", "Toboggan snapshot: " + s.label);
+    bars($("tobBars"), [{s: "grav", v: s.g}, {s: "kinetic", v: s.k}, {s: "thermal", v: s.t, label: "Thermal"}], 5880, "Total");
+    $("tobBars").appendChild(el("p", {"class": "hint"}, s.say));
+  }
+  $("tobS").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 2: gallery ---------- */
+(function(){
+  var box = $("gallery"), btns = [];
+  STORES.forEach(function(s, i){
+    var b = el("button", {"class": "stile", type: "button", "data-s": s.id, "aria-pressed": "false"});
+    b.appendChild(el("b", null, s.name));
+    b.appendChild(el("small", null, s.dep));
+    b.addEventListener("click", function(){ show(i); });
+    box.appendChild(b); btns.push(b);
+  });
+  function show(i){
+    var s = STORES[i], d = $("galDetail");
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    clear(d);
+    d.appendChild(el("span", {"class": "tagline"}, "Depends on: " + s.dep));
+    var h = el("h5"); h.appendChild(el("span", {"class": "sw", "data-s": s.id, "aria-hidden": "true"})); h.appendChild(document.createTextNode(s.name + " store")); d.appendChild(h);
+    d.appendChild(el("p", null, s.more));
+    var ul = el("ul"); s.ex.forEach(function(x){ ul.appendChild(el("li", null, x)); }); d.appendChild(ul);
+  }
+  show(0);
+})();
+
+/* ---------- Chain renderer ---------- */
+function renderChain(box, nodes, upto){
+  clear(box);
+  nodes.forEach(function(n, i){
+    var d;
+    if (n[0] === "s") {
+      d = el("div", {"class": "node store", "data-s": n[1]});
+      var b = el("b"); b.appendChild(el("span", {"class": "sw", "data-s": n[1], "aria-hidden": "true"})); b.appendChild(document.createTextNode(SMAP[n[1]].name + " store")); d.appendChild(b);
+      d.appendChild(el("span", null, n[2]));
+    } else if (n[0] === "p") {
+      d = el("div", {"class": "node path"});
+      var b2 = el("b", null, n[1]); d.appendChild(b2);
+      if (n[2]) d.appendChild(el("span", null, n[2]));
+    } else {
+      d = el("div", {"class": "node spread"}, n[1]);
+    }
+    if (upto != null && i > upto) d.className += " dim";
+    if (upto != null && i > upto) d.setAttribute("aria-hidden", "true");
+    box.appendChild(d);
+  });
+}
+
+/* ---------- Lesson 3: devices ---------- */
+(function(){
+  var DEV = [
+    {label: "Flashlight", n: [["s","chem","of the battery"],["p","Electrical","a current flows through the bulb"],["s","thermal","of the hot bulb"],["p","Radiation","light and infrared shine out"],["s","thermal","of the walls and air that absorb the light"]], say: "Energy is transferred from the chemical store of the battery, by an electrical pathway, to the thermal store of the bulb. Then radiation carries it to the thermal store of the room."},
+    {label: "Bow and arrow", n: [["s","elastic","of the drawn bow"],["p","Mechanical work","the string pushes the arrow forward"],["s","kinetic","of the flying arrow"],["x","Some energy spreads as sound and a tiny bit of warming."]], say: "Energy is transferred from the elastic store of the bow, by mechanical work, to the kinetic store of the arrow."},
+    {label: "Gas furnace", n: [["s","chem","of natural gas and oxygen"],["p","Heating","hot flames warm the air passing through the furnace"],["s","thermal","of the air in the house"],["x","Some energy escapes with the exhaust gases up the vent."]], say: "Energy is transferred from the chemical store of natural gas and oxygen, by heating, to the thermal store of the air in the house."},
+    {label: "Wind-up toy", n: [["s","elastic","of the twisted spring"],["p","Mechanical work","the spring turns the gears and wheels"],["s","kinetic","of the moving toy"],["x","Friction in the gears spreads some energy to the thermal store of the toy."]], say: "Energy is transferred from the elastic store of the spring, by mechanical work, to the kinetic store of the toy."},
+    {label: "Solar panel", n: [["s","nuc","of the Sun"],["p","Radiation","sunlight reaches the panel on the school roof"],["p","Electrical","the panel drives a current to a battery"],["s","chem","of the charging battery"],["x","Much of the sunlight just warms the panel instead."]], say: "Energy is transferred from the nuclear store of the Sun, by radiation and then an electrical pathway, to the chemical store of the battery."},
+    {label: "Fridge magnets", n: [["s","mag","of two magnets held apart"],["p","Mechanical work","the magnetic force pulls them together"],["s","kinetic","of the moving magnets"],["x","When they snap together, the energy spreads as sound and warming."]], say: "Energy is transferred from the magnetic store of the magnets, by mechanical work, to their kinetic store."}
+  ];
+  chipGroup($("devChips"), DEV, function(d){ renderChain($("devChain"), d.n); $("devSentence").textContent = d.say; }, 0);
+})();
+
+/* ---------- Lesson 4: hoist ---------- */
+(function(){
+  var LOADS = [{label: "Hay bale 25 kg", m: 25}, {label: "Canoe 30 kg", m: 30}, {label: "Steel beam 400 kg", m: 400}];
+  var cur = LOADS[0];
+  var svg = $("hoistSvg");
+  function draw(){
+    var h = +$("hoistH").value; $("hoistHOut").textContent = h + " m";
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 150, width: 360, height: 20, fill: "var(--hill)"}));
+    svg.appendChild(sv("rect", {x: 60, y: 12, width: 8, height: 138, fill: "var(--path)"}));
+    svg.appendChild(sv("rect", {x: 60, y: 12, width: 120, height: 6, fill: "var(--path)"}));
+    svg.appendChild(sv("circle", {cx: 176, cy: 22, r: 8, fill: "none", stroke: "var(--ink)", "stroke-width": 2}));
+    var y = 150 - h * 8 - 20;
+    svg.appendChild(sv("line", {x1: 176, y1: 30, x2: 176, y2: y, stroke: "var(--ink)", "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 156, y: y, width: 40, height: 20, rx: 3, fill: "var(--s-chem)"}));
+    svg.appendChild(sv("line", {x1: 230, y1: 150, x2: 230, y2: y + 20, stroke: "var(--s-grav)", "stroke-width": 3}));
+    svg.appendChild(sv("text", {x: 238, y: (150 + y + 20) / 2 + 4, "class": "lbl"}, "h = " + h + " m"));
+    svg.setAttribute("aria-label", cur.label + " lifted " + h + " metres");
+    var F = cur.m * G, W = F * h;
+    var w = $("hoistWork"); clear(w);
+    w.appendChild(el("span", {"class": "tagline"}, "Worked example"));
+    w.appendChild(el("p", {"class": "mono"}, "Force needed = weight = " + cur.m + " kg × 9.8 N/kg = " + grp(fmt(F, 1)) + " N"));
+    w.appendChild(el("p", {"class": "mono"}, "W = F × d = " + grp(fmt(F, 1)) + " N × " + h + " m = " + grp(fmt(W, 0)) + " J"));
+    w.appendChild(el("p", {"class": "mono"}, "Increase in gravitational store = " + grp(fmt(W, 0)) + " J"));
+    w.appendChild(el("p", null, "The work done on the load and the change in its gravitational store are the same number. Measuring one tells you the other."));
+  }
+  chipGroup($("hoistChips"), LOADS, function(l){ cur = l; draw(); }, 0);
+  $("hoistH").addEventListener("input", draw);
+})();
+
+/* ---------- Lesson 5: chains ---------- */
+(function(){
+  var CH = [
+    {label: "Bow River hydro", n: [["s","grav","of water held behind a dam on the Bow River"],["p","Mechanical work","falling water pushes on the turbine blades"],["s","kinetic","of the spinning turbine"],["p","Electrical","the generator drives a current through power lines"],["s","thermal","of water in a kettle in a Calgary kitchen"],["x","Along the way: friction in the turbine, warm power lines and a warm kettle body send some energy to the thermal store of the surroundings."]]},
+    {label: "Prairie wind to the LRT", n: [["s","kinetic","of wind blowing across southern Alberta"],["p","Mechanical work","the wind pushes on the turbine blades"],["s","kinetic","of the spinning rotor"],["p","Electrical","the generator sends a current to Edmonton"],["s","kinetic","of an LRT train speeding up"],["x","Along the way: noise, warm wires and air resistance spread some energy to the thermal store of the surroundings."]]},
+    {label: "Sun to a bike ride", n: [["s","nuc","of the Sun"],["p","Radiation","sunlight reaches a wheat field"],["s","chem","of wheat plants and oxygen"],["x","You eat bread made from the wheat. The chemical store comes with the food."],["s","chem","of food and oxygen in your body"],["p","Mechanical work","your leg muscles push the pedals"],["s","kinetic","of you and your bike"],["x","Your body also warms up, so energy goes to your thermal store and the air."]]},
+    {label: "Campfire", n: [["s","chem","of wood and oxygen"],["p","Heating","hot gases warm the pot by conduction and convection"],["p","Radiation","infrared and light shine out from the flames"],["s","thermal","of a pot of water and of your hands"],["x","Most of the energy warms the air and ground around the fire."]]},
+    {label: "Archery", n: [["s","chem","of food and oxygen in the archer’s muscles"],["p","Mechanical work","the archer pulls back the string"],["s","elastic","of the drawn bow"],["p","Mechanical work","the string pushes the arrow"],["s","kinetic","of the flying arrow"],["p","Mechanical work","the arrow pushes into the target"],["s","thermal","of the target and the arrow"]]}
+  ];
+  var cur = CH[0], at = 0;
+  function draw(){
+    renderChain($("chainView"), cur.n, at);
+    $("chainStatus").textContent = "Step " + (at + 1) + " of " + cur.n.length + (at === cur.n.length - 1 ? ". Chain complete. The total energy is the same as at the start." : ".");
+    $("chainBack").disabled = at === 0; $("chainNext").disabled = at >= cur.n.length - 1;
+  }
+  chipGroup($("chainChips"), CH, function(c){ cur = c; at = 0; draw(); }, 0);
+  $("chainNext").addEventListener("click", function(){ if (at < cur.n.length - 1) at++; draw(); });
+  $("chainBack").addEventListener("click", function(){ if (at > 0) at--; draw(); });
+})();
+
+/* ---------- Bench 1: store spotter ---------- */
+(function(){
+  var SC = [
+    ["A drawn bow releases an arrow.", "elastic", "kinetic", "The bent bow springs back and the arrow speeds up."],
+    ["A skier speeds up going down a slope in the Rockies.", "grav", "kinetic", "The skier loses height and gains speed."],
+    ["A curling stone slides and slowly stops on the ice.", "kinetic", "thermal", "Friction warms the ice and stone a tiny bit as the stone slows."],
+    ["Natural gas burns in a furnace and warms the house.", "chem", "thermal", "The fuel and oxygen react, and the air in the house gets warmer."],
+    ["The Sun shines on a canola field and the plants grow.", "nuc", "chem", "Fusion in the Sun releases energy. Plants store it as new chemical substances."],
+    ["You lift a heavy backpack onto a high shelf.", "chem", "grav", "Your muscles use food and oxygen to raise the backpack."],
+    ["A trampoline launches a child upward.", "elastic", "kinetic", "The stretched mat springs back and the child speeds up."],
+    ["Two fridge magnets held apart are let go and snap together.", "mag", "kinetic", "The magnets speed up as they pull toward each other."],
+    ["A rubbed balloon is let go near your hair and swings toward it.", "elec", "kinetic", "Charges that attract were held apart. As they move closer, the balloon speeds up."],
+    ["A ball thrown straight up slows down as it rises.", "kinetic", "grav", "It loses speed and gains height."],
+    ["A car brakes to a stop at a red light.", "kinetic", "thermal", "The brakes get hot as the car slows."],
+    ["Water behind a dam rushes down through a pipe.", "grav", "kinetic", "The water loses height and gains speed."],
+    ["A hockey stick bends in a slap shot, then springs back and launches the puck.", "elastic", "kinetic", "The bent stick springs back and the puck speeds off."],
+    ["A wind-up toy car rolls across the floor.", "elastic", "kinetic", "The twisted spring unwinds and the car moves."],
+    ["A phone battery runs a phone that warms up in your hand.", "chem", "thermal", "The battery’s chemicals react and the phone warms."],
+    ["Hot cocoa left outside on a cold deck cools down.", "thermal", "thermal", "Energy moves from the thermal store of the cocoa to the thermal store of the cold air. Both are thermal stores."]
+  ];
+  var order = shuffle(SC), idx = 0, cur, fromSel = null, toSel = null, done = false;
+  store.b1 = store.b1 || {r: 0, n: 0};
+  function makeChoices(box, setter){
+    clear(box); var bs = [];
+    STORES.forEach(function(s){
+      var b = el("button", {type: "button", "aria-pressed": "false", "data-s": s.id});
+      b.appendChild(el("span", {"class": "sw", "data-s": s.id, "aria-hidden": "true"})); b.appendChild(document.createTextNode(s.name));
+      b.addEventListener("click", function(){ if (done) return; bs.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); setter(s.id); });
+      box.appendChild(b); bs.push(b);
+    });
+    return bs;
+  }
+  var fb1, fb2;
+  function next(){
+    cur = order[idx % order.length]; idx++; if (idx % order.length === 0) order = shuffle(SC);
+    fromSel = toSel = null; done = false;
+    clear($("b1Q")); $("b1Q").appendChild(el("span", {"class": "tagline"}, "Scenario")); $("b1Q").appendChild(el("p", null, cur[0]));
+    fb1 = makeChoices($("b1From"), function(v){ fromSel = v; });
+    fb2 = makeChoices($("b1To"), function(v){ toSel = v; });
+    $("b1Fb").textContent = ""; $("b1Fb").className = "fb";
+    score();
+  }
+  function score(){ $("b1Score").textContent = "Correct so far: " + store.b1.r + " of " + store.b1.n; }
+  $("b1Check").addEventListener("click", function(){
+    if (done) return;
+    if (!fromSel || !toSel) { $("b1Fb").textContent = "Choose one store in each box first."; $("b1Fb").className = "fb no"; return; }
+    done = true;
+    var ok = fromSel === cur[1] && toSel === cur[2];
+    store.b1.n++; if (ok) store.b1.r++; save();
+    fb1.forEach(function(b){ var id = b.getAttribute("data-s"); if (id === cur[1]) b.classList.add("right"); else if (id === fromSel) b.classList.add("wrong"); });
+    fb2.forEach(function(b){ var id = b.getAttribute("data-s"); if (id === cur[2]) b.classList.add("right"); else if (id === toSel) b.classList.add("wrong"); });
+    $("b1Fb").textContent = (ok ? "Correct. " : "Not quite. It goes from the " + SMAP[cur[1]].name.toLowerCase() + " store to the " + SMAP[cur[2]].name.toLowerCase() + " store. ") + cur[3];
+    $("b1Fb").className = "fb " + (ok ? "ok" : "no");
+    score();
+  });
+  $("b1New").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 2: work and stores ---------- */
+(function(){
+  function calc(){
+    var m = parseFloat($("b2M").value), h = parseFloat($("b2H").value), w = $("b2Work"); clear(w);
+    w.appendChild(el("span", {"class": "tagline"}, "Worked example"));
+    if (!(m >= 0) || !(h >= 0)) { w.appendChild(el("p", null, "Enter a mass and a height of zero or more.")); return; }
+    var F = m * G, W = F * h;
+    w.appendChild(el("p", {"class": "mono"}, "Step 1. Weight: F = m × g = " + fmt(m, 2) + " × 9.8 = " + grp(fmt(F, 1)) + " N"));
+    w.appendChild(el("p", {"class": "mono"}, "Step 2. Work: W = F × d = " + grp(fmt(F, 1)) + " × " + fmt(h, 2) + " = " + grp(fmt(W, 1)) + " J"));
+    w.appendChild(el("p", {"class": "mono"}, "Step 3. ΔE gravitational = " + grp(fmt(W, 1)) + " J"));
+  }
+  ["b2M", "b2H"].forEach(function(id){ $(id).addEventListener("input", calc); });
+  calc();
+  var GEN = [
+    function(){ var m = pick([20, 25, 30, 40, 50, 60]), h = pick([2, 3, 4, 5, 6]); return {q: "A hoist lifts a " + m + " kg load " + h + " m at a steady speed. How much does the load’s gravitational store increase?", a: m * G * h, u: "J", show: "Weight = " + m + " × 9.8 = " + fmt(m * G, 1) + " N. W = " + fmt(m * G, 1) + " × " + h + " = " + fmt(m * G * h, 1) + " J, so the gravitational store gains " + fmt(m * G * h, 1) + " J."}; },
+    function(){ var F = pick([40, 60, 80, 120, 150]), d = pick([5, 10, 15, 20, 25]); return {q: "You push a sled with a force of " + F + " N for " + d + " m across flat snow. How much work do you do on the sled?", a: F * d, u: "J", show: "W = F × d = " + F + " × " + d + " = " + (F * d) + " J. At first this goes to the sled’s kinetic store, and friction moves some to the thermal store."}; },
+    function(){ var F = pick([500, 800, 1200, 2000, 2500]), h = pick([2, 4, 5, 8, 10]); return {q: "A crane does " + grp(F * h) + " J of work lifting a beam " + h + " m at a steady speed. What force did the crane apply?", a: F, u: "N", show: "F = W ÷ d = " + grp(F * h) + " ÷ " + h + " = " + F + " N."}; },
+    function(){ var m = pick([40, 45, 50, 55, 60]), h = pick([3, 4, 6, 8]); return {q: "A " + m + " kg student climbs stairs that rise " + h + " m. By how much does the gravitational store increase?", a: m * G * h, u: "J", show: "ΔE = m × g × h = " + m + " × 9.8 × " + h + " = " + fmt(m * G * h, 1) + " J. The energy came from the chemical store of food and oxygen in the student’s muscles."}; },
+    function(){ var W = pick([300, 600, 900, 1200]), F = pick([50, 100, 150]); return {q: "A worker pulls a cart with " + F + " N and transfers " + W + " J to it by mechanical work. How far did the cart move?", a: W / F, u: "m", show: "d = W ÷ F = " + W + " ÷ " + F + " = " + fmt(W / F, 2) + " m."}; }
+  ];
+  var cur; store.b2 = store.b2 || {r: 0, n: 0};
+  function next(){ cur = pick(GEN)(); clear($("b2Q")); $("b2Q").appendChild(el("span", {"class": "tagline"}, "Practice problem")); $("b2Q").appendChild(el("p", null, cur.q)); $("b2Lab").textContent = "Your answer (" + cur.u + ")"; $("b2A").value = ""; $("b2Fb").textContent = ""; $("b2Fb").className = "fb"; sc(); }
+  function sc(){ $("b2Score").textContent = "Correct so far: " + store.b2.r + " of " + store.b2.n; }
+  $("b2Check").addEventListener("click", function(){
+    var v = parseFloat($("b2A").value);
+    if (isNaN(v)) { $("b2Fb").textContent = "Type a number first."; $("b2Fb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur.a) <= Math.max(0.5, Math.abs(cur.a) * 0.01);
+    store.b2.n++; if (ok) store.b2.r++; save();
+    $("b2Fb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.show; $("b2Fb").className = "fb " + (ok ? "ok" : "no"); sc();
+  });
+  $("b2New").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 3: ramp ---------- */
+(function(){
+  var SURF = [{label: "Smooth track", loss: 0.03}, {label: "Wood", loss: 0.12}, {label: "Carpet", loss: 0.30}];
+  var surf = SURF[0], m = 0.5, rows = [];
+  var svg = $("b3Svg");
+  function draw(){
+    var h = +$("b3H").value; $("b3HOut").textContent = h.toFixed(2) + " m";
+    clear(svg);
+    var top = 120 - h * 80;
+    svg.appendChild(sv("rect", {x: 0, y: 120, width: 360, height: 20, fill: "var(--hill)"}));
+    svg.appendChild(sv("path", {d: "M30 120 L30 " + top + " L250 120 Z", fill: "var(--surface-2)", stroke: "var(--path)", "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 34, y: top - 14, width: 22, height: 12, rx: 3, fill: "var(--s-kinetic)"}));
+    svg.appendChild(sv("line", {x1: 20, y1: 120, x2: 20, y2: top, stroke: "var(--s-grav)", "stroke-width": 3}));
+    svg.appendChild(sv("text", {x: 60, y: Math.max(14, top + 4), "class": "lbl"}, "h = " + h.toFixed(2) + " m"));
+    svg.appendChild(sv("rect", {x: 262, y: 100, width: 18, height: 20, fill: "var(--path)"}));
+    svg.appendChild(sv("text", {x: 286, y: 112, "class": "small"}, "speed sensor"));
+    svg.setAttribute("aria-label", "Cart at the top of a " + surf.label.toLowerCase() + " ramp, " + h.toFixed(2) + " metres high");
+  }
+  function table(){
+    var tb = document.querySelector("#b3Table tbody"); clear(tb);
+    rows.forEach(function(r){
+      var tr = el("tr");
+      [r.s, r.h.toFixed(2), r.v.toFixed(2), r.eg.toFixed(2), r.ek.toFixed(2), r.t.toFixed(2)].forEach(function(c){ tr.appendChild(el("td", null, c)); });
+      tb.appendChild(tr);
+    });
+  }
+  chipGroup($("b3Surf"), SURF, function(s){ surf = s; draw(); }, 0);
+  $("b3H").addEventListener("input", draw);
+  $("b3Run").addEventListener("click", function(){
+    var h = +$("b3H").value, eg = m * G * h;
+    var vTrue = Math.sqrt(2 * eg * (1 - surf.loss) / m), v = vTrue * (1 + (Math.random() - 0.5) * 0.02);
+    var ek = 0.5 * m * v * v; if (ek > eg) { ek = eg; v = Math.sqrt(2 * ek / m); }
+    var r = {s: surf.label, h: h, v: v, eg: eg, ek: ek, t: eg - ek};
+    rows.push(r); if (rows.length > 8) rows.shift(); table();
+    var d = $("b3Read"); clear(d);
+    d.appendChild(el("span", {"class": "tagline"}, "Reading this trial"));
+    d.appendChild(el("p", {"class": "mono"}, "ΔE g = 0.50 × 9.8 × " + h.toFixed(2) + " = " + eg.toFixed(2) + " J"));
+    d.appendChild(el("p", {"class": "mono"}, "E k = ½ × 0.50 × " + v.toFixed(2) + "² = " + ek.toFixed(2) + " J"));
+    d.appendChild(el("p", null, "About " + Math.round(ek / eg * 100) + "% of the gravitational store reached the kinetic store. The other " + (eg - ek).toFixed(2) + " J went by friction to the thermal store of the cart, the ramp and the air. Try another surface and compare."));
+  });
+  $("b3Clear").addEventListener("click", function(){ rows = []; table(); clear($("b3Read")); });
+  draw();
+  var d0 = $("b3Read"); d0.appendChild(el("span", {"class": "tagline"}, "How to use it")); d0.appendChild(el("p", null, "Choose a surface and a height, then run a trial. Keep the height the same and change only the surface to make it a fair test."));
+})();
+
+/* ---------- Bench 4: build a chain ---------- */
+(function(){
+  var SC = [
+    ["A battery-powered fan spins.", ["chem"], ["Electrical"], ["kinetic"], "The battery’s chemical store drives a current that turns the fan."],
+    ["A campfire warms your hands from a metre away.", ["chem"], ["Radiation", "Heating"], ["thermal"], "Wood and oxygen react. Infrared radiation, and some warm air, carry energy to your hands."],
+    ["A pulled-back slingshot launches a pebble.", ["elastic"], ["Mechanical work"], ["kinetic"], "The stretched band pushes the pebble forward."],
+    ["Sunlight warms a dark car seat.", ["nuc"], ["Radiation"], ["thermal"], "Fusion in the Sun releases energy that travels as light and infrared."],
+    ["A battery-powered hoist lifts a load onto a roof.", ["chem"], ["Electrical", "Mechanical work"], ["grav"], "A current runs the motor, and the motor’s cable does work lifting the load."],
+    ["A hot frying pan warms cold water poured into it.", ["thermal"], ["Heating"], ["thermal"], "Energy moves from the hotter pan to the colder water."],
+    ["A rolling bowling ball knocks pins flying.", ["kinetic"], ["Mechanical work"], ["kinetic"], "The ball pushes the pins, and they speed up."],
+    ["A child at the top of a slide slides down and speeds up.", ["grav"], ["Mechanical work"], ["kinetic"], "The pull of gravity does work on the child as they lose height."],
+    ["A cyclist squeezes the brakes and the brake pads get warm.", ["kinetic"], ["Mechanical work", "Heating"], ["thermal"], "Friction does work on the pads and wheel rims, and they warm up."],
+    ["A charged thundercloud discharges, and a lightning bolt heats the air.", ["elec"], ["Electrical"], ["thermal"], "A huge current flows through the air, which becomes extremely hot."]
+  ];
+  var order = shuffle(SC), idx = 0, cur;
+  function fill(sel, opts){ clear(sel); sel.appendChild(el("option", {value: ""}, "Choose…")); opts.forEach(function(o){ sel.appendChild(el("option", {value: o[0]}, o[1])); }); }
+  fill($("b4From"), STORES.map(function(s){ return [s.id, s.name]; }));
+  fill($("b4To"), STORES.map(function(s){ return [s.id, s.name]; }));
+  fill($("b4Path"), PATHS.map(function(p){ return [p, p]; }));
+  function next(){
+    cur = order[idx % order.length]; idx++; if (idx % order.length === 0) order = shuffle(SC);
+    clear($("b4Q")); $("b4Q").appendChild(el("span", {"class": "tagline"}, "Scenario")); $("b4Q").appendChild(el("p", null, cur[0]));
+    ["b4From", "b4Path", "b4To"].forEach(function(id){ $(id).value = ""; });
+    $("b4Fb").textContent = ""; $("b4Fb").className = "fb";
+  }
+  $("b4Check").addEventListener("click", function(){
+    var f = $("b4From").value, p = $("b4Path").value, t = $("b4To").value;
+    if (!f || !p || !t) { $("b4Fb").textContent = "Choose all three parts first."; $("b4Fb").className = "fb no"; return; }
+    var ok = cur[1].indexOf(f) > -1 && cur[2].indexOf(p) > -1 && cur[3].indexOf(t) > -1;
+    var model = "Energy is transferred from the " + SMAP[cur[1][0]].name.toLowerCase() + " store, by " + cur[2].join(" and ").toLowerCase() + ", to the " + SMAP[cur[3][0]].name.toLowerCase() + " store. ";
+    $("b4Fb").textContent = (ok ? "Correct. " : "Not quite. ") + model + cur[4];
+    $("b4Fb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("b4New").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Store or pathway?", bins: ["Energy store", "Pathway"], items: [
+    ["Kinetic", 0, "Kinetic is a store: energy of a moving object."],
+    ["Heating", 1, "Heating is a pathway: energy moving from hotter to colder."],
+    ["Gravitational", 0, "Gravitational is a store: energy of a raised object."],
+    ["Radiation", 1, "Radiation is a pathway: energy carried by waves."],
+    ["Elastic", 0, "Elastic is a store: energy of a stretched or squashed object."],
+    ["Electrical", 1, "Electrical is a pathway: a current carries energy between stores."],
+    ["Chemical", 0, "Chemical is a store: fuels, food and batteries."],
+    ["Mechanical work", 1, "Work is a pathway: a force moves an object."],
+    ["Light", 1, "Light is not a store. It is radiation, a pathway."],
+    ["Sound", 1, "Sound is not a store. It is a wave that carries energy, usually grouped with radiation."],
+    ["Nuclear", 0, "Nuclear is a store: energy in the nuclei of atoms."],
+    ["Magnetic", 0, "Magnetic is a store: magnets held apart or pushed together."],
+    ["Thermal", 0, "Thermal is a store: how hot something is."],
+    ["Electrostatic", 0, "Electrostatic is a store: charges held apart or pushed together."]
+  ]},
+  {label: "Which store fills?", bins: ["Thermal", "Kinetic", "Elastic", "Gravitational", "Chemical", "Magnetic", "Electrostatic", "Nuclear"], items: [
+    ["A trampoline mat stretches as you land", 2, "Stretching fills the elastic store."],
+    ["A canoe is lifted onto a car roof", 3, "Raising it fills the gravitational store."],
+    ["A pot of water warms on the stove", 0, "Getting hotter fills the thermal store."],
+    ["An LRT train speeds up leaving a station", 1, "Speeding up fills the kinetic store."],
+    ["A phone battery charges overnight", 4, "Charging makes new chemical substances in the battery."],
+    ["You pull a fridge magnet off the fridge door", 5, "Pulling attracting magnets apart fills the magnetic store."],
+    ["You rub a balloon on your hair and pull it away", 6, "Separating charges that attract fills the electrostatic store."],
+    ["A canola plant grows in summer sunlight", 4, "Plants build new chemical substances that store energy."],
+    ["A bow is drawn back", 2, "Bending the bow fills its elastic store."],
+    ["A skier rides a chairlift up the mountain", 3, "Gaining height fills the gravitational store."],
+    ["Brakes squeal and get hot as a bus stops", 0, "Friction warms the brakes."],
+    ["Hydrogen nuclei in a star are packed together under huge pressure", 7, "Energy in atomic nuclei is the nuclear store. Fusion then releases it."]
+  ]},
+  {label: "Which pathway?", bins: ["Mechanical work", "Electrical", "Heating", "Radiation"], items: [
+    ["A hockey stick pushes a puck", 0, "A force moves the puck."],
+    ["A current runs through a toaster", 1, "An electric current carries the energy."],
+    ["A hot radiator warms the air around it", 2, "Hotter to colder by conduction and convection."],
+    ["Sunlight warms your face on a cold day", 3, "Light and infrared waves carry the energy across space."],
+    ["A crane lifts a steel beam", 0, "The cable’s force moves the beam upward."],
+    ["Power lines carry energy from a wind farm", 1, "A current carries the energy."],
+    ["Your cold hand warms up on a warm mug", 2, "Energy moves from the hotter mug by touch (conduction)."],
+    ["A phone screen shines light into your eyes", 3, "Light is radiation."],
+    ["Your feet push the pedals of a bike", 0, "A force moves the pedals."],
+    ["A charger cable fills a phone battery", 1, "A current carries energy into the battery."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Energy", "A quantity, measured in joules, that scientists keep track of. It is not a substance."],
+  ["Joule (J)", "The unit of energy and work."],
+  ["Energy store", "A model for tracking how much energy a system has and where it is."],
+  ["Thermal store", "Energy linked to how hot something is and how much material there is."],
+  ["Kinetic store", "Energy of a moving object. More mass or more speed means more energy."],
+  ["Elastic store", "Energy of an object that is stretched, squashed, bent or twisted."],
+  ["Gravitational store", "Energy of an object raised above the ground. ΔE = m × g × h."],
+  ["Chemical store", "Energy in fuels, food and batteries, which is released in chemical reactions, often with oxygen."],
+  ["Magnetic store", "Energy of magnets that attract held apart, or magnets that repel pushed together."],
+  ["Electrostatic store", "Energy of charges that attract held apart, or charges that repel pushed together."],
+  ["Nuclear store", "Energy in the nuclei of atoms, released by fusion in the Sun or fission of uranium."],
+  ["Pathway", "The way energy is transferred from one store to another."],
+  ["Mechanical work", "A pathway: a force moves an object. W = F × d."],
+  ["Electrical pathway", "An electric current carries energy between stores."],
+  ["Heating pathway", "Energy moves from a hotter object to a colder one by conduction or convection."],
+  ["Radiation pathway", "Energy carried by waves, such as light and infrared. Sound is often grouped here."],
+  ["Work", "Energy transferred when a force moves an object in the direction of the force."],
+  ["Newton (N)", "The unit of force. A 1 kg mass weighs about 9.8 N on Earth."],
+  ["Weight", "The pull of gravity on an object. Weight = mass × 9.8 N/kg."],
+  ["Conservation of energy", "Energy is never created or destroyed. The total stays the same as it moves between stores."],
+  ["Dissipation", "Energy spreading into the thermal store of the surroundings, where it is hard to use again."],
+  ["System", "The part of the world you choose to study. Everything else is the surroundings."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is an energy store?", ["A model for tracking how much energy a system has and where it is", "A real container inside objects that holds energy fluid", "A type of battery", "A pathway that carries energy"], "Stores are a bookkeeping model, not physical tanks."],
+  ["Which of these is NOT an energy store?", ["Light", "Kinetic", "Elastic", "Nuclear"], "Light is radiation, which is a pathway."],
+  ["A skier waits at the top of a hill. Most of their energy is in which store?", ["Gravitational", "Kinetic", "Elastic", "Thermal"], "Height above the ground means a full gravitational store."],
+  ["A drawn bow has energy mainly in its…", ["elastic store", "kinetic store", "chemical store", "nuclear store"], "The bow is bent out of shape and can spring back."],
+  ["Which store is linked to speed?", ["Kinetic", "Gravitational", "Thermal", "Magnetic"], "Moving objects have energy in their kinetic store."],
+  ["A granola bar has energy in its…", ["chemical store", "elastic store", "kinetic store", "electrostatic store"], "Food stores energy that is released when it reacts with oxygen in your body."],
+  ["Where is the energy that powers the Sun stored?", ["In the nuclear store of hydrogen nuclei", "In the chemical store of burning coal", "In the gravitational store of the planets", "In the elastic store of sunlight"], "Fusion of nuclei releases energy from the nuclear store."],
+  ["Two magnets that attract are held apart. When are their magnetic stores largest?", ["When they are held far apart", "When they are touching", "When they are both moving", "It never changes"], "Pulling attracting magnets apart fills the magnetic store."],
+  ["Which list contains only pathways?", ["Heating, radiation, mechanical work, electrical", "Heating, kinetic, light, chemical", "Thermal, elastic, nuclear, magnetic", "Sound, gravitational, electrical, elastic"], "Those are the four pathways. The others mix in stores."],
+  ["A battery lights a bulb. Which pathway carries energy from the battery to the bulb?", ["Electrical", "Heating", "Radiation", "Mechanical work"], "An electric current carries the energy."],
+  ["A hot pan warms cold water. Which pathway is this?", ["Heating", "Electrical", "Mechanical work", "Nuclear"], "Energy moves from hotter to colder."],
+  ["Sunlight warms your face. Which pathway carries the energy?", ["Radiation", "Heating by convection", "Electrical", "Mechanical work"], "Light and infrared waves travel through space."],
+  ["A hockey stick hits a puck. Which pathway transfers energy to the puck?", ["Mechanical work", "Radiation", "Electrical", "Heating"], "A force moves the puck."],
+  ["Which sentence describes a transfer the scientific way?", ["Energy is transferred from the chemical store of the fuel, by heating, to the thermal store of the water.", "The fuel turns into heat energy and then into water energy.", "The water absorbs fuel energy.", "Heat energy is created in the water."], "A full description names the store that empties, the pathway and the store that fills."],
+  ["A hoist lifts a 20 kg box 3 m at steady speed. How much does its gravitational store increase? (g = 9.8 N/kg)", ["588 J", "60 J", "196 J", "23 J"], "Weight = 20 × 9.8 = 196 N. W = 196 N × 3 m = 588 J."],
+  ["You push a sled with 50 N for 10 m. How much work do you do?", ["500 J", "60 J", "5 J", "40 J"], "W = F × d = 50 × 10 = 500 J."],
+  ["A crane does 6000 J of work lifting a load 3 m at steady speed. How much did the load’s gravitational store change?", ["It increased by 6000 J", "It increased by 2000 J", "It decreased by 6000 J", "It did not change"], "At steady speed, the work done on the load equals the increase in its gravitational store."],
+  ["Why can a change in a store tell you how much work was done?", ["The energy transferred by the force ends up in the store, so the change equals the work", "Stores create work", "Work and energy have different units", "Stores only change when nothing moves"], "Work is energy transferred, and that energy shows up as a store change."],
+  ["A pot of water warms on a stove. Was work done on the water?", ["No. Its thermal store increased by heating, not by a force moving it.", "Yes, because the store changed.", "Yes, because the stove pushed the water.", "No, because its energy did not change."], "Stores can change by heating or radiation as well as by work."],
+  ["A cart rolls down a ramp. It loses 3.0 J from its gravitational store but gains only 2.6 J in its kinetic store. Where did the other 0.4 J go?", ["To the thermal store of the cart, ramp and air by friction", "It was destroyed", "Back into the gravitational store", "Into the nuclear store"], "Energy is conserved. Friction spreads some into the thermal store of the surroundings."],
+  ["Water behind a Bow River dam flows through a turbine. Which store starts the chain?", ["Gravitational store of the water", "Chemical store of the water", "Nuclear store of the turbine", "Elastic store of the dam"], "The water is held high, so it has a full gravitational store."],
+  ["In a wind farm, energy goes from the kinetic store of the wind to the kinetic store of the blades. Which pathway is this?", ["Mechanical work", "Electrical", "Radiation", "Heating"], "The moving air pushes on the blades with a force."],
+  ["What happens to the total energy in a chain of transfers?", ["It stays the same", "It gets bigger", "It runs out", "It is destroyed at each step"], "Energy is conserved. Some spreads into the surroundings, but none is lost from the universe."],
+  ["A curling stone slides to a stop. What happened to its kinetic store?", ["It emptied into the thermal store of the ice, stone and air", "It turned into a gravitational store", "It was destroyed by friction", "It moved into the stone’s nuclear store"], "Friction does work, and the energy spreads into thermal stores."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain what an energy store is, and why scientists call it a model.", a: "An energy store is a way of tracking how much energy a system has and where it is, such as the kinetic store of a moving puck. It is a model because there is no real tank inside the object. We work out the amount in each store from things we can measure, like speed, height or temperature.", k: ["Tracks how much energy and where", "Example of a store", "Not a real container", "Amounts come from measurements"]},
+  {q: "Name all eight types of energy store.", a: "Thermal, kinetic, elastic, gravitational, chemical, magnetic, electrostatic and nuclear.", k: ["Thermal, kinetic, elastic", "Gravitational, chemical", "Magnetic, electrostatic, nuclear"]},
+  {q: "Give one Alberta example for each of these stores: gravitational, chemical, kinetic and thermal.", a: "Gravitational: water held behind a dam on the Bow River. Chemical: natural gas and oxygen in a home furnace. Kinetic: an LRT train moving through Edmonton. Thermal: the warm air inside a house in January.", k: ["Gravitational example", "Chemical example", "Kinetic example", "Thermal example"]},
+  {q: "Name the four energy pathways and give an example of each.", a: "Mechanical work: a hockey stick pushes a puck. Electrical: a current runs from a battery to a bulb. Heating: a hot pan warms cold water. Radiation: sunlight warms your face.", k: ["Mechanical work with example", "Electrical with example", "Heating with example", "Radiation with example"]},
+  {q: "Your friend says a flashlight turns light energy into electrical energy. Explain what is wrong and rewrite it using stores and pathways.", a: "Light and electricity are pathways, not stores, and the order is backwards. Energy is transferred from the chemical store of the battery, by an electrical pathway, to the thermal store of the bulb. Then radiation (light) carries energy to the thermal store of the room.", k: ["Light and electrical are pathways", "Starts in the chemical store of the battery", "Electrical pathway to the bulb", "Radiation carries light out"]},
+  {q: "A hoist lifts a 30 kg canoe 2 m onto a rack at steady speed. Calculate the work done and the change in its gravitational store.", a: "Weight = 30 kg × 9.8 N/kg = 294 N. W = F × d = 294 N × 2 m = 588 J. The canoe’s gravitational store increases by 588 J.", k: ["Weight calculated as 294 N", "Uses W = F × d", "Answer 588 J", "Store change equals work done"]},
+  {q: "Explain why a change in an energy store can show how much work was done. When does this link not apply?", a: "When a force moves an object, the energy transferred by that work ends up in a store, such as the gravitational store of a lifted box. So the size of the store change equals the work done. The link does not apply when the store changes by heating or radiation, such as water warming on a stove.", k: ["Work transfers energy into a store", "Store change equals work done", "Example", "Heating or radiation exception"]},
+  {q: "Describe the energy transfers when a skier goes down a slope and slides to a stop at the bottom.", a: "At the top, the skier has a full gravitational store. Going down, energy is transferred by mechanical work (gravity pulling the skier) to the kinetic store. Friction with the snow and air resistance transfer some energy to the thermal store of the skis, snow and air. When the skier stops, all that energy is in the thermal store of the surroundings.", k: ["Starts in gravitational", "Transfers to kinetic", "Friction to thermal", "Ends in the thermal store of surroundings"]},
+  {q: "A cart loses 4.0 J from its gravitational store on a ramp but gains only 3.2 J in its kinetic store. Explain where the missing energy went and whether energy was lost.", a: "The other 0.8 J was transferred by friction to the thermal store of the cart, the ramp and the air. Energy was not destroyed. The total is still 4.0 J, but 0.8 J is spread out and hard to use again.", k: ["0.8 J difference", "Friction to thermal store", "Energy conserved, not destroyed", "Spread out and hard to use"]}
+];
+var LONG = [
+  {q: "Trace the energy from water behind a dam on the Bow River to a kettle of water boiling in a Calgary kitchen. Name each store and pathway, and explain where some energy spreads along the way.", a: "The water behind the dam has a full gravitational store. As it falls through the dam, it does mechanical work on the turbine blades, filling the kinetic store of the spinning turbine. The generator drives a current through power lines, an electrical pathway, to the kettle. In the kettle, the current warms the element and the element heats the water, filling the thermal store of the water. Along the way, friction in the turbine, warm power lines, the kettle body and the kitchen air all gain a little thermal energy. The total energy is conserved, but not all of it reaches the water.", k: ["Gravitational store of water", "Mechanical work on the turbine", "Kinetic store of the turbine", "Electrical pathway through power lines", "Thermal store of the water", "Spreading to the surroundings named"]},
+  {q: "Describe an archery shot at a target as a chain of energy stores and pathways, starting with the archer’s breakfast.", a: "Breakfast and oxygen give the archer’s muscles a chemical store. The muscles do mechanical work pulling the string, filling the elastic store of the bow. When released, the string does mechanical work on the arrow, filling its kinetic store. When the arrow hits, it does work pushing into the target, and its kinetic store empties into the thermal store of the arrow and target, with a little sound. The total energy stays the same.", k: ["Chemical store of food and oxygen", "Work fills the elastic store", "Elastic to kinetic by work", "Kinetic to thermal at the target", "Total conserved"]},
+  {q: "Plan a fair investigation with a cart and a ramp to compare how much energy different surfaces send to the thermal store. Include variables, steps and calculations.", a: "Manipulated variable: the ramp surface (smooth track, wood, carpet). Responding variable: the energy that goes to the thermal store. Controlled variables: the cart, its mass, the release height and the way it is released. Steps: measure the cart’s mass, release it from the same height on each surface, measure its speed at the bottom with a sensor, and repeat three times. Calculate the drop in the gravitational store with ΔE = m × g × h and the kinetic store at the bottom with E = ½ × m × v². The difference is the energy sent to the thermal store. The surface with the biggest difference has the most friction.", k: ["Manipulated and responding variables", "Controlled variables", "Repeated trials", "Uses mgh and ½mv²", "Difference is thermal energy"]},
+  {q: "Some people say energy is “used up” when a phone battery goes flat. Use the ideas of stores, pathways and conservation of energy to agree or disagree.", a: "Disagree. Energy is never used up or destroyed. The chemical store of the battery empties, but the energy is transferred by an electrical pathway to the phone’s parts. The screen sends energy out by radiation as light, and the electronics warm up. In the end, the energy is in the thermal store of the phone, your hand and the air. What is used up is the useful, concentrated energy in the battery. The energy itself is spread out and hard to use again.", k: ["Clear position", "Chemical store empties", "Electrical and radiation pathways", "Ends in thermal stores of surroundings", "Energy conserved but spread out"]}
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["EN1.K1", "An energy store is a model to represent how much energy is available within a system.", "Learn: Lesson 1 (toboggan bar chart) and Lesson 5 (energy spreads). Flashcards, Quiz, Written Review short answer 1, extended 4."],
+    ["EN1.K2", "Change in energy stores can indicate the amount of work done on an object or in a system.", "Learn: Lesson 4 (hoist a load). Lab Bench: Investigation 2 (work and stores calculator with randomized practice) and Investigation 3 (ramp run). Quiz, Written Review short answers 6, 7 and 9, extended 3."],
+    ["EN1.K3", "Types of energy stores include\n• thermal\n• kinetic\n• elastic\n• gravitational\n• chemical\n• magnetic\n• electrostatic\n• nuclear", "Learn: Lesson 2 (store gallery). Sort It: store or pathway and which store fills decks. Flashcards (all eight), Quiz, Written Review short answers 2 and 3."],
+    ["EN1.K4", "Energy is transferred from one energy store to another through a pathway, including\n• heating\n• radiation\n• mechanical work\n• electrical", "Learn: Lesson 3 (pick a device) and Lesson 5 (step through a chain). Lab Bench: Investigations 3 and 4. Sort It: which pathway deck. Quiz, Written Review short answers 4 and 5, extended 1 and 2."],
+    ["EN1.S1", "Identify various types of energy stores.", "Learn: Lesson 2. Lab Bench: Investigation 1 (store spotter). Sort It: which store fills deck. Quiz."],
+    ["EN1.S2", "Provide examples of energy stores.", "Learn: Lesson 2 (Alberta examples for every store). Lab Bench: Investigation 1. Written Review short answer 3."],
+    ["EN1.S3", "Describe how energy is transferred between energy stores through energy pathways.", "Learn: Lessons 3 and 5. Lab Bench: Investigation 4 (build a chain) and Investigation 3. Written Review short answers 5 and 8, extended 1, 2 and 4."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

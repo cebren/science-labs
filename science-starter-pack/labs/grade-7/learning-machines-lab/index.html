@@ -1,0 +1,1271 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/learning-machines-lab/"><meta name="description" content="Machines can learn to perform tasks."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Learning Machines Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a machine learning workbench. Sticky tab strip, then lessons that pair a short reading column with a live model: a heating schedule that learns, a spam filter, a bird call sorter that votes with its nearest neighbours, a learning curve, a book recommender and a task grid. Two class colours run through every model: blue for chickadee, amber for nuthatch. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --ca:#1F5FA6; --ca-soft:#DFEAF7; --cb:#9A5A00; --cb-soft:#F8E9D2; --ai:#6B3FA0; --ai-soft:#ECE3F6;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --ca:#82B4EE; --ca-soft:#172A40; --cb:#F0B45C; --cb-soft:#3A2A12; --ai:#C3A4EC; --ai-soft:#2A1E3C;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --ca:#82B4EE; --ca-soft:#172A40; --cb:#F0B45C; --cb-soft:#3A2A12; --ai:#C3A4EC; --ai-soft:#2A1E3C;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+
+/* ---- Learning Machines additions ---- */
+header h1 .c1{color:var(--ai)} header h1 .c2{color:var(--ca)}
+.credit a{color:var(--water)}
+p.detail{display:block}
+.panel>*,.bench-card>*,.model>*{min-width:0}
+.bench-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:860px){.bench-grid{grid-template-columns:minmax(0,1fr)}}
+.bench-card{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.bench-card h3{font-size:1.3rem}
+.plot svg{min-width:0;max-width:440px;margin:0 auto}
+.plot svg:focus-visible{outline:3px solid var(--water);outline-offset:2px}
+.pt-a{fill:var(--ca);stroke:var(--surface);stroke-width:1.5}
+.pt-b{fill:var(--cb);stroke:var(--surface);stroke-width:1.5}
+.zone-a{fill:var(--ca-soft)} .zone-b{fill:var(--cb-soft)}
+.mystery{fill:var(--surface);stroke:var(--ink);stroke-width:3}
+.nbr{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3}
+.tag-a{color:var(--ca);font-weight:700} .tag-b{color:var(--cb);font-weight:700}
+.dt td.yes{color:var(--good);font-weight:700} .dt td.no{color:var(--bad);font-weight:700}
+.msg{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.9rem}
+.msg .lab{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.lab.spam{background:var(--bad-soft);color:var(--bad)} .lab.ok{background:var(--leaf-soft);color:var(--good)}
+.msgs{display:grid;gap:6px}
+.wordscore{display:flex;flex-wrap:wrap;gap:4px}
+.wordscore span{font-family:var(--f-mono);font-size:.76rem;border:1px solid var(--line);border-radius:6px;padding:1px 6px;background:var(--surface)}
+.wordscore span.pos{border-color:var(--bad);color:var(--bad)} .wordscore span.neg{border-color:var(--good);color:var(--good)}
+.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px}
+.book{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;gap:6px;font-size:.9rem}
+.book b{font-family:var(--f-display);font-size:1rem}
+.book .tags{font-family:var(--f-mono);font-size:.7rem;color:var(--muted)}
+.book.rec{border:2px solid var(--ai);background:var(--ai-soft)}
+.book .row button{padding:4px 10px;font-size:.84rem}
+.taskgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:6px}
+.task{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;background:var(--surface);display:flex;gap:8px;align-items:flex-start}
+.task i{font-style:normal;font-family:var(--f-mono);font-weight:700;width:1.2em;flex:0 0 auto}
+.task.on{border-color:var(--ai);background:var(--ai-soft)}
+.task.on i{color:var(--ai)}
+.task.off{color:var(--muted)}
+.case{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:10px}
+.case h4{font-size:1.1rem}
+.qrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:.92rem}
+.yn{display:flex;gap:4px}
+.yn button{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:4px 10px;cursor:pointer;font-weight:700;color:var(--ink)}
+.yn button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.thermo{width:100%;border-collapse:collapse;font-size:.86rem;min-width:420px}
+.thermo th,.thermo td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;font-variant-numeric:tabular-nums}
+.thermo th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.curve .ln{fill:none;stroke:var(--ai);stroke-width:3}
+.curve .dot{fill:var(--ai)}
+.curve .ln2{fill:none;stroke:var(--fire);stroke-width:3;stroke-dasharray:6 4}
+.curve .dot2{fill:var(--fire)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
+.vs .col{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:6px;align-content:start}
+.vs .col h4{font-size:1.05rem}
+.vs .col ul{font-size:.92rem}
+</style>
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Computer Science · CS2</div>
+    <h1><span class="c1">Learning</span> <span class="c2">Machines</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Machines can learn to perform tasks. In this lab you will watch programs change their behaviour from data, train a bird call sorter, test how the amount and quality of data matter, and compare the narrow AI we use every day with the idea of general AI.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. All the data in these models is made up for practice.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · What AI is</span>
+      <div class="codes"><span class="code">CS2.K1</span></div>
+      <h3>AI changes what it does because of data</h3>
+      <p><b>Artificial intelligence</b>, or <b>AI</b>, is the ability of a machine to adapt its actions. It adapts in response to three things:</p>
+      <ul>
+        <li><b>received data</b>: information it takes in, like sounds, photos or numbers</li>
+        <li><b>prior interactions</b>: what happened the last times it was used</li>
+        <li><b>its environment</b>: the conditions around it right now</li>
+      </ul>
+      <p>To <b>adapt</b> means to change to fit new conditions. An ordinary program does the same thing every time unless a person rewrites it. An AI system can change its own behaviour from experience.</p>
+      <p>Try the model. Both heaters warm a house in Edmonton before the family wakes up. One follows a fixed rule. One learns from the wake-up times it has seen.</p>
+      <p class="key"><b>Big idea:</b> AI is not about looking smart. It is about a machine changing what it does based on data and experience.</p>
+    </div>
+    <div class="model">
+      <h4>Model: fixed heater vs learning heater</h4>
+      <p class="hint">Pick today’s wake-up time, then press Next day. The fixed heater always starts at 6:30. The learning heater starts 30 minutes before the average of the last 5 wake-ups.</p>
+      <div class="row">
+        <label class="field" for="wakeSel">Wake-up time today
+          <select id="wakeSel"></select>
+        </label>
+        <button class="btn" id="dayBtn" type="button">Next day</button>
+        <button class="btn ghost" id="dayReset" type="button">Start over</button>
+      </div>
+      <div class="tablebox"><table class="thermo"><thead><tr><th>Day</th><th>Woke</th><th>Fixed starts</th><th>Warm?</th><th>Learner starts</th><th>Warm?</th></tr></thead><tbody id="thermoBody"></tbody></table></div>
+      <p class="detail" id="thermoNote" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · AI vs other programs</span>
+      <div class="codes"><span class="code">CS2.K1</span><span class="code">CS2.S1</span><span class="code">CS2.S2</span></div>
+      <h3>Rules written by people, or patterns found in data</h3>
+      <p>In an <b>ordinary program</b>, a programmer writes every rule. The same input always gives the same output. A calculator is a good example.</p>
+      <p>In many AI programs, people do not write the rules for the task. They give the program <b>examples</b>. The program finds its own patterns in those examples and uses them to decide what to do.</p>
+      <p>The model shows two spam filters. <b>Spam</b> is unwanted junk messages. The rule filter has one rule a person wrote. The learning filter gives each word a score from messages you label.</p>
+      <p>To decide if a technology uses AI, ask three questions:</p>
+      <ol>
+        <li>Was it trained on data or examples?</li>
+        <li>Does it find patterns to make predictions or decisions?</li>
+        <li>Does its behaviour change with new data or experience?</li>
+      </ol>
+      <p class="note">If the answer to all three is no, it is an ordinary program, even if it seems clever. Practise this on the Lab Bench.</p>
+    </div>
+    <div class="model">
+      <h4>Model: rule filter vs learning filter</h4>
+      <p class="hint">Label each training message as Spam or OK. Then check the test message. The learning filter adds up its word scores: above 0 means spam.</p>
+      <div class="msgs" id="trainMsgs"></div>
+      <div class="worked">
+        <b>Test message</b>
+        <label class="field" for="testMsg">Choose a test message
+          <select id="testMsg"></select>
+        </label>
+        <div id="filterOut" aria-live="polite"></div>
+      </div>
+      <div><b class="tagline">Word scores the learner found</b><div class="wordscore" id="wordScores"></div></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Machine learning</span>
+      <div class="codes"><span class="code">CS2.K2</span><span class="code">CS2.S3</span></div>
+      <h3>Machine learning is trained from data</h3>
+      <p><b>Machine learning</b> is a type of AI that is trained from data. <b>Training</b> means showing the program many examples so it can find patterns.</p>
+      <p>Here a sorter learns to tell two Edmonton birds apart by their calls: the <span class="tag-a">black-capped chickadee</span> and the <span class="tag-b">red-breasted nuthatch</span>. Each dot is one recorded call with a known answer, called a <b>label</b>.</p>
+      <p>The sorter uses a simple method. To label a mystery call, it finds the 3 training calls closest to it and lets them vote. The shaded areas show what it would predict anywhere on the plot.</p>
+      <ul>
+        <li>It <b>identifies patterns</b>: chickadee calls cluster in one area.</li>
+        <li>It <b>makes predictions</b>: it labels calls it has never heard.</li>
+      </ul>
+      <p class="note">The pitch and length scores are made up for practice. Real bird sound apps use far more features and far more examples.</p>
+    </div>
+    <div class="model plot">
+      <h4>Model: bird call sorter</h4>
+      <p class="hint">Move the mystery call with the sliders, or focus the plot and use the arrow keys. To add training data, pick a label and click the plot or press Add at mystery.</p>
+      <div class="svgbox fit" id="knnBox"></div>
+      <div class="slots">
+        <label class="field" for="mxP">Pitch score <span class="num" id="mxPv"></span><input type="range" id="mxP" min="0" max="10" step="0.1" value="5"></label>
+        <label class="field" for="mxL">Length score <span class="num" id="mxLv"></span><input type="range" id="mxL" min="0" max="10" step="0.1" value="5"></label>
+      </div>
+      <div class="row">
+        <div class="chips" role="group" aria-label="Label for new training call">
+          <button class="chip" type="button" data-lab="a" aria-pressed="true">Chickadee</button>
+          <button class="chip" type="button" data-lab="b" aria-pressed="false">Nuthatch</button>
+        </div>
+        <button class="btn ghost" type="button" id="knnAdd">Add at mystery</button>
+        <button class="btn ghost" type="button" id="knnReset">Reset data</button>
+      </div>
+      <p class="detail" id="knnOut" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Learning over time</span>
+      <div class="codes"><span class="code">CS2.K2</span><span class="code">CS2.S3</span></div>
+      <h3>More data, better data, new data</h3>
+      <p>Machine learning can <b>improve its performance over time</b>. Usually this happens because it gets more examples to learn from. Nobody writes new rules. The program updates itself from the data.</p>
+      <p>We measure performance with <b>accuracy</b>: the percent of test examples it gets right.</p>
+      <div class="formula">accuracy = correct ÷ total × 100%</div>
+      <p>Data matters in three ways:</p>
+      <ul>
+        <li><b>Amount</b>: a few examples give a rough guess. More examples usually help, up to a point.</li>
+        <li><b>Quality</b>: wrong labels teach wrong patterns.</li>
+        <li><b>Fit</b>: the training data must match the real world. If the world changes, the program must <b>adapt based on new data</b>.</li>
+      </ul>
+      <p>When training data leaves out some kinds of examples, the program can be unfair or wrong for those cases. This is called <b>bias in data</b>.</p>
+    </div>
+    <div class="model">
+      <h4>Model: learning curve</h4>
+      <p class="hint">The sorter is trained again and again with more examples, then tested on 100 new calls. Change the wrong labels slider to see what bad data does.</p>
+      <label class="field" for="noiseR">Wrong labels in training data: <span class="num" id="noiseV">0%</span>
+        <input type="range" id="noiseR" min="0" max="40" step="5" value="0"></label>
+      <div class="svgbox fit curve" id="curveBox"></div>
+      <div class="legend"><span><i style="background:var(--ai)"></i>Clean labels</span><span><i style="background:var(--fire)"></i>With wrong labels</span></div>
+      <h4>New data: a change in the world</h4>
+      <p class="hint">Pretend a new microphone records every call as longer. The old sorter was trained before the change.</p>
+      <div class="row">
+        <button class="btn ghost" type="button" id="shiftOld">Test old sorter on new calls</button>
+        <button class="btn" type="button" id="shiftNew">Retrain with new calls</button>
+      </div>
+      <p class="detail" id="shiftOut" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Narrow AI</span>
+      <div class="codes"><span class="code">CS2.K3</span><span class="code">CS2.K1</span></div>
+      <h3>Narrow AI does one kind of job</h3>
+      <p><b>Narrow AI</b> is designed to perform a specific task. Almost all the AI you meet is narrow AI:</p>
+      <ul>
+        <li><b>voice recognition</b> turns speech into words or commands</li>
+        <li><b>recommendation algorithms</b> suggest songs, videos or books from what you liked before</li>
+        <li>spam filters, face unlock, map apps that predict traffic</li>
+      </ul>
+      <p>An <b>algorithm</b> is a set of steps for solving a problem. A recommender learns from your <b>prior interactions</b>, like the things you liked or skipped.</p>
+      <p>Narrow AI can be very good at its job. A team at the University of Alberta in Edmonton built Chinook, a checkers program that could not be beaten. But Chinook could not play chess or recognize a voice. Edmonton is also home to Amii, the Alberta Machine Intelligence Institute, where people research machine learning.</p>
+    </div>
+    <div class="model">
+      <h4>Model: library book recommender</h4>
+      <p class="hint">Press Like or Skip on any book. The recommender adds +1 or −1 to each of the book’s tags, then suggests the unrated books with the highest total.</p>
+      <div class="books" id="books"></div>
+      <p class="detail" id="recOut" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="recReset">Start over</button>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · General AI</span>
+      <div class="codes"><span class="code">CS2.K4</span><span class="code">CS2.S4</span></div>
+      <h3>General AI would work across many tasks</h3>
+      <p><b>General AI</b> is AI designed to show human-like intelligence, reasoning and adaptability across a wide range of tasks. It would learn a new kind of task the way a person can, and use what it knows in new situations.</p>
+      <p>General AI is a goal that researchers talk about. Today, no system is widely accepted as general AI. Experts disagree about whether or when it will be built. Some chatbots can help with many kinds of writing and questions, but they still make mistakes a thinking person would not, and they are not widely accepted as general AI.</p>
+      <div class="vs">
+        <div class="col"><h4>Narrow AI</h4><ul><li>One specific task</li><li>Exists and is used every day</li><li>Trained for its job only</li></ul></div>
+        <div class="col"><h4>General AI</h4><ul><li>A wide range of tasks</li><li>A goal, not widely accepted as built</li><li>Would reason and adapt like a person</li></ul></div>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Model: what can it do?</h4>
+      <p class="hint">Pick a system. Highlighted tasks are ones it is designed to do.</p>
+      <div class="chips" role="group" aria-label="System" id="sysChips"></div>
+      <div class="taskgrid" id="taskGrid"></div>
+      <p class="detail" id="sysOut" aria-live="polite"></p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Three investigations. Your trials are saved in this browser.</p>
+  </div>
+
+  <div class="bench-card">
+    <span class="step eyebrow">Investigation 1 · CS2.S1 · CS2.S2</span>
+    <h3>Is it AI?</h3>
+    <p>Read each case file. Answer the three questions from Lesson 2, then check your verdict.</p>
+    <div class="row">
+      <label class="field" for="caseSel">Case file
+        <select id="caseSel"></select>
+      </label>
+      <span class="hint" id="caseScore"></span>
+    </div>
+    <div class="case" id="caseBox"></div>
+  </div>
+
+  <div class="bench-card">
+    <span class="step eyebrow">Investigation 2 · CS2.S3</span>
+    <h3>Train and test a bird call sorter</h3>
+    <p>Question: how do the amount and quality of training data affect accuracy? Change one variable at a time. Each trial makes new practice calls, trains the sorter, then tests it on 40 calls it has never seen.</p>
+    <div class="bench-grid">
+      <div class="model">
+        <label class="field" for="bnN">Training calls: <span class="num" id="bnNv"></span><input type="range" id="bnN" min="4" max="80" step="2" value="20"></label>
+        <label class="field" for="bnNoise">Wrong labels: <span class="num" id="bnNoisev"></span><input type="range" id="bnNoise" min="0" max="40" step="5" value="0"></label>
+        <label class="field" for="bnBias">Which calls are in the training data?
+          <select id="bnBias">
+            <option value="all">All kinds of calls</option>
+            <option value="short">Only short calls (biased data)</option>
+          </select>
+        </label>
+        <div class="row"><button class="btn" id="bnRun" type="button">Run trial</button><button class="btn ghost" id="bnClear" type="button">Clear results</button></div>
+        <p class="detail" id="bnOut" aria-live="polite"></p>
+      </div>
+      <div class="model plot"><div class="svgbox fit" id="bnPlot"></div><p class="hint">Dots are training calls. Rings are test calls: a filled ring was sorted correctly, a crossed ring was wrong.</p></div>
+    </div>
+    <div class="tablebox"><table class="dt"><thead><tr><th>Trial</th><th>Training calls</th><th>Wrong labels</th><th>Data</th><th>Correct</th><th>Accuracy</th></tr></thead><tbody id="bnTable"></tbody></table></div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>A sorter labels 40 test calls and gets 34 right.</span>
+      <span class="mono">accuracy = correct ÷ total × 100% = 34 ÷ 40 × 100% = 85%</span>
+      <span>It got 40 − 34 = 6 wrong, so its error rate is 6 ÷ 40 × 100% = 15%.</span>
+    </div>
+    <div class="worked">
+      <b>Practice</b>
+      <span id="prQ"></span>
+      <div class="row">
+        <label class="field" for="prA">Your answer (%)<input type="number" id="prA" step="0.1"></label>
+        <button class="btn" id="prCheck" type="button">Check</button>
+        <button class="btn ghost" id="prNew" type="button">New problem</button>
+      </div>
+      <p class="fb" id="prFb" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="bench-card">
+    <span class="step eyebrow">Investigation 3 · CS2.S4</span>
+    <h3>Narrow or general: task test</h3>
+    <p>Give a system a task and see what happens. Find out which tasks each system can and cannot do, then compare.</p>
+    <div class="slots">
+      <label class="field" for="ttSys">System<select id="ttSys"></select></label>
+      <label class="field" for="ttTask">Task<select id="ttTask"></select></label>
+    </div>
+    <div class="row"><button class="btn" id="ttRun" type="button">Try it</button></div>
+    <p class="detail" id="ttOut" aria-live="polite"></p>
+    <p class="hint" id="ttTally"></p>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Is it an ordinary program, narrow AI, or general AI? Tap the right bin.</p>
+  </div>
+  <div class="sort">
+    <div class="sortcard" id="sortCard"></div>
+    <div class="bins" id="sortBins"></div>
+    <div class="feedback" id="sortFb" aria-live="polite"></div>
+    <div class="row"><span class="hint" id="sortScore"></span><button class="btn ghost" id="sortNew" type="button">New round</button></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each one as known or still learning.</p>
+  </div>
+  <div class="fc">
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint" id="fcCount" aria-live="polite"></p>
+    <button class="card3" id="fcCard" type="button"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcLearn" type="button">Still learning</button>
+      <button class="btn ghost" id="fcNext" type="button">Next</button>
+    </div>
+    <label class="field" for="fcOnly" style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" id="fcOnly"> Show only cards I am still learning</label>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <p class="hint" id="qzStat" aria-live="polite"></p>
+    <div id="qzBox"></div>
+    <div class="row"><button class="btn" id="qzNew" type="button">New round</button></div>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included.</p>
+  </div>
+  <div class="wr" id="wrShort"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="wrLong"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills and procedures (S) statement for Science 7 CS2, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody id="covBody"></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul>
+      <li><b>CS2.K1:</b> The draft definition is broad. A simple thermostat also responds to data from its environment. The lab teaches AI as a machine that changes its own behaviour from data and experience, beyond fixed rules that a person wrote. Definitions of AI vary; many also mention tasks that usually need human intelligence.</li>
+      <li><b>CS2.K2:</b> “Without additional programming” is taught as without a programmer writing new rules for the task. People still collect data, retrain and update models. Many apps use a model that stays the same until its makers retrain it, so improvement is not always automatic.</li>
+      <li><b>CS2.K3:</b> Voice recognition and recommendation algorithms are taught as narrow AI. Chinook (University of Alberta checkers program) and Amii (Alberta Machine Intelligence Institute, Edmonton) are named as local context; please verify wording.</li>
+      <li><b>CS2.K4:</b> General AI is taught as a goal that no system is widely accepted as reaching. Experts disagree about whether or when it will be built. Chatbots that handle many writing tasks are mentioned as harder to classify. This is a fast-changing area, so please re-check before teaching.</li>
+      <li><b>CS2.S3:</b> Bias in data, wrong labels and data that no longer fits the world are added to explain the role of data. The k-nearest-neighbour sorter (k = 3), bird call scores, spam messages, books and accuracy results are all made up for practice.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-cs2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, html){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (html != null) n.innerHTML = html;
+  return n;
+}
+function sv(tag, attrs){ var n = document.createElementNS(NS, tag); if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+function gauss(){ var u = 1 - Math.random(), v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+
+/* ---------- tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.getAttribute("data-tab") === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.getAttribute("aria-controls")).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  if (location.hash !== "#" + name) { try { history.replaceState(null, "", "#" + name); } catch(e) { location.hash = name; } }
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.getAttribute("data-tab")); });
+  b.addEventListener("keydown", function(e){
+    var k = e.key, j = -1;
+    if (k === "ArrowRight") j = (i + 1) % tabBtns.length;
+    else if (k === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    else if (k === "Home") j = 0;
+    else if (k === "End") j = tabBtns.length - 1;
+    if (j >= 0) { e.preventDefault(); showTab(tabBtns[j].getAttribute("data-tab"), true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+showTab(location.hash.slice(1));
+
+/* ---------- shared bird call data ---------- */
+var MEAN = { a: [7, 3.5], b: [4.5, 5.6] };
+function makeCall(lab, shift){
+  return { p: clamp(MEAN[lab][0] + gauss() * 1.25, 0.2, 9.8), l: clamp(MEAN[lab][1] + gauss() * 1.25 + (shift || 0), 0.2, 9.8), lab: lab };
+}
+function makeSet(n, shift){ var out = []; for (var i = 0; i < n; i++) out.push(makeCall(Math.random() < 0.5 ? "b" : "a", shift)); return shuffle(out); }
+function knn(train, p, l, k){
+  k = Math.min(k || 3, train.length);
+  if (!train.length) return { lab: null, nbrs: [] };
+  var d = train.map(function(t){ return { t: t, d: Math.hypot(t.p - p, t.l - l) }; }).sort(function(x, y){ return x.d - y.d; }).slice(0, k);
+  var va = d.filter(function(x){ return x.t.lab === "a"; }).length;
+  return { lab: va * 2 > d.length ? "a" : (va * 2 < d.length ? "b" : d[0].t.lab), nbrs: d.map(function(x){ return x.t; }), va: va, vb: d.length - va };
+}
+function accuracy(train, test){ var c = 0; test.forEach(function(t){ if (knn(train, t.p, t.l).lab === t.lab) c++; }); return c; }
+var NAME = { a: "chickadee", b: "nuthatch" };
+
+function plotFrame(box, label){
+  var s = sv("svg", { viewBox: "0 0 340 330", role: "img", "aria-label": label });
+  box.innerHTML = ""; box.appendChild(s);
+  return s;
+}
+var PX = function(p){ return 40 + p * 29; }, PY = function(l){ return 290 - l * 28; };
+function axes(s){
+  for (var i = 0; i <= 10; i += 2) {
+    s.appendChild(sv("line", { x1: PX(i), x2: PX(i), y1: PY(0), y2: PY(10), class: "grid" }));
+    s.appendChild(sv("line", { y1: PY(i), y2: PY(i), x1: PX(0), x2: PX(10), class: "grid" }));
+    var t = sv("text", { x: PX(i), y: 306, "text-anchor": "middle", class: "small" }); t.textContent = i; s.appendChild(t);
+    var t2 = sv("text", { x: 32, y: PY(i) + 4, "text-anchor": "end", class: "small" }); t2.textContent = i; s.appendChild(t2);
+  }
+  var xl = sv("text", { x: PX(5), y: 324, "text-anchor": "middle", class: "small" }); xl.textContent = "Pitch score (higher = higher sound)"; s.appendChild(xl);
+  var yl = sv("text", { x: 12, y: PY(5), "text-anchor": "middle", class: "small", transform: "rotate(-90 12 " + PY(5) + ")" }); yl.textContent = "Length score"; s.appendChild(yl);
+}
+function zones(s, train){
+  var g = sv("g", { "aria-hidden": "true" });
+  for (var i = 0; i < 20; i++) for (var j = 0; j < 20; j++) {
+    var p = i * 0.5 + 0.25, l = j * 0.5 + 0.25, r = knn(train, p, l);
+    if (!r.lab) continue;
+    g.appendChild(sv("rect", { x: PX(i * 0.5), y: PY(j * 0.5 + 0.5), width: 14.6, height: 14.1, class: "zone-" + r.lab }));
+  }
+  s.appendChild(g);
+}
+function dots(s, list){
+  list.forEach(function(t){ s.appendChild(sv("circle", { cx: PX(t.p), cy: PY(t.l), r: 5, class: "pt-" + t.lab })); });
+}
+
+/* ---------- Lesson 1: thermostat ---------- */
+var WAKES = ["5:30","6:00","6:30","7:00","7:30","8:00","8:30","9:00"];
+function toMin(s){ var a = s.split(":"); return +a[0] * 60 + +a[1]; }
+function toTime(m){ m = Math.round(m / 5) * 5; return Math.floor(m / 60) + ":" + ("0" + (m % 60)).slice(-2); }
+WAKES.forEach(function(w){ var o = el("option", { value: w }, w); if (w === "7:00") o.selected = true; $("wakeSel").appendChild(o); });
+var thermo = [];
+function renderThermo(){
+  var body = $("thermoBody"); body.innerHTML = "";
+  var learned = [];
+  var fixedOK = 0, learnOK = 0;
+  thermo.forEach(function(w, i){
+    var wm = toMin(w);
+    var recent = learned.slice(-5);
+    var lstart = recent.length ? recent.reduce(function(a, b){ return a + b; }, 0) / recent.length - 30 : 390;
+    var fOK = 390 <= wm - 20 && 390 >= wm - 90, lOK = lstart <= wm - 20 && lstart >= wm - 90;
+    if (fOK) fixedOK++; if (lOK) learnOK++;
+    var tr = el("tr");
+    tr.innerHTML = "<td>" + (i + 1) + "</td><td>" + w + "</td><td>6:30</td><td class='" + (fOK ? "yes" : "no") + "'>" + (fOK ? "Yes" : (390 > wm - 20 ? "Cold" : "Wasted heat")) + "</td><td>" + toTime(lstart) + "</td><td class='" + (lOK ? "yes" : "no") + "'>" + (lOK ? "Yes" : (lstart > wm - 20 ? "Cold" : "Wasted heat")) + "</td>";
+    body.appendChild(tr);
+    learned.push(wm);
+  });
+  var next = learned.slice(-5);
+  var nstart = next.length ? next.reduce(function(a, b){ return a + b; }, 0) / next.length - 30 : 390;
+  $("thermoNote").innerHTML = thermo.length
+    ? "After " + thermo.length + " days the fixed heater was on time " + fixedOK + " times. The learning heater was on time " + learnOK + " times. Tomorrow the learner will start at <b>" + toTime(nstart) + "</b>. The fixed heater will still start at 6:30, because nobody changed its rule."
+    : "No days yet. A start is on time if the heater turns on 20 to 90 minutes before wake-up. Try a week of late wake-ups, like 8:30.";
+}
+$("dayBtn").addEventListener("click", function(){ thermo.push($("wakeSel").value); if (thermo.length > 10) thermo.shift(); renderThermo(); });
+$("dayReset").addEventListener("click", function(){ thermo = []; renderThermo(); });
+renderThermo();
+
+/* ---------- Lesson 2: spam filters ---------- */
+var TRAIN_MSGS = [
+  { t: "Win a free phone now, click here", spam: true },
+  { t: "Practice moved to 4:00 at the rink", spam: false },
+  { t: "Claim your prize, click to win cash", spam: true },
+  { t: "Can you bring the science notes tomorrow", spam: false },
+  { t: "Free gift card for you, claim now", spam: true },
+  { t: "Grandma says the bus is late today", spam: false }
+];
+var TEST_MSGS = [
+  "Click now to claim cash",
+  "Free hot dogs at the school fair tomorrow",
+  "You win a prize today",
+  "Bring your notes to practice",
+  "Get rich quick, click here now"
+];
+var STOP = ["a","the","to","at","for","you","your","is","can","says","here","now","today","tomorrow","get"];
+var labels = TRAIN_MSGS.map(function(m){ return m.spam; });
+function words(s){ return s.toLowerCase().replace(/[^a-z0-9: ]/g, "").split(" ").filter(function(w){ return w && STOP.indexOf(w) < 0; }); }
+function wordScores(){
+  var sc = {};
+  TRAIN_MSGS.forEach(function(m, i){
+    var seen = {};
+    words(m.t).forEach(function(w){ if (seen[w]) return; seen[w] = 1; sc[w] = (sc[w] || 0) + (labels[i] ? 1 : -1); });
+  });
+  return sc;
+}
+function renderSpam(){
+  var box = $("trainMsgs"); box.innerHTML = "";
+  TRAIN_MSGS.forEach(function(m, i){
+    var row = el("div", { class: "msg" });
+    row.appendChild(el("span", null, esc(m.t)));
+    var b = el("button", { type: "button", class: "lab " + (labels[i] ? "spam" : "ok"), "aria-label": "Message " + (i + 1) + " is labelled " + (labels[i] ? "spam" : "OK") + ". Press to switch." }, labels[i] ? "Spam" : "OK");
+    b.style.border = "0"; b.style.cursor = "pointer";
+    b.addEventListener("click", function(){ labels[i] = !labels[i]; renderSpam(); });
+    row.appendChild(b); box.appendChild(row);
+  });
+  var sc = wordScores();
+  var ws = $("wordScores"); ws.innerHTML = "";
+  Object.keys(sc).sort(function(a, b){ return sc[b] - sc[a]; }).forEach(function(w){
+    if (!sc[w]) return;
+    ws.appendChild(el("span", { class: sc[w] > 0 ? "pos" : "neg" }, esc(w) + " " + (sc[w] > 0 ? "+" : "−") + Math.abs(sc[w])));
+  });
+  var msg = $("testMsg").value, ws2 = words(msg), total = 0, used = [];
+  ws2.forEach(function(w){ if (sc[w]) { total += sc[w]; used.push(w + " " + (sc[w] > 0 ? "+" : "−") + Math.abs(sc[w])); } });
+  var rule = /free/i.test(msg);
+  $("filterOut").innerHTML =
+    "<p><b>Rule filter</b> (rule: if the message has the word “free”, it is spam): <span class='lab " + (rule ? "spam" : "ok") + "'>" + (rule ? "Spam" : "OK") + "</span></p>" +
+    "<p><b>Learning filter</b>: " + (used.length ? used.join(", ") : "no known words") + " → total " + (total > 0 ? "+" : total < 0 ? "−" : "") + Math.abs(total) + " → <span class='lab " + (total > 0 ? "spam" : "ok") + "'>" + (total > 0 ? "Spam" : "OK") + "</span></p>" +
+    "<p class='hint'>Switch some labels and watch the learning filter change. The rule filter never changes unless a person rewrites its rule.</p>";
+}
+TEST_MSGS.forEach(function(m){ $("testMsg").appendChild(el("option", { value: m }, esc(m))); });
+$("testMsg").addEventListener("change", renderSpam);
+renderSpam();
+
+/* ---------- Lesson 3: kNN sorter ---------- */
+var BASE = [[7.6,3.1,"a"],[6.4,2.6,"a"],[8.1,4.2,"a"],[6.9,3.9,"a"],[7.3,2.2,"a"],[5.9,3.4,"a"],[8.4,3.3,"a"],[6.6,4.6,"a"],
+            [4.2,5.4,"b"],[5.1,6.3,"b"],[3.6,6.0,"b"],[4.8,4.8,"b"],[3.9,7.1,"b"],[5.4,5.6,"b"],[2.9,5.2,"b"],[4.5,6.8,"b"]];
+var kTrain, mx = { p: 5.8, l: 4.6 }, addLab = "a";
+function resetK(){ kTrain = BASE.map(function(x){ return { p: x[0], l: x[1], lab: x[2] }; }); }
+resetK();
+var kBox = $("knnBox");
+function renderK(){
+  var s = plotFrame(kBox, "Bird call sorter plot. Pitch across, length up. Arrow keys move the mystery call. Enter adds a training call there.");
+  s.setAttribute("tabindex", "0"); s.setAttribute("role", "application");
+  zones(s, kTrain); axes(s);
+  var r = knn(kTrain, mx.p, mx.l);
+  r.nbrs.forEach(function(t){ s.appendChild(sv("line", { x1: PX(mx.p), y1: PY(mx.l), x2: PX(t.p), y2: PY(t.l), class: "nbr" })); });
+  dots(s, kTrain);
+  s.appendChild(sv("circle", { cx: PX(mx.p), cy: PY(mx.l), r: 8, class: "mystery" }));
+  var q = sv("text", { x: PX(mx.p), y: PY(mx.l) + 4, "text-anchor": "middle", class: "lbl" }); q.textContent = "?"; s.appendChild(q);
+  s.addEventListener("click", function(e){
+    var pt = s.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    var m = s.getScreenCTM(); if (!m) return; var p = pt.matrixTransform(m.inverse());
+    var P = (p.x - 40) / 29, L = (290 - p.y) / 28;
+    if (P < 0 || P > 10 || L < 0 || L > 10) return;
+    kTrain.push({ p: P, l: L, lab: addLab }); renderK();
+  });
+  s.addEventListener("keydown", function(e){
+    var d = { ArrowRight: [0.2, 0], ArrowLeft: [-0.2, 0], ArrowUp: [0, 0.2], ArrowDown: [0, -0.2] }[e.key];
+    if (d) { e.preventDefault(); mx.p = clamp(mx.p + d[0], 0, 10); mx.l = clamp(mx.l + d[1], 0, 10); syncSliders(); renderK(); kBox.querySelector("svg").focus(); }
+    else if (e.key === "Enter") { e.preventDefault(); kTrain.push({ p: mx.p, l: mx.l, lab: addLab }); renderK(); kBox.querySelector("svg").focus(); }
+  });
+  var na = kTrain.filter(function(t){ return t.lab === "a"; }).length;
+  $("knnOut").innerHTML = "The 3 nearest training calls vote: <span class='tag-a'>" + r.va + " chickadee</span>, <span class='tag-b'>" + r.vb + " nuthatch</span>. Prediction: <b class='tag-" + r.lab + "'>" + NAME[r.lab] + "</b>. Training data: " + kTrain.length + " calls (" + na + " chickadee, " + (kTrain.length - na) + " nuthatch).";
+}
+function syncSliders(){ $("mxP").value = mx.p.toFixed(1); $("mxL").value = mx.l.toFixed(1); $("mxPv").textContent = mx.p.toFixed(1); $("mxLv").textContent = mx.l.toFixed(1); }
+$("mxP").addEventListener("input", function(){ mx.p = +this.value; syncSliders(); renderK(); });
+$("mxL").addEventListener("input", function(){ mx.l = +this.value; syncSliders(); renderK(); });
+Array.prototype.forEach.call(document.querySelectorAll("[data-lab]"), function(b){
+  b.addEventListener("click", function(){
+    addLab = b.getAttribute("data-lab");
+    document.querySelectorAll("[data-lab]").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+  });
+});
+$("knnAdd").addEventListener("click", function(){ kTrain.push({ p: mx.p, l: mx.l, lab: addLab }); renderK(); });
+$("knnReset").addEventListener("click", function(){ resetK(); renderK(); });
+syncSliders(); renderK();
+
+/* ---------- Lesson 4: learning curve ---------- */
+var SIZES = [2, 4, 8, 16, 32, 64];
+function noisy(set, pct){ return set.map(function(t){ return Math.random() * 100 < pct ? { p: t.p, l: t.l, lab: t.lab === "a" ? "b" : "a" } : t; }); }
+function curve(pct){
+  return SIZES.map(function(n){
+    var sum = 0, R = 12;
+    for (var r = 0; r < R; r++) { var tr = noisy(makeSet(n), pct); sum += accuracy(tr, makeSet(100)); }
+    return sum / R;
+  });
+}
+function renderCurve(){
+  var pct = +$("noiseR").value; $("noiseV").textContent = pct + "%";
+  var c1 = curve(0), c2 = pct ? curve(pct) : null;
+  var s = sv("svg", { viewBox: "0 0 340 220", role: "img", "aria-label": "Learning curve. Accuracy with clean labels: " + c1.map(function(v, i){ return SIZES[i] + " examples " + Math.round(v) + "%"; }).join(", ") + (c2 ? ". With " + pct + "% wrong labels: " + c2.map(function(v){ return Math.round(v) + "%"; }).join(", ") : "") });
+  var X = function(i){ return 50 + i * 54; }, Y = function(v){ return 180 - (v - 40) * 2.6; };
+  [40, 60, 80, 100].forEach(function(v){
+    s.appendChild(sv("line", { x1: 50, x2: 320, y1: Y(v), y2: Y(v), class: "grid" }));
+    var t = sv("text", { x: 44, y: Y(v) + 4, "text-anchor": "end", class: "small" }); t.textContent = v + "%"; s.appendChild(t);
+  });
+  SIZES.forEach(function(n, i){ var t = sv("text", { x: X(i), y: 198, "text-anchor": "middle", class: "small" }); t.textContent = n; s.appendChild(t); });
+  var xl = sv("text", { x: 185, y: 216, "text-anchor": "middle", class: "small" }); xl.textContent = "Number of training calls"; s.appendChild(xl);
+  function line(c, cl, dl){
+    s.appendChild(sv("polyline", { points: c.map(function(v, i){ return X(i) + "," + Y(v); }).join(" "), class: cl }));
+    c.forEach(function(v, i){ s.appendChild(sv("circle", { cx: X(i), cy: Y(v), r: 4, class: dl })); });
+  }
+  line(c1, "ln", "dot"); if (c2) line(c2, "ln2", "dot2");
+  $("curveBox").innerHTML = ""; $("curveBox").appendChild(s);
+}
+$("noiseR").addEventListener("change", renderCurve);
+$("noiseR").addEventListener("input", function(){ $("noiseV").textContent = this.value + "%"; });
+renderCurve();
+var shiftTrain = null;
+$("shiftOld").addEventListener("click", function(){
+  var old = makeSet(40), before = accuracy(old, makeSet(100)), after = accuracy(old, makeSet(100, 3));
+  $("shiftOut").innerHTML = "Old sorter on old-style calls: <b>" + before + "%</b>. Same sorter on calls from the new microphone: <b>" + after + "%</b>. The world changed, but the sorter did not. Chickadee calls now look long, so many are sorted as nuthatch.";
+});
+$("shiftOut").textContent = "Press a button to run the test. Each run uses new practice calls, so results vary a little.";
+$("shiftNew").addEventListener("click", function(){
+  var nw = makeSet(40, 3), acc = accuracy(nw, makeSet(100, 3));
+  $("shiftOut").innerHTML = "Retrained on 40 calls from the new microphone, the sorter scores <b>" + acc + "%</b> on new calls. Nobody wrote a new rule. The sorter <b>adapted based on new data</b>.";
+});
+
+/* ---------- Lesson 5: recommender ---------- */
+var BOOKS = [
+  { t: "Ice Road Rescue", g: ["adventure","winter"] },
+  { t: "The Robot Who Gardened", g: ["science","funny"] },
+  { t: "Goalie Dreams", g: ["sports","friends"] },
+  { t: "Secrets of the Badlands", g: ["mystery","science"] },
+  { t: "Canoe the North Saskatchewan", g: ["adventure","nature"] },
+  { t: "My Dog Ate the Telescope", g: ["funny","science"] },
+  { t: "The Last Hockey Card", g: ["sports","mystery"] },
+  { t: "Owl Night", g: ["nature","mystery"] },
+  { t: "Snow Fort Wars", g: ["funny","winter","friends"] },
+  { t: "Dinosaur Dig", g: ["science","nature"] }
+];
+var rate = {};
+function renderBooks(){
+  var sc = {};
+  Object.keys(rate).forEach(function(i){ BOOKS[i].g.forEach(function(g){ sc[g] = (sc[g] || 0) + rate[i]; }); });
+  var scores = BOOKS.map(function(b, i){ return { i: i, s: b.g.reduce(function(a, g){ return a + (sc[g] || 0); }, 0) }; });
+  var unr = scores.filter(function(x){ return rate[x.i] == null; }).sort(function(a, b){ return b.s - a.s; });
+  var any = Object.keys(rate).length > 0;
+  var recs = any ? unr.filter(function(x){ return x.s > 0; }).slice(0, 3).map(function(x){ return x.i; }) : [];
+  var box = $("books"); box.innerHTML = "";
+  BOOKS.forEach(function(b, i){
+    var c = el("div", { class: "book" + (recs.indexOf(i) >= 0 ? " rec" : "") });
+    c.appendChild(el("b", null, esc(b.t)));
+    c.appendChild(el("span", { class: "tags" }, b.g.join(" · ")));
+    var row = el("div", { class: "row" });
+    if (rate[i] == null) {
+      var l = el("button", { type: "button", class: "btn ghost", "aria-label": "Like " + b.t }, "Like");
+      var k = el("button", { type: "button", class: "btn ghost", "aria-label": "Skip " + b.t }, "Skip");
+      l.addEventListener("click", function(){ rate[i] = 1; renderBooks(); });
+      k.addEventListener("click", function(){ rate[i] = -1; renderBooks(); });
+      row.appendChild(l); row.appendChild(k);
+      if (recs.indexOf(i) >= 0) row.appendChild(el("span", { class: "tagline" }, "Recommended"));
+    } else row.appendChild(el("span", { class: "tagline" }, rate[i] > 0 ? "You liked this" : "You skipped this"));
+    c.appendChild(row); box.appendChild(c);
+  });
+  var tags = Object.keys(sc).filter(function(g){ return sc[g]; }).sort(function(a, b){ return sc[b] - sc[a]; });
+  $("recOut").innerHTML = any
+    ? "Tag scores: " + tags.map(function(g){ return g + " " + (sc[g] > 0 ? "+" : "−") + Math.abs(sc[g]); }).join(", ") + ". " + (recs.length ? "Recommended: <b>" + recs.map(function(i){ return esc(BOOKS[i].t); }).join(", ") + "</b>." : "No book has a positive score yet.") + " This is narrow AI: it only recommends books."
+    : "No ratings yet, so the recommender knows nothing about you. Like or skip a few books.";
+}
+$("recReset").addEventListener("click", function(){ rate = {}; renderBooks(); });
+renderBooks();
+
+/* ---------- Lesson 6 + Bench 3: systems and tasks ---------- */
+var TASKS = ["Turn speech into text","Suggest a song you might like","Play checkers","Sort spam email","Recognize a face to unlock a phone","Learn a brand new board game from its rules","Plan a science fair project","Explain why a joke is funny","Cook a meal in a new kitchen","Help a friend who feels sad"];
+var SYSTEMS = [
+  { n: "Voice assistant", can: [0], note: "A voice assistant is narrow AI. Its speech recognition part was trained only on speech. It can pass your words to other programs, but it does not understand the world the way a person does." },
+  { n: "Music recommender", can: [1], note: "A recommender is narrow AI. It learned from what people listened to and skipped. It only suggests music." },
+  { n: "Checkers program", can: [2], note: "A checkers program like Chinook is narrow AI. It plays checkers perfectly but cannot do anything else." },
+  { n: "Spam filter", can: [3], note: "A spam filter is narrow AI. It sorts messages and nothing more." },
+  { n: "Face unlock", can: [4], note: "Face unlock is narrow AI. It was trained to match one face to a phone owner." },
+  { n: "General AI (an idea)", can: [0,1,2,3,4,5,6,7,8,9], note: "General AI would be designed to reason and adapt across all of these tasks and new ones too, the way a person can. No system is widely accepted as general AI today." }
+];
+var sysPick = 0;
+function renderSys(){
+  var chips = $("sysChips"); chips.innerHTML = "";
+  SYSTEMS.forEach(function(s, i){
+    var b = el("button", { type: "button", class: "chip", "aria-pressed": i === sysPick ? "true" : "false" }, esc(s.n));
+    b.addEventListener("click", function(){ sysPick = i; renderSys(); });
+    chips.appendChild(b);
+  });
+  var g = $("taskGrid"); g.innerHTML = "";
+  TASKS.forEach(function(t, i){
+    var on = SYSTEMS[sysPick].can.indexOf(i) >= 0;
+    g.appendChild(el("div", { class: "task " + (on ? "on" : "off") }, "<i aria-hidden='true'>" + (on ? "✓" : "·") + "</i><span>" + esc(t) + (on ? "" : "<span class='sr'> (not designed for this)</span>") + "</span>"));
+  });
+  $("sysOut").textContent = SYSTEMS[sysPick].note;
+}
+renderSys();
+SYSTEMS.forEach(function(s, i){ $("ttSys").appendChild(el("option", { value: i }, esc(s.n))); });
+TASKS.forEach(function(t, i){ $("ttTask").appendChild(el("option", { value: i }, esc(t))); });
+store.tt = store.tt || {};
+function ttTally(){
+  var n = Object.keys(store.tt).length;
+  $("ttTally").textContent = "You have tried " + n + " of " + (SYSTEMS.length * TASKS.length) + " system and task pairs. Try each narrow AI on a task outside its job.";
+}
+$("ttRun").addEventListener("click", function(){
+  var si = +$("ttSys").value, ti = +$("ttTask").value, s = SYSTEMS[si], ok = s.can.indexOf(ti) >= 0;
+  store.tt[si + "-" + ti] = 1; save(); ttTally();
+  var msg;
+  if (si === 5) msg = "<b>In theory, yes.</b> General AI would be designed to handle “" + esc(TASKS[ti]) + "” and many other tasks. Remember: this is an idea, not a system that is widely accepted as existing.";
+  else if (ok) msg = "<b>Success.</b> The " + esc(s.n.toLowerCase()) + " was trained for exactly this task. Narrow AI can be very good at its one job.";
+  else msg = "<b>Cannot do it.</b> The " + esc(s.n.toLowerCase()) + " was never trained for “" + esc(TASKS[ti]) + "”. Narrow AI does not transfer its skill to a different kind of task.";
+  $("ttOut").innerHTML = msg;
+});
+ttTally();
+
+/* ---------- Bench 1: Is it AI? ---------- */
+var QS = ["Was it trained on data or examples?","Does it find patterns to make predictions or decisions?","Does its behaviour change with new data or experience?"];
+var CASES = [
+  { n: "Pocket calculator", d: "You type 12 × 7 and it shows 84. It shows 84 every time, for every person.", a: [0,0,0], ai: false, e: "A calculator follows fixed rules a programmer wrote. Same input, same output, forever. It is an ordinary program." },
+  { n: "Spam filter that learns", d: "When you mark messages as junk, it gets better at catching similar messages.", a: [1,1,1], ai: true, e: "It was trained on labelled messages, finds patterns in the words, and changes as you label more. It uses AI." },
+  { n: "Timer on a crosswalk light", d: "The walk signal lasts 25 seconds every time someone presses the button.", a: [0,0,0], ai: false, e: "A fixed timer follows one rule. It does not learn from traffic. It is an ordinary program." },
+  { n: "Video app suggestions", d: "After you watch several hockey highlight videos, the app suggests more hockey.", a: [1,1,1], ai: true, e: "A recommendation algorithm learns from your prior interactions and the habits of many users. It is narrow AI." },
+  { n: "Voice typing", d: "You speak into your phone and it types your words, even with background noise.", a: [1,1,0], ai: true, e: "Speech recognition models are trained on huge amounts of recorded speech and find patterns in sounds. Some adapt to your voice. It is narrow AI." },
+  { n: "Automatic door", d: "A motion sensor opens the door when something moves in front of it.", a: [0,0,0], ai: false, e: "It reacts to its environment, but always in the same way. Responding to a sensor is not the same as learning. It is an ordinary program." },
+  { n: "Photo app that groups faces", d: "The app sorts your photos into groups, one for each person, without being told who is who.", a: [1,1,1], ai: true, e: "Face grouping uses machine learning trained on many faces to find patterns. It updates the groups as you add photos. It uses AI." },
+  { n: "Spell checker with a word list", d: "It underlines any word that is not in its built-in dictionary.", a: [0,0,0], ai: false, e: "A simple dictionary check is a fixed rule. (Some newer keyboards also predict your next word. That prediction part is machine learning.)" },
+  { n: "Wildfire smoke forecast", d: "A forecast model learned from years of past fire, wind and air quality data to predict smoky days in Alberta.", a: [1,1,1], ai: true, e: "If a model is trained on past data to find patterns and make predictions, and is retrained as new data comes in, it uses machine learning. (Many forecasts also use physics equations that are ordinary programs.)" }
+];
+store.cases = store.cases || {};
+CASES.forEach(function(c, i){ $("caseSel").appendChild(el("option", { value: i }, (i + 1) + ". " + esc(c.n))); });
+var caseAns = [null, null, null];
+function renderCase(){
+  var c = CASES[+$("caseSel").value], box = $("caseBox"); box.innerHTML = "";
+  caseAns = [null, null, null];
+  box.appendChild(el("h4", null, esc(c.n)));
+  box.appendChild(el("p", null, esc(c.d)));
+  QS.forEach(function(q, qi){
+    var row = el("div", { class: "qrow" }); row.appendChild(el("span", null, esc(q)));
+    var yn = el("div", { class: "yn", role: "group", "aria-label": q });
+    ["Yes","No"].forEach(function(lbl, v){
+      var b = el("button", { type: "button", "aria-pressed": "false" }, lbl);
+      b.addEventListener("click", function(){ caseAns[qi] = v === 0 ? 1 : 0; Array.prototype.forEach.call(yn.children, function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); });
+      yn.appendChild(b);
+    });
+    row.appendChild(yn); box.appendChild(row);
+  });
+  var r = el("div", { class: "row" });
+  var bA = el("button", { type: "button", class: "btn" }, "Verdict: uses AI");
+  var bN = el("button", { type: "button", class: "btn ghost" }, "Verdict: ordinary program");
+  r.appendChild(bA); r.appendChild(bN); box.appendChild(r);
+  var fb = el("div", { class: "verdict", "aria-live": "polite" }); box.appendChild(fb);
+  function judge(v){
+    var right = v === c.ai, idx = +$("caseSel").value;
+    var qOK = caseAns.every(function(a, i){ return a === null || a === c.a[i]; });
+    fb.className = "verdict " + (right ? "ok" : "no");
+    fb.innerHTML = "<b>" + (right ? "Correct." : "Not quite.") + "</b> <span>" + esc(c.e) + "</span>" + (qOK ? "" : "<span class='hint'>Check your answers to the three questions too. Expected: " + c.a.map(function(a){ return a ? "Yes" : "No"; }).join(", ") + ".</span>");
+    if (right) store.cases[idx] = 1; save(); caseScore();
+  }
+  bA.addEventListener("click", function(){ judge(true); });
+  bN.addEventListener("click", function(){ judge(false); });
+}
+function caseScore(){ $("caseScore").textContent = Object.keys(store.cases).length + " of " + CASES.length + " cases solved"; }
+$("caseSel").addEventListener("change", renderCase);
+renderCase(); caseScore();
+
+/* ---------- Bench 2: train and test ---------- */
+store.trials = store.trials || [];
+function syncBn(){ $("bnNv").textContent = $("bnN").value; $("bnNoisev").textContent = $("bnNoise").value + "%"; }
+$("bnN").addEventListener("input", syncBn); $("bnNoise").addEventListener("input", syncBn); syncBn();
+function renderTrials(){
+  var tb = $("bnTable"); tb.innerHTML = "";
+  if (!store.trials.length) { tb.innerHTML = "<tr><td colspan='6'>No trials yet. Press Run trial.</td></tr>"; return; }
+  store.trials.forEach(function(t, i){
+    tb.appendChild(el("tr", null, "<td>" + (i + 1) + "</td><td>" + t.n + "</td><td>" + t.noise + "%</td><td>" + (t.bias === "short" ? "Short only" : "All") + "</td><td>" + t.c + " / 40</td><td>" + Math.round(t.c / 40 * 100) + "%</td>"));
+  });
+}
+function bnPlot(train, test, res){
+  var s = plotFrame($("bnPlot"), "Training and test calls for the latest trial.");
+  zones(s, train); axes(s); dots(s, train);
+  test.forEach(function(t, i){
+    var c = sv("circle", { cx: PX(t.p), cy: PY(t.l), r: 6, style: "fill:none;stroke-width:2;stroke:var(--c" + t.lab + ")" });
+    s.appendChild(c);
+    if (!res[i]) { s.appendChild(sv("path", { d: "M" + (PX(t.p) - 5) + " " + (PY(t.l) - 5) + "l10 10m0 -10l-10 10", style: "stroke:var(--bad);stroke-width:2;fill:none" })); }
+    else s.appendChild(sv("circle", { cx: PX(t.p), cy: PY(t.l), r: 2.5, style: "fill:var(--c" + t.lab + ")" }));
+  });
+}
+$("bnRun").addEventListener("click", function(){
+  var n = +$("bnN").value, noise = +$("bnNoise").value, bias = $("bnBias").value;
+  var pool = [], tries = 0;
+  while (pool.length < n && tries < 5000) { var c = makeCall(Math.random() < 0.5 ? "b" : "a"); tries++; if (bias === "short" && c.l > 4) continue; pool.push(c); }
+  var train = noisy(pool, noise), test = makeSet(40);
+  var res = test.map(function(t){ return knn(train, t.p, t.l).lab === t.lab; });
+  var c2 = res.filter(Boolean).length;
+  var wa = test.filter(function(t, i){ return t.lab === "a" && !res[i]; }).length, wb = test.filter(function(t, i){ return t.lab === "b" && !res[i]; }).length;
+  store.trials.push({ n: n, noise: noise, bias: bias, c: c2 }); if (store.trials.length > 12) store.trials.shift(); save();
+  renderTrials(); bnPlot(train, test, res);
+  $("bnOut").innerHTML = "Correct: <b>" + c2 + " of 40</b>. Accuracy = " + c2 + " ÷ 40 × 100% = <b>" + Math.round(c2 / 40 * 100) + "%</b>. Wrong: " + wa + " chickadee calls, " + wb + " nuthatch calls." + (bias === "short" ? " The training data left out long calls, so most nuthatch calls were missing. Biased data leads to biased predictions." : "");
+});
+$("bnClear").addEventListener("click", function(){ store.trials = []; save(); renderTrials(); });
+renderTrials();
+var pr;
+function newPr(){
+  var total = [20, 25, 40, 50, 80, 100, 200][rint(0, 6)], c = rint(Math.round(total * 0.55), total);
+  var kind = rint(0, 2);
+  if (kind === 0) pr = { q: "A sorter labels " + total + " test calls and gets " + c + " right. What is its accuracy?", a: c / total * 100, w: c + " ÷ " + total + " × 100%" };
+  else if (kind === 1) pr = { q: "A face unlock model is tested on " + total + " photos. It gets " + (total - c) + " wrong. What is its accuracy?", a: c / total * 100, w: "(" + total + " − " + (total - c) + ") ÷ " + total + " × 100%" };
+  else pr = { q: "A spam filter checks " + total + " messages and sorts " + c + " correctly. What is its error rate?", a: (total - c) / total * 100, w: "(" + total + " − " + c + ") ÷ " + total + " × 100%" };
+  $("prQ").textContent = pr.q; $("prA").value = ""; $("prFb").textContent = ""; $("prFb").className = "fb";
+}
+$("prNew").addEventListener("click", newPr);
+$("prCheck").addEventListener("click", function(){
+  var v = parseFloat($("prA").value), ok = Math.abs(v - pr.a) < 0.6;
+  $("prFb").className = "fb " + (ok ? "ok" : "no");
+  $("prFb").textContent = (isNaN(v) ? "Type a number first. " : ok ? "Correct. " : "Not quite. ") + pr.w + " = " + (Math.round(pr.a * 10) / 10) + "%";
+});
+newPr();
+
+/* ---------- Sort It ---------- */
+var BINS = ["Ordinary program","Narrow AI","General AI"];
+var SORT = [
+  ["A calculator app", 0, "Fixed rules, same answer every time."],
+  ["A timer that rings the school bell at 8:30", 0, "It follows a schedule a person set."],
+  ["A thermostat set to always heat to 20 °C", 0, "It reacts to temperature with one fixed rule. It does not learn."],
+  ["A game where the enemy always walks the same path", 0, "Scripted behaviour written by a programmer."],
+  ["A website form that checks if your email has an @ sign", 0, "One rule, written by a person."],
+  ["A heater that learns when your family wakes up", 1, "It adapts from prior interactions, but only for one task."],
+  ["Voice recognition in a phone", 1, "Trained on speech for one specific job."],
+  ["A music app that recommends songs", 1, "A recommendation algorithm, one task."],
+  ["A spam filter that improves as you mark junk", 1, "Machine learning for one task."],
+  ["A bird sound app that names the bird you hear", 1, "Trained on bird recordings. It only identifies birds."],
+  ["A program that beats every human at checkers", 1, "Superhuman at one game, useless at everything else."],
+  ["A phone camera that unlocks for your face only", 1, "Trained to recognize faces for one job."],
+  ["A machine that could learn any school subject, cook and plan a trip as well as a person", 2, "Human-like ability across a wide range of tasks."],
+  ["A system that reasons through brand new problems in any area, the way people do", 2, "That breadth of reasoning and adaptability is the goal of general AI."],
+  ["A robot that could learn any job in a new town without being retrained by engineers", 2, "Adapting across a wide range of tasks like a person is general AI."]
+];
+var sortDeck = [], sortI = 0, sortRight = 0;
+function newSort(){ sortDeck = shuffle(SORT).slice(0, 10); sortI = 0; sortRight = 0; renderSort(); $("sortFb").textContent = ""; $("sortFb").className = "feedback"; }
+function renderSort(){
+  var c = $("sortCard"), bins = $("sortBins"); bins.innerHTML = "";
+  if (sortI >= sortDeck.length) {
+    c.innerHTML = "Round done: " + sortRight + " of " + sortDeck.length + " right.<small>Press New round to play again.</small>";
+    store.sortBest = Math.max(store.sortBest || 0, sortRight); save();
+    $("sortScore").textContent = "Best round: " + store.sortBest + " / 10"; return;
+  }
+  c.innerHTML = esc(sortDeck[sortI][0]) + "<small>Card " + (sortI + 1) + " of " + sortDeck.length + "</small>";
+  BINS.forEach(function(b, i){
+    var btn = el("button", { type: "button", class: "bin" }, esc(b));
+    btn.addEventListener("click", function(){
+      var it = sortDeck[sortI], ok = it[1] === i; if (ok) sortRight++;
+      $("sortFb").className = "feedback " + (ok ? "ok" : "no");
+      $("sortFb").innerHTML = "<b>" + (ok ? "Right." : "That one is " + BINS[it[1]] + ".") + "</b> " + esc(it[2]);
+      sortI++; renderSort();
+    });
+    bins.appendChild(btn);
+  });
+  $("sortScore").textContent = sortRight + " right so far" + (store.sortBest ? " · Best round: " + store.sortBest + " / 10" : "");
+}
+$("sortNew").addEventListener("click", newSort);
+newSort();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Artificial intelligence (AI)","The ability of a machine to adapt its actions in response to received data, prior interactions and its environment."],
+  ["Adapt","To change to fit new conditions."],
+  ["Ordinary program","A program that follows rules a person wrote. The same input always gives the same output."],
+  ["Machine learning","A type of AI that is trained from data. It finds patterns, makes predictions or decisions, and can improve and adapt with new data."],
+  ["Training","Showing a machine learning program many examples so it can find patterns."],
+  ["Training data","The examples a machine learning program learns from."],
+  ["Label","The known answer attached to a training example, like “chickadee” or “spam”."],
+  ["Pattern","Something that repeats or clusters in data, like high pitched calls being chickadees."],
+  ["Prediction","The program’s best answer for an example it has not seen before."],
+  ["Accuracy","The percent of test examples a program gets right. Accuracy = correct ÷ total × 100%."],
+  ["Test data","New examples, not used in training, that check how well a program learned."],
+  ["Bias in data","When training data leaves out or over-represents some cases, so predictions are unfair or wrong for those cases."],
+  ["Algorithm","A set of steps for solving a problem."],
+  ["Recommendation algorithm","Narrow AI that suggests things, like songs or books, based on prior interactions."],
+  ["Voice recognition","Narrow AI that turns spoken words into text or commands."],
+  ["Narrow AI","AI designed to perform one specific task, like voice recognition or recommendations."],
+  ["General AI","AI designed to show human-like intelligence, reasoning and adaptability across a wide range of tasks. No system is widely accepted as general AI today."]
+];
+store.known = store.known || {};
+var fcI = 0, fcFlip = false;
+function fcList(){ var all = CARDS.map(function(c, i){ return i; }); if ($("fcOnly").checked) { var l = all.filter(function(i){ return !store.known[i]; }); return l.length ? l : all; } return all; }
+function renderFc(){
+  var list = fcList(); if (fcI >= list.length) fcI = 0;
+  var i = list[fcI], c = CARDS[i];
+  $("fcCard").innerHTML = fcFlip ? "<span class='tag'>Definition</span><span class='def'>" + esc(c[1]) + "</span>" : "<span class='tag'>Term " + (fcI + 1) + " of " + list.length + (store.known[i] ? " · known" : "") + "</span><span class='term'>" + esc(c[0]) + "</span><span class='hint'>Tap to flip</span>";
+  $("fcCard").setAttribute("aria-label", fcFlip ? "Definition of " + c[0] + ": " + c[1] : "Term: " + c[0] + ". Press to flip.");
+  var k = Object.keys(store.known).length;
+  $("fcBar").style.width = (k / CARDS.length * 100) + "%";
+  $("fcCount").textContent = k + " of " + CARDS.length + " cards marked known";
+}
+$("fcCard").addEventListener("click", function(){ fcFlip = !fcFlip; renderFc(); });
+$("fcNext").addEventListener("click", function(){ fcI = (fcI + 1) % fcList().length; fcFlip = false; renderFc(); });
+$("fcPrev").addEventListener("click", function(){ var n = fcList().length; fcI = (fcI - 1 + n) % n; fcFlip = false; renderFc(); });
+$("fcKnow").addEventListener("click", function(){ store.known[fcList()[fcI]] = 1; save(); fcI = (fcI + 1) % fcList().length; fcFlip = false; renderFc(); });
+$("fcLearn").addEventListener("click", function(){ delete store.known[fcList()[fcI]]; save(); fcI = (fcI + 1) % fcList().length; fcFlip = false; renderFc(); });
+$("fcOnly").addEventListener("change", function(){ fcI = 0; fcFlip = false; renderFc(); });
+renderFc();
+
+/* ---------- Quiz ---------- */
+var BANK = [
+  ["Which best describes artificial intelligence in this unit?", ["A machine that adapts its actions in response to data, prior interactions and its environment","Any machine that uses electricity","A robot that looks like a person","A program that never makes mistakes"], 0, "AI is about adapting actions based on data and experience. It does not need a body, and it can make mistakes."],
+  ["A calculator always shows 84 for 12 × 7. Why is it not AI?", ["It is too small","It follows fixed rules and does not change from data or experience","It uses numbers instead of words","It has no screen"], 1, "An ordinary program gives the same output for the same input. It does not learn."],
+  ["What is machine learning?", ["Programming a robot arm","A type of AI that is trained from data","Repairing computers with machines","Typing code very quickly"], 1, "Machine learning programs find patterns in training data instead of following only hand-written rules."],
+  ["In machine learning, a label is…", ["the brand of the computer","the known answer attached to a training example","a sticker on a hard drive","the name of the programmer"], 1, "Labels like “spam” or “chickadee” tell the program the right answer for each example."],
+  ["Which is NOT something machine learning can do, according to the curriculum?", ["Identify patterns","Make predictions or decisions","Adapt based on new data","Work without any data at all"], 3, "Machine learning is trained from data. Without data, there is nothing to learn from."],
+  ["A sorter labels 50 test calls and gets 40 right. What is its accuracy?", ["40%","80%","90%","125%"], 1, "accuracy = 40 ÷ 50 × 100% = 80%."],
+  ["Why is test data kept separate from training data?", ["To save memory","To check how well the program handles examples it has never seen","Because test data is always wrong","So the program learns faster"], 1, "Testing on new examples shows whether the program learned a real pattern or just memorized."],
+  ["Training data has many wrong labels. What usually happens?", ["Accuracy goes up","The program learns wrong patterns and accuracy drops","Nothing changes","The program refuses to run"], 1, "Wrong labels teach wrong patterns. Data quality matters."],
+  ["A sorter was trained only on short bird calls. What problem is this?", ["Bias in data","Too much data","A broken microphone","Narrow AI becoming general AI"], 0, "When training data leaves out some kinds of examples, predictions for those cases are often wrong."],
+  ["What does “improve performance over time without additional programming” mean?", ["A programmer rewrites the rules every day","The program gets better from more data, without a person writing new rules for the task","The computer gets faster hardware","The program never changes"], 1, "Improvement comes from data. People may still collect data and retrain, but they do not hand-write the new rules."],
+  ["A new microphone makes all calls sound longer. The old sorter’s accuracy drops. What fixes it best?", ["Turn the computer off and on","Retrain the sorter with calls from the new microphone","Delete all the data","Use a calculator instead"], 1, "Machine learning can adapt based on new data. Retraining with data that fits the new situation helps."],
+  ["Which is an example of narrow AI?", ["A system that can do any job a person can","Voice recognition on a phone","A light switch","A paper map"], 1, "Voice recognition is designed for one specific task, so it is narrow AI."],
+  ["A recommendation algorithm suggests songs. What does it mostly learn from?", ["Your prior interactions, like songs you played or skipped","The weather","The colour of your phone","Random guesses only"], 0, "Recommenders adapt to prior interactions, one of the three things in the AI definition."],
+  ["What is general AI?", ["AI for a general store","AI designed to show human-like intelligence, reasoning and adaptability across a wide range of tasks","Any AI used by the army","A simple calculator"], 1, "General AI would work across many kinds of tasks, the way people do."],
+  ["Which statement about general AI is most accurate today?", ["Every phone has general AI","No system is widely accepted as general AI, and experts disagree about when or whether it will be built","General AI was invented in 1950","General AI only plays games"], 1, "General AI is still a goal. Experts disagree about the timeline."],
+  ["Chinook, built at the University of Alberta, could not be beaten at checkers. What kind of AI is it?", ["General AI","Narrow AI","Not a program at all","A calculator"], 1, "It is excellent at one task and cannot do others, so it is narrow AI."],
+  ["Which question helps you decide if a technology uses AI?", ["Is it expensive?","Does its behaviour change with new data or experience?","Is it made of metal?","Does it have a screen?"], 1, "Changing behaviour from data or experience is a key sign of AI."],
+  ["An automatic door opens when a sensor sees motion. Is it AI?", ["Yes, because it uses a sensor","No, because it reacts the same way every time and does not learn","Yes, because it moves","No, because doors are not electronic"], 1, "Responding to a sensor with a fixed rule is not learning."],
+  ["What is the biggest difference between narrow AI and general AI?", ["Narrow AI is always smaller","Narrow AI does a specific task; general AI would handle a wide range of tasks","General AI is cheaper","Narrow AI never uses data"], 1, "Range of tasks is the key difference."],
+  ["In the bird call sorter, the program looks at the 3 nearest training calls. What do they do?", ["Vote on the label for the mystery call","Delete the mystery call","Change the microphone","Write new rules"], 0, "The majority label among the nearest examples becomes the prediction."],
+  ["A filter checks 200 messages and sorts 180 correctly. What is its error rate?", ["10%","18%","20%","90%"], 0, "It got 20 wrong. Error rate = 20 ÷ 200 × 100% = 10%."],
+  ["Usually, what happens to accuracy as a sorter gets more good training examples?", ["It drops to zero","It usually rises, then levels off","It stays exactly the same","It becomes 100% after 2 examples"], 1, "More good data usually helps, up to a point."],
+  ["A learning heater starts earlier after the family wakes up early for a week. Which part of the AI definition does this show?", ["Adapting to prior interactions","Following a fixed rule","Being general AI","Having no data"], 0, "It changes its action because of what happened before."],
+  ["Who decides the patterns in a machine learning model?", ["A programmer writes each pattern by hand","The program finds patterns in its training data","The user’s keyboard","Nobody, models have no patterns"], 1, "People choose the data and method, but the patterns themselves are found from the data."]
+];
+store.qBest = store.qBest || 0;
+var round = [], qAnswered = 0, qRight = 0;
+function newQuiz(){
+  round = shuffle(BANK).slice(0, 10); qAnswered = 0; qRight = 0;
+  var box = $("qzBox"); box.innerHTML = "";
+  round.forEach(function(q, qi){
+    var card = el("div", { class: "q" });
+    card.appendChild(el("h3", null, (qi + 1) + ". " + esc(q[0])));
+    var opts = el("div", { class: "opts" }); card.appendChild(opts);
+    var ex = el("p", { class: "expl", "aria-live": "polite" }); card.appendChild(ex);
+    var order = shuffle(q[1].map(function(o, i){ return i; }));
+    order.forEach(function(oi){
+      var b = el("button", { type: "button", class: "opt" }, esc(q[1][oi]));
+      b.addEventListener("click", function(){
+        var ok = oi === q[2]; qAnswered++; if (ok) qRight++;
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; });
+        b.classList.add(ok ? "right" : "wrong");
+        if (!ok) Array.prototype.forEach.call(opts.children, function(x){ if (x.getAttribute("data-i") == q[2]) x.classList.add("right"); });
+        ex.innerHTML = "<b>" + (ok ? "Correct." : "Not quite.") + "</b> " + esc(q[3]);
+        if (qAnswered === round.length) { store.qBest = Math.max(store.qBest, qRight); save(); }
+        qStat();
+      });
+      b.setAttribute("data-i", oi);
+      opts.appendChild(b);
+    });
+    box.appendChild(card);
+  });
+  qStat();
+}
+function qStat(){ $("qzStat").textContent = "Score: " + qRight + " of " + qAnswered + " answered" + (store.qBest ? " · Best round: " + store.qBest + " / 10" : ""); }
+$("qzNew").addEventListener("click", newQuiz);
+newQuiz();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  ["Define artificial intelligence in your own words.", "AI is the ability of a machine to adapt what it does in response to data it receives, its past interactions and its environment. Unlike an ordinary program, it can change its behaviour from experience.", ["Machine adapts or changes its actions","Uses data","Mentions prior interactions or environment"]],
+  ["Explain one difference between an ordinary program and an AI program. Use an example of each.", "An ordinary program follows rules a person wrote, so the same input always gives the same output, like a calculator. An AI program finds patterns in data and can change its behaviour, like a spam filter that gets better as you mark junk.", ["Ordinary program: fixed rules","AI: learns from data or changes","Gives an example of each"]],
+  ["What is machine learning? List two things it can do.", "Machine learning is a type of AI that is trained from data. It can identify patterns, make predictions or decisions, improve over time without new rules being programmed, and adapt to new data.", ["Trained from data","Names two abilities from the list"]],
+  ["Why do machine learning programs need labelled training data?", "Labels give the right answer for each example. The program compares examples with their labels to find the patterns that separate one group from another. Without labels, it would not know which pattern goes with which answer.", ["Labels are known answers","Used to find patterns","Links patterns to answers"]],
+  ["A sorter gets 36 of 45 test calls right. Calculate its accuracy and show your work.", "accuracy = correct ÷ total × 100% = 36 ÷ 45 × 100% = 80%.", ["Uses correct ÷ total × 100%","Answer 80%"]],
+  ["Explain how wrong labels in training data affect a machine learning program.", "Wrong labels teach the program wrong patterns. It may then sort new examples into the wrong group, so its accuracy drops. Good quality data matters as much as the amount of data.", ["Learns wrong patterns","Accuracy drops","Quality of data matters"]],
+  ["Give an example of bias in training data and explain the problem it causes.", "If a bird sorter was trained only on short calls, it saw very few nuthatch calls. It then labels many nuthatch calls as chickadees. When data leaves out some cases, predictions are wrong or unfair for those cases.", ["Gives a clear example","Some cases left out or over-represented","Wrong or unfair predictions for those cases"]],
+  ["What is narrow AI? Give two examples.", "Narrow AI is designed to perform one specific task. Examples are voice recognition, recommendation algorithms, spam filters and face unlock.", ["One specific task","Two correct examples"]],
+  ["Compare narrow AI and general AI.", "Narrow AI does one specific task and is used every day. General AI would show human-like intelligence, reasoning and adaptability across a wide range of tasks. No system is widely accepted as general AI today.", ["Narrow: specific task","General: wide range, human-like","General AI is not widely accepted as existing"]]
+];
+var LONG = [
+  ["A school wants to buy a “smart” attendance camera. The company says it uses AI. Describe how you would decide whether it really uses AI, and what questions you would ask about its training data.", "I would ask the three questions: Was it trained on data or examples? Does it find patterns to make predictions or decisions? Does its behaviour change with new data? If it only follows a fixed rule, such as counting motion, it is an ordinary program. About the data, I would ask how many examples it was trained on, whether labels were checked, and whether the data included many kinds of people, lighting and angles. If some groups were left out, it could be less accurate for them. I would also ask how it protects students’ photos.", ["Uses the three AI questions","Explains ordinary program vs AI","Asks about amount and quality of data","Raises bias or fairness","Mentions privacy or consent"]],
+  ["Use your Lab Bench results to explain the role of data in machine learning. Include accuracy values.", "In my trials, a sorter trained on 4 calls scored about 60%, while 40 or more calls scored close to 90%. Adding 30% wrong labels dropped accuracy, and training only on short calls dropped it to about 70% because many nuthatch calls were sorted wrong. This shows that the amount, quality and fit of data all affect how well a machine learns. (Students’ own values will differ, since the trials use random practice data.)", ["Uses own accuracy values","Amount of data","Quality (wrong labels)","Fit or bias of data","Clear conclusion"]],
+  ["Debate: “General AI will be built in our lifetime.” Write a paragraph that gives one reason someone might agree and one reason someone might disagree, then state your own view.", "Some people agree because AI tools are improving quickly and can already help with many tasks. Others disagree because today’s systems still make mistakes a person would not make and cannot adapt to any new task the way people do, so experts disagree about whether or when it will happen. My view should use the definition: general AI must show human-like reasoning and adaptability across a wide range of tasks.", ["Defines general AI","Reason to agree","Reason to disagree","Notes experts disagree","Clear personal view with a reason"]],
+  ["A music app keeps recommending the same kind of song. Explain why this happens using what you know about recommendation algorithms, and suggest how a user could change it.", "A recommendation algorithm is narrow AI that learns from prior interactions. If you mostly play one kind of song, those tags get high scores, so it recommends more of the same. To change it, you could like or play other kinds of music and skip songs you do not want. The algorithm will adapt to the new data.", ["Recommender learns from prior interactions","Explains repeated scores or patterns","Narrow AI","Suggests giving new data"]]
+];
+store.wr = store.wr || {};
+function buildWr(boxId, list, pre){
+  var box = $(boxId);
+  list.forEach(function(w, i){
+    var id = pre + i;
+    var d = el("details");
+    d.appendChild(el("summary", null, (i + 1) + ". " + esc(w[0])));
+    var inner = el("div", { class: "inner" });
+    var ta = el("textarea", { id: "ta-" + id, "aria-label": "Your answer to question " + (i + 1) });
+    try { ta.value = (store.wr[id] && store.wr[id].t) || ""; } catch(e) {}
+    ta.addEventListener("input", function(){ store.wr[id] = store.wr[id] || {}; store.wr[id].t = ta.value; save(); });
+    inner.appendChild(ta);
+    var det = el("details"); det.appendChild(el("summary", null, "Show model answer"));
+    det.appendChild(el("div", { class: "model-ans" }, esc(w[1])));
+    var ul = el("ul", { class: "checks" });
+    w[2].forEach(function(k, ki){
+      var li = el("li"), cid = "ck-" + id + "-" + ki;
+      var cb = el("input", { type: "checkbox", id: cid });
+      cb.checked = !!(store.wr[id] && store.wr[id]["k" + ki]);
+      cb.addEventListener("change", function(){ store.wr[id] = store.wr[id] || {}; store.wr[id]["k" + ki] = cb.checked; save(); });
+      var lb = el("label", { for: cid }); lb.appendChild(cb); lb.appendChild(document.createTextNode(k));
+      li.appendChild(lb); ul.appendChild(li);
+    });
+    det.appendChild(ul);
+    inner.appendChild(det);
+    d.appendChild(inner); box.appendChild(d);
+  });
+}
+buildWr("wrShort", SHORT, "s"); buildWr("wrLong", LONG, "l");
+
+/* ---------- Coverage ---------- */
+var COV = [
+  ["CS2.K1","Artificial intelligence, or AI, can be defined as the ability of a machine to adapt its action in response to received data, prior interactions, and its environment.","Learn: Lessons 1, 2 and 5 · Sort It · Flashcards · Quiz"],
+  ["CS2.K2","Machine learning is a type of AI that is trained from data and can\n• identify patterns\n• make predictions or decisions\n• improve performance over time without additional programming\n• adapt based on input from new data","Learn: Lessons 3 and 4 · Lab Bench: Investigation 2 · Quiz · Written Review"],
+  ["CS2.K3","Narrow AI is designed to perform specific tasks, such as voice recognition or running recommendation algorithms.","Learn: Lesson 5 · Lab Bench: Investigation 3 · Sort It · Quiz"],
+  ["CS2.K4","General AI is designed to display human-like intelligence, reasoning, and adaptability across a wide range of tasks.","Learn: Lesson 6 · Lab Bench: Investigation 3 · Sort It · Written Review (debate)"],
+  ["CS2.S1","Determine whether a digital technology uses AI.","Learn: Lesson 2 · Lab Bench: Investigation 1 · Sort It · Written Review (extended 1)"],
+  ["CS2.S2","Discuss how AI differs from other computer programs.","Learn: Lessons 1 and 2 · Lab Bench: Investigation 1 · Written Review"],
+  ["CS2.S3","Explore the role of data in machine learning.","Learn: Lessons 3 and 4 · Lab Bench: Investigation 2 with accuracy practice · Written Review (extended 2)"],
+  ["CS2.S4","Compare narrow AI and general AI.","Learn: Lesson 6 · Lab Bench: Investigation 3 · Sort It · Written Review"]
+];
+COV.forEach(function(c){ $("covBody").appendChild(el("tr", null, "<td>" + c[0] + "</td><td><span>" + esc(c[1]) + "</span></td><td>" + esc(c[2]) + "</td>")); });
+})();
+</script>
+
+</body></html>

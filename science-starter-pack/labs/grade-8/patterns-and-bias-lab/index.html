@@ -1,0 +1,874 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/patterns-and-bias-lab/"><meta name="description" content="Unbiased data can help accurately predict trends."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Patterns and Bias Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: lab notebook on graph paper. Sticky tab rail, single reading column, every concept paired with a live plot. Science 8 blue from the collection index. */
+:root{
+  --bg:#EEF2F7; --surface:#FFFFFF; --surface-2:#F4F7FA; --ink:#14202E; --muted:#526072; --line:#D2DAE4;
+  --accent:#1D5FA8; --accent-ink:#FFFFFF; --accent-soft:#DFEAF6;
+  --bias:#B4471F; --bias-soft:#F8E2D8; --good:#2B7448; --good-soft:#DDF0E3;
+  --grid:#E4EAF1; --pt:#1D5FA8; --pt2:#B4471F; --pt3:#2B7448;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0D131A; --surface:#151D27; --surface-2:#1A2430; --ink:#E3E9F0; --muted:#9AA8B7; --line:#2A3644;
+  --accent:#7DB0F0; --accent-ink:#0D131A; --accent-soft:#18283C;
+  --bias:#F09A74; --bias-soft:#3A2218; --good:#74C995; --good-soft:#16301F;
+  --grid:#1F2A36; --pt:#7DB0F0; --pt2:#F09A74; --pt3:#74C995;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0D131A; --surface:#151D27; --surface-2:#1A2430; --ink:#E3E9F0; --muted:#9AA8B7; --line:#2A3644;
+  --accent:#7DB0F0; --accent-ink:#0D131A; --accent-soft:#18283C;
+  --bias:#F09A74; --bias-soft:#3A2218; --good:#74C995; --good-soft:#16301F;
+  --grid:#1F2A36; --pt:#7DB0F0; --pt2:#F09A74; --pt3:#74C995;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:1px 7px;border-radius:999px;white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:12px}
+header h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:800;letter-spacing:-.03em}
+header h1 span{color:var(--accent)}
+.under{max-width:62ch;color:var(--muted)}
+.under b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-mono);font-size:.72rem;padding:3px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+.chip b{color:var(--ink);font-weight:600}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin;padding-block:6px}
+nav.tabs button{border:0;background:none;padding:9px 13px;border-radius:999px;font-weight:700;font-size:.92rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+nav.tabs button:hover{color:var(--ink);background:var(--surface-2)}
+nav.tabs button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+
+main{padding-block:26px 56px}
+section.panel{display:grid;gap:22px}
+.intro{color:var(--muted);max-width:66ch}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;min-width:0}
+.block-head{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between}
+.block h2{font-size:1.45rem;font-weight:800;letter-spacing:-.015em}
+.block h3{font-size:1.1rem;font-weight:700}
+.prose{display:grid;gap:10px;max-width:68ch}
+.prose ul{margin:0;padding-left:1.2em;display:grid;gap:4px}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;align-items:start}
+.split>*{min-width:0}
+.mini{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:6px;min-width:0}
+.mini h4{font-size:1rem}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface-2);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.note{font-size:.9rem;color:var(--muted)}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 8px 8px 0}
+.callout.bias{border-color:var(--bias);background:var(--bias-soft)}
+.callout.good{border-color:var(--good);background:var(--good-soft)}
+
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:999px;font-weight:700;font-size:.9rem;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08);color:var(--accent-ink)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.small{padding:5px 11px;font-size:.82rem}
+label.inline{display:flex;gap:8px;align-items:center;font-size:.9rem;flex-wrap:wrap}
+input[type="range"]{accent-color:var(--accent);width:min(100%,280px)}
+input[type="number"],input[type="text"],select,textarea{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+input[type="number"]{width:7.5em}
+textarea{width:100%;min-height:90px;resize:vertical}
+.feedback{font-weight:700;min-height:1.4em}
+.feedback.ok{color:var(--good)}
+.feedback.no{color:var(--bias)}
+.readout{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.readout b{color:var(--ink)}
+
+.plot{width:100%;max-width:560px;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.plot text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.plot .lab{font-family:var(--f-body);font-size:12px;fill:var(--ink)}
+.plotwrap{overflow-x:auto;min-width:0}
+
+.done{display:flex;gap:8px;align-items:center;font-size:.88rem;color:var(--muted)}
+.done input{accent-color:var(--good);width:18px;height:18px}
+
+table.t{border-collapse:collapse;font-size:.9rem;width:100%}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--surface-2);font-family:var(--f-display);font-weight:700}
+table.t td.num{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px}
+.flow div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface-2);font-size:.9rem;position:relative}
+.flow div b{display:block;font-family:var(--f-display);font-size:.95rem}
+.flow .bad{border-color:var(--bias);background:var(--bias-soft)}
+
+details.q{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--surface-2)}
+details.q summary{cursor:pointer;font-weight:700}
+details.q[open] summary{margin-bottom:6px}
+
+.dots{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;max-width:340px}
+.dots i{aspect-ratio:1;border-radius:50%;background:var(--line);max-width:100%}
+.dots i.bike{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
+.dots i.pick{background:var(--bias)}
+.dots i.bike.pick{background:var(--bias);box-shadow:inset 0 0 0 2px var(--accent)}
+
+/* sort */
+.pool{display:flex;flex-wrap:wrap;gap:8px}
+.card-s{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 12px;text-align:left;cursor:pointer;font-size:.92rem;max-width:100%}
+.card-s[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);border-radius:12px;padding:10px;display:grid;gap:8px;align-content:start;min-height:120px;background:var(--surface-2)}
+.bin>button{font-weight:800;font-family:var(--f-display);font-size:1rem;border:0;background:var(--ink);color:var(--bg);border-radius:8px;padding:8px;cursor:pointer}
+.bin .placed{font-size:.86rem;border-radius:8px;padding:6px 9px;background:var(--surface);border:1px solid var(--line)}
+.bin .placed.ok{border-color:var(--good);background:var(--good-soft)}
+.bin .placed.no{border-color:var(--bias);background:var(--bias-soft)}
+
+/* flashcards */
+.fc{min-height:210px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:grid;place-items:center;text-align:center;padding:24px;cursor:pointer;width:100%;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px);background-size:100% 28px}
+.fc .term{font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,5vw,2.2rem)}
+.fc .def{font-size:1.1rem;max-width:46ch}
+.bar{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--good)}
+
+/* quiz */
+.opts{display:grid;gap:8px}
+.opt{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;text-align:left;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.ok{border-color:var(--good);background:var(--good-soft)}
+.opt.no{border-color:var(--bias);background:var(--bias-soft)}
+.opt:disabled{cursor:default}
+
+.check{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.check label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.check input{accent-color:var(--good);margin-top:4px}
+.model{background:var(--good-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+
+@media (prefers-reduced-motion: no-preference){
+  .fc,.opt,.btn{transition:background-color .15s,border-color .15s}
+}
+footer{border-top:1px solid var(--line)}footer .wrap{padding-block:18px 28px;font-size:.85rem;color:var(--muted)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · SL2 · Launch: Laws, Theories and Bias</div>
+    <h1>Patterns and <span>Bias</span> Lab</h1>
+    <p class="under"><b>Big idea:</b> Unbiased data can help accurately predict trends. Find the pattern between two variables, use it to predict, then check whether bias could be steering you to the wrong conclusion.</p>
+    <div class="chips" id="chips" aria-label="Your progress"></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="p-learn" aria-selected="true">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="p-bench" aria-selected="false" tabindex="-1">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="p-sort" aria-selected="false" tabindex="-1">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="p-cards" aria-selected="false" tabindex="-1">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="p-quiz" aria-selected="false" tabindex="-1">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="p-written" aria-selected="false" tabindex="-1">Written Review</button>
+    <button role="tab" id="t-cov" aria-controls="p-cov" aria-selected="false" tabindex="-1">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- LEARN -->
+<section class="panel" id="p-learn" role="tabpanel" aria-labelledby="t-learn">
+  <p class="intro">Five short sections, in order. Each one has a model to try. All data on this page is practice data, built to match patterns scientists really observe.</p>
+
+  <article class="block" id="L1">
+    <div class="block-head"><h2>1. Two variables, one relationship</h2><span class="code">SL2.K1</span></div>
+    <div class="prose">
+      <p>A <b>variable</b> is anything you can measure or change. When you measure two variables together, you can plot each pair as a point on a <b>scatter plot</b>. The <b>independent variable</b> (the one you choose or change) goes on the x-axis. The <b>dependent variable</b> (the one that responds) goes on the y-axis.</p>
+      <p>If the points form a shape, the two variables have a <b>relationship</b>:</p>
+      <ul>
+        <li><b>Positive:</b> as x goes up, y tends to go up.</li>
+        <li><b>Negative:</b> as x goes up, y tends to go down.</li>
+        <li><b>No relationship:</b> the points are scattered with no upward or downward direction.</li>
+      </ul>
+      <p>A <b>trend line</b> (line of best fit) runs through the middle of the points to show the general pattern.</p>
+    </div>
+    <div class="row" id="l1-sets" role="group" aria-label="Choose a data set"></div>
+    <div class="plotwrap"><svg class="plot" id="l1-plot" viewBox="0 0 560 330" role="img" aria-label="Scatter plot of the chosen data set"></svg></div>
+    <p class="note" id="l1-desc"></p>
+    <div class="row" role="group" aria-label="Which relationship is this?">
+      <span class="note">Which relationship is this?</span>
+      <button class="btn small" data-l1="positive">Positive</button>
+      <button class="btn small" data-l1="negative">Negative</button>
+      <button class="btn small" data-l1="none">No relationship</button>
+      <button class="btn small" id="l1-line" aria-pressed="false">Show trend line</button>
+    </div>
+    <p class="feedback" id="l1-fb" aria-live="polite"></p>
+    <label class="done"><input type="checkbox" data-done="L1"> I've finished this section</label>
+  </article>
+
+  <article class="block" id="L2">
+    <div class="block-head"><h2>2. Patterns help us predict, spot risks and decide</h2><span class="code">SL2.K1</span></div>
+    <div class="prose">
+      <p>Once you know how two variables are related, the pattern becomes a tool. It can help you:</p>
+      <ul>
+        <li><b>Predict trends:</b> estimate a value you did not measure.</li>
+        <li><b>Identify risks:</b> notice when one variable is reaching a level linked to harm.</li>
+        <li><b>Make decisions:</b> choose an action based on what the pattern says is likely.</li>
+      </ul>
+      <p>A prediction <b>inside</b> the range of your data is called <b>interpolation</b>. A prediction <b>outside</b> that range is <b>extrapolation</b>. Extrapolation is riskier because the pattern might change where you have no data.</p>
+    </div>
+    <div class="split">
+      <div class="mini">
+        <h4>Predict a trend: hiking up Whistlers Mountain, Jasper</h4>
+        <p class="note">A class measured air temperature at different elevations on one afternoon. Drag the slider to predict the temperature at any elevation.</p>
+        <label class="inline" for="l2-elev">Elevation <input type="range" id="l2-elev" min="0" max="4000" step="50" value="1600"> <span class="readout" id="l2-elev-v"></span></label>
+        <div class="plotwrap"><svg class="plot" id="l2-plot" viewBox="0 0 560 330" role="img" aria-label="Elevation and temperature with a prediction marker"></svg></div>
+        <p class="feedback" id="l2-fb" aria-live="polite"></p>
+      </div>
+      <div class="mini">
+        <h4>Identify a risk: wildfire smoke in Edmonton</h4>
+        <p class="note">The Air Quality Health Index (AQHI) runs from 1 upward. Canada labels 7 to 10 as high risk. This practice data compares daily AQHI with asthma visits at one clinic.</p>
+        <div class="plotwrap"><svg class="plot" id="l2-risk" viewBox="0 0 560 330" role="img" aria-label="AQHI and clinic asthma visits with the high risk zone shaded"></svg></div>
+        <p class="note"><b>Decision:</b> because visits climb as AQHI rises, a school might keep students inside at recess on high risk days, and families of students with asthma can plan ahead when smoke is forecast.</p>
+      </div>
+    </div>
+    <label class="done"><input type="checkbox" data-done="L2"> I've finished this section</label>
+  </article>
+
+  <article class="block" id="L3">
+    <div class="block-head"><h2>3. Think critically before you trust a pattern</h2><span class="code">SL2.K2</span></div>
+    <div class="prose">
+      <p><b>Critical thinking</b> means questioning the evidence and the reasoning before you accept a conclusion. A pattern on a graph is a starting point, not the final answer.</p>
+      <p>At a summer camp near Pigeon Lake, staff noticed that on days when more ice cream cones were sold, more campers came to first aid with sunburns. Does ice cream cause sunburn? Turn on the colour switch to find out.</p>
+    </div>
+    <div class="row"><button class="btn small" id="l3-col" aria-pressed="false">Colour points by daily high temperature</button></div>
+    <div class="plotwrap"><svg class="plot" id="l3-plot" viewBox="0 0 560 330" role="img" aria-label="Ice cream sales and sunburn visits"></svg></div>
+    <p class="note" id="l3-note">Each point is one camp day.</p>
+    <h3>Five questions to ask about any pattern</h3>
+    <div class="prose" id="l3-qs"></div>
+    <div class="callout"><p><b>Patterns across generations.</b> Careful pattern finding is not only done with instruments. First Nations and Métis knowledge holders in Treaty 6 territory have tracked patterns such as river ice break-up, animal movements and berry ripening over many generations. Long records like these help people notice when a pattern is changing, and many monitoring projects in Alberta now combine community observations with measured data.</p></div>
+    <label class="done"><input type="checkbox" data-done="L3"> I've finished this section</label>
+  </article>
+
+  <article class="block" id="L4">
+    <div class="block-head"><h2>4. How bias leads to wrong conclusions</h2><span class="code">SL2.K3</span></div>
+    <div class="prose">
+      <p><b>Bias</b> is a tendency that pushes how data is collected or understood in one direction, away from a fair result. Bias can lead to incorrect conclusions in three main ways.</p>
+    </div>
+    <div class="split">
+      <div class="mini">
+        <h4>Route A: errors in reasoning</h4>
+        <p class="note">Thinking mistakes, such as noticing only evidence that agrees with you (confirmation bias), judging a whole group from a few examples, or deciding one thing causes another just because they change together.</p>
+        <p><b>Try it.</b> Sam says, "Our class is always rowdy on full moon days." Compare what Sam remembers with the full record of 30 school days.</p>
+        <div class="row" role="group" aria-label="Choose a view"><button class="btn small" id="l4-mem" aria-pressed="true">What Sam remembers</button><button class="btn small" id="l4-all" aria-pressed="false">All 30 days</button></div>
+        <div class="tablewrap"><table class="t" id="l4-table"></table></div>
+        <p class="note" id="l4-mnote"></p>
+      </div>
+      <div class="mini">
+        <h4>Route B: misinterpretation and inaccurate analysis</h4>
+        <p class="note">Mistakes in handling the data, such as picking only the part that supports your idea (cherry-picking), using a misleading graph scale, or stretching a trend line too far.</p>
+        <p><b>Try it.</b> A Grade 8 step challenge ran for 12 weeks. Choose a window of weeks and see what trend it seems to show.</p>
+        <label class="inline" for="l4-a">From week <input type="range" id="l4-a" min="1" max="11" value="5"> <span class="readout" id="l4-av"></span></label>
+        <label class="inline" for="l4-b">To week <input type="range" id="l4-b" min="2" max="12" value="7"> <span class="readout" id="l4-bv"></span></label>
+        <div class="plotwrap"><svg class="plot" id="l4-plot" viewBox="0 0 560 330" role="img" aria-label="Weekly average steps with a chosen window"></svg></div>
+        <p class="feedback" id="l4-fb" aria-live="polite"></p>
+      </div>
+    </div>
+    <h3>Route C: flawed decision making</h3>
+    <p class="note">When a biased conclusion is used to make a choice, the decision can waste money or cause harm. Follow the chain.</p>
+    <div class="flow" aria-label="From biased data to a flawed decision">
+      <div class="bad"><b>Biased data</b>Bus riders on Route 8 are counted only on one stormy Friday in February.</div>
+      <div class="bad"><b>Wrong conclusion</b>"Hardly anyone rides Route 8."</div>
+      <div class="bad"><b>Flawed decision</b>The route is cut, and students who rely on it lose their way to school.</div>
+      <div><b>Better</b>Count riders on many days across seasons, then decide.</div>
+    </div>
+    <label class="done"><input type="checkbox" data-done="L4"> I've finished this section</label>
+  </article>
+
+  <article class="block" id="L5">
+    <div class="block-head"><h2>5. Unbiased data predicts better</h2><span class="code">Understanding · SL2.K2 · SL2.K3</span></div>
+    <div class="prose">
+      <p>Data is <b>unbiased</b> when it fairly represents the whole situation. Unbiased data does not guarantee a perfect prediction, but it makes the pattern far more likely to show what is really happening. Ways to collect fairer data:</p>
+      <ul>
+        <li>Use a <b>random sample</b>, where everyone has an equal chance of being picked.</li>
+        <li>Collect <b>enough</b> data. Bigger samples even out chance differences.</li>
+        <li>Decide how you will measure <b>before</b> you start, and measure every trial the same way.</li>
+        <li>Keep <b>all</b> the data, including results that surprise you, and report outliers.</li>
+        <li>Ask someone else to check your graph and reasoning.</li>
+      </ul>
+      <p><b>Try it.</b> Your school has 400 students. Blue rings mark students who bike to school. Estimate the percentage who bike using two different survey methods.</p>
+    </div>
+    <div class="split">
+      <div class="dots" id="l5-dots" aria-hidden="true"></div>
+      <div style="display:grid;gap:10px">
+        <div class="row" role="group" aria-label="Survey method">
+          <button class="btn small" id="l5-rand" aria-pressed="true">Random from school list</button>
+          <button class="btn small" id="l5-rack" aria-pressed="false">At the bike rack</button>
+        </div>
+        <label class="inline" for="l5-n">Sample size <input type="range" id="l5-n" min="10" max="200" step="10" value="40"> <span class="readout" id="l5-nv"></span></label>
+        <div class="row"><button class="btn primary" id="l5-go">Take a sample</button><button class="btn small" id="l5-reveal" aria-pressed="false">Reveal true value</button><button class="btn small" id="l5-clear">Clear</button></div>
+        <p class="readout" id="l5-out">No samples yet.</p>
+        <div class="plotwrap"><svg class="plot" id="l5-plot" viewBox="0 0 560 150" role="img" aria-label="Estimates from each sample"></svg></div>
+      </div>
+    </div>
+    <p class="note">Take several samples with each method. Random samples land near the true value, and bigger samples land closer. Bike rack samples land too high every time, no matter how big they are. More biased data does not fix bias.</p>
+    <label class="done"><input type="checkbox" data-done="L5"> I've finished this section</label>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="p-bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <p class="intro">Three stations. Each one gives you new practice every time.</p>
+
+  <article class="block">
+    <div class="block-head"><h2>Station 1: Pattern Analyzer</h2><span class="code">SL2.S1 · SL2.K1 · SL2.K2</span></div>
+    <p class="note">Analyze a real-world style data set in three steps: name the relationship, make a prediction from the trend line, then judge how trustworthy your prediction is.</p>
+    <div class="formula">slope m = (y₂ − y₁) ÷ (x₂ − x₁)&nbsp;&nbsp;&nbsp;prediction y = y₁ + m × (x − x₁)</div>
+    <h3 id="pa-title"></h3>
+    <p class="note" id="pa-ctx"></p>
+    <div class="plotwrap"><svg class="plot" id="pa-plot" viewBox="0 0 560 330" role="img" aria-label="Practice data scatter plot"></svg></div>
+    <div id="pa-step1" class="row" role="group" aria-label="Step 1: relationship">
+      <b>Step 1.</b> <span>The relationship is</span>
+      <button class="btn small" data-pa="positive">Positive</button>
+      <button class="btn small" data-pa="negative">Negative</button>
+      <button class="btn small" data-pa="none">No relationship</button>
+    </div>
+    <p class="feedback" id="pa-fb1" aria-live="polite"></p>
+    <div id="pa-step2" hidden>
+      <div class="row"><b>Step 2.</b> <label class="inline" for="pa-in"><span id="pa-q"></span> <input type="number" id="pa-in" step="any"></label> <button class="btn primary small" id="pa-check">Check</button> <button class="btn small" id="pa-show">Show worked solution</button></div>
+      <p class="feedback" id="pa-fb2" aria-live="polite"></p>
+      <div class="formula" id="pa-work" hidden></div>
+    </div>
+    <div id="pa-step3" class="row" hidden role="group" aria-label="Step 3: how trustworthy">
+      <b>Step 3.</b> <span>This prediction is</span>
+      <button class="btn small" data-pa3="inter">Interpolation, inside the data</button>
+      <button class="btn small" data-pa3="extra">Extrapolation, outside the data</button>
+    </div>
+    <p class="feedback" id="pa-fb3" aria-live="polite"></p>
+    <div class="row"><button class="btn primary" id="pa-new">New data set</button><span class="readout" id="pa-score"></span></div>
+  </article>
+
+  <article class="block">
+    <div class="block-head"><h2>Station 2: Graph Makeover</h2><span class="code">SL2.S2 · SL2.K3</span></div>
+    <p class="note">Bar graphs should start at zero. Move the axis start up and watch how a small difference starts to look huge. This is a misleading scale.</p>
+    <p id="gm-ctx"></p>
+    <label class="inline" for="gm-s">y-axis starts at <input type="range" id="gm-s" min="0" max="100" value="0"> <span class="readout" id="gm-sv"></span></label>
+    <div class="plotwrap"><svg class="plot" id="gm-plot" viewBox="0 0 560 300" role="img" aria-label="Two bars with an adjustable axis start"></svg></div>
+    <p class="readout" id="gm-read"></p>
+    <div class="formula">actual ratio = B ÷ A&nbsp;&nbsp;&nbsp;looks like = (B − start) ÷ (A − start)</div>
+    <div class="row"><label class="inline" for="gm-in"><span id="gm-q"></span> <input type="number" id="gm-in" step="any"></label><button class="btn primary small" id="gm-check">Check</button><button class="btn small" id="gm-new">New numbers</button></div>
+    <p class="feedback" id="gm-fb" aria-live="polite"></p>
+    <div class="formula" id="gm-work" hidden></div>
+  </article>
+
+  <article class="block">
+    <div class="block-head"><h2>Station 3: Bias Investigator</h2><span class="code">SL2.S2 · SL2.K3</span></div>
+    <p class="note">Read each case file. Find what went wrong, then see which route the bias took.</p>
+    <div class="mini">
+      <span class="eyebrow" id="bi-num"></span>
+      <h3 id="bi-claim"></h3>
+      <p id="bi-data"></p>
+    </div>
+    <div class="opts" id="bi-opts"></div>
+    <div id="bi-exp" class="callout" hidden></div>
+    <div class="row"><button class="btn primary" id="bi-next">Next case</button><span class="readout" id="bi-score"></span></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="p-sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <p class="intro">Tap a card, then tap the bin it belongs in. You can use Tab and Enter too.</p>
+  <div class="row" role="group" aria-label="Choose a round">
+    <button class="btn" id="s-a" aria-pressed="true">Round 1: Which relationship?</button>
+    <button class="btn" id="s-b" aria-pressed="false">Round 2: How did bias get in?</button>
+  </div>
+  <article class="block">
+    <div class="block-head"><h2 id="s-title"></h2><span class="readout" id="s-score"></span></div>
+    <div class="pool" id="s-pool"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="row"><button class="btn small" id="s-reset">Start this round again</button><span class="feedback" id="s-fb" aria-live="polite"></span></div>
+  </article>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="p-cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <article class="block">
+    <div class="block-head"><h2>Flashcards</h2><span class="readout" id="fc-count"></span></div>
+    <div class="bar" aria-hidden="true"><i id="fc-bar" style="width:0"></i></div>
+    <div class="row" role="group" aria-label="Which cards">
+      <button class="btn small" id="fc-all" aria-pressed="true">All cards</button>
+      <button class="btn small" id="fc-learn" aria-pressed="false">Still learning only</button>
+      <button class="btn small" id="fc-shuf">Shuffle</button>
+    </div>
+    <button class="fc" id="fc" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn small" id="fc-prev">Back</button>
+      <button class="btn small" id="fc-no">Still learning</button>
+      <button class="btn primary small" id="fc-yes">I know it</button>
+      <button class="btn small" id="fc-next">Next</button>
+    </div>
+    <p class="note">Tap the card or press Space to flip it.</p>
+  </article>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="p-quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <article class="block" id="q-box">
+    <div class="block-head"><h2>Quiz</h2><span class="readout" id="q-meta"></span></div>
+    <div id="q-body"></div>
+  </article>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="p-written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <p class="intro">Write your answer first. Then open the model answer and tick the key ideas you included. Your writing stays in this browser only.</p>
+  <h2>Short answer</h2>
+  <div id="w-short" style="display:grid;gap:14px"></div>
+  <h2>Extended response</h2>
+  <div id="w-long" style="display:grid;gap:14px"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="p-cov" role="tabpanel" aria-labelledby="t-cov" hidden>
+  <article class="block">
+    <div class="block-head"><h2>Curriculum coverage</h2><span class="code">Science 8 · SL2</span></div>
+    <p class="note"><b>Outcome:</b> Students interpret patterns and possible bias in data. <b>Understanding:</b> Unbiased data can help accurately predict trends. Source: Draft Science (7 to 9) Curriculum, September 2026. Codes are labels added for this collection.</p>
+    <div class="tablewrap"><table class="t" id="cov"></table></div>
+    <p class="note">Practice data on this page is constructed to match real patterns (for example, air cools about 6.5 °C for every 1000 m of climb, and Canada's AQHI labels 7 to 10 as high risk). It is not a record of real measurements. Progress is saved only in this browser. Nothing is sent anywhere.</p>
+    <div class="row"><button class="btn small" id="reset-all">Clear my saved progress</button><span class="feedback" id="reset-fb" aria-live="polite"></span></div>
+  </article>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+/* ---------- storage ---------- */
+var KEY="rb28-g8-sl2-v1";
+var S={done:{},pa:{r:0,t:0},gm:{r:0,t:0},bi:{r:0,t:0},sort:{A:0,B:0},cards:{},quiz:0,w:{},wc:{}};
+try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);for(var k in o){S[k]=o[k];}}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}chips();}
+function $(s){return document.querySelector(s);}
+function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s));}
+function el(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function rnd(a,b){return a+Math.random()*(b-a);}
+function r1(x){return Math.round(x*10)/10;}
+function fmt(x,d){var p=Math.pow(10,d||0);var v=Math.round(x*p)/p;return v.toLocaleString("en-CA",{maximumFractionDigits:d||0});}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+/* ---------- tabs ---------- */
+var tabs=$$("[role=tab]");
+function showTab(t,focus){tabs.forEach(function(b){var on=b===t;b.setAttribute("aria-selected",on?"true":"false");b.tabIndex=on?0:-1;document.getElementById(b.getAttribute("aria-controls")).hidden=!on;});if(focus)t.focus();try{localStorage.setItem(KEY+"-tab",t.id);}catch(e){}}
+tabs.forEach(function(b,i){b.addEventListener("click",function(){showTab(b);});b.addEventListener("keydown",function(e){var n=null;if(e.key==="ArrowRight")n=tabs[(i+1)%tabs.length];if(e.key==="ArrowLeft")n=tabs[(i-1+tabs.length)%tabs.length];if(e.key==="Home")n=tabs[0];if(e.key==="End")n=tabs[tabs.length-1];if(n){e.preventDefault();showTab(n,true);}});});
+try{var st=localStorage.getItem(KEY+"-tab");if(st&&document.getElementById(st))showTab(document.getElementById(st));}catch(e){}
+
+/* ---------- plotting ---------- */
+function niceStep(range,n){var raw=range/n;var p=Math.pow(10,Math.floor(Math.log10(raw)));var f=raw/p;var s=f<1.5?1:f<3?2:f<7?5:10;return s*p;}
+function axis(min,max,n){if(max===min){max=min+1;}var step=niceStep(max-min,n||5);return {lo:Math.floor(min/step)*step,hi:Math.ceil(max/step)*step,step:step};}
+function fit(pts){var n=pts.length,sx=0,sy=0,sxx=0,sxy=0;pts.forEach(function(p){sx+=p[0];sy+=p[1];sxx+=p[0]*p[0];sxy+=p[0]*p[1];});var m=(n*sxy-sx*sy)/(n*sxx-sx*sx);var b=(sy-m*sx)/n;return {m:m,b:b,f:function(x){return m*x+b;}};}
+function strength(pts){var n=pts.length,mx=0,my=0;pts.forEach(function(p){mx+=p[0];my+=p[1];});mx/=n;my/=n;var a=0,bx=0,by=0;pts.forEach(function(p){a+=(p[0]-mx)*(p[1]-my);bx+=(p[0]-mx)*(p[0]-mx);by+=(p[1]-my)*(p[1]-my);});return a/Math.sqrt(bx*by);}
+/* o: {pts, xl, yl, xr:[lo,hi], yr:[lo,hi], W,H, line, color(p,i), lineTo:[x0,x1], marks:[{x,y,c,label}], bands:[{y0,y1,label}], conn:bool, hl:[i0,i1]} */
+function plot(svg,o){
+  var W=o.W||560,H=o.H||330,m={l:58,r:18,t:16,b:50};
+  var xs=o.pts.map(function(p){return p[0];}),ys=o.pts.map(function(p){return p[1];});
+  var xa=axis(o.xr?o.xr[0]:Math.min.apply(null,xs),o.xr?o.xr[1]:Math.max.apply(null,xs),6);
+  var ya=axis(o.yr?o.yr[0]:Math.min.apply(null,ys),o.yr?o.yr[1]:Math.max.apply(null,ys),5);
+  function X(x){return m.l+(x-xa.lo)/(xa.hi-xa.lo)*(W-m.l-m.r);}
+  function Y(y){return H-m.b-(y-ya.lo)/(ya.hi-ya.lo)*(H-m.t-m.b);}
+  var s="";
+  (o.bands||[]).forEach(function(b){var y0=Math.max(b.y0,ya.lo),y1=Math.min(b.y1,ya.hi);s+='<rect x="'+m.l+'" y="'+Y(y1)+'" width="'+(W-m.l-m.r)+'" height="'+(Y(y0)-Y(y1))+'" fill="var(--bias-soft)"/>';if(b.label)s+='<text x="'+(W-m.r-6)+'" y="'+(Y(y1)+14)+'" text-anchor="end" style="fill:var(--bias)">'+esc(b.label)+'</text>';});
+  (o.xbands||[]).forEach(function(b){s+='<rect x="'+X(b.x0)+'" y="'+m.t+'" width="'+(X(b.x1)-X(b.x0))+'" height="'+(H-m.t-m.b)+'" fill="var(--accent-soft)"/>';});
+  for(var gx=xa.lo;gx<=xa.hi+1e-9;gx+=xa.step){s+='<line x1="'+X(gx)+'" x2="'+X(gx)+'" y1="'+m.t+'" y2="'+(H-m.b)+'" stroke="var(--grid)"/>';s+='<text x="'+X(gx)+'" y="'+(H-m.b+16)+'" text-anchor="middle">'+fmt(gx,xa.step<1?1:0)+'</text>';}
+  for(var gy=ya.lo;gy<=ya.hi+1e-9;gy+=ya.step){s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+Y(gy)+'" y2="'+Y(gy)+'" stroke="var(--grid)"/>';s+='<text x="'+(m.l-7)+'" y="'+(Y(gy)+4)+'" text-anchor="end">'+fmt(gy,ya.step<1?1:0)+'</text>';}
+  s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+(H-m.b)+'" y2="'+(H-m.b)+'" stroke="var(--muted)"/><line x1="'+m.l+'" x2="'+m.l+'" y1="'+m.t+'" y2="'+(H-m.b)+'" stroke="var(--muted)"/>';
+  s+='<text class="lab" x="'+((m.l+W-m.r)/2)+'" y="'+(H-10)+'" text-anchor="middle">'+esc(o.xl)+'</text>';
+  s+='<text class="lab" transform="translate(14 '+((m.t+H-m.b)/2)+') rotate(-90)" text-anchor="middle">'+esc(o.yl)+'</text>';
+  if(o.conn){var d=o.pts.map(function(p,i){return (i?"L":"M")+X(p[0])+" "+Y(p[1]);}).join(" ");s+='<path d="'+d+'" fill="none" stroke="var(--muted)" stroke-width="1.5"/>';}
+  if(o.line){var f=fit(o.pts);var x0=o.lineTo?o.lineTo[0]:xa.lo,x1=o.lineTo?o.lineTo[1]:xa.hi;
+    var cl=function(x){return Math.max(ya.lo,Math.min(ya.hi,f.f(x)));};
+    s+='<line x1="'+X(x0)+'" y1="'+Y(cl(x0))+'" x2="'+X(x1)+'" y2="'+Y(cl(x1))+'" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="7 5"/>';}
+  if(o.seg){s+='<line x1="'+X(o.seg[0])+'" y1="'+Y(o.seg[1])+'" x2="'+X(o.seg[2])+'" y2="'+Y(o.seg[3])+'" stroke="var(--bias)" stroke-width="3"/>';}
+  o.pts.forEach(function(p,i){var c=o.color?o.color(p,i):"var(--pt)";s+='<circle cx="'+X(p[0])+'" cy="'+Y(p[1])+'" r="6" fill="'+c+'" stroke="var(--surface)" stroke-width="1.5"/>';});
+  (o.marks||[]).forEach(function(k){var y=Math.max(ya.lo,Math.min(ya.hi,k.y));s+='<line x1="'+X(k.x)+'" x2="'+X(k.x)+'" y1="'+(H-m.b)+'" y2="'+Y(y)+'" stroke="'+k.c+'" stroke-dasharray="3 3"/><circle cx="'+X(k.x)+'" cy="'+Y(y)+'" r="8" fill="none" stroke="'+k.c+'" stroke-width="3"/>';if(k.label)s+='<text x="'+Math.min(W-m.r-4,X(k.x)+12)+'" y="'+(Y(y)-10)+'" text-anchor="'+(X(k.x)>W-150?"end":"start")+'" style="fill:'+k.c+';font-weight:600">'+esc(k.label)+'</text>';});
+  svg.innerHTML=s;
+  return {xa:xa,ya:ya};
+}
+
+/* ---------- LEARN 1 ---------- */
+var SETS={
+  cricket:{name:"Cricket chirps",xl:"Chirps counted in 15 seconds",yl:"Air temperature (°C)",rel:"positive",
+    pts:[[14,12.2],[18,14.2],[21,16.1],[25,18.4],[28,19.7],[32,22.4],[35,23.6],[38,25.6]],
+    desc:"On summer evenings, field crickets chirp faster when the air is warmer. Each point is one evening."},
+  mountain:{name:"Elevation and temperature",xl:"Elevation (m)",yl:"Air temperature (°C)",rel:"negative",
+    pts:[[700,18.0],[900,16.8],[1100,15.2],[1300,14.0],[1500,12.9],[1700,11.4],[1900,10.2],[2100,9.1],[2300,7.6]],
+    desc:"Temperatures measured on one afternoon while hiking up a mountain trail near Jasper."},
+  screen:{name:"Screen time and sleep",xl:"Screen time before bed (min)",yl:"Hours of sleep",rel:"negative",
+    pts:[[0,9.1],[15,8.9],[30,8.6],[45,8.7],[60,8.1],[75,7.9],[90,7.6],[120,7.2]],
+    desc:"One student's sleep log over eight school nights."},
+  shoe:{name:"Shoe size and quiz score",xl:"Shoe size",yl:"Quiz score (%)",rel:"none",
+    pts:[[5,72],[6,85],[6.5,64],[7,78],[8,70],[8.5,88],[9,66],[10,81],[11,74]],
+    desc:"Shoe sizes and quiz scores for nine Grade 8 students."}
+};
+var l1Key="cricket",l1Line=false;
+function drawL1(){var d=SETS[l1Key];plot($("#l1-plot"),{pts:d.pts,xl:d.xl,yl:d.yl,line:l1Line});$("#l1-desc").textContent=d.desc;
+  $$("#l1-sets button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.k===l1Key?"true":"false");});}
+Object.keys(SETS).forEach(function(k){var b=el("button","btn small",SETS[k].name);b.dataset.k=k;b.addEventListener("click",function(){l1Key=k;$("#l1-fb").textContent="";drawL1();});$("#l1-sets").appendChild(b);});
+$("#l1-line").addEventListener("click",function(){l1Line=!l1Line;this.setAttribute("aria-pressed",l1Line?"true":"false");drawL1();});
+$$("[data-l1]").forEach(function(b){b.addEventListener("click",function(){var d=SETS[l1Key];var ok=b.dataset.l1===d.rel;var fb=$("#l1-fb");fb.className="feedback "+(ok?"ok":"no");
+  var why={positive:"As x increases, y tends to increase.",negative:"As x increases, y tends to decrease.",none:"The points are scattered with no upward or downward direction, so the trend line is almost flat."}[d.rel];
+  fb.textContent=(ok?"Correct. ":"Not quite. This is a "+(d.rel==="none"?"no relationship":d.rel+" relationship")+". ")+why;
+  if(!l1Line){l1Line=true;$("#l1-line").setAttribute("aria-pressed","true");drawL1();}});});
+drawL1();
+
+/* ---------- LEARN 2 ---------- */
+var mtn=SETS.mountain.pts,mtnFit=fit(mtn);
+function drawL2(){var e=+$("#l2-elev").value;var t=mtnFit.f(e);$("#l2-elev-v").textContent=fmt(e)+" m";
+  var inside=e>=700&&e<=2300;
+  plot($("#l2-plot"),{pts:mtn,xl:"Elevation (m)",yl:"Air temperature (°C)",xr:[0,4000],yr:[-10,25],line:true,xbands:[{x0:700,x1:2300}],marks:[{x:e,y:t,c:inside?"var(--good)":"var(--bias)",label:fmt(t,1)+" °C"}]});
+  var fb=$("#l2-fb");fb.className="feedback "+(inside?"ok":"no");
+  fb.textContent=inside?"Interpolation: "+fmt(e)+" m is inside the measured range (shaded), so the prediction of about "+fmt(t,1)+" °C is fairly reliable.":"Extrapolation: "+fmt(e)+" m is outside the measured range. The line predicts about "+fmt(t,1)+" °C, but weather, wind or time of day could break the pattern there. Treat it as a rough guess.";}
+$("#l2-elev").addEventListener("input",drawL2);drawL2();
+var aq=[[2,3],[3,4],[4,4],[5,6],[6,7],[7,9],[8,10],[9,13],[10,15]];
+plot($("#l2-risk"),{pts:aq,xl:"Daily AQHI",yl:"Clinic asthma visits",xr:[0,11],yr:[0,16],line:true,xbands:[{x0:7,x1:10}],color:function(p){return p[0]>=7?"var(--pt2)":"var(--pt)";}});
+
+/* ---------- LEARN 3 ---------- */
+var ice=[[40,1,16],[55,2,19],[65,1,20],[70,2,21],[85,3,23],[100,4,25],[110,4,26],[120,5,27],[135,5,28],[150,7,31]];
+var l3c=false;
+function drawL3(){plot($("#l3-plot"),{pts:ice.map(function(p){return [p[0],p[1]];}),xl:"Ice cream cones sold",yl:"Sunburn first aid visits",yr:[0,8],line:true,
+  color:function(p,i){if(!l3c)return "var(--pt)";var t=ice[i][2];return t>=27?"var(--pt2)":t>=22?"var(--pt3)":"var(--pt)";}});
+  $("#l3-note").textContent=l3c?"Blue: high below 22 °C. Green: 22 to 26 °C. Orange: 27 °C or hotter. Hot, sunny days push both variables up. The weather is a third variable. Ice cream does not cause sunburn.":"Each point is one camp day. The pattern is clearly positive.";}
+$("#l3-col").addEventListener("click",function(){l3c=!l3c;this.setAttribute("aria-pressed",l3c?"true":"false");drawL3();});drawL3();
+var QS=[["Is there really a pattern?","Look at the whole cloud of points, not one or two. A trend line helps, but a few points can fool you."],
+["How strong is it?","If points sit close to the trend line, the pattern is strong. If they are spread far from it, predictions will be rough."],
+["Could a third variable explain it?","Two variables can rise together because something else drives both, like hot weather driving ice cream sales and sunburns. A pattern alone does not prove that one variable causes the other."],
+["Is the data fair and big enough?","Ask who or what was measured, how many, and how they were picked. A small or one-sided sample can show a pattern that is not real."],
+["Does it hold outside the data?","A pattern is only known inside the range you measured. Beyond it, the pattern might bend, level off or stop."]];
+QS.forEach(function(q,i){var d=el("details","q");var s=el("summary",null,(i+1)+". "+q[0]);d.appendChild(s);d.appendChild(el("p",null,q[1]));$("#l3-qs").appendChild(d);});
+
+/* ---------- LEARN 4 ---------- */
+function drawMoon(all){var t=$("#l4-table");
+  if(!all){t.innerHTML='<tr><th>Day type</th><th>Rowdy days Sam remembers</th></tr><tr><td>Full moon</td><td class="num">2</td></tr><tr><td>Other days</td><td class="num">none noticed</td></tr>';
+    $("#l4-mnote").textContent="Sam remembers the two rowdy full moon days because they fit the idea. That feels like proof.";}
+  else{t.innerHTML='<tr><th>Day type</th><th>Days</th><th>Rowdy</th><th>Rowdy share</th></tr><tr><td>Full moon</td><td class="num">4</td><td class="num">2</td><td class="num">50%</td></tr><tr><td>Other days</td><td class="num">26</td><td class="num">13</td><td class="num">50%</td></tr>';
+    $("#l4-mnote").textContent="With every day counted, rowdy days happen at the same rate either way. The full moon pattern came from confirmation bias, an error in reasoning.";}
+  $("#l4-mem").setAttribute("aria-pressed",all?"false":"true");$("#l4-all").setAttribute("aria-pressed",all?"true":"false");}
+$("#l4-mem").addEventListener("click",function(){drawMoon(false);});$("#l4-all").addEventListener("click",function(){drawMoon(true);});drawMoon(false);
+var steps=[6200,6500,6400,6900,7300,7000,6600,7400,7700,7600,8000,8300].map(function(v,i){return [i+1,v];});
+function drawL4(){var a=+$("#l4-a").value,b=+$("#l4-b").value;if(b<=a){b=a+1;$("#l4-b").value=b;}
+  $("#l4-av").textContent=a;$("#l4-bv").textContent=b;
+  var sub=steps.filter(function(p){return p[0]>=a&&p[0]<=b;});var fs=fit(sub);var full=fit(steps);
+  plot($("#l4-plot"),{pts:steps,xl:"Week",yl:"Average daily steps",xr:[1,12],yr:[5500,8500],conn:true,line:true,xbands:[{x0:a,x1:b}],seg:[a,fs.f(a),b,fs.f(b)],
+    color:function(p){return p[0]>=a&&p[0]<=b?"var(--pt2)":"var(--pt)";}});
+  var dir=function(m){return Math.abs(m)<30?"flat":m>0?"rising":"falling";};
+  var fb=$("#l4-fb");var full12=(a===1&&b===12);var match=dir(fs.m)===dir(full.m);
+  fb.className="feedback "+(match?"ok":"no");
+  fb.textContent=full12?"All 12 weeks: steps are rising by about "+fmt(full.m)+" per week. This is the honest trend.":
+   "Weeks "+a+" to "+b+" look "+dir(fs.m)+" (orange line). All 12 weeks are rising (dashed line). "+(match?"This window happens to agree.":"Picking only this window would be cherry-picking.");}
+$("#l4-a").addEventListener("input",drawL4);$("#l4-b").addEventListener("input",drawL4);drawL4();
+
+/* ---------- LEARN 5 ---------- */
+var POP=[];(function(){var idx=shuffle(Array.from({length:400},function(_,i){return i;}));var bikers={};idx.slice(0,140).forEach(function(i){bikers[i]=1;});for(var i=0;i<400;i++)POP.push(!!bikers[i]);})();
+var dots=$("#l5-dots");POP.forEach(function(b){var d=el("i",b?"bike":"");dots.appendChild(d);});
+var l5m="rand",l5res=[],l5rev=false;
+function drawL5(){$("#l5-nv").textContent=$("#l5-n").value+" students";
+  var marks=[];var W=560,H=150,l=30,r=20;function X(p){return l+p/100*(W-l-r);}
+  var s='<line x1="'+l+'" x2="'+(W-r)+'" y1="110" y2="110" stroke="var(--muted)"/>';
+  for(var p=0;p<=100;p+=10){s+='<line x1="'+X(p)+'" x2="'+X(p)+'" y1="106" y2="114" stroke="var(--muted)"/><text x="'+X(p)+'" y="132" text-anchor="middle">'+p+'%</text>';}
+  if(l5rev)s+='<line x1="'+X(35)+'" x2="'+X(35)+'" y1="10" y2="110" stroke="var(--good)" stroke-width="2.5"/><text x="'+(X(35)+6)+'" y="22" style="fill:var(--good);font-weight:600">true value 35%</text>';
+  var stack={};l5res.forEach(function(r){var k=Math.round(r.p);stack[k]=(stack[k]||0)+1;var y=104-(stack[k]-1)*11;s+='<circle cx="'+X(r.p)+'" cy="'+y+'" r="5" fill="'+(r.m==="rand"?"var(--pt)":"var(--pt2)")+'"/>';});
+  s+='<circle cx="'+(l+6)+'" cy="12" r="5" fill="var(--pt)"/><text x="'+(l+16)+'" y="16">random</text><circle cx="'+(l+90)+'" cy="12" r="5" fill="var(--pt2)"/><text x="'+(l+100)+'" y="16">bike rack</text>';
+  $("#l5-plot").innerHTML=s;}
+function setM(m){l5m=m;$("#l5-rand").setAttribute("aria-pressed",m==="rand"?"true":"false");$("#l5-rack").setAttribute("aria-pressed",m==="rack"?"true":"false");}
+$("#l5-rand").addEventListener("click",function(){setM("rand");});$("#l5-rack").addEventListener("click",function(){setM("rack");});
+$("#l5-n").addEventListener("input",drawL5);
+$("#l5-go").addEventListener("click",function(){var n=+$("#l5-n").value;var picks=[];
+  if(l5m==="rand"){picks=shuffle(Array.from({length:400},function(_,i){return i;})).slice(0,n);}
+  else{var bk=[],nb=[];POP.forEach(function(b,i){(b?bk:nb).push(i);});bk=shuffle(bk);nb=shuffle(nb);
+    for(var i=0;i<n;i++){if(Math.random()<0.85&&bk.length)picks.push(bk.pop());else if(nb.length)picks.push(nb.pop());else picks.push(bk.pop());}}
+  var yes=picks.filter(function(i){return POP[i];}).length;var p=yes/n*100;
+  l5res.push({p:p,m:l5m});
+  $$("#l5-dots i").forEach(function(d,i){d.classList.toggle("pick",picks.indexOf(i)>-1);});
+  $("#l5-out").innerHTML="<b>"+(l5m==="rand"?"Random sample":"Bike rack sample")+"</b> of "+n+": "+yes+" bike, estimate <b>"+fmt(p,1)+"%</b>";
+  drawL5();});
+$("#l5-reveal").addEventListener("click",function(){l5rev=!l5rev;this.setAttribute("aria-pressed",l5rev?"true":"false");drawL5();});
+$("#l5-clear").addEventListener("click",function(){l5res=[];$$("#l5-dots i").forEach(function(d){d.classList.remove("pick");});$("#l5-out").textContent="No samples yet.";drawL5();});
+drawL5();
+
+/* done checkboxes */
+$$("[data-done]").forEach(function(c){c.checked=!!S.done[c.dataset.done];c.addEventListener("change",function(){S.done[c.dataset.done]=c.checked;save();});});
+
+/* ---------- BENCH 1: Pattern Analyzer ---------- */
+var TPL=[
+ {t:"Sunshine and solar power",ctx:"A solar panel on a farm near Vegreville. Each point is one day.",xl:"Hours of sunshine",yl:"Panel output (kWh)",x:[2,14],m:0.8,b:0.5,noise:0.6,d:1,unit:"kWh",xu:"hours"},
+ {t:"Cold weather and home heating",ctx:"Natural gas used by one Edmonton home. Each point is one week of winter or spring.",xl:"Average outdoor temperature (°C)",yl:"Gas used (GJ per week)",x:[-25,15],m:-0.15,b:6,noise:0.35,d:1,unit:"GJ",xu:"°C"},
+ {t:"Canola growth",ctx:"Height of canola plants in a Treaty 6 area field, measured during the season.",xl:"Days after seeding",yl:"Plant height (cm)",x:[10,60],m:1.8,b:-10,noise:4,d:0,unit:"cm",xu:"days"},
+ {t:"Driving and fuel",ctx:"Fuel left in a car's tank on a road trip from Edmonton toward Grande Prairie.",xl:"Kilometres driven",yl:"Fuel left (L)",x:[0,400],m:-0.08,b:60,noise:1.5,d:0,unit:"L",xu:"km"},
+ {t:"Practice and free throws",ctx:"Free throws made out of 20 by school basketball players.",xl:"Practice hours per week",yl:"Free throws made (out of 20)",x:[0,8],m:1.2,b:6,noise:1,d:1,unit:"throws",xu:"hours"},
+ {t:"Height and library books",ctx:"Grade 8 students' heights and how many library books they borrowed this term.",xl:"Height (cm)",yl:"Library books borrowed",x:[145,180],m:0,b:7,noise:3,d:0,unit:"books",xu:"cm",none:true},
+ {t:"Phone number and test score",ctx:"The last digit of each student's phone number and their science test score.",xl:"Last digit of phone number",yl:"Science test score (%)",x:[0,9],m:0,b:75,noise:10,d:0,unit:"%",xu:"",none:true}
+];
+var pa=null;
+function newPA(){var T=TPL[Math.floor(Math.random()*TPL.length)];var pts=[];var n=8;
+  for(var i=0;i<n;i++){var x=T.x[0]+(T.x[1]-T.x[0])*(i/(n-1))+rnd(-0.3,0.3)*(T.x[1]-T.x[0])/(n-1);x=T.d?r1(x):Math.round(x);
+    var y=T.m*x+T.b+rnd(-1,1)*T.noise*(T.none?1.6:1);if(T.none){y=T.b+rnd(-1,1)*T.noise;}pts.push([x,Math.max(0,r1(y))]);}
+  var f=fit(pts);var rel=T.none?"none":(f.m>0?"positive":"negative");
+  if(!T.none&&Math.abs(strength(pts))<0.7){return newPA();}
+  var span=T.x[1]-T.x[0];var extra=Math.random()<0.4;var tx;
+  if(extra){tx=Math.random()<0.5?T.x[0]-span*rnd(0.2,0.45):T.x[1]+span*rnd(0.2,0.45);}else{tx=T.x[0]+span*rnd(0.2,0.8);}
+  tx=T.d?r1(tx):Math.round(tx);
+  if(T.t==="Driving and fuel"&&tx<0)tx=T.x[1]+Math.round(span*0.3);
+  if(T.t==="Practice and free throws"&&tx<0)tx=T.x[1]+2;
+  var xmin=Math.min.apply(null,pts.map(function(p){return p[0];})),xmax=Math.max.apply(null,pts.map(function(p){return p[0];}));
+  pa={T:T,pts:pts,f:f,rel:rel,tx:tx,ans:f.f(tx),inside:tx>=xmin&&tx<=xmax,xmin:xmin,xmax:xmax,step:1};
+  $("#pa-title").textContent=T.t;$("#pa-ctx").textContent=T.ctx+" Practice data.";
+  drawPA(false);
+  ["#pa-fb1","#pa-fb2","#pa-fb3"].forEach(function(s){$(s).textContent="";});
+  $("#pa-step2").hidden=true;$("#pa-step3").hidden=true;$("#pa-work").hidden=true;$("#pa-in").value="";
+  $$("[data-pa]").forEach(function(b){b.disabled=false;});$$("[data-pa3]").forEach(function(b){b.disabled=false;});
+  scorePA();}
+function drawPA(line){var T=pa.T;var lo=Math.min(T.x[0],pa.tx),hi=Math.max(T.x[1],pa.tx);
+  var ys=pa.pts.map(function(p){return p[1];});var yl=Math.min.apply(null,ys.concat([line?pa.ans:Infinity])),yh=Math.max.apply(null,ys.concat([line?pa.ans:-Infinity]));
+  plot($("#pa-plot"),{pts:pa.pts,xl:T.xl,yl:T.yl,xr:[lo,hi],yr:[Math.min(0,yl),yh],line:line,xbands:[{x0:pa.xmin,x1:pa.xmax}],marks:line&&!pa.T.none?[{x:pa.tx,y:pa.ans,c:"var(--pt2)",label:"x = "+fmt(pa.tx,1)}]:[]});}
+function scorePA(){$("#pa-score").textContent="Correct steps: "+S.pa.r+" of "+S.pa.t;}
+$$("[data-pa]").forEach(function(b){b.addEventListener("click",function(){var ok=b.dataset.pa===pa.rel;S.pa.t++;if(ok)S.pa.r++;save();scorePA();
+  var fb=$("#pa-fb1");fb.className="feedback "+(ok?"ok":"no");
+  var nm={positive:"a positive relationship",negative:"a negative relationship",none:"no relationship"}[pa.rel];
+  fb.textContent=(ok?"Correct: ":"This shows ")+nm+". "+(pa.rel==="none"?"The points scatter with no direction. A trend line would be nearly flat, so any prediction from it would be unreliable. Try a new data set.":"The trend line is now drawn.");
+  $$("[data-pa]").forEach(function(x){x.disabled=true;});
+  drawPA(pa.rel!=="none");
+  if(pa.rel!=="none"){$("#pa-step2").hidden=false;$("#pa-q").textContent="Use the trend line to predict "+pa.T.yl.toLowerCase()+" when "+pa.T.xl.toLowerCase()+" = "+fmt(pa.tx,1)+":";}});});
+$("#pa-check").addEventListener("click",function(){var v=parseFloat($("#pa-in").value);var fb=$("#pa-fb2");
+  if(isNaN(v)){fb.className="feedback no";fb.textContent="Type a number first.";return;}
+  var ys=pa.pts.map(function(p){return p[1];});var tol=Math.max(0.12*(Math.max.apply(null,ys)-Math.min.apply(null,ys)),0.5);
+  var ok=Math.abs(v-pa.ans)<=tol;S.pa.t++;if(ok)S.pa.r++;save();scorePA();
+  fb.className="feedback "+(ok?"ok":"no");fb.textContent=ok?"Good prediction. The line gives about "+fmt(pa.ans,1)+" "+pa.T.unit+".":"Not close enough. The line gives about "+fmt(pa.ans,1)+" "+pa.T.unit+". Open the worked solution.";
+  showWork();$("#pa-step3").hidden=false;});
+$("#pa-show").addEventListener("click",function(){showWork();$("#pa-step3").hidden=false;});
+function showWork(){var f=pa.f;var x1=pa.xmin,x2=pa.xmax;var y1=f.f(x1),y2=f.f(x2);var m=(y2-y1)/(x2-x1);
+  var w=$("#pa-work");w.hidden=false;
+  w.innerHTML="Two points on the trend line: ("+fmt(x1,1)+", "+fmt(y1,2)+") and ("+fmt(x2,1)+", "+fmt(y2,2)+")<br>m = ("+fmt(y2,2)+" − "+fmt(y1,2)+") ÷ ("+fmt(x2,1)+" − "+fmt(x1,1)+") = <b>"+fmt(m,3)+"</b> "+esc(pa.T.unit)+" per "+esc(pa.T.xu||"unit")+"<br>y = "+fmt(y1,2)+" + "+fmt(m,3)+" × ("+fmt(pa.tx,1)+" − "+fmt(x1,1)+") = <b>"+fmt(pa.ans,1)+" "+esc(pa.T.unit)+"</b>";}
+$$("[data-pa3]").forEach(function(b){b.addEventListener("click",function(){var ok=(b.dataset.pa3==="inter")===pa.inside;S.pa.t++;if(ok)S.pa.r++;save();scorePA();
+  var fb=$("#pa-fb3");fb.className="feedback "+(ok?"ok":"no");
+  fb.textContent=(ok?"Correct. ":"Look again. ")+(pa.inside?"x = "+fmt(pa.tx,1)+" is inside the measured range ("+fmt(pa.xmin,1)+" to "+fmt(pa.xmax,1)+"), so this is interpolation and fairly trustworthy.":"x = "+fmt(pa.tx,1)+" is outside the measured range ("+fmt(pa.xmin,1)+" to "+fmt(pa.xmax,1)+"), so this is extrapolation. The pattern may change out there, so treat the prediction with caution.");
+  $$("[data-pa3]").forEach(function(x){x.disabled=true;});});});
+$("#pa-new").addEventListener("click",newPA);newPA();
+
+/* ---------- BENCH 2: Graph Makeover ---------- */
+var GMC=[{t:"School recycling collected",a:"2025",b:"2026",u:"kg",lo:400,hi:600},
+ {t:"Average Grade 8 reading minutes per day",a:"Fall",b:"Spring",u:"min",lo:30,hi:60},
+ {t:"Energy drink brand test: reaction time score",a:"Water",b:"Drink",u:"points",lo:80,hi:100},
+ {t:"Students who say they like science",a:"Class A",b:"Class B",u:"students",lo:20,hi:32}];
+var gm=null;
+function newGM(){var c=GMC[Math.floor(Math.random()*GMC.length)];var A=Math.round(rnd(c.lo,c.hi));var B=Math.round(A*rnd(1.03,1.12));if(B===A)B=A+1;
+  var maxS=Math.floor(A*0.95);var qs=Math.round(A*rnd(0.6,0.9));
+  gm={c:c,A:A,B:B,maxS:maxS,qs:qs};$("#gm-s").max=maxS;$("#gm-s").value=0;
+  $("#gm-ctx").innerHTML="<b>"+esc(c.t)+".</b> "+esc(c.a)+": "+A+" "+esc(c.u)+". "+esc(c.b)+": "+B+" "+esc(c.u)+".";
+  $("#gm-q").textContent="If the axis starts at "+qs+", how many times taller does the "+c.b+" bar look than the "+c.a+" bar? (one decimal)";
+  $("#gm-in").value="";$("#gm-fb").textContent="";$("#gm-work").hidden=true;drawGM();}
+function drawGM(){var s=+$("#gm-s").value;$("#gm-sv").textContent=s+" "+gm.c.u;
+  var W=560,H=300,l=60,b=40,t=16,top=Math.ceil(gm.B*1.08);function Y(v){return H-b-(v-s)/(top-s)*(H-b-t);}
+  var o="";var ax=axis(s,top,5);for(var g=ax.lo;g<=top;g+=ax.step){if(g<s)continue;o+='<line x1="'+l+'" x2="'+(W-20)+'" y1="'+Y(g)+'" y2="'+Y(g)+'" stroke="var(--grid)"/><text x="'+(l-6)+'" y="'+(Y(g)+4)+'" text-anchor="end">'+fmt(g)+'</text>';}
+  [[gm.A,gm.c.a,"var(--pt)"],[gm.B,gm.c.b,"var(--pt2)"]].forEach(function(d,i){var x=l+60+i*200;o+='<rect x="'+x+'" y="'+Y(d[0])+'" width="120" height="'+(H-b-Y(d[0]))+'" fill="'+d[2]+'" rx="3"/><text class="lab" x="'+(x+60)+'" y="'+(H-b+18)+'" text-anchor="middle">'+esc(d[1])+'</text><text x="'+(x+60)+'" y="'+(Y(d[0])-6)+'" text-anchor="middle" style="fill:var(--ink);font-weight:600">'+d[0]+'</text>';});
+  o+='<line x1="'+l+'" x2="'+(W-20)+'" y1="'+(H-b)+'" y2="'+(H-b)+'" stroke="var(--muted)"/><line x1="'+l+'" x2="'+l+'" y1="'+t+'" y2="'+(H-b)+'" stroke="var(--muted)"/>';
+  if(s>0)o+='<text x="'+(l+4)+'" y="'+(H-b-6)+'" style="fill:var(--bias);font-weight:600">axis starts at '+s+'</text>';
+  $("#gm-plot").innerHTML=o;
+  var act=gm.B/gm.A,look=(gm.B-s)/(gm.A-s);
+  $("#gm-read").innerHTML="Actually <b>"+fmt(act,2)+"×</b> bigger. Looks <b>"+fmt(look,2)+"×</b> bigger."+(look/act>1.5?" <span style=\"color:var(--bias)\">Misleading.</span>":"");}
+$("#gm-s").addEventListener("input",drawGM);
+$("#gm-check").addEventListener("click",function(){var v=parseFloat($("#gm-in").value);var fb=$("#gm-fb");if(isNaN(v)){fb.className="feedback no";fb.textContent="Type a number first.";return;}
+  var ans=(gm.B-gm.qs)/(gm.A-gm.qs);var ok=Math.abs(v-ans)<=0.11;S.gm.t++;if(ok)S.gm.r++;save();
+  fb.className="feedback "+(ok?"ok":"no");fb.textContent=(ok?"Correct. ":"Not quite. ")+"It looks "+fmt(ans,1)+" times taller, but the real ratio is only "+fmt(gm.B/gm.A,2)+".";
+  var w=$("#gm-work");w.hidden=false;w.innerHTML="looks like = ("+gm.B+" − "+gm.qs+") ÷ ("+gm.A+" − "+gm.qs+") = "+(gm.B-gm.qs)+" ÷ "+(gm.A-gm.qs)+" = <b>"+fmt(ans,2)+"</b><br>actual = "+gm.B+" ÷ "+gm.A+" = <b>"+fmt(gm.B/gm.A,2)+"</b>";
+  $("#gm-s").value=gm.qs;drawGM();});
+$("#gm-new").addEventListener("click",newGM);newGM();
+
+/* ---------- BENCH 3: Bias Investigator ---------- */
+var R={A:"Route A: error in reasoning",B:"Route B: misinterpretation and inaccurate analysis",C:"Route C: flawed decision making"};
+var CASES=[
+ {c:"\"90% of teens play video games every day!\"",d:"The survey was posted on a gaming website and answered by its visitors.",o:["The sample was not random, so it over-represents gamers","90% is too high to be a real number","Teens cannot answer surveys honestly","The survey should have used a bar graph"],r:"B",e:"Only people who visit a gaming site answered. The data was analyzed as if it represented all teens, which it does not."},
+ {c:"\"Our class is always rowdy on full moon days.\"",d:"Sam remembers two rowdy full moon days and no rowdy ordinary days.",o:["Sam noticed only the evidence that fit the idea","The moon is too far away to see","Two days is enough proof","Rowdiness cannot be observed"],r:"A",e:"This is confirmation bias. Counting all days shows rowdy days are just as common without a full moon."},
+ {c:"\"Ice cream causes sunburns.\"",d:"At a summer camp, ice cream sales and sunburn visits rise together.",o:["A third variable, hot sunny weather, drives both","The data must be wrong","Ice cream contains chemicals that burn skin","There is no pattern in the data"],r:"A",e:"Correlation is not causation. Concluding one causes the other from a pattern alone is an error in reasoning."},
+ {c:"\"Scores TRIPLED after drinking our energy drink!\"",d:"The ad's bar graph starts its y-axis at 90. Scores went from 92 to 96.",o:["The axis start makes a small difference look huge","The drink really tripled scores","96 is three times 92","Bar graphs can never be trusted"],r:"B",e:"96 ÷ 92 is about 1.04, a 4% change. Starting the axis at 90 makes the bars look 3 times different. That is a misleading scale."},
+ {c:"\"Steps are falling, so the step challenge failed.\"",d:"The report shows only weeks 5 to 7 of a 12 week challenge. Over all 12 weeks, steps rose.",o:["Only part of the data was chosen (cherry-picking)","Weeks 5 to 7 are the only ones that count","Steps cannot be measured","The challenge was too long"],r:"B",e:"Choosing a window that supports a claim and hiding the rest is cherry-picking."},
+ {c:"\"All tall players are better scorers.\"",d:"A coach watched one tall player score 30 points in a game.",o:["One example is too little to judge a whole group","Tall players always score more","The coach should measure height in metres","30 points is not a lot"],r:"A",e:"Judging a whole group from one or two examples is a hasty generalization, an error in reasoning."},
+ {c:"\"Hardly anyone rides Route 8, so we cut it.\"",d:"Riders were counted on one stormy Friday in February.",o:["A choice was made from a count that does not represent normal days","Buses should never be cut","Fridays are always busy","The count was too high"],r:"C",e:"The biased count led to a wrong conclusion, and the decision to cut the route came from it. That is flawed decision making."},
+ {c:"\"By September our canola will be 3 metres tall.\"",d:"A trend line from the first 40 days of growth was extended to day 150.",o:["The trend line was stretched far past the data","Canola cannot be measured","40 days is too much data","Plants never grow in summer"],r:"B",e:"This is extrapolation far outside the data. Canola stops growing taller as it matures, so the straight line no longer applies."},
+ {c:"\"Students want more sports drinks, so the cafeteria ordered 500.\"",d:"Only members of the school sports teams were asked.",o:["The order was based on a one-sided sample","500 is a round number","Sports teams know nutrition best","The cafeteria should not sell drinks"],r:"C",e:"The survey left out most students, so the conclusion was biased, and spending money on that conclusion is a flawed decision."},
+ {c:"\"The new fertilizer works!\"",d:"A student ran the test six times. Two runs showed taller plants. The other four were thrown out as 'mistakes'.",o:["Results that disagreed were removed without a good reason","Six runs are too many","Fertilizer always works","Plants should be measured in kilograms"],r:"B",e:"Dropping results you do not like is inaccurate analysis. Outliers should be checked for real errors and reported either way."}
+];
+var biOrder=shuffle(CASES.map(function(_,i){return i;})),biI=0;
+function showBI(){var k=CASES[biOrder[biI%biOrder.length]];$("#bi-num").textContent="Case file "+((biI%biOrder.length)+1)+" of "+CASES.length;
+  $("#bi-claim").textContent=k.c;$("#bi-data").textContent=k.d;var box=$("#bi-opts");box.innerHTML="";$("#bi-exp").hidden=true;
+  shuffle(k.o.map(function(t,i){return {t:t,ok:i===0};})).forEach(function(op){var b=el("button","opt",op.t);b.addEventListener("click",function(){
+    S.bi.t++;if(op.ok)S.bi.r++;save();
+    $$("#bi-opts .opt").forEach(function(x){x.disabled=true;if(x.textContent===k.o[0])x.classList.add("ok");});if(!op.ok)b.classList.add("no");
+    var ex=$("#bi-exp");ex.hidden=false;ex.className="callout "+(op.ok?"good":"bias");ex.innerHTML="<p><b>"+(op.ok?"Correct.":"Not quite.")+" "+esc(R[k.r])+".</b> "+esc(k.e)+"</p>";scoreBI();});box.appendChild(b);});
+  scoreBI();}
+function scoreBI(){$("#bi-score").textContent="Solved: "+S.bi.r+" of "+S.bi.t;}
+$("#bi-next").addEventListener("click",function(){biI++;showBI();});showBI();
+
+/* ---------- SORT ---------- */
+var ROUNDS={
+ A:{title:"Round 1: Which relationship?",bins:["Positive","Negative","No relationship"],cards:[
+  ["The more hours you practise piano, the fewer mistakes you make.",1],["Higher up a mountain trail, colder air.",1],["More cricket chirps per minute, warmer evening.",0],
+  ["Bigger sunflower heads, more seeds.",0],["Shoe size and favourite colour.",2],["More days without rain, drier lawn soil.",0],
+  ["Kilometres driven and fuel left in the tank.",1],["Hours of sunshine and solar panel output.",0],["Birth month and science test score.",2],
+  ["Colder Edmonton days, more minutes the furnace runs.",1],["Height and number of library books borrowed.",2],["Higher AQHI, more clinic asthma visits.",0]]},
+ B:{title:"Round 2: How did bias get in?",bins:["Error in reasoning","Misinterpretation or inaccurate analysis","Flawed decision making"],cards:[
+  ["Remembering only the evidence that agrees with you.",0],["Deciding one thing causes another just because they rise together.",0],["Judging all Grade 8s from two students you know.",0],
+  ["Starting a bar graph's axis at 95 so a small gap looks huge.",1],["Showing only the weeks that fit the trend you want.",1],["Surveying only the bike rack about how students get to school.",1],
+  ["Stretching a trend line far past the measured data.",1],["Cutting a bus route after counting riders on one stormy day.",2],["Ordering 500 sports drinks after asking only the sports teams.",2],
+  ["Picking a whole team lineup from stats in one practice game.",2]]}
+};
+var sr="A",sState=null,sSel=null;
+function startSort(k){sr=k;$("#s-a").setAttribute("aria-pressed",k==="A"?"true":"false");$("#s-b").setAttribute("aria-pressed",k==="B"?"true":"false");
+  var R0=ROUNDS[k];sState={left:shuffle(R0.cards.map(function(c,i){return i;})),placed:[[],[],[]],right:0,tries:0};sSel=null;$("#s-fb").textContent="";drawSort();}
+function drawSort(){var R0=ROUNDS[sr];$("#s-title").textContent=R0.title;
+  $("#s-score").textContent=sState.right+" correct · "+(R0.cards.length-sState.left.length)+" of "+R0.cards.length+" placed · best "+(S.sort[sr]||0);
+  var pool=$("#s-pool");pool.innerHTML="";
+  sState.left.forEach(function(i){var b=el("button","card-s",R0.cards[i][0]);b.setAttribute("aria-pressed",sSel===i?"true":"false");b.addEventListener("click",function(){sSel=i;drawSort();var f=$$("#s-bins .bin>button")[0];if(f)f.focus();});pool.appendChild(b);});
+  if(!sState.left.length)pool.appendChild(el("p","note","All cards placed. Green cards are correct. Orange cards show the right answer in brackets."));
+  var bins=$("#s-bins");bins.innerHTML="";
+  R0.bins.forEach(function(name,bi){var d=el("div","bin");var h=el("button",null,name);h.setAttribute("aria-label","Place selected card in "+name);
+    h.addEventListener("click",function(){if(sSel==null){$("#s-fb").className="feedback no";$("#s-fb").textContent="Tap a card first.";return;}
+      var ok=R0.cards[sSel][1]===bi;sState.placed[bi].push({i:sSel,ok:ok});if(ok)sState.right++;sState.left=sState.left.filter(function(x){return x!==sSel;});sSel=null;
+      $("#s-fb").className="feedback "+(ok?"ok":"no");$("#s-fb").textContent=ok?"Correct.":"Not that bin. Check the orange card.";
+      if(!sState.left.length){var pct=Math.round(sState.right/R0.cards.length*100);if(pct>(S.sort[sr]||0)){S.sort[sr]=pct;save();}$("#s-fb").textContent="Round done: "+sState.right+" of "+R0.cards.length+" correct.";}
+      drawSort();var nb=$("#s-pool .card-s");if(nb)nb.focus();});
+    d.appendChild(h);
+    sState.placed[bi].forEach(function(p){d.appendChild(el("div","placed "+(p.ok?"ok":"no"),R0.cards[p.i][0]+(p.ok?"":" ["+R0.bins[R0.cards[p.i][1]]+"]")));});
+    bins.appendChild(d);});}
+$("#s-a").addEventListener("click",function(){startSort("A");});$("#s-b").addEventListener("click",function(){startSort("B");});$("#s-reset").addEventListener("click",function(){startSort(sr);});
+startSort("A");
+
+/* ---------- FLASHCARDS ---------- */
+var CARDS=[["Variable","A factor that can change or be measured in an investigation."],["Independent variable","The variable you change or choose. It usually goes on the x-axis."],["Dependent variable","The variable that responds. It usually goes on the y-axis."],["Relationship","A connection where a change in one variable tends to go with a change in another."],["Positive relationship","As one variable increases, the other also increases."],["Negative relationship","As one variable increases, the other decreases."],["No relationship","Changing one variable shows no consistent change in the other."],["Scatter plot","A graph of paired data points used to look for a relationship."],["Pattern","A regular, predictable shape or repetition in data."],["Trend","The general direction data moves over time or across values."],["Trend line","A line of best fit drawn through the middle of the points to show the general pattern."],["Slope","How steep a trend line is: the change in y divided by the change in x."],["Prediction","A statement of what is expected to happen, based on a pattern."],["Interpolation","Predicting a value inside the range of the measured data."],["Extrapolation","Predicting a value outside the range of the measured data. It is less reliable."],["Outlier","A data point far away from the rest of the data."],["Risk","The chance that something harmful will happen."],["Correlation","A pattern where two variables change together."],["Causation","When a change in one variable directly produces a change in another."],["Third variable","A hidden factor that affects both variables and can create a misleading pattern."],["Critical thinking","Carefully questioning evidence and reasoning before accepting a conclusion."],["Bias","A tendency that pushes how data is collected or understood in one direction, away from a fair result."],["Confirmation bias","Noticing or remembering only evidence that supports what you already believe."],["Hasty generalization","Drawing a broad conclusion from too few examples."],["Cherry-picking","Choosing only the data that supports a claim and leaving out the rest."],["Misleading scale","A graph axis that starts or stretches in a way that exaggerates or hides differences."],["Sample","The group of people or things you collect data from."],["Random sample","A sample where every member of the group has an equal chance of being chosen."],["Sample size","The number of individuals or measurements in a sample."],["Unbiased data","Data collected fairly so it represents the whole group or situation."],["Flawed decision making","Making a choice based on a biased or incorrect conclusion."]];
+var fcOrder=CARDS.map(function(_,i){return i;}),fcI=0,fcFlip=false,fcOnly=false;
+function fcList(){return fcOrder.filter(function(i){return !fcOnly||S.cards[CARDS[i][0]]!=="k";});}
+function drawFC(){var L=fcList();var known=CARDS.filter(function(c){return S.cards[c[0]]==="k";}).length;
+  $("#fc-count").textContent=known+" of "+CARDS.length+" known";$("#fc-bar").style.width=(known/CARDS.length*100)+"%";
+  var fc=$("#fc");if(!L.length){fc.innerHTML='<span class="def">Every card is marked known. Switch to All cards to review.</span>';return;}
+  fcI=(fcI+L.length)%L.length;var c=CARDS[L[fcI]];var stt=S.cards[c[0]];
+  fc.innerHTML=fcFlip?'<span class="def">'+esc(c[1])+'</span>':'<span><span class="term">'+esc(c[0])+'</span><br><span class="note">'+(fcI+1)+' of '+L.length+(stt==="k"?" · known":stt==="l"?" · still learning":"")+'</span></span>';
+  fc.setAttribute("aria-label",(fcFlip?"Definition: ":"Term: ")+(fcFlip?c[1]:c[0])+". Press to flip.");}
+$("#fc").addEventListener("click",function(){fcFlip=!fcFlip;drawFC();});
+function mark(v){var L=fcList();if(!L.length)return;S.cards[CARDS[L[fcI]][0]]=v;save();fcFlip=false;if(!(fcOnly&&v==="k"))fcI++;drawFC();}
+$("#fc-yes").addEventListener("click",function(){mark("k");});$("#fc-no").addEventListener("click",function(){mark("l");});
+$("#fc-next").addEventListener("click",function(){fcI++;fcFlip=false;drawFC();});$("#fc-prev").addEventListener("click",function(){fcI--;fcFlip=false;drawFC();});
+$("#fc-shuf").addEventListener("click",function(){fcOrder=shuffle(fcOrder);fcI=0;fcFlip=false;drawFC();});
+$("#fc-all").addEventListener("click",function(){fcOnly=false;this.setAttribute("aria-pressed","true");$("#fc-learn").setAttribute("aria-pressed","false");fcI=0;drawFC();});
+$("#fc-learn").addEventListener("click",function(){fcOnly=true;this.setAttribute("aria-pressed","true");$("#fc-all").setAttribute("aria-pressed","false");fcI=0;drawFC();});
+drawFC();
+
+/* ---------- QUIZ ---------- */
+var QB=[
+ ["Two variables have a relationship when...",["a change in one tends to go with a change in the other","both always have the same value","one is always larger than the other","they were measured on the same day"],"A relationship means the variables change together in a consistent way."],
+ ["On a mountain trail, air gets colder as elevation increases. This is a...",["negative relationship","positive relationship","no relationship","proof that elevation causes everything"],"One variable goes up while the other goes down, so the relationship is negative."],
+ ["Points on a scatter plot form a cloud with no upward or downward direction. This shows...",["no clear relationship","a strong positive relationship","a strong negative relationship","an error in the graph"],"Scattered points with a nearly flat trend line show no relationship."],
+ ["Which is the best use of a pattern to predict?",["Estimating tonight's temperature from cricket chirps, within the range already measured","Guessing next year's lottery numbers from this year's","Assuming a plant will keep growing at the same rate forever","Ignoring the data and using a hunch"],"Predictions inside the measured range, from a real pattern, are the most reliable."],
+ ["AQHI and clinic asthma visits rise together. What does this pattern help health workers do?",["Identify a risk and warn people with asthma on smoky days","Prove that asthma causes smoke","Stop measuring air quality","Lower the AQHI"],"Patterns can identify risks so people can act before harm happens."],
+ ["Predicting a value far outside the range of your data is called...",["extrapolation","interpolation","cherry-picking","random sampling"],"Extra means outside. Extrapolation goes beyond the measured data."],
+ ["Why is extrapolation risky?",["The pattern may change outside the range you measured","It uses too much data","It is always more accurate","It only works with bar graphs"],"You have no evidence about what happens beyond your data, so the pattern might bend or stop."],
+ ["Ice cream sales and sunburns rise together at a summer camp. The best explanation is...",["a third variable, hot sunny weather, increases both","ice cream causes sunburn","sunburn makes people buy ice cream","the data is made up"],"A hidden third variable can create a pattern between two things that do not cause each other."],
+ ["Which question shows critical thinking about a pattern?",["Could something else explain why these two variables change together?","How can I make the graph look more dramatic?","Which data should I hide?","Is this the answer I wanted?"],"Critical thinking questions the evidence and looks for other explanations."],
+ ["A data point far away from the others is called...",["an outlier","a trend","a variable","a sample"],"An outlier sits far from the rest of the data."],
+ ["What should you do with an outlier?",["Check whether it was a measurement error, then report it either way","Always delete it","Hide it without saying anything","Use only the outlier"],"Outliers might be errors or might be important. Removing them without a reason is a form of bias."],
+ ["Bias is best described as...",["a tendency that pushes data or conclusions in one direction, away from a fair result","any number that is very large","a kind of graph","a careful measurement"],"Bias tilts results away from what is fair and accurate."],
+ ["Sam remembers rowdy full moon days but forgets rowdy ordinary days. This is...",["an error in reasoning called confirmation bias","a misleading graph scale","a random sample","a flawed decision"],"Noticing only evidence that fits your belief is confirmation bias."],
+ ["A bar graph's y-axis starts at 95. The bars show 96 and 98. What is the problem?",["The small difference looks much bigger than it is","The numbers are wrong","Bar graphs cannot show numbers near 100","There is no problem"],"The bars look 3 times different, but 98 ÷ 96 is only about 1.02."],
+ ["A survey about how students get to school is handed out only at the bike rack. The result will most likely...",["overestimate how many students bike","underestimate how many students bike","be exactly right","show no pattern"],"The sample is full of cyclists, so the estimate is pushed too high."],
+ ["Choosing only the weeks of data that support your idea is called...",["cherry-picking","interpolation","peer review","random sampling"],"Cherry-picking keeps only the data that fits and hides the rest."],
+ ["Which is an example of flawed decision making caused by bias?",["Cutting a bus route after counting riders on one stormy day","Counting riders on many days before deciding","Asking a random sample of riders","Graphing ridership with the axis starting at zero"],"A decision built on a biased count can harm the people who rely on the service."],
+ ["Which sample gives the least biased estimate of students' favourite lunch at your school?",["Randomly choosing 80 students from the full school list","Asking your friends at your table","Asking only the volleyball team","Asking the first 5 people at the door"],"A large random sample gives everyone an equal chance to be included."],
+ ["Why does a larger random sample usually give a better estimate?",["Chance differences even out, so results land closer to the true value","Larger samples remove all bias automatically","Small samples are always biased on purpose","It makes the graph bigger"],"More randomly chosen data smooths out luck. It cannot fix a biased method, though."],
+ ["Two variables are correlated. Which statement is true?",["One may or may not cause the other, so more evidence is needed","One definitely causes the other","They cannot be graphed","They must both be increasing"],"Correlation shows variables change together. It does not prove cause."],
+ ["A trend line passes through (2, 10) and (6, 22). What is its slope?",["3","2","4","6"],"m = (22 − 10) ÷ (6 − 2) = 12 ÷ 4 = 3."],
+ ["Using the same line through (2, 10) with slope 3, predict y when x = 4.",["16","13","22","12"],"y = 10 + 3 × (4 − 2) = 10 + 6 = 16."],
+ ["Which statement best matches 'Unbiased data can help accurately predict trends'?",["Fair, representative data makes a pattern more likely to show what is really happening","Any data predicts trends perfectly","Biased data predicts better because it is clearer","Predictions do not need data"],"When data fairly represents the situation, the pattern and predictions from it are more trustworthy."],
+ ["A coach sees one tall player score a lot and decides all tall players score more. This is...",["a hasty generalization from too little data","a random sample","interpolation","a fair test"],"One example cannot represent a whole group."],
+ ["Which helps reduce bias when collecting data?",["Deciding how to measure before starting and measuring every trial the same way","Changing the method when results look wrong","Keeping only the trials you like","Measuring only when it is convenient"],"A consistent plan made in advance keeps your wishes from steering the data."]
+];
+var qz=null;
+function startQuiz(){qz={qs:shuffle(QB.map(function(_,i){return i;})).slice(0,10),i:0,score:0};drawQ();}
+function drawQ(){var body=$("#q-body");body.innerHTML="";$("#q-meta").textContent="Best score: "+S.quiz+"/10";
+  if(qz.i>=qz.qs.length){if(qz.score>S.quiz){S.quiz=qz.score;save();}
+    body.appendChild(el("p",null,"You scored "+qz.score+" out of 10."));body.appendChild(el("p","note",qz.score>=8?"Strong work. Try another round for new questions.":"Review the Learn tab sections, then try again. Each round draws 10 of "+QB.length+" questions."));
+    var b=el("button","btn primary","Start a new round");b.addEventListener("click",startQuiz);body.appendChild(b);b.focus();$("#q-meta").textContent="Best score: "+S.quiz+"/10";return;}
+  var q=QB[qz.qs[qz.i]];body.appendChild(el("p","eyebrow","Question "+(qz.i+1)+" of 10 · score "+qz.score));
+  var h=el("h3",null,q[0]);body.appendChild(h);var box=el("div","opts");body.appendChild(box);
+  var exp=el("div","callout");exp.hidden=true;
+  shuffle(q[1].map(function(t,i){return {t:t,ok:i===0};})).forEach(function(op){var b=el("button","opt",op.t);b.addEventListener("click",function(){
+    $$("#q-body .opt").forEach(function(x){x.disabled=true;if(x.textContent===q[1][0])x.classList.add("ok");});if(!op.ok)b.classList.add("no");else qz.score++;
+    exp.hidden=false;exp.className="callout "+(op.ok?"good":"bias");exp.innerHTML="<p><b>"+(op.ok?"Correct.":"Not quite.")+"</b> "+esc(q[2])+"</p>";
+    var n=el("button","btn primary",qz.i===9?"See my score":"Next question");n.addEventListener("click",function(){qz.i++;drawQ();});body.appendChild(n);n.focus();});box.appendChild(b);});
+  body.appendChild(exp);}
+startQuiz();
+
+/* ---------- WRITTEN ---------- */
+var WS=[
+ ["What does it mean for two variables to have a relationship? Give an example.","SL2.K1","Two variables have a relationship when a change in one tends to go with a change in the other. For example, as elevation increases on a mountain trail, air temperature decreases.",["Defines relationship as variables changing together","Gives a specific example","Names the direction (positive or negative)"]],
+ ["Compare a positive and a negative relationship using examples from Alberta.","SL2.K1","In a positive relationship both variables increase together, such as hours of sunshine and solar panel output on a farm near Vegreville. In a negative relationship one increases as the other decreases, such as outdoor temperature in Edmonton and the amount of gas used to heat a home.",["Describes a positive relationship correctly","Describes a negative relationship correctly","Uses an Alberta example for each"]],
+ ["How can a pattern help identify a risk? Use an example.","SL2.K1","A pattern can show that harm becomes more likely as a variable rises. Clinic asthma visits climb as the AQHI rises during wildfire smoke, so a high AQHI forecast warns people with asthma to take precautions.",["States that a pattern links a variable to harm","Gives an example such as AQHI","Explains how people can act on it"]],
+ ["Why is a prediction inside the data range more reliable than one far outside it?","SL2.K1 · SL2.K2","Inside the range (interpolation) you have measurements on both sides that show the pattern holds. Outside the range (extrapolation) you have no evidence, and the pattern might bend, level off or stop.",["Names interpolation and extrapolation","Explains evidence exists inside the range","Explains the pattern may change outside it"]],
+ ["Ice cream sales and sunburns rise together. Explain why one does not cause the other.","SL2.K2","A third variable, hot sunny weather, increases both. People buy more ice cream and spend more time in strong sun on hot days. The pattern is a correlation, not proof of cause.",["Identifies the third variable","Explains how it affects both","States that correlation is not causation"]],
+ ["Name two critical-thinking questions to ask before trusting a pattern, and explain why each matters.","SL2.K2","Could a third variable explain it? This matters because a hidden factor can create a pattern between unrelated things. Is the data fair and big enough? This matters because a small or one-sided sample can show a pattern that is not real.",["Gives two clear questions","Explains the purpose of each","Connects to avoiding wrong conclusions"]],
+ ["What is bias, and how can it lead to an incorrect conclusion?","SL2.K3","Bias is a tendency that pushes data collection or interpretation in one direction. It can cause errors in reasoning, like noticing only agreeing evidence, or inaccurate analysis, like cherry-picking data, so the conclusion does not match what is really happening.",["Defines bias","Gives at least one route (reasoning, analysis or decision)","Links bias to a wrong conclusion"]],
+ ["How can a graph's scale mislead a reader?","SL2.K3 · SL2.S2","If a bar graph's axis starts above zero, small differences look huge. Scores of 92 and 96 differ by about 4%, but with the axis starting at 90 the second bar looks 3 times taller.",["Mentions the axis not starting at zero","Explains that differences look exaggerated","Uses numbers or an example"]],
+ ["How could you collect unbiased data on how students at your school get to school?","Understanding","Randomly choose a large sample from the full school list so every student has an equal chance. Ask everyone the same question the same way, on several ordinary days, and keep every answer.",["Uses a random sample from the whole school","Uses a large enough sample","Measures consistently and keeps all data"]]
+];
+var WL=[
+ ["Analyze a real-world pattern. Using the AQHI and asthma visit data in Learn section 2, describe the pattern, make a prediction, identify the risk, suggest a decision and name one limitation of the data.","SL2.S1 · SL2.K1","The data shows a positive relationship: as AQHI rises, asthma visits rise, and they climb fastest above 7. Using the trend line, an AQHI of 6.5 predicts about 8 visits. The pattern identifies a risk for people with asthma on smoky days. A school could keep students inside for recess when AQHI reaches the high risk range. A limitation is that the data comes from one clinic, so it may not represent the whole city, and other factors like pollen could also affect visits.",["Names the relationship and direction","Makes a prediction using the trend line","Identifies the risk","Proposes a reasonable decision","States a limitation (sample, third variable or extrapolation)"]],
+ ["Sam claims the full moon makes the class rowdy. Explain how bias led to this conclusion, then design a fair way to test the claim.","SL2.S2 · SL2.K3","Sam remembered rowdy full moon days because they fit the idea and forgot rowdy ordinary days. This confirmation bias is an error in reasoning. A fair test would record every school day for several months, using the same checklist for rowdiness, decided before starting. Ideally the person scoring would not know the moon phase. Then compare the share of rowdy days with and without a full moon.",["Identifies confirmation bias as an error in reasoning","Records all days, not just remembered ones","Defines rowdiness the same way every day","Compares rates for both groups","Reduces the observer's influence"]],
+ ["A town counted bus riders on one stormy February Friday and then cut the route. Trace how bias moved from the data to the conclusion to the decision, and explain how the town should fix its process.","SL2.K3","The data was biased because one stormy day does not represent normal ridership. Analyzing that count as if it were typical produced the wrong conclusion that few people ride. The town then made a flawed decision to cut the route, which hurts riders who depend on it. A better process counts riders on many days across seasons, checks the numbers with drivers and riders, and reviews the conclusion before deciding.",["Names the biased data","Explains the wrong conclusion","Explains the flawed decision and its impact","Proposes fairer data collection"]],
+ ["'Unbiased data can help accurately predict trends.' Do you agree? Support your answer with at least two examples from this lab.","Understanding · SL2.K1 · SL2.K2 · SL2.K3","Yes. In the bike survey, random samples landed near the true 35%, while bike rack samples were always too high, so only the unbiased method predicted well. In the step challenge, the full 12 weeks showed a rising trend, while a cherry-picked window suggested a decline. Unbiased data does not guarantee a perfect prediction, because chance and extrapolation can still cause errors, but it makes the pattern much more likely to match reality.",["Takes a clear position","Uses at least two examples","Explains how bias distorted the other result","Acknowledges that unbiased data is not a guarantee"]]
+];
+function wItem(arr,i,pref){var q=arr[i];var id=pref+i;var box=el("article","block");
+  var hd=el("div","block-head");hd.appendChild(el("h3",null,(i+1)+". "+q[0]));hd.appendChild(el("span","code",q[1]));box.appendChild(hd);
+  var lab=el("label","note","Your answer");lab.setAttribute("for","w-"+id);box.appendChild(lab);
+  var ta=el("textarea");ta.id="w-"+id;ta.value=S.w[id]||"";if(pref==="L")ta.style.minHeight="150px";ta.addEventListener("input",function(){S.w[id]=ta.value;save();});box.appendChild(ta);
+  var d=el("details","q");d.appendChild(el("summary",null,"Show model answer and key ideas"));d.appendChild(el("p","model",q[2]));
+  var ul=el("ul","check");q[3].forEach(function(k,j){var li=el("li");var lb=el("label");var cb=el("input");cb.type="checkbox";cb.id="wc-"+id+"-"+j;cb.checked=!!S.wc[id+"-"+j];
+    cb.addEventListener("change",function(){S.wc[id+"-"+j]=cb.checked;save();});lb.appendChild(cb);lb.appendChild(document.createTextNode(k));li.appendChild(lb);ul.appendChild(li);});
+  d.appendChild(el("p","note","Tick the key ideas your answer includes:"));d.appendChild(ul);box.appendChild(d);return box;}
+WS.forEach(function(_,i){$("#w-short").appendChild(wItem(WS,i,"S"));});WL.forEach(function(_,i){$("#w-long").appendChild(wItem(WL,i,"L"));});
+
+/* ---------- COVERAGE ---------- */
+var COV=[
+ ["SL2.K1","The relationship between two variables can reveal patterns to help predict trends, identify risks, and make decisions.","Learn 1 and 2; Lab Bench Station 1; Sort It Round 1; Flashcards; Quiz; Written short 1 to 4, extended 1"],
+ ["SL2.K2","Critical-thinking skills can support the interpretation and analysis of patterns.","Learn 3 and 5; Lab Bench Station 1 (Step 3); Quiz; Written short 4 to 6, extended 4"],
+ ["SL2.K3","Bias can lead to incorrect conclusions due to errors in reasoning, misinterpretation and inaccurate analysis of data, and flawed decision making.","Learn 4 and 5; Lab Bench Stations 2 and 3; Sort It Round 2; Quiz; Written short 7 and 8, extended 2 and 3"],
+ ["SL2.S1","Analyze patterns in real-world situations.","Lab Bench Station 1 (Pattern Analyzer); Learn 2 (Jasper trail, Edmonton AQHI); Written extended 1"],
+ ["SL2.S2","Explore how bias can lead to incorrect conclusions.","Lab Bench Stations 2 and 3; Learn 4 (full moon, step challenge) and 5 (bike survey); Written extended 2 to 4"]
+];
+var ct=$("#cov");ct.innerHTML="<tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr>";
+COV.forEach(function(r){var tr=el("tr");tr.appendChild(el("td","mono",r[0]));tr.appendChild(el("td",null,r[1]));tr.appendChild(el("td",null,r[2]));ct.appendChild(tr);});
+$("#reset-all").addEventListener("click",function(){var b=this;if(b.dataset.arm!=="1"){b.dataset.arm="1";b.textContent="Press again to clear everything";$("#reset-fb").textContent="";return;}
+  try{localStorage.removeItem(KEY);localStorage.removeItem(KEY+"-tab");}catch(e){}
+  S={done:{},pa:{r:0,t:0},gm:{r:0,t:0},bi:{r:0,t:0},sort:{A:0,B:0},cards:{},quiz:0,w:{},wc:{}};b.dataset.arm="";b.textContent="Clear my saved progress";
+  $$("[data-done]").forEach(function(c){c.checked=false;});$$("textarea").forEach(function(t){t.value="";});$$(".check input").forEach(function(c){c.checked=false;});
+  scorePA();scoreBI();drawFC();drawSort();chips();$("#reset-fb").className="feedback ok";$("#reset-fb").textContent="Progress cleared.";});
+
+/* ---------- chips ---------- */
+function chips(){var c=$("#chips");var learn=["L1","L2","L3","L4","L5"].filter(function(k){return S.done[k];}).length;
+  var known=CARDS.filter(function(x){return S.cards[x[0]]==="k";}).length;var wr=Object.keys(S.w).filter(function(k){return (S.w[k]||"").trim().length>0;}).length;
+  c.innerHTML='<span class="chip">Learn <b>'+learn+'/5</b></span><span class="chip">Bench <b>'+(S.pa.r+S.gm.r+S.bi.r)+'</b> correct</span><span class="chip">Sort best <b>'+(S.sort.A||0)+'% · '+(S.sort.B||0)+'%</b></span><span class="chip">Cards <b>'+known+'/'+CARDS.length+'</b></span><span class="chip">Quiz best <b>'+S.quiz+'/10</b></span><span class="chip">Written <b>'+wr+'/'+(WS.length+WL.length)+'</b></span>';}
+chips();
+document.addEventListener("keydown",function(e){if(!$("#p-cards").hidden&&document.activeElement===$("#fc")&&(e.key==="ArrowRight")){fcI++;fcFlip=false;drawFC();}});
+})();
+</script>
+
+</body></html>

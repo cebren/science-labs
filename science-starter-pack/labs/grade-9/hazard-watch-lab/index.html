@@ -1,0 +1,1322 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/hazard-watch-lab/"><meta name="description" content="Various geological hazards are associated with geological processes within Earth."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hazard Watch Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a hazard watch desk on the Pacific coast. Sticky tab strip, then lessons pairing a short reading column with a map, cross-section, seismogram or shake table. Ember for volcanoes and danger, ocean blue for tsunamis, rock brown for slopes, Grade 9 green for codes. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --rock:#8A4B12; --rock-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g9:#2E7A4F;
+  --land:#D9CBB0; --sea:#CFE3EE; --plate:#8C6A4A; --plate2:#5B6E7E; --magma:#D9774A; --warn:#9A6A00; --warn-soft:#FBF0D2;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --rock:#E8A86A; --rock-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --land:#4A4232; --sea:#16303F; --plate:#7E6844; --plate2:#55697A; --magma:#9C4A2A; --warn:#E8C25A; --warn-soft:#3A3014;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --rock:#E8A86A; --rock-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --land:#4A4232; --sea:#16303F; --plate:#7E6844; --plate2:#55697A; --magma:#9C4A2A; --warn:#E8C25A; --warn-soft:#3A3014;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px;grid-template-columns:minmax(0,1fr)}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--g9);border-color:var(--g9);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:480px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg [role=button]{cursor:pointer}
+svg [role=button]:focus{outline:none}
+svg [role=button]:focus-visible>*:first-child, svg [role=button].sel>*:first-child{stroke:var(--ink);stroke-width:3}
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g9)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+.inv h3{font-size:1.3rem}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.readout{font-family:var(--f-mono);font-size:1.02rem;font-variant-numeric:tabular-nums;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.inline label.field{flex:1 1 140px}
+.inline input,.inline select{width:100%}
+.timeline{display:grid;gap:6px;padding:0;margin:0;list-style:none}
+.timeline button{width:100%;display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:10px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.timeline button b{font-family:var(--f-mono);color:var(--g9);font-size:.85rem}
+.timeline button[aria-pressed="true"]{border-color:var(--g9);background:var(--leaf-soft)}
+.ev{display:flex;flex-wrap:wrap;gap:6px}
+.evtag{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.evtag.on{border-color:var(--g9);color:var(--g9);background:var(--leaf-soft)}
+.ladder{display:grid;gap:3px}
+.rung{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:5px 10px;background:var(--surface);font-size:.86rem}
+.rung b{font-family:var(--f-mono);font-size:.82rem;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:9em minmax(0,1fr) 3.4em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.mid{background:var(--warn)}
+.barrow .track i.hi{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.8em minmax(0,1fr) 2.8em}}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:460px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.bin small{font-weight:400;font-size:.8rem;color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+.mmi{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.mmi button{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:6px 0;font-family:var(--f-mono);font-weight:600;cursor:pointer;font-size:.85rem}
+.mmi button[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.reports{display:grid;gap:8px}
+.report{display:grid;grid-template-columns:minmax(0,1fr) 7.5em;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.92rem}
+.report b{font-family:var(--f-display)}
+.report.ok{border-color:var(--good);background:var(--leaf-soft)}
+.report.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:520px){.report{grid-template-columns:minmax(0,1fr)}}
+.house{transform-box:fill-box;transform-origin:50% 100%}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Earth Science: Plate Tectonics · ES2</div>
+    <h1><span class="fi">Hazard</span> Watch Lab</h1>
+    <p class="under"><b>Understanding:</b> Various geological hazards are associated with geological processes within Earth. In this lab you will tour the Ring of Fire, read the clues left by past disasters on Canada’s west coast and in the Alberta Rockies, try the tools scientists use to watch for danger, and learn how two different scales describe an earthquake.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn" tabindex="0">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. Start with the big picture around the Pacific Ocean, zoom in on Canada, look back at three famous events, then learn how scientists watch for hazards and measure earthquakes.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · The big picture</span>
+      <div class="codes"><span class="code">ES2.K1</span><span class="code">ES2.S1</span></div>
+      <h3>The Ring of Fire</h3>
+      <p>A <b>geological hazard</b> is a natural event caused by processes in Earth that can harm people or property. Earthquakes, volcanoes, landslides and tsunamis are all geological hazards.</p>
+      <p>The <b>Ring of Fire</b> is a horseshoe-shaped belt around the edge of the Pacific Ocean. Most of the world’s earthquakes and many of its active volcanoes happen here. Scientists often say about 90 percent of earthquakes and about three quarters of active volcanoes are in this belt.</p>
+      <p>Why here? The Pacific Ocean floor is made of several plates. Along most of the ring, an ocean plate slides under another plate. This is called <b>subduction</b>. The sinking plate can get stuck and then slip, which makes earthquakes. Rock melts deep below and rises to feed volcanoes.</p>
+      <div class="key"><b>Big idea:</b> hazards cluster where plates meet. The edges of the Pacific are busy plate boundaries.</div>
+    </div>
+    <div class="model">
+      <h4>Tour the ring</h4>
+      <p class="hint">Select a dot to learn about that part of the Ring of Fire. The map is a simple sketch, not to scale.</p>
+      <div class="svgbox"><svg id="ringMap" viewBox="0 0 560 330" role="group" aria-label="Sketch map of the Pacific Ocean with the Ring of Fire"></svg></div>
+      <div class="detail" id="ringOut" aria-live="polite"><p class="hint">No place selected yet.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Canada’s west coast</span>
+      <div class="codes"><span class="code">ES2.K1</span><span class="code">ES2.S1</span></div>
+      <h3>Four hazards on one coast</h3>
+      <p>British Columbia sits on the Ring of Fire. Off Vancouver Island, the small <b>Juan de Fuca Plate</b> slides under the <b>North American Plate</b>. This boundary is called the <b>Cascadia Subduction Zone</b>. Farther north, near Haida Gwaii, the Pacific Plate grinds sideways past North America.</p>
+      <p>These plate movements give the west coast four main hazards:</p>
+      <ul>
+        <li><b>Earthquakes</b> when stuck plates suddenly slip.</li>
+        <li><b>Tsunamis</b>, which are huge ocean waves made when the sea floor moves in a big earthquake.</li>
+        <li><b>Volcanic activity</b> from melted rock rising above the sinking plate. BC has volcanoes such as Mount Garibaldi and Mount Meager.</li>
+        <li><b>Landslides</b> on steep mountain slopes, often set off by shaking or heavy rain.</li>
+      </ul>
+      <p class="note">Edmonton is far from a plate boundary, so our earthquake and volcano hazard is low. Alberta still has landslides, and small earthquakes do happen.</p>
+    </div>
+    <div class="model">
+      <h4>Cascadia cross-section</h4>
+      <p class="hint">Choose a hazard to see where it comes from.</p>
+      <div class="chips" id="cascChips" role="group" aria-label="Choose a hazard"></div>
+      <div class="svgbox"><svg id="cascSvg" viewBox="0 0 560 300" role="img" aria-label="Cross-section of the Cascadia Subduction Zone"></svg></div>
+      <div class="detail" id="cascOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Reading the past</span>
+      <div class="codes"><span class="code">ES2.K2</span></div>
+      <h3>Historical accounts as evidence</h3>
+      <p>Big geological events can be hundreds of years apart. To understand them, scientists combine different kinds of evidence:</p>
+      <ul>
+        <li><b>Oral histories</b> passed down by First Nations, who have lived on this land for thousands of years.</li>
+        <li><b>Written records</b>, such as old diaries, newspapers and government reports.</li>
+        <li><b>Physical evidence</b> in rocks, soil, lava and tree rings.</li>
+      </ul>
+      <p>When the stories and the rocks agree, scientists can be much more confident about what happened, when, and how big it was. Historical accounts help scientists estimate how often an event happens, which helps communities plan for the next one.</p>
+      <p class="note">Oral histories belong to the communities that keep them. This lab describes them only in general terms. Learn more from the Nations themselves when you can.</p>
+    </div>
+    <div class="model">
+      <h4>Three events, many clues</h4>
+      <p class="hint">Select an event. The tags show which kinds of evidence support it.</p>
+      <ul class="timeline" id="histList"></ul>
+      <div class="detail" id="histOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Alberta’s deadliest landslide</span>
+      <div class="codes"><span class="code">ES2.K2</span><span class="code">ES2.K3</span></div>
+      <h3>The Frank Slide</h3>
+      <p>Early on April 29, 1903, a huge piece of Turtle Mountain broke away above the coal-mining town of Frank, in the Crowsnest Pass of southwestern Alberta. Millions of tonnes of limestone crashed down in less than two minutes and buried part of the town. Somewhere between about 70 and 90 people died. The exact number is not known, because records from the time are incomplete.</p>
+      <p>Records from the time, and studies of the mountain since, point to several causes working together. No single cause explains it.</p>
+      <p>Turtle Mountain is not finished moving. Today the Alberta Geological Survey watches it with sensors that measure tiny movements of the cracks near the top. If the movement speeds up, people below can be warned.</p>
+      <div class="key"><b>Connect:</b> a landslide hazard is not only on the coast. The Frank Slide is a historical account from our own province.</div>
+    </div>
+    <div class="model">
+      <h4>Why did the mountain fall?</h4>
+      <p class="hint">Select each numbered factor on the diagram.</p>
+      <div class="svgbox"><svg id="frankSvg" viewBox="0 0 560 300" role="group" aria-label="Sketch of Turtle Mountain with four contributing factors"></svg></div>
+      <div class="detail" id="frankOut" aria-live="polite"><p class="hint">Found 0 of 4 factors.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Watching for warning signs</span>
+      <div class="codes"><span class="code">ES2.K3</span><span class="code">ES2.S2</span></div>
+      <h3>Monitoring hazards</h3>
+      <p>To <b>monitor</b> a hazard means to measure it again and again so changes can be spotted early. Scientists use many tools:</p>
+      <ul>
+        <li>A <b>seismograph</b> records ground shaking. A network of them can find where an earthquake started and how big it was.</li>
+        <li><b>Gas emission monitoring</b> measures gases such as sulfur dioxide and carbon dioxide coming out of a volcano. A sudden change can mean magma is rising.</li>
+        <li><b>GPS stations and tiltmeters</b> measure tiny changes in the shape of the ground, such as a volcano swelling.</li>
+        <li><b>Crack meters</b> measure how fast cracks open on an unstable slope, like at Turtle Mountain.</li>
+      </ul>
+      <p>Monitoring cannot stop a hazard. It gives people information and, sometimes, time.</p>
+    </div>
+    <div class="model">
+      <h4>Monitoring station</h4>
+      <p class="hint">Pick an instrument, then switch between a quiet week and a week with warning signs. The readings are made up for practice.</p>
+      <div class="chips" id="monChips" role="group" aria-label="Choose an instrument"></div>
+      <div class="row"><button type="button" class="btn ghost" id="monToggle" aria-pressed="false">Show warning signs</button></div>
+      <div class="svgbox"><svg id="monSvg" viewBox="0 0 560 200" role="img" aria-label="Instrument reading over seven days"></svg></div>
+      <div class="detail" id="monOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Reducing the harm</span>
+      <div class="codes"><span class="code">ES2.K3</span><span class="code">ES2.S2</span></div>
+      <h3>Warning, building and planning</h3>
+      <p>We cannot stop earthquakes, but we can <b>minimize</b> their impacts. Ways to do this include:</p>
+      <ul>
+        <li><b>Early warning systems</b> detect the first, faster earthquake waves and send an alert before the stronger shaking arrives. Canada began an earthquake early warning system in British Columbia in 2024. Tsunami warnings tell coastal people to move to high ground.</li>
+        <li><b>Emergency preparedness</b> means knowing what to do: Drop, Cover and Hold On during shaking, keep an emergency kit, and practise drills.</li>
+        <li><b>Construction standards</b> are rules in building codes. They require strong connections, cross bracing and other designs so buildings bend without collapsing.</li>
+        <li><b>Land-use planning</b> keeps homes, schools and hospitals away from the most dangerous places, such as unstable slopes, tsunami zones and soft ground.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Shake table</h4>
+      <p class="hint">Add design features, then shake the building. This is a simple model with made-up scores, not an engineering test.</p>
+      <div class="checks2" id="shakeOpts">
+        <label><input type="checkbox" id="opBrace"> Cross bracing in the walls</label>
+        <label><input type="checkbox" id="opIso"> Base isolators (flexible pads under the building)</label>
+        <label><input type="checkbox" id="opTie"> Strong ties between floors and walls</label>
+        <label><input type="checkbox" id="opSite"> Built on solid rock instead of soft, wet soil</label>
+      </div>
+      <div class="row"><button type="button" class="btn" id="shakeBtn">Shake it</button></div>
+      <div class="svgbox fit"><svg id="shakeSvg" viewBox="0 0 400 220" role="img" aria-label="Building on a shake table"></svg></div>
+      <div class="detail" id="shakeOut" aria-live="polite"><p class="hint">Choose features, then press Shake it.</p></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · How big was it?</span>
+      <div class="codes"><span class="code">ES2.K4</span><span class="code">ES2.S3</span></div>
+      <h3>The Richter scale measures magnitude</h3>
+      <p>In 1935, Charles Richter and Beno Gutenberg in California created a scale to compare earthquakes using seismograph records. It gives one number, the <b>magnitude</b>, for the size of the earthquake at its source.</p>
+      <p>The Richter scale is <b>logarithmic</b>. Each step up of one whole number means the waves on the seismograph are 10 times taller. It also means about 32 times more energy is released.</p>
+      <div class="formula">amplitude ratio = 10<sup>(M₂ − M₁)</sup><br>energy ratio ≈ 32<sup>(M₂ − M₁)</sup></div>
+      <p class="note">Today, scientists usually report large earthquakes with the <b>moment magnitude scale</b>. It works like the Richter scale but is more accurate for very big earthquakes. News reports often still say “Richter.”</p>
+    </div>
+    <div class="model">
+      <h4>Magnitude ladder</h4>
+      <label class="field" for="magSlider">Magnitude: <span id="magVal" class="readout" style="display:inline-block;padding:2px 8px">5.0</span></label>
+      <input type="range" id="magSlider" min="2" max="9" step="1" value="5">
+      <div class="svgbox"><svg id="magSvg" viewBox="0 0 560 160" role="img" aria-label="Seismogram wave for the chosen magnitude"></svg></div>
+      <div class="stats" id="magStats" aria-live="polite"></div>
+      <p class="hint">The wave is drawn compared to a magnitude 2. Above magnitude 4 it would go off the screen, so the picture is capped and the number tells the real story.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · How strong did it feel?</span>
+      <div class="codes"><span class="code">ES2.K4</span><span class="code">ES2.S3</span></div>
+      <h3>The Modified Mercalli Intensity scale</h3>
+      <p>The <b>Modified Mercalli Intensity (MMI) scale</b> describes the <b>intensity</b> of an earthquake: what people felt and how much damage happened at a certain place. It uses Roman numerals from I (not felt) to XII (total destruction). It began with Italian scientist Giuseppe Mercalli and was later modified by American scientists.</p>
+      <p>One earthquake has <b>one magnitude</b> but <b>many intensities</b>. Intensity is usually highest near the epicentre and drops farther away. It also depends on the ground and the buildings.</p>
+      <div class="key"><b>Compare:</b> Richter magnitude = size of the earthquake at its source, from instruments. Mercalli intensity = effects at one place, from observations.</div>
+    </div>
+    <div class="model">
+      <h4>One earthquake, many places</h4>
+      <p class="hint">A made-up magnitude 6.8 earthquake. Select a town to read its felt report and see its intensity on the ladder.</p>
+      <div class="svgbox"><svg id="intSvg" viewBox="0 0 560 260" role="group" aria-label="Map of intensity rings around an epicentre"></svg></div>
+      <div class="detail" id="intOut" aria-live="polite"><p class="hint">No town selected yet.</p></div>
+      <div class="ladder" id="mmiLadder"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" tabindex="0" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Analyze risk around the Ring of Fire, time an earthquake warning, do magnitude math, and rate intensity from felt reports. All data here is simplified or made up for practice.</p>
+  </div>
+
+  <article class="inv">
+    <span class="step">Investigation 1 · ES2.S1</span>
+    <h3>Risk analyzer</h3>
+    <p>A hazard is not the same as a risk. Scientists and planners often think of risk as three things multiplied together:</p>
+    <div class="formula">risk = hazard × exposure × vulnerability</div>
+    <ul>
+      <li><b>Hazard:</b> how likely and how strong the event is in that place.</li>
+      <li><b>Exposure:</b> how many people, homes and roads are in the way.</li>
+      <li><b>Vulnerability:</b> how easily they are harmed. Good buildings, warnings and practice lower it.</li>
+    </ul>
+    <div class="two">
+      <div style="display:grid;gap:12px;align-content:start">
+        <label class="field" for="riskRegion">Region
+          <select id="riskRegion"></select>
+        </label>
+        <label class="field" for="riskPrep">Preparedness (lowers vulnerability): <span id="riskPrepVal">Some</span>
+          <input type="range" id="riskPrep" min="1" max="3" step="1" value="2">
+        </label>
+        <div class="detail" id="riskNote"></div>
+      </div>
+      <div style="display:grid;gap:10px;align-content:start">
+        <div class="bars" id="riskBars" aria-live="polite"></div>
+        <p class="hint">Each hazard score is rated 0 to 3 (made-up classroom ratings). Exposure is rated 1 to 3. Vulnerability goes from 3 (little preparation) to 1 (well prepared). Highest possible risk score is 27.</p>
+      </div>
+    </div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>Metro Vancouver earthquakes: hazard 3 × exposure 3 × vulnerability 2 = <b>18</b> out of 27.</span>
+      <span>Edmonton earthquakes: hazard 1 × exposure 3 × vulnerability 2 = <b>6</b>. Lots of people, but a low hazard, so a lower risk.</span>
+    </div>
+    <div class="detail">
+      <b>Try it</b>
+      <p id="riskQ"></p>
+      <div class="inline"><label class="field" for="riskAns">Risk score<input type="number" id="riskAns" inputmode="numeric"></label><button type="button" class="btn" id="riskCheck">Check</button><button type="button" class="btn ghost" id="riskNew">New question</button></div>
+      <p class="fb" id="riskFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 2 · ES2.K3 · ES2.S2</span>
+    <h3>Early warning timer</h3>
+    <p>An earthquake sends out two main kinds of waves. <b>P waves</b> are faster but cause little damage. <b>S waves</b> are slower and cause the strong shaking. Sensors near the epicentre detect the P waves, and computers send an alert. If the alert reaches you before the S waves, you get a few seconds to Drop, Cover and Hold On.</p>
+    <div class="formula">arrival time = distance ÷ wave speed<br>warning time = S wave arrival − alert time</div>
+    <p class="hint">This simplified model uses a P wave speed of 6 km/s, an S wave speed of 3.5 km/s, and an alert sent 10 seconds after the earthquake starts. Real systems vary.</p>
+    <div class="two">
+      <div style="display:grid;gap:10px;align-content:start">
+        <label class="field" for="ewDist">Your distance from the epicentre: <span id="ewDistVal">150 km</span>
+          <input type="range" id="ewDist" min="10" max="300" step="10" value="150">
+        </label>
+        <div class="stats" id="ewStats" aria-live="polite"></div>
+      </div>
+      <div class="svgbox fit"><svg id="ewSvg" viewBox="0 0 400 150" role="img" aria-label="Timeline of P wave, alert and S wave arrival"></svg></div>
+    </div>
+    <div class="detail">
+      <b>Practice</b>
+      <p id="ewQ"></p>
+      <div class="inline"><label class="field" for="ewAns">Warning time (s, nearest whole number)<input type="number" id="ewAns" inputmode="numeric"></label><button type="button" class="btn" id="ewCheck">Check</button><button type="button" class="btn ghost" id="ewNew">New question</button></div>
+      <p class="fb" id="ewFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 3 · ES2.K4 · ES2.S3</span>
+    <h3>Magnitude math</h3>
+    <p>Compare two earthquakes. Because the Richter scale is logarithmic, small differences in magnitude mean big differences in size.</p>
+    <div class="inline">
+      <label class="field" for="mA">Smaller earthquake, magnitude<input type="number" id="mA" value="5" step="0.1" min="1" max="9.5"></label>
+      <label class="field" for="mB">Larger earthquake, magnitude<input type="number" id="mB" value="7" step="0.1" min="1" max="9.5"></label>
+    </div>
+    <div class="stats" id="mStats" aria-live="polite"></div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>Magnitude 7 compared to magnitude 5. Difference = 7 − 5 = 2.</span>
+      <span>Amplitude ratio = 10² = <b>100</b>. The seismograph waves are 100 times taller.</span>
+      <span>Energy ratio ≈ 32² ≈ <b>1000</b>. About 1000 times more energy is released.</span>
+    </div>
+    <div class="detail">
+      <b>Practice</b>
+      <p id="mQ"></p>
+      <div class="inline"><label class="field" for="mAns">Your answer<input type="number" id="mAns" inputmode="numeric"></label><button type="button" class="btn" id="mCheck">Check</button><button type="button" class="btn ghost" id="mNew">New question</button></div>
+      <p class="fb" id="mFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 4 · ES2.K4 · ES2.S3</span>
+    <h3>Intensity survey</h3>
+    <p>After a made-up magnitude 6.2 earthquake, people in six places sent in felt reports. Use the MMI ladder in Learn, Lesson 8, to rate each report. Then look at the pattern.</p>
+    <div class="reports" id="survey"></div>
+    <div class="row"><button type="button" class="btn" id="surveyCheck">Check my ratings</button><button type="button" class="btn ghost" id="surveyReset">Reset</button></div>
+    <p class="fb" id="surveyFb" aria-live="polite"></p>
+    <div class="detail" id="surveyConc" hidden>
+      <b>What the survey shows</b>
+      <p>All six reports come from the same earthquake, so the Richter magnitude is the same number, 6.2, for everyone. The intensity changes from place to place. It is highest close to the epicentre and on soft ground, and lowest far away. That is why the two scales answer different questions.</p>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" tabindex="0" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a game, read each card, then choose the bin it belongs in.</p>
+  </div>
+  <div class="chips" id="sortSets" role="group" aria-label="Choose a sorting game"></div>
+  <div class="sort">
+    <div class="row"><span class="tagline" id="sortCount"></span></div>
+    <div class="sortcard" id="sortCard" aria-live="polite"></div>
+    <div class="bins" id="sortBins"></div>
+    <div class="feedback" id="sortFb" aria-live="polite" hidden></div>
+    <div class="row"><button type="button" class="btn ghost" id="sortRestart">Restart this game</button></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" tabindex="0" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your progress is saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="tagline" id="fcCount"></span></div>
+    <div class="prog" aria-hidden="true"><i id="fcBar" style="width:0%"></i></div>
+    <button type="button" class="card3" id="fcCard" aria-live="polite"></button>
+    <div class="row">
+      <button type="button" class="btn ghost" id="fcPrev">Previous</button>
+      <button type="button" class="btn ghost" id="fcLearn">Still learning</button>
+      <button type="button" class="btn" id="fcKnow">I know it</button>
+      <button type="button" class="btn ghost" id="fcNext">Next</button>
+    </div>
+    <div class="row">
+      <label class="checks2"><span style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="fcOnly"> Show only still learning</span></label>
+      <button type="button" class="btn ghost" id="fcReset">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" tabindex="0" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="tagline" id="qzMeta"></span></div>
+    <div id="qzBox"></div>
+    <div class="row"><button type="button" class="btn" id="qzNext" disabled>Next question</button><button type="button" class="btn ghost" id="qzNew">New round</button></div>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" tabindex="0" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included.</p>
+  </div>
+  <div class="wr" id="wrShort"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="wrLong"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" tabindex="0" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills and procedures (S) statement for ES2, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody id="covBody"></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul>
+      <li><b>ES2.K4 and ES2.S3:</b> the draft says both scales “measure the intensity.” Only the Modified Mercalli scale measures intensity (observed effects at a place). The Richter scale measures magnitude (size at the source, from seismograph records). The lab teaches this difference and notes that scientists now usually report the moment magnitude scale for large earthquakes.</li>
+      <li><b>ES2.K1:</b> the figures of about 90 percent of earthquakes and about three quarters of active volcanoes are commonly quoted estimates and are taught as approximate. Ring of Fire place examples are general.</li>
+      <li><b>ES2.K2:</b> the Cascadia earthquake is taught as January 26, 1700, about magnitude 9. The Tseax Cone eruption is taught as about 300 years ago (estimates of the date vary) with many Nisga’a deaths remembered in Nisga’a oral history. The Frank Slide is taught as April 29, 1903, with between about 70 and 90 deaths. First Nations oral histories are described only in general terms; please review the wording and consider inviting a community voice.</li>
+      <li><b>ES2.K3:</b> Canada’s earthquake early warning system is taught as starting in British Columbia in 2024; please confirm current status. Turtle Mountain monitoring by the Alberta Geological Survey is described generally.</li>
+      <li><b>Lab Bench:</b> risk ratings, wave speeds, alert delay, monitoring traces, shake table scores and felt reports are simplified or made up for practice and are labelled as such.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-es2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, html){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (html != null) n.innerHTML = html;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function fmt(n){ if (n >= 1e6) return Math.round(n).toLocaleString("en-CA"); if (n >= 100) return Math.round(n).toLocaleString("en-CA"); if (n >= 10) return n.toFixed(0); return n.toFixed(1); }
+function svgButton(g, label, fn){
+  g.setAttribute("role", "button"); g.setAttribute("tabindex", "0"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.getAttribute("data-tab") === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.setAttribute("tabindex", on ? "0" : "-1");
+    $(b.getAttribute("aria-controls")).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ var n = b.getAttribute("data-tab"); if (location.hash !== "#" + n) location.hash = n; else showTab(n); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); location.hash = tabBtns[j].getAttribute("data-tab"); showTab(tabBtns[j].getAttribute("data-tab"), true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+showTab(location.hash ? location.hash.slice(1) : (store.tab || "learn"));
+
+/* ---------- Lesson 1: Ring of Fire ---------- */
+var SITES = [
+  {n:"Japan", x:172, y:112, t:"The Pacific Plate dives under Japan. In 2011, a magnitude 9.0 earthquake caused a tsunami that flooded the northeast coast. Japan also has many active volcanoes."},
+  {n:"Kamchatka", x:214, y:62, t:"A Russian peninsula with many active volcanoes, fed by the Pacific Plate sinking beneath it."},
+  {n:"Alaska and the Aleutians", x:330, y:48, t:"A long chain of volcanic islands. In 1964, Alaska had a magnitude 9.2 earthquake, one of the largest ever recorded."},
+  {n:"British Columbia (Cascadia)", x:418, y:96, t:"Canada’s west coast. The Juan de Fuca Plate dives under North America at the Cascadia Subduction Zone. All four hazards happen here. See Lesson 2."},
+  {n:"California", x:432, y:140, t:"Here the Pacific Plate slides sideways past North America along the San Andreas Fault. This makes earthquakes, like the 1906 San Francisco earthquake, but few volcanoes."},
+  {n:"Mexico and Central America", x:455, y:182, t:"The Cocos Plate sinks under this region, making strong earthquakes and active volcanoes such as Popocatépetl near Mexico City."},
+  {n:"Chile and the Andes", x:488, y:278, t:"The Nazca Plate dives under South America. In 1960, Chile had a magnitude 9.5 earthquake, the largest ever recorded. Its tsunami crossed the whole Pacific."},
+  {n:"New Zealand", x:205, y:296, t:"The Pacific and Australian plates meet here. New Zealand has active volcanoes, frequent earthquakes and a national hazard monitoring program."},
+  {n:"Indonesia", x:122, y:220, t:"Thousands of islands with many active volcanoes. The famous 1883 eruption of Krakatau was heard thousands of kilometres away."},
+  {n:"Philippines", x:150, y:172, t:"Plates meet on both sides of these islands. In 1991, Mount Pinatubo had one of the largest eruptions of the 1900s. Monitoring allowed many people to be evacuated in time."}
+];
+(function(){
+  var s = $("ringMap");
+  s.appendChild(sv("rect",{x:0,y:0,width:560,height:330,fill:"var(--sea)"}));
+  var land = [
+    "M0,20 L150,20 L190,40 L200,80 L175,140 L150,160 L110,150 L60,170 L0,160 Z",
+    "M70,240 L150,230 L175,260 L160,310 L90,315 L60,285 Z",
+    "M380,20 L560,20 L560,170 L470,170 L440,150 L420,110 L400,80 L360,60 Z",
+    "M470,190 L530,200 L540,240 L505,320 L480,320 L470,250 Z"
+  ];
+  land.forEach(function(d){ s.appendChild(sv("path",{d:d,fill:"var(--land)",stroke:"var(--line)"})); });
+  var ring = "M205,300 C150,260 115,235 122,215 C130,190 150,170 160,140 C170,110 190,80 214,62 C250,40 300,42 340,46 C380,52 410,80 420,100 C430,130 440,160 455,182 C470,215 485,250 490,300";
+  s.appendChild(sv("path",{d:ring,fill:"none",stroke:"var(--fire)","stroke-width":10,"stroke-opacity":.35,"stroke-linecap":"round"}));
+  s.appendChild(sv("text",{x:300,y:190,"text-anchor":"middle",class:"lbl"},"Pacific Ocean"));
+  s.appendChild(sv("text",{x:300,y:208,"text-anchor":"middle",class:"small"},"Ring of Fire shown in orange"));
+  var nodes = [];
+  SITES.forEach(function(p, i){
+    var g = sv("g",{});
+    g.appendChild(sv("circle",{cx:p.x,cy:p.y,r:9,fill:"var(--fire)",stroke:"var(--surface)","stroke-width":2}));
+    g.appendChild(sv("text",{x:p.x,y:p.y+4,"text-anchor":"middle",style:"font-size:10px;font-weight:700;fill:var(--surface)"}, String(i+1)));
+    svgButton(g, p.n, function(){
+      nodes.forEach(function(n){ n.classList.remove("sel"); }); g.classList.add("sel");
+      $("ringOut").innerHTML = "<h5>" + (i+1) + ". " + p.n + "</h5><p>" + p.t + "</p>";
+    });
+    nodes.push(g); s.appendChild(g);
+  });
+})();
+
+/* ---------- Lesson 2: Cascadia ---------- */
+var CASC = {
+  eq:{n:"Earthquakes", t:"The two plates are stuck together where they touch near the coast (the star). Stress builds for centuries. When the plates suddenly slip, the ground shakes. Great Cascadia earthquakes happen roughly every 500 years on average, but the gaps vary a lot."},
+  ts:{n:"Tsunamis", t:"In a great earthquake, the sea floor above the stuck zone can jump up by metres. That lifts the whole column of water above it and starts a tsunami. Waves can reach the outer coast within minutes."},
+  vo:{n:"Volcanic activity", t:"The sinking plate carries water down with it. At about 100 km deep, the water helps the mantle rock above it melt. The melted rock, called magma, rises and can erupt at volcanoes such as Mount Garibaldi."},
+  ls:{n:"Landslides", t:"The coast mountains are steep. Shaking from an earthquake or heavy rain can make rock and soil slide downhill. Landslides can also block rivers or fall into the sea and make local tsunamis."}
+};
+(function(){
+  var s = $("cascSvg");
+  s.appendChild(sv("rect",{x:0,y:0,width:560,height:300,fill:"var(--surface-2)"}));
+  s.appendChild(sv("text",{x:520,y:290,"text-anchor":"end",class:"small"},"Mantle"));
+  s.appendChild(sv("polygon",{points:"0,80 262,80 232,116 0,116",fill:"var(--sea)"}));
+  s.appendChild(sv("polygon",{points:"0,116 232,116 560,270 560,300 520,300 232,146 0,146",fill:"var(--plate2)"}));
+  s.appendChild(sv("polygon",{points:"232,116 262,80 330,72 400,62 432,32 450,20 468,32 500,62 560,62 560,270",fill:"var(--plate)"}));
+  s.appendChild(sv("text",{x:90,y:136,class:"lbl",style:"fill:#fff"},"Juan de Fuca Plate"));
+  s.appendChild(sv("text",{x:320,y:122,class:"lbl",style:"fill:#fff"},"North American Plate"));
+  s.appendChild(sv("text",{x:60,y:104,class:"small",style:"fill:var(--ink)"},"Pacific Ocean"));
+  s.appendChild(sv("text",{x:290,y:64,class:"small"},"Vancouver Island"));
+  s.appendChild(sv("path",{d:"M150,128 L200,128",stroke:"#fff","stroke-width":2,"marker-end":"url(#arr)"}));
+  var defs = sv("defs",{}); var m = sv("marker",{id:"arr",viewBox:"0 0 10 10",refX:8,refY:5,markerWidth:6,markerHeight:6,orient:"auto"});
+  m.appendChild(sv("path",{d:"M0,0 L10,5 L0,10 Z",fill:"#fff"})); defs.appendChild(m); s.insertBefore(defs, s.firstChild);
+  var G = {};
+  G.eq = sv("g",{}); G.eq.appendChild(sv("path",{d:"M275,128 l5,10 l11,1 l-8,7 l3,11 l-11,-6 l-11,6 l3,-11 l-8,-7 l11,-1 Z",fill:"var(--warn)",stroke:"var(--ink)"}));
+  G.eq.appendChild(sv("text",{x:300,y:172,class:"small",style:"fill:#fff"},"stuck zone"));
+  G.ts = sv("g",{}); G.ts.appendChild(sv("path",{d:"M60,78 Q90,40 120,78 Q150,40 180,78 Q210,40 240,78",fill:"none",stroke:"var(--water)","stroke-width":4}));
+  G.vo = sv("g",{}); G.vo.appendChild(sv("path",{d:"M440,232 C430,200 462,170 446,130 C436,100 458,60 450,22",fill:"none",stroke:"var(--magma)","stroke-width":8,"stroke-linecap":"round"}));
+  G.vo.appendChild(sv("circle",{cx:440,cy:236,r:10,fill:"var(--magma)"}));
+  G.ls = sv("g",{}); G.ls.appendChild(sv("path",{d:"M470,36 L500,62",stroke:"var(--rock)","stroke-width":5,"marker-end":"url(#arr)"}));
+  G.ls.appendChild(sv("circle",{cx:486,cy:46,r:5,fill:"var(--rock)"}));
+  Object.keys(G).forEach(function(k){ G[k].setAttribute("opacity",".2"); s.appendChild(G[k]); });
+  var box = $("cascChips");
+  Object.keys(CASC).forEach(function(k){
+    var b = el("button",{type:"button",class:"chip","aria-pressed":"false"}, CASC[k].n);
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(box.children, function(c){ c.setAttribute("aria-pressed","false"); });
+      b.setAttribute("aria-pressed","true");
+      Object.keys(G).forEach(function(j){ G[j].setAttribute("opacity", j === k ? "1" : ".2"); });
+      $("cascOut").innerHTML = "<h5>" + CASC[k].n + "</h5><p>" + CASC[k].t + "</p>";
+    });
+    box.appendChild(b);
+  });
+  box.children[0].click();
+})();
+
+/* ---------- Lesson 3: historical accounts ---------- */
+var EVTYPES = ["Oral history","Written records","Eyewitness accounts","Physical evidence"];
+var HIST = [
+  {y:"1700", n:"Cascadia earthquake", ev:[0,1,3], t:"On the night of January 26, 1700, a great earthquake of about magnitude 9 struck the Cascadia Subduction Zone. Oral histories of First Nations along the coast describe strong shaking and flooding on a winter night. In Japan, written records describe a tsunami that arrived with no earthquake felt there. Along the coast, scientists found “ghost forests” of trees killed when the land suddenly dropped and was flooded with salt water, plus sand layers left by the tsunami. Tree rings show the trees died in the winter of 1699 to 1700. Together, these clues give the date, the time and the size."},
+  {y:"~1700", n:"Tseax Cone eruption", ev:[0,3], t:"About 300 years ago, a small volcano called Tseax Cone erupted in the Nass Valley of northwestern British Columbia, in Nisga’a territory. Lava flowed down the valley and buried villages. Nisga’a oral history remembers the eruption and the many people who died, likely from volcanic gases. Scientists date the lava and the trees it buried, and their estimates of the date have changed over time. It is one of the deadliest geological disasters known in Canada. The lava beds are now a protected park managed together with the Nisga’a Nation."},
+  {y:"1903", n:"Frank Slide", ev:[1,2,3], t:"On April 29, 1903, part of Turtle Mountain fell on the town of Frank, Alberta. Newspapers, government reports and photographs recorded the disaster. Survivors described what they heard and saw. The huge field of limestone boulders and the scar on the mountain are still visible from Highway 3. Geologists use all of these to study why the mountain failed. See Lesson 4."}
+];
+(function(){
+  var ul = $("histList"), btns = [];
+  HIST.forEach(function(h){
+    var li = el("li"); var b = el("button",{type:"button","aria-pressed":"false"}, "<b>" + h.y + "</b><span>" + h.n + "</span>");
+    b.addEventListener("click", function(){
+      btns.forEach(function(x){ x.setAttribute("aria-pressed","false"); }); b.setAttribute("aria-pressed","true");
+      var tags = EVTYPES.map(function(t, i){ return '<span class="evtag' + (h.ev.indexOf(i) >= 0 ? " on" : "") + '">' + (h.ev.indexOf(i) >= 0 ? "✓ " : "") + t + "</span>"; }).join("");
+      $("histOut").innerHTML = "<h5>" + h.n + "</h5><div class=\"ev\">" + tags + "</div><p>" + h.t + "</p>";
+    });
+    btns.push(b); li.appendChild(b); ul.appendChild(li);
+  });
+  btns[0].click();
+})();
+
+/* ---------- Lesson 4: Frank Slide ---------- */
+var FRANK = [
+  {x:300, y:52, n:"Cracked rock near the top", t:"The top of Turtle Mountain is limestone with many deep cracks. The rock layers were folded and broken when the Rocky Mountains formed, leaving a steep, weak east face."},
+  {x:215, y:175, n:"Weak rock under strong rock", t:"Hard limestone sits on top of softer layers of shale, sandstone and coal. The weak layers below give the heavy rock above poor support."},
+  {x:335, y:105, n:"Water and ice in the cracks", t:"Water seeps into cracks and expands when it freezes, pushing them wider. Records describe a warm spell and cold nights just before the slide, so freezing and thawing may have been the final trigger."},
+  {x:410, y:232, n:"Coal mine at the base", t:"A coal mine had been dug into the base of the mountain. Removing coal may have weakened support for the rock above. Scientists still discuss how much the mine contributed."}
+];
+(function(){
+  var s = $("frankSvg"), found = {};
+  s.appendChild(sv("rect",{x:0,y:0,width:560,height:300,fill:"var(--surface-2)"}));
+  s.appendChild(sv("polygon",{points:"0,300 0,265 120,255 200,185 262,64 300,38 340,70 470,250 560,262 560,300",fill:"var(--rock-soft)",stroke:"var(--rock)","stroke-width":2}));
+  [[205,200,560,270],[225,165,560,240],[245,128,520,190]].forEach(function(l){ s.appendChild(sv("line",{x1:l[0],y1:l[1],x2:l[2],y2:l[3],stroke:"var(--rock)","stroke-dasharray":"6 5","stroke-opacity":.6})); });
+  s.appendChild(sv("path",{d:"M290,50 l10,30 l-6,18 M318,60 l4,26",fill:"none",stroke:"var(--ink)","stroke-width":2}));
+  s.appendChild(sv("rect",{x:395,y:240,width:30,height:12,fill:"var(--ink)"}));
+  for (var i = 0; i < 4; i++) s.appendChild(sv("rect",{x:480 + i * 18,y:244,width:12,height:12,fill:"var(--muted)"}));
+  s.appendChild(sv("text",{x:478,y:236,class:"small"},"Frank"));
+  s.appendChild(sv("text",{x:250,y:28,class:"small"},"Turtle Mountain (sketch)"));
+  FRANK.forEach(function(f, i){
+    var g = sv("g",{});
+    g.appendChild(sv("circle",{cx:f.x,cy:f.y,r:13,fill:"var(--g9)",stroke:"var(--surface)","stroke-width":2}));
+    g.appendChild(sv("text",{x:f.x,y:f.y+5,"text-anchor":"middle",style:"font-size:13px;font-weight:700;fill:var(--surface)"}, String(i+1)));
+    svgButton(g, "Factor " + (i+1) + ": " + f.n, function(){
+      found[i] = 1; g.classList.add("sel");
+      var c = Object.keys(found).length;
+      $("frankOut").innerHTML = "<h5>" + (i+1) + ". " + f.n + "</h5><p>" + f.t + "</p><p class=\"hint\">Found " + c + " of 4 factors." + (c === 4 ? " Several causes worked together. That is common for landslides." : "") + "</p>";
+    });
+    s.appendChild(g);
+  });
+})();
+
+/* ---------- Lesson 5: Monitoring ---------- */
+var MON = [
+  {n:"Seismograph", u:"small quakes per day", q:[2,3,1,2,3,2,2], w:[2,4,7,12,20,35,48], t:"A swarm of many small earthquakes under a volcano can mean magma is pushing through the rock."},
+  {n:"Gas sensor", u:"sulfur dioxide (tonnes/day)", q:[300,320,290,310,300,305,295], w:[300,350,480,700,950,1300,1800], t:"A big rise in sulfur dioxide can mean fresh magma is rising closer to the surface."},
+  {n:"GPS and tiltmeter", u:"ground rise (mm)", q:[0,1,0,1,1,0,1], w:[0,4,10,18,28,40,55], t:"When magma collects under a volcano, the ground swells upward. GPS stations can measure changes of a few millimetres."},
+  {n:"Crack meter", u:"crack width change (mm)", q:[0.1,0.1,0.2,0.1,0.1,0.2,0.1], w:[0.1,0.2,0.4,0.8,1.5,2.6,4.2], t:"On a slope like Turtle Mountain, cracks that open faster and faster can mean the rock is close to failing."}
+];
+(function(){
+  var cur = 0, warn = false, box = $("monChips");
+  function draw(){
+    var m = MON[cur], d = warn ? m.w : m.q, s = $("monSvg");
+    while (s.firstChild) s.removeChild(s.firstChild);
+    var max = Math.max.apply(null, m.w);
+    var x0 = 60, x1 = 540, y0 = 170, y1 = 20;
+    s.appendChild(sv("line",{x1:x0,y1:y0,x2:x1,y2:y0,stroke:"var(--line)"}));
+    s.appendChild(sv("line",{x1:x0,y1:y0,x2:x0,y2:y1,stroke:"var(--line)"}));
+    s.appendChild(sv("text",{x:x0-6,y:y1+4,"text-anchor":"end",class:"small"}, fmt(max)));
+    s.appendChild(sv("text",{x:x0-6,y:y0,"text-anchor":"end",class:"small"},"0"));
+    var pts = d.map(function(v, i){ var x = x0 + i * (x1 - x0) / 6, y = y0 - (v / max) * (y0 - y1); return [x, y]; });
+    pts.forEach(function(p, i){ s.appendChild(sv("text",{x:p[0],y:y0+16,"text-anchor":"middle",class:"small"},"Day " + (i+1))); });
+    s.appendChild(sv("polyline",{points:pts.map(function(p){return p.join(",");}).join(" "),fill:"none",stroke:warn ? "var(--fire)" : "var(--g9)","stroke-width":3}));
+    pts.forEach(function(p){ s.appendChild(sv("circle",{cx:p[0],cy:p[1],r:4,fill:warn ? "var(--fire)" : "var(--g9)"})); });
+    s.setAttribute("aria-label", m.n + " reading over seven days, " + (warn ? "with warning signs" : "a quiet week") + ": " + d.join(", ") + " " + m.u);
+    $("monOut").innerHTML = "<h5>" + m.n + " · " + m.u + "</h5><p>" + (warn ? m.t : "Readings stay steady from day to day. Nothing unusual is happening.") + "</p>";
+    $("monToggle").textContent = warn ? "Show a quiet week" : "Show warning signs";
+    $("monToggle").setAttribute("aria-pressed", warn ? "true" : "false");
+  }
+  MON.forEach(function(m, i){
+    var b = el("button",{type:"button",class:"chip","aria-pressed":i === 0 ? "true" : "false"}, m.n);
+    b.addEventListener("click", function(){ cur = i; Array.prototype.forEach.call(box.children, function(c, j){ c.setAttribute("aria-pressed", j === i ? "true" : "false"); }); draw(); });
+    box.appendChild(b);
+  });
+  $("monToggle").addEventListener("click", function(){ warn = !warn; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 6: Shake table ---------- */
+(function(){
+  var s = $("shakeSvg"), house;
+  function build(){
+    while (s.firstChild) s.removeChild(s.firstChild);
+    var soft = !$("opSite").checked;
+    s.appendChild(sv("rect",{x:0,y:190,width:400,height:30,fill:soft ? "var(--rock-soft)" : "var(--plate2)"}));
+    s.appendChild(sv("text",{x:10,y:210,class:"small",style:soft ? "" : "fill:#fff"}, soft ? "soft, wet soil" : "solid rock"));
+    house = sv("g",{class:"house"});
+    if ($("opIso").checked) { [150,190,230].forEach(function(x){ house.appendChild(sv("rect",{x:x,y:180,width:20,height:10,rx:3,fill:"var(--water)"})); }); }
+    house.appendChild(sv("rect",{x:140,y:50,width:120,height:130,fill:"var(--surface)",stroke:"var(--ink)","stroke-width":2}));
+    [93,136].forEach(function(y){ house.appendChild(sv("line",{x1:140,y1:y,x2:260,y2:y,stroke:"var(--ink)","stroke-width":$("opTie").checked ? 4 : 1.5})); });
+    if ($("opBrace").checked) { [[50,93],[93,136],[136,180]].forEach(function(r){ house.appendChild(sv("path",{d:"M140," + r[0] + " L260," + r[1] + " M260," + r[0] + " L140," + r[1],stroke:"var(--fire)","stroke-width":2})); }); }
+    s.appendChild(house);
+  }
+  ["opBrace","opIso","opTie","opSite"].forEach(function(id){ $(id).addEventListener("change", build); });
+  build();
+  $("shakeBtn").addEventListener("click", function(){
+    var score = 4 + ($("opSite").checked ? 0 : 1) - ($("opBrace").checked ? 1 : 0) - ($("opIso").checked ? 2 : 0) - ($("opTie").checked ? 1 : 0);
+    score = Math.max(0, score);
+    var levels = ["Little or no damage. The building flexes and returns.", "Small cracks in walls. Safe to use after an inspection.", "Moderate damage. Some walls cracked, repairs needed.", "Heavy damage. People inside could be hurt.", "Severe damage. Parts of the building could collapse.", "Collapse is likely. This design would fail."];
+    var amp = 2 + score * 2.5;
+    $("shakeOut").innerHTML = "<h5>Damage score " + score + " of 5</h5><p>" + levels[score] + "</p><p class=\"hint\">Each feature you add lowers the score. Base isolation helps the most in this model, and soft soil makes shaking worse.</p>";
+    if (reduce) return;
+    var t0 = null;
+    function frame(ts){
+      if (!t0) t0 = ts; var t = (ts - t0) / 1000;
+      if (t > 2) { house.setAttribute("transform",""); return; }
+      var a = amp * Math.sin(t * 22) * (1 - t / 2);
+      house.setAttribute("transform","rotate(" + a.toFixed(2) + " 200 190)");
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+})();
+
+/* ---------- Lesson 7: magnitude ---------- */
+var MAGNOTE = {2:"Recorded by instruments, rarely felt.",3:"Often felt nearby, rarely causes damage.",4:"Felt widely nearby. Dishes rattle.",5:"Can damage weak buildings near the epicentre.",6:"Can cause serious damage in populated areas.",7:"A major earthquake. The 2012 Haida Gwaii earthquake was 7.8.",8:"A great earthquake. The 1949 Haida Gwaii earthquake, Canada’s largest recorded, was about 8.1.",9:"The largest kind. The 1700 Cascadia earthquake was about 9."};
+function drawMag(){
+  var M = +$("magSlider").value, s = $("magSvg");
+  $("magVal").textContent = M.toFixed(1);
+  while (s.firstChild) s.removeChild(s.firstChild);
+  s.appendChild(sv("line",{x1:20,y1:70,x2:540,y2:70,stroke:"var(--line)"}));
+  var amp = Math.min(58, 3 * Math.pow(10, M - 2)), d = "M20,70";
+  for (var x = 20; x <= 540; x += 4) {
+    var env = (x > 120 && x < 460) ? Math.sin((x - 120) / 340 * Math.PI) : 0;
+    d += " L" + x + "," + (70 - amp * env * Math.sin(x / 6)).toFixed(1);
+  }
+  s.appendChild(sv("path",{d:d,fill:"none",stroke:"var(--fire)","stroke-width":2}));
+  if (M > 3) s.appendChild(sv("text",{x:540,y:152,"text-anchor":"end",class:"small"},"drawing capped: real wave is " + fmt(Math.pow(10, M - 2)) + " times a magnitude 2"));
+  s.setAttribute("aria-label","Seismogram for magnitude " + M);
+  $("magStats").innerHTML = '<div class="stat"><span>Wave height vs magnitude 2</span><b>' + fmt(Math.pow(10, M - 2)) + '×</b></div><div class="stat"><span>Energy vs magnitude 2</span><b>≈' + fmt(Math.pow(10, 1.5 * (M - 2))) + '×</b></div><div class="stat" style="grid-column:1/-1"><span>Typical description</span><b style="font-family:var(--f-body);font-size:.95rem">' + MAGNOTE[M] + '</b></div>';
+}
+$("magSlider").addEventListener("input", drawMag); drawMag();
+
+/* ---------- Lesson 8: intensity ---------- */
+var ROMAN = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
+var MMI = ["Not felt except by a very few people in special conditions.","Felt by only a few people at rest, especially on upper floors.","Felt indoors. Feels like a passing truck. Hanging objects may swing.","Felt indoors by many. Dishes, windows and doors rattle. Parked cars rock.","Felt by nearly everyone. Some dishes and windows break. Unstable objects tip over.","Felt by all. Heavy furniture moves. Some plaster falls. Slight damage.","Hard to stand. Slight damage to well-built buildings, considerable damage to poorly built ones.","Considerable damage to ordinary buildings. Chimneys and walls fall.","Heavy damage even to well-designed buildings. Buildings shift off foundations.","Most masonry and wood-frame buildings destroyed. Rails bend.","Few if any masonry buildings stay standing. Bridges are destroyed.","Damage is total. Objects are thrown into the air."];
+(function(){
+  var lad = $("mmiLadder");
+  for (var i = 11; i >= 0; i--) lad.appendChild(el("div",{class:"rung","data-i":i}, "<b>" + ROMAN[i] + "</b><span>" + MMI[i] + "</span>"));
+  var TOWNS = [
+    {n:"Seal Cove", d:5, a:200, i:7, r:"Chimneys fell and several older houses lost walls. Many people were hurt by falling objects."},
+    {n:"Mill Bay", d:20, a:330, i:6, r:"It was hard to stand. Older brick buildings cracked badly, while newer houses had only small cracks."},
+    {n:"Granite Ridge", d:45, a:30, i:5, r:"Everyone felt it. A heavy bookshelf slid across the room and plaster fell from the ceiling."},
+    {n:"Elk Valley", d:80, a:150, i:4, r:"Nearly everyone woke up. A few dishes broke and a lamp tipped over."},
+    {n:"Spruce Hill", d:140, a:250, i:3, r:"Many people indoors felt it. Windows and dishes rattled and parked cars rocked."},
+    {n:"Prairie Junction", d:300, a:345, i:1, r:"Only a few people resting on upper floors noticed a gentle sway."}
+  ];
+  var s = $("intSvg"), cx = 280, cy = 130;
+  s.appendChild(sv("rect",{x:0,y:0,width:560,height:260,fill:"var(--surface-2)"}));
+  [[175,"var(--leaf-soft)"],[125,"var(--warn-soft)"],[95,"var(--fire-soft)"],[65,"var(--fire)"]].forEach(function(r){ s.appendChild(sv("circle",{cx:cx,cy:cy,r:r[0],fill:r[1],"fill-opacity":r[1] === "var(--fire)" ? .5 : 1,stroke:"var(--line)"})); });
+  s.appendChild(sv("path",{d:"M" + cx + "," + (cy-9) + " l3,6 l7,1 l-5,5 l2,7 l-7,-4 l-7,4 l2,-7 l-5,-5 l7,-1 Z",fill:"var(--ink)"}));
+  s.appendChild(sv("text",{x:10,y:250,class:"small"},"Rings show intensity dropping with distance. Made-up magnitude 6.8 earthquake. Not to scale."));
+  function rad(d){ return 30 + Math.sqrt(d) * 12; }
+  var nodes = [];
+  TOWNS.forEach(function(t){
+    var r = Math.min(rad(t.d), 240), ang = t.a * Math.PI / 180;
+    var x = cx + r * Math.cos(ang) * (t.d > 100 ? 1.1 : 1), y = cy + r * Math.sin(ang) * .9;
+    x = Math.max(16, Math.min(544, x)); y = Math.max(16, Math.min(236, y));
+    var g = sv("g",{});
+    g.appendChild(sv("rect",{x:x-7,y:y-7,width:14,height:14,rx:3,fill:"var(--water)",stroke:"var(--surface)","stroke-width":2}));
+    g.appendChild(sv("text",{x:x + (x > 450 ? -10 : 10),y:y+4,"text-anchor":x > 450 ? "end" : "start",class:"lbl",style:"font-size:12px"}, t.n));
+    svgButton(g, t.n + ", " + t.d + " km from the epicentre", function(){
+      nodes.forEach(function(n){ n.classList.remove("sel"); }); g.classList.add("sel");
+      $("intOut").innerHTML = "<h5>" + t.n + " · " + t.d + " km away · Intensity " + ROMAN[t.i] + "</h5><p>“" + t.r + "”</p><p class=\"hint\">Magnitude is still 6.8 here. Only the intensity changes.</p>";
+      Array.prototype.forEach.call(lad.children, function(c){ c.classList.toggle("on", +c.getAttribute("data-i") === t.i); });
+    });
+    nodes.push(g); s.appendChild(g);
+  });
+})();
+
+/* ---------- Bench 1: risk ---------- */
+var HZ = [["eq","Earthquakes"],["ts","Tsunamis"],["vo","Volcanic activity"],["ls","Landslides"]];
+var REG = [
+  {n:"Haida Gwaii, BC", x:1, eq:3, ts:3, vo:0, ls:2, t:"The Pacific Plate slides past North America just offshore. Canada’s largest recorded earthquake, about magnitude 8.1 in 1949, happened here. Few people live here, so exposure is low."},
+  {n:"West coast of Vancouver Island, BC", x:2, eq:3, ts:3, vo:0, ls:2, t:"Faces the Cascadia Subduction Zone directly. A great earthquake could send a tsunami to shore within minutes."},
+  {n:"Metro Vancouver, BC", x:3, eq:3, ts:1, vo:1, ls:2, t:"Millions of people live near Cascadia. Vancouver Island shelters the city from the largest tsunami waves. Soft river delta soil can shake more."},
+  {n:"Squamish to Pemberton, BC", x:2, eq:2, ts:1, vo:2, ls:3, t:"Steep valleys and young volcanoes such as Mount Garibaldi and Mount Meager. A huge landslide came down Mount Meager in 2010."},
+  {n:"Edmonton, AB", x:3, eq:1, ts:0, vo:0, ls:1, t:"Far from any plate boundary and not part of the Ring of Fire. Small slumps happen on steep river valley slopes."},
+  {n:"Crowsnest Pass, AB", x:1, eq:1, ts:0, vo:0, ls:3, t:"Not on the Ring of Fire, but steep, cracked mountains like Turtle Mountain make landslides the main hazard."},
+  {n:"Northeast coast of Japan", x:3, eq:3, ts:3, vo:2, ls:2, t:"The Pacific Plate dives under Japan. The 2011 magnitude 9.0 earthquake and tsunami struck this coast."},
+  {n:"Central Chile", x:3, eq:3, ts:3, vo:3, ls:2, t:"The Nazca Plate dives under South America. The largest earthquake ever recorded, magnitude 9.5, struck Chile in 1960."}
+];
+var PREP = ["Little","Some","Well prepared"];
+(function(){
+  var sel = $("riskRegion");
+  REG.forEach(function(r, i){ sel.appendChild(el("option",{value:i}, r.n)); });
+  if (store.riskRegion != null) sel.value = store.riskRegion;
+  function draw(){
+    var r = REG[+sel.value], p = +$("riskPrep").value, v = 4 - p;
+    $("riskPrepVal").textContent = PREP[p-1];
+    $("riskNote").innerHTML = "<h5>" + r.n + "</h5><p>" + r.t + "</p><p class=\"hint\">Exposure " + r.x + " of 3 · Vulnerability " + v + " of 3</p>";
+    $("riskBars").innerHTML = HZ.map(function(h){
+      var sc = r[h[0]] * r.x * v, cls = sc >= 12 ? "hi" : sc >= 6 ? "mid" : "";
+      return '<div class="barrow"><span>' + h[1] + ' <small>(hazard ' + r[h[0]] + ')</small></span><div class="track"><i class="' + cls + '" style="width:' + (sc / 27 * 100) + '%"></i></div><b>' + sc + '</b></div>';
+    }).join("");
+    store.riskRegion = sel.value; save();
+  }
+  sel.addEventListener("change", draw); $("riskPrep").addEventListener("input", draw); draw();
+  var Q;
+  function newQ(){
+    var r = pick(REG), h = pick(HZ), p = 1 + Math.floor(Math.random() * 3);
+    Q = {a: r[h[0]] * r.x * (4 - p)};
+    $("riskQ").textContent = r.n + ", " + h[1].toLowerCase() + ": hazard " + r[h[0]] + ", exposure " + r.x + ", preparedness “" + PREP[p-1] + "” (vulnerability " + (4 - p) + "). What is the risk score?";
+    $("riskAns").value = ""; $("riskFb").textContent = ""; $("riskFb").className = "fb";
+  }
+  $("riskNew").addEventListener("click", newQ);
+  $("riskCheck").addEventListener("click", function(){
+    var v = parseFloat($("riskAns").value), ok = v === Q.a;
+    $("riskFb").className = "fb " + (ok ? "ok" : "no");
+    $("riskFb").textContent = ok ? "Correct. Multiply all three ratings to get " + Q.a + "." : "Not quite. Multiply hazard × exposure × vulnerability. The answer is " + Q.a + ".";
+  });
+  newQ();
+})();
+
+/* ---------- Bench 2: early warning ---------- */
+(function(){
+  var VP = 6, VS = 3.5, ALERT = 10;
+  function draw(){
+    var d = +$("ewDist").value, p = d / VP, s = d / VS, w = s - ALERT;
+    $("ewDistVal").textContent = d + " km";
+    $("ewStats").innerHTML = '<div class="stat"><span>P waves arrive</span><b>' + p.toFixed(1) + ' s</b></div><div class="stat"><span>Alert arrives</span><b>' + ALERT + ' s</b></div><div class="stat"><span>S waves arrive</span><b>' + s.toFixed(1) + ' s</b></div><div class="stat"><span>Warning time</span><b>' + (w > 0 ? w.toFixed(1) + " s" : "none") + '</b></div>';
+    var g = $("ewSvg"); while (g.firstChild) g.removeChild(g.firstChild);
+    var x0 = 20, x1 = 380, T = 90; function X(t){ return x0 + Math.min(t, T) / T * (x1 - x0); }
+    g.appendChild(sv("line",{x1:x0,y1:100,x2:x1,y2:100,stroke:"var(--line)","stroke-width":2}));
+    for (var t = 0; t <= T; t += 15) { g.appendChild(sv("line",{x1:X(t),y1:96,x2:X(t),y2:104,stroke:"var(--muted)"})); g.appendChild(sv("text",{x:X(t),y:120,"text-anchor":"middle",class:"small"}, t + " s")); }
+    if (w > 0) g.appendChild(sv("rect",{x:X(ALERT),y:86,width:X(s) - X(ALERT),height:28,fill:"var(--leaf-soft)",stroke:"var(--good)"}));
+    [[p,"P","var(--water)",40],[ALERT,"Alert","var(--g9)",60],[s,"S","var(--fire)",40]].forEach(function(m){
+      g.appendChild(sv("line",{x1:X(m[0]),y1:m[3]+6,x2:X(m[0]),y2:114,stroke:m[2],"stroke-width":3}));
+      g.appendChild(sv("text",{x:X(m[0]),y:m[3],"text-anchor":"middle",class:"lbl",style:"fill:" + m[2]}, m[1]));
+    });
+    g.appendChild(sv("text",{x:x0,y:142,class:"small"}, w > 0 ? "Green bar: time to Drop, Cover and Hold On" : "Blind zone: too close for a warning"));
+    g.setAttribute("aria-label","At " + d + " km, P waves arrive at " + p.toFixed(1) + " s, the alert at 10 s and S waves at " + s.toFixed(1) + " s.");
+  }
+  $("ewDist").addEventListener("input", draw); draw();
+  var Q;
+  function newQ(){
+    var d = pick([70,105,140,175,210,245,280]);
+    Q = d / VS - ALERT;
+    $("ewQ").textContent = "You are " + d + " km from the epicentre. S waves travel 3.5 km/s and the alert arrives 10 s after the earthquake starts. How many seconds of warning do you get?";
+    $("ewAns").value = ""; $("ewFb").textContent = "";
+  }
+  $("ewNew").addEventListener("click", newQ);
+  $("ewCheck").addEventListener("click", function(){
+    var v = parseFloat($("ewAns").value), ok = Math.abs(v - Q) < 0.6;
+    $("ewFb").className = "fb " + (ok ? "ok" : "no");
+    $("ewFb").textContent = (ok ? "Correct. " : "Not quite. ") + "S waves arrive at " + (Q + ALERT) + " s. " + (Q + ALERT) + " − 10 = " + Q + " s of warning.";
+  });
+  newQ();
+})();
+
+/* ---------- Bench 3: magnitude math ---------- */
+(function(){
+  function draw(){
+    var a = parseFloat($("mA").value), b = parseFloat($("mB").value);
+    if (isNaN(a) || isNaN(b)) { $("mStats").innerHTML = '<div class="stat"><span>Enter two magnitudes</span><b>?</b></div>'; return; }
+    var dm = b - a;
+    $("mStats").innerHTML = '<div class="stat"><span>Difference</span><b>' + dm.toFixed(1) + '</b></div><div class="stat"><span>Wave height ratio</span><b>' + fmt(Math.pow(10, dm)) + '×</b></div><div class="stat"><span>Energy ratio</span><b>≈' + fmt(Math.pow(10, 1.5 * dm)) + '×</b></div>';
+  }
+  $("mA").addEventListener("input", draw); $("mB").addEventListener("input", draw); draw();
+  var Q;
+  function newQ(){
+    var a = 3 + Math.floor(Math.random() * 5);
+    if (Math.random() < .6) { var d = 1 + Math.floor(Math.random() * 3); Q = {a:Math.pow(10, d), tol:0}; $("mQ").textContent = "How many times taller are the seismograph waves of a magnitude " + (a + d) + " earthquake than a magnitude " + a + "?"; }
+    else { var d2 = 1 + Math.floor(Math.random() * 2); Q = {a:d2 === 1 ? 32 : 1000, tol:d2 === 1 ? 1.5 : 30}; $("mQ").textContent = "About how many times more energy does a magnitude " + (a + d2) + " earthquake release than a magnitude " + a + "? (Use about 32 times per step.)"; }
+    $("mAns").value = ""; $("mFb").textContent = "";
+  }
+  $("mNew").addEventListener("click", newQ);
+  $("mCheck").addEventListener("click", function(){
+    var v = parseFloat($("mAns").value), ok = Math.abs(v - Q.a) <= Q.tol;
+    $("mFb").className = "fb " + (ok ? "ok" : "no");
+    $("mFb").textContent = (ok ? "Correct. " : "Not quite. ") + "The answer is about " + Q.a.toLocaleString("en-CA") + ".";
+  });
+  newQ();
+})();
+
+/* ---------- Bench 4: intensity survey ---------- */
+var SURVEY = [
+  {n:"Wolf Creek", d:"8 km away", i:6, r:"Hard to stand up. Our old brick store had big cracks, but newer houses only had small cracks."},
+  {n:"Bay Flats", d:"15 km away, on soft, wet ground", i:7, r:"Chimneys fell and some walls of ordinary houses collapsed."},
+  {n:"Hilltop", d:"30 km away", i:5, r:"Everyone felt it. The piano moved across the room and plaster fell from the ceiling."},
+  {n:"Riverside", d:"60 km away", i:4, r:"Nearly everyone woke up. A few dishes broke and a vase tipped over."},
+  {n:"Lakeview", d:"110 km away", i:3, r:"Many people indoors felt it. Windows and dishes rattled, and parked cars rocked."},
+  {n:"Far Prairie", d:"250 km away", i:1, r:"A few people resting on upper floors felt a gentle sway."}
+];
+(function(){
+  var box = $("survey"); store.survey = store.survey || {};
+  SURVEY.forEach(function(s, k){
+    var row = el("div",{class:"report",id:"rep" + k});
+    var opts = '<option value="">Choose</option>' + ROMAN.map(function(r, i){ return '<option value="' + i + '">' + r + '</option>'; }).join("");
+    row.innerHTML = '<div><b>' + s.n + '</b> <span class="hint">(' + s.d + ')</span><p>“' + s.r + '”</p></div><label class="field" for="sv' + k + '">Intensity<select id="sv' + k + '">' + opts + '</select></label>';
+    box.appendChild(row);
+    var se = row.querySelector("select");
+    if (store.survey[k] != null) se.value = store.survey[k];
+    se.addEventListener("change", function(){ store.survey[k] = se.value; save(); });
+  });
+  $("surveyCheck").addEventListener("click", function(){
+    var right = 0;
+    SURVEY.forEach(function(s, k){
+      var v = $("sv" + k).value, row = $("rep" + k), ok = v !== "" && Math.abs(+v - s.i) <= 1;
+      if (ok) right++;
+      row.className = "report " + (ok ? "ok" : "no");
+    });
+    $("surveyFb").className = "fb " + (right === 6 ? "ok" : "no");
+    $("surveyFb").textContent = right + " of 6 within one level of the expected rating. Expected: " + SURVEY.map(function(s){ return s.n + " " + ROMAN[s.i]; }).join(", ") + ".";
+    $("surveyConc").hidden = false;
+  });
+  $("surveyReset").addEventListener("click", function(){
+    SURVEY.forEach(function(s, k){ $("sv" + k).value = ""; $("rep" + k).className = "report"; });
+    store.survey = {}; save(); $("surveyFb").textContent = ""; $("surveyConc").hidden = true;
+  });
+})();
+
+/* ---------- Sort ---------- */
+var SORTS = [
+  {n:"Magnitude or intensity?", bins:[["R","Richter magnitude","size at the source"],["M","Mercalli intensity","effects at a place"]], items:[
+    ["One number for the whole earthquake","R","Magnitude describes the earthquake itself, so there is one value."],
+    ["Changes from town to town","M","Intensity depends on distance, ground and buildings, so it varies by place."],
+    ["Calculated from seismograph wave heights","R","Richter used the height of waves recorded on seismographs."],
+    ["Based on what people felt and saw","M","The Mercalli scale is built from observations and felt reports."],
+    ["Written with Roman numerals, like VII","M","Mercalli intensities go from I to XII."],
+    ["Each whole step means waves 10 times taller","R","The Richter scale is logarithmic."],
+    ["Can be higher on soft, wet ground","M","Soft ground shakes more, so intensity can be higher there."],
+    ["Reported as 6.8 on the news","R","A decimal number like 6.8 is a magnitude."],
+    ["Describes damage to buildings at one place","M","Damage is an effect, so it is intensity."],
+    ["About 32 times more energy per whole step","R","Energy release is part of magnitude."]
+  ]},
+  {n:"Monitor or minimize?", bins:[["Mo","Monitor","watch and measure"],["Mi","Minimize","reduce the harm"]], items:[
+    ["A seismograph network records shaking","Mo","Seismographs measure earthquakes."],
+    ["Measuring sulfur dioxide from a volcano","Mo","Gas emission monitoring watches for rising magma."],
+    ["GPS stations track a volcano swelling","Mo","GPS measures changes in the ground."],
+    ["Crack meters on Turtle Mountain","Mo","They measure how fast cracks open."],
+    ["A tiltmeter on the side of a volcano","Mo","Tiltmeters measure tiny changes in slope."],
+    ["Building code requires cross bracing","Mi","Construction standards make buildings safer."],
+    ["Not building a hospital on an unstable slope","Mi","Land-use planning keeps people out of danger."],
+    ["Drop, Cover and Hold On drills at school","Mi","Emergency preparedness reduces injuries."],
+    ["Tsunami evacuation route signs","Mi","Signs help people reach high ground quickly."],
+    ["An emergency kit with water and a flashlight","Mi","Preparedness helps people cope after a disaster."]
+  ]},
+  {n:"Which hazard?", bins:[["E","Earthquake",""],["V","Volcanic activity",""],["L","Landslide",""],["T","Tsunami",""]], items:[
+    ["Stuck plates suddenly slip","E","The sudden slip releases energy as shaking."],
+    ["Melted rock rises above a sinking plate","V","Magma feeds volcanoes."],
+    ["Lava and ash pour out of a vent","V","That is an eruption."],
+    ["Rock and soil slide down a steep slope","L","Gravity pulls loose material downhill."],
+    ["Frank Slide, 1903","L","Part of Turtle Mountain fell on the town of Frank."],
+    ["Tseax Cone, about 300 years ago","V","A volcanic eruption in the Nass Valley."],
+    ["Giant waves after the sea floor suddenly moves","T","Moving the sea floor moves the water above it."],
+    ["Japanese records of a 1700 wave with no shaking felt","T","An orphan tsunami from the Cascadia earthquake."],
+    ["Haida Gwaii, 1949, about magnitude 8.1","E","Canada’s largest recorded earthquake."],
+    ["Ground shaking recorded by seismographs","E","Seismographs record earthquakes."]
+  ]}
+];
+(function(){
+  var set = store.sortSet || 0, deck, pos, score;
+  var chips = $("sortSets");
+  SORTS.forEach(function(s, i){
+    var b = el("button",{type:"button",class:"chip","aria-pressed":"false"}, s.n);
+    b.addEventListener("click", function(){ set = i; store.sortSet = i; save(); start(); });
+    chips.appendChild(b);
+  });
+  function start(){
+    Array.prototype.forEach.call(chips.children, function(c, j){ c.setAttribute("aria-pressed", j === set ? "true" : "false"); });
+    deck = shuffle(SORTS[set].items); pos = 0; score = 0;
+    var bins = $("sortBins"); bins.innerHTML = "";
+    SORTS[set].bins.forEach(function(b){
+      var btn = el("button",{type:"button",class:"bin"}, b[1] + (b[2] ? "<small>" + b[2] + "</small>" : ""));
+      btn.addEventListener("click", function(){ answer(b[0], b[1]); });
+      bins.appendChild(btn);
+    });
+    $("sortFb").hidden = true; show();
+  }
+  function show(){
+    var bins = $("sortBins").querySelectorAll("button");
+    if (pos >= deck.length) {
+      $("sortCard").innerHTML = "Done! " + score + " of " + deck.length + " correct.<small>Choose Restart or try another game.</small>";
+      $("sortCount").textContent = "Finished";
+      Array.prototype.forEach.call(bins, function(b){ b.disabled = true; });
+      var best = store["sortBest" + set] || 0; if (score > best) { store["sortBest" + set] = score; save(); }
+      return;
+    }
+    Array.prototype.forEach.call(bins, function(b){ b.disabled = false; });
+    $("sortCount").textContent = "Card " + (pos + 1) + " of " + deck.length + " · Score " + score + (store["sortBest" + set] ? " · Best " + store["sortBest" + set] : "");
+    $("sortCard").innerHTML = deck[pos][0] + "<small>Which bin?</small>";
+  }
+  function answer(k, name){
+    var it = deck[pos], ok = it[1] === k, right = SORTS[set].bins.filter(function(b){ return b[0] === it[1]; })[0][1];
+    if (ok) score++;
+    var fb = $("sortFb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Yes, " + name + ". " : "Not quite. It belongs in " + right + ". ") + it[2];
+    pos++; show();
+  }
+  $("sortRestart").addEventListener("click", start);
+  start();
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Geological hazard","A natural event caused by processes within Earth that can harm people or property, such as an earthquake, volcanic eruption, landslide or tsunami."],
+  ["Ring of Fire","A horseshoe-shaped belt around the edge of the Pacific Ocean where most earthquakes and many active volcanoes occur."],
+  ["Tectonic plate","A large, moving piece of Earth’s rigid outer layer."],
+  ["Subduction","When one plate slides beneath another plate and sinks into the mantle."],
+  ["Cascadia Subduction Zone","The boundary off the coast of BC, Washington and Oregon where the Juan de Fuca Plate slides under the North American Plate."],
+  ["Juan de Fuca Plate","A small ocean plate off Vancouver Island that is sinking beneath North America."],
+  ["Earthquake","Shaking of the ground caused by the sudden slip of rock along a fault or plate boundary."],
+  ["Epicentre","The point on Earth’s surface directly above where an earthquake starts."],
+  ["Tsunami","A series of huge ocean waves made when the sea floor or a large mass of water suddenly moves, often in a big earthquake."],
+  ["Volcanic activity","Eruptions of lava, ash and gases from magma rising to the surface."],
+  ["Landslide","Rock, soil or debris moving quickly down a slope."],
+  ["Historical account","A record of a past event, such as an oral history, a diary, a newspaper report or an eyewitness story."],
+  ["Oral history","Knowledge and accounts passed down by speaking from one generation to the next."],
+  ["Cascadia earthquake","A great earthquake of about magnitude 9 on January 26, 1700, known from oral histories, Japanese tsunami records and ghost forests."],
+  ["Frank Slide","The 1903 rock slide from Turtle Mountain that buried part of Frank, Alberta."],
+  ["Tseax Cone eruption","A volcanic eruption in the Nass Valley of BC about 300 years ago, remembered in Nisga’a oral history."],
+  ["Monitoring","Measuring a hazard again and again to notice changes early."],
+  ["Seismograph","An instrument that detects and records ground shaking."],
+  ["Gas emission monitoring","Measuring gases such as sulfur dioxide from a volcano to watch for rising magma."],
+  ["Early warning system","A system that detects a hazard and alerts people before its effects arrive."],
+  ["P wave","The faster earthquake wave that arrives first and usually does little damage."],
+  ["S wave","The slower earthquake wave that causes stronger shaking."],
+  ["Emergency preparedness","Planning and practising what to do before a disaster, such as Drop, Cover and Hold On, and keeping a kit."],
+  ["Construction standards","Building code rules that make structures strong enough to survive hazards."],
+  ["Land-use planning","Deciding what can be built where, to keep people away from dangerous places."],
+  ["Magnitude","A single number for the size of an earthquake at its source."],
+  ["Richter scale","A logarithmic scale that gives earthquake magnitude from seismograph wave heights."],
+  ["Logarithmic scale","A scale where each step is a multiple, such as 10 times, of the step below."],
+  ["Intensity","How strongly an earthquake is felt and how much damage it causes at a particular place."],
+  ["Modified Mercalli Intensity scale","A scale from I to XII that describes earthquake intensity using observed effects."],
+  ["Risk","The chance of harm, which depends on the hazard, exposure and vulnerability."]
+];
+(function(){
+  store.known = store.known || {};
+  var idx = 0, flipped = false;
+  function list(){ var l = CARDS.map(function(c, i){ return i; }); if ($("fcOnly").checked) l = l.filter(function(i){ return !store.known[i]; }); return l; }
+  function show(){
+    var l = list(), card = $("fcCard");
+    var kn = Object.keys(store.known).filter(function(k){ return store.known[k]; }).length;
+    $("fcBar").style.width = (kn / CARDS.length * 100) + "%";
+    if (!l.length) { card.innerHTML = '<span class="term">All known!</span><span class="def">Untick “Show only still learning” to review every card.</span>'; $("fcCount").textContent = kn + " of " + CARDS.length + " known"; return; }
+    if (idx >= l.length) idx = 0; if (idx < 0) idx = l.length - 1;
+    var c = CARDS[l[idx]];
+    card.innerHTML = flipped ? '<span class="tag">Definition</span><span class="def">' + c[1] + '</span>' : '<span class="tag">Term · tap to flip</span><span class="term">' + c[0] + '</span>';
+    card.setAttribute("aria-label", (flipped ? "Definition of " + c[0] + ": " + c[1] : "Term: " + c[0] + ". Activate to flip."));
+    $("fcCount").textContent = "Card " + (idx + 1) + " of " + l.length + " · " + kn + " of " + CARDS.length + " known" + (store.known[l[idx]] ? " · marked known" : "");
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; show(); });
+  $("fcNext").addEventListener("click", function(){ idx++; flipped = false; show(); });
+  $("fcPrev").addEventListener("click", function(){ idx--; flipped = false; show(); });
+  function mark(v){ var l = list(); if (!l.length) return; store.known[l[idx]] = v; save(); if (!$("fcOnly").checked || !v) idx++; flipped = false; show(); }
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcLearn").addEventListener("click", function(){ mark(false); });
+  $("fcOnly").addEventListener("change", function(){ idx = 0; flipped = false; show(); });
+  $("fcReset").addEventListener("click", function(){ store.known = {}; save(); idx = 0; show(); });
+  show();
+})();
+
+/* ---------- Quiz ---------- */
+var QB = [
+  ["Which region has a high exposure to earthquakes, volcanoes, landslides and tsunamis?",["The Ring of Fire around the Pacific Ocean","The middle of the Canadian prairies","The Canadian Shield","The centre of Australia"],0,"The Ring of Fire follows busy plate boundaries around the Pacific, including Canada’s west coast."],
+  ["What causes most hazards along the Ring of Fire?",["Ocean plates sliding under other plates","Strong winds over the ocean","The Moon’s gravity","Melting glaciers"],0,"Subduction makes stuck plates that slip in earthquakes and makes magma that feeds volcanoes."],
+  ["Which plate slides under North America at the Cascadia Subduction Zone?",["Juan de Fuca Plate","Nazca Plate","Eurasian Plate","African Plate"],0,"The small Juan de Fuca Plate sinks beneath the North American Plate off Vancouver Island."],
+  ["How does a big subduction earthquake start a tsunami?",["The sea floor suddenly moves and lifts the water above it","Strong winds push the water","The Sun heats the water","Rivers flood the coast"],0,"Moving the sea floor moves the whole column of water, starting the waves."],
+  ["Why does Edmonton have a low volcano and earthquake hazard?",["It is far from a plate boundary","It is too cold for volcanoes","It is on the Ring of Fire","It is below sea level"],0,"Hazards cluster at plate boundaries. Edmonton is in the middle of the North American Plate."],
+  ["Which kind of evidence helped scientists find the exact date of the 1700 Cascadia earthquake?",["Japanese written records of a tsunami","Satellite photos from 1700","A seismograph in Victoria","A newspaper in Edmonton"],0,"A tsunami reached Japan with no felt shaking. The Japanese records gave the date and time."],
+  ["What are “ghost forests” on the Pacific coast evidence of?",["Land that suddenly dropped and flooded with salt water in a great earthquake","A forest fire","A drought","Logging"],0,"The trees died when the coast sank during the 1700 earthquake. Tree rings help date it."],
+  ["The Tseax Cone eruption is remembered in the oral history of which Nation?",["Nisga’a","Haida","Cree","Blackfoot"],0,"Tseax Cone is in the Nass Valley in Nisga’a territory."],
+  ["What happened in the Frank Slide of 1903?",["Part of Turtle Mountain fell on the town of Frank, Alberta","A volcano erupted near Calgary","A tsunami hit Haida Gwaii","An earthquake destroyed Edmonton"],0,"Millions of tonnes of limestone buried part of Frank in less than two minutes."],
+  ["Which is NOT thought to be a factor in the Frank Slide?",["A tsunami","Cracked rock near the top","Water freezing in cracks","A coal mine at the base"],0,"Frank is far inland. Cracks, weak rock, freeze and thaw, and possibly mining all played a part."],
+  ["Why are historical accounts useful to geologists?",["They show what happened in events too old for instruments","They replace the need for any data","They predict the exact date of the next earthquake","They measure magnitude directly"],0,"Oral histories and written records extend our knowledge back before seismographs existed."],
+  ["Which tool records ground shaking?",["Seismograph","Thermometer","Barometer","Rain gauge"],0,"A seismograph detects and records earthquake waves."],
+  ["A volcano’s sulfur dioxide output jumps from 300 to 1800 tonnes per day. What might this mean?",["Magma may be rising toward the surface","The volcano is going extinct","It is about to snow","Nothing at all"],0,"A sudden rise in volcanic gas is a common warning sign of rising magma."],
+  ["How is Turtle Mountain monitored today?",["Sensors measure tiny movements of cracks near the top","Divers check it underwater","It is not monitored","With a tsunami buoy"],0,"The Alberta Geological Survey watches the cracks so people can be warned if movement speeds up."],
+  ["Which is an example of land-use planning?",["Not building a school on an unstable slope","Adding cross bracing to walls","Practising Drop, Cover and Hold On","Measuring volcanic gas"],0,"Land-use planning decides where things can be built."],
+  ["Which is an example of a construction standard?",["A building code that requires cross bracing","A tsunami evacuation sign","A seismograph network","An oral history"],0,"Construction standards are rules about how to build."],
+  ["Why can an early warning system warn people before strong shaking?",["P waves travel faster than the damaging S waves","S waves travel faster than light","It predicts earthquakes days ahead","It stops the S waves"],0,"Sensors detect the fast P waves and send an alert before the slower S waves arrive."],
+  ["What should you do in an earthquake?",["Drop, Cover and Hold On","Run outside right away","Stand in a doorway","Use the elevator"],0,"Drop, Cover and Hold On protects you from falling objects."],
+  ["What does the Richter scale measure?",["The magnitude, or size, of an earthquake at its source","The damage in one town","How many people felt it","The depth of the ocean"],0,"Richter magnitude comes from seismograph wave heights and describes the earthquake’s size."],
+  ["What does the Modified Mercalli Intensity scale measure?",["The effects of an earthquake at a particular place","The energy released at the source","The speed of P waves","The age of the rocks"],0,"MMI uses observations of shaking and damage, so it changes from place to place."],
+  ["How many times taller are the seismograph waves of a magnitude 7 earthquake than a magnitude 5?",["100 times","2 times","20 times","1000 times"],0,"Two steps on a logarithmic scale: 10 × 10 = 100."],
+  ["About how much more energy does a magnitude 6 earthquake release than a magnitude 5?",["About 32 times","About 2 times","Exactly 10 times","About 1000 times"],0,"Each whole step means about 32 times more energy."],
+  ["One earthquake is felt as intensity VII in one town and III in another. Why?",["Intensity depends on distance, ground and buildings","The earthquake had two magnitudes","One town measured it wrong","Intensity is the same everywhere"],0,"One earthquake has one magnitude but many intensities."],
+  ["Which statement about the two scales is accurate?",["Richter measures magnitude; Mercalli measures intensity","Both measure only intensity","Mercalli uses decimals like 6.8","Richter uses Roman numerals"],0,"Magnitude is the size at the source. Intensity is the effect at a place."]
+];
+(function(){
+  var round, qi, score, answered;
+  function newRound(){ round = shuffle(QB).slice(0, 10); qi = 0; score = 0; render(); }
+  function render(){
+    var box = $("qzBox"); box.innerHTML = "";
+    $("qzMeta").textContent = qi < 10 ? "Question " + (qi + 1) + " of 10 · Score " + score + (store.qBest != null ? " · Best " + store.qBest + "/10" : "") : "Round complete";
+    if (qi >= 10) {
+      if (store.qBest == null || score > store.qBest) { store.qBest = score; save(); }
+      box.appendChild(el("div",{class:"q"}, "<h3>You scored " + score + " out of 10.</h3><p class=\"expl\">" + (score >= 8 ? "Great work. You know your hazards." : "Review the Learn lessons and try a new round.") + "</p>"));
+      $("qzNext").disabled = true; return;
+    }
+    var q = round[qi], order = shuffle([0,1,2,3]); answered = false;
+    var card = el("div",{class:"q"}); card.appendChild(el("h3",{}, q[0]));
+    var opts = el("div",{class:"opts"}); var ex = el("p",{class:"expl","aria-live":"polite"});
+    order.forEach(function(o){
+      var b = el("button",{type:"button",class:"opt"}, q[1][o]);
+      b.addEventListener("click", function(){
+        if (answered) return; answered = true;
+        var ok = o === q[2]; if (ok) score++;
+        Array.prototype.forEach.call(opts.children, function(c){ c.disabled = true; });
+        b.classList.add(ok ? "right" : "wrong");
+        if (!ok) opts.children[order.indexOf(q[2])].classList.add("right");
+        ex.textContent = (ok ? "Correct. " : "Not quite. ") + q[3];
+        $("qzNext").disabled = false;
+        $("qzMeta").textContent = "Question " + (qi + 1) + " of 10 · Score " + score;
+      });
+      opts.appendChild(b);
+    });
+    card.appendChild(opts); card.appendChild(ex); box.appendChild(card);
+    $("qzNext").disabled = true;
+  }
+  $("qzNext").addEventListener("click", function(){ qi++; render(); });
+  $("qzNew").addEventListener("click", newRound);
+  newRound();
+})();
+
+/* ---------- Written ---------- */
+var WS = [
+  ["Explain why the west coast of Canada has a high exposure to geological hazards.","British Columbia is on the Ring of Fire. Off Vancouver Island, the Juan de Fuca Plate slides under the North American Plate at the Cascadia Subduction Zone, and near Haida Gwaii the Pacific Plate slides past North America. These moving plates cause earthquakes and tsunamis, and subduction makes magma for volcanoes. Steep mountains add landslides.",["Names the Ring of Fire","Describes subduction at Cascadia","Links plate movement to earthquakes or tsunamis","Mentions volcanoes or landslides"]],
+  ["Name the four geological hazards in ES2.K1 and give one cause of each.","Earthquakes happen when stuck plates suddenly slip. Tsunamis form when the sea floor suddenly moves the water above it. Volcanic activity happens when magma rises to the surface. Landslides happen when rock and soil slide down steep slopes, often after shaking or heavy rain.",["Earthquake with cause","Tsunami with cause","Volcanic activity with cause","Landslide with cause"]],
+  ["How did written records from Japan help scientists understand the 1700 Cascadia earthquake?","A tsunami reached Japan in January 1700 with no earthquake felt there. Japanese records noted the date and time. Scientists traced the wave back across the Pacific to Cascadia, which let them date the earthquake to January 26, 1700, and estimate it was about magnitude 9.",["Tsunami with no felt shaking","Records gave a date and time","Traced back to Cascadia","Helped estimate size"]],
+  ["Why are oral histories valuable evidence for geological events, and how can they be used respectfully?","Oral histories carry knowledge from long before instruments or written records in this region. They can describe what happened, when, and its effects, as with the Cascadia earthquake and the Tseax Cone eruption. They should be used with permission, credited to the Nation that keeps them, and understood in the community’s own words.",["Older than written records here","Gives details of an event","Gives an example","Respect: permission, credit, community voice"]],
+  ["Describe two factors that contributed to the Frank Slide and how Turtle Mountain is monitored today.","Turtle Mountain had cracked limestone on top of weaker rock, and water freezing in its cracks pushed them wider. A coal mine at the base may also have weakened it. Today sensors measure tiny movements of cracks near the top so people can be warned if movement speeds up.",["First factor","Second factor","Sensors measure crack movement","Purpose is early warning"]],
+  ["Explain the difference between monitoring a hazard and minimizing its impact. Give one example of each.","Monitoring means measuring a hazard again and again to spot changes, such as a seismograph network or volcanic gas sensors. Minimizing means reducing harm, such as building codes that require cross bracing or land-use planning that keeps homes off unstable slopes.",["Defines monitoring","Monitoring example","Defines minimizing","Minimizing example"]],
+  ["How can an earthquake early warning system give people a few seconds of warning?","Earthquakes send out fast P waves and slower, more damaging S waves. Sensors near the epicentre detect the P waves, and computers send an alert that travels much faster than the waves. People farther away receive it before the S waves arrive and can Drop, Cover and Hold On.",["P waves faster than S waves","Sensors detect early waves","Alert travels faster","Action people can take"]],
+  ["Compare the Richter scale and the Modified Mercalli Intensity scale.","The Richter scale gives one number for the magnitude, or size, of an earthquake at its source, based on seismograph wave heights. It is logarithmic. The Mercalli scale describes intensity, the effects at one place, using observations and Roman numerals I to XII. One earthquake has one magnitude but many intensities.",["Richter: magnitude from instruments","Logarithmic","Mercalli: intensity from observations","One magnitude, many intensities"]],
+  ["A magnitude 8 earthquake is compared with a magnitude 6. How many times taller are its seismograph waves? About how much more energy does it release?","The difference is 2. Waves are 10² = 100 times taller. Energy is about 32² ≈ 1000 times greater.",["Finds difference of 2","100 times taller","About 1000 times the energy"]]
+];
+var WL = [
+  ["A small coastal town on the west coast of Vancouver Island (made up for this task) asks you for a hazard plan. Analyze its risk and recommend ways to monitor and minimize the hazards.","The town faces the Cascadia Subduction Zone, so its earthquake and tsunami hazards are high, and steep slopes add landslides. Exposure depends on how many people live near the shore. A good plan would use the national seismograph network and the earthquake early warning system, tsunami warning sirens and signs, and regular drills. Building codes should require strong designs, and land-use planning should move schools and the hospital to high ground. Preparedness lowers vulnerability, which lowers risk even though the hazard stays the same.",["Identifies the main hazards and why","Uses hazard, exposure and vulnerability","At least two monitoring methods","At least two minimizing methods","Explains how the plan lowers risk"]],
+  ["Should students in Edmonton learn about Ring of Fire hazards? Take a position and support it.","Yes. Edmonton’s own hazard is low, but Albertans travel and move to BC, and a great Cascadia earthquake would affect the whole country. Alberta also has landslides, as the Frank Slide shows. Learning how hazards are monitored and minimized helps people make safe choices anywhere. A reasonable opposing view is that local hazards like river valley slumps and severe weather deserve more time, but the skills of risk analysis apply to both.",["Clear position","Uses hazard or exposure ideas","Alberta example","Considers another view"]],
+  ["Two people describe the same earthquake very differently and both are right. Explain how this is possible using both scales.","The earthquake has one magnitude, measured from seismographs, so both people would hear the same number on the news. Intensity is different at each place. A person near the epicentre or on soft ground might feel intensity VII and see damage, while a person far away might feel intensity III, like a passing truck. Both descriptions are true for their location.",["One magnitude","Intensity varies by place","Distance and ground explain differences","Uses Mercalli examples"]],
+  ["Evaluate how combining historical accounts with scientific evidence improves our understanding of geological events. Use two of the three events from this lab.","For Cascadia, First Nations oral histories, Japanese tsunami records and ghost forests agree, giving a date, time and size that no single source could. For the Frank Slide, newspapers and survivor accounts describe what happened, while geologists study the rock to explain why. Combining sources makes conclusions stronger and helps communities plan, though each source has limits, such as missing details or dating uncertainty, as with Tseax Cone.",["Two events used","Names several kinds of evidence","Explains how they support each other","Notes a limitation"]]
+];
+(function(){
+  store.wr = store.wr || {};
+  function build(arr, box, pre){
+    arr.forEach(function(w, i){
+      var id = pre + i, d = el("details"); d.appendChild(el("summary",{}, (i + 1) + ". " + w[0]));
+      var inner = el("div",{class:"inner"});
+      inner.appendChild(el("label",{for:"ta" + id,class:"sr"},"Your answer"));
+      var ta = el("textarea",{id:"ta" + id,placeholder:"Write your answer here first."}); ta.value = (store.wr[id] && store.wr[id].t) || "";
+      ta.addEventListener("input", function(){ store.wr[id] = store.wr[id] || {}; store.wr[id].t = ta.value; save(); });
+      inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary",{}, "Model answer and key ideas"));
+      var mi = el("div",{class:"inner"}); mi.appendChild(el("p",{class:"model-ans"}, w[1]));
+      var ul = el("ul",{class:"checks"});
+      w[2].forEach(function(c, j){
+        var li = el("li"), cb = el("input",{type:"checkbox",id:"cb" + id + "_" + j});
+        cb.checked = !!(store.wr[id] && store.wr[id]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[id] = store.wr[id] || {}; store.wr[id]["c" + j] = cb.checked; save(); });
+        var lb = el("label",{for:"cb" + id + "_" + j}); lb.appendChild(cb); lb.appendChild(document.createTextNode(c)); li.appendChild(lb); ul.appendChild(li);
+      });
+      mi.appendChild(ul); md.appendChild(mi); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build(WS, $("wrShort"), "s"); build(WL, $("wrLong"), "l");
+})();
+
+/* ---------- Coverage ---------- */
+var COV = [
+  ["ES2.K1","Regions around the Ring of Fire, including the west coast of Canada, have high exposure to geological hazards that include\n• volcanic activity\n• earthquakes\n• landslides\n• tsunamis","Learn: Lessons 1 and 2 · Lab Bench: Investigation 1 · Sort It: Which hazard? · Quiz · Written 1 and 2"],
+  ["ES2.K2","Historical accounts can support scientific understandings of geological events, such as the\n• Cascadia earthquake\n• Frank Slide\n• Tseax Cone eruption","Learn: Lessons 3 and 4 · Sort It: Which hazard? · Flashcards · Quiz · Written 3, 4, 5 and extended 4"],
+  ["ES2.K3","Geological hazards can be monitored and their impacts minimized in a variety of ways, such as\n• early warning systems and emergency preparedness\n• construction standards and land-use planning\n• seismographic detection and gas emission monitoring","Learn: Lessons 4, 5 and 6 · Lab Bench: Investigation 2 · Sort It: Monitor or minimize? · Quiz · Written 6 and 7"],
+  ["ES2.K4","The Modified Mercalli Intensity scale and the Richter scale are used to measure the intensity of earthquakes.","Learn: Lessons 7 and 8 · Lab Bench: Investigations 3 and 4 · Sort It: Magnitude or intensity? · Quiz · Written 8 and 9 (see teacher note)"],
+  ["ES2.S1","Analyze the risk of geological hazards in regions located around the Ring of Fire.","Learn: Lessons 1 and 2 · Lab Bench: Investigation 1 (risk analyzer with practice) · Written extended 1 and 2"],
+  ["ES2.S2","Describe ways to monitor and minimize geological hazards.","Learn: Lessons 5 and 6 · Lab Bench: Investigation 2 · Sort It: Monitor or minimize? · Written 6, 7 and extended 1"],
+  ["ES2.S3","Compare how the Modified Mercalli Intensity scale and the Richter scale measure the impact of earthquakes.","Learn: Lessons 7 and 8 · Lab Bench: Investigations 3 and 4 · Sort It: Magnitude or intensity? · Written 8 and extended 3"]
+];
+(function(){
+  var tb = $("covBody");
+  COV.forEach(function(c){ var tr = el("tr"); tr.appendChild(el("td",{}, c[0])); var td = el("td"); td.appendChild(el("span",{}, c[1])); tr.appendChild(td); tr.appendChild(el("td",{}, c[2])); tb.appendChild(tr); });
+})();
+})();
+</script>
+
+</body></html>

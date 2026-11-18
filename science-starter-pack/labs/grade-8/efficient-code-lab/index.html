@@ -1,0 +1,2083 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/efficient-code-lab/"><meta name="description" content="Programs can be enhanced for efficiency."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Efficient Code Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a coding bench for a small microcontroller board with a 5 by 5 light grid, two buttons and sensors. Lessons pair a reading column with a live model that runs block code. Block colours follow the kind of block: amber for events, orange for variables, blue for control, pink for functions, violet for output, teal for sensors. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --acc:#1D5FA8;
+  --b-mo:#1F5FA6; --b-mo-soft:#DFEAF7; --b-pen:#2D7546; --b-pen-soft:#DDEFE3; --b-out:#6B3FA0; --b-out-soft:#ECE3F6;
+  --b-ctl:#8A4B12; --b-ctl-soft:#F6E8D8; --b-math:#0F6E6A; --b-math-soft:#D9F0EE;
+  --grid:#DCE3DD; --trail:#2D7546; --bot:#B0431B; --flag:#1F5FA6; --target:#9DB7A6;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --acc:#7DB0F0;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --acc:#7DB0F0;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+:root{
+  --b-ev:#8A4B12; --b-ev-soft:#F6E8D8; --b-var:#A8401A; --b-var-soft:#FBE6DA; --b-fn:#9C2F68; --b-fn-soft:#F6E0EC; --b-sen:#0F6E6A; --b-sen-soft:#D9F0EE;
+  --board:#1E2B3A; --board-edge:#33465C; --led:#FF5A4A; --led-off:#34475C; --btn:#D9DEE4; --btn-ink:#1E2B3A;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --b-ev:#E8A86A; --b-ev-soft:#3A2814; --b-var:#F2A27F; --b-var-soft:#3A1E14; --b-fn:#EE9CC7; --b-fn-soft:#3A1729; --b-sen:#6FD3CB; --b-sen-soft:#11302E;
+  --board:#0B1219; --board-edge:#3A4F66; --led:#FF7A6B; --led-off:#22303F; --btn:#C9D2DC; --btn-ink:#0B1219 }}
+:root[data-theme="dark"]{
+  --b-ev:#E8A86A; --b-ev-soft:#3A2814; --b-var:#F2A27F; --b-var-soft:#3A1E14; --b-fn:#EE9CC7; --b-fn-soft:#3A1729; --b-sen:#6FD3CB; --b-sen-soft:#11302E;
+  --board:#0B1219; --board-edge:#3A4F66; --led:#FF7A6B; --led-off:#22303F; --btn:#C9D2DC; --btn-ink:#0B1219 }
+
+/* ---- Efficient code lab additions ---- */
+header h1 .c1{color:var(--b-fn)} header h1 .c2{color:var(--acc)}
+:focus-visible{outline-color:var(--acc)}
+a{color:var(--acc)}
+.blk{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-family:var(--f-mono);font-size:.82rem;font-weight:600;border-radius:8px;padding:4px 10px;border:1.5px solid var(--bc);background:var(--bs);color:var(--ink);line-height:1.35;max-width:100%;text-align:left}
+.blk .kw{color:var(--bc)}
+.blk.ev{--bc:var(--b-ev);--bs:var(--b-ev-soft);border-radius:14px 14px 8px 8px}
+.blk.var{--bc:var(--b-var);--bs:var(--b-var-soft)}
+.blk.ctl{--bc:var(--b-mo);--bs:var(--b-mo-soft)}
+.blk.fn{--bc:var(--b-fn);--bs:var(--b-fn-soft)}
+.blk.out{--bc:var(--b-out);--bs:var(--b-out-soft)}
+.blk.sen{--bc:var(--b-sen);--bs:var(--b-sen-soft)}
+.blk.def{--bc:var(--b-fn);--bs:var(--b-fn-soft);border-radius:14px 14px 8px 8px}
+.code-list{display:grid;gap:4px;padding:0;margin:0;list-style:none}
+.code-list li{display:flex;align-items:center;gap:6px;min-width:0}
+.code-list li.gap{height:8px}
+.code-list .ln{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);width:1.8em;text-align:right;flex:0 0 auto}
+.code-list li.now .blk{outline:3px solid var(--fire);outline-offset:1px}
+.code-list li.bad .blk{outline:3px solid var(--bad);outline-offset:1px}
+.code-list li.good .blk{outline:3px solid var(--good);outline-offset:1px}
+.code-list button.blk{cursor:pointer}
+.code-list button.blk:hover{border-width:2.5px}
+.codewrap{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;overflow-x:auto}
+.board svg{max-width:300px;margin:0 auto}
+.board .ledon{fill:var(--led)}
+.board .ledoff{fill:var(--led-off)}
+.board .bbtn{cursor:pointer;outline:none}
+.board .bbtn circle{fill:var(--btn);stroke:var(--board-edge);stroke-width:3}
+.board .bbtn:hover circle,.board .bbtn:focus-visible circle{stroke:var(--fire);stroke-width:4}
+.board .bbtn text{fill:var(--btn-ink);font-family:var(--f-mono);font-weight:600;font-size:15px}
+.board .btxt{fill:var(--btn);font-family:var(--f-mono);font-size:11px}
+.readout{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:center;font-family:var(--f-mono);font-size:.85rem;color:var(--muted)}
+.readout b{color:var(--ink);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.varbox{display:flex;flex-wrap:wrap;gap:8px}
+.vb{display:grid;gap:2px;border:2px solid var(--b-var);background:var(--b-var-soft);border-radius:8px;padding:6px 12px;min-width:7em}
+.vb span{font-family:var(--f-mono);font-size:.72rem;color:var(--b-var);font-weight:600}
+.vb b{font-family:var(--f-mono);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.vb.flash{animation:pop .5s ease}
+@keyframes pop{0%{transform:scale(1.08)}100%{transform:scale(1)}}
+.loglist{font-family:var(--f-mono);font-size:.8rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;max-height:13em;overflow:auto;display:grid;gap:2px}
+.loglist .ext{color:var(--b-ev)} .loglist .int{color:var(--b-fn)} .loglist .er{color:var(--bad)}
+.editor{display:grid;gap:10px}
+.escript{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:6px;min-width:0}
+.eline{display:flex;flex-wrap:wrap;gap:4px;align-items:center;min-width:0}
+.eline.in1{padding-left:22px;border-left:3px solid var(--b-mo-soft)}
+.eline select,.eline input{font-size:.8rem;padding:3px 6px;border-radius:6px}
+.eline input[type=number]{width:5em}
+.eline .tag{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 6px;border-radius:6px;border:1.5px solid var(--bc);background:var(--bs);color:var(--bc)}
+.tiny{border:1px solid var(--line);background:var(--surface-2);border-radius:6px;min-width:2em;height:2em;cursor:pointer;font-weight:700;color:var(--ink);font-size:.8rem;padding:0 6px}
+.tiny:hover{border-color:var(--muted)}
+.check-list{display:grid;gap:6px}
+.check-list label{display:flex;gap:8px;align-items:flex-start;font-size:.93rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.check-list input{margin-top:.3em}
+.ipo-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:520px){.ipo-row{grid-template-columns:minmax(0,1fr)}}
+.ipo-box{background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:4px;font-size:.9rem;min-width:0}
+.ipo-box b{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc)}
+.ipo-box.on{border-color:var(--fire);background:var(--fire-soft)}
+.happen{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:6px}
+.chartbox svg{min-width:480px}
+.chartbox .line{fill:none;stroke:var(--b-sen);stroke-width:2.5}
+.chartbox .thr{stroke:var(--fire);stroke-width:2;stroke-dasharray:6 4}
+.chartbox .dot{fill:var(--b-sen)}
+.chartbox .trig{fill:var(--fire)}
+.twocol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:640px){.twocol{grid-template-columns:minmax(0,1fr)}}
+.big{font-family:var(--f-display);font-size:1.6rem;font-weight:800}
+.credit a{color:var(--acc)}
+.panel>*,.model>*,.text>*{min-width:0}
+code{font-family:var(--f-mono);font-size:.9em;overflow-wrap:anywhere}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Computer Science · CS1</div>
+    <h1><span class="c1">Efficient</span> <span class="c2">Code</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Programs can be enhanced for efficiency. In this lab you will program a small board with a 5 by 5 light grid, two buttons and some sensors. You will design functions, respond to events, store data in variables, read sensors, and make code shorter, clearer and more reliable.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. Most models use the same practice board: a 5 by 5 grid of lights, button A, button B, and sensors for light and temperature. The board runs block code, the same kind of code you build in a visual block-based tool.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Designing a function</span>
+      <div class="codes"><span class="code">CS1.K1</span></div>
+      <h3>You can design your own functions</h3>
+      <p>In Science 7 you used <b>built-in functions</b>, like move or print, that come with a language. You can also <b>design</b> your own. A function is a named block of code that does one job.</p>
+      <p>Designing a function has two parts. First you <b>define</b> it: you give it a descriptive name, choose its <b>inputs</b> (also called parameters) and write its algorithm. Then you <b>call</b> it: you use its name in the program, with a value for each input.</p>
+      <p>In block tools, you usually make your own block with a “define” hat. Every time you call the block, its code runs.</p>
+      <div class="key"><b>Remember:</b> define once, call many times. The input lets one function do slightly different jobs, like flash 2 times or flash 5 times.</div>
+    </div>
+    <div class="model">
+      <h4>Model: design a flash function</h4>
+      <p class="hint">Choose a name and an input. Then run the program. Watch how one definition is called twice.</p>
+      <div class="twocol">
+        <label class="field" for="l1Name">Function name
+          <select id="l1Name"><option value="flash">flash</option><option value="doIt">doIt</option><option value="f1">f1</option></select></label>
+        <label class="field" for="l1In">Input
+          <select id="l1In"><option value="times">times (a number)</option><option value="">no input</option></select></label>
+      </div>
+      <div class="codewrap" id="l1Code"></div>
+      <div class="board svgbox fit" id="l1Board"></div>
+      <div class="row">
+        <button class="btn" type="button" id="l1Run">Run program</button>
+      </div>
+      <div class="detail" id="l1Note" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Events</span>
+      <div class="codes"><span class="code">CS1.K2</span></div>
+      <h3>An event is something a program can detect</h3>
+      <p>An <b>event</b> is a detectable action, change or occurrence.</p>
+      <ul>
+        <li><b>Action:</b> someone does something, like pressing a button or clicking a mouse.</li>
+        <li><b>Change:</b> something in the world changes, like the light level dropping as a cloud passes.</li>
+        <li><b>Occurrence:</b> something happens, like a timer reaching 10 seconds or a message arriving.</li>
+      </ul>
+      <p>The key word is <b>detectable</b>. The computer must have a way to notice it, through hardware such as a button or a sensor, or through its own software, such as a clock.</p>
+    </div>
+    <div class="model">
+      <h4>Model: can the board detect it?</h4>
+      <p class="hint">Tap each happening. Find out whether the board can detect it, and what kind of event it is.</p>
+      <div class="happen" id="l2List"></div>
+      <div class="detail" id="l2Detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Responding to events</span>
+      <div class="codes"><span class="code">CS1.K3</span></div>
+      <h3>External and internal events</h3>
+      <p>A program can <b>recognize</b> an event and <b>respond</b> to it. In block code, an event hat like “when button A pressed” starts the code under it.</p>
+      <p>An <b>external event</b> comes from outside the program: a mouse click, a key press, a button press or a sensor reading.</p>
+      <p>An <b>internal event</b> comes from inside the program or the computer: a timer finishes, or a count is completed.</p>
+      <p>Between events, the board waits. Code runs only when it is needed.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a tap counter with a timer</h4>
+      <p class="hint">Press button A on the board (or use the buttons below). At 5 taps, an internal event shows a smile. Start the 10 second timer for a second internal event.</p>
+      <div class="codewrap" id="l3Code"></div>
+      <div class="board svgbox fit" id="l3Board"></div>
+      <div class="row">
+        <button class="btn" type="button" id="l3A">Press A</button>
+        <button class="btn ghost" type="button" id="l3T">Start 10 s timer</button>
+        <button class="btn ghost" type="button" id="l3R">Reset</button>
+      </div>
+      <div class="loglist" id="l3Log" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Sensors</span>
+      <div class="codes"><span class="code">CS1.K4</span></div>
+      <h3>Sensors bring the world into the IPO cycle</h3>
+      <p>A <b>sensor</b> is a device that collects data from the environment, such as light, temperature, moisture, tilt or distance.</p>
+      <p>Sensors are the <b>input</b> stage of the input–process–output (IPO) cycle. The program <b>processes</b> the reading, often by comparing it to a set value. Then it makes an <b>output</b>, like turning on a pump or a light.</p>
+      <p>Sensors are used in many applications. <b>Robotics</b> is a big one: a robot uses sensors to find a line, avoid walls or keep its balance. Sensors also run greenhouses, traffic lights and home thermostats.</p>
+      <div class="key"><b>Remember:</b> a button is an input device you press. A sensor measures something in the environment.</div>
+    </div>
+    <div class="model">
+      <h4>Model: follow one sensor reading through IPO</h4>
+      <p class="hint">Choose an application. Move the slider to change what the sensor measures. All set values are examples.</p>
+      <div class="chips" id="l4Apps" role="group" aria-label="Choose an application"></div>
+      <label class="field" for="l4Slider"><span id="l4Lbl">Reading</span>
+        <input type="range" id="l4Slider" min="0" max="100" value="40"></label>
+      <div class="ipo-row" id="l4Ipo" aria-live="polite"></div>
+      <p class="hint" id="l4Note"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Variables</span>
+      <div class="codes"><span class="code">CS1.K5</span></div>
+      <h3>Variables store information that can change</h3>
+      <p>A <b>variable</b> is a named place in memory that stores a piece of information. Think of a labelled box.</p>
+      <p>A program can <b>retrieve</b> the value (look in the box) and <b>change</b> it (put something new in the box) at any point while it runs.</p>
+      <p>In a game, a variable called <code>lives</code> might start at 3. Each time the player is hit, the program changes it by −1. The program retrieves it to show the lives left and to check if the game is over.</p>
+    </div>
+    <div class="model">
+      <h4>Model: watch the lives box</h4>
+      <p class="hint">Start the game, then press B to be hit. Each step says whether the variable was changed or retrieved.</p>
+      <div class="codewrap" id="l5Code"></div>
+      <div class="varbox" id="l5Vars"></div>
+      <div class="board svgbox fit" id="l5Board"></div>
+      <div class="row">
+        <button class="btn" type="button" id="l5Start">Start game</button>
+        <button class="btn ghost" type="button" id="l5B">Press B (hit)</button>
+      </div>
+      <div class="loglist" id="l5Log" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Names and values</span>
+      <div class="codes"><span class="code">CS1.K6</span></div>
+      <h3>Give variables good names and the right kind of value</h3>
+      <p>A variable needs a <b>descriptive name</b> that says what it stores, like <code>lapCount</code> or <code>tempOutside</code>. Many languages do not allow spaces in names, so programmers join words.</p>
+      <p>A variable can be <b>assigned</b> a value in different ways:</p>
+      <ul>
+        <li>a <b>number</b>, like <code>set lapCount to 0</code></li>
+        <li>a <b>string</b> of text, like <code>set playerName to "Amara"</code></li>
+        <li>the result of a calculation or a sensor reading, like <code>set tempOutside to temperature</code></li>
+      </ul>
+      <p>The kind of value matters. You can add numbers. You can join strings. Many languages treat the text <code>"5"</code> differently from the number <code>5</code>.</p>
+    </div>
+    <div class="model">
+      <h4>Model: name check and value check</h4>
+      <p class="hint">Part 1: pick a name for a variable that stores the number of laps a skater has finished.</p>
+      <div class="chips" id="l6Names" role="group" aria-label="Choose a variable name"></div>
+      <div class="detail" id="l6NameFb" aria-live="polite"></div>
+      <p class="hint">Part 2: choose the kind of value for a and b, then add or join them.</p>
+      <div class="twocol">
+        <label class="field" for="l6A">a is
+          <select id="l6A"><option value="n">the number 5</option><option value="s">the string "5"</option><option value="w">the string "five"</option></select></label>
+        <label class="field" for="l6B">b is
+          <select id="l6B"><option value="n">the number 5</option><option value="s">the string "5"</option></select></label>
+      </div>
+      <div class="chips" id="l6Op" role="group" aria-label="Operation"></div>
+      <div class="detail" id="l6Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Variables at work</span>
+      <div class="codes"><span class="code">CS1.K7</span></div>
+      <h3>Variables work with loops, conditionals, functions and events</h3>
+      <p>Variables are most useful when they team up with the other parts of a program.</p>
+      <ul>
+        <li><b>Loops:</b> a variable can count how many times the loop has run.</li>
+        <li><b>Conditionals:</b> a variable can be tested, like <code>if laps = 10</code>.</li>
+        <li><b>Functions:</b> a variable can be passed in as an input, or changed inside the function.</li>
+        <li><b>Events:</b> an event can change a variable, like adding 1 each time a button is pressed.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Model: one variable, four teammates</h4>
+      <p class="hint">Choose a teammate. Then step through the code and watch <code>laps</code> change.</p>
+      <div class="chips" id="l7Pick" role="group" aria-label="Choose a structure"></div>
+      <div class="codewrap" id="l7Code"></div>
+      <div class="row">
+        <button class="btn" type="button" id="l7Step">Next step</button>
+        <button class="btn ghost" type="button" id="l7Reset">Start again</button>
+      </div>
+      <div class="varbox" id="l7Vars"></div>
+      <div class="detail" id="l7Note" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Efficient code</span>
+      <div class="codes"><span class="code">CS1.K8</span></div>
+      <h3>Efficient code uses functions, variables and events well</h3>
+      <p><b>Efficient code</b> does its job with fewer wasted steps. It also tends to be shorter, easier to read and easier to fix, so it runs more reliably.</p>
+      <ul>
+        <li><b>Functions</b> stop you from copying the same blocks again and again. Fix the function once and every call is fixed.</li>
+        <li><b>Variables</b> store a value in one place. Change it once and the whole program uses the new value.</li>
+        <li><b>Events</b> run code only when something happens, so the program does not spend its own steps checking again and again.</li>
+      </ul>
+      <p>Here is the idea in a skating rink lap counter. A light sensor notices each skater passing the finish line.</p>
+    </div>
+    <div class="model">
+      <h4>Model: three versions of a lap counter</h4>
+      <p class="hint">All three versions do the same job. Change the number of laps in the race and compare. Numbers are a simple model.</p>
+      <label class="field" for="l8Laps">Laps in the race: <span id="l8LapsV" class="mono">10</span>
+        <input type="range" id="l8Laps" min="3" max="25" value="10"></label>
+      <div class="chips" id="l8Pick" role="group" aria-label="Show the code for a version"></div>
+      <div class="codewrap" id="l8Code"></div>
+      <div class="bars" id="l8Bars"></div>
+      <div class="detail" id="l8Note" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Six investigations. Build a function, explain and trace code, write programs with variables, make code more efficient, debug, and explore sensors. All programs and data here are made up for practice.</p>
+  </div>
+
+  <article class="lesson bench-card">
+    <div class="text">
+      <span class="step">Investigation 1 · Function factory</span>
+      <div class="codes"><span class="code">CS1.S1</span><span class="code">CS1.K1</span></div>
+      <h3>Create a function to replace copied code</h3>
+      <p>The program on the left flashes all lights 2 times, shows a heart, then flashes 3 times and shows a smile. It works, but the flash blocks are copied over and over. Build one function called <code>flash(times)</code> that does the flashing. Pick blocks for its body in order.</p>
+      <div class="twocol">
+        <div class="codewrap" id="b1Old"></div>
+        <div class="model">
+          <h4>Your function</h4>
+          <p class="hint">Tap blocks to add them to the body. The first block can be a repeat. Blocks after it go inside the repeat.</p>
+          <div class="palette chips" id="b1Pal" role="group" aria-label="Blocks you can use"></div>
+          <div class="codewrap" id="b1New"></div>
+          <div class="row">
+            <button class="btn" type="button" id="b1Test">Test my function</button>
+            <button class="btn ghost" type="button" id="b1Undo">Remove last block</button>
+            <button class="btn ghost" type="button" id="b1Clear">Clear</button>
+          </div>
+        </div>
+      </div>
+      <div class="board svgbox fit" id="b1Board"></div>
+      <div class="verdict mid" id="b1Fb" aria-live="polite">Build the function body, then test it.</div>
+    </div>
+  </article>
+
+  <article class="lesson bench-card">
+    <div class="text">
+      <span class="step">Investigation 2 · Explain and trace</span>
+      <div class="codes"><span class="code">CS1.S2</span></div>
+      <h3>What does this code do?</h3>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Code: <code>when green flag clicked → set points to 0</code> and <code>when button A pressed → change points by 2, show points</code>.</span>
+        <span>Event: the green flag starts the program; button A presses are external events.</span>
+        <span>Variable: <code>points</code> stores the score. It starts at 0 and grows by 2 for each press.</span>
+        <span>Trace for 3 presses: 0 → 2 → 4 → 6. The board shows 6.</span>
+        <span>Purpose: a score keeper that adds 2 points per press.</span>
+      </div>
+      <p class="hint">Now try new programs. They change every time.</p>
+      <div class="codewrap" id="b2Code"></div>
+      <div id="b2Q" class="quiz"></div>
+      <div class="row"><button class="btn ghost" type="button" id="b2New">New program</button></div>
+    </div>
+  </article>
+
+  <article class="lesson bench-card">
+    <div class="text">
+      <span class="step">Investigation 3 · Build with variables</span>
+      <div class="codes"><span class="code">CS1.S4</span><span class="code">CS1.K5 to K7</span></div>
+      <h3>Write a program that uses variables</h3>
+      <p>Pick a challenge. Make variables with descriptive names, add event scripts and blocks, then press <b>Check my program</b>. You can also try it by hand with the board buttons.</p>
+      <div class="chips" id="b3Ch" role="group" aria-label="Choose a challenge"></div>
+      <div class="detail" id="b3Goal"></div>
+      <div class="bench-grid">
+        <div class="editor">
+          <div class="row">
+            <label class="field" for="b3VarName">New variable name <input type="text" id="b3VarName" placeholder="for example taps" maxlength="20"></label>
+            <button class="btn ghost" type="button" id="b3AddVar">Make a variable</button>
+          </div>
+          <p class="hint" id="b3VarList" aria-live="polite"></p>
+          <div id="b3Scripts" class="editor"></div>
+          <div class="row">
+            <button class="btn ghost" type="button" id="b3AddScript">Add an event script</button>
+            <button class="btn ghost" type="button" id="b3Starter">Load starter code</button>
+          </div>
+        </div>
+        <div class="model">
+          <h4>Try it</h4>
+          <div class="board svgbox fit" id="b3Board"></div>
+          <div class="row">
+            <button class="btn ghost" type="button" id="b3Go">Green flag</button>
+            <button class="btn ghost" type="button" id="b3A">Press A</button>
+            <button class="btn ghost" type="button" id="b3B">Press B</button>
+            <button class="btn ghost" type="button" id="b3Dark">Cover light sensor</button>
+          </div>
+          <div class="varbox" id="b3Vars"></div>
+          <button class="btn" type="button" id="b3Check">Check my program</button>
+          <div class="loglist" id="b3Log" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="verdict mid" id="b3Fb" aria-live="polite">Choose a challenge to begin.</div>
+    </div>
+  </article>
+
+  <article class="lesson bench-card">
+    <div class="text">
+      <span class="step">Investigation 4 · Make it efficient</span>
+      <div class="codes"><span class="code">CS1.S3</span><span class="code">CS1.K8</span></div>
+      <h3>Adjust code with functions, variables and events</h3>
+      <div class="worked">
+        <b>Worked example: count the blocks</b>
+        <span>A sign flashes 3 times by copying “show icon all, wait, show icon clear, wait” 3 times: 3 × 4 = 12 blocks.</span>
+        <span>With a loop: 1 repeat block + 4 blocks inside = 5 blocks. To flash 6 times, the copied version needs 24 blocks; the loop version still needs 5. You change one number.</span>
+      </div>
+      <p>Pick a program. Tick the changes that would make it more efficient. Watch the code and the measures change. Some choices do not help.</p>
+      <div class="chips" id="b4Case" role="group" aria-label="Choose a program"></div>
+      <div class="detail" id="b4Goal"></div>
+      <div class="check-list" id="b4Opts"></div>
+      <div class="twocol">
+        <div class="codewrap" id="b4Code"></div>
+        <div class="stats" id="b4Stats"></div>
+      </div>
+      <div class="verdict mid" id="b4Fb" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson bench-card">
+    <div class="text">
+      <span class="step">Investigation 5 · Debug it</span>
+      <div class="codes"><span class="code">CS1.S5</span></div>
+      <h3>Find and fix the bug</h3>
+      <p>A <b>bug</b> is a mistake in code. Read the goal. Run the test to see what goes wrong. Tap the block you think is wrong, then choose a fix.</p>
+      <div class="detail" id="b5Goal"></div>
+      <div class="codewrap" id="b5Code"></div>
+      <div class="row">
+        <button class="btn ghost" type="button" id="b5Run">Run the test</button>
+        <button class="btn ghost" type="button" id="b5Next">Next bug</button>
+        <span class="hint mono" id="b5Score"></span>
+      </div>
+      <div class="loglist" id="b5Log" aria-live="polite"></div>
+      <div id="b5Fix" class="opts"></div>
+      <div class="verdict mid" id="b5Fb" aria-live="polite">Run the test first.</div>
+    </div>
+  </article>
+
+  <article class="lesson bench-card">
+    <div class="text">
+      <span class="step">Investigation 6 · Sensor explorer</span>
+      <div class="codes"><span class="code">CS1.S6</span><span class="code">CS1.K4</span></div>
+      <h3>Explore how sensors trigger code</h3>
+      <p>Pick an application. The chart shows 24 made-up readings taken over time. Move the set value. The program uses an event “when the reading crosses the set value”, so it responds once each time the reading crosses, not at every reading.</p>
+      <div class="chips" id="b6Apps" role="group" aria-label="Choose an application"></div>
+      <label class="field" for="b6Thr"><span id="b6ThrL">Set value</span>
+        <input type="range" id="b6Thr" min="0" max="100" value="30"></label>
+      <div class="svgbox chartbox" id="b6Chart"></div>
+      <div class="stats" id="b6Stats"></div>
+      <div class="detail" id="b6Note" aria-live="polite"></div>
+      <h4>Which sensor fits?</h4>
+      <div id="b6Q" class="quiz"></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 CS1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>CS1.K8:</b> “run faster and more reliably” is taught with more precision. Functions and variables mainly make code shorter, clearer and easier to change and fix, which makes it more reliable. Events let the program run code only when something happens instead of checking again and again in a forever loop. In block tools the system still watches for the event behind the scenes, so the saving is in the program’s own steps. Calling a function does not by itself make code run faster.</li>
+      <li><b>CS1.K3:</b> an internal event such as “a count is completed” is modelled with a “when <i>condition</i>” hat that fires once when the condition becomes true. Some block tools do this with a timer hat or a broadcast message instead. Block names in the lab are generic, not tied to one product.</li>
+      <li><b>CS1.K6:</b> number and string values are taught. True or false (Boolean) values and lists are mentioned once in the flashcards only. How text that looks like a number is handled varies: some block tools convert “5” to 5 when adding, while Python joins “5” + “5” into “55”.</li>
+      <li><b>CS1.K4:</b> sensors are described generically (light, temperature, moisture, tilt, distance). A button is taught as an input device, not a sensor. The block heater example (plug in below about −15 °C) is a common Alberta rule of thumb used as an example set value; please check wording.</li>
+      <li><b>CS1.K1:</b> “functions can be designed” is taught as defining your own function with a name, inputs and an algorithm, and then calling it.</li>
+      <li><b>Data:</b> all programs, sensor readings, block counts and “checks per minute” figures are made up or simplified for practice and labelled as such.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-cs1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function stat(box, label, val){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, label)); d.appendChild(el("b", null, val)); box.appendChild(d); }
+function bar(box, label, v, max, warn, valText){
+  var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, label));
+  var t = el("div", {"class": "track"}); var i = el("i"); if (warn) i.className = "warn"; i.style.width = Math.max(2, Math.min(100, v / max * 100)) + "%"; t.appendChild(i); r.appendChild(t);
+  r.appendChild(el("b", null, valText != null ? valText : String(v))); box.appendChild(r);
+}
+function verdict(box, kind, text){ box.className = "verdict " + kind; box.textContent = text; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Block language ----------
+   Program: {vars:[names], funcs:{name:{p:param, b:[stmts]}}, scripts:[{ev, c?, b:[stmts]}]}
+   Statements: set, chg, show, icon, wait, rep, if, call, forever, until (display only)
+   Expressions: number | {s:text} | {v:name} | {sen:name} | {add:[a,b]} | {join:[a,b]} | {t:text} */
+var HATS = {
+  start: "when green flag clicked", A: "when button A pressed", B: "when button B pressed",
+  dark: "when light level drops below 30", timer: "when timer reaches 10 s", tick: "when timer ticks (every 1 s)",
+  sense: "when sensor crosses the set value", tilt: "when board is tilted"
+};
+function exText(e){
+  if (e == null) return "";
+  if (typeof e === "number") return String(e);
+  if (typeof e === "string") return e;
+  if (e.s != null) return "“" + e.s + "”";
+  if (e.v != null) return e.v;
+  if (e.sen != null) return e.sen + " level";
+  if (e.t != null) return e.t;
+  if (e.add) return exText(e.add[0]) + " + " + exText(e.add[1]);
+  if (e.join) return "join " + exText(e.join[0]) + " " + exText(e.join[1]);
+  return "?";
+}
+function condText(c){ if (!c) return ""; if (c.t) return c.t; return exText(c[0]) + " " + c[1] + " " + exText(c[2]); }
+function stText(s){
+  switch (s.o) {
+    case "set": return [["kw","set "], ["", s.v + " to " + exText(s.x)]];
+    case "chg": return [["kw","change "], ["", s.v + " by " + exText(s.x)]];
+    case "show": return [["kw","show "], ["", exText(s.x)]];
+    case "icon": return [["kw","show icon "], ["", s.n]];
+    case "wait": return [["kw","wait "], ["", exText(s.x) + " s"]];
+    case "rep": return [["kw","repeat "], ["", exText(s.x)]];
+    case "if": return [["kw","if "], ["", condText(s.c)]];
+    case "call": return [["kw", s.f], ["", "(" + (s.x != null ? exText(s.x) : "") + ")"]];
+    case "forever": return [["kw","forever"]];
+    case "until": return [["kw","wait until "], ["", condText(s.c)]];
+    case "read": return [["kw","set "], ["", s.v + " to " + s.sen + " sensor"]];
+    case "note": return [["", s.t]];
+  }
+  return [["", "?"]];
+}
+function stCat(s){
+  if (s.o === "set" || s.o === "chg") return "var";
+  if (s.o === "read") return "sen";
+  if (s.o === "show" || s.o === "icon") return "out";
+  if (s.o === "call") return "fn";
+  return "ctl";
+}
+function flatten(prog){
+  var lines = [];
+  function walk(list, d){
+    (list || []).forEach(function(s){
+      lines.push({d: d, cat: stCat(s), parts: stText(s), st: s});
+      if (s.b) walk(s.b, d + 1);
+      if (s.e) { lines.push({d: d, cat: "ctl", parts: [["kw","else"]], st: s, isElse: true}); walk(s.e, d + 1); }
+    });
+  }
+  var first = true;
+  Object.keys(prog.funcs || {}).forEach(function(n){
+    if (!first) lines.push({gap: true}); first = false;
+    var f = prog.funcs[n];
+    lines.push({d: 0, cat: "def", parts: [["kw","define "], ["", n + "(" + (f.p || "") + ")"]], hat: true, fn: n});
+    walk(f.b, 1);
+  });
+  (prog.scripts || []).forEach(function(sc){
+    if (!first) lines.push({gap: true}); first = false;
+    var t = sc.ev === "when" ? "when " + condText(sc.c) : (HATS[sc.ev] || sc.ev);
+    lines.push({d: 0, cat: "ev", parts: [["kw", t]], hat: true, sc: sc});
+    walk(sc.b, 1);
+  });
+  var n = 0; lines.forEach(function(l){ if (!l.gap) l.idx = n++; });
+  return lines;
+}
+function countBlocks(prog){ return flatten(prog).filter(function(l){ return !l.gap && !l.isElse; }).length; }
+function renderProg(box, prog, opts){
+  opts = opts || {};
+  clear(box);
+  var ol = el("ol", {"class": "code-list"});
+  var lines = flatten(prog);
+  lines.forEach(function(l){
+    var li = el("li");
+    if (l.gap) { li.className = "gap"; li.setAttribute("aria-hidden", "true"); ol.appendChild(li); return; }
+    if (opts.hl === l.idx) li.classList.add("now");
+    if (opts.mark && opts.mark[l.idx]) li.classList.add(opts.mark[l.idx]);
+    li.style.paddingLeft = (l.d * 20) + "px";
+    var b = el(opts.pick ? "button" : "span", {"class": "blk " + l.cat});
+    if (opts.pick) { b.type = "button"; b.addEventListener("click", function(){ opts.pick(l.idx, l); }); }
+    l.parts.forEach(function(p){ var s = el("span", p[0] ? {"class": p[0]} : null, p[1]); b.appendChild(s); });
+    li.appendChild(b); ol.appendChild(li);
+  });
+  box.appendChild(ol);
+  return lines;
+}
+
+/* ---------- Runner ---------- */
+function Runner(prog, sensors){
+  this.p = prog; this.vars = {}; this.sensors = sensors || {light: 70, temperature: 20};
+  var self = this;
+  (prog.vars || []).forEach(function(v){ self.vars[v] = 0; });
+  this.t = 0; this.log = []; this.disp = {icon: "clear", text: ""}; this.steps = 0; this.locals = []; this.whenPrev = {}; this.err = null;
+}
+Runner.prototype.val = function(e){
+  if (typeof e === "number") return e;
+  if (typeof e === "string") return e;
+  if (e == null) return 0;
+  if (e.s != null) return e.s;
+  if (e.v != null) {
+    for (var i = this.locals.length - 1; i >= 0; i--) if (e.v in this.locals[i]) return this.locals[i][e.v];
+    if (!(e.v in this.vars)) { this.fail("There is no variable called " + e.v + "."); return 0; }
+    return this.vars[e.v];
+  }
+  if (e.sen != null) return this.sensors[e.sen];
+  if (e.add) { var a = this.val(e.add[0]), b = this.val(e.add[1]); return Number(a) + Number(b); }
+  if (e.join) return String(this.val(e.join[0])) + String(this.val(e.join[1]));
+  return 0;
+};
+Runner.prototype.fail = function(msg){ if (!this.err) { this.err = msg; this.log.push({k: "err", text: msg, t: this.t}); } };
+Runner.prototype.test = function(c){
+  if (!c || c.t) return false;
+  var a = this.val(c[0]), b = this.val(c[2]);
+  switch (c[1]) { case "=": return Number(a) === Number(b); case ">": return Number(a) > Number(b); case "<": return Number(a) < Number(b); case "≥": return Number(a) >= Number(b); }
+  return false;
+};
+Runner.prototype.exec = function(list){
+  var self = this;
+  for (var i = 0; i < (list || []).length; i++) {
+    if (self.err) return;
+    if (++self.steps > 3000) { self.fail("The program ran too many steps. Check your loops."); return; }
+    var s = list[i];
+    switch (s.o) {
+      case "set": self.setVar(s.v, self.val(s.x)); break;
+      case "read": self.setVar(s.v, self.sensors[s.sen]); break;
+      case "chg":
+        if (!(s.v in self.vars)) { self.fail("There is no variable called " + s.v + "."); return; }
+        self.setVar(s.v, Number(self.vars[s.v]) + Number(self.val(s.x))); break;
+      case "show": var v = self.val(s.x); self.disp = {icon: null, text: String(v)}; self.log.push({k: "show", text: String(v), t: self.t}); break;
+      case "icon": self.disp = {icon: s.n, text: ""}; self.log.push({k: "icon", text: s.n, t: self.t}); break;
+      case "wait": self.t += Number(self.val(s.x)) || 0; self.log.push({k: "wait", text: String(self.val(s.x)), t: self.t}); break;
+      case "rep": var n = Math.max(0, Math.min(200, Math.floor(Number(self.val(s.x)) || 0))); for (var r = 0; r < n; r++) { self.exec(s.b); if (self.err) return; } break;
+      case "if": if (self.test(s.c)) self.exec(s.b); else self.exec(s.e); break;
+      case "call":
+        var f = self.p.funcs && self.p.funcs[s.f];
+        if (!f) { self.fail("There is no function called " + s.f + "."); return; }
+        var loc = {}; if (f.p) loc[f.p] = s.x != null ? self.val(s.x) : 0;
+        if (f.p && s.x == null) { self.fail(s.f + " needs a value for its input " + f.p + "."); return; }
+        self.locals.push(loc); self.exec(f.b); self.locals.pop(); break;
+    }
+  }
+};
+Runner.prototype.setVar = function(v, x){ this.vars[v] = x; this.log.push({k: "var", v: v, text: v + " = " + x, t: this.t}); };
+Runner.prototype.fire = function(ev){
+  var self = this;
+  (self.p.scripts || []).forEach(function(sc){ if (sc.ev === ev) { self.log.push({k: "event", text: ev, t: self.t}); self.exec(sc.b); } });
+  self.checkWhen();
+};
+Runner.prototype.checkWhen = function(){
+  var self = this;
+  for (var loop = 0; loop < 5; loop++) {
+    var fired = false;
+    (self.p.scripts || []).forEach(function(sc, i){
+      if (sc.ev !== "when") return;
+      var now = self.test(sc.c);
+      if (now && !self.whenPrev[i]) { self.whenPrev[i] = true; self.log.push({k: "event", text: "when " + condText(sc.c), t: self.t, internal: true}); self.exec(sc.b); fired = true; }
+      else if (!now) self.whenPrev[i] = false;
+    });
+    if (!fired) return;
+  }
+};
+function outputs(log){ return log.filter(function(x){ return x.k === "show" || x.k === "icon"; }).map(function(x){ return (x.k === "icon" ? "icon " : "") + x.text; }); }
+
+/* ---------- Board ---------- */
+var ICONS = {
+  heart: "0101011111111110111000100", smile: "0000001010000001000101110", sad: "0000001010000000111010001",
+  check: "0000000001000101010001000", x: "1000101010001000101010001", all: "1111111111111111111111111",
+  clear: "0000000000000000000000000", snow: "1010101110111110111010101", drop: "0010001110011101111101110",
+  clock: "0111010101101111000101110", sun: "1010101110111110111010101"
+};
+var DIG = {"0":"111101101101111","1":"010110010010111","2":"111001111100111","3":"111001111001111","4":"101101111001001","5":"111100111001111","6":"111100111101111","7":"111001010010010","8":"111101111101111","9":"111101111001111","-":"000000111000000"};
+function makeBoard(box, handlers){
+  handlers = handlers || {};
+  clear(box);
+  var s = sv("svg", {viewBox: "0 0 300 220", role: "group", "aria-label": "Practice board with a 5 by 5 light grid and buttons A and B"});
+  s.appendChild(sv("rect", {x: 6, y: 6, width: 288, height: 178, rx: 18, fill: "var(--board)", stroke: "var(--board-edge)", "stroke-width": 3}));
+  var leds = [];
+  for (var r = 0; r < 5; r++) for (var c = 0; c < 5; c++) {
+    var L = sv("rect", {x: 92 + c * 24, y: 36 + r * 24, width: 16, height: 16, rx: 3, "class": "ledoff"});
+    s.appendChild(L); leds.push(L);
+  }
+  function btn(x, label, key){
+    var g = sv("g", {"class": "bbtn", tabindex: 0, role: "button", "aria-label": "Press button " + label});
+    g.appendChild(sv("circle", {cx: x, cy: 96, r: 20}));
+    g.appendChild(sv("text", {x: x, y: 101, "text-anchor": "middle"}, label));
+    function go(){ if (handlers[key]) handlers[key](); }
+    g.addEventListener("click", go);
+    g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    s.appendChild(g);
+  }
+  btn(46, "A", "A"); btn(254, "B", "B");
+  s.appendChild(sv("circle", {cx: 150, cy: 166, r: 6, fill: "var(--btn)"}));
+  s.appendChild(sv("text", {x: 162, y: 170, "class": "btxt"}, "light sensor"));
+  s.appendChild(sv("text", {x: 20, y: 170, "class": "btxt"}, "temp sensor"));
+  var txt = sv("text", {x: 150, y: 210, "text-anchor": "middle", "class": "lbl"});
+  s.appendChild(txt);
+  box.appendChild(s);
+  var api = {
+    pattern: function(p){ for (var i = 0; i < 25; i++) leds[i].setAttribute("class", p.charAt(i) === "1" ? "ledon" : "ledoff"); },
+    icon: function(n){ api.pattern(ICONS[n] || ICONS.clear); txt.textContent = n === "clear" ? "" : "icon: " + n; },
+    text: function(t){
+      t = String(t);
+      if (DIG[t]) {
+        var p = ""; for (var r = 0; r < 5; r++) p += "0" + DIG[t].substr(r * 3, 3) + "0";
+        api.pattern(p);
+      } else api.pattern(ICONS.clear);
+      txt.textContent = "shows: " + t;
+    },
+    show: function(d){ if (d.icon != null) api.icon(d.icon); else api.text(d.text); },
+    reset: function(){ api.icon("clear"); txt.textContent = ""; }
+  };
+  api.reset();
+  return api;
+}
+/* play a runner log on a board, with timing */
+function play(board, log, done){
+  var frames = log.filter(function(x){ return x.k === "show" || x.k === "icon"; });
+  if (reduced || !frames.length) { if (frames.length) { var f = frames[frames.length - 1]; f.k === "icon" ? board.icon(f.text) : board.text(f.text); } if (done) done(); return; }
+  var i = 0, t0 = 0;
+  function next(){
+    if (i >= frames.length) { if (done) done(); return; }
+    var f = frames[i]; f.k === "icon" ? board.icon(f.text) : board.text(f.text);
+    var nt = i + 1 < frames.length ? frames[i + 1].t : f.t;
+    var gap = Math.max(250, Math.min(1200, (nt - f.t) * 1000));
+    i++; setTimeout(next, gap);
+  }
+  next();
+}
+function varBoxes(box, vars, flashName){
+  clear(box);
+  Object.keys(vars).forEach(function(k){
+    var d = el("div", {"class": "vb" + (k === flashName && !reduced ? " flash" : "")});
+    d.appendChild(el("span", null, k)); d.appendChild(el("b", null, String(vars[k])));
+    box.appendChild(d);
+  });
+  if (!Object.keys(vars).length) box.appendChild(el("span", {"class": "hint"}, "No variables yet."));
+}
+function logLine(box, text, cls){ var d = el("div", cls ? {"class": cls} : null, text); box.appendChild(d); box.scrollTop = box.scrollHeight; }
+
+/* ---------- Lesson 1: design a function ---------- */
+(function(){
+  var board = makeBoard($("l1Board"));
+  function prog(){
+    var name = $("l1Name").value, inp = $("l1In").value;
+    var body = [{o: "icon", n: "all"}, {o: "wait", x: 0.3}, {o: "icon", n: "clear"}, {o: "wait", x: 0.3}];
+    var f = {p: inp, b: [{o: "rep", x: inp ? {v: inp} : 2, b: body}]};
+    var funcs = {}; funcs[name] = f;
+    return {funcs: funcs, scripts: [{ev: "start", b: [
+      {o: "call", f: name, x: inp ? 2 : null}, {o: "icon", n: "heart"}, {o: "wait", x: 1},
+      {o: "call", f: name, x: inp ? 3 : null}, {o: "icon", n: "smile"}]}]};
+  }
+  function draw(){
+    var p = prog(); renderProg($("l1Code"), p);
+    var name = $("l1Name").value, inp = $("l1In").value;
+    var notes = [];
+    notes.push(name === "flash" ? "Good name: flash says what the function does." : name + " is a poor name. The code still runs, but a reader cannot tell what " + name + " does.");
+    notes.push(inp ? "With the input times, one definition flashes 2 times on the first call and 3 times on the second." : "With no input, the function always flashes 2 times. The second call should flash 3 times, so this design cannot do both jobs.");
+    notes.push("Blocks: " + countBlocks(p) + " with the function, compared with 24 if every flash were copied out.");
+    detail($("l1Note"), "What changed", notes);
+  }
+  $("l1Name").addEventListener("change", draw);
+  $("l1In").addEventListener("change", draw);
+  $("l1Run").addEventListener("click", function(){
+    var r = new Runner(prog()); r.fire("start");
+    $("l1Run").disabled = true;
+    play(board, r.log, function(){ $("l1Run").disabled = false; });
+  });
+  draw();
+})();
+
+/* ---------- Lesson 2: events ---------- */
+(function(){
+  var H = [
+    ["Button A is pressed", "Yes · action · external", "The button is hardware the board can detect. A press is an action by a person."],
+    ["The room gets dark when the lights go off", "Yes · change · external", "The light sensor measures the light level, so the board can detect the change."],
+    ["A timer reaches 10 seconds", "Yes · occurrence · internal", "The board keeps time with its own clock. Reaching 10 s is an occurrence inside the system."],
+    ["The board is tilted", "Yes · action · external", "A tilt sensor (an accelerometer) detects the movement."],
+    ["The outdoor temperature drops below 0 °C", "Yes · change · external", "A temperature sensor can detect the change if the board is outside."],
+    ["The score reaches 10", "Yes · occurrence · internal", "The program stores the score in a variable and can detect when it reaches 10."],
+    ["A student feels bored", "No · not detectable", "The board has no way to measure feelings. Without a way to detect it, it cannot be an event for this program."],
+    ["It is someone’s birthday", "Not by this board", "This board has no calendar. A phone could detect it, because it stores the date and the birthday."]
+  ];
+  var list = $("l2List"), btns = [];
+  H.forEach(function(h, i){
+    var b = el("button", {"class": "piece", type: "button", "aria-pressed": "false"}, h[0]);
+    b.addEventListener("click", function(){
+      btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      detail($("l2Detail"), h[0], [h[2]], h[1]);
+    });
+    list.appendChild(b); btns.push(b);
+  });
+  btns[0].click();
+})();
+
+/* ---------- Lesson 3: external and internal events ---------- */
+(function(){
+  var P = {vars: ["taps"], scripts: [
+    {ev: "A", b: [{o: "chg", v: "taps", x: 1}, {o: "show", x: {v: "taps"}}]},
+    {ev: "when", c: [{v: "taps"}, "=", 5], b: [{o: "icon", n: "smile"}, {o: "set", v: "taps", x: 0}]},
+    {ev: "timer", b: [{o: "icon", n: "clock"}]}
+  ]};
+  renderProg($("l3Code"), P);
+  var r, seen, board, timerId = null;
+  function reset(){
+    r = new Runner(P); seen = 0; board.reset(); clear($("l3Log"));
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    $("l3T").textContent = "Start 10 s timer"; $("l3T").disabled = false;
+    logLine($("l3Log"), "Waiting for an event. taps = 0");
+  }
+  function flush(){
+    for (; seen < r.log.length; seen++) {
+      var x = r.log[seen];
+      if (x.k === "event") logLine($("l3Log"), (x.internal || x.text === "timer" ? "Internal event: " : "External event: ") + (x.text === "A" ? "button A pressed" : x.text === "timer" ? "timer reached 10 s" : x.text), x.internal || x.text === "timer" ? "int" : "ext");
+      else if (x.k === "var") logLine($("l3Log"), "  " + x.text);
+      else if (x.k === "show") logLine($("l3Log"), "  board shows " + x.text);
+      else if (x.k === "icon") logLine($("l3Log"), "  board shows icon " + x.text);
+    }
+    board.show(r.disp);
+  }
+  function pressA(){ r.fire("A"); flush(); }
+  board = makeBoard($("l3Board"), {A: pressA, B: function(){ logLine($("l3Log"), "Button B pressed, but no script listens for it. Nothing runs."); }});
+  $("l3A").addEventListener("click", pressA);
+  $("l3T").addEventListener("click", function(){
+    var left = 10; $("l3T").disabled = true; $("l3T").textContent = "Timer: 10 s";
+    timerId = setInterval(function(){
+      left--; $("l3T").textContent = "Timer: " + left + " s";
+      if (left <= 0) { clearInterval(timerId); timerId = null; $("l3T").textContent = "Start 10 s timer"; $("l3T").disabled = false; r.fire("timer"); flush(); }
+    }, 1000);
+  });
+  $("l3R").addEventListener("click", reset);
+  reset();
+})();
+
+/* ---------- Lesson 4: sensors and IPO ---------- */
+(function(){
+  var APPS = [
+    {label: "School greenhouse", sensor: "Soil moisture sensor", unit: "%", min: 0, max: 100, set: 30, v: 22, cmp: "<", on: "Pump on: water the plants", off: "Pump off: soil is moist enough", note: "A greenhouse controller reads soil moisture and waters only when the soil is dry."},
+    {label: "Block heater", sensor: "Outdoor temperature sensor", unit: " °C", min: -40, max: 10, set: -15, v: -24, cmp: "<", on: "Heater on: warm the engine", off: "Heater off: saves electricity", note: "Many Alberta drivers plug in a block heater on cold nights. A smart outlet with a sensor turns it on only below a set temperature, for example −15 °C."},
+    {label: "Line-following robot", sensor: "Light sensor pointing at the floor", unit: "% reflected", min: 0, max: 100, set: 50, v: 18, cmp: "<", on: "On the dark line: drive straight", off: "Off the line: turn to find it", note: "Robotics uses sensors everywhere. A dark tape line reflects little light, so a low reading means the robot is on the line."},
+    {label: "Hallway lights", sensor: "Distance sensor", unit: " cm", min: 0, max: 400, set: 150, v: 90, cmp: "<", on: "Lights on: someone is close", off: "Lights off: hallway is empty", note: "A distance or motion sensor turns lights on only when someone is near, which saves energy."}
+  ];
+  var app = APPS[0], sl = $("l4Slider");
+  function draw(){
+    var v = Number(sl.value), yes = app.cmp === "<" ? v < app.set : v > app.set;
+    $("l4Lbl").textContent = app.sensor + ": " + v + app.unit;
+    var box = $("l4Ipo"); clear(box);
+    [["Input", app.sensor + " reads " + v + app.unit + "."], ["Process", "Is " + v + " " + app.cmp + " " + app.set + "? " + (yes ? "Yes." : "No.")], ["Output", yes ? app.on : app.off]].forEach(function(p, i){
+      var d = el("div", {"class": "ipo-box" + (i === 2 && yes ? " on" : "")}); d.appendChild(el("b", null, p[0])); d.appendChild(el("span", null, p[1])); box.appendChild(d);
+    });
+    $("l4Note").textContent = app.note + " Then the cycle repeats with the next reading.";
+  }
+  chipGroup($("l4Apps"), APPS, "", function(a){ app = a; sl.min = a.min; sl.max = a.max; sl.value = a.v; draw(); }, 0);
+  sl.addEventListener("input", draw);
+})();
+
+/* ---------- Lesson 5: variables ---------- */
+(function(){
+  var P = {vars: ["lives"], scripts: [
+    {ev: "start", b: [{o: "set", v: "lives", x: 3}, {o: "show", x: {v: "lives"}}]},
+    {ev: "B", b: [{o: "chg", v: "lives", x: -1}, {o: "show", x: {v: "lives"}}]},
+    {ev: "when", c: [{v: "lives"}, "=", 0], b: [{o: "icon", n: "sad"}]}
+  ]};
+  renderProg($("l5Code"), P);
+  var r = null, seen = 0, board;
+  function flush(changed){
+    for (; seen < r.log.length; seen++) {
+      var x = r.log[seen];
+      if (x.k === "var") { logLine($("l5Log"), "Changed: " + x.text); changed = x.v; }
+      else if (x.k === "show") logLine($("l5Log"), "Retrieved: lives is " + x.text + ", so the board shows " + x.text + ".");
+      else if (x.k === "event" && x.internal) logLine($("l5Log"), "Retrieved: lives = 0 is true. Game over.", "int");
+      else if (x.k === "icon") logLine($("l5Log"), "Board shows the sad icon.");
+    }
+    varBoxes($("l5Vars"), r.vars, changed); board.show(r.disp);
+  }
+  function hit(){
+    if (!r) { logLine($("l5Log"), "Start the game first."); return; }
+    if (r.vars.lives <= 0) { logLine($("l5Log"), "The game is over. Start a new game."); return; }
+    r.fire("B"); flush();
+  }
+  board = makeBoard($("l5Board"), {B: hit});
+  $("l5Start").addEventListener("click", function(){ r = new Runner(P); seen = 0; clear($("l5Log")); r.fire("start"); flush(); });
+  $("l5B").addEventListener("click", hit);
+  varBoxes($("l5Vars"), {lives: "?"}); logLine($("l5Log"), "Press Start game.");
+})();
+
+/* ---------- Lesson 6: names and values ---------- */
+(function(){
+  var N = [
+    {label: "x", fb: ["Too short. x could mean anything. Six weeks from now, even you will not remember."]},
+    {label: "lapCount", fb: ["Good choice. It says exactly what is stored and has no spaces."]},
+    {label: "laps done", fb: ["Clear meaning, but it has a space. Many languages do not allow spaces in names. Try lapsDone."]},
+    {label: "a1", fb: ["Not descriptive. Names like a1 make code hard to read and debug."]},
+    {label: "numberOfLapsTheSkaterHasFinishedSoFarToday", fb: ["Descriptive, but far too long to type and read. Keep the key words, like lapsFinished."]},
+    {label: "lapsFinished", fb: ["Good choice. Short, clear and no spaces."]}
+  ];
+  chipGroup($("l6Names"), N, "", function(n){ detail($("l6NameFb"), n.label, n.fb); }, 0);
+  var op = "add";
+  function run(){
+    var a = $("l6A").value, b = $("l6B").value, out, note;
+    var av = a === "n" ? "5" : a === "s" ? "“5”" : "“five”", bv = b === "n" ? "5" : "“5”";
+    if (op === "join") {
+      out = "“" + (a === "w" ? "five" : "5") + "5”";
+      note = "Join always treats the values as text and sticks them together. The result is a string, not a number.";
+    } else if (a === "n" && b === "n") { out = "10"; note = "Both values are numbers, so adding works: 5 + 5 = 10."; }
+    else if (a === "w") { out = "error (or 0)"; note = "“five” is text, not a number. Adding it gives an error in many languages. Some block tools quietly use 0, which hides the bug."; }
+    else { out = "10 or an error"; note = "It depends on the language. Many block tools turn the text “5” into the number 5 and give 10. Python gives an error for 5 + “5”. Store numbers as numbers to be safe."; }
+    detail($("l6Out"), (op === "add" ? av + " + " + bv : "join " + av + " " + bv) + "  →  " + out, [note]);
+  }
+  chipGroup($("l6Op"), [{label: "Add (+)"}, {label: "Join"}], "", function(o, i){ op = i ? "join" : "add"; run(); }, 0);
+  $("l6A").addEventListener("change", run); $("l6B").addEventListener("change", run);
+})();
+
+/* ---------- Lesson 7: variables with loops, conditionals, functions, events ---------- */
+(function(){
+  var V = [
+    {label: "Loop", prog: {scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 0}, {o: "rep", x: 3, b: [{o: "chg", v: "laps", x: 1}, {o: "show", x: {v: "laps"}}]}]}]},
+      steps: [[1, 0, "laps is set to 0."], [2, 0, "The loop will run 3 times."], [3, 1, "Run 1: laps changes to 1."], [4, 1, "show retrieves laps: 1."], [3, 2, "Run 2: laps changes to 2."], [4, 2, "show retrieves laps: 2."], [3, 3, "Run 3: laps changes to 3."], [4, 3, "Loop done. laps counted how many times the loop ran."]]},
+    {label: "Conditional", prog: {scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 9}, {o: "chg", v: "laps", x: 1}, {o: "if", c: [{v: "laps"}, "=", 10], b: [{o: "icon", n: "check"}], e: [{o: "show", x: {v: "laps"}}]}]}]},
+      steps: [[1, 9, "laps is set to 9."], [2, 10, "One more lap: laps is 10."], [3, 10, "The test retrieves laps. Is 10 = 10? Yes."], [4, 10, "The check icon shows the race is finished. The else part is skipped."]]},
+    {label: "Function", prog: {funcs: {addLaps: {p: "n", b: [{o: "chg", v: "laps", x: {v: "n"}}, {o: "show", x: {v: "laps"}}]}}, scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 0}, {o: "call", f: "addLaps", x: 2}, {o: "call", f: "addLaps", x: 3}]}]},
+      steps: [[4, 0, "laps is set to 0."], [5, 0, "Call addLaps with input n = 2."], [1, 2, "Inside the function: laps changes by n, so laps is 2."], [2, 2, "show retrieves laps: 2."], [6, 2, "Call addLaps again with n = 3."], [1, 5, "laps changes by 3, so laps is 5."], [2, 5, "show retrieves laps: 5. One function, used twice."]]},
+    {label: "Event", prog: {scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 0}]}, {ev: "A", b: [{o: "chg", v: "laps", x: 1}, {o: "show", x: {v: "laps"}}]}]},
+      steps: [[1, 0, "laps is set to 0."], [2, 0, "A skater crosses the line and button A is pressed. The event runs its script."], [3, 1, "laps changes to 1."], [4, 1, "show retrieves laps: 1."], [2, 1, "Another press: the event runs again."], [3, 2, "laps changes to 2."], [4, 2, "show retrieves laps: 2."]]}
+  ];
+  var cur = V[0], k = -1;
+  function draw(){
+    var s = k >= 0 ? cur.steps[k] : null;
+    renderProg($("l7Code"), cur.prog, {hl: s ? s[0] : -1});
+    varBoxes($("l7Vars"), {laps: s ? s[1] : "?"}, s ? "laps" : null);
+    detail($("l7Note"), s ? "Step " + (k + 1) + " of " + cur.steps.length : "Ready", [s ? s[2] : "Press Next step."]);
+    $("l7Step").disabled = k >= cur.steps.length - 1;
+  }
+  chipGroup($("l7Pick"), V, "", function(v){ cur = v; k = -1; draw(); }, 0);
+  $("l7Step").addEventListener("click", function(){ if (k < cur.steps.length - 1) k++; draw(); });
+  $("l7Reset").addEventListener("click", function(){ k = -1; draw(); });
+})();
+
+/* ---------- Lesson 8: efficient code ---------- */
+(function(){
+  var view = 0;
+  var dark = {t: "light level < 30"};
+  function progs(n){
+    var copies = [];
+    for (var i = 0; i < Math.min(n, 2); i++) copies.push({o: "until", c: dark}, {o: "chg", v: "laps", x: 1}, {o: "show", x: {v: "laps"}});
+    copies.push({o: "note", t: "… the same 3 blocks copied " + (n - 2) + (n - 2 === 1 ? " more time" : " more times")});
+    return [
+      {scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 0}].concat(copies)}]},
+      {scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 0}, {o: "set", v: "raceLaps", x: n}, {o: "rep", x: {v: "raceLaps"}, b: [{o: "until", c: dark}, {o: "chg", v: "laps", x: 1}, {o: "show", x: {v: "laps"}}]}, {o: "icon", n: "check"}]}]},
+      {funcs: {countLap: {p: "", b: [{o: "chg", v: "laps", x: 1}, {o: "show", x: {v: "laps"}}, {o: "if", c: [{v: "laps"}, "=", {v: "raceLaps"}], b: [{o: "icon", n: "check"}]}]}},
+        scripts: [{ev: "start", b: [{o: "set", v: "laps", x: 0}, {o: "set", v: "raceLaps", x: n}]}, {ev: "dark", b: [{o: "call", f: "countLap"}]}]}
+    ];
+  }
+  var names = ["A: copied blocks", "B: loop and variable", "C: function and event"];
+  function draw(){
+    var n = Number($("l8Laps").value); $("l8LapsV").textContent = n;
+    var P = progs(n);
+    renderProg($("l8Code"), P[view]);
+    var blocks = [2 + 3 * n, countBlocks(P[1]), countBlocks(P[2])];
+    var checks = [1800, 1800, 0], edits = [n, 1, 1];
+    var bx = $("l8Bars"); clear(bx);
+    bx.appendChild(el("span", {"class": "tagline"}, "Blocks in the program"));
+    blocks.forEach(function(b, i){ bar(bx, names[i].split(":")[0], b, 77, i === 0); });
+    bx.appendChild(el("span", {"class": "tagline"}, "Places to edit to change the race length"));
+    edits.forEach(function(b, i){ bar(bx, names[i].split(":")[0], b, 25, i === 0); });
+    bx.appendChild(el("span", {"class": "tagline"}, "Checks per minute by the program while waiting (model)"));
+    checks.forEach(function(b, i){ bar(bx, names[i].split(":")[0], b, 1800, b > 0, b ? "1800" : "0"); });
+    var notes = [
+      ["Version A copies the same 3 blocks for every lap: " + blocks[0] + " blocks for " + n + " laps. To change the race length you must add or remove blocks, and a fix to the show block must be made " + n + " times. Its wait until block checks the sensor again and again, about 30 times a second in this model."],
+      ["Version B uses a loop and the variable raceLaps. It needs " + blocks[1] + " blocks for any race length. Change one number to change the race. It still checks the sensor again and again while waiting."],
+      ["Version C puts the lap work in a function and uses an event. It has " + blocks[2] + " blocks, a few more than B, but the program does nothing while it waits. The system signals the event when the light drops, and countLap runs once per lap. Fix countLap once and every lap is fixed."]
+    ];
+    detail($("l8Note"), names[view], notes[view]);
+  }
+  chipGroup($("l8Pick"), names.map(function(x){ return {label: x}; }), "", function(o, i){ view = i; draw(); }, 0);
+  $("l8Laps").addEventListener("input", draw);
+})();
+
+/* ---------- Bench 1: function factory ---------- */
+(function(){
+  var FL = [{o: "icon", n: "all"}, {o: "wait", x: 0.3}, {o: "icon", n: "clear"}, {o: "wait", x: 0.3}];
+  function flashes(n){ var a = []; for (var i = 0; i < n; i++) a = a.concat(FL); return a; }
+  var OLD = {scripts: [{ev: "start", b: flashes(2).concat([{o: "icon", n: "heart"}, {o: "wait", x: 1}]).concat(flashes(3)).concat([{o: "icon", n: "smile"}])}]};
+  renderProg($("b1Old"), OLD);
+  $("b1Old").insertBefore(el("p", {"class": "tagline"}, "Copied code · " + countBlocks(OLD) + " blocks"), $("b1Old").firstChild);
+  var PAL = [
+    {label: "repeat times", st: {o: "rep", x: {v: "times"}}},
+    {label: "repeat 2", st: {o: "rep", x: 2}},
+    {label: "show icon all", st: {o: "icon", n: "all"}},
+    {label: "show icon clear", st: {o: "icon", n: "clear"}},
+    {label: "wait 0.3 s", st: {o: "wait", x: 0.3}},
+    {label: "show icon heart", st: {o: "icon", n: "heart"}},
+    {label: "change score by 1", st: {o: "chg", v: "score", x: 1}}
+  ];
+  var body = [], board = makeBoard($("b1Board"));
+  function build(){
+    var b;
+    if (body.length && body[0].o === "rep") b = [{o: "rep", x: body[0].x, b: body.slice(1)}];
+    else b = body.slice();
+    return {vars: ["score"], funcs: {flash: {p: "times", b: b}}, scripts: [{ev: "start", b: [{o: "call", f: "flash", x: 2}, {o: "icon", n: "heart"}, {o: "wait", x: 1}, {o: "call", f: "flash", x: 3}, {o: "icon", n: "smile"}]}]};
+  }
+  function draw(){ renderProg($("b1New"), build()); }
+  PAL.forEach(function(p){
+    var cat = stCat(p.st);
+    var b = el("button", {"class": "blk " + cat, type: "button"}, p.label);
+    b.addEventListener("click", function(){ if (body.length < 8) { body.push(JSON.parse(JSON.stringify(p.st))); draw(); } });
+    $("b1Pal").appendChild(b);
+  });
+  $("b1Undo").addEventListener("click", function(){ body.pop(); draw(); });
+  $("b1Clear").addEventListener("click", function(){ body = []; draw(); verdict($("b1Fb"), "mid", "Build the function body, then test it."); });
+  function seq(log){ return log.filter(function(x){ return x.k === "icon" || x.k === "wait"; }).map(function(x){ return x.k + " " + x.text; }).join("|"); }
+  $("b1Test").addEventListener("click", function(){
+    var ro = new Runner(OLD); ro.fire("start");
+    var P = build(), rn = new Runner(P); rn.fire("start");
+    var same = seq(ro.log) === seq(rn.log);
+    play(board, rn.log);
+    if (same) {
+      verdict($("b1Fb"), "ok", "It works. Your program does exactly what the copied code does, with " + countBlocks(P) + " blocks instead of " + countBlocks(OLD) + ". To flash 10 times, you only change the input: flash(10).");
+    } else {
+      var hint;
+      if (!body.length) hint = "The function body is empty, so nothing flashes.";
+      else if (body[0].o !== "rep") hint = "The flash must happen a number of times. Start the body with a repeat block.";
+      else if (body[0].x !== null && typeof body[0].x === "number") hint = "repeat 2 always flashes 2 times, but the second call asks for 3. Use the input: repeat times.";
+      else if (body.some(function(s){ return s.o === "chg" || s.n === "heart"; })) hint = "Some blocks in your body are not part of a flash. A function should do one job.";
+      else hint = "A flash is: show icon all, wait 0.3 s, show icon clear, wait 0.3 s. Check the order and that both waits are there.";
+      verdict($("b1Fb"), "no", "Not the same as the copied code yet. " + hint);
+    }
+  });
+  draw();
+})();
+
+/* ---------- Bench 2: explain and trace ---------- */
+(function(){
+  function mcq(box, q, opts, correct, expl){
+    var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, q));
+    var o = el("div", {"class": "opts"}), fb = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(opts.map(function(t, i){ return [t, i === correct]; })).forEach(function(p){
+      var b = el("button", {"class": "opt", type: "button"}, p[0]);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(o.children, function(x){ x.disabled = true; if (x._ok) x.classList.add("right"); });
+        if (!p[1]) b.classList.add("wrong");
+        fb.textContent = (p[1] ? "Correct. " : "Not quite. ") + expl;
+      });
+      b._ok = p[1]; o.appendChild(b);
+    });
+    d.appendChild(o); d.appendChild(fb); box.appendChild(d);
+  }
+  function numQ(box, q, ans, expl){
+    var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, q));
+    var id = "b2n" + Math.floor(Math.random() * 1e6);
+    var lab = el("label", {"class": "field", "for": id}, "Your answer");
+    var inp = el("input", {type: "number", id: id}); lab.appendChild(inp);
+    var b = el("button", {"class": "btn", type: "button"}, "Check");
+    var fb = el("p", {"class": "expl", "aria-live": "polite"});
+    b.addEventListener("click", function(){
+      var v = parseFloat(inp.value);
+      fb.textContent = (v === ans ? "Correct. " : "Not quite. The answer is " + ans + ". ") + expl;
+      fb.className = "expl fb " + (v === ans ? "ok" : "no");
+    });
+    var r = el("div", {"class": "row"}); r.appendChild(lab); r.appendChild(b);
+    d.appendChild(r); d.appendChild(fb); box.appendChild(d);
+  }
+  var GEN = [
+    function(){
+      var s0 = rint(0, 5), k = rint(2, 5), p = rint(2, 5), v = pick(["points", "goals", "stars"]);
+      return {prog: {vars: [v], scripts: [{ev: "start", b: [{o: "set", v: v, x: s0}]}, {ev: "A", b: [{o: "chg", v: v, x: k}, {o: "show", x: {v: v}}]}]},
+        purpose: ["A score keeper that adds " + k + " each time A is pressed", "A countdown timer", "A light sensor alarm", "A program that flashes all the lights"],
+        trace: ["The green flag is clicked, then button A is pressed " + p + " times. What does the board show?", s0 + k * p, v + " starts at " + s0 + ". Each press adds " + k + ": " + s0 + " + " + k + " × " + p + " = " + (s0 + k * p) + "."],
+        store: ["What does the variable " + v + " store?", ["The current score", "The number of seconds left", "The light level", "The name of the player"], 0, v + " holds the score, which changes with each press."]};
+    },
+    function(){
+      var c = rint(3, 9), v = pick(["count", "timeLeft"]);
+      return {prog: {vars: [v], scripts: [{ev: "start", b: [{o: "set", v: v, x: c}, {o: "rep", x: c, b: [{o: "show", x: {v: v}}, {o: "chg", v: v, x: -1}, {o: "wait", x: 1}]}, {o: "icon", n: "check"}]}]},
+        purpose: ["A countdown from " + c + " to 1, then a check icon", "A counter that goes up each time A is pressed", "A function that flashes " + c + " times", "A program that waits for the light to drop"],
+        trace: ["What is the value of " + v + " after the loop finishes?", 0, v + " starts at " + c + " and the loop subtracts 1 a total of " + c + " times: " + c + " − " + c + " = 0. The last number shown was 1."],
+        store: ["Which structure makes the count go down more than once?", ["The repeat loop", "The event hat", "The show icon block", "The wait block"], 0, "The repeat loop runs its blocks " + c + " times."]};
+    },
+    function(){
+      var L = rint(3, 6), p = rint(1, L - 1);
+      return {prog: {vars: ["lives"], scripts: [{ev: "start", b: [{o: "set", v: "lives", x: L}]}, {ev: "B", b: [{o: "chg", v: "lives", x: -1}, {o: "show", x: {v: "lives"}}]}, {ev: "when", c: [{v: "lives"}, "=", 0], b: [{o: "icon", n: "sad"}]}]},
+        purpose: ["A game that takes away a life each time B is pressed and shows a sad face at 0", "A tap counter that resets with B", "A light alarm", "A countdown that runs by itself"],
+        trace: ["After the green flag, button B is pressed " + p + " times. What does the board show?", L - p, "lives starts at " + L + ". Each B press subtracts 1: " + L + " − " + p + " = " + (L - p) + "."],
+        store: ["Which event is internal?", ["when lives = 0", "when button B pressed", "when green flag clicked", "None of them"], 0, "lives reaching 0 happens inside the program, so it is an internal event."]};
+    },
+    function(){
+      var p = rint(2, 7);
+      return {prog: {vars: ["steps"], scripts: [{ev: "tilt", b: [{o: "chg", v: "steps", x: 1}]}, {ev: "A", b: [{o: "show", x: {v: "steps"}}]}, {ev: "B", b: [{o: "set", v: "steps", x: 0}]}]},
+        purpose: ["A step counter: tilting counts a step, A shows the total, B resets it", "A countdown timer", "A greenhouse watering system", "A program that only flashes the heart"],
+        trace: ["steps starts at 0. The board is tilted " + p + " times, then A is pressed. What does the board show?", p, "Each tilt event adds 1. After " + p + " tilts steps is " + p + ", and A retrieves and shows it."],
+        store: ["Why is “steps” a good variable name here?", ["It says what the variable stores", "It is the shortest possible name", "Variables must be named steps", "It makes the code run faster"], 0, "Descriptive names make the purpose of code clear."]};
+    }
+  ];
+  function make(){
+    var g = pick(GEN)();
+    renderProg($("b2Code"), g.prog);
+    var box = $("b2Q"); clear(box);
+    mcq(box, "What is the purpose of this code?", g.purpose, 0, "Read the event hats first, then what each script does to the variable.");
+    numQ(box, g.trace[0], g.trace[1], g.trace[2]);
+    mcq(box, g.store[0], g.store[1], g.store[2], g.store[3]);
+  }
+  $("b2New").addEventListener("click", make);
+  make();
+})();
+
+/* ---------- Bench 3: build with variables ---------- */
+(function(){
+  var HAT_OPTS = [["start", "when green flag clicked"], ["A", "when button A pressed"], ["B", "when button B pressed"], ["dark", "when light level drops below 30"]];
+  var OPS = [["set", "set variable to"], ["chg", "change variable by"], ["show", "show variable"], ["icon", "show icon"], ["wait", "wait (s)"], ["rep", "repeat"], ["if", "if variable"]];
+  var CH = [
+    {label: "Tap counter", goal: "Green flag sets taps to 0. Each press of button A adds 1 to taps and shows it. Button B sets taps back to 0 and shows it.",
+      starter: {vars: ["taps"], scripts: [{ev: "start", lines: [{o: "set", v: "taps", x: 0}]}, {ev: "A", lines: [{o: "chg", v: "taps", x: 1}]}, {ev: "B", lines: []}]},
+      check: function(P){
+        var r = new Runner(P); r.fire("start"); r.fire("A"); r.fire("A"); r.fire("A");
+        var o = outputs(r.log); if (r.err) return [false, r.err];
+        if (o[o.length - 1] !== "3") return [false, "After the green flag and 3 presses of A, the board should show 3. It showed " + (o.length ? o[o.length - 1] : "nothing") + "."];
+        r.fire("B"); o = outputs(r.log);
+        if (o[o.length - 1] !== "0") return [false, "After pressing B, the board should show 0."];
+        r.fire("A"); o = outputs(r.log);
+        if (o[o.length - 1] !== "1") return [false, "After B, one more A press should show 1. Does B set the variable back to 0?"];
+        return [true, "Your tap counter works: 1, 2, 3, then B resets to 0, then 1."];
+      }},
+    {label: "Countdown", goal: "Green flag shows 5, 4, 3, 2, 1 with a 1 second wait between numbers, then shows the check icon. Use a variable and a repeat loop.",
+      starter: {vars: ["count"], scripts: [{ev: "start", lines: [{o: "set", v: "count", x: 5}, {o: "rep", x: 5}]}]},
+      check: function(P, raw){
+        var r = new Runner(P); r.fire("start"); if (r.err) return [false, r.err];
+        var o = outputs(r.log).join(", ");
+        if (!raw.scripts.some(function(s){ return s.lines.some(function(l){ return l.o === "rep"; }); })) return [false, "Use a repeat loop so you do not copy blocks."];
+        if (o !== "5, 4, 3, 2, 1, icon check") return [false, "The board showed: " + (o || "nothing") + ". It should show 5, 4, 3, 2, 1, icon check."];
+        if (!r.log.some(function(x){ return x.k === "wait"; })) return [false, "Add a wait 1 s inside the loop."];
+        return [true, "Your countdown works and uses one loop instead of copied blocks."];
+      }},
+    {label: "Dark counter", goal: "A school greenhouse needs light. Green flag sets a counter to 0. Each time the light level drops below 30, add 1 and show the count. When the count is 3 or more, show the sad icon instead.",
+      starter: {vars: ["darkCount"], scripts: [{ev: "start", lines: [{o: "set", v: "darkCount", x: 0}]}, {ev: "dark", lines: []}]},
+      check: function(P){
+        var r = new Runner(P); r.fire("start"); r.fire("dark");
+        var o = outputs(r.log); if (r.err) return [false, r.err];
+        if (o[o.length - 1] !== "1") return [false, "After the light drops once, the board should show 1."];
+        r.fire("dark"); r.fire("dark"); o = outputs(r.log);
+        if (o[o.length - 1] !== "icon sad") return [false, "After the third time, the board should end on the sad icon. Use an if block to test the count."];
+        return [true, "Your dark counter works. The event, the variable and the if block work together."];
+      }},
+    {label: "Free build", goal: "Build anything you like. Try the board buttons to test it. There is no check for this one.", starter: {vars: [], scripts: [{ev: "start", lines: []}]}, check: null}
+  ];
+  var ch = CH[0], st, runner = null, board;
+  function copy(o){ return JSON.parse(JSON.stringify(o)); }
+  function toProg(){
+    var P = {vars: st.vars.slice(), scripts: []};
+    st.scripts.forEach(function(sc){
+      var body = [], cont = null;
+      sc.lines.forEach(function(l){
+        var s;
+        if (l.o === "set") s = {o: "set", v: l.v, x: Number(l.x) || 0};
+        else if (l.o === "chg") s = {o: "chg", v: l.v, x: Number(l.x) || 0};
+        else if (l.o === "show") s = {o: "show", x: {v: l.v}};
+        else if (l.o === "icon") s = {o: "icon", n: l.n || "heart"};
+        else if (l.o === "wait") s = {o: "wait", x: Number(l.x) || 0};
+        else if (l.o === "rep") s = {o: "rep", x: Number(l.x) || 0, b: []};
+        else if (l.o === "if") s = {o: "if", c: [{v: l.v}, l.cmp || "=", Number(l.x) || 0], b: []};
+        if (l.ind && cont) cont.b.push(s);
+        else { body.push(s); cont = (s.o === "rep" || s.o === "if") ? s : null; }
+      });
+      P.scripts.push({ev: sc.ev, b: body});
+    });
+    return P;
+  }
+  function sel(opts, val, label, onCh){
+    var s = el("select", {"aria-label": label});
+    opts.forEach(function(o){ var op = el("option", {value: o[0]}, o[1]); if (o[0] === val) op.selected = true; s.appendChild(op); });
+    s.addEventListener("change", function(){ onCh(s.value); });
+    return s;
+  }
+  function numIn(val, label, onCh){
+    var i = el("input", {type: "number", step: "1", "aria-label": label}); i.value = val == null ? 0 : val;
+    i.addEventListener("input", function(){ onCh(i.value); });
+    return i;
+  }
+  function needsVar(o){ return o === "set" || o === "chg" || o === "show" || o === "if"; }
+  function draw(){
+    var box = $("b3Scripts"); clear(box);
+    st.scripts.forEach(function(sc, si){
+      var d = el("div", {"class": "escript"});
+      var hr = el("div", {"class": "eline"});
+      var tag = el("span", {"class": "tag"}, "event"); tag.style.setProperty("--bc", "var(--b-ev)"); tag.style.setProperty("--bs", "var(--b-ev-soft)");
+      hr.appendChild(tag);
+      hr.appendChild(sel(HAT_OPTS, sc.ev, "Event for script " + (si + 1), function(v){ sc.ev = v; changed(); }));
+      var del = el("button", {"class": "tiny", type: "button", "aria-label": "Delete script " + (si + 1)}, "✕");
+      del.addEventListener("click", function(){ st.scripts.splice(si, 1); changed(true); }); hr.appendChild(del);
+      d.appendChild(hr);
+      sc.lines.forEach(function(l, li){
+        var row = el("div", {"class": "eline" + (l.ind ? " in1" : "")});
+        var nm = "script " + (si + 1) + " line " + (li + 1);
+        row.appendChild(sel(OPS, l.o, "Block for " + nm, function(v){ l.o = v; if (needsVar(v) && !l.v) l.v = st.vars[0]; changed(true); }));
+        if (needsVar(l.o)) row.appendChild(sel(st.vars.length ? st.vars.map(function(v){ return [v, v]; }) : [["", "(make a variable)"]], l.v, "Variable for " + nm, function(v){ l.v = v; changed(); }));
+        if (l.o === "if") row.appendChild(sel([["=", "="], [">", ">"], ["<", "<"], ["≥", "≥"]], l.cmp || "=", "Comparison for " + nm, function(v){ l.cmp = v; changed(); }));
+        if (l.o === "set" || l.o === "chg" || l.o === "wait" || l.o === "rep" || l.o === "if") row.appendChild(numIn(l.x, "Number for " + nm, function(v){ l.x = v; changed(); }));
+        if (l.o === "icon") row.appendChild(sel([["heart", "heart"], ["smile", "smile"], ["sad", "sad"], ["check", "check"], ["x", "x"], ["drop", "drop"], ["clear", "clear"]], l.n || "heart", "Icon for " + nm, function(v){ l.n = v; changed(); }));
+        function t(label, aria, fn){ var b = el("button", {"class": "tiny", type: "button", "aria-label": aria}, label); b.addEventListener("click", fn); row.appendChild(b); }
+        t(l.ind ? "←" : "→", (l.ind ? "Move out of the loop or if, " : "Move inside the loop or if above, ") + nm, function(){ l.ind = !l.ind; changed(true); });
+        t("↑", "Move up, " + nm, function(){ if (li > 0) { sc.lines.splice(li - 1, 0, sc.lines.splice(li, 1)[0]); changed(true); } });
+        t("↓", "Move down, " + nm, function(){ if (li < sc.lines.length - 1) { sc.lines.splice(li + 1, 0, sc.lines.splice(li, 1)[0]); changed(true); } });
+        t("✕", "Delete " + nm, function(){ sc.lines.splice(li, 1); changed(true); });
+        d.appendChild(row);
+      });
+      var add = el("button", {"class": "btn ghost", type: "button"}, "Add a block");
+      add.addEventListener("click", function(){ sc.lines.push({o: "show", v: st.vars[0] || "", x: 0}); changed(true); });
+      d.appendChild(add);
+      box.appendChild(d);
+    });
+    var names = st.vars.map(function(v){ return v + (v.length < 3 ? " (try a more descriptive name)" : ""); });
+    $("b3VarList").textContent = st.vars.length ? "Variables: " + names.join(", ") : "No variables yet. Make one above.";
+  }
+  function resetRun(){ runner = new Runner(toProg()); board.reset(); clear($("b3Log")); varBoxes($("b3Vars"), runner.vars); logLine($("b3Log"), "Ready. Press Green flag to start."); }
+  function changed(redraw){ if (redraw) draw(); resetRun(); store.b3 = store.b3 || {}; store.b3[ch.label] = st; save(); }
+  function fire(ev, label){
+    var n = runner.log.length; runner.fire(ev);
+    logLine($("b3Log"), label, "ext");
+    runner.log.slice(n).forEach(function(x){
+      if (x.k === "var") logLine($("b3Log"), "  " + x.text);
+      else if (x.k === "show") logLine($("b3Log"), "  board shows " + x.text);
+      else if (x.k === "icon") logLine($("b3Log"), "  board shows icon " + x.text);
+      else if (x.k === "err") logLine($("b3Log"), "  " + x.text, "er");
+    });
+    if (runner.log.length === n) logLine($("b3Log"), "  no script responds to this event");
+    board.show(runner.disp); varBoxes($("b3Vars"), runner.vars);
+  }
+  board = makeBoard($("b3Board"), {A: function(){ fire("A", "Button A pressed"); }, B: function(){ fire("B", "Button B pressed"); }});
+  $("b3Go").addEventListener("click", function(){ runner = new Runner(toProg()); clear($("b3Log")); fire("start", "Green flag clicked"); });
+  $("b3A").addEventListener("click", function(){ fire("A", "Button A pressed"); });
+  $("b3B").addEventListener("click", function(){ fire("B", "Button B pressed"); });
+  $("b3Dark").addEventListener("click", function(){ fire("dark", "Light level dropped below 30"); });
+  $("b3AddVar").addEventListener("click", function(){
+    var n = $("b3VarName").value.trim().replace(/\s+/g, "");
+    if (!n) { $("b3VarList").textContent = "Type a name first. Spaces are removed."; return; }
+    if (!/^[A-Za-z][A-Za-z0-9_]*$/.test(n)) { $("b3VarList").textContent = "Start with a letter and use only letters, digits or _."; return; }
+    if (st.vars.indexOf(n) < 0) st.vars.push(n);
+    $("b3VarName").value = ""; changed(true);
+  });
+  $("b3AddScript").addEventListener("click", function(){ st.scripts.push({ev: "A", lines: []}); changed(true); });
+  $("b3Starter").addEventListener("click", function(){ st = copy(ch.starter); changed(true); verdict($("b3Fb"), "mid", "Starter code loaded."); });
+  $("b3Check").addEventListener("click", function(){
+    if (!ch.check) { verdict($("b3Fb"), "mid", "Free build has no check. Test it with the board buttons."); return; }
+    var res = ch.check(toProg(), st);
+    var short = st.vars.filter(function(v){ return v.length < 3; });
+    verdict($("b3Fb"), res[0] ? "ok" : "no", res[1] + (res[0] && short.length ? " Tip: give " + short.join(", ") + " a more descriptive name." : ""));
+  });
+  chipGroup($("b3Ch"), CH, "", function(c){
+    ch = c; detail($("b3Goal"), c.label, [c.goal]);
+    st = (store.b3 && store.b3[c.label]) ? copy(store.b3[c.label]) : copy(c.starter);
+    draw(); resetRun(); verdict($("b3Fb"), "mid", "Finish the code, then press Check my program.");
+  }, 0);
+})();
+
+/* ---------- Bench 4: make it efficient ---------- */
+(function(){
+  var FL = [{o: "icon", n: "all"}, {o: "wait", x: 0.5}, {o: "icon", n: "clear"}, {o: "wait", x: 0.5}];
+  function cp(o){ return JSON.parse(JSON.stringify(o)); }
+  var aPress = {t: "button A is pressed"}, bPress = {t: "button B is pressed"};
+  function team(t, btn, target){
+    return [{o: "chg", v: t, x: 1}, {o: "show", x: {v: t}}, {o: "if", c: [{v: t}, "=", target], b: [{o: "icon", n: "check"}]}];
+  }
+  function bed(v, sen, lvl, fn){
+    return fn ? [{o: "read", v: v, sen: sen}, {o: "call", f: "checkBed", x: {v: v}}]
+      : [{o: "read", v: v, sen: sen}, {o: "if", c: [{v: v}, "<", lvl], b: [{o: "icon", n: "drop"}, {o: "wait", x: 5}, {o: "icon", n: "clear"}]}];
+  }
+  var CASES = [
+    {label: "Snow day sign", goal: "A hallway sign flashes 3 times, then shows a snowflake.",
+      opts: [["Use a repeat loop for the flashing", 1], ["Put the flashing in a function flash(times)", 2], ["Copy the flash blocks once more, to be safe", 0, "Extra copies make the code longer and change the result. Safe code is code you can read and test."]],
+      variant: function(m){
+        if (m === 0) return {scripts: [{ev: "start", b: cp(FL).concat(cp(FL), cp(FL), [{o: "icon", n: "snow"}])}]};
+        if (m === 1) return {scripts: [{ev: "start", b: [{o: "rep", x: 3, b: cp(FL)}, {o: "icon", n: "snow"}]}]};
+        if (m === 2) return {funcs: {flash: {p: "", b: cp(FL)}}, scripts: [{ev: "start", b: [{o: "call", f: "flash"}, {o: "call", f: "flash"}, {o: "call", f: "flash"}, {o: "icon", n: "snow"}]}]};
+        return {funcs: {flash: {p: "times", b: [{o: "rep", x: {v: "times"}, b: cp(FL)}]}}, scripts: [{ev: "start", b: [{o: "call", f: "flash", x: 3}, {o: "icon", n: "snow"}]}]};
+      },
+      stats: function(m){ return [["Places to edit to change the number of flashes", m === 0 ? "4 blocks per flash" : "1"], ["Places to fix if the wait time changes", m === 0 ? "6" : "2"], ["Can other signs reuse it?", m >= 2 ? "Yes, call flash" : "No"]]; }},
+    {label: "Hockey scoreboard", goal: "Button A adds a home goal and button B adds an away goal. The first team to 5 gets a check icon.",
+      opts: [["Use events: when button A pressed and when button B pressed", 1], ["Store the winning score in a variable goalTarget", 2], ["Rename home and away to h and a", 0, "Shorter names do not make code more efficient. They make it harder to read and debug."]],
+      variant: function(m){
+        var tgt = (m & 2) ? {v: "goalTarget"} : 5;
+        var start = [{o: "set", v: "home", x: 0}, {o: "set", v: "away", x: 0}];
+        if (m & 2) start.push({o: "set", v: "goalTarget", x: 5});
+        if (m & 1) return {scripts: [{ev: "start", b: start}, {ev: "A", b: team("home", "A", tgt)}, {ev: "B", b: team("away", "B", tgt)}]};
+        return {scripts: [{ev: "start", b: start.concat([{o: "forever", b: [
+          {o: "if", c: aPress, b: team("home", "A", tgt).concat([{o: "until", c: {t: "button A is released"}}])},
+          {o: "if", c: bPress, b: team("away", "B", tgt).concat([{o: "until", c: {t: "button B is released"}}])}]}])}]};
+      },
+      stats: function(m){ return [["Checks per minute while no one scores (model)", (m & 1) ? "0" : "about 1800"], ["Places to edit to change the winning score", (m & 2) ? "1" : "2"], ["Same job?", "Yes"]]; }},
+    {label: "Greenhouse beds", goal: "Three soil sensors watch three garden beds. A dry bed (below 30%) gets the drop icon and 5 seconds of watering.",
+      opts: [["Put the watering steps in a function checkBed(level)", 1], ["Store the dry level 30 in a variable dryLevel", 2], ["Check the sensors 100 times a second", 0, "Soil dries over hours. Checking 100 times a second wastes power and processing. It does not make the program more efficient."]],
+      variant: function(m){
+        var lvl = (m & 2) ? {v: "dryLevel"} : 30, fn = !!(m & 1);
+        var loop = [{o: "forever", b: bed("bed1", "soil 1", lvl, fn).concat(bed("bed2", "soil 2", lvl, fn), bed("bed3", "soil 3", lvl, fn))}];
+        var start = (m & 2) ? [{o: "set", v: "dryLevel", x: 30}].concat(loop) : loop;
+        var P = {scripts: [{ev: "start", b: start}]};
+        if (fn) P.funcs = {checkBed: {p: "level", b: [{o: "if", c: [{v: "level"}, "<", lvl], b: [{o: "icon", n: "drop"}, {o: "wait", x: 5}, {o: "icon", n: "clear"}]}]}};
+        return P;
+      },
+      stats: function(m){ return [["Places to fix if watering time changes", (m & 1) ? "1" : "3"], ["Places to edit to change the dry level", (m & 2) ? "1" : ((m & 1) ? "1" : "3")], ["Same job?", "Yes"]]; }}
+  ];
+  var cs = CASES[0], mask = 0, base = 0;
+  function draw(){
+    var P = cs.variant(mask); renderProg($("b4Code"), P);
+    var sb = $("b4Stats"); clear(sb);
+    stat(sb, "Blocks", String(countBlocks(P)) + (mask ? "  (was " + base + ")" : ""));
+    cs.stats(mask).forEach(function(s){ stat(sb, s[0], s[1]); });
+  }
+  chipGroup($("b4Case"), CASES, "", function(c){
+    cs = c; mask = 0; base = countBlocks(c.variant(0));
+    detail($("b4Goal"), c.label, [c.goal]);
+    var box = $("b4Opts"); clear(box);
+    c.opts.forEach(function(o, i){
+      var id = "b4o" + i, lab = el("label", {"for": id}), cb = el("input", {type: "checkbox", id: id});
+      lab.appendChild(cb); lab.appendChild(el("span", null, o[0])); box.appendChild(lab);
+      cb.addEventListener("change", function(){
+        if (o[1] === 0) { verdict($("b4Fb"), "no", o[2]); cb.checked = false; return; }
+        mask = cb.checked ? (mask | o[1]) : (mask & ~o[1]); draw();
+        verdict($("b4Fb"), mask === 3 ? "ok" : "mid", mask === 3 ? "Both improvements are in. The program does the same job and is easier to change, fix and reuse." : "Good change. Look at the measures. Is there another improvement?");
+      });
+    });
+    verdict($("b4Fb"), "mid", "Tick a change to apply it.");
+    draw();
+  }, 0);
+})();
+
+/* ---------- Bench 5: debug ---------- */
+(function(){
+  var FL = [{o: "icon", n: "all"}, {o: "wait", x: 0.3}, {o: "icon", n: "clear"}, {o: "wait", x: 0.3}];
+  var BUGS = [
+    {goal: "Green flag sets score to 0. Each A press adds 1 and shows the score.", test: ["start", "A", "A"], testText: "green flag, A, A",
+      bug: {vars: ["score"], scripts: [{ev: "start", b: [{o: "set", v: "score", x: 1}]}, {ev: "A", b: [{o: "chg", v: "score", x: 1}, {o: "show", x: {v: "score"}}]}]},
+      fixed: {vars: ["score"], scripts: [{ev: "start", b: [{o: "set", v: "score", x: 0}]}, {ev: "A", b: [{o: "chg", v: "score", x: 1}, {o: "show", x: {v: "score"}}]}]},
+      lines: [1], fixes: [["Change it to set score to 0", true], ["Change the A script to change score by 2", false], ["Delete the show block", false]], why: "The score started at 1 instead of 0, so every count was 1 too high."},
+    {goal: "A adds 1 to score and shows it. B resets score to 0 and shows it.", test: ["start", "A", "A"], testText: "green flag, A, A",
+      bug: {vars: ["score"], scripts: [{ev: "start", b: [{o: "set", v: "score", x: 0}]}, {ev: "A", b: [{o: "chg", v: "score", x: 1}, {o: "show", x: {v: "score"}}]}, {ev: "A", b: [{o: "set", v: "score", x: 0}, {o: "show", x: {v: "score"}}]}]},
+      fixed: {vars: ["score"], scripts: [{ev: "start", b: [{o: "set", v: "score", x: 0}]}, {ev: "A", b: [{o: "chg", v: "score", x: 1}, {o: "show", x: {v: "score"}}]}, {ev: "B", b: [{o: "set", v: "score", x: 0}, {o: "show", x: {v: "score"}}]}]},
+      lines: [5], fixes: [["Change that hat to when button B pressed", true], ["Change set score to 0 into set score to 1", false], ["Move the show block to the top", false]], why: "Both scripts listened for button A, so every A press counted and then reset to 0."},
+    {goal: "Each A press adds 1 to taps and shows it.", test: ["start", "A", "A", "A"], testText: "green flag, A, A, A",
+      bug: {vars: ["taps"], scripts: [{ev: "start", b: [{o: "set", v: "taps", x: 0}]}, {ev: "A", b: [{o: "set", v: "taps", x: 1}, {o: "show", x: {v: "taps"}}]}]},
+      fixed: {vars: ["taps"], scripts: [{ev: "start", b: [{o: "set", v: "taps", x: 0}]}, {ev: "A", b: [{o: "chg", v: "taps", x: 1}, {o: "show", x: {v: "taps"}}]}]},
+      lines: [3], fixes: [["Use change taps by 1 instead", true], ["Use set taps to 3 instead", false], ["Add a second show block", false]], why: "set puts the same value, 1, in the box every time. change adds to what is already there."},
+    {goal: "Each A press adds 1 to count, then shows the new count.", test: ["start", "A", "A"], testText: "green flag, A, A",
+      bug: {vars: ["count"], scripts: [{ev: "start", b: [{o: "set", v: "count", x: 0}]}, {ev: "A", b: [{o: "show", x: {v: "count"}}, {o: "chg", v: "count", x: 1}]}]},
+      fixed: {vars: ["count"], scripts: [{ev: "start", b: [{o: "set", v: "count", x: 0}]}, {ev: "A", b: [{o: "chg", v: "count", x: 1}, {o: "show", x: {v: "count"}}]}]},
+      lines: [3, 4], fixes: [["Move the show block below the change block", true], ["Change count by 2 instead", false], ["Set count to 1 at the start", false]], why: "The board showed the old value before it changed. Order matters in a sequence."},
+    {goal: "Green flag counts down 3, 2, 1, then shows the check icon.", test: ["start"], testText: "green flag",
+      bug: {vars: ["count"], scripts: [{ev: "start", b: [{o: "set", v: "count", x: 3}, {o: "rep", x: 2, b: [{o: "show", x: {v: "count"}}, {o: "chg", v: "count", x: -1}]}, {o: "icon", n: "check"}]}]},
+      fixed: {vars: ["count"], scripts: [{ev: "start", b: [{o: "set", v: "count", x: 3}, {o: "rep", x: 3, b: [{o: "show", x: {v: "count"}}, {o: "chg", v: "count", x: -1}]}, {o: "icon", n: "check"}]}]},
+      lines: [2], fixes: [["Change it to repeat 3", true], ["Change count by −2 instead", false], ["Set count to 2 at the start", false]], why: "The loop ran only 2 times, so the 1 never appeared."},
+    {goal: "Green flag sets lives to 3. Each B press removes a life and shows lives.", test: ["start", "B"], testText: "green flag, B",
+      bug: {vars: ["lives"], scripts: [{ev: "start", b: [{o: "set", v: "lives", x: 3}]}, {ev: "B", b: [{o: "chg", v: "lifes", x: -1}, {o: "show", x: {v: "lives"}}]}]},
+      fixed: {vars: ["lives"], scripts: [{ev: "start", b: [{o: "set", v: "lives", x: 3}]}, {ev: "B", b: [{o: "chg", v: "lives", x: -1}, {o: "show", x: {v: "lives"}}]}]},
+      lines: [3], fixes: [["Fix the spelling: change lives by −1", true], ["Make a new variable called lifes", false], ["Set lives to 2 at the start", false]], why: "lifes is a spelling mistake. The program has no variable with that name."},
+    {goal: "Each A press adds a step. When steps reaches 5, show the check icon.", test: ["start", "A", "A", "A", "A", "A"], testText: "green flag, A five times",
+      bug: {vars: ["steps"], scripts: [{ev: "start", b: [{o: "set", v: "steps", x: 0}]}, {ev: "A", b: [{o: "chg", v: "steps", x: 1}, {o: "show", x: {v: "steps"}}]}, {ev: "when", c: [{v: "steps"}, ">", 5], b: [{o: "icon", n: "check"}]}]},
+      fixed: {vars: ["steps"], scripts: [{ev: "start", b: [{o: "set", v: "steps", x: 0}]}, {ev: "A", b: [{o: "chg", v: "steps", x: 1}, {o: "show", x: {v: "steps"}}]}, {ev: "when", c: [{v: "steps"}, "=", 5], b: [{o: "icon", n: "check"}]}]},
+      lines: [5], fixes: [["Change the test to steps = 5", true], ["Change steps by 2 instead", false], ["Change the icon to heart", false]], why: "steps > 5 is only true at 6 or more, so reaching exactly 5 did nothing."},
+    {goal: "flash(times) should flash the lights as many times as its input. The program calls flash(3).", test: ["start"], testText: "green flag",
+      bug: {funcs: {flash: {p: "times", b: [{o: "rep", x: 2, b: FL}]}}, scripts: [{ev: "start", b: [{o: "call", f: "flash", x: 3}]}]},
+      fixed: {funcs: {flash: {p: "times", b: [{o: "rep", x: {v: "times"}, b: FL}]}}, scripts: [{ev: "start", b: [{o: "call", f: "flash", x: 3}]}]},
+      lines: [1], fixes: [["Change it to repeat times", true], ["Call flash(2) instead", false], ["Remove the input times", false]], why: "The loop ignored the input and always used 2. Using the input makes the function work for any number."},
+    {goal: "total should be bonus + 5. With bonus = 10, the board should show 15.", test: ["start"], testText: "green flag",
+      bug: {vars: ["bonus", "total"], scripts: [{ev: "start", b: [{o: "set", v: "bonus", x: 10}, {o: "set", v: "total", x: {join: [{v: "bonus"}, 5]}}, {o: "show", x: {v: "total"}}]}]},
+      fixed: {vars: ["bonus", "total"], scripts: [{ev: "start", b: [{o: "set", v: "bonus", x: 10}, {o: "set", v: "total", x: {add: [{v: "bonus"}, 5]}}, {o: "show", x: {v: "total"}}]}]},
+      lines: [2], fixes: [["Use bonus + 5 (add) instead of join", true], ["Set bonus to 15", false], ["Show bonus instead of total", false]], why: "join treats values as text and sticks them together: 10 and 5 become 105. Adding numbers gives 15."}
+  ];
+  var order = shuffle(BUGS.map(function(b, i){ return i; })), pos = 0, cur, picked = null, done = false;
+  var sc = store.b5 || {right: 0, tried: 0};
+  function run(P){ var r = new Runner(P); cur.test.forEach(function(e){ r.fire(e); }); return r; }
+  function showScore(){ $("b5Score").textContent = "Fixed first try: " + sc.right + " of " + sc.tried; }
+  function draw(mark){ renderProg($("b5Code"), cur.bug, {pick: done ? null : choose, mark: mark}); }
+  function choose(idx){
+    picked = idx; var m = {}; m[idx] = "now"; draw(m);
+    var box = $("b5Fix"); clear(box);
+    if (cur.lines.indexOf(idx) < 0) { verdict($("b5Fb"), "no", "That block looks fine. Compare the goal with what the test showed, then try another block."); return; }
+    verdict($("b5Fb"), "mid", "Good find. Now choose the fix.");
+    var first = true;
+    shuffle(cur.fixes).forEach(function(f){
+      var b = el("button", {"class": "opt", type: "button"}, f[0]);
+      b.addEventListener("click", function(){
+        if (f[1]) {
+          b.classList.add("right"); done = true;
+          if (first) sc.right++; sc.tried++; store.b5 = sc; save(); showScore();
+          Array.prototype.forEach.call(box.children, function(x){ x.disabled = true; });
+          var r = run(cur.fixed), m2 = {}; cur.lines.forEach(function(l){ m2[l] = "good"; });
+          renderProg($("b5Code"), cur.fixed, {mark: m2});
+          logLine($("b5Log"), "After the fix: " + (outputs(r.log).join(", ") || "nothing"), "int");
+          verdict($("b5Fb"), "ok", "Fixed. " + cur.why);
+        } else { b.classList.add("wrong"); b.disabled = true; first = false; verdict($("b5Fb"), "no", "That would not meet the goal. Try another fix."); }
+      });
+      box.appendChild(b);
+    });
+  }
+  function load(){
+    cur = BUGS[order[pos % order.length]]; picked = null; done = false;
+    detail($("b5Goal"), "Goal", [cur.goal, "Test: " + cur.testText + "."], "Bug " + ((pos % order.length) + 1) + " of " + order.length);
+    draw(); clear($("b5Fix")); clear($("b5Log"));
+    verdict($("b5Fb"), "mid", "Run the test first, then tap the block you think is wrong.");
+  }
+  $("b5Run").addEventListener("click", function(){
+    var r = run(cur.bug), e = run(cur.fixed);
+    clear($("b5Log"));
+    logLine($("b5Log"), "Expected: " + outputs(e.log).join(", "));
+    logLine($("b5Log"), "Got: " + (outputs(r.log).join(", ") || "nothing"), "er");
+    if (r.err) logLine($("b5Log"), "Error: " + r.err, "er");
+  });
+  $("b5Next").addEventListener("click", function(){ pos++; load(); });
+  showScore(); load();
+})();
+
+/* ---------- Bench 6: sensor explorer ---------- */
+(function(){
+  var APPS = [
+    {label: "Greenhouse soil", sensor: "soil moisture", unit: "%", min: 0, max: 100, thr: 30, xlab: "hour",
+      data: [62, 58, 55, 51, 47, 44, 40, 37, 33, 30, 27, 24, 61, 57, 53, 50, 46, 42, 39, 35, 31, 28, 25, 22],
+      resp: "show the drop icon and water for 5 s", note: "The soil dries slowly, then someone waters it by hand at hour 12. The event fires once each time the soil gets too dry."},
+    {label: "Block heater", sensor: "outdoor temperature", unit: " °C", min: -30, max: 0, thr: -15, xlab: "hour",
+      data: [-8, -9, -10, -12, -13, -15, -17, -18, -19, -20, -19, -17, -15, -13, -11, -10, -9, -10, -12, -14, -16, -17, -18, -18],
+      resp: "turn the block heater on", note: "A made-up winter day and night in Edmonton. Each time it gets colder than the set value, the heater turns on once."},
+    {label: "Line robot", sensor: "reflected light", unit: "%", min: 0, max: 100, thr: 50, xlab: "reading",
+      data: [80, 78, 30, 25, 28, 75, 82, 79, 35, 22, 24, 26, 77, 81, 30, 28, 80, 79, 76, 24, 20, 78, 80, 79],
+      resp: "steer back onto the line", note: "A dark tape line reflects little light. Each drop means the sensor crossed onto the line."},
+    {label: "Hallway lights", sensor: "distance", unit: " cm", min: 0, max: 400, thr: 150, xlab: "minute",
+      data: [380, 375, 360, 140, 90, 120, 300, 390, 385, 370, 130, 80, 60, 140, 350, 390, 380, 100, 90, 330, 390, 385, 380, 375],
+      resp: "turn the hallway lights on", note: "When someone walks closer than the set value, the lights turn on once for that visit."}
+  ];
+  var app = APPS[0], thr = $("b6Thr");
+  function draw(){
+    var t = Number(thr.value), d = app.data, W = 520, H = 220, L = 46, R = 12, T = 14, B = 34;
+    $("b6ThrL").textContent = "Set value: " + t + app.unit + " (event: when " + app.sensor + " drops below this)";
+    function X(i){ return L + i * (W - L - R) / (d.length - 1); }
+    function Y(v){ return T + (app.max - v) * (H - T - B) / (app.max - app.min); }
+    var box = $("b6Chart"); clear(box);
+    var s = sv("svg", {viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Line chart of " + d.length + " made-up " + app.sensor + " readings with the set value at " + t + app.unit});
+    for (var k = 0; k <= 4; k++) {
+      var v = app.min + k * (app.max - app.min) / 4, y = Y(v);
+      s.appendChild(sv("line", {x1: L, x2: W - R, y1: y, y2: y, "class": "grid"}));
+      s.appendChild(sv("text", {x: L - 6, y: y + 4, "text-anchor": "end", "class": "small"}, String(Math.round(v))));
+    }
+    s.appendChild(sv("text", {x: (L + W - R) / 2, y: H - 6, "text-anchor": "middle", "class": "small"}, app.xlab + " 1 to " + d.length));
+    var path = d.map(function(v, i){ return (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1); }).join(" ");
+    s.appendChild(sv("path", {d: path, "class": "line"}));
+    s.appendChild(sv("line", {x1: L, x2: W - R, y1: Y(t), y2: Y(t), "class": "thr"}));
+    var below = 0, fires = 0;
+    d.forEach(function(v, i){
+      var isB = v < t; if (isB) below++;
+      var fire = isB && (i === 0 || d[i - 1] >= t); if (fire) fires++;
+      s.appendChild(sv("circle", {cx: X(i), cy: Y(v), r: fire ? 6 : 3, "class": fire ? "trig" : "dot"}));
+    });
+    box.appendChild(s);
+    var st = $("b6Stats"); clear(st);
+    stat(st, "Readings", String(d.length));
+    stat(st, "Readings below the set value", String(below));
+    stat(st, "Times the event fires", String(fires));
+    stat(st, "Runs with an “if below” check at every reading", String(below));
+    detail($("b6Note"), "Input → process → output", [
+      "Input: the " + app.sensor + " sensor. Process: did the reading just drop below " + t + app.unit + "? Output: " + app.resp + ".",
+      app.note + " The large orange dots show when the event fires. A program that checks “if below” at every reading would respond " + below + " times instead of " + fires + "."
+    ], "Made-up data");
+  }
+  chipGroup($("b6Apps"), APPS, "", function(a){ app = a; thr.min = a.min; thr.max = a.max; thr.value = a.thr; draw(); }, 0);
+  thr.addEventListener("input", draw);
+  var SQ = [
+    ["A robot vacuum must stop before it bumps into a wall.", "Distance"], ["Street lights should turn on at dusk.", "Light"],
+    ["An arena needs an alarm if the ice gets too warm.", "Temperature"], ["A watch counts each step you take.", "Tilt (motion)"],
+    ["A garden waters plants only when the soil is dry.", "Moisture"], ["A classroom sign glows when the room gets too loud.", "Sound"]
+  ];
+  var ALL = ["Distance", "Light", "Temperature", "Tilt (motion)", "Moisture", "Sound"];
+  var box = $("b6Q");
+  shuffle(SQ).slice(0, 4).forEach(function(q){
+    var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, q[0]));
+    var o = el("div", {"class": "chips"}), fb = el("p", {"class": "expl", "aria-live": "polite"});
+    ALL.forEach(function(a){
+      var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, a);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(o.children, function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        fb.textContent = a === q[1] ? "Yes. A " + a.toLowerCase() + " sensor fits this job." : "Not the best fit. Think about what needs to be measured.";
+        fb.className = "expl fb " + (a === q[1] ? "ok" : "no");
+      });
+      o.appendChild(b);
+    });
+    d.appendChild(o); d.appendChild(fb); box.appendChild(d);
+  });
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "External or internal event?", bins: ["External", "Internal"], items: [
+    ["A mouse click", 0, "The click comes from a person outside the program."],
+    ["A timer reaches 30 seconds", 1, "The timer runs inside the computer."],
+    ["A key is pressed", 0, "A person presses the key: external."],
+    ["The score variable reaches 10", 1, "The count is completed inside the program."],
+    ["The light sensor reads less than 30", 0, "The sensor detects a change in the world outside."],
+    ["A countdown finishes", 1, "The countdown is kept by the program."],
+    ["The board is tilted", 0, "Someone moves the board. A tilt sensor detects it."],
+    ["A loop has run 5 times", 1, "The count is completed inside the program."],
+    ["A touch screen is tapped", 0, "A person taps the screen."]
+  ]},
+  {label: "Function, variable or event?", bins: ["Function", "Variable", "Event"], items: [
+    ["define flash(times)", 0, "A define block designs a named block of code: a function."],
+    ["set lapCount to 0", 1, "This stores a value in a variable."],
+    ["when button A pressed", 2, "An event hat starts code when something is detected."],
+    ["drawStar(size)", 0, "Calling a function by its name with an input."],
+    ["playerName", 1, "A descriptive name for a stored value: a variable."],
+    ["when timer reaches 10 s", 2, "A timer finishing is an internal event."],
+    ["change lives by −1", 1, "This changes the value stored in a variable."],
+    ["countLap()", 0, "A call to a function with no input."]
+  ]},
+  {label: "Number or string?", bins: ["Number", "String of text"], items: [
+    ["5", 0, "A number you can do maths with."],
+    ["“Amara”", 1, "Text in quotation marks is a string."],
+    ["−18", 0, "A negative number is still a number."],
+    ["“Game over!”", 1, "A message is a string."],
+    ["“5”", 1, "In quotation marks, 5 is stored as text."],
+    ["3.5", 0, "A decimal number."],
+    ["“Edmonton”", 1, "A place name is text."]
+  ]},
+  {label: "Sensor or not a sensor?", bins: ["Sensor", "Not a sensor"], items: [
+    ["Thermometer probe that reads air temperature", 0, "It measures the environment."],
+    ["Soil moisture probe", 0, "It measures water in the soil."],
+    ["Speaker", 1, "A speaker is an output device."],
+    ["Light level sensor", 0, "It measures how bright it is."],
+    ["5 by 5 light grid", 1, "The light grid is an output. It shows things."],
+    ["Distance sensor on a robot", 0, "It measures how far away an object is."],
+    ["Motor that turns a wheel", 1, "A motor is an output that moves things."],
+    ["Accelerometer (tilt)", 0, "It measures movement and tilt."]
+  ]},
+  {label: "Efficient or not?", bins: ["More efficient", "Less efficient"], items: [
+    ["Using repeat 10 instead of copying blocks 10 times", 0, "A loop does the same job with far fewer blocks."],
+    ["Copying the same 6 blocks into three scripts", 1, "Copies mean three places to fix. A function would be better."],
+    ["Storing the winning score in one variable", 0, "Change one value and the whole program uses it."],
+    ["A forever loop that checks a button again and again", 1, "The program keeps spending steps. An event runs code only when needed."],
+    ["Using when button A pressed", 0, "The code runs only when the event happens."],
+    ["Typing the number 30 in five different places", 1, "If it changes, you must find and fix all five."],
+    ["Naming variables x, y and z", 1, "Code with unclear names is harder to read and debug, so it is less reliable."],
+    ["Making a function with an input for a job you repeat", 0, "Define once, call many times."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, i, score;
+  function card(){
+    clear(area);
+    if (i >= order.length) {
+      area.appendChild(el("div", {"class": "sortcard"}, "Deck done: " + score + " of " + order.length + " right on the first try."));
+      var b = el("button", {"class": "btn", type: "button"}, "Play again"); b.addEventListener("click", function(){ start(deck); }); area.appendChild(b);
+      return;
+    }
+    var it = order[i], tried = false;
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + (i + 1) + " of " + order.length + " · Score " + score));
+    var c = el("div", {"class": "sortcard"}, it[0]); area.appendChild(c);
+    var bins = el("div", {"class": "bins"}), fb = el("div", {"class": "feedback", "aria-live": "polite"});
+    deck.bins.forEach(function(name, j){
+      var b = el("button", {"class": "bin", type: "button"}, name);
+      b.addEventListener("click", function(){
+        if (j === it[1]) {
+          if (!tried) score++;
+          fb.className = "feedback ok"; fb.textContent = "Yes: " + name + ". " + it[2];
+          Array.prototype.forEach.call(bins.children, function(x){ x.disabled = true; });
+          var n = el("button", {"class": "btn", type: "button"}, "Next card"); n.addEventListener("click", function(){ i++; card(); });
+          area.appendChild(n); n.focus();
+        } else { tried = true; fb.className = "feedback no"; fb.textContent = "Not " + name + ". Try again."; }
+      });
+      bins.appendChild(b);
+    });
+    area.appendChild(bins); area.appendChild(fb);
+  }
+  function start(d){ deck = d; order = shuffle(d.items); i = 0; score = 0; card(); }
+  chipGroup($("deckChips"), DECKS, "", start, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Function", "A named, organized block of code that does one specific task."],
+  ["Define a function", "Design it: give it a descriptive name, choose its inputs and write its algorithm."],
+  ["Call a function", "Use the function’s name in a program, with a value for each input, so its code runs."],
+  ["Input (parameter)", "A value given to a function when it is called, like 3 in flash(3)."],
+  ["Algorithm", "The ordered steps inside a function or program."],
+  ["Event", "A detectable action, change or occurrence that a program can respond to."],
+  ["External event", "An event from outside the program, like a mouse click, key press or sensor reading."],
+  ["Internal event", "An event from inside the program or computer, like a timer finishing or a count being completed."],
+  ["Event hat", "A block like “when button A pressed” that starts the code under it when the event happens."],
+  ["Sensor", "A device that collects data from the environment, such as light, temperature, moisture, tilt or distance."],
+  ["IPO cycle", "Input, process, output: a model of how a computer system takes in data, works on it and gives a result, again and again."],
+  ["Robotics", "Building and programming robots. Robots use sensors as input to decide what to do."],
+  ["Variable", "A named place in memory that stores information which can be retrieved and changed while a program runs."],
+  ["Retrieve", "Read the value stored in a variable without changing it."],
+  ["Assign", "Give a variable a value, for example set lapCount to 0."],
+  ["Descriptive name", "A name that says what is stored or done, like lapCount instead of x."],
+  ["Number value", "A value you can do maths with, like 5 or −18."],
+  ["String", "A value made of text, written in quotation marks, like “Amara”."],
+  ["Boolean", "A true or false value. Many languages have this kind of value too."],
+  ["Loop", "A structure that repeats blocks, such as repeat 10."],
+  ["Conditional", "A structure that makes a choice: if a test is true, do one thing, else do another."],
+  ["Efficient code", "Code that does its job with fewer wasted steps, using functions, variables and events well."],
+  ["Polling", "Checking again and again in a loop to see if something has happened. Events avoid this in your own code."],
+  ["Bug", "A mistake in code that makes a program do the wrong thing."],
+  ["Debugging", "Testing a program, finding the bug, fixing it, then testing again."]
+];
+(function(){
+  store.fc = store.fc || {};
+  var only = false, list, i = 0, flipped = false;
+  function rebuild(keep){ var all = CARDS.map(function(c, k){ return k; }); list = only ? all.filter(function(k){ return store.fc[k] !== "know"; }) : (keep && list ? list : all); if (i >= list.length) i = 0; }
+  function draw(){
+    var known = CARDS.filter(function(c, k){ return store.fc[k] === "know"; }).length;
+    $("fcBar").style.width = (known / CARDS.length * 100) + "%";
+    $("fcCount").textContent = known + " of " + CARDS.length + " known" + (list.length ? " · card " + (i + 1) + " of " + list.length : "");
+    var c = $("fcCard"); clear(c);
+    if (!list.length) { c.appendChild(el("span", {"class": "term"}, "All known!")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards to review.")); return; }
+    var k = list[i], cd = CARDS[k];
+    c.appendChild(el("span", {"class": "tag"}, flipped ? "Definition" : "Term" + (store.fc[k] === "know" ? " · known" : store.fc[k] === "still" ? " · still learning" : "")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? cd[1] : cd[0]));
+    c.setAttribute("aria-label", (flipped ? "Definition: " + cd[1] : "Term: " + cd[0]) + ". Press to flip.");
+  }
+  function mark(v){ if (!list.length) return; store.fc[list[i]] = v; save(); flipped = false; if (only && v === "know") rebuild(); else i = (i + 1) % list.length; draw(); }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("fcKnow").addEventListener("click", function(){ mark("know"); });
+  $("fcStill").addEventListener("click", function(){ mark("still"); });
+  $("fcPrev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("fcShuffle").addEventListener("click", function(){ list = shuffle(list); i = 0; flipped = false; draw(); });
+  $("fcReset").addEventListener("click", function(){ store.fc = {}; save(); rebuild(); draw(); });
+  $("fcAll").addEventListener("click", function(){ only = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); rebuild(); i = 0; draw(); });
+  $("fcLearning").addEventListener("click", function(){ only = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); rebuild(); i = 0; draw(); });
+  rebuild(); draw();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What does it mean to define a function?", ["Give it a name, inputs and an algorithm", "Run it once", "Delete it", "Turn it into a variable"], "Defining designs the function. Calling it makes it run."],
+  ["In flash(3), what is 3?", ["The input", "The function name", "The output", "An event"], "The value in brackets is the input (parameter)."],
+  ["Why design a function instead of copying blocks?", ["Define once, call many times, and fix it in one place", "Functions always make the screen brighter", "Copies are not allowed in block code", "Functions remove the need for events"], "Reusing one function keeps code short and easy to fix."],
+  ["Which is the best name for a function that waters a garden bed?", ["waterBed", "doIt", "f2", "thing"], "A descriptive name says what the function does."],
+  ["What is an event?", ["A detectable action, change or occurrence", "Any variable", "A spelling mistake in code", "A kind of loop"], "Programs respond to events they can detect."],
+  ["Which is an external event?", ["A mouse click", "A timer finishing", "A count reaching 10", "A loop ending"], "A mouse click comes from outside the program."],
+  ["Which is an internal event?", ["A timer reaches 10 seconds", "A key is pressed", "The board is tilted", "A light sensor reading drops"], "The timer is kept inside the computer."],
+  ["Why can’t the practice board detect that a student feels bored?", ["It has no sensor or data that can measure it", "Feelings are internal events", "The board is turned off", "Events only happen at night"], "An event must be detectable."],
+  ["What does a sensor do?", ["Collects data from the environment", "Shows pictures", "Stores the program", "Prints text"], "Sensors are input devices that measure the world."],
+  ["In the IPO cycle, a sensor is part of the…", ["input stage", "process stage", "output stage", "storage stage only"], "Sensor readings are input."],
+  ["A line-following robot uses a light sensor because…", ["a dark line reflects less light than the floor", "light sensors measure distance", "robots cannot use other sensors", "the line is hot"], "The reading drops when the sensor is over the dark line."],
+  ["Which sensor fits a garden that waters only dry soil?", ["Soil moisture sensor", "Speaker", "Tilt sensor", "Light grid"], "Moisture is what needs to be measured."],
+  ["What is a variable?", ["A named place that stores information that can change", "A block that always repeats", "A type of sensor", "A finished program"], "Variables store values you can retrieve and change."],
+  ["lives is 3. The program runs change lives by −1 twice. What is lives?", ["1", "2", "3", "5"], "3 − 1 − 1 = 1."],
+  ["taps is 0. A script runs set taps to 1 three times. What is taps?", ["1", "3", "0", "4"], "set puts 1 in the box each time. It does not add."],
+  ["Which is a string value?", ["“Amara”", "42", "−7", "3.5"], "Text in quotation marks is a string."],
+  ["join “10” and “5” gives…", ["“105”", "15", "5", "an event"], "Join sticks text together."],
+  ["Which variable name is best for the outdoor temperature?", ["tempOutside", "t", "outside temp", "variable1"], "It is descriptive and has no spaces."],
+  ["In “repeat 5: change laps by 1”, the variable is used with a…", ["loop", "sensor", "string", "driver"], "The variable counts how many times the loop runs."],
+  ["“if laps = 10 then show check” uses a variable with a…", ["conditional", "loop", "function definition", "sensor"], "The if block tests the variable."],
+  ["Which change makes code more efficient?", ["Replacing copied blocks with a loop or function", "Renaming every variable to x", "Adding extra wait blocks", "Copying a script to be safe"], "Fewer repeated blocks means fewer places for mistakes."],
+  ["Why can events make a program more efficient than a forever loop that keeps checking?", ["The code runs only when the event happens", "Events make the screen bigger", "Forever loops cannot use variables", "Events never use input"], "The program does not spend its own steps checking again and again."],
+  ["The winning score 5 is typed in three places. What is the efficient fix?", ["Store it once in a variable like goalTarget", "Type it in a fourth place", "Change it to 50", "Delete the score"], "One variable means one place to change."],
+  ["The board should show 1, 2, 3 for three A presses but shows 0, 1, 2. What is the likely bug?", ["show runs before change", "The event is wrong", "The sensor is broken", "The function has no name"], "Showing before changing shows the old value."],
+  ["What is debugging?", ["Finding and fixing mistakes in code, then testing again", "Making a program longer", "Adding a sensor", "Deleting all variables"], "Test, find, fix, test again."],
+  ["A test shows “There is no variable called scroe.” What should you check?", ["The spelling of the variable name", "The light sensor", "The number of loops", "The event hat colour"], "A misspelled name points to a variable that does not exist."]
+];
+(function(){
+  var area = $("quizArea");
+  function newRound(){
+    clear(area);
+    var qs = shuffle(QUIZ).slice(0, 10), score = 0, answered = 0;
+    var head = el("p", {"class": "hint mono", "aria-live": "polite"}, "Score: 0 of 10"); area.appendChild(head);
+    qs.forEach(function(q, n){
+      var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, (n + 1) + ". " + q[0]));
+      var opts = el("div", {"class": "opts"}), fb = el("p", {"class": "expl", "aria-live": "polite"});
+      shuffle(q[1].map(function(t, k){ return [t, k === 0]; })).forEach(function(p){
+        var b = el("button", {"class": "opt", type: "button"}, p[0]); b._ok = p[1];
+        b.addEventListener("click", function(){
+          Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (x._ok) x.classList.add("right"); });
+          if (p[1]) score++; else b.classList.add("wrong");
+          answered++; fb.textContent = (p[1] ? "Correct. " : "Not quite. ") + q[2];
+          head.textContent = "Score: " + score + " of 10" + (answered === 10 ? " · round complete" : "");
+          if (answered === 10) { store.best = Math.max(store.best || 0, score); save(); head.textContent += " · best " + store.best; }
+        });
+        opts.appendChild(b);
+      });
+      d.appendChild(opts); d.appendChild(fb); area.appendChild(d);
+    });
+    var nb = el("button", {"class": "btn", type: "button"}, "New round"); nb.addEventListener("click", function(){ newRound(); window.scrollTo({top: 0}); }); area.appendChild(nb);
+  }
+  newRound();
+  $("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What is the difference between defining a function and calling it?", a: "Defining a function designs it: you give it a descriptive name, choose its inputs and write its algorithm. Calling a function uses its name in the program, with values for its inputs, so its code runs. You define it once and can call it many times.", k: ["Define: name, inputs, algorithm", "Call: use the name so the code runs", "Define once, call many times"]},
+  {q: "Design a function for a task you repeat. Give its name, its input and its steps.", a: "Name: beep(times). Input: times, the number of beeps. Steps: repeat times: play a short sound, wait 0.2 s. I can call beep(1) for a correct answer and beep(3) for a warning.", k: ["Descriptive name", "An input that changes what it does", "Ordered steps", "Example calls with different inputs"]},
+  {q: "What is an event? Give one external and one internal example.", a: "An event is a detectable action, change or occurrence that a program can respond to. External: a mouse click or a button press. Internal: a timer reaching 10 seconds or a count being completed.", k: ["Detectable action, change or occurrence", "Correct external example", "Correct internal example"]},
+  {q: "Explain how a sensor fits into the IPO cycle. Use a robot or a greenhouse as your example.", a: "The sensor is the input. In a greenhouse, a soil moisture sensor measures how wet the soil is. The program processes the reading by comparing it with a set value, such as 30%. If it is lower, the output turns on a pump. Then the cycle repeats with the next reading.", k: ["Sensor is input", "Process compares the reading", "Output acts on the result", "The cycle repeats"]},
+  {q: "What is a variable? What does it mean to retrieve and to change it?", a: "A variable is a named place in memory that stores information. Retrieving it means reading the value, for example to show it or test it. Changing it means storing a new value, for example change lives by −1.", k: ["Named place that stores information", "Retrieve = read the value", "Change = store a new value"]},
+  {q: "Why should variables have descriptive names? Improve the name x for a variable that stores the outdoor temperature.", a: "A descriptive name tells anyone reading the code what is stored, which makes the code easier to understand and debug. A better name is tempOutside.", k: ["Explains what is stored", "Easier to read and debug", "Good replacement name with no spaces"]},
+  {q: "Explain the difference between the number 5 and the string “5”. Why does it matter?", a: "The number 5 is a value you can do maths with. The string “5” is text. Adding numbers gives 10, but joining strings gives “55”, and some languages give an error when you add text. Storing values as the right kind avoids bugs.", k: ["Number: can do maths", "String: text", "Add vs join give different results", "Right kind avoids bugs"]},
+  {q: "Describe how one variable can be used with a loop, a conditional and an event in a lap counter.", a: "An event (when the light sensor is blocked) changes laps by 1. A conditional checks if laps = raceLaps and shows a check icon. A loop could count down the laps left or flash the lights laps times at the end.", k: ["Event changes the variable", "Conditional tests the variable", "Loop uses or counts with the variable"]},
+  {q: "A program should show 1, 2, 3 for three button presses, but it shows 0, 1, 2. Explain the bug and the fix.", a: "The show block runs before the change block, so the board shows the old value each time. The fix is to move show below change, then test again.", k: ["Identifies the order bug", "Explains why the old value shows", "Fix: move show after change", "Test again"]}
+];
+var LONG = [
+  {q: "A classmate’s scoreboard program has 40 copied blocks, uses a forever loop to check the buttons, and types the winning score in three places. Explain three changes that would make it more efficient and why each helps.", a: "First, replace the forever loop with events such as when button A pressed, so the code runs only when a goal is scored instead of checking again and again. Second, put the repeated scoring steps in a function such as addGoal(team), so they are written once and fixed in one place. Third, store the winning score in a variable like goalTarget, so changing it means changing one value. Together the code is shorter, easier to read and change, and more reliable.", k: ["Events instead of constant checking", "Function for repeated steps", "Variable for the repeated value", "Explains why each helps", "Connects to reliability"]},
+  {q: "Design a sensor-based system for your school or community. Describe the sensor, the event, the variable or variables, and the output. Then explain how you would test it.", a: "A hallway light system for the school. A distance sensor measures how close a person is. The event is “when distance drops below 150 cm”. A variable visits counts how many people pass, and lightsOn stores whether the lights are on. The output turns the lights on for 2 minutes. To test it, walk past at different distances, check visits goes up by 1 each time, and check the lights turn off when no one is there.", k: ["Suitable sensor", "Clear event", "Variable with a descriptive name", "Output", "Test plan with expected results"]},
+  {q: "Some people say shorter code is always more efficient. Do you agree? Use the lap counter versions from this lab in your answer.", a: "Not always. In the lab, the event and function version had a few more blocks than the loop version. But it was more efficient while waiting, because it did not check the sensor again and again, and it was easy to fix in one place. Efficient code uses functions, variables and events well. Length is only one measure.", k: ["Clear position", "Uses the lab example", "Mentions waiting or checking", "Mentions ease of fixing", "Efficiency has more than one measure"]},
+  {q: "Explain how debugging connects to efficient code. Use an example of a bug you found or fixed.", a: "Efficient code is easier to debug. When code is copied, the same bug can hide in many places. With a function, you fix the bug once. In the lab, flash(times) used repeat 2 instead of repeat times. Fixing one block made every call work. Descriptive names also help, because a spelling mistake like lifes is easier to spot.", k: ["Copied code spreads bugs", "Functions mean one fix", "Specific example", "Names or variables help find bugs"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i, d = el("details"), done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id}); ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details"); reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"}); mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){ var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j); store.wr[id] = s; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["CS1.K1", "Functions can be designed in a programming language.", "Learn: Lesson 1 (design a flash function). Lab Bench: Investigation 1. Sort It: function, variable or event. Quiz, Flashcards, Written Review short answers 1 and 2."],
+    ["CS1.K2", "An event can be a detectable action, change, or occurrence.", "Learn: Lesson 2 (can the board detect it?). Quiz, Flashcards, Written Review short answer 3."],
+    ["CS1.K3", "A program recognizes and can respond to an event, including an\n• external event, e.g., mouse click\n• internal event, e.g., a timer or count is completed", "Learn: Lesson 3 (tap counter with timer). Lab Bench: Investigations 2, 3 and 5. Sort It: external or internal event. Quiz, Flashcards, Written Review short answer 3."],
+    ["CS1.K4", "Sensors are devices that collect data from the environment for input to the IPO cycle and can be used in many applications, such as robotics.", "Learn: Lesson 4 (one reading through IPO, line-following robot). Lab Bench: Investigation 6. Sort It: sensor or not. Quiz, Flashcards, Written Review short answer 4, extended 2."],
+    ["CS1.K5", "Variables store information that can be retrieved and changed throughout a program.", "Learn: Lesson 5 (lives box, changed or retrieved). Lab Bench: Investigations 2 and 3. Quiz, Flashcards, Written Review short answer 5."],
+    ["CS1.K6", "Variables are given a descriptive name and are assigned in different ways, including as a numerical value or a string of text.", "Learn: Lesson 6 (name check, add or join). Lab Bench: Investigation 3 (name tips) and Investigation 5 (join bug). Sort It: number or string. Quiz, Flashcards, Written Review short answers 6 and 7."],
+    ["CS1.K7", "A variable can be used with\n• loops\n• conditionals\n• functions\n• events", "Learn: Lesson 7 (one variable, four teammates). Lab Bench: Investigations 2 and 3. Quiz, Written Review short answer 8."],
+    ["CS1.K8", "Efficient code uses functions, variables, and events effectively to ensure programs run faster and more reliably, enhancing task performance.", "Learn: Lesson 8 (three lap counters). Lab Bench: Investigation 4. Sort It: efficient or not. Quiz, Flashcards, Written Review extended 1, 3 and 4."],
+    ["CS1.S1", "Create a function to carry out a set of instructions using visual block-based code.", "Lab Bench: Investigation 1 (function factory with test). Learn: Lesson 1. Written Review short answer 2."],
+    ["CS1.S2", "Explain the purpose of a sequence of visual block-based code containing functions, variables, and events.", "Lab Bench: Investigation 2 (worked example, then randomized programs with purpose, trace and variable questions). Learn: Lesson 7."],
+    ["CS1.S3", "Adjust a sequence of visual block-based code by using functions, variables, and events to improve efficiency.", "Lab Bench: Investigation 4 (three programs with worked example and measures). Learn: Lesson 8. Written Review extended 1."],
+    ["CS1.S4", "Write a program using visual block-based code that includes variables.", "Lab Bench: Investigation 3 (block editor with three checked challenges and a free build)."],
+    ["CS1.S5", "Debug errors in a sequence of visual block-based code that contains functions, variables, and events.", "Lab Bench: Investigation 5 (nine bugs in random order, test, find, fix). Written Review short answer 9, extended 4."],
+    ["CS1.S6", "Explore the use of sensors.", "Lab Bench: Investigation 6 (four applications with made-up data, set value and event count, sensor match). Learn: Lesson 4."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr"); tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2])); tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,1470 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/space-exploration-and-law-lab/"><meta name="description" content="The advancement of space exploration needs to ensure safety, sustainability, and equitable use."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Space Exploration and Law Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a mission control notebook. Sticky tab strip, then lessons that pair a short reading column with a live model. Night-sky panels hold orbit scenes; ember marks rockets and risk, blue marks orbits and data, violet marks law. */
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --surface-2:#F4F6F8; --ink:#16202A; --muted:#4E5C69; --line:#CDD5DD;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5;
+  --rocket:#B4471F; --rocket-soft:#FAE4DA; --orbit:#235FA6; --orbit-soft:#DDE8F5; --law:#6B3FA0; --law-soft:#ECE3F6;
+  --good:#2E7A4F; --good-soft:#DFF0E5; --bad:#B03A2E; --bad-soft:#F7E0DC; --warn:#8A5A00; --warn-soft:#FBEFD5;
+  --night:#0E1828; --night-2:#1A2740; --star:#E8EEF5; --star-dim:#A9B7C9; --earth:#2F6FAE; --land:#3E8A5A; --leo:#F0A070; --meo:#7DB0F0; --geo:#C9A7F0;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E131A; --surface:#161D26; --surface-2:#1C2530; --ink:#E4EAF0; --muted:#9FADBB; --line:#2B3744;
+  --g9:#74C995; --g9-soft:#16301F;
+  --rocket:#F2916A; --rocket-soft:#3A1E14; --orbit:#7DB0F0; --orbit-soft:#16263A; --law:#C3A2EE; --law-soft:#2A1E3A;
+  --good:#74C995; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --warn:#F0C060; --warn-soft:#3A2C10;
+  --night:#070D17; --night-2:#121C2E; --star:#E8EEF5; --star-dim:#A9B7C9; --earth:#3A7CC0; --land:#4E9A6A; --leo:#F0A070; --meo:#7DB0F0; --geo:#C9A7F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E131A; --surface:#161D26; --surface-2:#1C2530; --ink:#E4EAF0; --muted:#9FADBB; --line:#2B3744;
+  --g9:#74C995; --g9-soft:#16301F;
+  --rocket:#F2916A; --rocket-soft:#3A1E14; --orbit:#7DB0F0; --orbit-soft:#16263A; --law:#C3A2EE; --law-soft:#2A1E3A;
+  --good:#74C995; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --warn:#F0C060; --warn-soft:#3A2C10;
+  --night:#070D17; --night-2:#121C2E; --star:#E8EEF5; --star-dim:#A9B7C9; --earth:#3A7CC0; --land:#4E9A6A; --leo:#F0A070; --meo:#7DB0F0; --geo:#C9A7F0;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--orbit)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orbit);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:none}
+svg .hot:focus-visible circle, svg .hot:focus-visible rect, svg .hot:focus-visible path{stroke:var(--rocket);stroke-width:4}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ro{color:var(--rocket)} header h1 .lw{color:var(--law)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.ro[aria-pressed="true"]{background:var(--rocket);border-color:var(--rocket);color:var(--surface)}
+.chip.or[aria-pressed="true"]{background:var(--orbit);border-color:var(--orbit);color:var(--surface)}
+.chip.lw[aria-pressed="true"]{background:var(--law);border-color:var(--law);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox.night{background:var(--night);border-color:var(--night-2)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .lt{fill:var(--star)} svg .ltd{fill:var(--star-dim)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+svg .hot{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--orbit)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* investigation blocks */
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv > header{display:grid;gap:4px}
+.inv h3{font-size:1.3rem}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+.verdicts{display:grid;gap:8px}
+.vrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2)}
+@media (max-width:560px){.vrow{grid-template-columns:minmax(0,1fr)}}
+.vrow.ok{border-color:var(--good);background:var(--good-soft)} .vrow.no{border-color:var(--bad);background:var(--bad-soft)}
+.vrow p{font-size:.92rem}
+.vrow .why{grid-column:1/-1;font-size:.86rem;color:var(--muted)}
+.scen{background:var(--law-soft);border-radius:10px;padding:14px;display:grid;gap:6px}
+.scen b{font-family:var(--f-display);font-size:1.1rem}
+.status{font-family:var(--f-mono);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:999px;width:fit-content}
+.status.cov{background:var(--good-soft);color:var(--good)} .status.part{background:var(--warn-soft);color:var(--warn)} .status.gap{background:var(--bad-soft);color:var(--bad)}
+
+/* bars */
+.bars{display:grid;gap:8px}
+.barrow{display:grid;grid-template-columns:8.5em minmax(0,1fr) 4.2em;gap:8px;align-items:center;font-size:.86rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--orbit);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--rocket)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 3.8em}}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit a{color:var(--g9);font-weight:700}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Space · SP1</div>
+    <h1>Space <span class="ro">Exploration</span> and <span class="lw">Law</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> The advancement of space exploration needs to ensure safety, sustainability, and equitable use. People explore space with rockets, computers, telescopes, rovers and stations. Canada builds robots and satellites for that work. Exploring brings benefits and costs, and international law sets some rules, but not all of them.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Nine short lessons in order. Each one has a model to try. First meet the tools of space exploration and Canada's part in it. Then weigh the benefits and costs. Finish with the laws that guide space, and the gaps they leave.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · The toolkit</span>
+      <div class="codes"><span class="code">SP1.K1</span></div>
+      <h3>Technology makes space exploration possible</h3>
+      <p><b>Space exploration</b> is the study of space using spacecraft, instruments and people. Humans cannot travel far into space on their own, so exploration depends on technology.</p>
+      <p>Five kinds of technology do most of the work:</p>
+      <ul>
+        <li><b>Rockets</b> lift spacecraft off Earth and push them into orbit or beyond.</li>
+        <li><b>Computers</b> guide rockets, control spacecraft and process the data they send back.</li>
+        <li><b>Telescopes</b> collect light to study objects far away, from the ground or from orbit.</li>
+        <li><b>Rovers</b> are robot vehicles that drive across another world and study it up close.</li>
+        <li><b>Space stations</b> are labs in orbit where people live and work for months.</li>
+      </ul>
+      <div class="key"><b>Big idea:</b> each tool solves a problem. Rockets solve getting there. Computers solve control and data. Telescopes see far. Rovers go where people cannot yet go. Stations let people stay.</div>
+    </div>
+    <div class="model">
+      <h4>Model: open the toolkit</h4>
+      <div class="chips" id="toolChips" role="group" aria-label="Choose a technology"></div>
+      <div class="detail" id="toolDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Getting off the ground</span>
+      <div class="codes"><span class="code">SP1.K1</span></div>
+      <h3>Rockets and the computers that fly them</h3>
+      <p>A <b>rocket</b> burns fuel and pushes hot gas out the bottom very fast. The gas pushes back on the rocket, so the rocket goes up. This is an example of Newton's third law: every push has an equal push in the opposite direction.</p>
+      <p>Most of a rocket's mass at launch is fuel. To save weight, rockets are built in <b>stages</b>. When a stage runs out of fuel, it drops away. The rocket no longer has to carry that empty tank, so the next stage can go faster with less fuel.</p>
+      <p><b>Computers</b> steer the rocket many times each second, decide when to drop each stage, and check thousands of sensors. On the ground, computers run simulations before launch and help mission control track the flight.</p>
+      <p class="note">Some rocket stages are now built to land and fly again. Reusing rockets lowers the cost of each launch.</p>
+    </div>
+    <div class="model">
+      <h4>Model: fly a two-stage rocket</h4>
+      <div class="svgbox night"><svg id="rocketSvg" viewBox="0 0 520 300" role="img" aria-label="Rocket launch diagram that changes with each step"></svg></div>
+      <div class="row">
+        <button class="btn" id="rocketNext" type="button">Next step</button>
+        <button class="btn ghost" id="rocketReset" type="button">Reset</button>
+      </div>
+      <div class="detail" id="rocketDetail" aria-live="polite"></div>
+      <p class="hint">Masses are rounded and made up for this model.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Seeing far, roving, staying</span>
+      <div class="codes"><span class="code">SP1.K1</span></div>
+      <h3>Telescopes, rovers and space stations</h3>
+      <p><b>Space telescopes</b> orbit above the air, which blurs and blocks some light. The James Webb Space Telescope, launched in 2021, sees infrared light from some of the first galaxies.</p>
+      <p><b>Rovers</b> such as Curiosity and Perseverance drive on Mars. They carry cameras, drills and labs to test rocks for signs of past water and life.</p>
+      <p>Radio signals travel at the speed of light, about 300 000 km every second. Mars is so far away that a message takes several minutes to arrive. A driver on Earth cannot steer a rover in real time, so rovers use onboard computers to drive themselves around rocks.</p>
+      <div class="formula">time = distance ÷ speed of light &nbsp; (t = d ÷ c)</div>
+      <p>The <b>International Space Station</b> (ISS) has had people on board since the year 2000. It orbits about 400 km up and circles Earth about every 90 minutes. Astronauts there run experiments on health, materials and plants.</p>
+    </div>
+    <div class="model">
+      <h4>Model: how long does a message to Mars take?</h4>
+      <label class="field" for="marsD">Distance from Earth to Mars: <span id="marsOut" class="mono">225 million km</span>
+        <input type="range" id="marsD" min="55" max="400" step="5" value="225"></label>
+      <div class="svgbox night"><svg id="marsSvg" viewBox="0 0 520 140" role="img" aria-label="Earth and Mars with a radio signal between them"></svg></div>
+      <div class="stats">
+        <div class="stat"><span>One way</span><b id="marsOne">12.5 min</b></div>
+        <div class="stat"><span>Command and reply</span><b id="marsTwo">25.0 min</b></div>
+      </div>
+      <p class="hint" id="marsNote" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Canada in space</span>
+      <div class="codes"><span class="code">SP1.K2</span></div>
+      <h3>Canada's contributions: robots and satellites</h3>
+      <p>Canada is known around the world for two kinds of space technology.</p>
+      <p><b>Robotics.</b> Canada built the <b>Canadarm</b> for the Space Shuttle, then <b>Canadarm2</b> and the two-armed robot <b>Dextre</b> for the ISS. Canadarm2 catches cargo ships and helped build the station. Canada is building <b>Canadarm3</b> for Gateway, a planned station that will orbit the Moon.</p>
+      <p><b>Satellite technology.</b> In 1962, <b>Alouette 1</b> made Canada one of the first countries to design and build its own satellite. <b>Anik A1</b> (1972) carried TV and phone signals across Canada, including to the North. The <b>RADARSAT</b> satellites use radar to see Earth's surface through cloud and darkness.</p>
+      <p>Canadian astronauts and scientists take part too. Marc Garneau, a Francophone from Quebec, was the first Canadian in space in 1984. In April 2026, Jeremy Hansen flew around the Moon on Artemis II. Canada also built a guidance sensor and a science instrument for the James Webb Space Telescope.</p>
+      <p class="note">Alberta link: University of Alberta students built Ex-Alta 1, a small satellite called a CubeSat that went to orbit in 2017.</p>
+    </div>
+    <div class="model">
+      <h4>Model: Canada's space timeline</h4>
+      <p class="hint">Select a dot (tap, or Tab then Enter) to read about it.</p>
+      <div class="svgbox"><svg id="tlSvg" viewBox="0 0 640 170" role="group" aria-label="Timeline of Canadian space milestones"></svg></div>
+      <div class="chips" id="tlFilter" role="group" aria-label="Filter the timeline"></div>
+      <div class="detail" id="tlDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · What we gain</span>
+      <div class="codes"><span class="code">SP1.K3</span></div>
+      <h3>Benefits: data for life on Earth, and jobs</h3>
+      <p>An <b>implication</b> is a result or effect that follows from a choice. Space exploration has positive and negative implications. Two big positive ones are data and jobs.</p>
+      <p><b>Data that benefits life on Earth.</b> Satellites watch weather, wildfires, floods, crops and sea ice. Satellite navigation (GPS) guides tractors, planes and phones. Experiments on the ISS teach doctors about bones, muscles and the heart.</p>
+      <p><b>Employment.</b> The space industry needs engineers, robotics technicians, software developers, data analysts, scientists, doctors, lawyers and many trades. Many of these jobs use space data on Earth, not in a rocket.</p>
+      <p class="note">Alberta link: neuroArm, a surgical robot developed at the University of Calgary with the company that built Canadarm, used ideas from space robotics to help doctors operate on the brain.</p>
+    </div>
+    <div class="model">
+      <h4>Model: Alberta, seen from orbit</h4>
+      <div class="chips" id="benChips" role="group" aria-label="Choose a benefit"></div>
+      <div class="detail" id="benDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · What it costs</span>
+      <div class="codes"><span class="code">SP1.K3</span></div>
+      <h3>Costs and space debris</h3>
+      <p><b>Long-term costs.</b> Space projects take many years and a lot of money. The ISS cost more than 100 billion US dollars, shared by many countries, and it needs constant repairs, supplies and crew. It is planned to be retired around 2030 and brought down safely.</p>
+      <p><b>Space debris</b> is human-made junk in orbit: dead satellites, used rocket stages, and fragments from explosions and collisions. In low Earth orbit, objects travel at about 7 to 8 km every second. At that speed, even a fleck of paint can chip a window.</p>
+      <p>The European Space Agency reported about 40 000 tracked objects in orbit in 2025, and an estimated 1.2 million pieces larger than 1 cm. Every collision makes more fragments, which can cause more collisions. Scientists call this runaway chain the <b>Kessler syndrome</b>.</p>
+      <div class="key"><b>Sustainability:</b> using orbits in a way that leaves them safe and usable for future generations. That means bringing satellites down at the end of their life and avoiding events that make debris.</div>
+    </div>
+    <div class="model">
+      <h4>Model: crowded orbits</h4>
+      <p class="hint">Select an orbit band to learn what lives there.</p>
+      <div class="svgbox night"><svg id="orbSvg" viewBox="0 0 520 320" role="group" aria-label="Earth with three orbit bands"></svg></div>
+      <div class="detail" id="orbDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · The body in space</span>
+      <div class="codes"><span class="code">SP1.K3</span></div>
+      <h3>Effects on the human body</h3>
+      <p>Human bodies are built for Earth's gravity. In orbit, astronauts are in free fall, so they feel weightless. This is called <b>microgravity</b>. It changes the body in several ways:</p>
+      <ul>
+        <li><b>Bones</b> lose minerals, because they are not holding up the body's weight.</li>
+        <li><b>Muscles</b> shrink, especially in the legs and back.</li>
+        <li><b>Fluids</b> shift toward the head. Faces look puffy and eyesight can change.</li>
+        <li><b>Balance</b> is confused at first, which can cause space sickness.</li>
+        <li><b>Radiation</b> is much higher than on the ground, which raises the risk of cancer later in life.</li>
+        <li><b>Isolation</b> and a strange sleep schedule can affect mood and focus.</li>
+      </ul>
+      <p>Astronauts on the ISS exercise about two hours each day to slow bone and muscle loss. A trip to Mars would take years, so these effects are a major safety question.</p>
+    </div>
+    <div class="model">
+      <h4>Model: astronaut health check</h4>
+      <p class="hint">Select a part of the body.</p>
+      <div class="svgbox"><svg id="bodySvg" viewBox="0 0 320 330" role="group" aria-label="Astronaut outline with body systems to select"></svg></div>
+      <div class="detail" id="bodyDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Rules for space</span>
+      <div class="codes"><span class="code">SP1.K4</span></div>
+      <h3>International space law</h3>
+      <p>A <b>treaty</b> is a written agreement between countries. Countries that join a treaty promise to follow it. <b>International space law</b> is the set of treaties and agreements that guide what countries do in space.</p>
+      <p>The most important one is the <b>Outer Space Treaty</b> of 1967. Canada and more than 110 other countries have joined it. Four of its main goals:</p>
+      <ul>
+        <li><b>Prohibit space appropriation.</b> No country can claim the Moon, a planet or any part of space as its own territory.</li>
+        <li><b>Promote peaceful exploration.</b> Nuclear weapons and other weapons of mass destruction are banned from orbit, and military bases are banned on the Moon and planets.</li>
+        <li><b>Benefit humankind.</b> Space is open to all countries, and exploration should benefit every country.</li>
+        <li><b>Reduce contamination.</b> Countries must avoid harmful contamination of other worlds, and of Earth by anything brought back.</li>
+      </ul>
+      <p>Later treaties added rules for rescuing astronauts (1968), paying for damage caused by space objects (1972), and registering every object launched (1975). Countries are responsible for what their companies do in space too.</p>
+    </div>
+    <div class="model">
+      <h4>Model: the four principles in action</h4>
+      <div class="chips" id="lawChips" role="group" aria-label="Choose a principle"></div>
+      <div class="detail" id="lawDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · The gaps</span>
+      <div class="codes"><span class="code">SP1.K5</span><span class="code">Understanding</span></div>
+      <h3>What space law does not cover yet</h3>
+      <p>The main space treaties were written in the 1960s and 1970s, when only a few governments could reach space. Today thousands of satellites launch each year, and private companies run rockets, tourist flights and plans to mine the Moon.</p>
+      <p>Many of these new activities are <b>not regulated</b> by international space law, or the rules are unclear. Some countries have made their own national laws, and some have signed voluntary agreements such as the <b>Artemis Accords</b> (2020), which Canada signed. Voluntary agreements are not binding treaties, and not every country agrees with them.</p>
+      <p>This is where the understanding for this lab comes in. As space exploration grows, people need new rules to keep it <b>safe</b>, <b>sustainable</b> and <b>equitable</b>. Equitable means fair, so countries that cannot yet afford rockets still get a share of the benefits and of the sky.</p>
+      <p class="note">Many cultures, including First Nations, Métis and Inuit peoples, have long relationships with the night sky. Growing numbers of bright satellites change the sky that everyone shares, and no international rule limits that yet.</p>
+    </div>
+    <div class="model">
+      <h4>Model: is it regulated?</h4>
+      <div class="chips" id="gapChips" role="group" aria-label="Choose a space activity"></div>
+      <div class="detail" id="gapDetail" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- LAB BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Six investigations. Plan a mission with the right technology, calculate signal delays, run a space debris model, weigh the implications of missions, test astronaut health plans, and judge cases in space law court.</p>
+  </div>
+
+  <div class="inv" id="inv1">
+    <header><span class="eyebrow">Investigation 1 · SP1.S1</span><h3>Mission planner</h3>
+      <p class="hint">Choose a mission. Tick every technology the mission needs, then check your plan.</p></header>
+    <div class="chips" id="mpChips" role="group" aria-label="Choose a mission"></div>
+    <div class="scen" id="mpGoal"></div>
+    <div class="checks2" id="mpTools" role="group" aria-label="Technologies for this mission"></div>
+    <div class="row"><button class="btn" id="mpCheck" type="button">Check my plan</button></div>
+    <div id="mpFb" aria-live="polite"></div>
+  </div>
+
+  <div class="inv" id="inv2">
+    <header><span class="eyebrow">Investigation 2 · SP1.S1</span><h3>Signal delay calculator</h3>
+      <p class="hint">Radio signals travel at the speed of light. Use the formula to find how long a message takes. You do not need to memorize the formula.</p></header>
+    <div class="formula">t = d ÷ c &nbsp;&nbsp; t = time (s), d = distance (km), c = speed of light ≈ 300 000 km/s</div>
+    <div class="two">
+      <div class="worked">
+        <span class="tagline">Worked example</span>
+        <p><b>Question:</b> The Moon is about 384 000 km from Earth. How long does a radio message take to reach a rover there?</p>
+        <p>t = d ÷ c</p>
+        <p>t = 384 000 km ÷ 300 000 km/s</p>
+        <p>t = 1.28 s</p>
+        <p><b>Answer:</b> about 1.3 seconds one way. A driver on Earth could steer a Moon rover with only a short delay.</p>
+      </div>
+      <div class="worked">
+        <span class="tagline">Your turn</span>
+        <p id="sdQ"></p>
+        <label class="field" for="sdA">Your answer (<span id="sdUnit">s</span>)<input type="number" id="sdA" step="any" inputmode="decimal"></label>
+        <div class="row"><button class="btn" id="sdCheck" type="button">Check</button><button class="btn ghost" id="sdNew" type="button">New problem</button><button class="btn ghost" id="sdShow" type="button">Show steps</button></div>
+        <div id="sdFb" aria-live="polite"></div>
+        <p class="hint mono" id="sdScore"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv" id="inv3">
+    <header><span class="eyebrow">Investigation 3 · SP1.S2</span><h3>Space debris simulator</h3>
+      <p class="hint">Set the rules, then run 30 years. This is a made-up model to show trends. Its numbers are not real forecasts.</p></header>
+    <div class="two">
+      <div class="checks2">
+        <label class="field" for="dbLaunch">New objects launched each year (thousands): <span id="dbLaunchOut" class="mono">3</span>
+          <input type="range" id="dbLaunch" min="1" max="6" step="0.5" value="3"></label>
+        <label class="field" for="dbComp">Satellites brought down at end of life: <span id="dbCompOut" class="mono">80%</span>
+          <input type="range" id="dbComp" min="0" max="100" step="5" value="80"></label>
+        <label class="field" for="dbRemove">Old debris removed by cleanup missions each year (thousands): <span id="dbRemoveOut" class="mono">0</span>
+          <input type="range" id="dbRemove" min="0" max="1" step="0.1" value="0"></label>
+        <label><input type="checkbox" id="dbAsat"> A country blows up a satellite in a weapons test in year 5</label>
+        <div class="row"><button class="btn" id="dbRun" type="button">Run 30 years</button></div>
+      </div>
+      <div class="model">
+        <div class="svgbox"><svg id="dbSvg" viewBox="0 0 420 240" role="img" aria-label="Line graph of tracked objects over 30 years"></svg></div>
+        <div class="stats">
+          <div class="stat"><span>Start</span><b>40 thousand</b></div>
+          <div class="stat"><span>After 30 years</span><b id="dbEnd">–</b></div>
+          <div class="stat"><span>Collisions, year 30</span><b id="dbCol">–</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="detail" id="dbFb" aria-live="polite">Run the model to see what happens.</p>
+  </div>
+
+  <div class="inv" id="inv4">
+    <header><span class="eyebrow">Investigation 4 · SP1.S2</span><h3>Implications analyzer</h3>
+      <p class="hint">Choose a mission. For each implication, decide whether it is mainly a benefit, mainly a drawback, or both. Then check.</p></header>
+    <div class="chips" id="imChips" role="group" aria-label="Choose a mission"></div>
+    <div class="verdicts" id="imRows"></div>
+    <div class="row"><button class="btn" id="imCheck" type="button">Check my analysis</button></div>
+    <div id="imFb" aria-live="polite"></div>
+  </div>
+
+  <div class="inv" id="inv5">
+    <header><span class="eyebrow">Investigation 5 · SP1.S2</span><h3>Astronaut health planner</h3>
+      <p class="hint">Plan a mission length and exercise routine. The rates are rounded estimates for a simple model.</p></header>
+    <div class="two">
+      <div class="checks2">
+        <label class="field" for="hpMonths">Mission length: <span id="hpOut" class="mono">6 months</span>
+          <input type="range" id="hpMonths" min="1" max="36" step="1" value="6"></label>
+        <label><input type="checkbox" id="hpEx" checked> Exercise about 2 hours a day</label>
+        <div class="chips" id="hpPresets" role="group" aria-label="Mission presets"></div>
+      </div>
+      <div class="model">
+        <div class="bars" id="hpBars"></div>
+        <p class="hint" id="hpNote" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inv" id="inv6">
+    <header><span class="eyebrow">Investigation 6 · SP1.S3</span><h3>Space law court</h3>
+      <p class="hint">Read each case. Decide what international space law says, then name the principle that applies.</p></header>
+    <p class="hint mono" id="ctScore"></p>
+    <div class="scen" id="ctCase"></div>
+    <p class="fb">1. What does international space law say?</p>
+    <div class="chips" id="ctVerdict" role="group" aria-label="Verdict"></div>
+    <p class="fb">2. Which idea applies most?</p>
+    <div class="chips" id="ctPrinciple" role="group" aria-label="Principle"></div>
+    <div class="row"><button class="btn" id="ctCheck" type="button">Rule on this case</button><button class="btn ghost" id="ctNext" type="button">Next case</button></div>
+    <div id="ctFb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 SP1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>SP1.K2:</b> Canadian milestones are taught with dates as known in 2026 (Alouette 1, 1962; Anik A1, 1972; Canadarm, 1981; Marc Garneau, 1984; Roberta Bondar, 1992; RADARSAT-1, 1995; Canadarm2, 2001; Dextre, 2008; Chris Hadfield as ISS commander, 2013; RADARSAT Constellation Mission, 2019; Webb's Fine Guidance Sensor and NIRISS, 2021; Jeremy Hansen on Artemis II, April 2026). Alberta links (Ex-Alta 1 CubeSat, 2017; neuroArm at the University of Calgary) should be verified before sharing. "One of the first countries to design and build its own satellite" is used instead of the common "third country" claim, which depends on how it is counted.</li>
+      <li><b>SP1.K3:</b> debris figures come from the ESA Space Environment Report 2025 (about 40 000 tracked objects, an estimated 1.2 million larger than 1 cm). The ISS cost (more than 100 billion US dollars) and retirement around 2030 are widely reported estimates. Health rates in Investigation 5 are rounded (bone loss about 1 to 1.5 percent per month in hip and spine without countermeasures; ISS radiation about 100 times the ground dose) and the exercise effect is simplified; please check before sharing.</li>
+      <li><b>SP1.K4:</b> taught more precisely than the draft list. "Prohibit space appropriation" is taught as no national claim of sovereignty (Outer Space Treaty, Article II); whether companies can own resources they extract is taught as unsettled (K5). "Promote peaceful exploration" is taught as the treaty actually states it: weapons of mass destruction are banned from orbit and military bases from the Moon and other bodies; other military uses of space are not banned. "Reduce contamination" is taught as avoiding harmful contamination of other worlds and of Earth (Article IX).</li>
+      <li><b>SP1.K5:</b> the list of unregulated or unclear areas (resource ownership, traffic management, debris cleanup, satellite brightness, tourism passenger safety, conventional weapons and anti-satellite tests, settlements, heritage sites) reflects 2026 and may change. The Artemis Accords are taught as a voluntary set of principles that Canada signed in 2020.</li>
+      <li><b>Night sky note:</b> First Nations, Métis and Inuit relationships with the night sky are mentioned only in general terms in Lesson 9. Please review the wording, and consider inviting a Knowledge Keeper if you want to explore sky knowledge further.</li>
+      <li><b>Practice data:</b> rocket masses, the debris simulator, the health planner and the mission budgets are made up or rounded for practice and are labelled on the page.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-sp1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(x, d){ return x.toLocaleString("en-CA", {maximumFractionDigits: d == null ? 1 : d, minimumFractionDigits: 0}); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function hot(g, label, onAct){
+  g.setAttribute("class", "hot"); g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", onAct);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onAct(); } });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: toolkit ---------- */
+var TOOLS = [
+  {label: "Rockets", t: "Rockets: getting there", p: ["Problem solved: escaping Earth's gravity. A rocket must reach about 28 000 km/h to stay in low Earth orbit.", "Examples: the Saturn V that carried Apollo crews to the Moon; NASA's Space Launch System that launched Artemis II in 2026; reusable boosters that land after launch.", "Limit: rockets are expensive, and most of their mass is fuel."]},
+  {label: "Computers", t: "Computers: control and data", p: ["Problem solved: making thousands of fast decisions and handling huge amounts of data.", "Examples: the guidance computer that steers a rocket; software that lets a Mars rover choose a safe path; supercomputers that turn telescope signals into images; mission control systems that track every spacecraft.", "Limit: a software error can end a mission, so code is tested again and again."]},
+  {label: "Telescopes", t: "Telescopes: seeing far", p: ["Problem solved: studying objects too far away to visit. Telescopes collect much more light than an eye can.", "Examples: Hubble (1990) and the James Webb Space Telescope (2021) in space; large radio and optical telescopes on mountaintops; the Dominion Radio Astrophysical Observatory near Penticton, British Columbia.", "Why go to space? Air blurs starlight and blocks some kinds of light, such as much of the infrared."]},
+  {label: "Rovers", t: "Rovers: robot geologists", p: ["Problem solved: studying the surface of another world before people can go there.", "Examples: Curiosity (landed 2012) and Perseverance (landed 2021) on Mars; China's Yutu rovers on the Moon.", "Limit: rovers are slow and far away. Signals take minutes to reach Mars, so rovers must make some decisions on their own."]},
+  {label: "Space stations", t: "Space stations: staying in space", p: ["Problem solved: letting people live and work in space for months.", "Examples: the International Space Station, built by the United States, Russia, Europe, Japan and Canada; China's Tiangong station; Gateway, a planned station that will orbit the Moon.", "What happens there: experiments on health, plants, fire, fluids and new materials that only microgravity allows."]}
+];
+chipGroup($("toolChips"), TOOLS, "or", function(t){ detail($("toolDetail"), t.t, t.p, "Space technology"); }, 0);
+
+/* ---------- Lesson 2: rocket ---------- */
+var RSTEPS = [
+  {name: "On the launch pad", txt: "The full rocket has two stages and a payload (the satellite). Total mass is 500 tonnes. Fuel makes up 450 tonnes of that.", alt: 0, s1: true, burn: 0, s1f: 380, s2f: 70},
+  {name: "Liftoff: stage 1 burns", txt: "Stage 1 engines push hot gas down, and the gas pushes the rocket up. Computers steer it many times each second.", alt: 1, s1: true, burn: 1, s1f: 120, s2f: 70},
+  {name: "Stage separation", txt: "Stage 1 is out of fuel. The computer releases it and it falls away. The rocket now has a mass of 90 tonnes, 410 tonnes less than at launch. Some stages are designed to land and fly again.", alt: 2, s1: false, burn: 0, s1f: 0, s2f: 70, drop: true},
+  {name: "Stage 2 burns", txt: "Stage 2 fires. Because it does not have to carry the empty stage 1 tank, a small amount of fuel can push it much faster.", alt: 3, s1: false, burn: 2, s1f: 0, s2f: 20},
+  {name: "Payload in orbit", txt: "The payload reaches about 28 000 km/h and stays in orbit. Only 10 tonnes of the 500 tonnes at launch is the satellite.", alt: 4, s1: false, burn: 0, s1f: 0, s2f: 0, orbit: true}
+];
+var rIdx = 0;
+function drawRocket(){
+  var s = RSTEPS[rIdx], svg = $("rocketSvg"); clear(svg);
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 300, fill: "var(--night)"}));
+  [[30,40],[80,110],[140,30],[200,80],[300,20],[360,60],[440,35],[470,120],[400,150],[250,130]].forEach(function(p){ svg.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 1.4, fill: "var(--star-dim)"})); });
+  svg.appendChild(sv("path", {d: "M-20 300 Q260 " + (250 + s.alt * 12) + " 540 300 Z", fill: "var(--earth)"}));
+  var cx = 170, base = 250 - s.alt * 42;
+  var g = sv("g");
+  if (s.s1) { g.appendChild(sv("rect", {x: cx - 16, y: base - 70, width: 32, height: 70, rx: 3, fill: "var(--star)"})); g.appendChild(sv("text", {x: cx, y: base - 30, "text-anchor": "middle", "class": "small"}, "1")); }
+  g.appendChild(sv("rect", {x: cx - 13, y: base - (s.s1 ? 110 : 40), width: 26, height: 40, rx: 3, fill: "var(--star-dim)"}));
+  g.appendChild(sv("text", {x: cx, y: base - (s.s1 ? 86 : 16), "text-anchor": "middle", "class": "small", fill: "var(--night)"}, "2"));
+  var topY = base - (s.s1 ? 110 : 40);
+  g.appendChild(sv("path", {d: "M" + (cx - 13) + " " + topY + " L" + cx + " " + (topY - 24) + " L" + (cx + 13) + " " + topY + " Z", fill: "var(--rocket)"}));
+  if (s.burn) { var fy = s.s1 ? base : base; g.appendChild(sv("path", {d: "M" + (cx - 10) + " " + fy + " L" + cx + " " + (fy + 34) + " L" + (cx + 10) + " " + fy + " Z", fill: "var(--leo)"})); }
+  if (s.orbit) { svg.appendChild(sv("path", {d: "M20 70 Q260 10 500 70", fill: "none", stroke: "var(--meo)", "stroke-width": 2, "stroke-dasharray": "5 5"})); }
+  svg.appendChild(g);
+  if (s.drop) { svg.appendChild(sv("rect", {x: cx + 40, y: base + 40, width: 26, height: 60, rx: 3, fill: "var(--star-dim)", transform: "rotate(25 " + (cx + 53) + " " + (base + 70) + ")"})); svg.appendChild(sv("text", {x: cx + 80, y: base + 50, "class": "small ltd"}, "empty stage 1")); }
+  var mass = 10 + (s.s1 ? 30 + s.s1f : 0) + 10 + s.s2f;
+  if (s.orbit) mass = 10;
+  var bx = 330;
+  svg.appendChild(sv("text", {x: bx, y: 40, "class": "lbl lt"}, "Mass now: " + mass + " t"));
+  var parts = [["Stage 1 fuel", s.s1 ? s.s1f : 0, "var(--leo)"], ["Stage 1 tank", s.s1 ? 30 : 0, "var(--star-dim)"], ["Stage 2 fuel", s.s2f, "var(--meo)"], ["Stage 2 tank", s.orbit ? 0 : 10, "var(--star-dim)"], ["Payload", 10, "var(--rocket)"]];
+  parts.forEach(function(pt, i){
+    var y = 60 + i * 26;
+    svg.appendChild(sv("text", {x: bx, y: y + 11, "class": "small ltd"}, pt[0]));
+    svg.appendChild(sv("rect", {x: bx + 84, y: y, width: 90, height: 14, rx: 3, fill: "var(--night-2)"}));
+    svg.appendChild(sv("rect", {x: bx + 84, y: y, width: Math.max(0, pt[1] / 380 * 90), height: 14, rx: 3, fill: pt[2]}));
+    svg.appendChild(sv("text", {x: bx + 180, y: y + 11, "class": "small ltd"}, pt[1] + " t"));
+  });
+  detail($("rocketDetail"), (rIdx + 1) + " of " + RSTEPS.length + ": " + s.name, [s.txt]);
+  $("rocketNext").disabled = rIdx === RSTEPS.length - 1;
+}
+$("rocketNext").addEventListener("click", function(){ if (rIdx < RSTEPS.length - 1) rIdx++; drawRocket(); });
+$("rocketReset").addEventListener("click", function(){ rIdx = 0; drawRocket(); });
+drawRocket();
+
+/* ---------- Lesson 3: Mars delay ---------- */
+function drawMars(){
+  var d = +$("marsD").value, sec = d * 1e6 / 300000, min = sec / 60;
+  $("marsOut").textContent = d + " million km";
+  $("marsOne").textContent = fmt(min, 1) + " min";
+  $("marsTwo").textContent = fmt(min * 2, 1) + " min";
+  var svg = $("marsSvg"); clear(svg);
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 140, fill: "var(--night)"}));
+  var mx = 70 + (d - 55) / (400 - 55) * 380;
+  svg.appendChild(sv("circle", {cx: 40, cy: 70, r: 18, fill: "var(--earth)"}));
+  svg.appendChild(sv("text", {x: 40, y: 112, "text-anchor": "middle", "class": "small lt"}, "Earth"));
+  svg.appendChild(sv("circle", {cx: mx + 30, cy: 70, r: 11, fill: "var(--rocket)"}));
+  svg.appendChild(sv("text", {x: mx + 30, y: 112, "text-anchor": "middle", "class": "small lt"}, "Mars"));
+  svg.appendChild(sv("line", {x1: 62, y1: 70, x2: mx + 16, y2: 70, stroke: "var(--meo)", "stroke-width": 2, "stroke-dasharray": "4 6"}));
+  svg.appendChild(sv("text", {x: (62 + mx + 16) / 2, y: 56, "text-anchor": "middle", "class": "small lt"}, fmt(min, 1) + " minutes"));
+  $("marsNote").textContent = d <= 60 ? "Mars is at its closest. Even now, a rover could drive into a rock before a warning from Earth arrived." : d >= 380 ? "Mars is on the far side of the Sun. A command and its reply take more than 40 minutes, so rovers must plan their own moves." : "A driver on Earth would see the rover's camera view " + fmt(min, 1) + " minutes late.";
+}
+$("marsD").addEventListener("input", drawMars); drawMars();
+
+/* ---------- Lesson 4: Canada timeline ---------- */
+var TL = [
+  {y: 1962, c: 1, t: "Alouette 1", d: "Canada's first satellite studied the upper atmosphere. It made Canada one of the first countries to design and build its own satellite."},
+  {y: 1972, c: 1, t: "Anik A1", d: "A communications satellite high above the equator. It carried TV and phone signals across Canada, including to communities in the North."},
+  {y: 1981, c: 0, t: "Canadarm", d: "A robotic arm built in Canada flew on the Space Shuttle. It moved satellites in and out of the cargo bay and held astronauts during spacewalks."},
+  {y: 1984, c: 2, t: "Marc Garneau", d: "The first Canadian in space, aboard the Space Shuttle Challenger. Garneau is a Francophone from Quebec City."},
+  {y: 1992, c: 2, t: "Roberta Bondar", d: "The first Canadian woman in space. A neurologist, she studied how the nervous system adapts to microgravity."},
+  {y: 1995, c: 1, t: "RADARSAT-1", d: "A radar satellite that sees Earth's surface through cloud and darkness. It mapped sea ice, floods and crops."},
+  {y: 2001, c: 0, t: "Canadarm2", d: "A larger robotic arm for the ISS. It helped build the station and still catches visiting cargo ships."},
+  {y: 2008, c: 0, t: "Dextre", d: "A two-armed robot handyman on the ISS that can do delicate repair jobs, so astronauts make fewer risky spacewalks."},
+  {y: 2013, c: 2, t: "Chris Hadfield", d: "The first Canadian to command the ISS. His videos from orbit helped people around the world see life in space."},
+  {y: 2017, c: 1, t: "Ex-Alta 1", d: "A small satellite (CubeSat) built by University of Alberta students went to orbit to study space weather."},
+  {y: 2019, c: 1, t: "RADARSAT Constellation", d: "Three Canadian radar satellites working together to watch Canada's land, coasts and Arctic waters."},
+  {y: 2021, c: 2, t: "Webb telescope", d: "Canada built the Fine Guidance Sensor that keeps the James Webb Space Telescope pointed steadily, and the NIRISS science instrument."},
+  {y: 2026, c: 2, t: "Jeremy Hansen", d: "In April 2026 he flew around the Moon on Artemis II, the first Canadian to travel to the Moon. Canada's Canadarm3 for the Gateway station earned this seat."}
+];
+var tlFilter = -1, tlSel = 0;
+var CATN = ["Robotics", "Satellite technology", "Astronauts and science"];
+var CATC = ["var(--rocket)", "var(--orbit)", "var(--law)"];
+function drawTL(){
+  var svg = $("tlSvg"); clear(svg);
+  var x0 = 30, x1 = 610, sc = function(y){ return x0 + (y - 1960) / (2030 - 1960) * (x1 - x0); };
+  svg.appendChild(sv("line", {x1: x0, y1: 100, x2: x1, y2: 100, stroke: "var(--line)", "stroke-width": 3}));
+  [1960, 1980, 2000, 2020].forEach(function(y){ svg.appendChild(sv("text", {x: sc(y), y: 158, "text-anchor": "middle", "class": "small"}, String(y))); svg.appendChild(sv("line", {x1: sc(y), y1: 94, x2: sc(y), y2: 106, stroke: "var(--muted)"})); });
+  TL.forEach(function(ev, i){
+    var on = tlFilter < 0 || tlFilter === ev.c;
+    var x = sc(ev.y), y = i % 2 ? 128 : 68;
+    var g = sv("g", {opacity: on ? 1 : 0.2});
+    g.appendChild(sv("line", {x1: x, y1: 100, x2: x, y2: y, stroke: "var(--line)"}));
+    g.appendChild(sv("circle", {cx: x, cy: y, r: i === tlSel ? 11 : 8, fill: CATC[ev.c], stroke: i === tlSel ? "var(--ink)" : "var(--surface)", "stroke-width": 2}));
+    if (i === tlSel) g.appendChild(sv("text", {x: Math.min(560, Math.max(50, x)), y: i % 2 ? 152 : 46, "text-anchor": "middle", "class": "lbl"}, ev.y + " " + ev.t));
+    if (on) hot(g, ev.y + ": " + ev.t, function(){ tlSel = i; drawTL(); showTL(); });
+    svg.appendChild(g);
+  });
+}
+function showTL(){ var ev = TL[tlSel]; detail($("tlDetail"), ev.y + ": " + ev.t, [ev.d], CATN[ev.c]); }
+chipGroup($("tlFilter"), [{label: "All"}, {label: "Robotics"}, {label: "Satellites"}, {label: "Astronauts and science"}], "", function(it, i){
+  tlFilter = i - 1;
+  if (tlFilter >= 0 && TL[tlSel].c !== tlFilter) { for (var k = 0; k < TL.length; k++) if (TL[k].c === tlFilter) { tlSel = k; break; } }
+  drawTL(); showTL();
+}, 0);
+
+/* ---------- Lesson 5: benefits ---------- */
+var BEN = [
+  {label: "Wildfires", t: "Spotting wildfires", p: ["Satellites detect hot spots and smoke over Alberta's forests. Fire crews use the maps to plan where to send people and aircraft.", "Implication: data that protects communities, forests and air quality."]},
+  {label: "Farming", t: "Smarter farming", p: ["Satellite images show crop health, soil moisture and drought across the prairies. Satellite navigation guides tractors so seed and fertilizer go exactly where needed.", "Implication: less waste and better harvests."]},
+  {label: "Floods and ice", t: "Floods and ice", p: ["Radar satellites such as RADARSAT see through cloud. They map flooded land, river ice and Arctic sea ice for shipping and communities in the North."]},
+  {label: "Weather", t: "Weather forecasts", p: ["Weather satellites track storms and measure temperature and moisture around the globe. Forecasts for Edmonton depend on this data every day."]},
+  {label: "Medicine", t: "Medicine and health", p: ["Studies of astronauts teach doctors about bone loss, muscles and the heart. Space robotics ideas helped create neuroArm, a surgical robot developed at the University of Calgary.", "Satellite links also let doctors in cities support health care in remote communities."]},
+  {label: "Jobs", t: "Careers in the space industry", p: ["Canada's space industry employs thousands of people. Jobs include aerospace engineer, robotics technician, software developer, satellite data analyst, astronomer, flight surgeon, space lawyer and machinist.", "Many space jobs are on the ground, using space data to solve problems on Earth."]}
+];
+chipGroup($("benChips"), BEN, "or", function(b){ detail($("benDetail"), b.t, b.p, "Benefit to life on Earth"); }, 0);
+
+/* ---------- Lesson 6: orbits ---------- */
+var ORB = [
+  {r: 78, w: 20, col: "var(--leo)", t: "Low Earth orbit (LEO)", d: ["About 160 to 2000 km up. Home of the ISS, Earth-watching satellites and large internet satellite groups.", "This is the most crowded band and holds most of the debris. Objects here circle Earth in about 90 to 120 minutes at 7 to 8 km/s."]},
+  {r: 118, w: 12, col: "var(--meo)", t: "Medium Earth orbit (MEO)", d: ["About 2000 to 35 000 km up. Navigation satellites such as GPS and Europe's Galileo travel here.", "Less crowded, but debris here can stay for a very long time."]},
+  {r: 148, w: 8, col: "var(--geo)", t: "Geostationary orbit (GEO)", d: ["About 35 800 km above the equator. A satellite here circles once a day, so it seems to hang over one spot. TV and weather satellites, such as Canada's Anik satellites, use it.", "Slots in this ring are limited, so countries share them through an agency of the United Nations."]}
+];
+(function(){
+  var svg = $("orbSvg"), cx = 260, cy = 160, sel = 0;
+  var seed = 7; function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  var dots = []; for (var i = 0; i < 120; i++) { var a = rnd() * Math.PI * 2, rr = 70 + rnd() * 18; if (i > 95) rr = 112 + rnd() * 12; if (i > 112) rr = 146 + rnd() * 4; dots.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * 0.92]); }
+  function draw(){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 320, fill: "var(--night)"}));
+    ORB.forEach(function(o, i){
+      var g = sv("g");
+      g.appendChild(sv("ellipse", {cx: cx, cy: cy, rx: o.r, ry: o.r * 0.92, fill: "none", stroke: o.col, "stroke-width": o.w, opacity: i === sel ? 0.75 : 0.3}));
+      hot(g, o.t, function(){ sel = i; draw(); show(); });
+      svg.appendChild(g);
+    });
+    dots.forEach(function(p){ svg.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 1.6, fill: "var(--star)", "pointer-events": "none"})); });
+    svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 58, fill: "var(--earth)", "pointer-events": "none"}));
+    svg.appendChild(sv("path", {d: "M232 128 q18 -14 34 -4 q10 14 -6 26 q-16 8 -30 -6 z M268 176 q14 -6 22 6 q-4 16 -20 10 z", fill: "var(--land)", "pointer-events": "none"}));
+    svg.appendChild(sv("text", {x: cx, y: cy + 4, "text-anchor": "middle", "class": "lbl lt", "pointer-events": "none"}, "Earth"));
+    ["LEO", "MEO", "GEO"].forEach(function(n, i){ svg.appendChild(sv("text", {x: cx + ORB[i].r + 10, y: cy - ORB[i].r * 0.5, "class": "small lt", "pointer-events": "none"}, n)); });
+    svg.appendChild(sv("text", {x: 12, y: 306, "class": "small ltd"}, "Not to scale. Dots stand for objects; real numbers are far larger."));
+  }
+  function show(){ var o = ORB[sel]; detail($("orbDetail"), o.t, o.d, "Orbit band"); }
+  draw(); show();
+})();
+
+/* ---------- Lesson 7: body ---------- */
+var BODY = [
+  {x: 160, y: 40, t: "Head and eyes", d: ["Without gravity pulling fluid down, fluid shifts toward the head. Faces look puffy and legs get thin. Pressure changes can alter the shape of the eye, and some astronauts need new glasses.", "Countermeasure: eye exams before, during and after flights; research on suits that pull fluid back to the legs."]},
+  {x: 132, y: 52, t: "Inner ear and balance", d: ["The inner ear senses gravity to help with balance. In orbit it sends confusing signals, so many astronauts feel space sickness for the first few days. Back on Earth, walking can be wobbly for a while."]},
+  {x: 160, y: 120, t: "Heart and blood", d: ["The heart does not have to pump blood uphill, so it works less and can shrink a little. Astronauts can feel dizzy when they stand up after landing.", "Countermeasure: daily cardio exercise on a treadmill or bike."]},
+  {x: 160, y: 190, t: "Bones", d: ["Bones that hold up the body on Earth, such as hips and spine, lose minerals in microgravity. A common estimate is about 1 to 1.5 percent per month without countermeasures.", "Countermeasure: resistance exercise on special machines, and a healthy diet. Some loss can take years to recover."]},
+  {x: 140, y: 260, t: "Muscles", d: ["Leg and back muscles are hardly used when floating, so they shrink and weaken.", "Countermeasure: about two hours of exercise every day on the ISS."]},
+  {x: 208, y: 100, t: "Radiation", d: ["Earth's air and magnetic field shield us from most space radiation. On the ISS, astronauts receive much more radiation than on the ground, and beyond Earth's magnetic field it is higher still.", "Long-term risk: a higher chance of cancer later in life. Spacecraft add shielding, and mission length is limited."]},
+  {x: 112, y: 100, t: "Mind and sleep", d: ["Living in a small space far from family can be stressful. The ISS sees about 16 sunrises a day, which confuses the body clock.", "Countermeasure: schedules, special lighting, calls home, and support from psychologists on the ground."]}
+];
+(function(){
+  var svg = $("bodySvg"), sel = 0;
+  function draw(){
+    clear(svg);
+    var c = "var(--surface-2)", s = "var(--muted)";
+    svg.appendChild(sv("circle", {cx: 160, cy: 45, r: 30, fill: c, stroke: s, "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 125, y: 80, width: 70, height: 120, rx: 22, fill: c, stroke: s, "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 92, y: 86, width: 28, height: 100, rx: 14, fill: c, stroke: s, "stroke-width": 2, transform: "rotate(14 106 86)"}));
+    svg.appendChild(sv("rect", {x: 200, y: 86, width: 28, height: 100, rx: 14, fill: c, stroke: s, "stroke-width": 2, transform: "rotate(-14 214 86)"}));
+    svg.appendChild(sv("rect", {x: 128, y: 196, width: 28, height: 120, rx: 14, fill: c, stroke: s, "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 164, y: 196, width: 28, height: 120, rx: 14, fill: c, stroke: s, "stroke-width": 2}));
+    BODY.forEach(function(b, i){
+      var g = sv("g");
+      g.appendChild(sv("circle", {cx: b.x, cy: b.y, r: 13, fill: i === sel ? "var(--rocket)" : "var(--orbit)", stroke: "var(--surface)", "stroke-width": 2}));
+      g.appendChild(sv("text", {x: b.x, y: b.y + 4, "text-anchor": "middle", "class": "small", fill: "var(--surface)", style: "fill:var(--surface);font-weight:700"}, String(i + 1)));
+      hot(g, (i + 1) + ". " + b.t, function(){ sel = i; draw(); show(); });
+      svg.appendChild(g);
+    });
+  }
+  function show(){ var b = BODY[sel]; detail($("bodyDetail"), (sel + 1) + ". " + b.t, b.d, "Effect of spaceflight"); }
+  draw(); show();
+})();
+
+/* ---------- Lesson 8: law principles ---------- */
+var LAW = [
+  {label: "No claiming space", t: "Prohibit space appropriation", p: ["What the treaty says: outer space, the Moon and other bodies cannot be claimed by any country as its territory (Outer Space Treaty, Article II).", "In action: the Apollo astronauts planted a US flag on the Moon in 1969, but the United States did not and could not claim the Moon.", "Still debated: the treaty does not clearly say whether a company may own and sell materials it digs up. See Lesson 9."]},
+  {label: "Peaceful exploration", t: "Promote peaceful exploration", p: ["What the treaty says: no nuclear weapons or other weapons of mass destruction in orbit or on other worlds. The Moon and other bodies are for peaceful purposes only, with no military bases or weapons tests there.", "Be precise: the treaty does not ban every military use of space. Many armies use satellites for communication and navigation."]},
+  {label: "Benefit humankind", t: "Benefit humankind", p: ["What the treaty says: exploration must be carried out for the benefit of all countries, whatever their wealth or science. Space is free for all countries to explore.", "In action: countries share data, such as weather satellite images and disaster maps. Astronauts are treated as envoys of humankind, and countries must help astronauts in trouble."]},
+  {label: "Reduce contamination", t: "Reduce contamination", p: ["What the treaty says: countries must avoid harmful contamination of other worlds, and harmful changes to Earth from anything brought back.", "In action: Mars landers are cleaned to remove Earth microbes so scientists do not mistake them for Martian life. Samples brought back from Mars will be handled in sealed labs."]}
+];
+chipGroup($("lawChips"), LAW, "lw", function(l){ detail($("lawDetail"), l.t, l.p, "Outer Space Treaty, 1967"); }, 0);
+
+/* ---------- Lesson 9: gaps ---------- */
+var GAPS = [
+  {label: "Mining the Moon", s: 2, t: "Owning space resources", p: ["Some countries have national laws that let their companies own resources they mine in space. Other countries say this breaks the rule against claiming space. No international treaty settles it."]},
+  {label: "Traffic control", s: 2, t: "Space traffic management", p: ["Planes follow air traffic control. Satellites have no international traffic control. Operators share warnings and move satellites to avoid crashes, mostly on a voluntary basis."]},
+  {label: "Debris cleanup", s: 1, t: "Debris rules and cleanup", p: ["International guidelines ask operators to remove satellites from busy orbits after their missions, but the guidelines are voluntary. Some countries have stricter national rules.", "A country keeps control of its dead satellites, so another country cannot remove them without permission."]},
+  {label: "Bright satellites", s: 2, t: "The night sky", p: ["Groups of thousands of internet satellites reflect sunlight. They leave streaks in telescope images and change the night sky. No international rule limits how bright satellites can be."]},
+  {label: "Space tourism", s: 1, t: "Passenger safety", p: ["Countries license launches, but there is no international safety standard for paying passengers. In the United States, passengers sign forms saying they understand the risks."]},
+  {label: "Anti-satellite tests", s: 1, t: "Weapons and anti-satellite tests", p: ["Weapons of mass destruction are banned in orbit, but ordinary weapons are not. Tests that blow up satellites create thousands of fragments.", "In 2022, Canada and many other countries promised not to do destructive tests, but this is a voluntary pledge."]},
+  {label: "Moon settlements", s: 2, t: "Living on other worlds", p: ["If people build bases on the Moon or Mars, whose laws apply there? How are shared areas, such as ice deposits, divided fairly? The treaties do not say."]},
+  {label: "Rescue and liability", s: 0, t: "Rescue and damage (covered)", p: ["This is covered. Treaties require countries to help astronauts in trouble and to pay for damage their space objects cause on Earth. Countries also register what they launch."]}
+];
+var GSTAT = [["cov", "Covered by treaty"], ["part", "Partly covered or voluntary"], ["gap", "Not regulated internationally"]];
+chipGroup($("gapChips"), GAPS, "lw", function(g){
+  var box = $("gapDetail"); clear(box);
+  box.appendChild(el("span", {"class": "status " + GSTAT[g.s][0]}, GSTAT[g.s][1]));
+  box.appendChild(el("h5", null, g.t));
+  g.p.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}, 0);
+
+/* ---------- Investigation 1: mission planner ---------- */
+var MTOOLS = ["Rocket", "Computers", "Space telescope", "Rover", "Space station", "Earth-watching satellite"];
+var MISSIONS = [
+  {label: "Life on Mars?", goal: "Search Martian rocks for signs of ancient life.", need: [0, 1, 3], opt: [], why: "A rocket launches the mission, computers land it and plan drives, and a rover drills and tests rocks on the surface. A space station orbits Earth, so it cannot reach Martian rocks."},
+  {label: "First galaxies", goal: "Photograph galaxies whose light left them more than 13 billion years ago.", need: [0, 1, 2], opt: [], why: "A rocket places a space telescope above the air, and computers point it and turn its signals into images. Rovers and stations are not needed."},
+  {label: "Bones in orbit", goal: "Measure how six months in orbit changes astronauts' bones.", need: [0, 1, 4], opt: [], why: "Astronauts must live in microgravity for months, which needs a space station. Rockets carry crew and supplies; computers run the station and record data."},
+  {label: "Wildfire watch", goal: "Map wildfire hot spots and smoke over Alberta every day.", need: [0, 1, 5], opt: [], why: "An Earth-watching satellite looks down at Alberta from orbit. A rocket launches it and computers turn its data into fire maps."},
+  {label: "Moon rover test", goal: "Drive a rover on the Moon from a control room in Edmonton.", need: [0, 1, 3], opt: [4], why: "A rocket and a rover are needed, and computers send commands with only a 1.3 second delay. A station near the Moon could help relay signals, but it is not required."}
+];
+(function(){
+  var cur;
+  function start(m){
+    cur = m; $("mpGoal").textContent = ""; $("mpGoal").appendChild(el("b", null, "Mission: " + m.label)); $("mpGoal").appendChild(el("p", null, m.goal));
+    var box = $("mpTools"); clear(box);
+    MTOOLS.forEach(function(t, i){ var l = el("label", {"for": "mp" + i}), cb = el("input", {type: "checkbox", id: "mp" + i}); l.appendChild(cb); l.appendChild(document.createTextNode(t)); box.appendChild(l); });
+    clear($("mpFb"));
+  }
+  $("mpCheck").addEventListener("click", function(){
+    var missing = [], extra = [];
+    MTOOLS.forEach(function(t, i){ var on = $("mp" + i).checked; if (cur.need.indexOf(i) > -1 && !on) missing.push(t); if (on && cur.need.indexOf(i) < 0 && cur.opt.indexOf(i) < 0) extra.push(t); });
+    var fb = $("mpFb"); clear(fb);
+    var ok = !missing.length && !extra.length;
+    fb.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "Mission ready. Your plan has everything it needs." : (missing.length ? "Missing: " + missing.join(", ") + ". " : "") + (extra.length ? "Not needed: " + extra.join(", ") + "." : "")));
+    fb.appendChild(el("p", {"class": "hint"}, cur.why));
+    if (ok) { store.mp = store.mp || {}; store.mp[cur.label] = 1; save(); }
+  });
+  chipGroup($("mpChips"), MISSIONS, "ro", function(m){ start(m); }, 0);
+})();
+
+/* ---------- Investigation 2: signal delay ---------- */
+var DEST = [
+  {n: "a communications satellite in geostationary orbit", lo: 35800, hi: 36000, u: "s"},
+  {n: "the Moon", lo: 363000, hi: 405000, u: "s"},
+  {n: "Mars at a close approach", lo: 56, hi: 90, u: "min", m: 1},
+  {n: "Mars on the far side of the Sun", lo: 340, hi: 400, u: "min", m: 1},
+  {n: "the Sun", lo: 147, hi: 152, u: "min", m: 1},
+  {n: "Jupiter", lo: 590, hi: 960, u: "min", m: 1},
+  {n: "Saturn", lo: 1200, hi: 1650, u: "min", m: 1}
+];
+(function(){
+  var cur, d, ans;
+  store.sd = store.sd || {right: 0, tries: 0};
+  function score(){ $("sdScore").textContent = "Correct so far: " + store.sd.right + " of " + store.sd.tries; }
+  function make(){
+    cur = pick(DEST);
+    if (cur.m) { d = Math.round(cur.lo + Math.random() * (cur.hi - cur.lo)); ans = d * 1e6 / 300000 / 60; $("sdQ").textContent = "A spacecraft near " + cur.n + " is " + d + " million km from Earth. How many minutes does a radio message take to reach it? Round to one decimal place."; }
+    else { d = Math.round((cur.lo + Math.random() * (cur.hi - cur.lo)) / 100) * 100; ans = d / 300000; $("sdQ").textContent = "A spacecraft near " + cur.n + " is " + fmt(d, 0) + " km from Earth. How many seconds does a radio message take to reach it? Round to two decimal places."; }
+    $("sdUnit").textContent = cur.u; $("sdA").value = ""; clear($("sdFb")); score();
+  }
+  function steps(){
+    var box = $("sdFb"); clear(box);
+    if (cur.m) {
+      box.appendChild(el("p", null, "d = " + d + " million km = " + fmt(d * 1e6, 0) + " km"));
+      box.appendChild(el("p", null, "t = d ÷ c = " + fmt(d * 1e6, 0) + " ÷ 300 000 = " + fmt(d * 1e6 / 300000, 0) + " s"));
+      box.appendChild(el("p", null, "Convert to minutes: " + fmt(d * 1e6 / 300000, 0) + " ÷ 60 = " + fmt(ans, 1) + " min"));
+    } else {
+      box.appendChild(el("p", null, "t = d ÷ c = " + fmt(d, 0) + " ÷ 300 000 = " + fmt(ans, 2) + " s"));
+    }
+  }
+  $("sdCheck").addEventListener("click", function(){
+    var v = parseFloat($("sdA").value), box = $("sdFb"); clear(box);
+    if (isNaN(v)) { box.appendChild(el("p", {"class": "fb no"}, "Type a number first.")); return; }
+    var ok = Math.abs(v - ans) <= Math.max(0.02, ans * 0.03);
+    store.sd.tries++; if (ok) store.sd.right++; save(); score();
+    box.appendChild(el("p", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "Correct: about " + fmt(ans, cur.m ? 1 : 2) + " " + cur.u + "." : "Not quite. The answer is about " + fmt(ans, cur.m ? 1 : 2) + " " + cur.u + ". Check the steps."));
+    if (!ok) steps();
+  });
+  $("sdNew").addEventListener("click", make);
+  $("sdShow").addEventListener("click", steps);
+  make();
+})();
+
+/* ---------- Investigation 3: debris simulator ---------- */
+(function(){
+  function lab(){
+    $("dbLaunchOut").textContent = $("dbLaunch").value;
+    $("dbCompOut").textContent = $("dbComp").value + "%";
+    $("dbRemoveOut").textContent = $("dbRemove").value;
+  }
+  ["dbLaunch", "dbComp", "dbRemove"].forEach(function(id){ $(id).addEventListener("input", lab); });
+  function run(){
+    var L = +$("dbLaunch").value, comp = +$("dbComp").value / 100, R = +$("dbRemove").value, asat = $("dbAsat").checked;
+    var N = 40, series = [N], col = 0;
+    for (var y = 1; y <= 30; y++) {
+      col = 0.0004 * N * N;
+      N = N + L * (1 - comp) + col - 0.02 * N - R + (asat && y === 5 ? 3 : 0);
+      if (N < 5) N = 5;
+      if (N > 400) N = 400;
+      series.push(N);
+    }
+    var svg = $("dbSvg"); clear(svg);
+    var x0 = 46, x1 = 404, y0 = 206, y1 = 16, max = Math.max(100, Math.ceil(Math.max.apply(null, series) / 50) * 50);
+    var sx = function(t){ return x0 + t / 30 * (x1 - x0); }, sy = function(v){ return y0 - v / max * (y0 - y1); };
+    for (var g = 0; g <= 4; g++) { var v = max / 4 * g; svg.appendChild(sv("line", {x1: x0, y1: sy(v), x2: x1, y2: sy(v), "class": "grid"})); svg.appendChild(sv("text", {x: x0 - 6, y: sy(v) + 4, "text-anchor": "end", "class": "small"}, String(Math.round(v)))); }
+    [0, 10, 20, 30].forEach(function(t){ svg.appendChild(sv("text", {x: sx(t), y: y0 + 16, "text-anchor": "middle", "class": "small"}, String(t))); });
+    svg.appendChild(sv("text", {x: (x0 + x1) / 2, y: 236, "text-anchor": "middle", "class": "small"}, "Years from now"));
+    svg.appendChild(sv("text", {x: 8, y: 12, "class": "small"}, "Thousands of tracked objects"));
+    svg.appendChild(sv("line", {x1: x0, y1: sy(40), x2: x1, y2: sy(40), stroke: "var(--muted)", "stroke-dasharray": "2 3"}));
+    var d = series.map(function(v, t){ return (t ? "L" : "M") + sx(t).toFixed(1) + " " + sy(v).toFixed(1); }).join(" ");
+    var end = series[30];
+    svg.appendChild(sv("path", {d: d, fill: "none", stroke: end > 60 ? "var(--rocket)" : "var(--orbit)", "stroke-width": 3}));
+    svg.appendChild(sv("circle", {cx: sx(30), cy: sy(end), r: 4, fill: end > 60 ? "var(--rocket)" : "var(--orbit)"}));
+    $("dbEnd").textContent = (end >= 400 ? "400+" : fmt(end, 0)) + " thousand";
+    $("dbCol").textContent = fmt(col, 1) + " thousand fragments";
+    var msg;
+    if (end >= 150) msg = "Runaway growth. Collisions make fragments faster than old objects fall out of orbit. This is the Kessler syndrome, and low orbits would become risky for everyone.";
+    else if (end > 60) msg = "Debris keeps growing. More launches with fewer satellites brought down add objects, and each extra object raises the chance of collisions.";
+    else if (end > 42) msg = "Slow growth. Try bringing more satellites down at the end of their life, or add cleanup missions.";
+    else msg = "Stable or shrinking. Bringing satellites down and cleaning up old debris keeps orbits usable. This is what sustainable use of space looks like.";
+    if (asat) msg += " The weapons test added thousands of fragments in a single day, and those fragments then cause more collisions.";
+    $("dbFb").textContent = msg + " (Made-up model for practice.)";
+    store.db = 1; save();
+  }
+  $("dbRun").addEventListener("click", run);
+  lab(); run();
+})();
+
+/* ---------- Investigation 4: implications ---------- */
+var IMPL = [
+  {label: "Wildfire satellite", rows: [
+    ["Daily fire maps help crews protect Alberta communities.", "b", "Data that benefits life on Earth."],
+    ["Engineers and data analysts in Canada are hired to build and run it.", "b", "Employment in the space industry."],
+    ["It costs hundreds of millions of dollars to build, launch and operate for years.", "d", "Long-term investment and maintenance costs."],
+    ["When it stops working, it could become debris unless it is brought down.", "d", "Space debris in orbit."],
+    ["No astronauts are needed to run it.", "b", "No effects on the human body, and lower cost."]
+  ]},
+  {label: "Crewed Mars mission", rows: [
+    ["Crew could search for signs of past life much faster than a rover.", "b", "Data and discovery."],
+    ["The trip takes years in microgravity and high radiation.", "d", "Effects on the human body."],
+    ["It would cost far more than any robot mission and take decades to plan.", "d", "Long-term costs."],
+    ["New life-support and medical technology could later help people on Earth.", "b", "Benefits to life on Earth."],
+    ["It inspires students and creates jobs, but money spent here is not spent on other needs.", "both", "Both a benefit (jobs) and a drawback (cost trade-off)."]
+  ]},
+  {label: "Moon ice mining", rows: [
+    ["Water ice could make drinking water and rocket fuel on the Moon.", "b", "Supports future exploration."],
+    ["New space mining jobs would open up.", "b", "Employment."],
+    ["International law does not clearly say who can own the ice.", "d", "Not regulated by international space law, which could cause conflict."],
+    ["Mining dust and equipment could damage sites scientists want to study.", "d", "Contamination and loss of scientific value."],
+    ["Only wealthy countries and companies can afford to mine at first.", "d", "An equity concern: benefits may not be shared fairly."]
+  ]},
+  {label: "10 000 internet satellites", rows: [
+    ["Fast internet reaches rural farms and remote northern communities.", "b", "Benefit to life on Earth."],
+    ["Thousands more objects crowd low Earth orbit.", "d", "More debris and collision risk."],
+    ["Satellite streaks spoil telescope images and change the night sky.", "d", "A cost to astronomy and to everyone who values a dark sky."],
+    ["Factories and launch sites hire many workers.", "b", "Employment."],
+    ["Satellites must be replaced every few years, which means more launches.", "both", "Jobs (benefit), but ongoing cost and debris (drawback)."]
+  ]}
+];
+(function(){
+  var cur, LBL = {b: "Benefit", d: "Drawback", both: "Both"};
+  function start(m, mi){
+    cur = m; var box = $("imRows"); clear(box); clear($("imFb"));
+    m.rows.forEach(function(r, i){
+      var row = el("div", {"class": "vrow", id: "imr" + i});
+      row.appendChild(el("p", null, r[0]));
+      var lab = el("label", {"class": "sr", "for": "ims" + i}, "Benefit or drawback: " + r[0]);
+      var s = el("select", {id: "ims" + i});
+      [["", "Choose"], ["b", "Benefit"], ["d", "Drawback"], ["both", "Both"]].forEach(function(o){ s.appendChild(el("option", {value: o[0]}, o[1])); });
+      row.appendChild(lab); row.appendChild(s);
+      box.appendChild(row);
+    });
+  }
+  $("imCheck").addEventListener("click", function(){
+    var right = 0;
+    cur.rows.forEach(function(r, i){
+      var row = $("imr" + i), v = $("ims" + i).value, ok = v === r[1];
+      if (ok) right++;
+      row.className = "vrow " + (ok ? "ok" : "no");
+      var old = row.querySelector(".why"); if (old) row.removeChild(old);
+      row.appendChild(el("p", {"class": "why"}, (ok ? "Yes. " : "Best answer: " + LBL[r[1]] + ". ") + r[2]));
+    });
+    var fb = $("imFb"); clear(fb);
+    fb.appendChild(el("p", {"class": "fb " + (right === cur.rows.length ? "ok" : "no")}, right + " of " + cur.rows.length + " match the model analysis."));
+    fb.appendChild(el("p", {"class": "hint"}, "To analyze implications, weigh benefits against drawbacks and ask who gains, who pays, and whether the effects last."));
+  });
+  chipGroup($("imChips"), IMPL, "ro", function(m, i){ start(m, i); }, 0);
+})();
+
+/* ---------- Investigation 5: health planner ---------- */
+(function(){
+  var deep = false;
+  var PRE = [{label: "ISS stay (6 months, low orbit)", m: 6, deep: false}, {label: "Year on the ISS (12 months)", m: 12, deep: false}, {label: "Moon trip (1 month, deep space)", m: 1, deep: true}, {label: "Mars round trip (about 30 months)", m: 30, deep: true}];
+  function bar(box, name, val, max, txt, warn){
+    var r = el("div", {"class": "barrow"});
+    r.appendChild(el("span", null, name));
+    var tr = el("div", {"class": "track"}), i = el("i", warn ? {"class": "warn"} : null);
+    i.style.width = Math.min(100, val / max * 100) + "%"; tr.appendChild(i); r.appendChild(tr);
+    r.appendChild(el("b", null, txt)); box.appendChild(r);
+  }
+  function draw(){
+    var m = +$("hpMonths").value, ex = $("hpEx").checked;
+    $("hpOut").textContent = m + (m === 1 ? " month" : " months") + (deep ? ", deep space" : ", low orbit");
+    var bone = m * (ex ? 0.5 : 1.25);
+    var dose = m * 30 * (deep ? 1.5 : 0.5);
+    var box = $("hpBars"); clear(box);
+    bar(box, "Hip bone lost", bone, 30, fmt(bone, 0) + "%", bone > 10);
+    bar(box, "Radiation (mSv)", dose, 1000, fmt(dose, 0), dose > 600);
+    bar(box, "Career limit", 600, 1000, "600");
+    var note = [];
+    note.push("Hip bone loss is estimated at about " + (ex ? "0.5" : "1.25") + " percent per month in this model.");
+    note.push("Radiation: about " + (deep ? "1.5" : "0.5") + " mSv per day. A person in Canada gets about 1.8 mSv per year from natural sources.");
+    if (dose > 600) note.push("This mission goes past NASA's career radiation limit of 600 mSv. Planners would need more shielding or a shorter trip.");
+    if (!ex) note.push("Without daily exercise, bones and muscles weaken much faster.");
+    note.push("Rounded estimates for a simple model.");
+    $("hpNote").textContent = note.join(" ");
+  }
+  chipGroup($("hpPresets"), PRE, "or", function(p){ $("hpMonths").value = p.m; deep = p.deep; draw(); }, 0);
+  $("hpMonths").addEventListener("input", draw); $("hpEx").addEventListener("change", draw);
+})();
+
+/* ---------- Investigation 6: law court ---------- */
+var VERD = ["Against the treaties", "Required or allowed by the treaties", "Not clearly regulated"];
+var PRIN = ["No claiming territory", "Peaceful use", "Benefit for all", "Avoid contamination", "Country is responsible", "Gap in the law"];
+var CASES = [
+  {t: "A country plants its flag in a crater on Mars and declares the crater its territory.", v: 0, p: 0, w: "The Outer Space Treaty bans any national claim of territory in space. A flag can mark a visit, not ownership."},
+  {t: "A country places a nuclear weapon in orbit around Earth.", v: 0, p: 1, w: "Nuclear weapons and other weapons of mass destruction are banned from orbit."},
+  {t: "A military base is built on the Moon.", v: 0, p: 1, w: "The Moon and other bodies are for peaceful purposes only, and military bases there are banned."},
+  {t: "A Canadian company launches a satellite. Who must authorize and supervise it?", v: 1, p: 4, w: "Countries are responsible for space activities by their companies. Canada must license and supervise the company, and Canada is liable for damage it causes."},
+  {t: "A small country with no rockets asks for satellite images of its farmland after a drought.", v: 1, p: 2, w: "Space exploration should benefit all countries. Many space agencies share data, especially for disasters."},
+  {t: "A Mars lander is sent without being cleaned to remove Earth microbes.", v: 0, p: 3, w: "Countries must avoid harmful contamination of other worlds. Landers are cleaned so Earth microbes are not mistaken for Martian life."},
+  {t: "Rock samples brought back from Mars are opened in an ordinary classroom.", v: 0, p: 3, w: "The treaty also protects Earth from harmful contamination by anything brought back, so samples are kept in sealed labs."},
+  {t: "A company mines water ice on the Moon and sells it as rocket fuel.", v: 2, p: 5, w: "International law does not clearly say whether a company can own resources it extracts. Some national laws allow it, and other countries disagree."},
+  {t: "A space tourism company flies paying passengers past the edge of space. What international safety standard protects them?", v: 2, p: 5, w: "There is no international safety standard for space tourists. Rules come from the country that licenses the launch."},
+  {t: "A dead satellite drifts for decades in a busy orbit. Must its owner remove it?", v: 2, p: 5, w: "Debris guidelines ask operators to clear busy orbits, but they are voluntary. No treaty requires removal."},
+  {t: "A country tests a missile by blowing up one of its own satellites, making thousands of fragments.", v: 2, p: 5, w: "The treaties ban weapons of mass destruction in orbit, not ordinary missiles. Canada and others pledged in 2022 not to do these tests, but the pledge is voluntary."},
+  {t: "A website sells deeds to plots of land on the Moon.", v: 0, p: 0, w: "No country can claim the Moon, so no one has land there to sell. The deeds have no legal value."}
+];
+(function(){
+  var order = shuffle(CASES.map(function(c, i){ return i; })), pos = 0, vSel = -1, pSel = -1, done = false;
+  store.ct = store.ct || {right: 0, total: 0};
+  var setV = chipGroup($("ctVerdict"), VERD.map(function(v){ return {label: v}; }), "lw", function(it, i){ vSel = i; });
+  var setP = chipGroup($("ctPrinciple"), PRIN.map(function(v){ return {label: v}; }), "lw", function(it, i){ pSel = i; });
+  function reset(btns){ Array.prototype.forEach.call(btns.querySelectorAll(".chip"), function(b){ b.setAttribute("aria-pressed", "false"); }); }
+  function show(){
+    var c = CASES[order[pos]], box = $("ctCase"); clear(box);
+    box.appendChild(el("b", null, "Case " + (pos + 1) + " of " + CASES.length));
+    box.appendChild(el("p", null, c.t));
+    vSel = -1; pSel = -1; done = false; reset($("ctVerdict")); reset($("ctPrinciple")); clear($("ctFb"));
+    $("ctScore").textContent = "Cases ruled correctly: " + store.ct.right + " of " + store.ct.total;
+  }
+  $("ctCheck").addEventListener("click", function(){
+    var fb = $("ctFb"); clear(fb);
+    if (vSel < 0 || pSel < 0) { fb.appendChild(el("p", {"class": "fb no"}, "Choose a verdict and a principle first.")); return; }
+    var c = CASES[order[pos]], okV = vSel === c.v, okP = pSel === c.p;
+    if (!done) { store.ct.total++; if (okV && okP) store.ct.right++; save(); done = true; }
+    fb.appendChild(el("p", {"class": "fb " + (okV && okP ? "ok" : "no")}, (okV ? "Verdict correct. " : "Verdict: " + VERD[c.v] + ". ") + (okP ? "Principle correct." : "Principle: " + PRIN[c.p] + ".")));
+    fb.appendChild(el("p", {"class": "hint"}, c.w));
+    $("ctScore").textContent = "Cases ruled correctly: " + store.ct.right + " of " + store.ct.total;
+  });
+  $("ctNext").addEventListener("click", function(){ pos = (pos + 1) % CASES.length; if (pos === 0) order = shuffle(order); show(); });
+  show();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Which technology?", bins: ["Rocket", "Computer", "Telescope", "Rover", "Space station"], items: [
+    ["Drops empty stages to save mass", 0, "Rockets are built in stages."],
+    ["Turns raw signals into images of galaxies", 1, "Computers process the data."],
+    ["Collects infrared light from distant galaxies", 2, "That is what a telescope does."],
+    ["Drills Martian rock and tests it", 3, "Rovers study a surface up close."],
+    ["Crew lives there for six months doing experiments", 4, "Space stations let people stay in orbit."],
+    ["Steers a launch many times each second", 1, "Guidance computers steer rockets."],
+    ["Burns fuel and pushes hot gas out the bottom", 0, "That is how rockets produce thrust."],
+    ["Drives itself around rocks because commands are minutes late", 3, "Rovers use onboard computers to drive."],
+    ["Orbits above the air so starlight is not blurred", 2, "Space telescopes avoid the atmosphere."],
+    ["Canadarm2 is attached to it", 4, "Canadarm2 works on the ISS."]
+  ]},
+  {label: "Benefit or drawback", bins: ["Benefit", "Drawback"], items: [
+    ["Satellite maps of wildfire hot spots", 0, "Data that benefits life on Earth."],
+    ["Bone loss in astronauts", 1, "An effect on the human body."],
+    ["Jobs for robotics technicians", 0, "Employment in the space industry."],
+    ["A dead satellite tumbling in orbit", 1, "Space debris."],
+    ["Billions of dollars to maintain a station for decades", 1, "Long-term investment and maintenance costs."],
+    ["GPS guiding tractors on prairie farms", 0, "A benefit to life on Earth."],
+    ["Higher radiation dose for crews", 1, "An effect on the human body."],
+    ["Weather forecasts from satellite data", 0, "Data that benefits life on Earth."],
+    ["Fragments from an anti-satellite test", 1, "Space debris."],
+    ["Medical robots inspired by space robotics", 0, "A spin-off benefit."]
+  ]},
+  {label: "Space law", bins: ["Against the treaties", "Required by the treaties", "Not clearly regulated"], items: [
+    ["Claiming the Moon as national territory", 0, "Space appropriation is prohibited."],
+    ["Nuclear weapons in orbit", 0, "Weapons of mass destruction are banned in space."],
+    ["Helping astronauts who land in trouble", 1, "Countries must assist and return astronauts."],
+    ["Registering a satellite you launch", 1, "The Registration Convention requires it."],
+    ["Who owns ice mined on the Moon", 2, "Resource ownership is unsettled."],
+    ["How bright satellites may be", 2, "No international rule limits brightness."],
+    ["Safety rules for space tourists", 2, "There is no international standard."],
+    ["Military bases on the Moon", 0, "The Moon is for peaceful purposes only."],
+    ["Paying for damage your satellite causes on Earth", 1, "The Liability Convention requires it."]
+  ]},
+  {label: "Canada's contributions", bins: ["Robotics", "Satellite technology", "Astronauts and science"], items: [
+    ["Canadarm", 0, "A robotic arm for the Space Shuttle."],
+    ["Alouette 1", 1, "Canada's first satellite."],
+    ["Dextre", 0, "A two-armed robot on the ISS."],
+    ["RADARSAT Constellation Mission", 1, "Three radar satellites."],
+    ["Marc Garneau", 2, "The first Canadian in space."],
+    ["Canadarm3 for Gateway", 0, "A robotic system for a station orbiting the Moon."],
+    ["Anik A1", 1, "A communications satellite."],
+    ["Jeremy Hansen on Artemis II", 2, "The first Canadian to travel to the Moon."],
+    ["Webb's Fine Guidance Sensor", 2, "A Canadian science and guidance instrument on the Webb telescope."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Space exploration", "The study of space using spacecraft, instruments and people."],
+  ["Rocket", "A vehicle that pushes hot gas out one end so it moves the other way, strong enough to reach orbit."],
+  ["Rocket stage", "A section of a rocket with its own fuel and engines that drops away when empty to save mass."],
+  ["Space telescope", "A telescope in orbit, above the air that blurs and blocks some light. Example: James Webb Space Telescope."],
+  ["Rover", "A robot vehicle that drives on another world and studies it up close. Example: Perseverance on Mars."],
+  ["Space station", "A lab in orbit where people live and work for months. Example: the International Space Station."],
+  ["Satellite", "An object that orbits a larger body. Artificial satellites are human-made, such as RADARSAT."],
+  ["Orbit", "The curved path of an object around a planet or star."],
+  ["Signal delay", "The time a radio message takes to travel. t = d ÷ c, where c is about 300 000 km/s."],
+  ["Canadarm2", "Canada's robotic arm on the ISS. It helped build the station and catches cargo ships."],
+  ["Dextre", "Canada's two-armed robot handyman on the ISS."],
+  ["RADARSAT", "Canadian radar satellites that see Earth's surface through cloud and darkness."],
+  ["Implication", "A result or effect that follows from a choice. It can be positive or negative."],
+  ["Space industry", "Businesses and agencies that build, launch and use space technology and data."],
+  ["Space debris", "Human-made junk in orbit, such as dead satellites, old rocket stages and fragments."],
+  ["Kessler syndrome", "A chain reaction in which collisions make debris that causes more collisions."],
+  ["Microgravity", "The weightless condition astronauts feel in orbit because they are in free fall."],
+  ["Bone loss", "Loss of minerals from bones that are not supporting body weight in microgravity."],
+  ["Space radiation", "High-energy particles in space. Exposure is much higher than on the ground and raises cancer risk."],
+  ["Treaty", "A written agreement between countries that they promise to follow."],
+  ["Outer Space Treaty", "The 1967 treaty that is the foundation of international space law. Canada is a party."],
+  ["Space appropriation", "Claiming part of space, the Moon or a planet as a country's own territory. Banned by the Outer Space Treaty."],
+  ["Peaceful exploration", "Exploration without weapons of mass destruction in orbit and without military bases on other worlds."],
+  ["Contamination", "Carrying unwanted material or life, such as Earth microbes to Mars, or Martian material back to Earth."],
+  ["Artemis Accords", "A 2020 set of voluntary principles for exploring the Moon. Canada signed. It is not a binding treaty."],
+  ["Sustainability", "Using space so it stays safe and usable for future generations."],
+  ["Equitable use", "Fair use of space so all countries, not only wealthy ones, share its benefits."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Why are rockets built in stages?", ["Empty stages drop away, so the rocket does not carry useless mass.", "Stages make the rocket look taller.", "Each stage carries a different astronaut.", "Stages stop the rocket from spinning."], "Dropping empty tanks lets the remaining fuel push a lighter rocket faster."],
+  ["Which technology lets a Mars rover avoid a rock without waiting for Earth?", ["Its onboard computer", "A space station", "A telescope on Earth", "Its rocket engine"], "Signals take minutes, so rovers use onboard computers to drive themselves."],
+  ["Why put a telescope in space?", ["Air blurs starlight and blocks some light, such as much of the infrared.", "Stars are closer in space.", "Telescopes do not work on Earth.", "It is cheaper than building one on a mountain."], "Space telescopes avoid the atmosphere's blurring and absorption."],
+  ["What is the main purpose of a space station such as the ISS?", ["Letting people live and work in orbit for months to do experiments", "Launching rockets to Mars", "Taking photos of distant galaxies only", "Driving across the Moon"], "Stations let crews stay in microgravity for long experiments."],
+  ["The Moon is about 384 000 km away. About how long does a radio signal take to get there? (c ≈ 300 000 km/s)", ["About 1.3 s", "About 13 s", "About 0.13 s", "About 2 min"], "t = 384 000 ÷ 300 000 = 1.28 s."],
+  ["Mars is 150 million km away. About how long does a message take? (c ≈ 300 000 km/s)", ["About 8.3 min", "About 83 min", "About 50 s", "About 2.5 h"], "150 000 000 ÷ 300 000 = 500 s, and 500 ÷ 60 ≈ 8.3 min."],
+  ["Which two areas is Canada best known for in space technology?", ["Robotics and satellite technology", "Rocket engines and space tourism", "Moon mining and space stations", "Telescopes and spacesuits only"], "Canadarm, Canadarm2, Dextre, and satellites such as Alouette, Anik and RADARSAT."],
+  ["What does Canadarm2 do?", ["It helped build the ISS and catches visiting cargo ships.", "It launches satellites from the ground.", "It drives on Mars.", "It is a telescope."], "Canadarm2 is the station's robotic arm."],
+  ["What makes RADARSAT satellites especially useful in Canada?", ["Radar sees the surface through cloud and darkness.", "They carry astronauts.", "They only work in summer.", "They study distant galaxies."], "Radar works day and night in any weather, useful for floods and sea ice."],
+  ["Who was the first Canadian in space?", ["Marc Garneau", "Chris Hadfield", "Jeremy Hansen", "Roberta Bondar"], "Marc Garneau flew in 1984. Bondar was the first Canadian woman (1992)."],
+  ["Which is a benefit of space exploration for life on Earth?", ["Satellite maps of wildfires and floods", "Space debris", "Bone loss in astronauts", "Maintenance costs"], "Satellite data helps protect communities."],
+  ["Which statement about space industry jobs is most accurate?", ["Many space jobs are on the ground, such as data analysis, robotics and law.", "Only astronauts work in the space industry.", "Space jobs exist only in the United States.", "Space jobs do not involve computers."], "The industry employs many kinds of workers, most of them on Earth."],
+  ["What is space debris?", ["Human-made junk in orbit, such as dead satellites and fragments", "Rocks from the asteroid belt", "Dust on the Moon", "Gas around the Sun"], "Debris comes from human activity in space."],
+  ["Why is even a tiny piece of debris dangerous in low Earth orbit?", ["It moves at about 7 to 8 km every second.", "It is radioactive.", "It is magnetic.", "It is always on fire."], "At that speed, small objects can damage spacecraft."],
+  ["What is the Kessler syndrome?", ["A chain reaction where collisions make debris that causes more collisions", "Space sickness in the first few days", "The loss of bone in space", "A rule for naming satellites"], "Runaway collisions could make some orbits unusable."],
+  ["Why do astronauts exercise about two hours a day on the ISS?", ["To slow bone and muscle loss in microgravity", "To stay warm", "To make the station move", "To produce oxygen"], "Bones and muscles weaken without the load of gravity."],
+  ["Why do astronauts' faces look puffy in orbit?", ["Body fluids shift toward the head without gravity pulling them down.", "They eat more salt.", "The air is thinner.", "Radiation causes swelling."], "Fluid shift also affects the eyes."],
+  ["Which treaty is the foundation of international space law?", ["The Outer Space Treaty of 1967", "The Artemis Accords of 2020", "The Treaty 6 agreement of 1876", "The Kyoto Protocol"], "Canada and more than 110 other countries are parties to it."],
+  ["What does 'prohibit space appropriation' mean?", ["No country can claim the Moon, a planet or part of space as its territory.", "No country can launch rockets.", "Satellites cannot be sold.", "Only the United Nations may explore space."], "Article II of the Outer Space Treaty bans national claims."],
+  ["Which is banned by the Outer Space Treaty?", ["Nuclear weapons in orbit", "Weather satellites", "Robotic arms", "GPS satellites"], "Weapons of mass destruction are banned in space."],
+  ["Why are Mars landers cleaned before launch?", ["To avoid contaminating Mars with Earth microbes", "To make them shiny for photos", "To reduce their mass", "To meet tourism rules"], "Space law asks countries to avoid harmful contamination."],
+  ["A Canadian company launches a satellite. Under space law, who is responsible for it?", ["Canada", "The United Nations", "No one", "The country it flies over"], "Countries are responsible for their companies' space activities."],
+  ["Which activity is NOT clearly regulated by international space law?", ["Who owns ice mined on the Moon", "Placing nuclear weapons in orbit", "Claiming Mars as territory", "Registering launched objects"], "Resource ownership is unsettled."],
+  ["What are the Artemis Accords?", ["Voluntary principles for Moon exploration that Canada signed in 2020", "A binding treaty signed by every country", "A NASA rocket", "A rule that bans satellites"], "They are not a binding treaty, and not every country has signed."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Choose three technologies used in space exploration. For each, describe what it does and give an example.", a: "Rockets launch spacecraft into orbit and beyond, such as the rocket that launched Artemis II. Rovers drive on other worlds and test rocks, such as Perseverance on Mars. Space stations let people live and do experiments in orbit, such as the ISS.", k: ["Three technologies named", "What each one does", "An example of each"]},
+  {q: "Explain why a Mars rover must be able to drive itself.", a: "Radio signals travel at the speed of light, but Mars is so far away that a message takes several minutes, and up to about 22 minutes one way. A driver on Earth would see old pictures and could not react in time, so the rover's computer must choose a safe path itself.", k: ["Signals take minutes to reach Mars", "Driver on Earth cannot react in time", "Onboard computer makes decisions"]},
+  {q: "Describe two contributions Canada has made to space exploration.", a: "Robotics: Canada built Canadarm, Canadarm2 and Dextre, which helped build and maintain the ISS, and is building Canadarm3 for Gateway. Satellite technology: Canada built Alouette 1 in 1962 and the RADARSAT satellites, which see Earth through cloud and darkness.", k: ["One robotics contribution", "One satellite contribution", "Says what each one does"]},
+  {q: "Give two ways data from space exploration benefits life in Alberta.", a: "Satellites detect wildfire hot spots and smoke, so crews can protect communities. Satellite images and GPS help farmers check crop health and guide tractors, which reduces waste.", k: ["Two benefits", "Each linked to Alberta", "Explains how it helps"]},
+  {q: "What is space debris, and why is it a growing problem?", a: "Space debris is human-made junk in orbit, such as dead satellites, old rocket stages and fragments. It moves at about 7 to 8 km/s, so even small pieces can damage spacecraft. More launches add more objects, and collisions create fragments that cause more collisions, which is called the Kessler syndrome.", k: ["Defines space debris", "Speed makes it dangerous", "More launches and collisions add more", "Names or describes the Kessler syndrome"]},
+  {q: "Describe three effects of spaceflight on the human body and one way astronauts reduce them.", a: "Bones lose minerals, muscles shrink, and fluids shift to the head, which can change eyesight. Radiation exposure is also higher. Astronauts exercise about two hours a day to slow bone and muscle loss.", k: ["Three effects", "Each explained briefly", "One countermeasure"]},
+  {q: "Name the four goals of international space law listed in this lab and explain one in your own words.", a: "Prohibit space appropriation, promote peaceful exploration, benefit humankind, and reduce contamination. For example, prohibiting appropriation means no country can claim the Moon or a planet as its own territory, even if it lands there first.", k: ["All four goals named", "One goal explained clearly", "Uses an example"]},
+  {q: "Does the Outer Space Treaty ban all military activity in space? Explain.", a: "No. It bans nuclear weapons and other weapons of mass destruction in orbit, and military bases and weapons tests on the Moon and other bodies. Many countries still use satellites for military communication and navigation, and ordinary weapons in orbit are not clearly banned.", k: ["States no", "What is banned", "What is not banned"]},
+  {q: "Give two examples of space activities that are not clearly regulated by international space law.", a: "Who can own resources mined on the Moon or asteroids, and how bright satellites can be. Other examples are space traffic control, safety rules for space tourists and destructive anti-satellite tests.", k: ["Two correct examples", "Explains why each is a gap"]}
+];
+var LONG = [
+  {q: "A Canadian company plans to launch 2000 small internet satellites to serve rural and northern communities. Analyze the implications of this plan. Include at least two benefits and two drawbacks, and give your recommendation.", a: "Benefits: fast internet would reach farms, First Nations and Métis communities and northern towns that lack good service, which supports school, health care and business. Building and running the satellites would create jobs in Canada. Drawbacks: 2000 more satellites would crowd low Earth orbit and raise the risk of collisions and debris, especially if dead satellites are not brought down quickly. The satellites would cost a lot to replace every few years and would leave streaks in telescope images and change the night sky. Recommendation: approve the plan only if the company brings satellites down within a few years of retirement, shares tracking data to avoid collisions, and makes the satellites darker.", k: ["At least two benefits with explanation", "At least two drawbacks with explanation", "Links to debris or sustainability", "Considers who benefits (equity)", "A clear recommendation with conditions"]},
+  {q: "Should a crewed mission to Mars go ahead in the next 20 years? Use evidence about technology, the human body, costs and benefits.", a: "A strong answer takes a position and weighs both sides. Technology: rockets, life support and landing systems would need to be proven, and computers would have to handle a communication delay of up to about 22 minutes one way. Human body: a round trip of about two and a half years would bring bone and muscle loss and a high radiation dose, possibly over current career limits. Costs: far more than robot missions, over many years. Benefits: faster discovery, new technology for Earth, jobs and inspiration. A reasonable position is that robots should continue first while shielding and medical countermeasures improve, then a crewed mission can follow when risks are lower.", k: ["Clear position", "Technology evidence", "Human body evidence", "Cost and benefit evidence", "Addresses the other side"]},
+  {q: "Space law was written when only a few countries could reach space. Choose one activity that is not clearly regulated today and propose a new international rule for it. Explain how your rule supports safety, sustainability and equitable use.", a: "Example: ownership of Moon resources. Proposed rule: companies may mine resources only with a licence from a new international body; they must leave protected science and heritage zones untouched; and a share of the profits must go to a fund that helps countries without space programs use space data. Safety: licensing prevents crowding and conflict at the same site. Sustainability: protected zones and clean-up rules keep the Moon usable for the future. Equity: the fund shares benefits with countries that cannot yet afford to mine.", k: ["Names a real gap", "States a clear rule", "Explains safety", "Explains sustainability", "Explains equitable use"]},
+  {q: "Using examples, explain how Canada's contributions to space exploration have benefited people in Canada.", a: "Canada's robotics, such as Canadarm2 and Dextre, earned Canada a role on the ISS and seats for Canadian astronauts, including Jeremy Hansen's flight around the Moon on Artemis II. Space robotics ideas led to medical robots such as neuroArm at the University of Calgary. Canadian satellites such as Anik A1 brought TV and phone service to the North, and RADARSAT watches floods, sea ice and crops. These contributions also create jobs for Canadian engineers, technicians and scientists.", k: ["At least one robotics example", "At least one satellite example", "Benefits to people in Canada explained", "Mentions jobs or skills"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["SP1.K1", "Space exploration is enhanced by technology, including computers, rockets, telescopes, rovers, and space stations.", "Learn: Lessons 1 to 3 (toolkit, two-stage rocket model, Mars signal delay). Lab Bench: Investigations 1 and 2. Sort It: which technology deck. Quiz, Flashcards, Written Review short answers 1 and 2."],
+    ["SP1.K2", "Canada makes contributions to space exploration, e.g., robotics and satellite technology.", "Learn: Lesson 4 (Canada timeline with robotics, satellite and astronaut filters). Sort It: Canada's contributions deck. Quiz, Flashcards, Written Review short answer 3 and extended 4."],
+    ["SP1.K3", "Implications of space exploration include\n• collection of data that could benefit life on Earth\n• employment opportunities in the space industry\n• long-term investment and maintenance costs\n• space debris in orbit\n• effects on the human body", "Learn: Lesson 5 (data and jobs), Lesson 6 (costs and debris), Lesson 7 (body). Lab Bench: Investigations 3, 4 and 5. Sort It: benefit or drawback deck. Quiz, Written Review short answers 4 to 6 and extended 1 and 2."],
+    ["SP1.K4", "International space law regulates space exploration through treaties to\n• prohibit space appropriation\n• promote peaceful exploration\n• benefit humankind\n• reduce contamination", "Learn: Lesson 8 (four principles). Lab Bench: Investigation 6 (space law court). Sort It: space law deck. Quiz, Flashcards, Written Review short answers 7 and 8."],
+    ["SP1.K5", "Space exploration is advancing, and many aspects are not regulated by international space law.", "Learn: Lesson 9 (is it regulated? explorer). Lab Bench: Investigation 6. Sort It: space law deck. Quiz, Written Review short answer 9 and extended 3."],
+    ["SP1.S1", "Describe technologies involved in space exploration.", "Lab Bench: Investigation 1 (mission planner) and Investigation 2 (signal delay calculator with randomized practice). Learn: Lessons 1 to 4."],
+    ["SP1.S2", "Analyze implications of space exploration.", "Lab Bench: Investigation 3 (debris simulator), Investigation 4 (implications analyzer) and Investigation 5 (astronaut health planner). Written Review: extended 1 and 2."],
+    ["SP1.S3", "Discuss regulation of space exploration and consider what aspects are not regulated.", "Lab Bench: Investigation 6 (space law court, 12 cases). Learn: Lessons 8 and 9. Written Review: extended 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

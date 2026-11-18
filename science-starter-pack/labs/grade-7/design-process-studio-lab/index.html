@@ -1,0 +1,1387 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/design-process-studio-lab/"><meta name="description" content="Design processes can be used to solve problems."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Design Process Studio Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout: a design studio wall. Sticky tab strip, then lessons that pair a short reading column with a model: an observation board, a design loop, a solution grid, thinking-tool cards, a self-checkout screen builder and a universal design feature finder. Ember marks problems and loop-backs, river blue marks questions, green marks what works. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---- Design Studio additions ---- */
+header h1 .wa{color:var(--water)}
+.inline{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.readout{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--muted)}
+.readout b{font-family:var(--f-mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.hmw{background:var(--surface);border:2px solid var(--water);border-radius:10px;padding:12px 14px;font-family:var(--f-display);font-size:1.12rem;font-weight:700}
+.hmw small{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--water);margin-bottom:4px}
+.obs{display:grid;gap:6px;padding:0;margin:0}
+.obs li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:.92rem}
+.stage{cursor:pointer;outline:none}
+.stage circle{fill:var(--surface);stroke:var(--line);stroke-width:2;transition:stroke .2s ease}
+.stage:hover circle,.stage:focus-visible circle{stroke:var(--ink);stroke-width:3}
+.stage.on circle{stroke:var(--g7);stroke-width:4;fill:var(--mix-soft)}
+.loop{fill:none;stroke:var(--line);stroke-width:3}
+.loop.hot{stroke:var(--fire);stroke-width:4;stroke-dasharray:8 6}
+.grid3{display:grid;grid-template-columns:6.4em repeat(3,minmax(0,1fr));gap:6px;font-size:.86rem}
+.grid3 .hd{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);align-self:end;padding:2px 4px}
+.cell{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 6px;min-height:3.4em;cursor:pointer;text-align:left;font-size:.82rem;line-height:1.3}
+.cell:hover{border-color:var(--muted)}
+.cell.on{border:2px solid var(--g7);background:var(--mix-soft)}
+@media (max-width:480px){.grid3{grid-template-columns:4.6em repeat(3,minmax(0,1fr));font-size:.78rem}.cell{font-size:.74rem;padding:6px 4px}}
+.tree{display:grid;gap:8px}
+.tree .root{background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 12px;font-weight:700}
+.tree .kids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px}
+.tree .kid{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem}
+.tree .kid.hi{border:2px solid var(--leaf);background:var(--leaf-soft)}
+.tree .kid.dim{opacity:.55}
+/* kiosk preview */
+.kiosk{border:3px solid var(--ink);border-radius:14px;background:var(--surface);padding:12px;display:grid;gap:10px;max-width:420px}
+.kiosk .scr-title{font-weight:700;font-size:.95rem}
+.kiosk .kbtns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.kbtn{border:1px solid var(--line);background:var(--surface-2);color:var(--muted);border-radius:6px;padding:4px 6px;font-size:.72rem;text-align:center;display:grid;gap:2px;justify-items:center}
+.kbtn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+.kiosk.big .kbtn{padding:14px 8px;font-size:1rem}
+.kiosk.contrast .kbtn{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.kiosk.contrast .scr-title{color:var(--ink)}
+.kiosk .kfoot{display:flex;flex-wrap:wrap;gap:6px;font-family:var(--f-mono);font-size:.7rem;color:var(--muted)}
+.kiosk .kfoot span{border:1px dashed var(--line);border-radius:999px;padding:2px 8px}
+.users{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.user{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px;font-size:.86rem}
+.user b{font-family:var(--f-display);font-size:.98rem}
+.user .st{font-family:var(--f-mono);font-size:.72rem;font-weight:600}
+.user.ok{border-color:var(--good)} .user.ok .st{color:var(--good)}
+.user.no{border-color:var(--bad);background:var(--bad-soft)} .user.no .st{color:var(--bad)}
+.princ{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.pr{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.86rem;display:grid;gap:2px}
+.pr b{font-family:var(--f-mono);font-size:.74rem;color:var(--g7)}
+.pr.hi{border:2px solid var(--g7);background:var(--mix-soft)}
+.seq{display:grid;gap:6px;padding:0;margin:0}
+.seq li{list-style:none;display:grid;grid-template-columns:2em minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:.92rem}
+.seq li .n{font-family:var(--f-mono);font-weight:600;color:var(--muted)}
+.seq li.good{border-color:var(--good);background:var(--leaf-soft)}
+.seq li.badpos{border-color:var(--bad);background:var(--bad-soft)}
+.seq .mv{display:flex;gap:4px}
+.seq .mv button{border:1px solid var(--line);background:var(--surface-2);border-radius:6px;width:2.2em;height:2.2em;cursor:pointer;font-weight:700}
+.audit{display:grid;gap:6px;padding:0;margin:0}
+.audit li{list-style:none}
+.audit label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.audit input{margin-top:.3em}
+.audit .ans-ok{color:var(--good);font-weight:700}
+.audit .ans-no{color:var(--bad);font-weight:700}
+.log{display:grid;gap:4px;font-family:var(--f-mono);font-size:.8rem;padding:0;margin:0}
+.log li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.mtx{width:100%;border-collapse:collapse;font-size:.88rem;min-width:480px}
+.mtx th,.mtx td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:center}
+.mtx th:first-child,.mtx td:first-child{text-align:left}
+.mtx th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.mtx select{padding:4px 6px}
+.mtx tr.tot td{font-weight:700;font-family:var(--f-mono)}
+.bench-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.bench-card h3{font-size:1.3rem}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Forces: Structures and Simple Machines · CS3</div>
+    <h1><span class="fi">Design</span> Process <span class="wa">Studio</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Design processes can be used to solve problems. Designers start with the people who will use a solution, try ideas quickly, test them and improve them. This lab walks through design thinking, the steps of a design process, computational thinking, user interfaces and universal design, then lets you solve a real school problem yourself.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. One school problem runs through the whole lab: the school boot room gets jammed every winter recess. You will see how designers would tackle it.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Design thinking</span>
+      <div class="codes"><span class="code">CS3.K1</span></div>
+      <h3>Start with the people, not the gadget</h3>
+      <p><b>Design thinking</b> is a way of solving problems that starts with the people who have the problem. It is called an <b>innovative</b> approach because it often leads to new ideas that nobody would think of from a desk.</p>
+      <p>A designer first watches and listens. What do people do? What gets in their way? What do they say they need? This is called building <b>empathy</b>: understanding how someone else experiences the problem.</p>
+      <p>Then the designer writes the problem as a question that opens up many answers. A common form is: <b>“How might we…?”</b></p>
+      <p>Compare two starts. “We need more hooks” jumps straight to one solution. “How might we help 60 students get their winter gear on in five minutes?” leaves room for hooks, a new schedule, cubbies, or something nobody has tried yet.</p>
+      <div class="key"><b>Remember:</b> design thinking asks who has the problem and what they really need before choosing a solution.</div>
+    </div>
+    <div class="model">
+      <h4>Model: from observations to a “How might we” question</h4>
+      <p class="hint">Pick a person who uses the boot room. Read what a designer noticed about them. Then pick the need you want to focus on.</p>
+      <div class="chips" id="hmwUsers" role="group" aria-label="Choose a user"></div>
+      <ul class="obs" id="hmwObs" aria-live="polite"></ul>
+      <div class="chips" id="hmwNeeds" role="group" aria-label="Choose a need to focus on"></div>
+      <div class="hmw" id="hmwOut" aria-live="polite"></div>
+      <p class="note">The observations are made up for practice. A real design team would watch and interview real users.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Design processes</span>
+      <div class="codes"><span class="code">CS3.K2</span><span class="code">CS3.S1</span></div>
+      <h3>A design process is a loop</h3>
+      <p>A <b>design process</b> is a set of steps for solving a problem. Many versions exist. This curriculum uses five:</p>
+      <ol>
+        <li><b>Identify the problem.</b> Who has it? What do they need?</li>
+        <li><b>Research.</b> Find out more: ask users, measure, look at what others have tried.</li>
+        <li><b>Brainstorm solutions.</b> List many ideas without judging them yet.</li>
+        <li><b>Plan and develop a prototype.</b> A <b>prototype</b> is a quick, early model of a solution, such as a sketch, cardboard model or practice run.</li>
+        <li><b>Test and refine.</b> Try the prototype with real users. Then improve it.</li>
+      </ol>
+      <p>Design processes are <b>iterative</b>. That means you go around more than once. A test might send you back to brainstorming, or even show that you misunderstood the problem.</p>
+      <p>Design is also often <b>collaborative</b>. Teams share ideas, and users help by testing. Different people notice different things.</p>
+      <div class="key"><b>Remember:</b> each test teaches you something. Use it to loop back and improve.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the design loop</h4>
+      <p class="hint">Select a step to see what the boot room team did. Then pick a test result to see where the team loops back.</p>
+      <div class="svgbox fit" id="loopBox"></div>
+      <div class="detail" id="loopDetail" aria-live="polite"></div>
+      <div class="chips" id="loopTests" role="group" aria-label="Test results"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · What counts as a solution</span>
+      <div class="codes"><span class="code">CS3.K3</span></div>
+      <h3>Needs, wants and problems; products, processes and services</h3>
+      <p>A solution can respond to a <b>need</b> (something people must have to be safe, healthy or able to take part), a <b>want</b> (something that would make life nicer) or a <b>problem</b> (something that is going wrong).</p>
+      <p>A solution does not have to be an object. It can be:</p>
+      <ul>
+        <li>a <b>product</b>: a thing you can hold or use, like a boot tray or an app;</li>
+        <li>a <b>process</b>: a new way or order of doing something, like letting classes into the boot room in waves;</li>
+        <li>a <b>service</b>: help that people provide, like Grade 7 buddies who help kindergarten students with zippers.</li>
+      </ul>
+      <p>Some solutions fit more than one box. A school app is a product, and it may also change a process. That is fine. The labels help you think of more kinds of ideas.</p>
+      <div class="key"><b>Remember:</b> when you brainstorm, ask “Could this be a product, a process or a service?”</div>
+    </div>
+    <div class="model">
+      <h4>Model: the solution grid</h4>
+      <p class="hint">Each square holds an example solution. Select a square to read why it fits there.</p>
+      <div class="grid3" id="solGrid"></div>
+      <div class="detail" id="solDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Computational thinking</span>
+      <div class="codes"><span class="code">CS3.K4</span></div>
+      <h3>Four thinking tools that support design</h3>
+      <p><b>Computational thinking</b> is a set of thinking tools that computer scientists use. You do not need a computer to use them. They help with any design problem.</p>
+      <ul>
+        <li><b>Decomposition:</b> breaking a big problem into smaller parts you can solve one at a time.</li>
+        <li><b>Pattern recognition:</b> noticing what repeats or what is similar, so you can reuse a solution.</li>
+        <li><b>Abstraction:</b> keeping the important details and leaving out the rest, so the problem is easier to think about.</li>
+        <li><b>Algorithms:</b> writing clear, ordered steps that solve the problem every time.</li>
+      </ul>
+      <p>A transit map is a good example of abstraction. It shows the order of the stops and where lines meet. It leaves out the real curves of the track because riders do not need them.</p>
+      <div class="key"><b>Remember:</b> break it down, look for patterns, keep what matters, then write the steps.</div>
+    </div>
+    <div class="model">
+      <h4>Model: thinking tools on the boot room problem</h4>
+      <p class="hint">Pick a tool to see how the team used it.</p>
+      <div class="chips" id="ctChips" role="group" aria-label="Computational thinking tools"></div>
+      <div id="ctView" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · User interaction</span>
+      <div class="codes"><span class="code">CS3.K5</span></div>
+      <h3>Design for how people will use it</h3>
+      <p><b>User interaction</b> is everything that happens when a person uses a solution: what they see, hear, touch and do, and how the solution responds.</p>
+      <p>A <b>user interface</b> is the part a person uses to control a solution. On a screen it is the buttons, words and icons. On a door it is the handle. On an elevator it is the panel of buttons and the sound that tells you which floor you are on.</p>
+      <p>Good interfaces are easy to understand, give <b>feedback</b> (a sound, light or message that tells you something worked) and let you fix mistakes, for example with a back or undo button.</p>
+      <p>A solution can work perfectly inside and still fail if people cannot figure out how to use it.</p>
+      <div class="key"><b>Remember:</b> ask “Can every user see it, reach it, understand it and recover from a mistake?”</div>
+    </div>
+    <div class="model">
+      <h4>Model: design a library self-checkout screen</h4>
+      <p class="hint">Turn interface features on or off. The preview changes, and the user cards show who can use the screen. The users are made-up examples.</p>
+      <div class="chips" id="uiChips" role="group" aria-label="Interface features"></div>
+      <div class="kiosk" id="kiosk" aria-label="Preview of the self-checkout screen" role="img"></div>
+      <div class="readout" id="uiRead" aria-live="polite"></div>
+      <div class="users" id="uiUsers"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Universal design</span>
+      <div class="codes"><span class="code">CS3.K6</span><span class="code">CS3.S2</span></div>
+      <h3>Design that works for as many people as possible</h3>
+      <p><b>Universal design</b> means planning a solution from the start so that people with many different needs and abilities can use it, without needing a special version.</p>
+      <p>This matters for <b>accessibility</b>: how easily people, including people with disabilities, can reach, use and understand something. Universal design also helps almost everyone. A curb cut was made for wheelchair users, but it also helps people with strollers, wagons, rolling suitcases and bikes. This is often called the <b>curb cut effect</b>.</p>
+      <p>The architect Ronald Mace, who used a wheelchair, made the term popular in the 1980s. His team later wrote seven principles of universal design. You do not need to memorize them. Use them as a checklist when you design or judge a solution.</p>
+      <p>Universal design supports the whole design process. When you research, include users with different abilities. When you test, test with them too.</p>
+      <div class="key"><b>Remember:</b> design for the widest range of users from the start. Fixing it later usually costs more and works less well.</div>
+    </div>
+    <div class="model">
+      <h4>Model: who does it help?</h4>
+      <p class="hint">Pick a design feature. See who it helps and which principles it uses.</p>
+      <div class="chips" id="udChips" role="group" aria-label="Design features"></div>
+      <div class="detail" id="udDetail" aria-live="polite"></div>
+      <div class="princ" id="udPrinc"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Solve the boot room problem with a full design loop, put algorithm steps in order, compare solutions for universal design, and audit a real kind of user interaction.</p>
+  </div>
+
+  <article class="bench-card">
+    <span class="step eyebrow">Investigation 1 · Solve a problem with a design process</span>
+    <div class="codes"><span class="code">CS3.S1</span><span class="code">CS3.K2</span></div>
+    <h3>Boot room prototype tester</h3>
+    <p>The problem: about 60 students crowd into the boot room at once, and recess starts late. A survey (made-up data) found that the average time to get ready is 9 minutes. The team’s goal is 5 minutes or less, with every user able to use the room.</p>
+    <div class="two">
+      <div class="model">
+        <h4>Build your prototype</h4>
+        <label class="field" for="bHook">Main hook height: <span class="mono" id="bHookOut">150 cm</span><input type="range" id="bHook" min="90" max="170" step="5" value="150"></label>
+        <label class="field" for="bWaves">Classes let in at once: <span class="mono" id="bWavesOut">3 classes</span><input type="range" id="bWaves" min="1" max="3" step="1" value="3"></label>
+        <div class="chips" id="bOpts" role="group" aria-label="Extra features"></div>
+        <div class="row"><button class="btn" id="bTest" type="button">Test this prototype</button><button class="btn ghost" id="bReset" type="button">Start over</button></div>
+      </div>
+      <div class="model">
+        <h4>Test results</h4>
+        <div class="stats" id="bStats"></div>
+        <div class="users" id="bUsers" aria-live="polite"></div>
+        <p class="hint">Iteration log</p>
+        <ul class="log" id="bLog"></ul>
+      </div>
+    </div>
+    <div class="worked"><b>Worked example.</b> Round 1: hooks at 150 cm, three classes at once. Time 9 min. The kindergarten buddy and the student using a wheelchair cannot reach the hooks. Round 2: lower the hooks to 120 cm and add a bench. Reach is fixed, but time is still 8 min. Round 3: let in two classes at a time (a process change). Time drops to 5 min. Each round tested one or two changes, so the team could tell what helped.</div>
+    <p class="note">The tester uses a simple made-up model. Real testing would time real students.</p>
+  </article>
+
+  <article class="bench-card">
+    <span class="step eyebrow">Investigation 2 · Write an algorithm</span>
+    <div class="codes"><span class="code">CS3.K4</span><span class="code">CS3.S1</span></div>
+    <h3>Put the steps in order</h3>
+    <p>An algorithm only works if its steps are clear and in the right order. You get a random task with its steps mixed up. Move steps up or down, then check.</p>
+    <div class="worked"><b>Worked example: making a phone call on speaker.</b> 1. Unlock the phone. 2. Open the phone app. 3. Enter the number. 4. Tap call. 5. Tap the speaker button. Step 5 can only come after step 4 because the speaker button appears during a call. Look for steps that depend on other steps.</div>
+    <p class="mono hint" id="algTitle"></p>
+    <ol class="seq" id="algList"></ol>
+    <div class="row"><button class="btn" id="algCheck" type="button">Check my order</button><button class="btn ghost" id="algNew" type="button">New task</button></div>
+    <p class="fb" id="algFb" aria-live="polite"></p>
+  </article>
+
+  <article class="bench-card">
+    <span class="step eyebrow">Investigation 3 · Compare solutions</span>
+    <div class="codes"><span class="code">CS3.S2</span><span class="code">CS3.K3</span><span class="code">CS3.K6</span></div>
+    <h3>Decision matrix: which design is more universal?</h3>
+    <p>Pick a problem. Two solutions are described. Score each one from 0 (poor) to 3 (excellent) on each criterion. The matrix adds the scores. Then read the discussion.</p>
+    <div class="chips" id="mxChips" role="group" aria-label="Choose a problem"></div>
+    <div id="mxDesc"></div>
+    <div class="tablebox"><table class="mtx" id="mxTable"></table></div>
+    <div class="row"><button class="btn ghost" id="mxShow" type="button">Show discussion</button></div>
+    <div class="detail" id="mxDisc" aria-live="polite" hidden></div>
+  </article>
+
+  <article class="bench-card">
+    <span class="step eyebrow">Investigation 4 · Evaluate a user interaction</span>
+    <div class="codes"><span class="code">CS3.S3</span><span class="code">CS3.K5</span><span class="code">CS3.K6</span></div>
+    <h3>Universal design audit</h3>
+    <p>Read the description of a user interaction. Tick each principle of universal design that the design meets. Then check your audit against a model audit. The descriptions are made-up examples.</p>
+    <div class="chips" id="auChips" role="group" aria-label="Choose an interaction to audit"></div>
+    <div class="scen" id="auDesc"></div>
+    <ul class="audit" id="auList"></ul>
+    <div class="row"><button class="btn" id="auCheck" type="button">Check my audit</button></div>
+    <div class="detail" id="auFb" aria-live="polite"></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 CS3, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>CS3.K1:</b> design thinking is taught as a human-centred approach that begins with empathy for users and a “How might we” question. The draft calls it “innovative”; the lab explains this as leading to new ideas, without claiming it is the only innovative method.</li>
+      <li><b>CS3.K2:</b> the five draft steps are taught as one common version of a design process. The lab notes that many versions exist (for example, one well-known design thinking model uses empathize, define, ideate, prototype and test) and teaches iteration as looping back to any earlier step, not only to “refine”.</li>
+      <li><b>CS3.K3:</b> needs, wants and problems, and products, processes and services, are taught as helpful labels that can overlap. A need is defined as something required to be safe, healthy or able to take part.</li>
+      <li><b>CS3.K4:</b> abstraction is taught as keeping the important details and hiding the rest (transit map example), and algorithm as clear, ordered steps. No programming is required here; CS1 and CS2 handle coding.</li>
+      <li><b>CS3.K5:</b> user interaction is taught as the whole experience of using a solution, and user interface as the part a person controls (screen, handle, panel). Feedback and undo are added as features of good interfaces.</li>
+      <li><b>CS3.K6:</b> universal design is distinguished from separate add-on accommodations. Ronald Mace is credited with making the term popular in the 1980s, and the seven principles come from his team at the Center for Universal Design (North Carolina State University, 1997). Please verify these attributions. Universal Design for Learning (UDL) is a related idea for teaching and is not taught here. Disability is described with general, respectful wording; please review.</li>
+      <li><b>Data:</b> the boot room survey, prototype tester model, user personas, decision matrix scenarios and audit scenarios are made up for practice and labelled as such.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-cs3-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+
+function S(n, attrs, style){ var x = sv(n, attrs); if (style) x.setAttribute("style", style); return x; }
+function arrow(g, x1, y1, x2, y2, color, w){
+  w = w || 5;
+  var dx = x2 - x1, dy = y2 - y1, L = Math.sqrt(dx*dx + dy*dy);
+  if (L < 2) return;
+  var ux = dx / L, uy = dy / L, hx = x2 - ux * 14, hy = y2 - uy * 14;
+  g.appendChild(S("line", {x1: x1, y1: y1, x2: hx, y2: hy, "stroke-width": w, "stroke-linecap": "round"}, "stroke:" + color));
+  g.appendChild(S("polygon", {points: x2 + "," + y2 + " " + (hx - uy * 9) + "," + (hy + ux * 9) + " " + (hx + uy * 9) + "," + (hy - ux * 9)}, "fill:" + color));
+}
+function txt(g, x, y, t, cls, anchor, style){ var n = S("text", {x: x, y: y, "class": cls || "lbl", "text-anchor": anchor || "start"}, style); n.textContent = t; g.appendChild(n); return n; }
+function stat(box, label, val){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, label)); d.appendChild(el("b", null, val)); box.appendChild(d); }
+function bar(box, label, v, max, warn, valText){
+  var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, label));
+  var t = el("div", {"class": "track"}), i = el("i"); if (warn) i.className = "warn"; i.style.width = Math.min(100, v / max * 100) + "%"; t.appendChild(i); r.appendChild(t);
+  r.appendChild(el("b", null, valText)); box.appendChild(r);
+}
+function num(v){ var x = parseFloat(String(v).replace(",", ".")); return isNaN(x) ? null : x; }
+function close(a, b){ return Math.abs(a - b) <= Math.max(0.011 * Math.abs(b), 0.051); }
+function makeSvg(box, vb){ clear(box); var s = sv("svg", {viewBox: vb, role: "img"}); box.appendChild(s); return s; }
+function focusable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+
+/* ---------- Lesson 1: How might we ---------- */
+(function(){
+  var USERS = [
+    {label: "Grade 7 student", obs: ["Arrives with 20 others at the same moment.", "Has to wait for people blocking the bench.", "Says: “By the time I find my mitts, recess is half over.”"],
+      needs: [["get outside quickly", "most of recess is lost to waiting"], ["find their own gear fast", "mitts and hats get mixed up in one big pile"]]},
+    {label: "Kindergarten buddy", obs: ["Cannot reach the hooks, which are at adult shoulder height.", "Needs help with zippers and boot liners.", "Gets bumped in the crowd and starts to cry."],
+      needs: [["reach and manage their own gear", "the room was built for taller people"], ["feel safe in a crowded room", "big kids rush past them"]]},
+    {label: "Student who uses a wheelchair", obs: ["Waits until the room is empty because there is no space to turn.", "Cannot reach the top shelf for boots.", "Misses the first 10 minutes of recess most days."],
+      needs: [["move through the room with space to turn", "the walkway is blocked by benches and boots"], ["reach their own gear", "storage is high and crowded"]]},
+    {label: "Custodian", obs: ["Mops melted snow three times every recess.", "Finds lost mitts piled in a box by Friday.", "Says the floor gets slippery near the door."],
+      needs: [["keep the floor dry and safe", "snow melts off boots in the walkway"], ["return lost items to owners", "gear has no names or places"]]}
+  ];
+  var u = 0;
+  function renderNeeds(){
+    var box = $("hmwNeeds"); clear(box);
+    chipGroup(box, USERS[u].needs.map(function(n){ return {label: "Needs to " + n[0], n: n}; }), "wa", function(it){
+      var o = $("hmwOut"); clear(o);
+      o.appendChild(el("small", null, "Problem statement"));
+      o.appendChild(document.createTextNode("How might we help a " + USERS[u].label.toLowerCase() + " " + it.n[0] + ", since " + it.n[1] + "?"));
+    }, 0);
+  }
+  chipGroup($("hmwUsers"), USERS, "", function(it, i){
+    u = i;
+    var ul = $("hmwObs"); clear(ul);
+    it.obs.forEach(function(t){ ul.appendChild(el("li", null, t)); });
+    renderNeeds();
+  }, 0);
+})();
+
+/* ---------- Lesson 2: design loop ---------- */
+(function(){
+  var STAGES = [
+    {n: "Identify", t: "Identify the problem", d: "The team watched the boot room for a week and talked to users. They wrote: How might we help everyone get ready for recess in 5 minutes or less?"},
+    {n: "Research", t: "Research", d: "They timed students (about 9 minutes on average), measured hook heights, asked the custodian about wet floors, and looked at how other schools handle boot rooms."},
+    {n: "Brainstorm", t: "Brainstorm solutions", d: "Ideas included lower hooks, labelled cubbies, boot trays, letting classes in by waves, buddy helpers and a dryer rack. No idea was judged yet."},
+    {n: "Prototype", t: "Plan and develop a prototype", d: "They taped paper labels to the wall at three heights, set out two boot trays and tried a two-class schedule for one week. Cheap and quick on purpose."},
+    {n: "Test", t: "Test and refine", d: "They timed recess again and asked users what worked. Each result told them what to change next, and the loop started again."}
+  ];
+  var TESTS = [
+    {label: "Little kids still cannot reach", back: 2, msg: "Back to Brainstorm: the team needs new ideas for low storage, such as lower hooks or floor cubbies."},
+    {label: "We solved the wrong problem", back: 0, msg: "Back to Identify: interviews show the real delay is lost mitts, not hooks. The problem statement needs to change."},
+    {label: "Prototype is too flimsy", back: 3, msg: "Back to Prototype: the idea works, but the tape labels fell off. Build a sturdier version and test again."},
+    {label: "Works for every user", back: 4, msg: "Refine and share: make the final version, tell other classes about it, and keep checking it over the winter."}
+  ];
+  var cx = 210, cy = 160, R = 110, sel = 0, back = null;
+  var pos = STAGES.map(function(s, i){ var a = -Math.PI / 2 + i * 2 * Math.PI / 5; return [cx + R * Math.cos(a), cy + R * Math.sin(a)]; });
+  function draw(){
+    var s = makeSvg($("loopBox"), "0 0 420 320");
+    s.setAttribute("aria-label", "Design loop with five steps arranged in a circle.");
+    var g = S("g"); s.appendChild(g);
+    g.appendChild(S("circle", {cx: cx, cy: cy, r: R, "class": "loop"}));
+    for (var i = 0; i < 5; i++) {
+      var a1 = -Math.PI / 2 + (i + 0.5) * 2 * Math.PI / 5;
+      var x = cx + R * Math.cos(a1), y = cy + R * Math.sin(a1);
+      var tx = -Math.sin(a1), ty = Math.cos(a1);
+      arrow(g, x - tx * 8, y - ty * 8, x + tx * 6, y + ty * 6, "var(--muted)", 3);
+    }
+    if (back != null && back !== 4) {
+      var p = pos[4], q = pos[back];
+      var path = S("path", {d: "M" + p[0] + "," + p[1] + " Q" + cx + "," + cy + " " + q[0] + "," + q[1], "class": "loop hot"});
+      g.appendChild(path);
+    }
+    txt(g, cx, cy - 4, "Iterate", "lbl", "middle");
+    txt(g, cx, cy + 14, "loop back as needed", "small", "middle");
+    STAGES.forEach(function(st, i){
+      var n = S("g", {"class": "stage" + (i === sel ? " on" : "")});
+      n.appendChild(S("circle", {cx: pos[i][0], cy: pos[i][1], r: 34}));
+      txt(n, pos[i][0], pos[i][1] - 4, String(i + 1), "small", "middle");
+      txt(n, pos[i][0], pos[i][1] + 11, st.n, "lbl", "middle");
+      focusable(n, "Step " + (i + 1) + ": " + st.t, function(){ sel = i; draw(); show(); var f = $("loopBox").querySelectorAll(".stage")[i]; if (f) f.focus(); });
+      g.appendChild(n);
+    });
+  }
+  function show(msg){
+    var st = STAGES[sel];
+    detail($("loopDetail"), st.t, msg ? [st.d, msg] : [st.d], "Step " + (sel + 1) + " of 5");
+  }
+  chipGroup($("loopTests"), TESTS, "fi", function(t){ back = t.back; sel = t.back; draw(); show(t.msg); });
+  draw(); show();
+})();
+
+/* ---------- Lesson 3: solution grid ---------- */
+(function(){
+  var ROWS = ["Need", "Want", "Problem"], COLS = ["Product", "Process", "Service"];
+  var G = [
+    [["Boot trays", "Wet boots make the floor slippery. A tray is an object that keeps people safe, so it meets a need."], ["Fire drill route", "Getting everyone out safely is a need. A planned route is a way of doing things, so it is a process."], ["Buddy helpers", "Young students need help with zippers to go outside. People giving help is a service."]],
+    [["Heated boot dryer", "Warm boots are nice but not required. A dryer is a product."], ["Music during gear-up", "Music makes the wait more fun. Playing it at set times is a process."], ["Lost and found pickup", "Getting a lost mitt delivered to class is nice to have. Someone does it for you, so it is a service."]],
+    [["Name labels on gear", "Mixed-up mitts are a problem. Labels are objects, so they are a product."], ["Classes enter in waves", "Crowding is the problem. Changing the order people enter is a process."], ["Recess monitor at the door", "Pushing at the door is a problem. A person helping keep order is a service."]]
+  ];
+  var grid = $("solGrid"), btns = [];
+  grid.appendChild(el("span", {"class": "hd"}, ""));
+  COLS.forEach(function(c){ grid.appendChild(el("span", {"class": "hd"}, c)); });
+  ROWS.forEach(function(r, i){
+    grid.appendChild(el("span", {"class": "hd"}, r));
+    COLS.forEach(function(c, j){
+      var b = el("button", {"class": "cell", type: "button", "aria-label": r + " and " + c + ": " + G[i][j][0]}, G[i][j][0]);
+      b.addEventListener("click", function(){ pick(i, j); });
+      grid.appendChild(b); btns.push(b);
+    });
+  });
+  function pick(i, j){
+    btns.forEach(function(b, k){ b.classList.toggle("on", k === i * 3 + j); });
+    detail($("solDetail"), G[i][j][0], [G[i][j][1]], ROWS[i] + " · " + COLS[j]);
+  }
+  pick(0, 0);
+})();
+
+/* ---------- Lesson 4: computational thinking ---------- */
+(function(){
+  var KIDS = ["Storing gear", "Moving people in and out", "Wet floors", "Lost items", "Helping young students"];
+  var TOOLS = [
+    {label: "Decomposition", render: function(v){
+      var t = el("div", {"class": "tree"});
+      t.appendChild(el("div", {"class": "root"}, "Big problem: the boot room jams every recess"));
+      var k = el("div", {"class": "kids"}); KIDS.forEach(function(x){ k.appendChild(el("div", {"class": "kid"}, x)); }); t.appendChild(k);
+      v.appendChild(t);
+      v.appendChild(el("p", {"class": "hint"}, "Five smaller problems. Each one can get its own ideas and its own test."));
+    }},
+    {label: "Pattern recognition", render: function(v){
+      var tb = el("div", {"class": "tablebox"}), t = el("table", {"class": "dt"});
+      t.innerHTML = "<thead><tr><th>Day</th><th>Recess 1 (min)</th><th>Lunch (min)</th><th>Recess 2 (min)</th></tr></thead>";
+      var bd = el("tbody");
+      [["Mon", 9, 6, 8], ["Tue", 10, 5, 9], ["Wed", 9, 6, 9], ["Thu", 8, 5, 8], ["Fri", 10, 6, 9]].forEach(function(r){
+        var tr = el("tr"); r.forEach(function(c, i){ var td = el("td", null, String(c)); if (i === 1 || i === 3) td.className = "flag"; tr.appendChild(td); }); bd.appendChild(tr);
+      });
+      t.appendChild(bd); tb.appendChild(t); v.appendChild(tb);
+      v.appendChild(el("p", {"class": "hint"}, "Made-up timing data. Pattern: the two short recesses are always slow, lunch is faster. At lunch, classes leave at different times. That pattern suggests a solution: stagger recess too."));
+    }},
+    {label: "Abstraction", render: function(v){
+      var t = el("div", {"class": "tree"});
+      t.appendChild(el("div", {"class": "root"}, "Details that matter for the design"));
+      var k = el("div", {"class": "kids"});
+      [["Number of students at once", 1], ["Height of users", 1], ["Space to turn a wheelchair", 1], ["Colour of the walls", 0], ["Brand of boots", 0], ["Where wet snow lands", 1]].forEach(function(x){ k.appendChild(el("div", {"class": "kid " + (x[1] ? "hi" : "dim")}, (x[1] ? "Keep: " : "Leave out: ") + x[0])); });
+      t.appendChild(k); v.appendChild(t);
+      v.appendChild(el("p", {"class": "hint"}, "A floor plan sketch of the boot room shows only the kept details. That makes it easier to try layouts."));
+    }},
+    {label: "Algorithm", render: function(v){
+      var ol = el("ol", {"class": "seq"});
+      ["Bell rings: Class A enters the boot room.", "Two minutes later: Class B enters.", "Students put boots on at the bench, then step onto the tray.", "Students take gear from their own labelled hook.", "Students exit through the outside door, not back through the room."].forEach(function(s, i){
+        var li = el("li"); li.appendChild(el("span", {"class": "n"}, String(i + 1))); li.appendChild(el("span", null, s)); li.appendChild(el("span")); ol.appendChild(li);
+      });
+      v.appendChild(ol);
+      v.appendChild(el("p", {"class": "hint"}, "Clear, ordered steps that anyone can follow the same way every day. A teacher could post them on the door."));
+    }}
+  ];
+  chipGroup($("ctChips"), TOOLS, "lf", function(t){ var v = $("ctView"); clear(v); t.render(v); }, 0);
+})();
+
+/* ---------- Lesson 5: kiosk UI ---------- */
+var ICONS = {
+  book: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg>',
+  back: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
+  card: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>',
+  help: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17.5v.01"/></svg>'
+};
+(function(){
+  var F = [
+    {k: "big", label: "Large buttons"},
+    {k: "contrast", label: "High contrast"},
+    {k: "icons", label: "Icons with words"},
+    {k: "audio", label: "Spoken prompts"},
+    {k: "undo", label: "Back button"},
+    {k: "plain", label: "Plain language"},
+    {k: "low", label: "Screen at seated height"}
+  ];
+  var on = {big: false, contrast: false, icons: false, audio: false, undo: false, plain: false, low: false};
+  var USERS = [
+    {n: "Ava", d: "uses a wheelchair", need: ["low"], why: "needs the screen low enough to reach"},
+    {n: "Mr. Tran", d: "has low vision", need: ["big", "contrast"], why: "needs large, high-contrast buttons"},
+    {n: "Jordan", d: "is new to English", need: ["icons", "plain"], why: "needs icons and simple words"},
+    {n: "Lee", d: "is blind", need: ["audio"], why: "needs spoken prompts"},
+    {n: "Sam", d: "is wearing winter mitts", need: ["big"], why: "needs large buttons to tap with mitts"},
+    {n: "Kim", d: "is using it for the first time", need: ["undo", "plain"], why: "needs clear words and a way to fix mistakes"}
+  ];
+  function render(){
+    var k = $("kiosk"); clear(k);
+    k.className = "kiosk" + (on.big ? " big" : "") + (on.contrast ? " contrast" : "");
+    k.appendChild(el("div", {"class": "scr-title"}, on.plain ? "Borrow a book" : "Initiate circulation transaction"));
+    var b = el("div", {"class": "kbtns"});
+    [["book", "Scan book", "Item acquisition"], ["card", "Scan library card", "Patron authentication"], ["help", "Get help", "Assistance request"], ["back", "Go back", null]].forEach(function(x){
+      if (x[0] === "back" && !on.undo) return;
+      var d = el("div", {"class": "kbtn"});
+      if (on.icons) d.innerHTML = ICONS[x[0]];
+      d.appendChild(el("span", null, on.plain || !x[2] ? x[1] : x[2]));
+      b.appendChild(d);
+    });
+    k.appendChild(b);
+    var f = el("div", {"class": "kfoot"});
+    f.appendChild(el("span", null, on.low ? "Mounted 90 cm high" : "Mounted 150 cm high"));
+    if (on.audio) f.appendChild(el("span", null, "Speaker and headphone jack"));
+    k.appendChild(f);
+    var onList = F.filter(function(x){ return on[x.k]; }).map(function(x){ return x.label; });
+    k.setAttribute("aria-label", onList.length ? "Preview of the screen with: " + onList.join(", ") : "Preview of the screen with no extra features");
+    var U = $("uiUsers"); clear(U); var ok = 0;
+    USERS.forEach(function(u){
+      var good = u.need.every(function(n){ return on[n]; }); if (good) ok++;
+      var c = el("div", {"class": "user " + (good ? "ok" : "no")});
+      c.appendChild(el("b", null, u.n));
+      c.appendChild(el("span", null, u.n + " " + u.d + " and " + u.why + "."));
+      c.appendChild(el("span", {"class": "st"}, good ? "Can use it" : "Blocked"));
+      U.appendChild(c);
+    });
+    var R = $("uiRead"); clear(R);
+    R.appendChild(el("span", null, "Features on: ")); R.appendChild(el("b", null, F.filter(function(x){ return on[x.k]; }).length + " of 7"));
+    R.appendChild(el("span", null, "Users who can check out a book: ")); R.appendChild(el("b", null, ok + " of " + USERS.length));
+    if (ok === USERS.length) R.appendChild(el("span", null, "Every user can use it. Notice that most features help more than one person."));
+  }
+  var box = $("uiChips");
+  F.forEach(function(f){
+    var b = el("button", {"class": "chip lf", type: "button", "aria-pressed": "false"}, f.label);
+    toggle(b, function(v){ on[f.k] = v; render(); });
+    box.appendChild(b);
+  });
+  render();
+})();
+
+/* ---------- Lesson 6: universal design ---------- */
+var PRINCIPLES = [
+  ["1. Equitable use", "Useful to people with different abilities, in the same way when possible."],
+  ["2. Flexibility in use", "Fits a wide range of choices, like left or right hand, or your own pace."],
+  ["3. Simple and intuitive use", "Easy to understand, no matter what you know or what language you speak."],
+  ["4. Perceptible information", "Important information gets through in more than one way: sight, sound or touch."],
+  ["5. Tolerance for error", "Mistakes are hard to make and easy to fix, and they cause little harm."],
+  ["6. Low physical effort", "Can be used comfortably without much strength or tiring."],
+  ["7. Size and space for approach and use", "Enough room to reach and use it, whether you sit, stand or use a mobility aid."]
+];
+(function(){
+  var FEAT = [
+    {label: "Curb cut", who: "Wheelchair users, people pushing strollers or wagons, travellers with rolling suitcases, cyclists, people who find steps hard.", p: [0, 5, 6], note: "Designed first for wheelchair users. Now nearly everyone on a sidewalk benefits."},
+    {label: "Automatic sliding door", who: "People using mobility aids, people carrying groceries or hockey bags, parents with strollers, anyone wearing thick mitts.", p: [0, 5, 6], note: "Everyone goes through the same door the same way."},
+    {label: "Captions on videos", who: "Deaf and hard of hearing people, people learning English, viewers in a noisy cafeteria, people who remember better when they read.", p: [1, 3], note: "The same information arrives by sound and by text."},
+    {label: "Lever door handle", who: "People with arthritis or weak grip, people with full arms, children, anyone wearing mitts.", p: [1, 5], note: "Can be pushed with an elbow or a closed hand. A round knob needs a strong twist."},
+    {label: "Step-free main entrance", who: "Wheelchair users, people with walkers, delivery workers with carts, people on icy days who could slip on steps.", p: [0, 5, 6], note: "Better than a separate ramp around the back, because everyone uses the same entrance."},
+    {label: "Picture and word signs", who: "Young children, newcomers learning English, visitors in a hurry, people with some reading disabilities.", p: [2, 3], note: "A washroom or exit sign with both a symbol and a word works for more people."}
+  ];
+  var P = $("udPrinc");
+  PRINCIPLES.forEach(function(p){ var d = el("div", {"class": "pr"}); d.appendChild(el("b", null, p[0])); d.appendChild(el("span", null, p[1])); P.appendChild(d); });
+  chipGroup($("udChips"), FEAT, "", function(f){
+    detail($("udDetail"), f.label, ["Who it helps: " + f.who, f.note], "Principles used: " + f.p.map(function(i){ return i + 1; }).join(", "));
+    Array.prototype.forEach.call(P.children, function(c, i){ c.classList.toggle("hi", f.p.indexOf(i) > -1); });
+  }, 0);
+})();
+
+/* ---------- Bench 1: prototype tester ---------- */
+(function(){
+  var OPTS = [{k: "bench", label: "Benches along the wall"}, {k: "cubby", label: "Low floor cubbies"}, {k: "labels", label: "Picture and name labels"}, {k: "tray", label: "Boot trays by the door"}, {k: "lane", label: "Clear 150 cm walkway"}, {k: "buddy", label: "Buddy helpers"}];
+  var on = {}; var round = 0;
+  store.bootLog = store.bootLog || [];
+  var box = $("bOpts");
+  OPTS.forEach(function(o){ var b = el("button", {"class": "chip lf", type: "button", "aria-pressed": "false"}, o.label); toggle(b, function(v){ on[o.k] = v; }); box.appendChild(b); });
+  $("bHook").addEventListener("input", function(){ $("bHookOut").textContent = $("bHook").value + " cm"; });
+  $("bWaves").addEventListener("input", function(){ var v = +$("bWaves").value; $("bWavesOut").textContent = v + (v === 1 ? " class" : " classes"); });
+  function test(silent){
+    var hook = +$("bHook").value, waves = +$("bWaves").value;
+    var t = 9;
+    if (waves === 2) t -= 3; if (waves === 1) t -= 3.5;
+    if (on.bench) t -= 0.8; if (on.labels) t -= 1.2; if (on.cubby) t -= 0.5; if (on.buddy) t -= 0.6; if (on.lane) t -= 0.4;
+    if (waves === 1) t += 1.5;
+    t = Math.max(3, Math.round(t * 2) / 2);
+    var users = [
+      ["Grade 7 student", t <= 5, t <= 5 ? "Ready in time for recess." : "Still waiting in the crowd."],
+      ["Kindergarten buddy", (hook <= 120 || on.cubby) && (on.buddy || on.bench), (hook <= 120 || on.cubby) ? ((on.buddy || on.bench) ? "Can reach gear and sit to put boots on." : "Can reach gear, but has nowhere to sit for boots.") : "Cannot reach the hooks."],
+      ["Wheelchair user", on.lane && (hook <= 120 || on.cubby), on.lane ? ((hook <= 120 || on.cubby) ? "Has space to turn and can reach gear." : "Has space, but storage is too high.") : "No space to turn in the walkway."],
+      ["Custodian", !!on.tray, on.tray ? "Floor stays mostly dry." : "Floor is wet and slippery."],
+      ["Newcomer learning English", !!on.labels, on.labels ? "Finds their spot from the picture label." : "Cannot tell which hook is theirs."]
+    ];
+    var ok = users.filter(function(u){ return u[1]; }).length;
+    var S2 = $("bStats"); clear(S2);
+    stat(S2, "Time to get ready", fmt(t) + " min"); stat(S2, "Goal", "≤ 5 min"); stat(S2, "Users served", ok + " of 5");
+    var U = $("bUsers"); clear(U);
+    users.forEach(function(u){ var c = el("div", {"class": "user " + (u[1] ? "ok" : "no")}); c.appendChild(el("b", null, u[0])); c.appendChild(el("span", null, u[2])); c.appendChild(el("span", {"class": "st"}, u[1] ? "Works" : "Problem")); U.appendChild(c); });
+    if (silent === true) { renderLog(); return; }
+    round++;
+    var parts = ["hooks " + hook + " cm", waves + (waves === 1 ? " class" : " classes")].concat(OPTS.filter(function(o){ return on[o.k]; }).map(function(o){ return o.label.toLowerCase(); }));
+    var line = "Round " + round + ": " + parts.join(", ") + " → " + fmt(t) + " min, " + ok + "/5 users" + (t <= 5 && ok === 5 ? " · goal met" : "");
+    store.bootLog.push(line); if (store.bootLog.length > 12) store.bootLog.shift(); save();
+    renderLog();
+    if (waves === 1 && t > 5) U.appendChild(el("p", {"class": "hint"}, "One class at a time makes the line outside the boot room long. Try two."));
+  }
+  function renderLog(){ var L = $("bLog"); clear(L); store.bootLog.forEach(function(x){ L.appendChild(el("li", null, x)); }); if (!store.bootLog.length) L.appendChild(el("li", null, "No tests yet. Build a prototype and test it.")); }
+  $("bTest").addEventListener("click", function(){ test(); });
+  $("bReset").addEventListener("click", function(){ store.bootLog = []; round = 0; save(); renderLog(); clear($("bStats")); clear($("bUsers")); });
+  round = store.bootLog.length;
+  test(true);
+})();
+
+/* ---------- Bench 2: algorithm order ---------- */
+(function(){
+  var TASKS = [
+    {t: "Check out a book at the library kiosk", s: ["Walk to the kiosk.", "Tap “Borrow a book”.", "Scan your library card.", "Scan the barcode on the book.", "Check the screen for the due date.", "Take your receipt and the book."]},
+    {t: "Turn on captions for a class video", s: ["Open the video.", "Press pause.", "Open the settings menu.", "Choose “Captions”.", "Pick the language.", "Press play."]},
+    {t: "Get ready for winter recess", s: ["Put on snow pants.", "Put on boots.", "Put on your jacket.", "Zip the jacket.", "Put on your hat.", "Put on your mitts."]},
+    {t: "Test a boot room prototype", s: ["Choose what you will measure.", "Set up the prototype.", "Time students getting ready.", "Ask users what worked.", "Record the results.", "Decide what to change next."]},
+    {t: "Make the school website easier to read", s: ["Open the page settings.", "Turn on high contrast.", "Increase the text size.", "Preview the page.", "Ask a user to try it.", "Save the changes."]}
+  ];
+  var task, order, ti = -1;
+  function newTask(){
+    var n; do { n = rint(0, TASKS.length - 1); } while (n === ti && TASKS.length > 1); ti = n; task = TASKS[n];
+    do { order = shuffle(task.s.map(function(x, i){ return i; })); } while (order.every(function(x, i){ return x === i; }));
+    $("algFb").textContent = ""; render();
+  }
+  function render(marks){
+    $("algTitle").textContent = "Task: " + task.t;
+    var L = $("algList"); clear(L);
+    order.forEach(function(si, i){
+      var li = el("li"); if (marks) li.className = si === i ? "good" : "badpos";
+      li.appendChild(el("span", {"class": "n"}, String(i + 1)));
+      li.appendChild(el("span", null, task.s[si]));
+      var mv = el("span", {"class": "mv"});
+      var up = el("button", {type: "button", "aria-label": "Move up: " + task.s[si]}, "↑"), dn = el("button", {type: "button", "aria-label": "Move down: " + task.s[si]}, "↓");
+      up.disabled = i === 0; dn.disabled = i === order.length - 1;
+      up.addEventListener("click", function(){ swap(i, i - 1, "up", si); });
+      dn.addEventListener("click", function(){ swap(i, i + 1, "down", si); });
+      mv.appendChild(up); mv.appendChild(dn); li.appendChild(mv); L.appendChild(li);
+    });
+  }
+  function swap(a, b, dir, si){
+    var t = order[a]; order[a] = order[b]; order[b] = t; render();
+    var btns = $("algList").querySelectorAll("li")[b].querySelectorAll("button");
+    var f = dir === "up" ? btns[0] : btns[1]; if (f && !f.disabled) f.focus(); else if (btns[0]) (btns[0].disabled ? btns[1] : btns[0]).focus();
+  }
+  $("algCheck").addEventListener("click", function(){
+    var right = order.filter(function(x, i){ return x === i; }).length;
+    render(true);
+    $("algFb").className = "fb " + (right === order.length ? "ok" : "no");
+    $("algFb").textContent = right === order.length ? "All " + right + " steps in order. This algorithm would work every time." : right + " of " + order.length + " steps are in the right place. Look for a step that must happen before another one.";
+  });
+  $("algNew").addEventListener("click", newTask);
+  newTask();
+})();
+
+/* ---------- Bench 3: decision matrix ---------- */
+(function(){
+  var CRIT = ["Works for the widest range of users", "Same experience for everyone", "Easy to use and understand", "Cost and effort to build"];
+  var PROBS = [
+    {label: "School entrance", a: "A: Keep the front steps and add a ramp at the side door by the parking lot.", b: "B: Rebuild the front walk as a gentle slope with no steps, heated in winter.", def: [[1, 1, 2, 3], [3, 3, 3, 1]], disc: "Option B is universal design: everyone uses the same front entrance, and the slope also helps strollers, carts and anyone on an icy day. Option A meets a need, but it sends some users to a separate door. Option A costs less now, which is a real constraint. Many schools choose B when they renovate."},
+    {label: "Morning announcements", a: "A: Read the announcements over the speaker only. Students who need them can ask for a printed copy later.", b: "B: Read them over the speaker and show them on classroom screens with pictures and words at the same time.", def: [[1, 1, 2, 3], [3, 3, 3, 2]], disc: "Option B sends the same information by sound and by sight at the same time (principle 4, perceptible information). It helps Deaf students, students learning English and anyone who missed a word. Option A works only for some students, and the others get the information late."},
+    {label: "Classroom desks", a: "A: Every desk is the same fixed height. One special desk is ordered for a student who needs a different height.", b: "B: All desks adjust up and down with a simple lever.", def: [[1, 1, 3, 3], [3, 3, 2, 1]], disc: "Option B uses flexibility in use (principle 2): every student, tall or short, sitting or standing, can set a comfortable height. Option A singles out one student. Option B costs more, so a school might phase it in over time."}
+  ];
+  var cur, scores;
+  function render(){
+    var p = cur; var D = $("mxDesc"); clear(D);
+    D.appendChild(el("p", null, p.a)); D.appendChild(el("p", null, p.b));
+    var T = $("mxTable"); clear(T);
+    var th = el("thead"), hr = el("tr"); ["Criterion", "Option A", "Option B"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); th.appendChild(hr); T.appendChild(th);
+    var tb = el("tbody");
+    CRIT.forEach(function(c, ci){
+      var tr = el("tr"); tr.appendChild(el("td", null, c + (ci === 3 ? " (3 = low cost)" : "")));
+      [0, 1].forEach(function(o){
+        var td = el("td"), id = "mx-" + ci + "-" + o;
+        var lab = el("label", {"class": "sr", "for": id}, c + ", option " + (o ? "B" : "A"));
+        var s = el("select", {id: id});
+        [0, 1, 2, 3].forEach(function(v){ var op = el("option", {value: v}, String(v)); if (scores[o][ci] === v) op.selected = true; s.appendChild(op); });
+        s.addEventListener("change", function(){ scores[o][ci] = +s.value; tot(); });
+        td.appendChild(lab); td.appendChild(s); tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+    var tr2 = el("tr", {"class": "tot"}); tr2.appendChild(el("td", null, "Total out of 12")); tr2.appendChild(el("td", {id: "mxA"})); tr2.appendChild(el("td", {id: "mxB"})); tb.appendChild(tr2);
+    T.appendChild(tb); tot();
+    $("mxDisc").hidden = true;
+  }
+  function tot(){ var s = function(a){ return a.reduce(function(x, y){ return x + y; }, 0); }; $("mxA").textContent = s(scores[0]); $("mxB").textContent = s(scores[1]); }
+  chipGroup($("mxChips"), PROBS, "", function(p){ cur = p; scores = [p.def[0].slice(), p.def[1].slice()]; render(); }, 0);
+  $("mxShow").addEventListener("click", function(){ var d = $("mxDisc"); d.hidden = false; detail(d, "Discussion", [cur.disc, "The starting scores are one class’s made-up ratings. Change them if you disagree, and be ready to explain why."], "Universal design"); });
+})();
+
+/* ---------- Bench 4: audit ---------- */
+(function(){
+  var SC = [
+    {label: "Transit ticket machine", d: "A ticket machine at an LRT station has a touch screen 140 cm high. Text is small and grey on white. It has a headphone jack with spoken instructions. It shows a “Cancel” button on every screen. You choose English or French. Buttons need a firm press.", m: [false, true, false, true, true, false, false], why: ["Some riders cannot reach or read it, so it is not equally useful.", "Language choice and audio give flexibility.", "Small grey text makes it harder to understand quickly.", "Information comes by screen and by sound.", "Cancel on every screen makes mistakes easy to fix.", "Firm presses take effort.", "At 140 cm it is too high for a seated user."]},
+    {label: "School water fountain", d: "A new fountain has two spouts: one at 75 cm and one at 100 cm. It has a large push bar on the front that works with a light touch from a hand, wrist or elbow. Clear floor space in front lets a wheelchair pull up. A bottle filler shows a light when the filter needs changing.", m: [true, true, true, false, false, true, true], why: ["Everyone uses the same fountain.", "Two heights fit different users.", "How to use it is obvious.", "No sound or touch information; the filter light is only for staff.", "Nothing here deals with mistakes.", "A light push bar needs little effort.", "Floor space lets a wheelchair pull up."]},
+    {label: "Classroom fire alarm", d: "The school alarm makes a loud sound and flashes bright strobe lights in every room and washroom. Pull stations are at about 120 cm with a clear picture and the word “Fire”. A cover over each pull station must be lifted first, which stops accidental pulls.", m: [true, false, true, true, true, true, true], why: ["Everyone gets the warning at the same time.", "There is only one way to set it off, which is fine for an alarm.", "Picture and word make it clear.", "Sound and light both carry the warning.", "The cover prevents accidental alarms.", "A pull station is easy to use.", "Pull stations are at a reachable height."]}
+  ];
+  var cur, boxes = [];
+  function render(){
+    var D = $("auDesc"); clear(D); D.appendChild(el("span", {"class": "given"}, "Interaction: " + cur.label)); D.appendChild(el("p", null, cur.d));
+    var L = $("auList"); clear(L); boxes = [];
+    PRINCIPLES.forEach(function(p, i){
+      var li = el("li"), id = "au-" + i, lab = el("label", {"for": id}), cb = el("input", {type: "checkbox", id: id});
+      lab.appendChild(cb); var sp = el("span"); sp.appendChild(el("b", null, p[0] + ". ")); sp.appendChild(document.createTextNode(p[1])); lab.appendChild(sp);
+      li.appendChild(lab); L.appendChild(li); boxes.push({cb: cb, sp: sp});
+    });
+    clear($("auFb"));
+  }
+  chipGroup($("auChips"), SC, "", function(s){ cur = s; render(); }, 0);
+  $("auCheck").addEventListener("click", function(){
+    var agree = 0;
+    boxes.forEach(function(b, i){
+      var old = b.sp.querySelector(".ans-ok,.ans-no"); if (old) b.sp.removeChild(old);
+      var same = b.cb.checked === cur.m[i]; if (same) agree++;
+      b.sp.appendChild(el("span", {"class": same ? "ans-ok" : "ans-no"}, " " + (cur.m[i] ? "Met. " : "Not met. ") + cur.why[i]));
+    });
+    var met = cur.m.filter(Boolean).length;
+    detail($("auFb"), "You agreed with the model audit on " + agree + " of 7 principles", ["The model audit says this design meets " + met + " of 7 principles. An evaluation should also say what to improve. Pick one principle it does not meet and suggest a change."], "Audit result");
+  });
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Which design step?", bins: ["Identify the problem", "Research", "Brainstorm", "Prototype", "Test and refine"], items: [
+    ["Watching the boot room to see who struggles", 0, "Watching users to understand who has the problem is part of identifying it."],
+    ["Writing “How might we help everyone get ready in 5 minutes?”", 0, "A problem statement names the problem and the goal."],
+    ["Timing how long students take to get ready", 1, "Measuring gives facts about the problem. That is research."],
+    ["Looking up how other schools design boot rooms", 1, "Learning what others have tried is research."],
+    ["Listing 20 ideas in 10 minutes without judging them", 2, "Brainstorming means many ideas first, judging later."],
+    ["Taping paper hook labels to the wall at three heights", 3, "A quick, cheap early version is a prototype."],
+    ["Building a cardboard model of a cubby", 3, "A model you can try out is a prototype."],
+    ["Asking kindergarten students to try the new low hooks", 4, "Trying the prototype with real users is testing."],
+    ["Moving hooks 10 cm lower after a test", 4, "Changing the design based on test results is refining."]
+  ]},
+  {label: "Product, process or service?", bins: ["Product", "Process", "Service"], items: [
+    ["A boot dryer rack", 0, "A thing you can hold or use is a product."],
+    ["Letting classes into the boot room in waves", 1, "A new order or way of doing things is a process."],
+    ["Grade 7 buddies who help with zippers", 2, "Help that people give is a service."],
+    ["A bus tracking app", 0, "An app is a product people use."],
+    ["A sign-out routine for borrowed calculators", 1, "A routine is a process."],
+    ["A library that delivers books to classrooms", 2, "People doing a task for others is a service."],
+    ["A lever door handle", 0, "A handle is an object, so it is a product."],
+    ["A tech help desk at lunch", 2, "Students or staff giving help is a service."]
+  ]},
+  {label: "Which thinking tool?", bins: ["Decomposition", "Pattern recognition", "Abstraction", "Algorithm"], items: [
+    ["Splitting “plan the science fair” into judging, setup, signs and food", 0, "Breaking a big problem into smaller parts is decomposition."],
+    ["Noticing the line is always longest on Mondays", 1, "Spotting what repeats is pattern recognition."],
+    ["Drawing a floor plan that shows only walls, doors and hooks", 2, "Keeping only the important details is abstraction."],
+    ["Writing numbered steps for using the kiosk", 3, "Clear ordered steps are an algorithm."],
+    ["Using a transit map that ignores the real curves of the tracks", 2, "The map leaves out details riders do not need. That is abstraction."],
+    ["Seeing that three complaints all mention wet floors", 1, "Finding the same thing in different data is pattern recognition."],
+    ["A recipe card", 3, "A recipe is a set of ordered steps: an algorithm."],
+    ["Listing the parts of a wheelchair ramp project: slope, surface, railings, landing", 0, "Breaking a project into parts is decomposition."]
+  ]},
+  {label: "Universal or add-on?", bins: ["Universal design", "Separate or add-on fix"], items: [
+    ["A main entrance with no steps", 0, "Everyone uses the same entrance in the same way."],
+    ["A ramp around the back by the loading dock", 1, "It helps, but it sends some people to a separate door."],
+    ["Captions shown on every class video", 0, "The same video works for more people without asking."],
+    ["Captions only for students who ask for them", 1, "The access depends on asking for a special version."],
+    ["Desks that all adjust in height", 0, "Every student can set their own height."],
+    ["One special desk for one student", 1, "It meets a need but singles one student out."],
+    ["Signs with pictures and words", 0, "The same sign works for readers, non-readers and newcomers."],
+    ["A printed copy of the announcements, available on request", 1, "It is an add-on that arrives later and only if asked for."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Design thinking", "An approach to solving problems that starts with understanding the people who have the problem."],
+  ["Empathy", "Understanding how someone else experiences a problem."],
+  ["How might we…?", "A question form that names a problem and leaves room for many solutions."],
+  ["Design process", "A set of steps for solving a problem: identify, research, brainstorm, prototype, test and refine."],
+  ["Iterative", "Repeating steps in a loop to improve a solution each time."],
+  ["Collaborative", "Working together with a team and with users."],
+  ["Brainstorming", "Listing many ideas quickly before judging them."],
+  ["Prototype", "A quick, early model of a solution used for testing."],
+  ["Refine", "Improve a design based on what testing showed."],
+  ["Need", "Something people must have to be safe, healthy or able to take part."],
+  ["Want", "Something that would be nice to have but is not required."],
+  ["Product, process, service", "Three kinds of solutions: a thing, a way of doing something, or help that people give."],
+  ["Computational thinking", "Thinking tools from computer science: decomposition, pattern recognition, abstraction and algorithms."],
+  ["Decomposition", "Breaking a big problem into smaller parts."],
+  ["Pattern recognition", "Noticing what repeats or what is similar."],
+  ["Abstraction", "Keeping the important details and leaving out the rest."],
+  ["Algorithm", "A clear set of ordered steps that solves a problem."],
+  ["User interaction", "Everything that happens when a person uses a solution."],
+  ["User interface", "The part of a solution a person uses to control it, like buttons, a screen or a handle."],
+  ["Feedback (in design)", "A sound, light or message that tells the user something worked."],
+  ["Universal design", "Designing from the start so people with many different needs and abilities can use a solution."],
+  ["Accessibility", "How easily all people, including people with disabilities, can reach, use and understand something."],
+  ["Curb cut effect", "When a feature made for one group ends up helping many people."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What does design thinking start with?", ["Understanding the people who have the problem", "Choosing the cheapest material", "Building the final product", "Writing computer code"], "Design thinking begins with empathy: learning what users experience and need."],
+  ["Which is the best problem statement?", ["How might we help everyone get ready for recess in 5 minutes?", "We need more hooks.", "Buy a bigger boot room.", "Hooks are bad."], "A “How might we” question names the goal and leaves room for many solutions."],
+  ["What does iterative mean in a design process?", ["You repeat steps in a loop to improve the design", "You only do each step once", "You skip testing", "You work alone"], "Iterative means going around the loop more than once, using each test to improve."],
+  ["Which step comes right before testing?", ["Plan and develop a prototype", "Identify the problem", "Brainstorm", "Research"], "You need a prototype before you can test it."],
+  ["What is a prototype?", ["A quick, early model of a solution used for testing", "The final product sold in stores", "A list of ideas", "A survey of users"], "Prototypes are cheap and quick so you can learn from testing."],
+  ["A test shows the team solved the wrong problem. Where should they go?", ["Back to identifying the problem", "Straight to selling it", "Nowhere, the design is done", "Only to refining colours"], "If the problem was wrong, the loop goes all the way back to the start."],
+  ["Why are design processes often collaborative?", ["Different people notice different problems and ideas", "Rules say only teams can design", "It makes work slower", "Users should never be asked"], "Teams and users bring different views, which leads to better solutions."],
+  ["Letting classes into the boot room in waves is an example of a…", ["process", "product", "service", "prototype only"], "A new way or order of doing things is a process."],
+  ["Grade 7 buddies helping kindergarten students with zippers is a…", ["service", "product", "process", "algorithm"], "Help that people give is a service."],
+  ["Which is a want rather than a need?", ["Music playing in the boot room", "A dry, non-slip floor", "Being able to reach your own boots", "A safe fire exit route"], "Music is nice but not required. The others relate to safety or taking part."],
+  ["Breaking “plan the field trip” into transport, food, permission and schedule is…", ["decomposition", "abstraction", "pattern recognition", "an interface"], "Decomposition breaks a big problem into smaller parts."],
+  ["A transit map shows stops in order but not the real shape of the track. This is…", ["abstraction", "decomposition", "an algorithm", "a prototype"], "Abstraction keeps the important details and leaves out the rest."],
+  ["Noticing the boot room is slowest after both short recesses is…", ["pattern recognition", "abstraction", "decomposition", "refining"], "Spotting something that repeats is pattern recognition."],
+  ["What makes a good algorithm?", ["Clear steps in the right order", "As few words as possible, in any order", "Steps that change each time", "Pictures only"], "An algorithm is an ordered set of clear steps that works every time."],
+  ["What is a user interface?", ["The part of a solution a person uses to control it", "The inside wiring of a machine", "The company that sells it", "The price tag"], "Buttons, screens, handles and panels are user interfaces."],
+  ["Which feature lets a user recover from a mistake?", ["A back or undo button", "Small grey text", "A hidden menu", "A firm press button"], "Good interfaces make mistakes easy to fix."],
+  ["What is universal design?", ["Designing from the start so people with many needs and abilities can use it", "Making one special version for one person", "Designing only for the average person", "A design used in every country"], "Universal design plans for a wide range of users from the beginning."],
+  ["The curb cut effect means…", ["a feature made for one group helps many people", "curbs should be taller", "ramps only help wheelchair users", "design should be cheap"], "Curb cuts help strollers, carts, cyclists and travellers too."],
+  ["Which entrance shows universal design best?", ["A step-free main entrance everyone uses", "Front steps plus a ramp at a back door", "Front steps only", "A sign telling people to call for help"], "Universal design gives everyone the same experience where possible."],
+  ["Captions on a video help…", ["Deaf viewers, English learners and people in noisy rooms", "only Deaf viewers", "nobody who can hear", "only teachers"], "Information by both sound and text helps many users."],
+  ["A ticket machine is 140 cm high. Which principle does it fail?", ["Size and space for approach and use", "Perceptible information", "Tolerance for error", "Simple and intuitive use"], "Seated users cannot reach it, so the size and space principle is not met."],
+  ["Why is a lever door handle better than a round knob for many people?", ["It needs little grip or strength", "It is cheaper to paint", "It looks older", "It needs two hands"], "A lever can be pushed with an elbow or closed hand: low physical effort."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What is design thinking, and why does it start with users?", a: "Design thinking is a way of solving problems that starts with understanding the people who have the problem. It starts with users because a solution only works if it meets their real needs, and watching and listening often shows a problem the designer did not expect.", k: ["Approach to solving problems", "Starts with people or users", "Empathy or understanding needs", "Reason: solution must meet real needs"]},
+  {q: "List the five steps of the design process used in this unit.", a: "Identify the problem, research, brainstorm solutions, plan and develop a prototype, and test and refine.", k: ["Identify", "Research", "Brainstorm", "Prototype", "Test and refine"]},
+  {q: "Explain what iterative means. Give an example from the boot room problem.", a: "Iterative means going through the steps more than once and using each test to improve. In the boot room, the first test showed small children could not reach the hooks, so the team went back to brainstorming, lowered the hooks and tested again.", k: ["Repeat the loop", "Testing leads to changes", "Boot room example with a loop back"]},
+  {q: "What is a prototype, and why should a first prototype be quick and cheap?", a: "A prototype is an early model of a solution used for testing. It should be quick and cheap because the first version will probably need changes. You can learn from testing without wasting time or money.", k: ["Early model for testing", "Expect changes", "Saves time or money"]},
+  {q: "Give one example each of a product, a process and a service that could solve a problem at your school.", a: "Product: name labels for gear. Process: classes enter the boot room in waves. Service: Grade 7 buddies help young students with zippers.", k: ["Correct product", "Correct process", "Correct service", "Linked to a school problem"]},
+  {q: "Name the four parts of computational thinking and give a short example of one.", a: "Decomposition, pattern recognition, abstraction and algorithms. Example: abstraction is drawing a floor plan of the boot room that shows only walls, doors and hooks.", k: ["All four named", "Correct example", "Example matches the tool"]},
+  {q: "What is a user interface? Give two examples that are not screens.", a: "A user interface is the part of a solution that a person uses to control it. Examples that are not screens: a door handle and the buttons in an elevator.", k: ["Definition", "Two non-screen examples"]},
+  {q: "Define universal design and explain the curb cut effect.", a: "Universal design means planning a solution from the start so that people with many different needs and abilities can use it. The curb cut effect is when a feature made for one group helps many others, like curb cuts helping strollers, carts and cyclists as well as wheelchair users.", k: ["Planned from the start", "Many needs and abilities", "Curb cut effect explained", "Example of who else benefits"]},
+  {q: "Why is a step-free main entrance a better example of universal design than a ramp at a back door?", a: "With a step-free main entrance, everyone uses the same door in the same way. A back ramp works, but it sends some people to a separate entrance, which is less equal and often less convenient.", k: ["Same experience for everyone", "Separate entrance is less equal", "Mentions convenience or dignity"]}
+];
+var LONG = [
+  {q: "Use the five steps of the design process to describe how you would solve a problem at your school (for example, a crowded hallway or a messy lunchroom). Show where you would iterate.", a: "Example: the lunch line is too slow. Identify: watch the line and interview students; write “How might we help everyone get food in 10 minutes?” Research: time the line and find where people wait. Brainstorm: two lines, pre-ordering, moving the cutlery. Prototype: try two lines for one week. Test and refine: time it again and ask users. The test shows the drink cooler causes a new jam, so I loop back to brainstorming and move the cooler, then test again.", k: ["Clear problem with users", "All five steps used in order", "Specific test and measurement", "At least one loop back explained", "Users involved in testing"]},
+  {q: "Choose a user interaction you use often (a phone app, a vending machine, a door, the school website). Evaluate it using at least three principles of universal design and suggest one improvement.", a: "Example: the school website. Simple and intuitive use: menus are confusing, with 12 items. Perceptible information: images have no descriptions for screen readers. Tolerance for error: forms clear all your answers if you make a mistake. Improvement: add image descriptions so blind users hear what each picture shows.", k: ["Names the interaction", "Three principles applied with evidence", "Judges met or not met", "One specific improvement", "Says who the improvement helps"]},
+  {q: "A classmate says, “Universal design only helps people with disabilities, so it is not worth the cost.” Do you agree? Use examples.", a: "I disagree. Universal design helps people with disabilities and almost everyone else. Curb cuts help strollers and bikes. Captions help people learning English and people in noisy places. Automatic doors help anyone carrying things. Designing it in from the start usually costs less than fixing it later. Cost is a real limit, but the benefit reaches many users.", k: ["Clear position", "At least two examples", "Curb cut effect idea", "Cost of fixing later or cost as a real constraint", "Conclusion"]},
+  {q: "Explain how computational thinking could help a team design a new layout for the school library.", a: "Decomposition: split the job into shelving, seating, the checkout desk and paths for wheelchairs. Pattern recognition: notice that most visitors come at lunch and go to the same shelves. Abstraction: draw a floor plan with only shelves, doors and walkways. Algorithm: write steps for checking out a book that work for every user.", k: ["Decomposition applied", "Pattern recognition applied", "Abstraction applied", "Algorithm applied", "Mentions users or accessibility"]}
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["CS3.K1", "Design thinking is an innovative approach to solving problems.", "Learn: Lesson 1 (How might we builder). Sort It: which design step. Quiz, Flashcards, Written Review short answer 1."],
+    ["CS3.K2", "Design processes are iterative, often collaborative, and include\n• identifying the problem\n• researching\n• brainstorming solutions\n• planning and developing a prototype\n• testing and refining", "Learn: Lesson 2 (design loop with test results). Lab Bench: Investigation 1 (iteration log). Sort It: which design step. Quiz, Flashcards, Written Review short answers 2 to 4, extended 1."],
+    ["CS3.K3", "Solutions can address needs, wants, or problems and can be products, processes, or services.", "Learn: Lesson 3 (solution grid). Lab Bench: Investigation 3. Sort It: product, process or service. Quiz, Flashcards, Written Review short answer 5."],
+    ["CS3.K4", "Design processes can be supported by computational thinking, which includes\n• decomposition\n• pattern recognition\n• abstraction\n• algorithms", "Learn: Lesson 4 (four tools on the boot room problem). Lab Bench: Investigation 2 (algorithm order, randomized). Sort It: which thinking tool. Quiz, Flashcards, Written Review short answer 6, extended 4."],
+    ["CS3.K5", "User interaction, such as a user interface, should be considered when designing solutions.", "Learn: Lesson 5 (self-checkout screen builder). Lab Bench: Investigation 4. Quiz, Flashcards, Written Review short answer 7."],
+    ["CS3.K6", "Universal design considers users’ diverse needs and abilities and can support design processes and accessibility.", "Learn: Lessons 5 and 6 (who does it help, seven principles). Lab Bench: Investigations 1, 3 and 4. Sort It: universal or add-on. Quiz, Flashcards, Written Review short answers 8 and 9, extended 3."],
+    ["CS3.S1", "Solve a problem, using design processes.", "Lab Bench: Investigation 1 (boot room prototype tester with worked example) and Investigation 2. Learn: Lesson 2. Written Review extended 1."],
+    ["CS3.S2", "Discuss solutions that incorporate universal design.", "Learn: Lesson 6. Lab Bench: Investigation 3 (decision matrix and discussion). Written Review short answer 9, extended 3."],
+    ["CS3.S3", "Evaluate the use of universal design in a user interaction.", "Lab Bench: Investigation 4 (universal design audit of three interactions). Learn: Lesson 5. Written Review extended 2."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

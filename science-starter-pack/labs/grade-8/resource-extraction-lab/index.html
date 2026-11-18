@@ -1,0 +1,1465 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/resource-extraction-lab/"><meta name="description" content="Geological resource extraction methods change Earth’s surface."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Resource Extraction Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a geologist's field and core-shed notebook. Sticky tab strip, then lessons that pair a short reading column with a live cross-section, core or map. Copper marks ore, slate blue marks the grade, green marks reclamation, blue marks water. */
+:root{
+  --bg:#ECEEEB; --surface:#FFFFFF; --surface-2:#F4F5F2; --ink:#1B2126; --muted:#4F5860; --line:#D0D5D4;
+  --g8:#1D5FA8; --g8-soft:#DFEAF6; --ore:#A04F1C; --ore-soft:#F8E6DA; --leaf:#2D7546; --leaf-soft:#DDEFE3;
+  --water:#1C6A8A; --water-soft:#DCEDF4; --oil:#4A3F5C; --oil-soft:#E9E5F0; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --sky:#E4EDF3; --till:#D8C9A0; --sand:#E8D79E; --shale:#A9B0B3; --coal:#3B3B3D; --lime:#CFD3BC; --salt:#E9EFF3; --bitu:#6A5640; --shield:#B99A94; --orebody:#C8763A; --grass:#9BC38A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1315; --surface:#171D21; --surface-2:#1D252A; --ink:#E4EAEE; --muted:#A0ADB6; --line:#2C373E;
+  --g8:#7DB0F0; --g8-soft:#18283C; --ore:#F0A070; --ore-soft:#3A2418; --leaf:#7BCB95; --leaf-soft:#16301F;
+  --water:#6DC1E0; --water-soft:#132C38; --oil:#C3B4E0; --oil-soft:#2A2338; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18;
+  --sky:#16232C; --till:#5E5337; --sand:#6E6236; --shale:#4E575C; --coal:#0B0B0C; --lime:#4F5444; --salt:#3C4A53; --bitu:#3E3226; --shield:#5E4A46; --orebody:#C8763A; --grass:#3E5E36;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1315; --surface:#171D21; --surface-2:#1D252A; --ink:#E4EAEE; --muted:#A0ADB6; --line:#2C373E;
+  --g8:#7DB0F0; --g8-soft:#18283C; --ore:#F0A070; --ore-soft:#3A2418; --leaf:#7BCB95; --leaf-soft:#16301F;
+  --water:#6DC1E0; --water-soft:#132C38; --oil:#C3B4E0; --oil-soft:#2A2338; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18;
+  --sky:#16232C; --till:#5E5337; --sand:#6E6236; --shale:#4E575C; --coal:#0B0B0C; --lime:#4F5444; --salt:#3C4A53; --bitu:#3E3226; --shield:#5E4A46; --orebody:#C8763A; --grass:#3E5E36;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g8)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g8);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:none}
+svg .hit:focus-visible, svg .hit:hover{stroke:var(--ink);stroke-width:3}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .or{color:var(--ore)}
+.under{max-width:72ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g8-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g8)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.05rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:480px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .mono{font-family:var(--f-mono);font-size:11px}
+svg .hit{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--ore)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* criteria checks */
+.crit{display:grid;gap:6px;padding:0;margin:0}
+.crit li{list-style:none;display:grid;grid-template-columns:1.6em minmax(0,1fr);gap:6px;font-size:.92rem;align-items:start}
+.crit li b{font-family:var(--f-mono);text-align:center;border-radius:4px}
+.crit li.y b{color:var(--good)} .crit li.n b{color:var(--bad)}
+.verdict{font-weight:700;border-radius:8px;padding:8px 12px}
+.verdict.ok{background:var(--leaf-soft);color:var(--good)} .verdict.no{background:var(--bad-soft);color:var(--bad)}
+
+/* product parts */
+.parts{display:grid;gap:6px}
+.part{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.9rem}
+.part b{font-family:var(--f-display);font-size:.98rem}
+.part .src{grid-column:1/-1;color:var(--muted);font-size:.86rem}
+.flag{font-family:var(--f-mono);font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.flag.ab{background:var(--g8-soft);color:var(--g8)}
+.flag.far{background:var(--ore-soft);color:var(--ore)}
+.flag.both{background:var(--leaf-soft);color:var(--leaf)}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:9.5em minmax(0,1fr) 2.6em;gap:8px;align-items:center;font-size:.86rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;border-radius:7px;transition:width .4s ease}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:7.4em minmax(0,1fr) 2.4em}}
+.bar-eco{background:var(--g8)} .bar-env{background:var(--ore)}
+
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+.checks2 label.off{color:var(--muted)}
+/* atlas list */
+.atlas{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:700px){.atlas{grid-template-columns:minmax(0,1fr)}}
+.atlas .svgbox svg{min-width:0;max-width:300px;margin:0 auto}
+.reslist{display:flex;flex-wrap:wrap;gap:6px}
+.rtable{display:grid;gap:6px;font-size:.92rem}
+.rtable div{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.rtable div span:first-child{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-top:2px}
+@media (max-width:480px){.rtable div{grid-template-columns:minmax(0,1fr);gap:2px}}
+.logged{display:flex;flex-wrap:wrap;gap:6px}
+.logged span{font-family:var(--f-mono);font-size:.72rem;padding:2px 8px;border-radius:999px;background:var(--leaf-soft);color:var(--leaf)}
+
+/* core samples */
+.cores{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.core{display:grid;gap:4px;justify-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--muted)}
+.core .stick{width:26px;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:grid}
+.core .stick i{display:block;width:100%}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g8)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Earth Science: Fossils and Resources · ES2</div>
+    <h1>Resource <span class="or">Extraction</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Geological resource extraction methods change Earth’s surface. Alberta sits on coal, oil sands, gravel, salt and more. Finding these resources, digging them up and caring for the land afterward all leave a mark that people must plan for.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with what counts as a geological resource, find out why Alberta has the resources it has, then follow them from the ground into products, through exploration and mining, and on to caring for the land.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · What counts as a resource?</span>
+      <div class="codes"><span class="code">ES2.K1</span></div>
+      <h3>Geological resources</h3>
+      <p>A <b>geological resource</b> is a material that formed naturally on or below Earth’s surface, has <b>economic value</b>, and can be <b>extracted</b> (taken out) for people to use. Economic value means people will pay for it.</p>
+      <p>Geological resources include <b>fossil fuels</b> such as coal, oil and natural gas, <b>metal ores</b> such as copper and iron ore, and <b>industrial minerals and rock</b> such as gravel, limestone and salt.</p>
+      <p>A material has to pass all four tests. Gravel buried under a city park is still gravel, but it is not a resource you can extract there. Iron in Earth’s core is real, but nobody can reach it.</p>
+      <div class="key"><b>Remember:</b> natural, on or below the surface, worth money, and possible to extract.</div>
+      <p class="note">Whether a deposit is worth extracting can change. If prices rise or new technology lowers costs, a deposit that was not worth mining can become one that is.</p>
+    </div>
+    <div class="model">
+      <h4>Resource or not?</h4>
+      <p class="hint">Pick a material. The checklist shows which tests it passes.</p>
+      <div class="chips" id="resChips" role="group" aria-label="Choose a material"></div>
+      <ul class="crit" id="resCrit" aria-live="polite"></ul>
+      <p class="verdict" id="resVerdict" aria-live="polite"></p>
+      <p class="hint" id="resWhy"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Why here and not there?</span>
+      <div class="codes"><span class="code">ES2.K2</span></div>
+      <h3>Resources are unevenly spread</h3>
+      <p>Geological resources are found only where past geological processes made them. That is why some places have plenty of a resource and other places have none.</p>
+      <ul>
+        <li><b>Ancient seas</b> covered Alberta several times. Tiny sea creatures were buried in mud and slowly changed into <b>oil and natural gas</b>. Reefs and shells became <b>limestone</b>. When shallow seas dried up, they left thick beds of <b>salt</b>.</li>
+        <li><b>Swamps</b> along old coastlines buried thick layers of plants. Heat and pressure turned them into <b>coal</b>.</li>
+        <li><b>Glaciers and rivers</b> dropped sand and <b>gravel</b> across the province during and after the last Ice Age.</li>
+        <li>Most <b>metal ores</b>, like copper, form from hot fluids moving through cracks in rock, often where mountains or volcanoes formed. Alberta’s plains have few of these, so most copper and iron used in Canada comes from places like British Columbia, Quebec and Labrador.</li>
+      </ul>
+      <p class="note">Ages are rounded. Each layer holds clues, including fossils, that geologists use to predict where a resource might be.</p>
+    </div>
+    <div class="model">
+      <h4>Alberta underground (simplified cross-section)</h4>
+      <p class="hint">Select a layer to see what formed it and what resource it holds. Not to scale.</p>
+      <div class="svgbox fit"><svg id="xsec" viewBox="0 0 520 300" role="group" aria-label="Simplified layers under Alberta"></svg></div>
+      <div class="detail" id="xsecInfo" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · From rock to product</span>
+      <div class="codes"><span class="code">ES2.K3</span></div>
+      <h3>Alberta resources become raw materials</h3>
+      <p>A <b>raw material</b> is a natural material used to make something else. Alberta’s fossil fuels and minerals supply raw materials for many products.</p>
+      <p>Natural gas contains <b>ethane</b> and <b>propane</b>. Petrochemical plants near Red Deer and Fort Saskatchewan turn these into <b>plastics</b> such as polyethylene and polypropylene. Plastics end up in IV bags, tubing, syringes, gloves, food packaging and phone parts.</p>
+      <p>A cell phone needs more than plastic. It uses copper wires, a lithium battery, gold on its contacts, and glass made from sand. Most of these metals are mined outside Alberta, so a phone is built from resources from many countries.</p>
+      <div class="key"><b>Big idea:</b> almost every manufactured product starts as something that was grown or something that was extracted from the ground.</div>
+    </div>
+    <div class="model">
+      <h4>Take it apart</h4>
+      <p class="hint">Pick a product to trace each part back to a geological resource.</p>
+      <div class="chips" id="prodChips" role="group" aria-label="Choose a product"></div>
+      <div class="parts" id="prodParts" aria-live="polite"></div>
+      <p class="hint"><span class="flag ab">Alberta</span> can come from Alberta resources. <span class="flag far">Elsewhere</span> mostly mined outside Alberta.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Changing the surface</span>
+      <div class="codes"><span class="code">ES2.K4</span></div>
+      <h3>Surface mines and underground mines</h3>
+      <p>A <b>surface mine</b> removes the soil and rock on top, called <b>overburden</b>, to reach a deposit near the surface. Gravel pits, rock quarries, Alberta coal mines and oil sands mines are surface mines. They change the land over a wide area: forests, wetlands and farmland are cleared and big pits and waste piles are left until the land is reclaimed.</p>
+      <p>An <b>underground mine</b> reaches a deep deposit through shafts and tunnels. It disturbs less land at the surface, but it costs more per tonne, needs strong supports and ventilation, and can leave waste rock piles and cause the ground above to sink.</p>
+      <p>The choice depends mostly on <b>how deep</b> the deposit is and its shape, not only on what the material is. Coal and gravel are usually near the surface. Copper and iron ore come from both kinds of mine. Many of the world’s largest copper and iron mines are open pits, and deeper deposits are mined underground.</p>
+      <p>Some resources are not dug at all. Oil and gas flow up <b>wells</b>. Deep oil sands are heated with steam underground so the thick oil can be pumped out (<b>in situ</b> means “in place”). Salt can be dissolved with water and pumped up.</p>
+    </div>
+    <div class="model">
+      <h4>How deep is the deposit?</h4>
+      <label class="field" for="depth">Depth to top of deposit: <span class="mono" id="depthOut">40 m</span></label>
+      <input type="range" id="depth" min="10" max="400" step="10" value="40">
+      <div class="svgbox fit"><svg id="mineSvg" viewBox="0 0 520 280" role="img" aria-labelledby="mineCap"><title id="mineCap">Cross-section of a mine</title></svg></div>
+      <div class="stats" id="mineStats" aria-live="polite"></div>
+      <p class="hint">Stripping ratio = mass of overburden removed ÷ mass of ore. In this simple model, the ore body is 30 m thick and pit walls slope at 45°.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Finding resources</span>
+      <div class="codes"><span class="code">ES2.K5</span></div>
+      <h3>Exploration: where is it, and how much?</h3>
+      <p><b>Exploration</b> is the search for a resource before anyone mines it. Geologists use many methods, usually starting wide and cheap and ending narrow and expensive.</p>
+      <ul>
+        <li><b>Surveying Earth’s surface:</b> mapping rock outcrops, collecting rock and soil samples, and looking for fossils and minerals that hint at what lies below.</li>
+        <li><b>Geophysical surveys:</b> instruments on the ground or in aircraft measure magnetism or gravity, or send sound waves down and record the echoes (seismic surveys).</li>
+        <li><b>Core sample drilling:</b> a hollow drill bit cuts a long cylinder of rock called a <b>core</b>. Geologists log every layer and send samples to a lab to measure how much resource the rock holds.</li>
+      </ul>
+      <p>Only a few places that are explored ever become mines.</p>
+    </div>
+    <div class="model">
+      <h4>Exploration steps</h4>
+      <div class="chips" id="expChips" role="group" aria-label="Exploration step"></div>
+      <div class="detail" id="expInfo" aria-live="polite"></div>
+      <div class="cores" id="expCores" aria-hidden="true"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Doing it responsibly</span>
+      <div class="codes"><span class="code">ES2.K6</span></div>
+      <h3>Reducing environmental impacts in Alberta</h3>
+      <p>Extraction always has impacts. <b>Responsible extraction</b> uses methods and rules that make those impacts smaller. In Alberta, examples include:</p>
+      <ul>
+        <li><b>Carbon capture and storage (CCS):</b> catching carbon dioxide from a plant and storing it deep underground.</li>
+        <li><b>Methane emission reduction:</b> finding and fixing leaks and capturing gas that would escape from wells and pipelines.</li>
+        <li><b>Water recycling and filtration:</b> cleaning and reusing water so less is taken from rivers.</li>
+        <li><b>Tailings management:</b> safely storing and treating the leftover water, sand and clay from processing, then reclaiming the land.</li>
+      </ul>
+      <p><b>Reclamation</b> means returning disturbed land to a useful, stable landscape such as forest, wetland or farmland. Alberta law requires companies to reclaim land they disturb.</p>
+    </div>
+    <div class="model">
+      <h4>Four practices</h4>
+      <div class="chips" id="pracChips" role="group" aria-label="Choose a practice"></div>
+      <div class="svgbox fit"><svg id="pracSvg" viewBox="0 0 520 220" role="img" aria-labelledby="pracCap"><title id="pracCap">Diagram of the selected practice</title></svg></div>
+      <div class="detail" id="pracInfo" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Weighing the impacts</span>
+      <div class="codes"><span class="code">ES2.S3</span><span class="code">Understanding</span></div>
+      <h3>Economic and environmental impacts</h3>
+      <p><b>Economic impacts</b> are effects on money, jobs and businesses. Resource projects create jobs, pay taxes, and pay <b>royalties</b>, which are fees paid to the owner of the resource. In Alberta most mineral rights belong to the province, so royalties help pay for schools, hospitals and roads. Prices for resources rise and fall, so these benefits can rise and fall too.</p>
+      <p><b>Environmental impacts</b> are effects on land, water, air, wildlife and climate. They include cleared land, lost habitat, water use, dust, noise, waste, and greenhouse gas emissions.</p>
+      <p>Different people feel different impacts. Good decisions listen to all of them, including nearby First Nations and Métis communities whose Treaty and Aboriginal rights must be respected. Governments have a legal duty to consult them about projects that may affect those rights.</p>
+    </div>
+    <div class="model">
+      <h4>Who is affected?</h4>
+      <p class="hint">Pick a group to see possible benefits and concerns.</p>
+      <div class="chips" id="whoChips" role="group" aria-label="Choose a group"></div>
+      <div class="detail" id="whoInfo" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Map Alberta’s resources, explore for a hidden ore body, practise the math geologists use, and analyze the impacts of different projects. All numbers in investigations 2 to 4 are made up for practice.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 1 · Alberta resource atlas</span>
+      <div class="codes"><span class="code">ES2.S1</span><span class="code">ES2.K2</span><span class="code">ES2.K3</span></div>
+      <h3>What is found where, and what is it used for?</h3>
+      <p>Select a resource on the list or a marker on the map. Read how it formed, where it is found, how it is extracted and what it is used for. Each resource you open is logged.</p>
+      <div class="reslist" id="atlasChips" role="group" aria-label="Choose a resource"></div>
+      <p class="hint mono" id="atlasCount"></p>
+      <p class="note">Your task: choose three resources and, for each one, write its primary use and the geological process that put it where it is.</p>
+    </div>
+    <div class="model">
+      <div class="atlas">
+        <div class="svgbox fit"><svg id="abMap" viewBox="-10 -10 280 510" role="group" aria-label="Map of Alberta with resource locations"></svg></div>
+        <div class="detail" id="atlasInfo" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 2 · Core drilling explorer</span>
+      <div class="codes"><span class="code">ES2.S2</span><span class="code">ES2.K5</span><span class="code">ES2.K4</span></div>
+      <h3>Find the ore body, then choose a mine</h3>
+      <p>A copper ore body is hidden under this land. You have an exploration budget of <b>100 units</b>.</p>
+      <ol>
+        <li>Run a <b>magnetic survey</b> (20 units). The bump in the line shows roughly where the ore is.</li>
+        <li>Drill <b>core samples</b> (15 units each). Pick a spot on the surface. Each core shows the layers it went through.</li>
+        <li>Use your cores to estimate how deep the ore starts and choose a mining method.</li>
+      </ol>
+      <p class="note">Model rule: if the stripping ratio (overburden thickness ÷ ore thickness) is 4 or less, a surface mine is likely. Above that, an underground mine is likely. Real decisions also depend on ore grade, prices and costs.</p>
+    </div>
+    <div class="model">
+      <div class="stats" id="drillStats" aria-live="polite"></div>
+      <div class="svgbox"><svg id="drillSvg" viewBox="0 0 520 300" role="group" aria-label="Cross-section of the exploration site"></svg></div>
+      <div class="row">
+        <button class="btn ghost" id="surveyBtn" type="button">Run magnetic survey (20)</button>
+        <button class="btn ghost" id="newSite" type="button">New site</button>
+      </div>
+      <div class="cores" id="drillCores"></div>
+      <div class="row">
+        <label class="field" for="estDepth">Estimated depth to ore (m)<input type="number" id="estDepth" min="0" max="400" step="5"></label>
+        <label class="field" for="estMethod">Mining method
+          <select id="estMethod"><option value="">Choose</option><option value="surface">Surface mine (open pit)</option><option value="under">Underground mine</option></select></label>
+        <button class="btn" id="drillCheck" type="button">Check my plan</button>
+      </div>
+      <p class="fb" id="drillFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 3 · Ore math</span>
+      <div class="codes"><span class="code">ES2.S3</span><span class="code">ES2.K4</span></div>
+      <h3>Grade, stripping ratio and profit</h3>
+      <p>Mining companies use three simple calculations to decide whether a deposit is worth mining. You do not need to memorize them.</p>
+      <div class="formula">metal mass = ore mass × grade ÷ 100<br>stripping ratio = waste rock mass ÷ ore mass<br>profit = revenue − costs</div>
+      <div class="worked">
+        <b>Worked example (made-up numbers)</b>
+        <span>A pit produces 2 000 t of ore with a copper grade of 0.5%. Copper sells for $10 000 per tonne in this example.</span>
+        <span>Copper: 2 000 t × 0.5 ÷ 100 = <b>10 t</b></span>
+        <span>Revenue: 10 t × $10 000 = <b>$100 000</b></span>
+        <span>The miners also removed 6 000 t of waste rock. Stripping ratio: 6 000 ÷ 2 000 = <b>3</b> (3 t of waste for every tonne of ore).</span>
+        <span>If mining and processing cost $40 per tonne of ore, costs are 2 000 × $40 = $80 000. Profit: $100 000 − $80 000 = <b>$20 000</b>.</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Practice problem</h4>
+      <p id="mathQ" aria-live="polite"></p>
+      <label class="field" for="mathA">Your answer<input type="number" id="mathA" step="any"></label>
+      <div class="row">
+        <button class="btn" id="mathCheck" type="button">Check</button>
+        <button class="btn ghost" id="mathShow" type="button">Show solution</button>
+        <button class="btn ghost" id="mathNew" type="button">New problem</button>
+      </div>
+      <p class="fb" id="mathFb" aria-live="polite"></p>
+      <div class="worked" id="mathSol" hidden></div>
+      <p class="hint mono" id="mathScore"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 4 · Impact analyzer</span>
+      <div class="codes"><span class="code">ES2.S3</span><span class="code">ES2.K6</span><span class="code">ES2.K4</span></div>
+      <h3>Weigh a project’s impacts</h3>
+      <p>Choose a project, then switch responsible practices on or off. The bars show made-up scores from 0 to 10 so you can compare projects. Blue bars are economic. Orange bars are environmental, where a longer bar means a bigger impact.</p>
+      <p>Write a short recommendation: should this project go ahead, and with which practices? Use at least one economic and one environmental impact as evidence.</p>
+      <label class="field" for="impNote">My recommendation</label>
+      <textarea id="impNote"></textarea>
+    </div>
+    <div class="model">
+      <div class="chips" id="projChips" role="group" aria-label="Choose a project"></div>
+      <p class="hint" id="projDesc"></p>
+      <div class="checks2" id="pracToggles" role="group" aria-label="Responsible practices"></div>
+      <div class="bars" id="impBars" aria-live="polite"></div>
+      <p class="hint" id="impSummary"></p>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 ES2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>ES2.K4:</b> the draft pairs coal and gravel with surface mines and copper and iron with underground mines. This is taught more precisely: the method depends mainly on deposit depth and shape. Coal and gravel are usually surface mined (Alberta also has a history of underground coal mining), while copper and iron ore come from both, and many of the largest copper and iron mines (for example in British Columbia and the Labrador Trough) are open pits. Wells, in situ oil sands recovery and solution mining are added as context.</li>
+      <li><b>ES2.K3:</b> Alberta’s main contribution to plastics is natural gas liquids (ethane, propane) processed near Red Deer (Joffre) and in the Industrial Heartland near Fort Saskatchewan, described generally. Most metals in a cell phone (copper, lithium, cobalt, gold, tin, rare earths) are mined outside Alberta; lithium from Alberta brines is described as early stage. Product breakdowns are simplified.</li>
+      <li><b>ES2.K2:</b> formation ages are rounded (Devonian salt and reef oil about 375 to 390 million years; oil sands about 110 million years; plains coal about 70 million years; glacial gravel within the last 2 million years). The cross-section is not to scale.</li>
+      <li><b>ES2.K6:</b> figures are kept general and should be checked before sharing: the Quest CCS project near Fort Saskatchewan (about one million tonnes of carbon dioxide a year since 2015), methane described as about 80 times stronger than carbon dioxide over 20 years, and in situ facilities recycling most (often over 90%) of their water. Reclamation is added because it completes tailings management.</li>
+      <li><b>Lesson 7 and S3:</b> royalties and the statement that most Alberta mineral rights are owned by the province (about 81%) are context; please verify. First Nations and Métis communities, Treaty 6 and the duty to consult are described generally, without speaking for any community. Please review the wording and consider a community partner. Coal-fired electricity in Alberta ended in 2024; coal mining policy is a current public debate.</li>
+      <li><b>Lab Bench:</b> the exploration site, ore math values, prices and impact scores are invented for practice and labelled on the page. The magnetic survey and the stripping ratio rule of 4 are simplified models.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-es2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function rnd(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(n){ var s = String(Math.round(n * 100) / 100); var p = s.split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function hitKeys(node, fn){
+  node.addEventListener("click", fn);
+  node.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: resource or not ---------- */
+var CRIT = ["Formed naturally", "On or below Earth’s surface", "Has economic value", "Can be extracted"];
+var MATS = [
+  {label: "Gravel in a river valley pit", c: [1,1,1,1], why: "Gravel formed naturally from glaciers and rivers. Builders pay for it, and it is dug from pits near most Alberta towns."},
+  {label: "Bitumen in the oil sands", c: [1,1,1,1], why: "Bitumen formed from ancient oil in buried sands. It is extracted by surface mining or by steam and wells, and sold as fuel and raw material."},
+  {label: "Iron in Earth’s core", c: [1,1,0,0], why: "It is natural, but it lies about 2 900 km down. Nobody can reach it, so it is not a resource."},
+  {label: "Plastic water bottle", c: [0,1,1,1], why: "Plastic is made by people from natural gas or oil. The gas is the geological resource; the bottle is a product."},
+  {label: "Wind over the prairies", c: [1,0,1,0], why: "Wind is a valuable energy resource, but it is moving air, not a material in or on Earth’s crust, so it is not a geological resource."},
+  {label: "Ordinary clay under a protected park", c: [1,1,0,0], why: "Common clay is natural, but this clay is not worth much and mining is not allowed in a protected park, so it is not something that can be extracted for use there."},
+  {label: "Salt beds near Fort Saskatchewan", c: [1,1,1,1], why: "Thick salt beds formed when ancient seas dried up. The salt is dissolved with water and pumped up for industry and road salt."}
+];
+(function(){
+  var crit = $("resCrit"), verdict = $("resVerdict"), why = $("resWhy");
+  chipGroup($("resChips"), MATS, "", function(m){
+    clear(crit);
+    var all = true;
+    CRIT.forEach(function(c, i){
+      var ok = !!m.c[i]; if (!ok) all = false;
+      var li = el("li", {"class": ok ? "y" : "n"});
+      li.appendChild(el("b", {"aria-hidden": "true"}, ok ? "✓" : "✗"));
+      li.appendChild(el("span", null, c + (ok ? ": yes" : ": no")));
+      crit.appendChild(li);
+    });
+    verdict.className = "verdict " + (all ? "ok" : "no");
+    verdict.textContent = all ? "Geological resource" : "Not a geological resource here";
+    why.textContent = m.why;
+  }, 0);
+})();
+
+/* ---------- Lesson 2: cross-section ---------- */
+var LAYERS = [
+  {name: "Soil and glacial gravel", y: 30, h: 26, fill: "--till", age: "Last 2 million years", how: "Glaciers ground up rock and left till, sand and gravel. Meltwater rivers sorted gravel into beds along valleys like the North Saskatchewan.", res: "Sand and gravel for concrete and roads.", ex: "Surface pits near Edmonton and most Alberta towns."},
+  {name: "Coal seams", y: 56, h: 30, fill: "--coal", age: "About 70 million years ago", how: "Swamps along an old inland sea buried thick layers of plants. Over millions of years heat and pressure turned the plants into coal.", res: "Coal for steelmaking and, until 2024, for electricity in Alberta.", ex: "Plains coal near Edmonton and Drumheller; mountain coal near Hinton and the Crowsnest Pass."},
+  {name: "Ammonite shale", y: 86, h: 22, fill: "--shale", age: "About 75 million years ago", how: "Mud on the floor of a warm inland sea buried shelled animals called ammonites. Their shells became a colourful gem material.", res: "Ammolite, a rare gemstone.", ex: "Southern Alberta near Lethbridge."},
+  {name: "Oil sands", y: 108, h: 40, fill: "--bitu", age: "About 110 million years ago", how: "Rivers and shorelines laid down sand. Later, oil moved into the sand from deeper rock and was thickened by bacteria into bitumen.", res: "Bitumen for fuels, asphalt and raw materials.", ex: "Athabasca (Fort McMurray), Cold Lake and Peace River areas."},
+  {name: "Reef limestone with oil and gas", y: 148, h: 46, fill: "--lime", age: "About 375 million years ago", how: "Reefs grew in warm, shallow seas. Remains of tiny sea life were buried in nearby mud and cooked into oil and gas, which moved into holes in the reef rock.", res: "Oil and natural gas; limestone for cement where it is pushed up in the mountains.", ex: "Leduc, where a big oil discovery was made in 1947; limestone quarries near Exshaw."},
+  {name: "Salt beds", y: 194, h: 34, fill: "--salt", age: "About 390 million years ago", how: "Shallow seas dried up again and again in a hot climate, leaving thick layers of salt.", res: "Salt for chemicals and roads; dissolved caverns are used to store products.", ex: "Underground near Fort Saskatchewan and Lindbergh."},
+  {name: "Ancient basement rock", y: 228, h: 52, fill: "--shield", age: "Over 1.8 billion years ago", how: "Very old igneous and metamorphic rock. It reaches the surface only in the far northeast, in the Canadian Shield.", res: "Possible metal ores; mostly unexplored in Alberta.", ex: "Far northeast Alberta near Lake Athabasca."}
+];
+(function(){
+  var s = $("xsec"), info = $("xsecInfo"), rects = [];
+  s.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 30, fill: "var(--sky)"}));
+  s.appendChild(sv("rect", {x: 0, y: 26, width: 520, height: 5, fill: "var(--grass)"}));
+  function show(i){
+    var L = LAYERS[i];
+    rects.forEach(function(r, j){ r.setAttribute("stroke", j === i ? "var(--ink)" : "none"); r.setAttribute("stroke-width", j === i ? 3 : 0); });
+    clear(info);
+    info.appendChild(el("span", {"class": "tagline"}, L.age));
+    info.appendChild(el("h5", null, L.name));
+    info.appendChild(el("p", null, L.how));
+    var p1 = el("p"); p1.appendChild(el("b", null, "Resource: ")); p1.appendChild(document.createTextNode(L.res)); info.appendChild(p1);
+    var p2 = el("p"); p2.appendChild(el("b", null, "Where: ")); p2.appendChild(document.createTextNode(L.ex)); info.appendChild(p2);
+  }
+  LAYERS.forEach(function(L, i){
+    var g = sv("g");
+    var r = sv("rect", {x: 0, y: L.y + 1, width: 520, height: L.h, fill: "var(" + L.fill + ")", "class": "hit", tabindex: 0, role: "button", "aria-label": L.name + ", " + L.age});
+    hitKeys(r, function(){ show(i); });
+    rects.push(r); g.appendChild(r);
+    var dark = L.fill === "--coal" || L.fill === "--bitu";
+    var t = sv("text", {x: 12, y: L.y + L.h / 2 + 5, "class": "lbl", "pointer-events": "none"}, L.name);
+    t.setAttribute("style", dark ? "fill:#F2F2F2" : "fill:var(--ink)");
+    g.appendChild(t);
+    var a = sv("text", {x: 508, y: L.y + L.h / 2 + 5, "text-anchor": "end", "class": "mono", "pointer-events": "none"}, L.age.replace("About ", "~").replace(" million years ago", " Ma").replace("Over 1.8 billion years ago", ">1.8 Ga").replace("Last 2 million years", "<2 Ma"));
+    a.setAttribute("style", dark ? "fill:#F2F2F2" : "fill:var(--ink)");
+    g.appendChild(a);
+    s.appendChild(g);
+  });
+  show(4);
+})();
+
+/* ---------- Lesson 3: products ---------- */
+var PRODUCTS = [
+  {label: "Cell phone", parts: [
+    ["Case and inner plastic parts", "Plastics made from natural gas liquids or oil", "ab"],
+    ["Screen glass", "Silica sand plus other minerals", "both"],
+    ["Wires and circuit traces", "Copper from copper ore", "far"],
+    ["Battery", "Lithium, cobalt, nickel and graphite. Alberta lithium from deep brines is in early development", "far"],
+    ["Contacts and chips", "Gold, tin and silicon", "far"],
+    ["Speaker and vibration magnets", "Rare earth elements", "far"]
+  ]},
+  {label: "IV bag and tubing", parts: [
+    ["Bag and tubing", "Plastics (such as PVC or polyolefins) made from natural gas liquids or oil, plus salt for the chlorine in PVC", "ab"],
+    ["Saline solution inside", "Purified water and salt", "both"],
+    ["Clamp and connectors", "Polypropylene plastic from propane", "ab"]
+  ]},
+  {label: "Syringe", parts: [
+    ["Barrel and plunger", "Polypropylene plastic from propane", "ab"],
+    ["Rubber tip", "Synthetic rubber made from petrochemicals", "ab"],
+    ["Needle", "Stainless steel from iron ore, chromium and nickel", "far"]
+  ]},
+  {label: "Concrete sidewalk", parts: [
+    ["Gravel and sand", "Glacial and river gravel from local pits", "ab"],
+    ["Cement", "Limestone and clay heated in a kiln", "ab"],
+    ["Steel reinforcing bar", "Iron ore and recycled steel", "both"]
+  ]}
+];
+(function(){
+  var box = $("prodParts");
+  var names = {ab: "Alberta", far: "Elsewhere", both: "Both"};
+  chipGroup($("prodChips"), PRODUCTS, "", function(p){
+    clear(box);
+    p.parts.forEach(function(pt){
+      var d = el("div", {"class": "part"});
+      d.appendChild(el("b", null, pt[0]));
+      d.appendChild(el("span", {"class": "flag " + pt[2]}, names[pt[2]]));
+      d.appendChild(el("span", {"class": "src"}, pt[1]));
+      box.appendChild(d);
+    });
+  }, 0);
+})();
+
+/* ---------- Lesson 4: mine depth ---------- */
+(function(){
+  var s = $("mineSvg"), r = $("depth"), out = $("depthOut"), stats = $("mineStats");
+  var SCALE = 0.5; // px per m
+  function draw(){
+    var d = +r.value; out.textContent = d + " m";
+    while (s.childNodes.length > 1) s.removeChild(s.lastChild);
+    var top = 40, oreT = 30, oreW = 80; // m
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: top, fill: "var(--sky)"}));
+    s.appendChild(sv("rect", {x: 0, y: top, width: 520, height: 240, fill: "var(--till)"}));
+    s.appendChild(sv("rect", {x: 0, y: top - 4, width: 520, height: 5, fill: "var(--grass)"}));
+    var oy = top + d * SCALE, cx = 260, ow = oreW * 1.2;
+    var bottom = d + oreT; // m
+    var surface = d / oreT <= 4;
+    // pit outline
+    var halfTop = ow / 2 + bottom * SCALE; // 45 degree walls
+    if (surface) {
+      var pts = [[cx - halfTop, top], [cx - ow / 2, top + bottom * SCALE], [cx + ow / 2, top + bottom * SCALE], [cx + halfTop, top]];
+      s.appendChild(sv("polygon", {points: pts.map(function(p){ return p.join(","); }).join(" "), fill: "var(--sky)", stroke: "var(--ink)", "stroke-width": 1.5}));
+      s.appendChild(sv("rect", {x: cx - ow / 2, y: oy, width: ow, height: oreT * SCALE, fill: "var(--orebody)", stroke: "var(--ink)", "stroke-dasharray": "4 3"}));
+      s.appendChild(sv("text", {x: cx, y: top - 12, "text-anchor": "middle", "class": "lbl"}, "Open pit"));
+    } else {
+      s.appendChild(sv("rect", {x: cx - ow / 2, y: oy, width: ow, height: oreT * SCALE, fill: "var(--orebody)", stroke: "var(--ink)"}));
+      s.appendChild(sv("rect", {x: 120, y: top - 22, width: 26, height: 22, fill: "var(--shale)", stroke: "var(--ink)"}));
+      s.appendChild(sv("line", {x1: 133, y1: top, x2: 133, y2: oy + oreT * SCALE / 2, stroke: "var(--ink)", "stroke-width": 4}));
+      s.appendChild(sv("line", {x1: 133, y1: oy + oreT * SCALE / 2, x2: cx - ow / 2, y2: oy + oreT * SCALE / 2, stroke: "var(--ink)", "stroke-width": 4}));
+      s.appendChild(sv("text", {x: 152, y: top - 8, "class": "lbl"}, "Shaft and tunnel"));
+      s.appendChild(sv("polygon", {points: "380," + top + " 400," + (top - 18) + " 430," + top, fill: "var(--shale)", stroke: "var(--ink)"}));
+      s.appendChild(sv("text", {x: 440, y: top - 6, "class": "small"}, "waste rock"));
+    }
+    s.appendChild(sv("text", {x: cx, y: oy + oreT * SCALE / 2 + 5, "text-anchor": "middle", "class": "lbl", style: "fill:#1B2126"}, "Ore"));
+    // depth ruler
+    for (var m = 0; m <= 400; m += 100) {
+      var yy = top + m * SCALE;
+      s.appendChild(sv("line", {x1: 0, y1: yy, x2: 12, y2: yy, stroke: "var(--ink)"}));
+      s.appendChild(sv("text", {x: 16, y: yy + 4, "class": "mono"}, m + " m"));
+    }
+    // stats: stripping ratio for 2D pit, in cross-section areas
+    var area = (ow / SCALE + (ow / SCALE + 2 * bottom)) / 2 * bottom; // trapezoid m2
+    var oreA = (ow / SCALE) * oreT;
+    var sr = surface ? (area - oreA) / oreA : null;
+    var wPit = surface ? Math.round(ow / SCALE + 2 * bottom) : 0;
+    clear(stats);
+    [["Depth to ore", d + " m"], ["Overburden ÷ ore", (d / oreT).toFixed(1)], [surface ? "Pit width at surface" : "Pit width", surface ? wPit + " m" : "no pit"], ["Likely method", surface ? "Surface" : "Underground"]].forEach(function(p){
+      var b = el("div", {"class": "stat"}); b.appendChild(el("span", null, p[0])); b.appendChild(el("b", null, p[1])); stats.appendChild(b);
+    });
+    if (sr != null) {
+      var b2 = el("div", {"class": "stat"}); b2.appendChild(el("span", null, "Stripping ratio (pit)")); b2.appendChild(el("b", null, sr.toFixed(1))); stats.appendChild(b2);
+    }
+  }
+  r.addEventListener("input", draw); draw();
+})();
+
+/* ---------- Lesson 5: exploration ---------- */
+var EXP = [
+  {label: "1. Surface survey", t: "Mapping and sampling", p: ["Geologists walk the land, map rock outcrops and stream banks, and collect rock and soil samples. Rusty stains, unusual minerals or fossils can hint at what lies below.", "This step is cheap and covers a big area."], cores: 0},
+  {label: "2. Geophysical survey", t: "Seeing underground without digging", p: ["Instruments measure tiny changes in magnetism or gravity, or record sound waves that bounce off rock layers (seismic surveys). Oil and gas companies in Alberta use seismic surveys to map layers kilometres deep.", "Survey lines through forests leave long cleared strips, which is one way exploration itself changes the surface."], cores: 0},
+  {label: "3. Core drilling", t: "Taking a sample of the layers", p: ["A hollow, diamond-tipped drill bit cuts a cylinder of rock called a core. Cores are laid in boxes in order, so geologists can see every layer and its depth.", "Drilling is expensive, so holes are placed where surveys look most promising."], cores: 3},
+  {label: "4. Lab analysis", t: "How much is there?", p: ["Pieces of core are crushed and tested to find the grade, the percentage of useful resource in the rock. Results from many holes are combined into a 3D model of the deposit.", "Only if the deposit is big enough, rich enough and can be extracted responsibly will it become a mine."], cores: 3}
+];
+(function(){
+  var info = $("expInfo"), cores = $("expCores");
+  var LAY = [["--till", 18], ["--sand", 26], ["--shale", 30], ["--orebody", 22], ["--shale", 20]];
+  chipGroup($("expChips"), EXP, "", function(e, idx){
+    detail(info, e.t, e.p, "Step " + (idx + 1) + " of 4");
+    clear(cores);
+    for (var c = 0; c < e.cores; c++) {
+      var core = el("div", {"class": "core"}), st = el("div", {"class": "stick"});
+      LAY.forEach(function(l, j){
+        var h = l[1] + (c === 1 && j === 3 ? 12 : 0) - (c === 2 && j === 3 ? 14 : 0);
+        var i = el("i"); i.style.height = h + "px"; i.style.background = "var(" + l[0] + ")"; st.appendChild(i);
+      });
+      core.appendChild(st); core.appendChild(el("span", null, "Hole " + (c + 1)));
+      cores.appendChild(core);
+    }
+  }, 0);
+})();
+
+/* ---------- Lesson 6: practices ---------- */
+var PRAC = [
+  {label: "Carbon capture", t: "Carbon capture and storage (CCS)", p: ["Equipment catches carbon dioxide from a plant’s exhaust before it reaches the air. The gas is compressed and pumped down a well into porous rock about 2 km underground, below layers of rock that seal it in.", "Near Fort Saskatchewan, the Quest project has stored about one million tonnes of carbon dioxide a year since 2015."], reduce: "Greenhouse gas emissions"},
+  {label: "Methane reduction", t: "Methane emission reduction", p: ["Methane is the main gas in natural gas. Over 20 years it traps about 80 times more heat than the same mass of carbon dioxide.", "Crews use infrared cameras to find leaks, replace equipment that vents gas, and capture gas that used to be released or burned."], reduce: "Greenhouse gas emissions and wasted gas"},
+  {label: "Water recycling", t: "Water recycling and filtration", p: ["Extraction can use a lot of water, for example to make steam or to wash bitumen from sand. Plants filter and treat the water so they can reuse it again and again.", "Steam-based oil sands facilities recycle most of their water, which means less water is taken from rivers and lakes."], reduce: "Water use and water pollution"},
+  {label: "Tailings management", t: "Tailings management and reclamation", p: ["Tailings are what is left after the resource is separated: water, sand, fine clay and a little leftover bitumen or chemicals. In oil sands mining they are stored in large ponds.", "Fine clay settles very slowly, so companies add treatments to help it settle and dry, recycle the water, and then reshape and replant the area. Reclaimed land is planted with native trees, shrubs and wetland plants."], reduce: "Land disturbance, risk to wildlife and water"}
+];
+(function(){
+  var s = $("pracSvg"), info = $("pracInfo");
+  function base(){
+    while (s.childNodes.length > 1) s.removeChild(s.lastChild);
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 70, fill: "var(--sky)"}));
+    s.appendChild(sv("rect", {x: 0, y: 70, width: 520, height: 150, fill: "var(--till)"}));
+    s.appendChild(sv("rect", {x: 0, y: 66, width: 520, height: 5, fill: "var(--grass)"}));
+  }
+  function label(x, y, t, anchor){ s.appendChild(sv("text", {x: x, y: y, "class": "lbl", "text-anchor": anchor || "start"}, t)); }
+  var draws = [
+    function(){
+      s.appendChild(sv("rect", {x: 40, y: 30, width: 70, height: 40, fill: "var(--shale)", stroke: "var(--ink)"}));
+      label(75, 22, "Plant", "middle");
+      s.appendChild(sv("path", {d: "M110 50 H200 V70 V190", fill: "none", stroke: "var(--water)", "stroke-width": 5}));
+      s.appendChild(sv("rect", {x: 0, y: 150, width: 520, height: 22, fill: "var(--shale)"}));
+      s.appendChild(sv("rect", {x: 0, y: 172, width: 520, height: 48, fill: "var(--sand)"}));
+      for (var i = 0; i < 12; i++) s.appendChild(sv("circle", {cx: 210 + i * 24, cy: 196 - (i % 2) * 8, r: 5, fill: "var(--water)"}));
+      label(330, 140, "Seal rock", "start"); label(250, 214, "CO₂ stored in porous rock", "start");
+      label(130, 44, "CO₂", "start");
+    },
+    function(){
+      s.appendChild(sv("rect", {x: 220, y: 40, width: 14, height: 30, fill: "var(--shale)", stroke: "var(--ink)"}));
+      s.appendChild(sv("path", {d: "M234 50 H420", stroke: "var(--ink)", "stroke-width": 4, fill: "none"}));
+      s.appendChild(sv("circle", {cx: 330, cy: 50, r: 10, fill: "none", stroke: "var(--bad)", "stroke-width": 3}));
+      label(330, 30, "Leak found", "middle");
+      s.appendChild(sv("rect", {x: 100, y: 30, width: 40, height: 26, rx: 4, fill: "var(--surface)", stroke: "var(--ink)"}));
+      s.appendChild(sv("path", {d: "M140 43 L318 50", stroke: "var(--bad)", "stroke-dasharray": "5 4", fill: "none"}));
+      label(80, 90, "Infrared camera", "start");
+      s.appendChild(sv("line", {x1: 227, y1: 70, x2: 227, y2: 210, stroke: "var(--ink)", "stroke-width": 3}));
+      label(240, 200, "Gas well", "start"); label(430, 55, "To pipeline", "start");
+    },
+    function(){
+      s.appendChild(sv("rect", {x: 60, y: 30, width: 90, height: 40, fill: "var(--shale)", stroke: "var(--ink)"}));
+      label(105, 22, "Plant", "middle");
+      s.appendChild(sv("rect", {x: 300, y: 30, width: 90, height: 40, fill: "var(--water-soft)", stroke: "var(--water)"}));
+      label(345, 22, "Treatment", "middle");
+      s.appendChild(sv("path", {d: "M150 40 H300", stroke: "var(--water)", "stroke-width": 4, fill: "none"}));
+      s.appendChild(sv("path", {d: "M300 60 H150", stroke: "var(--water)", "stroke-width": 4, fill: "none", "stroke-dasharray": "8 4"}));
+      label(225, 100, "Used water out, clean water back", "middle");
+      s.appendChild(sv("path", {d: "M450 200 Q470 140 500 130", stroke: "var(--water)", "stroke-width": 8, fill: "none"}));
+      label(440, 190, "River: less taken", "end");
+    },
+    function(){
+      s.appendChild(sv("path", {d: "M40 70 Q130 140 220 70 Z", fill: "var(--water-soft)", stroke: "var(--water)"}));
+      s.appendChild(sv("path", {d: "M60 90 Q130 130 200 90", fill: "none", stroke: "var(--shale)", "stroke-width": 8}));
+      label(130, 160, "Tailings pond", "middle"); label(130, 178, "(clay settles slowly)", "middle");
+      s.appendChild(sv("path", {d: "M240 60 H290", stroke: "var(--ink)", "stroke-width": 3, "marker-end": ""}));
+      s.appendChild(sv("polygon", {points: "290,54 302,60 290,66", fill: "var(--ink)"}));
+      s.appendChild(sv("rect", {x: 320, y: 62, width: 180, height: 10, fill: "var(--grass)"}));
+      for (var i = 0; i < 6; i++) { s.appendChild(sv("polygon", {points: (330 + i * 30) + ",62 " + (340 + i * 30) + ",30 " + (350 + i * 30) + ",62", fill: "var(--leaf)"})); }
+      label(410, 110, "Reclaimed land", "middle");
+    }
+  ];
+  chipGroup($("pracChips"), PRAC, "", function(p, i){
+    base(); draws[i]();
+    detail(info, p.t, p.p.concat(["Reduces: " + p.reduce + "."]));
+  }, 0);
+})();
+
+/* ---------- Lesson 7: who is affected ---------- */
+var WHO = [
+  {label: "Workers and families", plus: "Well-paid jobs in mining, trucking, engineering, labs and reclamation.", minus: "Jobs can disappear when prices fall or a mine closes; remote camps keep people away from home; safety risks."},
+  {label: "The province", plus: "Royalties and taxes help pay for schools, hospitals and roads.", minus: "Income rises and falls with world prices; the public may face costs if a company cannot pay for cleanup."},
+  {label: "Nearby communities", plus: "Local businesses, new services and roads; some First Nations and Métis communities own or partner in resource businesses.", minus: "Dust, noise, traffic and changes to land used for hunting, trapping, fishing and gathering. First Nations and Métis communities must be consulted about effects on their rights."},
+  {label: "Wildlife and habitat", plus: "Reclamation can rebuild forests and wetlands; set-aside areas protect habitat.", minus: "Cleared land and long survey lines and roads break up habitat. Woodland caribou are especially affected because predators travel easily along cleared lines."},
+  {label: "Water users downstream", plus: "Recycling and filtration reduce the water taken and protect quality.", minus: "Water is taken from rivers, and tailings and runoff must be kept out of waterways."},
+  {label: "The climate", plus: "Carbon capture and methane reduction cut emissions.", minus: "Extracting, processing and burning fossil fuels release greenhouse gases that warm the planet."},
+  {label: "People who use the products", plus: "Plastics for medical supplies, fuels, gravel for roads, metals for phones and batteries.", minus: "Prices for these products depend on supply from extraction somewhere in the world."}
+];
+(function(){
+  var info = $("whoInfo");
+  chipGroup($("whoChips"), WHO, "", function(w){
+    clear(info);
+    info.appendChild(el("h5", null, w.label));
+    var a = el("p"); a.appendChild(el("b", {style: "color:var(--good)"}, "Possible benefits: ")); a.appendChild(document.createTextNode(w.plus)); info.appendChild(a);
+    var b = el("p"); b.appendChild(el("b", {style: "color:var(--bad)"}, "Possible concerns: ")); b.appendChild(document.createTextNode(w.minus)); info.appendChild(b);
+  }, 0);
+})();
+
+/* ---------- Investigation 1: atlas ---------- */
+var ATLAS = [
+  {label: "Oil sands", pts: [[220,144,"Fort McMurray"],[250,244,"Cold Lake"],[69,167,"Peace River"]], form: "Oil moved into river and shoreline sands about 110 million years ago and was thickened into bitumen.", where: "Athabasca, Cold Lake and Peace River areas in northern Alberta.", how: "Surface mining where it is shallow (near Fort McMurray). Most is too deep, so steam is injected and bitumen is pumped up wells (in situ).", use: "Fuels such as diesel and jet fuel, asphalt for roads, and raw materials for other products."},
+  {label: "Conventional oil and natural gas", pts: [[165,296,"Leduc"],[31,213,"Grande Prairie"]], form: "Remains of tiny sea life were buried and heated over millions of years. Oil and gas moved upward into porous rock such as old reefs and were trapped below sealing rock.", where: "Under most of Alberta, from the foothills to the eastern border.", how: "Wells drilled into the reservoir rock. Some wells use hydraulic fracturing to free gas from tight rock.", use: "Heating, fuels, electricity, and natural gas liquids (ethane, propane) that become plastics near Red Deer and Fort Saskatchewan."},
+  {label: "Coal", pts: [[62,290,"Hinton"],[140,458,"Crowsnest Pass"],[140,284,"West of Edmonton"]], form: "Thick layers of swamp plants were buried and squeezed into coal, mostly 60 to 150 million years ago.", where: "Plains west and south of Edmonton, and the mountains and foothills.", how: "Mostly surface mines today. Alberta also has a long history of underground coal mines.", use: "Metallurgical coal for making steel. Coal-fired electricity in Alberta ended in 2024."},
+  {label: "Sand and gravel", pts: [[166,276,"Edmonton"],[151,394,"Calgary"]], form: "Glaciers and meltwater rivers spread and sorted gravel during and after the last Ice Age.", where: "River valleys and old glacial deposits near most towns.", how: "Surface pits. Gravel is screened by size and often washed.", use: "Concrete, road beds, asphalt and building foundations."},
+  {label: "Limestone", pts: [[123,393,"Exshaw"]], form: "Shells and skeletons of sea creatures piled up on the floors of ancient seas. Mountain building later pushed the rock up.", where: "The front ranges of the Rocky Mountains, such as near Exshaw.", how: "Surface quarries.", use: "Cement for concrete, and lime for industry and water treatment."},
+  {label: "Salt", pts: [[174,270,"Fort Saskatchewan"],[232,268,"Lindbergh"]], form: "Shallow seas dried up again and again about 390 million years ago, leaving thick salt beds.", where: "Deep underground in east-central Alberta.", how: "Solution mining: water is pumped down to dissolve the salt, then the salty water (brine) is pumped up.", use: "Chemicals such as chlorine, road salt, table salt; the caverns left behind store products."},
+  {label: "Ammolite", pts: [[183,454,"Lethbridge"]], form: "Shells of ammonites, sea animals related to squid, were buried in seafloor mud about 75 million years ago and slowly changed into a colourful gem material.", where: "Southern Alberta, near the St. Mary River and Lethbridge.", how: "Small surface mines.", use: "Gemstones and jewellery."},
+  {label: "Lithium in brine", pts: [[82,246,"Fox Creek area"]], form: "Very salty water trapped deep in old reef rock picked up lithium from surrounding rock over millions of years.", where: "Deep under central and west-central Alberta, often in old oil fields.", how: "Brine is pumped up wells and the lithium is separated out. This is still in early development in Alberta.", use: "Batteries for phones, tools and electric vehicles."},
+  {label: "Metal ores", pts: [[238,34,"Canadian Shield"]], form: "Hot fluids moving through cracks in very old rock can leave metals behind.", where: "Alberta has few metal mines. The far northeast is part of the Canadian Shield and is mostly unexplored. Large copper and iron mines are in British Columbia, Quebec and Labrador.", how: "Open pits for shallow deposits; underground mines for deep ones.", use: "Copper wiring, steel (from iron), and metals for electronics."}
+];
+(function(){
+  var s = $("abMap"), info = $("atlasInfo"), count = $("atlasCount");
+  store.atlas = store.atlas || [];
+  var outline = "0,0 255,0 255,484 151,484 122,440 94,378 61,334 36,304 0,273";
+  s.appendChild(sv("polygon", {points: outline, fill: "var(--surface-2)", stroke: "var(--ink)", "stroke-width": 1.5}));
+  s.appendChild(sv("text", {x: 166, y: 304, "class": "small", "text-anchor": "middle"}, "Edmonton"));
+  s.appendChild(sv("circle", {cx: 166, cy: 284, r: 3, fill: "var(--ink)"}));
+  var marks = [], setChip;
+  function show(i){
+    var a = ATLAS[i];
+    marks.forEach(function(m){ var on = m.i === i; m.n.setAttribute("r", on ? 9 : 6); m.n.setAttribute("fill", on ? "var(--ore)" : "var(--g8)"); });
+    clear(info);
+    info.appendChild(el("h5", null, a.label));
+    [["Formed", a.form], ["Where", a.where], ["Extracted by", a.how], ["Primary uses", a.use]].forEach(function(r){
+      var p = el("p"); p.appendChild(el("b", null, r[0] + ": ")); p.appendChild(document.createTextNode(r[1])); info.appendChild(p);
+    });
+    if (store.atlas.indexOf(i) < 0) { store.atlas.push(i); save(); }
+    count.textContent = "Resources explored: " + store.atlas.length + " of " + ATLAS.length;
+  }
+  ATLAS.forEach(function(a, i){
+    a.pts.forEach(function(p){
+      var c = sv("circle", {cx: p[0], cy: p[1], r: 6, fill: "var(--g8)", stroke: "var(--surface)", "stroke-width": 2, "class": "hit", tabindex: 0, role: "button", "aria-label": a.label + " near " + p[2]});
+      c.appendChild(sv("title", null, a.label + ": " + p[2]));
+      hitKeys(c, function(){ setChip(i); });
+      s.appendChild(c); marks.push({i: i, n: c});
+    });
+  });
+  setChip = chipGroup($("atlasChips"), ATLAS, "", function(a, i){ show(i); }, 0);
+})();
+
+/* ---------- Investigation 2: drilling ---------- */
+(function(){
+  var s = $("drillSvg"), cores = $("drillCores"), stats = $("drillStats"), fb = $("drillFb");
+  var SURF = 70, K = 0.72, site, budget, surveyed, holes, done;
+  function newSite(){
+    var thick = rnd(5, 10) * 5, top = rnd(4, 44) * 5;
+    site = {cx: rnd(130, 390), w: rnd(80, 130), top: top, thick: thick, till: rnd(8, 20), sand: rnd(40, 90)};
+    budget = 100; surveyed = false; holes = []; done = false;
+    fb.textContent = ""; fb.className = "fb"; $("estDepth").value = ""; $("estMethod").value = "";
+    render();
+  }
+  function hit(x){ return Math.abs(x - site.cx) <= site.w / 2; }
+  function layersAt(x){
+    var L = [["Till and gravel", 0, site.till, "--till"], ["Sandstone", site.till, site.till + site.sand, "--sand"]];
+    if (hit(x) && site.top > site.till + site.sand) {
+      L.push(["Shale", site.till + site.sand, site.top, "--shale"]);
+      L.push(["Copper ore", site.top, site.top + site.thick, "--orebody"]);
+      L.push(["Shale", site.top + site.thick, 300, "--shale"]);
+    } else if (hit(x)) {
+      L = [["Till and gravel", 0, Math.min(site.till, site.top), "--till"]];
+      if (site.top > site.till) L.push(["Sandstone", site.till, site.top, "--sand"]);
+      L.push(["Copper ore", site.top, site.top + site.thick, "--orebody"]);
+      L.push(["Sandstone and shale", site.top + site.thick, 300, "--shale"]);
+    } else {
+      L.push(["Shale", site.till + site.sand, 300, "--shale"]);
+    }
+    return L.filter(function(l){ return l[2] > l[1]; });
+  }
+  function render(){
+    clear(s);
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: SURF, fill: "var(--sky)"}));
+    s.appendChild(sv("rect", {x: 0, y: SURF, width: 520, height: 300 * K, fill: "var(--surface-2)"}));
+    s.appendChild(sv("rect", {x: 0, y: SURF - 4, width: 520, height: 5, fill: "var(--grass)"}));
+    for (var m = 0; m <= 300; m += 50) {
+      var yy = SURF + m * K;
+      s.appendChild(sv("line", {x1: 0, y1: yy, x2: 520, y2: yy, stroke: "var(--line)", "stroke-dasharray": "3 4"}));
+      s.appendChild(sv("text", {x: 4, y: yy - 3, "class": "mono"}, m + " m"));
+    }
+    if (surveyed) {
+      var pts = [];
+      for (var x = 0; x <= 520; x += 8) {
+        var spread = site.top * K * 0.9 + 30, amp = 34 * Math.min(1, (site.thick / 40)) * Math.min(1, 80 / (site.top + 40)) + 6;
+        var y = SURF - 28 - amp / (1 + Math.pow((x - site.cx) / spread, 2));
+        pts.push(x + "," + y.toFixed(1));
+      }
+      s.appendChild(sv("polyline", {points: pts.join(" "), fill: "none", stroke: "var(--ore)", "stroke-width": 2.5}));
+      s.appendChild(sv("text", {x: 516, y: 14, "text-anchor": "end", "class": "small"}, "Magnetic reading"));
+    }
+    holes.forEach(function(hx){
+      layersAt(hx).forEach(function(l){
+        s.appendChild(sv("rect", {x: hx - 4, y: SURF + l[1] * K, width: 8, height: (l[2] - l[1]) * K, fill: "var(" + l[3] + ")", stroke: "var(--ink)", "stroke-width": .6}));
+      });
+    });
+    if (done) {
+      s.appendChild(sv("rect", {x: site.cx - site.w / 2, y: SURF + site.top * K, width: site.w, height: site.thick * K, fill: "var(--orebody)", "fill-opacity": .55, stroke: "var(--ink)", "stroke-dasharray": "4 3"}));
+    }
+    for (var i = 0; i < 13; i++) {
+      (function(i){
+        var x = 40 + i * 36;
+        var used = holes.indexOf(x) > -1;
+        var t = sv("polygon", {points: (x - 8) + "," + (SURF - 22) + " " + (x + 8) + "," + (SURF - 22) + " " + x + "," + (SURF - 6), fill: used ? "var(--muted)" : "var(--g8)", "class": "hit", tabindex: 0, role: "button", "aria-label": "Drill at position " + (i + 1) + (used ? ", already drilled" : "")});
+        hitKeys(t, function(){ drill(x, i); });
+        s.appendChild(t);
+      })(i);
+    }
+    clear(stats);
+    [["Budget left", budget + " units"], ["Holes drilled", String(holes.length)], ["Survey", surveyed ? "Done" : "Not run"]].forEach(function(p){
+      var b = el("div", {"class": "stat"}); b.appendChild(el("span", null, p[0])); b.appendChild(el("b", null, p[1])); stats.appendChild(b);
+    });
+    $("surveyBtn").disabled = surveyed || budget < 20 || done;
+    clear(cores);
+    holes.forEach(function(hx, n){
+      var c = el("div", {"class": "core"}), st = el("div", {"class": "stick"});
+      var L = layersAt(hx), txt = [];
+      L.forEach(function(l){ var i2 = el("i"); i2.style.height = Math.max(2, (l[2] - l[1]) * 0.45) + "px"; i2.style.background = "var(" + l[3] + ")"; st.appendChild(i2); txt.push(l[0] + " " + l[1] + " to " + l[2] + " m"); });
+      c.appendChild(st);
+      var ore = L.filter(function(l){ return l[0] === "Copper ore"; })[0];
+      c.appendChild(el("span", null, "Hole " + (n + 1)));
+      c.appendChild(el("span", {style: "color:var(" + (ore ? "--ore" : "--muted") + ");font-weight:600"}, ore ? "ore " + ore[1] + " to " + ore[2] + " m" : "no ore"));
+      c.setAttribute("aria-label", "Hole " + (n + 1) + ": " + txt.join("; "));
+      c.setAttribute("role", "img");
+      cores.appendChild(c);
+    });
+  }
+  function drill(x, i){
+    if (done) { fb.className = "fb"; fb.textContent = "This site is finished. Choose New site to explore again."; return; }
+    if (holes.indexOf(x) > -1) { fb.className = "fb"; fb.textContent = "You already drilled at position " + (i + 1) + "."; return; }
+    if (budget < 15) { fb.className = "fb no"; fb.textContent = "Not enough budget for another hole. Make your estimate with the cores you have."; return; }
+    budget -= 15; holes.push(x);
+    var L = layersAt(x).filter(function(l){ return l[0] === "Copper ore"; })[0];
+    fb.className = "fb"; fb.textContent = "Hole at position " + (i + 1) + ": " + (L ? "ore from " + L[1] + " to " + L[2] + " m." : "no ore found.");
+    render();
+  }
+  $("surveyBtn").addEventListener("click", function(){ if (surveyed || budget < 20) return; budget -= 20; surveyed = true; fb.className = "fb"; fb.textContent = "Survey done. The highest part of the orange line is above the ore. A narrow, tall bump suggests shallow ore; a low, wide bump suggests deep ore."; render(); });
+  $("newSite").addEventListener("click", newSite);
+  $("drillCheck").addEventListener("click", function(){
+    var est = parseFloat($("estDepth").value), meth = $("estMethod").value;
+    if (isNaN(est) || !meth) { fb.className = "fb no"; fb.textContent = "Enter a depth and choose a mining method first."; return; }
+    var ratio = site.top / site.thick, right = ratio <= 4 ? "surface" : "under";
+    var depthOk = Math.abs(est - site.top) <= Math.max(10, site.top * 0.15);
+    var methOk = meth === right;
+    done = true; render();
+    store.drillRuns = (store.drillRuns || 0) + 1; if (depthOk && methOk) store.drillWins = (store.drillWins || 0) + 1; save();
+    fb.className = "fb " + (depthOk && methOk ? "ok" : "no");
+    fb.textContent = (depthOk ? "Depth estimate is close. " : "Depth estimate is off. ") + "The ore starts at " + site.top + " m and is " + site.thick + " m thick, so the stripping ratio is about " + ratio.toFixed(1) + ". " + (methOk ? "Your method fits: " : "A better choice: ") + (right === "surface" ? "a surface mine (open pit)." : "an underground mine.") + " Sites solved: " + (store.drillWins || 0) + " of " + store.drillRuns + ".";
+  });
+  newSite();
+})();
+
+/* ---------- Investigation 3: ore math ---------- */
+(function(){
+  var cur;
+  store.math = store.math || {r: 0, n: 0};
+  function gen(){
+    var t = pick(["metal", "strip", "revenue", "profit"]);
+    var ore = rnd(2, 18) * 500, grade = rnd(2, 20) / 10, price = rnd(16, 22) * 500, cost = rnd(2, 8) * 5;
+    if (t === "metal") return {q: "A mine processes " + fmt(ore) + " t of ore with a copper grade of " + grade + "%. How many tonnes of copper does it contain?", a: ore * grade / 100, unit: "t", sol: ["metal mass = ore mass × grade ÷ 100", fmt(ore) + " × " + grade + " ÷ 100 = " + fmt(ore * grade / 100) + " t of copper"]};
+    if (t === "strip") { var r = rnd(2, 16) / 2, waste = ore * r; return {q: "To reach " + fmt(ore) + " t of ore, miners removed " + fmt(waste) + " t of waste rock. What is the stripping ratio?", a: r, unit: "", sol: ["stripping ratio = waste rock mass ÷ ore mass", fmt(waste) + " ÷ " + fmt(ore) + " = " + fmt(r), "That means " + fmt(r) + " t of waste for every tonne of ore."]}; }
+    if (t === "revenue") { var m = ore * grade / 100; return {q: "Ore with " + fmt(m) + " t of copper is processed. In this practice problem, copper sells for $" + fmt(price) + " per tonne. What is the revenue in dollars?", a: m * price, unit: "$", sol: ["revenue = metal mass × price", fmt(m) + " t × $" + fmt(price) + " = $" + fmt(m * price)]}; }
+    var mm = ore * grade / 100, rev = mm * price, c = ore * cost;
+    return {q: "A pit produces " + fmt(ore) + " t of ore at " + grade + "% copper. Copper sells for $" + fmt(price) + " per tonne, and mining and processing cost $" + cost + " per tonne of ore (practice values). What is the profit in dollars? Use a negative number for a loss.", a: rev - c, unit: "$", sol: ["copper = " + fmt(ore) + " × " + grade + " ÷ 100 = " + fmt(mm) + " t", "revenue = " + fmt(mm) + " × $" + fmt(price) + " = $" + fmt(rev), "costs = " + fmt(ore) + " × $" + cost + " = $" + fmt(c), "profit = $" + fmt(rev) + " − $" + fmt(c) + " = $" + fmt(rev - c) + (rev - c < 0 ? " (a loss)" : "")]};
+  }
+  function score(){ $("mathScore").textContent = "Correct this device: " + store.math.r + " of " + store.math.n; }
+  function next(){ cur = gen(); $("mathQ").textContent = cur.q; $("mathA").value = ""; $("mathFb").textContent = ""; $("mathFb").className = "fb"; $("mathSol").hidden = true; cur.counted = false; }
+  function showSol(){ var b = $("mathSol"); clear(b); b.appendChild(el("b", null, "Solution")); cur.sol.forEach(function(x){ b.appendChild(el("span", null, x)); }); b.hidden = false; }
+  $("mathCheck").addEventListener("click", function(){
+    var v = parseFloat($("mathA").value);
+    if (isNaN(v)) { $("mathFb").className = "fb no"; $("mathFb").textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - cur.a) <= Math.max(0.01, Math.abs(cur.a) * 0.01);
+    if (!cur.counted) { store.math.n++; if (ok) store.math.r++; cur.counted = true; save(); score(); }
+    $("mathFb").className = "fb " + (ok ? "ok" : "no");
+    $("mathFb").textContent = ok ? "Correct." : "Not quite. Check each step, or show the solution.";
+    if (ok) showSol();
+  });
+  $("mathShow").addEventListener("click", showSol);
+  $("mathNew").addEventListener("click", next);
+  next(); score();
+})();
+
+/* ---------- Investigation 4: impact analyzer ---------- */
+var IND = [["Jobs", "eco"], ["Government revenue", "eco"], ["Land disturbed", "env"], ["Water use", "env"], ["Greenhouse gases", "env"], ["Habitat impact", "env"], ["Waste and tailings", "env"]];
+var PRACT = [["ccs", "Carbon capture and storage"], ["meth", "Methane emission reduction"], ["water", "Water recycling and filtration"], ["tail", "Tailings or waste management and reclamation"]];
+var PROJ = [
+  {label: "Gravel pit", d: "A sand and gravel pit on farmland near Edmonton (made-up example).", base: [2,2,4,2,1,3,1], fx: {water: {3: -1}, tail: {2: -2, 5: -1, 6: -1}}},
+  {label: "Oil sands mine", d: "A large oil sands surface mine north of Fort McMurray (made-up example).", base: [9,9,9,7,8,8,9], fx: {ccs: {4: -2}, meth: {4: -1}, water: {3: -3}, tail: {2: -3, 5: -2, 6: -4}}},
+  {label: "In situ oil sands", d: "A steam-based oil sands project near Cold Lake with wells and pipelines (made-up example).", base: [6,7,4,6,9,6,3], fx: {ccs: {4: -3}, meth: {4: -1}, water: {3: -4}, tail: {2: -1, 5: -2, 6: -1}}},
+  {label: "Natural gas wells", d: "A group of natural gas wells and a small processing plant in the foothills (made-up example).", base: [4,6,3,2,6,4,1], fx: {ccs: {4: -1}, meth: {4: -3}, water: {3: -1}, tail: {2: -2, 5: -1}}},
+  {label: "Underground copper mine", d: "A deep underground copper mine in the Canadian Shield (made-up example; Alberta has none today).", base: [6,6,2,4,3,3,6], fx: {water: {3: -2}, tail: {2: -1, 5: -1, 6: -3}}}
+];
+(function(){
+  var proj, on = {}, bars = $("impBars"), tg = $("pracToggles");
+  try { $("impNote").value = store.impNote || ""; } catch(e) {}
+  $("impNote").addEventListener("input", function(){ store.impNote = $("impNote").value; save(); });
+  function render(){
+    var v = proj.base.slice(), nOn = 0;
+    PRACT.forEach(function(p){ if (on[p[0]] && proj.fx[p[0]]) { nOn++; var f = proj.fx[p[0]]; for (var k in f) v[k] = Math.max(0, v[k] + f[k]); } });
+    clear(bars);
+    IND.forEach(function(ind, i){
+      var r = el("div", {"class": "barrow"});
+      r.appendChild(el("span", null, ind[0]));
+      var tr = el("span", {"class": "track", role: "img", "aria-label": ind[0] + " " + v[i] + " out of 10"}), b = el("i", {"class": ind[1] === "eco" ? "bar-eco" : "bar-env"});
+      b.style.width = (v[i] * 10) + "%"; tr.appendChild(b); r.appendChild(tr);
+      r.appendChild(el("b", null, String(v[i])));
+      bars.appendChild(r);
+    });
+    var eco = (v[0] + v[1]) / 2, env = (v[2] + v[3] + v[4] + v[5] + v[6]) / 5;
+    $("impSummary").textContent = "Average economic benefit " + eco.toFixed(1) + " · average environmental impact " + env.toFixed(1) + (nOn ? " · " + nOn + " practice" + (nOn > 1 ? "s" : "") + " on, which adds cost for the company but lowers impacts." : " · no practices on.") + " Scores are made up for comparison only.";
+  }
+  function build(){
+    clear(tg);
+    PRACT.forEach(function(p){
+      var ok = !!proj.fx[p[0]];
+      var l = el("label", {"for": "pr-" + p[0], "class": ok ? "" : "off"}), cb = el("input", {type: "checkbox", id: "pr-" + p[0]});
+      cb.checked = ok && !!on[p[0]]; cb.disabled = !ok;
+      cb.addEventListener("change", function(){ on[p[0]] = cb.checked; render(); });
+      l.appendChild(cb); l.appendChild(document.createTextNode(p[1] + (ok ? "" : " (not used for this project)")));
+      tg.appendChild(l);
+    });
+  }
+  chipGroup($("projChips"), PROJ, "", function(p){ proj = p; $("projDesc").textContent = p.d; build(); render(); }, 1);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Surface or underground?", bins: ["Surface mine", "Underground mine", "Wells or pumping"], items: [
+    ["Gravel 5 m below a farm field", 0, "Shallow gravel is dug from a surface pit."],
+    ["Coal seam 20 m deep under the plains", 0, "Shallow coal is cheaper to reach by removing the overburden."],
+    ["Copper ore starting 600 m down", 1, "Deep ore is reached by shafts and tunnels; an open pit would need far too much waste removed."],
+    ["Copper ore starting 30 m down in a huge, low-grade body", 0, "Large, shallow copper deposits are often mined in open pits."],
+    ["Oil sands 40 m deep near Fort McMurray", 0, "Shallow oil sands are surface mined."],
+    ["Oil sands 400 m deep near Cold Lake", 2, "Deep oil sands are heated with steam and pumped up wells (in situ)."],
+    ["Natural gas 2 km down in the foothills", 2, "Gas flows up a drilled well."],
+    ["Salt bed 1 km under Fort Saskatchewan", 2, "Salt is dissolved with water and pumped up as brine."],
+    ["Narrow gold vein reaching 1 km down", 1, "Narrow, deep veins are mined underground."],
+    ["Limestone forming a mountainside near Exshaw", 0, "Limestone at the surface is quarried."]
+  ]},
+  {label: "Find, extract or reclaim?", bins: ["Exploration", "Extraction", "Reclamation"], items: [
+    ["Drilling a core and logging its layers", 0, "Cores show what lies below before anyone mines."],
+    ["Mapping rock outcrops along a creek", 0, "Surface surveying is an early exploration step."],
+    ["Seismic survey sending sound waves into the ground", 0, "Geophysical surveys map layers underground."],
+    ["Trucks hauling ore out of a pit", 1, "Removing ore is extraction."],
+    ["Pumping steam down a well to free bitumen", 1, "In situ recovery is an extraction method."],
+    ["Planting spruce and aspen on reshaped tailings", 2, "Returning land to forest is reclamation."],
+    ["Turning an old gravel pit into a lake and park", 2, "Giving disturbed land a new use is reclamation."],
+    ["Testing crushed rock to measure its grade", 0, "Lab analysis tells explorers how rich the deposit is."],
+    ["Spreading saved topsoil back over a filled mine", 2, "Saving and returning topsoil is a key reclamation step."]
+  ]},
+  {label: "Economic or environmental?", bins: ["Economic impact", "Environmental impact"], items: [
+    ["Royalties paid to the province", 0, "Money paid to the resource owner is economic."],
+    ["Woodland caribou habitat broken up by survey lines", 1, "Habitat change is environmental."],
+    ["New jobs for heavy equipment operators", 0, "Jobs are economic."],
+    ["Water taken from the Athabasca River", 1, "Water use is environmental."],
+    ["Methane leaking from a well", 1, "Greenhouse gas emissions are environmental."],
+    ["A town’s stores lose business when a mine closes", 0, "Effects on businesses and income are economic."],
+    ["Dust settling on nearby crops and homes", 1, "Air quality is environmental, though it can also cost farmers money."],
+    ["The world price of oil drops by half", 0, "Prices affect income, jobs and royalties."],
+    ["A tailings pond that must be watched for years", 1, "Waste storage is environmental."]
+  ]},
+  {label: "Which responsible practice?", bins: ["Carbon capture", "Methane reduction", "Water recycling", "Tailings management"], items: [
+    ["Pumping carbon dioxide 2 km underground", 0, "Storing captured CO₂ deep underground is CCS."],
+    ["Infrared camera checks of pipelines for leaks", 1, "Finding and fixing leaks cuts methane."],
+    ["Treating steam plant water so it can be reused", 2, "Reusing water means less is taken from rivers."],
+    ["Adding treatments so fine clay settles and dries", 3, "Helping tailings settle is tailings management."],
+    ["Replacing equipment that vents natural gas", 1, "Less venting means less methane released."],
+    ["Filtering water before it returns to a river", 2, "Filtration protects water quality."],
+    ["Capping a dried tailings area and replanting it", 3, "Tailings areas are reclaimed once they are stable."],
+    ["Catching CO₂ from an upgrader’s exhaust", 0, "Capture is the first step of CCS."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Geological resource", "A naturally occurring material on or below Earth’s surface that has economic value and can be extracted for human use."],
+  ["Extraction", "Taking a resource out of the ground, for example by mining, drilling wells or pumping."],
+  ["Economic value", "Worth money, because people will pay for the material or the products made from it."],
+  ["Fossil fuel", "A fuel such as coal, oil or natural gas that formed from the buried remains of ancient living things."],
+  ["Ore", "Rock that holds enough of a useful metal or mineral to be worth mining."],
+  ["Grade", "The percentage of useful resource in ore. Metal mass = ore mass × grade ÷ 100."],
+  ["Deposit", "A concentrated build-up of a resource in one place."],
+  ["Raw material", "A natural material used to make other products, such as ethane used to make plastic."],
+  ["Petrochemical", "A chemical made from oil or natural gas, such as the ethylene used to make polyethylene plastic."],
+  ["Overburden", "The soil and rock that lie on top of a deposit and must be removed in a surface mine."],
+  ["Surface mine", "A mine that removes overburden to reach a shallow deposit, such as a pit, quarry or open-pit mine."],
+  ["Underground mine", "A mine that reaches a deep deposit through shafts and tunnels."],
+  ["Stripping ratio", "Waste rock mass ÷ ore mass. A higher ratio means more digging for each tonne of ore."],
+  ["In situ recovery", "Extracting a resource in place, such as heating deep oil sands with steam and pumping the bitumen up wells."],
+  ["Exploration", "The search for a resource and the measurement of how much there is, before mining."],
+  ["Core sample", "A cylinder of rock cut by a hollow drill bit, showing the layers below the surface in order."],
+  ["Seismic survey", "An exploration method that sends sound waves into the ground and records echoes from rock layers."],
+  ["Carbon capture and storage", "Catching carbon dioxide from a plant and storing it in porous rock deep underground."],
+  ["Methane", "The main gas in natural gas; a strong greenhouse gas when it leaks into the air."],
+  ["Tailings", "The leftover water, sand, clay and traces of resource or chemicals after processing."],
+  ["Reclamation", "Returning disturbed land to a stable, useful landscape such as forest, wetland or farmland."],
+  ["Royalty", "A payment to the owner of a resource, such as the province, for each amount extracted."],
+  ["Economic impact", "An effect on money, jobs, businesses or government revenue."],
+  ["Environmental impact", "An effect on land, water, air, wildlife or climate."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Which is a geological resource?", ["Gravel dug from a pit near Edmonton", "Wind blowing across the prairie", "A plastic bottle", "Iron in Earth’s core"], "Gravel is natural, valuable and can be extracted. Wind is not an Earth material, plastic is made by people, and the core cannot be reached."],
+  ["What must be true for a material to be a geological resource?", ["It formed naturally, has economic value and can be extracted", "It is found only in Alberta", "It is a metal", "It is renewable"], "The four tests are: natural, on or below the surface, worth money, and able to be extracted."],
+  ["Why are geological resources unevenly distributed?", ["They form only where past geological processes created them", "Governments decide where they are", "They move around each year", "They are spread evenly but hidden"], "Seas, swamps, glaciers and hot fluids acted in some places and not others."],
+  ["Alberta’s thick salt beds formed when…", ["shallow seas dried up long ago", "glaciers melted", "volcanoes erupted", "swamp plants were buried"], "Evaporating seas left salt behind about 390 million years ago."],
+  ["Alberta’s coal formed from…", ["buried swamp plants", "dead sea creatures in reefs", "volcanic ash", "glacial gravel"], "Layers of plants were buried and squeezed into coal over millions of years."],
+  ["Which Alberta resource is the main source of raw materials for plastics such as polyethylene?", ["Natural gas liquids such as ethane", "Gravel", "Limestone", "Ammolite"], "Ethane and propane from natural gas are turned into plastics near Red Deer and Fort Saskatchewan."],
+  ["Most of the copper, gold and lithium in a cell phone today comes from…", ["mines in many places outside Alberta", "Alberta oil sands", "Alberta gravel pits", "recycled plastic"], "Alberta supplies plastics, but most phone metals are mined elsewhere. Lithium from Alberta brines is still in early development."],
+  ["An IV bag and tubing are mostly made of…", ["plastics made from petrochemicals", "copper", "limestone", "coal"], "Medical bags, tubing and syringes are plastics made from natural gas liquids or oil."],
+  ["What decides whether a deposit is mined from the surface or underground?", ["Mainly how deep it is and its shape", "Only the type of material", "The colour of the rock", "Whether it is in Alberta"], "Shallow deposits are usually surface mined; deep ones are mined underground. Copper and iron come from both kinds of mine."],
+  ["What is overburden?", ["Soil and rock lying on top of a deposit", "The leftover water after processing", "A type of ore", "A drilling tool"], "Overburden must be removed to reach a deposit in a surface mine."],
+  ["Which statement about copper mines is most accurate?", ["Many of the largest are open pits, and deep deposits are mined underground", "All copper comes from underground mines", "Copper is never mined in Canada", "Copper is pumped up wells"], "The method depends on depth. British Columbia has large open-pit copper mines."],
+  ["Which change to Earth’s surface is caused mainly by surface mining?", ["Large areas of cleared land, pits and waste piles", "Ground sinking over old tunnels", "No visible change", "Higher mountains"], "Surface mines remove everything above the deposit. Sinking ground is more linked to underground mines."],
+  ["Deep oil sands near Cold Lake are usually extracted by…", ["injecting steam and pumping bitumen up wells", "open-pit mining", "panning in rivers", "dissolving with water"], "This is in situ recovery, used where the oil sands are too deep to mine."],
+  ["What is a core sample?", ["A cylinder of rock cut by a hollow drill bit", "A sample of air from a mine", "A piece of the Earth’s core", "A chart of prices"], "Cores show every layer in order with its depth."],
+  ["Which exploration method sends sound waves into the ground?", ["Seismic survey", "Core drilling", "Surface mapping", "Reclamation"], "Seismic surveys record echoes from rock layers."],
+  ["Why do explorers usually survey before drilling?", ["Surveys are cheaper and show where drilling is most promising", "Drilling is not allowed in Alberta", "Surveys remove the ore", "Cores cannot show depth"], "Surveys cover big areas cheaply, so expensive drill holes can be placed well."],
+  ["Carbon capture and storage reduces impacts by…", ["storing carbon dioxide deep underground instead of releasing it", "planting trees on tailings", "recycling water", "finding methane leaks"], "CCS keeps CO₂ out of the air."],
+  ["Why is reducing methane emissions important?", ["Methane is a strong greenhouse gas", "Methane makes water salty", "Methane is a metal ore", "Methane causes earthquakes"], "Over 20 years, methane traps about 80 times more heat than the same mass of carbon dioxide."],
+  ["What are tailings?", ["Leftover water, sand, clay and traces of resource after processing", "The top layer of soil", "A type of drill", "Royalties paid to the province"], "Tailings must be stored safely, treated and then reclaimed."],
+  ["Which is an example of reclamation?", ["Replanting native trees on a reshaped mine site", "Drilling a new core", "Building a new pit", "Venting gas"], "Reclamation returns disturbed land to a stable, useful landscape."],
+  ["A mine has 3 000 t of ore at 2% copper. How much copper is that?", ["60 t", "6 t", "600 t", "1 500 t"], "3 000 × 2 ÷ 100 = 60 t."],
+  ["Miners remove 8 000 t of waste rock to reach 2 000 t of ore. What is the stripping ratio?", ["4", "0.25", "10 000", "6"], "8 000 ÷ 2 000 = 4. That is 4 t of waste for every tonne of ore."],
+  ["Which is an economic impact of resource extraction?", ["Royalties that help pay for schools", "Habitat broken up for caribou", "Water taken from a river", "Dust on crops"], "Royalties, jobs and taxes are economic impacts."],
+  ["Why must governments consult First Nations and Métis communities about resource projects?", ["Projects can affect their Treaty and Aboriginal rights", "They own every mine", "It is only a courtesy", "To set world oil prices"], "Governments have a legal duty to consult when a project may affect these rights."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Define a geological resource and give two Alberta examples.", a: "A geological resource is a naturally occurring material on or below Earth’s surface that has economic value and can be extracted for human use. Alberta examples include oil sands bitumen and sand and gravel. Others are coal, natural gas, limestone and salt.", k: ["Naturally occurring", "On or below the surface", "Economic value", "Can be extracted", "Two correct Alberta examples"]},
+  {q: "Explain why Alberta has large salt deposits but very few metal mines.", a: "Resources form only where geological processes made them. Shallow seas covered Alberta and dried up many times about 390 million years ago, leaving thick salt beds. Metal ores usually form from hot fluids in cracks in rock, often where mountains or volcanoes formed. Alberta’s plains are covered by flat sedimentary layers, so they have few metal ores.", k: ["Resources depend on past processes", "Salt from evaporating seas", "Metal ores from hot fluids in cracked rock", "Alberta mostly sedimentary layers"]},
+  {q: "Trace one medical product back to an Alberta geological resource.", a: "A syringe barrel is made of polypropylene plastic. Polypropylene is made from propane, which is separated from natural gas. Natural gas is extracted from wells in Alberta and processed at petrochemical plants near Fort Saskatchewan.", k: ["Names a product and its material", "Names the raw material (ethane or propane)", "Links it to natural gas or oil", "Mentions extraction or processing"]},
+  {q: "Compare how a surface mine and an underground mine change Earth’s surface.", a: "A surface mine removes all the soil, vegetation and overburden over a wide area, leaving a pit and waste piles until the land is reclaimed. An underground mine reaches the deposit through shafts and tunnels, so less land is disturbed at the surface. It can still leave waste rock piles, and the ground above can sink.", k: ["Surface: wide area cleared, pit, waste piles", "Underground: shafts and tunnels, smaller footprint", "Underground: waste rock or sinking ground", "Clear comparison words"]},
+  {q: "Coal and gravel are usually surface mined. Explain why the depth of a deposit matters more than the type of material.", a: "A deposit near the surface has little overburden, so it is cheaper to remove the overburden than to dig tunnels. Coal and gravel in Alberta are usually close to the surface, so they are surface mined. Copper and iron ore are mined in open pits when shallow and underground when deep. The same material can be mined either way.", k: ["Shallow means less overburden", "Cost comparison", "Copper or iron mined both ways", "Same material, different method"]},
+  {q: "Describe two methods used to locate and identify a geological resource.", a: "Surveying Earth’s surface: geologists map rock outcrops and collect rock and soil samples for clues. Core sample drilling: a hollow drill bit cuts a cylinder of rock, showing each layer and its depth, and samples are tested in a lab for grade.", k: ["Surface surveying described", "Core drilling described", "What each method tells geologists"]},
+  {q: "What is carbon capture and storage, and which environmental impact does it reduce?", a: "Carbon capture and storage catches carbon dioxide from a plant’s exhaust, compresses it and pumps it into porous rock deep underground, sealed by rock layers above. It reduces greenhouse gas emissions, such as at the Quest project near Fort Saskatchewan.", k: ["Captures CO₂", "Stores it deep underground", "Reduces greenhouse gas emissions"]},
+  {q: "What are tailings, and why do they need to be managed?", a: "Tailings are the water, sand, fine clay and traces of bitumen or chemicals left after a resource is separated. They are stored in ponds. The fine clay settles very slowly and the water must be kept out of rivers and away from wildlife, so companies treat the tailings, recycle the water and reclaim the area.", k: ["Defines tailings", "Fine clay settles slowly", "Protects water and wildlife", "Treatment and reclamation"]},
+  {q: "A pit produces 4 000 t of ore at 1.5% copper. How many tonnes of copper is that? Show your work.", a: "metal mass = ore mass × grade ÷ 100 = 4 000 × 1.5 ÷ 100 = 60 t of copper.", k: ["Correct formula", "Correct substitution", "60 t with units"]}
+];
+var LONG = [
+  {q: "A company wants to open an oil sands surface mine north of Fort McMurray. Analyze the potential economic and environmental impacts and give your recommendation.", a: "Economic: the mine would create thousands of construction and operating jobs, support local businesses, and pay royalties and taxes that help fund schools and hospitals. It would also supply fuels and raw materials. However, income would rise and fall with world oil prices. Environmental: the mine would clear a large area of boreal forest and wetlands, use water from the Athabasca River, release greenhouse gases and create tailings that must be stored for many years. Habitat for wildlife would be lost until the land is reclaimed. Recommendation: the project could go ahead only with strong responsible practices: water recycling, tailings treatment, progressive reclamation, methane reduction and carbon capture, plus consultation with nearby First Nations and Métis communities.", k: ["At least two economic impacts", "At least two environmental impacts", "Mentions price changes or trade-offs", "Clear recommendation", "Names responsible practices or consultation"]},
+  {q: "Explain how a geological resource gets from the ground into a product you use. Include exploration, extraction, processing and an impact at each stage.", a: "Example: natural gas to a syringe. Exploration: seismic surveys and drilling locate gas in deep rock; survey lines clear strips of forest. Extraction: wells bring gas to the surface; leaks can release methane, so leak detection reduces emissions. Processing: ethane and propane are separated and turned into plastics near Fort Saskatchewan; this uses energy and emits carbon dioxide, which carbon capture can reduce. Manufacturing: polypropylene is moulded into syringes for hospitals. After use, wells and plants must be reclaimed.", k: ["Names the resource and product", "Exploration step with method", "Extraction step with method", "Processing or manufacturing", "An impact at each stage"]},
+  {q: "Use the core drilling explorer to explain how geologists decide whether to build a surface mine or an underground mine.", a: "First, a magnetic survey shows roughly where the ore is. Then core holes are drilled around the high point of the survey line. Each core shows the depth to the top of the ore and its thickness. Comparing the overburden thickness to the ore thickness gives a stripping ratio. In the model, a ratio of 4 or less favours a surface mine, because removing the overburden costs less than tunnelling. A higher ratio favours an underground mine. In real life, ore grade, prices, costs and environmental impacts also matter.", k: ["Survey before drilling", "Cores show depth and thickness", "Stripping ratio explained", "Decision rule applied", "Other real factors named"]},
+  {q: "Some people say Alberta should extract as many resources as possible because they bring in money. Others say the environmental costs are too high. Take a position and defend it with evidence.", a: "A strong answer takes a clear position, for example that extraction can continue if impacts are reduced and land is reclaimed. Evidence: royalties and jobs support Albertans and products such as medical plastics depend on these resources; but cleared land, water use, tailings and greenhouse gases are serious impacts. Practices such as carbon capture, methane reduction, water recycling and tailings management lower these impacts, and reclamation returns the land. Decisions should include the voices of First Nations and Métis communities and others affected.", k: ["Clear position", "Economic evidence", "Environmental evidence", "Responsible practices", "Considers other viewpoints"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["ES2.K1", "Geological resources are naturally occurring materials found on or below Earth's surface that have economic value and can be extracted for human use.", "Learn: Lesson 1 (resource or not checker). Quiz, Flashcards, Written Review: short answer 1."],
+    ["ES2.K2", "Geological resources are unevenly distributed across Earth due to past geological processes.", "Learn: Lesson 2 (Alberta cross-section). Lab Bench: Investigation 1 (atlas, how each resource formed). Quiz, Written Review: short answer 2."],
+    ["ES2.K3", "Alberta’s geological resources, including fossil fuels and minerals, provide the raw materials that can be used to produce plastics and other components found in products such as medical devices and cell phones.", "Learn: Lesson 3 (take it apart: cell phone, IV bag, syringe, concrete). Lab Bench: Investigation 1 (uses). Quiz, Written Review: short answer 3, extended 2."],
+    ["ES2.K4", "Humans change Earth’s surface by extracting materials such as coal and gravel from surface mines, and materials such as copper and iron from underground mines.", "Learn: Lesson 4 (depth slider, pit and shaft). Lab Bench: Investigations 2 and 3. Sort It: surface or underground deck. Quiz, Written Review: short answers 4 and 5."],
+    ["ES2.K5", "Many methods are used to locate and identify geological resources, e.g., surveying Earth’s surface and core sample drilling.", "Learn: Lesson 5 (four exploration steps). Lab Bench: Investigation 2 (survey and core drilling). Sort It: find, extract or reclaim deck. Quiz, Written Review: short answer 6."],
+    ["ES2.K6", "In Alberta, responsible resource extraction reduces environmental impacts and involves activities such as\n• carbon capture and storage\n• methane emission reduction\n• water recycling and filtration\n• tailings management", "Learn: Lesson 6 (four practices with diagrams). Lab Bench: Investigation 4 (practice switches). Sort It: responsible practice deck. Quiz, Flashcards, Written Review: short answers 7 and 8."],
+    ["ES2.S1", "Investigate geological resources found in Alberta and their primary uses.", "Lab Bench: Investigation 1 (Alberta resource atlas with map, nine resources and logged progress). Learn: Lessons 2 and 3."],
+    ["ES2.S2", "Research exploration and extraction methods for a geological resource.", "Lab Bench: Investigation 2 (survey, core drilling and method choice) and Investigation 1 (extraction method for each resource). Learn: Lessons 4 and 5. Written Review: extended 2 and 3."],
+    ["ES2.S3", "Analyze potential economic and environmental impacts of geological resource extraction.", "Lab Bench: Investigation 4 (impact analyzer and recommendation) and Investigation 3 (ore math and profit). Learn: Lesson 7 (who is affected). Sort It: economic or environmental deck. Written Review: extended 1 and 4."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

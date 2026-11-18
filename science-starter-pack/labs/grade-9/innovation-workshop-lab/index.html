@@ -1,0 +1,1288 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/innovation-workshop-lab/"><meta name="description" content="Innovation stems from creativity when developing and implementing solutions."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Innovation Workshop Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an innovation workshop. Sticky tab strip, then lessons pairing a reading column with a model: a design cycle, an idea-to-innovation timeline, a value lens, a risk dial, an impact web and a risk matrix. Bench: a bus shelter design sprint, an impact evaluator and two randomized calculators. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g9:#2E7A4F;
+  --b-mo:#1F5FA6; --b-mo-soft:#DFEAF7; --b-pen:#2D7546; --b-pen-soft:#DDEFE3; --b-out:#6B3FA0; --b-out-soft:#ECE3F6;
+  --b-ctl:#8A4B12; --b-ctl-soft:#F6E8D8; --b-math:#0F6E6A; --b-math-soft:#D9F0EE;
+  --grid:#DCE3DD; --trail:#2D7546; --bot:#B0431B; --flag:#1F5FA6; --target:#9DB7A6;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+
+/* ---- Innovation Workshop additions ---- */
+:root{ --idea:#6B3FA0; --idea-soft:#ECE3F6; --warn:#8A5A00; --warn-soft:#FBEFCF; --cell1:#DDEFE3; --cell2:#FBEFCF; --cell3:#FAE5DB; --cell4:#F7D3CC; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --idea:#C3A4EC; --idea-soft:#2A1E3C; --warn:#E8C060; --warn-soft:#3A3214; --cell1:#16301F; --cell2:#3A3214; --cell3:#3A2418; --cell4:#4A1F1A; }}
+:root[data-theme="dark"]{ --idea:#C3A4EC; --idea-soft:#2A1E3C; --warn:#E8C060; --warn-soft:#3A3214; --cell1:#16301F; --cell2:#3A3214; --cell3:#3A2418; --cell4:#4A1F1A; }
+header h1 .ac{color:var(--g9)}
+.credit a{color:var(--water)}
+.panel>*,.model>*{min-width:0}
+svg .node{cursor:pointer}
+svg .node circle{fill:var(--surface);stroke:var(--line);stroke-width:2}
+svg .node.on circle{fill:var(--leaf-soft);stroke:var(--leaf);stroke-width:3}
+svg .node:focus{outline:none}
+svg .node:focus-visible circle{stroke:var(--water);stroke-width:4}
+svg .arc{fill:none;stroke:var(--muted);stroke-width:2}
+svg .arr{fill:var(--muted)}
+svg .loop{fill:none;stroke:var(--idea);stroke-width:2;stroke-dasharray:6 5}
+svg .dot{cursor:pointer}
+svg .dot:focus{outline:none}
+svg .dot:focus-visible circle{stroke:var(--water);stroke-width:4}
+svg .quad{fill:var(--surface-2);stroke:var(--line)}
+.stage-track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.stage-track span{font-family:var(--f-mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;padding:6px 2px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:var(--muted);overflow-wrap:anywhere}
+.stage-track span.done{background:var(--leaf-soft);border-color:var(--leaf);color:var(--ink)}
+.stage-track span.now{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.badge{display:inline-block;font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+.badge.yes{background:var(--leaf-soft);border-color:var(--leaf);color:var(--leaf)}
+.badge.no{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.badge.new{background:var(--idea-soft);border-color:var(--idea);color:var(--idea)}
+.impacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.imp{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--ic);border-radius:8px;padding:8px 10px;display:grid;gap:3px;font-size:.9rem}
+.imp.pos{--ic:var(--good)} .imp.neg{--ic:var(--bad)}
+.imp .tagline{color:var(--ic)}
+.matrix{display:grid;grid-template-columns:2.2em repeat(5,minmax(0,1fr));gap:3px;font-family:var(--f-mono);font-size:.78rem}
+.matrix div{border-radius:5px;padding:6px 0;text-align:center;font-variant-numeric:tabular-nums}
+.matrix .ax{color:var(--muted);background:none}
+.matrix .c1{background:var(--cell1)} .matrix .c2{background:var(--cell2)} .matrix .c3{background:var(--cell3)} .matrix .c4{background:var(--cell4)}
+.matrix .hit{outline:3px solid var(--ink);outline-offset:-3px;font-weight:700}
+.feat{display:grid;gap:6px}
+.feat label{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.9rem;cursor:pointer}
+.feat label small{display:block;color:var(--muted);font-size:.8rem}
+.feat label b.mono{font-size:.8rem}
+.feat input{margin-top:.25em}
+.ratebox{display:grid;gap:8px}
+.raterow{display:grid;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px}
+.raterow.ok{border-color:var(--good);background:var(--leaf-soft)}
+.raterow.no{border-color:var(--bad);background:var(--bad-soft)}
+.raterow p{font-size:.92rem}
+.raterow .row .chip{font-size:.8rem;padding:4px 10px}
+.verdict{display:grid;gap:6px}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Computer Science · CS2</div>
+    <h1>Innovation <span class="ac">Workshop</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Innovation stems from creativity when developing and implementing solutions. In this lab you will follow design processes from a need to a solution people use, look at what makes an idea innovative, improve a real design through testing, and weigh the good and bad impacts of new solutions.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. Lessons 1 and 2 are about design processes, Lessons 3 and 4 are about the innovation mindset, and Lessons 5 and 6 are about responsible innovation.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · Design processes</span>
+      <h3>A design process is a loop, not a straight line</h3>
+      <div class="codes"><span class="code">CS2.K1</span><span class="code">CS2.S1</span></div>
+      <p>A <b>design process</b> is a set of steps people use to turn a need, want or problem into a working solution. There are many versions. Most include the same big moves: define the problem, research it, come up with ideas, build a prototype, test it, and put the best version into use.</p>
+      <p>A <b>prototype</b> is an early model of a solution, built so you can test it. Testing shows what works and what does not, so designers go back and <b>improve</b> the design. That is why the steps form a loop.</p>
+      <p>Example in this lesson: a bus stop on a windy Edmonton street in January. Riders wait in the cold. How could the shelter be better?</p>
+      <div class="key"><b>Try it:</b> tap each step on the loop to see what it looks like for the bus shelter.</div>
+    </div>
+    <div class="model">
+      <h4>The design loop</h4>
+      <div class="svgbox fit"><svg viewBox="0 0 400 330" id="cycle" role="group" aria-label="Design process loop with six steps"></svg></div>
+      <div class="detail" id="cycle-d" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · From idea to innovation</span>
+      <h3>An idea becomes an innovation when people use it</h3>
+      <div class="codes"><span class="code">CS2.K1</span></div>
+      <p>An <b>innovation</b> is a new or improved solution that has been <b>implemented</b>. Implemented means it is put into real use by the people it was made for.</p>
+      <p>A great idea in a notebook is not an innovation yet. A prototype that works in a lab is not one yet either. It becomes an innovation when it leaves the design process and starts solving the problem in the real world.</p>
+      <p>Some innovations are <b>new</b>: nothing like them existed before. Others are <b>improved</b>: they make an existing solution work better. Both count.</p>
+      <div class="key"><b>Try it:</b> choose a Canadian innovation, then move the slider along its path. Watch when it becomes an innovation.</div>
+    </div>
+    <div class="model">
+      <h4>Idea to innovation timeline</h4>
+      <div class="chips" id="tl-chips" role="group" aria-label="Choose an innovation"></div>
+      <label class="field" for="tl-range">Stage on the path</label>
+      <input type="range" id="tl-range" min="0" max="4" step="1" value="0">
+      <div class="stage-track" id="tl-track" aria-hidden="true"></div>
+      <div class="detail" id="tl-d" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Exploring and adding value</span>
+      <h3>Innovators look for new ways and add value</h3>
+      <div class="codes"><span class="code">CS2.K2</span></div>
+      <p>Innovation is not luck. It comes from approaching a design process with clear <b>intent</b>, meaning you set out on purpose to do three things:</p>
+      <ul>
+        <li><b>Explore</b> new or improved ways to address a need, want or problem.</li>
+        <li><b>Add value</b>, so the solution is clearly better for someone.</li>
+        <li><b>Take risks</b> by trying ideas that might not work (Lesson 4).</li>
+      </ul>
+      <p><b>Value</b> is the benefit people get from a solution. It can save time or money, make people safer or healthier, help the environment, or let more people take part. A solution that is new but adds no value is not much use.</p>
+      <div class="key"><b>Try it:</b> pick a solution and look through the value lens. The bars are rough class judgments, not measurements.</div>
+    </div>
+    <div class="model">
+      <h4>Value lens</h4>
+      <div class="chips" id="vl-chips" role="group" aria-label="Choose a solution"></div>
+      <div class="bars" id="vl-bars"></div>
+      <div class="detail" id="vl-d" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Taking risks</span>
+      <h3>Bold ideas carry risk, so test them small</h3>
+      <div class="codes"><span class="code">CS2.K2</span></div>
+      <p>In design, <b>taking a risk</b> means trying something that might fail. The newer an idea is, the less anyone knows about whether it will work. New ideas can also bring the biggest gains.</p>
+      <p>Innovators take <b>smart risks</b>, not careless ones. They never risk anyone’s safety. They test early with cheap prototypes, so a failure costs little and teaches a lot. A failed test is data that shows what to change.</p>
+      <p>Safe, familiar ideas are less likely to fail, but they usually only make small improvements.</p>
+      <div class="key"><b>Try it:</b> move the newness dial and switch on early prototyping. The model is made up to show the pattern, not real data.</div>
+    </div>
+    <div class="model">
+      <h4>Risk dial</h4>
+      <label class="field" for="rk-range">How new is the idea? <span class="mono num" id="rk-val"></span></label>
+      <input type="range" id="rk-range" min="1" max="5" step="1" value="3">
+      <label class="row" for="rk-proto" style="font-size:.9rem;font-weight:700"><input type="checkbox" id="rk-proto" checked> Test early with cheap prototypes</label>
+      <div class="bars" id="rk-bars"></div>
+      <div class="detail" id="rk-d" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Responsible innovation</span>
+      <h3>Every solution has impacts, good and bad</h3>
+      <div class="codes"><span class="code">CS2.K3</span><span class="code">CS2.S2</span></div>
+      <p>An <b>impact</b> is an effect a solution has on people, communities, the economy or the environment. Impacts can be <b>positive</b> (helpful) or <b>negative</b> (harmful).</p>
+      <p>Some impacts are <b>intended</b>: the designers planned them. Others are <b>unintended</b>: nobody planned them, and they may only show up years later.</p>
+      <p><b>Responsible innovation</b> means thinking about both positive and negative potential impacts before and after a solution is used, and changing the design to reduce harm.</p>
+      <div class="key"><b>Try it:</b> choose an innovation and see its impacts sorted by area. Green edges are positive and red edges are negative.</div>
+    </div>
+    <div class="model">
+      <h4>Impact web</h4>
+      <div class="chips" id="iw-chips" role="group" aria-label="Choose an innovation"></div>
+      <div class="impacts" id="iw-list"></div>
+      <div class="detail" id="iw-d" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Weighing impacts</span>
+      <h3>Which negative impacts need attention first?</h3>
+      <div class="codes"><span class="code">CS2.K3</span><span class="code">CS2.S2</span></div>
+      <p>Not every negative impact is equally serious. Designers often rate each one on two scales from 1 to 5:</p>
+      <ul>
+        <li><b>Likelihood</b>: how likely is it to happen?</li>
+        <li><b>Severity</b>: how bad would it be if it did?</li>
+      </ul>
+      <div class="formula">risk score = likelihood × severity</div>
+      <p>A high score means the impact needs a plan to reduce it, called <b>mitigation</b>. You do not need to memorize this formula. It is one tool for comparing impacts. Values and the voices of the people affected matter too.</p>
+      <div class="key"><b>Try it:</b> set the two sliders for an impact of shared e-scooters and see where it lands on the matrix.</div>
+    </div>
+    <div class="model">
+      <h4>Risk matrix</h4>
+      <label class="field" for="mx-imp">Impact to rate</label>
+      <select id="mx-imp"></select>
+      <label class="field" for="mx-l">Likelihood <span class="mono num" id="mx-lv"></span></label>
+      <input type="range" id="mx-l" min="1" max="5" step="1" value="3">
+      <label class="field" for="mx-s">Severity <span class="mono num" id="mx-sv"></span></label>
+      <input type="range" id="mx-s" min="1" max="5" step="1" value="3">
+      <div class="matrix" id="mx-grid" aria-hidden="true"></div>
+      <div class="detail" id="mx-d" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Use a design process to improve a solution, evaluate the impacts of new solutions, and practise the calculations designers use. All data here are made up for practice.</p>
+  </div>
+
+  <article class="bench-card" id="b1">
+    <span class="step mono eyebrow">Investigation 1 · CS2.S1</span>
+    <h3>Design sprint: a better winter bus shelter</h3>
+    <p>The old shelter at a stop near your school has a roof and three glass walls. Riders say it is cold, dark after school and hard to use with a wheelchair. Your budget is <b>$12 000</b> (a made-up number). Choose features, test the design with riders, then save it as a version. Keep improving until it meets all the criteria, then implement it.</p>
+    <div class="worked"><b>Design criteria</b><span>Comfort score 7 or higher · Cost at or under budget · Fully accessible · Energy use 10 or lower</span></div>
+    <div class="bench-grid">
+      <div class="ctrl">
+        <h4>Features</h4>
+        <div class="feat" id="ds-feats"></div>
+      </div>
+      <div class="ctrl">
+        <h4>Test results</h4>
+        <div class="stats" id="ds-stats"></div>
+        <div class="detail" id="ds-fb" aria-live="polite"></div>
+        <div class="row">
+          <button class="btn" type="button" id="ds-save">Save this version</button>
+          <button class="btn ghost" type="button" id="ds-impl">Implement</button>
+          <button class="btn ghost" type="button" id="ds-reset">Start over</button>
+        </div>
+        <div class="tablebox"><table class="dt" id="ds-hist"></table></div>
+        <p class="feedback" id="ds-out" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="bench-card" id="b2">
+    <span class="step mono eyebrow">Investigation 2 · CS2.S2</span>
+    <h3>Impact evaluator</h3>
+    <p>Choose a proposed solution. For each possible impact, decide whether it is positive or negative and whether the designers intended it. Then check your thinking and write a short verdict.</p>
+    <div class="chips" id="ie-chips" role="group" aria-label="Choose a proposal"></div>
+    <p class="hint" id="ie-desc"></p>
+    <div class="ratebox" id="ie-rows"></div>
+    <div class="row"><button class="btn" type="button" id="ie-check">Check my ratings</button><span class="fb" id="ie-score" aria-live="polite"></span></div>
+    <div class="verdict">
+      <label class="field" for="ie-verdict">Your verdict: should this solution go ahead? What change would reduce its biggest negative impact?</label>
+      <textarea id="ie-verdict"></textarea>
+    </div>
+  </article>
+
+  <article class="bench-card" id="b3">
+    <span class="step mono eyebrow">Investigation 3 · CS2.S1</span>
+    <h3>How much better is the new version?</h3>
+    <div class="bench-grid">
+      <div class="worked">
+        <b>Worked example</b>
+        <div class="formula">percent change = (new − old) ÷ old × 100%</div>
+        <span>A school’s old recycling bins collected 40 kg of recyclables a week. After a redesign with clearer labels, they collect 52 kg.</span>
+        <span>(52 − 40) ÷ 40 × 100% = 12 ÷ 40 × 100% = <b>30% increase</b></span>
+        <span>If smaller is better (like wait time or cost), a decrease is the improvement. A wait that drops from 10 min to 8 min is a 20% decrease.</span>
+      </div>
+      <div class="ctrl">
+        <h4>Practice</h4>
+        <p id="pc-q" aria-live="polite"></p>
+        <label class="field" for="pc-a">Percent change (use a minus sign for a decrease)</label>
+        <div class="row"><input type="number" id="pc-a" step="0.1" style="width:9em"><span>%</span><button class="btn" type="button" id="pc-check">Check</button><button class="btn ghost" type="button" id="pc-new">New problem</button></div>
+        <p class="fb" id="pc-fb" aria-live="polite"></p>
+        <p class="hint" id="pc-score"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="bench-card" id="b4">
+    <span class="step mono eyebrow">Investigation 4 · CS2.S2</span>
+    <h3>Rank the risks</h3>
+    <div class="bench-grid">
+      <div class="worked">
+        <b>Worked example</b>
+        <div class="formula">risk score = likelihood × severity</div>
+        <span>A school app reminds students about homework. One risk: it sends too many alerts at night. Likelihood 4, severity 2: 4 × 2 = <b>8</b>.</span>
+        <span>Another risk: student data is shared without permission. Likelihood 2, severity 5: 2 × 5 = <b>10</b>.</span>
+        <span>The data risk scores higher, so the team deals with it first, for example by storing less data.</span>
+      </div>
+      <div class="ctrl">
+        <h4>Practice</h4>
+        <p id="rr-q"></p>
+        <div class="ratebox" id="rr-rows"></div>
+        <label class="field" for="rr-pick">Which risk should the team mitigate first?</label>
+        <select id="rr-pick"></select>
+        <div class="row"><button class="btn" type="button" id="rr-check">Check</button><button class="btn ghost" type="button" id="rr-new">New problem</button></div>
+        <p class="fb" id="rr-fb" aria-live="polite"></p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of more than twenty. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 9 CS2, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-cs2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function minus(n){ return String(n).replace("-", "−"); }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: design loop ---------- */
+(function(){
+  var NS = "http://www.w3.org/2000/svg";
+  function s(tag, attrs){ var n = document.createElementNS(NS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+  var STEPS = [
+    ["Define", "Define the problem", ["Say who has the need and what success looks like.", "Bus shelter: riders, including people using wheelchairs and strollers, need a place to wait that is warmer, lit and easy to enter."]],
+    ["Research", "Research", ["Find out more about the users, the setting and solutions that already exist.", "Bus shelter: count riders, measure wind and temperature at the stop, ask riders what bothers them, look at shelters in other winter cities."]],
+    ["Ideate", "Ideate (brainstorm)", ["Come up with many ideas before choosing. Creative, unusual ideas are welcome here.", "Bus shelter: wind walls, heaters, solar lights, arrival signs, heated benches, even a shelter inside a nearby store."]],
+    ["Prototype", "Prototype", ["Build an early model that is quick and cheap to change.", "Bus shelter: a cardboard scale model, a drawing on a tablet, or one test panel at a real stop."]],
+    ["Test", "Test and improve", ["Try the prototype with real users and collect data. Then go back and improve the design. The dashed arrow shows this loop.", "Bus shelter: measure the temperature inside, time how long boarding takes, and ask riders to rate comfort. Results lead to a better version."]],
+    ["Implement", "Implement", ["Put the best version into real use. This is the moment a new or improved solution becomes an innovation.", "Bus shelter: install it at the stop, then keep watching how well it works. Feedback can start the loop again."]]
+  ];
+  var svg = $("cycle"), cx = 200, cy = 160, R = 118, r = 38, nodes = [];
+  var defs = s("defs", {}); var mk = s("marker", {id: "ah", viewBox: "0 0 10 10", refX: "9", refY: "5", markerWidth: "7", markerHeight: "7", orient: "auto-start-reverse"});
+  mk.appendChild(s("path", {d: "M0 0 L10 5 L0 10 z", "class": "arr"})); defs.appendChild(mk);
+  var mk2 = s("marker", {id: "ah2", viewBox: "0 0 10 10", refX: "9", refY: "5", markerWidth: "7", markerHeight: "7", orient: "auto"});
+  mk2.appendChild(s("path", {d: "M0 0 L10 5 L0 10 z", style: "fill:var(--idea)"})); defs.appendChild(mk2); svg.appendChild(defs);
+  var pos = STEPS.map(function(st, i){ var a = (-90 + i * 60) * Math.PI / 180; return [cx + R * Math.cos(a), cy + R * Math.sin(a)]; });
+  pos.forEach(function(p, i){
+    if (i === STEPS.length - 1) return;
+    var q = pos[i + 1], dx = q[0] - p[0], dy = q[1] - p[1], L = Math.sqrt(dx * dx + dy * dy), ux = dx / L, uy = dy / L;
+    svg.appendChild(s("line", {x1: p[0] + ux * (r + 3), y1: p[1] + uy * (r + 3), x2: q[0] - ux * (r + 5), y2: q[1] - uy * (r + 5), "class": "arc", "marker-end": "url(#ah)"}));
+  });
+  var t = pos[4], id = pos[2];
+  svg.appendChild(s("path", {d: "M" + (t[0] + 30) + " " + (t[1] - 22) + " Q " + cx + " " + (cy + 10) + " " + (id[0] + 30) + " " + (id[1] + 22), "class": "loop", "marker-end": "url(#ah2)"}));
+  var lt = s("text", {x: cx, y: cy + 4, "text-anchor": "middle", "class": "lbl", style: "fill:var(--idea)"}); lt.textContent = "Improve"; svg.appendChild(lt);
+  STEPS.forEach(function(st, i){
+    var g = s("g", {"class": "node", tabindex: "0", role: "button", "aria-label": "Step " + (i + 1) + ": " + st[1]});
+    g.appendChild(s("circle", {cx: pos[i][0], cy: pos[i][1], r: r}));
+    var tx = s("text", {x: pos[i][0], y: pos[i][1] + 4, "text-anchor": "middle", "class": "lbl", style: "font-size:12px"}); tx.textContent = st[0]; g.appendChild(tx);
+    var n = s("text", {x: pos[i][0], y: pos[i][1] - 14, "text-anchor": "middle", "class": "small"}); n.textContent = i + 1; g.appendChild(n);
+    g.addEventListener("click", function(){ show(i); });
+    g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } });
+    svg.appendChild(g); nodes.push(g);
+  });
+  function show(i){
+    nodes.forEach(function(g, j){ g.classList.toggle("on", j === i); g.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    detail($("cycle-d"), STEPS[i][1], STEPS[i][2], "Step " + (i + 1) + " of 6");
+  }
+  show(0);
+})();
+
+/* ---------- Lesson 2: idea to innovation ---------- */
+(function(){
+  var STAGES = ["Need", "Idea", "Prototype", "Test", "Implemented"];
+  var EX = [
+    {label: "Canola", kind: "Improved", steps: [
+      "Oil from rapeseed plants contained substances that made it a poor food oil and a poor animal feed.",
+      "Breed new rapeseed plants that are low in those substances.",
+      "In the 1960s and 1970s, Canadian plant breeders in Saskatoon and Winnipeg grew and selected many new plant lines.",
+      "Seeds and oil from each line were tested in labs and grown in field trials.",
+      "The improved crop was named canola in the late 1970s. Today canola is one of the most important crops on Prairie farms, including in Alberta."]},
+    {label: "Insulin treatment", kind: "New", steps: [
+      "In 1920, type 1 diabetes usually led to death, because the body cannot make the hormone insulin.",
+      "Collect insulin from the pancreas of animals and give it to patients.",
+      "In 1921 at the University of Toronto, Frederick Banting and Charles Best made early extracts.",
+      "James Collip, a University of Alberta biochemist working with the team, purified the extract so it could be tested safely. Patient tests began in January 1922.",
+      "Insulin was produced in larger amounts and used to treat patients from 1922 on. It is still a daily treatment for millions of people."]},
+    {label: "Bombardier snow vehicle", kind: "New", steps: [
+      "In rural Quebec in the 1930s, winter snow closed many roads, so people could not easily reach towns, doctors or schools.",
+      "Build a vehicle with tracks and skis that travels on top of deep snow.",
+      "Joseph-Armand Bombardier, a mechanic in Valcourt, Quebec, built and rebuilt many snow vehicles.",
+      "He tested and improved his designs and patented the B7 snow vehicle in 1937.",
+      "His snow vehicles carried passengers, mail and patients. In 1959 his company released the Ski-Doo, a small snowmobile for one or two people."]},
+    {label: "Canadarm", kind: "New", steps: [
+      "Astronauts on the U.S. Space Shuttle needed a way to move cargo and satellites in space.",
+      "Build a robotic arm, controlled from inside the shuttle, that can grab and move large objects.",
+      "A Canadian engineering team designed and built the arm in partnership with the National Research Council.",
+      "The arm was tested on Earth and then on its first flight on Space Shuttle Columbia in 1981.",
+      "Canadarm worked on shuttle missions for about 30 years, until 2011, and led to Canadarm2 on the International Space Station."]},
+    {label: "Edmonton Protocol", kind: "Improved", steps: [
+      "Some people with type 1 diabetes have dangerous low blood sugar even with careful insulin use.",
+      "Improve islet transplants: give the patient insulin-making cells (islets) from a donor pancreas.",
+      "A University of Alberta team in Edmonton changed the method, using more islet cells and different anti-rejection medicines.",
+      "The first patients were treated in 1999, and the results were published in 2000.",
+      "Transplant centres in many countries adopted the improved method, which became known as the Edmonton Protocol."]}
+  ];
+  var cur = 0, rng = $("tl-range"), track = $("tl-track");
+  STAGES.forEach(function(st){ track.appendChild(el("span", null, st)); });
+  function draw(){
+    var E = EX[cur], k = +rng.value;
+    Array.prototype.forEach.call(track.children, function(sp, j){ sp.className = j < k ? "done" : j === k ? "now" : ""; });
+    rng.setAttribute("aria-valuetext", STAGES[k]);
+    var box = $("tl-d"); clear(box);
+    var r = el("div", {"class": "row"});
+    r.appendChild(el("span", {"class": "badge new"}, E.kind + " solution"));
+    r.appendChild(el("span", {"class": "badge " + (k === 4 ? "yes" : "no")}, k === 4 ? "Innovation: yes, it is in use" : "Innovation: not yet"));
+    box.appendChild(r);
+    box.appendChild(el("h5", null, STAGES[k] + ": " + E.label));
+    box.appendChild(el("p", null, E.steps[k]));
+  }
+  chipGroup($("tl-chips"), EX, "", function(e, i){ cur = i; rng.value = 0; draw(); }, 0);
+  rng.addEventListener("input", draw);
+})();
+
+/* ---------- Lesson 3: value lens ---------- */
+(function(){
+  var DIMS = ["Saves time", "Saves money", "Safety and health", "Environment", "Access for more people"];
+  var SOL = [
+    {label: "LED street lights", v: [1, 4, 3, 4, 1], why: "LED lights use much less electricity and last longer than older street lights, so cities save money and energy. Brighter, steadier light can also help people see at night."},
+    {label: "Low-floor buses", v: [2, 1, 3, 1, 5], why: "A low floor and a ramp let people using wheelchairs, walkers and strollers board without steps. Boarding is also faster for everyone."},
+    {label: "Canola", v: [1, 5, 3, 2, 2], why: "Canola gave farmers a valuable new crop and gave families a widely used cooking oil. The main value is economic, with health value from the oil."},
+    {label: "Online library holds", v: [4, 2, 1, 1, 4], why: "Patrons can reserve a book from home and pick it up at the closest branch. This saves time and helps people who cannot browse in person."},
+    {label: "Insulin treatment", v: [1, 1, 5, 1, 3], why: "Insulin turned a deadly disease into one people can live with. Its biggest value is health, which is hard to measure in money."}
+  ];
+  chipGroup($("vl-chips"), SOL, "", function(sv){
+    var b = $("vl-bars"); clear(b);
+    DIMS.forEach(function(d, i){
+      var row = el("div", {"class": "barrow"}); row.appendChild(el("span", null, d));
+      var tr = el("div", {"class": "track"}), f = el("i"); f.style.width = (sv.v[i] * 20) + "%"; tr.appendChild(f); row.appendChild(tr);
+      row.appendChild(el("b", null, sv.v[i] + "/5")); b.appendChild(row);
+    });
+    detail($("vl-d"), "Where the value is", [sv.why, "Ask: who gets this value, and is anyone left out?"]);
+  }, 0);
+})();
+
+/* ---------- Lesson 4: risk dial ---------- */
+(function(){
+  var LV = ["", "a small tweak", "a modest change", "a fresh approach", "a bold new idea", "a never-tried breakthrough"];
+  function draw(){
+    var n = +$("rk-range").value, proto = $("rk-proto").checked;
+    $("rk-val").textContent = n + " of 5 (" + LV[n] + ")";
+    $("rk-range").setAttribute("aria-valuetext", n + " of 5, " + LV[n]);
+    var gain = n * 20, works = 90 - n * 15, cost = proto ? n * 5 + 5 : n * 20;
+    var rows = [["Possible gain", gain, false], ["Chance version 1 works", works, false], ["Cost if it fails", cost, true]];
+    var b = $("rk-bars"); clear(b);
+    rows.forEach(function(r){
+      var row = el("div", {"class": "barrow"}); row.appendChild(el("span", null, r[0]));
+      var tr = el("div", {"class": "track"}), f = el("i", r[2] ? {"class": "warn"} : null); f.style.width = r[1] + "%"; tr.appendChild(f); row.appendChild(tr);
+      row.appendChild(el("b", null, r[1])); b.appendChild(row);
+    });
+    var msg = n >= 4 ? "A bold idea could bring a big gain, but the first version will probably fail." : n <= 2 ? "A small tweak is likely to work, but the gain is small." : "A fresh approach balances gain and risk.";
+    detail($("rk-d"), proto ? "Smart risk" : "Risky without early tests", [msg, proto ? "Cheap prototypes keep the cost of each failure low, so the team can afford to try bold ideas and learn from them." : "Without early testing, problems are found late, when they are expensive to fix. Switch early prototyping back on to compare."], "Made-up model, scores out of 100");
+  }
+  $("rk-range").addEventListener("input", draw); $("rk-proto").addEventListener("change", draw); draw();
+})();
+
+/* ---------- Lesson 5: impact web ---------- */
+(function(){
+  var INN = [
+    {label: "Cars", note: "Cars changed how and where people live. Many of their negative impacts were not planned.", imp: [
+      ["People", 1, 1, "People can travel long distances quickly and carry heavy loads."],
+      ["Economy", 1, 1, "Building, selling and fixing cars created many jobs."],
+      ["Environment", 0, 0, "Exhaust pollutes the air and releases greenhouse gases."],
+      ["People", 0, 0, "Collisions injure and kill people every year."],
+      ["Community", 0, 0, "Cities spread out around roads, so walking to places got harder."]]},
+    {label: "Leaded gasoline", note: "Lead was added to gasoline starting in the 1920s. Canada banned leaded gasoline for cars in 1990 after its health harms became clear.", imp: [
+      ["Economy", 1, 1, "Engines ran more smoothly without knocking, a problem that wears out engines."],
+      ["People", 0, 0, "Lead from exhaust got into air and soil and harmed health, especially children’s developing brains."],
+      ["Environment", 0, 0, "Lead built up in soil near busy roads."]]},
+    {label: "CFC refrigerants", note: "CFCs replaced toxic gases in fridges. When scientists learned they damage the ozone layer, countries agreed to phase them out in the Montreal Protocol (1987). The ozone layer is slowly recovering.", imp: [
+      ["People", 1, 1, "Fridges became safer, because CFCs are not toxic and do not burn."],
+      ["Health", 1, 1, "Safe refrigeration kept food and medicine cold."],
+      ["Environment", 0, 0, "CFCs that leaked into the air thinned the ozone layer, which blocks harmful UV light."]]},
+    {label: "Smartphones", note: "Smartphones are a mix of positive and negative impacts. Responsible design keeps the good ones and reduces the bad ones.", imp: [
+      ["People", 1, 1, "Instant calls, messages, maps and emergency calls almost anywhere."],
+      ["Economy", 1, 0, "New jobs and businesses, from app makers to delivery services."],
+      ["People", 0, 0, "Notifications can distract students and late-night use can cut into sleep."],
+      ["Environment", 0, 0, "Mining for metals and discarded phones create waste and pollution."]]},
+    {label: "Shared e-scooters", note: "Many cities, including Edmonton, have tried shared e-scooters. Cities set rules to reduce the negative impacts.", imp: [
+      ["People", 1, 1, "Quick, cheap short trips without a car."],
+      ["Environment", 1, 1, "Some short car trips are replaced, which can cut traffic and exhaust."],
+      ["Community", 0, 0, "Scooters left on sidewalks can block people using wheelchairs or canes."],
+      ["People", 0, 0, "Riders can fall and get hurt, especially on rough or icy surfaces."]]}
+  ];
+  chipGroup($("iw-chips"), INN, "", function(it){
+    var L = $("iw-list"); clear(L);
+    it.imp.forEach(function(m){
+      var c = el("div", {"class": "imp " + (m[1] ? "pos" : "neg")});
+      c.appendChild(el("span", {"class": "tagline"}, m[0] + " · " + (m[1] ? "positive" : "negative") + " · " + (m[2] ? "intended" : "unintended")));
+      c.appendChild(el("span", null, m[3])); L.appendChild(c);
+    });
+    var pos = it.imp.filter(function(m){ return m[1]; }).length;
+    detail($("iw-d"), it.label, [it.note, pos + " positive and " + (it.imp.length - pos) + " negative impacts shown. Notice that most negative impacts were unintended."]);
+  }, 0);
+})();
+
+/* ---------- Lesson 6: risk matrix ---------- */
+(function(){
+  var IMPS = [
+    ["Riders fall and get hurt", "Require helmets, slow speed limits in busy areas, and pause service on icy days."],
+    ["Scooters block sidewalks", "Mark parking zones and charge riders who park badly."],
+    ["Used batteries become waste", "Choose swappable batteries and a recycling program."],
+    ["Scooters are stolen or vandalized", "Add GPS tracking and sturdier parts."]
+  ];
+  var sel = $("mx-imp");
+  IMPS.forEach(function(m, i){ var o = el("option", {value: i}, m[0]); sel.appendChild(o); });
+  function band(x){ return x >= 15 ? 4 : x >= 10 ? 3 : x >= 5 ? 2 : 1; }
+  var BN = ["", "Low: watch it", "Medium: plan to reduce it", "High: reduce it before launch", "Very high: redesign or stop"];
+  function draw(){
+    var L = +$("mx-l").value, S = +$("mx-s").value, sc = L * S, g = $("mx-grid"); clear(g);
+    $("mx-lv").textContent = L + " of 5"; $("mx-sv").textContent = S + " of 5";
+    for (var sv = 5; sv >= 1; sv--) {
+      g.appendChild(el("div", {"class": "ax"}, "S" + sv));
+      for (var lv = 1; lv <= 5; lv++) { var x = lv * sv; g.appendChild(el("div", {"class": "c" + band(x) + (lv === L && sv === S ? " hit" : "")}, String(x))); }
+    }
+    g.appendChild(el("div", {"class": "ax"}, ""));
+    for (var l2 = 1; l2 <= 5; l2++) g.appendChild(el("div", {"class": "ax"}, "L" + l2));
+    var m = IMPS[+sel.value];
+    detail($("mx-d"), "Risk score " + L + " × " + S + " = " + sc, [BN[band(sc)] + ".", "Possible mitigation: " + m[1]], m[0]);
+  }
+  ["mx-l", "mx-s", "mx-imp"].forEach(function(i){ $(i).addEventListener("input", draw); });
+  draw();
+})();
+
+/* ---------- Bench 1: design sprint ---------- */
+(function(){
+  var FEATS = [
+    ["wall", "Wind wall on the open side", "Blocks the north wind. Leaves a wide gap to enter.", 2500, 2, 0],
+    ["heat", "Push-button radiant heater", "Warms riders for 10 minutes at a time.", 3500, 3, 6],
+    ["floor", "Heated floor", "Very warm, runs all day in winter.", 6000, 3, 9],
+    ["solar", "Solar-powered LED light", "Light after dark with no grid power.", 2000, 1, 0],
+    ["grid", "Grid-powered lights", "Cheaper lights that use city power.", 900, 1, 3],
+    ["sign", "Real-time arrival sign", "Shows when the next bus will come.", 3000, 1, 2],
+    ["pad", "Level concrete pad and wide entrance", "No curb or step. Room for a wheelchair to turn.", 2800, 0, 0],
+    ["bench", "Bench with armrests", "Easier to sit and stand up.", 800, 1, 0]
+  ];
+  var BUDGET = 12000;
+  store.ds = store.ds || {on: {}, hist: [], done: false};
+  var box = $("ds-feats");
+  FEATS.forEach(function(f){
+    var id = "ds-" + f[0], lab = el("label", {"for": id}), cb = el("input", {type: "checkbox", id: id});
+    cb.checked = !!store.ds.on[f[0]];
+    cb.addEventListener("change", function(){ store.ds.on[f[0]] = cb.checked; save(); draw(); });
+    var mid = el("span"); mid.appendChild(el("span", null, f[1])); mid.appendChild(el("small", null, f[2]));
+    lab.appendChild(cb); lab.appendChild(mid); lab.appendChild(el("b", {"class": "mono num"}, "$" + f[3].toLocaleString("en-CA")));
+    box.appendChild(lab);
+  });
+  function calc(){
+    var c = {cost: 0, comfort: 2, energy: 0, acc: false, list: []};
+    FEATS.forEach(function(f){ if (store.ds.on[f[0]]) { c.cost += f[3]; c.comfort += f[4]; c.energy += f[5]; c.list.push(f[0]); if (f[0] === "pad") c.acc = true; } });
+    if (store.ds.on.heat && store.ds.on.floor) c.comfort -= 2;
+    if (store.ds.on.solar && store.ds.on.grid) c.comfort -= 1;
+    c.comfort = Math.min(10, c.comfort);
+    c.ok = [c.comfort >= 7, c.cost <= BUDGET, c.acc, c.energy <= 10];
+    return c;
+  }
+  function stat(lbl, val, good){ var s = el("div", {"class": "stat"}); s.appendChild(el("span", null, lbl)); var b = el("b", null, val); b.style.color = good ? "var(--good)" : "var(--bad)"; s.appendChild(b); return s; }
+  function draw(){
+    var c = calc(), st = $("ds-stats"); clear(st);
+    st.appendChild(stat("Comfort (out of 10)", String(c.comfort), c.ok[0]));
+    st.appendChild(stat("Cost", "$" + c.cost.toLocaleString("en-CA"), c.ok[1]));
+    st.appendChild(stat("Accessible", c.acc ? "Yes" : "No", c.ok[2]));
+    st.appendChild(stat("Energy use", String(c.energy), c.ok[3]));
+    var fb = [];
+    if (!store.ds.on.wall && !store.ds.on.heat && !store.ds.on.floor) fb.push("“It is still freezing in here. The wind cuts right through.”");
+    if (!store.ds.on.solar && !store.ds.on.grid) fb.push("“After school in December it is dark by 4:30. I can’t see anything.”");
+    if (!c.acc) fb.push("“I use a wheelchair. The curb and the narrow opening stop me from getting in.”");
+    if (c.cost > BUDGET) fb.push("City planner: “This is over budget. What could you cut?”");
+    if (c.energy > 10) fb.push("City planner: “The power bill for this design is too high.”");
+    if (store.ds.on.heat && store.ds.on.floor) fb.push("Tester: “Two heaters is overkill. The second one adds little comfort.”");
+    if (!fb.length) fb.push("“This is a big improvement. I would wait here happily.”");
+    var met = c.ok.filter(Boolean).length;
+    detail($("ds-fb"), "Rider test: " + met + " of 4 criteria met", fb, "Simulated feedback");
+    drawHist();
+  }
+  function drawHist(){
+    var t = $("ds-hist"); clear(t);
+    var hr = el("tr"); ["Version", "Comfort", "Cost", "Access", "Energy", "Criteria met"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+    var base = el("tr"); ["Old shelter", "2", "$0", "No", "0", "1 of 4"].forEach(function(v){ base.appendChild(el("td", null, v)); }); t.appendChild(base);
+    store.ds.hist.forEach(function(h, i){ var tr = el("tr"); ["Version " + (i + 1), String(h.comfort), "$" + h.cost.toLocaleString("en-CA"), h.acc ? "Yes" : "No", String(h.energy), h.met + " of 4"].forEach(function(v){ tr.appendChild(el("td", null, v)); }); t.appendChild(tr); });
+  }
+  function out(msg, ok){ var o = $("ds-out"); o.hidden = false; o.className = "feedback " + (ok ? "ok" : "no"); o.textContent = msg; }
+  $("ds-save").addEventListener("click", function(){
+    var c = calc(); if (store.ds.hist.length >= 8) store.ds.hist.shift();
+    store.ds.hist.push({comfort: c.comfort, cost: c.cost, acc: c.acc, energy: c.energy, met: c.ok.filter(Boolean).length}); save(); drawHist();
+    var pct = Math.round((c.comfort - 2) / 2 * 100);
+    out("Saved as version " + store.ds.hist.length + ". Comfort changed from 2 to " + c.comfort + ", a " + pct + "% change from the old shelter. Each saved version is one trip around the design loop.", true);
+  });
+  $("ds-impl").addEventListener("click", function(){
+    var c = calc(), miss = [];
+    if (!c.ok[0]) miss.push("comfort is below 7"); if (!c.ok[1]) miss.push("cost is over budget"); if (!c.ok[2]) miss.push("it is not accessible"); if (!c.ok[3]) miss.push("energy use is above 10");
+    if (miss.length) { out("Not ready to implement: " + miss.join(", ") + ". Go back around the loop and improve it.", false); return; }
+    store.ds.done = true; save();
+    out("Implemented. The improved shelter is now in real use, so it counts as an innovation. Keep collecting rider feedback, because it can start the next round of improvements.", true);
+  });
+  $("ds-reset").addEventListener("click", function(){ store.ds = {on: {}, hist: [], done: false}; save(); FEATS.forEach(function(f){ $("ds-" + f[0]).checked = false; }); $("ds-out").hidden = true; draw(); });
+  draw();
+})();
+
+/* ---------- Bench 2: impact evaluator ---------- */
+(function(){
+  var PROPS = [
+    {label: "Solar panels on the school roof", desc: "Proposal: cover the flat roof of the school with solar panels.", imp: [
+      ["Lower electricity bills for the school", 1, 1, "Saving money is a planned benefit."],
+      ["Less greenhouse gas from power plants", 1, 1, "Cleaner power is a main reason for the project."],
+      ["Snow covers the panels in winter, so they make less power", 0, 0, "A downside nobody wanted, common in Alberta winters."],
+      ["Students study live energy data in science class", 1, 1, "Many school solar projects plan for this. Some people may see it as a bonus, so this one is debatable."],
+      ["Old panels become waste after about 25 to 30 years", 0, 0, "A long-term negative impact that is easy to forget."]]},
+    {label: "Medicine delivery drones", desc: "Proposal: use drones to fly medicine from a city pharmacy to small communities far from a pharmacy.", imp: [
+      ["Medicine arrives in hours instead of days", 1, 1, "Faster delivery is the goal of the project."],
+      ["Fewer long winter drives for patients", 1, 1, "A planned benefit for safety and time."],
+      ["Drone noise disturbs wildlife and people", 0, 0, "Not planned, but it can matter a lot to people on the land."],
+      ["Cameras on drones raise privacy worries", 0, 0, "An unintended impact that needs rules about cameras and data."],
+      ["Cold weather drains batteries and shortens flights", 0, 0, "A technical problem the design must solve."]]},
+    {label: "AI homework helper app", desc: "Proposal: give every Grade 9 student an AI app that answers homework questions any time.", imp: [
+      ["Help is available late at night", 1, 1, "Always-on help is a planned feature."],
+      ["Students who cannot pay for a tutor get extra help", 1, 1, "Fairer access is a planned benefit."],
+      ["Some students copy answers instead of learning", 0, 0, "Not what the designers wanted, but likely without good rules."],
+      ["The app collects data about students", 0, 0, "Data collection may be needed to run the app, but the privacy risk is unintended."],
+      ["The app sometimes gives wrong answers that sound sure", 0, 0, "AI tools can make mistakes, so students must check answers."]]}
+  ];
+  var cur = 0, picks = [];
+  store.ie = store.ie || {};
+  function build(){
+    var P = PROPS[cur], box = $("ie-rows"); clear(box); picks = P.imp.map(function(){ return [null, null]; });
+    $("ie-desc").textContent = P.desc; $("ie-score").textContent = "";
+    P.imp.forEach(function(m, i){
+      var r = el("div", {"class": "raterow"}); r.appendChild(el("p", null, m[0]));
+      var g1 = el("div", {"class": "chips", role: "group", "aria-label": "Positive or negative: " + m[0]}), g2 = el("div", {"class": "chips", role: "group", "aria-label": "Intended or unintended: " + m[0]});
+      chipGroup(g1, [{label: "Positive", v: 1}, {label: "Negative", v: 0}], "", function(it){ picks[i][0] = it.v; });
+      chipGroup(g2, [{label: "Intended", v: 1}, {label: "Unintended", v: 0}], "", function(it){ picks[i][1] = it.v; });
+      var row = el("div", {"class": "row"}); row.appendChild(g1); row.appendChild(g2); r.appendChild(row);
+      r.appendChild(el("p", {"class": "expl", "aria-live": "polite"}));
+      box.appendChild(r);
+    });
+    $("ie-verdict").value = store.ie["v" + cur] || "";
+  }
+  $("ie-check").addEventListener("click", function(){
+    var P = PROPS[cur], rows = $("ie-rows").children, right = 0;
+    P.imp.forEach(function(m, i){
+      var ok = picks[i][0] === m[1] && picks[i][1] === m[2]; if (ok) right++;
+      rows[i].className = "raterow " + (ok ? "ok" : "no");
+      rows[i].lastChild.textContent = (ok ? "Matches. " : "Model rating: " + (m[1] ? "positive" : "negative") + ", " + (m[2] ? "intended" : "unintended") + ". ") + m[3];
+    });
+    $("ie-score").textContent = right + " of " + P.imp.length + " match the model ratings.";
+  });
+  $("ie-verdict").addEventListener("input", function(){ store.ie["v" + cur] = $("ie-verdict").value; save(); });
+  chipGroup($("ie-chips"), PROPS, "", function(p, i){ cur = i; build(); }, 0);
+})();
+
+/* ---------- Bench 3: percent change ---------- */
+(function(){
+  var SC = [
+    ["A lunch line redesign changed the average wait", "min", 1, [8, 10, 12, 15, 20]],
+    ["A new bike rack design changed the number of bikes parked", "bikes", 0, [20, 24, 30, 40, 50]],
+    ["Better insulation changed the shelter’s heater energy use per day", "kWh", 1, [10, 20, 25, 40, 50]],
+    ["A clearer sign changed the number of riders finding the right stop each hour", "riders", 0, [40, 50, 60, 80, 100]],
+    ["A redesigned water bottle changed the number of plastic bottles thrown out each week", "bottles", 1, [100, 120, 150, 200, 250]]
+  ];
+  var cur, right = 0, tries = 0;
+  function make(){
+    var s = pick(SC), old = pick(s[3]), p = pick([-50, -40, -30, -25, -20, -10, 10, 20, 25, 30, 40, 50]);
+    var nw = Math.round(old * (1 + p / 100) * 10) / 10;
+    cur = {s: s, old: old, nw: nw, ans: Math.round((nw - old) / old * 1000) / 10};
+    $("pc-q").textContent = s[0] + " from " + old + " " + s[1] + " to " + nw + " " + s[1] + ". What is the percent change? Is it an improvement?";
+    $("pc-a").value = ""; $("pc-fb").textContent = ""; $("pc-fb").className = "fb";
+  }
+  $("pc-check").addEventListener("click", function(){
+    var v = parseFloat($("pc-a").value), fb = $("pc-fb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    tries++;
+    var ok = Math.abs(v - cur.ans) <= 0.5, better = cur.s[2] ? cur.nw < cur.old : cur.nw > cur.old;
+    if (ok) right++;
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + "(" + cur.nw + " − " + cur.old + ") ÷ " + cur.old + " × 100% = " + minus(cur.ans) + "%. " + (cur.s[2] ? "Here smaller is better, so this is " : "Here bigger is better, so this is ") + (better ? "an improvement." : "not an improvement.");
+    $("pc-score").textContent = right + " correct out of " + tries + " tries";
+  });
+  $("pc-new").addEventListener("click", make); make();
+})();
+
+/* ---------- Bench 4: rank the risks ---------- */
+(function(){
+  var SETS = [
+    ["A city plans self-driving shuttle buses on a short route.", ["The shuttle misreads a snowy road", "Riders feel nervous without a driver", "Hackers break into the control system", "Bus drivers lose jobs on that route"]],
+    ["A school plans a phone app to order cafeteria lunches.", ["Students without phones cannot order", "The app crashes at lunch rush", "Payment data is stolen", "Orders are mixed up"]],
+    ["A town plans a wind turbine near a bird migration path.", ["Birds strike the blades", "Neighbours dislike the noise", "Ice falls off the blades in winter", "Power output is lower than planned"]]
+  ];
+  var cur;
+  function make(){
+    var S = pick(SETS), names = shuffle(S[1]).slice(0, 3), sc;
+    do { cur = names.map(function(n){ return {n: n, l: rint(1, 5), s: rint(1, 5)}; }); sc = cur.map(function(r){ return r.l * r.s; }).sort(function(a, b){ return b - a; }); } while (sc[0] === sc[1]);
+    $("rr-q").textContent = S[0] + " Calculate each risk score, then choose the one to mitigate first.";
+    var box = $("rr-rows"); clear(box); var sel = $("rr-pick"); clear(sel);
+    sel.appendChild(el("option", {value: ""}, "Choose a risk"));
+    cur.forEach(function(r, i){
+      var row = el("div", {"class": "raterow"}); row.appendChild(el("p", null, r.n + ": likelihood " + r.l + ", severity " + r.s));
+      var id = "rr-in" + i, lab = el("label", {"for": id, "class": "field"}, "Risk score"), inp = el("input", {type: "number", id: id, style: "width:7em"});
+      row.appendChild(lab); row.appendChild(inp); box.appendChild(row);
+      sel.appendChild(el("option", {value: i}, r.n));
+    });
+    $("rr-fb").textContent = ""; $("rr-fb").className = "fb";
+  }
+  $("rr-check").addEventListener("click", function(){
+    var rows = $("rr-rows").children, allOk = true, best = 0;
+    cur.forEach(function(r, i){ var v = parseFloat($("rr-in" + i).value), ok = v === r.l * r.s; if (!ok) allOk = false; rows[i].className = "raterow " + (ok ? "ok" : "no"); if (r.l * r.s > cur[best].l * cur[best].s) best = i; });
+    var pickOk = $("rr-pick").value === String(best), fb = $("rr-fb");
+    fb.className = "fb " + (allOk && pickOk ? "ok" : "no");
+    fb.textContent = cur.map(function(r){ return r.n + ": " + r.l + " × " + r.s + " = " + (r.l * r.s); }).join(" · ") + ". Mitigate first: " + cur[best].n + "." + (allOk && pickOk ? " Well done." : "");
+  });
+  $("rr-new").addEventListener("click", make); make();
+})();
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "Idea, prototype or innovation?", bins: ["Idea only", "Prototype being tested", "Innovation in use"], items: [
+      ["A student sketches a self-heating mitten in a notebook", 0, "It is only an idea. Nothing has been built or used yet."],
+      ["A team tests a cardboard model of a new bus shelter", 1, "A model being tested is a prototype. It is not in real use yet."],
+      ["Canola is grown on Prairie farms and sold as cooking oil", 2, "An improved crop in real use: an innovation."],
+      ["Insulin is used to treat people with diabetes", 2, "A new treatment that was implemented: an innovation."],
+      ["A drone delivery company runs a one-week trial with ten packages", 1, "A trial is a test of a prototype service."],
+      ["Someone suggests putting heated benches in every park", 0, "A suggestion with no build or test is still an idea."],
+      ["Low-floor buses carry riders on Edmonton routes every day", 2, "An improved solution in everyday use."],
+      ["Engineers test a robotic arm in a lab before a space flight", 1, "Lab testing comes before implementation."],
+      ["A class brainstorms 30 ways to reduce lunch waste", 0, "Brainstorming produces ideas, not yet solutions in use."],
+      ["The school installs the improved recycling bins it tested", 2, "Installed and used: the improved design is implemented."]
+    ]},
+    {label: "Which innovation intent?", bins: ["Explore new or improved ways", "Add value", "Take risks"], items: [
+      ["Ask: what if the bus shelter did not need a roof at all?", 0, "Questioning the usual way opens new possibilities."],
+      ["Look at how other winter cities design shelters", 0, "Exploring existing solutions can lead to improved ones."],
+      ["Make sure the new design saves riders time", 1, "Saving time is a kind of value."],
+      ["Check that people using wheelchairs can use the solution too", 1, "Access for more people adds value."],
+      ["Try a design nobody has tested, knowing it might fail", 2, "Trying the untested is taking a risk."],
+      ["Build a cheap prototype of a bold idea to see if it works", 2, "Testing small is how innovators take smart risks."],
+      ["Cut the cost so more schools can afford it", 1, "Lower cost adds value for users."],
+      ["Combine two old ideas into something new", 0, "Combining ideas is a common way to explore new solutions."],
+      ["Pitch an unusual idea to the class even though some may laugh", 2, "Sharing a bold idea takes a social risk."]
+    ]},
+    {label: "Positive or negative impact?", bins: ["Positive impact", "Negative impact"], items: [
+      ["Shared e-scooters replace some short car trips", 0, "Fewer car trips can reduce traffic and exhaust."],
+      ["E-scooters left on the sidewalk block a wheelchair user", 1, "A harmful unintended impact on the community."],
+      ["CFC fridges thinned the ozone layer", 1, "An unintended environmental harm, later fixed by the Montreal Protocol."],
+      ["LED street lights cut a city’s electricity use", 0, "Saves energy and money."],
+      ["Leaded gasoline harmed children’s health", 1, "A serious unintended health impact."],
+      ["Smartphones let people call for help almost anywhere", 0, "A safety benefit."],
+      ["Old solar panels become waste", 1, "A long-term environmental cost."],
+      ["Insulin lets people with type 1 diabetes live long lives", 0, "A major health benefit."],
+      ["An app collects more student data than it needs", 1, "A privacy risk."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var D = DECKS[deck], c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, "", function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Design process", "A set of steps used to turn a need, want or problem into a working solution, usually repeated in a loop."],
+    ["Need", "Something people must have, such as safety, warmth or clean water."],
+    ["Want", "Something people would like to have that makes life better or more enjoyable."],
+    ["Ideate", "To come up with many ideas, often by brainstorming, before choosing one."],
+    ["Prototype", "An early model of a solution, built to test ideas quickly and cheaply."],
+    ["Iterate", "To repeat the design loop, improving the solution each time."],
+    ["Implement", "To put a solution into real use by the people it was made for."],
+    ["Innovation", "A new or improved solution that has been implemented."],
+    ["Invention", "Something new that has been created. It becomes an innovation when it is put into real use."],
+    ["New solution", "A solution unlike anything that existed before, such as the first insulin treatment."],
+    ["Improved solution", "An existing solution made to work better, such as canola from rapeseed."],
+    ["Creativity", "Thinking of original ideas or new ways to combine ideas."],
+    ["Value", "The benefit a solution gives people, such as saving time or money, safety, health, access or a cleaner environment."],
+    ["Smart risk", "Trying an idea that might fail, while keeping people safe and testing early so failures are cheap."],
+    ["Impact", "An effect of a solution on people, communities, the economy or the environment."],
+    ["Positive impact", "An effect that helps people or the environment."],
+    ["Negative impact", "An effect that harms people or the environment."],
+    ["Unintended impact", "An effect nobody planned, often discovered after the solution is in use."],
+    ["Stakeholder", "Any person or group affected by a solution, such as users, neighbours or workers."],
+    ["Responsible innovation", "Innovating while thinking about positive and negative potential impacts, and changing the design to reduce harm."],
+    ["Likelihood", "How likely an impact is to happen, often rated from 1 to 5."],
+    ["Severity", "How bad an impact would be if it happened, often rated from 1 to 5."],
+    ["Mitigation", "A plan or change that reduces a negative impact."],
+    ["Design criteria", "The specific requirements a solution must meet, such as a budget or a comfort score."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){ list = CARDS.map(function(c, j){ return j; }).filter(function(j){ var m = store.cards[j]; return filter === "all" || (filter === "learning" ? m !== "known" : m === "known"); }); if (i >= list.length) i = 0; draw(); }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){ if (!list.length) return; store.cards[list[i]] = v; save(); flipped = false; var was = list.length; build(); if (list.length === was) { i = (i + 1) % list.length; draw(); } }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], "", function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["When does a new or improved solution become an innovation?", ["When it is implemented, meaning put into real use", "As soon as someone thinks of it", "When a prototype is drawn", "When it wins a prize"], 0, "Ideas and prototypes come first. Implementation makes it an innovation."],
+    ["Which is the best example of an innovation?", ["Canola grown on farms and sold as cooking oil", "A sketch of a flying car in a notebook", "A brainstorm list of 50 ideas", "A cardboard model on a desk"], 0, "Canola is an improved solution in real use."],
+    ["Why are design processes usually drawn as a loop?", ["Testing shows what to improve, so designers repeat steps", "Designers like circles", "Every step must be done exactly once", "The last step is always the first"], 0, "Test results send designers back to improve the solution."],
+    ["What is a prototype?", ["An early model built to test a design", "The final product sold in stores", "A list of design criteria", "A negative impact"], 0, "Prototypes are quick, cheap models for testing."],
+    ["Canola was developed from rapeseed by Canadian plant breeders. What kind of solution is it?", ["An improved solution", "A brand new solution with no earlier version", "Not a solution", "Only an idea"], 0, "It improved an existing crop."],
+    ["Which three intents does the curriculum say innovators bring to design processes?", ["Exploring new or improved ways, adding value and taking risks", "Copying, selling and advertising", "Avoiding risk, saving paper and working alone", "Testing once, implementing and stopping"], 0, "Explore, add value, take risks."],
+    ["Which is an example of adding value?", ["A redesign that lets wheelchair users board a bus", "Painting a product a new colour with no other change", "Making a product harder to repair", "Adding a feature nobody uses"], 0, "Access for more people is valuable."],
+    ["What is a smart risk in design?", ["Trying a bold idea with a cheap prototype and no danger to anyone", "Skipping all tests to save time", "Testing a new heater on a person without safety checks", "Never trying anything new"], 0, "Smart risks keep people safe and make failures cheap."],
+    ["Why might a team build a cheap prototype first?", ["So a failure costs little and teaches them what to change", "Because prototypes are always the final product", "To avoid any testing", "Because cheap means better"], 0, "Early testing finds problems when they are cheap to fix."],
+    ["A design fails its first test. What should the team do?", ["Use the results as data to improve the next version", "Give up on the problem", "Hide the results", "Implement it anyway"], 0, "Failure is information in a design loop."],
+    ["What does responsible innovation consider?", ["Positive and negative potential impacts of a solution", "Only how much money it makes", "Only the positive impacts", "Only what the designer likes"], 0, "Responsible innovators weigh both kinds of impacts."],
+    ["Leaded gasoline made engines run smoothly but harmed health. The health harm was", ["a negative, unintended impact", "a positive, intended impact", "a design criterion", "a prototype"], 0, "No one planned the harm. It was discovered later."],
+    ["CFC refrigerants made fridges safer but damaged the ozone layer. What did countries do?", ["Agreed to phase them out in the Montreal Protocol", "Banned all fridges", "Ignored the problem", "Added more CFCs"], 0, "The 1987 Montreal Protocol phased out ozone-damaging chemicals."],
+    ["A stakeholder is", ["any person or group affected by a solution", "only the person who pays for it", "a type of prototype", "a part of a bus shelter"], 0, "Users, neighbours, workers and others are all stakeholders."],
+    ["Risk score = likelihood × severity. Likelihood is 3 and severity is 4. What is the score?", ["12", "7", "1", "34"], 0, "3 × 4 = 12."],
+    ["Which risk should be mitigated first?", ["Likelihood 2, severity 5 (score 10)", "Likelihood 4, severity 2 (score 8)", "Likelihood 1, severity 3 (score 3)", "Likelihood 3, severity 1 (score 3)"], 0, "The highest score is usually dealt with first."],
+    ["What is mitigation?", ["A change that reduces a negative impact", "A positive impact", "A brainstorming method", "The last step of a design loop"], 0, "For e-scooters, parking zones mitigate sidewalk clutter."],
+    ["A lunch line wait drops from 10 min to 8 min. What is the percent change?", ["−20%", "+20%", "−2%", "+25%"], 0, "(8 − 10) ÷ 10 × 100% = −20%. Shorter waits are better, so this is an improvement."],
+    ["James Collip, who helped purify insulin so it could be tested safely, was a scientist from", ["the University of Alberta", "the University of Paris", "NASA", "a car company"], 0, "Collip was a University of Alberta biochemist working with the Toronto team."],
+    ["The Edmonton Protocol, developed at the University of Alberta, improved", ["islet cell transplants for people with type 1 diabetes", "snowmobile engines", "bus shelters", "canola seeds"], 0, "It is an Alberta example of an improved medical solution."],
+    ["Joseph-Armand Bombardier’s snow vehicles helped rural Quebec families mainly by", ["letting people travel over snow-covered roads in winter", "making fridges safer", "lighting streets", "cleaning water"], 0, "His tracked vehicles carried passengers, mail and patients in winter."],
+    ["Which is an unintended negative impact of shared e-scooters?", ["Scooters left on sidewalks block people using wheelchairs", "Quick, cheap short trips", "Fewer short car trips", "Riders get exercise outdoors"], 0, "Nobody planned the clutter, but it harms access."],
+    ["Which question best helps evaluate the impacts of a solution?", ["Who could be helped or harmed, now and in the future?", "What colour should it be?", "How fast can we skip testing?", "Which design looks the newest?"], 0, "Evaluation looks at stakeholders and time."],
+    ["Which shows creativity in a design process?", ["Combining a heater and a bench into a heated seat", "Copying the old shelter exactly", "Choosing the first idea without thinking", "Refusing to brainstorm"], 0, "Creativity often combines ideas in new ways."],
+    ["Why is a good idea that is never implemented not an innovation?", ["It has not solved the problem in the real world yet", "Ideas are never useful", "Only companies can innovate", "It has too many negative impacts"], 0, "Innovation requires implementation."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, "You scored " + score + " of 10.")); d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons and the Flashcards, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); var h = el("h3", {style: "white-space:pre-line"}, Q[0]); q.appendChild(h);
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button", style: "white-space:pre-line;font-family:" + (/\n/.test(Q[1][i]) ? "var(--f-mono)" : "inherit")}, Q[1][i]);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; });
+        opts.children[Array.prototype.indexOf.call(opts.children, b)].classList.add(i === Q[2] ? "right" : "wrong");
+        Array.prototype.forEach.call(opts.children, function(x){ if (x.textContent === Q[1][Q[2]]) x.classList.add("right"); });
+        if (i === Q[2]) score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["Explain how design processes lead to innovations.", "Design processes take a need, want or problem through steps such as defining, researching, ideating, prototyping and testing. Testing shows what to improve, so the steps repeat. When the new or improved solution is implemented, meaning put into real use, it becomes an innovation.", ["Names steps of a design process", "Mentions testing and improving in a loop", "Says innovation needs implementation"]],
+    ["What is the difference between an idea, a prototype and an innovation?", "An idea is a thought about a possible solution. A prototype is an early model built to test the idea. An innovation is a new or improved solution that has been implemented and is in real use.", ["Defines idea", "Defines prototype as a test model", "Defines innovation as implemented"]],
+    ["Give one example of a new solution and one example of an improved solution.", "New: insulin treatment for diabetes, which did not exist before 1922. Improved: canola, which improved rapeseed so its oil and meal could be used for food and feed.", ["Correct new example", "Correct improved example", "Explains why each fits"]],
+    ["Describe the three intents innovators bring to design processes.", "They explore new or improved ways to address needs, wants or problems. They aim to create solutions that add value for people. They are willing to take risks by trying ideas that might not work.", ["Exploring new or improved ways", "Adding value", "Taking risks"]],
+    ["What does it mean for a solution to add value? Give an example.", "A solution adds value when it brings a real benefit, such as saving time or money, improving safety or health, helping the environment or letting more people take part. Low-floor buses add value by letting wheelchair users board without steps.", ["Defines value as a benefit", "Gives a type of value", "Gives a matching example"]],
+    ["Why do innovators take risks, and how can they keep the risks smart?", "New ideas might fail, but they can also bring big improvements, so innovators try them. They keep risks smart by never risking safety, testing early with cheap prototypes and treating failures as data for improvement.", ["New ideas can bring big gains", "Never risk safety", "Test early and cheaply", "Learn from failure"]],
+    ["What is responsible innovation?", "Responsible innovation means thinking about both the positive and negative potential impacts of a solution on people, communities, the economy and the environment, and changing the design to reduce harm.", ["Positive and negative impacts", "Names areas affected", "Changing the design to reduce harm"]],
+    ["Give an example of an unintended negative impact of an innovation and how people responded.", "CFC refrigerants made fridges safer, but they damaged the ozone layer. Countries responded by phasing them out under the Montreal Protocol in 1987, and the ozone layer is slowly recovering.", ["Names an innovation", "Describes an unintended harm", "Describes a response"]],
+    ["An impact has likelihood 4 and severity 3. Calculate the risk score and say what the team should do.", "Risk score = 4 × 3 = 12. That is a high score, so the team should plan a mitigation, such as a design change, before launching the solution.", ["Correct score of 12", "Says it is high", "Suggests a mitigation"]]
+  ];
+  var LONG = [
+    ["Choose a solution you use at school or in your community that could be better. Describe how you would use a design process to improve it, step by step, and explain at what point your improved solution would become an innovation.", "A strong answer names a real solution and a clear need (for example, a crowded bike rack or a cold bus stop). It walks through defining the problem, researching users, brainstorming many ideas, building a cheap prototype, testing it with users and using the results to improve it, maybe more than once. It explains that the improved solution becomes an innovation only when it is implemented and used, and that feedback can start the loop again.", ["Clear need and users", "All major steps in order", "Testing leads to improvement", "Innovation at implementation", "Mentions taking a smart risk or adding value"]],
+    ["Evaluate the potential impacts of a solution such as shared e-scooters, school solar panels or an AI homework app. Include at least two positive and two negative impacts, decide whether the solution should go ahead, and suggest one mitigation.", "A strong answer names stakeholders, lists at least two positive and two negative impacts in different areas (people, community, economy, environment), notes which are intended and unintended, rates the most serious negative impact using likelihood and severity, makes a clear decision and proposes a realistic mitigation.", ["Two or more positive impacts", "Two or more negative impacts", "Names stakeholders", "Uses likelihood and severity or similar reasoning", "Clear decision with a mitigation"]],
+    ["Some people say innovators should move fast and fix problems later. Others say they should study every possible impact before doing anything. Take a position and support it with examples from this lab.", "A strong answer takes a clear position and supports it. Moving fast can bring benefits sooner and testing reveals real problems, but examples like leaded gasoline and CFCs show that some harms take years to find and are hard to undo. A balanced position might favour fast, small, safe prototypes with careful checks before full implementation. It considers the other side.", ["Clear position", "Uses at least one historical example", "Considers the other side", "Connects to responsible innovation"]],
+    ["Compare two Canadian innovations from this lab. For each, explain the need, whether it was new or improved, and one positive and one possible negative impact.", "A strong answer chooses two examples such as canola and the Edmonton Protocol. It names each need, correctly labels new or improved, and gives accurate impacts, such as canola adding value for farmers while large single-crop fields can reduce habitat, or islet transplants helping patients while needing scarce donor organs and anti-rejection medicine.", ["Two examples with needs", "New or improved labelled correctly", "Positive impact for each", "Possible negative impact for each"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      s.style.whiteSpace = "pre-line"; d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans", style: "white-space:pre-line"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["CS2.K1", "Design processes lead to innovations when new or improved solutions are implemented.", "Learn 1 and 2; Lab Bench 1 (implement step); Sort It (deck 1); Flashcards; Quiz; Written Review short 1 to 3, extended 1 and 4"],
+    ["CS2.K2", "Innovation involves approaching design processes with the intent of\n• exploring new or improved ways to address needs, wants, or problems\n• creating solutions that add value\n• taking risks", "Learn 3 and 4; Sort It (deck 2); Flashcards; Quiz; Written Review short 4 to 6"],
+    ["CS2.K3", "Responsible innovation considers positive and negative potential impacts of solutions.", "Learn 5 and 6; Lab Bench 2 and 4; Sort It (deck 3); Quiz; Written Review short 7 to 9, extended 2 and 3"],
+    ["CS2.S1", "Apply design processes to improve a solution.", "Learn 1; Lab Bench 1 (design sprint) and 3 (percent change); Written Review extended 1"],
+    ["CS2.S2", "Evaluate potential impacts of solutions.", "Learn 5 and 6; Lab Bench 2 (impact evaluator) and 4 (rank the risks); Written Review extended 2 and 3"]
+  ];
+  var NOTES = [
+    "CS2.K1: innovation is taught as a new or improved solution that has been implemented (put into real use). The difference between an invention or prototype and an innovation is added as context. The six-step loop is one common model; the draft does not name specific steps.",
+    "CS2.K2: “taking risks” is taught as smart, calculated risk: never risking safety, testing early with cheap prototypes and treating failure as data. The Lesson 4 risk dial is a made-up model.",
+    "CS2.K3: impacts are organized by area (people, community, economy, environment), intended or unintended, and short or long term. Risk score = likelihood × severity is added beyond the statement as one evaluation tool, with the note that values and the voices of affected people also matter.",
+    "History examples need a quick check: canola (1970s, Saskatoon and Winnipeg breeders), insulin (Toronto 1921 to 1922, with University of Alberta biochemist James Collip), Bombardier B7 (patented 1937) and Ski-Doo (1959), Canadarm (first flight 1981, retired 2011), Edmonton Protocol (published 2000), leaded gasoline (banned for cars in Canada in 1990) and CFCs (Montreal Protocol, 1987).",
+    "Bombardier is included as a Francophone contribution. The medicine drone proposal mentions effects on people on the land in general terms only; no specific community knowledge is described.",
+    "All bus shelter costs, comfort and energy scores, value lens ratings, impact ratings and practice numbers are made up for practice. Intended or unintended labels in Lab Bench 2 are model judgments and some are debatable."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

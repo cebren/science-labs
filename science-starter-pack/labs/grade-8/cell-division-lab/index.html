@@ -1,0 +1,1698 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/cell-division-lab/"><meta name="description" content="Cell division is essential for survival and diversity."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cell Division Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a genetics bench. Sticky tab strip, then lessons that pair a short reading column with a live model: a DNA zoom, cells with DNA locations, a gene switchboard, division scenarios and step-through mitosis and meiosis animations. Red marks DNA, orange chromosomes from parent 1, teal chromosomes from parent 2, purple the nucleus. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#15212C; --muted:#53606D; --line:#D2D9E0;
+  --acc:#1D5FA8; --acc-soft:#DFEAF6;
+  --memb:#1F6F7A; --memb-soft:#DCEFF1; --cyto:#EEF6F0;
+  --nuc:#6B3FA0; --nuc-fill:#E5DAF4;
+  --mito:#D9792E; --mito-ink:#8A4A10; --mito-fill:#FBE1CC;
+  --chl:#2E7D32; --chl-fill:#8CC98F;
+  --vac:#2F6DB0; --vac-fill:#D3E5F7;
+  --wall:#8A6420; --wall-fill:#EADBB8;
+  --ribo:#3A4652; --dna:#B3261E;
+  --field:#F8F5E6; --stain:#B98B3E; --blue-stain:#4D6FB8;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --pa:#A9480F; --pa-fill:#F6D9C4; --pb:#1F6F7A; --pb-fill:#CDEAEE;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --memb:#5FC8D4; --memb-soft:#12303A; --cyto:#17251E;
+  --nuc:#C49BFF; --nuc-fill:#2C2140;
+  --mito:#E9A050; --mito-ink:#F2C14E; --mito-fill:#3A2A16;
+  --chl:#7BCB7F; --chl-fill:#2E5A31;
+  --vac:#7FB0F0; --vac-fill:#1A2E46;
+  --wall:#D9B670; --wall-fill:#3A2F18;
+  --ribo:#C9D3DC; --dna:#FF8A80;
+  --field:#24261F; --stain:#C9A060; --blue-stain:#8FA8E8;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --pa:#F0A060; --pa-fill:#3D2614; --pb:#5FC8D4; --pb-fill:#123038;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --memb:#5FC8D4; --memb-soft:#12303A; --cyto:#17251E;
+  --nuc:#C49BFF; --nuc-fill:#2C2140;
+  --mito:#E9A050; --mito-ink:#F2C14E; --mito-fill:#3A2A16;
+  --chl:#7BCB7F; --chl-fill:#2E5A31;
+  --vac:#7FB0F0; --vac-fill:#1A2E46;
+  --wall:#D9B670; --wall-fill:#3A2F18;
+  --ribo:#C9D3DC; --dna:#FF8A80;
+  --field:#24261F; --stain:#C9A060; --blue-stain:#8FA8E8;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --pa:#F0A060; --pa-fill:#3D2614; --pb:#5FC8D4; --pb-fill:#123038;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--acc)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--acc)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson,.inv{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--acc-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--acc)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.mb{color:var(--memb);font-weight:700}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.two>*{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tg{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tg.on{background:var(--memb-soft);border-color:var(--memb);color:var(--ink)}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .mtxt{font-family:var(--f-mono);font-size:12px;font-weight:600}
+svg [tabindex]{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+label.field output{font-family:var(--f-mono);font-weight:600;color:var(--memb)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+select{width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--mito);border-radius:7px;transition:width .3s ease}
+.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.chain div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;display:grid;gap:2px}
+.chain b{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mito-ink)}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;font-variant-numeric:tabular-nums}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--good)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--acc)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+header h1 .mb{color:var(--memb)}
+svg .part{cursor:pointer;transition:opacity .2s}
+svg .part:hover{opacity:.85}
+svg .part.sel>*:first-child, svg .part.sel{filter:drop-shadow(0 0 3px var(--acc))}
+svg .part:focus{outline:none}
+svg .part:focus-visible{filter:drop-shadow(0 0 4px var(--acc))}
+.scope{display:grid;justify-items:center;gap:8px}
+.scope svg{width:min(100%,320px);height:auto;display:block}
+.view{transition:filter .15s}
+.timeline{display:grid;gap:6px}
+.tl{display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer}
+.tl b{font-family:var(--f-mono);font-size:.85rem;color:var(--acc)}
+.tl[aria-pressed="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.casegrid button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;text-align:left;cursor:pointer;display:grid;gap:2px}
+.casegrid button small{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.casegrid button[aria-pressed="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.pins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.pins label{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+.pins .fb{font-size:.84rem}
+.warn{background:var(--bad-soft);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.okbox{background:var(--good-soft);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:10px}
+.ctl>*{min-width:0}
+.dt.small{min-width:0}
+svg .cellbtn{cursor:pointer}
+svg .cellbtn:focus{outline:none}
+svg .cellbtn:focus-visible rect.wallr{stroke:var(--acc);stroke-width:4}
+svg .cellbtn.picked rect.wallr{stroke:var(--acc);stroke-width:4}
+.stepper{display:grid;gap:10px}
+.stagebar{display:flex;flex-wrap:wrap;gap:6px}
+.stagebar span{font-family:var(--f-mono);font-size:.7rem;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.stagebar span.on{background:var(--acc-soft);border-color:var(--acc);color:var(--ink)}
+.cmp{display:grid;gap:8px}
+.cmp .dt td select{width:100%}
+.pa{color:var(--pa);font-weight:700}.pb{color:var(--pb);font-weight:700}.dn{color:var(--dna);font-weight:700}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Life Science: Cells and Organ Systems · LS2</div>
+    <h1><span class="dn">Cell Division</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Cell division is essential for survival and diversity. Every cell in a spruce seedling, a canola plant or your own body came from another cell that divided. One kind of division copies cells exactly so living things can grow and heal. The other kind mixes things up so offspring are all a little different.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with what DNA is and where cells keep it, then find out why cells divide and how the two kinds of division work.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · The instruction molecule</span>
+      <div class="codes"><span class="code">LS2.K1</span></div>
+      <h3>DNA carries the cell’s instructions</h3>
+      <p><b>DNA</b> is short for <b>deoxyribonucleic acid</b>. It is a very long molecule that carries a cell’s <b>genetic information</b>. You can think of it as an instruction book written in a code of four chemical letters: A, T, G and C.</p>
+      <p>A section of DNA that holds the instructions for one job, such as making one protein, is called a <b>gene</b>. The cell reads its genes to build the proteins it needs to take in food, release energy, repair itself and divide. Without its DNA, a cell cannot keep itself alive for long.</p>
+      <p>DNA is shaped like a twisted ladder, called a <b>double helix</b>. In 1953, Rosalind Franklin’s X-ray images helped James Watson and Francis Crick work out this shape. Long strands of DNA are wound tightly into <b>chromosomes</b>. Most human body cells have 46 chromosomes.</p>
+      <div class="key"><b>Remember:</b> DNA is the molecule. Genes are sections of it. Chromosomes are DNA wound up into neat packages.</div>
+    </div>
+    <div class="model">
+      <h4>Model: zoom into a cell</h4>
+      <p class="hint">Each picture zooms in on the one before it. Pick a level to read about it.</p>
+      <div class="svgbox"><svg id="zoomSvg" viewBox="0 0 540 200" role="img" aria-label="Zoom from a cell to its nucleus, a chromosome, the DNA ladder and one gene"></svg></div>
+      <div class="chips" id="zoomChips" role="group" aria-label="Choose a zoom level"></div>
+      <div class="detail" id="zoomDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Where cells keep DNA</span>
+      <div class="codes"><span class="code">LS2.K2</span><span class="code">LS2.S1</span></div>
+      <h3>In the nucleus, or loose in the cytoplasm</h3>
+      <p>Most animal and plant cells keep their DNA inside the <b>nucleus</b>. A membrane around the nucleus protects the DNA and controls what goes in and out.</p>
+      <p>Some cells have <b>no nucleus</b>. Bacteria are the best example. A bacterial cell keeps its DNA in the <b>cytoplasm</b>, mostly in one large loop. Many bacteria also carry small extra rings of DNA called <b>plasmids</b>.</p>
+      <p>There is one more place to look. Mitochondria, and the chloroplasts in plant cells, hold a small amount of their own DNA. Almost all of the cell’s instructions are still in the nucleus.</p>
+      <div class="key"><b>Compare:</b> plant cell and animal cell: DNA in the nucleus. Bacterial cell: DNA in the cytoplasm, because there is no nucleus.</div>
+    </div>
+    <div class="model">
+      <h4>Model: find the DNA</h4>
+      <p class="hint">Pick a cell. DNA is shown in red. Tap or press Enter on a part to learn what DNA it holds.</p>
+      <div class="chips" id="whereChips" role="group" aria-label="Choose a cell"></div>
+      <div class="svgbox"><svg id="whereSvg" viewBox="0 0 440 260" role="group" aria-label="Cell diagram with DNA locations"></svg></div>
+      <div class="detail" id="whereDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · One set of instructions</span>
+      <div class="codes"><span class="code">LS2.K3</span></div>
+      <h3>Your body cells share the same DNA</h3>
+      <p>You started as one cell. Every body cell you have came from that cell by division, and each division copied the DNA. So your skin cells, muscle cells and nerve cells all hold the <b>same DNA</b>.</p>
+      <p>If the DNA is the same, why do cells look and act so differently? Each kind of cell <b>uses different genes</b>. A muscle cell switches on the genes for muscle proteins. A nerve cell switches on the genes for sending signals. The rest of the book is still there, just closed.</p>
+      <p>There are a few exceptions. <b>Sex cells</b> (sperm and egg cells) carry only half the DNA, one chromosome from each pair. <b>Mature red blood cells</b> lose their nucleus, so they have no DNA at all. Rarely, a copying mistake changes a cell’s DNA a little.</p>
+      <div class="key"><b>Remember:</b> same DNA in almost every body cell, different genes in use.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the gene switchboard</h4>
+      <p class="hint">Each row is one copy of eight genes: the top row came from parent 1 and the bottom row from parent 2. Bright boxes are genes that cell is using. Pick a cell.</p>
+      <div class="chips" id="geneChips" role="group" aria-label="Choose a cell type"></div>
+      <div class="svgbox"><svg id="geneSvg" viewBox="0 0 520 150" role="img" aria-label="Gene switchboard"></svg></div>
+      <div class="detail" id="geneDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Why cells divide</span>
+      <div class="codes"><span class="code">LS2.K4</span></div>
+      <h3>Growth, repair, reproduction and variation</h3>
+      <p><b>Cell division</b> is when one cell splits to make new cells. The starting cell is the <b>parent cell</b>. The new cells are <b>daughter cells</b>. Cell division does four jobs:</p>
+      <ul>
+        <li><b>Growth:</b> a seedling becomes a tree by making more cells.</li>
+        <li><b>Repair:</b> new cells replace damaged or worn-out ones, like when a scraped knee heals.</li>
+        <li><b>Reproduction:</b> new organisms are made. A yeast cell divides into two yeast cells. Plants and animals make sex cells that join to start a new organism.</li>
+        <li><b>Variation:</b> the kind of division that makes sex cells shuffles DNA, so offspring are different from each other.</li>
+      </ul>
+      <p class="note">Bacteria split in two by a simpler process called <b>binary fission</b>. They copy their DNA loop and pinch in half.</p>
+    </div>
+    <div class="model">
+      <h4>Model: what is the division for?</h4>
+      <p class="hint">Pick an example from Alberta. The tags show which jobs the cell division is doing.</p>
+      <div class="chips" id="whyChips" role="group" aria-label="Choose an example"></div>
+      <div class="tags" id="whyTags" aria-hidden="true"></div>
+      <div class="svgbox"><svg id="whySvg" viewBox="0 0 520 150" role="img" aria-label="Diagram of the cell division"></svg></div>
+      <div class="detail" id="whyDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Copy and split</span>
+      <div class="codes"><span class="code">LS2.K5</span><span class="code">LS2.S2</span></div>
+      <h3>Mitosis makes two identical cells</h3>
+      <p><b>Mitosis</b> is the kind of cell division that makes <b>two identical daughter cells</b>. Each daughter cell gets a full, exact copy of the parent cell’s DNA. It has the same number of chromosomes as the parent.</p>
+      <p>Mitosis is how your body <b>grows</b> and <b>repairs</b> itself. Skin, bone and the root tips of plants all grow by mitosis. Some living things also use it to reproduce, like yeast and aspen trees that sprout from roots.</p>
+      <ol>
+        <li><b>Copy:</b> the cell copies every chromosome. Each one now has two identical halves joined together.</li>
+        <li><b>Line up:</b> the chromosomes line up single file across the middle.</li>
+        <li><b>Pull apart:</b> the two halves of each chromosome are pulled to opposite ends.</li>
+        <li><b>Split:</b> the cell pinches in two. Each new cell has a full set.</li>
+      </ol>
+      <p class="note">Scientists name these stages interphase, prophase, metaphase, anaphase and telophase. You do not need to memorize the names.</p>
+    </div>
+    <div class="model">
+      <h4>Model: mitosis step by step</h4>
+      <p class="hint">This cell has 4 chromosomes: two long and two short. Orange ones came from parent 1 and teal ones from parent 2.</p>
+      <div class="stagebar" id="mitBar" aria-hidden="true"></div>
+      <div class="svgbox"><svg id="mitSvg" viewBox="0 0 520 240" role="img" aria-label="Mitosis animation"></svg></div>
+      <div class="row">
+        <button class="btn ghost" id="mitBack" type="button">Back</button>
+        <button class="btn" id="mitNext" type="button">Next step</button>
+      </div>
+      <div class="detail" id="mitDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Copy, shuffle, split twice</span>
+      <div class="codes"><span class="code">LS2.K6</span><span class="code">LS2.K4</span></div>
+      <h3>Meiosis makes four different sex cells</h3>
+      <p><b>Meiosis</b> is the kind of cell division that makes sex cells for <b>sexual reproduction</b>. In animals these are sperm and egg cells. In flowering plants they form inside pollen and ovules.</p>
+      <p>Meiosis makes <b>four daughter cells</b>, and they are <b>not identical</b>. Each one has <b>half</b> the parent cell’s chromosomes: one from each pair. In humans, a body cell has 46 chromosomes and a sex cell has 23.</p>
+      <ol>
+        <li><b>Copy:</b> every chromosome is copied, just like in mitosis.</li>
+        <li><b>Pair and swap:</b> matching chromosomes pair up and trade pieces. This is called <b>crossing over</b>.</li>
+        <li><b>First split:</b> the pairs separate. Which side each chromosome goes to is random.</li>
+        <li><b>Second split:</b> the copies separate. Four cells, each with half the chromosomes.</li>
+      </ol>
+      <p>Crossing over and the random line-up mean every sex cell gets a different mix. When a sperm and egg join, a <b>fertilized egg</b> gets 23 + 23 = 46 chromosomes, and a new, unique combination. This is where <b>variation</b> comes from.</p>
+    </div>
+    <div class="model">
+      <h4>Model: meiosis step by step</h4>
+      <p class="hint">Same starting cell as mitosis. Step through, then press Shuffle to run it again with a new random line-up and crossing over.</p>
+      <div class="stagebar" id="meiBar" aria-hidden="true"></div>
+      <div class="svgbox"><svg id="meiSvg" viewBox="0 0 520 240" role="img" aria-label="Meiosis animation"></svg></div>
+      <div class="row">
+        <button class="btn ghost" id="meiBack" type="button">Back</button>
+        <button class="btn" id="meiNext" type="button">Next step</button>
+        <button class="btn ghost" id="meiShuffle" type="button">Shuffle</button>
+      </div>
+      <div class="detail" id="meiDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Side by side</span>
+      <div class="codes"><span class="code">LS2.S3</span><span class="code">LS2.K5</span><span class="code">LS2.K6</span></div>
+      <h3>Comparing mitosis and meiosis</h3>
+      <p>Both kinds of division start by copying the DNA. After that, they do different jobs.</p>
+      <div class="tablebox"><table class="dt small">
+        <thead><tr><th>Feature</th><th>Mitosis</th><th>Meiosis</th></tr></thead>
+        <tbody>
+          <tr><td>Number of divisions</td><td>1</td><td>2</td></tr>
+          <tr><td>Daughter cells</td><td>2</td><td>4</td></tr>
+          <tr><td>Identical to parent?</td><td>Yes</td><td>No, each is different</td></tr>
+          <tr><td>Chromosome number</td><td>Same as parent</td><td>Half of parent</td></tr>
+          <tr><td>Used for</td><td>Growth, repair, some asexual reproduction</td><td>Sex cells for sexual reproduction</td></tr>
+          <tr><td>Where in the body</td><td>Body cells everywhere</td><td>Reproductive organs only</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="model">
+      <h4>Model: chromosome counter</h4>
+      <p class="hint">Pick a living thing. See how many chromosomes each daughter cell gets. Chromosome numbers are rounded reference values.</p>
+      <label class="field" for="spSel">Living thing
+        <select id="spSel"></select>
+      </label>
+      <div class="svgbox"><svg id="countSvg" viewBox="0 0 520 210" role="img" aria-label="Chromosome numbers after mitosis, meiosis and fertilization"></svg></div>
+      <div class="detail" id="countDetail" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Find the DNA in different cells, name the division from a picture, count dividing cells in a root tip, work out cell and chromosome numbers, and build your own comparison chart.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · DNA locator</span>
+      <div class="codes"><span class="code">LS2.S1</span><span class="code">LS2.K2</span></div>
+      <h3>Where does this cell keep its DNA?</h3>
+      <p>Read the cell card. Decide where its DNA is kept. Use the clue: does this cell have a nucleus?</p>
+      <div class="worked"><b>Worked example</b><span>A cheek cell is an animal cell. Animal cells have a nucleus, so its DNA is in the nucleus.</span><span>A <i>Lactobacillus</i> cell in yogurt is a bacterium. Bacteria have no nucleus, so its DNA is in the cytoplasm.</span></div>
+      <p class="hint mono" id="locScore"></p>
+    </div>
+    <div class="model">
+      <div class="sortcard" id="locCard" aria-live="polite"></div>
+      <div class="bins" id="locBins" role="group" aria-label="Where is the DNA?"></div>
+      <div id="locFb" aria-live="polite"></div>
+      <button class="btn ghost" id="locNext" type="button">Next cell</button>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Name that division</span>
+      <div class="codes"><span class="code">LS2.S2</span></div>
+      <h3>Mitosis or meiosis?</h3>
+      <p>Look at the representation. It might be a diagram or a description. Decide which kind of cell division it shows.</p>
+      <div class="worked"><b>Clues to look for</b>
+        <span>2 daughter cells, same chromosomes as the parent, matching colours: <b>mitosis</b>.</span>
+        <span>4 daughter cells, half the chromosomes, different mixes: <b>meiosis</b>.</span>
+        <span>Growth or repair in body cells: <b>mitosis</b>. Making sperm, eggs or pollen: <b>meiosis</b>.</span></div>
+      <p class="hint mono" id="ntdScore"></p>
+    </div>
+    <div class="model">
+      <div class="svgbox" id="ntdBox"><svg id="ntdSvg" viewBox="0 0 520 200" role="img" aria-label="Cell division representation"></svg></div>
+      <p class="detail" id="ntdText"></p>
+      <div class="bins" role="group" aria-label="Which division?">
+        <button class="bin" id="ntdMit" type="button">Mitosis</button>
+        <button class="bin" id="ntdMei" type="button">Meiosis</button>
+      </div>
+      <div id="ntdFb" aria-live="polite"></div>
+      <button class="btn ghost" id="ntdNext" type="button">New representation</button>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Onion root tip count</span>
+      <div class="codes"><span class="code">LS2.S2</span><span class="code">LS2.K5</span><span class="code">LS2.K4</span></div>
+      <h3>How many cells are dividing?</h3>
+      <p>Root tips grow fast, so many of their cells are in mitosis. Scientists stain a thin slice and count. This view is a drawing with made-up practice data.</p>
+      <p>Tap every cell you think is dividing. A dividing cell shows dark chromosomes instead of a round nucleus. Then press Check.</p>
+      <div class="formula">percent dividing = (dividing cells ÷ total cells) × 100</div>
+      <div class="worked"><b>Worked example</b><span>A slide has 40 cells. 8 are dividing.</span><span>8 ÷ 40 = 0.2, and 0.2 × 100 = 20% dividing.</span></div>
+    </div>
+    <div class="model">
+      <div class="svgbox"><svg id="rootSvg" viewBox="0 0 480 300" role="group" aria-label="Onion root tip cells. Tap the dividing cells."></svg></div>
+      <div class="row">
+        <button class="btn" id="rootCheck" type="button">Check</button>
+        <button class="btn ghost" id="rootNew" type="button">New slide</button>
+      </div>
+      <div class="stats" id="rootStats"></div>
+      <div id="rootFb" aria-live="polite"></div>
+      <label class="field" for="rootPct">Your percent dividing (use the real count after checking)
+        <input type="text" id="rootPct" inputmode="decimal" placeholder="for example 20">
+      </label>
+      <button class="btn ghost" id="rootPctBtn" type="button">Check my percent</button>
+      <p class="fb" id="rootPctFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Cell and chromosome maths</span>
+      <div class="codes"><span class="code">LS2.K4</span><span class="code">LS2.K5</span><span class="code">LS2.K6</span><span class="code">LS2.S3</span></div>
+      <h3>Doubling, halving and joining</h3>
+      <p>Every round of mitosis doubles the number of cells. Meiosis halves the chromosome number. Fertilization adds two halves back together.</p>
+      <div class="formula">cells after n rounds = starting cells × 2<sup>n</sup><br>sex cell chromosomes = body cell chromosomes ÷ 2<br>fertilized egg = sperm + egg chromosomes</div>
+      <div class="worked"><b>Worked example</b><span>1 cell divides by mitosis 5 times: 1 × 2 × 2 × 2 × 2 × 2 = 32 cells.</span><span>A canola body cell has 38 chromosomes. Meiosis gives sex cells with 38 ÷ 2 = 19.</span></div>
+      <label class="field" for="dblN">Rounds of mitosis: <output id="dblOut">4</output>
+        <input type="range" id="dblN" min="0" max="10" value="4">
+      </label>
+      <div class="svgbox"><svg id="dblSvg" viewBox="0 0 480 130" role="img" aria-label="Cells after doubling"></svg></div>
+    </div>
+    <div class="model">
+      <h4>Practice</h4>
+      <p class="detail" id="mathQ" aria-live="polite"></p>
+      <label class="field" for="mathA">Your answer
+        <input type="text" id="mathA" inputmode="numeric">
+      </label>
+      <div class="row">
+        <button class="btn" id="mathCheck" type="button">Check</button>
+        <button class="btn ghost" id="mathNew" type="button">New question</button>
+      </div>
+      <p class="fb" id="mathFb" aria-live="polite"></p>
+      <p class="hint mono" id="mathScore"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 5 · Build the comparison</span>
+      <div class="codes"><span class="code">LS2.S3</span></div>
+      <h3>Compare mitosis and meiosis yourself</h3>
+      <p>Choose the right entry for each box. Then press Check. Wrong boxes are marked so you can try again.</p>
+      <p class="hint">Try it from memory first. Lesson 7 has the full chart if you get stuck.</p>
+    </div>
+    <div class="model cmp">
+      <div class="tablebox"><table class="dt small" id="cmpTable"><thead><tr><th>Feature</th><th>Mitosis</th><th>Meiosis</th></tr></thead><tbody></tbody></table></div>
+      <div class="row"><button class="btn" id="cmpCheck" type="button">Check</button><button class="btn ghost" id="cmpReset" type="button">Clear</button></div>
+      <p class="fb" id="cmpFb" aria-live="polite"></p>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 LS2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>LS2.K1:</b> “DNA is the genetic information” is taught more precisely as DNA being the molecule that carries the genetic information, coded in genes. Instructions are linked to the survival of the whole organism as well as the cell. The 1953 double helix work (Franklin, Watson and Crick) is added as one line of context.</li>
+      <li><b>LS2.K2:</b> “may store DNA in the cytoplasm” is taught as bacteria always keeping their DNA in the cytoplasm (one main loop, often with plasmids), since they have no nucleus. Mitochondria and chloroplasts are noted as holding a small amount of their own DNA.</li>
+      <li><b>LS2.K3:</b> “cells contain the same DNA” is taught as almost all body cells holding the same DNA. Exceptions are named: sex cells carry half, mature red blood cells have no nucleus and no DNA, and rare copying errors occur. Cell differences are explained by different genes being used.</li>
+      <li><b>LS2.K4:</b> variation is taught as coming from meiosis (crossing over and random line-up) together with fertilization. Reproduction includes asexual examples (yeast, aspen root suckers). Bacteria are noted as dividing by binary fission, not mitosis.</li>
+      <li><b>LS2.K5:</b> strictly, mitosis divides the nucleus and the cytoplasm then splits (cytokinesis); the lab treats them together as the draft does. Daughter cells are identical apart from rare copying errors. Phase names are given once as optional context.</li>
+      <li><b>LS2.K6:</b> the four daughter cells are taught as having half the chromosomes. In human females, meiosis gives one egg cell and three small cells that break down; the lab keeps the general four-cell model and does not detail this. Plant meiosis is described simply as happening in pollen and ovules.</li>
+      <li><b>Sensitive content:</b> sperm, egg and fertilization are taught only at the cell level. Please check whether Alberta’s parental notice rules for human sexuality content apply to this lesson in your school.</li>
+      <li><b>Numbers:</b> chromosome numbers (human 46, fruit fly 8, pea 14, corn 20, canola 38, bread wheat 42, potato 48, dog 78) are standard reference values that should be spot checked. Root tip slides are drawings with randomized practice data.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-ls2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function stat(box, items){
+  clear(box);
+  items.forEach(function(it){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, it[0])); d.appendChild(el("b", null, it[1])); box.appendChild(d); });
+}
+function parseNum(s){ return parseFloat(String(s).replace(/−/g, "-").replace(/,/g, ".").replace(/\s/g, "")); }
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Animation loop ---------- */
+var anims = [];
+function addAnim(fn){ anims.push(fn); }
+var lastT = 0;
+function loop(t){
+  var s = t / 1000;
+  if (!$("learn").hidden || !$("bench").hidden) anims.forEach(function(fn){ fn(s); });
+  requestAnimationFrame(loop);
+}
+function arrow(g, x1, y1, x2, y2, color, opts){
+  opts = opts || {};
+  var w = opts.w || 3;
+  g.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: color, "stroke-width": w, "stroke-dasharray": opts.dash || "none", "stroke-linecap": "round"}));
+  if (opts.head === false) return;
+  var a = Math.atan2(y2 - y1, x2 - x1), L = 11, s = 0.45;
+  var p = [x2, y2, x2 - L * Math.cos(a - s), y2 - L * Math.sin(a - s), x2 - L * Math.cos(a + s), y2 - L * Math.sin(a + s)];
+  g.appendChild(sv("polygon", {points: p.join(" "), fill: color}));
+}
+function st(fill, stroke, sw, extra){
+  var s = "fill:" + (fill || "none") + ";";
+  if (stroke) s += "stroke:" + stroke + ";stroke-width:" + (sw || 2) + ";";
+  return s + (extra || "");
+}
+function V(n){ return "var(--" + n + ")"; }
+function seeded(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function txt(g, x, y, s, cls, anchor){ var t = sv("text", {x: x, y: y, "class": cls || "lbl", "text-anchor": anchor || "start"}, s); g.appendChild(t); return t; }
+function makePart(svg, key, label, onPick){
+  var g = sv("g", {"class": "part", tabindex: "0", role: "button", "aria-label": label, "data-part": key});
+  if (onPick) {
+    g.addEventListener("click", function(){ onPick(key, g); });
+    g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onPick(key, g); } });
+  } else { g.removeAttribute("tabindex"); g.removeAttribute("role"); g.setAttribute("class", "part-static"); }
+  svg.appendChild(g);
+  return g;
+}
+function selectPart(svg, g){ Array.prototype.forEach.call(svg.querySelectorAll(".part"), function(p){ p.classList.toggle("sel", p === g); p.setAttribute("aria-pressed", p === g ? "true" : "false"); }); }
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Mitosis, meiosis or both?", bins: ["Mitosis", "Meiosis", "Both"], items: [
+    ["Makes 2 daughter cells", 0, "Mitosis is one division that gives two cells."],
+    ["Makes 4 daughter cells", 1, "Meiosis divides twice and gives four cells."],
+    ["Daughter cells are identical to the parent", 0, "Mitosis makes exact copies."],
+    ["Daughter cells have half the chromosomes", 1, "Meiosis halves the number, for example 46 to 23."],
+    ["The DNA is copied before dividing", 2, "Both kinds of division start by copying the DNA."],
+    ["Used for growth and repair", 0, "Body cells grow and heal by mitosis."],
+    ["Makes sperm, eggs and the sex cells in pollen", 1, "Sex cells are made by meiosis."],
+    ["Matching chromosomes swap pieces", 1, "Crossing over happens only in meiosis."],
+    ["Happens in the reproductive organs only", 1, "Meiosis happens only where sex cells are made."],
+    ["Happens in skin, bone and root tip cells", 0, "These are body cells dividing by mitosis."],
+    ["Is a type of cell division", 2, "Both are types of cell division."],
+    ["Creates variation among offspring", 1, "Meiosis shuffles DNA, so sex cells are all different."]
+  ]},
+  {label: "Where is the DNA?", bins: ["In the nucleus", "In the cytoplasm", "No DNA"], items: [
+    ["Cheek cell", 0, "Animal cells keep DNA in the nucleus."],
+    ["Onion skin cell", 0, "Plant cells keep DNA in the nucleus."],
+    ["E. coli bacterium", 1, "Bacteria have no nucleus, so DNA is in the cytoplasm."],
+    ["Yogurt bacterium", 1, "Bacteria keep their DNA loop in the cytoplasm."],
+    ["Yeast cell", 0, "Yeast is unicellular but has a nucleus."],
+    ["Mature human red blood cell", 2, "It loses its nucleus, so it has no DNA."],
+    ["Canola leaf cell", 0, "The main DNA is in the nucleus."],
+    ["Plasmid in a bacterium", 1, "Plasmids are small DNA rings in the cytoplasm of bacteria."],
+    ["Amoeba", 0, "Protists have a nucleus."],
+    ["Nerve cell", 0, "Animal body cells keep their DNA in the nucleus."]
+  ]},
+  {label: "Why is the cell dividing?", bins: ["Growth", "Repair", "Reproduction", "Variation"], items: [
+    ["A seedling gets taller", 0, "More cells make a bigger plant."],
+    ["A broken bone mends", 1, "New bone cells replace the damaged ones."],
+    ["One yeast cell becomes two yeast cells", 2, "Each new yeast cell is a new organism."],
+    ["Puppies in a litter all look different", 3, "Meiosis gives each sex cell a different mix of DNA."],
+    ["Skin replaces the cells you rub off every day", 1, "Worn-out skin cells are replaced by mitosis."],
+    ["A baby grows into a child", 0, "Growth happens by making more cells."],
+    ["Bacteria in milk multiply", 2, "Each bacterium splits into two new bacteria."],
+    ["Wheat seeds from one plant grow into slightly different plants", 3, "Each seed came from different sex cells made by meiosis."],
+    ["A scraped knee heals", 1, "Skin cells divide to fill the scrape."],
+    ["Aspen trees sprout new shoots from their roots", 2, "New trees from roots are asexual reproduction by mitosis."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["DNA", "Deoxyribonucleic acid: the long molecule that carries a cell’s genetic information."],
+  ["Genetic information", "The instructions a cell needs to live, grow and work, coded in its DNA."],
+  ["Gene", "A section of DNA that holds the instructions for one job, usually making one protein."],
+  ["Chromosome", "A long piece of DNA wound up tightly into a package. Humans have 46 in most body cells."],
+  ["Double helix", "The twisted ladder shape of DNA."],
+  ["Nucleus", "The organelle that holds the DNA in plant and animal cells."],
+  ["Cytoplasm", "The fluid inside the cell membrane. In bacteria, it is where the DNA is kept."],
+  ["Plasmid", "A small extra ring of DNA found in many bacteria."],
+  ["Body cell", "Any cell in the body that is not a sex cell. Body cells hold the full set of DNA."],
+  ["Sex cell", "A sperm or egg cell, or the sex cells in pollen and ovules. It has half the chromosomes."],
+  ["Cell division", "When one cell splits to make new cells."],
+  ["Parent cell", "The cell that divides."],
+  ["Daughter cells", "The new cells made when a parent cell divides."],
+  ["Mitosis", "Cell division that makes 2 identical daughter cells with the same chromosome number. Used for growth and repair."],
+  ["Meiosis", "Cell division that makes 4 non-identical daughter cells with half the chromosomes. Used to make sex cells."],
+  ["Crossing over", "When matching chromosomes swap pieces during meiosis. It creates new mixes of DNA."],
+  ["Fertilization", "When a sperm and egg join. The fertilized egg has a full set of chromosomes."],
+  ["Sexual reproduction", "Making offspring from two parents’ sex cells. The offspring are different from each other."],
+  ["Asexual reproduction", "Making offspring from one parent, by mitosis or binary fission. The offspring are identical."],
+  ["Binary fission", "How bacteria divide: they copy their DNA loop and pinch in two."],
+  ["Variation", "Differences between members of the same species."],
+  ["Growth", "Getting bigger by making more cells."],
+  ["Repair", "Replacing damaged or worn-out cells with new ones."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is DNA?", ["The molecule that carries a cell’s genetic information", "A type of cell wall", "A kind of sugar used for energy", "An organelle that makes proteins"], "DNA is a long molecule. Its code of four chemical letters holds the cell’s instructions."],
+  ["What is a gene?", ["A section of DNA with instructions for one job", "A whole chromosome", "A type of cell", "The nucleus membrane"], "Genes are sections of DNA, usually with instructions for one protein."],
+  ["Why does a cell need its DNA?", ["It holds the instructions the cell needs to survive", "It gives the cell its green colour", "It stores water", "It makes the cell wall rigid"], "Cells read their DNA to make the proteins they need."],
+  ["Where is the DNA in a plant cell?", ["Mostly in the nucleus", "In the cell wall", "In the vacuole", "There is none"], "Plant cells keep almost all their DNA in the nucleus."],
+  ["Where is the DNA in a bacterial cell?", ["In the cytoplasm, because there is no nucleus", "In the nucleus", "In the chloroplasts", "Outside the cell"], "Bacteria have no nucleus, so their DNA loop is in the cytoplasm."],
+  ["Which cell has no DNA at all?", ["A mature human red blood cell", "A cheek cell", "A yeast cell", "A bacterium"], "Red blood cells push out their nucleus as they mature."],
+  ["Which organelles hold a small amount of their own DNA?", ["Mitochondria and chloroplasts", "Cell walls and vacuoles", "Ribosomes and membranes", "None"], "Mitochondria and chloroplasts each have a small ring of DNA."],
+  ["A skin cell and a muscle cell from the same person have…", ["The same DNA, but use different genes", "Completely different DNA", "No DNA", "Half the DNA each"], "Body cells share the same DNA. They use different genes for their jobs."],
+  ["Why do body cells in one person have the same DNA?", ["They all came from one cell by divisions that copied the DNA", "They swap DNA every day", "They all get DNA from food", "They are all sex cells"], "Mitosis copies the DNA each time a cell divides."],
+  ["Which is NOT a job of cell division?", ["Digesting food", "Growth", "Repair", "Reproduction"], "Cell division enables growth, repair, reproduction and variation."],
+  ["A scraped knee heals. Which job of cell division is this?", ["Repair", "Variation", "Meiosis", "Fertilization"], "New skin cells replace damaged ones."],
+  ["What does mitosis produce?", ["2 identical daughter cells", "4 different daughter cells", "1 larger cell", "2 sex cells"], "Mitosis makes two cells identical to the parent."],
+  ["A cell with 8 chromosomes divides by mitosis. Each daughter cell has…", ["8 chromosomes", "4 chromosomes", "16 chromosomes", "2 chromosomes"], "Mitosis keeps the same number."],
+  ["What does meiosis produce?", ["4 non-identical daughter cells with half the chromosomes", "2 identical daughter cells", "4 identical body cells", "1 fertilized egg"], "Meiosis makes four different sex cells."],
+  ["A human body cell has 46 chromosomes. A human egg cell has…", ["23", "46", "92", "12"], "Meiosis halves the number: 46 ÷ 2 = 23."],
+  ["Canola body cells have 38 chromosomes. How many does a canola sex cell have?", ["19", "38", "76", "9"], "38 ÷ 2 = 19."],
+  ["What is crossing over?", ["Matching chromosomes swapping pieces in meiosis", "A cell splitting in two", "DNA leaving the nucleus", "Two cells joining"], "Crossing over mixes DNA, which adds variation."],
+  ["Why are brothers and sisters different from each other?", ["Each came from different sex cells made by meiosis", "They have no DNA from their parents", "Mitosis made them different", "They have different numbers of chromosomes"], "Meiosis gives each sex cell a different mix of DNA."],
+  ["Which kind of cell division is used for growth?", ["Mitosis", "Meiosis", "Fertilization", "Crossing over"], "Growth uses mitosis."],
+  ["How many times does the cell divide during meiosis?", ["2", "1", "4", "3"], "Meiosis has two divisions, which is why it ends with four cells."],
+  ["What happens to the DNA before mitosis and meiosis begin?", ["It is copied", "It is destroyed", "It leaves the cell", "It is cut in half"], "Both kinds of division start by copying the DNA."],
+  ["One cell divides by mitosis 3 times. How many cells are there?", ["8", "6", "3", "4"], "1 × 2 × 2 × 2 = 8."],
+  ["A diagram shows one cell becoming four cells with different coloured chromosomes. Which division is it?", ["Meiosis", "Mitosis", "Binary fission", "Fertilization"], "Four different cells means meiosis."],
+  ["How do bacteria divide?", ["By binary fission", "By meiosis", "By fertilization", "They cannot divide"], "Bacteria copy their DNA loop and pinch in half."],
+  ["A sperm cell (23) joins an egg cell (23). The fertilized egg has…", ["46 chromosomes", "23 chromosomes", "92 chromosomes", "69 chromosomes"], "23 + 23 = 46, a full set."],
+  ["Where does meiosis happen in an animal?", ["Only in the reproductive organs", "In every cell", "Only in the skin", "Only in the blood"], "Meiosis happens only where sex cells are made."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What is DNA, and why does a cell need it?", a: "DNA (deoxyribonucleic acid) is a long molecule that carries the cell’s genetic information. Its genes hold the instructions for making the proteins the cell needs to take in materials, release energy, repair itself and divide. Without DNA, a cell cannot survive for long.", k: ["DNA is a molecule that carries genetic information", "Genes hold instructions", "Link to the cell’s survival"]},
+  {q: "Explain how a gene, a chromosome and DNA are related.", a: "DNA is the long molecule. A gene is one section of DNA with instructions for one job. A chromosome is a long piece of DNA wound up tightly, and it holds many genes.", k: ["DNA is the molecule", "A gene is a section of DNA", "A chromosome is DNA wound into a package with many genes"]},
+  {q: "Compare where DNA is kept in a plant cell, an animal cell and a bacterial cell.", a: "Plant and animal cells keep their DNA in the nucleus, with a small amount in the mitochondria (and chloroplasts in plants). A bacterial cell has no nucleus, so its DNA is kept in the cytoplasm as a loop, often with small plasmids.", k: ["Plant and animal: nucleus", "Bacterium: cytoplasm", "Reason: bacteria have no nucleus"]},
+  {q: "A muscle cell and a nerve cell come from the same person. Do they have the same DNA? Explain why they look so different.", a: "Yes. Both came from the same fertilized egg through mitosis, which copies the DNA exactly. They look different because each cell uses different genes: the muscle cell uses genes for muscle proteins and the nerve cell uses genes for sending signals.", k: ["Same DNA", "Came from one cell by mitosis", "Different genes are used"]},
+  {q: "Name the four things cell division enables and give an example of each.", a: "Growth: a spruce seedling grows taller. Repair: a scraped knee heals. Reproduction: a yeast cell divides into two yeast cells. Variation: puppies in a litter look different because their sex cells were made by meiosis.", k: ["Growth with example", "Repair with example", "Reproduction with example", "Variation with example"]},
+  {q: "Describe the steps of mitosis in your own words.", a: "The cell copies every chromosome. The chromosomes line up across the middle. The two halves of each chromosome are pulled to opposite ends. The cell pinches in two, making two identical cells with the same number of chromosomes as the parent.", k: ["DNA is copied", "Chromosomes line up in the middle", "Halves pulled to opposite ends", "Two identical cells"]},
+  {q: "Explain why the four cells made by meiosis are not identical.", a: "During meiosis, matching chromosomes swap pieces (crossing over). Then the pairs separate in a random way, so each cell gets a different mix of chromosomes from the two parents.", k: ["Crossing over swaps pieces", "Random separation of pairs", "Each cell gets a different mix"]},
+  {q: "A dog body cell has 78 chromosomes. How many chromosomes are in a cell made by mitosis, a sex cell made by meiosis and a puppy’s fertilized egg? Show your work.", a: "Mitosis: 78 (same as the parent). Meiosis: 78 ÷ 2 = 39. Fertilized egg: 39 + 39 = 78.", k: ["Mitosis: 78", "Meiosis: 39", "Fertilized egg: 78", "Shows the working"]},
+  {q: "A diagram shows a parent cell with 6 chromosomes dividing into 2 cells, each with 6 chromosomes in the same colours. Identify the type of cell division and give two clues.", a: "This is mitosis. Clue 1: there are only two daughter cells. Clue 2: each daughter cell has the same number of chromosomes as the parent, and they match, so the cells are identical.", k: ["Names mitosis", "Two daughter cells", "Same number and identical chromosomes"]}
+];
+var LONG = [
+  {q: "Compare mitosis and meiosis. Include the number of divisions, the number and type of daughter cells, the chromosome number and what each is used for. Explain why both are important to a living thing.", a: "Both start by copying the DNA. Mitosis has one division and makes two identical daughter cells with the same chromosome number as the parent. It is used for growth, repair and some asexual reproduction. Meiosis has two divisions and makes four non-identical daughter cells with half the chromosomes. It makes sex cells for sexual reproduction. Mitosis keeps an organism alive and healthy by building and replacing cells. Meiosis makes reproduction with variation possible, so a species has many different individuals.", k: ["Both copy DNA first", "Mitosis: 1 division, 2 identical cells, same number", "Meiosis: 2 divisions, 4 different cells, half the number", "Uses of each", "Why both matter"]},
+  {q: "The understanding for this lab is “Cell division is essential for survival and diversity.” Explain this statement using examples from plants, animals and bacteria.", a: "Survival: organisms need mitosis to grow and to replace damaged cells. A spruce seedling grows by mitosis in its tips and a person heals a cut by mitosis. Single-celled organisms survive as a species by dividing: bacteria in yogurt split by binary fission and yeast divides by mitosis. Diversity: meiosis makes sex cells with different mixes of DNA through crossing over and random line-up. When sex cells join, offspring like calves or canola seeds are each different. This variation helps a species survive when conditions change, because some individuals may be better suited.", k: ["Growth and repair for survival", "Reproduction of single-celled organisms", "Meiosis creates variation", "Examples from plants, animals and bacteria", "Variation helps a species"]},
+  {q: "A classmate says, “If all my body cells have the same DNA, my eye cells and my stomach cells should be the same.” Respond to your classmate. Include any exceptions to the idea that body cells have the same DNA.", a: "Your body cells do have the same DNA, because they all came from one fertilized egg by mitosis. But each kind of cell uses different genes, so eye cells make proteins for seeing and stomach cells make proteins for digesting. There are exceptions: mature red blood cells have no DNA, sex cells have only half, and rare copying errors can change a cell’s DNA a little.", k: ["Same DNA from one fertilized egg by mitosis", "Different genes used", "Red blood cell exception", "Sex cell exception", "Rare copying errors"]},
+  {q: "Trembling aspen can reproduce by sprouting from roots, and also by seeds from flowers. Compare the two ways. Which type of cell division does each use, and how are the offspring different?", a: "Root sprouts grow by mitosis, so the new trees have the same DNA as the parent. They are clones, and a whole grove can share one set of DNA. Seeds come from sex cells made by meiosis in the flowers, joined by fertilization. Seed-grown trees have a new mix of DNA from two parents, so they are different from each other. Sprouting is fast and keeps a successful set of DNA. Seeds add variation that can help aspen survive new diseases or a changing climate.", k: ["Root sprouts use mitosis", "Sprouts are identical to the parent", "Seeds come from meiosis and fertilization", "Seed offspring vary", "Advantage of each"]}
+];
+
+/* ---------- Coverage ---------- */
+var COVER = [
+  ["LS2.K1", "Learn: Lesson 1 (zoom from cell to gene). Flashcards, Quiz, Written Review short answers 1 and 2."],
+  ["LS2.K2", "Learn: Lesson 2 (find the DNA in animal, plant and bacterial cells). Lab Bench: Investigation 1. Sort It: where is the DNA deck. Quiz, Written Review short answer 3."],
+  ["LS2.K3", "Learn: Lesson 3 (gene switchboard with exceptions). Quiz, Written Review short answer 4, extended 3."],
+  ["LS2.K4", "Learn: Lessons 4 and 6 (division scenarios, meiosis and variation). Lab Bench: Investigations 3 and 4. Sort It: why is the cell dividing deck. Quiz, Written Review short answer 5, extended 2 and 4."],
+  ["LS2.K5", "Learn: Lesson 5 (mitosis stepper) and Lesson 7. Lab Bench: Investigations 2 to 5. Sort It: mitosis or meiosis deck. Quiz, Written Review short answer 6."],
+  ["LS2.K6", "Learn: Lesson 6 (meiosis stepper with shuffle) and Lesson 7. Lab Bench: Investigations 2, 4 and 5. Sort It: mitosis or meiosis deck. Quiz, Written Review short answers 7 and 8."],
+  ["LS2.S1", "Learn: Lesson 2. Lab Bench: Investigation 1 (DNA locator). Sort It: where is the DNA deck. Written Review short answer 3."],
+  ["LS2.S2", "Lab Bench: Investigation 2 (name that division, diagrams and descriptions) and Investigation 3 (root tip cells). Learn: Lessons 5 and 6. Quiz, Written Review short answer 9."],
+  ["LS2.S3", "Learn: Lesson 7 (comparison chart and chromosome counter). Lab Bench: Investigations 4 and 5. Sort It: mitosis or meiosis deck. Written Review short answer 8, extended 1 and 4."]
+];
+var STMT = {
+  "LS2.K1": "Deoxyribonucleic acid, or DNA, is the genetic information that provides instructions necessary for survival of the cell.",
+  "LS2.K2": "Most animal and plant cells store DNA in the nucleus, while cells without a nucleus, such as bacterial cells, may store DNA in the cytoplasm.",
+  "LS2.K3": "Cells within an individual organism contain the same DNA.",
+  "LS2.K4": "Cell division enables\n• growth\n• repair\n• reproduction\n• variation",
+  "LS2.K5": "Mitosis is a type of cell division that creates two identical daughter cells and enables growth and repair.",
+  "LS2.K6": "Meiosis is a type of cell division that creates four non-identical daughter cells, which are used in sexual reproduction.",
+  "LS2.S1": "Compare the location of DNA in different types of cells.",
+  "LS2.S2": "Identify the type of cell division from a given representation.",
+  "LS2.S3": "Compare mitosis and meiosis."
+};
+(function(){
+  var tb = document.querySelector("#covTable tbody");
+  COVER.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, STMT[r[0]])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[1]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Chromosome drawing ---------- */
+function pc(p){ return p === "a" ? V("pa") : V("pb"); }
+function pf(p){ return p === "a" ? V("pa-fill") : V("pb-fill"); }
+/* single chromatid, vertical, centred at x,y, height h; tip = colour of the lower part after crossing over */
+function chromatid(g, x, y, h, p, tip, w){
+  w = w || 9;
+  var top = y - h / 2;
+  g.appendChild(sv("rect", {x: x - w / 2, y: top, width: w, height: h, rx: w / 2, style: st(pc(p))}));
+  if (tip && tip !== p) {
+    var th = h * 0.38;
+    g.appendChild(sv("rect", {x: x - w / 2, y: top + h - th, width: w, height: th, rx: w / 2, style: st(pc(tip))}));
+    g.appendChild(sv("rect", {x: x - w / 2, y: top + h - th, width: w, height: Math.min(th, w), style: st(pc(tip))}));
+  }
+}
+/* copied chromosome: two chromatids joined; tips = [leftTip, rightTip] */
+function doubled(g, x, y, h, p, tips){
+  tips = tips || [null, null];
+  chromatid(g, x - 5, y, h, p, tips[0]);
+  chromatid(g, x + 5, y, h, p, tips[1]);
+  g.appendChild(sv("circle", {cx: x, cy: y - h * 0.1, r: 4, style: st(V("ink"))}));
+}
+function cellShape(g, cx, cy, rx, ry, nucleus){
+  g.appendChild(sv("ellipse", {cx: cx, cy: cy, rx: rx, ry: ry, style: st(V("cyto"), V("memb"), 3)}));
+  if (nucleus) g.appendChild(sv("ellipse", {cx: cx, cy: cy, rx: nucleus[0], ry: nucleus[1], style: st(V("nuc-fill"), V("nuc"), 2, "stroke-dasharray:" + (nucleus[2] ? "5 4" : "none"))}));
+}
+var BASE = [{len: 44, p: "a"}, {len: 44, p: "b"}, {len: 26, p: "a"}, {len: 26, p: "b"}];
+
+/* ---------- Lesson 1: zoom ---------- */
+(function(){
+  var svg = $("zoomSvg"); svg.setAttribute("role", "group");
+  var LEVELS = [
+    {label: "Cell", t: "A cell", p: ["A cell is the basic unit of life. In plant and animal cells, the DNA is inside the nucleus, the dark circle in the middle.", "Most human body cells are about 10 to 30 micrometres wide."]},
+    {label: "Nucleus", t: "The nucleus", p: ["Zoom into the nucleus and you find long, thin threads of DNA. Between divisions they are spread out like loose yarn.", "If you stretched out all the DNA in one human cell, it would be about 2 metres long."]},
+    {label: "Chromosome", t: "A chromosome", p: ["Before a cell divides, its DNA winds up tightly into chromosomes. Each one is a single, very long DNA molecule.", "Most human body cells have 46 chromosomes in 23 pairs. One of each pair came from each parent."]},
+    {label: "DNA", t: "The DNA ladder", p: ["DNA is shaped like a twisted ladder, called a double helix. Each rung is a pair of chemical letters.", "A always pairs with T, and G always pairs with C. That pairing lets the cell copy its DNA exactly."]},
+    {label: "Gene", t: "A gene", p: ["A gene is a section of DNA with the instructions for one job, usually making one protein.", "Humans have about 20 000 genes. The order of the letters in a gene is the code the cell reads."]}
+  ];
+  var parts = [];
+  function draw(sel){
+    clear(svg); parts = [];
+    LEVELS.forEach(function(L, i){
+      var x0 = 6 + i * 107, cx = x0 + 50, cy = 82;
+      var g = makePart(svg, i, L.label + " level", function(){ setZoom(i, true); });
+      g.appendChild(sv("rect", {x: x0, y: 8, width: 100, height: 150, rx: 10, style: st(V("surface"), i === sel ? V("acc") : V("line"), i === sel ? 3 : 1.5)}));
+      if (i === 0) {
+        g.appendChild(sv("circle", {cx: cx, cy: cy, r: 38, style: st(V("cyto"), V("memb"), 3)}));
+        g.appendChild(sv("circle", {cx: cx, cy: cy, r: 14, style: st(V("nuc-fill"), V("nuc"), 2)}));
+        g.appendChild(sv("circle", {cx: cx, cy: cy, r: 17, style: st("none", V("acc"), 1.5, "stroke-dasharray:3 3")}));
+      } else if (i === 1) {
+        g.appendChild(sv("circle", {cx: cx, cy: cy, r: 40, style: st(V("nuc-fill"), V("nuc"), 2)}));
+        var r = seeded(7);
+        for (var k = 0; k < 6; k++) {
+          var d = "M" + (cx - 28 + r() * 10) + " " + (cy - 25 + k * 10);
+          for (var m = 0; m < 4; m++) d += " q " + (6 + r() * 6) + " " + (r() * 12 - 6) + " " + (12 + r() * 4) + " " + (r() * 8 - 4);
+          g.appendChild(sv("path", {d: d, style: st("none", V("dna"), 1.6)}));
+        }
+      } else if (i === 2) {
+        g.appendChild(sv("path", {d: "M" + (cx - 22) + " " + (cy - 40) + " Q" + cx + " " + cy + " " + (cx - 22) + " " + (cy + 40), style: st("none", V("dna"), 10, "stroke-linecap:round")}));
+        g.appendChild(sv("path", {d: "M" + (cx + 22) + " " + (cy - 40) + " Q" + cx + " " + cy + " " + (cx + 22) + " " + (cy + 40), style: st("none", V("dna"), 10, "stroke-linecap:round")}));
+      } else {
+        var pts1 = "", pts2 = "", rungs = [];
+        for (var yy = 0; yy <= 100; yy += 4) {
+          var y = cy - 50 + yy, a = Math.sin(yy / 100 * Math.PI * 2) * 22;
+          pts1 += (yy ? " L" : "M") + (cx + a) + " " + y; pts2 += (yy ? " L" : "M") + (cx - a) + " " + y;
+          if (yy % 12 === 0 && yy > 0 && yy < 100) rungs.push([cx + a, cx - a, y]);
+        }
+        var gene = i === 4;
+        if (gene) g.appendChild(sv("rect", {x: x0 + 8, y: cy - 20, width: 84, height: 40, rx: 6, style: st(V("acc-soft"), V("acc"), 1.5)}));
+        rungs.forEach(function(rr, j){ g.appendChild(sv("line", {x1: rr[0], x2: rr[1], y1: rr[2], y2: rr[2], style: st("none", j % 2 ? V("pb") : V("pa"), 3)})); });
+        g.appendChild(sv("path", {d: pts1, style: st("none", V("dna"), 3)}));
+        g.appendChild(sv("path", {d: pts2, style: st("none", V("dna"), 3)}));
+        if (gene) { g.appendChild(sv("rect", {x: cx - 30, y: cy - 10, width: 60, height: 18, rx: 4, style: st(V("surface"))})); txt(g, cx, cy + 4, "ATGCCA", "mtxt", "middle"); }
+      }
+      txt(g, cx, 150, L.label, "lbl", "middle");
+      parts.push(g);
+    });
+    txt(svg, 270, 190, "each panel zooms in on the one before", "small", "middle");
+  }
+  var setChip;
+  function setZoom(i, fromPart){ draw(i); selectPart(svg, parts[i]); if (fromPart) parts[i].focus(); var L = LEVELS[i]; detail($("zoomDetail"), L.t, L.p, "Zoom level " + (i + 1) + " of 5"); if (setChip) setChip.quiet(i); }
+  var items = LEVELS.map(function(L){ return {label: L.label}; });
+  var btns = [];
+  items.forEach(function(it, i){ var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, it.label); b.addEventListener("click", function(){ setZoom(i); }); $("zoomChips").appendChild(b); btns.push(b); });
+  setChip = {quiet: function(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); }};
+  setZoom(0);
+})();
+
+/* ---------- Lesson 2: where is the DNA ---------- */
+(function(){
+  var svg = $("whereSvg"), box = $("whereDetail");
+  var INFO = {
+    nucleus: ["Nucleus", "This is where almost all of the cell’s DNA is kept, wound into chromosomes. The nuclear membrane protects it."],
+    mito: ["Mitochondrion", "Mitochondria release energy from food. Each one holds a tiny ring of its own DNA, but only a few genes."],
+    chl: ["Chloroplast", "Chloroplasts capture light to make sugar. Like mitochondria, they hold a small ring of their own DNA."],
+    cyto: ["Cytoplasm", "In plant and animal cells, the cytoplasm holds the organelles but not the main DNA. The DNA stays in the nucleus."],
+    wall: ["Cell wall", "The cell wall supports the cell. It holds no DNA."],
+    loop: ["DNA loop", "A bacterium has no nucleus. Its main DNA is one large loop lying in the cytoplasm, in an area called the nucleoid."],
+    plasmid: ["Plasmid", "Plasmids are small extra rings of DNA in many bacteria. They can carry genes, such as genes that help resist antibiotics."],
+    bcyto: ["Cytoplasm", "In a bacterium, the cytoplasm is where the DNA is kept, because there is no nucleus."]
+  };
+  function pick(k, g){ selectPart(svg, g); detail(box, INFO[k][0], [INFO[k][1]], "Tap another part"); }
+  function squiggle(g, cx, cy, rr, n, seed){
+    var r = seeded(seed);
+    for (var k = 0; k < n; k++) {
+      var d = "M" + (cx - rr + r() * 8) + " " + (cy - rr * 0.6 + k * (rr * 1.2 / n));
+      for (var m = 0; m < 3; m++) d += " q " + (rr * 0.25) + " " + (r() * 10 - 5) + " " + (rr * 0.5) + " " + (r() * 6 - 3);
+      g.appendChild(sv("path", {d: d, style: st("none", V("dna"), 2)}));
+    }
+  }
+  function mito(g, x, y){ g.appendChild(sv("ellipse", {cx: x, cy: y, rx: 24, ry: 12, style: st(V("mito-fill"), V("mito"), 2)})); g.appendChild(sv("circle", {cx: x, cy: y, r: 5, style: st("none", V("dna"), 2)})); }
+  function draw(kind){
+    clear(svg);
+    if (kind === "bact") {
+      var c = makePart(svg, "bcyto", "Bacterial cytoplasm", pick);
+      c.appendChild(sv("rect", {x: 40, y: 50, width: 360, height: 160, rx: 80, style: st(V("cyto"), V("memb"), 3)}));
+      var lp = makePart(svg, "loop", "Main DNA loop", pick);
+      var d = "M150 130", r = seeded(3);
+      for (var k = 0; k < 14; k++) { var a = (k + 1) / 14 * Math.PI * 2; d += " L" + (220 + Math.cos(a) * (70 + r() * 14)) + " " + (130 + Math.sin(a) * (40 + r() * 10)); }
+      lp.appendChild(sv("path", {d: "M290 130" + d.slice(8) + " Z", style: st("rgba(0,0,0,0)", V("dna"), 3)}));
+      var pl = makePart(svg, "plasmid", "Plasmid", pick);
+      pl.appendChild(sv("circle", {cx: 340, cy: 95, r: 12, style: st("rgba(0,0,0,0)", V("dna"), 3)}));
+      pl.appendChild(sv("circle", {cx: 100, cy: 170, r: 9, style: st("rgba(0,0,0,0)", V("dna"), 3)}));
+      txt(svg, 220, 240, "Bacterial cell: no nucleus", "lbl", "middle");
+      return;
+    }
+    if (kind === "plant") {
+      var w = makePart(svg, "wall", "Cell wall", pick);
+      w.appendChild(sv("rect", {x: 30, y: 20, width: 380, height: 205, rx: 8, style: st(V("wall-fill"), V("wall"), 3)}));
+      var c2 = makePart(svg, "cyto", "Cytoplasm", pick);
+      c2.appendChild(sv("rect", {x: 42, y: 32, width: 356, height: 181, rx: 6, style: st(V("cyto"), V("memb"), 2)}));
+      var ch = makePart(svg, "chl", "Chloroplast", pick);
+      [[90, 70], [340, 180], [330, 60]].forEach(function(p){ ch.appendChild(sv("ellipse", {cx: p[0], cy: p[1], rx: 22, ry: 12, style: st(V("chl-fill"), V("chl"), 2)})); ch.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 4, style: st("none", V("dna"), 2)})); });
+    } else {
+      var c3 = makePart(svg, "cyto", "Cytoplasm", pick);
+      c3.appendChild(sv("ellipse", {cx: 220, cy: 122, rx: 190, ry: 102, style: st(V("cyto"), V("memb"), 3)}));
+    }
+    var m = makePart(svg, "mito", "Mitochondrion", pick);
+    mito(m, 110, 175); mito(m, 320, 120);
+    var n = makePart(svg, "nucleus", "Nucleus", pick);
+    n.appendChild(sv("circle", {cx: 210, cy: 115, r: 48, style: st(V("nuc-fill"), V("nuc"), 3)}));
+    squiggle(n, 210, 115, 36, 6, 11);
+    txt(svg, 220, 248, kind === "plant" ? "Plant cell" : "Animal cell", "lbl", "middle");
+  }
+  chipGroup($("whereChips"), [{label: "Animal cell", k: "animal"}, {label: "Plant cell", k: "plant"}, {label: "Bacterial cell", k: "bact"}], function(it){
+    draw(it.k);
+    detail(box, it.label, [it.k === "bact" ? "No nucleus here. Tap the red loop and the small rings to see where this cell keeps its DNA." : "Tap the nucleus first. Then check the mitochondria" + (it.k === "plant" ? " and chloroplasts." : ".")], "Where is the DNA?");
+  }, 0);
+})();
+
+/* ---------- Lesson 3: gene switchboard ---------- */
+(function(){
+  var svg = $("geneSvg"), box = $("geneDetail");
+  var GENES = ["Energy", "Membrane", "Keratin", "Muscle", "Signal", "Blood", "Pigment", "Digest"];
+  var CELLS = [
+    {label: "Skin cell", on: [0, 1, 2, 6], t: ["Full DNA: two copies of every gene.", "A skin cell uses genes for keratin, a tough protein, and for pigment that colours skin. It does not use the muscle or signal genes."]},
+    {label: "Muscle cell", on: [0, 1, 3], t: ["Full DNA: two copies of every gene.", "A muscle cell uses the genes for muscle proteins that pull and shorten the cell. It needs lots of energy, too."]},
+    {label: "Nerve cell", on: [0, 1, 4], t: ["Full DNA: two copies of every gene.", "A nerve cell uses genes that let it send electrical signals. The keratin and hemoglobin genes are still there, just not in use."]},
+    {label: "Stomach cell", on: [0, 1, 7], t: ["Full DNA: two copies of every gene.", "A stomach lining cell uses genes for proteins that break down food."]},
+    {label: "Mature red blood cell", none: true, t: ["No DNA at all.", "A red blood cell uses its hemoglobin genes while it is young. Then it pushes out its nucleus to make room for more hemoglobin, which carries oxygen. With no DNA, it cannot divide and lives only about four months."]},
+    {label: "Sex cell", half: true, on: [0, 1], t: ["Half the DNA: one copy of each gene.", "A sperm or egg cell has one copy of each gene instead of two. Some copies came from parent 1 and some from parent 2, in a random mix. Press this cell again to see another mix."]}
+  ];
+  function draw(c){
+    clear(svg);
+    var rows = c.none ? [] : c.half ? ["mix"] : ["a", "b"];
+    var r = Math.random;
+    GENES.forEach(function(gname, i){ txt(svg, 112 + i * 51 + 22, 18, gname, "small", "middle"); });
+    ["a", "b"].forEach(function(row, ri){
+      var y = 30 + ri * 50;
+      txt(svg, 6, y + 26, ri === 0 ? "parent 1" : "parent 2", "small");
+      GENES.forEach(function(gname, i){
+        var x = 112 + i * 51;
+        var present = rows.length === 2 || (rows.length === 1 && ri === 0);
+        var p = row;
+        if (rows.length === 1) p = r() < 0.5 ? "a" : "b";
+        var on = present && c.on && c.on.indexOf(i) > -1;
+        svg.appendChild(sv("rect", {x: x, y: y, width: 44, height: 40, rx: 6, style: present ? st(on ? pc(p) : V("surface"), pc(p), 2.5) : st("none", V("line"), 1.5, "stroke-dasharray:4 4")}));
+        if (on) svg.appendChild(sv("text", {x: x + 22, y: y + 25, "class": "mtxt", "text-anchor": "middle", style: "fill:var(--surface)"}, "ON"));
+      });
+    });
+    if (rows.length === 1) txt(svg, 6, 106, "(empty)", "small");
+    txt(svg, 260, 145, c.none ? "no nucleus, so no DNA" : c.half ? "one row only: half the DNA, a mix of both parents" : "same two rows in every body cell, different genes ON", "small", "middle");
+  }
+  chipGroup($("geneChips"), CELLS, function(c){ draw(c); detail(box, c.label, c.t, c.none ? "Exception" : c.half ? "Exception" : "Body cell"); }, 0);
+})();
+
+/* ---------- Lesson 4: why divide ---------- */
+(function(){
+  var svg = $("whySvg"), box = $("whyDetail");
+  var JOBS = ["Growth", "Repair", "Reproduction", "Variation"];
+  var EX = [
+    {label: "Spruce seedling grows", j: [0], d: "mit", t: "A white spruce seedling in the boreal forest grows taller and wider as cells at its tips divide by mitosis. More cells means a bigger plant."},
+    {label: "Scraped knee heals", j: [1], d: "mit", t: "Skin cells at the edge of the scrape divide by mitosis to replace the damaged cells. The new cells have the same DNA, so they are skin cells too."},
+    {label: "Aspen sprouts from roots", j: [0, 2], d: "mit", t: "Trembling aspen across Alberta can send up new shoots from their roots. The new trees grow by mitosis, so a whole grove can share the same DNA. This is asexual reproduction."},
+    {label: "Yeast in bread dough", j: [2], d: "mit", t: "Yeast is a single-celled fungus. Each yeast cell divides by mitosis to make a new yeast cell, so the dough fills with yeast that makes gas and rises."},
+    {label: "Bacteria in yogurt", j: [2], d: "fis", t: "Yogurt bacteria reproduce by binary fission. Each one copies its DNA loop and pinches in half. In warm milk, their numbers can double about every hour."},
+    {label: "Canola makes pollen", j: [2, 3], d: "mei", t: "A canola flower uses meiosis to make sex cells in its pollen and ovules. Each one has a different mix of DNA, so the seeds grow into slightly different plants."},
+    {label: "Calves in a herd differ", j: [2, 3], d: "mei", t: "Each calf comes from a sperm and an egg made by meiosis. The shuffled DNA is why calves from the same parents still look different."},
+    {label: "Your bones grow longer", j: [0], d: "mit", t: "Near the ends of your long bones, cells divide by mitosis while you are growing. That is how your arms and legs get longer."}
+  ];
+  function smallCell(x, y, r, p1, p2){
+    svg.appendChild(sv("circle", {cx: x, cy: y, r: r, style: st(V("cyto"), V("memb"), 2.5)}));
+    chromatid(svg, x - 6, y, r * 0.9, p1, null, 7);
+    chromatid(svg, x + 6, y, r * 0.9, p2, null, 7);
+  }
+  function draw(d){
+    clear(svg);
+    if (d === "fis") {
+      svg.appendChild(sv("rect", {x: 30, y: 50, width: 110, height: 50, rx: 25, style: st(V("cyto"), V("memb"), 2.5)}));
+      svg.appendChild(sv("ellipse", {cx: 85, cy: 75, rx: 26, ry: 12, style: st("none", V("dna"), 2.5)}));
+      arrow(svg, 160, 75, 240, 75, V("muted"), {w: 2.5});
+      txt(svg, 200, 62, "binary fission", "small", "middle");
+      [[270, 40], [270, 95]].forEach(function(p){ svg.appendChild(sv("rect", {x: p[0], y: p[1], width: 100, height: 40, rx: 20, style: st(V("cyto"), V("memb"), 2.5)})); svg.appendChild(sv("ellipse", {cx: p[0] + 50, cy: p[1] + 20, rx: 22, ry: 9, style: st("none", V("dna"), 2.5)})); });
+      txt(svg, 450, 80, "2 identical", "lbl", "middle");
+      txt(svg, 450, 98, "bacteria", "small", "middle");
+      return;
+    }
+    smallCell(70, 75, 36, "a", "b");
+    arrow(svg, 115, 75, 185, 75, V("muted"), {w: 2.5});
+    txt(svg, 150, 62, d === "mit" ? "mitosis" : "meiosis", "small", "middle");
+    if (d === "mit") { smallCell(240, 75, 32, "a", "b"); smallCell(320, 75, 32, "a", "b"); txt(svg, 440, 70, "2 identical", "lbl", "middle"); txt(svg, 440, 88, "cells", "small", "middle"); }
+    else {
+      [["a"], ["b"], ["b", "a"], ["a", "b"]].forEach(function(m, i){
+        var x = 225 + i * 62;
+        svg.appendChild(sv("circle", {cx: x, cy: 75, r: 26, style: st(V("cyto"), V("memb"), 2.5)}));
+        chromatid(svg, x, 75, 30, m[0], m[1] || null, 8);
+      });
+      txt(svg, 470, 70, "4 different", "lbl", "middle"); txt(svg, 470, 88, "sex cells", "small", "middle");
+    }
+    txt(svg, 260, 140, "orange and teal show DNA from the two parents", "small", "middle");
+  }
+  chipGroup($("whyChips"), EX, function(e){
+    clear($("whyTags"));
+    JOBS.forEach(function(j, i){ $("whyTags").appendChild(el("span", {"class": "tg" + (e.j.indexOf(i) > -1 ? " on" : "")}, j)); });
+    draw(e.d);
+    detail(box, e.label, [e.t, "Jobs: " + e.j.map(function(i){ return JOBS[i]; }).join(" and ") + ". Division type: " + (e.d === "mit" ? "mitosis" : e.d === "mei" ? "meiosis" : "binary fission") + "."], "Why divide?");
+  }, 0);
+})();
+
+/* ---------- Lessons 5 and 6: mitosis and meiosis steppers ---------- */
+function stepper(cfg){
+  var stage = 0;
+  function render(){
+    clear(cfg.svg); cfg.draw(stage);
+    clear(cfg.bar);
+    cfg.stages.forEach(function(s, i){ cfg.bar.appendChild(el("span", {"class": i === stage ? "on" : ""}, (i + 1) + " " + s.n)); });
+    var s = cfg.stages[stage];
+    detail(cfg.box, s.n, s.p, "Step " + (stage + 1) + " of " + cfg.stages.length);
+    cfg.svg.setAttribute("aria-label", cfg.name + ", step " + (stage + 1) + ": " + s.n + ". " + s.p[0]);
+    cfg.back.disabled = stage === 0;
+    cfg.next.textContent = stage === cfg.stages.length - 1 ? "Start again" : "Next step";
+  }
+  cfg.next.addEventListener("click", function(){ stage = stage === cfg.stages.length - 1 ? 0 : stage + 1; render(); });
+  cfg.back.addEventListener("click", function(){ if (stage > 0) stage--; render(); });
+  render();
+  return {render: render, reset: function(){ stage = 0; render(); }};
+}
+function looseSet(g, cx, cy){
+  var pos = [[-30, -8], [28, -14], [-12, 18], [16, 20]];
+  BASE.forEach(function(c, i){ var gg = sv("g", {transform: "rotate(" + [20, -30, 60, -10][i] + " " + (cx + pos[i][0]) + " " + (cy + pos[i][1]) + ")"}); chromatid(gg, cx + pos[i][0], cy + pos[i][1], c.len * 0.9, c.p, null, 6); g.appendChild(gg); });
+}
+function doubledSet(g, cx, cy){
+  var pos = [[-36, -6], [30, -12], [-10, 26], [22, 24]];
+  BASE.forEach(function(c, i){ var gg = sv("g", {transform: "rotate(" + [15, -25, 50, -15][i] + " " + (cx + pos[i][0]) + " " + (cy + pos[i][1]) + ")"}); doubled(gg, cx + pos[i][0], cy + pos[i][1], c.len, c.p); g.appendChild(gg); });
+}
+function spindle(g, x1, x2, ys, mid){
+  ys.forEach(function(y){
+    g.appendChild(sv("line", {x1: x1, y1: 120, x2: mid ? mid[0] : x2, y2: y, style: st("none", V("muted"), 1, "stroke-dasharray:3 4")}));
+    g.appendChild(sv("line", {x1: x2, y1: 120, x2: mid ? mid[1] : x1, y2: y, style: st("none", V("muted"), 1, "stroke-dasharray:3 4")}));
+  });
+}
+stepper({
+  name: "Mitosis", svg: $("mitSvg"), bar: $("mitBar"), box: $("mitDetail"), back: $("mitBack"), next: $("mitNext"),
+  stages: [
+    {n: "Parent cell", p: ["The parent cell has 4 chromosomes, loose inside the nucleus.", "It grows and gets ready to divide."]},
+    {n: "Copy", p: ["Every chromosome is copied. Each one now has two identical halves joined together.", "There are still 4 chromosomes, but each is doubled."]},
+    {n: "Line up", p: ["The nucleus breaks down. Fibres line the chromosomes up single file across the middle of the cell.", "Each chromosome has one half on each side of the middle."]},
+    {n: "Pull apart", p: ["The fibres pull the two halves of each chromosome to opposite ends of the cell.", "Each end now has one copy of all 4 chromosomes."]},
+    {n: "Split", p: ["A nucleus forms at each end and the cell pinches in two.", "Result: 2 daughter cells, each with the same 4 chromosomes as the parent. They are identical."]}
+  ],
+  draw: function(s){
+    var g = $("mitSvg"), ys = [40, 92, 145, 190];
+    if (s === 0) { cellShape(g, 260, 120, 170, 105, [70, 60]); looseSet(g, 260, 120); }
+    else if (s === 1) { cellShape(g, 260, 120, 170, 105, [80, 68]); doubledSet(g, 260, 120); }
+    else if (s === 2) {
+      cellShape(g, 260, 118, 180, 100);
+      spindle(g, 100, 420, ys, [255, 265]);
+      g.appendChild(sv("line", {x1: 260, y1: 18, x2: 260, y2: 222, style: st("none", V("acc"), 1.5, "stroke-dasharray:6 4")}));
+      BASE.forEach(function(c, i){ doubled(g, 260, ys[i] + 3, c.len * 0.85, c.p); });
+    } else if (s === 3) {
+      cellShape(g, 260, 120, 225, 100);
+      spindle(g, 60, 460, ys, [180, 340]);
+      BASE.forEach(function(c, i){ chromatid(g, 175 - i * 6, ys[i] + 3, c.len * 0.85, c.p); chromatid(g, 345 + i * 6, ys[i] + 3, c.len * 0.85, c.p); });
+    } else {
+      [130, 390].forEach(function(cx){
+        cellShape(g, cx, 120, 115, 92, [52, 48]);
+        BASE.forEach(function(c, i){ chromatid(g, cx - 27 + i * 18, 120, c.len * 0.75, c.p, null, 7); });
+        txt(g, cx, 232, "4 chromosomes", "small", "middle");
+      });
+    }
+    if (s < 4) txt(g, 260, 236, s === 0 ? "4 chromosomes" : "4 chromosomes, each doubled", "small", "middle");
+  }
+});
+(function(){
+  var plan;
+  function newPlan(){
+    plan = {
+      flipL: Math.random() < 0.5, flipS: Math.random() < 0.5,
+      crossL: true, crossS: Math.random() < 0.6
+    };
+  }
+  newPlan();
+  /* returns arrangement for stage 2+: left and right doubled chromosomes with tips */
+  function arrangement(){
+    var L = plan.flipL ? ["b", "a"] : ["a", "b"], S = plan.flipS ? ["b", "a"] : ["a", "b"];
+    function pair(ps, len, cross){
+      return {len: len, left: {p: ps[0], tips: [null, cross ? ps[1] : null]}, right: {p: ps[1], tips: [cross ? ps[0] : null, null]}};
+    }
+    return [pair(L, 44, plan.crossL), pair(S, 26, plan.crossS)];
+  }
+  var api = stepper({
+    name: "Meiosis", svg: $("meiSvg"), bar: $("meiBar"), box: $("meiDetail"), back: $("meiBack"), next: $("meiNext"),
+    stages: [
+      {n: "Parent cell", p: ["The same parent cell: 4 chromosomes in 2 matching pairs. Each pair has one from parent 1 (orange) and one from parent 2 (teal).", "Meiosis happens only in reproductive organs."]},
+      {n: "Copy", p: ["Every chromosome is copied, just like in mitosis.", "There are 4 doubled chromosomes."]},
+      {n: "Pair and swap", p: ["Matching chromosomes line up side by side in pairs. Touching halves trade pieces. This is crossing over.", "Which side each one faces is random. Look for orange tips on teal chromosomes and teal tips on orange ones."]},
+      {n: "First split", p: ["The pairs separate. Each new cell gets one chromosome from each pair, still doubled.", "Now each cell has 2 chromosomes instead of 4."]},
+      {n: "Second split", p: ["The copies separate, like in mitosis. Result: 4 daughter cells, each with 2 chromosomes, half the parent’s number.", "Compare the four cells. Their colour mixes are all different. That is variation."]}
+    ],
+    draw: function(s){
+      var g = $("meiSvg");
+      if (s === 0) { cellShape(g, 260, 120, 170, 105, [70, 60]); looseSet(g, 260, 120); txt(g, 260, 236, "4 chromosomes", "small", "middle"); return; }
+      if (s === 1) { cellShape(g, 260, 120, 170, 105, [80, 68]); doubledSet(g, 260, 120); txt(g, 260, 236, "4 chromosomes, each doubled", "small", "middle"); return; }
+      var A = arrangement();
+      if (s === 2) {
+        cellShape(g, 260, 118, 180, 100);
+        g.appendChild(sv("line", {x1: 260, y1: 18, x2: 260, y2: 222, style: st("none", V("acc"), 1.5, "stroke-dasharray:6 4")}));
+        A.forEach(function(pr, i){ var y = i === 0 ? 75 : 165; doubled(g, 244, y, pr.len * 1.2, pr.left.p, pr.left.tips); doubled(g, 276, y, pr.len * 1.2, pr.right.p, pr.right.tips); });
+        txt(g, 260, 236, "pairs side by side, swapping pieces", "small", "middle");
+      } else if (s === 3) {
+        [["left", 130], ["right", 390]].forEach(function(side){
+          var cx = side[1];
+          cellShape(g, cx, 120, 112, 92, [50, 50]);
+          A.forEach(function(pr, i){ var c = pr[side[0]]; doubled(g, cx - 16 + i * 32, 120, pr.len * 1.1, c.p, c.tips); });
+          txt(g, cx, 232, "2 chromosomes, doubled", "small", "middle");
+        });
+      } else {
+        var cells = [["left", 0], ["left", 1], ["right", 0], ["right", 1]];
+        cells.forEach(function(cl, k){
+          var cx = 66 + k * 129;
+          cellShape(g, cx, 115, 58, 72, [38, 40]);
+          A.forEach(function(pr, i){ var c = pr[cl[0]]; chromatid(g, cx - 11 + i * 22, 115, pr.len * 1.05, c.p, c.tips[cl[1]], 8); });
+          txt(g, cx, 210, "cell " + (k + 1), "small", "middle");
+        });
+        txt(g, 260, 234, "4 different cells, 2 chromosomes each", "small", "middle");
+      }
+    }
+  });
+  $("meiShuffle").addEventListener("click", function(){ newPlan(); api.reset(); });
+})();
+
+/* ---------- Lesson 7: chromosome counter ---------- */
+var SPECIES = [["Human", 46], ["Fruit fly", 8], ["Garden pea", 14], ["Corn", 20], ["Canola", 38], ["Bread wheat", 42], ["Potato", 48], ["Dog", 78]];
+(function(){
+  var sel = $("spSel"), svg = $("countSvg");
+  SPECIES.forEach(function(s, i){ var o = el("option", {value: i}, s[0] + " (" + s[1] + " in a body cell)"); sel.appendChild(o); });
+  function cellN(x, y, r, n, fill){
+    svg.appendChild(sv("circle", {cx: x, cy: y, r: r, style: st(fill || V("cyto"), V("memb"), 2.5)}));
+    svg.appendChild(sv("text", {x: x, y: y + 5, "class": "mtxt", "text-anchor": "middle"}, String(n)));
+  }
+  function draw(){
+    var s = SPECIES[+sel.value], n = s[1];
+    clear(svg);
+    txt(svg, 10, 18, "Mitosis", "lbl"); txt(svg, 280, 18, "Meiosis, then fertilization", "lbl");
+    cellN(45, 100, 28, n); arrow(svg, 78, 100, 120, 100, V("muted"), {w: 2});
+    cellN(155, 65, 24, n); cellN(155, 135, 24, n);
+    txt(svg, 155, 185, "2 cells, " + n + " each", "small", "middle");
+    svg.appendChild(sv("line", {x1: 250, y1: 10, x2: 250, y2: 200, style: st("none", V("line"), 1.5)}));
+    cellN(300, 100, 26, n); arrow(svg, 330, 100, 360, 100, V("muted"), {w: 2});
+    [40, 80, 120, 160].forEach(function(y){ cellN(385, y, 17, n / 2); });
+    arrow(svg, 405, 80, 450, 100, V("muted"), {w: 2}); arrow(svg, 405, 120, 450, 100, V("muted"), {w: 2, dash: "4 4"});
+    cellN(482, 100, 26, n, V("acc-soft"));
+    txt(svg, 385, 196, "4 sex cells, " + (n / 2) + " each", "small", "middle");
+    txt(svg, 482, 145, n / 2 + " + " + n / 2, "small", "middle");
+    detail($("countDetail"), s[0], ["Mitosis: " + n + " → " + n + " and " + n + ". Same number as the parent.", "Meiosis: " + n + " → four cells with " + (n / 2) + ". Fertilization: " + (n / 2) + " + " + (n / 2) + " = " + n + ", back to a full set."], "Chromosome count");
+  }
+  sel.addEventListener("change", draw); draw();
+})();
+
+/* ---------- Investigation 1: DNA locator ---------- */
+(function(){
+  var BINS = ["In the nucleus", "In the cytoplasm (no nucleus)", "No DNA"];
+  var ITEMS = [
+    ["Cheek cell", "An animal cell scraped from inside your cheek.", 0, "Animal cells keep their DNA in the nucleus."],
+    ["Onion skin cell", "A plant cell from an onion bulb.", 0, "Plant cells keep their DNA in the nucleus."],
+    ["Canola leaf cell", "A plant cell with many chloroplasts.", 0, "The main DNA is in the nucleus. Chloroplasts and mitochondria hold only a little of their own."],
+    ["E. coli", "A rod-shaped bacterium that lives in the gut.", 1, "Bacteria have no nucleus, so their DNA loop is in the cytoplasm."],
+    ["Lactobacillus", "A bacterium that turns milk into yogurt.", 1, "It is a bacterium, so its DNA is in the cytoplasm."],
+    ["Rhizobium", "A bacterium living in the root nodules of peas and lentils.", 1, "Bacteria have no nucleus. Its DNA is in the cytoplasm."],
+    ["Baker’s yeast", "A single-celled fungus used in bread.", 0, "Yeast is unicellular, but its cell has a nucleus."],
+    ["Amoeba", "A single-celled protist from pond water.", 0, "Protists have a nucleus, even though they are one cell."],
+    ["Mature red blood cell", "A human blood cell that carries oxygen.", 2, "It pushes out its nucleus as it matures, so it has no DNA."],
+    ["Skeletal muscle cell", "A long cell from a leg muscle.", 0, "Muscle cells keep their DNA in nuclei. These long cells actually have many nuclei."],
+    ["Spruce needle cell", "A plant cell from a white spruce.", 0, "Plant cells keep their DNA in the nucleus."],
+    ["Streptococcus", "A round bacterium that can cause strep throat.", 1, "Bacteria have no nucleus, so the DNA is in the cytoplasm."]
+  ];
+  var order = shuffle(ITEMS), i = 0, score = 0, tries = 0, answered = false;
+  BINS.forEach(function(b, bi){
+    var btn = el("button", {"class": "bin", type: "button"}, b);
+    btn.addEventListener("click", function(){
+      if (answered) return; answered = true; tries++;
+      var it = order[i], ok = bi === it[2];
+      if (ok) score++;
+      clear($("locFb")); $("locFb").appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no")}, (ok ? "Correct. " : "Not quite: " + BINS[it[2]] + ". ") + it[3]));
+      $("locScore").textContent = "Score " + score + " of " + tries;
+      $("locNext").focus();
+    });
+    $("locBins").appendChild(btn);
+  });
+  function show(){
+    var it = order[i % order.length]; answered = false;
+    clear($("locCard")); $("locCard").appendChild(document.createTextNode(it[0])); $("locCard").appendChild(el("small", null, it[1]));
+    clear($("locFb"));
+  }
+  $("locNext").addEventListener("click", function(){ i++; if (i >= order.length) { order = shuffle(ITEMS); i = 0; } show(); });
+  $("locScore").textContent = "Score 0 of 0";
+  show();
+})();
+
+/* ---------- Investigation 2: name that division ---------- */
+(function(){
+  var svg = $("ntdSvg"), cur, score = 0, tries = 0, answered = false;
+  var TEXTS = [
+    ["Cells at the tip of a growing onion root divide. Each new cell has 16 chromosomes, the same as the parent.", 0, "Growth, and the same chromosome number: mitosis."],
+    ["Cells in a bull’s reproductive organs divide to make sperm cells with 30 chromosomes. The body cells have 60.", 1, "Half the chromosomes, making sex cells: meiosis."],
+    ["A cut on your finger heals as new skin cells fill the gap.", 0, "Repair uses mitosis."],
+    ["Inside a canola flower’s anthers, cells divide to make pollen with different mixes of DNA.", 1, "Making sex cells with variation: meiosis."],
+    ["One cell divides twice and gives four cells. Each has half the chromosomes.", 1, "Two divisions, four cells, half the number: meiosis."],
+    ["A parent cell with 46 chromosomes gives two cells with 46 chromosomes each.", 0, "Two identical cells with the full number: mitosis."],
+    ["A yeast cell in warm bread dough divides to make a new yeast cell with the same DNA.", 0, "Identical copies for asexual reproduction: mitosis."],
+    ["Matching chromosomes pair up and swap pieces before the cell divides.", 1, "Crossing over only happens in meiosis."],
+    ["In a growing calf, bone cells divide so its legs get longer.", 0, "Growth of body cells: mitosis."],
+    ["Cells in an ovary divide to make egg cells with 23 chromosomes.", 1, "Egg cells are sex cells with half the number: meiosis."]
+  ];
+  function diagram(type){
+    var n = pick([4, 6, 8]);
+    clear(svg);
+    var px = 60;
+    svg.appendChild(sv("circle", {cx: px, cy: 100, r: 48, style: st(V("cyto"), V("memb"), 2.5)}));
+    for (var k = 0; k < n; k++) chromatid(svg, px - (n - 1) * 5 + k * 10, 100, k % 4 < 2 ? 34 : 22, k % 2 ? "b" : "a", null, 7);
+    txt(svg, px, 172, "parent: " + n, "small", "middle");
+    arrow(svg, 115, 100, 160, 100, V("muted"), {w: 2.5});
+    if (type === 0) {
+      [[240, 100], [380, 100]].forEach(function(p){
+        svg.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 50, style: st(V("cyto"), V("memb"), 2.5)}));
+        for (var k = 0; k < n; k++) chromatid(svg, p[0] - (n - 1) * 5 + k * 10, p[1], k % 4 < 2 ? 34 : 22, k % 2 ? "b" : "a", null, 7);
+        txt(svg, p[0], 172, n + " chromosomes", "small", "middle");
+      });
+    } else {
+      for (var c = 0; c < 4; c++) {
+        var x = 200 + c * 88;
+        svg.appendChild(sv("circle", {cx: x, cy: 100, r: 38, style: st(V("cyto"), V("memb"), 2.5)}));
+        for (var k2 = 0; k2 < n / 2; k2++) {
+          var p = Math.random() < 0.5 ? "a" : "b", tip = Math.random() < 0.4 ? (p === "a" ? "b" : "a") : null;
+          chromatid(svg, x - (n / 2 - 1) * 6 + k2 * 12, 100, k2 < n / 4 ? 32 : 22, p, tip, 7);
+        }
+        txt(svg, x, 160, (n / 2) + " each", "small", "middle");
+      }
+    }
+    svg.setAttribute("aria-label", "Diagram: a parent cell with " + n + " chromosomes divides into " + (type === 0 ? "2 cells with " + n + " matching chromosomes each" : "4 cells with " + n / 2 + " chromosomes each, in different colour mixes"));
+    return n;
+  }
+  function next(){
+    answered = false; clear($("ntdFb"));
+    if (Math.random() < 0.5) {
+      var type = Math.random() < 0.5 ? 0 : 1, n = diagram(type);
+      $("ntdBox").hidden = false;
+      $("ntdText").textContent = "Diagram: what kind of division is this?";
+      cur = [null, type, type === 0 ? "Two daughter cells, each with all " + n + " chromosomes in the same colours. That is mitosis." : "Four daughter cells, each with " + (n / 2) + " chromosomes, half of " + n + ", in different mixes. That is meiosis."];
+    } else {
+      cur = pick(TEXTS); $("ntdBox").hidden = true; $("ntdText").textContent = cur[0];
+    }
+  }
+  function answer(a){
+    if (answered) return; answered = true; tries++;
+    var ok = a === cur[1]; if (ok) score++;
+    $("ntdFb").appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no")}, (ok ? "Correct. " : "Not quite. ") + cur[2]));
+    $("ntdScore").textContent = "Score " + score + " of " + tries;
+    $("ntdNext").focus();
+  }
+  $("ntdMit").addEventListener("click", function(){ answer(0); });
+  $("ntdMei").addEventListener("click", function(){ answer(1); });
+  $("ntdNext").addEventListener("click", next);
+  $("ntdScore").textContent = "Score 0 of 0";
+  next();
+})();
+
+/* ---------- Investigation 3: root tip ---------- */
+(function(){
+  var svg = $("rootSvg"), cells = [], checked = false, truth = 0;
+  function build(){
+    clear(svg); cells = []; checked = false;
+    var total = 40, nd = rint(6, 14), idx = shuffle(Array.apply(null, Array(total)).map(function(_, i){ return i; })).slice(0, nd);
+    truth = nd;
+    for (var k = 0; k < total; k++) {
+      var r = Math.floor(k / 8), c = k % 8, x = 4 + c * 59, y = 4 + r * 59;
+      var div = idx.indexOf(k) > -1, kind = div ? rint(0, 2) : -1;
+      var g = sv("g", {"class": "cellbtn", tabindex: "0", role: "button", "aria-pressed": "false", "aria-label": "Cell in row " + (r + 1) + ", column " + (c + 1)});
+      g.appendChild(sv("rect", {"class": "wallr", x: x, y: y, width: 55, height: 55, rx: 4, style: st(V("field"), V("stain"), 2)}));
+      var cx = x + 27.5, cy = y + 27.5;
+      if (!div) {
+        g.appendChild(sv("circle", {cx: cx + rint(-4, 4), cy: cy + rint(-4, 4), r: 11, style: st(V("nuc-fill"), V("nuc"), 1.5)}));
+        g.appendChild(sv("circle", {cx: cx + rint(-3, 3), cy: cy + rint(-3, 3), r: 2.5, style: st(V("nuc"))}));
+      } else if (kind === 0) {
+        for (var m = 0; m < 5; m++) g.appendChild(sv("rect", {x: cx - 3, y: cy - 18 + m * 7.5, width: 6, height: 5, rx: 2, style: st(V("dna"))}));
+      } else if (kind === 1) {
+        for (var m2 = 0; m2 < 4; m2++) { g.appendChild(sv("rect", {x: cx - 18, y: cy - 14 + m2 * 7.5, width: 8, height: 4, rx: 2, style: st(V("dna"))})); g.appendChild(sv("rect", {x: cx + 10, y: cy - 14 + m2 * 7.5, width: 8, height: 4, rx: 2, style: st(V("dna"))})); }
+      } else {
+        g.appendChild(sv("line", {x1: cx, y1: y + 6, x2: cx, y2: y + 49, style: st("none", V("stain"), 1.5)}));
+        g.appendChild(sv("ellipse", {cx: cx - 13, cy: cy, rx: 7, ry: 11, style: st(V("dna"))}));
+        g.appendChild(sv("ellipse", {cx: cx + 13, cy: cy, rx: 7, ry: 11, style: st(V("dna"))}));
+      }
+      (function(g, div){
+        var obj = {g: g, div: div, picked: false};
+        function tog(){ if (checked) return; obj.picked = !obj.picked; g.classList.toggle("picked", obj.picked); g.setAttribute("aria-pressed", obj.picked ? "true" : "false"); stats(); }
+        g.addEventListener("click", tog);
+        g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } });
+        cells.push(obj);
+      })(g, div);
+      svg.appendChild(g);
+    }
+    clear($("rootFb")); $("rootPct").value = ""; $("rootPctFb").textContent = "";
+    stats();
+  }
+  function stats(){
+    var picked = cells.filter(function(c){ return c.picked; }).length;
+    stat($("rootStats"), [["Total cells", "40"], ["You picked", String(picked)], ["Dividing (real)", checked ? String(truth) : "?"]]);
+  }
+  $("rootCheck").addEventListener("click", function(){
+    checked = true;
+    var hit = 0, miss = 0, extra = 0;
+    cells.forEach(function(c){
+      if (c.div && c.picked) hit++; else if (c.div) miss++; else if (c.picked) extra++;
+      if (c.div) c.g.appendChild(sv("circle", {cx: +c.g.firstChild.getAttribute("x") + 48, cy: +c.g.firstChild.getAttribute("y") + 8, r: 5, style: st(V("good"))}));
+    });
+    clear($("rootFb"));
+    $("rootFb").appendChild(el("div", {"class": "feedback " + (miss + extra === 0 ? "ok" : "no")}, "You found " + hit + " of " + truth + " dividing cells" + (extra ? " and picked " + extra + " resting cell" + (extra > 1 ? "s" : "") : "") + ". Green dots mark the real dividing cells. Now find the percent dividing using " + truth + " ÷ 40 × 100."));
+    stats();
+  });
+  $("rootPctBtn").addEventListener("click", function(){
+    var v = parseNum($("rootPct").value), ans = truth / 40 * 100;
+    if (!checked) { $("rootPctFb").className = "fb no"; $("rootPctFb").textContent = "Press Check first to see the real count."; return; }
+    if (isNaN(v)) { $("rootPctFb").className = "fb no"; $("rootPctFb").textContent = "Type a number, like 20."; return; }
+    var ok = Math.abs(v - ans) < 0.6;
+    $("rootPctFb").className = "fb " + (ok ? "ok" : "no");
+    $("rootPctFb").textContent = ok ? "Correct: " + truth + " ÷ 40 × 100 = " + fmt(ans) + "%." : "Not yet. Divide " + truth + " by 40, then multiply by 100.";
+  });
+  $("rootNew").addEventListener("click", build);
+  build();
+})();
+
+/* ---------- Investigation 4: doubling and chromosome maths ---------- */
+(function(){
+  var svg = $("dblSvg");
+  function drawDbl(){
+    var n = +$("dblN").value, cells = Math.pow(2, n);
+    $("dblOut").textContent = n;
+    clear(svg);
+    for (var k = 0; k < cells; k++) { var c = k % 64, r = Math.floor(k / 64); svg.appendChild(sv("circle", {cx: 10 + c * 7.2, cy: 10 + r * 7, r: 2.8, style: st(V("memb"))})); }
+    txt(svg, 470, 124, "1 × 2^" + n + " = " + cells + " cells", "mtxt", "end");
+    svg.setAttribute("aria-label", "After " + n + " rounds of mitosis, 1 cell becomes " + cells + " cells");
+  }
+  $("dblN").addEventListener("input", drawDbl); drawDbl();
+  var q, score = 0, tries = 0;
+  var GEN = [
+    function(){ var s = pick([1, 2, 3, 5]), n = rint(2, 6); return {t: "A sample starts with " + s + " cell" + (s > 1 ? "s" : "") + ". Each cell divides by mitosis " + n + " times. How many cells are there now?", a: s * Math.pow(2, n), w: s + " × 2^" + n + " = " + s * Math.pow(2, n) + " cells."}; },
+    function(){ var sp = pick(SPECIES); return {t: "A " + sp[0].toLowerCase() + " body cell has " + sp[1] + " chromosomes. It divides by mitosis. How many chromosomes does each daughter cell have?", a: sp[1], w: "Mitosis keeps the same number: " + sp[1] + "."}; },
+    function(){ var sp = pick(SPECIES); return {t: "A " + sp[0].toLowerCase() + " body cell has " + sp[1] + " chromosomes. How many chromosomes are in each sex cell made by meiosis?", a: sp[1] / 2, w: sp[1] + " ÷ 2 = " + sp[1] / 2 + "."}; },
+    function(){ var sp = pick(SPECIES); return {t: "A " + sp[0].toLowerCase() + " sperm or pollen cell has " + sp[1] / 2 + " chromosomes and the egg has " + sp[1] / 2 + ". How many does the fertilized egg have?", a: sp[1], w: sp[1] / 2 + " + " + sp[1] / 2 + " = " + sp[1] + "."}; },
+    function(){ var k = rint(2, 9); return {t: k + " cells each go through meiosis. How many sex cells are made in total?", a: 4 * k, w: "Each meiosis makes 4 cells: " + k + " × 4 = " + 4 * k + "."}; },
+    function(){ var sp = pick(SPECIES); return {t: "A " + sp[0].toLowerCase() + " sex cell has " + sp[1] / 2 + " chromosomes. How many are in its body cells?", a: sp[1], w: "Sex cells have half, so double it: " + sp[1] / 2 + " × 2 = " + sp[1] + "."}; }
+  ];
+  function newQ(){ q = pick(GEN)(); $("mathQ").textContent = q.t; $("mathA").value = ""; $("mathFb").textContent = ""; }
+  $("mathCheck").addEventListener("click", function(){
+    var v = parseNum($("mathA").value);
+    if (isNaN(v)) { $("mathFb").className = "fb no"; $("mathFb").textContent = "Type a number first."; return; }
+    tries++; var ok = v === q.a; if (ok) score++;
+    $("mathFb").className = "fb " + (ok ? "ok" : "no");
+    $("mathFb").textContent = (ok ? "Correct. " : "Not quite. ") + q.w;
+    $("mathScore").textContent = "Score " + score + " of " + tries;
+  });
+  $("mathNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Investigation 5: comparison builder ---------- */
+(function(){
+  var ROWS = [
+    ["Number of divisions", ["1", "2"], 0, 1],
+    ["Daughter cells made", ["2", "4"], 0, 1],
+    ["Identical to the parent?", ["Yes", "No"], 0, 1],
+    ["Chromosome number", ["Same as parent", "Half of parent"], 0, 1],
+    ["Main job", ["Growth and repair", "Sex cells for reproduction"], 0, 1],
+    ["Where it happens", ["Body cells everywhere", "Reproductive organs"], 0, 1],
+    ["DNA copied first?", ["Yes", "No"], 0, 0]
+  ];
+  var tb = document.querySelector("#cmpTable tbody"), sels = [];
+  ROWS.forEach(function(r, i){
+    var tr = el("tr"); tr.appendChild(el("td", null, r[0]));
+    ["Mitosis", "Meiosis"].forEach(function(col, j){
+      var td = el("td"), id = "cmp-" + i + "-" + j;
+      var lab = el("label", {"for": id, "class": "hint"}, col + ": " + r[0]);
+      lab.style.position = "absolute"; lab.style.width = "1px"; lab.style.height = "1px"; lab.style.overflow = "hidden"; lab.style.clip = "rect(0 0 0 0)";
+      var s = el("select", {id: id});
+      s.appendChild(el("option", {value: ""}, "Choose"));
+      r[1].forEach(function(o, k){ s.appendChild(el("option", {value: k}, o)); });
+      td.appendChild(lab); td.appendChild(s); tr.appendChild(td);
+      sels.push({s: s, ans: j === 0 ? r[2] : r[3], td: td});
+    });
+    tb.appendChild(tr);
+  });
+  $("cmpCheck").addEventListener("click", function(){
+    var right = 0;
+    sels.forEach(function(x){ var ok = x.s.value !== "" && +x.s.value === x.ans; if (ok) right++; x.s.style.borderColor = x.s.value === "" ? "" : ok ? "var(--good)" : "var(--bad)"; x.s.setAttribute("aria-invalid", ok ? "false" : "true"); });
+    $("cmpFb").className = "fb " + (right === sels.length ? "ok" : "no");
+    $("cmpFb").textContent = right + " of " + sels.length + " correct." + (right === sels.length ? " Your chart matches. Both kinds copy the DNA first." : " Red boxes need another look.");
+  });
+  $("cmpReset").addEventListener("click", function(){ sels.forEach(function(x){ x.s.value = ""; x.s.style.borderColor = ""; x.s.removeAttribute("aria-invalid"); }); $("cmpFb").textContent = ""; });
+})();
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

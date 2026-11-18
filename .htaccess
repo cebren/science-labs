@@ -1,0 +1,17 @@
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+Options -Indexes
+
+RewriteEngine On
+# Send http to https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://confluenceeducation.ca%{REQUEST_URI} [L,R=301]
+# Send www to the bare domain
+RewriteCond %{HTTP_HOST} ^www\.confluenceeducation\.ca$ [NC]
+RewriteRule ^ https://confluenceeducation.ca%{REQUEST_URI} [L,R=301]
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|svg)$">
+    Header set Cache-Control "max-age=86400"
+  </FilesMatch>
+</IfModule>

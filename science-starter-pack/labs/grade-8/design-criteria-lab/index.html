@@ -1,0 +1,1379 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/design-criteria-lab/"><meta name="description" content="Design criteria and testing can help turn ideas into solutions."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Design Criteria Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g8:#1D5FA8;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g8:#7DB0F0;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g8:#7DB0F0;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* ---- Design Criteria additions. Layout: a design studio test log. Blueprint blue marks criteria, amber marks constraints and target lines, green and red mark pass and fail. ---- */
+:root{ --bp:#1D5FA8; --bp-soft:#DFEAF6; --amber:#8F5A00; --amber-soft:#F8ECD3; --target:#B26B00; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bp:#7DB0F0; --bp-soft:#18283C; --amber:#F0B860; --amber-soft:#3A2A10; --target:#F0B860; }}
+:root[data-theme="dark"]{ --bp:#7DB0F0; --bp-soft:#18283C; --amber:#F0B860; --amber-soft:#3A2A10; --target:#F0B860; }
+a{color:var(--bp)}
+:focus-visible{outline-color:var(--bp)}
+header h1 .cr{color:var(--bp)} header h1 .ts{color:var(--amber)}
+input[type=range]{accent-color:var(--bp)}
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button.right{background:var(--leaf-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.choice2 button:disabled{cursor:default;color:var(--ink)}
+.pf{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pf.pass{background:var(--leaf-soft);color:var(--good)}
+.pf.fail{background:var(--bad-soft);color:var(--bad)}
+.pf.must{background:var(--bp-soft);color:var(--bp)}
+.pf.want{background:var(--amber-soft);color:var(--amber)}
+.crit{display:grid;gap:6px;padding:0;margin:0}
+.crit li{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.92rem}
+.story{background:var(--amber-soft);border-radius:8px;padding:10px 12px;font-size:.93rem;display:grid;gap:4px}
+.story b{color:var(--amber)}
+.trials{display:flex;flex-wrap:wrap;gap:6px}
+.trials span{font-family:var(--f-mono);font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-variant-numeric:tabular-nums}
+.parts{display:grid;gap:10px}
+.parts fieldset{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0;display:grid;gap:4px;background:var(--surface)}
+.parts legend{font-weight:700;font-size:.9rem;padding:0 4px}
+.parts label{display:flex;gap:8px;align-items:center;font-size:.92rem}
+.parts label .cost{margin-left:auto;font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.inv>.full{grid-column:1/-1}
+@media (max-width:860px){.inv{grid-template-columns:minmax(0,1fr);padding:16px}}
+.inv h3{font-size:1.3rem}
+.matrix{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+.matrix th,.matrix td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:center;font-variant-numeric:tabular-nums}
+.matrix th:first-child,.matrix td:first-child{text-align:left}
+.matrix th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.matrix tr.win td{background:var(--leaf-soft);font-weight:700}
+.matrix select{padding:4px 6px}
+.loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,110px),1fr));gap:6px}
+.loop span{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px;text-align:center;font-size:.85rem;font-weight:700}
+.loop span.on{background:var(--bp-soft);border-color:var(--bp);color:var(--bp)}
+.credit a{color:var(--bp)}
+.panel>*,.inv>*,.parts>*{min-width:0}
+.parts select{width:100%;max-width:100%}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.inline input{min-width:0;width:8em}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Forces, Motion and Fluids · CS3</div>
+    <h1><span class="cr">Design</span> <span class="ts">Criteria</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Design criteria and testing can help turn ideas into solutions. In this lab you design, test and improve a syringe hydraulic arm, the kind of build many Alberta Grade 8 classes make in the fluids unit.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Five short lessons in order. Each one has a model to try. You will turn a need into clear criteria, work within constraints, test a prototype, read the results and plan an improvement.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · What counts as success?</span>
+      <div class="codes"><span class="code">CS3.K1</span></div>
+      <h3>Design criteria are the requirements a solution must meet</h3>
+      <p>Every design starts with a need, a want or a problem. Your class needs a hydraulic arm that can move a small load from one desk spot to another. That is the need. It is not yet clear enough to build or test.</p>
+      <p><b>Design criteria</b> are the specific requirements a solution must meet so the need, want or problem is really addressed. Good criteria are <b>specific</b> and, where possible, <b>measurable</b>. “The arm should be strong” is vague. “The arm lifts a 100 g load at least 10 cm” can be checked.</p>
+      <p>Some criteria are musts: the solution fails without them. Others are wants: nice to have, but not required.</p>
+      <div class="key"><b>Key idea:</b> criteria describe what success looks like, in words you can check with a test.</div>
+    </div>
+    <div class="model">
+      <h4>Make it measurable</h4>
+      <p class="hint">Pick a vague criterion. Then choose the rewrite that you could check with a test.</p>
+      <div class="chips" id="l1Chips" role="group" aria-label="Vague criteria"></div>
+      <div class="choice2" id="l1Opts"></div>
+      <p class="fb" id="l1Fb" aria-live="polite"></p>
+      <h4>Hydraulic arm criteria</h4>
+      <ul class="crit">
+        <li>Lifts a 100 g load at least 10 cm <span class="pf must">Must</span></li>
+        <li>Moves a paper cup 20 cm sideways in under 30 s <span class="pf must">Must</span></li>
+        <li>Loses no more than 5 drops of water after 20 open and close cycles <span class="pf must">Must</span></li>
+        <li>Fits on a desk: base under 30 cm × 30 cm <span class="pf must">Must</span></li>
+        <li>Looks tidy enough to show at the open house <span class="pf want">Want</span></li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Working within limits</span>
+      <div class="codes"><span class="code">CS3.K2</span></div>
+      <h3>Constraints limit a design</h3>
+      <p>A <b>constraint</b> is a limit you must work within. Common constraints are budget, available materials, time, tools, safety rules and size. Criteria say what the solution must do. Constraints say what you have to do it with.</p>
+      <p>Constraints can have <b>negative impacts</b>. A tiny budget might force weaker materials, so the design breaks sooner. They can also have <b>positive impacts</b> on innovation. When you cannot buy the usual part, you may invent a smarter, cheaper or lighter one.</p>
+      <div class="story"><b>A famous example</b><span>In 1970, the crew of Apollo 13 had to shelter in the small lunar module after an explosion damaged their spacecraft. Carbon dioxide began to build up. The command module’s square air filter canisters did not fit the lunar module’s round openings. Engineers on the ground could only use items the crew had on board, such as plastic bags, cardboard, hoses and tape. Working within that strict constraint, they designed an adapter the crew could build, and the crew made it home safely.</span></div>
+    </div>
+    <div class="model">
+      <h4>Constraint explorer</h4>
+      <p class="hint">Tap a constraint to see how it can help or hurt a design.</p>
+      <div class="chips" id="l2Chips" role="group" aria-label="Constraints"></div>
+      <div class="detail" id="l2Detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Put it to the test</span>
+      <div class="codes"><span class="code">CS3.K3</span></div>
+      <h3>Testing shows whether criteria were met</h3>
+      <p>A solution can be <b>tested</b> to find out if it meets each design criterion. A good test matches the criterion: if the criterion is about lifting 100 g at least 10 cm, you measure the height the load is lifted.</p>
+      <p>A <b>fair test</b> changes only what you are testing. Everything else stays the same: the same load, the same starting position, the same operator, the same amount of water in the syringes. These are <b>controlled variables</b>.</p>
+      <p>Results vary a little each time, so testers run <b>repeated trials</b>, usually at least three, and use the average. One lucky or unlucky trial can mislead you.</p>
+    </div>
+    <div class="model">
+      <h4>Lift test: Prototype A</h4>
+      <p class="hint">Criterion: lifts a 100 g load at least 10 cm. Run trials and watch the average settle. Trial results are simulated practice data.</p>
+      <div class="row">
+        <button class="btn" type="button" id="l3Run">Run a trial</button>
+        <button class="btn ghost" type="button" id="l3Reset">Start over</button>
+      </div>
+      <div class="trials" id="l3Trials" aria-label="Trial results"></div>
+      <div class="stats">
+        <div class="stat"><span>Trials</span><b id="l3N">0</b></div>
+        <div class="stat"><span>Average height</span><b id="l3Mean">none</b></div>
+        <div class="stat"><span>Target</span><b>10.0 cm</b></div>
+      </div>
+      <p class="fb" id="l3Fb" aria-live="polite">Run at least three trials before deciding.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Read the results</span>
+      <div class="codes"><span class="code">CS3.K4</span></div>
+      <h3>Data shows strengths and weaknesses</h3>
+      <p>After testing, you <b>analyze the data</b>. Compare each average with its target. A result that beats the target is a <b>strength</b>. A result that misses it is a <b>weakness</b>, and a weakness on a must criterion means the design is not ready yet.</p>
+      <p>Look for patterns too. A prototype can be the strongest lifter but the slowest mover. Comparing several prototypes on the same criteria helps a team see which ideas are worth keeping.</p>
+      <div class="note">Watch the direction of each target. For lift height, higher is better. For time and number of leaks, lower is better.</div>
+    </div>
+    <div class="model">
+      <h4>Three prototypes, one target line</h4>
+      <p class="hint">Pick a criterion. The dashed line is the target. Averages are made up for practice.</p>
+      <div class="chips" id="l4Chips" role="group" aria-label="Criterion to graph"></div>
+      <div class="svgbox fit" id="l4Svg"></div>
+      <div class="detail" id="l4Detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Improve and retest</span>
+      <div class="codes"><span class="code">CS3.K3</span><span class="code">CS3.K4</span></div>
+      <h3>Use the weakness to plan the next version</h3>
+      <p>Test data tells you where to focus. Prototype B lifts well and does not leak, but it is too slow to move the cup. An improvement should target that weakness.</p>
+      <p>Every change has <b>trade-offs</b>. In a syringe hydraulic system, a larger output syringe pushes with more force but moves a shorter distance. Fixing one criterion can weaken another, so you retest after every change.</p>
+      <div class="loop" aria-label="Design loop"><span>Criteria</span><span>Build</span><span class="on">Test</span><span class="on">Analyze</span><span>Improve</span></div>
+    </div>
+    <div class="model">
+      <h4>Choose an improvement for Prototype B</h4>
+      <p class="hint">Weakness: moves the cup 20 cm in 41 s (target under 30 s). Pick a change and see the retest. Results are made up for practice.</p>
+      <div class="choice2" id="l5Opts"></div>
+      <div class="tablebox"><table class="dt" id="l5Table"><thead><tr><th>Criterion</th><th>Target</th><th>Before</th><th>After</th></tr></thead><tbody></tbody></table></div>
+      <p class="fb" id="l5Fb" aria-live="polite"></p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Build within a budget, plan a fair test, analyze trial data and compare prototypes with a decision matrix. All prices and test results are made up for practice.</p>
+  </div>
+
+  <article class="inv">
+    <div class="full"><span class="step eyebrow">Investigation 1 · CS3.S1</span><h3>Budget build: how constraints shape a design</h3><p class="hint">Choose a budget, then pick parts for your hydraulic arm. The bars predict how well the arm will meet each criterion (target 3 out of 5).</p></div>
+    <div class="parts">
+      <label class="field" for="b1Budget">Budget constraint
+        <select id="b1Budget"><option value="5">$5 per team</option><option value="10" selected>$10 per team</option><option value="20">$20 per team</option></select>
+      </label>
+      <fieldset><legend>Number of joints (each joint needs 2 syringes and tubing)</legend>
+        <label><input type="radio" name="b1j" value="1" id="b1j1"> 1 joint <span class="cost">$2</span></label>
+        <label><input type="radio" name="b1j" value="2" id="b1j2" checked> 2 joints <span class="cost">$4</span></label>
+        <label><input type="radio" name="b1j" value="3" id="b1j3"> 3 joints <span class="cost">$6</span></label>
+      </fieldset>
+      <fieldset><legend>Frame</legend>
+        <label><input type="radio" name="b1f" value="cb" id="b1fcb"> Recycled cardboard <span class="cost">$0</span></label>
+        <label><input type="radio" name="b1f" value="st" id="b1fst" checked> Craft sticks <span class="cost">$2</span></label>
+        <label><input type="radio" name="b1f" value="dw" id="b1fdw"> Wooden dowels <span class="cost">$5</span></label>
+      </fieldset>
+      <fieldset><legend>Gripper</legend>
+        <label><input type="radio" name="b1g" value="cc" id="b1gcc"> Cardboard claw <span class="cost">$0</span></label>
+        <label><input type="radio" name="b1g" value="cp" id="b1gcp" checked> Clothespin <span class="cost">$1</span></label>
+        <label><input type="radio" name="b1g" value="3d" id="b1g3d"> 3D printed claw <span class="cost">$6</span></label>
+      </fieldset>
+      <fieldset><legend>Fluid in the syringes</legend>
+        <label><input type="radio" name="b1w" value="water" id="b1ww" checked> Water <span class="cost">$0</span></label>
+        <label><input type="radio" name="b1w" value="air" id="b1wa"> Air <span class="cost">$0</span></label>
+      </fieldset>
+    </div>
+    <div class="model">
+      <div class="stats">
+        <div class="stat"><span>Total cost</span><b id="b1Cost">$0</b></div>
+        <div class="stat"><span>Budget</span><b id="b1Bud">$10</b></div>
+        <div class="stat"><span>Criteria met</span><b id="b1Met">0 of 4</b></div>
+      </div>
+      <div class="bars" id="b1Bars"></div>
+      <div class="detail" id="b1Msg" aria-live="polite"></div>
+      <label class="field" for="b1Note">How did the budget change your design? Name one negative and one positive impact.
+        <textarea id="b1Note"></textarea>
+      </label>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="full"><span class="step eyebrow">Investigation 2 · CS3.S2</span><h3>Test planner: design a fair test</h3><p class="hint">Pick a criterion, then build a test that would show whether a prototype meets it. Check your plan for feedback.</p></div>
+    <div class="parts">
+      <label class="field" for="b2Crit">Criterion to test
+        <select id="b2Crit"></select>
+      </label>
+      <label class="field" for="b2Meas">What will you measure?
+        <select id="b2Meas"></select>
+      </label>
+      <fieldset><legend>Which things will you keep the same?</legend><div id="b2Ctrl"></div></fieldset>
+      <label class="field" for="b2Trials">How many trials?
+        <select id="b2Trials"><option value="1">1 trial</option><option value="3">3 trials</option><option value="5">5 trials</option></select>
+      </label>
+      <label class="field" for="b2Rule">How will you decide pass or fail?
+        <select id="b2Rule"></select>
+      </label>
+      <button class="btn" type="button" id="b2Check">Check my plan</button>
+    </div>
+    <div class="model">
+      <h4>Your test plan</h4>
+      <div class="detail" id="b2Plan"></div>
+      <div class="detail" id="b2Fb" aria-live="polite"><p>Build your plan, then press Check my plan.</p></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="full"><span class="step eyebrow">Investigation 3 · CS3.S3</span><h3>Data analyzer: strength or weakness?</h3><p class="hint">Work out the average of the trials, compare it with the target, then choose the best improvement. Each problem is randomly generated practice data.</p></div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>Prototype C, criterion: moves a cup 20 cm in under 30 s.</span>
+      <span>Trials: 26 s, 29 s, 32 s.</span>
+      <span class="mono">average = (26 + 29 + 32) ÷ 3 = 87 ÷ 3 = 29 s</span>
+      <span>29 s is under 30 s, so this criterion is met, but only just. One trial (32 s) failed, so the result is close to the limit. That is a borderline strength worth watching.</span>
+    </div>
+    <div class="model">
+      <div class="detail" id="b3Prob" aria-live="polite"></div>
+      <div class="inline">
+        <label class="field" for="b3Ans">Average (to one decimal place)
+          <input type="number" id="b3Ans" step="0.1" inputmode="decimal">
+        </label>
+        <button class="btn" type="button" id="b3Check">Check average</button>
+        <button class="btn ghost" type="button" id="b3New">New problem</button>
+      </div>
+      <p class="fb" id="b3Fb" aria-live="polite"></p>
+      <div id="b3Step2" hidden>
+        <p><b>Is this a strength or a weakness?</b></p>
+        <div class="choice2" id="b3Sw"></div>
+        <p class="fb" id="b3Fb2" aria-live="polite"></p>
+        <div id="b3Step3" hidden>
+          <p><b>Which improvement targets this result?</b></p>
+          <div class="choice2" id="b3Imp"></div>
+          <p class="fb" id="b3Fb3" aria-live="polite"></p>
+        </div>
+      </div>
+      <p class="hint mono" id="b3Score"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="full"><span class="step eyebrow">Investigation 4 · CS3.S3 and CS3.K4</span><h3>Decision matrix: which prototype goes forward?</h3><p class="hint">Each prototype was scored from 1 to 5 on each criterion after testing. Set how important each criterion is (its weight). The total for each prototype is the sum of score × weight. Scores are made up for practice.</p></div>
+    <div class="full tablebox"><table class="matrix" id="b4Table"></table></div>
+    <div class="detail" id="b4Msg" aria-live="polite"></div>
+    <div class="model">
+      <h4>Practice: weighted total</h4>
+      <div class="detail" id="b4Prob"></div>
+      <div class="inline">
+        <label class="field" for="b4Ans">Weighted total
+          <input type="number" id="b4Ans" step="1" inputmode="numeric">
+        </label>
+        <button class="btn" type="button" id="b4Check">Check</button>
+        <button class="btn ghost" type="button" id="b4New">New problem</button>
+      </div>
+      <p class="fb" id="b4Fb" aria-live="polite"></p>
+    </div>
+  </article>
+</section>
+
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 CS3, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>CS3.K1:</b> criteria are taught as specific and, where possible, measurable requirements. The lab adds the must and want distinction (sometimes called requirements and desirables) to help students rank criteria. This is a common classroom extension, not a draft statement.</li>
+      <li><b>CS3.K2:</b> the line between criteria and constraints is not sharp in practice. Some engineering sources list constraints as a kind of requirement. The lab teaches a working distinction: criteria say what success looks like, constraints are limits on how you can reach it (budget, materials, time, tools, safety, size). Sort It items were chosen to be clear cases.</li>
+      <li><b>CS3.K2:</b> the Apollo 13 carbon dioxide adapter (April 1970) is used as a positive impact of constraints on innovation. It is described generally; please check the wording suits your class.</li>
+      <li><b>CS3.K3:</b> testing is taught as a fair test with controlled variables and repeated trials (at least three), building on the Science 7 design process (CS3 in Grade 7). User testing is mentioned only briefly.</li>
+      <li><b>CS3.K4:</b> analysis uses the mean (average), comparison with a target, and the direction of a target (higher or lower is better). The weighted decision matrix in Investigation 4 goes slightly beyond the statement as a tool for comparing prototypes.</li>
+      <li><b>Context:</b> the syringe hydraulic arm borrows from the Forces, Motion and Fluids unit. The force and distance trade-off (larger output syringe gives more force but less movement) and air being more compressible than water are stated qualitatively only.</li>
+      <li><b>Numbers:</b> all prices, trial results, prototype averages and decision matrix scores are made up for practice and labelled as such.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-cs3-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: make it measurable ---------- */
+(function(){
+  var V = [
+    {label: "“It should be strong”", opts: [
+      ["The arm lifts a 100 g load at least 10 cm.", true, "Yes. It names a load and a height you can measure with a ruler."],
+      ["The arm is really, really strong.", false, "Still vague. How strong is really strong?"],
+      ["The arm is stronger than most arms.", false, "Which arms? You cannot check this with one test."]]},
+    {label: "“It should be fast”", opts: [
+      ["The arm should not be slow.", false, "This only flips the words. There is still no number to check."],
+      ["The arm moves a paper cup 20 cm sideways in under 30 s.", true, "Yes. A stopwatch and a ruler can check it."],
+      ["The arm moves quickly when people use it.", false, "Quickly is not measurable."]]},
+    {label: "“It should not leak”", opts: [
+      ["The arm should not leak very much.", false, "How much is very much? Add a number."],
+      ["The arm looks dry.", false, "Looking dry is a guess, not a measurement."],
+      ["The arm loses no more than 5 drops of water after 20 open and close cycles.", true, "Yes. It sets a number of cycles and a limit you can count."]]},
+    {label: "“It should fit”", opts: [
+      ["The base fits inside a 30 cm × 30 cm square on a desk.", true, "Yes. You can measure the base with a ruler."],
+      ["The arm is not too big.", false, "Too big for what? Give a size."],
+      ["The arm fits in the room.", false, "Almost anything fits in a room. The real need is desk space."]]}
+  ];
+  var box = $("l1Opts"), fb = $("l1Fb");
+  chipGroup($("l1Chips"), V, "", function(v){
+    clear(box); fb.textContent = ""; fb.className = "fb";
+    var btns = [];
+    shuffle(v.opts).forEach(function(o){
+      var b = el("button", {type: "button"}, o[0]);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.disabled = true; });
+        b.classList.add(o[1] ? "right" : "wrong");
+        if (!o[1]) btns.forEach(function(x, j){ if (x.dataset.ok === "1") x.classList.add("right"); });
+        fb.textContent = (o[1] ? "Correct. " : "Not quite. ") + o[2];
+        fb.className = "fb " + (o[1] ? "ok" : "no");
+      });
+      b.dataset.ok = o[1] ? "1" : "0";
+      box.appendChild(b); btns.push(b);
+    });
+  }, 0);
+})();
+
+/* ---------- Lesson 2: constraint explorer ---------- */
+(function(){
+  var C = [
+    {label: "Budget", ex: "Each team has $10 for syringes, tubing and frame parts.", neg: "Cheaper parts may be weaker, so the arm could break or leak sooner.", pos: "Teams look for free or reused materials, such as cardboard and clothespins, and find clever low-cost designs."},
+    {label: "Materials", ex: "Only the syringes, tubing, craft sticks and tape in the bin may be used.", neg: "The best material for a job may not be available.", pos: "Teams learn to use simple parts in new ways, like bending a craft stick into a hinge."},
+    {label: "Time", ex: "The arm must be built and tested in four class periods.", neg: "Less time to test means problems may not be found.", pos: "A tight deadline pushes teams to focus on the must criteria first."},
+    {label: "Safety", ex: "No hot glue guns without a teacher present. No sharp cut edges.", neg: "Some fast building methods are not allowed.", pos: "Safe designs are usually easier for other people to use and repair."},
+    {label: "Size", ex: "The base must fit inside 30 cm × 30 cm on a desk.", neg: "A small base can make a long arm tip over.", pos: "Teams invent compact, folding designs that store easily."},
+    {label: "Tools", ex: "Scissors, rulers and hole punches only. No power tools.", neg: "Precise cuts and holes are harder to make.", pos: "Simple designs that anyone can rebuild with basic tools are easier to share."}
+  ];
+  var d = $("l2Detail");
+  chipGroup($("l2Chips"), C, "", function(c){
+    clear(d);
+    d.appendChild(el("span", {"class": "tagline"}, "Constraint: " + c.label));
+    d.appendChild(el("p", null, "Example: " + c.ex));
+    var p1 = el("p"); p1.appendChild(el("b", null, "Possible negative impact: ")); p1.appendChild(document.createTextNode(c.neg)); d.appendChild(p1);
+    var p2 = el("p"); p2.appendChild(el("b", null, "Possible positive impact: ")); p2.appendChild(document.createTextNode(c.pos)); d.appendChild(p2);
+  }, 0);
+})();
+
+/* ---------- Lesson 3: run the lift test ---------- */
+(function(){
+  var vals = [];
+  function render(){
+    var t = $("l3Trials"); clear(t);
+    vals.forEach(function(v, i){ t.appendChild(el("span", null, "Trial " + (i + 1) + ": " + v.toFixed(1) + " cm")); });
+    $("l3N").textContent = vals.length;
+    var fb = $("l3Fb");
+    if (!vals.length) { $("l3Mean").textContent = "none"; fb.textContent = "Run at least three trials before deciding."; fb.className = "fb"; return; }
+    var m = vals.reduce(function(a, b){ return a + b; }, 0) / vals.length;
+    $("l3Mean").textContent = m.toFixed(1) + " cm";
+    if (vals.length < 3) { fb.textContent = "Only " + vals.length + " trial" + (vals.length > 1 ? "s" : "") + ". One result could be lucky or unlucky. Run more before deciding."; fb.className = "fb"; }
+    else if (m >= 10) { fb.textContent = "Average " + m.toFixed(1) + " cm meets the 10 cm target. Criterion met." + (vals.some(function(v){ return v < 10; }) ? " Notice that some single trials missed: that is why we use the average." : ""); fb.className = "fb ok"; }
+    else { fb.textContent = "Average " + m.toFixed(1) + " cm is below the 10 cm target. Criterion not met yet."; fb.className = "fb no"; }
+    $("l3Run").disabled = vals.length >= 8;
+  }
+  $("l3Run").addEventListener("click", function(){
+    if (vals.length >= 8) return;
+    var v = 10.6 + (Math.random() + Math.random() + Math.random() - 1.5) * 1.6;
+    vals.push(Math.round(v * 10) / 10); render();
+  });
+  $("l3Reset").addEventListener("click", function(){ vals = []; $("l3Run").disabled = false; render(); });
+  render();
+})();
+
+/* ---------- Lesson 4: three prototypes ---------- */
+var PROTO = {
+  names: ["Prototype A", "Prototype B", "Prototype C"],
+  crit: [
+    {label: "Lift height", unit: "cm", target: 10, higher: true, vals: [10.6, 12.8, 8.9], max: 14, rule: "at least 10 cm"},
+    {label: "Cup move time", unit: "s", target: 30, higher: false, vals: [27, 41, 24], max: 45, rule: "under 30 s"},
+    {label: "Water lost", unit: "drops", target: 5, higher: false, vals: [3, 1, 9], max: 10, rule: "5 drops or fewer"}
+  ]
+};
+function meets(c, v){ return c.higher ? v >= c.target : (c.unit === "s" ? v < c.target : v <= c.target); }
+(function(){
+  var box = $("l4Svg"), d = $("l4Detail");
+  var cols = ["var(--pa)", "var(--pb)", "var(--pc)"];
+  chipGroup($("l4Chips"), PROTO.crit, "", function(c){
+    clear(box);
+    var W = 360, H = 220, x0 = 46, y0 = 180, top = 20, h = y0 - top;
+    var s = sv("svg", {viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": c.label + " averages for three prototypes with a target line at " + c.target + " " + c.unit});
+    s.appendChild(sv("line", {x1: x0, y1: y0, x2: W - 10, y2: y0, "class": "axis"}));
+    [0, 0.5, 1].forEach(function(f){
+      var val = c.max * f, y = y0 - h * f;
+      s.appendChild(sv("text", {x: x0 - 6, y: y + 4, "text-anchor": "end", "class": "small"}, String(Math.round(val))));
+    });
+    c.vals.forEach(function(v, i){
+      var bw = 60, x = x0 + 24 + i * 100, bh = h * v / c.max;
+      var ok = meets(c, v);
+      var r = sv("rect", {x: x, y: y0 - bh, width: bw, height: bh, rx: 4, fill: cols[i], tabindex: "0", role: "img", "aria-label": PROTO.names[i] + ": " + v + " " + c.unit + ", " + (ok ? "meets target" : "misses target")});
+      r.addEventListener("focus", function(){ say(i); });
+      r.addEventListener("click", function(){ say(i); });
+      s.appendChild(r);
+      s.appendChild(sv("text", {x: x + bw / 2, y: y0 - bh - 6, "text-anchor": "middle", "class": "lbl"}, v + " " + c.unit));
+      s.appendChild(sv("text", {x: x + bw / 2, y: y0 + 18, "text-anchor": "middle", "class": "small"}, PROTO.names[i].replace("Prototype ", "Proto ")));
+      s.appendChild(sv("text", {x: x + bw / 2, y: y0 + 34, "text-anchor": "middle", "class": "small"}, ok ? "meets" : "misses"));
+    });
+    var ty = y0 - h * c.target / c.max;
+    s.appendChild(sv("line", {x1: x0, y1: ty, x2: W - 10, y2: ty, stroke: "var(--target)", "stroke-width": 2, "stroke-dasharray": "6 4"}));
+    s.appendChild(sv("text", {x: W - 12, y: ty - 6, "text-anchor": "end", "class": "small"}, "target " + c.target + " " + c.unit));
+    box.appendChild(s);
+    function say(i){
+      var v = c.vals[i], ok = meets(c, v);
+      detail(d, PROTO.names[i] + ": " + v + " " + c.unit, [(ok ? "Strength. " : "Weakness. ") + "Target is " + c.rule + ". " + (c.higher ? "Higher is better here." : "Lower is better here.")], c.label);
+    }
+    var best = c.vals.indexOf(c.higher ? Math.max.apply(null, c.vals) : Math.min.apply(null, c.vals));
+    var fails = c.vals.map(function(v, i){ return meets(c, v) ? null : PROTO.names[i]; }).filter(Boolean);
+    detail(d, c.label + ": target " + c.rule, [
+      "Best result: " + PROTO.names[best] + ". " + (fails.length ? "Misses the target: " + fails.join(" and ") + "." : "All three meet the target."),
+      "Tap or focus a bar for details."], c.higher ? "Higher is better" : "Lower is better");
+  }, 0);
+})();
+
+/* ---------- Lesson 5: improve prototype B ---------- */
+(function(){
+  var rows = [["Lift height", "at least 10 cm", 12.8, "cm"], ["Cup move time", "under 30 s", 41, "s"], ["Water lost", "5 drops or fewer", 1, "drops"]];
+  var O = [
+    {t: "Use a smaller output syringe on the base joint", after: [10.4, 28, 1], ok: true, msg: "Good choice. The arm now swings farther with each push, so it moves the cup in 28 s. Lift dropped to 10.4 cm, a trade-off, but it still meets the target. Every must criterion is now met."},
+    {t: "Add a third joint for more reach", after: [12.1, 46, 4], ok: false, msg: "This did not target the weakness. More joints mean more steps and more seals, so the arm got slower and leaked more."},
+    {t: "Fill the syringes with air instead of water", after: [7.5, 35, 0], ok: false, msg: "Air squashes under pressure, so the arm feels springy. It got a bit faster but lost lifting power, and now fails the lift criterion."},
+    {t: "Paint the arm to look tidier", after: [12.8, 41, 1], ok: false, msg: "Painting helps a want criterion, not the weakness. The data shows speed is the problem, so nothing important changed."}
+  ];
+  var tb = document.querySelector("#l5Table tbody"), box = $("l5Opts"), fb = $("l5Fb");
+  function crit(i){ return PROTO.crit[i]; }
+  function table(after){
+    clear(tb);
+    rows.forEach(function(r, i){
+      var tr = el("tr");
+      tr.appendChild(el("td", null, r[0])); tr.appendChild(el("td", null, r[1]));
+      var b = el("td", null, r[2] + " " + r[3]); if (!meets(crit(i), r[2])) b.className = "flag"; tr.appendChild(b);
+      var a = el("td", null, after ? after[i] + " " + r[3] : "?"); if (after && !meets(crit(i), after[i])) a.className = "flag"; tr.appendChild(a);
+      tb.appendChild(tr);
+    });
+  }
+  var btns = [];
+  O.forEach(function(o){
+    var b = el("button", {type: "button"}, o.t);
+    b.addEventListener("click", function(){
+      btns.forEach(function(x){ x.classList.remove("right", "wrong"); });
+      b.classList.add(o.ok ? "right" : "wrong");
+      table(o.after);
+      fb.textContent = o.msg; fb.className = "fb " + (o.ok ? "ok" : "no");
+    });
+    box.appendChild(b); btns.push(b);
+  });
+  table(null);
+})();
+
+/* ---------- Bench 1: budget build ---------- */
+(function(){
+  function val(name){ var r = document.querySelector("input[name=" + name + "]:checked"); return r ? r.value : null; }
+  var COST = {j: {"1": 2, "2": 4, "3": 6}, f: {cb: 0, st: 2, dw: 5}, g: {cc: 0, cp: 1, "3d": 6}, w: {water: 0, air: 0}};
+  var NOTES = {
+    "5": "A $5 budget is a tight constraint. Try a few builds: you will find that something always has to give. That is a negative impact on the design. Notice which free materials you start looking for: that is the positive side.",
+    "10": "A $10 budget allows a solid design if you spend on what matters most. Choosing where to spend is part of the design.",
+    "20": "A $20 budget gives lots of options. More money does not always mean a better design: the 3D printed claw costs the most but only helps control a little."
+  };
+  function clamp(x){ return Math.max(1, Math.min(5, x)); }
+  function update(){
+    var j = val("b1j"), f = val("b1f"), g = val("b1g"), w = val("b1w"), bud = +$("b1Budget").value;
+    var cost = COST.j[j] + COST.f[f] + COST.g[g] + COST.w[w];
+    var lift = clamp({cb: 2, st: 3, dw: 5}[f] - (w === "air" ? 1 : 0));
+    var reach = clamp({"1": 2, "2": 3, "3": 5}[j]);
+    var control = clamp((w === "water" ? 4 : 2) + {cc: -1, cp: 0, "3d": 1}[g]);
+    var rel = clamp({cb: 2, st: 4, dw: 5}[f] - (j === "3" ? 1 : 0));
+    var sc = [["Lift", lift], ["Reach", reach], ["Control", control], ["Reliability", rel]];
+    var bars = $("b1Bars"); clear(bars);
+    var met = 0;
+    sc.forEach(function(s){
+      var row = el("div", {"class": "barrow"});
+      row.appendChild(el("span", null, s[0]));
+      var tr = el("div", {"class": "track", role: "img", "aria-label": s[0] + " " + s[1] + " out of 5"});
+      var i = el("i"); i.style.width = (s[1] / 5 * 100) + "%"; if (s[1] < 3) i.className = "warn"; tr.appendChild(i);
+      row.appendChild(tr); row.appendChild(el("b", null, s[1] + "/5"));
+      bars.appendChild(row); if (s[1] >= 3) met++;
+    });
+    $("b1Cost").textContent = "$" + cost; $("b1Bud").textContent = "$" + bud; $("b1Met").textContent = met + " of 4";
+    var msgs = [];
+    if (cost > bud) msgs.push("Over budget by $" + (cost - bud) + ". This build breaks the constraint. Swap or remove a part.");
+    else msgs.push("Within budget, with $" + (bud - cost) + " left.");
+    var weak = sc.filter(function(s){ return s[1] < 3; }).map(function(s){ return s[0].toLowerCase(); });
+    msgs.push(weak.length ? "Predicted to miss: " + weak.join(", ") + "." : "Predicted to meet all four criteria.");
+    if (w === "air") msgs.push("Air squashes under pressure, so the arm feels springy and lifts less. Water barely squashes.");
+    msgs.push(NOTES[String(bud)]);
+    detail($("b1Msg"), cost > bud ? "Over budget" : (weak.length ? "Within budget, but not all criteria met" : "A design that works within the constraint"), msgs);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#bench input[type=radio]"), function(r){ r.addEventListener("change", update); });
+  $("b1Budget").addEventListener("change", update);
+  var note = $("b1Note"); note.value = store.b1Note || "";
+  note.addEventListener("input", function(){ store.b1Note = note.value; save(); });
+  update();
+})();
+
+/* ---------- Bench 2: test planner ---------- */
+(function(){
+  var CR = [
+    {t: "Lifts a 100 g load at least 10 cm", meas: ["Height the load is lifted, in cm", "How long the arm took to build", "How heavy the arm is", "How much the class likes it"], rule: ["Pass if the average height of the trials is at least 10 cm", "Pass if any one trial reaches 10 cm", "Pass if the arm looks strong", "Pass if it lifts something"]},
+    {t: "Moves a paper cup 20 cm sideways in under 30 s", meas: ["Time to move the cup 20 cm, in seconds", "Height the cup is lifted", "Number of syringes used", "How smooth the motion looks"], rule: ["Pass if the average time of the trials is under 30 s", "Pass if the fastest trial is under 30 s", "Pass if it feels fast", "Pass if the cup moves at all"]},
+    {t: "Loses no more than 5 drops of water after 20 open and close cycles", meas: ["Drops of water lost after 20 cycles", "Colour of the water", "Length of the tubing", "Time taken for one cycle"], rule: ["Pass if the average loss is 5 drops or fewer", "Pass if one trial has no drops", "Pass if the desk looks dry", "Pass if it leaks less than last week"]}
+  ];
+  var CTRL = [
+    ["Same load or cup each trial", true],
+    ["Same starting position each trial", true],
+    ["Same amount of water in the syringes", true],
+    ["Same operator, with a practice run first", true],
+    ["Use a heavier load if the first trial goes well", false],
+    ["A new student tries each trial with no practice", false]
+  ];
+  var cSel = $("b2Crit"), mSel = $("b2Meas"), rSel = $("b2Rule"), ctrl = $("b2Ctrl");
+  CR.forEach(function(c, i){ cSel.appendChild(el("option", {value: i}, c.t)); });
+  CTRL.forEach(function(c, i){
+    var l = el("label", {"for": "b2c" + i}); var cb = el("input", {type: "checkbox", id: "b2c" + i});
+    cb.addEventListener("change", plan);
+    l.appendChild(cb); l.appendChild(document.createTextNode(c[0])); ctrl.appendChild(l);
+  });
+  var mOrder, rOrder;
+  function fill(){
+    var c = CR[+cSel.value];
+    mOrder = shuffle([0, 1, 2, 3]); rOrder = shuffle([0, 1, 2, 3]);
+    clear(mSel); clear(rSel);
+    mSel.appendChild(el("option", {value: ""}, "Choose a measurement"));
+    rSel.appendChild(el("option", {value: ""}, "Choose a pass rule"));
+    mOrder.forEach(function(k){ mSel.appendChild(el("option", {value: k}, c.meas[k])); });
+    rOrder.forEach(function(k){ rSel.appendChild(el("option", {value: k}, c.rule[k])); });
+    plan(); clear($("b2Fb")); $("b2Fb").appendChild(el("p", null, "Build your plan, then press Check my plan."));
+  }
+  function plan(){
+    var c = CR[+cSel.value], box = $("b2Plan"); clear(box);
+    box.appendChild(el("span", {"class": "tagline"}, "Criterion"));
+    box.appendChild(el("p", null, c.t));
+    box.appendChild(el("p", null, "Measure: " + (mSel.value === "" ? "not chosen" : c.meas[+mSel.value])));
+    var kept = CTRL.filter(function(x, i){ return $("b2c" + i).checked; }).map(function(x){ return x[0].toLowerCase(); });
+    box.appendChild(el("p", null, "Keep the same: " + (kept.length ? kept.join("; ") : "nothing chosen")));
+    box.appendChild(el("p", null, "Trials: " + $("b2Trials").value));
+    box.appendChild(el("p", null, "Decision: " + (rSel.value === "" ? "not chosen" : c.rule[+rSel.value])));
+  }
+  cSel.addEventListener("change", fill);
+  [mSel, rSel, $("b2Trials")].forEach(function(s){ s.addEventListener("change", plan); });
+  $("b2Check").addEventListener("click", function(){
+    var issues = [], good = [];
+    if (mSel.value === "0") good.push("Your measurement matches the criterion."); else issues.push("Measure the exact thing the criterion names, with its unit.");
+    var missing = CTRL.filter(function(x, i){ return x[1] && !$("b2c" + i).checked; });
+    var bad = CTRL.filter(function(x, i){ return !x[1] && $("b2c" + i).checked; });
+    if (!missing.length) good.push("You kept the important variables the same."); else issues.push("Also keep these the same: " + missing.map(function(x){ return x[0].toLowerCase(); }).join("; ") + ".");
+    if (bad.length) issues.push("These would make the test unfair: " + bad.map(function(x){ return x[0].toLowerCase(); }).join("; ") + ".");
+    if (+$("b2Trials").value >= 3) good.push("Repeated trials make the average more reliable."); else issues.push("One trial could be lucky or unlucky. Use at least 3.");
+    if (rSel.value === "0") good.push("Your pass rule uses the average and the target number."); else issues.push("Decide using the average of all trials compared with the target number.");
+    var fb = $("b2Fb"); clear(fb);
+    fb.appendChild(el("h5", null, issues.length ? "Plan needs work (" + issues.length + " to fix)" : "Fair test. Ready to run."));
+    good.forEach(function(g){ fb.appendChild(el("p", {"class": "fb ok"}, "✓ " + g)); });
+    issues.forEach(function(g){ fb.appendChild(el("p", {"class": "fb no"}, "✗ " + g)); });
+  });
+  fill();
+})();
+
+/* ---------- Bench 3: data analyzer ---------- */
+(function(){
+  var TYPES = [
+    {name: "Lift height", unit: "cm", target: 10, higher: true, rule: "at least 10 cm", gen: function(){ var c = 7.5 + Math.random() * 5; return [0, 0, 0].map(function(){ return Math.round((c + (Math.random() - 0.5) * 2) * 10) / 10; }); },
+      fix: [["Use a larger output syringe so the arm pushes with more force", true], ["Use a smaller output syringe", false], ["Paint the arm a brighter colour", false]]},
+    {name: "Cup move time", unit: "s", target: 30, higher: false, rule: "under 30 s", gen: function(){ var c = 22 + Math.random() * 16; return [0, 0, 0].map(function(){ return Math.round(c + (Math.random() - 0.5) * 6); }); },
+      fix: [["Use a smaller output syringe so each push moves the arm farther", true], ["Add a heavier gripper", false], ["Fill the syringes with air instead of water", false]]},
+    {name: "Water lost after 20 cycles", unit: "drops", target: 5, higher: false, rule: "5 drops or fewer", gen: function(){ var c = 1 + Math.random() * 8; return [0, 0, 0].map(function(){ return Math.max(0, Math.round(c + (Math.random() - 0.5) * 4)); }); },
+      fix: [["Reseal the joints and tighten the tubing with cable ties", true], ["Add another joint", false], ["Make the arm longer", false]]}
+  ];
+  var cur, mean, right = 0, tries = 0;
+  function okFor(t, v){ return t.higher ? v >= t.target : (t.unit === "s" ? v < t.target : v <= t.target); }
+  function choices(box, list, fbId, onDone){
+    clear(box); var btns = [];
+    shuffle(list).forEach(function(o){
+      var b = el("button", {type: "button"}, o[0]);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.disabled = true; });
+        b.classList.add(o[1] ? "right" : "wrong");
+        onDone(o[1], o[2]);
+      });
+      box.appendChild(b); btns.push(b);
+    });
+  }
+  function score(){ $("b3Score").textContent = "This session: " + right + " of " + tries + " averages correct"; }
+  function newProb(){
+    var t = pick(TYPES), v = t.gen();
+    mean = Math.round(v.reduce(function(a, b){ return a + b; }, 0) / 3 * 10) / 10;
+    cur = {t: t, v: v};
+    var p = pick(["A", "B", "C", "D"]);
+    detail($("b3Prob"), "Prototype " + p + ": " + t.name, ["Target: " + t.rule + ".", "Trials: " + v.map(function(x){ return x + " " + t.unit; }).join(", ") + "."], "Practice data");
+    $("b3Ans").value = ""; $("b3Fb").textContent = ""; $("b3Fb").className = "fb";
+    $("b3Step2").hidden = true; $("b3Step3").hidden = true;
+    score();
+  }
+  $("b3Check").addEventListener("click", function(){
+    var a = parseFloat($("b3Ans").value), fb = $("b3Fb");
+    if (isNaN(a)) { fb.textContent = "Type the average first."; fb.className = "fb no"; return; }
+    tries++;
+    var t = cur.t, sum = cur.v.reduce(function(x, y){ return x + y; }, 0);
+    var ok = Math.abs(a - mean) < 0.051;
+    if (ok) right++;
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + "Average = (" + cur.v.join(" + ") + ") ÷ 3 = " + fmt(sum, 1) + " ÷ 3 = " + mean.toFixed(1) + " " + t.unit + ".";
+    fb.className = "fb " + (ok ? "ok" : "no");
+    score();
+    $("b3Step2").hidden = false; $("b3Step3").hidden = true; $("b3Fb2").textContent = "";
+    var strong = okFor(t, mean);
+    choices($("b3Sw"), [["Strength: it meets the target", strong], ["Weakness: it misses the target", !strong]], "b3Fb2", function(r){
+      var f2 = $("b3Fb2");
+      f2.textContent = (r ? "Correct. " : "Not quite. ") + mean.toFixed(1) + " " + t.unit + (strong ? " meets" : " misses") + " the target (" + t.rule + ")." + (strong ? " Keep this feature and test the next criterion." : "");
+      f2.className = "fb " + (r ? "ok" : "no");
+      if (!strong) {
+        $("b3Step3").hidden = false; $("b3Fb3").textContent = "";
+        choices($("b3Imp"), t.fix.map(function(x){ return [x[0], x[1]]; }), "b3Fb3", function(r2){
+          var good = t.fix.filter(function(x){ return x[1]; })[0][0];
+          $("b3Fb3").textContent = (r2 ? "Correct. " : "Not quite. The best choice is: " + good.toLowerCase() + ". ") + "It targets the weakness. Retest afterwards, because the change may affect other criteria.";
+          $("b3Fb3").className = "fb " + (r2 ? "ok" : "no");
+        });
+      }
+    });
+  });
+  $("b3New").addEventListener("click", newProb);
+  newProb();
+})();
+
+/* ---------- Bench 4: decision matrix ---------- */
+(function(){
+  var CRIT = ["Lift", "Speed", "No leaks", "Low cost"];
+  var SC = [["Prototype A", [3, 4, 4, 4]], ["Prototype B", [5, 2, 5, 3]], ["Prototype C", [2, 5, 2, 5]]];
+  var W = store.b4w || [3, 2, 3, 1];
+  var tbl = $("b4Table");
+  function build(){
+    clear(tbl);
+    var th = el("thead"), hr = el("tr"); hr.appendChild(el("th", null, "Prototype"));
+    CRIT.forEach(function(c, i){
+      var h = el("th"); var lab = el("label", {"for": "b4w" + i}, c + " weight "); var s = el("select", {id: "b4w" + i});
+      [1, 2, 3].forEach(function(k){ var o = el("option", {value: k}, "×" + k); if (k === W[i]) o.selected = true; s.appendChild(o); });
+      s.addEventListener("change", function(){ W[i] = +s.value; store.b4w = W; save(); build(); });
+      lab.appendChild(s); h.appendChild(lab); hr.appendChild(h);
+    });
+    hr.appendChild(el("th", null, "Total")); th.appendChild(hr); tbl.appendChild(th);
+    var tb = el("tbody"), totals = SC.map(function(p){ return p[1].reduce(function(a, s, i){ return a + s * W[i]; }, 0); });
+    var mx = Math.max.apply(null, totals), winners = totals.filter(function(t){ return t === mx; }).length;
+    SC.forEach(function(p, r){
+      var tr = el("tr"); if (totals[r] === mx && winners === 1) tr.className = "win";
+      tr.appendChild(el("td", null, p[0]));
+      p[1].forEach(function(s){ tr.appendChild(el("td", null, String(s))); });
+      tr.appendChild(el("td", null, String(totals[r]))); tb.appendChild(tr);
+    });
+    tbl.appendChild(tb);
+    var wi = totals.indexOf(mx), msg = [];
+    if (winners > 1) msg.push("There is a tie at " + mx + " points. Change a weight to decide what matters most.");
+    else msg.push(SC[wi][0] + " has the highest total (" + mx + "). Changing the weights can change the winner, so the team must agree on what matters most.");
+    var lowSpeed = SC[wi][1][1] <= 2, lowLeak = SC[wi][1][2] <= 2, lowLift = SC[wi][1][0] <= 2;
+    if (winners === 1 && (lowSpeed || lowLeak || lowLift)) msg.push("Careful: " + SC[wi][0] + " scored 2 or less on a must criterion (" + [lowLift ? "lift" : "", lowSpeed ? "speed" : "", lowLeak ? "no leaks" : ""].filter(Boolean).join(", ") + "). A high total does not fix a failed must. Improve that weakness and retest before choosing it.");
+    detail($("b4Msg"), "Result", msg, "Weighted totals");
+  }
+  build();
+  var prob;
+  function newProb(){
+    var s = [rint(1, 5), rint(1, 5), rint(1, 5)], w = [rint(1, 3), rint(1, 3), rint(1, 3)];
+    var names = shuffle(["Lift", "Speed", "No leaks", "Low cost", "Fits desk"]).slice(0, 3);
+    prob = {s: s, w: w, names: names, ans: s[0] * w[0] + s[1] * w[1] + s[2] * w[2]};
+    detail($("b4Prob"), "Prototype " + pick(["D", "E", "F"]), names.map(function(n, i){ return n + ": score " + s[i] + ", weight ×" + w[i]; }), "Practice data");
+    $("b4Ans").value = ""; $("b4Fb").textContent = ""; $("b4Fb").className = "fb";
+  }
+  $("b4Check").addEventListener("click", function(){
+    var a = parseFloat($("b4Ans").value), fb = $("b4Fb");
+    if (isNaN(a)) { fb.textContent = "Type the total first."; fb.className = "fb no"; return; }
+    var ok = a === prob.ans;
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + prob.s.map(function(x, i){ return x + " × " + prob.w[i]; }).join(" + ") + " = " + prob.s.map(function(x, i){ return x * prob.w[i]; }).join(" + ") + " = " + prob.ans + ".";
+    fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  $("b4New").addEventListener("click", newProb);
+  newProb();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Criterion or constraint?", bins: ["Design criterion (what success looks like)", "Constraint (a limit to work within)"], items: [
+    ["The arm lifts a 100 g load at least 10 cm.", 0, "This describes what the solution must do."],
+    ["Each team may spend no more than $10.", 1, "Budget is a limit on how you build."],
+    ["The arm moves a cup 20 cm in under 30 s.", 0, "This is a performance requirement you can test."],
+    ["Only materials from the supply bin may be used.", 1, "Available materials limit the design."],
+    ["The build must be finished in four class periods.", 1, "Time is a constraint."],
+    ["The arm loses no more than 5 drops of water after 20 cycles.", 0, "This tells you what a successful arm does."],
+    ["No hot glue guns without a teacher present.", 1, "A safety rule limits how you can build."],
+    ["A student can operate the arm with one hand.", 0, "This is a requirement for the user."],
+    ["Only scissors and hole punches may be used as tools.", 1, "Available tools are a constraint."],
+    ["The gripper holds a paper cup without crushing it.", 0, "This is a requirement the solution must meet."]
+  ]},
+  {label: "Measurable or vague?", bins: ["Specific and measurable", "Too vague to test"], items: [
+    ["The bridge holds at least 2 kg.", 0, "A mass you can check with a scale."],
+    ["The bridge is sturdy.", 1, "Sturdy has no number."],
+    ["The boat floats with 20 pennies inside for 1 minute.", 0, "Load and time are both stated."],
+    ["The boat floats well.", 1, "Well is a matter of opinion."],
+    ["The parachute takes at least 4 s to fall 3 m.", 0, "Time and distance can be measured."],
+    ["The parachute falls slowly.", 1, "How slowly?"],
+    ["The lunch bag keeps a drink below 10 °C for 3 hours.", 0, "Temperature and time are measurable."],
+    ["The lunch bag keeps food cold.", 1, "How cold, and for how long?"],
+    ["The arm is easy to use.", 1, "Easy for whom? You could make it measurable, for example: a new user succeeds on the first try."],
+    ["A new user can move the cup on their first try.", 0, "You can count first-try successes."]
+  ]},
+  {label: "Fair test or not?", bins: ["Fair test", "Not a fair test"], items: [
+    ["Three trials with the same 100 g load each time.", 0, "Repeated trials with the load kept the same."],
+    ["Prototype A lifts 100 g, Prototype B lifts 200 g, then you compare heights.", 1, "The load changed, so the comparison is unfair."],
+    ["Each prototype starts from the same arm position.", 0, "The starting position is controlled."],
+    ["One trial only, then you decide.", 1, "One trial can be lucky or unlucky."],
+    ["The same student, after a practice run, operates every prototype.", 0, "The operator is controlled."],
+    ["A different student times each trial with a different stopwatch.", 1, "Timing could vary between people and tools."],
+    ["Every syringe is filled with the same amount of water.", 0, "The fluid is controlled."],
+    ["You test the best-looking prototype more times than the others.", 1, "Every prototype should get the same number of trials."],
+    ["You record every result, even the one that looked wrong.", 0, "Honest records are part of a fair test."],
+    ["You skip the trial where the arm leaked.", 1, "Leaving out results hides weaknesses."]
+  ]},
+  {label: "Helps or limits innovation?", bins: ["Positive impact", "Negative impact"], items: [
+    ["A $5 budget leads a team to build the frame from free recycled cardboard.", 0, "The constraint sparked a creative, low-cost idea."],
+    ["A $5 budget means the team cannot buy enough tubing for a second joint.", 1, "The constraint limited what the design can do."],
+    ["A short deadline makes the team focus on the must criteria first.", 0, "The time limit helped the team set priorities."],
+    ["A short deadline means the team has no time to retest after a fix.", 1, "Weaknesses may go unnoticed."],
+    ["No power tools, so the team designs snap-together parts anyone can rebuild.", 0, "A simpler, more shareable design."],
+    ["No power tools, so the holes are rough and the joints wobble.", 1, "Lower precision weakened the build."],
+    ["Only items on board Apollo 13 could be used, so engineers invented a filter adapter.", 0, "A strict constraint led to a famous solution."],
+    ["A tiny size limit makes a long arm tip over.", 1, "The size limit created a stability problem."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Design criteria", "The specific requirements a solution must meet so a need, want or problem is addressed."],
+  ["Need", "Something that must be solved or provided for the solution to be useful."],
+  ["Want", "Something nice to have that is not required."],
+  ["Measurable criterion", "A requirement with a number and unit that a test can check, such as at least 10 cm."],
+  ["Must criterion", "A requirement the solution fails without."],
+  ["Constraint", "A limit you must work within, such as budget, materials, time, tools, safety or size."],
+  ["Budget", "The amount of money available. A common constraint."],
+  ["Innovation", "A new idea, method or product that solves a problem in a better way."],
+  ["Prototype", "An early working model of a solution, built to test ideas."],
+  ["Test", "A planned check of whether a solution meets a design criterion."],
+  ["Fair test", "A test where only the thing being tested changes and everything else stays the same."],
+  ["Controlled variable", "Something kept the same in every trial so the test is fair."],
+  ["Trial", "One run of a test. Testers repeat trials, usually at least three."],
+  ["Average (mean)", "Add the results and divide by the number of results."],
+  ["Target", "The number in a criterion that a result must reach or beat."],
+  ["Strength", "A result that meets or beats its target."],
+  ["Weakness", "A result that misses its target."],
+  ["Trade-off", "Giving up some of one thing to gain another, such as less lift for more speed."],
+  ["Decision matrix", "A table that scores options on each criterion, often with weights, to compare them."],
+  ["Iteration", "Repeating the build, test and improve cycle to make a solution better."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What are design criteria?", ["The specific requirements a solution must meet", "The money a team can spend", "The tools a team may use", "The final grade for a project"], "Criteria describe what a successful solution must do."],
+  ["Which criterion is the most measurable?", ["The arm lifts a 100 g load at least 10 cm.", "The arm is strong.", "The arm works well.", "The arm is better than before."], "It names a load and a height you can measure."],
+  ["Why should criteria be specific?", ["So a test can show whether they were met", "So the design looks better", "So the project costs more", "So no testing is needed"], "Specific criteria can be checked with a test."],
+  ["Which is a constraint?", ["Each team may spend no more than $10.", "The arm lifts 100 g.", "The arm moves a cup in under 30 s.", "The gripper holds a cup."], "Budget is a limit you work within."],
+  ["Which list contains only constraints?", ["Budget, time, available materials", "Lift, speed, no leaks", "Budget, lift, speed", "Speed, time, colour"], "Budget, time and materials limit how you build."],
+  ["How can a constraint have a positive impact on innovation?", ["It can push designers to invent clever new solutions.", "It always makes the solution cheaper and better.", "It removes the need for testing.", "It never has a positive impact."], "Limits can spark creativity, like the Apollo 13 filter adapter."],
+  ["How can a constraint have a negative impact?", ["It can force weaker materials so the design fails sooner.", "It makes testing unfair.", "It turns criteria into wants.", "It makes data impossible to analyze."], "Tight limits can reduce quality or performance."],
+  ["In 1970, Apollo 13 engineers built an air filter adapter from items on board. This shows that…", ["a strict constraint can lead to an innovative solution", "constraints always stop good ideas", "testing is not needed in emergencies", "budget is the only constraint"], "They could only use what the crew had, and still solved the problem."],
+  ["What does testing a solution tell you?", ["Whether the design criteria were met", "How much the materials cost", "Who designed it", "Whether constraints exist"], "Tests check each criterion."],
+  ["In a fair test, what should change?", ["Only the thing being tested", "Everything", "The load and the operator", "Nothing at all"], "Keep everything else the same."],
+  ["Which is a controlled variable when testing lift height?", ["The mass of the load", "The height lifted", "The prototype being tested", "The result of trial 2"], "The load is kept the same; height is what you measure."],
+  ["Why run at least three trials?", ["One result could be lucky or unlucky.", "Three is the law.", "It makes the arm stronger.", "To use up class time."], "Repeated trials make the average more reliable."],
+  ["Trials for lift height are 9 cm, 11 cm and 13 cm. What is the average?", ["11 cm", "33 cm", "13 cm", "10 cm"], "(9 + 11 + 13) ÷ 3 = 33 ÷ 3 = 11 cm."],
+  ["Cup move times are 28 s, 31 s and 34 s. The target is under 30 s. Is the criterion met?", ["No, the average is 31 s.", "Yes, one trial was under 30 s.", "Yes, the average is 28 s.", "It cannot be decided."], "Average = 93 ÷ 3 = 31 s, which misses the target."],
+  ["To test the criterion “moves a cup 20 cm in under 30 s”, what should you measure?", ["The time to move the cup 20 cm", "The height the cup is lifted", "The cost of the arm", "The colour of the cup"], "Measure the exact thing the criterion names."],
+  ["For water lost from a leaky arm, is a higher or lower result better?", ["Lower", "Higher", "It does not matter", "Exactly 5 drops"], "Fewer drops lost means fewer leaks."],
+  ["Prototype B lifts 12.8 cm (target 10 cm) but takes 41 s (target under 30 s). Its weakness is…", ["speed", "lift", "both", "neither"], "41 s misses the time target."],
+  ["Which improvement best targets a slow arm?", ["Use a smaller output syringe so each push moves the arm farther", "Paint the arm", "Add a heavier gripper", "Run fewer trials"], "A smaller output syringe gives more movement per push."],
+  ["A larger output syringe gives more force but less movement. This is an example of…", ["a trade-off", "a constraint", "a fair test", "a want"], "Gaining one thing costs some of another."],
+  ["Why retest after making an improvement?", ["The change may have affected other criteria.", "The first test is always wrong.", "Retesting is a constraint.", "To make the data look better."], "Fixes can create new weaknesses."],
+  ["In a decision matrix, a weight shows…", ["how important a criterion is", "how heavy the prototype is", "the cost of each part", "the number of trials"], "A higher weight counts that criterion more."],
+  ["Scores 4 and 3 with weights 2 and 3 give a weighted total of…", ["17", "12", "7", "24"], "4 × 2 + 3 × 3 = 8 + 9 = 17."],
+  ["A prototype has the highest total but fails a must criterion. What should the team do?", ["Improve that weakness and retest before choosing it", "Choose it anyway", "Delete the criterion", "Lower the target"], "A high total does not fix a failed must."],
+  ["Which filling makes a syringe arm feel springy and weak?", ["Air", "Water", "Coloured water", "Cooking oil"], "Air squashes under pressure. Liquids barely squash."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What are design criteria? Give one example for a hydraulic arm.", a: "Design criteria are the specific requirements a solution must meet so the need, want or problem is addressed. For example, the arm must lift a 100 g load at least 10 cm.", k: ["Requirements a solution must meet", "Linked to a need, want or problem", "Specific example with a number"]},
+  {q: "Rewrite the vague criterion “the boat should float well” so that it is measurable.", a: "The boat floats with 20 pennies inside for at least 1 minute without water coming in. Now there is a load, a time and a clear pass or fail.", k: ["Adds a number or amount", "Adds a unit, such as time or mass", "Can be checked with a test"]},
+  {q: "What is the difference between a criterion and a constraint?", a: "A criterion describes what the solution must do to be successful, such as lifting 100 g. A constraint is a limit you must work within while designing, such as a $10 budget or a four day deadline.", k: ["Criterion: what success looks like", "Constraint: a limit on how you build", "Example of each"]},
+  {q: "Describe how a budget constraint might have a negative impact on a solution.", a: "A small budget can force a team to use cheaper, weaker materials, such as cardboard instead of wood. The arm might bend, break or leak sooner, so it may not meet its criteria.", k: ["Names a budget limit", "Cheaper or fewer parts", "Effect on performance or criteria"]},
+  {q: "Describe how a constraint might have a positive impact on innovation.", a: "A constraint can push designers to think creatively. With only $5, a team might invent a gripper from a clothespin and a frame from recycled cardboard. On Apollo 13, engineers could only use items on board and still designed a working air filter adapter.", k: ["Constraint pushes creative thinking", "New or clever solution", "Example"]},
+  {q: "Why do testers run at least three trials and use the average?", a: "Results vary a little each time because of small changes in how the test is done. One trial could be lucky or unlucky. The average of several trials gives a more reliable result to compare with the target.", k: ["Results vary between trials", "One trial can mislead", "Average is more reliable"]},
+  {q: "Name three variables you would keep the same when testing how high a hydraulic arm lifts a load.", a: "Keep the same load, the same starting position of the arm, and the same amount of water in the syringes. Having the same practised operator also helps.", k: ["Same load", "Same starting position", "Same fluid amount or same operator"]},
+  {q: "Trials for cup move time are 33 s, 29 s and 31 s. The target is under 30 s. Is this a strength or a weakness? Show your work.", a: "Average = (33 + 29 + 31) ÷ 3 = 93 ÷ 3 = 31 s. 31 s is not under 30 s, so this is a weakness, even though one trial passed.", k: ["Correct average of 31 s", "Compares with target", "Weakness, despite one passing trial"]},
+  {q: "What is a trade-off? Give an example from the hydraulic arm.", a: "A trade-off is giving up some of one thing to gain another. A smaller output syringe makes the arm move farther and faster, but it pushes with less force, so it lifts less.", k: ["Definition: gain one thing, lose some of another", "Hydraulic arm example", "Explains both sides"]}
+];
+var LONG = [
+  {q: "Your team must design a lunch bag that keeps a drink cold. Write three measurable design criteria and two constraints. Explain how one constraint might affect your design.", a: "Criteria: keeps a drink below 10 °C for 3 hours; fits inside a standard locker; weighs less than 500 g. Constraints: $8 budget; only materials from the classroom bin. The budget may stop us from buying foam insulation, which is a negative impact. It could also push us to reuse bubble wrap and foil, a creative low-cost solution.", k: ["Three criteria with numbers and units", "Two constraints", "Explains an impact of a constraint", "Considers positive or negative effects"]},
+  {q: "Design a fair test to check whether a hydraulic arm meets the criterion “loses no more than 5 drops of water after 20 open and close cycles.” Include what you measure, what you keep the same, the number of trials and how you decide.", a: "Measure the drops of water lost after 20 full cycles by catching them on a paper towel or counting them in a tray. Keep the same amount of water in each syringe, the same speed of each cycle, the same operator and the same tubing. Run three trials, refilling to the same level each time. Find the average; the arm passes if the average is 5 drops or fewer.", k: ["Measures drops lost after 20 cycles", "At least three controlled variables", "At least three trials", "Pass rule uses the average and the target"]},
+  {q: "Use the Lesson 4 data. Prototype A: 10.6 cm, 27 s, 3 drops. Prototype B: 12.8 cm, 41 s, 1 drop. Prototype C: 8.9 cm, 24 s, 9 drops. Identify each prototype’s strengths and weaknesses and recommend which one to improve. Justify your choice.", a: "A meets all three targets, so it has no weaknesses, though its lift is only just above 10 cm. B is the best lifter and leaks least, but it is too slow. C is fastest but lifts too little and leaks too much. I recommend A, because it already meets every must criterion. If the team wants more lift, B could be improved by fixing its one weakness, speed, and then retested.", k: ["Compares each result with its target", "Names strengths and weaknesses for all three", "Clear recommendation", "Justified with data"]},
+  {q: "Debate: “A bigger budget always leads to a better design.” Agree or disagree, using evidence from this lab.", a: "Disagree. A bigger budget gives more choices, but a better design comes from meeting the criteria. In the budget build, a $10 arm with craft sticks and a clothespin met all four criteria, while the costly 3D printed claw only helped control a little. Constraints can also spark innovation, as on Apollo 13. However, a budget that is too small can stop a design from working at all, so budget does matter.", k: ["Clear position", "Evidence from the lab", "Mentions innovation under constraints", "Acknowledges the other side"]}
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["CS3.K1", "Design criteria are the specific requirements a solution must meet to ensure needs, wants, or problems are addressed.", "Learn Lesson 1 (Make it measurable); Sort It: Criterion or constraint, Measurable or vague; Flashcards; Quiz; Written Review"],
+    ["CS3.K2", "Constraints, e.g., budget or available resources, limit the design of a solution and can have positive or negative impacts on innovation.", "Learn Lesson 2 (Constraint explorer, Apollo 13); Lab Bench Investigation 1; Sort It: Helps or limits innovation; Quiz; Written Review"],
+    ["CS3.K3", "Solutions can be tested to determine whether design criteria were met.", "Learn Lesson 3 (Lift test) and Lesson 5 (retest); Lab Bench Investigation 2; Sort It: Fair test or not; Quiz"],
+    ["CS3.K4", "Data can be analyzed to identify potential strengths and weaknesses of a design.", "Learn Lesson 4 (target line graph) and Lesson 5; Lab Bench Investigations 3 and 4; Quiz; Written Review extended response 3"],
+    ["CS3.S1", "Describe how constraints might impact a solution.", "Lab Bench Investigation 1 (Budget build, written reflection); Learn Lesson 2; Written Review short answers 4 and 5, extended response 4"],
+    ["CS3.S2", "Design a test to evaluate potential solutions based on design criteria.", "Lab Bench Investigation 2 (Test planner); Learn Lesson 3; Written Review extended response 2"],
+    ["CS3.S3", "Analyze potential improvements to a solution.", "Learn Lesson 5 (Improve Prototype B); Lab Bench Investigations 3 and 4; Written Review short answer 9, extended response 3"]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

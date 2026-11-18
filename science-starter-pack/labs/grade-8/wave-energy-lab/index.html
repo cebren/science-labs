@@ -1,0 +1,1488 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/wave-energy-lab/"><meta name="description" content="Energy can be transferred as a wave."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Wave Energy Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a ripple bench. Sticky tab strip, then lessons that pair a short reading column with a live model: a bead rope, a labelled wave, an energy meter, a bell jar, a slinky, a boundary explorer, a mirror and a refraction tank. Teal marks the wave itself, red marks light rays, dashed grey marks the normal. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#15212C; --muted:#53606D; --line:#D2D9E0;
+  --acc:#1D5FA8; --acc-soft:#DFEAF6;
+  --wave:#0F6E7A; --wave-soft:#DCEFF1; --ray:#B3261E; --ray-soft:#F8E1DE; --energy:#8A5A00; --energy-fill:#E9A93A; --energy-soft:#FBF0D8;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --water:#CFE6F2; --glass:#E3E9EE; --air:#FFFFFF; --mirror:#7E8C99;
+  --d1:#C62828; --d2:#D97706; --d3:#2E8B47; --d4:#2F64C8; --d5:#7340B8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --wave:#5FC8D4; --wave-soft:#12303A; --ray:#FF8A80; --ray-soft:#3A1C18; --energy:#F2C14E; --energy-fill:#E9A93A; --energy-soft:#3A2F12;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --water:#163447; --glass:#26313B; --air:#161E26; --mirror:#8E9CAA;
+  --d1:#FF6B6B; --d2:#FFB347; --d3:#6FD08C; --d4:#7FA8FF; --d5:#C49BFF;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --wave:#5FC8D4; --wave-soft:#12303A; --ray:#FF8A80; --ray-soft:#3A1C18; --energy:#F2C14E; --energy-fill:#E9A93A; --energy-soft:#3A2F12;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --water:#163447; --glass:#26313B; --air:#161E26; --mirror:#8E9CAA;
+  --d1:#FF6B6B; --d2:#FFB347; --d3:#6FD08C; --d4:#7FA8FF; --d5:#C49BFF;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--acc)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--acc)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .wv{color:var(--wave)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson,.inv{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--acc-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--acc)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.wv{color:var(--wave);font-weight:700} .rv{color:var(--ray);font-weight:700}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.two>*{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tg{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tg.on{background:var(--wave-soft);border-color:var(--wave);color:var(--ink)}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .mtxt{font-family:var(--f-mono);font-size:12px;font-weight:600}
+svg [tabindex]{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+label.field output{font-family:var(--f-mono);font-weight:600;color:var(--wave)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+select{width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--energy-fill);border-radius:7px;transition:width .3s ease}
+.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.chain div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;display:grid;gap:2px}
+.chain b{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--energy)}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;font-variant-numeric:tabular-nums}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--good)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--acc)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Energy: Stores, Static and Waves · EN3</div>
+    <h1><span class="wv">Wave</span> Energy Lab</h1>
+    <p class="under"><b>Understanding:</b> Energy can be transferred as a wave. A ripple crossing Sylvan Lake, a rumble from a distant earthquake and the sunlight warming a January sidewalk all carry energy from one place to another, and none of them carries the water, rock or air along with it.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. Start with what a wave is, measure its parts, see how it carries energy, then follow waves as they cross from one material into another.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Energy on the move</span>
+      <div class="codes"><span class="code">EN3.K1</span><span class="code">EN3.S1</span></div>
+      <h3>A wave carries energy, not matter</h3>
+      <p>Tie one end of a rope to a post and flick the other end. A bump races along the rope. When it reaches the post, the post shakes. Energy travelled from your hand to the post.</p>
+      <p>Did the rope travel to the post? No. Each piece of rope moved up, then back down to where it started. A <b>wave</b> is a disturbance or <b>oscillation</b> (a back and forth or up and down motion) that transfers energy from one point to another without carrying matter along with it.</p>
+      <p>The same is true on a lake. A duck sitting on the water bobs up and down as waves pass. The waves move toward shore, but the duck stays in about the same place.</p>
+      <div class="key"><b>Remember:</b> the energy travels along the wave. The material only moves back and forth around its resting place.</div>
+      <p class="note">Waves that break on a beach are different: near shore the wave topples over and water does rush forward. Out in open water, the water mostly just bobs.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a rope of beads</h4>
+      <p class="hint">Watch the red bead. Send a single pulse or make a steady wave. Does the red bead ever reach the post?</p>
+      <div class="svgbox"><svg id="ropeSvg" viewBox="0 0 520 200" role="img" aria-label="A rope of beads with one red bead, attached to a post on the right"></svg></div>
+      <div class="row">
+        <button class="btn" id="ropePulse" type="button">Send a pulse</button>
+        <button class="btn ghost" id="ropeSteady" type="button">Make a steady wave</button>
+        <button class="btn ghost" id="ropeStop" type="button">Stop</button>
+      </div>
+      <div class="stats" id="ropeStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Measuring a wave</span>
+      <div class="codes"><span class="code">EN3.K2</span><span class="code">EN3.S2</span></div>
+      <h3>Waves repeat, so we can measure them</h3>
+      <p>A steady wave has a repeating pattern. The high points are <b>crests</b>. The low points are <b>troughs</b>. The middle line is the <b>rest position</b>, where the rope sits when no wave passes.</p>
+      <ul>
+        <li><b>Wavelength</b> (λ): the distance from one crest to the next crest, in metres.</li>
+        <li><b>Amplitude</b> (A): the distance from the rest position to a crest (or to a trough).</li>
+        <li><b>Frequency</b> (f): how many waves pass a point each second, in hertz (Hz). 1 Hz means 1 wave per second.</li>
+        <li><b>Period</b> (T): the time for one whole wave to pass, in seconds.</li>
+        <li><b>Speed</b> (v): how far a crest travels each second, in metres per second (m/s).</li>
+      </ul>
+      <div class="formula">T = 1 ÷ f &nbsp;&nbsp;&nbsp; v = f × λ</div>
+      <p class="hint">You do not need to memorize these. They are tools you can look up and use.</p>
+    </div>
+    <div class="model">
+      <h4>Model: parts of a wave</h4>
+      <div class="two">
+        <label class="field" for="wpL">Wavelength <output id="wpLo">1.0 m</output><input type="range" id="wpL" min="0.5" max="2" step="0.1" value="1"></label>
+        <label class="field" for="wpA">Amplitude <output id="wpAo">0.20 m</output><input type="range" id="wpA" min="0.05" max="0.35" step="0.05" value="0.2"></label>
+        <label class="field" for="wpF">Frequency <output id="wpFo">1.0 Hz</output><input type="range" id="wpF" min="0.5" max="3" step="0.5" value="1"></label>
+      </div>
+      <div class="svgbox"><svg id="partsSvg" viewBox="0 0 520 220" role="img" aria-label="A labelled wave showing crest, trough, wavelength, amplitude and rest position"></svg></div>
+      <div class="row"><button class="btn ghost" id="partsPlay" type="button">Play</button><span class="hint">The scale is 1 m = 100 px across the box.</span></div>
+      <div class="stats" id="partsStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Energy in a wave</span>
+      <div class="codes"><span class="code">EN3.K3</span><span class="code">EN3.S1</span></div>
+      <h3>Bigger and faster waves carry more energy</h3>
+      <p>In Science 8 you track energy in <b>stores</b>, like the kinetic store of a moving object or the gravitational store of a raised object. A wave is a way to <b>transfer</b> energy from one store to another.</p>
+      <p>To make a wave with a bigger <b>amplitude</b>, you have to swing your hand farther. To make a wave with a higher <b>frequency</b>, you have to swing it more often. Both take more energy from you, so the wave carries more energy to the far end.</p>
+      <p>For the same kind of wave in the same material, doubling the amplitude makes the wave carry about <b>4 times</b> as much energy each second. Doubling the frequency also gives about 4 times as much.</p>
+      <div class="formula">energy carried each second ∝ A² × f² &nbsp;(same wave type, same material)</div>
+      <p class="note">The ∝ sign means “goes up with”. Light works a little differently. For light, frequency sets how much energy each tiny packet carries, and brightness depends on how many packets arrive.</p>
+    </div>
+    <div class="model">
+      <h4>Model: wave energy meter</h4>
+      <p class="hint">Compare each wave with the starting wave (amplitude 1, frequency 1 Hz).</p>
+      <div class="two">
+        <label class="field" for="enA">Amplitude <output id="enAo">1×</output><input type="range" id="enA" min="1" max="3" step="0.5" value="1"></label>
+        <label class="field" for="enF">Frequency <output id="enFo">1 Hz</output><input type="range" id="enF" min="1" max="3" step="0.5" value="1"></label>
+      </div>
+      <div class="svgbox"><svg id="enSvg" viewBox="0 0 520 170" role="img" aria-label="A wave travelling toward a float on the water"></svg></div>
+      <div class="meter" aria-hidden="true"><i id="enBar"></i></div>
+      <div class="stats" id="enStats" aria-live="polite"></div>
+      <div class="chain" aria-label="Energy transfer chain">
+        <div><b>Store</b>Kinetic store of your moving hand</div>
+        <div><b>Transfer</b>Wave travels along the rope or water</div>
+        <div><b>Store</b>Kinetic and gravitational stores of the float as it rises</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Does it need a medium?</span>
+      <div class="codes"><span class="code">EN3.K4</span><span class="code">EN3.S3</span></div>
+      <h3>Mechanical waves and electromagnetic waves</h3>
+      <p>The material a wave travels through is called its <b>medium</b>. Water is the medium for a lake wave. Air is the medium for most sounds you hear.</p>
+      <p><b>Mechanical waves</b> need a medium. They travel by making the particles of the medium move. Sound, water waves, waves on a string and <b>seismic waves</b> (waves through rock from an earthquake) are all mechanical.</p>
+      <p><b>Electromagnetic waves</b> (EM waves) do not need a medium. They can cross empty space, where there are almost no particles at all. Radio waves, microwaves, visible light and X-rays are all EM waves. They can also travel through some materials, like light through glass.</p>
+      <div class="key"><b>Proof from space:</b> sunlight crosses about 150 million km of nearly empty space to reach Edmonton in about 8 minutes. Huge explosions on the Sun make no sound we can hear on Earth, because sound cannot cross empty space.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the bell jar</h4>
+      <p class="hint">A ringing bell with a light sits in a sealed jar. Pump the air out and compare what still gets through.</p>
+      <label class="field" for="jarAir">Air left in the jar <output id="jarAiro">100%</output><input type="range" id="jarAir" min="0" max="100" step="10" value="100"></label>
+      <div class="svgbox"><svg id="jarSvg" viewBox="0 0 520 220" role="img" aria-label="A bell and a light inside a glass jar"></svg></div>
+      <div class="stats" id="jarStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Particles in a mechanical wave</span>
+      <div class="codes"><span class="code">EN3.K5</span><span class="code">EN3.S3</span></div>
+      <h3>Particles oscillate, energy travels on</h3>
+      <p>In a mechanical wave, each particle of the medium is pushed by its neighbour, moves, and passes the push along. The particles <b>oscillate</b> around their resting places, while the energy moves in the direction the wave travels.</p>
+      <p>Particles can oscillate in two main ways:</p>
+      <ul>
+        <li><b>Across</b> the direction of travel, like a rope wave. This is called a <b>transverse</b> wave.</li>
+        <li><b>Along</b> the direction of travel, squeezing together and spreading apart, like a push on a slinky. This is called a <b>longitudinal</b> wave. Sound in air works this way.</li>
+      </ul>
+      <p>Earthquakes send out both kinds. The faster <b>P waves</b> squeeze and stretch rock (longitudinal). The slower <b>S waves</b> shake rock side to side (transverse). Seismometers in Alberta record both.</p>
+    </div>
+    <div class="model">
+      <h4>Model: watch the marked particles</h4>
+      <div class="chips" id="slinkyChips" role="group" aria-label="Wave type"></div>
+      <div class="svgbox"><svg id="slinkySvg" viewBox="0 0 520 180" role="img" aria-label="A row of particles carrying a wave from left to right"></svg></div>
+      <div class="row"><button class="btn ghost" id="slinkyPlay" type="button">Pause</button></div>
+      <div class="detail" id="slinkyOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Meeting a new medium</span>
+      <div class="codes"><span class="code">EN3.K6</span><span class="code">EN3.S4</span></div>
+      <h3>Five things a wave can do at a boundary</h3>
+      <p>When a wave reaches a new medium, such as light hitting water or sound hitting a wall, its energy can go several ways.</p>
+      <ul>
+        <li><b>Transmitted</b>: the wave passes through into the new medium.</li>
+        <li><b>Reflected</b>: the wave bounces back. An echo is reflected sound.</li>
+        <li><b>Refracted</b>: the wave changes direction as it enters the new medium at an angle.</li>
+        <li><b>Dispersed</b>: a mix of waves spreads apart because each frequency travels at a slightly different speed in the new medium. A prism splits white light into colours this way.</li>
+        <li><b>Absorbed</b>: the medium takes in the wave’s energy, usually warming up.</li>
+      </ul>
+      <div class="key"><b>Most of the time, several happen at once.</b> A window lets most light through, reflects a little (you can see your reflection at night) and absorbs a little.</div>
+    </div>
+    <div class="model">
+      <h4>Model: boundary explorer</h4>
+      <div class="chips" id="bndChips" role="group" aria-label="Choose a situation"></div>
+      <div class="svgbox"><svg id="bndSvg" viewBox="0 0 520 220" role="img" aria-label="A wave meeting a new medium"></svg></div>
+      <div class="tags" id="bndTags" aria-label="Behaviours shown"></div>
+      <div class="detail" id="bndOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · The law of reflection</span>
+      <div class="codes"><span class="code">EN3.K7</span><span class="code">EN3.S5</span></div>
+      <h3>The angle in equals the angle out</h3>
+      <p>To describe a reflection, draw a <b>normal</b>: a dashed line at 90° to the surface, at the point where the wave hits.</p>
+      <ul>
+        <li>The <b>angle of incidence</b> (i) is between the incoming ray and the normal.</li>
+        <li>The <b>angle of reflection</b> (r) is between the reflected ray and the normal.</li>
+      </ul>
+      <p>The <b>law of reflection</b> says these two angles are always equal.</p>
+      <div class="formula">angle of incidence = angle of reflection &nbsp;&nbsp; i = r</div>
+      <p class="note">Measure both angles from the normal, not from the mirror. A ray that hits the mirror 30° from its surface is 60° from the normal. Rough surfaces, like paper, scatter light in many directions, but each tiny piece of the surface still follows the law.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a flat mirror</h4>
+      <p class="hint">Drag the slider, or focus the red light source and use the arrow keys.</p>
+      <label class="field" for="refI">Angle of incidence <output id="refIo">40°</output><input type="range" id="refI" min="0" max="80" step="5" value="40"></label>
+      <div class="svgbox"><svg id="refSvg" viewBox="0 0 520 260" role="img" aria-label="A ray reflecting off a flat mirror with the normal drawn"></svg></div>
+      <div class="stats" id="refStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Refraction</span>
+      <div class="codes"><span class="code">EN3.K8</span><span class="code">EN3.S4</span></div>
+      <h3>A change in speed bends the wave</h3>
+      <p><b>Refraction</b> is the bending of a wave because its speed changes when it passes into a new medium. Light travels about 300 000 km each second in air, but only about 225 000 km/s in water and about 200 000 km/s in glass.</p>
+      <p>Think of a wagon rolling at an angle from a sidewalk onto grass. The wheel that reaches the grass first slows down first, so the wagon turns.</p>
+      <ul>
+        <li>Slowing down: the wave bends <b>toward</b> the normal.</li>
+        <li>Speeding up: the wave bends <b>away from</b> the normal.</li>
+        <li>Hitting straight on (along the normal): the speed changes, but the wave does not bend.</li>
+      </ul>
+      <p>Refraction is why a straw looks broken in a glass of water, and why lake waves turn to come in almost straight toward shore: waves slow down in shallow water.</p>
+    </div>
+    <div class="model">
+      <h4>Model: light into a new medium</h4>
+      <div class="chips" id="rfChips" role="group" aria-label="Second medium"></div>
+      <label class="field" for="rfI">Angle of incidence <output id="rfIo">45°</output><input type="range" id="rfI" min="0" max="80" step="5" value="45"></label>
+      <div class="svgbox"><svg id="rfSvg" viewBox="0 0 520 260" role="img" aria-label="A light ray bending as it enters a new medium"></svg></div>
+      <div class="stats" id="rfStats" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Use the wave equation, test how amplitude and frequency change the energy a wave delivers, measure reflections, and use echoes to find the depth of a lake. All numbers here are made up for practice.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · The wave equation</span>
+      <div class="codes"><span class="code">EN3.S2</span><span class="code">EN3.K2</span></div>
+      <h3>Wave calculator</h3>
+      <p>Enter any frequency and wavelength. The calculator finds the speed and the period.</p>
+      <div class="two">
+        <label class="field" for="calcF">Frequency (Hz)<input type="number" id="calcF" value="0.5" step="any" min="0"></label>
+        <label class="field" for="calcL">Wavelength (m)<input type="number" id="calcL" value="4" step="any" min="0"></label>
+      </div>
+      <div class="stats" id="calcOut" aria-live="polite"></div>
+      <div class="worked">
+        <span class="tagline">Worked example (made-up numbers)</span>
+        <p>Waves on Sylvan Lake have crests 4 m apart. A float bobs up and down once every 2 s. How fast are the waves moving?</p>
+        <p><b>Step 1.</b> The period is T = 2 s, so the frequency is f = 1 ÷ T = 1 ÷ 2 s = 0.5 Hz.</p>
+        <p><b>Step 2.</b> v = f × λ = 0.5 Hz × 4 m = <b>2 m/s</b>.</p>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Practice: randomized problems</h4>
+      <div class="detail" id="wpQ"></div>
+      <label class="field" for="wpAns">Your answer<input type="text" id="wpAns" inputmode="decimal" autocomplete="off"></label>
+      <div class="row">
+        <button class="btn" id="wpCheck" type="button">Check</button>
+        <button class="btn ghost" id="wpNew" type="button">New problem</button>
+      </div>
+      <p class="fb" id="wpFb" aria-live="polite"></p>
+      <p class="hint mono" id="wpScore"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Ripple tank</span>
+      <div class="codes"><span class="code">EN3.S1</span><span class="code">EN3.K3</span></div>
+      <h3>What makes a wave deliver more energy?</h3>
+      <p><b>Question:</b> how do amplitude and frequency affect the energy a water wave delivers to a float?</p>
+      <p>A paddle at one end of a model ripple tank makes waves. A sensor in a float at the far end measures the energy that arrives in 10 seconds, in made-up energy units.</p>
+      <ol>
+        <li>Predict: what will happen to the energy if you double the amplitude?</li>
+        <li>Change one variable at a time. Keep the other one the same.</li>
+        <li>Run each setting and record it. Real measurements wobble a little, so run each one twice.</li>
+      </ol>
+      <label class="field" for="rtPred">My prediction<select id="rtPred"><option value="">Choose a prediction</option><option value="same">The energy stays the same</option><option value="x2">The energy doubles</option><option value="x4">The energy is about 4 times bigger</option><option value="less">The energy goes down</option></select></label>
+    </div>
+    <div class="model">
+      <h4>Model: ripple tank (made-up data)</h4>
+      <div class="two">
+        <label class="field" for="rtA">Paddle amplitude<select id="rtA"><option value="1">1 cm</option><option value="2">2 cm</option><option value="3">3 cm</option></select></label>
+        <label class="field" for="rtF">Paddle frequency<select id="rtF"><option value="1">1 Hz</option><option value="2">2 Hz</option><option value="3">3 Hz</option></select></label>
+      </div>
+      <div class="svgbox"><svg id="rtSvg" viewBox="0 0 520 140" role="img" aria-label="A ripple tank with a paddle on the left and a float on the right"></svg></div>
+      <div class="row">
+        <button class="btn" id="rtRun" type="button">Run trial</button>
+        <button class="btn ghost" id="rtClear" type="button">Clear table</button>
+      </div>
+      <div class="tablebox"><table class="dt" id="rtTable"><thead><tr><th>Trial</th><th>Amplitude</th><th>Frequency</th><th>Energy (units)</th></tr></thead><tbody></tbody></table></div>
+      <div class="detail" id="rtOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Mirror protractor</span>
+      <div class="codes"><span class="code">EN3.S5</span><span class="code">EN3.K7</span></div>
+      <h3>Represent the law of reflection</h3>
+      <p>A light ray hits a flat mirror. Find the angle of reflection. Watch out: some problems give the angle from the <b>mirror surface</b>, not from the normal. Change it first.</p>
+      <div class="worked">
+        <span class="tagline">Worked example</span>
+        <p>A ray hits a mirror 25° from the surface. What is the angle of reflection?</p>
+        <p><b>Step 1.</b> The normal is at 90° to the surface, so i = 90° − 25° = 65°.</p>
+        <p><b>Step 2.</b> The law of reflection says r = i, so r = <b>65°</b>.</p>
+      </div>
+      <p class="hint">How to draw it on paper: draw the mirror, draw the normal with a protractor, measure i from the normal, then measure the same angle on the other side of the normal.</p>
+    </div>
+    <div class="model">
+      <h4>Practice: randomized rays</h4>
+      <div class="svgbox"><svg id="mpSvg" viewBox="0 0 520 240" role="img" aria-label="A ray hitting a mirror"></svg></div>
+      <div class="detail" id="mpQ"></div>
+      <label class="field" for="mpAns">Angle of reflection (degrees)<input type="text" id="mpAns" inputmode="decimal" autocomplete="off"></label>
+      <div class="row">
+        <button class="btn" id="mpCheck" type="button">Check and draw</button>
+        <button class="btn ghost" id="mpNew" type="button">New ray</button>
+      </div>
+      <p class="fb" id="mpFb" aria-live="polite"></p>
+      <p class="hint mono" id="mpScore"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Echo sounder</span>
+      <div class="codes"><span class="code">EN3.S4</span><span class="code">EN3.K6</span></div>
+      <h3>Using reflected sound to measure depth</h3>
+      <p>A boat’s echo sounder sends a short pulse of sound down into the lake. The sound is reflected by the lake bottom and returns to the boat. The sounder times the round trip.</p>
+      <div class="formula">depth = speed × time ÷ 2</div>
+      <p>Divide by 2 because the sound travels down <b>and</b> back up. Sound travels about 1480 m/s in water and about 343 m/s in air at 20 °C.</p>
+      <div class="worked">
+        <span class="tagline">Worked example (made-up numbers)</span>
+        <p>An echo returns after 0.05 s. How deep is the lake?</p>
+        <p><b>Step 1.</b> Distance there and back = 1480 m/s × 0.05 s = 74 m.</p>
+        <p><b>Step 2.</b> Depth = 74 m ÷ 2 = <b>37 m</b>.</p>
+      </div>
+      <p class="note">A soft, muddy bottom absorbs more of the sound, so the echo is weaker. A rocky bottom reflects more, so the echo is stronger.</p>
+    </div>
+    <div class="model">
+      <h4>Practice: randomized echoes</h4>
+      <div class="svgbox"><svg id="ecSvg" viewBox="0 0 520 200" role="img" aria-label="A boat sending sound down to the lake bottom"></svg></div>
+      <div class="detail" id="ecQ"></div>
+      <label class="field" for="ecAns">Your answer (m)<input type="text" id="ecAns" inputmode="decimal" autocomplete="off"></label>
+      <div class="row">
+        <button class="btn" id="ecCheck" type="button">Check</button>
+        <button class="btn ghost" id="ecNew" type="button">New echo</button>
+      </div>
+      <p class="fb" id="ecFb" aria-live="polite"></p>
+      <p class="hint mono" id="ecScore"></p>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 EN3, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>EN3.K1:</b> “without transporting matter” is taught as no overall transport: particles oscillate around a rest position and return. Breaking waves near a beach are noted as the exception students will raise.</li>
+      <li><b>EN3.K2:</b> period and speed are linked with T = 1 ÷ f and v = f × λ, shown as tools, not for memorizing. Amplitude is taught from rest position to crest (not crest to trough).</li>
+      <li><b>EN3.K3:</b> the draft says higher frequency and amplitude “transfer a greater amount of energy”. The lab teaches this as energy carried each second, for the same wave type in the same medium, using the proportionality energy ∝ A² × f² as context. For light, a brief note says frequency sets the energy of each packet and brightness depends on how many arrive (photons are not named). Energy stores link to EN1.</li>
+      <li><b>EN3.K4:</b> “do not require a medium” is taught as can travel through empty space; EM waves can also pass through some materials. Seismic waves are classed as mechanical. Sun distance and light travel time are rounded (about 150 million km, about 8 minutes).</li>
+      <li><b>EN3.K5:</b> transverse and longitudinal are added as brief context to show the two directions particles can oscillate. P and S waves are described qualitatively (P faster); no speeds are given.</li>
+      <li><b>EN3.K6:</b> “dispersed” is ambiguous. The lab teaches dispersion as a mix of frequencies spreading apart because each travels at a slightly different speed in the new medium (prism, rainbow). Scattering from rough surfaces is mentioned under reflection only. Students learn that several behaviours usually happen at once.</li>
+      <li><b>EN3.K7:</b> angles are taught as measured from the normal, with practice that converts angles given from the mirror surface. Diffuse reflection is mentioned briefly; each small piece of a rough surface still obeys the law.</li>
+      <li><b>EN3.K8:</b> refraction is taught as bending when a wave enters a new medium at an angle; a wave entering along the normal changes speed without bending. The model uses indices of refraction (air 1.00, water 1.33, glass 1.50) to draw rays, but students only see the speeds (about 300 000, 225 000 and 200 000 km/s) and the toward or away rule. Shallow water slowing lake waves is given as context.</li>
+      <li><b>Numbers:</b> sound in water about 1480 m/s and in air about 343 m/s at 20 °C are rounded reference values. Sylvan Lake wave values, ripple tank energies and echo times are made up for practice and labelled that way.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-en3-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function stat(box, items){
+  clear(box);
+  items.forEach(function(it){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, it[0])); d.appendChild(el("b", null, it[1])); box.appendChild(d); });
+}
+function parseNum(s){ return parseFloat(String(s).replace(/−/g, "-").replace(/,/g, ".").replace(/\s/g, "")); }
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Animation loop ---------- */
+var anims = [];
+function addAnim(fn){ anims.push(fn); }
+var lastT = 0;
+function loop(t){
+  var s = t / 1000;
+  if (!$("learn").hidden || !$("bench").hidden) anims.forEach(function(fn){ fn(s); });
+  requestAnimationFrame(loop);
+}
+function arrow(g, x1, y1, x2, y2, color, opts){
+  opts = opts || {};
+  var w = opts.w || 3;
+  g.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: color, "stroke-width": w, "stroke-dasharray": opts.dash || "none", "stroke-linecap": "round"}));
+  if (opts.head === false) return;
+  var a = Math.atan2(y2 - y1, x2 - x1), L = 11, s = 0.45;
+  var p = [x2, y2, x2 - L * Math.cos(a - s), y2 - L * Math.sin(a - s), x2 - L * Math.cos(a + s), y2 - L * Math.sin(a + s)];
+  g.appendChild(sv("polygon", {points: p.join(" "), fill: color}));
+}
+function deg(r){ return r * 180 / Math.PI; }
+function rad(d){ return d * Math.PI / 180; }
+function arc(g, cx, cy, r, a1, a2, color){
+  // angles in degrees measured clockwise from "up" (screen)
+  var p1 = [cx + r * Math.sin(rad(a1)), cy - r * Math.cos(rad(a1))];
+  var p2 = [cx + r * Math.sin(rad(a2)), cy - r * Math.cos(rad(a2))];
+  var large = Math.abs(a2 - a1) > 180 ? 1 : 0, sweep = a2 > a1 ? 1 : 0;
+  g.appendChild(sv("path", {d: "M" + p1.join(" ") + " A" + r + " " + r + " 0 " + large + " " + sweep + " " + p2.join(" "), fill: "none", stroke: color, "stroke-width": 2}));
+}
+
+/* ---------- Lesson 1: rope of beads ---------- */
+(function(){
+  var svg = $("ropeSvg"), N = 27, xs = [], RED = 8, mode = "idle", t0 = 0, now = 0, maxRed = 0;
+  for (var i = 0; i < N; i++) xs.push(40 + i * 17);
+  var post = sv("rect", {x: 486, y: 40, width: 14, height: 130, rx: 3, fill: "var(--muted)"});
+  var bell = sv("circle", {cx: 493, cy: 30, r: 8, fill: "var(--surface-2)", stroke: "var(--energy)", "stroke-width": 2});
+  svg.appendChild(sv("line", {x1: 30, y1: 105, x2: 486, y2: 105, stroke: "var(--line)", "stroke-dasharray": "4 4"}));
+  svg.appendChild(sv("text", {x: 34, y: 190, "class": "small"}, "Your hand"));
+  svg.appendChild(sv("text", {x: 420, y: 190, "class": "small"}, "Post"));
+  var redPath = sv("line", {x1: xs[RED], y1: 105, x2: xs[RED], y2: 105, stroke: "var(--ray)", "stroke-width": 1, "stroke-dasharray": "2 3"});
+  svg.appendChild(redPath);
+  var line = sv("polyline", {fill: "none", stroke: "var(--wave)", "stroke-width": 3});
+  svg.appendChild(line); svg.appendChild(post); svg.appendChild(bell);
+  var hand = sv("rect", {x: 14, y: 95, width: 22, height: 20, rx: 6, fill: "var(--energy-soft)", stroke: "var(--energy)", "stroke-width": 2});
+  svg.appendChild(hand);
+  var beads = xs.map(function(x, i){ var c = sv("circle", {cx: x, cy: 105, r: i === RED ? 7 : 5, fill: i === RED ? "var(--ray)" : "var(--wave)"}); svg.appendChild(c); return c; });
+  function y(x, t){
+    if (mode === "pulse") { var c = 40 + 190 * (t - t0); return -55 * Math.exp(-Math.pow((x - c) / 28, 2)); }
+    if (mode === "steady") { var front = 40 + 190 * (t - t0); if (x > front) return 0; return -40 * Math.sin(2 * Math.PI * (0.9 * (t - t0) - (x - 40) / 170)); }
+    return 0;
+  }
+  function draw(t){
+    var pts = [], hy = y(40, t);
+    xs.forEach(function(x, i){ var yy = 105 + y(x, t); pts.push(x + "," + yy); beads[i].setAttribute("cy", yy); });
+    line.setAttribute("points", "36," + (105 + hy) + " " + pts.join(" ") + " 493," + (105 + y(493, t)));
+    hand.setAttribute("y", 95 + hy);
+    var ry = y(xs[RED], t); maxRed = Math.max(maxRed, Math.abs(ry));
+    redPath.setAttribute("y1", 105 - maxRed); redPath.setAttribute("y2", 105 + maxRed);
+    var postMove = y(486, t), shaking = Math.abs(postMove) > 3;
+    post.setAttribute("y", 40 + postMove * 0.25);
+    bell.setAttribute("fill", shaking ? "var(--energy-fill)" : "var(--surface-2)");
+    if (Math.round(t * 10) % 3 === 0 || mode === "idle") stat($("ropeStats"), [["Red bead sideways movement", "0 cm"], ["Red bead up and down range", Math.round(maxRed / 2) + " cm"], ["Energy at the post", shaking ? "Arriving now" : (mode === "idle" ? "None yet" : "Waiting")]]);
+    if (mode === "pulse" && t - t0 > 3.2) { mode = "idle"; }
+  }
+  $("ropePulse").addEventListener("click", function(){ mode = "pulse"; t0 = now; maxRed = 0; });
+  $("ropeSteady").addEventListener("click", function(){ mode = "steady"; t0 = now; maxRed = 0; });
+  $("ropeStop").addEventListener("click", function(){ mode = "idle"; draw(now); });
+  addAnim(function(t){ now = t; if (mode !== "idle") draw(t); });
+  draw(0);
+})();
+
+/* ---------- Lesson 2: parts of a wave ---------- */
+(function(){
+  var svg = $("partsSvg"), playing = !reduced, phase = 0, last = null;
+  var PX = 200, X0 = 40, X1 = 500, MID = 115;
+  $("partsPlay").textContent = playing ? "Pause" : "Play";
+  function vals(){ return {L: +$("wpL").value, A: +$("wpA").value, f: +$("wpF").value}; }
+  function draw(){
+    var v = vals(); clear(svg);
+    $("wpLo").textContent = fmt(v.L, 1) + " m"; $("wpAo").textContent = v.A.toFixed(2) + " m"; $("wpFo").textContent = fmt(v.f, 1) + " Hz";
+    var lp = v.L * PX, ap = v.A * PX;
+    svg.appendChild(sv("line", {x1: X0, y1: MID, x2: X1, y2: MID, stroke: "var(--muted)", "stroke-dasharray": "5 4"}));
+    svg.appendChild(sv("text", {x: X0, y: MID + 16, "class": "small"}, "rest position"));
+    var pts = [];
+    for (var x = X0; x <= X1; x += 3) pts.push(x + "," + (MID - ap * Math.sin(2 * Math.PI * ((x - X0) / lp - phase))));
+    svg.appendChild(sv("polyline", {points: pts.join(" "), fill: "none", stroke: "var(--wave)", "stroke-width": 3}));
+    var fr = ((0.25 + phase) % 1 + 1) % 1, xc = X0 + lp * fr;
+    var cy = MID - ap, ty = MID + ap;
+    svg.appendChild(sv("circle", {cx: xc, cy: cy, r: 4, fill: "var(--ink)"}));
+    svg.appendChild(sv("text", {x: xc, y: cy - 22, "class": "lbl", "text-anchor": "middle"}, "crest"));
+    var xt = xc + lp / 2 <= X1 ? xc + lp / 2 : xc - lp / 2;
+    svg.appendChild(sv("circle", {cx: xt, cy: ty, r: 4, fill: "var(--ink)"}));
+    svg.appendChild(sv("text", {x: xt, y: ty + 20, "class": "lbl", "text-anchor": "middle"}, "trough"));
+    // amplitude
+    var g = sv("g"); svg.appendChild(g);
+    arrow(g, xc, MID, xc, cy + 2, "var(--energy)", {w: 2});
+    svg.appendChild(sv("text", {x: xc + 8, y: (MID + cy) / 2 + 4, "class": "mtxt", fill: "var(--energy)"}, "A"));
+    // wavelength
+    if (xc + lp <= X1) {
+      var yl = cy - 8;
+      g.appendChild(sv("line", {x1: xc, y1: yl, x2: xc + lp, y2: yl, stroke: "var(--acc)", "stroke-width": 2}));
+      g.appendChild(sv("line", {x1: xc, y1: yl - 5, x2: xc, y2: yl + 5, stroke: "var(--acc)", "stroke-width": 2}));
+      g.appendChild(sv("line", {x1: xc + lp, y1: yl - 5, x2: xc + lp, y2: yl + 5, stroke: "var(--acc)", "stroke-width": 2}));
+      svg.appendChild(sv("text", {x: xc + lp / 2, y: yl - 6, "class": "mtxt", "text-anchor": "middle", fill: "var(--acc)"}, "λ = " + fmt(v.L, 1) + " m"));
+    }
+    svg.appendChild(sv("text", {x: X1, y: 212, "class": "small", "text-anchor": "end"}, "wave travels →"));
+  }
+  function stats(){
+    var v = vals();
+    stat($("partsStats"), [["Wavelength", fmt(v.L, 1) + " m"], ["Amplitude", v.A.toFixed(2) + " m"], ["Frequency", fmt(v.f, 1) + " Hz"], ["Period T = 1 ÷ f", fmt(1 / v.f, 2) + " s"], ["Speed v = f × λ", fmt(v.f * v.L, 2) + " m/s"]]);
+  }
+  ["wpL", "wpA", "wpF"].forEach(function(id){ $(id).addEventListener("input", function(){ draw(); stats(); }); });
+  $("partsPlay").addEventListener("click", function(){ playing = !playing; last = null; $("partsPlay").textContent = playing ? "Pause" : "Play"; });
+  addAnim(function(t){ if (!playing) { last = null; return; } if (last != null) phase += (t - last) * vals().f * 0.5; last = t; draw(); });
+  draw(); stats();
+})();
+
+/* ---------- Lesson 3: energy meter ---------- */
+(function(){
+  var svg = $("enSvg"), phase = 0, last = null;
+  function vals(){ return {A: +$("enA").value, f: +$("enF").value}; }
+  function draw(){
+    var v = vals(); clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 85, width: 520, height: 85, fill: "var(--wave-soft)"}));
+    var lp = 150 / v.f, ap = v.A * 14, pts = [];
+    for (var x = 20; x <= 500; x += 3) pts.push(x + "," + (85 - ap * Math.sin(2 * Math.PI * ((x - 20) / lp - phase))));
+    svg.appendChild(sv("polyline", {points: pts.join(" "), fill: "none", stroke: "var(--wave)", "stroke-width": 3}));
+    var fy = 85 - ap * Math.sin(2 * Math.PI * ((450 - 20) / lp - phase));
+    svg.appendChild(sv("rect", {x: 438, y: fy - 12, width: 24, height: 16, rx: 5, fill: "var(--energy-fill)", stroke: "var(--energy)", "stroke-width": 2}));
+    svg.appendChild(sv("text", {x: 450, y: 30 > fy - 22 ? 30 : fy - 22, "class": "small", "text-anchor": "middle"}, "float"));
+    svg.appendChild(sv("text", {x: 20, y: 160, "class": "small"}, "wave travels toward the float →"));
+  }
+  function stats(){
+    var v = vals(), E = v.A * v.A * v.f * v.f;
+    $("enAo").textContent = fmt(v.A, 1) + "×"; $("enFo").textContent = fmt(v.f, 1) + " Hz";
+    $("enBar").style.width = Math.max(1.5, E / 81 * 100) + "%";
+    stat($("enStats"), [["Amplitude", fmt(v.A, 1) + "× the start"], ["Frequency", fmt(v.f, 1) + "× the start"], ["Energy each second", fmt(E, 2) + "× the start"]]);
+  }
+  ["enA", "enF"].forEach(function(id){ $(id).addEventListener("input", function(){ draw(); stats(); }); });
+  addAnim(function(t){ if (reduced) return; if (last != null) phase += (t - last) * vals().f * 0.6; last = t; draw(); });
+  draw(); stats();
+})();
+
+/* ---------- Lesson 4: bell jar ---------- */
+(function(){
+  var svg = $("jarSvg"), dots = [];
+  for (var i = 0; i < 40; i++) dots.push([200 + Math.random() * 120, 50 + Math.random() * 140]);
+  function draw(){
+    var air = +$("jarAir").value; clear(svg);
+    $("jarAiro").textContent = air + "%";
+    svg.appendChild(sv("rect", {x: 180, y: 30, width: 160, height: 170, rx: 30, fill: "var(--glass)", stroke: "var(--muted)", "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 160, y: 196, width: 200, height: 12, rx: 3, fill: "var(--muted)"}));
+    dots.slice(0, Math.round(air / 100 * dots.length)).forEach(function(d){ svg.appendChild(sv("circle", {cx: d[0], cy: d[1], r: 2.5, fill: "var(--muted)"})); });
+    svg.appendChild(sv("path", {d: "M235 140 Q235 95 260 92 Q285 95 285 140 Z", fill: "var(--energy-fill)", stroke: "var(--energy)", "stroke-width": 2}));
+    svg.appendChild(sv("circle", {cx: 260, cy: 70, r: 11, fill: "var(--ray)"}));
+    // light rays always
+    [[-1, -0.3], [1, -0.3], [-1, 0.2], [1, 0.2]].forEach(function(d){ arrow(svg, 260 + d[0] * 90, 70 + d[1] * 60, 260 + d[0] * 230, 70 + d[1] * 150, "var(--ray)", {w: 2}); });
+    // sound arcs fade with air
+    var op = air / 100;
+    [30, 50, 70].forEach(function(r){
+      ["M" + (180 - r * 0.3) + " " + (100 - r) + " Q" + (160 - r) + " 115 " + (180 - r * 0.3) + " " + (130 + r), "M" + (340 + r * 0.3) + " " + (100 - r) + " Q" + (360 + r) + " 115 " + (340 + r * 0.3) + " " + (130 + r)].forEach(function(d){
+        svg.appendChild(sv("path", {d: d, fill: "none", stroke: "var(--wave)", "stroke-width": 3, opacity: op}));
+      });
+    });
+    svg.appendChild(sv("text", {x: 20, y: 214, "class": "small"}, "teal arcs: sound · red arrows: light"));
+    var sound = air >= 70 ? "Loud" : air >= 30 ? "Quieter" : air > 0 ? "Very faint" : "Almost silent";
+    stat($("jarStats"), [["Air particles in jar", air + "%"], ["Sound heard outside", sound], ["Light seen outside", "Just as bright"]]);
+  }
+  $("jarAir").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 5: transverse and longitudinal ---------- */
+(function(){
+  var svg = $("slinkySvg"), mode = 0, playing = !reduced, phase = 0, last = null;
+  $("slinkyPlay").textContent = playing ? "Pause" : "Play";
+  var MODES = [
+    {label: "Particles move across", title: "Transverse wave: particles move across", text: "The marked particles move up and down while the wave and its energy move left to right. Rope waves and S waves in rock are like this."},
+    {label: "Particles move along", title: "Longitudinal wave: particles move along", text: "The marked coils move back and forth along the direction of travel, making squeezed parts (compressions) and stretched parts. Sound in air and P waves in rock are like this."}
+  ];
+  function draw(){
+    clear(svg);
+    var N = 30;
+    for (var i = 0; i < N; i++) {
+      var x0 = 30 + i * 15.5, k = 2 * Math.PI * (i / 12 - phase);
+      var mark = i === 8 || i === 20;
+      if (mode === 0) {
+        var y = 80 - 32 * Math.sin(k);
+        svg.appendChild(sv("circle", {cx: x0, cy: y, r: mark ? 7 : 5, fill: mark ? "var(--ray)" : "var(--wave)"}));
+        if (mark) svg.appendChild(sv("line", {x1: x0, y1: 46, x2: x0, y2: 114, stroke: "var(--ray)", "stroke-dasharray": "2 3"}));
+      } else {
+        var x = x0 + 7 * Math.sin(k);
+        svg.appendChild(sv("line", {x1: x, y1: 50, x2: x, y2: 110, stroke: mark ? "var(--ray)" : "var(--wave)", "stroke-width": mark ? 4 : 2.5}));
+        if (mark) svg.appendChild(sv("line", {x1: x0 - 8, y1: 120, x2: x0 + 8, y2: 120, stroke: "var(--ray)", "stroke-dasharray": "2 3"}));
+      }
+    }
+    arrow(svg, 300, 160, 480, 160, "var(--energy)", {w: 3});
+    svg.appendChild(sv("text", {x: 290, y: 165, "class": "small", "text-anchor": "end"}, "energy travels this way"));
+  }
+  chipGroup($("slinkyChips"), MODES, function(m, i){ mode = i; detail($("slinkyOut"), m.title, [m.text]); draw(); }, 0);
+  $("slinkyPlay").addEventListener("click", function(){ playing = !playing; last = null; $("slinkyPlay").textContent = playing ? "Pause" : "Play"; });
+  addAnim(function(t){ if (!playing) { last = null; return; } if (last != null) phase += (t - last) * 0.6; last = t; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 6: boundary explorer ---------- */
+(function(){
+  var B = ["Transmitted", "Reflected", "Refracted", "Dispersed", "Absorbed"];
+  var S = [
+    {label: "Sunlight through a window", m: ["Air", "Glass", "var(--air)", "var(--glass)"], w: "light", on: [0, 1, 4], show: {t: 1, r: 0.4, a: 0.3}, text: "Most of the light is transmitted, so you can see through the glass. A little is reflected, which is why you see yourself in a window at night. A little is absorbed."},
+    {label: "Light on a bathroom mirror", m: ["Air", "Mirror", "var(--air)", "var(--mirror)"], w: "light", on: [1, 4], show: {r: 1, a: 0.3}, text: "A smooth, shiny mirror reflects almost all the light that hits it. A small amount is absorbed."},
+    {label: "Light entering a lake", m: ["Air", "Water", "var(--air)", "var(--water)"], w: "light", on: [0, 1, 2], show: {rr: 1, r: 0.5}, text: "Light slows down in water, so it bends toward the normal: it is refracted. Some light is also reflected, which is why the lake surface shines."},
+    {label: "White light into a prism", m: ["Air", "Glass prism", "var(--air)", "var(--glass)"], w: "light", on: [0, 2, 3], show: {d: 1}, text: "Each colour of light travels at a slightly different speed in glass, so each colour bends by a different amount. The white light spreads into a band of colours: it is dispersed. Violet bends most and red bends least."},
+    {label: "Sunlight on black asphalt", m: ["Air", "Asphalt", "var(--air)", "var(--ink)"], w: "light", on: [1, 4], show: {a: 1, r: 0.25}, text: "Dark asphalt absorbs most of the light. The energy warms the road, which is why a dark parking lot can melt snow faster on a sunny March day. Only a little light is reflected."},
+    {label: "Sound hits a rock cliff", m: ["Air", "Rock", "var(--air)", "var(--mirror)"], w: "sound", on: [1, 4], show: {r: 1, a: 0.3}, text: "Hard rock reflects most of the sound back toward you. You hear the reflected sound a moment later as an echo."},
+    {label: "Sound into thick curtains", m: ["Air", "Curtain", "var(--air)", "var(--energy-soft)"], w: "sound", on: [0, 1, 4], show: {a: 1, r: 0.3, t: 0.3}, text: "Soft, thick fabric absorbs most of the sound energy, so the room sounds quieter. A little sound is reflected and a little passes through."},
+    {label: "Lake waves reach shallow water", m: ["Deep water", "Shallow water", "var(--water)", "var(--wave-soft)"], w: "water", on: [0, 2], show: {rr: 1}, text: "Water waves slow down in shallow water, so they bend toward the normal. This is why waves end up rolling in almost straight toward the beach."},
+    {label: "Earthquake waves reach a new rock layer", m: ["Rock layer 1", "Rock layer 2", "var(--glass)", "var(--mirror)"], w: "sound", on: [0, 1, 2, 4], show: {rr: 1, r: 0.5}, text: "Seismic waves change speed in a new rock layer, so part of the energy is refracted into the layer and part is reflected. Some is absorbed. Scientists use these reflections to map rock layers deep underground."}
+  ];
+  var svg = $("bndSvg");
+  function draw(s){
+    clear(svg);
+    var P = [260, 100];
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 260, height: 220, fill: s.m[2]}));
+    svg.appendChild(sv("rect", {x: 260, y: 0, width: 260, height: 220, fill: s.m[3], opacity: s.m[3] === "var(--ink)" ? 0.85 : 1}));
+    svg.appendChild(sv("line", {x1: 260, y1: 0, x2: 260, y2: 220, stroke: "var(--muted)", "stroke-width": 2}));
+    svg.appendChild(sv("line", {x1: 180, y1: 100, x2: 340, y2: 100, stroke: "var(--muted)", "stroke-dasharray": "5 4"}));
+    svg.appendChild(sv("text", {x: 12, y: 210, "class": "lbl"}, s.m[0]));
+    var tx = sv("text", {x: 508, y: 210, "class": "lbl", "text-anchor": "end", fill: s.m[3] === "var(--ink)" ? "var(--bg)" : "var(--ink)"}, s.m[1]); svg.appendChild(tx);
+    var col = s.w === "light" ? "var(--ray)" : "var(--wave)", dash = s.w === "light" ? "none" : "8 5";
+    arrow(svg, 60, 30, P[0] - 4, P[1] - 2, col, {dash: dash});
+    var sh = s.show;
+    if (sh.t) arrow(svg, P[0], P[1], 470, 170, col, {dash: dash, w: 1 + 2 * sh.t});
+    if (sh.r) arrow(svg, P[0], P[1], 60, 170, col, {dash: dash, w: 1 + 2 * sh.r});
+    if (sh.rr) arrow(svg, P[0], P[1], 480, 145, col, {dash: dash});
+    if (sh.d) ["var(--d1)", "var(--d2)", "var(--d3)", "var(--d4)", "var(--d5)"].forEach(function(c, i){ arrow(svg, P[0], P[1], 480, 128 + i * 12, c, {w: 2.5}); });
+    if (sh.a) { for (var i = 0; i < 3; i++) svg.appendChild(sv("path", {d: "M" + (285 + i * 18) + " 125 q6 -8 0 -16 q-6 -8 0 -16", fill: "none", stroke: "var(--energy-fill)", "stroke-width": 2.5, opacity: sh.a})); }
+    svg.appendChild(sv("text", {x: 330, y: 92, "class": "small", fill: s.m[3] === "var(--ink)" ? "var(--bg)" : "var(--muted)"}, "normal"));
+    var tags = $("bndTags"); clear(tags);
+    B.forEach(function(b, i){ tags.appendChild(el("span", {"class": "tg" + (s.on.indexOf(i) > -1 ? " on" : "")}, b)); });
+    detail($("bndOut"), s.label, [s.text, "Behaviours: " + s.on.map(function(i){ return B[i].toLowerCase(); }).join(", ") + "."], s.w === "light" ? "Light wave (electromagnetic)" : s.w === "water" ? "Water wave (mechanical)" : "Mechanical wave");
+    svg.setAttribute("aria-label", s.label + ": " + s.on.map(function(i){ return B[i].toLowerCase(); }).join(", "));
+  }
+  chipGroup($("bndChips"), S, function(s){ draw(s); }, 0);
+})();
+
+/* ---------- Lesson 7: law of reflection ---------- */
+(function(){
+  var svg = $("refSvg"), P = [260, 215], L = 180;
+  function draw(){
+    var i = +$("refI").value; clear(svg);
+    $("refIo").textContent = i + "°";
+    svg.appendChild(sv("rect", {x: 40, y: 215, width: 440, height: 10, fill: "var(--mirror)"}));
+    for (var x = 46; x < 480; x += 14) svg.appendChild(sv("line", {x1: x, y1: 226, x2: x - 8, y2: 240, stroke: "var(--muted)"}));
+    svg.appendChild(sv("text", {x: 476, y: 255, "class": "small", "text-anchor": "end"}, "mirror"));
+    svg.appendChild(sv("line", {x1: 260, y1: 20, x2: 260, y2: 215, stroke: "var(--muted)", "stroke-dasharray": "5 4"}));
+    svg.appendChild(sv("text", {x: 266, y: 30, "class": "small"}, "normal"));
+    var s = [P[0] - L * Math.sin(rad(i)), P[1] - L * Math.cos(rad(i))], e = [P[0] + L * Math.sin(rad(i)), P[1] - L * Math.cos(rad(i))];
+    arrow(svg, s[0], s[1], P[0], P[1], "var(--ray)");
+    arrow(svg, P[0], P[1], e[0], e[1], "var(--ray)");
+    if (i > 0) { arc(svg, P[0], P[1], 55, -i, 0, "var(--energy)"); arc(svg, P[0], P[1], 55, 0, i, "var(--acc)"); }
+    svg.appendChild(sv("text", {x: P[0] - 28 * Math.sin(rad(i / 2)) - 22, y: P[1] - 72 * Math.cos(rad(i / 2)), "class": "mtxt", fill: "var(--energy)", "text-anchor": "middle"}, "i = " + i + "°"));
+    svg.appendChild(sv("text", {x: P[0] + 28 * Math.sin(rad(i / 2)) + 22, y: P[1] - 72 * Math.cos(rad(i / 2)), "class": "mtxt", fill: "var(--acc)", "text-anchor": "middle"}, "r = " + i + "°"));
+    var src = sv("circle", {cx: s[0], cy: s[1], r: 10, fill: "var(--ray)", tabindex: "0", role: "slider", "aria-label": "Light source, angle of incidence", "aria-valuemin": "0", "aria-valuemax": "80", "aria-valuenow": String(i), "aria-valuetext": i + " degrees"});
+    src.addEventListener("keydown", function(ev){
+      var v = +$("refI").value;
+      if (ev.key === "ArrowUp" || ev.key === "ArrowRight") v = Math.min(80, v + 5);
+      else if (ev.key === "ArrowDown" || ev.key === "ArrowLeft") v = Math.max(0, v - 5);
+      else return;
+      ev.preventDefault(); $("refI").value = v; draw(); var n = svg.querySelector("[role=slider]"); if (n) n.focus();
+    });
+    svg.appendChild(src);
+    stat($("refStats"), [["Angle of incidence", i + "°"], ["Angle of reflection", i + "°"], ["Angle from mirror surface", (90 - i) + "°"]]);
+  }
+  $("refI").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 8: refraction ---------- */
+(function(){
+  var MED = [
+    {label: "Air into water", top: ["Air", 1.00, 300000, "var(--air)"], bot: ["Water", 1.33, 225000, "var(--water)"], max: 80},
+    {label: "Air into glass", top: ["Air", 1.00, 300000, "var(--air)"], bot: ["Glass", 1.50, 200000, "var(--glass)"], max: 80},
+    {label: "Water into air", top: ["Water", 1.33, 225000, "var(--water)"], bot: ["Air", 1.00, 300000, "var(--air)"], max: 45}
+  ];
+  var svg = $("rfSvg"), cur = MED[0], P = [260, 130], L = 125;
+  function draw(){
+    var inp = $("rfI");
+    inp.max = cur.max; if (+inp.value > cur.max) inp.value = cur.max;
+    var i = +inp.value; $("rfIo").textContent = i + "°";
+    var s2 = Math.sin(rad(i)) * cur.top[1] / cur.bot[1], r = deg(Math.asin(Math.min(1, s2)));
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 130, fill: cur.top[3]}));
+    svg.appendChild(sv("rect", {x: 0, y: 130, width: 520, height: 130, fill: cur.bot[3]}));
+    svg.appendChild(sv("line", {x1: 0, y1: 130, x2: 520, y2: 130, stroke: "var(--muted)", "stroke-width": 2}));
+    svg.appendChild(sv("line", {x1: 260, y1: 8, x2: 260, y2: 252, stroke: "var(--muted)", "stroke-dasharray": "5 4"}));
+    svg.appendChild(sv("text", {x: 12, y: 24, "class": "lbl"}, cur.top[0] + " · light about " + cur.top[2].toLocaleString("en-CA") + " km/s"));
+    svg.appendChild(sv("text", {x: 12, y: 250, "class": "lbl"}, cur.bot[0] + " · light about " + cur.bot[2].toLocaleString("en-CA") + " km/s"));
+    svg.appendChild(sv("text", {x: 266, y: 120, "class": "small"}, "normal"));
+    var s = [P[0] - L * Math.sin(rad(i)), P[1] - L * Math.cos(rad(i))];
+    arrow(svg, s[0], s[1], P[0], P[1], "var(--ray)");
+    svg.appendChild(sv("line", {x1: P[0], y1: P[1], x2: P[0] + L * Math.sin(rad(i)), y2: P[1] + L * Math.cos(rad(i)), stroke: "var(--muted)", "stroke-width": 1.5, "stroke-dasharray": "3 4"}));
+    arrow(svg, P[0], P[1], P[0] + L * Math.sin(rad(r)), P[1] + L * Math.cos(rad(r)), "var(--ray)");
+    var bend = i === 0 ? "No bending (straight along the normal)" : cur.bot[2] < cur.top[2] ? "Slows down: bends toward the normal" : "Speeds up: bends away from the normal";
+    stat($("rfStats"), [["Angle of incidence", i + "°"], ["Angle of refraction", Math.round(r) + "°"], ["What happens", bend]]);
+    svg.setAttribute("aria-label", cur.label + ". Angle of incidence " + i + " degrees, angle of refraction " + Math.round(r) + " degrees. " + bend + ". The dotted line shows the path with no bending.");
+  }
+  chipGroup($("rfChips"), MED, function(m){ cur = m; draw(); }, 0);
+  $("rfI").addEventListener("input", draw);
+})();
+
+/* ---------- Bench 1: wave equation ---------- */
+(function(){
+  function calc(){
+    var f = parseNum($("calcF").value), L = parseNum($("calcL").value);
+    if (!(f > 0) || !(L > 0)) { stat($("calcOut"), [["Speed v = f × λ", "Enter numbers above 0"], ["Period T = 1 ÷ f", "…"]]); return; }
+    stat($("calcOut"), [["Speed v = f × λ", fmt(f * L, 3) + " m/s"], ["Period T = 1 ÷ f", fmt(1 / f, 3) + " s"]]);
+  }
+  $("calcF").addEventListener("input", calc); $("calcL").addEventListener("input", calc); calc();
+  store.wp = store.wp || [0, 0];
+  var cur;
+  var GEN = [
+    function(){ var f = pick([0.5, 1, 1.5, 2, 3]), L = pick([2, 3, 4, 5, 6]); return {q: "A wave on Sylvan Lake has a frequency of " + fmt(f, 1) + " Hz and a wavelength of " + L + " m. What is its speed in m/s?", a: f * L, how: "v = f × λ = " + fmt(f, 1) + " Hz × " + L + " m = " + fmt(f * L, 2) + " m/s"}; },
+    function(){ var f = pick([110, 220, 440, 686, 880]); return {q: "A guitar note in air has a frequency of " + f + " Hz. Sound travels 343 m/s in air. What is the wavelength in metres?", a: 343 / f, how: "λ = v ÷ f = 343 m/s ÷ " + f + " Hz = " + fmt(343 / f, 3) + " m"}; },
+    function(){ var L = pick([0.5, 1, 2, 4]), f = pick([2, 3, 4, 5]); var v = L * f; return {q: "A wave on a rope travels at " + fmt(v, 1) + " m/s. Its wavelength is " + fmt(L, 1) + " m. What is its frequency in Hz?", a: f, how: "f = v ÷ λ = " + fmt(v, 1) + " m/s ÷ " + fmt(L, 1) + " m = " + f + " Hz"}; },
+    function(){ var f = pick([0.25, 0.5, 2, 4, 5, 10]); return {q: "A float bobs with a frequency of " + fmt(f, 2) + " Hz. What is the period in seconds?", a: 1 / f, how: "T = 1 ÷ f = 1 ÷ " + fmt(f, 2) + " Hz = " + fmt(1 / f, 2) + " s"}; },
+    function(){ var T = pick([2, 4, 5, 8]), L = pick([6, 8, 10, 20]); return {q: "Ocean swells pass a buoy every " + T + " s and are " + L + " m apart. What is their speed in m/s?", a: L / T, how: "f = 1 ÷ T = 1 ÷ " + T + " s = " + fmt(1 / T, 3) + " Hz, then v = f × λ = " + fmt(1 / T, 3) + " Hz × " + L + " m = " + fmt(L / T, 2) + " m/s"}; }
+  ];
+  function score(){ $("wpScore").textContent = "Correct " + store.wp[0] + " of " + store.wp[1]; }
+  function next(){ cur = pick(GEN)(); detail($("wpQ"), null, [cur.q], "Problem"); $("wpAns").value = ""; $("wpFb").textContent = ""; $("wpFb").className = "fb"; score(); }
+  $("wpCheck").addEventListener("click", function(){
+    var v = parseNum($("wpAns").value);
+    if (isNaN(v)) { $("wpFb").textContent = "Type a number first."; $("wpFb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur.a) <= Math.max(0.02 * Math.abs(cur.a), 0.01);
+    store.wp[1]++; if (ok) store.wp[0]++; save(); score();
+    $("wpFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.how + ".";
+    $("wpFb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("wpNew").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 2: ripple tank ---------- */
+(function(){
+  var rows = [], svg = $("rtSvg");
+  function draw(){
+    var A = +$("rtA").value, f = +$("rtF").value; clear(svg);
+    svg.appendChild(sv("rect", {x: 10, y: 60, width: 500, height: 70, rx: 6, fill: "var(--wave-soft)", stroke: "var(--line)"}));
+    svg.appendChild(sv("rect", {x: 20, y: 40, width: 12, height: 50, rx: 3, fill: "var(--muted)"}));
+    var lp = 120 / f, pts = [];
+    for (var x = 36; x <= 470; x += 3) pts.push(x + "," + (70 - A * 8 * Math.sin(2 * Math.PI * (x - 36) / lp)));
+    svg.appendChild(sv("polyline", {points: pts.join(" "), fill: "none", stroke: "var(--wave)", "stroke-width": 3}));
+    svg.appendChild(sv("rect", {x: 466, y: 58, width: 28, height: 16, rx: 5, fill: "var(--energy-fill)", stroke: "var(--energy)", "stroke-width": 2}));
+    svg.appendChild(sv("text", {x: 26, y: 30, "class": "small"}, "paddle"));
+    svg.appendChild(sv("text", {x: 490, y: 50, "class": "small", "text-anchor": "end"}, "float with sensor"));
+  }
+  function ratio(sameKey, varKey){
+    // find average energy for setting 1 and 2 of varKey with same other value
+    var out = null;
+    [1, 2, 3].forEach(function(o){
+      function avg(v){ var r = rows.filter(function(x){ return x[sameKey] === o && x[varKey] === v; }); return r.length ? r.reduce(function(s, x){ return s + x.E; }, 0) / r.length : null; }
+      var a1 = avg(1), a2 = avg(2);
+      if (out == null && a1 && a2) out = a2 / a1;
+    });
+    return out;
+  }
+  function analyse(){
+    var msgs = [], ra = ratio("f", "A"), rf = ratio("A", "f");
+    if (ra) msgs.push("Doubling the amplitude (1 cm to 2 cm) made the energy about " + fmt(ra, 1) + " times bigger.");
+    if (rf) msgs.push("Doubling the frequency (1 Hz to 2 Hz) made the energy about " + fmt(rf, 1) + " times bigger.");
+    var p = $("rtPred").value;
+    if (ra && p) msgs.push(p === "x4" ? "Your prediction matches the data." : "Compare your prediction with the data. The energy grew about 4 times, not " + ({same: "stayed the same", x2: "doubled", less: "went down"})[p] + ".");
+    if (!msgs.length) msgs.push("Run trials at 1 cm and 2 cm with the same frequency, and at 1 Hz and 2 Hz with the same amplitude. The analysis will appear here.");
+    detail($("rtOut"), "Analysis", msgs);
+  }
+  $("rtRun").addEventListener("click", function(){
+    var A = +$("rtA").value, f = +$("rtF").value, E = 5 * A * A * f * f * (1 + (Math.random() - 0.5) * 0.08);
+    rows.push({A: A, f: f, E: E});
+    var tr = el("tr");
+    [String(rows.length), A + " cm", f + " Hz", fmt(E, 1)].forEach(function(t){ tr.appendChild(el("td", null, t)); });
+    document.querySelector("#rtTable tbody").appendChild(tr);
+    analyse();
+  });
+  $("rtClear").addEventListener("click", function(){ rows = []; clear(document.querySelector("#rtTable tbody")); analyse(); });
+  $("rtA").addEventListener("change", draw); $("rtF").addEventListener("change", draw); $("rtPred").addEventListener("change", analyse);
+  draw(); analyse();
+})();
+
+/* ---------- Bench 3: mirror protractor ---------- */
+(function(){
+  var svg = $("mpSvg"), cur, P = [260, 200], L = 160;
+  store.mp = store.mp || [0, 0];
+  function draw(showR){
+    clear(svg);
+    var i = cur.i;
+    svg.appendChild(sv("rect", {x: 40, y: 200, width: 440, height: 10, fill: "var(--mirror)"}));
+    svg.appendChild(sv("line", {x1: 260, y1: 20, x2: 260, y2: 200, stroke: "var(--muted)", "stroke-dasharray": "5 4"}));
+    var s = [P[0] - L * Math.sin(rad(i)), P[1] - L * Math.cos(rad(i))];
+    arrow(svg, s[0], s[1], P[0], P[1], "var(--ray)");
+    if (cur.surface) { arc(svg, P[0], P[1], 45, -90, -i, "var(--energy)"); svg.appendChild(sv("text", {x: P[0] - 95, y: P[1] - 14, "class": "mtxt", fill: "var(--energy)"}, (90 - i) + "° to surface")); }
+    else { arc(svg, P[0], P[1], 55, -i, 0, "var(--energy)"); svg.appendChild(sv("text", {x: P[0] - 30 * Math.sin(rad(i / 2)) - 30, y: P[1] - 72 * Math.cos(rad(i / 2)), "class": "mtxt", fill: "var(--energy)", "text-anchor": "middle"}, "i = " + i + "°")); }
+    if (showR) {
+      arrow(svg, P[0], P[1], P[0] + L * Math.sin(rad(i)), P[1] - L * Math.cos(rad(i)), "var(--ray)");
+      arc(svg, P[0], P[1], 55, 0, i, "var(--acc)");
+      svg.appendChild(sv("text", {x: P[0] + 30 * Math.sin(rad(i / 2)) + 30, y: P[1] - 72 * Math.cos(rad(i / 2)), "class": "mtxt", fill: "var(--acc)", "text-anchor": "middle"}, "r = " + i + "°"));
+    }
+    svg.appendChild(sv("text", {x: 266, y: 30, "class": "small"}, "normal"));
+  }
+  function score(){ $("mpScore").textContent = "Correct " + store.mp[0] + " of " + store.mp[1]; }
+  function next(){
+    cur = {i: rint(3, 15) * 5, surface: Math.random() < 0.45};
+    detail($("mpQ"), null, [cur.surface ? "The ray hits the mirror " + (90 - cur.i) + "° from the mirror surface. What is the angle of reflection?" : "The angle of incidence is " + cur.i + "°. What is the angle of reflection?"], cur.surface ? "Careful: angle from the surface" : "Angle from the normal");
+    $("mpAns").value = ""; $("mpFb").textContent = ""; $("mpFb").className = "fb"; draw(false); score();
+  }
+  $("mpCheck").addEventListener("click", function(){
+    var v = parseNum($("mpAns").value);
+    if (isNaN(v)) { $("mpFb").textContent = "Type an angle first."; $("mpFb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur.i) < 0.5;
+    store.mp[1]++; if (ok) store.mp[0]++; save(); score();
+    var how = cur.surface ? "i = 90° − " + (90 - cur.i) + "° = " + cur.i + "°, and r = i, so r = " + cur.i + "°." : "r = i, so r = " + cur.i + "°.";
+    if (!ok && cur.surface && Math.abs(v - (90 - cur.i)) < 0.5) how = "You used the angle from the surface. Measure from the normal: " + how;
+    $("mpFb").textContent = (ok ? "Correct. " : "Not quite. ") + how;
+    $("mpFb").className = "fb " + (ok ? "ok" : "no");
+    draw(true);
+  });
+  $("mpNew").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 4: echo sounder ---------- */
+(function(){
+  var svg = $("ecSvg"), cur;
+  store.ec = store.ec || [0, 0];
+  function draw(depthFrac){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 50, width: 520, height: 150, fill: "var(--water)"}));
+    var by = 50 + 30 + depthFrac * 105;
+    svg.appendChild(sv("path", {d: "M0 " + (by + 10) + " Q130 " + (by - 6) + " 260 " + by + " T520 " + (by + 8) + " L520 200 L0 200 Z", fill: "var(--mirror)"}));
+    svg.appendChild(sv("path", {d: "M200 50 L320 50 L305 34 L215 34 Z", fill: "var(--energy-fill)", stroke: "var(--energy)", "stroke-width": 2}));
+    arrow(svg, 250, 54, 250, by - 4, "var(--wave)", {dash: "6 5", w: 2.5});
+    arrow(svg, 270, by - 4, 270, 54, "var(--wave)", {dash: "6 5", w: 2.5});
+    svg.appendChild(sv("text", {x: 290, y: (50 + by) / 2, "class": "small"}, "sound down, echo back up"));
+    svg.appendChild(sv("text", {x: 12, y: 24, "class": "small"}, cur && cur.air ? "Shout at a cliff (same idea, sideways, in air)" : "Echo sounder on a lake"));
+  }
+  function score(){ $("ecScore").textContent = "Correct " + store.ec[0] + " of " + store.ec[1]; }
+  var GEN = [
+    function(){ var t = pick([0.02, 0.03, 0.04, 0.06, 0.08, 0.1]); var d = 1480 * t / 2; return {q: "The echo returns to the boat after " + t + " s. Sound travels 1480 m/s in water. How deep is the lake, in metres?", a: d, how: "depth = 1480 m/s × " + t + " s ÷ 2 = " + fmt(d, 1) + " m", f: Math.min(1, d / 80)}; },
+    function(){ var t = pick([1, 2, 3, 4]); var d = 343 * t / 2; return {q: "You shout toward a rock cliff and hear the echo " + t + " s later. Sound travels 343 m/s in air. How far away is the cliff, in metres?", a: d, how: "distance = 343 m/s × " + t + " s ÷ 2 = " + fmt(d, 1) + " m", f: 0.5, air: true}; },
+    function(){ var d = pick([15, 22, 30, 37, 45]); var t = 2 * d / 1480; return {u: "s", q: "A lake is " + d + " m deep. How long, in seconds, until the echo returns? (Sound in water: 1480 m/s.) Round to 3 decimal places.", a: t, how: "time = 2 × " + d + " m ÷ 1480 m/s = " + fmt(t, 3) + " s", f: d / 80}; }
+  ];
+  function next(){ cur = pick(GEN)(); detail($("ecQ"), null, [cur.q], "Problem (made-up numbers)"); $("ecAns").previousSibling.textContent = "Your answer (" + (cur.u || "m") + ")"; $("ecAns").value = ""; $("ecFb").textContent = ""; $("ecFb").className = "fb"; draw(cur.f); score(); }
+  $("ecCheck").addEventListener("click", function(){
+    var v = parseNum($("ecAns").value);
+    if (isNaN(v)) { $("ecFb").textContent = "Type a number first."; $("ecFb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur.a) <= Math.max(0.02 * cur.a, 0.0015);
+    store.ec[1]++; if (ok) store.ec[0]++; save(); score();
+    var extra = (!ok && Math.abs(v - 2 * cur.a) <= 0.02 * 2 * cur.a) ? " You found the round trip. Divide by 2." : "";
+    $("ecFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.how + "." + extra;
+    $("ecFb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("ecNew").addEventListener("click", next);
+  next();
+})();
+
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Mechanical or electromagnetic?", bins: ["Mechanical (needs a medium)", "Electromagnetic (no medium needed)"], items: [
+    ["The sound of a drum", 0, "Sound moves by pushing air particles, so it needs a medium."],
+    ["Ripples on Sylvan Lake", 0, "Water waves travel through water."],
+    ["Seismic waves from an earthquake", 0, "They travel through rock, which is their medium."],
+    ["A wave on a guitar string", 0, "The string is the medium."],
+    ["Ultrasound used to see a baby before birth", 0, "Ultrasound is very high-pitched sound, so it is mechanical."],
+    ["Radio waves from a radio tower", 1, "Radio waves are electromagnetic and can cross space."],
+    ["Microwaves heating soup", 1, "Microwaves are electromagnetic waves."],
+    ["Visible light from the Sun", 1, "Sunlight crosses nearly empty space to reach Earth."],
+    ["X-rays at the dentist", 1, "X-rays are high-energy electromagnetic waves."],
+    ["A Wi-Fi signal", 1, "Wi-Fi uses radio waves, which are electromagnetic."]
+  ]},
+  {label: "Which behaviour?", bins: ["Transmitted", "Reflected", "Refracted", "Dispersed", "Absorbed"], items: [
+    ["You hear your echo in a canyon", 1, "Sound bounces off the rock walls."],
+    ["You see the mountains upside down in a still lake", 1, "The smooth water surface reflects light like a mirror."],
+    ["A straw looks broken in a glass of water", 2, "Light changes speed and bends as it leaves the water."],
+    ["A glass prism makes a band of colours", 3, "Each colour travels at a slightly different speed in glass, so the colours spread apart."],
+    ["A rainbow after a summer storm", 3, "Raindrops spread sunlight into colours. Refraction and reflection inside the drops help too."],
+    ["Sunlight passes through a clear window", 0, "Most of the light goes straight through the glass."],
+    ["A black car seat gets hot in the sun", 4, "The dark seat takes in the light energy and warms up."],
+    ["Fresh snow makes a winter street sound quiet", 4, "Fluffy snow absorbs sound energy."],
+    ["Lake waves turn to face the beach in shallow water", 2, "Waves slow down in shallow water and bend."],
+    ["You hear music through a closed door", 0, "Some sound energy passes through the door."]
+  ]},
+  {label: "Name that property", bins: ["Wavelength", "Frequency", "Amplitude", "Period", "Speed"], items: [
+    ["Distance from one crest to the next crest", 0, "That is one full wavelength."],
+    ["Number of waves passing a point each second", 1, "Frequency counts waves per second."],
+    ["Distance from the rest position to a crest", 2, "Amplitude is measured from the rest position."],
+    ["Time for one whole wave to pass", 3, "Period is the time for one wave. T = 1 ÷ f."],
+    ["How far a crest moves each second", 4, "Speed is distance per second. v = f × λ."],
+    ["Measured in hertz (Hz)", 1, "1 Hz means one wave each second."],
+    ["Measured in metres per second (m/s)", 4, "Speed tells metres travelled each second."],
+    ["Measured in seconds (s)", 3, "Period is a time."],
+    ["Distance from one trough to the next trough", 0, "Any matching point to the next matching point is one wavelength."],
+    ["Storm waves are taller because they have a bigger…", 2, "Taller waves have a bigger amplitude."]
+  ]},
+  {label: "More or less energy?", bins: ["More energy", "Less energy", "About the same"], items: [
+    ["Same rope, same frequency, double the amplitude", 0, "Energy goes up about 4 times."],
+    ["Same rope, same amplitude, half the frequency", 1, "Lower frequency carries less energy."],
+    ["Shaking the rope farther and more often", 0, "Bigger amplitude and higher frequency both add energy."],
+    ["A gentle ripple compared with a storm wave on the same lake", 1, "The ripple has a much smaller amplitude."],
+    ["Same amplitude and frequency, but the rope is painted a new colour", 2, "Paint colour does not change amplitude or frequency."],
+    ["Same rope, amplitude cut in half, same frequency", 1, "Energy drops to about one quarter."],
+    ["Same rope, frequency doubled, same amplitude", 0, "Energy goes up about 4 times."],
+    ["Same rope, amplitude doubled but frequency halved", 2, "4 times from amplitude, one quarter from frequency: about the same."],
+    ["The same sound after passing through thick curtains", 1, "The curtains absorbed some of the energy."],
+    ["Same rope, amplitude tripled, same frequency", 0, "Energy goes up about 9 times."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Wave", "A disturbance or oscillation that transfers energy from one point to another without carrying matter along."],
+  ["Oscillation", "A repeating back and forth or up and down motion around a resting place."],
+  ["Medium", "The material a wave travels through, such as water, air or rock."],
+  ["Crest", "The highest point of a wave."],
+  ["Trough", "The lowest point of a wave."],
+  ["Rest position", "The level of the medium when no wave is passing."],
+  ["Wavelength (λ)", "The distance from one crest to the next crest, in metres."],
+  ["Amplitude (A)", "The distance from the rest position to a crest or a trough."],
+  ["Frequency (f)", "The number of waves that pass a point each second, measured in hertz (Hz)."],
+  ["Period (T)", "The time for one whole wave to pass a point, in seconds. T = 1 ÷ f."],
+  ["Wave speed (v)", "How far a wave travels each second, in m/s. v = f × λ."],
+  ["Energy store", "A way energy is held, such as the kinetic store of a moving object. Waves transfer energy between stores."],
+  ["Mechanical wave", "A wave that needs a medium, such as sound, water waves and seismic waves."],
+  ["Electromagnetic wave", "A wave that does not need a medium and can cross empty space, such as radio, microwaves and light."],
+  ["Seismic wave", "A wave that travels through Earth’s rock, often from an earthquake."],
+  ["Transverse wave", "A wave in which particles move across the direction the wave travels."],
+  ["Longitudinal wave", "A wave in which particles move back and forth along the direction the wave travels, like sound."],
+  ["Transmission", "When a wave passes through into a new medium."],
+  ["Reflection", "When a wave bounces back from a surface."],
+  ["Refraction", "The bending of a wave because its speed changes as it enters a new medium."],
+  ["Dispersion", "When a mix of waves spreads apart because each frequency travels at a slightly different speed, like a prism making colours."],
+  ["Absorption", "When a medium takes in a wave’s energy, usually warming up."],
+  ["Normal", "A line drawn at 90° to a surface where a wave hits it. Angles are measured from it."],
+  ["Angle of incidence", "The angle between the incoming ray and the normal."],
+  ["Angle of reflection", "The angle between the reflected ray and the normal."],
+  ["Law of reflection", "The angle of incidence equals the angle of reflection."],
+  ["Echo", "A sound you hear again after it reflects off a surface."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What does a wave transfer from one place to another?", ["Energy", "Matter", "Water only", "Air particles"], "A wave carries energy. The medium only oscillates around its resting place."],
+  ["A duck floats on a lake as waves pass. What does the duck mostly do?", ["Bobs up and down in about the same place", "Travels to shore with the waves", "Sinks", "Moves away from shore"], "The wave passes under the duck. The water and the duck mostly move up and down."],
+  ["What is the wavelength of a wave?", ["The distance from one crest to the next crest", "The height of a crest above the trough", "The number of waves each second", "The time for one wave"], "Wavelength is measured from any point to the matching point on the next wave."],
+  ["Amplitude is measured from…", ["the rest position to a crest", "a crest to a trough", "one crest to the next", "the start of the rope to the end"], "Amplitude is from the rest position to a crest or trough. Crest to trough is twice the amplitude."],
+  ["A wave has a frequency of 4 Hz. What is its period?", ["0.25 s", "4 s", "2 s", "40 s"], "T = 1 ÷ f = 1 ÷ 4 Hz = 0.25 s."],
+  ["A wave has a frequency of 2 Hz and a wavelength of 3 m. What is its speed?", ["6 m/s", "1.5 m/s", "5 m/s", "0.67 m/s"], "v = f × λ = 2 Hz × 3 m = 6 m/s."],
+  ["Which unit is used for frequency?", ["Hertz (Hz)", "Metres (m)", "Seconds (s)", "Joules (J)"], "1 Hz means one wave each second."],
+  ["You keep the frequency the same and double the amplitude of a rope wave. About how much energy does the wave carry now?", ["About 4 times as much", "About 2 times as much", "The same", "Half as much"], "For the same wave in the same material, energy goes with amplitude squared: 2 × 2 = 4."],
+  ["Which change makes a rope wave carry more energy?", ["Shaking the rope more often", "Shaking the rope less often", "Shaking it more gently", "Painting the rope"], "Higher frequency means more energy transferred each second."],
+  ["When you make a wave on a rope, where does the energy come from?", ["The kinetic store of your moving hand", "The rope’s colour", "The post at the far end", "The air around the rope"], "Your hand transfers energy from its kinetic store into the wave."],
+  ["Which of these is a mechanical wave?", ["Sound", "Radio waves", "Visible light", "X-rays"], "Sound needs a medium, such as air, to travel."],
+  ["Which of these can travel through empty space?", ["Microwaves", "Sound", "Water waves", "Seismic waves"], "Microwaves are electromagnetic, so they do not need a medium."],
+  ["Why can astronauts on a spacewalk not hear each other shout?", ["There is almost no air to carry sound.", "Space is too cold.", "Their radios block sound.", "Sound moves too fast in space."], "Sound is a mechanical wave and needs a medium."],
+  ["In a mechanical wave, the particles of the medium…", ["oscillate around their resting places", "travel along with the wave to the end", "stay completely still", "disappear"], "The particles move back and forth while the energy moves on."],
+  ["In a sound wave in air, how do the air particles move?", ["Back and forth along the direction of travel", "Up and down across the direction of travel", "In a straight line to your ear", "They do not move"], "Sound is a longitudinal wave. Particles squeeze together and spread apart."],
+  ["Light hits a window and most of it passes through. This is called…", ["transmission", "reflection", "absorption", "dispersion"], "Transmitted waves pass into and through the new medium."],
+  ["You hear your voice bounce back from a cliff. This is…", ["reflection", "refraction", "absorption", "transmission"], "An echo is reflected sound."],
+  ["A black asphalt road warms up on a sunny day because the light is…", ["absorbed", "reflected", "dispersed", "transmitted"], "Dark surfaces absorb most light energy and warm up."],
+  ["A prism splits white light into colours because…", ["each colour travels at a slightly different speed in glass", "the glass adds colour to the light", "the light is absorbed", "the prism reflects all the light"], "Different speeds mean different amounts of bending, so the colours spread apart. This is dispersion."],
+  ["The law of reflection says…", ["angle of incidence = angle of reflection", "the reflected ray is always at 90°", "light slows down when reflected", "the angle of reflection is double the angle of incidence"], "i = r, with both angles measured from the normal."],
+  ["A ray hits a mirror 20° from the mirror surface. What is the angle of reflection?", ["70°", "20°", "40°", "90°"], "Measure from the normal: i = 90° − 20° = 70°, so r = 70°."],
+  ["What is refraction?", ["Bending of a wave due to a change in speed in a new medium", "Bouncing of a wave off a surface", "A wave losing all its energy", "A wave getting a bigger amplitude"], "When a wave changes speed at an angle, it changes direction."],
+  ["Light passes at an angle from air into water and slows down. Which way does it bend?", ["Toward the normal", "Away from the normal", "It does not bend", "Straight back"], "Slowing down bends the wave toward the normal."],
+  ["An echo sounder hears an echo 0.04 s after sending a pulse. Sound travels 1480 m/s in water. How deep is the lake?", ["About 30 m", "About 59 m", "About 15 m", "About 1480 m"], "1480 m/s × 0.04 s = 59.2 m there and back, so the depth is about 30 m."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain what a wave is. Use the words energy, matter and oscillate.", a: "A wave is a disturbance that transfers energy from one place to another. The particles of the medium oscillate around their resting places, so matter is not carried along. For example, a duck on a lake bobs up and down while the waves pass to shore.", k: ["Transfers energy", "Matter is not carried along", "Particles oscillate around rest position", "Example"]},
+  {q: "Sketch or describe a wave and label the crest, trough, rest position, wavelength and amplitude.", a: "The crest is the top of the wave and the trough is the bottom. The rest position is the middle line. The wavelength is the distance from one crest to the next crest. The amplitude is the distance from the rest position up to a crest.", k: ["Crest and trough", "Rest position", "Wavelength crest to crest", "Amplitude from rest position"]},
+  {q: "A wave has a frequency of 5 Hz and a wavelength of 0.8 m. Find its speed and its period. Show your work.", a: "Speed: v = f × λ = 5 Hz × 0.8 m = 4 m/s. Period: T = 1 ÷ f = 1 ÷ 5 Hz = 0.2 s.", k: ["Uses v = f × λ", "Speed 4 m/s", "Uses T = 1 ÷ f", "Period 0.2 s with units"]},
+  {q: "Describe two ways to make a wave on a rope carry more energy. Explain where the extra energy comes from.", a: "Shake the rope with a bigger amplitude by moving your hand farther, or with a higher frequency by moving it more often. Both take more energy from the kinetic store of your moving hand, so more energy is transferred along the rope to the far end.", k: ["Bigger amplitude", "Higher frequency", "Energy comes from your hand", "More energy transferred to the far end"]},
+  {q: "Explain the difference between mechanical and electromagnetic waves. Give two examples of each.", a: "Mechanical waves need a medium to travel through, because they move by making particles oscillate. Examples are sound and seismic waves. Electromagnetic waves do not need a medium and can travel through empty space. Examples are radio waves and visible light.", k: ["Mechanical needs a medium", "Electromagnetic does not", "Two mechanical examples", "Two electromagnetic examples"]},
+  {q: "Sunlight reaches Earth, but no sound from the Sun does. Explain why.", a: "Space between the Sun and Earth is almost empty, so there are almost no particles. Light is an electromagnetic wave and does not need a medium, so it can cross space. Sound is a mechanical wave and needs particles to pass the vibration along, so it cannot cross.", k: ["Space is nearly empty", "Light is electromagnetic, no medium needed", "Sound is mechanical, needs a medium"]},
+  {q: "Name the five things that can happen when a wave meets a new medium. Give an example of each.", a: "Transmitted: light through a window. Reflected: an echo off a cliff. Refracted: a straw looking bent in water. Dispersed: a prism making a band of colours. Absorbed: a black car seat warming in the sun.", k: ["Transmitted with example", "Reflected with example", "Refracted with example", "Dispersed with example", "Absorbed with example"]},
+  {q: "State the law of reflection. Explain how to measure the angles correctly.", a: "The angle of incidence equals the angle of reflection. Both angles are measured from the normal, a line at 90° to the surface where the ray hits, not from the surface itself.", k: ["i = r", "Normal is at 90° to the surface", "Angles measured from the normal"]},
+  {q: "Explain why a straw in a glass of water looks broken at the water surface.", a: "Light from the part of the straw under water travels through water, then into air. Light speeds up as it leaves the water, so it bends away from the normal. Our eyes assume light travels in straight lines, so the straw appears to be in a different place. This is refraction.", k: ["Light changes medium", "Speed changes", "Light bends", "Names refraction"]}
+];
+var LONG = [
+  {q: "Explain how a wave on a lake transfers energy from a passing boat to a dock. Include the energy stores, what the water particles do, and how the wave’s amplitude and frequency affect the energy delivered.", a: "The boat’s engine pushes water aside, transferring energy from the boat’s kinetic store into the water. This disturbance travels outward as a wave. The water particles mostly move up and down in place, passing the push along to their neighbours, so the energy moves toward the dock while the water does not. When the wave reaches the dock, it makes the dock and anything floating there move, so energy ends up in their kinetic and gravitational stores. A bigger, faster boat makes waves with a bigger amplitude, and waves that arrive more often have a higher frequency. Both mean more energy is delivered each second.", k: ["Energy starts in the boat’s kinetic store", "Water particles oscillate in place", "Energy travels toward the dock", "Energy ends in the dock’s stores", "Amplitude and frequency both increase energy"]},
+  {q: "Design an investigation to test how amplitude affects the energy a water wave delivers. Name your variables, describe your steps, and explain how you would measure the energy.", a: "Manipulated variable: the amplitude of the paddle stroke (for example 1 cm, 2 cm and 3 cm). Responding variable: the energy delivered, measured by how high a float rises or how far a light ball is pushed at the far end. Controlled variables: the same tank, water depth, paddle, frequency and distance to the float. Steps: make waves at one amplitude for 10 seconds, measure the float, repeat three times, then change the amplitude. Average the trials and graph energy against amplitude. I expect the energy to grow faster than the amplitude, about 4 times for double the amplitude.", k: ["Manipulated and responding variables", "Controlled variables including frequency", "A way to measure energy", "Repeated trials", "Prediction or expected pattern"]},
+  {q: "A student says, “Light and sound are both waves, so they must travel the same way.” Do you agree? Use what you know about mechanical and electromagnetic waves and about how waves behave at a new medium.", a: "I partly agree. Both light and sound are waves that transfer energy, have wavelengths and frequencies, and can be reflected, refracted and absorbed. For example, both can echo or bounce off surfaces. But they are different types. Sound is a mechanical wave, so it needs a medium and cannot cross empty space. Light is an electromagnetic wave, so it can travel through space from the Sun. They also travel at very different speeds: sound about 343 m/s in air, light about 300 000 km each second.", k: ["Clear position", "Similarities: energy and properties", "Both reflect, refract and absorb", "Difference: medium needed or not", "Uses evidence such as speed or sunlight"]},
+  {q: "Use the law of reflection and refraction to explain what happens to sunlight hitting a calm lake. Draw or describe the rays and the normal.", a: "Draw the lake surface and a normal at 90° where the sunlight hits. Part of the light is reflected: it leaves at the same angle from the normal as it arrived, which is why you see a bright glare or a mirror image of the trees. Part of the light is transmitted into the water. Because light slows down in water, this part is refracted and bends toward the normal. Some light is absorbed by the water, which warms it a little.", k: ["Normal drawn at 90°", "Reflected ray with equal angles", "Transmitted ray bends toward normal", "Explains bending by slowing down", "Mentions absorption"]}
+];
+
+/* ---------- Coverage rows ---------- */
+var COVER = [
+  ["EN3.K1", "Learn: Lesson 1 (rope of beads with a marked bead). Quiz, Flashcards, Written Review short answer 1, extended 1."],
+  ["EN3.K2", "Learn: Lesson 2 (parts of a wave with sliders and live T and v). Lab Bench: Investigation 1. Sort It: name that property deck. Quiz, Flashcards, Written Review short answers 2 and 3."],
+  ["EN3.K3", "Learn: Lesson 3 (wave energy meter and energy chain). Lab Bench: Investigation 2 (ripple tank). Sort It: more or less energy deck. Quiz, Written Review short answer 4, extended 1 and 2."],
+  ["EN3.K4", "Learn: Lesson 4 (bell jar). Sort It: mechanical or electromagnetic deck. Quiz, Flashcards, Written Review short answers 5 and 6, extended 3."],
+  ["EN3.K5", "Learn: Lesson 5 (marked particles, across and along). Quiz, Flashcards, Written Review short answer 1, extended 1."],
+  ["EN3.K6", "Learn: Lesson 6 (boundary explorer, nine situations). Lab Bench: Investigation 4 (echo sounder). Sort It: which behaviour deck. Quiz, Flashcards, Written Review short answer 7, extended 4."],
+  ["EN3.K7", "Learn: Lesson 7 (mirror with a keyboard-movable light source). Lab Bench: Investigation 3. Quiz, Flashcards, Written Review short answer 8, extended 4."],
+  ["EN3.K8", "Learn: Lesson 8 (light into water, glass and back into air). Sort It: which behaviour deck. Quiz, Flashcards, Written Review short answer 9, extended 4."],
+  ["EN3.S1", "Learn: Lessons 1 and 3 (energy chain from hand to float). Lab Bench: Investigation 2. Written Review short answer 4, extended 1 and 2."],
+  ["EN3.S2", "Learn: Lesson 2. Lab Bench: Investigation 1 (calculator, worked example, randomized practice). Written Review short answers 2 and 3."],
+  ["EN3.S3", "Learn: Lessons 4 and 5. Sort It: mechanical or electromagnetic deck. Written Review short answers 5 and 6, extended 3."],
+  ["EN3.S4", "Learn: Lessons 6 and 8. Lab Bench: Investigation 4 (echo sounder, randomized practice). Sort It: which behaviour deck. Written Review short answers 7 and 9, extended 4."],
+  ["EN3.S5", "Learn: Lesson 7. Lab Bench: Investigation 3 (mirror protractor, randomized rays with drawing). Written Review short answer 8, extended 4."]
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+
+/* ---------- Coverage ---------- */
+var STMT = {"EN3.K1": "A wave is a disturbance or oscillation that transfers energy from one point to another without transporting matter, e.g., a wave on a string.", "EN3.K2": "Waves have a repeating pattern and measurable properties, including\n• wavelength\n• frequency\n• amplitude\n• period\n• speed", "EN3.K3": "Waves with higher frequency and higher amplitude transfer a greater amount of energy from one energy store to another.", "EN3.K4": "Waves can be classified by type, depending on whether they require a medium to propagate, for example:\n• mechanical waves, such as seismic and water, require a medium\n• electromagnetic waves, such as radio and microwave, do not require a medium", "EN3.K5": "Mechanical waves oscillate the particles of a medium while transferring energy in the direction the wave travels.", "EN3.K6": "When a wave encounters a new medium, the wave can be\n• transmitted\n• reflected\n• refracted\n• dispersed\n• absorbed", "EN3.K7": "The law of reflection states that when a wave strikes a surface, the angle of incidence is equal to the angle of reflection.", "EN3.K8": "Refraction is the bending of a wave due to a change in speed when the wave passes through a new medium.", "EN3.S1": "Relate energy stores and transfers to waves.", "EN3.S2": "Describe the properties of a wave.", "EN3.S3": "Differentiate between mechanical and electromagnetic waves.", "EN3.S4": "Interpret the behaviour of waves when encountering different surfaces or mediums.", "EN3.S5": "Represent the law of reflection."};
+(function(){
+  var tb = document.querySelector("#covTable tbody");
+  COVER.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, STMT[r[0]])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[1]));
+    tb.appendChild(tr);
+  });
+})();
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+requestAnimationFrame(loop);
+})();
+</script>
+
+</body></html>

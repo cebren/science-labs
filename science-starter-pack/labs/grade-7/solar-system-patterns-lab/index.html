@@ -1,0 +1,1320 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/solar-system-patterns-lab/"><meta name="description" content="Celestial bodies move in predictable patterns."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Solar System Patterns Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a planetarium console. Sticky tab strip, then lessons pairing a reading column with a dark sky window: a launch cannon, a size and distance strip, two models of one sky, a Venus phase test, an AU ruler and a working orrery. Bench: scale model builder, AU converter and an orbit pattern graph. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --g7:#A4501E; --g7-soft:#F8E7DC;
+  --sky:#141B26; --sky-2:#1F2836; --sky-ink:#E8EDF3; --sky-muted:#AEB9C6; --sky-line:#3A4757;
+  --sun:#F2B632; --sun-glow:#F7D27A; --orbit:#56657A; --trail:#F0A070; --sight:#7DB0F0;
+  --mercury:#A39C93; --venus:#E0BD72; --earth:#4F8FCF; --mars:#D0603E; --jupiter:#D3A473; --saturn:#E1CB8E; --uranus:#86D0D6; --neptune:#6684DE; --moon:#E3E7EC; --dark:#3C4553; --land:#5E9E5A; --rock:#8B7B66;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC; --link:#1D5FA8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#0A0F16; --sky-2:#141C27; --sky-ink:#E8EDF3; --sky-muted:#A9B5C3; --sky-line:#2C3746;
+  --orbit:#4A586B; --dark:#323A47;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#0A0F16; --sky-2:#141C27; --sky-ink:#E8EDF3; --sky-muted:#A9B5C3; --sky-line:#2C3746;
+  --orbit:#4A586B; --dark:#323A47;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--link)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g7);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g7)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g7-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g7)}
+.warn{background:var(--bad-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.warn b{color:var(--bad)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.big{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--g7);line-height:1.1}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.skybox{border-radius:8px;background:var(--sky);border:1px solid var(--sky-line);overflow:hidden}
+.skybox svg{display:block;width:100%;height:auto}
+.skybox svg text{font-family:var(--f-body);fill:var(--sky-ink)}
+.skybox svg .lbl{font-size:13px;font-weight:700}
+.skybox svg .small{font-size:11.5px;fill:var(--sky-muted)}
+.skybox svg .mlbl{font-family:var(--f-mono);font-size:11px;fill:var(--sky-muted)}
+.tap{cursor:pointer}
+.tap:hover > circle:first-child{stroke:var(--sun);stroke-width:2}
+.chartbox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.chartbox svg{display:block;width:100%;min-width:340px;height:auto}
+.chartbox svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g7)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+textarea{min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;align-items:end}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.dt th:first-child,.dt td:first-child{text-align:left;font-family:var(--f-body);font-weight:700}
+.dt th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g7)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Space · SP2</div>
+    <h1>Solar System <span class="ac">Patterns</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Celestial bodies move in predictable patterns. In this lab you will see how gravity makes orbits, compare Earth‑centred and Sun‑centred models of the sky, measure the solar system in astronomical units and build a scale model you could walk.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. Lesson 1 explains orbits. Lesson 2 is about models. Lessons 3 and 4 compare the Earth‑centred and Sun‑centred models. Lessons 5 and 6 measure distances and describe how the planets move.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · Gravity and orbits</span>
+      <h3>Falling around a planet</h3>
+      <div class="codes"><span class="code">SP2.K1</span><span class="code">SP2.S3</span></div>
+      <p><b>Gravity</b> is a force of attraction between objects that have mass. Every object pulls on every other object. The pull is stronger when the objects have more mass, and weaker when they are farther apart.</p>
+      <p>A <b>celestial body</b> is a natural object in space, such as a star, a planet or a moon. An <b>orbit</b> is the curved path one body follows around another.</p>
+      <p>Gravity alone would pull a planet straight into the Sun. A planet stays in orbit because it is also moving <b>sideways</b> very fast. Gravity keeps bending its path toward the Sun, so the planet keeps falling around the Sun without ever falling in.</p>
+      <div class="key"><b>Try it:</b> this is Isaac Newton’s famous thought experiment. Launch a ball sideways from a very tall mountain. Change the speed and see if the ball falls back, orbits or escapes.</div>
+      <p class="note">Gravity pulls both ways. The Moon pulls on Earth too, so Earth and the Moon both circle a shared balance point. That point is inside Earth, about 4700 km from its centre.</p>
+    </div>
+    <div class="model">
+      <h4>Newton’s cannon</h4>
+      <div class="skybox"><svg id="l1-svg" viewBox="0 0 400 320" role="img" aria-label="Earth with a tall mountain and the path of a launched ball"></svg></div>
+      <label class="field" for="l1-speed">Launch speed: <span class="mono num" id="l1-out">8.0 km/s</span></label>
+      <input type="range" id="l1-speed" min="0" max="13" step="0.2" value="8">
+      <div class="row">
+        <button class="chip" type="button" id="l1-grav" aria-pressed="true">Gravity on</button>
+      </div>
+      <div class="detail" id="l1-detail" aria-live="polite"></div>
+      <p class="hint">Not to scale. The mountain is drawn far too tall. Speeds are rounded values for a low orbit around Earth.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · Models</span>
+      <h3>Every model shows some things and hides others</h3>
+      <div class="codes"><span class="code">SP2.K2</span><span class="code">SP2.S2</span></div>
+      <p>A <b>model</b> is a simpler version of something real that helps us explain or predict. Scientists use models for things that are too big, too small, too far or too slow to study directly. The solar system is all four.</p>
+      <p>Models of the solar system can show <b>movement patterns</b>, such as which way planets travel, or <b>distances</b>, such as how far each planet is from the Sun. A <b>scale model</b> shrinks every size or distance by the same amount.</p>
+      <p>No single picture can show both the sizes and the distances of the planets to scale. If the planets were big enough to see, the page would need to be hundreds of metres wide.</p>
+      <div class="key"><b>Try it:</b> switch between the two scale views. Then tap each type of model to see what it does well and what it leaves out.</div>
+    </div>
+    <div class="model">
+      <h4>Sizes to scale or distances to scale?</h4>
+      <div class="chips" id="l2-view" role="group" aria-label="Choose a scale view"></div>
+      <div class="skybox"><svg id="l2-svg" viewBox="0 0 600 200" role="img" aria-label="Scale view of the Sun and planets"></svg></div>
+      <p class="hint" id="l2-cap" aria-live="polite"></p>
+      <div class="chips" id="l2-types" role="group" aria-label="Choose a type of model"></div>
+      <div class="detail" id="l2-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Two models, one sky</span>
+      <h3>Earth at the centre, or the Sun?</h3>
+      <div class="codes"><span class="code">SP2.K3</span><span class="code">SP2.S1</span></div>
+      <p>For about 2000 years, most astronomers used a <b>geocentric model</b>. Geo means Earth. In this model Earth sits still at the centre and the Sun, the Moon, the planets and the stars all move around it. It made sense: we do not feel Earth moving, and the sky seems to turn around us.</p>
+      <p>Planets caused a puzzle. Every so often Mars seems to stop, move backward against the stars for a few weeks, then go forward again. This is called <b>retrograde motion</b>. The astronomer <b>Ptolemy</b>, around the year 150, explained it by putting each planet on a small circle called an <b>epicycle</b>, whose centre moves around Earth on a big circle.</p>
+      <p>In a <b>heliocentric model</b>, helio means Sun. The Sun is at the centre and Earth is one of the planets moving around it. Earth, on its faster inside orbit, catches up to Mars and passes it. For a while Mars seems to slide backward, the way a slower car seems to move backward when you pass it on the highway.</p>
+      <div class="key"><b>Try it:</b> move the time slider in each view. Both models make the same loop in the sky strip. To choose between them, scientists needed more evidence (Lesson 4).</div>
+    </div>
+    <div class="model">
+      <h4>Mars over 26 months</h4>
+      <div class="chips" id="l3-view" role="group" aria-label="Choose a model"></div>
+      <div class="skybox"><svg id="l3-svg" viewBox="0 0 360 300" role="img" aria-label="Top view of Earth, the Sun and Mars"></svg></div>
+      <div class="skybox"><svg id="l3-sky" viewBox="0 0 600 110" role="img" aria-label="Where Mars appears against the stars, as seen from Earth"></svg></div>
+      <label class="field" for="l3-t">Days from start: <span class="mono num" id="l3-out">0</span></label>
+      <input type="range" id="l3-t" min="0" max="780" step="5" value="300">
+      <div class="row"><button class="btn ghost" type="button" id="l3-play">Play</button></div>
+      <p class="hint" id="l3-cap" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Evidence</span>
+      <h3>How the evidence changed minds</h3>
+      <div class="codes"><span class="code">SP2.K3</span><span class="code">SP2.S1</span></div>
+      <p>The switch to the heliocentric model did not happen in one day. It took ideas and careful measurements from many people and places over hundreds of years.</p>
+      <p>A big turning point came around 1610. <b>Galileo Galilei</b> looked through an early telescope and saw <b>moons orbiting Jupiter</b>, which showed that not everything orbits Earth. He also saw that <b>Venus shows a full set of phases</b>, from a thin crescent to nearly full.</p>
+      <p>In Ptolemy’s model Venus always stays between Earth and the Sun, so we would only ever see crescents. In the heliocentric model Venus can go behind the Sun and look nearly full. Galileo saw what the heliocentric model predicted.</p>
+      <p>Later, <b>Johannes Kepler</b> showed that orbits are slightly stretched circles called <b>ellipses</b>, and <b>Isaac Newton</b> showed that gravity explains why planets orbit the Sun.</p>
+      <div class="key"><b>Try it:</b> compare the Venus phases each model predicts, then tap the timeline to meet the people behind the change.</div>
+    </div>
+    <div class="model">
+      <h4>Test: what does Venus look like?</h4>
+      <div class="skybox"><svg id="l4-svg" viewBox="0 0 600 230" role="img" aria-label="Venus phases predicted by each model"></svg></div>
+      <div class="chips" id="l4-time" role="group" aria-label="Timeline of ideas"></div>
+      <div class="detail" id="l4-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Measuring the solar system</span>
+      <h3>The astronomical unit</h3>
+      <div class="codes"><span class="code">SP2.K4</span><span class="code">SP2.S3</span></div>
+      <p>Distances in space are huge. Writing them in kilometres gives numbers that are hard to read and compare. So astronomers use a bigger unit.</p>
+      <p>One <b>astronomical unit</b>, or <b>AU</b>, is the average distance from Earth to the Sun.</p>
+      <p class="big num">1 AU ≈ 150 000 000 km</p>
+      <p>Earth is 1 AU from the Sun. Jupiter is about 5.2 AU away, so it is about 5 times as far from the Sun as Earth. Neptune is about 30 AU away. Even sunlight takes time to cross these distances: about 8.3 minutes to reach Earth and about 4 hours to reach Neptune.</p>
+      <p>Other stars have their own planets. These <b>planetary systems</b> are measured in AU too. The distances <b>between</b> stars are so large that astronomers use the <b>light‑year</b>, the distance light travels in a year, about 63 000 AU.</p>
+      <div class="formula">distance in km = distance in AU × 150 000 000 km</div>
+    </div>
+    <div class="model">
+      <h4>The AU ruler</h4>
+      <div class="chips" id="l5-zoom" role="group" aria-label="Choose a ruler range"></div>
+      <div class="skybox"><svg id="l5-svg" viewBox="0 0 600 150" role="group" aria-label="Ruler showing planet distances from the Sun in AU"></svg></div>
+      <div class="detail" id="l5-detail" aria-live="polite"></div>
+      <p class="hint">Tap or focus a planet. Distances are average distances, rounded.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Movement patterns</span>
+      <h3>Patterns we can predict</h3>
+      <div class="codes"><span class="code">SP2.S3</span><span class="code">SP2.K1</span><span class="code">SP2.K2</span></div>
+      <p>In the heliocentric model, the eight planets move in clear patterns:</p>
+      <ul>
+        <li><b>Same direction.</b> Seen from above Earth’s North Pole, every planet orbits the Sun counterclockwise.</li>
+        <li><b>Nearly flat.</b> The orbits lie close to one flat plane, like grooves on a record.</li>
+        <li><b>Nearly round.</b> The orbits are ellipses that are very close to circles.</li>
+        <li><b>Farther means slower.</b> The Sun’s pull is weaker far away, so outer planets move more slowly and have much longer paths. Their <b>orbital period</b>, or year, is longer.</li>
+      </ul>
+      <p>Moons follow patterns too. The Moon orbits Earth about once a month while Earth carries it around the Sun. Because these patterns repeat, astronomers can predict where a planet will be years ahead.</p>
+      <p class="note">From the Beaver Hills Dark Sky Preserve east of Edmonton, you can see five planets without a telescope: Mercury, Venus, Mars, Jupiter and Saturn.</p>
+    </div>
+    <div class="model">
+      <h4>Orrery: a moving model</h4>
+      <div class="skybox"><svg id="l6-svg" viewBox="0 0 400 400" role="group" aria-label="Top view of the eight planets orbiting the Sun"></svg></div>
+      <div class="row">
+        <button class="btn ghost" type="button" id="l6-play">Play</button>
+        <label class="field" for="l6-rate" style="flex:1 1 180px">Speed: <span class="mono num" id="l6-rateout">1 Earth year per second</span>
+          <input type="range" id="l6-rate" min="0" max="4" step="1" value="1"></label>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Time passed</span><b id="l6-years">0.0 years</b></div>
+        <div class="stat"><span>Earth orbits</span><b id="l6-earth">0</b></div>
+      </div>
+      <div class="detail" id="l6-detail" aria-live="polite"></div>
+      <p class="hint">Orbit sizes are squeezed so all eight fit. Starting positions are not today’s real positions.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Three investigations with worked examples and practice questions. New questions appear each time you press New question.</p>
+  </div>
+
+  <article class="lesson" id="b1">
+    <div class="text">
+      <span class="step">Bench 1 · Scale model builder</span>
+      <h3>Shrink the solar system to fit Edmonton</h3>
+      <div class="codes"><span class="code">SP2.S2</span><span class="code">SP2.K2</span><span class="code">SP2.K4</span></div>
+      <p>Pick an object to stand in for the Sun. The builder shrinks every size and every distance by the same amount, so the model is to scale.</p>
+      <div class="formula">scale factor = model Sun size ÷ real Sun size<br>model distance = real distance × scale factor</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>A basketball is about 24 cm wide. The real Sun is about 1 391 000 km wide.</span>
+        <span>Earth is 1 AU, about 149 600 000 km, from the Sun.</span>
+        <span>model distance = 149 600 000 km × (24 cm ÷ 1 391 000 km) ≈ 2580 cm ≈ 26 m</span>
+        <span>Earth itself would be about 2 mm wide, the size of a peppercorn.</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Your scale model</h4>
+      <div class="chips" id="b1-obj" role="group" aria-label="Choose a Sun model"></div>
+      <label class="field" for="b1-sun">Or type your own Sun size in cm
+        <input type="number" id="b1-sun" min="1" max="500" step="1" value="24"></label>
+      <div class="tablebox"><table class="dt" id="b1-table"></table></div>
+      <p class="hint" id="b1-star" aria-live="polite"></p>
+      <div class="worked" aria-live="polite">
+        <b>Practice</b>
+        <span id="b1-q"></span>
+        <div class="fields">
+          <label class="field" for="b1-a">Your answer in metres<input type="number" id="b1-a" step="any"></label>
+          <div class="row"><button class="btn" type="button" id="b1-check">Check</button><button class="btn ghost" type="button" id="b1-new">New question</button></div>
+        </div>
+        <span class="fb" id="b1-fb"></span>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b2">
+    <div class="text">
+      <span class="step">Bench 2 · AU converter</span>
+      <h3>Kilometres, AU and light travel time</h3>
+      <div class="codes"><span class="code">SP2.K4</span><span class="code">SP2.S3</span></div>
+      <p>Use the converter to change a distance between AU and kilometres and see how long sunlight takes to travel it.</p>
+      <div class="formula">km = AU × 150 000 000<br>AU = km ÷ 150 000 000<br>light time ≈ AU × 8.3 minutes</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Mars is about 1.5 AU from the Sun.</span>
+        <span>km = 1.5 × 150 000 000 = 225 000 000 km</span>
+        <span>light time ≈ 1.5 × 8.3 min ≈ 12.5 minutes</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Converter</h4>
+      <div class="fields">
+        <label class="field" for="b2-au">Distance in AU<input type="number" id="b2-au" step="any" value="5.2"></label>
+        <label class="field" for="b2-km">Distance in million km<input type="number" id="b2-km" step="any" value="780"></label>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Light travel time</span><b id="b2-light">-</b></div>
+        <div class="stat"><span>Compared with Earth</span><b id="b2-times">-</b></div>
+        <div class="stat"><span>Nearest planet distance</span><b id="b2-near">-</b></div>
+      </div>
+      <div class="worked" aria-live="polite">
+        <b>Practice</b>
+        <span id="b2-q"></span>
+        <div class="fields">
+          <label class="field" for="b2-a"><span id="b2-unit">Your answer</span><input type="number" id="b2-a" step="any"></label>
+          <div class="row"><button class="btn" type="button" id="b2-check">Check</button><button class="btn ghost" type="button" id="b2-new">New question</button></div>
+        </div>
+        <span class="fb" id="b2-fb"></span>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3">
+    <div class="text">
+      <span class="step">Bench 3 · Orbit pattern finder</span>
+      <h3>Does distance predict the length of a year?</h3>
+      <div class="codes"><span class="code">SP2.S3</span><span class="code">SP2.K1</span></div>
+      <p>Plot each planet’s distance from the Sun against its orbital period or its speed. Look for the pattern, then use it to predict.</p>
+      <p>Kepler found a rule that fits every planet. You do not need to memorize it.</p>
+      <div class="formula">P² = a³<br>P = period in Earth years, a = distance in AU</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>The dwarf planet Ceres orbits about 2.77 AU from the Sun.</span>
+        <span>a³ = 2.77 × 2.77 × 2.77 ≈ 21.3</span>
+        <span>P = √21.3 ≈ 4.6 years</span>
+        <span>Ceres is farther out than Mars (1.9 years) and closer than Jupiter (11.9 years), so 4.6 years fits the pattern.</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Distance versus <span id="b3-yname">period</span></h4>
+      <div class="chips" id="b3-y" role="group" aria-label="Choose what to plot"></div>
+      <div class="chartbox"><svg id="b3-svg" viewBox="0 0 520 300" role="img" aria-label="Graph of planet distance from the Sun against orbital period"></svg></div>
+      <div class="worked" aria-live="polite">
+        <b>Predict</b>
+        <span id="b3-q"></span>
+        <div class="opts" id="b3-opts"></div>
+        <span class="fb" id="b3-fb"></span>
+        <div class="row"><button class="btn ghost" type="button" id="b3-new">New question</button></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of more than twenty. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 7 SP2, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-sp2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+var NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) {
+    var v = attrs[k];
+    if ((k === "fill" || k === "stroke") && String(v).indexOf("var(") === 0) n.style[k] = v;
+    else if (k === "class") n.setAttribute("class", v);
+    else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(n, d){ return Number(n).toFixed(d); }
+function grp(n){ var p = String(n).split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function sig(n){ var a = Math.abs(n); if (a >= 100) return grp(Math.round(n)); if (a >= 10) return fmt(n, 1); if (a >= 1) return fmt(n, 2); return fmt(n, 3); }
+function chipGroup(container, items, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function tappable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label); g.setAttribute("class", "tap");
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+function stars(svg, w, h, n, seed){
+  var s = seed || 7;
+  function r(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }
+  for (var i = 0; i < n; i++) S("circle", {cx: fmt(r() * w, 1), cy: fmt(r() * h, 1), r: fmt(0.6 + r() * 0.9, 2), fill: "var(--sky-muted)", opacity: fmt(0.3 + r() * 0.4, 2)}, svg);
+}
+var reduce = false;
+try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+
+/* Planet reference data (rounded): distance a in AU, period P in Earth years, mean orbital speed v in km/s, diameter D in km */
+var PL = [
+  {n: "Mercury", a: 0.39, P: 0.24, v: 47.4, D: 4879, c: "var(--mercury)", days: 88},
+  {n: "Venus", a: 0.72, P: 0.62, v: 35.0, D: 12104, c: "var(--venus)", days: 225},
+  {n: "Earth", a: 1.00, P: 1.00, v: 29.8, D: 12756, c: "var(--earth)", days: 365},
+  {n: "Mars", a: 1.52, P: 1.88, v: 24.1, D: 6792, c: "var(--mars)", days: 687},
+  {n: "Jupiter", a: 5.20, P: 11.86, v: 13.1, D: 142984, c: "var(--jupiter)"},
+  {n: "Saturn", a: 9.54, P: 29.46, v: 9.7, D: 120536, c: "var(--saturn)"},
+  {n: "Uranus", a: 19.19, P: 84.0, v: 6.8, D: 51118, c: "var(--uranus)"},
+  {n: "Neptune", a: 30.07, P: 164.8, v: 5.4, D: 49528, c: "var(--neptune)"}
+];
+var SUN_D = 1391000, AU_KM = 149600000, LIGHT_MIN = 8.32;
+function lightTime(au){ var m = au * LIGHT_MIN; if (m < 90) return fmt(m, 1) + " min"; return fmt(m / 60, 1) + " h"; }
+function yearsText(P){ return P < 1 ? Math.round(P * 365) + " Earth days" : (P < 10 ? fmt(P, 2) : fmt(P, 1)) + " Earth years"; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: Newton's cannon ---------- */
+(function(){
+  var svg = $("l1-svg"), cx = 200, cy = 172, R = 70, r0 = 86, GM = 86, grav = true;
+  var VC = 7.9, VE = 11.2;
+  function draw(){
+    var vr = +$("l1-speed").value;
+    $("l1-out").textContent = fmt(vr, 1) + " km/s";
+    clear(svg); stars(svg, 400, 320, 60, 11);
+    S("circle", {cx: cx, cy: cy, r: R, fill: "var(--earth)"}, svg);
+    S("path", {d: "M" + (cx - 40) + " " + (cy - 50) + " q 20 -12 34 -4 q 10 14 -6 26 q -22 6 -28 -22 z", fill: "var(--land)", opacity: 0.85}, svg);
+    S("path", {d: "M" + (cx + 16) + " " + (cy + 18) + " q 22 -6 30 10 q -6 22 -26 18 q -10 -10 -4 -28 z", fill: "var(--land)", opacity: 0.85}, svg);
+    S("path", {d: "M" + (cx - 12) + " " + (cy - R + 2) + " L " + cx + " " + (cy - r0) + " L " + (cx + 12) + " " + (cy - R + 2) + " z", fill: "var(--rock)"}, svg);
+    var x = 0, y = -r0, vx = vr / VC, vy = 0, pts = [[cx, cy - r0]], dt = 0.5, ang = 0, prev = Math.atan2(y, x), out = "";
+    for (var i = 0; i < 9000; i++) {
+      if (grav) { var r = Math.sqrt(x * x + y * y), a = GM / (r * r); vx += -a * x / r * dt; vy += -a * y / r * dt; }
+      x += vx * dt; y += vy * dt;
+      var rr = Math.sqrt(x * x + y * y), th = Math.atan2(y, x), d = th - prev;
+      if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; ang += d; prev = th;
+      if (i % 3 === 0) pts.push([cx + x, cy + y]);
+      if (rr < R) { pts.push([cx + x, cy + y]); break; }
+      if (rr > 330 || Math.abs(ang) > 2 * Math.PI + 0.05) break;
+    }
+    S("polyline", {points: pts.map(function(p){ return fmt(p[0], 1) + "," + fmt(p[1], 1); }).join(" "), fill: "none", stroke: "var(--trail)", "stroke-width": 2.2, "stroke-dasharray": "5 4"}, svg);
+    S("circle", {cx: cx, cy: cy - r0, r: 4.5, fill: "var(--sun)"}, svg);
+    S("text", {x: 12, y: 22, "class": "lbl"}, svg, grav ? "Gravity on" : "Gravity off");
+    S("text", {x: 12, y: 40, "class": "small"}, svg, "Launch: " + fmt(vr, 1) + " km/s sideways");
+    var t, p;
+    if (!grav) { t = vr === 0 ? "The ball just sits there" : "Straight line into space"; p = ["With no gravity there is nothing to bend the path. The ball moves in a straight line forever. This is why a planet needs gravity to stay in orbit."]; }
+    else if (vr >= VE) { t = "Escapes"; p = ["At about 11.2 km/s or faster, the ball is moving too fast for gravity to bring it back. Gravity bends its path, but the ball still flies off into space."]; }
+    else if (vr < 7.6) { t = "Falls back to Earth"; p = ["Gravity pulls the ball down while it moves sideways, so its path curves. It is not moving sideways fast enough, so the curve hits the ground."]; }
+    else if (Math.abs(vr - VC) < 0.15) { t = "Orbits in a circle"; p = ["At about 7.9 km/s the ground curves away as fast as the ball falls. The ball keeps falling around Earth in a circle. That is an orbit."]; }
+    else { t = "Orbits in an ellipse"; p = ["The ball keeps falling around Earth but its path is a stretched circle, called an ellipse. Gravity plus sideways motion makes an orbit. Most real orbits are ellipses."]; }
+    detail($("l1-detail"), t, p, "Result");
+  }
+  $("l1-speed").addEventListener("input", draw);
+  $("l1-grav").addEventListener("click", function(){ grav = !grav; this.setAttribute("aria-pressed", grav ? "true" : "false"); this.textContent = grav ? "Gravity on" : "Gravity off"; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 2: scale views and model types ---------- */
+(function(){
+  var svg = $("l2-svg");
+  function sizes(){
+    clear(svg); stars(svg, 600, 200, 40, 3);
+    var k = 22 / 142984, sunR = SUN_D * k;
+    S("circle", {cx: fmt(46 - sunR, 1), cy: 95, r: fmt(sunR, 1), fill: "var(--sun)"}, svg);
+    S("text", {x: 8, y: 190, "class": "small"}, svg, "Sun (edge)");
+    var xs = [70, 98, 128, 158, 210, 290, 370, 440];
+    PL.forEach(function(p, i){
+      var r = Math.max(1, p.D * k);
+      S("circle", {cx: xs[i] + 20, cy: 95, r: fmt(r, 2), fill: p.c}, svg);
+      if (p.n === "Saturn") S("ellipse", {cx: xs[i] + 20, cy: 95, rx: fmt(r * 2.1, 1), ry: fmt(r * 0.45, 1), fill: "none", stroke: "var(--saturn)", "stroke-width": 1.5}, svg);
+      S("text", {x: xs[i] + 20, y: i % 2 ? 160 : 145, "class": "small", "text-anchor": "middle"}, svg, p.n);
+    });
+    S("text", {x: 590, y: 22, "class": "mlbl", "text-anchor": "end"}, svg, "Sizes to scale · distances NOT to scale");
+    $("l2-cap").textContent = "Sizes to scale: Jupiter is about 11 times wider than Earth, and the Sun is about 10 times wider than Jupiter. The gaps between planets are not to scale.";
+  }
+  function dists(){
+    clear(svg); stars(svg, 600, 200, 40, 3);
+    var x0 = 30, k = 545 / 30.07;
+    S("line", {x1: x0, y1: 100, x2: 580, y2: 100, stroke: "var(--orbit)", "stroke-width": 1}, svg);
+    S("circle", {cx: x0, cy: 100, r: 4, fill: "var(--sun)"}, svg);
+    S("text", {x: x0, y: 125, "class": "small", "text-anchor": "middle"}, svg, "Sun");
+    PL.forEach(function(p, i){
+      var x = x0 + p.a * k;
+      S("circle", {cx: fmt(x, 1), cy: 100, r: 2.5, fill: p.c}, svg);
+      if (i >= 4) S("text", {x: fmt(x, 1), y: i % 2 ? 80 : 125, "class": "small", "text-anchor": "middle"}, svg, p.n);
+    });
+    S("path", {d: "M" + (x0 + 0.39 * k) + " 72 L" + (x0 + 0.39 * k) + " 66 L" + (x0 + 1.52 * k) + " 66 L" + (x0 + 1.52 * k) + " 72", fill: "none", stroke: "var(--sky-muted)"}, svg);
+    S("text", {x: x0 + 2, y: 58, "class": "small"}, svg, "Mercury to Mars");
+    S("text", {x: 590, y: 22, "class": "mlbl", "text-anchor": "end"}, svg, "Distances to scale · sizes NOT to scale");
+    S("text", {x: 590, y: 185, "class": "mlbl", "text-anchor": "end"}, svg, "At this scale every planet would be smaller than a speck of dust");
+    $("l2-cap").textContent = "Distances to scale: the four inner planets crowd close to the Sun, and the outer planets are spread far apart. The dots are drawn far too big so you can see them.";
+  }
+  chipGroup($("l2-view"), [{label: "Sizes to scale", f: sizes}, {label: "Distances to scale", f: dists}], function(it){ it.f(); }, 0);
+  var TYPES = [
+    {label: "Scale model", t: "Physical scale model", p: ["Real objects, such as balls and beads placed along a field, with every size or distance shrunk by the same amount.", "Shows well: real sizes or real distances, and how empty space is.", "Leaves out: usually motion, and it is very hard to show sizes and distances at the same scale."]},
+    {label: "Orrery", t: "Orrery", p: ["A moving model, often with gears, where planets circle a central Sun at different speeds.", "Shows well: movement patterns, such as inner planets moving faster.", "Leaves out: real distances and sizes. The orbits are squeezed close together."]},
+    {label: "Diagram", t: "Diagram or poster", p: ["A flat drawing of the Sun and planets, like the ones in this lab.", "Shows well: order of the planets, labels and one idea at a time.", "Leaves out: motion and usually true scale. Many posters line the planets up, which never really happens."]},
+    {label: "Simulation", t: "Computer simulation", p: ["A program that uses gravity and measured data to calculate where bodies will be.", "Shows well: movement patterns over thousands of years, predictions of eclipses and planet positions.", "Leaves out: only what its data and rules leave out. It is only as good as the measurements behind it."]}
+  ];
+  chipGroup($("l2-types"), TYPES, function(it){ detail($("l2-detail"), it.t, it.p, "Type of model"); }, 1);
+})();
+
+/* ---------- Lesson 3: two models, one sky ---------- */
+(function(){
+  var svg = $("l3-svg"), sky = $("l3-sky"), mode = 0, timer = null;
+  var TE = 365.25, TM = 687, T0 = 390;
+  var phE = 0, phM = 2 * Math.PI * T0 / TE - 2 * Math.PI * T0 / TM;
+  function E(t){ var a = 2 * Math.PI * t / TE + phE; return [Math.cos(a), -Math.sin(a)]; }
+  function M(t){ var a = 2 * Math.PI * t / TM + phM; return [1.52 * Math.cos(a), -1.52 * Math.sin(a)]; }
+  function lam(t){ var e = E(t), m = M(t); return Math.atan2(-(m[1] - e[1]), m[0] - e[0]); }
+  var LAM = [], prevL = null, off = 0;
+  for (var t = 0; t <= 780; t += 5) { var L = lam(t); if (prevL != null) { if (L - prevL > Math.PI) off -= 2 * Math.PI; if (L - prevL < -Math.PI) off += 2 * Math.PI; } prevL = L; LAM.push(L + off); }
+  var lmin = Math.min.apply(null, LAM), lmax = Math.max.apply(null, LAM);
+  function retro(i){ return i > 0 && LAM[i] < LAM[i - 1]; }
+  function draw(){
+    var t = +$("l3-t").value, i = Math.round(t / 5);
+    $("l3-out").textContent = t;
+    clear(svg); stars(svg, 360, 300, 40, 5);
+    var cx = 180, cy = 150, e = E(t), m = M(t);
+    if (mode === 0) {
+      var s = 55;
+      S("text", {x: 10, y: 20, "class": "lbl"}, svg, "Geocentric: Earth at the centre");
+      S("circle", {cx: cx, cy: cy, r: 1.52 * s, fill: "none", stroke: "var(--orbit)", "stroke-dasharray": "3 4"}, svg);
+      S("circle", {cx: cx, cy: cy, r: s, fill: "none", stroke: "var(--orbit)"}, svg);
+      var tr = [];
+      for (var k = 0; k <= t; k += 5) { var ee = E(k), mm = M(k); tr.push(fmt(cx + (mm[0] - ee[0]) * s, 1) + "," + fmt(cy + (mm[1] - ee[1]) * s, 1)); }
+      if (tr.length > 1) S("polyline", {points: tr.join(" "), fill: "none", stroke: "var(--trail)", "stroke-width": 1.6}, svg);
+      var dx = cx + m[0] * s, dy = cy + m[1] * s;
+      S("circle", {cx: fmt(dx, 1), cy: fmt(dy, 1), r: s, fill: "none", stroke: "var(--sky-muted)", "stroke-width": 1}, svg);
+      S("circle", {cx: fmt(dx, 1), cy: fmt(dy, 1), r: 2.5, fill: "var(--sky-muted)"}, svg);
+      S("line", {x1: fmt(dx, 1), y1: fmt(dy, 1), x2: fmt(dx - e[0] * s, 1), y2: fmt(dy - e[1] * s, 1), stroke: "var(--sky-muted)", "stroke-dasharray": "2 3"}, svg);
+      S("circle", {cx: fmt(cx - e[0] * s, 1), cy: fmt(cy - e[1] * s, 1), r: 9, fill: "var(--sun)"}, svg);
+      S("circle", {cx: cx, cy: cy, r: 7, fill: "var(--earth)"}, svg);
+      S("circle", {cx: fmt(dx - e[0] * s, 1), cy: fmt(dy - e[1] * s, 1), r: 5.5, fill: "var(--mars)"}, svg);
+      S("text", {x: 10, y: 288, "class": "small"}, svg, "Orange line: Mars’s loops. Grey circle: its epicycle.");
+    } else {
+      var s2 = 70;
+      S("text", {x: 10, y: 20, "class": "lbl"}, svg, "Heliocentric: Sun at the centre");
+      S("circle", {cx: cx, cy: cy, r: s2, fill: "none", stroke: "var(--orbit)"}, svg);
+      S("circle", {cx: cx, cy: cy, r: 1.52 * s2, fill: "none", stroke: "var(--orbit)"}, svg);
+      var ex = cx + e[0] * s2, ey = cy + e[1] * s2, mx = cx + m[0] * s2, my = cy + m[1] * s2;
+      var ux = mx - ex, uy = my - ey, ul = Math.sqrt(ux * ux + uy * uy);
+      S("line", {x1: fmt(ex, 1), y1: fmt(ey, 1), x2: fmt(ex + ux / ul * 260, 1), y2: fmt(ey + uy / ul * 260, 1), stroke: "var(--sight)", "stroke-width": 1.4, "stroke-dasharray": "5 4"}, svg);
+      S("circle", {cx: cx, cy: cy, r: 11, fill: "var(--sun)"}, svg);
+      S("circle", {cx: fmt(ex, 1), cy: fmt(ey, 1), r: 7, fill: "var(--earth)"}, svg);
+      S("circle", {cx: fmt(mx, 1), cy: fmt(my, 1), r: 5.5, fill: "var(--mars)"}, svg);
+      S("text", {x: 10, y: 288, "class": "small"}, svg, "Blue dashes: our line of sight from Earth to Mars.");
+    }
+    S("text", {x: 350, y: 20, "class": "mlbl", "text-anchor": "end"}, svg, "Not to scale");
+    clear(sky); stars(sky, 600, 110, 50, 9);
+    S("text", {x: 10, y: 16, "class": "mlbl"}, sky, "SKY STRIP · where Mars appears from Earth · forward →");
+    for (var j = 0; j <= i; j++) {
+      var x = 30 + (LAM[j] - lmin) / (lmax - lmin) * 540, y = 30 + j / 156 * 70;
+      S("circle", {cx: fmt(x, 1), cy: fmt(y, 1), r: j === i ? 5 : 1.8, fill: j === i ? "var(--mars)" : (retro(j) ? "var(--trail)" : "var(--sky-muted)")}, sky);
+    }
+    var r = retro(i);
+    $("l3-cap").textContent = (mode === 0 ? "Earth‑centred view. " : "Sun‑centred view. ") + (r ? "Right now Mars is in retrograde motion: it seems to move backward against the stars (orange dots)." : "Right now Mars moves forward against the stars, its usual direction.") + " Both models predict the same sky.";
+  }
+  chipGroup($("l3-view"), [{label: "Geocentric (Ptolemy)"}, {label: "Heliocentric (Copernicus)"}], function(it, i){ mode = i; draw(); }, 0);
+  $("l3-t").addEventListener("input", draw);
+  $("l3-play").addEventListener("click", function(){
+    var b = this;
+    if (timer) { clearInterval(timer); timer = null; b.textContent = "Play"; return; }
+    b.textContent = "Pause";
+    timer = setInterval(function(){ var s = $("l3-t"), v = +s.value + 5; if (v > 780) v = 0; s.value = v; draw(); }, reduce ? 200 : 60);
+  });
+})();
+
+/* ---------- Lesson 4: Venus phases and timeline ---------- */
+function phaseDisc(g, cx, cy, r, k, dark){
+  S("circle", {cx: cx, cy: cy, r: r, fill: dark || "var(--dark)"}, g);
+  if (k <= 0.01) return;
+  var rx = Math.abs(1 - 2 * k) * r, sweep = k < 0.5 ? 0 : 1;
+  S("path", {d: "M" + fmt(cx, 2) + " " + fmt(cy - r, 2) + " A " + fmt(r, 2) + " " + fmt(r, 2) + " 0 0 1 " + fmt(cx, 2) + " " + fmt(cy + r, 2) + " A " + fmt(rx, 2) + " " + fmt(r, 2) + " 0 0 " + sweep + " " + fmt(cx, 2) + " " + fmt(cy - r, 2) + " Z", fill: "var(--venus)"}, g);
+}
+(function(){
+  var svg = $("l4-svg");
+  clear(svg); stars(svg, 600, 230, 40, 21);
+  S("text", {x: 12, y: 24, "class": "lbl"}, svg, "Heliocentric prediction: full set of phases");
+  S("text", {x: 12, y: 132, "class": "lbl"}, svg, "Ptolemy’s prediction: crescents only");
+  [15, 60, 100, 135, 158].forEach(function(deg, i){
+    var th = deg * Math.PI / 180, vx = 0.723 * Math.cos(th), vy = 0.723 * Math.sin(th);
+    var ex = -1 - vx, ey = -vy, d = Math.sqrt(ex * ex + ey * ey);
+    var cosA = (-vx * ex - vy * ey) / (0.723 * d), k = (1 + cosA) / 2;
+    phaseDisc(svg, 70 + i * 112, 70, 7 / d, k);
+  });
+  S("text", {x: 70, y: 112, "class": "small", "text-anchor": "middle"}, svg, "far side of Sun");
+  S("text", {x: 518, y: 112, "class": "small", "text-anchor": "middle"}, svg, "near Earth");
+  [0.08, 0.18, 0.28, 0.2, 0.1].forEach(function(k, i){ phaseDisc(svg, 70 + i * 112, 178, 10, k); });
+  S("text", {x: 588, y: 222, "class": "mlbl", "text-anchor": "end"}, svg, "Galileo saw the top row. Sizes not exact.");
+  var EV = [
+    {label: "~270 BCE", t: "Aristarchus of Samos, Greece", p: ["Proposed that Earth moves around the Sun. Few people accepted the idea, partly because no one could feel or measure Earth moving."]},
+    {label: "~150", t: "Claudius Ptolemy, Alexandria, Egypt", p: ["Wrote the Almagest, a geocentric model with epicycles. It predicted planet positions well enough to be used for about 1400 years."]},
+    {label: "499", t: "Aryabhata, India", p: ["Proposed that Earth spins on its axis, which explains why the stars seem to turn around us each night."]},
+    {label: "1200s to 1300s", t: "Astronomers of the Islamic world", p: ["Nasir al-Din al-Tusi in Persia and Ibn al-Shatir in Damascus improved planet models with new mathematical tools. Copernicus later used very similar methods. Historians still study how these ideas travelled."]},
+    {label: "1543", t: "Nicolaus Copernicus, Poland", p: ["Published a heliocentric model. It still used perfect circles, so its predictions were not much better than Ptolemy’s at first."]},
+    {label: "1570s to 1601", t: "Tycho Brahe, Denmark", p: ["Measured planet positions more precisely than anyone before the telescope. His data later let Kepler test models."]},
+    {label: "1609 to 1610", t: "Galileo Galilei, Italy", p: ["Used a telescope to see four moons orbiting Jupiter and the full set of Venus’s phases. These observations did not fit Ptolemy’s model."]},
+    {label: "1609 and 1619", t: "Johannes Kepler, Germany", p: ["Showed that planets move in ellipses and move faster when closer to the Sun. His predictions were far more accurate than any earlier model."]},
+    {label: "1687", t: "Isaac Newton, England", p: ["Explained that gravity pulls the planets toward the Sun and keeps them in orbit. The same law explains a falling apple and the Moon’s orbit."]},
+    {label: "1838", t: "Friedrich Bessel, Germany", p: ["Measured stellar parallax, a tiny shift in a nearby star’s position as Earth moves around the Sun. This was direct evidence that Earth really moves."]}
+  ];
+  chipGroup($("l4-time"), EV, function(it){ detail($("l4-detail"), it.t, it.p, it.label); }, 6);
+})();
+
+/* ---------- Lesson 5: AU ruler ---------- */
+(function(){
+  var svg = $("l5-svg"), max = 31;
+  function info(p){
+    detail($("l5-detail"), p.n, [
+      "Average distance from the Sun: " + fmt(p.a, 2) + " AU, about " + grp(Math.round(p.a * AU_KM / 1e6)) + " million km.",
+      p.n === "Earth" ? "This is the distance that defines 1 AU." : (p.a > 1 ? "That is about " + sig(p.a) + " times as far from the Sun as Earth." : "That is closer to the Sun than Earth, about " + Math.round(p.a * 100) + "% of Earth’s distance."),
+      "Sunlight takes about " + lightTime(p.a) + " to reach it."
+    ], "Distance");
+  }
+  function draw(){
+    clear(svg); stars(svg, 600, 150, 30, 13);
+    var x0 = 40, w = 530, k = w / max;
+    S("line", {x1: x0, y1: 80, x2: x0 + w, y2: 80, stroke: "var(--sky-muted)", "stroke-width": 1.2}, svg);
+    var step = max > 5 ? 5 : 0.5;
+    for (var v = 0; v <= max + 0.001; v += step) {
+      var x = x0 + v * k;
+      S("line", {x1: fmt(x, 1), y1: 80, x2: fmt(x, 1), y2: 88, stroke: "var(--sky-muted)"}, svg);
+      S("text", {x: fmt(x, 1), y: 104, "class": "mlbl", "text-anchor": "middle"}, svg, (step < 1 ? fmt(v, 1) : v) + "");
+    }
+    S("text", {x: x0 + w, y: 124, "class": "mlbl", "text-anchor": "end"}, svg, "distance from the Sun in AU");
+    if (max > 5) {
+      S("rect", {x: fmt(x0 + 2.2 * k, 1), y: 74, width: fmt(1.1 * k, 1), height: 12, fill: "var(--sky-muted)", opacity: 0.35}, svg);
+      S("text", {x: fmt(x0 + 2.75 * k, 1), y: 140, "class": "mlbl", "text-anchor": "middle"}, svg, "asteroid belt");
+    }
+    S("circle", {cx: x0, cy: 80, r: 8, fill: "var(--sun)"}, svg);
+    var n = 0;
+    PL.forEach(function(p){
+      if (p.a > max) return;
+      var x = x0 + p.a * k, up = n % 2 === 0, g = S("g", null, svg);
+      S("circle", {cx: fmt(x, 1), cy: 80, r: 6, fill: p.c, stroke: "var(--sky)", "stroke-width": 1}, g);
+      S("line", {x1: fmt(x, 1), y1: 72, x2: fmt(x, 1), y2: up ? 50 : 30, stroke: p.c, "stroke-width": 1}, g);
+      S("text", {x: fmt(x, 1), y: up ? 46 : 26, "class": "small", "text-anchor": "middle"}, g, p.n);
+      tappable(g, p.n + ", " + p.a + " AU from the Sun", function(){ info(p); });
+      n++;
+    });
+  }
+  chipGroup($("l5-zoom"), [{label: "Inner planets (0 to 2 AU)", m: 2}, {label: "All planets (0 to 31 AU)", m: 31}], function(it){ max = it.m; draw(); }, 1);
+  info(PL[4]);
+})();
+
+/* ---------- Lesson 6: orrery ---------- */
+(function(){
+  var svg = $("l6-svg"), cx = 200, cy = 200, years = 0, timer = null, last = 0;
+  var RATES = [0.25, 1, 4, 16, 64], rate = 1, dots = [];
+  var START = [0.3, 2.1, 4.0, 5.2, 1.0, 3.3, 5.8, 0.6];
+  function rad(a){ return 22 + 160 * Math.sqrt(a / 30.07); }
+  clear(svg); stars(svg, 400, 400, 70, 17);
+  PL.forEach(function(p){ S("circle", {cx: cx, cy: cy, r: fmt(rad(p.a), 1), fill: "none", stroke: "var(--orbit)", "stroke-width": 1}, svg); });
+  S("circle", {cx: cx, cy: cy, r: 12, fill: "var(--sun)"}, svg);
+  S("path", {d: "M 350 30 A 40 40 0 0 0 310 60", fill: "none", stroke: "var(--sky-muted)", "stroke-width": 1.4}, svg);
+  S("path", {d: "M 306 52 L 310 60 L 318 56", fill: "none", stroke: "var(--sky-muted)", "stroke-width": 1.4}, svg);
+  S("text", {x: 392, y: 22, "class": "mlbl", "text-anchor": "end"}, svg, "counterclockwise");
+  PL.forEach(function(p, i){
+    var g = S("g", null, svg);
+    var c = S("circle", {cx: 0, cy: 0, r: i >= 4 ? 7 : 5, fill: p.c, stroke: "var(--sky)", "stroke-width": 1}, g);
+    var t = S("text", {x: 0, y: 0, "class": "small", "text-anchor": "middle"}, g, p.n);
+    tappable(g, p.n + ": orbits the Sun in " + yearsText(p.P), function(){
+      detail($("l6-detail"), p.n, [
+        "Distance from the Sun: " + fmt(p.a, 2) + " AU.",
+        "One orbit (its year): " + yearsText(p.P) + ".",
+        "Average orbital speed: about " + fmt(p.v, 1) + " km/s."
+      ], "Planet");
+    });
+    dots.push({c: c, t: t, p: p, s: START[i]});
+  });
+  function place(){
+    dots.forEach(function(d){
+      var a = d.s + 2 * Math.PI * years / d.p.P, r = rad(d.p.a), x = cx + r * Math.cos(a), y = cy - r * Math.sin(a);
+      d.c.setAttribute("cx", fmt(x, 1)); d.c.setAttribute("cy", fmt(y, 1));
+      d.t.setAttribute("x", fmt(x, 1)); d.t.setAttribute("y", fmt(y - 10, 1));
+    });
+    $("l6-years").textContent = fmt(years, 1) + " years";
+    $("l6-earth").textContent = Math.floor(years);
+  }
+  function tick(ts){
+    if (!timer) return;
+    if (last) years += (ts - last) / 1000 * rate;
+    last = ts; place(); requestAnimationFrame(tick);
+  }
+  $("l6-play").addEventListener("click", function(){
+    if (timer) { timer = null; this.textContent = "Play"; return; }
+    timer = true; last = 0; this.textContent = "Pause"; requestAnimationFrame(tick);
+  });
+  $("l6-rate").addEventListener("input", function(){
+    rate = RATES[+this.value];
+    $("l6-rateout").textContent = (rate < 1 ? "1 Earth year every 4 seconds" : rate + " Earth year" + (rate > 1 ? "s" : "") + " per second");
+  });
+  place();
+  detail($("l6-detail"), "Tap a planet", ["Press Play and watch. Mercury races around while Neptune barely moves. Tap any planet to see its distance, year and speed."], "Planet");
+})();
+
+/* ---------- Bench 1: scale model builder ---------- */
+(function(){
+  var OBJ = [{label: "Grape (2 cm)", d: 2}, {label: "Grapefruit (12 cm)", d: 12}, {label: "Basketball (24 cm)", d: 24}, {label: "Exercise ball (65 cm)", d: 65}];
+  var setObj;
+  function build(){
+    var sun = Math.max(1, +$("b1-sun").value || 24), f = sun / 100 / SUN_D;
+    var t = $("b1-table"); clear(t);
+    var hr = el("tr"); ["Body", "Model size", "Distance from model Sun", "Steps (0.75 m each)"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+    var r0 = el("tr"); [ "Sun", fmt(sun, 0) + " cm", "-", "-"].forEach(function(v){ r0.appendChild(el("td", null, v)); }); t.appendChild(r0);
+    PL.forEach(function(p){
+      var size = p.D * f * 1000, dist = p.a * AU_KM * f, tr = el("tr");
+      [p.n, (size < 1 ? fmt(size, 2) : fmt(size, 1)) + " mm", sig(dist) + " m", grp(Math.round(dist / 0.75))].forEach(function(v){ tr.appendChild(el("td", null, v)); });
+      t.appendChild(tr);
+    });
+    var star = 268000 * AU_KM * f / 1000;
+    $("b1-star").textContent = "The nearest other star, Proxima Centauri, is about 268 000 AU away. In this model it would be about " + grp(Math.round(star)) + " km away. For comparison, Edmonton to Calgary is about 300 km.";
+  }
+  setObj = chipGroup($("b1-obj"), OBJ, function(it){ $("b1-sun").value = it.d; build(); }, 2);
+  $("b1-sun").addEventListener("input", function(){ build(); });
+  var Q = null;
+  function newQ(){
+    var sun = pick([10, 15, 20, 24, 30, 50]), p = pick(PL.slice(1));
+    var ans = p.a * AU_KM * (sun / 100 / SUN_D);
+    Q = {ans: ans};
+    $("b1-q").textContent = "A model Sun is " + sun + " cm wide. " + p.n + " is " + p.a + " AU from the Sun (1 AU ≈ 149 600 000 km, Sun ≈ 1 391 000 km wide). How many metres from the model Sun should " + p.n + " go?";
+    $("b1-a").value = ""; $("b1-fb").textContent = ""; $("b1-fb").className = "fb";
+  }
+  $("b1-check").addEventListener("click", function(){
+    var v = parseFloat($("b1-a").value), fb = $("b1-fb");
+    if (isNaN(v)) { fb.className = "fb no"; fb.textContent = "Type a number in metres first."; return; }
+    var ok = Math.abs(v - Q.ans) / Q.ans < 0.05;
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + "About " + sig(Q.ans) + " m. Multiply the real distance in km by (model Sun size ÷ real Sun size), then change cm to m.";
+  });
+  $("b1-new").addEventListener("click", newQ);
+  build(); newQ();
+})();
+
+/* ---------- Bench 2: AU converter ---------- */
+(function(){
+  function show(au){
+    if (!(au > 0)) { $("b2-light").textContent = "-"; $("b2-times").textContent = "-"; $("b2-near").textContent = "-"; return; }
+    $("b2-light").textContent = lightTime(au);
+    $("b2-times").textContent = sig(au) + " × Earth";
+    var best = PL[0]; PL.forEach(function(p){ if (Math.abs(p.a - au) < Math.abs(best.a - au)) best = p; });
+    $("b2-near").textContent = best.n;
+  }
+  $("b2-au").addEventListener("input", function(){ var a = parseFloat(this.value); if (a >= 0) $("b2-km").value = Math.round(a * 150 * 10) / 10; show(a); });
+  $("b2-km").addEventListener("input", function(){ var k = parseFloat(this.value); var a = k / 150; if (k >= 0) $("b2-au").value = Math.round(a * 1000) / 1000; show(a); });
+  show(5.2);
+  var OBJS = [["Saturn", 9.5], ["Uranus", 19.2], ["an asteroid", 2.6], ["a comet", 12], ["Mars", 1.5], ["the dwarf planet Pluto", 39.5], ["Venus", 0.72], ["Jupiter", 5.2]];
+  var Q = null;
+  function newQ(){
+    var o = pick(OBJS), type = pick([0, 1, 2]), q, ans, unit;
+    if (type === 0) { q = o[0][0].toUpperCase() + o[0].slice(1) + " is about " + o[1] + " AU from the Sun. About how many million km is that? Use 1 AU = 150 million km."; ans = o[1] * 150; unit = "Million km"; }
+    else if (type === 1) { var km = o[1] * 150; q = o[0][0].toUpperCase() + o[0].slice(1) + " is about " + grp(Math.round(km)) + " million km from the Sun. How many AU is that? Use 1 AU = 150 million km."; ans = o[1]; unit = "AU"; }
+    else { q = "Sunlight takes about 8.3 minutes to travel 1 AU. About how many minutes does it take to reach " + o[0] + " at " + o[1] + " AU?"; ans = o[1] * 8.3; unit = "Minutes"; }
+    Q = {ans: ans, type: type};
+    $("b2-q").textContent = q; $("b2-unit").textContent = "Your answer (" + unit + ")";
+    $("b2-a").value = ""; $("b2-fb").textContent = ""; $("b2-fb").className = "fb";
+  }
+  $("b2-check").addEventListener("click", function(){
+    var v = parseFloat($("b2-a").value), fb = $("b2-fb");
+    if (isNaN(v)) { fb.className = "fb no"; fb.textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - Q.ans) / Q.ans < 0.04;
+    var how = Q.type === 0 ? "Multiply AU by 150." : Q.type === 1 ? "Divide million km by 150." : "Multiply AU by 8.3 minutes.";
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + "The answer is about " + sig(Q.ans) + ". " + how;
+  });
+  $("b2-new").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 3: orbit pattern finder ---------- */
+(function(){
+  var svg = $("b3-svg"), mode = 0;
+  function draw(){
+    clear(svg);
+    var L = 52, T = 18, W = 448, H = 232, ymax = mode === 0 ? 180 : 50, xmax = 32;
+    function X(a){ return L + a / xmax * W; } function Y(v){ return T + H - v / ymax * H; }
+    for (var gx = 0; gx <= 30; gx += 5) { S("line", {x1: X(gx), y1: T, x2: X(gx), y2: T + H, stroke: "var(--line)"}, svg); S("text", {x: X(gx), y: T + H + 16, "text-anchor": "middle"}, svg, gx + ""); }
+    var gs = mode === 0 ? 30 : 10;
+    for (var gy = 0; gy <= ymax; gy += gs) { S("line", {x1: L, y1: Y(gy), x2: L + W, y2: Y(gy), stroke: "var(--line)"}, svg); S("text", {x: L - 6, y: Y(gy) + 4, "text-anchor": "end"}, svg, gy + ""); }
+    S("text", {x: L + W / 2, y: 294, "text-anchor": "middle"}, svg, "distance from the Sun (AU)");
+    S("text", {x: 14, y: T + H / 2, "text-anchor": "middle", transform: "rotate(-90 14 " + (T + H / 2) + ")"}, svg, mode === 0 ? "period (Earth years)" : "orbital speed (km/s)");
+    var pts = [];
+    for (var a = 0.3; a <= 31; a += 0.2) { var v = mode === 0 ? Math.pow(a, 1.5) : 29.8 / Math.sqrt(a); if (v <= ymax) pts.push(fmt(X(a), 1) + "," + fmt(Y(v), 1)); }
+    S("polyline", {points: pts.join(" "), fill: "none", stroke: "var(--muted)", "stroke-dasharray": "4 4", "stroke-width": 1.2}, svg);
+    PL.forEach(function(p, i){
+      var v = mode === 0 ? p.P : p.v;
+      S("circle", {cx: fmt(X(p.a), 1), cy: fmt(Y(v), 1), r: 5, fill: p.c, stroke: "var(--ink)", "stroke-width": 0.8}, svg);
+      if (i >= 4) S("text", {x: fmt(X(p.a) - 8, 1), y: fmt(Y(v) - 8, 1), "text-anchor": "end"}, svg, p.n);
+    });
+    S("text", {x: X(2.2), y: mode === 0 ? Y(0) - 14 : Y(47.4) + 4, "text-anchor": "start"}, svg, "Mercury to Mars");
+    S("text", {x: L + W - 4, y: T + 12, "text-anchor": "end"}, svg, mode === 0 ? "dashes: Kepler’s rule P² = a³" : "dashes: pattern line");
+    $("b3-yname").textContent = mode === 0 ? "period" : "speed";
+    svg.setAttribute("aria-label", "Graph of planet distance from the Sun against " + (mode === 0 ? "orbital period. Period rises faster and faster with distance." : "orbital speed. Speed drops as distance increases."));
+  }
+  chipGroup($("b3-y"), [{label: "Orbital period"}, {label: "Orbital speed"}], function(it, i){ mode = i; draw(); }, 0);
+  var OBJ = [["a made-up planet", 0.5], ["the dwarf planet Ceres", 2.77], ["an asteroid", 3.0], ["a made-up planet", 10], ["a comet", 17], ["the dwarf planet Pluto", 39.5]];
+  var RANGES = ["Less than 1 Earth year", "1 to 10 Earth years", "10 to 100 Earth years", "More than 100 Earth years"];
+  function newQ(){
+    var box = $("b3-opts"); clear(box); $("b3-fb").textContent = ""; $("b3-fb").className = "fb";
+    var o = pick(OBJ), P = Math.pow(o[1], 1.5), right = P < 1 ? 0 : P < 10 ? 1 : P < 100 ? 2 : 3;
+    $("b3-q").textContent = "Predict: " + o[0] + " orbits about " + o[1] + " AU from the Sun. How long is its year?";
+    RANGES.forEach(function(r, i){
+      var b = el("button", {"class": "opt", type: "button"}, r);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(box.children, function(x, j){ x.disabled = true; if (j === right) x.classList.add("right"); });
+        if (i !== right) b.classList.add("wrong");
+        var fb = $("b3-fb"); fb.className = "fb " + (i === right ? "ok" : "no");
+        fb.textContent = (i === right ? "Correct. " : "Not quite. ") + "Kepler’s rule gives about " + sig(P) + " years. Farther from the Sun means a longer year.";
+      });
+      box.appendChild(b);
+    });
+  }
+  $("b3-new").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "Which model?", bins: ["Geocentric", "Heliocentric", "Both"], items: [
+      ["Earth sits still at the centre", 0, "Geo means Earth. Earth is the still centre in the geocentric model."],
+      ["The Sun is at the centre", 1, "Helio means Sun."],
+      ["In Ptolemy’s version, planets ride on epicycles", 0, "Ptolemy used epicycles to explain retrograde motion with Earth at the centre."],
+      ["Mars seems to go backward because Earth passes it", 1, "Earth’s faster inside orbit overtakes Mars."],
+      ["Predicts where planets will appear in the sky", 2, "Both models were built to predict planet positions. Kepler’s heliocentric version predicted best."],
+      ["Explains why Venus can look nearly full", 1, "Venus can go behind the Sun only if it orbits the Sun."],
+      ["The Sun travels around Earth once a year", 0, "That is how the geocentric model explains the Sun’s yearly path."],
+      ["Earth spins once a day and orbits the Sun once a year", 1, "Both motions belong to Earth in the heliocentric model."],
+      ["Explains sunrise and sunset", 2, "Either a moving Sun or a spinning Earth explains sunrise and sunset."],
+      ["The Moon orbits Earth", 2, "Both models have the Moon going around Earth."],
+      ["Fits Newton’s law of gravity", 1, "Newton’s gravity explains why planets orbit the much heavier Sun."],
+      ["Published by Copernicus in 1543", 1, "Copernicus put the Sun at the centre."]
+    ]},
+    {label: "Closer or farther?", bins: ["Closer to the Sun", "Farther from the Sun"], items: [
+      ["Takes longer to orbit the Sun once", 1, "Farther planets have longer paths and move more slowly."],
+      ["Moves faster along its orbit", 0, "The Sun’s pull is stronger close in, so closer planets move faster."],
+      ["Feels a stronger pull from the Sun (same mass)", 0, "Gravity gets weaker with distance."],
+      ["Has a longer path to travel each orbit", 1, "A bigger circle has a longer path."],
+      ["Sunlight takes longer to reach it", 1, "More distance means more travel time for light."],
+      ["Has a shorter year", 0, "Mercury’s year is only 88 Earth days."],
+      ["Mercury, compared with Mars", 0, "Mercury is 0.39 AU from the Sun and Mars is 1.52 AU."],
+      ["Saturn, compared with Jupiter", 1, "Saturn is about 9.5 AU from the Sun and Jupiter is about 5.2 AU."]
+    ]},
+    {label: "Best unit", bins: ["Kilometres", "Astronomical units", "Light-years"], items: [
+      ["Edmonton to Calgary", 0, "About 300 km. AU would give a tiny number."],
+      ["Earth to the Moon", 0, "About 384 400 km, which is only 0.0026 AU."],
+      ["The Sun to Jupiter", 1, "About 5.2 AU. In km it is about 780 million km."],
+      ["The Sun to Neptune", 1, "About 30 AU."],
+      ["The Sun to the nearest other star", 2, "About 4.2 light‑years, or about 268 000 AU."],
+      ["Across the Milky Way galaxy", 2, "About 100 000 light‑years. AU would give enormous numbers."],
+      ["The width of Earth", 0, "About 12 756 km."],
+      ["The size of a planet’s orbit around another star", 1, "Planetary systems around other stars are measured in AU too."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Gravity", "A force of attraction between objects that have mass. It is stronger for more massive objects and weaker when objects are farther apart."],
+    ["Celestial body", "A natural object in space, such as a star, a planet, a moon or an asteroid."],
+    ["Orbit", "The curved path one body follows around another, caused by gravity plus sideways motion."],
+    ["Solar system", "Our Sun and everything that orbits it: eight planets, their moons, dwarf planets, asteroids and comets."],
+    ["Planetary system", "A star and the planets and other bodies that orbit it. Our solar system is one example."],
+    ["Planet", "A large, round body that orbits a star and has cleared its path of other objects."],
+    ["Moon", "A natural body that orbits a planet or a dwarf planet."],
+    ["Model", "A simpler version of something real that helps us explain or predict it."],
+    ["Scale model", "A model in which every size or distance is shrunk or enlarged by the same amount."],
+    ["Orrery", "A moving model of the solar system that shows planets orbiting the Sun at different speeds."],
+    ["Geocentric model", "A model with Earth still at the centre and the Sun, Moon, planets and stars moving around it."],
+    ["Heliocentric model", "A model with the Sun at the centre and Earth as one of the planets orbiting it."],
+    ["Epicycle", "In Ptolemy’s model, a small circle a planet moves on while the circle’s centre moves around Earth."],
+    ["Retrograde motion", "When a planet seems to move backward against the stars for a while, as seen from Earth."],
+    ["Evidence", "Observations and measurements that support or contradict an idea."],
+    ["Phases of Venus", "The changing lit shape of Venus. Galileo saw a full set, which fits the heliocentric model."],
+    ["Ellipse", "A slightly stretched circle. Kepler showed that planets orbit the Sun in ellipses."],
+    ["Stellar parallax", "A tiny yearly shift in a nearby star’s position caused by Earth orbiting the Sun. First measured in 1838."],
+    ["Astronomical unit (AU)", "The average distance from Earth to the Sun, about 150 million km."],
+    ["Light-year", "The distance light travels in one year, about 63 000 AU. Used for distances between stars."],
+    ["Orbital period", "The time a body takes to complete one orbit. A planet’s orbital period is its year."],
+    ["Orbital speed", "How fast a body moves along its orbit. Planets closer to the Sun move faster."],
+    ["Asteroid belt", "A region between Mars and Jupiter, about 2 to 3.3 AU from the Sun, with many small rocky bodies."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){
+    list = [];
+    CARDS.forEach(function(c, j){ var m = store.cards[j]; if (filter === "all" || (filter === "known" && m === "known") || (filter === "learning" && m !== "known")) list.push(j); });
+    if (i >= list.length) i = 0;
+    draw();
+  }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){
+    if (!list.length) return;
+    store.cards[list[i]] = v; save();
+    var before = list.length; flipped = false;
+    if (filter === "all") { i = (i + 1) % list.length; draw(); }
+    else { build(); if (list.length === before && list.length) { i = (i + 1) % list.length; draw(); } }
+  }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["What is gravity?", ["A force of attraction between objects that have mass", "A push that moves objects away from Earth", "A force that only planets have", "Magnetism from Earth’s core"], 0, "Every object with mass pulls on every other object."],
+    ["What keeps a planet in orbit around the Sun?", ["The Sun’s gravity plus the planet’s sideways motion", "The Sun’s gravity alone, with no motion", "Sunlight pushing the planet outward", "Magnetic forces between planets"], 0, "Gravity bends the path while sideways motion keeps the planet from falling in."],
+    ["In Newton’s cannon model, a ball launched too slowly will", ["fall back to the ground", "orbit in a circle", "escape into space", "stop in midair"], 0, "It is not moving sideways fast enough, so its curved path hits the ground."],
+    ["If the Sun’s gravity suddenly vanished, Earth would", ["move off in a straight line", "fall into the Sun", "stop moving", "keep circling as before"], 0, "With no force to bend its path, Earth would travel in a straight line."],
+    ["The gravity between two objects gets weaker when", ["they move farther apart", "they gain more mass", "they move closer together", "they are in sunlight"], 0, "Gravity weakens with distance."],
+    ["Which statement about models is true?", ["Every model shows some features well and leaves others out", "A good model must be the same size as the real thing", "Only students use models", "A model can never change"], 0, "Scientists choose a model for what they need to show and know its limits."],
+    ["Why do most solar system posters not show distances to scale?", ["The planets would be too small to see on any page", "Scientists do not know the distances", "The planets are all the same distance apart", "Distances do not matter in science"], 0, "With distances to scale, the planets would be tiny specks."],
+    ["What is at the centre of a geocentric model?", ["Earth", "The Sun", "The Moon", "Jupiter"], 0, "Geo means Earth."],
+    ["Around the year 150, who described a geocentric model with epicycles?", ["Ptolemy", "Copernicus", "Galileo", "Newton"], 0, "Ptolemy’s model was used for about 1400 years."],
+    ["In Ptolemy’s model, an epicycle is", ["a small circle a planet moves on while its centre moves around Earth", "the path of a comet", "a kind of eclipse", "the Sun’s daily spin"], 0, "Epicycles let the model show planets looping backward."],
+    ["Retrograde motion is when a planet", ["seems to move backward against the stars for a while", "stops orbiting the Sun", "spins backward on its axis", "falls toward the Sun"], 0, "It is an apparent motion, seen from Earth."],
+    ["How does the heliocentric model explain Mars’s retrograde motion?", ["Earth, on a faster inside orbit, passes Mars", "Mars really reverses direction", "The Sun pushes Mars backward", "Mars moves on an epicycle"], 0, "Like passing a slower car on the highway."],
+    ["Galileo saw moons orbiting Jupiter. Why did this matter?", ["It showed that not everything orbits Earth", "It proved Jupiter is a star", "It showed the Moon is made of rock", "It measured the AU"], 0, "A geocentric model said everything circles Earth."],
+    ["Galileo saw Venus look nearly full at times. Which model does this fit?", ["The heliocentric model", "Ptolemy’s geocentric model", "Neither model", "Only a flat Earth model"], 0, "Venus can only look nearly full if it goes behind the Sun, which needs it to orbit the Sun."],
+    ["Who published a Sun‑centred model in 1543?", ["Nicolaus Copernicus", "Claudius Ptolemy", "Isaac Newton", "Tycho Brahe"], 0, "Copernicus put the Sun at the centre."],
+    ["Kepler improved the heliocentric model by showing that orbits are", ["ellipses", "perfect circles", "squares", "spirals into the Sun"], 0, "Ellipses made predictions much more accurate."],
+    ["What did Newton add to the heliocentric model?", ["Gravity explains why planets orbit the Sun", "Planets ride on epicycles", "Earth is at the centre", "The telescope"], 0, "Newton’s law of gravity explains the orbits."],
+    ["One astronomical unit (AU) is", ["the average distance from Earth to the Sun", "the distance from Earth to the Moon", "the distance light travels in a year", "the width of the Sun"], 0, "1 AU is about 150 million km."],
+    ["Jupiter is about 5.2 AU from the Sun. About how far is that in km?", ["780 million km", "5.2 million km", "52 million km", "7.8 billion km"], 0, "5.2 × 150 million km ≈ 780 million km."],
+    ["Neptune is about 30 AU from the Sun. Compared with Earth, Neptune is", ["about 30 times farther from the Sun", "about 3 times farther", "about 300 times farther", "the same distance"], 0, "Earth is 1 AU away, so 30 AU is 30 times as far."],
+    ["Sunlight takes about 8.3 minutes to travel 1 AU. About how long does it take to reach Mars at 1.5 AU?", ["About 12.5 minutes", "About 8.3 minutes", "About 1.5 minutes", "About 2 hours"], 0, "1.5 × 8.3 ≈ 12.5 minutes."],
+    ["Why do astronomers use AU inside the solar system?", ["The numbers are smaller and easier to compare", "Kilometres cannot measure space", "AU measures time", "AU only works for the Moon"], 0, "Jupiter at 5.2 AU is easier to compare than 778 000 000 km."],
+    ["Which planet has the longest orbital period?", ["Neptune", "Mercury", "Earth", "Jupiter"], 0, "Neptune is farthest out, so its year is about 165 Earth years."],
+    ["Which pattern is true for the planets?", ["Farther planets move more slowly and take longer to orbit", "Farther planets move faster", "Every planet takes one Earth year to orbit", "Planets orbit in random directions"], 0, "The Sun’s pull weakens with distance."],
+    ["Seen from above Earth’s North Pole, the planets orbit the Sun", ["all in the same direction, counterclockwise", "in random directions", "half one way and half the other", "only clockwise"], 0, "All eight planets orbit in the same direction, close to one flat plane."],
+    ["Which unit is best for the distance from the Sun to the nearest other star?", ["Light-years", "Kilometres", "Metres", "Centimetres"], 0, "It is about 4.2 light‑years. In km the number would be enormous."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"});
+      d.appendChild(el("h3", null, "You scored " + score + " of 10."));
+      d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try another round for new questions." : "Review the Learn tab, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); q.appendChild(el("h3", null, Q[0]));
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button"}, Q[1][i]);
+      b.dataset.i = i;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (+x.dataset.i === Q[2]) x.classList.add("right"); });
+        if (i !== Q[2]) b.classList.add("wrong"); else score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["What is gravity, and how does it keep the Moon in orbit around Earth?", "Gravity is a force of attraction between objects that have mass. Earth’s gravity pulls the Moon toward Earth. The Moon is also moving sideways very fast. Gravity keeps bending its path, so the Moon keeps falling around Earth instead of flying away or crashing in.", ["Gravity is an attractive force between masses", "Earth pulls the Moon toward it", "The Moon also moves sideways", "Together these make a curved path, an orbit"]],
+    ["Predict what would happen to Earth if the Sun’s gravity suddenly disappeared. Explain.", "Earth would stop curving around the Sun and move off in a straight line into space. Without a force pulling it toward the Sun, nothing would bend its path.", ["Earth would travel in a straight line", "No force would bend its path", "Gravity is what keeps the orbit curved"]],
+    ["Why can’t one poster show both the sizes and the distances of the planets to scale?", "The distances are huge compared with the sizes. If the planets were drawn big enough to see, the distances to scale would need a poster hundreds of metres long. If the distances fit on the page, the planets would be smaller than specks of dust.", ["Distances are much larger than sizes", "Visible planets would need a huge poster", "Distances on one page make planets too tiny to see"]],
+    ["Describe the geocentric model of the solar system.", "In the geocentric model Earth sits still at the centre. The Sun, the Moon, the planets and the stars all move around Earth. Ptolemy’s version put planets on small circles called epicycles to explain why they sometimes seem to move backward.", ["Earth is still at the centre", "Sun, Moon, planets and stars move around Earth", "Epicycles explain retrograde motion"]],
+    ["Give two reasons why people accepted the geocentric model for so long.", "We do not feel Earth moving, and the Sun and stars look like they move around us. The geocentric model with epicycles also predicted planet positions well enough for everyday use, such as calendars.", ["We do not feel Earth moving", "The sky appears to turn around us", "It made useful predictions"]],
+    ["Explain retrograde motion of Mars using the heliocentric model.", "Earth orbits closer to the Sun and moves faster than Mars. When Earth catches up to Mars and passes it, Mars seems to slide backward against the distant stars for a few weeks. Then it seems to move forward again.", ["Earth is on a faster inside orbit", "Earth passes Mars", "Mars only appears to move backward", "Compared against distant stars"]],
+    ["Describe one observation by Galileo that supported the heliocentric model.", "Galileo saw that Venus shows a full set of phases, including a nearly full Venus. That can only happen if Venus orbits the Sun and sometimes goes behind it. Ptolemy’s model predicted only crescents. He also saw moons orbiting Jupiter, which showed not everything orbits Earth.", ["Names the observation (Venus phases or Jupiter’s moons)", "Explains what the heliocentric model predicts", "Explains why it did not fit the geocentric model"]],
+    ["What is an astronomical unit, and why do astronomers use it?", "An astronomical unit (AU) is the average distance from Earth to the Sun, about 150 million km. Astronomers use it because distances in the solar system are so large that kilometres give long numbers that are hard to compare.", ["Average Earth to Sun distance", "About 150 million km", "Makes large distances easier to compare"]],
+    ["Describe two patterns in how the planets move around the Sun.", "All eight planets orbit the Sun in the same direction, close to one flat plane. Planets farther from the Sun move more slowly and take longer to complete one orbit, so their years are longer.", ["Same direction", "Nearly the same flat plane, nearly circular orbits", "Farther planets move more slowly", "Farther planets have longer orbital periods"]]
+  ];
+  var LONG = [
+    ["Compare the geocentric and heliocentric models. Describe what each model says, how each explains retrograde motion, and the evidence that led scientists to accept the heliocentric model.", "The geocentric model puts Earth at the centre with everything moving around it. Ptolemy explained retrograde motion with epicycles. The heliocentric model puts the Sun at the centre and explains retrograde motion as Earth passing slower outer planets. Both could predict planet positions, so evidence was needed. Galileo saw moons orbiting Jupiter and a full set of Venus phases, which did not fit Ptolemy’s model. Kepler’s ellipses made the heliocentric model predict much better, Newton’s gravity explained why planets orbit the Sun, and in 1838 stellar parallax showed directly that Earth moves.", ["Describes both models accurately", "Explains retrograde motion in both", "Uses at least two pieces of evidence", "Explains that the change took a long time and many people"]],
+    ["Design a scale model of the solar system for your school field or a walk in your community. Choose a Sun size, calculate at least three planet distances, and explain what your model shows well and what it leaves out.", "Example: a 24 cm basketball Sun. Scale factor = 24 cm ÷ 1 391 000 km. Earth goes about 26 m away, Jupiter about 134 m, and Neptune about 776 m. Earth would be about 2 mm wide. The model shows true sizes and distances at one scale and how empty the solar system is. It does not show motion, and Neptune would be far off the school field.", ["States a Sun size and scale factor", "Calculates at least three distances correctly", "Describes what the model shows well", "Describes at least one limit"]],
+    ["A classmate says: “The heliocentric model was accepted as soon as Copernicus published it.” Evaluate this claim.", "The claim is not accurate. Copernicus published in 1543, but his model still used circles and did not predict much better than Ptolemy’s. Many people kept using the geocentric model. It took Galileo’s observations around 1610, Kepler’s ellipses, Newton’s gravity in 1687 and finally stellar parallax in 1838 before the evidence was overwhelming. Ideas from Greece, India and the Islamic world also helped along the way.", ["Takes a clear position", "Notes Copernicus’s model did not predict much better at first", "Gives later evidence with names or dates", "Explains that science changes as evidence builds"]],
+    ["Neptune takes about 165 Earth years to orbit the Sun, but Mercury takes only 88 days. Use gravity and the AU to explain this difference.", "Mercury is about 0.39 AU from the Sun, while Neptune is about 30 AU away. The Sun’s gravity is much weaker far away, so Neptune moves much more slowly, about 5 km/s compared with about 47 km/s for Mercury. Neptune also has a far longer path to travel. A slower speed on a longer path means a much longer orbital period.", ["Uses AU distances for both planets", "Gravity is weaker farther away", "Farther planets move more slowly", "Longer path plus slower speed means a longer year"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["SP2.K1", "Gravity, an attractive force between objects, can cause celestial bodies to orbit each other.", "Learn 1 (Newton’s cannon); Learn 6; Bench 3; Sort It (deck 2); Flashcards; Quiz; Written Review short 1 and 2, extended 4"],
+    ["SP2.K2", "Models can be used to represent movement patterns and distances between celestial bodies.", "Learn 2 (scale views, model types); Learn 6 (orrery); Bench 1; Quiz; Written Review short 3, extended 2"],
+    ["SP2.K3", "Geocentric models of the solar system were used to explain the motion of the planets until evidence supported the heliocentric model.", "Learn 3 (two models, one sky); Learn 4 (Venus test, timeline); Sort It (deck 1); Flashcards; Quiz; Written Review short 4, 5 and 7, extended 1 and 3"],
+    ["SP2.K4", "Solar systems exist on large scales and are measured in astronomical units, or AU.", "Learn 5 (AU ruler); Bench 1; Bench 2 (AU converter); Sort It (deck 3); Flashcards; Quiz; Written Review short 8, extended 4"],
+    ["SP2.S1", "Compare geocentric and heliocentric models of the solar system.", "Learn 3 and 4; Sort It (deck 1); Quiz; Written Review short 6, extended 1 and 3"],
+    ["SP2.S2", "Explore a scale model of our solar system.", "Learn 2; Bench 1 (scale model builder with practice); Written Review extended 2"],
+    ["SP2.S3", "Describe movement patterns of and distances between celestial bodies in the heliocentric model of the solar system.", "Learn 1, 5 and 6; Bench 2 and 3; Sort It (deck 2); Quiz; Written Review short 9, extended 4"]
+  ];
+  var NOTES = [
+    "SP2.K1: “can cause celestial bodies to orbit” is taught precisely as gravity plus sideways motion. Gravity alone would pull bodies together. Both bodies orbit a shared balance point (Earth and Moon about 4700 km from Earth’s centre). Newton’s cannon speeds (about 7.9 km/s for a low orbit, 11.2 km/s to escape) are rounded and the mountain is not to scale.",
+    "SP2.K3: the change is taught as gradual, from Copernicus (1543) to Bessel’s parallax (1838). Venus’s phases ruled out Ptolemy’s model but not every Earth‑centred model (Tycho Brahe’s hybrid also fit), so Kepler’s accurate predictions and Newton’s gravity are included. The Lesson 3 epicycle model is simplified (no equant) and is drawn to match the heliocentric geometry.",
+    "SP2.K3: worldwide contributions (Aristarchus, Ptolemy, Aryabhata, al‑Tusi, Ibn al‑Shatir, Copernicus, Tycho, Galileo, Kepler, Newton, Bessel) are summarized briefly with approximate dates. Please spot check the wording.",
+    "SP2.K4: “solar systems” is taught as planetary systems around other stars, with our Sun’s being the solar system. The AU is the average Earth to Sun distance (defined as exactly 149 597 870 700 m); the lab rounds to 150 million km for practice. The light‑year (about 63 000 AU) is added as context for distances between stars.",
+    "SP2.S3: the planet distances, periods, speeds and diameters are rounded reference values. Kepler’s rule P² = a³ is shown as context only, not for memorizing. The orrery squeezes orbit sizes and uses made‑up starting positions.",
+    "SP2.S2: scale model values are calculated in the page. Proxima Centauri distance (about 4.2 light‑years, 268 000 AU) and the Edmonton to Calgary comparison (about 300 km) are rounded. The Beaver Hills Dark Sky Preserve note is general."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); tr.appendChild(el("td", null, r[1])); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

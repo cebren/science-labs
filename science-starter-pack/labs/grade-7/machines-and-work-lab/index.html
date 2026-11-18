@@ -1,0 +1,1423 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/machines-and-work-lab/"><meta name="description" content="Machines can change the force required to complete a task."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Machines and Work Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout: a machine shop bench. Sticky tab strip, then lessons that pair a short reading column with a model: force arrows, a work rectangle, six machine tiles, a ramp, a lever, a pulley rig and a wheelbarrow. Ember marks the input force (your effort), river blue marks the output force (the load), green marks work. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+/* ---- Machines and Work additions ---- */
+:root{ --steel:#5C6670; --timber:#A9772F; --ground:#CDBF9F; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --steel:#A3ADB7; --timber:#D2A15A; --ground:#5A5140; }}
+:root[data-theme="dark"]{ --steel:#A3ADB7; --timber:#D2A15A; --ground:#5A5140; }
+header h1 .wa{color:var(--water)}
+.inline{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.readout{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--muted)}
+.readout b{font-family:var(--f-mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.mach{cursor:pointer;outline:none}
+.mach .tilebg{fill:var(--surface);stroke:var(--line);stroke-width:1.5;transition:stroke .2s ease}
+.mach:hover .tilebg,.mach:focus-visible .tilebg{stroke:var(--ink);stroke-width:3}
+.mach.on .tilebg{stroke:var(--g7);stroke-width:3;fill:var(--mix-soft)}
+.wb{cursor:pointer;outline:none}
+.wb:hover .shape,.wb:focus-visible .shape{stroke:var(--ink);stroke-width:4}
+.wb.on .shape{stroke:var(--g7);stroke-width:4}
+.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px;align-items:stretch}
+.chain .box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px;font-size:.88rem}
+.chain .box b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.chain .box.in b{color:var(--fire)} .chain .box.out b{color:var(--water)}
+.ans{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.ans label.field{flex:1 1 160px}
+.ans input{width:100%}
+.scen{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:8px}
+.scen .given{font-family:var(--f-mono);font-size:.85rem;color:var(--muted)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Forces: Structures and Simple Machines · F2</div>
+    <h1><span class="fi">Machines</span> and <span class="wa">Work</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Machines can change the force required to complete a task. A ramp, a pulley and a crowbar all let you move heavy things with a smaller push or pull. This lab shows what force and work are, how the six simple machines trade force for distance, and how to measure the help a machine gives.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with force and work, meet the six simple machines, then see how machines trade force for distance and how to measure the help they give.</p>
+  </div>
+  <div class="legend" aria-label="Colour key"><span><i style="background:var(--fire)"></i>Input force (your effort)</span><span><i style="background:var(--water)"></i>Output force (the load)</span><span><i style="background:var(--leaf)"></i>Work</span></div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Force</span>
+      <div class="codes"><span class="code">F2.K1</span></div>
+      <h3>A force has a size and a direction</h3>
+      <p>A <b>force</b> is a push or a pull. Forces are measured in <b>newtons</b> (N). A small apple weighs about 1 N.</p>
+      <p>Every force has a <b>magnitude</b>, which is its size, and a <b>direction</b>, which is the way it points. “200 N” is not enough. You need “200 N to the right” or “200 N up”.</p>
+      <p>That is why scientists draw a force as an <b>arrow</b>. The length shows the magnitude. The arrowhead shows the direction.</p>
+      <p><b>Weight</b> is the force of gravity pulling an object down. On Earth, each kilogram of mass weighs about 9.8 N.</p>
+      <div class="formula">weight = mass × 9.8 N/kg<br>20 kg crate: 20 × 9.8 = 196 N, pointing down</div>
+      <div class="key"><b>Remember:</b> to describe a force, give its size in newtons and its direction.</div>
+    </div>
+    <div class="model">
+      <h4>Model: forces on a crate</h4>
+      <p class="hint">Change the push or pull and its direction. Change the mass to see the weight arrow grow.</p>
+      <div class="svgbox fit" id="forceBox"></div>
+      <label class="field" for="fMag">Push or pull: <span class="mono" id="fMagOut">200 N</span><input type="range" id="fMag" min="0" max="500" step="10" value="200"></label>
+      <div class="chips" id="fDir" role="group" aria-label="Direction of the push or pull"></div>
+      <label class="field" for="fMass">Mass of the crate: <span class="mono" id="fMassOut">20 kg</span><input type="range" id="fMass" min="1" max="60" step="1" value="20"></label>
+      <div class="readout" id="forceRead" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Work</span>
+      <div class="codes"><span class="code">F2.K2</span><span class="code">F2.S2</span><span class="code">F2.S3</span></div>
+      <h3>Work means a force moves something</h3>
+      <p>In science, <b>work</b> is done when a force moves an object a distance in the direction of the force. Work is measured in <b>joules</b> (J).</p>
+      <div class="formula">W = F × d<br>work (J) = force (N) × distance moved in the direction of the force (m)</div>
+      <p>One joule is the work done when a 1 N force moves something 1 m.</p>
+      <p>Two things must happen for work to be done. There must be a force, and the object must move in the direction of that force. Pushing hard on a wall that does not move does no work on the wall. Holding a backpack still does no work on it, even though your arms get tired.</p>
+      <p>A bigger force or a longer distance means more work. Double either one and the work doubles.</p>
+      <div class="key"><b>Remember:</b> no movement in the direction of the force means no work.</div>
+    </div>
+    <div class="model">
+      <h4>Model: work as a rectangle</h4>
+      <p class="hint">Work is force times distance, so it is the area of this rectangle. Try a scenario, or set your own force and distance.</p>
+      <div class="chips" id="workChips" role="group" aria-label="Work scenarios"></div>
+      <div class="svgbox fit" id="workBox"></div>
+      <div class="inline">
+        <label class="field" for="wF">Force: <span class="mono" id="wFOut">50 N</span><input type="range" id="wF" min="0" max="200" step="10" value="50"></label>
+        <label class="field" for="wD">Distance: <span class="mono" id="wDOut">4 m</span><input type="range" id="wD" min="0" max="10" step="0.5" value="4"></label>
+      </div>
+      <div class="detail" id="workDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · The six simple machines</span>
+      <div class="codes"><span class="code">F2.K3</span></div>
+      <h3>Six machines with no motor</h3>
+      <p>A <b>simple machine</b> is a device with few or no moving parts that helps you do a task. You push or pull on it with an <b>input force</b>, also called the effort. The machine pushes or pulls on the load with an <b>output force</b>.</p>
+      <p>A simple machine helps by changing the input force. It can change its <b>magnitude</b> (you push with less force) or its <b>direction</b> (you pull down to lift up), or both.</p>
+      <p>There are six simple machines: the <b>inclined plane</b>, the <b>lever</b>, the <b>wheel and axle</b>, the <b>screw</b>, the <b>wedge</b> and the <b>pulley</b>. A screw is an inclined plane wrapped around a post. A wedge is an inclined plane that moves.</p>
+      <div class="key"><b>Remember:</b> a machine changes the size or the direction of the force you need.</div>
+    </div>
+    <div class="model">
+      <h4>Model: machine gallery</h4>
+      <p class="hint">Tap or tab to a machine to see how it changes the force, with examples from around Alberta.</p>
+      <div class="svgbox fit" id="machBox"></div>
+      <div class="detail" id="machDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Work in, work out</span>
+      <div class="codes"><span class="code">F2.K4</span><span class="code">F2.S4</span></div>
+      <h3>A machine does not make extra work</h3>
+      <p>The work you put into a machine is the <b>input work</b>. The work the machine does on the load is the <b>output work</b>.</p>
+      <div class="formula">input work = input force × input distance<br>output work = output force × output distance</div>
+      <p>In an <b>ideal machine</b>, with no friction, the input work equals the output work. A machine cannot give out more work than you put in.</p>
+      <p>So how does a ramp help? To raise a 600 N crate 1 m, you must do 600 J of work. Lifting straight up takes 600 N over 1 m. Pushing it up a 4 m ramp takes only 150 N, but over 4 m. The work is the same: 150 × 4 = 600 J. You trade a smaller force for a longer distance.</p>
+      <p>Real machines have <b>friction</b>, which turns some input work into heat. So real output work is always a little less than input work. <b>Efficiency</b> tells you how much of the input work becomes output work.</p>
+      <div class="formula">efficiency = output work ÷ input work × 100%</div>
+      <div class="key"><b>Remember:</b> a machine changes the force and the distance, not the amount of work.</div>
+    </div>
+    <div class="model">
+      <h4>Model: push a 600 N crate up a ramp</h4>
+      <p class="hint">Change the height and the length of the ramp. Then switch on friction to see a real ramp.</p>
+      <div class="svgbox fit" id="rampBox"></div>
+      <div class="inline">
+        <label class="field" for="rH">Height: <span class="mono" id="rHOut">1 m</span><input type="range" id="rH" min="0.5" max="2" step="0.1" value="1"></label>
+        <label class="field" for="rL">Ramp length: <span class="mono" id="rLOut">4 m</span><input type="range" id="rL" min="1" max="8" step="0.5" value="4"></label>
+      </div>
+      <div class="chips" id="rampMode" role="group" aria-label="Ideal or real ramp"></div>
+      <div class="stats" id="rampStats" aria-live="polite"></div>
+      <div class="bars" id="rampBars"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Mechanical advantage</span>
+      <div class="codes"><span class="code">F2.K5</span><span class="code">F2.K4</span><span class="code">F2.S2</span></div>
+      <h3>Trading distance for force</h3>
+      <p><b>Mechanical advantage</b> (MA) tells you how many times a machine multiplies your input force.</p>
+      <div class="formula">MA = output force ÷ input force<br>ideal MA = input distance ÷ output distance</div>
+      <p>A machine gives a mechanical advantage when it lets you use a smaller input force by moving that force over a longer distance. On a lever, the side you push is the <b>effort arm</b>. The side holding the load is the <b>load arm</b>. The point it turns on is the <b>fulcrum</b>.</p>
+      <p>Move the fulcrum close to the load and the effort arm gets long. Your end moves a long way, the load moves a short way, and you need only a small force. That is how a crowbar lifts a heavy rock.</p>
+      <p>An MA of 4 means the machine pushes on the load with 4 times your force. Some tools, like a canoe paddle or a snow shovel, have an MA less than 1. They need more force, but they make the load move farther and faster.</p>
+      <div class="key"><b>Remember:</b> more mechanical advantage means less force, but you push over a longer distance.</div>
+    </div>
+    <div class="model">
+      <h4>Model: lift a 400 N rock with a 2 m lever</h4>
+      <p class="hint">Slide the fulcrum. Watch the input force and the distance your hand moves to lift the rock 10 cm.</p>
+      <div class="svgbox fit" id="leverBox"></div>
+      <label class="field" for="lvX">Fulcrum distance from the rock: <span class="mono" id="lvXOut">0.5 m</span><input type="range" id="lvX" min="0.2" max="1.8" step="0.1" value="0.5"></label>
+      <div class="stats" id="leverStats" aria-live="polite"></div>
+      <p class="note" id="leverNote"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Pulleys</span>
+      <div class="codes"><span class="code">F2.K3</span><span class="code">F2.K5</span><span class="code">F2.S5</span></div>
+      <h3>Changing direction and changing size</h3>
+      <p>A <b>pulley</b> is a wheel with a groove that holds a rope. A <b>fixed pulley</b> stays in place, like the one at the top of a flagpole. It only changes the direction of your force. You pull down and the flag goes up. Its MA is 1.</p>
+      <p>A <b>movable pulley</b> hangs from the rope and moves with the load. When you join fixed and movable pulleys, more rope segments hold up the load. Each segment shares the load.</p>
+      <div class="formula">ideal MA of a pulley system = number of rope segments holding up the load</div>
+      <p>With 3 supporting segments, you pull with one third of the force. But to lift the load 1 m, you must pull 3 m of rope. The work stays the same.</p>
+      <div class="key"><b>Remember:</b> a fixed pulley changes direction. More supporting rope segments reduce the force.</div>
+    </div>
+    <div class="model">
+      <h4>Model: lift a 240 N hay bale 1 m</h4>
+      <p class="hint">Choose a pulley setup. The drawing is a simple schematic.</p>
+      <div class="chips" id="pulChips" role="group" aria-label="Pulley setups"></div>
+      <div class="svgbox fit" id="pulBox"></div>
+      <div class="stats" id="pulStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Complex machines</span>
+      <div class="codes"><span class="code">F2.K6</span><span class="code">F2.K7</span><span class="code">F2.S5</span></div>
+      <h3>Simple machines working together</h3>
+      <p>A <b>complex machine</b>, also called a compound machine, is made of two or more simple machines working together. A <b>wheelbarrow</b> joins a lever (the handles and tray, with the wheel’s axle as the fulcrum) and a wheel and axle. A hand <b>can opener</b> joins levers (the handles), a wheel and axle (the turning key) and a wedge (the sharp cutting wheel).</p>
+      <p>When one simple machine drives the next, the output force of the first becomes the input force of the second. Each machine multiplies the force again. So the overall MA is the <b>product</b> of the MAs.</p>
+      <div class="formula">MA of complex machine = MA₁ × MA₂ × …<br>lever (MA 3) driving pulleys (MA 2): 3 × 2 = 6</div>
+      <p class="note">This product rule works when the machines are linked in a chain. In a wheelbarrow, the wheel mostly makes rolling easier instead of multiplying force, so the wheelbarrow’s MA comes mainly from its lever.</p>
+      <div class="key"><b>Remember:</b> in a chain of machines, multiply the mechanical advantages.</div>
+    </div>
+    <div class="model">
+      <h4>Model: a wheelbarrow and a machine chain</h4>
+      <p class="hint">Tap or tab to a part of the wheelbarrow. Then build a chain of two machines below.</p>
+      <div class="svgbox fit" id="wbBox"></div>
+      <div class="detail" id="wbDetail" aria-live="polite"></div>
+      <div class="inline">
+        <label class="field" for="ch1">Machine 1 <select id="ch1"></select></label>
+        <label class="field" for="ch2">Machine 2 <select id="ch2"></select></label>
+        <label class="field" for="chF">Input force: <span class="mono" id="chFOut">50 N</span><input type="range" id="chF" min="10" max="200" step="10" value="50"></label>
+      </div>
+      <div class="chain" id="chainOut" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- LAB BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Test a ramp, practise work calculations, compare the mechanical advantage of real machines, and analyze work done at places around your community.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 1 · Ramp trials</span>
+      <div class="codes"><span class="code">F2.S2</span><span class="code">F2.S4</span><span class="code">F2.K4</span></div>
+      <h3>Does a longer ramp save work?</h3>
+      <p><b>Question:</b> when you push a 600 N crate up to a 1 m high platform, how do the force and the work change with the length of the ramp?</p>
+      <p><b>Method:</b> choose a ramp length. Pull the crate up with a spring scale to measure the input force. Repeat for at least four lengths.</p>
+      <p><b>Analyze:</b> input work = measured force × ramp length. Output work = 600 N × 1 m = 600 J. Efficiency = output work ÷ input work × 100%.</p>
+      <div class="worked"><b>Worked example</b><span>Ramp 3 m long. Measured force 255 N.</span><span>Input work = 255 N × 3 m = 765 J</span><span>Output work = 600 N × 1 m = 600 J</span><span>Efficiency = 600 ÷ 765 × 100% ≈ 78%</span></div>
+      <p class="note">Measurements are simulated with a little friction and random variation, so they are made up for practice.</p>
+    </div>
+    <div class="model">
+      <h4>Spring scale trials</h4>
+      <div class="chips" id="trialChips" role="group" aria-label="Ramp length for the next trial"></div>
+      <div class="row"><button class="btn" id="trialRun" type="button">Pull the crate</button><button class="btn ghost" id="trialReset" type="button">Clear table</button></div>
+      <p class="fb" id="trialMsg" aria-live="polite"></p>
+      <div class="tablebox"><table class="dt" id="trialTable"><thead><tr><th>Ramp length (m)</th><th>Force (N)</th><th>Input work (J)</th><th>Output work (J)</th><th>Efficiency</th></tr></thead><tbody></tbody></table></div>
+      <p class="hint" id="trialPattern"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 2 · Work calculator</span>
+      <div class="codes"><span class="code">F2.S3</span><span class="code">F2.S2</span><span class="code">F2.K2</span></div>
+      <h3>Solve for work, force or distance</h3>
+      <p>You do not need to memorize the formula. Use the triangle: cover what you want to find.</p>
+      <div class="formula">W = F × d &nbsp;&nbsp; F = W ÷ d &nbsp;&nbsp; d = W ÷ F</div>
+      <div class="worked"><b>Worked example</b><span>A farmer lifts a 250 N hay bale 1.2 m onto a wagon. How much work is done?</span><span>Given: F = 250 N, d = 1.2 m</span><span>W = F × d = 250 N × 1.2 m = 300 J</span></div>
+      <div class="worked"><b>Worked example</b><span>Pulling a toboggan 20 m takes 900 J of work. What force was used?</span><span>F = W ÷ d = 900 J ÷ 20 m = 45 N</span></div>
+    </div>
+    <div class="model">
+      <h4>Practice problems</h4>
+      <div class="scen" id="wpBox"></div>
+      <div class="ans">
+        <label class="field" for="wpIn"><span id="wpLabel">Your answer</span><input type="number" id="wpIn" step="any" inputmode="decimal"></label>
+        <button class="btn" id="wpCheck" type="button">Check</button>
+        <button class="btn ghost" id="wpNew" type="button">New problem</button>
+      </div>
+      <p class="fb" id="wpFb" aria-live="polite"></p>
+      <div class="worked" id="wpSteps" hidden></div>
+      <p class="hint mono" id="wpScore"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 3 · Compare machines</span>
+      <div class="codes"><span class="code">F2.S5</span><span class="code">F2.K5</span><span class="code">F2.K7</span></div>
+      <h3>Which machine multiplies force the most?</h3>
+      <p>A class measured the input force and the output force for eight machines. Find each machine’s mechanical advantage.</p>
+      <div class="formula">MA = output force ÷ input force</div>
+      <div class="worked"><b>Worked example</b><span>Crowbar: input 50 N, output 400 N.</span><span>MA = 400 N ÷ 50 N = 8. The crowbar multiplies the force 8 times.</span></div>
+      <p class="note">The measurements are made up for practice. Real values depend on the size of each tool and on friction.</p>
+    </div>
+    <div class="model">
+      <h4>Mechanical advantage comparison</h4>
+      <div class="row"><button class="btn ghost" id="maSort" type="button" aria-pressed="false">Sort by MA</button></div>
+      <div class="tablebox"><table class="dt" id="maTable"><thead><tr><th>Machine</th><th>Type</th><th>Input (N)</th><th>Output (N)</th><th>MA</th></tr></thead><tbody></tbody></table></div>
+      <div class="bars" id="maBars" aria-hidden="true"></div>
+      <div class="scen" id="maqBox"></div>
+      <div class="ans">
+        <label class="field" for="maqIn">Mechanical advantage<input type="number" id="maqIn" step="any" inputmode="decimal"></label>
+        <button class="btn" id="maqCheck" type="button">Check</button>
+        <button class="btn ghost" id="maqNew" type="button">New problem</button>
+      </div>
+      <p class="fb" id="maqFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 4 · Work around Alberta</span>
+      <div class="codes"><span class="code">F2.S1</span><span class="code">F2.S2</span><span class="code">F2.S4</span></div>
+      <h3>Machines in a local setting</h3>
+      <p>Simple machines are at work all around you: at school, on farms, in gardens and in Alberta’s oil fields. Pick a site, read the situation and calculate the work done.</p>
+      <p>Then ask two questions. How does the machine change the force? Does it change the amount of work?</p>
+      <p class="note">The numbers in these situations are made up for practice. They are close to real sizes.</p>
+    </div>
+    <div class="model">
+      <h4>Site files</h4>
+      <div class="chips" id="siteChips" role="group" aria-label="Choose a site"></div>
+      <div class="scen" id="siteBox"></div>
+      <div class="ans">
+        <label class="field" for="siteIn">Work done (J)<input type="number" id="siteIn" step="any" inputmode="decimal"></label>
+        <button class="btn" id="siteCheck" type="button">Check</button>
+      </div>
+      <p class="fb" id="siteFb" aria-live="polite"></p>
+      <div class="worked" id="siteSteps" hidden></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 F2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>F2.K1:</b> force is taught as a push or pull drawn as an arrow, with magnitude in newtons and a direction. Weight (mass × 9.8 N/kg) is added as context so students can find forces for loads given in kilograms.</li>
+      <li><b>F2.K2:</b> work is taught as W = F × d where d is the distance moved in the direction of the force. Holding an object still, pushing a wall, and carrying a box at a constant height are used as cases where the force does no work on the object. One joule is shown as one newton moving one metre.</li>
+      <li><b>F2.K3:</b> all six machines are taught as changing the size of the force, its direction, or both. The screw is described as an inclined plane wrapped around a post, and the wedge as a moving inclined plane. Ideal MA formulas for each machine appear only in the gallery details, as extension.</li>
+      <li><b>F2.K4:</b> the draft says input work equals output work. The lab teaches this as true for an ideal (frictionless) machine, and states that real machines always put out a little less work than goes in because friction turns some work into heat. Efficiency = output work ÷ input work × 100% is added. This keeps F2.S4 (work does not change) accurate: a machine never increases the work needed.</li>
+      <li><b>F2.K5:</b> the draft describes mechanical advantage only as reducing the input force. The lab defines MA = output force ÷ input force, with ideal MA = input distance ÷ output distance, and notes that a fixed pulley has an MA of 1 (direction only) and that some tools, such as a canoe paddle or snow shovel, have an MA below 1 and trade force for distance and speed.</li>
+      <li><b>F2.K6 and K7:</b> wheelbarrow and can opener are analyzed as complex machines. The product rule is taught for machines linked in a chain, where the output of one is the input of the next. The lab notes that a wheelbarrow’s wheel mainly reduces rolling friction, so its MA comes mainly from the lever. MA values for the chain builder and the comparison table are made up for practice.</li>
+      <li><b>F2.S1:</b> local sites (school flagpole, school entrance ramp, community garden wheelbarrow, an oil field pump jack, loading a canoe) are general Alberta contexts with made-up numbers. No specific site or company is described.</li>
+      <li><b>Not taught:</b> lever classes, gear ratios and power are left out because the statements do not name them.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-f2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+
+
+function S(n, attrs, style){ var x = sv(n, attrs); if (style) x.setAttribute("style", style); return x; }
+function arrow(g, x1, y1, x2, y2, color, w){
+  w = w || 5;
+  var dx = x2 - x1, dy = y2 - y1, L = Math.sqrt(dx*dx + dy*dy);
+  if (L < 2) return;
+  var ux = dx / L, uy = dy / L, hx = x2 - ux * 14, hy = y2 - uy * 14;
+  g.appendChild(S("line", {x1: x1, y1: y1, x2: hx, y2: hy, "stroke-width": w, "stroke-linecap": "round"}, "stroke:" + color));
+  g.appendChild(S("polygon", {points: x2 + "," + y2 + " " + (hx - uy * 9) + "," + (hy + ux * 9) + " " + (hx + uy * 9) + "," + (hy - ux * 9)}, "fill:" + color));
+}
+function txt(g, x, y, t, cls, anchor, style){ var n = S("text", {x: x, y: y, "class": cls || "lbl", "text-anchor": anchor || "start"}, style); n.textContent = t; g.appendChild(n); return n; }
+function stat(box, label, val){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, label)); d.appendChild(el("b", null, val)); box.appendChild(d); }
+function bar(box, label, v, max, warn, valText){
+  var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, label));
+  var t = el("div", {"class": "track"}), i = el("i"); if (warn) i.className = "warn"; i.style.width = Math.min(100, v / max * 100) + "%"; t.appendChild(i); r.appendChild(t);
+  r.appendChild(el("b", null, valText)); box.appendChild(r);
+}
+function num(v){ var x = parseFloat(String(v).replace(",", ".")); return isNaN(x) ? null : x; }
+function close(a, b){ return Math.abs(a - b) <= Math.max(0.011 * Math.abs(b), 0.051); }
+function makeSvg(box, vb){ clear(box); var s = sv("svg", {viewBox: vb, role: "img"}); box.appendChild(s); return s; }
+function focusable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+
+/* ---------- Lesson 1: forces on a crate ---------- */
+(function(){
+  var dir = "right";
+  var DIRS = [{label: "Right", v: "right"}, {label: "Left", v: "left"}, {label: "Up", v: "up"}, {label: "Down", v: "down"}];
+  function draw(){
+    var F = +$("fMag").value, m = +$("fMass").value, Wt = m * 9.8;
+    $("fMagOut").textContent = F + " N"; $("fMassOut").textContent = m + " kg";
+    var s = makeSvg($("forceBox"), "0 0 520 300");
+    s.setAttribute("aria-label", "A crate on the ground with a " + F + " newton force pointing " + dir + " and a weight of " + fmt(Wt) + " newtons pointing down.");
+    s.appendChild(S("line", {x1: 10, y1: 200, x2: 510, y2: 200, "stroke-width": 3}, "stroke:var(--muted)"));
+    s.appendChild(S("rect", {x: 210, y: 120, width: 100, height: 80, rx: 4, "stroke-width": 2}, "fill:var(--mix-soft);stroke:var(--mix)"));
+    txt(s, 260, 166, m + " kg", "lbl", "middle");
+    var len = F * 0.3, vl = F * 0.22;
+    if (F > 0) {
+      if (dir === "right") { arrow(s, 310, 160, 310 + len, 160, "var(--fire)"); txt(s, 316, 150, F + " N right", "lbl", "start", "fill:var(--fire)"); }
+      if (dir === "left") { arrow(s, 210, 160, 210 - len, 160, "var(--fire)"); txt(s, 204, 150, F + " N left", "lbl", "end", "fill:var(--fire)"); }
+      if (dir === "up") { arrow(s, 260, 120, 260, 120 - vl, "var(--fire)"); txt(s, 270, 120 - vl / 2, F + " N up", "lbl", "start", "fill:var(--fire)"); }
+      if (dir === "down") { arrow(s, 260, 120 - vl, 260, 120, "var(--fire)"); txt(s, 270, 120 - vl / 2, F + " N down", "lbl", "start", "fill:var(--fire)"); }
+    }
+    arrow(s, 240, 200, 240, 200 + Wt * 0.15, "var(--water)");
+    txt(s, 232, 214 + Wt * 0.075, "weight " + fmt(Wt) + " N down", "lbl", "end", "fill:var(--water)");
+    var r = $("forceRead"); clear(r);
+    r.appendChild(el("span", null, "Push or pull: ")); r.appendChild(el("b", null, F + " N " + dir));
+    r.appendChild(el("span", null, "Weight: ")); r.appendChild(el("b", null, m + " × 9.8 = " + fmt(Wt) + " N down"));
+  }
+  chipGroup($("fDir"), DIRS, "fi", function(d){ dir = d.v; draw(); }, 0);
+  $("fMag").addEventListener("input", draw); $("fMass").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 2: work rectangle ---------- */
+(function(){
+  var SC = [
+    {label: "Lift a backpack", F: 50, d: 1, same: true, say: "You lift a 50 N backpack 1 m onto a shelf. The force (up) and the motion (up) point the same way, so work is done: 50 N × 1 m = 50 J."},
+    {label: "Push a cart", F: 80, d: 6, same: true, say: "You push a cart with 80 N for 6 m along the aisle. The force and the motion point the same way: 80 N × 6 m = 480 J."},
+    {label: "Push a wall", F: 150, d: 0, same: true, say: "You push on the school wall with 150 N. The wall does not move, so the distance is 0 m. Work = 150 N × 0 m = 0 J. You feel tired because your muscles use energy, but no work is done on the wall."},
+    {label: "Hold a backpack still", F: 50, d: 0, same: true, say: "You hold a 50 N backpack still. It does not move, so no work is done on it: 50 N × 0 m = 0 J."},
+    {label: "Carry a box across a hall", F: 60, d: 0, same: false, say: "You carry a 60 N box 8 m down a flat hallway. Your upward holding force points up, but the box moves sideways. It moves 0 m in the direction of that force, so the holding force does 0 J of work."}
+  ];
+  function draw(say){
+    var F = +$("wF").value, d = +$("wD").value, W = F * d;
+    $("wFOut").textContent = F + " N"; $("wDOut").textContent = fmt(d) + " m";
+    var s = makeSvg($("workBox"), "0 0 520 270");
+    s.setAttribute("aria-label", "Rectangle with height " + F + " newtons and width " + fmt(d) + " metres. Its area is " + fmt(W) + " joules of work.");
+    var ox = 70, oy = 230;
+    s.appendChild(S("line", {x1: ox, y1: oy, x2: 500, y2: oy, "class": "axis", "stroke-width": 2}, "stroke:var(--muted)"));
+    s.appendChild(S("line", {x1: ox, y1: oy, x2: ox, y2: 20, "class": "axis", "stroke-width": 2}, "stroke:var(--muted)"));
+    for (var i = 0; i <= 10; i += 2) { s.appendChild(S("line", {x1: ox + i * 42, y1: oy, x2: ox + i * 42, y2: oy + 5})); txt(s, ox + i * 42, oy + 20, i + "", "small", "middle"); }
+    for (var j = 0; j <= 200; j += 50) { txt(s, ox - 8, oy - j + 4, j + "", "small", "end"); s.appendChild(S("line", {x1: ox, y1: oy - j, x2: 500, y2: oy - j, "class": "grid"})); }
+    txt(s, 285, 266, "distance in the direction of the force (m)", "small", "middle");
+    var t = txt(s, 18, 125, "force (N)", "small", "middle"); t.setAttribute("transform", "rotate(-90 18 125)");
+    if (W > 0) {
+      s.appendChild(S("rect", {x: ox, y: oy - F, width: d * 42, height: F, "stroke-width": 2}, "fill:var(--leaf-soft);stroke:var(--leaf)"));
+    }
+    var lx = ox + Math.max(d * 42, 0) / 2, ly = oy - F / 2 + 5;
+    if (W > 0 && d * 42 > 120 && F > 30) txt(s, lx, ly, fmt(W) + " J", "lbl", "middle", "fill:var(--leaf)");
+    else txt(s, 490, 40, "W = " + fmt(W) + " J", "lbl", "end", "fill:var(--leaf)");
+    var box = $("workDetail");
+    detail(box, "W = F × d = " + F + " N × " + fmt(d) + " m = " + fmt(W) + " J", [say || (W === 0 ? "No work is done. Either there is no force or the object does not move in the direction of the force." : "Double the force or double the distance and the rectangle, and the work, doubles.")]);
+  }
+  chipGroup($("workChips"), SC, "", function(sc){ $("wF").value = sc.F; $("wD").value = sc.d; draw(sc.say); });
+  $("wF").addEventListener("input", function(){ draw(); }); $("wD").addEventListener("input", function(){ draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 3: machine gallery ---------- */
+(function(){
+  var M = [
+    {name: "Inclined plane", tag: "Changes the size of the force", body: ["A flat sloped surface, like a ramp. You push the load along a longer path instead of lifting it straight up, so you need a smaller force.", "Examples: the ramp at a school entrance, a loading ramp on a moving truck, the sloped road up from the river valley.", "Ideal MA = ramp length ÷ height. A 6 m ramp up 0.5 m has an ideal MA of 12."]},
+    {name: "Lever", tag: "Changes size, direction or both", body: ["A stiff bar that turns on a point called the fulcrum. Push down on one end and the other end lifts.", "Examples: a crowbar, a seesaw, a hockey stick, a canoe paddle, and the walking beam of an oil field pump jack.", "Ideal MA = effort arm ÷ load arm."]},
+    {name: "Wheel and axle", tag: "Changes the size of the force", body: ["A large wheel joined to a smaller rod (the axle) so they turn together. A small force on the big wheel makes a bigger turning force on the axle.", "Examples: a doorknob, a steering wheel, a screwdriver handle, the crank on a fishing reel.", "Ideal MA = wheel radius ÷ axle radius, when you turn the wheel."]},
+    {name: "Screw", tag: "Changes size and direction", body: ["An inclined plane wrapped around a post. Turning the screw drives it forward a short distance, with a large force.", "Examples: a wood screw, a jar lid, an ice fishing auger, and the auger that lifts grain into a bin on a farm.", "Each turn moves the screw forward by the gap between its threads. Closer threads give more MA."]},
+    {name: "Wedge", tag: "Changes size and direction", body: ["Two inclined planes back to back that move. Pushing a wedge forward makes a large force out to the sides that splits or holds things apart.", "Examples: an axe or splitting maul for firewood, a knife, a doorstop, the blade of a snowplow.", "A long, thin wedge has more MA than a short, thick one."]},
+    {name: "Pulley", tag: "Changes direction, and size with more pulleys", body: ["A grooved wheel with a rope. A fixed pulley lets you pull down to lift up. Adding movable pulleys reduces the force.", "Examples: a school flagpole, window blinds, a block and tackle for lifting hay bales or an engine.", "Ideal MA = number of rope segments holding up the load."]}
+  ];
+  var s = makeSvg($("machBox"), "0 0 600 380");
+  s.setAttribute("role", "group"); s.setAttribute("aria-label", "Six simple machines");
+  var groups = [];
+  function icon(g, i){
+    var st = "stroke:var(--ink);fill:none", w = {"stroke-width": 3, "stroke-linejoin": "round", "stroke-linecap": "round"};
+    function a(o){ var r = {}; for (var k in w) r[k] = w[k]; for (var k2 in o) r[k2] = o[k2]; return r; }
+    if (i === 0) { g.appendChild(S("polygon", a({points: "25,130 165,130 165,55"}), "fill:var(--sand);stroke:var(--ink)")); g.appendChild(S("rect", a({x: 90, y: 72, width: 30, height: 26, transform: "rotate(-28 105 85)"}), "fill:var(--water-soft);stroke:var(--water)")); }
+    if (i === 1) { g.appendChild(S("polygon", a({points: "60,130 75,104 90,130"}), "fill:var(--steel);stroke:var(--ink)")); g.appendChild(S("line", a({x1: 20, y1: 112, x2: 170, y2: 92}), st)); g.appendChild(S("rect", a({x: 22, y: 86, width: 28, height: 24}), "fill:var(--water-soft);stroke:var(--water)")); arrow(g, 160, 50, 160, 88, "var(--fire)", 4); }
+    if (i === 2) { g.appendChild(S("circle", a({cx: 95, cy: 75, r: 52}), st)); g.appendChild(S("circle", a({cx: 95, cy: 75, r: 13}), "fill:var(--steel);stroke:var(--ink)")); for (var k = 0; k < 6; k++) { var an = k * Math.PI / 3; g.appendChild(S("line", a({x1: 95 + 13 * Math.cos(an), y1: 75 + 13 * Math.sin(an), x2: 95 + 52 * Math.cos(an), y2: 75 + 52 * Math.sin(an)}), "stroke:var(--muted)")); } }
+    if (i === 3) { g.appendChild(S("rect", a({x: 70, y: 20, width: 50, height: 14, rx: 3}), "fill:var(--steel);stroke:var(--ink)")); g.appendChild(S("rect", a({x: 84, y: 34, width: 22, height: 84}), st)); g.appendChild(S("polygon", a({points: "84,118 106,118 95,134"}), st)); for (var y = 40; y < 118; y += 12) g.appendChild(S("line", a({x1: 78, y1: y + 8, x2: 112, y2: y}), "stroke:var(--mix)")); }
+    if (i === 4) { g.appendChild(S("polygon", a({points: "68,24 122,24 95,132"}), "fill:var(--steel);stroke:var(--ink)")); arrow(g, 95, 2, 95, 20, "var(--fire)", 4); arrow(g, 80, 100, 45, 110, "var(--water)", 4); arrow(g, 110, 100, 145, 110, "var(--water)", 4); }
+    if (i === 5) { g.appendChild(S("line", a({x1: 40, y1: 14, x2: 150, y2: 14}), "stroke:var(--muted)")); g.appendChild(S("line", a({x1: 95, y1: 14, x2: 95, y2: 22}), st)); g.appendChild(S("circle", a({cx: 95, cy: 46, r: 24}), st)); g.appendChild(S("line", a({x1: 71, y1: 46, x2: 71, y2: 98}), "stroke:var(--water)")); g.appendChild(S("rect", a({x: 55, y: 98, width: 32, height: 28}), "fill:var(--water-soft);stroke:var(--water)")); g.appendChild(S("line", a({x1: 119, y1: 46, x2: 119, y2: 104}), "stroke:var(--fire)")); arrow(g, 119, 100, 119, 132, "var(--fire)", 4); }
+  }
+  function pickM(i){
+    groups.forEach(function(g, j){ g.classList.toggle("on", j === i); g.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    detail($("machDetail"), M[i].name, M[i].body, M[i].tag);
+  }
+  M.forEach(function(m, i){
+    var col = i % 3, row = Math.floor(i / 3);
+    var g = S("g", {"class": "mach", transform: "translate(" + (6 + col * 198) + "," + (6 + row * 188) + ")"});
+    g.appendChild(S("rect", {"class": "tilebg", x: 0, y: 0, width: 190, height: 178, rx: 10}));
+    icon(g, i);
+    txt(g, 95, 162, m.name, "lbl", "middle");
+    focusable(g, m.name, function(){ pickM(i); });
+    s.appendChild(g); groups.push(g);
+  });
+  pickM(0);
+})();
+
+/* ---------- Lesson 4: ramp ---------- */
+var LOAD = 600;
+function rampForce(h, L, mu){ var run = Math.sqrt(Math.max(L * L - h * h, 0)); return LOAD * h / L + mu * LOAD * run / L; }
+(function(){
+  var mu = 0;
+  function draw(){
+    var h = +$("rH").value, L = +$("rL").value;
+    if (L < h) { L = h; }
+    $("rHOut").textContent = fmt(h) + " m"; $("rLOut").textContent = fmt(L) + " m";
+    var run = Math.sqrt(Math.max(L * L - h * h, 0));
+    var Fin = rampForce(h, L, mu), Win = Fin * L, Wout = LOAD * h, eff = Wout / Win * 100;
+    var s = makeSvg($("rampBox"), "0 0 520 260");
+    s.setAttribute("aria-label", "Ramp " + fmt(L) + " metres long rising " + fmt(h) + " metres. Input force " + fmt(Fin, 0) + " newtons.");
+    var k = 55, x0 = 50, y0 = 220, x1 = x0 + run * k, y1 = y0 - h * k;
+    s.appendChild(S("line", {x1: 10, y1: y0, x2: 510, y2: y0, "stroke-width": 3}, "stroke:var(--muted)"));
+    s.appendChild(S("polygon", {points: x0 + "," + y0 + " " + x1 + "," + y0 + " " + x1 + "," + y1, "stroke-width": 2}, "fill:var(--sand);stroke:var(--ink)"));
+    s.appendChild(S("rect", {x: x1, y: y1, width: 60, height: y0 - y1, "stroke-width": 2}, "fill:var(--surface-2);stroke:var(--ink)"));
+    var ang = Math.atan2(h, run) * 180 / Math.PI, mx = x0 + (x1 - x0) * 0.45, my = y0 + (y1 - y0) * 0.45;
+    var g = S("g", {transform: "translate(" + mx + "," + my + ") rotate(" + (-ang) + ")"});
+    g.appendChild(S("rect", {x: -20, y: -34, width: 40, height: 34, rx: 3, "stroke-width": 2}, "fill:var(--water-soft);stroke:var(--water)"));
+    arrow(g, 22, -17, 22 + Math.min(150, Fin * 0.35), -17, "var(--fire)");
+    s.appendChild(g);
+    txt(s, x1 + 66, y1 + 16, "h = " + fmt(h) + " m", "lbl", "start");
+    txt(s, (x0 + x1) / 2 - 14, (y0 + y1) / 2 + 24, "L = " + fmt(L) + " m", "lbl", "middle");
+    txt(s, 14, 24, "push " + fmt(Fin, 0) + " N along the ramp", "lbl", "start", "fill:var(--fire)");
+    var st = $("rampStats"); clear(st);
+    stat(st, "Input force", fmt(Fin, 0) + " N");
+    stat(st, "Input work", fmt(Fin, 0) + " × " + fmt(L) + " = " + fmt(Win, 0) + " J");
+    stat(st, "Output work", "600 × " + fmt(h) + " = " + fmt(Wout, 0) + " J");
+    stat(st, "Efficiency", fmt(eff, 0) + "%");
+    var b = $("rampBars"); clear(b);
+    var mx2 = 1600;
+    bar(b, "Input work", Win, mx2, true, fmt(Win, 0) + " J");
+    bar(b, "Output work", Wout, mx2, false, fmt(Wout, 0) + " J");
+  }
+  chipGroup($("rampMode"), [{label: "Ideal ramp (no friction)", m: 0}, {label: "Real ramp (friction)", m: 0.1}], "", function(o){ mu = o.m; draw(); }, 0);
+  $("rH").addEventListener("input", draw); $("rL").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 5: lever ---------- */
+(function(){
+  function draw(){
+    var x = +$("lvX").value, la = x, ea = 2 - x, Fin = 400 * la / ea, MA = ea / la, din = 0.1 * ea / la;
+    $("lvXOut").textContent = fmt(x) + " m";
+    var s = makeSvg($("leverBox"), "0 0 520 250");
+    s.setAttribute("aria-label", "Lever 2 metres long with the fulcrum " + fmt(x) + " metres from a 400 newton rock. Input force " + fmt(Fin, 0) + " newtons.");
+    var X0 = 60, k = 200, Y = 150, fx = X0 + x * k;
+    s.appendChild(S("line", {x1: 10, y1: 200, x2: 510, y2: 200, "stroke-width": 3}, "stroke:var(--muted)"));
+    s.appendChild(S("polygon", {points: (fx - 22) + ",200 " + fx + "," + (Y + 6) + " " + (fx + 22) + ",200", "stroke-width": 2}, "fill:var(--steel);stroke:var(--ink)"));
+    s.appendChild(S("rect", {x: X0, y: Y - 6, width: 2 * k, height: 12, rx: 3, "stroke-width": 2}, "fill:var(--timber);stroke:var(--ink)"));
+    s.appendChild(S("ellipse", {cx: X0 + 10, cy: Y - 34, rx: 34, ry: 28, "stroke-width": 2}, "fill:var(--gravel);stroke:var(--ink)"));
+    txt(s, X0 + 10, Y - 30, "400 N", "lbl", "middle", "fill:var(--surface)");
+    var aL = Math.min(110, Math.max(12, Fin * 0.12));
+    arrow(s, X0 + 2 * k - 6, Y - 12 - aL, X0 + 2 * k - 6, Y - 10, "var(--fire)");
+    txt(s, X0 + 2 * k - 14, Math.max(14, Y - 18 - aL), fmt(Fin, 0) + " N", "lbl", "end", "fill:var(--fire)");
+    s.appendChild(S("line", {x1: X0, y1: Y + 30, x2: fx, y2: Y + 30, "stroke-width": 2}, "stroke:var(--water)"));
+    s.appendChild(S("line", {x1: fx, y1: Y + 38, x2: X0 + 2 * k, y2: Y + 38, "stroke-width": 2}, "stroke:var(--fire)"));
+    txt(s, (X0 + fx) / 2, Y + 64, "load arm " + fmt(la) + " m", "small", "middle");
+    txt(s, (fx + X0 + 2 * k) / 2, Y + 86, "effort arm " + fmt(ea) + " m", "small", "middle");
+    var st = $("leverStats"); clear(st);
+    stat(st, "Input force", fmt(Fin, 0) + " N");
+    stat(st, "Mechanical advantage", fmt(MA, 2));
+    stat(st, "Rock rises", "10 cm");
+    stat(st, "Your hand moves", fmt(din * 100, 0) + " cm");
+    $("leverNote").textContent = MA > 1.01 ? "MA is " + fmt(MA, 2) + ". Your force is smaller than the 400 N load, but your hand moves " + fmt(din * 100, 0) + " cm to lift the rock 10 cm. Work in: " + fmt(Fin, 0) + " N × " + fmt(din, 2) + " m ≈ " + fmt(Fin * din, 0) + " J. Work out: 400 N × 0.1 m = 40 J."
+      : MA < 0.99 ? "MA is " + fmt(MA, 2) + ", less than 1. You need more force than the load, but the rock moves farther than your hand. Work in and work out are still both 40 J."
+      : "MA is 1. The fulcrum is in the middle, so the force and the distance are the same on both sides. The lever only changes the direction of the force.";
+  }
+  $("lvX").addEventListener("input", draw); draw();
+})();
+
+/* ---------- Lesson 6: pulleys ---------- */
+(function(){
+  var P = [
+    {label: "1 fixed pulley", n: 1},
+    {label: "1 movable pulley", n: 2},
+    {label: "3 segments", n: 3},
+    {label: "4 segments", n: 4}
+  ];
+  function draw(o){
+    var n = o.n, s = makeSvg($("pulBox"), "0 0 360 300");
+    s.setAttribute("aria-label", "Pulley schematic with " + n + " rope segments holding up a 240 newton hay bale.");
+    s.appendChild(S("rect", {x: 40, y: 10, width: 280, height: 12}, "fill:var(--steel)"));
+    s.appendChild(S("circle", {cx: 150, cy: 50, r: 30, "stroke-width": 3}, "fill:var(--surface);stroke:var(--ink)"));
+    s.appendChild(S("line", {x1: 150, y1: 22, x2: 150, y2: 50, "stroke-width": 3}, "stroke:var(--ink)"));
+    var loadTop = 220, xs = [];
+    for (var i = 0; i < n; i++) xs.push(n === 1 ? 120 : 126 + i * (48 / (n - 1)));
+    if (n >= 2) { s.appendChild(S("circle", {cx: 150, cy: 196, r: 24, "stroke-width": 3}, "fill:var(--surface);stroke:var(--ink)")); }
+    xs.forEach(function(x){ s.appendChild(S("line", {x1: x, y1: n === 1 ? 50 : 40, x2: x, y2: n === 1 ? loadTop : 196, "stroke-width": 3}, "stroke:var(--water)")); });
+    if (n >= 2) s.appendChild(S("line", {x1: 150, y1: 196, x2: 150, y2: loadTop, "stroke-width": 3}, "stroke:var(--ink)"));
+    s.appendChild(S("rect", {x: 110, y: loadTop, width: 80, height: 50, rx: 4, "stroke-width": 2}, "fill:var(--lichen);stroke:var(--ink)"));
+    txt(s, 150, loadTop + 30, "240 N", "lbl", "middle");
+    s.appendChild(S("line", {x1: 180, y1: 50, x2: 230, y2: 50 + 0, "stroke-width": 3}, "stroke:var(--fire)"));
+    s.appendChild(S("line", {x1: 230, y1: 50, x2: 230, y2: 230, "stroke-width": 3}, "stroke:var(--fire)"));
+    arrow(s, 230, 220, 230, 262, "var(--fire)", 4);
+    txt(s, 240, 160, "pull " + fmt(240 / n) + " N", "lbl", "start", "fill:var(--fire)");
+    txt(s, 240, 180, "pull " + n + " m of rope", "small", "start");
+    txt(s, 20, 290, n + " supporting segment" + (n > 1 ? "s" : "") + " (blue)", "small", "start");
+    var st = $("pulStats"); clear(st);
+    stat(st, "Ideal MA", n + "");
+    stat(st, "Input force", fmt(240 / n) + " N");
+    stat(st, "Rope pulled", n + " m");
+    stat(st, "Work in = work out", fmt(240 / n) + " × " + n + " = 240 J");
+  }
+  chipGroup($("pulChips"), P, "wa", draw, 0);
+})();
+
+/* ---------- Lesson 7: wheelbarrow and chain ---------- */
+(function(){
+  var parts = [
+    {name: "Handles and tray (lever)", body: ["The handles and tray form a lever. The wheel’s axle is the fulcrum. The load sits between the fulcrum and your hands, close to the wheel.", "Example: hands 1.2 m from the axle and the load 0.4 m from it give an ideal MA of 1.2 ÷ 0.4 = 3. You lift a 600 N load of soil with about 200 N (made-up numbers)."]},
+    {name: "Wheel and axle", body: ["The wheel turns on an axle. It lets the wheelbarrow roll instead of being dragged, which greatly reduces friction.", "Because the wheel mainly cuts friction, the wheelbarrow’s MA comes mostly from the lever."]},
+    {name: "Load in the tray", body: ["The load is the output side. The closer the load sits to the wheel, the shorter the load arm and the easier it is to lift."]}
+  ];
+  var s = makeSvg($("wbBox"), "0 0 520 230");
+  s.setAttribute("role", "group"); s.setAttribute("aria-label", "Wheelbarrow with three parts to explore");
+  s.appendChild(S("line", {x1: 10, y1: 210, x2: 510, y2: 210, "stroke-width": 3}, "stroke:var(--muted)"));
+  var gs = [];
+  var g0 = S("g", {"class": "wb"});
+  g0.appendChild(S("polygon", {"class": "shape", points: "120,90 330,90 300,150 150,150", "stroke-width": 3}, "fill:var(--water-soft);stroke:var(--water)"));
+  g0.appendChild(S("line", {"class": "shape", x1: 150, y1: 150, x2: 470, y2: 110, "stroke-width": 7, "stroke-linecap": "round"}, "stroke:var(--timber)"));
+  g0.appendChild(S("line", {x1: 330, y1: 136, x2: 340, y2: 210, "stroke-width": 5}, "stroke:var(--steel)"));
+  var g1 = S("g", {"class": "wb"});
+  g1.appendChild(S("circle", {"class": "shape", cx: 120, cy: 176, r: 34, "stroke-width": 3}, "fill:var(--surface-2);stroke:var(--ink)"));
+  g1.appendChild(S("circle", {cx: 120, cy: 176, r: 6}, "fill:var(--ink)"));
+  var g2 = S("g", {"class": "wb"});
+  g2.appendChild(S("ellipse", {"class": "shape", cx: 220, cy: 86, rx: 80, ry: 22, "stroke-width": 3}, "fill:var(--ground);stroke:var(--mix)"));
+  [g0, g1, g2].forEach(function(g, i){
+    focusable(g, parts[i].name, function(){ gs.forEach(function(x, j){ x.classList.toggle("on", j === i); x.setAttribute("aria-pressed", j === i ? "true" : "false"); }); detail($("wbDetail"), parts[i].name, parts[i].body); });
+    s.appendChild(g); gs.push(g);
+  });
+  arrow(s, 468, 50, 468, 102, "var(--fire)");
+  txt(s, 460, 44, "lift", "lbl", "end", "fill:var(--fire)");
+  txt(s, 120, 228, "fulcrum: axle", "small", "middle");
+  gs[0].dispatchEvent(new Event("click"));
+
+  var MACH = [
+    {label: "Lever, MA 2", ma: 2}, {label: "Lever, MA 3", ma: 3}, {label: "Wheel and axle, MA 4", ma: 4},
+    {label: "Pulley system, MA 2", ma: 2}, {label: "Pulley system, MA 4", ma: 4}, {label: "Fixed pulley, MA 1", ma: 1}, {label: "Screw, MA 10", ma: 10}
+  ];
+  [$("ch1"), $("ch2")].forEach(function(sel, si){
+    MACH.forEach(function(m, i){ var o = el("option", {value: i}, m.label); sel.appendChild(o); });
+    sel.value = si === 0 ? 1 : 3;
+    sel.addEventListener("change", chain);
+  });
+  $("chF").addEventListener("input", chain);
+  function chain(){
+    var a = MACH[+$("ch1").value], b = MACH[+$("ch2").value], F = +$("chF").value;
+    $("chFOut").textContent = F + " N";
+    var o = $("chainOut"); clear(o);
+    function box(cls, l, v){ var d = el("div", {"class": "box " + cls}); d.appendChild(el("span", null, l)); d.appendChild(el("b", null, v)); o.appendChild(d); }
+    box("in", "Your input force", F + " N");
+    box("", "After machine 1 (× " + a.ma + ")", fmt(F * a.ma) + " N");
+    box("out", "After machine 2 (× " + b.ma + ")", fmt(F * a.ma * b.ma) + " N");
+    box("", "Total MA", a.ma + " × " + b.ma + " = " + (a.ma * b.ma));
+  }
+  chain();
+})();
+
+/* ---------- Bench 1: ramp trials ---------- */
+(function(){
+  var lengths = [{label: "1.5 m", L: 1.5}, {label: "2 m", L: 2}, {label: "3 m", L: 3}, {label: "4 m", L: 4}, {label: "6 m", L: 6}];
+  var cur = lengths[0];
+  store.trials = store.trials || [];
+  chipGroup($("trialChips"), lengths, "", function(o){ cur = o; }, 2);
+  function render(){
+    var tb = document.querySelector("#trialTable tbody"); clear(tb);
+    if (!store.trials.length) { var tr0 = el("tr"); var td0 = el("td", {colspan: "5"}, "No trials yet. Choose a length and pull the crate."); tr0.appendChild(td0); tb.appendChild(tr0); }
+    store.trials.forEach(function(t){
+      var tr = el("tr"), Win = t.F * t.L;
+      [fmt(t.L), t.F, fmt(Win, 0), "600", fmt(600 / Win * 100, 0) + "%"].forEach(function(v){ tr.appendChild(el("td", null, v)); });
+      tb.appendChild(tr);
+    });
+    var ls = {}; store.trials.forEach(function(t){ ls[t.L] = 1; });
+    $("trialPattern").textContent = Object.keys(ls).length >= 4 ? "Pattern: as the ramp gets longer, the force goes down. The input work stays close to 600 J, a little more because of friction. The ramp changes the force, not the work." : "Test at least four different lengths to look for a pattern (" + Object.keys(ls).length + " so far).";
+  }
+  $("trialRun").addEventListener("click", function(){
+    var mu = 0.08 + Math.random() * 0.04;
+    var F = Math.round(rampForce(1, cur.L, mu) / 5) * 5;
+    store.trials.push({L: cur.L, F: F}); if (store.trials.length > 12) store.trials.shift(); save();
+    $("trialMsg").textContent = "Ramp " + fmt(cur.L) + " m: the spring scale reads " + F + " N.";
+    render();
+  });
+  $("trialReset").addEventListener("click", function(){ store.trials = []; save(); $("trialMsg").textContent = "Table cleared."; render(); });
+  render();
+})();
+
+/* ---------- Bench 2: work practice ---------- */
+(function(){
+  var CTX = [
+    ["lift a hay bale onto a wagon", "lifts"], ["push a snowblower down the driveway", "pushes"], ["pull a toboggan up a hill path", "pulls"],
+    ["lift a canoe onto a truck rack", "lifts"], ["push a cart of library books", "pushes"], ["drag a hockey bag across the rink lobby", "drags"]
+  ];
+  var p, right = 0, tries = 0;
+  function make(){
+    var c = pick(CTX), F = rint(4, 60) * 5, d = rint(1, 24) * 0.5, W = F * d, ask = pick(["W", "W", "F", "d"]);
+    p = {c: c, F: F, d: d, W: W, ask: ask};
+    var b = $("wpBox"); clear(b);
+    b.appendChild(el("span", {"class": "tagline"}, ask === "W" ? "Find the work" : ask === "F" ? "Find the force" : "Find the distance"));
+    var q = ask === "W" ? "A student " + c[1] + " with a force of " + F + " N to " + c[0] + ", moving it " + fmt(d) + " m in the direction of the force. How much work is done?"
+      : ask === "F" ? "A student does " + fmt(W) + " J of work to " + c[0] + ", moving it " + fmt(d) + " m in the direction of the force. What force was used?"
+      : "A student uses a force of " + F + " N to " + c[0] + " and does " + fmt(W) + " J of work. How far did it move in the direction of the force?";
+    b.appendChild(el("p", null, q));
+    $("wpLabel").textContent = ask === "W" ? "Work (J)" : ask === "F" ? "Force (N)" : "Distance (m)";
+    $("wpIn").value = ""; $("wpFb").textContent = ""; $("wpFb").className = "fb"; $("wpSteps").hidden = true;
+  }
+  $("wpCheck").addEventListener("click", function(){
+    var v = num($("wpIn").value);
+    if (v == null) { $("wpFb").textContent = "Type a number first."; $("wpFb").className = "fb no"; return; }
+    var ans = p.ask === "W" ? p.W : p.ask === "F" ? p.F : p.d, unit = p.ask === "W" ? " J" : p.ask === "F" ? " N" : " m";
+    var ok = close(v, ans); tries++; if (ok) right++;
+    $("wpFb").textContent = ok ? "Correct: " + fmt(ans, 2) + unit + "." : "Not quite. The answer is " + fmt(ans, 2) + unit + ".";
+    $("wpFb").className = "fb " + (ok ? "ok" : "no");
+    var st = $("wpSteps"); clear(st); st.hidden = false;
+    st.appendChild(el("b", null, "Steps"));
+    st.appendChild(el("span", null, p.ask === "W" ? "W = F × d = " + p.F + " N × " + fmt(p.d) + " m = " + fmt(p.W, 2) + " J" : p.ask === "F" ? "F = W ÷ d = " + fmt(p.W) + " J ÷ " + fmt(p.d) + " m = " + fmt(p.F, 2) + " N" : "d = W ÷ F = " + fmt(p.W) + " J ÷ " + p.F + " N = " + fmt(p.d, 2) + " m"));
+    $("wpScore").textContent = right + " correct out of " + tries + " this session";
+  });
+  $("wpNew").addEventListener("click", make);
+  make();
+})();
+
+/* ---------- Bench 3: MA comparison ---------- */
+(function(){
+  var D = [
+    ["Loading ramp (4 m long, 1 m high)", "Inclined plane", 170, 600],
+    ["Crowbar", "Lever", 50, 400],
+    ["Flagpole pulley", "Fixed pulley", 25, 24],
+    ["Block and tackle (3 segments)", "Pulley system", 90, 240],
+    ["Doorknob", "Wheel and axle", 5, 27],
+    ["Wheelbarrow", "Complex machine", 200, 550],
+    ["Hand can opener", "Complex machine", 20, 300],
+    ["Snow shovel (flinging snow)", "Lever", 120, 40]
+  ];
+  var sorted = false;
+  function render(){
+    var rows = D.map(function(r){ return {r: r, ma: r[3] / r[2]}; });
+    if (sorted) rows.sort(function(a, b){ return b.ma - a.ma; });
+    var tb = document.querySelector("#maTable tbody"); clear(tb);
+    var bars = $("maBars"); clear(bars);
+    rows.forEach(function(o){
+      var tr = el("tr");
+      [o.r[0], o.r[1], o.r[2], o.r[3], fmt(o.ma, 2)].forEach(function(v){ tr.appendChild(el("td", null, String(v))); });
+      tb.appendChild(tr);
+      bar(bars, o.r[0].split(" (")[0], o.ma, 15, o.ma < 1, fmt(o.ma, 1));
+    });
+  }
+  $("maSort").addEventListener("click", function(){ sorted = !sorted; $("maSort").setAttribute("aria-pressed", sorted ? "true" : "false"); render(); });
+  render();
+  var q;
+  function make(){
+    var kind = Math.random() < 0.6 ? "simple" : "chain";
+    var b = $("maqBox"); clear(b);
+    if (kind === "simple") {
+      var Fin = rint(2, 20) * 10, ma = pick([1.5, 2, 2.5, 3, 4, 5, 6, 8]), Fout = Fin * ma;
+      q = ma; b.appendChild(el("span", {"class": "tagline"}, "Practice: one machine"));
+      b.appendChild(el("p", null, "A machine needs an input force of " + Fin + " N to move a load with an output force of " + fmt(Fout) + " N. What is its mechanical advantage?"));
+    } else {
+      var a1 = pick([2, 3, 4]), a2 = pick([2, 3, 5]);
+      q = a1 * a2; b.appendChild(el("span", {"class": "tagline"}, "Practice: a machine chain"));
+      b.appendChild(el("p", null, "A lever with an MA of " + a1 + " drives a pulley system with an MA of " + a2 + ". What is the mechanical advantage of the complex machine?"));
+    }
+    $("maqIn").value = ""; $("maqFb").textContent = ""; $("maqFb").className = "fb";
+  }
+  $("maqCheck").addEventListener("click", function(){
+    var v = num($("maqIn").value);
+    if (v == null) { $("maqFb").textContent = "Type a number first."; $("maqFb").className = "fb no"; return; }
+    var ok = close(v, q);
+    $("maqFb").textContent = ok ? "Correct: MA = " + fmt(q, 2) + "." : "Not quite. MA = " + fmt(q, 2) + ". For one machine, divide output force by input force. For a chain, multiply the MAs.";
+    $("maqFb").className = "fb " + (ok ? "ok" : "no");
+  });
+  $("maqNew").addEventListener("click", make);
+  make();
+})();
+
+/* ---------- Bench 4: local sites ---------- */
+(function(){
+  var SITES = [
+    {label: "School flagpole", text: "The flag and its clips weigh 20 N. You raise the flag 9 m to the top of the pole by pulling down on the rope. The pole has one fixed pulley at the top.", given: "F = 20 N (ideal) · d = 9 m", ans: 180, steps: ["W = F × d = 20 N × 9 m = 180 J", "The fixed pulley has an MA of 1. It changes the direction of the force (pull down, flag goes up) but not its size or the work."]},
+    {label: "School entrance ramp", text: "A person in a wheelchair (900 N together) goes up a ramp 6 m long to a door 0.5 m above the sidewalk. Find the ideal work done to rise 0.5 m.", given: "Output force 900 N · rise 0.5 m · ramp 6 m", ans: 450, steps: ["Output work = 900 N × 0.5 m = 450 J", "Ideal push along the ramp = 450 J ÷ 6 m = 75 N, much less than 900 N.", "The ramp (ideal MA 12) changes the force but the work is the same 450 J. With friction, a little more work is needed."]},
+    {label: "Community garden", text: "A gardener lifts the handles of a wheelbarrow full of soil with a force of 150 N. The handles rise 0.4 m. How much input work is done?", given: "F = 150 N · d = 0.4 m", ans: 60, steps: ["Input work = 150 N × 0.4 m = 60 J", "The load of soil is heavier than 150 N but rises less than 0.4 m, because it sits close to the wheel. The lever trades distance for force."]},
+    {label: "Oil field pump jack", text: "A pump jack’s walking beam is a lever. Suppose each stroke lifts a 20 000 N load of rods and oil 2 m up the well. How much output work is done each stroke?", given: "F = 20 000 N · d = 2 m", ans: 40000, steps: ["W = F × d = 20 000 N × 2 m = 40 000 J", "An electric motor or engine turns the crank that rocks the beam. The lever changes the direction of the motion: one end goes down while the other end lifts."]},
+    {label: "Loading a canoe", text: "Two friends load a 300 N canoe onto a trailer 1.5 m high by sliding it up a 3 m plank. Find the ideal input force along the plank, then the work. Enter the work.", given: "Output force 300 N · height 1.5 m · plank 3 m", ans: 450, steps: ["Output work = 300 N × 1.5 m = 450 J", "Ideal input force = 450 J ÷ 3 m = 150 N", "Input work = 150 N × 3 m = 450 J, the same as lifting it straight up. The plank halves the force."]}
+  ];
+  var cur;
+  function show(s){
+    cur = s; var b = $("siteBox"); clear(b);
+    b.appendChild(el("span", {"class": "tagline"}, s.label));
+    b.appendChild(el("p", null, s.text));
+    b.appendChild(el("p", {"class": "given"}, "Given: " + s.given));
+    $("siteIn").value = ""; $("siteFb").textContent = ""; $("siteFb").className = "fb"; $("siteSteps").hidden = true;
+  }
+  chipGroup($("siteChips"), SITES, "", show, 0);
+  $("siteCheck").addEventListener("click", function(){
+    var v = num($("siteIn").value);
+    if (v == null) { $("siteFb").textContent = "Type a number first."; $("siteFb").className = "fb no"; return; }
+    var ok = close(v, cur.ans);
+    $("siteFb").textContent = ok ? "Correct: " + cur.ans.toLocaleString("en-CA") + " J." : "Not quite. The answer is " + cur.ans.toLocaleString("en-CA") + " J.";
+    $("siteFb").className = "fb " + (ok ? "ok" : "no");
+    var st = $("siteSteps"); clear(st); st.hidden = false; st.appendChild(el("b", null, "Steps"));
+    cur.steps.forEach(function(x){ st.appendChild(el("span", null, x)); });
+  });
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Which simple machine?", bins: ["Inclined plane", "Lever", "Wheel and axle", "Screw", "Wedge", "Pulley"], items: [
+    ["School entrance ramp", 0, "A sloped surface you move a load along is an inclined plane."],
+    ["Seesaw", 1, "A seesaw is a bar that turns on a fulcrum in the middle, so it is a lever."],
+    ["Crowbar", 1, "A crowbar is a lever. The fulcrum sits close to the load."],
+    ["Doorknob", 2, "The big knob turns a thin rod, so it is a wheel and axle."],
+    ["Steering wheel", 2, "The large wheel turns a narrow shaft: wheel and axle."],
+    ["Jar lid", 3, "The threads on a jar lid are an inclined plane wrapped in a circle, so it is a screw."],
+    ["Ice fishing auger", 3, "An auger’s spiral blade is a screw that drives into the ice."],
+    ["Axe head", 4, "An axe head is a wedge. It pushes wood apart as it moves forward."],
+    ["Doorstop", 4, "A doorstop is a wedge that holds the door in place."],
+    ["Flagpole rope wheel", 5, "A grooved wheel with a rope at the top of a flagpole is a fixed pulley."],
+    ["Window blind cord", 5, "Blinds lift on small pulleys when you pull the cord down."],
+    ["Canoe paddle", 1, "A paddle is a lever. Your top hand is near the fulcrum and the blade moves through the water."]
+  ]},
+  {label: "Is work done?", bins: ["Work is done", "No work is done"], items: [
+    ["Lifting a hockey bag onto a bench", 0, "The force is up and the bag moves up, so work is done."],
+    ["Pushing a stalled car that does not move", 1, "The car does not move, so the distance is 0 and no work is done on it."],
+    ["Holding a backpack still for 5 minutes", 1, "The backpack does not move. No movement means no work, even though you get tired."],
+    ["Pulling a sled across the snow", 0, "The pull and the movement point the same way, so work is done."],
+    ["Carrying a box at the same height down a flat hallway", 1, "The holding force points up but the box moves sideways, so the holding force does no work on it."],
+    ["Raising a flag with a pulley", 0, "The rope pulls the flag up and the flag moves up, so work is done."],
+    ["Leaning on a wall", 1, "The wall does not move, so no work is done on it."],
+    ["Pushing a shopping cart down the aisle", 0, "Force and motion are in the same direction, so work is done."],
+    ["Pushing a wheelbarrow up a ramp", 0, "The push moves the wheelbarrow along the ramp in the direction of the force."]
+  ]},
+  {label: "Simple or complex?", bins: ["Simple machine", "Complex machine"], items: [
+    ["Wheelbarrow", 1, "A wheelbarrow combines a lever and a wheel and axle."],
+    ["Can opener", 1, "A can opener combines levers, a wheel and axle and a wedge."],
+    ["Scissors", 1, "Scissors are two levers joined at a fulcrum, with wedge-shaped blades."],
+    ["Bicycle", 1, "A bicycle combines wheels and axles, levers (pedals and brakes) and more."],
+    ["Ramp", 0, "A ramp is one inclined plane."],
+    ["Crowbar", 0, "A crowbar is one lever."],
+    ["Wood screw", 0, "A wood screw is one screw."],
+    ["Hand crank pencil sharpener", 1, "The crank is a wheel and axle that turns wedge-shaped cutting blades."],
+    ["Single fixed pulley", 0, "One pulley on its own is a simple machine."],
+    ["Doorstop", 0, "A doorstop is one wedge."]
+  ]},
+  {label: "What does the machine change?", bins: ["Only the direction", "The size of the force"], items: [
+    ["Single fixed pulley on a flagpole", 0, "A fixed pulley has an MA of 1. You pull down to lift up, with the same size of force."],
+    ["Long ramp to a loading dock", 1, "A long ramp lets you push with a smaller force over a longer distance."],
+    ["Crowbar with the fulcrum close to the rock", 1, "A long effort arm and a short load arm make the input force smaller."],
+    ["Seesaw with the fulcrum exactly in the middle", 0, "With equal arms the MA is 1. Pushing down on one side lifts the other side."],
+    ["Block and tackle with 4 supporting segments", 1, "Four segments share the load, so you pull with a quarter of the force."],
+    ["Doorknob", 1, "Turning the large knob makes a bigger turning force on the thin axle."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Force", "A push or a pull. It has a magnitude (size) and a direction."],
+  ["Newton (N)", "The unit of force. A small apple weighs about 1 N."],
+  ["Magnitude", "The size of a force, given in newtons."],
+  ["Weight", "The downward force of gravity on an object. On Earth, about 9.8 N for each kilogram."],
+  ["Work", "Done when a force moves an object a distance in the direction of the force. W = F × d."],
+  ["Joule (J)", "The unit of work and energy. 1 J is the work done when 1 N moves an object 1 m."],
+  ["Simple machine", "A device with few or no moving parts that changes the size or direction of a force."],
+  ["Input force (effort)", "The force you put into a machine."],
+  ["Output force", "The force the machine puts on the load."],
+  ["Load", "The object the machine moves or the force it works against."],
+  ["Inclined plane", "A flat sloped surface, like a ramp. Trades a longer path for a smaller force."],
+  ["Lever", "A stiff bar that turns on a fulcrum."],
+  ["Fulcrum", "The point a lever turns on."],
+  ["Effort arm", "The distance from the fulcrum to where you push on a lever."],
+  ["Wheel and axle", "A large wheel joined to a smaller axle so they turn together."],
+  ["Screw", "An inclined plane wrapped around a post."],
+  ["Wedge", "Two inclined planes back to back that move, used to split, cut or hold things apart."],
+  ["Pulley", "A grooved wheel with a rope. A fixed pulley changes direction. Movable pulleys reduce force."],
+  ["Input work", "Input force × the distance the input force moves."],
+  ["Output work", "Output force × the distance the load moves."],
+  ["Ideal machine", "A machine with no friction. Its input work equals its output work."],
+  ["Friction", "A force that resists sliding or rolling. It turns some work into heat."],
+  ["Efficiency", "Output work ÷ input work × 100%. Always less than 100% for real machines."],
+  ["Mechanical advantage (MA)", "Output force ÷ input force. How many times a machine multiplies your force."],
+  ["Complex machine", "Two or more simple machines working together, like a wheelbarrow or can opener."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Which describes a force completely?", ["300 N to the left", "300 N", "To the left", "300 J to the left"], "A force needs both a magnitude in newtons and a direction."],
+  ["What unit is force measured in?", ["Newtons", "Joules", "Metres", "Kilograms"], "Force is measured in newtons (N). Work is measured in joules."],
+  ["About how much does a 10 kg box weigh on Earth?", ["98 N", "10 N", "9.8 N", "980 N"], "Weight = mass × 9.8 N/kg = 10 × 9.8 = 98 N."],
+  ["When is work done on an object?", ["When a force moves it a distance in the direction of the force", "Whenever a force acts on it", "Whenever you feel tired", "Only when it is lifted"], "Work needs a force and movement in the direction of that force."],
+  ["You push a 150 N sled 20 m across flat snow with a 40 N force. How much work does your push do?", ["800 J", "3000 J", "190 J", "6000 J"], "Use the push, not the weight: W = 40 N × 20 m = 800 J."],
+  ["You push hard on a wall for a minute. How much work do you do on the wall?", ["0 J", "It depends on how hard you push", "1 J", "60 J"], "The wall does not move, so the distance is 0 and the work is 0 J."],
+  ["A student does 600 J of work lifting a box 1.5 m. What force did they use?", ["400 N", "900 N", "600 N", "4 N"], "F = W ÷ d = 600 J ÷ 1.5 m = 400 N."],
+  ["Which is NOT one of the six simple machines?", ["Gear motor", "Wedge", "Screw", "Pulley"], "The six simple machines are inclined plane, lever, wheel and axle, screw, wedge and pulley."],
+  ["A screw is best described as", ["an inclined plane wrapped around a post", "a lever with two fulcrums", "a wheel with a groove", "two pulleys joined together"], "The threads of a screw are a ramp wrapped in a spiral."],
+  ["What does a single fixed pulley at the top of a flagpole change?", ["Only the direction of the force", "Only the size of the force", "The amount of work", "Both size and work"], "A fixed pulley has an MA of 1. You pull down to raise the flag up."],
+  ["In an ideal machine with no friction,", ["input work equals output work", "output work is greater than input work", "input force equals output force", "no work is done"], "An ideal machine gives out exactly the work you put in."],
+  ["Why does a real machine put out less work than you put in?", ["Friction turns some of the work into heat", "Machines destroy energy", "The load gets lighter", "Real machines have no mechanical advantage"], "Energy is not destroyed. Some input work becomes heat because of friction."],
+  ["A 4 m ramp lets you push a 600 N crate up 1 m with 150 N. What stays the same compared with lifting straight up?", ["The work, 600 J", "The force, 600 N", "The distance, 1 m", "Nothing stays the same"], "150 N × 4 m = 600 J and 600 N × 1 m = 600 J. The ramp trades force for distance."],
+  ["Mechanical advantage is found by", ["output force ÷ input force", "input force ÷ output force", "input force × output force", "work ÷ distance"], "MA tells how many times a machine multiplies your force: output ÷ input."],
+  ["A crowbar lifts a 600 N rock when you push with 100 N. What is its MA?", ["6", "0.17", "500", "700"], "MA = 600 N ÷ 100 N = 6."],
+  ["How does a lever give a mechanical advantage?", ["Your force moves a longer distance than the load", "It removes the weight of the load", "It makes more work than you put in", "It shortens the distance you push"], "A long effort arm means your hand moves farther while the load moves a short way, so you need less force."],
+  ["A pulley system has 4 rope segments holding up a 400 N load. What is the ideal input force?", ["100 N", "400 N", "1600 N", "4 N"], "Ideal MA = 4, so input force = 400 N ÷ 4 = 100 N."],
+  ["With that 4 segment pulley system, how much rope must you pull to lift the load 1 m?", ["4 m", "1 m", "0.25 m", "400 m"], "Each segment shortens by 1 m, so you pull 4 m of rope. Work stays the same."],
+  ["A wheelbarrow combines which simple machines?", ["A lever and a wheel and axle", "A screw and a wedge", "Two pulleys", "An inclined plane and a screw"], "The handles and tray form a lever with the axle as fulcrum, and the wheel turns on an axle."],
+  ["A lever with an MA of 3 drives a pulley system with an MA of 4. What is the overall MA?", ["12", "7", "1.3", "34"], "In a chain, multiply the MAs: 3 × 4 = 12."],
+  ["A snow shovel has an MA less than 1. What is it good for?", ["Making the snow move farther and faster", "Lifting snow with less force", "Doing less work", "Changing nothing"], "MA below 1 needs more force but moves the load a longer distance, which flings snow far."],
+  ["Which is a complex machine?", ["A can opener", "A ramp", "A doorstop", "A crowbar"], "A can opener combines levers, a wheel and axle and a wedge."],
+  ["Which local example uses a screw?", ["A grain auger lifting grain into a bin", "A school entrance ramp", "A flagpole rope", "A seesaw"], "A grain auger turns a spiral screw that carries grain upward."],
+  ["A 5 m plank is used to raise a 500 N load 1 m. What is the ideal input force?", ["100 N", "500 N", "2500 N", "5 N"], "Output work = 500 N × 1 m = 500 J. Ideal input force = 500 J ÷ 5 m = 100 N."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What is a force? What two things do you need to describe one completely?", a: "A force is a push or a pull. To describe it completely, you need its magnitude in newtons and its direction, for example 200 N to the right. That is why forces are drawn as arrows.", k: ["Force is a push or a pull", "Magnitude measured in newtons", "Direction is needed", "Example with size and direction"]},
+  {q: "Explain when work is done on an object. Give one example where work is done and one where it is not.", a: "Work is done when a force moves an object a distance in the direction of the force. Lifting a backpack onto a shelf does work because the force is up and the bag moves up. Pushing a wall that does not move does no work because the distance is zero.", k: ["Force plus movement in the direction of the force", "Correct example of work", "Correct example of no work", "Explains why using distance or direction"]},
+  {q: "A student pulls a toboggan with a force of 60 N for 25 m along a flat trail. How much work is done? Show your steps.", a: "W = F × d = 60 N × 25 m = 1500 J. The pull and the motion point the same way along the trail.", k: ["Writes W = F × d", "Substitutes 60 N and 25 m", "Answer 1500 J with units"]},
+  {q: "Name the six simple machines and give an everyday example of each.", a: "Inclined plane (a ramp), lever (a crowbar or seesaw), wheel and axle (a doorknob), screw (a jar lid or ice auger), wedge (an axe head) and pulley (a flagpole).", k: ["All six named", "A correct example for each", "Examples are everyday or local"]},
+  {q: "A fixed pulley at the top of a flagpole does not reduce your force. Why is it still useful?", a: "A fixed pulley changes the direction of the force. You can stand on the ground and pull down to raise the flag up to the top of the pole. Its MA is 1, so the force and the work stay the same.", k: ["Changes direction", "Pull down to lift up", "MA of 1 or same force"]},
+  {q: "A ramp lets you push a 600 N crate up 1 m with only 150 N. Explain why the work stays the same.", a: "You push with 150 N but over the 4 m length of the ramp, so input work = 150 N × 4 m = 600 J. Lifting straight up takes 600 N × 1 m = 600 J. The ramp trades a smaller force for a longer distance, so the work does not change.", k: ["Smaller force over a longer distance", "Calculates input work", "Compares with output work", "Machine does not change the work"]},
+  {q: "Define mechanical advantage. What does an MA of 4 mean?", a: "Mechanical advantage is output force ÷ input force. An MA of 4 means the machine pushes on the load with 4 times the force you put in. You must move your force about 4 times as far as the load moves.", k: ["MA = output force ÷ input force", "Force is multiplied 4 times", "Distance trade mentioned"]},
+  {q: "Why does a real machine always put out a little less work than goes in?", a: "Real machines have friction between moving parts. Friction turns some of the input work into heat, so less work reaches the load. Only an ideal machine with no friction has input work equal to output work. Efficiency is output work ÷ input work × 100%.", k: ["Friction", "Some work becomes heat", "Ideal machine comparison", "Efficiency mentioned"]},
+  {q: "A wheelbarrow is a complex machine. Which simple machines does it combine, and what does each one do?", a: "It combines a lever and a wheel and axle. The handles and tray are a lever with the axle as the fulcrum, so you lift a heavy load with a smaller force. The wheel and axle let it roll, which reduces friction.", k: ["Lever named", "Wheel and axle named", "Role of the lever", "Role of the wheel"]},
+  {q: "A lever with an MA of 3 drives a pulley system with an MA of 2. What is the overall MA? What input force lifts a 1200 N load?", a: "Overall MA = 3 × 2 = 6. Input force = 1200 N ÷ 6 = 200 N.", k: ["Multiplies the MAs", "MA of 6", "Input force 200 N"]}
+];
+var LONG = [
+  {q: "Choose a simple machine used in your community (at school, on a farm, at the rink or in a garden). Describe the task, then analyze the work done with and without the machine. Use numbers.", a: "Example: the school entrance ramp. A person in a wheelchair (900 N together) rises 0.5 m to the door. Without a ramp, lifting straight up needs 900 N over 0.5 m, which is 450 J. With a 6 m ramp, the ideal push is 75 N over 6 m, which is also 450 J. The ramp changes the force a lot but not the work. With friction a real ramp needs a little more work.", k: ["Local task described", "Input and output forces identified", "Work calculated with and without the machine", "States the work stays the same (ideal)", "Mentions friction in a real machine"]},
+  {q: "A classmate says, “Machines save work.” Do you agree? Use a ramp, lever or pulley example with numbers to explain.", a: "I disagree. Machines save force, not work. A pulley system with 3 supporting segments lifts a 240 N hay bale with 80 N, but you pull 3 m of rope to lift it 1 m. Input work = 80 N × 3 m = 240 J, and output work = 240 N × 1 m = 240 J. In a real machine, friction means you actually do a little more work than without it. Machines make tasks easier by lowering the force or changing its direction.", k: ["Clear position", "Machines change force, not work", "Numerical example", "Friction means real input work is slightly larger", "Explains how machines still help"]},
+  {q: "Compare the mechanical advantage of three machines from the Lab Bench table. Which would you choose to open a stuck paint can lid, and which to raise a flag? Explain.", a: "A crowbar has an MA of 8, a hand can opener about 15, and a flagpole pulley about 1. To pry open a stuck lid, I would choose a lever like a crowbar or flat screwdriver, because a large MA turns a small push into a big prying force. To raise a flag, MA does not matter much; the fixed pulley is best because it lets me pull down from the ground to lift the flag up.", k: ["Uses MA values", "MA = output ÷ input applied", "Matches high MA to a hard job", "Recognizes direction change as a reason to use a machine"]},
+  {q: "Design a complex machine to lift a 1200 N engine using no more than 150 N of effort. Choose two simple machines, give each an MA, and show your machine works. What is the trade off?", a: "I would use a lever with an MA of 2 to pull the rope of a block and tackle with 4 supporting segments (MA 4). Overall MA = 2 × 4 = 8. Input force = 1200 N ÷ 8 = 150 N, which meets the limit. The trade off is distance: to lift the engine 1 m, my hand must move about 8 m in total, and friction means I would need a bit more than 150 N.", k: ["Two simple machines chosen", "Overall MA found by multiplying", "Input force calculated and checked", "Distance trade off explained", "Friction considered"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["F2.K1", "Force, expressed in newtons, has both magnitude and direction.", "Learn: Lesson 1 (forces on a crate). Quiz, Flashcards, Written Review short answer 1."],
+    ["F2.K2", "Work, expressed in joules, is done when an applied force moves an object a distance in the direction of the force W =F ×d.", "Learn: Lesson 2 (work rectangle and scenarios). Lab Bench: Investigation 2. Sort It: is work done deck. Quiz, Flashcards, Written Review short answers 2 and 3."],
+    ["F2.K3", "Simple machines can accomplish a task by changing the magnitude or direction of the input force and include\n• inclined planes\n• levers\n• wheels and axles\n• screws\n• wedges\n• pulleys", "Learn: Lessons 3 (machine gallery) and 6 (pulleys). Sort It: which simple machine and what does it change decks. Quiz, Flashcards, Written Review short answers 4 and 5."],
+    ["F2.K4", "In a simple machine, the input work is equal to the output work.", "Learn: Lessons 4 (ramp, ideal and real) and 5. Lab Bench: Investigation 1. Quiz, Flashcards, Written Review short answers 6 and 8, extended 2."],
+    ["F2.K5", "Mechanical advantage occurs when a machine reduces the input force needed to move an object by increasing the distance over which the force is applied.", "Learn: Lessons 5 (lever) and 6 (pulleys). Lab Bench: Investigation 3. Quiz, Flashcards, Written Review short answer 7."],
+    ["F2.K6", "Complex machines, such as a wheelbarrow or a can opener, are made by combining simple machines.", "Learn: Lesson 7 (wheelbarrow parts). Sort It: simple or complex deck. Quiz, Flashcards, Written Review short answer 9."],
+    ["F2.K7", "A complex machine’s mechanical advantage is the product of the mechanical advantages of the simple machines.", "Learn: Lesson 7 (machine chain builder). Lab Bench: Investigation 3 (chain practice). Quiz, Written Review short answer 10, extended 4."],
+    ["F2.S1", "Analyze work done in a local setting involving simple machines.", "Lab Bench: Investigation 4 (five Alberta site files). Written Review extended 1."],
+    ["F2.S2", "Explain the relationship between work, force, and distance.", "Learn: Lessons 2, 4 and 5. Lab Bench: Investigations 1 and 2. Written Review short answer 2."],
+    ["F2.S3", "Solve problems involving calculations related to work when given force and distance.", "Learn: Lesson 2. Lab Bench: Investigation 2 (worked examples and randomized practice) and Investigation 4. Quiz, Written Review short answer 3."],
+    ["F2.S4", "Explain why the amount of work does not change when a simple machine is used.", "Learn: Lesson 4 (ramp). Lab Bench: Investigations 1 and 4. Written Review short answer 6, extended 2."],
+    ["F2.S5", "Compare the mechanical advantage of various simple and complex machines.", "Learn: Lessons 6 and 7. Lab Bench: Investigation 3 (comparison table, sort by MA, practice). Written Review extended 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

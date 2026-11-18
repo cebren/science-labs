@@ -1,0 +1,1338 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/forces-in-motion-lab/"><meta name="description" content="The motion of an object changes because of forces acting on it."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Forces in Motion Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a physics bench notebook. Sticky tab strip, then lessons that pair a short reading column with a force diagram, a motion map or a graph. Ember arrows are forces, blue marks motion, green marks balance. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g8:#1D5FA8;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g8:#7DB0F0;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g8:#7DB0F0;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+header h1 .pu{color:var(--water)} header h1 .mx{color:var(--mix)}
+.chip.mx[aria-pressed="true"]{background:var(--mix);border-color:var(--mix);color:var(--surface)}
+.pbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.pfig{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px}
+.pfig svg{display:block;width:100%;height:auto}
+.pfig figcaption{font-size:.82rem;color:var(--muted)}
+.verdict{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.badge{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+.badge.pure{background:var(--water-soft);color:var(--water);border-color:var(--water)}
+.badge.mixb{background:var(--mix-soft);color:var(--mix);border-color:var(--mix)}
+.ptable{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.ptable th,.ptable td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.ptable th:first-child,.ptable td:first-child{text-align:left}
+.ptable th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ptable tr.on td{background:var(--water-soft);font-weight:700}
+.state{font-family:var(--f-display);font-size:1.3rem;font-weight:800}
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv h3{font-size:1.3rem}
+.inv .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.readout{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.choice button{background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:4px}
+.choice button:hover:not(:disabled){border-color:var(--muted)}
+.choice button.right{border-color:var(--good);background:var(--leaf-soft)}
+.choice button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice button svg{width:100%;height:auto;display:block}
+.tray{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.cup{border:1.5px dashed var(--line);border-radius:8px;padding:8px;font-size:.85rem;display:grid;gap:2px;background:var(--surface-2)}
+.cup.full{border-style:solid;border-color:var(--good);background:var(--leaf-soft)}
+.cup b{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.log{display:grid;gap:4px;padding-left:1.2em;font-size:.9rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,90px),1fr));gap:8px}
+.lbox{display:grid;gap:4px;justify-items:center;text-align:center;font-size:.85rem}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.inline label.field{flex:1 1 140px}
+.inline input{width:100%}
+
+.fc .card3:focus-visible{outline-offset:4px}
+fieldset legend{margin-bottom:4px}
+.inv h4{font-size:1.05rem}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Forces, Motion and Fluids · F1</div>
+    <h1>Forces in <span class="fi">Motion</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> The motion of an object changes because of forces acting on it. Add up the pushes and pulls on an object to find the net force. Balanced forces leave motion unchanged. Unbalanced forces speed objects up, slow them down or turn them.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. Start by adding forces together, then see what balanced and unbalanced forces do to motion, and finish by measuring speed.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Adding up forces</span>
+      <div class="codes"><span class="code">F1.K1</span></div>
+      <h3>Net force is the sum of all forces</h3>
+      <p>A <b>force</b> is a push or a pull. Forces are measured in <b>newtons</b> (N). A small apple pushes down on your hand with a force of about 1 N.</p>
+      <p>Every force has a size, called its <b>magnitude</b>, and a <b>direction</b>. That is why scientists draw forces as arrows. A longer arrow means a bigger force.</p>
+      <p>Most objects have several forces acting on them at once. The <b>net force</b> is the sum of all of them. Forces in the same direction add together. Forces in opposite directions work against each other, so you subtract.</p>
+      <div class="formula">net force = (forces to the right) − (forces to the left)</div>
+      <div class="key"><b>Worked example:</b> two students pull a sled right with 60 N and 40 N. One student pulls left with 70 N. Net force = (60 + 40) − 70 = 30 N to the right.</div>
+    </div>
+    <div class="model">
+      <h4>Model: tug of war</h4>
+      <div class="two">
+        <label class="field" for="tw1">Right team pull 1: <span class="mono num" id="tw1v"></span><input type="range" id="tw1" min="0" max="200" step="10" value="120"></label>
+        <label class="field" for="tw2">Right team pull 2: <span class="mono num" id="tw2v"></span><input type="range" id="tw2" min="0" max="200" step="10" value="60"></label>
+        <label class="field" for="tw3">Left team pull 1: <span class="mono num" id="tw3v"></span><input type="range" id="tw3" min="0" max="200" step="10" value="100"></label>
+        <label class="field" for="tw4">Left team pull 2: <span class="mono num" id="tw4v"></span><input type="range" id="tw4" min="0" max="200" step="10" value="50"></label>
+      </div>
+      <div class="svgbox fit"><svg id="twSvg" viewBox="0 0 340 170" role="img" aria-label="Force arrows on a rope knot"></svg></div>
+      <div class="readout" id="twOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Balanced forces</span>
+      <div class="codes"><span class="code">F1.K2</span></div>
+      <h3>Zero net force: no change in motion</h3>
+      <p>When the forces on an object cancel out, the net force is zero. We say the forces are <b>balanced</b>.</p>
+      <p>Balanced forces do not change an object's motion. That has two meanings:</p>
+      <ul>
+        <li>An object at rest stays at rest.</li>
+        <li>An object that is already moving keeps the same speed and the same direction.</li>
+      </ul>
+      <p>Many people think balanced forces mean an object must be still. That is a common mistake. A car cruising at a steady speed on a straight highway has balanced forces too.</p>
+      <p class="note">A force diagram shows one object as a box, with an arrow for each force on it. Pick an example to see its diagram.</p>
+    </div>
+    <div class="model">
+      <h4>Model: balanced force diagrams</h4>
+      <div class="chips" id="balChips" role="group" aria-label="Choose an example"></div>
+      <div class="svgbox fit"><svg id="balSvg" viewBox="0 0 340 200" role="img" aria-label="Force diagram for the chosen example"></svg></div>
+      <div class="detail" id="balOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Unbalanced forces</span>
+      <div class="codes"><span class="code">F1.K3</span></div>
+      <h3>Net force changes speed and direction</h3>
+      <p>When the net force is not zero, the forces are <b>unbalanced</b>. Unbalanced forces change motion. What happens depends on the direction of the net force compared with the direction the object is moving:</p>
+      <ul>
+        <li>Net force in the <b>same direction</b> as the motion: the object speeds up.</li>
+        <li>Net force in the <b>opposite direction</b>: the object slows down. It may stop, and if the force keeps acting it starts moving the other way.</li>
+        <li>Net force at an <b>angle</b> to the motion: the object changes direction.</li>
+      </ul>
+      <p>A bigger net force makes a bigger change in the same amount of time.</p>
+      <p class="note">The model shows a motion map: the puck's position every quarter second, like a strobe photo. Even spacing means steady speed. Growing gaps mean speeding up.</p>
+    </div>
+    <div class="model">
+      <h4>Model: hockey puck motion map</h4>
+      <p class="hint">The puck slides right across smooth ice. A stick pushes it for the whole second shown.</p>
+      <div class="chips" id="puckChips" role="group" aria-label="Choose the push"></div>
+      <label class="field" for="puckF">Size of the push: <span class="mono num" id="puckFv"></span><input type="range" id="puckF" min="1" max="4" step="1" value="2"></label>
+      <div class="svgbox fit"><svg id="puckSvg" viewBox="0 0 340 170" role="img" aria-label="Motion map of the puck"></svg></div>
+      <div class="detail" id="puckOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Newton's first law</span>
+      <div class="codes"><span class="code">F1.K4</span></div>
+      <h3>The law of inertia</h3>
+      <p>Isaac Newton described motion in three laws in 1687. His <b>first law of motion</b>, also called the <b>law of inertia</b>, says:</p>
+      <div class="key">An object at rest stays at rest, and an object in motion keeps moving in a straight line at a constant speed, unless an unbalanced force acts on it.</div>
+      <p><b>Inertia</b> is the tendency of an object to resist changes in its motion. Inertia is a property of the object. It is not a force.</p>
+      <p>On Earth, a sliding object usually slows down and stops. That is not because it "runs out" of motion. <b>Friction</b> and air resistance are unbalanced forces acting against the motion. The less friction there is, the farther the object slides. With no friction at all, it would never stop.</p>
+    </div>
+    <div class="model">
+      <h4>Model: same shove, different surfaces</h4>
+      <p class="hint">A puck leaves your stick at 5 m/s. Choose a surface to see how far it slides before friction stops it.</p>
+      <div class="chips" id="fricChips" role="group" aria-label="Choose a surface"></div>
+      <div class="bars" id="fricBars"></div>
+      <div class="detail" id="fricOut" aria-live="polite"></div>
+      <p class="hint">Distances are estimates for a smooth puck. Real values depend on the surface.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Mass and inertia</span>
+      <div class="codes"><span class="code">F1.K5</span></div>
+      <h3>More mass, more inertia</h3>
+      <p><b>Mass</b> is the amount of matter in an object, measured in kilograms (kg). The greater an object's mass, the greater its inertia.</p>
+      <p>More inertia means you need a bigger force to change the object's motion. An empty toboggan is easy to start and easy to stop. A toboggan loaded with three friends takes a much bigger push to get going, and it is harder to stop at the bottom of the hill.</p>
+      <p>For the same push over the same time, doubling the mass gives only half the change in speed.</p>
+      <p class="note">Mass is not the same as weight. Weight is the pull of gravity on an object. An astronaut's mass, and so their inertia, is the same on Earth and in space.</p>
+      <p class="note">Toboggans were developed by First Nations peoples for hauling loads over snow, long before they were used for fun on winter hills.</p>
+    </div>
+    <div class="model">
+      <h4>Model: push a toboggan on smooth snow</h4>
+      <label class="field" for="sledF">Push force: <span class="mono num" id="sledFv"></span><input type="range" id="sledF" min="20" max="200" step="10" value="80"></label>
+      <p class="hint">Each toboggan gets the same push for 1 second. Friction is ignored to keep the comparison fair.</p>
+      <div class="bars" id="sledBars"></div>
+      <div class="detail" id="sledOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Speed</span>
+      <div class="codes"><span class="code">F1.K6</span></div>
+      <h3>Speed links distance and time</h3>
+      <p><b>Speed</b> tells you how far an object travels in a certain amount of time. It is distance divided by time.</p>
+      <div class="formula">v = d ÷ t &nbsp; · &nbsp; speed = distance ÷ time</div>
+      <p>Common units are metres per second (m/s) and kilometres per hour (km/h). To change m/s into km/h, multiply by 3.6.</p>
+      <p>The formula gives the <b>average speed</b> over a trip. Your speed may change during the trip, but the average tells you the overall rate.</p>
+      <div class="key"><b>Worked example:</b> a cyclist on a river valley trail rides 1200 m in 240 s. v = d ÷ t = 1200 m ÷ 240 s = 5 m/s. That is 5 × 3.6 = 18 km/h.</div>
+      <p>The same formula can be rearranged: d = v × t and t = d ÷ v. You do not need to memorize these. You can always look them up.</p>
+    </div>
+    <div class="model">
+      <h4>Model: distance and time graph</h4>
+      <div class="chips" id="dtChips" role="group" aria-label="Choose a mover"></div>
+      <label class="field" for="dtT">Time: <span class="mono num" id="dtTv"></span><input type="range" id="dtT" min="5" max="50" step="5" value="30"></label>
+      <div class="svgbox fit"><svg id="dtSvg" viewBox="0 0 340 220" role="img" aria-label="Distance and time graph for three movers"></svg></div>
+      <div class="readout" id="dtOut" aria-live="polite"></div>
+      <p class="hint">A steeper line means a greater speed. Example speeds are typical values for practice.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four virtual investigations. Predict motion from net force, test how mass resists change, solve speed problems, and run a controlled experiment. All data here is made up for practice.</p>
+  </div>
+
+  <article class="inv">
+    <span class="step">Investigation 1 · Net force predictor</span>
+    <h3>Which way will the cart go?</h3>
+    <p>A cart rolls on a level floor. Read the forces, find the net force, then predict what the cart's motion will do next. Only horizontal forces are used.</p>
+    <div class="two">
+      <div class="svgbox fit"><svg id="npSvg" viewBox="0 0 340 170" role="img" aria-label="Force diagram for the cart"></svg></div>
+      <div style="display:grid;gap:10px;align-content:start">
+        <p id="npText"></p>
+        <div class="inline">
+          <label class="field" for="npMag">Net force size (N)<input type="number" id="npMag" inputmode="numeric" min="0"></label>
+          <label class="field" for="npDir">Direction<select id="npDir"><option value="">Choose</option><option value="r">Right</option><option value="l">Left</option><option value="0">None (balanced)</option></select></label>
+        </div>
+        <p class="hint">Then pick your prediction:</p>
+        <div class="chips" id="npPred" role="group" aria-label="Prediction"></div>
+      </div>
+    </div>
+    <div class="row"><button class="btn" id="npCheck" type="button">Check</button><button class="btn ghost" id="npNew" type="button">New cart</button><span class="hint mono" id="npScore"></span></div>
+    <div class="feedback" id="npFb" aria-live="polite" hidden></div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 2 · Mass and inertia</span>
+    <h3>How does mass affect a change in motion?</h3>
+    <p>A force sensor pushes a cart at rest with the same 2 N force for 1 second. You add masses to the cart and measure its speed afterwards.</p>
+    <label class="field" for="inPred">First, predict: as the mass goes up, the speed after the push will
+      <select id="inPred"><option value="">Choose a prediction</option><option value="up">increase</option><option value="same">stay the same</option><option value="down">decrease</option></select></label>
+    <div class="chips" id="inMass" role="group" aria-label="Cart mass"></div>
+    <div class="row"><button class="btn" id="inRun" type="button">Run trial</button><button class="btn ghost" id="inReset" type="button">Clear data</button></div>
+    <div class="two">
+      <div class="tablebox"><table class="dt" id="inTable"><thead><tr><th>Mass (kg)</th><th>Force (N)</th><th>Time (s)</th><th>Speed after (m/s)</th></tr></thead><tbody></tbody></table></div>
+      <div class="svgbox fit"><svg id="inSvg" viewBox="0 0 340 200" role="img" aria-label="Bar graph of speed after the push for each mass"></svg></div>
+    </div>
+    <div class="feedback" id="inFb" aria-live="polite" hidden></div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 3 · Speed calculator</span>
+    <h3>Solve speed, distance and time problems</h3>
+    <div class="two">
+      <div style="display:grid;gap:10px;align-content:start">
+        <div class="chips" id="calcMode" role="group" aria-label="Solve for"></div>
+        <div class="inline" id="calcIn"></div>
+        <div class="worked" id="calcOut" aria-live="polite"></div>
+      </div>
+      <div style="display:grid;gap:10px;align-content:start">
+        <h4>Practice problem</h4>
+        <p id="ppText"></p>
+        <div class="inline"><label class="field" for="ppAns"><span id="ppLab">Your answer</span><input type="number" id="ppAns" step="any"></label></div>
+        <div class="row"><button class="btn" id="ppCheck" type="button">Check</button><button class="btn ghost" id="ppNew" type="button">New problem</button><span class="hint mono" id="ppScore"></span></div>
+        <div class="worked" id="ppFb" aria-live="polite" hidden></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 4 · Controlled experiment</span>
+    <h3>How are speed, distance and time related?</h3>
+    <p>Question: how long does a battery toy car take to travel different distances down a school hallway? You will time it over 1 m to 5 m, three trials each, then use the results to find its speed.</p>
+    <h4>Step 1 · Plan your variables</h4>
+    <div class="inline">
+      <label class="field" for="vInd">Independent variable (what you change)<select id="vInd"><option value="">Choose</option><option>distance</option><option>time</option><option>speed setting</option><option>floor surface</option></select></label>
+      <label class="field" for="vDep">Dependent variable (what you measure)<select id="vDep"><option value="">Choose</option><option>distance</option><option>time</option><option>speed setting</option><option>floor surface</option></select></label>
+    </div>
+    <fieldset class="checks2" style="border:0;padding:0;margin:0"><legend class="hint">Controlled variables (keep these the same): tick all that apply</legend>
+      <label for="vc1"><input type="checkbox" id="vc1" value="1">the same car</label>
+      <label for="vc2"><input type="checkbox" id="vc2" value="1">the same speed setting and fresh batteries</label>
+      <label for="vc3"><input type="checkbox" id="vc3" value="1">the same floor surface</label>
+      <label for="vc4"><input type="checkbox" id="vc4" value="0">a different distance each trial</label>
+    </fieldset>
+    <div class="row"><button class="btn" id="vCheck" type="button">Check my plan</button></div>
+    <div class="feedback" id="vFb" aria-live="polite" hidden></div>
+    <h4>Step 2 · Collect data</h4>
+    <div class="chips" id="ceSet" role="group" aria-label="Car speed setting"></div>
+    <div class="row"><button class="btn" id="ceRun" type="button">Run all trials</button><span class="hint">Times include small human reaction errors, like a real stopwatch.</span></div>
+    <div class="two">
+      <div class="tablebox"><table class="dt" id="ceTable"><thead><tr><th>Distance (m)</th><th>Trial 1 (s)</th><th>Trial 2 (s)</th><th>Trial 3 (s)</th><th>Average (s)</th><th>Speed (m/s)</th></tr></thead><tbody></tbody></table></div>
+      <div class="svgbox fit"><svg id="ceSvg" viewBox="0 0 340 230" role="img" aria-label="Distance and time graph of the results"></svg></div>
+    </div>
+    <h4>Step 3 · Conclude</h4>
+    <div class="chips" id="ceConc" role="group" aria-label="Conclusion"></div>
+    <div class="feedback" id="ceFb" aria-live="polite" hidden></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 F1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>F1.K2:</b> "the object's motion will not change" is taught as both cases: an object at rest stays at rest, and a moving object keeps the same speed and direction. The lab names the common misconception that balanced forces mean an object must be still.</li>
+      <li><b>F1.K3 and F1.S2:</b> net force is found along one horizontal line (right positive, left negative), as S2 limits. Lesson 3 shows a sideways push only to illustrate a change in direction, without adding forces at angles. The lab notes that a backward net force slows an object, which may stop and then reverse if the force continues.</li>
+      <li><b>F1.K4:</b> inertia is taught as a property of matter, not a force. Friction and air resistance are named as the unbalanced forces that stop sliding objects on Earth. Newton's <i>Principia</i> date (1687) is given once as context.</li>
+      <li><b>F1.K5:</b> mass is separated from weight. "The greater the force required" is shown with equal pushes giving smaller speed changes for larger masses (same force, double mass, half the change). The formula F = ma is not taught; the halving pattern is shown as data only.</li>
+      <li><b>F1.K6:</b> the draft writes v = d/t with "v", the usual symbol for velocity. The lab teaches it as average speed with no direction, and gives the m/s to km/h factor of 3.6.</li>
+      <li><b>Examples:</b> toboggans are described as developed by First Nations peoples for hauling loads over snow, in general terms only; please review this wording. Surface sliding distances, mover speeds and all Lab Bench data are estimates or made-up practice data.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-f1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Drawing helpers ---------- */
+function arrow(svg, x1, y1, x2, y2, col, w){
+  var dx = x2 - x1, dy = y2 - y1, L = Math.sqrt(dx * dx + dy * dy); if (L < 2) return;
+  var ux = dx / L, uy = dy / L, h = Math.min(13, L * 0.6), bx = x2 - ux * h, by = y2 - uy * h, hw = (w || 6) + 3;
+  svg.appendChild(sv("line", {x1: x1.toFixed(1), y1: y1.toFixed(1), x2: bx.toFixed(1), y2: by.toFixed(1), style: "stroke:var(" + col + ");stroke-width:" + (w || 6) + ";stroke-linecap:round"}));
+  svg.appendChild(sv("polygon", {points: [x2, y2, bx - uy * hw, by + ux * hw, bx + uy * hw, by - ux * hw].map(function(n){ return n.toFixed(1); }).join(" "), style: "fill:var(" + col + ")"}));
+}
+function txt(svg, x, y, t, cls, anchor){ svg.appendChild(sv("text", {x: x, y: y, "class": cls || "lbl", "text-anchor": anchor || "middle"}, t)); }
+function box(svg, x, y, w, h, label){
+  svg.appendChild(sv("rect", {x: x, y: y, width: w, height: h, rx: 6, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5"}));
+  if (label) txt(svg, x + w / 2, y + h / 2 + 4, label, "small");
+}
+function dirWord(n){ return n > 0 ? "right" : n < 0 ? "left" : ""; }
+function fmt(n, d){ var s = (+n).toFixed(d == null ? 2 : d); return s.indexOf(".") > -1 ? s.replace(/0+$/, "").replace(/\.$/, "") : s; }
+
+/* ---------- Lesson 1: tug of war ---------- */
+(function(){
+  var ids = ["tw1", "tw2", "tw3", "tw4"];
+  function render(){
+    var v = ids.map(function(i){ return +$(i).value; });
+    ids.forEach(function(i, k){ $(i + "v").textContent = v[k] + " N"; });
+    var s = $("twSvg"); clear(s);
+    var R = v[0] + v[1], L = v[2] + v[3], net = R - L, k = 0.36;
+    s.appendChild(sv("line", {x1: 10, y1: 70, x2: 330, y2: 70, style: "stroke:var(--sand);stroke-width:4"}));
+    s.appendChild(sv("circle", {cx: 170, cy: 70, r: 9, style: "fill:var(--mix);stroke:var(--ink);stroke-width:1"}));
+    arrow(s, 180, 52, 180 + v[0] * k, 52, "--fire", 5); if (v[0]) txt(s, 186 + v[0] * k, 48, v[0] + " N", "small", "start");
+    arrow(s, 180, 88, 180 + v[1] * k, 88, "--fire", 5); if (v[1]) txt(s, 186 + v[1] * k, 100, v[1] + " N", "small", "start");
+    arrow(s, 160, 52, 160 - v[2] * k, 52, "--water", 5); if (v[2]) txt(s, 154 - v[2] * k, 48, v[2] + " N", "small", "end");
+    arrow(s, 160, 88, 160 - v[3] * k, 88, "--water", 5); if (v[3]) txt(s, 154 - v[3] * k, 100, v[3] + " N", "small", "end");
+    txt(s, 170, 132, "Net force", "small");
+    if (net === 0) { txt(s, 170, 156, "0 N: balanced", "lbl"); }
+    else { arrow(s, 170, 150, 170 + net * 0.35, 150, "--leaf", 7); txt(s, net > 0 ? 100 : 240, 156, Math.abs(net) + " N " + dirWord(net), "lbl"); }
+    $("twOut").textContent = "Net force = (" + v[0] + " + " + v[1] + ") − (" + v[2] + " + " + v[3] + ") = " + net + " N" + (net === 0 ? ". The forces are balanced, so the knot does not start moving." : ", which is " + Math.abs(net) + " N to the " + dirWord(net) + ". The knot starts moving " + dirWord(net) + ".");
+    s.setAttribute("aria-label", "Right team pulls " + R + " newtons in total, left team pulls " + L + " newtons. Net force " + Math.abs(net) + " newtons " + (dirWord(net) || "balanced"));
+  }
+  ids.forEach(function(i){ $(i).addEventListener("input", render); });
+  render();
+})();
+
+/* ---------- Lesson 2: balanced diagrams ---------- */
+(function(){
+  var EX = [
+    {label: "Book on a desk", obj: "book", f: [["u", "Desk pushes up 15 N"], ["d", "Gravity pulls down 15 N"]], move: 0,
+      t: "The book is at rest. Gravity pulls it down and the desk pushes up with the same size of force. The net force is zero, so the book stays at rest."},
+    {label: "Tied tug of war", obj: "rope", f: [["r", "300 N"], ["l", "300 N"]], move: 0,
+      t: "Both teams pull with 300 N. The net force is 300 N − 300 N = 0 N. The rope stays still until one team pulls harder."},
+    {label: "Car at a steady 100 km/h", obj: "car", f: [["r", "Tires push car forward"], ["l", "Air resistance and friction"]], move: 1,
+      t: "The car is moving, yet the forces are balanced. The forward push from the road on the tires is the same size as the air resistance and friction pushing back. The net force is zero, so the car keeps the same speed in the same direction."},
+    {label: "Canoe gliding steadily", obj: "canoe", f: [["r", "Paddling push"], ["l", "Water drag"]], move: 1,
+      t: "When the paddling push forward equals the drag of the water pushing back, the canoe glides at a constant speed. Balanced forces do not mean an object is still."}
+  ];
+  function render(e){
+    var s = $("balSvg"); clear(s);
+    box(s, 135, 80, 70, 44, e.obj);
+    e.f.forEach(function(f){
+      if (f[0] === "r") { arrow(s, 207, 102, 290, 102, "--fire"); txt(s, 262, 140, f[1], "small"); }
+      if (f[0] === "l") { arrow(s, 133, 102, 50, 102, "--fire"); txt(s, 78, 140, f[1], "small"); }
+      if (f[0] === "u") { arrow(s, 170, 78, 170, 22, "--fire"); txt(s, 182, 32, f[1], "small", "start"); }
+      if (f[0] === "d") { arrow(s, 170, 126, 170, 182, "--fire"); txt(s, 182, 176, f[1], "small", "start"); }
+    });
+    if (e.move) { s.appendChild(sv("line", {x1: 120, y1: 30, x2: 200, y2: 30, style: "stroke:var(--water);stroke-width:2;stroke-dasharray:5 4"})); arrow(s, 196, 30, 222, 30, "--water", 2); txt(s, 170, 22, "moving at constant speed", "small"); }
+    else txt(s, 60, 30, "at rest", "small");
+    txt(s, 170, 198, "Net force = 0 N", "lbl");
+    s.setAttribute("aria-label", "Force diagram: " + e.label + ". " + e.f.map(function(f){ return f[1]; }).join(", ") + ". Net force zero.");
+    detail($("balOut"), e.label, [e.t], e.move ? "Moving · balanced" : "At rest · balanced");
+  }
+  chipGroup($("balChips"), EX, "lf", render, 0);
+})();
+
+/* ---------- Lesson 3: puck motion map ---------- */
+(function(){
+  var MODES = [{label: "No push", k: "none"}, {label: "Push forward", k: "fwd"}, {label: "Push backward", k: "back"}, {label: "Push sideways", k: "side"}];
+  var mode = MODES[1];
+  function render(){
+    var a = +$("puckF").value, s = $("puckSvg"); clear(s);
+    $("puckFv").textContent = a + " of 4";
+    var v0 = 4, sc = 27, x0 = 22, y0 = 132, pts = [];
+    for (var i = 0; i <= 6; i++) {
+      var t = i * 0.25, x = v0 * t, y = 0;
+      if (mode.k === "fwd") x += a * t * t / 2;
+      if (mode.k === "back") x -= a * t * t / 2;
+      if (mode.k === "side") y = a * t * t / 2;
+      pts.push([x0 + x * sc, y0 - y * sc, t]);
+    }
+    s.appendChild(sv("line", {x1: 10, y1: 150, x2: 330, y2: 150, "class": "axis"}));
+    txt(s, 12, 165, "Each dot = 0.25 s", "small", "start");
+    pts.forEach(function(p, i){
+      s.appendChild(sv("circle", {cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 7, style: "fill:var(--ink);opacity:" + (0.35 + i * 0.1).toFixed(2)}));
+    });
+    arrow(s, x0, y0 - 24, x0 + 40, y0 - 24, "--water", 2); txt(s, x0 + 20, y0 - 30, "start: 4 m/s", "small");
+    var last = pts[pts.length - 1];
+    if (mode.k === "fwd") arrow(s, 200, 28, 214 + a * 8, 28, "--fire", 4);
+    if (mode.k === "back") arrow(s, 200, 28, 200 - 14 - a * 8, 28, "--fire", 4);
+    if (mode.k === "side") arrow(s, 290, 120, 290, 106 - a * 8, "--fire", 4);
+    if (mode.k !== "none") txt(s, mode.k === "side" ? 290 : 200, mode.k === "side" ? 135 : 18, "push", "small");
+    var vEnd = mode.k === "fwd" ? v0 + a * 1.5 : mode.k === "back" ? v0 - a * 1.5 : v0;
+    var msg;
+    if (mode.k === "none") msg = ["No net force acts along the ice, so the dots are evenly spaced. The puck keeps a steady 4 m/s in a straight line."];
+    if (mode.k === "fwd") msg = ["The net force points the same way the puck moves. The gaps between dots grow, so the puck speeds up. After 1.5 s it moves at " + fmt(vEnd) + " m/s."];
+    if (mode.k === "back") msg = vEnd < 0 ? ["The net force points against the motion. The gaps shrink, the puck stops, then it starts sliding back to the left. A force that keeps acting can reverse the motion."] : ["The net force points against the motion. The gaps shrink, so the puck slows down. After 1.5 s it moves at " + fmt(vEnd) + " m/s."];
+    if (mode.k === "side") msg = ["The push acts at a right angle to the motion. The path bends toward the push, so the puck changes direction as well as speed."];
+    msg.push("Try a bigger push: the change in motion gets bigger too.");
+    detail($("puckOut"), mode.label, msg, mode.k === "none" ? "Balanced" : "Unbalanced");
+    s.setAttribute("aria-label", "Motion map. " + msg[0]);
+  }
+  chipGroup($("puckChips"), MODES, "fi", function(m){ mode = m; render(); }, 1);
+  $("puckF").addEventListener("input", render);
+})();
+
+/* ---------- Lesson 4: friction and inertia ---------- */
+(function(){
+  var SURF = [
+    {label: "Rough asphalt", mu: 0.5}, {label: "Gym floor", mu: 0.25}, {label: "Outdoor rink", mu: 0.05},
+    {label: "Freshly flooded ice", mu: 0.02}, {label: "No friction (imagined)", mu: 0}
+  ];
+  var bars = $("fricBars"), rows = [];
+  SURF.forEach(function(su){
+    var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, su.label));
+    var tr = el("div", {"class": "track"}), i = el("i"); tr.appendChild(i); r.appendChild(tr);
+    var b = el("b", null, su.mu ? fmt(25 / (2 * su.mu * 9.8), 1) + " m" : "∞"); r.appendChild(b);
+    bars.appendChild(r); rows.push(i);
+    i.style.width = (su.mu ? Math.min(100, 25 / (2 * su.mu * 9.8) / 70 * 100) : 100) + "%";
+  });
+  chipGroup($("fricChips"), SURF, "wa", function(su, k){
+    rows.forEach(function(i, j){ i.className = j === k ? "" : "warn"; i.style.opacity = j === k ? "1" : ".35"; });
+    if (!su.mu) detail($("fricOut"), su.label, ["With no friction there is no unbalanced force on the puck. By Newton's first law it keeps moving in a straight line at 5 m/s forever. Nothing on Earth is truly frictionless, which is why this idea was hard to see before Newton."], "Inertia only");
+    else detail($("fricOut"), su.label, ["The puck slides about " + fmt(25 / (2 * su.mu * 9.8), 1) + " m. Friction is an unbalanced force pointing against the motion, so the puck slows and stops.", su.mu < 0.1 ? "Ice has very little friction, so the puck's inertia carries it a long way." : "More friction means a bigger backward force and a shorter slide."], "Friction stops it");
+  }, 2);
+})();
+
+/* ---------- Lesson 5: mass and inertia ---------- */
+(function(){
+  var M = [["Empty toboggan", 10], ["Toboggan with gear", 20], ["One rider", 40], ["Two riders", 80]];
+  var rows = [];
+  M.forEach(function(m){
+    var r = el("div", {"class": "barrow"}); r.appendChild(el("span", null, m[0] + " (" + m[1] + " kg)"));
+    var tr = el("div", {"class": "track"}), i = el("i"); tr.appendChild(i); r.appendChild(tr);
+    var b = el("b"); r.appendChild(b); $("sledBars").appendChild(r); rows.push([i, b]);
+  });
+  function render(){
+    var F = +$("sledF").value; $("sledFv").textContent = F + " N";
+    M.forEach(function(m, k){ var dv = F / m[1]; rows[k][0].style.width = Math.min(100, dv / 20 * 100) + "%"; rows[k][1].textContent = fmt(dv, 2); });
+    detail($("sledOut"), "Speed after a " + F + " N push for 1 s (m/s)", ["The empty toboggan reaches " + fmt(F / 10, 2) + " m/s. With twice the mass it reaches only " + fmt(F / 20, 2) + " m/s, half as much. More mass means more inertia, so the same force changes its motion less.", "To give the two-rider toboggan the same speed as the empty one, you would need a force 8 times as large: " + (F * 8) + " N."], "Mass and inertia");
+  }
+  $("sledF").addEventListener("input", render); render();
+})();
+
+/* ---------- Lesson 6: distance and time ---------- */
+(function(){
+  var MV = [{label: "Walker", v: 1.5, c: "--leaf"}, {label: "Runner", v: 4, c: "--water"}, {label: "Cyclist", v: 6, c: "--fire"}];
+  var cur = MV[1];
+  function X(t){ return 44 + t / 50 * 280; } function Y(d){ return 186 - d / 300 * 166; }
+  function render(){
+    var T = +$("dtT").value, s = $("dtSvg"); clear(s);
+    $("dtTv").textContent = T + " s";
+    for (var d = 0; d <= 300; d += 100) { s.appendChild(sv("line", {x1: 44, y1: Y(d), x2: 324, y2: Y(d), "class": d ? "grid" : "axis"})); txt(s, 38, Y(d) + 4, d, "small", "end"); }
+    for (var t = 0; t <= 50; t += 10) { s.appendChild(sv("line", {x1: X(t), y1: 20, x2: X(t), y2: 186, "class": t ? "grid" : "axis"})); txt(s, X(t), 202, t, "small"); }
+    txt(s, 184, 217, "Time (s)", "small"); txt(s, 8, 14, "Distance (m)", "small", "start");
+    MV.forEach(function(m){
+      var tEnd = Math.min(50, 300 / m.v);
+      s.appendChild(sv("line", {x1: X(0), y1: Y(0), x2: X(tEnd), y2: Y(m.v * tEnd), style: "stroke:var(" + m.c + ");stroke-width:" + (m === cur ? 4 : 2) + ";opacity:" + (m === cur ? 1 : 0.45)}));
+      txt(s, X(tEnd) - 4, Y(m.v * tEnd) - 6, m.label, "small", "end");
+    });
+    var dd = cur.v * T;
+    if (dd <= 300) {
+      s.appendChild(sv("line", {x1: X(T), y1: Y(dd), x2: X(T), y2: 186, style: "stroke:var(--muted);stroke-dasharray:3 3"}));
+      s.appendChild(sv("circle", {cx: X(T), cy: Y(dd), r: 6, style: "fill:var(" + cur.c + ");stroke:var(--ink)"}));
+      $("dtOut").textContent = "In " + T + " s the " + cur.label.toLowerCase() + " travels " + fmt(dd, 1) + " m. v = " + fmt(dd, 1) + " m ÷ " + T + " s = " + fmt(cur.v) + " m/s, which is " + fmt(cur.v * 3.6, 1) + " km/h.";
+    } else $("dtOut").textContent = "The " + cur.label.toLowerCase() + " passes 300 m before " + T + " s, off this graph. At " + fmt(cur.v) + " m/s it would cover " + fmt(dd, 1) + " m.";
+    s.setAttribute("aria-label", "Distance and time graph. Walker 1.5, runner 4 and cyclist 6 metres per second. " + $("dtOut").textContent);
+  }
+  chipGroup($("dtChips"), MV, "wa", function(m){ cur = m; render(); }, 1);
+  $("dtT").addEventListener("input", render);
+})();
+
+/* ---------- Bench 1: net force predictor ---------- */
+(function(){
+  var PRED = ["Stays at rest", "Keeps the same speed and direction", "Starts moving right", "Starts moving left", "Speeds up", "Slows down"];
+  var sc, pred = null, setPred, sCount = store.np || [0, 0];
+  setPred = chipGroup($("npPred"), PRED.map(function(p){ return {label: p}; }), "", function(p, i){ pred = i; });
+  function answer(){
+    if (sc.net === 0) return sc.start === 0 ? 0 : 1;
+    if (sc.start === 0) return sc.net > 0 ? 2 : 3;
+    return (sc.net > 0) === (sc.start > 0) ? 4 : 5;
+  }
+  function gen(){
+    var n = Math.random() < 0.5 ? 2 : 3, f = [];
+    for (var i = 0; i < n; i++) f.push((Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 12)) * 10);
+    if (f.every(function(x){ return x > 0; }) || f.every(function(x){ return x < 0; })) f[0] = -f[0];
+    if (Math.random() < 0.3) { var s0 = 0; for (var j = 0; j < n - 1; j++) s0 += f[j]; if (s0 !== 0 && Math.abs(s0) <= 150) f[n - 1] = -s0; }
+    sc = {f: f, start: [0, 1, -1][Math.floor(Math.random() * 3)], net: f.reduce(function(a, b){ return a + b; }, 0)};
+    pred = null; $("npPred").querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-pressed", "false"); });
+    $("npMag").value = ""; $("npDir").value = ""; $("npFb").hidden = true;
+    draw();
+  }
+  function draw(){
+    var s = $("npSvg"); clear(s);
+    box(s, 130, 70, 80, 40, "cart");
+    s.appendChild(sv("circle", {cx: 148, cy: 116, r: 7, style: "fill:var(--ink)"})); s.appendChild(sv("circle", {cx: 192, cy: 116, r: 7, style: "fill:var(--ink)"}));
+    s.appendChild(sv("line", {x1: 10, y1: 124, x2: 330, y2: 124, "class": "axis"}));
+    var ry = 64, ly = 64;
+    sc.f.forEach(function(F, i){
+      var len = 14 + Math.abs(F) * 0.85, name = String.fromCharCode(65 + i) + ": " + Math.abs(F) + " N";
+      if (F > 0) { arrow(s, 212, ry + 18, Math.min(330, 212 + len), ry + 18, "--fire", 5); txt(s, 216, ry + 10, name, "small", "start"); ry += 22; }
+      else { arrow(s, 128, ly + 18, Math.max(10, 128 - len), ly + 18, "--fire", 5); txt(s, 124, ly + 10, name, "small", "end"); ly += 22; }
+    });
+    if (sc.start) { var x1 = sc.start > 0 ? 140 : 200; arrow(s, x1, 30, x1 + sc.start * 60, 30, "--water", 2); txt(s, 170, 20, "moving " + dirWord(sc.start), "small"); }
+    else txt(s, 170, 26, "at rest", "small");
+    txt(s, 170, 150, "Forces right point right, forces left point left", "small");
+    var words = sc.f.map(function(F, i){ return String.fromCharCode(65 + i) + " is " + Math.abs(F) + " N " + dirWord(F); }).join(", ");
+    $("npText").textContent = "The cart is " + (sc.start ? "moving " + dirWord(sc.start) : "at rest") + ". Forces: " + words + ".";
+    s.setAttribute("aria-label", $("npText").textContent);
+  }
+  $("npCheck").addEventListener("click", function(){
+    var fb = $("npFb"), mag = $("npMag").value, dir = $("npDir").value;
+    var magOk = mag !== "" && +mag === Math.abs(sc.net), dirOk = sc.net === 0 ? dir === "0" || (dir === "" && +mag === 0) : dir === (sc.net > 0 ? "r" : "l");
+    var ans = answer(), predOk = pred === ans;
+    var R = sc.f.filter(function(x){ return x > 0; }), L = sc.f.filter(function(x){ return x < 0; }).map(Math.abs);
+    var work = "Net force = (" + R.join(" + ") + ") − (" + L.join(" + ") + ") = " + sc.net + " N" + (sc.net ? ", so " + Math.abs(sc.net) + " N " + dirWord(sc.net) : ", so the forces are balanced") + ".";
+    var why = sc.net === 0 ? (sc.start ? "Balanced forces do not change motion, so the moving cart keeps its speed and direction." : "Balanced forces leave an object at rest, at rest.") :
+      sc.start === 0 ? "An unbalanced force starts the cart moving in the direction of the net force." :
+      (ans === 4 ? "The net force points the same way the cart moves, so it speeds up." : "The net force points against the motion, so the cart slows down. If the force keeps acting, it will stop and then move " + dirWord(sc.net) + ".");
+    sCount[1]++; if (magOk && dirOk && predOk) sCount[0]++; store.np = sCount; save();
+    fb.hidden = false; fb.className = "feedback " + (magOk && dirOk && predOk ? "ok" : "no");
+    fb.textContent = (magOk && dirOk ? "Net force correct. " : "Check the net force. ") + (predOk ? "Prediction correct. " : "Prediction: " + PRED[ans] + ". ") + work + " " + why;
+    $("npScore").textContent = "All correct: " + sCount[0] + " of " + sCount[1];
+  });
+  $("npNew").addEventListener("click", gen);
+  $("npScore").textContent = sCount[1] ? "All correct: " + sCount[0] + " of " + sCount[1] : "";
+  gen();
+})();
+
+/* ---------- Bench 2: mass and inertia ---------- */
+(function(){
+  var MASSES = [0.5, 1, 2, 4], m = 0.5, data = {};
+  chipGroup($("inMass"), MASSES.map(function(x){ return {label: x + " kg cart", v: x}; }), "", function(it){ m = it.v; }, 0);
+  function render(){
+    var tb = document.querySelector("#inTable tbody"); clear(tb);
+    var ks = Object.keys(data).map(Number).sort(function(a, b){ return a - b; });
+    ks.forEach(function(k){ var tr = el("tr"); [fmt(k), "2", "1.0", data[k].toFixed(2)].forEach(function(c){ tr.appendChild(el("td", null, c)); }); tb.appendChild(tr); });
+    var s = $("inSvg"); clear(s);
+    s.appendChild(sv("line", {x1: 40, y1: 170, x2: 330, y2: 170, "class": "axis"})); s.appendChild(sv("line", {x1: 40, y1: 14, x2: 40, y2: 170, "class": "axis"}));
+    for (var v = 0; v <= 5; v++) { txt(s, 34, 174 - v * 28, v, "small", "end"); if (v) s.appendChild(sv("line", {x1: 40, y1: 170 - v * 28, x2: 330, y2: 170 - v * 28, "class": "grid"})); }
+    txt(s, 4, 10, "Speed after (m/s)", "small", "start"); txt(s, 185, 196, "Cart mass (kg)", "small");
+    MASSES.forEach(function(k, i){
+      var x = 60 + i * 68; txt(s, x + 22, 184, fmt(k), "small");
+      if (data[k] != null) { var h = data[k] * 28; s.appendChild(sv("rect", {x: x, y: (170 - h).toFixed(1), width: 44, height: h.toFixed(1), style: "fill:var(--water)"})); txt(s, x + 22, 164 - h, data[k].toFixed(2), "small"); }
+    });
+    var fb = $("inFb");
+    if (ks.length >= 3) {
+      var p = $("inPred").value;
+      fb.hidden = false; fb.className = "feedback " + (p === "down" ? "ok" : "no");
+      fb.textContent = "Your data shows that the speed after the push decreases as the mass increases. Doubling the mass roughly halves the speed. More mass means more inertia, so the same force changes the motion less. " + (p ? (p === "down" ? "Your prediction matched the data." : "Your prediction did not match the data. That is fine: scientists revise ideas when evidence disagrees.") : "Add a prediction above to compare it with the data.");
+    } else { fb.hidden = false; fb.className = "feedback"; fb.textContent = "Run at least three different masses to look for a pattern."; }
+  }
+  $("inRun").addEventListener("click", function(){ data[m] = 2 / m * (1 + (Math.random() - 0.5) * 0.06); render(); });
+  $("inReset").addEventListener("click", function(){ data = {}; $("inFb").hidden = true; render(); $("inFb").hidden = true; });
+  render(); $("inFb").hidden = true;
+})();
+
+/* ---------- Bench 3: speed calculator and practice ---------- */
+(function(){
+  var MODES = [
+    {label: "Find speed (v)", k: "v", ins: [["d", "Distance d (m)", 1200], ["t", "Time t (s)", 240]]},
+    {label: "Find distance (d)", k: "d", ins: [["v", "Speed v (m/s)", 5], ["t", "Time t (s)", 60]]},
+    {label: "Find time (t)", k: "t", ins: [["d", "Distance d (m)", 400], ["v", "Speed v (m/s)", 4]]}
+  ];
+  var mode;
+  function calc(){
+    var g = {}; mode.ins.forEach(function(i){ g[i[0]] = parseFloat($("ci-" + i[0]).value); });
+    var out = $("calcOut"); clear(out);
+    var bad = mode.ins.some(function(i){ return !(g[i[0]] > 0); });
+    if (bad) { out.appendChild(el("p", null, "Enter two positive numbers to see the steps.")); return; }
+    var lines;
+    if (mode.k === "v") lines = ["Formula: v = d ÷ t", "Substitute: v = " + fmt(g.d) + " m ÷ " + fmt(g.t) + " s", "Answer: v = " + fmt(g.d / g.t) + " m/s (" + fmt(g.d / g.t * 3.6, 1) + " km/h)"];
+    if (mode.k === "d") lines = ["Formula: d = v × t (rearranged from v = d ÷ t)", "Substitute: d = " + fmt(g.v) + " m/s × " + fmt(g.t) + " s", "Answer: d = " + fmt(g.v * g.t) + " m"];
+    if (mode.k === "t") lines = ["Formula: t = d ÷ v (rearranged from v = d ÷ t)", "Substitute: t = " + fmt(g.d) + " m ÷ " + fmt(g.v) + " m/s", "Answer: t = " + fmt(g.d / g.v) + " s"];
+    lines.forEach(function(l, i){ out.appendChild(el(i === 2 ? "b" : "span", null, l)); });
+  }
+  chipGroup($("calcMode"), MODES, "wa", function(m){
+    mode = m; var box2 = $("calcIn"); clear(box2);
+    m.ins.forEach(function(i){ var l = el("label", {"class": "field", "for": "ci-" + i[0]}, i[1]); var inp = el("input", {type: "number", id: "ci-" + i[0], step: "any", min: "0"}); inp.value = i[2]; inp.addEventListener("input", calc); l.appendChild(inp); box2.appendChild(l); });
+    calc();
+  }, 0);
+
+  var WHO = [
+    ["An LRT train", [10, 12, 15, 20], [20, 30, 40, 60]],
+    ["A cyclist on a river valley trail", [4, 5, 6, 8], [60, 120, 300]],
+    ["A hockey puck", [10, 15, 20, 25], [0.4, 0.8, 1.2, 2]],
+    ["A student walking to school", [1.2, 1.5, 2], [100, 200, 600]],
+    ["A Canada goose in flight", [15, 18, 20], [30, 60, 120]]
+  ];
+  var pp, sc = store.pp || [0, 0];
+  function newP(){
+    var w = pick(WHO), v = pick(w[1]), t = pick(w[2]), d = +(v * t).toFixed(2), ask = pick(["v", "d", "t"]);
+    var q, ans, sol, lab;
+    if (ask === "v") { q = w[0] + " travels " + fmt(d) + " m in " + fmt(t) + " s. What is its average speed?"; ans = v; lab = "Speed (m/s)"; sol = "v = d ÷ t = " + fmt(d) + " m ÷ " + fmt(t) + " s = " + fmt(v) + " m/s"; }
+    if (ask === "d") { q = w[0] + " moves at an average speed of " + fmt(v) + " m/s for " + fmt(t) + " s. How far does it travel?"; ans = d; lab = "Distance (m)"; sol = "d = v × t = " + fmt(v) + " m/s × " + fmt(t) + " s = " + fmt(d) + " m"; }
+    if (ask === "t") { q = w[0] + " travels " + fmt(d) + " m at an average speed of " + fmt(v) + " m/s. How long does it take?"; ans = t; lab = "Time (s)"; sol = "t = d ÷ v = " + fmt(d) + " m ÷ " + fmt(v) + " m/s = " + fmt(t) + " s"; }
+    pp = {ans: ans, sol: sol};
+    $("ppText").textContent = q; $("ppLab").textContent = lab; $("ppAns").value = ""; $("ppFb").hidden = true;
+  }
+  $("ppCheck").addEventListener("click", function(){
+    var g = parseFloat($("ppAns").value), fb = $("ppFb"); clear(fb); fb.hidden = false;
+    if (isNaN(g)) { fb.appendChild(el("span", null, "Type a number first.")); return; }
+    var ok = Math.abs(g - pp.ans) <= Math.abs(pp.ans) * 0.02;
+    sc[1]++; if (ok) sc[0]++; store.pp = sc; save();
+    fb.appendChild(el("b", {"class": "fb " + (ok ? "ok" : "no")}, ok ? "Correct." : "Not quite. The answer is " + fmt(pp.ans) + "."));
+    fb.appendChild(el("span", null, pp.sol));
+    $("ppScore").textContent = sc[0] + " of " + sc[1] + " correct";
+  });
+  $("ppNew").addEventListener("click", newP);
+  $("ppScore").textContent = sc[1] ? sc[0] + " of " + sc[1] + " correct" : "";
+  newP();
+})();
+
+/* ---------- Bench 4: controlled experiment ---------- */
+(function(){
+  $("vCheck").addEventListener("click", function(){
+    var ind = $("vInd").value, dep = $("vDep").value, c = [1, 2, 3, 4].map(function(i){ return $("vc" + i).checked; });
+    var msgs = [], ok = true;
+    if (ind === "distance") msgs.push("Independent variable: distance. Correct, you choose the distance."); else { ok = false; msgs.push("The independent variable is the one you change on purpose: the distance."); }
+    if (dep === "time") msgs.push("Dependent variable: time. Correct, you measure it with a stopwatch."); else { ok = false; msgs.push("The dependent variable is what you measure: the time."); }
+    if (c[0] && c[1] && c[2] && !c[3]) msgs.push("Controlled variables: the car, its speed setting and batteries, and the floor stay the same. That makes it a fair test.");
+    else { ok = false; msgs.push("Keep the car, speed setting and floor surface the same. Distance is not controlled: it is the variable you change."); }
+    var fb = $("vFb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no"); fb.textContent = msgs.join(" ");
+  });
+  var SET = [{label: "Slow setting", v: 0.8, c: "--leaf"}, {label: "Fast setting", v: 1.6, c: "--fire"}];
+  var cur = SET[0], res = {};
+  chipGroup($("ceSet"), SET, "", function(s){ cur = s; table(); }, 0);
+  function noise(){ return (Math.random() + Math.random() + Math.random() - 1.5) * 0.16; }
+  function table(){
+    var tb = document.querySelector("#ceTable tbody"); clear(tb);
+    var r = res[cur.label];
+    if (!r) { var tr0 = el("tr"); var td0 = el("td", {colspan: "6"}, "No data yet for the " + cur.label.toLowerCase() + ". Press Run all trials."); tr0.appendChild(td0); tb.appendChild(tr0); }
+    else r.forEach(function(row){ var tr = el("tr"); var avg = (row[1] + row[2] + row[3]) / 3; [row[0], row[1].toFixed(2), row[2].toFixed(2), row[3].toFixed(2), avg.toFixed(2), (row[0] / avg).toFixed(2)].forEach(function(c){ tr.appendChild(el("td", null, String(c))); }); tb.appendChild(tr); });
+    graph();
+  }
+  function X(t){ return 44 + t / 7 * 280; } function Y(d){ return 196 - d / 5 * 176; }
+  function graph(){
+    var s = $("ceSvg"); clear(s);
+    for (var d = 0; d <= 5; d++) { s.appendChild(sv("line", {x1: 44, y1: Y(d), x2: 324, y2: Y(d), "class": d ? "grid" : "axis"})); txt(s, 38, Y(d) + 4, d, "small", "end"); }
+    for (var t = 0; t <= 7; t++) { s.appendChild(sv("line", {x1: X(t), y1: 20, x2: X(t), y2: 196, "class": t ? "grid" : "axis"})); txt(s, X(t), 211, t, "small"); }
+    txt(s, 184, 226, "Average time (s)", "small"); txt(s, 8, 14, "Distance (m)", "small", "start");
+    var lbl = [];
+    SET.forEach(function(st){
+      var r = res[st.label]; if (!r) return;
+      var sumT = 0, sumD = 0;
+      r.forEach(function(row){ var avg = (row[1] + row[2] + row[3]) / 3; sumT += avg; sumD += row[0]; s.appendChild(sv("circle", {cx: X(avg).toFixed(1), cy: Y(row[0]).toFixed(1), r: 5, style: "fill:var(" + st.c + ");stroke:var(--ink)"})); });
+      var v = sumD / sumT, tEnd = Math.min(7, 5 / v);
+      s.appendChild(sv("line", {x1: X(0), y1: Y(0), x2: X(tEnd).toFixed(1), y2: Y(v * tEnd).toFixed(1), style: "stroke:var(" + st.c + ");stroke-width:2;stroke-dasharray:6 4"}));
+      txt(s, 320, 186 - SET.indexOf(st) * 16, st.label.split(" ")[0] + " ≈ " + v.toFixed(2) + " m/s", "small", "end"); s.appendChild(sv("rect", {x: 236 - (st.label.length > 12 ? 0 : 0), y: 178 - SET.indexOf(st) * 16, width: 10, height: 10, style: "fill:var(" + st.c + ")"}));
+      lbl.push(st.label + " about " + v.toFixed(2) + " metres per second");
+    });
+    s.setAttribute("aria-label", "Distance and time graph. " + (lbl.length ? lbl.join(". ") : "No data yet."));
+  }
+  $("ceRun").addEventListener("click", function(){
+    res[cur.label] = [1, 2, 3, 4, 5].map(function(d){ return [d, d / cur.v + noise(), d / cur.v + noise(), d / cur.v + noise()]; });
+    table();
+  });
+  var CONC = [
+    {label: "Time grows in step with distance, so the speed stays about the same: v = d ÷ t", ok: 1},
+    {label: "Longer distances make the car go faster", ok: 0},
+    {label: "The time is the same for every distance", ok: 0},
+    {label: "The fast setting takes more time to cover the same distance", ok: 0}
+  ];
+  chipGroup($("ceConc"), CONC, "", function(c){
+    var fb = $("ceFb"); fb.hidden = false; fb.className = "feedback " + (c.ok ? "ok" : "no");
+    var both = res["Slow setting"] && res["Fast setting"];
+    fb.textContent = (c.ok ? "Correct. Doubling the distance about doubles the time, so d ÷ t gives nearly the same speed every row. The points fall on a straight line through zero, and the slope of that line is the speed." : "Look at your table again. Each time the distance goes up by 1 m, the time goes up by about the same amount, so the speed column stays nearly constant.") + (both ? " Your two lines also show that the fast setting has the steeper slope: it covers the same distance in less time." : " Try the other setting too and compare the slopes.") + " The small differences between trials come from stopwatch reaction time, which is why we repeat trials and average them.";
+  });
+  table();
+})();
+
+/* ---------- Sort decks ---------- */
+var DECKS = [
+  {label: "Balanced or unbalanced?", bins: ["Balanced", "Unbalanced"], items: [
+    ["A bike coasts at a steady 5 m/s on a flat, straight path.", 0, "Constant speed in a straight line means the net force is zero."],
+    ["A soccer ball speeds up after a kick.", 1, "Speeding up is a change in motion, so the forces are unbalanced."],
+    ["A book rests on a shelf.", 0, "Gravity down and the shelf pushing up cancel out."],
+    ["A car slows down at a red light.", 1, "Slowing down is a change in motion caused by an unbalanced force."],
+    ["A skater turns a corner at the same speed.", 1, "A change in direction is a change in motion, so a net force acts."],
+    ["A tug of war rope does not move.", 0, "Both teams pull equally, so the net force is zero."],
+    ["An elevator rises at a constant speed.", 0, "Steady speed in a straight line: balanced forces."],
+    ["A curling stone slows down as it slides.", 1, "Friction is an unbalanced force against the motion."],
+    ["An LRT train pulls away from Churchill Station.", 1, "Starting to move from rest needs an unbalanced force."],
+    ["A truck parked on level ground.", 0, "At rest and staying at rest: the forces are balanced."]
+  ]},
+  {label: "What happens to the motion?", bins: ["Speeds up", "Slows down", "Changes direction", "No change"], items: [
+    ["A cart moves right. The net force is 20 N right.", 0, "The net force points the same way as the motion."],
+    ["A cart moves right. The net force is 20 N left.", 1, "The net force points against the motion."],
+    ["A puck slides east. A stick pushes it north.", 2, "A force at an angle to the motion bends the path."],
+    ["A cart moves left. The net force is 0 N.", 3, "Zero net force: same speed, same direction."],
+    ["A skier glides on flat snow. Friction is the only force along the snow.", 1, "Friction acts against the motion and is unbalanced."],
+    ["A cart at rest has 30 N pushing right and 30 N pushing left.", 3, "Balanced forces: it stays at rest."],
+    ["A bus moves forward. The engine's push is bigger than friction and air resistance.", 0, "The net force points forward, the way the bus moves."],
+    ["A ball on a string is swung in a circle at a steady speed.", 2, "The string's pull keeps changing the ball's direction."],
+    ["A car moves left. The net force is 50 N left.", 0, "The net force and the motion point the same way."]
+  ]},
+  {label: "Speed, distance or time?", bins: ["Speed", "Distance", "Time"], items: [
+    ["18 km/h", 0, "A distance unit divided by a time unit is a speed."],
+    ["400 m", 1, "Metres measure distance."],
+    ["12.5 s", 2, "Seconds measure time."],
+    ["3 m/s", 0, "Metres per second is a speed unit."],
+    ["2 h", 2, "Hours measure time."],
+    ["5 km", 1, "Kilometres measure distance."],
+    ["The slope of a distance and time graph", 0, "Distance divided by time is speed."],
+    ["What a stopwatch measures", 2, "A stopwatch measures time."],
+    ["What a trundle wheel or measuring tape measures", 1, "These measure distance."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Force", "A push or a pull on an object. It has a size (magnitude) and a direction."],
+  ["Newton (N)", "The unit of force. A small apple pushes on your hand with about 1 N."],
+  ["Magnitude", "The size of a force, shown by the length of its arrow."],
+  ["Direction", "The way a force points, such as left, right, up or down."],
+  ["Net force", "The sum of all the forces acting on an object."],
+  ["Balanced forces", "Forces that cancel out, so the net force is zero and motion does not change."],
+  ["Unbalanced forces", "Forces that do not cancel, so there is a net force that changes motion."],
+  ["Force diagram", "A drawing of one object with an arrow for each force acting on it."],
+  ["Friction", "A force that acts against the motion of surfaces sliding or trying to slide past each other."],
+  ["Air resistance", "A friction-like force from air that acts against an object moving through it."],
+  ["Inertia", "The tendency of an object to resist changes in its motion. It is a property, not a force."],
+  ["Newton's first law", "An object at rest stays at rest, and a moving object keeps moving in a straight line at constant speed, unless an unbalanced force acts on it."],
+  ["Law of inertia", "Another name for Newton's first law of motion."],
+  ["Mass", "The amount of matter in an object, measured in kilograms. More mass means more inertia."],
+  ["Weight", "The pull of gravity on an object. It is a force, measured in newtons, and is not the same as mass."],
+  ["Speed", "How far an object travels in a certain time: v = d ÷ t."],
+  ["Average speed", "The total distance divided by the total time for a trip."],
+  ["Constant speed", "Speed that does not change: the object covers equal distances in equal times."],
+  ["Metres per second (m/s)", "A unit of speed. Multiply by 3.6 to change it to km/h."],
+  ["Distance and time graph", "A graph of distance against time. A steeper line shows a greater speed."],
+  ["Motion map", "A row of dots showing an object's position at equal time steps."],
+  ["Controlled experiment", "A test where only one variable is changed on purpose and the others are kept the same."],
+  ["Independent variable", "The variable you change on purpose in an experiment."],
+  ["Dependent variable", "The variable you measure to see the effect of the change."],
+  ["Controlled variable", "A variable kept the same so the test is fair."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is the net force on an object?", ["The sum of all the forces acting on it", "The largest force acting on it", "The force of gravity only", "The force needed to stop it"], "Net force adds all the forces together, taking direction into account."],
+  ["In what unit is force measured?", ["Newtons (N)", "Kilograms (kg)", "Joules (J)", "Metres per second (m/s)"], "Force is measured in newtons. Kilograms measure mass."],
+  ["Two forces act on a box: 50 N right and 20 N left. What is the net force?", ["30 N right", "70 N right", "30 N left", "70 N left"], "Opposite forces subtract: 50 − 20 = 30 N, toward the larger force."],
+  ["Forces of 40 N right, 25 N right and 65 N left act on a cart. What is the net force?", ["0 N", "130 N right", "65 N left", "25 N right"], "(40 + 25) − 65 = 0 N. The forces are balanced."],
+  ["Why are forces drawn as arrows?", ["Forces have both a size and a direction", "Forces always point right", "Arrows show how heavy the object is", "Arrows show the object's speed"], "The length shows the magnitude and the arrowhead shows the direction."],
+  ["A car drives at a steady 80 km/h on a straight road. What are the forces on it?", ["Balanced", "Unbalanced, pointing forward", "Unbalanced, pointing backward", "There are no forces on it"], "No change in speed or direction means the net force is zero, even though the car is moving."],
+  ["When the net force on a moving object is zero, the object will", ["keep moving at the same speed and direction", "slow down and stop", "speed up", "turn around"], "Balanced forces do not change motion."],
+  ["A cart moving right has a net force pointing right. What happens?", ["It speeds up", "It slows down", "It stops at once", "Nothing changes"], "A net force in the direction of motion increases speed."],
+  ["A cart moving right has a net force pointing left. What happens first?", ["It slows down", "It speeds up", "It turns upward", "Nothing changes"], "A net force against the motion slows the cart. If it keeps acting, the cart will stop and then move left."],
+  ["A puck slides north and a stick pushes it east. What happens?", ["Its direction changes", "It stops", "Nothing changes", "It moves south"], "A net force at an angle to the motion changes the direction."],
+  ["Which statement is Newton's first law?", ["An object keeps its state of rest or constant straight-line motion unless an unbalanced force acts", "Every force has an equal and opposite force", "Heavier objects fall faster", "Moving objects always slow down on their own"], "This is the law of inertia."],
+  ["What is inertia?", ["The tendency of an object to resist changes in motion", "A force that pushes moving objects", "The pull of gravity", "The speed of an object"], "Inertia is a property of matter, not a force."],
+  ["Why does a hockey puck eventually stop on the ice?", ["Friction acts on it as an unbalanced force", "It runs out of inertia", "Its mass decreases", "Balanced forces make it stop"], "Friction against the motion is the unbalanced force. Inertia never runs out."],
+  ["A puck would slide forever at the same speed if", ["there were no friction or air resistance", "it were heavier", "it were pushed harder at the start", "it were on rough concrete"], "With no unbalanced force, Newton's first law says motion continues unchanged."],
+  ["Which object has the most inertia?", ["A loaded truck", "A bicycle", "A soccer ball", "A pencil"], "The more mass, the more inertia."],
+  ["The same push is given to a 20 kg toboggan and a 40 kg toboggan. Which statement is true?", ["The 20 kg toboggan gets about twice the change in speed", "Both get the same change in speed", "The 40 kg toboggan gets twice the change in speed", "Neither one moves"], "Twice the mass gives half the change in speed for the same force and time."],
+  ["How is mass different from weight?", ["Mass is the amount of matter; weight is the pull of gravity", "They mean the same thing", "Weight is measured in kilograms; mass in newtons", "Mass changes on the Moon but weight does not"], "Mass stays the same everywhere. Weight depends on gravity."],
+  ["A runner covers 200 m in 40 s. What is the average speed?", ["5 m/s", "8000 m/s", "0.2 m/s", "240 m/s"], "v = d ÷ t = 200 m ÷ 40 s = 5 m/s."],
+  ["A train moves at 15 m/s for 60 s. How far does it go?", ["900 m", "4 m", "75 m", "0.25 m"], "d = v × t = 15 m/s × 60 s = 900 m."],
+  ["A cyclist rides 1500 m at 5 m/s. How long does it take?", ["300 s", "7500 s", "1505 s", "30 s"], "t = d ÷ v = 1500 m ÷ 5 m/s = 300 s."],
+  ["On a distance and time graph, a steeper straight line means", ["a greater speed", "a smaller speed", "the object is at rest", "the object is slowing down"], "The slope of a distance and time graph is the speed."],
+  ["In an experiment timing a toy car over 1 m to 5 m, what is the dependent variable?", ["Time", "Distance", "The car", "The floor surface"], "Time is what you measure. Distance is what you change."],
+  ["Why do you repeat each trial three times and average the results?", ["To reduce the effect of random errors, like stopwatch reaction time", "To make the car faster", "To change the independent variable", "Because the formula needs three numbers"], "Averages reduce the effect of small random errors."],
+  ["A motion map shows dots that get farther apart. The object is", ["speeding up", "moving at constant speed", "slowing down", "at rest"], "Bigger gaps in equal time steps mean more distance each step, so it is speeding up."]
+];
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+
+/* ---------- Written ---------- */
+var SHORT = [
+  {q: "Define net force and explain how to find it when forces act in opposite directions.", a: "Net force is the sum of all the forces acting on an object. When forces act in opposite directions, you subtract the smaller total from the larger total. The net force points toward the larger side. For example, 50 N right and 20 N left give a net force of 30 N right.", k: ["Sum of all forces", "Subtract opposite forces", "Direction of the larger side", "Example with numbers"]},
+  {q: "Why must a force have both a magnitude and a direction? Give an example where direction matters.", a: "The effect of a force depends on how big it is and which way it points. Two 50 N pushes on a box add to 100 N if they point the same way, but they cancel to 0 N if they point in opposite directions.", k: ["Magnitude is size, measured in newtons", "Direction changes the effect", "Example where same-size forces add or cancel"]},
+  {q: "A student says, \"If the forces on an object are balanced, it cannot be moving.\" Explain why this is wrong.", a: "Balanced forces mean the motion does not change. An object at rest stays at rest, but an object that is already moving keeps moving at the same speed in the same direction. A car cruising at a steady 100 km/h on a straight road has balanced forces.", k: ["Balanced means no change in motion", "Moving objects keep moving steadily", "Example of a moving object with balanced forces"]},
+  {q: "Describe three ways an unbalanced force can change an object's motion.", a: "It can speed the object up when the net force points the same way as the motion. It can slow the object down when the net force points against the motion. It can change the object's direction when the net force acts at an angle to the motion.", k: ["Speeds up: same direction", "Slows down: opposite direction", "Changes direction: at an angle"]},
+  {q: "State Newton's first law of motion in your own words.", a: "An object keeps doing what it is already doing unless an unbalanced force acts on it. If it is at rest, it stays at rest. If it is moving, it keeps moving in a straight line at the same speed.", k: ["At rest stays at rest", "Moving keeps straight-line constant speed", "Unless an unbalanced force acts"]},
+  {q: "A puck slides across an outdoor rink and stops. Use the idea of inertia to explain what happened.", a: "The puck's inertia keeps it moving after it leaves the stick. Friction from the ice acts against its motion. Friction is an unbalanced force, so it slows the puck until it stops. The puck did not run out of inertia.", k: ["Inertia keeps it moving", "Friction acts against the motion", "Friction is the unbalanced force", "Inertia does not run out"]},
+  {q: "Explain how mass affects inertia, using two objects as an example.", a: "The greater the mass, the greater the inertia, so a bigger force is needed to change the motion. A 40 kg loaded toboggan is harder to start and harder to stop than a 10 kg empty one. With the same push, the empty toboggan gets about four times the change in speed.", k: ["More mass, more inertia", "Bigger force needed to change motion", "Comparison of two objects"]},
+  {q: "A goose flies 1080 m in 60 s. Calculate its average speed in m/s and in km/h. Show your work.", a: "v = d ÷ t = 1080 m ÷ 60 s = 18 m/s. In km/h: 18 × 3.6 = 64.8 km/h.", k: ["Formula v = d ÷ t", "Correct substitution with units", "18 m/s", "64.8 km/h"]},
+  {q: "In an experiment to find the relationship between speed, distance and time, name the independent, dependent and two controlled variables.", a: "The independent variable is the distance the car travels. The dependent variable is the time it takes. Controlled variables include using the same car, the same speed setting and batteries, and the same floor surface.", k: ["Independent: distance", "Dependent: time", "Two controlled variables"]}
+];
+var LONG = [
+  {q: "A grocery cart full of food and an empty grocery cart are both rolling at the same speed toward a wall. Using Newton's first law and the idea of inertia, explain which one is harder to stop and why.", a: "Both carts keep rolling because of their inertia: by Newton's first law they would keep moving in a straight line at constant speed unless an unbalanced force acts. To stop them, you must apply an unbalanced force against their motion. The full cart has more mass, so it has more inertia. It needs a bigger force, or the same force for a longer time, to stop. The empty cart has less mass and less inertia, so it is easier to stop.", k: ["Newton's first law stated or applied", "Stopping needs an unbalanced force against the motion", "Full cart has more mass and more inertia", "Full cart needs a bigger force to stop", "Clear comparison"]},
+  {q: "Design a controlled experiment to test how the mass of a cart affects how much its speed changes when it is pushed. Include your question, variables, steps and how you would show your results.", a: "Question: how does a cart's mass affect its change in speed when pushed with the same force? Independent variable: the mass (add 0.5 kg masses). Dependent variable: the speed after the push, found by timing the cart over a measured distance and using v = d ÷ t. Controlled variables: the same push (for example a stretched elastic pulled back the same amount), the same floor and the same cart. Steps: push the cart, time it over 2 m, repeat three times for each mass and average. Results: a table and a graph of speed against mass. The expected pattern is that speed decreases as mass increases.", k: ["Testable question", "Independent, dependent and controlled variables", "Uses v = d ÷ t to find speed", "Repeated trials and averages", "Table or graph and expected pattern"]},
+  {q: "Draw and describe force diagrams for a toboggan in three stages: being pushed at the top of a flat start, gliding at a steady speed, and slowing to a stop on flat snow. For each stage, say whether the forces are balanced and what happens to the motion.", a: "Pushed: a large push arrow forward and a smaller friction arrow backward. The forces are unbalanced forward, so the toboggan speeds up. Gliding steadily: a forward force (for example from sliding down a gentle slope) equal to friction backward. The forces are balanced, so the speed stays the same. Slowing: only friction acts along the snow, pointing backward. The forces are unbalanced against the motion, so the toboggan slows and stops.", k: ["Three labelled diagrams with arrows", "Stage 1 unbalanced forward, speeds up", "Stage 2 balanced, constant speed", "Stage 3 unbalanced backward, slows", "Arrow lengths match force sizes"]},
+  {q: "Two students time the same toy car. Student A finds it travels 3 m in 2.5 s. Student B finds it travels 5 m in 4.0 s. Calculate both speeds, compare them, and suggest reasons for any difference.", a: "Student A: v = 3 m ÷ 2.5 s = 1.2 m/s. Student B: v = 5 m ÷ 4.0 s = 1.25 m/s. The speeds are almost the same, which shows the car moves at a nearly constant speed. The small difference could come from stopwatch reaction time, starting or stopping the watch at slightly the wrong moment, or the car speeding up at the start. Repeating trials and averaging would make the results more reliable.", k: ["1.2 m/s", "1.25 m/s", "Speeds nearly equal: constant speed", "Sources of error named", "Suggests repeating and averaging"]}
+];
+
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["F1.K1", "Net force is the sum of all forces acting on an object.", "Learn: Lesson 1 (tug of war model, worked example). Lab Bench: Investigation 1. Quiz, Flashcards, Written Review short answers 1 and 2."],
+    ["F1.K2", "When the net force on an object is zero the forces acting on it are balanced and the object’s motion will not change.", "Learn: Lesson 2 (balanced force diagrams, at rest and moving examples). Lab Bench: Investigation 1. Sort It: balanced or unbalanced deck. Quiz, Written Review short answer 3."],
+    ["F1.K3", "Changes in the speed and direction of an object’s motion are dependent on the net force.", "Learn: Lesson 3 (puck motion map: forward, backward, sideways, push size). Lab Bench: Investigation 1. Sort It: what happens to the motion deck. Quiz, Written Review short answer 4, extended 3."],
+    ["F1.K4", "Newton’s first law of motion, or the law of inertia, states that an object at rest stays at rest and an object in motion continues moving in a straight line at a constant speed unless acted upon by an unbalanced force.", "Learn: Lesson 4 (same shove on different surfaces). Quiz, Flashcards, Written Review short answers 5 and 6, extended 1."],
+    ["F1.K5", "The greater the mass of an object, the greater its inertia and the greater the force required to change the motion of the object.", "Learn: Lesson 5 (toboggan push model). Lab Bench: Investigation 2. Quiz, Flashcards, Written Review short answer 7, extended 1 and 2."],
+    ["F1.K6", "Speed is the relationship between distance and time v = d/t", "Learn: Lesson 6 (distance and time graph, worked example). Lab Bench: Investigations 3 and 4. Sort It: speed, distance or time deck. Quiz, Written Review short answer 8."],
+    ["F1.S1", "Describe how forces affect the motion of an object.", "Learn: Lessons 2 to 5. Sort It: what happens to the motion deck. Written Review short answers 3, 4 and 6, extended 3."],
+    ["F1.S2", "Predict the direction of an object’s motion based on net force, limited to horizontal motion.", "Lab Bench: Investigation 1 (net force predictor with randomized carts, horizontal forces only). Learn: Lessons 1 and 3. Quiz."],
+    ["F1.S3", "Investigate how objects with different masses resist changes in motion when a force is applied.", "Lab Bench: Investigation 2 (equal 2 N push on 0.5 kg to 4 kg carts, prediction, table and graph). Learn: Lesson 5. Written Review extended 2."],
+    ["F1.S4", "Solve problems related to speed, distance, and time.", "Lab Bench: Investigation 3 (calculator with steps and randomized practice). Learn: Lesson 6. Quiz, Written Review short answer 8, extended 4."],
+    ["F1.S5", "Conduct a controlled experiment to determine the relationship between speed, distance, and time.", "Lab Bench: Investigation 4 (variable plan, three trials per distance, averages, graph and slope, conclusion). Quiz, Written Review short answer 9, extended 4."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,1806 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/cell-explorer-lab/"><meta name="description" content="Cells support life in organisms of varying complexity."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cell Explorer Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a microscope bench. Sticky tab strip, then lessons that pair a short reading column with a live model: a cell size ladder, a microscope timeline, a clickable microscope, cell diagrams with tappable organelles, a microbe gallery and a membrane particle tank. Teal marks membranes, purple the nucleus, orange mitochondria, green chloroplasts, blue vacuoles and water. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#15212C; --muted:#53606D; --line:#D2D9E0;
+  --acc:#1D5FA8; --acc-soft:#DFEAF6;
+  --memb:#1F6F7A; --memb-soft:#DCEFF1; --cyto:#EEF6F0;
+  --nuc:#6B3FA0; --nuc-fill:#E5DAF4;
+  --mito:#D9792E; --mito-ink:#8A4A10; --mito-fill:#FBE1CC;
+  --chl:#2E7D32; --chl-fill:#8CC98F;
+  --vac:#2F6DB0; --vac-fill:#D3E5F7;
+  --wall:#8A6420; --wall-fill:#EADBB8;
+  --ribo:#3A4652; --dna:#B3261E;
+  --field:#F8F5E6; --stain:#B98B3E; --blue-stain:#4D6FB8;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --memb:#5FC8D4; --memb-soft:#12303A; --cyto:#17251E;
+  --nuc:#C49BFF; --nuc-fill:#2C2140;
+  --mito:#E9A050; --mito-ink:#F2C14E; --mito-fill:#3A2A16;
+  --chl:#7BCB7F; --chl-fill:#2E5A31;
+  --vac:#7FB0F0; --vac-fill:#1A2E46;
+  --wall:#D9B670; --wall-fill:#3A2F18;
+  --ribo:#C9D3DC; --dna:#FF8A80;
+  --field:#24261F; --stain:#C9A060; --blue-stain:#8FA8E8;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --memb:#5FC8D4; --memb-soft:#12303A; --cyto:#17251E;
+  --nuc:#C49BFF; --nuc-fill:#2C2140;
+  --mito:#E9A050; --mito-ink:#F2C14E; --mito-fill:#3A2A16;
+  --chl:#7BCB7F; --chl-fill:#2E5A31;
+  --vac:#7FB0F0; --vac-fill:#1A2E46;
+  --wall:#D9B670; --wall-fill:#3A2F18;
+  --ribo:#C9D3DC; --dna:#FF8A80;
+  --field:#24261F; --stain:#C9A060; --blue-stain:#8FA8E8;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--acc)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--acc)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson,.inv{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--acc-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--acc)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.mb{color:var(--memb);font-weight:700}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.two>*{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tg{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tg.on{background:var(--memb-soft);border-color:var(--memb);color:var(--ink)}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .mtxt{font-family:var(--f-mono);font-size:12px;font-weight:600}
+svg [tabindex]{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+label.field output{font-family:var(--f-mono);font-weight:600;color:var(--memb)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+select{width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--mito);border-radius:7px;transition:width .3s ease}
+.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.chain div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;display:grid;gap:2px}
+.chain b{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mito-ink)}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;font-variant-numeric:tabular-nums}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--good)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--acc)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+header h1 .mb{color:var(--memb)}
+svg .part{cursor:pointer;transition:opacity .2s}
+svg .part:hover{opacity:.85}
+svg .part.sel>*:first-child, svg .part.sel{filter:drop-shadow(0 0 3px var(--acc))}
+svg .part:focus{outline:none}
+svg .part:focus-visible{filter:drop-shadow(0 0 4px var(--acc))}
+.scope{display:grid;justify-items:center;gap:8px}
+.scope svg{width:min(100%,320px);height:auto;display:block}
+.view{transition:filter .15s}
+.timeline{display:grid;gap:6px}
+.tl{display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer}
+.tl b{font-family:var(--f-mono);font-size:.85rem;color:var(--acc)}
+.tl[aria-pressed="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.casegrid button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;text-align:left;cursor:pointer;display:grid;gap:2px}
+.casegrid button small{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.casegrid button[aria-pressed="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.pins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.pins label{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+.pins .fb{font-size:.84rem}
+.warn{background:var(--bad-soft);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.okbox{background:var(--good-soft);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:10px}
+.ctl>*{min-width:0}
+.dt.small{min-width:0}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Life Science: Cells and Organ Systems · LS1</div>
+    <h1><span class="mb">Cell</span> Explorer Lab</h1>
+    <p class="under"><b>Understanding:</b> Cells support life in organisms of varying complexity. A single bacterium in a canola field, a yeast cell in bread dough and the trillions of cells in your body all carry out the same basic jobs: they take in what they need, release energy, build what they use and keep their insides steady.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Nine short lessons in order. Each one has a model to try. Start with what a cell is, learn how microscopes revealed cells, then look inside plant, animal and bacterial cells and see how a cell keeps itself alive.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · The basic unit of life</span>
+      <div class="codes"><span class="code">LS1.K1</span><span class="code">LS1.K4</span></div>
+      <h3>Every living thing is made of cells</h3>
+      <p>A <b>cell</b> is the smallest unit that can carry out all the processes of life. It takes in materials, releases energy, grows, responds and makes more cells. That is why we call the cell the <b>basic unit of life</b>.</p>
+      <p>Some organisms are <b>unicellular</b>: the whole organism is one cell. A bacterium or a yeast cell is a complete living thing. Other organisms are <b>multicellular</b>: they are made of many cells that share the work. Your body has trillions of cells.</p>
+      <p>Cells come in many sizes and shapes, and the shape usually fits the job. A red blood cell is a small flexible disc that squeezes through tiny blood vessels. A nerve cell has long thin branches that carry signals over long distances.</p>
+      <div class="key"><b>Remember:</b> most cells are measured in <b>micrometres</b> (µm). One micrometre is one thousandth of a millimetre.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the cell size ladder</h4>
+      <p class="hint">Each step on the scale is 10 times bigger than the one before. Pick a cell to see its size, shape and job.</p>
+      <div class="svgbox"><svg id="ladderSvg" viewBox="0 0 520 250" role="img" aria-label="Cell sizes on a scale from 1 micrometre to 1 metre"></svg></div>
+      <div class="chips" id="ladderChips" role="group" aria-label="Choose a cell"></div>
+      <div class="detail" id="ladderDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Seeing the invisible</span>
+      <div class="codes"><span class="code">LS1.K2</span></div>
+      <h3>Microscopes opened up the world of cells</h3>
+      <p>Most cells are far too small to see with your eyes alone. Your eye can just make out something about one tenth of a millimetre wide. Before microscopes, nobody knew cells existed.</p>
+      <p>Each better microscope let scientists see smaller things. Early lenses showed that living things are built of cells. Later, scientists used microscopes to show that new cells come only from cells that already exist. These ideas became the <b>cell theory</b>:</p>
+      <ul>
+        <li>All living things are made of one or more cells.</li>
+        <li>The cell is the basic unit of life.</li>
+        <li>New cells come from existing cells.</li>
+      </ul>
+      <p>Today, electron microscopes and glowing dyes let scientists see the tiny structures inside cells and even watch them work.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a microscope timeline</h4>
+      <p class="hint">Tap an event to read what it added to our knowledge of cells.</p>
+      <div class="timeline" id="timeline" role="group" aria-label="Microscope timeline"></div>
+      <div class="detail" id="tlDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · The compound light microscope</span>
+      <div class="codes"><span class="code">LS1.K3</span><span class="code">LS1.S1</span><span class="code">LS1.S2</span></div>
+      <h3>Two lenses multiply the view</h3>
+      <p>A <b>compound light microscope</b> uses light and two sets of lenses. The <b>eyepiece</b> (ocular lens) is the lens you look through. The <b>objective lens</b> is the lens just above the slide. Most school microscopes have three or four objectives on a turning nosepiece.</p>
+      <p>Each lens magnifies the image. The total magnification is the product of the two lenses: you multiply them.</p>
+      <div class="formula">total magnification = eyepiece magnification × objective magnification</div>
+      <div class="worked"><b>Worked example</b><span>Eyepiece 10×, objective 40×.</span><span>Total = 10 × 40 = 400×. The cell looks 400 times wider than it really is.</span></div>
+      <p class="hint">You do not need to memorize this. It is a tool you can look up and use.</p>
+    </div>
+    <div class="model">
+      <h4>Model: parts of the microscope</h4>
+      <p class="hint">Tap or tab to a part to see what it does. Then choose an objective to see the total magnification.</p>
+      <div class="svgbox"><svg id="scopeSvg" viewBox="0 0 360 330" role="group" aria-label="A compound light microscope with labelled parts"></svg></div>
+      <div class="detail" id="scopeDetail" aria-live="polite"></div>
+      <div class="chips" id="objChips" role="group" aria-label="Choose an objective lens"></div>
+      <div class="stats" id="objStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Organelles</span>
+      <div class="codes"><span class="code">LS1.K4</span><span class="code">LS1.K5</span><span class="code">LS1.S4</span><span class="code">LS1.S5</span></div>
+      <h3>Each organelle has a job</h3>
+      <p>Inside a cell are <b>organelles</b>: tiny specialized structures that each do a particular job. They work a bit like the rooms and machines in a factory. Organelles are found in the cells of both unicellular and multicellular organisms.</p>
+      <p>These parts are found in both plant and animal cells:</p>
+      <ul>
+        <li><b>Cell membrane:</b> the thin outer layer that controls what enters and leaves.</li>
+        <li><b>Nucleus:</b> holds the cell’s genetic instructions and controls its activities.</li>
+        <li><b>Cytoplasm:</b> the jelly-like fluid that fills the cell. Organelles sit in it and many reactions happen in it.</li>
+        <li><b>Mitochondria:</b> release energy from food by cellular respiration.</li>
+        <li><b>Ribosomes:</b> tiny structures that build proteins.</li>
+        <li><b>Vacuoles:</b> sacs that store water, food and wastes.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Model: an animal cell</h4>
+      <p class="hint">Tap or tab to any part of the cell.</p>
+      <div class="svgbox"><svg id="animalSvg" viewBox="0 0 360 250" role="group" aria-label="Animal cell diagram with selectable organelles"></svg></div>
+      <div class="detail" id="animalDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Plant and animal cells</span>
+      <div class="codes"><span class="code">LS1.K6</span><span class="code">LS1.S4</span></div>
+      <h3>Two extra parts make a plant cell</h3>
+      <p>Plant cells have every organelle an animal cell has. They also have two parts animal cells do not have:</p>
+      <ul>
+        <li><b>Cell wall:</b> a stiff layer outside the membrane. It supports the cell and gives it a box-like shape.</li>
+        <li><b>Chloroplasts:</b> green organelles that capture light energy and use it to make sugar by photosynthesis.</li>
+      </ul>
+      <p>A plant cell also usually has one <b>large central vacuole</b> full of water. When it is full, it pushes out against the wall and keeps the plant firm. Animal cells have only small vacuoles.</p>
+      <p class="note">Not every plant cell has chloroplasts. A root cell or an onion bulb cell gets no light, so it has none. Cell walls are also found outside the plant world, in fungi and bacteria.</p>
+    </div>
+    <div class="model">
+      <h4>Model: compare the two cells</h4>
+      <div class="chips" id="cellToggle" role="group" aria-label="Choose a cell"></div>
+      <div class="svgbox"><svg id="compareSvg" viewBox="0 0 360 250" role="group" aria-label="Cell diagram"></svg></div>
+      <div class="detail" id="compareDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Cells without a nucleus</span>
+      <div class="codes"><span class="code">LS1.K7</span></div>
+      <h3>Bacteria keep their DNA loose</h3>
+      <p>Some unicellular organisms, including all <b>bacteria</b>, have no nucleus. Their genetic material (DNA) sits in a loop in the cytoplasm instead of inside a nucleus. Bacteria also have no mitochondria or chloroplasts.</p>
+      <p>Bacteria still have a cell membrane, cytoplasm and ribosomes. Most also have a cell wall. Some have a tail-like <b>flagellum</b> they spin to swim.</p>
+      <p>Bacteria are much smaller than plant and animal cells. A typical bacterium is about 1 to 2 µm long. About 30 of them would fit across one cheek cell.</p>
+      <p class="note">Yeasts, amoebas and other protists are unicellular too, but their cells do have a nucleus.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a bacterial cell</h4>
+      <p class="hint">Tap or tab to any part. This diagram is drawn much larger than the plant and animal cells.</p>
+      <div class="svgbox"><svg id="bactSvg" viewBox="0 0 360 200" role="group" aria-label="Bacterial cell diagram with selectable parts"></svg></div>
+      <div class="detail" id="bactDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Microbes and health</span>
+      <div class="codes"><span class="code">LS1.K8</span><span class="code">LS1.S6</span></div>
+      <h3>Tiny organisms, big effects</h3>
+      <p>A <b>microbe</b> is a living thing too small to see without a microscope. Many are unicellular: <b>bacteria</b>, some <b>fungi</b> such as yeasts, and many <b>protists</b> such as amoebas.</p>
+      <p>Most microbes are harmless, and many are helpful. Bacteria in your gut help digest food. Bacteria in the roots of peas and lentils help those crops grow.</p>
+      <p>Some microbes cause disease. They can damage cells, use up the host’s nutrients or release harmful substances. This can affect humans and other multicellular organisms, including farm animals and crops.</p>
+      <div class="key"><b>Remember:</b> the same kind of microbe can be harmless in one place and harmful in another. Hand washing, safe water and cooking food fully all lower the risk.</div>
+    </div>
+    <div class="model">
+      <h4>Model: microbe gallery</h4>
+      <p class="hint">Pick a microbe to see what kind of organism it is and how it affects its host.</p>
+      <div class="casegrid" id="microbeGrid" role="group" aria-label="Choose a microbe"></div>
+      <div class="detail" id="microbeDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Keeping the inside steady</span>
+      <div class="codes"><span class="code">LS1.K9</span><span class="code">LS1.S8</span></div>
+      <h3>Four processes keep a cell alive</h3>
+      <p>A cell must keep its inside environment steady even when things outside change. Four processes help:</p>
+      <ul>
+        <li><b>Cellular respiration</b> provides energy. In the mitochondria, sugar (glucose) reacts with oxygen. Energy is released, and carbon dioxide and water are made.</li>
+        <li><b>Diffusion</b> moves vital substances such as oxygen into the cell and wastes such as carbon dioxide out.</li>
+        <li><b>Osmosis</b> moves water into or out of the cell.</li>
+        <li><b>Protein formation</b> happens at the ribosomes. Proteins build cell parts and do specific jobs, such as speeding up reactions.</li>
+      </ul>
+      <div class="formula">glucose + oxygen → carbon dioxide + water + energy</div>
+    </div>
+    <div class="model">
+      <h4>Model: a cell at work</h4>
+      <p class="hint">Choose a process to see what moves and where.</p>
+      <div class="chips" id="procChips" role="group" aria-label="Choose a process"></div>
+      <div class="svgbox"><svg id="procSvg" viewBox="0 0 360 230" role="img" aria-label="Cell diagram showing a cell process"></svg></div>
+      <div class="detail" id="procDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · The semi-permeable membrane</span>
+      <div class="codes"><span class="code">LS1.K10</span><span class="code">LS1.K9</span><span class="code">LS1.S7</span></div>
+      <h3>A gatekeeper with tiny gaps</h3>
+      <p>The cell membrane is <b>semi-permeable</b>. It lets some particles through and blocks others. Small particles such as water, oxygen and carbon dioxide pass through easily. Large particles such as starch cannot.</p>
+      <p><b>Diffusion</b> is the movement of particles from where they are more concentrated to where they are less concentrated. Particles keep moving at random until they are spread evenly.</p>
+      <p><b>Osmosis</b> is the diffusion of water across a semi-permeable membrane. Water moves toward the side with more dissolved particles, where there is less free water.</p>
+      <p class="note">The gaps in this model are a simple picture. Real membranes let particles through in several ways, including through special proteins.</p>
+    </div>
+    <div class="model">
+      <h4>Model: particles at a membrane</h4>
+      <p class="hint">Run diffusion or osmosis and watch the counts on each side.</p>
+      <div class="row">
+        <button class="btn" id="tankDiff" type="button">Diffusion: oxygen on the left</button>
+        <button class="btn ghost" id="tankOsm" type="button">Osmosis: sugar on the right</button>
+        <button class="btn ghost" id="tankPause" type="button">Pause</button>
+      </div>
+      <div class="svgbox"><svg id="tankSvg" viewBox="0 0 400 220" role="img" aria-label="Two chambers separated by a membrane with small gaps"></svg></div>
+      <div class="legend" id="tankLegend"></div>
+      <div class="stats" id="tankStats" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Seven investigations. Use a virtual microscope, calculate magnification, label and draw cells, test osmosis, research a microbe and decide which process a cell is using.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · Virtual microscope</span>
+      <div class="codes"><span class="code">LS1.S1</span><span class="code">LS1.S2</span><span class="code">LS1.S3</span></div>
+      <h3>Find, focus and observe</h3>
+      <p>Choose a slide. Always start on the lowest power objective. Use the coarse focus to find the image, then the fine focus to sharpen it. Only use the fine focus on high power.</p>
+      <ol>
+        <li>Carry a real microscope with two hands: one on the arm, one under the base.</li>
+        <li>Center what you want to see before you switch to a higher power.</li>
+        <li>Add a stain to make the nucleus and cell edges easier to see.</li>
+        <li>Count how many cells fit across the field of view to estimate their size.</li>
+      </ol>
+      <div class="formula">cell size ≈ field of view diameter ÷ number of cells across</div>
+      <div class="tablebox"><table class="dt small"><caption class="hint" style="text-align:left">Typical field of view (10× eyepiece)</caption><thead><tr><th>Objective</th><th>Total</th><th>Field of view</th></tr></thead><tbody><tr><td>4×</td><td>40×</td><td>about 4.5 mm (4500 µm)</td></tr><tr><td>10×</td><td>100×</td><td>about 1.8 mm (1800 µm)</td></tr><tr><td>40×</td><td>400×</td><td>about 0.45 mm (450 µm)</td></tr></tbody></table></div>
+    </div>
+    <div class="model">
+      <div class="ctl">
+        <label class="field" for="slideSel">Slide<select id="slideSel"></select></label>
+        <div class="field" style="display:grid;gap:4px;font-size:.88rem;font-weight:700"><span>Objective</span><div class="chips" id="msObj" role="group" aria-label="Objective lens"></div></div>
+      </div>
+      <div class="scope"><svg id="msView" viewBox="0 0 320 320" role="img" aria-label="View through the microscope"></svg></div>
+      <div class="ctl">
+        <label class="field" for="msCoarse">Coarse focus <output id="msCoarseOut"></output><input type="range" id="msCoarse" min="0" max="100" step="1" value="10"></label>
+        <label class="field" for="msFine">Fine focus <output id="msFineOut"></output><input type="range" id="msFine" min="-10" max="10" step="0.5" value="0"></label>
+      </div>
+      <div class="row"><button class="btn ghost" id="msStain" type="button" aria-pressed="false">Add stain</button></div>
+      <div class="ctl">
+        <label class="field" for="msCount">Cells across the middle (your count)<input type="number" id="msCount" min="1" max="200" step="1" inputmode="numeric"></label>
+        <div class="stat"><span>Estimated cell size</span><b id="msSize" aria-live="polite">count first</b></div>
+      </div>
+      <div id="msMsg" aria-live="polite"></div>
+      <div class="stats" id="msStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Magnification and size practice</span>
+      <div class="codes"><span class="code">LS1.S2</span><span class="code">LS1.K3</span></div>
+      <h3>Calculate it, then check it</h3>
+      <p>Use the calculator to multiply any eyepiece and objective. Then try the practice problems. Each one is new.</p>
+      <div class="formula">total = eyepiece × objective<br>objective = total ÷ eyepiece<br>cell size ≈ field of view ÷ cells across</div>
+      <div class="worked"><b>Worked example</b><span>At 100× the field of view is 1800 µm. Six cells fit across.</span><span>Size ≈ 1800 µm ÷ 6 = 300 µm, or 0.3 mm.</span></div>
+    </div>
+    <div class="model">
+      <h4>Calculator</h4>
+      <div class="ctl">
+        <label class="field" for="calcEye">Eyepiece (×)<select id="calcEye"><option>5</option><option selected>10</option><option>15</option></select></label>
+        <label class="field" for="calcObj">Objective (×)<select id="calcObj"><option>4</option><option selected>10</option><option>40</option><option>100</option></select></label>
+      </div>
+      <div class="stats" id="calcOut" aria-live="polite"></div>
+      <h4>Practice</h4>
+      <p id="pracQ"></p>
+      <div class="row"><label class="field" for="pracA" style="flex:1 1 160px">Your answer<input type="text" id="pracA" inputmode="decimal" autocomplete="off"></label></div>
+      <div class="row"><button class="btn" id="pracCheck" type="button">Check</button><button class="btn ghost" id="pracNew" type="button">New problem</button></div>
+      <p class="fb" id="pracFb" aria-live="polite"></p>
+      <p class="hint mono" id="pracScore"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Label and draw a cell</span>
+      <div class="codes"><span class="code">LS1.S3</span><span class="code">LS1.S4</span><span class="code">LS1.S5</span></div>
+      <h3>Turn a microscope view into a scientific drawing</h3>
+      <p>Scientists draw what they see, not what they expect. Use this checklist when you draw cells from a microscope image:</p>
+      <ul class="checks" id="drawChecks"></ul>
+      <p>Then practise labelling. Name each numbered part and read its function.</p>
+    </div>
+    <div class="model">
+      <div class="row"><button class="btn ghost" id="lblNew" type="button">New cell</button></div>
+      <div class="svgbox"><svg id="lblSvg" viewBox="0 0 360 250" role="img" aria-label="Cell diagram with numbered pins"></svg></div>
+      <div class="pins" id="lblPins"></div>
+      <div class="row"><button class="btn" id="lblCheck" type="button">Check my labels</button></div>
+      <p class="fb" id="lblFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Cells in different solutions</span>
+      <div class="codes"><span class="code">LS1.S7</span><span class="code">LS1.S8</span><span class="code">LS1.K10</span></div>
+      <h3>What happens when the water outside changes?</h3>
+      <p>Place a cell in a solution. Predict which way water will move by osmosis, then run the test.</p>
+      <ul>
+        <li><b>Fresh water</b> has fewer dissolved particles than the cell. Water moves in.</li>
+        <li><b>A matching solution</b> has the same amount. Water moves both ways equally.</li>
+        <li><b>Salty water</b> has more dissolved particles than the cell. Water moves out.</li>
+      </ul>
+      <p class="note">Elodea, a pond plant found in Alberta, is often used for this test. In salty water you can see the membrane pull away from the wall.</p>
+    </div>
+    <div class="model">
+      <div class="chips" id="osCell" role="group" aria-label="Choose a cell"></div>
+      <div class="chips" id="osSol" role="group" aria-label="Choose a solution"></div>
+      <label class="field" for="osPred">Your prediction<select id="osPred"><option value="">Choose…</option><option value="in">Water moves in overall</option><option value="none">No overall change</option><option value="out">Water moves out overall</option></select></label>
+      <div class="row"><button class="btn" id="osRun" type="button">Run the test</button></div>
+      <div class="svgbox"><svg id="osSvg" viewBox="0 0 360 220" role="img" aria-label="Cell in a solution"></svg></div>
+      <div class="detail" id="osDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 5 · Potato core osmosis</span>
+      <div class="codes"><span class="code">LS1.S7</span></div>
+      <h3>Measure osmosis with mass</h3>
+      <p>Cut equal potato cores, find each mass, then soak them in salt solutions for 24 hours. Pat them dry and find the mass again.</p>
+      <p><b>Manipulated variable:</b> salt concentration. <b>Responding variable:</b> percent change in mass. <b>Controlled:</b> core size, potato, time, temperature.</p>
+      <div class="formula">% change = (final mass − starting mass) ÷ starting mass × 100</div>
+      <div class="worked"><b>Worked example</b><span>Start 2.50 g, final 2.80 g.</span><span>(2.80 − 2.50) ÷ 2.50 × 100 = +12%. The core gained water.</span></div>
+      <p class="note">These results are made up for practice. They come from a simple model, not a real experiment.</p>
+    </div>
+    <div class="model">
+      <div class="row"><button class="btn" id="potRun" type="button">Run a new trial</button></div>
+      <div class="tablebox"><table class="dt" id="potTable"><thead><tr><th>Salt (%)</th><th>Start (g)</th><th>Final (g)</th><th>Your % change</th><th>Check</th></tr></thead><tbody></tbody></table></div>
+      <div class="svgbox"><svg id="potGraph" viewBox="0 0 420 230" role="img" aria-label="Graph of percent change in mass against salt concentration"></svg></div>
+      <label class="field" for="potZero">At about what salt percent would the core not change mass?<input type="text" id="potZero" inputmode="decimal" autocomplete="off"></label>
+      <div class="row"><button class="btn ghost" id="potZeroCheck" type="button">Check</button></div>
+      <p class="fb" id="potFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 6 · Microbe case file</span>
+      <div class="codes"><span class="code">LS1.S6</span><span class="code">LS1.K8</span></div>
+      <h3>Research how a microbe affects its host</h3>
+      <p>Choose a microbe. Read the starter card, then research further using reliable sources such as a government health or agriculture site, a library database or a textbook. Fill in your case file. It saves in this browser.</p>
+      <p class="note">If you research a disease that affects you or someone you know, talk to a trusted adult. This lab gives science facts, not medical advice.</p>
+    </div>
+    <div class="model">
+      <label class="field" for="caseSel">Microbe<select id="caseSel"></select></label>
+      <div class="detail" id="caseCard"></div>
+      <div id="caseForm" style="display:grid;gap:10px"></div>
+      <p class="hint" id="caseSaved" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 7 · Process detective</span>
+      <div class="codes"><span class="code">LS1.S8</span><span class="code">LS1.K9</span></div>
+      <h3>Which process keeps this cell steady?</h3>
+      <p>Read what is happening in the cell. Decide which process is at work: cellular respiration, diffusion, osmosis or protein formation.</p>
+    </div>
+    <div class="model">
+      <p class="detail" id="pdQ" aria-live="polite"></p>
+      <div class="bins" id="pdBins"></div>
+      <p class="fb" id="pdFb" aria-live="polite"></p>
+      <div class="row"><button class="btn ghost" id="pdNext" type="button">Next case</button></div>
+      <p class="hint mono" id="pdScore"></p>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the question bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 LS1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>LS1.K2:</b> the cell theory is added as context. Timeline dates (Hooke 1665, van Leeuwenhoek 1670s, Schleiden 1838, Schwann 1839, Virchow 1855, Ruska and Knoll 1931, the University of Toronto electron microscope 1938) are well known but should be checked against your resource. Remak’s earlier work on cell division is mentioned so Virchow is not credited alone.</li>
+      <li><b>LS1.K3:</b> lens values (10× eyepiece; 4×, 10×, 40× objectives) and field of view diameters (about 4.5, 1.8 and 0.45 mm) are typical values that vary between microscopes. Estimating cell size from the field of view is added to support LS1.S1 and S3.</li>
+      <li><b>LS1.K5:</b> cytoplasm is taught as the jelly-like fluid that fills the cell and holds the organelles, since it is not an organelle in the strict sense. Ribosomes are taught as tiny structures without a membrane. Animal cells are taught as having small vacuoles; plant cells usually have one large central vacuole.</li>
+      <li><b>LS1.K6:</b> “only in plant cells” is taught as “in plant cells but not animal cells”. The lab notes that fungi and bacteria also have cell walls, algae also have chloroplasts, and plant cells that get no light (roots, onion bulb) have no chloroplasts.</li>
+      <li><b>LS1.K7:</b> “some unicellular organisms, including bacteria” is taught as all bacteria having no nucleus, with DNA in a loop in the cytoplasm (this links to LS2.K2). Yeasts and protists are noted as unicellular organisms that do have a nucleus. Mature human red blood cells, which lose their nucleus, appear once in Sort It as a challenge card.</li>
+      <li><b>LS1.K8:</b> fungi are taught through unicellular yeasts, since most fungi (mushrooms, moulds) are multicellular. Most microbes are described as harmless or helpful. The clubroot organism is described as a protist-like soil parasite. Alberta details (clubroot found in Alberta canola in the early 2000s, Giardia in untreated surface water) are described generally and should be checked. Disease content is general science, not medical advice; be aware some students may have personal experience with these illnesses.</li>
+      <li><b>LS1.K9:</b> “regulate the internal environment” is taught as keeping conditions inside the cell steady. Cellular respiration is given as a word equation in the mitochondria. Protein formation is taught at the ribosomes using instructions from the nucleus; DNA itself is left for LS2.</li>
+      <li><b>LS1.K10:</b> semi-permeable is noted as also called selectively permeable. Osmosis is defined as the diffusion of water across a semi-permeable membrane toward the side with more dissolved particles. The particle model uses simple gaps and makes water less likely to cross from a side crowded with sugar; real membranes also use transport proteins.</li>
+      <li><b>Numbers:</b> cell sizes are rounded typical values (bacterium about 2 µm, red blood cell about 8 µm, cheek cell about 60 µm, human egg about 0.1 mm, onion skin cell about 250 µm, a long nerve cell about 1 m). Microscope images are drawings, not photographs. Potato core results come from a made-up model and are labelled as practice data.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-ls1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function stat(box, items){
+  clear(box);
+  items.forEach(function(it){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, it[0])); d.appendChild(el("b", null, it[1])); box.appendChild(d); });
+}
+function parseNum(s){ return parseFloat(String(s).replace(/−/g, "-").replace(/,/g, ".").replace(/\s/g, "")); }
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Animation loop ---------- */
+var anims = [];
+function addAnim(fn){ anims.push(fn); }
+var lastT = 0;
+function loop(t){
+  var s = t / 1000;
+  if (!$("learn").hidden || !$("bench").hidden) anims.forEach(function(fn){ fn(s); });
+  requestAnimationFrame(loop);
+}
+function arrow(g, x1, y1, x2, y2, color, opts){
+  opts = opts || {};
+  var w = opts.w || 3;
+  g.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: color, "stroke-width": w, "stroke-dasharray": opts.dash || "none", "stroke-linecap": "round"}));
+  if (opts.head === false) return;
+  var a = Math.atan2(y2 - y1, x2 - x1), L = 11, s = 0.45;
+  var p = [x2, y2, x2 - L * Math.cos(a - s), y2 - L * Math.sin(a - s), x2 - L * Math.cos(a + s), y2 - L * Math.sin(a + s)];
+  g.appendChild(sv("polygon", {points: p.join(" "), fill: color}));
+}
+function st(fill, stroke, sw, extra){
+  var s = "fill:" + (fill || "none") + ";";
+  if (stroke) s += "stroke:" + stroke + ";stroke-width:" + (sw || 2) + ";";
+  return s + (extra || "");
+}
+function V(n){ return "var(--" + n + ")"; }
+function seeded(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function txt(g, x, y, s, cls, anchor){ var t = sv("text", {x: x, y: y, "class": cls || "lbl", "text-anchor": anchor || "start"}, s); g.appendChild(t); return t; }
+function makePart(svg, key, label, onPick){
+  var g = sv("g", {"class": "part", tabindex: "0", role: "button", "aria-label": label, "data-part": key});
+  if (onPick) {
+    g.addEventListener("click", function(){ onPick(key, g); });
+    g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onPick(key, g); } });
+  } else { g.removeAttribute("tabindex"); g.removeAttribute("role"); g.setAttribute("class", "part-static"); }
+  svg.appendChild(g);
+  return g;
+}
+function selectPart(svg, g){ Array.prototype.forEach.call(svg.querySelectorAll(".part"), function(p){ p.classList.toggle("sel", p === g); p.setAttribute("aria-pressed", p === g ? "true" : "false"); }); }
+
+/* ---------- Organelle facts ---------- */
+var PARTS = {
+  memb: {n: "Cell membrane", f: "The thin, flexible outer layer of the cell. It is semi-permeable, so it controls what enters and leaves.", w: "Plant and animal cells, and bacteria"},
+  nuc: {n: "Nucleus", f: "Holds the cell’s genetic instructions and controls the cell’s activities, such as growing and making proteins.", w: "Plant and animal cells (not bacteria)"},
+  cyto: {n: "Cytoplasm", f: "The jelly-like fluid that fills the cell. Organelles sit in it, and many of the cell’s reactions happen in it.", w: "Plant and animal cells, and bacteria"},
+  mito: {n: "Mitochondria", f: "Release energy from food by cellular respiration. Busy cells, such as muscle cells, have many of them.", w: "Plant and animal cells (not bacteria)"},
+  ribo: {n: "Ribosomes", f: "Tiny structures that build proteins. They are so small that you need an electron microscope to see them.", w: "Plant and animal cells, and bacteria"},
+  vac: {n: "Vacuoles", f: "Sacs that store water, food and wastes. Animal cells have a few small vacuoles.", w: "Plant and animal cells"},
+  cvac: {n: "Large central vacuole", f: "One big sac full of water. When it is full, it pushes out against the cell wall and keeps the plant firm.", w: "Plant cells"},
+  wall: {n: "Cell wall", f: "A stiff layer outside the membrane. It supports and protects the cell and gives it a box-like shape. Water passes through it easily.", w: "Plant cells, not animal cells (fungi and bacteria have walls too)"},
+  chl: {n: "Chloroplasts", f: "Green organelles that capture light energy and use it to make sugar from carbon dioxide and water. This is photosynthesis.", w: "Plant cells that get light, not animal cells"},
+  bwall: {n: "Cell wall", f: "Most bacteria have a cell wall outside the membrane. It is made of a different material from a plant cell wall.", w: "Most bacteria"},
+  dna: {n: "DNA loop", f: "The bacterium’s genetic material. It sits in the cytoplasm with no membrane around it, because a bacterium has no nucleus.", w: "Bacteria"},
+  flag: {n: "Flagellum", f: "A whip-like tail that spins to push the bacterium through liquid. Not all bacteria have one.", w: "Some bacteria"}
+};
+function showPart(box, key){ var p = PARTS[key]; detail(box, p.n, [p.f, "Found in: " + p.w + "."], "Organelle"); }
+
+function mitoShape(g, x, y, rot, s){
+  s = s || 1;
+  var m = sv("g", {transform: "translate(" + x + " " + y + ") rotate(" + rot + ") scale(" + s + ")"});
+  m.appendChild(sv("ellipse", {cx: 0, cy: 0, rx: 24, ry: 12, style: st(V("mito-fill"), V("mito"), 2.5)}));
+  m.appendChild(sv("path", {d: "M-17 0 l4 -7 l4 13 l4 -13 l4 13 l4 -13 l4 13 l4 -7", style: st("none", V("mito"), 1.6)}));
+  g.appendChild(m);
+}
+function riboDots(g, pts){
+  pts.forEach(function(p){
+    g.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 7, style: "fill:transparent"}));
+    g.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 2.8, style: st(V("ribo"))}));
+  });
+}
+function chloro(g, x, y, rot){
+  var c = sv("g", {transform: "translate(" + x + " " + y + ") rotate(" + rot + ")"});
+  c.appendChild(sv("ellipse", {cx: 0, cy: 0, rx: 15, ry: 8, style: st(V("chl-fill"), V("chl"), 2)}));
+  [-7, 0, 7].forEach(function(dx){ c.appendChild(sv("line", {x1: dx, y1: -4, x2: dx, y2: 4, style: st("none", V("chl"), 2)})); });
+  g.appendChild(c);
+}
+/* draws a cell; returns anchors for pins */
+function drawCell(svg, kind, onPick){
+  clear(svg);
+  var A = {};
+  function P(key){ return makePart(svg, key, PARTS[key].n, onPick); }
+  if (kind === "animal") {
+    var blob = "M40 120 C40 50 120 18 190 22 C270 26 325 60 322 125 C319 195 262 232 180 230 C95 228 40 190 40 120 Z";
+    P("cyto").appendChild(sv("path", {d: blob, style: st(V("cyto"))})); A.cyto = [120, 200];
+    var v = P("vac"); v.appendChild(sv("circle", {cx: 105, cy: 165, r: 14, style: st(V("vac-fill"), V("vac"), 2)})); v.appendChild(sv("circle", {cx: 232, cy: 200, r: 10, style: st(V("vac-fill"), V("vac"), 2)})); A.vac = [105, 165];
+    var mi = P("mito"); mitoShape(mi, 92, 92, -20); mitoShape(mi, 262, 165, 25); mitoShape(mi, 258, 78, 10); A.mito = [262, 165];
+    var r = P("ribo"); riboDots(r, [[130,60],[145,190],[215,60],[240,118],[290,120],[80,130],[200,185],[118,110],[285,200],[175,205],[70,165],[225,150]]); A.ribo = [240, 118];
+    var n = P("nuc"); n.appendChild(sv("circle", {cx: 170, cy: 118, r: 40, style: st(V("nuc-fill"), V("nuc"), 3)})); n.appendChild(sv("circle", {cx: 180, cy: 110, r: 11, style: st(V("nuc"))})); A.nuc = [170, 118];
+    var m = P("memb"); m.appendChild(sv("path", {d: blob, style: st("none", V("memb"), 5, "pointer-events:stroke")})); m.appendChild(sv("path", {d: blob, style: st("none", "transparent", 14, "pointer-events:stroke")})); A.memb = [322, 125];
+  } else if (kind === "plant") {
+    var w = P("wall"); w.appendChild(sv("rect", {x: 18, y: 14, width: 324, height: 222, rx: 10, style: st(V("wall-fill"), V("wall"), 2)})); A.wall = [18, 60];
+    P("cyto").appendChild(sv("rect", {x: 32, y: 28, width: 296, height: 194, rx: 6, style: st(V("cyto"))})); A.cyto = [80, 190];
+    var cv = P("cvac"); cv.appendChild(sv("rect", {x: 112, y: 56, width: 186, height: 138, rx: 30, style: st(V("vac-fill"), V("vac"), 2.5)})); A.cvac = [205, 125];
+    var c = P("chl"); [[62,150,80],[64,198,10],[125,208,0],[200,208,-8],[265,208,6],[312,170,90],[312,92,80],[150,42,0],[230,42,10],[295,40,-10]].forEach(function(p){ chloro(c, p[0], p[1], p[2]); }); A.chl = [200, 208];
+    var mi2 = P("mito"); mitoShape(mi2, 76, 112, 70, 0.7); mitoShape(mi2, 92, 44, 0, 0.7); A.mito = [76, 112];
+    var r2 = P("ribo"); riboDots(r2, [[50,40],[100,180],[160,215],[235,215],[318,130],[318,205],[60,215],[205,30],[100,60],[50,125]]); A.ribo = [100, 180];
+    var n2 = P("nuc"); n2.appendChild(sv("circle", {cx: 66, cy: 74, r: 24, style: st(V("nuc-fill"), V("nuc"), 3)})); n2.appendChild(sv("circle", {cx: 72, cy: 70, r: 7, style: st(V("nuc"))})); A.nuc = [66, 74];
+    var m2 = P("memb"); m2.appendChild(sv("rect", {x: 32, y: 28, width: 296, height: 194, rx: 6, style: st("none", V("memb"), 3, "pointer-events:stroke")})); m2.appendChild(sv("rect", {x: 32, y: 28, width: 296, height: 194, rx: 6, style: st("none", "transparent", 10, "pointer-events:stroke")})); A.memb = [328, 60];
+  } else {
+    var bw = P("bwall"); bw.appendChild(sv("rect", {x: 40, y: 48, width: 250, height: 104, rx: 52, style: st(V("wall-fill"), V("wall"), 2)})); A.bwall = [100, 48];
+    P("cyto").appendChild(sv("rect", {x: 50, y: 58, width: 230, height: 84, rx: 42, style: st(V("cyto"))})); A.cyto = [90, 120];
+    var f = P("flag"); f.appendChild(sv("path", {d: "M290 100 q10 -14 20 0 t20 0 t20 0", style: st("none", V("ink"), 3)})); f.appendChild(sv("path", {d: "M290 100 q10 -14 20 0 t20 0 t20 0", style: st("none", "transparent", 14)})); A.flag = [330, 100];
+    var r3 = P("ribo"); riboDots(r3, [[80,85],[95,120],[240,80],[250,118],[120,70],[210,128],[150,130],[265,100]]); A.ribo = [240, 80];
+    var d = P("dna"); d.appendChild(sv("path", {d: "M120 100 c10 -30 40 -25 50 -5 s30 30 50 5 s-10 -30 -30 -15 s-40 35 -60 20 s-20 -20 -10 -5 Z", style: st("none", V("dna"), 2.5)})); d.appendChild(sv("rect", {x: 112, y: 70, width: 110, height: 60, style: "fill:transparent"})); A.dna = [170, 100];
+    var m3 = P("memb"); m3.appendChild(sv("rect", {x: 50, y: 58, width: 230, height: 84, rx: 42, style: st("none", V("memb"), 3, "pointer-events:stroke")})); m3.appendChild(sv("rect", {x: 50, y: 58, width: 230, height: 84, rx: 42, style: st("none", "transparent", 8, "pointer-events:stroke")})); A.memb = [200, 142];
+    txt(svg, 180, 186, "Drawn about 50 times larger than the other cell diagrams", "small", "middle");
+  }
+  return A;
+}
+
+/* ---------- Lesson 1: size ladder ---------- */
+(function(){
+  var CELLS = [
+    {label: "Bacterium", size: 2, s: "about 2 µm long", shape: "A tiny rod or sphere.", job: "A whole organism in one cell. It takes in nutrients and divides to make more bacteria."},
+    {label: "Red blood cell", size: 8, s: "about 8 µm across", shape: "A flexible disc, thinner in the middle.", job: "Carries oxygen. Its small, bendy shape lets it squeeze through the tiniest blood vessels."},
+    {label: "Cheek cell", size: 60, s: "about 60 µm across", shape: "Flat and thin, like a paving stone.", job: "Lines the inside of your mouth and protects it. Flat cells pack together into a smooth layer."},
+    {label: "Human egg cell", size: 100, s: "about 0.1 mm across", shape: "A large sphere.", job: "Stores food for an embryo’s first days. It is one of the few human cells you could just barely see without a microscope."},
+    {label: "Onion skin cell", size: 250, s: "about 250 µm long", shape: "A long box with a stiff wall.", job: "Forms a thin protective layer inside the onion bulb. Box-shaped cells fit tightly together."},
+    {label: "Nerve cell", size: 1e6, s: "up to about 1 m long", shape: "A small cell body with very long, thin branches.", job: "Carries signals. One nerve cell can reach from the bottom of your spine to your toes."}
+  ];
+  var svg = $("ladderSvg"), x0 = 70, x1 = 500, sel = 0;
+  function X(u){ return x0 + (Math.log10(u) / 6) * (x1 - x0); }
+  function draw(){
+    clear(svg);
+    var ticks = [[1, "1 µm"], [10, "10 µm"], [100, "100 µm"], [1000, "1 mm"], [1e4, "1 cm"], [1e5, "10 cm"], [1e6, "1 m"]];
+    ticks.forEach(function(t){ svg.appendChild(sv("line", {x1: X(t[0]), y1: 14, x2: X(t[0]), y2: 208, style: st("none", V("line"), 1)})); txt(svg, X(t[0]), 226, t[1], "small", "middle"); });
+    svg.appendChild(sv("line", {x1: X(100), y1: 10, x2: X(100), y2: 208, style: st("none", V("acc"), 2, "stroke-dasharray:5 4")}));
+    txt(svg, X(100) + 5, 244, "Smallest you can see with your eyes", "small", "middle");
+    CELLS.forEach(function(c, i){
+      var y = 22 + i * 31, on = i === sel;
+      txt(svg, x0 - 6, y + 14, c.label.split(" ")[0], "small", "end");
+      svg.appendChild(sv("rect", {x: x0, y: y, width: Math.max(4, X(c.size) - x0), height: 20, rx: 4, style: st(on ? V("memb") : V("memb-soft"), V("memb"), 1.5)}));
+    });
+  }
+  chipGroup($("ladderChips"), CELLS, function(c, i){ sel = i; draw(); detail($("ladderDetail"), c.label + " · " + c.s, ["Shape: " + c.shape, "Job: " + c.job]); }, 0);
+})();
+
+/* ---------- Lesson 2: timeline ---------- */
+(function(){
+  var EV = [
+    ["1665", "Robert Hooke names cells", "In England, Hooke looked at a thin slice of cork with a microscope he built. He saw rows of tiny boxes and called them “cells”. He was seeing the empty walls of dead cork cells."],
+    ["1670s", "Living microbes seen", "In the Netherlands, Antonie van Leeuwenhoek made tiny single-lens microscopes that magnified more than 200 times. He was the first to see living single-celled organisms, such as bacteria and protists, in pond water and on teeth."],
+    ["1838 to 1839", "Plants and animals are made of cells", "In Germany, Matthias Schleiden concluded that all plants are made of cells, and Theodor Schwann concluded the same for animals. Their ideas became the start of the cell theory."],
+    ["1850s", "Cells come from cells", "Robert Remak watched cells divide, and Rudolf Virchow spread the idea that every cell comes from an existing cell. This completed the cell theory."],
+    ["1931", "The electron microscope", "In Germany, Ernst Ruska and Max Knoll built a microscope that uses a beam of electrons instead of light. Electron microscopes can show ribosomes and the inside of mitochondria."],
+    ["1938", "A Canadian first", "At the University of Toronto, students James Hillier and Albert Prebus, working with Professor E. F. Burton, built the first practical electron microscope in North America."],
+    ["Today", "Watching living cells", "Scientists around the world use glowing dyes and computers to see living cells in 3D and watch organelles move. Each new tool has added to what we know about cells."]
+  ];
+  var box = $("timeline"), btns = [];
+  EV.forEach(function(e, i){
+    var b = el("button", {"class": "tl", type: "button", "aria-pressed": "false"});
+    b.appendChild(el("b", null, e[0])); b.appendChild(el("span", null, e[1]));
+    b.addEventListener("click", function(){ set(i); });
+    box.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", i === j ? "true" : "false"); }); detail($("tlDetail"), EV[i][1], [EV[i][2]], EV[i][0]); }
+  set(0);
+})();
+
+/* ---------- Lesson 3: microscope ---------- */
+var SCOPE = {
+  eye: ["Eyepiece", "The lens you look through. It usually magnifies 10×. It is also called the ocular lens."],
+  tube: ["Body tube", "Holds the eyepiece at the right distance above the objective lenses."],
+  arm: ["Arm", "Holds the top of the microscope. Carry the microscope by the arm with your other hand under the base."],
+  nose: ["Revolving nosepiece", "Turns to click a different objective lens into place."],
+  obj: ["Objective lenses", "The lenses just above the slide. A typical set is 4× (low power), 10× (medium) and 40× (high power)."],
+  clips: ["Stage clips", "Hold the slide in place on the stage."],
+  stage: ["Stage", "The flat platform where the slide sits. Light comes up through a hole in the middle."],
+  diaph: ["Diaphragm", "Opens and closes to control how much light reaches the slide. Less light can show more contrast."],
+  light: ["Light source", "A lamp or mirror that sends light up through the slide."],
+  coarse: ["Coarse focus knob", "Moves the stage a lot to bring the image roughly into focus. Use it only on low power."],
+  fine: ["Fine focus knob", "Moves the stage a tiny amount to sharpen the image. Use only this knob on high power."],
+  base: ["Base", "The heavy bottom that keeps the microscope steady. Support it with one hand when you carry the microscope."]
+};
+(function(){
+  var svg = $("scopeSvg");
+  svg.setAttribute("viewBox", "0 0 400 330");
+  function pick(k, g){ selectPart(svg, g); detail($("scopeDetail"), SCOPE[k][0], [SCOPE[k][1]], "Microscope part"); }
+  function part(k){ return makePart(svg, k, SCOPE[k][0], pick); }
+  var body = "var(--surface-2)", ink = V("ink");
+  svg.appendChild(sv("rect", {x: 170, y: 262, width: 20, height: 28, style: st(body, ink, 1.5)}));
+  var a = part("arm"); a.appendChild(sv("path", {d: "M270 290 L292 290 Q320 200 300 110 L275 70 L190 70 L190 84 L262 84 L278 115 Q292 200 270 290 Z", style: st(body, ink, 2)}));
+  var t = part("tube"); t.appendChild(sv("rect", {x: 170, y: 50, width: 20, height: 80, style: st(body, ink, 2)}));
+  var e = part("eye"); e.appendChild(sv("rect", {x: 164, y: 16, width: 32, height: 34, rx: 4, style: st(V("acc-soft"), ink, 2)}));
+  var n = part("nose"); n.appendChild(sv("rect", {x: 152, y: 130, width: 56, height: 14, rx: 6, style: st(body, ink, 2)}));
+  var o = part("obj"); [[158, 30], [175, 38], [192, 26]].forEach(function(p){ o.appendChild(sv("rect", {x: p[0], y: 144, width: 11, height: p[1], rx: 2, style: st(V("acc-soft"), ink, 2)})); });
+  var s = part("stage"); s.appendChild(sv("rect", {x: 112, y: 194, width: 156, height: 10, style: st(body, ink, 2)})); s.appendChild(sv("rect", {x: 145, y: 189, width: 80, height: 5, style: st(V("memb-soft"), V("memb"), 1)}));
+  var c = part("clips"); c.appendChild(sv("path", {d: "M128 188 L158 188 M212 188 L242 188", style: st("none", ink, 3.5, "stroke-linecap:round")})); c.appendChild(sv("rect", {x: 124, y: 182, width: 122, height: 10, style: "fill:transparent"}));
+  var d = part("diaph"); d.appendChild(sv("rect", {x: 158, y: 210, width: 44, height: 9, rx: 3, style: st(body, ink, 2)}));
+  var l = part("light"); l.appendChild(sv("circle", {cx: 180, cy: 248, r: 12, style: st(V("mito-fill"), V("mito"), 2)}));
+  var b = part("base"); b.appendChild(sv("rect", {x: 120, y: 290, width: 200, height: 24, rx: 6, style: st(body, ink, 2)}));
+  var co = part("coarse"); co.appendChild(sv("circle", {cx: 300, cy: 205, r: 16, style: st(body, ink, 2)}));
+  var fi = part("fine"); fi.appendChild(sv("circle", {cx: 300, cy: 240, r: 10, style: st(body, ink, 2)}));
+  var L = [["Eyepiece", 214, 34, 196, 34, "start"], ["Body tube", 214, 98, 190, 98, "start"], ["Arm", 330, 150, 312, 150, "start"], ["Coarse focus", 322, 196, 316, 200, "start"], ["Fine focus", 316, 258, 306, 248, "start"], ["Base", 330, 322, 320, 310, "start"],
+           ["Nosepiece", 8, 136, 150, 136, "start"], ["Objectives", 8, 160, 156, 160, "start"], ["Stage clips", 8, 184, 126, 186, "start"], ["Stage", 8, 204, 110, 200, "start"], ["Diaphragm", 8, 224, 156, 216, "start"], ["Light source", 8, 252, 166, 250, "start"]];
+  L.forEach(function(q){
+    var tx = txt(svg, q[1], q[2], q[0], "small", q[5]);
+    if (q[1] < 100) svg.appendChild(sv("line", {x1: 92, y1: q[2] - 4, x2: q[3], y2: q[4], style: st("none", V("muted"), 1)}));
+    else svg.appendChild(sv("line", {x1: q[3], y1: q[4], x2: q[1] - 3, y2: q[2] - 4, style: st("none", V("muted"), 1)}));
+  });
+  pick("obj", o);
+  chipGroup($("objChips"), [{label: "4× low", o: 4}, {label: "10× medium", o: 10}, {label: "40× high", o: 40}], function(it){
+    stat($("objStats"), [["Eyepiece", "10×"], ["Objective", it.o + "×"], ["Total", (10 * it.o) + "×"]]);
+  }, 0);
+})();
+
+/* ---------- Lessons 4 to 6: cell diagrams ---------- */
+(function(){
+  var a = $("animalSvg");
+  drawCell(a, "animal", function(k, g){ selectPart(a, g); showPart($("animalDetail"), k); });
+  showPart($("animalDetail"), "nuc"); selectPart(a, a.querySelector('[data-part="nuc"]'));
+  var c = $("compareSvg");
+  function cmp(kind){
+    drawCell(c, kind, function(k, g){ selectPart(c, g); showPart($("compareDetail"), k); });
+    var first = kind === "plant" ? "chl" : "memb";
+    selectPart(c, c.querySelector('[data-part="' + first + '"]')); showPart($("compareDetail"), first);
+  }
+  chipGroup($("cellToggle"), [{label: "Plant cell", k: "plant"}, {label: "Animal cell", k: "animal"}], function(it){ cmp(it.k); }, 0);
+  var b = $("bactSvg");
+  drawCell(b, "bact", function(k, g){ selectPart(b, g); showPart($("bactDetail"), k); });
+  showPart($("bactDetail"), "dna"); selectPart(b, b.querySelector('[data-part="dna"]'));
+})();
+
+/* ---------- Lesson 7 and Investigation 6: microbes ---------- */
+var MICROBES = [
+  {k: "strep", n: "Strep bacteria", t: "Bacterium", host: "Humans", eff: "Streptococcus bacteria can infect the throat and cause strep throat: a very sore throat and fever. They spread in droplets from coughs and sneezes and on shared cups.", care: "A doctor can test for it. Prescribed antibiotics kill bacteria. Hand washing and not sharing cups lower the spread.", good: false},
+  {k: "giardia", n: "Giardia", t: "Protist", host: "Humans, dogs, beavers and farm animals", eff: "Giardia attaches to the lining of the small intestine and stops it from absorbing food well. This causes cramps and diarrhea. It is sometimes called beaver fever.", care: "It spreads in water or food that has animal or human waste in it. When camping in Alberta, boil, filter or treat water from lakes and streams.", good: false},
+  {k: "candida", n: "Candida yeast", t: "Fungus (a single-celled yeast)", host: "Humans", eff: "Candida lives harmlessly on the skin and in the mouth and gut of most people. If it grows out of control, for example after antibiotics kill helpful bacteria, it can cause an infection such as thrush.", care: "Helpful bacteria normally keep it in check. A doctor or pharmacist can suggest treatment.", good: false},
+  {k: "clubroot", n: "Clubroot", t: "Protist-like soil parasite", host: "Canola and other cabbage-family plants", eff: "It infects root cells and makes the roots swell into lumps called clubs. The plant cannot take up enough water and nutrients, so it wilts and gives a smaller crop. It was found in Alberta canola fields in the early 2000s.", care: "Its spores can survive in soil for many years and spread in soil stuck to equipment. Farmers clean equipment, rotate crops and plant resistant canola.", good: false},
+  {k: "plasmodium", n: "Plasmodium", t: "Protist", host: "Humans (carried by mosquitoes)", eff: "Plasmodium causes malaria in warm parts of the world. It enters the blood through a mosquito bite, grows in the liver, then invades and bursts red blood cells. This causes high fevers.", care: "Bed nets, insect repellent, medicines and vaccines help prevent it. Malaria is not spread by mosquitoes in Alberta.", good: false},
+  {k: "rhizobium", n: "Rhizobium", t: "Bacterium (helpful)", host: "Peas, lentils and faba beans", eff: "Rhizobium lives in small lumps on the roots called nodules. It takes nitrogen gas from the air and changes it into a form the plant uses to grow. The plant gives the bacteria sugar. Both benefit.", care: "Many Alberta farmers coat pulse crop seeds with these bacteria before planting.", good: true}
+];
+(function(){
+  var grid = $("microbeGrid"), btns = [];
+  MICROBES.forEach(function(m, i){
+    var b = el("button", {type: "button", "aria-pressed": "false"});
+    b.appendChild(el("small", null, m.t.split(" (")[0])); b.appendChild(el("b", null, m.n));
+    b.addEventListener("click", function(){ set(i); });
+    grid.appendChild(b); btns.push(b);
+  });
+  function set(i){
+    var m = MICROBES[i];
+    btns.forEach(function(b, j){ b.setAttribute("aria-pressed", i === j ? "true" : "false"); });
+    detail($("microbeDetail"), m.n, [m.eff, m.care], m.t + " · Host: " + m.host + (m.good ? " · Helpful" : ""));
+  }
+  set(0);
+})();
+
+/* ---------- Lesson 8: cell processes ---------- */
+(function(){
+  var svg = $("procSvg"), dots = [], cur = 0;
+  var PROC = [
+    {label: "Cellular respiration", t: "In the mitochondria, glucose reacts with oxygen. Energy is released for the cell to use. Carbon dioxide and water are made as wastes.", why: "Why it matters: every activity in the cell, from moving to building proteins, needs this energy."},
+    {label: "Diffusion", t: "Oxygen is more concentrated outside the cell, so it diffuses in through the membrane. Carbon dioxide is more concentrated inside, so it diffuses out.", why: "Why it matters: the cell gets the oxygen it needs and gets rid of wastes without spending energy."},
+    {label: "Osmosis", t: "Water moves across the semi-permeable membrane toward the side with more dissolved particles. Here the cell has more dissolved particles, so water moves in.", why: "Why it matters: osmosis keeps the right amount of water in the cell, so it does not dry out or swell too much."},
+    {label: "Protein formation", t: "Instructions from the nucleus travel to a ribosome. The ribosome joins small building blocks into a long chain that folds into a protein.", why: "Why it matters: proteins build cell parts and do specific jobs, such as speeding up reactions or carrying substances."}
+  ];
+  function base(){
+    clear(svg);
+    svg.appendChild(sv("ellipse", {cx: 180, cy: 118, rx: 125, ry: 92, style: st(V("cyto"), V("memb"), 4)}));
+    svg.appendChild(sv("circle", {cx: 130, cy: 110, r: 30, style: st(V("nuc-fill"), V("nuc"), 3)}));
+    txt(svg, 130, 114, "nucleus", "small", "middle");
+    mitoShape(svg, 230, 80, 0, 1.2); txt(svg, 230, 108, "mitochondrion", "small", "middle");
+    svg.appendChild(sv("circle", {cx: 220, cy: 160, r: 5, style: st(V("ribo"))})); txt(svg, 232, 176, "ribosome", "small", "start");
+    txt(svg, 180, 222, "membrane", "small", "middle");
+  }
+  function path(pts, color, label, lx, ly){
+    arrow(svg, pts[0], pts[1], pts[2], pts[3], color, {w: 2.5});
+    if (label) txt(svg, lx, ly, label, "small", "middle");
+    for (var i = 0; i < 3; i++) { var d = sv("circle", {r: 4, style: st(color)}); svg.appendChild(d); dots.push({el: d, p: pts, off: i / 3}); }
+  }
+  function draw(i){
+    cur = i; dots = []; base();
+    if (i === 0) {
+      path([40, 30, 205, 72], V("mito"), "glucose", 60, 22);
+      path([330, 20, 252, 70], V("dna"), "oxygen", 330, 14);
+      path([205, 95, 60, 200], V("muted"), null); txt(svg, 8, 216, "carbon dioxide + water", "small", "start");
+      svg.appendChild(sv("path", {d: "M230 40 l4 -12 l4 12 l-4 -4 Z M210 46 l-10 -6 M250 46 l10 -6", style: st(V("mito-ink"), V("mito-ink"), 2)}));
+      txt(svg, 230, 22, "energy", "lbl", "middle");
+    } else if (i === 1) {
+      for (var k = 0; k < 10; k++) svg.appendChild(sv("circle", {cx: 14 + (k % 2) * 16, cy: 40 + k * 15, r: 4, style: st(V("dna"))}));
+      path([30, 118, 100, 118], V("dna"), "oxygen in", 40, 205);
+      path([300, 140, 352, 170], V("muted"), "carbon dioxide out", 300, 218);
+    } else if (i === 2) {
+      path([355, 60, 280, 88], V("vac"), "water", 345, 50);
+      path([5, 175, 85, 160], V("vac"), "water", 30, 200);
+      for (var q = 0; q < 8; q++) svg.appendChild(sv("circle", {cx: 170 + (q % 4) * 22, cy: 150 + Math.floor(q / 4) * 18, r: 6, style: st(V("mito-fill"), V("mito"), 1.5)}));
+      txt(svg, 205, 200, "dissolved particles", "small", "middle");
+    } else {
+      path([150, 135, 213, 158], V("nuc"), "instructions", 165, 160);
+      var ch = sv("g"); svg.appendChild(ch);
+      for (var j = 0; j < 7; j++) ch.appendChild(sv("circle", {cx: 228 + j * 9, cy: 160 - Math.sin(j) * 6, r: 4, style: st([V("mito"), V("chl"), V("vac"), V("nuc")][j % 4])}));
+      txt(svg, 262, 140, "protein chain", "small", "middle");
+    }
+    detail($("procDetail"), PROC[i].label, [PROC[i].t, PROC[i].why]);
+    svg.setAttribute("aria-label", "Cell diagram showing " + PROC[i].label.toLowerCase());
+  }
+  addAnim(function(s){
+    if (reduced || $("learn").hidden) return;
+    dots.forEach(function(d){ var f = (s * 0.4 + d.off) % 1; d.el.setAttribute("cx", d.p[0] + (d.p[2] - d.p[0]) * f); d.el.setAttribute("cy", d.p[1] + (d.p[3] - d.p[1]) * f); });
+  });
+  chipGroup($("procChips"), PROC, function(p, i){ draw(i); }, 0);
+  if (reduced) dots.forEach(function(d){ d.el.setAttribute("cx", (d.p[0] + d.p[2]) / 2); d.el.setAttribute("cy", (d.p[1] + d.p[3]) / 2); });
+})();
+
+/* ---------- Lesson 9: membrane tank ---------- */
+(function(){
+  var svg = $("tankSvg"), P = [], mode = "diff", running = false, last = null, MX = 200;
+  var PORES = [40, 80, 120, 160];
+  function inPore(y){ for (var i = 0; i < PORES.length; i++) if (Math.abs(y - PORES[i]) < 7) return true; return false; }
+  function setup(m){
+    mode = m; P = []; clear(svg);
+    svg.appendChild(sv("rect", {x: 10, y: 20, width: 380, height: 180, rx: 8, style: st(V("surface-2"), V("line"), 1.5)}));
+    var y = 20; PORES.concat([200]).forEach(function(p){ svg.appendChild(sv("line", {x1: MX, y1: y, x2: MX, y2: Math.min(200, p - 7), style: st("none", V("memb"), 5)})); y = p + 7; });
+    txt(svg, 105, 14, "Left side", "small", "middle"); txt(svg, 295, 14, "Right side", "small", "middle");
+    var R = seeded(m === "diff" ? 7 : 11);
+    function add(type, side, n){
+      for (var i = 0; i < n; i++) {
+        var r = type === "s" ? 7 : type === "o" ? 3.5 : 2.8;
+        var x = side === "L" ? 20 + R() * 170 : 210 + R() * 170, yy = 30 + R() * 160, a = R() * 6.283, sp = type === "s" ? 25 : 70;
+        var c = sv("circle", {cx: x, cy: yy, r: r, style: st(type === "s" ? V("mito-fill") : type === "o" ? V("dna") : V("vac"), type === "s" ? V("mito") : null, 1.5)});
+        svg.appendChild(c);
+        P.push({x: x, y: yy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, t: type, r: r, el: c});
+      }
+    }
+    if (m === "diff") { add("o", "L", 40); }
+    else { add("w", "L", 60); add("w", "R", 60); add("s", "R", 16); }
+    var lg = $("tankLegend"); clear(lg);
+    var items = m === "diff" ? [["dna", "Oxygen (small, passes through)"]] : [["vac", "Water (small, passes through)"], ["mito-fill", "Sugar (too big to pass)"]];
+    items.forEach(function(it){ var s = el("span"); var i = el("i"); i.style.background = V(it[0]); s.appendChild(i); s.appendChild(document.createTextNode(it[1])); lg.appendChild(s); });
+    count();
+  }
+  function count(){
+    var t = mode === "diff" ? "o" : "w", L = 0, Rr = 0, sR = 0;
+    P.forEach(function(p){ if (p.t === t) { if (p.x < MX) L++; else Rr++; } if (p.t === "s") sR++; });
+    stat($("tankStats"), mode === "diff" ? [["Oxygen left", L], ["Oxygen right", Rr], ["Status", running ? "running" : "paused"]] : [["Water left", L], ["Water right", Rr], ["Sugar right", sR], ["Status", running ? "running" : "paused"]]);
+  }
+  var sugarSides = function(){ var L = 0, R = 0; P.forEach(function(p){ if (p.t === "s") { if (p.x < MX) L++; else R++; } }); return [L, R]; };
+  var tick = 0;
+  addAnim(function(s){
+    if (!running || $("learn").hidden) { last = s; return; }
+    var dt = last == null ? 0 : Math.min(0.05, s - last); last = s;
+    var ss = sugarSides();
+    P.forEach(function(p){
+      var nx = p.x + p.vx * dt, ny = p.y + p.vy * dt;
+      if (ny < 20 + p.r || ny > 200 - p.r) { p.vy = -p.vy; ny = p.y; }
+      if (nx < 10 + p.r || nx > 390 - p.r) { p.vx = -p.vx; nx = p.x; }
+      var crossing = (p.x - MX) * (nx - MX) <= 0 || Math.abs(nx - MX) < p.r;
+      if (crossing) {
+        var pass = p.t !== "s" && inPore(ny);
+        if (pass && p.t === "w") { var side = p.x < MX ? 0 : 1; pass = Math.random() < 1 - 0.035 * ss[side]; }
+        if (!pass) { p.vx = -p.vx; nx = p.x; }
+      }
+      p.x = nx; p.y = ny;
+      if (Math.random() < 0.02) { var a = Math.random() * 6.283, sp = Math.hypot(p.vx, p.vy); p.vx = Math.cos(a) * sp; p.vy = Math.sin(a) * sp; }
+      p.el.setAttribute("cx", p.x.toFixed(1)); p.el.setAttribute("cy", p.y.toFixed(1));
+    });
+    if (++tick % 15 === 0) count();
+  });
+  $("tankDiff").addEventListener("click", function(){ setup("diff"); running = true; last = null; $("tankPause").textContent = "Pause"; count(); });
+  $("tankOsm").addEventListener("click", function(){ setup("osm"); running = true; last = null; $("tankPause").textContent = "Pause"; count(); });
+  $("tankPause").addEventListener("click", function(){ running = !running; $("tankPause").textContent = running ? "Pause" : "Resume"; count(); });
+  setup("diff");
+})();
+function arrow(g, x1, y1, x2, y2, color, opts){
+  opts = opts || {};
+  var w = opts.w || 3;
+  g.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, style: st("none", color, w, "stroke-linecap:round")}));
+  var a = Math.atan2(y2 - y1, x2 - x1), L = 11, s = 0.45;
+  var p = [x2, y2, x2 - L * Math.cos(a - s), y2 - L * Math.sin(a - s), x2 - L * Math.cos(a + s), y2 - L * Math.sin(a + s)];
+  g.appendChild(sv("polygon", {points: p.join(" "), style: st(color)}));
+}
+/* ---------- Investigation 1: virtual microscope ---------- */
+(function(){
+  var svg = $("msView"), FOV = {4: 4500, 10: 1800, 40: 450}, FAC = {4: 0.15, 10: 0.35, 40: 1.0};
+  var SLIDES = [
+    {k: "onion", n: "Onion skin (epidermis)", stain: "iodine", size: 250, tip: "Box-shaped cells in rows. The stain shows each nucleus and the cell walls."},
+    {k: "cheek", n: "Cheek cells", stain: "methylene blue", size: 60, tip: "Flat, irregular cells, often in clumps. Without stain they are almost invisible."},
+    {k: "elodea", n: "Elodea leaf (pond plant)", stain: null, size: 90, tip: "Long box-shaped cells full of green chloroplasts. No stain needed."},
+    {k: "pond", n: "Pond water", stain: null, size: 200, tip: "Slipper-shaped Paramecium (a protist) and tiny green algae cells. Each is a whole unicellular organism."},
+    {k: "letter", n: "Letter e from a newspaper", stain: null, size: 1500, tip: "Look at how the letter appears. The image in a microscope is upside down and backwards."}
+  ];
+  var obj = 4, slide = SLIDES[0], stained = false, target = 50, R;
+  var sel = $("slideSel");
+  SLIDES.forEach(function(s, i){ sel.appendChild(el("option", {value: i}, s.n)); });
+  var defs = sv("defs"); svg.appendChild(defs);
+  var clip = sv("clipPath", {id: "msClip"}); clip.appendChild(sv("circle", {cx: 160, cy: 160, r: 150})); defs.appendChild(clip);
+  var pat = sv("pattern", {id: "msPat", patternUnits: "userSpaceOnUse", x: 0, y: 0, width: 250, height: 140}); defs.appendChild(pat);
+  svg.appendChild(sv("circle", {cx: 160, cy: 160, r: 156, style: st(V("ink"))}));
+  svg.appendChild(sv("circle", {cx: 160, cy: 160, r: 150, style: st(V("field"))}));
+  var outer = sv("g", {"clip-path": "url(#msClip)"}); svg.appendChild(outer);
+  var view = sv("g", {"class": "view"}); outer.appendChild(view);
+  var scene = sv("g"); view.appendChild(scene);
+  function buildScene(){
+    clear(scene); clear(pat);
+    var k = 150 / (FOV[obj] / 2);
+    scene.setAttribute("transform", "translate(160 160) scale(" + k + ")");
+    R = seeded(slide.k.length * 97 + 3);
+    var wallC = stained ? V("stain") : V("muted"), wallO = stained ? 1 : 0.35;
+    if (slide.k === "onion") {
+      pat.setAttribute("width", 250); pat.setAttribute("height", 140);
+      if (stained) pat.appendChild(sv("rect", {x: 0, y: 0, width: 250, height: 140, style: st(V("stain"), null, 0, "opacity:.14")}));
+      [[0,0],[-125,70],[125,70]].forEach(function(c){ pat.appendChild(sv("rect", {x: c[0], y: c[1], width: 250, height: 70, style: st("none", wallC, stained ? 5 : 3, "opacity:" + wallO)})); });
+      [[70,38],[40,100],[205,108]].forEach(function(c){ pat.appendChild(sv("ellipse", {cx: c[0], cy: c[1], rx: 14, ry: 10, style: st(stained ? V("wall") : V("muted"), null, 0, "opacity:" + (stained ? 0.85 : 0.12))})); });
+      scene.appendChild(sv("rect", {x: -2400, y: -2400, width: 4800, height: 4800, style: "fill:url(#msPat)"}));
+    } else if (slide.k === "elodea") {
+      pat.setAttribute("width", 90); pat.setAttribute("height", 60);
+      [[0,0],[-45,30],[45,30]].forEach(function(c){ pat.appendChild(sv("rect", {x: c[0], y: c[1], width: 90, height: 30, style: st("none", V("chl"), 2, "opacity:.55")})); });
+      [[10,8],[24,21],[38,9],[52,20],[66,10],[80,21],[16,48],[30,38],[44,51],[58,40],[72,50],[86,39],[2,40]].forEach(function(c){ pat.appendChild(sv("circle", {cx: c[0], cy: c[1], r: 3.2, style: st(V("chl"))})); });
+      scene.appendChild(sv("rect", {x: -2400, y: -2400, width: 4800, height: 4800, style: "fill:url(#msPat)"}));
+    } else if (slide.k === "cheek") {
+      for (var i = 0; i < 260; i++) {
+        var gx = (R() + R() + R() - 1.5) * 900, gy = (R() + R() + R() - 1.5) * 900, rr = 26 + R() * 10, pts = [];
+        for (var j = 0; j < 8; j++) { var a = j / 8 * 6.283 + R() * 0.4, d = rr * (0.8 + R() * 0.35); pts.push((gx + Math.cos(a) * d).toFixed(1) + "," + (gy + Math.sin(a) * d).toFixed(1)); }
+        scene.appendChild(sv("polygon", {points: pts.join(" "), style: st(stained ? V("blue-stain") : "none", stained ? V("blue-stain") : V("muted"), 1.5, "fill-opacity:.16;stroke-opacity:" + (stained ? 0.9 : 0.3))}));
+        scene.appendChild(sv("circle", {cx: gx + (R() - 0.5) * 8, cy: gy + (R() - 0.5) * 8, r: 5, style: st(stained ? V("blue-stain") : V("muted"), null, 0, "opacity:" + (stained ? 0.9 : 0.15))}));
+      }
+    } else if (slide.k === "pond") {
+      for (var p = 0; p < 9; p++) {
+        var px = p === 0 ? 30 : (R() - 0.5) * 3200, py = p === 0 ? -20 : (R() - 0.5) * 3200, rot = R() * 180;
+        var g = sv("g", {transform: "translate(" + px + " " + py + ") rotate(" + rot + ")"});
+        g.appendChild(sv("path", {d: "M-100 0 C-100 -32 40 -38 100 -10 C110 0 110 8 100 14 C40 36 -100 32 -100 0 Z", style: st(V("cyto"), V("ink"), 3, "stroke-opacity:.6")}));
+        g.appendChild(sv("ellipse", {cx: 0, cy: 0, rx: 22, ry: 12, style: st(V("nuc-fill"), V("nuc"), 2)}));
+        g.appendChild(sv("circle", {cx: -55, cy: 4, r: 9, style: st(V("vac-fill"), V("vac"), 1.5)}));
+        scene.appendChild(g);
+      }
+      for (var q = 0; q < 220; q++) scene.appendChild(sv("circle", {cx: (R() - 0.5) * 4000, cy: (R() - 0.5) * 4000, r: 5, style: st(V("chl"))}));
+    } else {
+      scene.appendChild(sv("text", {x: 0, y: 0, transform: "rotate(180) translate(0 -560)", "text-anchor": "middle", style: "font-size:1600px;font-family:Georgia,serif;fill:var(--ink)"}, "e"));
+    }
+    focus();
+  }
+  function fval(){ return parseFloat($("msCoarse").value) + parseFloat($("msFine").value) * 0.5; }
+  function focus(){
+    var off = Math.abs(fval() - target), blur = Math.min(7, off * FAC[obj]);
+    view.style.filter = blur > 0.05 ? "blur(" + blur.toFixed(2) + "px)" : "none";
+    $("msCoarseOut").textContent = $("msCoarse").value; $("msFineOut").textContent = $("msFine").value;
+    stat($("msStats"), [["Total magnification", (10 * obj) + "×"], ["Field of view", FOV[obj] >= 1000 ? fmt(FOV[obj] / 1000, 2) + " mm" : FOV[obj] + " µm"], ["Focus", blur < 0.4 ? "sharp" : blur < 2 ? "almost" : "blurry"]]);
+    svg.setAttribute("aria-label", "View of " + slide.n + " at " + (10 * obj) + " times, " + (blur < 0.4 ? "in focus" : "out of focus"));
+    size();
+  }
+  function msg(text, warn){ var m = $("msMsg"); clear(m); m.appendChild(el("p", {"class": warn ? "warn" : "hint"}, text)); }
+  function size(){
+    var n = parseFloat($("msCount").value);
+    if (!(n > 0)) { $("msSize").textContent = "count first"; return; }
+    var s = FOV[obj] / n;
+    $("msSize").textContent = "≈ " + fmt(s, 0) + " µm";
+  }
+  chipGroup($("msObj"), [{label: "4×", o: 4}, {label: "10×", o: 10}, {label: "40×", o: 40}], function(it){
+    obj = it.o; target += (Math.random() - 0.5) * 4;
+    msg(obj === 40 ? "High power: use only the fine focus knob." : slide.tip);
+    buildScene();
+  }, 0);
+  var lastCoarse = 10;
+  $("msCoarse").addEventListener("input", function(){
+    if (obj === 40) { $("msCoarse").value = lastCoarse; msg("Stop! On high power, use only the fine focus. The coarse knob can crash the objective lens into the slide.", true); return; }
+    lastCoarse = parseFloat($("msCoarse").value); focus();
+  });
+  $("msFine").addEventListener("input", focus);
+  $("msCount").addEventListener("input", size);
+  $("msStain").addEventListener("click", function(){
+    if (!slide.stain) { msg(slide.k === "elodea" ? "Elodea needs no stain: its chloroplasts are already green." : "This slide does not need a stain."); return; }
+    stained = !stained; $("msStain").setAttribute("aria-pressed", stained ? "true" : "false"); $("msStain").textContent = stained ? "Remove stain" : "Add stain";
+    msg(stained ? "Stained with " + slide.stain + ". The nucleus and cell edges are easier to see." : "Unstained. Notice how hard the cells are to see.");
+    buildScene();
+  });
+  sel.addEventListener("change", function(){
+    slide = SLIDES[+sel.value]; stained = false; $("msStain").setAttribute("aria-pressed", "false"); $("msStain").textContent = "Add stain";
+    target = 30 + Math.random() * 45; $("msCount").value = ""; msg(slide.tip); buildScene();
+  });
+  target = 48; msg(slide.tip); buildScene();
+})();
+
+/* ---------- Investigation 2: magnification practice ---------- */
+(function(){
+  function calc(){ var e = +$("calcEye").value, o = +$("calcObj").value; stat($("calcOut"), [["Eyepiece", e + "×"], ["Objective", o + "×"], ["Total", (e * o) + "×"]]); }
+  $("calcEye").addEventListener("change", calc); $("calcObj").addEventListener("change", calc); calc();
+  var cur, right = 0, tried = 0;
+  function make(){
+    var t = rint(0, 2), e = pick([10, 10, 15, 5]), o = pick([4, 10, 40, 100]);
+    if (t === 0) cur = {q: "An eyepiece is " + e + "× and the objective is " + o + "×. What is the total magnification?", a: e * o, u: "×", w: e + " × " + o + " = " + (e * o) + "×"};
+    else if (t === 1) cur = {q: "The total magnification is " + (e * o) + "× and the eyepiece is " + e + "×. What is the objective lens?", a: o, u: "×", w: (e * o) + " ÷ " + e + " = " + o + "×"};
+    else { var f = pick([[4500, "40×"], [1800, "100×"], [450, "400×"]]), n = rint(3, 18); cur = {q: "At " + f[1] + " the field of view is " + f[0] + " µm. About " + n + " cells fit across it. About how wide is one cell, in µm?", a: f[0] / n, u: "µm", w: f[0] + " ÷ " + n + " ≈ " + fmt(f[0] / n, 0) + " µm"}; }
+    $("pracQ").textContent = cur.q; $("pracA").value = ""; $("pracFb").textContent = ""; $("pracFb").className = "fb";
+  }
+  function check(){
+    var v = parseNum($("pracA").value);
+    if (isNaN(v)) { $("pracFb").textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - cur.a) <= Math.max(0.5, Math.abs(cur.a) * 0.03);
+    tried++; if (ok) right++;
+    $("pracFb").textContent = (ok ? "Correct. " : "Not quite. ") + cur.w;
+    $("pracFb").className = "fb " + (ok ? "ok" : "no");
+    $("pracScore").textContent = right + " correct out of " + tried;
+  }
+  $("pracCheck").addEventListener("click", check);
+  $("pracA").addEventListener("keydown", function(e){ if (e.key === "Enter") check(); });
+  $("pracNew").addEventListener("click", make);
+  make();
+})();
+
+/* ---------- Investigation 3: label and draw ---------- */
+(function(){
+  var RULES = ["Use a sharp pencil.", "Draw only what you see, not what you expect.", "Draw large: at least half a page.", "Use clear single outlines with no shading.", "Draw label lines with a ruler. Do not let them cross.", "Write labels to the side, lined up neatly.", "Add a title, the specimen name and the total magnification."];
+  store.draw = store.draw || [];
+  var ul = $("drawChecks");
+  RULES.forEach(function(r, i){
+    var li = el("li"), l = el("label", {"for": "dr-" + i}), cb = el("input", {type: "checkbox", id: "dr-" + i});
+    cb.checked = store.draw.indexOf(i) > -1;
+    cb.addEventListener("change", function(){ store.draw = store.draw.filter(function(x){ return x !== i; }); if (cb.checked) store.draw.push(i); save(); });
+    l.appendChild(cb); l.appendChild(document.createTextNode(r)); li.appendChild(l); ul.appendChild(li);
+  });
+  var KINDS = {animal: ["memb", "nuc", "cyto", "mito", "ribo", "vac"], plant: ["wall", "memb", "nuc", "cyto", "mito", "ribo", "cvac", "chl"], bact: ["bwall", "memb", "cyto", "ribo", "dna", "flag"]};
+  var NAMES = {animal: "an animal cell", plant: "a plant cell", bact: "a bacterial cell"};
+  var cur = null, lastKind = null;
+  function make(){
+    var kinds = ["animal", "plant", "bact"].filter(function(k){ return k !== lastKind; }), kind = pick(kinds); lastKind = kind;
+    var svg = $("lblSvg"); svg.setAttribute("viewBox", kind === "bact" ? "0 0 360 200" : "0 0 360 250");
+    var A = drawCell(svg, kind, null);
+    var keys = shuffle(KINDS[kind]).slice(0, 4);
+    keys.forEach(function(k, i){
+      var p = A[k];
+      svg.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 11, style: st(V("acc"), V("surface"), 2)}));
+      svg.appendChild(sv("text", {x: p[0], y: p[1] + 4.5, "text-anchor": "middle", style: "font:700 13px var(--f-mono);fill:var(--surface)"}, String(i + 1)));
+    });
+    svg.setAttribute("aria-label", "Diagram of " + NAMES[kind] + " with 4 numbered pins");
+    var box = $("lblPins"); clear(box);
+    keys.forEach(function(k, i){
+      var lab = el("label", {"for": "pin-" + i}, "Pin " + (i + 1));
+      var s = el("select", {id: "pin-" + i}); s.appendChild(el("option", {value: ""}, "Choose…"));
+      KINDS[kind].slice().sort(function(a, b){ return PARTS[a].n < PARTS[b].n ? -1 : 1; }).forEach(function(o){ s.appendChild(el("option", {value: o}, PARTS[o].n)); });
+      lab.appendChild(s); lab.appendChild(el("span", {"class": "fb", id: "pinfb-" + i, "aria-live": "polite"}));
+      box.appendChild(lab);
+    });
+    cur = keys; $("lblFb").textContent = "This is " + NAMES[kind] + ". Name each pin."; $("lblFb").className = "fb";
+  }
+  $("lblCheck").addEventListener("click", function(){
+    var right = 0;
+    cur.forEach(function(k, i){
+      var v = $("pin-" + i).value, ok = v === k, fb = $("pinfb-" + i);
+      if (ok) right++;
+      fb.textContent = (ok ? "Correct. " : "No, this is the " + PARTS[k].n.toLowerCase() + ". ") + PARTS[k].f;
+      fb.className = "fb " + (ok ? "ok" : "no");
+    });
+    $("lblFb").textContent = right + " of 4 correct." + (right === 4 ? " Try a new cell." : " Read the functions, then try a new cell.");
+    $("lblFb").className = "fb " + (right === 4 ? "ok" : "no");
+  });
+  $("lblNew").addEventListener("click", make);
+  make();
+})();
+
+/* ---------- Investigation 4: cells in solutions ---------- */
+(function(){
+  var kind = "animal", sol = 0, ran = false;
+  var SOL = [{label: "Fresh water", dots: 4, res: "in"}, {label: "Matching solution", dots: 14, res: "none"}, {label: "Salty water", dots: 40, res: "out"}];
+  function draw(){
+    var svg = $("osSvg"); clear(svg);
+    svg.appendChild(sv("rect", {x: 6, y: 6, width: 348, height: 208, rx: 10, style: st(V("vac-fill"), V("vac"), 1.5)}));
+    var R = seeded(sol * 13 + 5);
+    for (var i = 0; i < SOL[sol].dots; i++) { var x = 14 + R() * 332, y = 14 + R() * 192; if (x > 80 && x < 280 && y > 30 && y < 190) continue; svg.appendChild(sv("circle", {cx: x, cy: y, r: 4, style: st(V("mito-fill"), V("mito"), 1.2)})); }
+    var st8 = ran ? SOL[sol].res : "none";
+    if (kind === "animal") {
+      if (st8 === "out") { var pts = []; for (var j = 0; j < 24; j++) { var a = j / 24 * 6.283, r = j % 2 ? 34 : 44; pts.push((180 + Math.cos(a) * r).toFixed(1) + "," + (110 + Math.sin(a) * r).toFixed(1)); } svg.appendChild(sv("polygon", {points: pts.join(" "), style: st(V("cyto"), V("memb"), 3)})); }
+      else svg.appendChild(sv("circle", {cx: 180, cy: 110, r: st8 === "in" ? 78 : 56, style: st(V("cyto"), V("memb"), 3)}));
+      svg.appendChild(sv("circle", {cx: 172, cy: 104, r: st8 === "out" ? 12 : 15, style: st(V("nuc-fill"), V("nuc"), 2)}));
+    } else {
+      svg.appendChild(sv("rect", {x: 100, y: 40, width: 160, height: 140, rx: 6, style: st(V("wall-fill"), V("wall"), 2)}));
+      if (st8 === "out") {
+        svg.appendChild(sv("ellipse", {cx: 180, cy: 110, rx: 46, ry: 36, style: st(V("cyto"), V("memb"), 3)}));
+        svg.appendChild(sv("ellipse", {cx: 186, cy: 112, rx: 20, ry: 14, style: st(V("vac-fill"), V("vac"), 2)}));
+      } else {
+        var ins = st8 === "in" ? 4 : 9;
+        svg.appendChild(sv("rect", {x: 100 + ins, y: 40 + ins, width: 160 - 2 * ins, height: 140 - 2 * ins, rx: 4, style: st(V("cyto"), V("memb"), 3)}));
+        var vi = st8 === "in" ? 14 : 28;
+        svg.appendChild(sv("rect", {x: 100 + vi + 16, y: 40 + vi, width: 160 - 2 * vi - 16, height: 140 - 2 * vi, rx: 14, style: st(V("vac-fill"), V("vac"), 2)}));
+      }
+      [[112, 56], [112, 160], [244, 60], [240, 162]].forEach(function(p){ if (st8 !== "out") chloro(svg, p[0] + 4, p[1], 90); });
+    }
+    if (ran) {
+      var col = V("vac");
+      [[18, 92, 70], [342, 268, 150]].forEach(function(d){
+        if (SOL[sol].res === "in") arrow(svg, d[0], d[2], d[1], d[2], col, {w: 3});
+        else if (SOL[sol].res === "out") arrow(svg, d[1], d[2], d[0], d[2], col, {w: 3});
+        else { arrow(svg, d[0], d[2] - 7, d[1], d[2] - 7, col, {w: 2}); arrow(svg, d[1], d[2] + 7, d[0], d[2] + 7, col, {w: 2}); }
+        txt(svg, (d[0] + d[1]) / 2, d[2] + 24, "water", "small", "middle");
+      });
+    } else txt(svg, 180, 205, "Make a prediction, then run the test.", "small", "middle");
+    svg.setAttribute("aria-label", (kind === "animal" ? "Animal" : "Plant") + " cell in " + SOL[sol].label.toLowerCase());
+  }
+  var OUT = {
+    animal: {in: "Water moved in by osmosis. The animal cell swelled up. With no wall to hold it, it could burst.", none: "Water moved in and out at the same rate. The cell kept its normal shape.", out: "Water moved out by osmosis. The animal cell shrank and its edges became wrinkled."},
+    plant: {in: "Water moved in by osmosis. The vacuole filled and pushed the membrane against the wall. The cell is firm, and the wall stops it from bursting. This keeps plants upright.", none: "Water moved in and out at the same rate. The cell is a little soft, like a slightly wilted plant.", out: "Water moved out by osmosis. The vacuole shrank and the membrane pulled away from the wall. The plant wilts."}
+  };
+  chipGroup($("osCell"), [{label: "Animal cell", k: "animal"}, {label: "Plant cell", k: "plant"}], function(it){ kind = it.k; ran = false; draw(); detail($("osDetail"), null, ["Choose a solution and a prediction."]); }, 0);
+  chipGroup($("osSol"), SOL, function(it, i){ sol = i; ran = false; draw(); detail($("osDetail"), null, ["Choose a prediction, then run the test."]); }, 0);
+  $("osRun").addEventListener("click", function(){
+    ran = true; draw();
+    var p = $("osPred").value, res = SOL[sol].res;
+    var verdict = !p ? "You did not make a prediction." : p === res ? "Your prediction was correct." : "Your prediction did not match. Compare the dissolved particles inside and outside the cell.";
+    detail($("osDetail"), SOL[sol].label + ": " + (res === "in" ? "water moves in" : res === "out" ? "water moves out" : "no overall change"), [OUT[kind][res], verdict]);
+  });
+})();
+
+/* ---------- Investigation 5: potato cores ---------- */
+(function(){
+  var C = [0, 1, 2, 3, 4, 5], rows = [];
+  function model(c){ return 14 * (0.9 - c) / (1 + 0.4 * c); }
+  function run(){
+    rows = C.map(function(c){ var s = 2 + Math.random(), d = model(c) + (Math.random() - 0.5) * 1.6; return {c: c, s: s, f: s * (1 + d / 100)}; });
+    var tb = document.querySelector("#potTable tbody"); clear(tb);
+    rows.forEach(function(r, i){
+      r.f = Math.round(r.f * 100) / 100; r.s = Math.round(r.s * 100) / 100; r.p = (r.f - r.s) / r.s * 100;
+      var tr = el("tr");
+      tr.appendChild(el("td", null, String(r.c))); tr.appendChild(el("td", null, r.s.toFixed(2))); tr.appendChild(el("td", null, r.f.toFixed(2)));
+      var td = el("td"), inp = el("input", {type: "text", id: "pot-" + i, inputmode: "decimal", autocomplete: "off", "aria-label": "Percent change for " + r.c + "% salt", style: "width:6em"}); td.appendChild(inp); tr.appendChild(td);
+      var td2 = el("td"), b = el("button", {"class": "btn ghost", type: "button"}, "Check"), out = el("span", {"class": "fb", "aria-live": "polite"});
+      b.addEventListener("click", function(){
+        var v = parseNum(inp.value);
+        if (isNaN(v)) { out.textContent = " Type a number."; out.className = "fb"; return; }
+        var ok = Math.abs(v - r.p) <= 0.6;
+        out.textContent = ok ? " Correct" : " " + (r.p >= 0 ? "+" : "") + fmt(r.p, 1) + "%"; out.className = "fb " + (ok ? "ok" : "no");
+      });
+      td2.appendChild(b); td2.appendChild(out); tr.appendChild(td2); tb.appendChild(tr);
+    });
+    graph(); $("potFb").textContent = "";
+  }
+  function graph(){
+    var svg = $("potGraph"); clear(svg);
+    var x0 = 50, x1 = 400, y0 = 20, y1 = 190;
+    function X(c){ return x0 + c / 5 * (x1 - x0); } function Y(p){ return y0 + (20 - p) / 45 * (y1 - y0); }
+    [-25, -20, -15, -10, -5, 0, 5, 10, 15, 20].forEach(function(p){ svg.appendChild(sv("line", {x1: x0, y1: Y(p), x2: x1, y2: Y(p), style: st("none", p === 0 ? V("ink") : V("line"), p === 0 ? 1.5 : 1)})); if (p % 10 === 0 || p === -25) txt(svg, x0 - 6, Y(p) + 4, (p > 0 ? "+" : "") + p, "small", "end"); });
+    C.forEach(function(c){ txt(svg, X(c), y1 + 16, String(c), "small", "middle"); });
+    txt(svg, (x0 + x1) / 2, 226, "Salt concentration (%)", "small", "middle");
+    var t = txt(svg, 14, 105, "Mass change (%)", "small", "middle"); t.setAttribute("transform", "rotate(-90 14 105)");
+    svg.appendChild(sv("polyline", {points: rows.map(function(r){ return X(r.c) + "," + Y(r.p).toFixed(1); }).join(" "), style: st("none", V("memb"), 2)}));
+    rows.forEach(function(r){ svg.appendChild(sv("circle", {cx: X(r.c), cy: Y(r.p), r: 5, style: st(V("memb"), V("surface"), 1.5)})); });
+    txt(svg, x1, y0 - 6, "Practice data (made up)", "small", "end");
+  }
+  $("potRun").addEventListener("click", run);
+  $("potZeroCheck").addEventListener("click", function(){
+    var v = parseNum($("potZero").value), fb = $("potFb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb"; return; }
+    var ok = v >= 0.5 && v <= 1.4;
+    fb.textContent = ok ? "Good estimate. The line crosses 0% at about 1% salt. There, the solution matches the potato cells, so water moves in and out equally." : "Look for where the line crosses the 0% line on the graph. That is about 1% salt.";
+    fb.className = "fb " + (ok ? "ok" : "no");
+  });
+  run();
+})();
+
+/* ---------- Investigation 6: microbe case file ---------- */
+(function(){
+  var sel = $("caseSel"), Q = ["What kind of organism is it?", "Which host or hosts does it affect?", "How does it reach or spread to its host?", "What does it do to the host’s cells or body?", "How can it be prevented or treated? (Or how is it helpful?)", "Sources I used"];
+  store.cases = store.cases || {};
+  MICROBES.forEach(function(m, i){ sel.appendChild(el("option", {value: i}, m.n)); });
+  function show(){
+    var m = MICROBES[+sel.value];
+    detail($("caseCard"), m.n, [m.eff, m.care], "Starter card · " + m.t);
+    var f = $("caseForm"); clear(f);
+    var data = store.cases[m.k] || [];
+    Q.forEach(function(q, i){
+      var lab = el("label", {"class": "field", "for": "case-" + i}, q);
+      var ta = el("textarea", {id: "case-" + i, style: "min-height:4em"}); ta.value = data[i] || "";
+      ta.addEventListener("input", function(){ var d = store.cases[m.k] || []; d[i] = ta.value; store.cases[m.k] = d; save(); $("caseSaved").textContent = "Saved in this browser."; });
+      lab.appendChild(ta); f.appendChild(lab);
+    });
+    $("caseSaved").textContent = "";
+  }
+  sel.addEventListener("change", show); show();
+})();
+
+/* ---------- Investigation 7: process detective ---------- */
+(function(){
+  var BINS = ["Cellular respiration", "Diffusion", "Osmosis", "Protein formation"];
+  var CASES = [
+    ["A muscle cell uses glucose and oxygen so it can contract.", 0, "Releasing energy from glucose with oxygen is cellular respiration."],
+    ["Carbon dioxide made inside a cell moves out into the blood, where there is less of it.", 1, "Particles moving from more concentrated to less concentrated is diffusion."],
+    ["A wilted lettuce leaf becomes crisp after sitting in fresh water.", 2, "Water moved into the leaf cells across their membranes. That is osmosis."],
+    ["A ribosome joins building blocks into a long chain, following instructions from the nucleus.", 3, "Building a protein at a ribosome is protein formation."],
+    ["Oxygen in the lungs moves into blood cells that have less oxygen.", 1, "Oxygen moves from high to low concentration by diffusion."],
+    ["A cell in salty water loses water and shrinks.", 2, "Water left the cell toward the side with more dissolved particles: osmosis."],
+    ["A yeast cell in bread dough releases energy from sugar and gives off carbon dioxide.", 0, "Releasing energy from sugar is cellular respiration. The gas makes the dough rise."],
+    ["A cell makes a new protein to repair its membrane.", 3, "Making a protein for a specific job is protein formation."],
+    ["A drop of food colouring slowly spreads through a glass of still water.", 1, "The dye particles spread from more to less concentrated: diffusion."],
+    ["A plant root cell takes in water from moist soil that has very few dissolved particles.", 2, "Water crossing the membrane into the root cell is osmosis."],
+    ["A busy nerve cell needs a steady supply of energy, so it has many mitochondria.", 0, "Mitochondria carry out cellular respiration to provide energy."],
+    ["A cell builds proteins that speed up the reactions inside it.", 3, "Proteins that do specific jobs are made by protein formation."]
+  ];
+  var order = shuffle(CASES), idx = 0, right = 0, tried = 0, answered = false;
+  var bins = $("pdBins");
+  BINS.forEach(function(b, i){
+    var btn = el("button", {"class": "bin", type: "button"}, b);
+    btn.addEventListener("click", function(){
+      if (answered) return;
+      var c = order[idx % order.length], ok = i === c[1];
+      answered = true; tried++; if (ok) right++;
+      $("pdFb").textContent = (ok ? "Correct. " : "Not quite: this is " + BINS[c[1]].toLowerCase() + ". ") + c[2];
+      $("pdFb").className = "fb " + (ok ? "ok" : "no");
+      $("pdScore").textContent = right + " correct out of " + tried;
+    });
+    bins.appendChild(btn);
+  });
+  function next(){ answered = false; $("pdQ").textContent = order[idx % order.length][0]; $("pdFb").textContent = ""; }
+  $("pdNext").addEventListener("click", function(){ idx++; next(); });
+  next();
+})();
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Plant only or both?", bins: ["Plant cells only", "Both plant and animal cells"], items: [
+    ["Cell wall", 0, "Plant cells have a stiff wall outside the membrane. Animal cells do not."],
+    ["Chloroplasts", 0, "Chloroplasts capture light for photosynthesis. Animal cells have none."],
+    ["Cell membrane", 1, "Every cell has a membrane that controls what enters and leaves."],
+    ["Nucleus", 1, "Both plant and animal cells keep their genetic instructions in a nucleus."],
+    ["Cytoplasm", 1, "Both kinds of cell are filled with cytoplasm."],
+    ["Mitochondria", 1, "Plants need energy too, so plant cells have mitochondria as well."],
+    ["Ribosomes", 1, "All cells build proteins with ribosomes."],
+    ["Vacuoles", 1, "Both have vacuoles. Plant cells usually have one large central vacuole."],
+    ["One large central vacuole that fills most of the cell", 0, "This is typical of plant cells. Animal cells have only small vacuoles."],
+    ["Makes sugar using light energy", 0, "Photosynthesis happens in chloroplasts, found in plant cells."],
+    ["Releases energy from food", 1, "Cellular respiration in mitochondria happens in both."],
+    ["Gives the cell a rigid box shape", 0, "That is the cell wall, found in plant cells."]
+  ]},
+  {label: "Nucleus or no nucleus?", bins: ["Has a nucleus", "No nucleus"], items: [
+    ["Strep bacterium", 1, "All bacteria have no nucleus. Their DNA sits in the cytoplasm."],
+    ["Rhizobium bacterium in a pea root", 1, "It is a bacterium, so it has no nucleus."],
+    ["Onion skin cell", 0, "Plant cells have a nucleus. Iodine stain makes it easy to see."],
+    ["Cheek cell", 0, "Animal cells have a nucleus."],
+    ["Yeast cell", 0, "Yeast is a single-celled fungus, and its cell has a nucleus."],
+    ["Giardia", 0, "Giardia is a protist. Its cell actually has two nuclei."],
+    ["Paramecium", 0, "Paramecium is a protist with a nucleus."],
+    ["Bacterium in yogurt", 1, "Bacteria have no nucleus."],
+    ["Elodea leaf cell", 0, "Plant cells have a nucleus."],
+    ["Mature human red blood cell (challenge)", 1, "It loses its nucleus as it matures, which leaves more room to carry oxygen. It is part of a multicellular organism, not a unicellular one."]
+  ]},
+  {label: "Which process?", bins: ["Cellular respiration", "Diffusion", "Osmosis", "Protein formation"], items: [
+    ["Glucose and oxygen react to release energy", 0, "That is cellular respiration, in the mitochondria."],
+    ["Oxygen moves into a cell where there is less oxygen", 1, "Movement from high to low concentration is diffusion."],
+    ["Water moves across a membrane toward the saltier side", 2, "Diffusion of water across a semi-permeable membrane is osmosis."],
+    ["A ribosome builds a chain of building blocks", 3, "That is protein formation."],
+    ["Carbon dioxide leaves the cell", 1, "Carbon dioxide diffuses from inside, where there is more, to outside."],
+    ["A raisin swells after soaking in water", 2, "Water moved into the raisin’s cells by osmosis."],
+    ["Makes carbon dioxide and water as wastes", 0, "These are the products of cellular respiration."],
+    ["Makes the materials that build new cell parts", 3, "Proteins build many cell parts."],
+    ["Perfume spreads across a room", 1, "Perfume particles spread out by diffusion."],
+    ["A slug shrivels when salt is sprinkled on it", 2, "Water leaves its cells toward the salt by osmosis."]
+  ]},
+  {label: "Microscope parts", bins: ["Eyepiece", "Objective lens", "Stage", "Focus knobs", "Diaphragm"], items: [
+    ["The lens you look into, usually 10×", 0, "That is the eyepiece, or ocular lens."],
+    ["Lenses that click into place above the slide", 1, "The objectives sit on the revolving nosepiece."],
+    ["Where the slide sits", 2, "The slide rests on the stage, held by clips."],
+    ["Sharpens the image by moving the stage up or down", 3, "The coarse and fine focus knobs do this."],
+    ["Controls how much light reaches the slide", 4, "The diaphragm opens and closes like the iris of your eye."],
+    ["Comes in 4×, 10× and 40× on most school microscopes", 1, "These are the objective lenses."],
+    ["Use only the fine one on high power", 3, "The coarse knob could crash the lens into the slide."],
+    ["Has a hole that light passes up through", 2, "Light comes through a hole in the stage."],
+    ["Multiplied by the objective to find total magnification", 0, "Total = eyepiece × objective."],
+    ["Close it a little to see clear cells better", 4, "Less light can give more contrast."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Cell", "The basic unit of life: the smallest unit that can carry out all the processes of life."],
+  ["Unicellular", "Made of only one cell, such as a bacterium or a yeast."],
+  ["Multicellular", "Made of many cells that share the work, such as a plant or a person."],
+  ["Micrometre (µm)", "One thousandth of a millimetre. Most cells are measured in micrometres."],
+  ["Cell theory", "All living things are made of cells, the cell is the basic unit of life, and new cells come from existing cells."],
+  ["Compound light microscope", "A microscope that uses light and two sets of lenses, the eyepiece and an objective."],
+  ["Total magnification", "Eyepiece magnification × objective magnification."],
+  ["Field of view", "The circle of the slide you can see through the microscope. It gets smaller as magnification increases."],
+  ["Electron microscope", "A microscope that uses a beam of electrons. It can show tiny structures such as ribosomes."],
+  ["Organelle", "A specialized structure inside a cell that does a particular job."],
+  ["Cell membrane", "The thin, semi-permeable outer layer that controls what enters and leaves the cell."],
+  ["Nucleus", "Holds the cell’s genetic instructions and controls its activities."],
+  ["Cytoplasm", "The jelly-like fluid that fills the cell and holds the organelles."],
+  ["Mitochondria", "Organelles that release energy from food by cellular respiration."],
+  ["Ribosomes", "Tiny structures that build proteins."],
+  ["Vacuole", "A sac that stores water, food or wastes. Plant cells usually have one large central vacuole."],
+  ["Cell wall", "A stiff layer outside the membrane of plant cells that supports the cell."],
+  ["Chloroplast", "A green organelle in plant cells that uses light energy to make sugar."],
+  ["Bacteria", "Unicellular organisms with no nucleus. Their DNA sits in the cytoplasm."],
+  ["Protist", "A mostly unicellular organism whose cell has a nucleus, such as an amoeba or Paramecium."],
+  ["Microbe", "A living thing too small to see without a microscope."],
+  ["Cellular respiration", "The process in mitochondria where glucose and oxygen react to release energy, making carbon dioxide and water."],
+  ["Diffusion", "Movement of particles from where they are more concentrated to where they are less concentrated."],
+  ["Osmosis", "Diffusion of water across a semi-permeable membrane, toward the side with more dissolved particles."],
+  ["Protein formation", "Building proteins at the ribosomes, using instructions from the nucleus."],
+  ["Semi-permeable", "Lets some particles through but not others. Also called selectively permeable."],
+  ["Stain", "A dye added to a slide to make cell parts easier to see, such as iodine or methylene blue."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Why is the cell called the basic unit of life?", ["It is the smallest unit that can carry out all life processes", "It is the largest part of an organism", "It is only found in animals", "It contains no water"], "A single cell can take in materials, release energy, grow and reproduce."],
+  ["Which organism is unicellular?", ["A bacterium", "A spruce tree", "A moose", "A mushroom"], "A bacterium is a whole organism made of one cell. Most mushrooms are multicellular fungi."],
+  ["A red blood cell is a small, flexible disc. How does its shape help it?", ["It can squeeze through tiny blood vessels", "It can make sugar from light", "It can carry signals a long way", "It can swim with a tail"], "Cell shape fits function. A small, bendy disc fits through narrow vessels."],
+  ["What did Robert Hooke see in 1665?", ["Tiny boxes in cork, which he called cells", "Living bacteria in pond water", "Ribosomes", "Cells dividing"], "Hooke named cells after the little boxes he saw in a cork slice."],
+  ["Which statement is part of the cell theory?", ["New cells come from existing cells", "Only animals are made of cells", "Cells form from non-living matter", "All cells have a cell wall"], "The cell theory says living things are made of cells, cells are the basic unit of life and new cells come from existing cells."],
+  ["Why could scientists see ribosomes only after the electron microscope was invented?", ["Ribosomes are too small for light microscopes to show", "Ribosomes only appear in dead cells", "Ribosomes are invisible to the human eye at any size", "Light destroys ribosomes"], "Electron microscopes can show much smaller structures than light microscopes."],
+  ["An eyepiece is 10× and the objective is 40×. What is the total magnification?", ["400×", "50×", "4×", "30×"], "Total = 10 × 40 = 400×."],
+  ["An eyepiece is 15× and the objective is 10×. What is the total magnification?", ["150×", "25×", "1.5×", "5×"], "Total = 15 × 10 = 150×."],
+  ["The total magnification is 100× and the eyepiece is 10×. What is the objective?", ["10×", "1000×", "90×", "110×"], "Objective = 100 ÷ 10 = 10×."],
+  ["Which focus knob should you use on high power?", ["Only the fine focus", "Only the coarse focus", "Both together", "Neither, the image is always sharp"], "The coarse knob moves too far and can crash the lens into the slide."],
+  ["The field of view at 100× is 1800 µm. Nine cells fit across. About how wide is each cell?", ["200 µm", "1800 µm", "9 µm", "16 200 µm"], "1800 µm ÷ 9 = 200 µm."],
+  ["Which organelle controls the cell’s activities?", ["Nucleus", "Vacuole", "Cell wall", "Cytoplasm"], "The nucleus holds the genetic instructions that control the cell."],
+  ["Which organelle releases energy from food?", ["Mitochondria", "Ribosomes", "Chloroplasts", "Cell membrane"], "Mitochondria carry out cellular respiration."],
+  ["Which structure builds proteins?", ["Ribosomes", "Vacuoles", "Cell wall", "Nucleus membrane"], "Ribosomes join building blocks into proteins."],
+  ["Which two parts are found in plant cells but not animal cells?", ["Cell wall and chloroplasts", "Nucleus and cytoplasm", "Mitochondria and ribosomes", "Membrane and vacuoles"], "Plant cells have a cell wall and chloroplasts. Animal cells have neither."],
+  ["An onion bulb cell has no chloroplasts. Why?", ["It grows underground with no light", "Onions are not plants", "Its cell wall blocks them", "It has no nucleus"], "Chloroplasts form in plant parts that get light. Bulbs and roots usually have none."],
+  ["Where is the DNA in a bacterial cell?", ["In a loop in the cytoplasm", "In the nucleus", "In the mitochondria", "In the cell wall"], "Bacteria have no nucleus, so their DNA sits in the cytoplasm."],
+  ["Which unicellular organism has no nucleus?", ["A bacterium", "A yeast", "An amoeba", "A Paramecium"], "Bacteria have no nucleus. Yeasts and protists do."],
+  ["Giardia causes cramps and diarrhea after people drink untreated lake water. What kind of organism is it?", ["A protist", "A bacterium", "A virus", "A plant"], "Giardia is a unicellular protist that lives in the intestine."],
+  ["Clubroot makes canola roots swell. Why does the plant wilt?", ["Damaged roots cannot take up enough water and nutrients", "The leaves lose their chloroplasts", "It makes too much sugar", "The roots grow too long"], "Infected root cells swell into clubs that cannot do their job."],
+  ["Which statement about microbes is true?", ["Most are harmless, and many are helpful", "All bacteria cause disease", "Fungi are always unicellular", "Microbes cannot affect plants"], "Most microbes are harmless or helpful, like the gut bacteria that help us digest food."],
+  ["What is the word equation for cellular respiration?", ["glucose + oxygen → carbon dioxide + water + energy", "carbon dioxide + water → glucose + oxygen", "water + salt → osmosis", "protein + DNA → ribosome"], "Cells release energy by reacting glucose with oxygen."],
+  ["Oxygen moves from the blood, where there is a lot, into a cell, where there is little. What is this?", ["Diffusion", "Osmosis", "Protein formation", "Respiration"], "Particles moving from high to low concentration is diffusion."],
+  ["A potato core is left in very salty water. What happens to its mass?", ["It decreases, because water leaves by osmosis", "It increases, because salt enters", "It stays the same", "It doubles"], "Water moves out toward the side with more dissolved particles."],
+  ["What does semi-permeable mean?", ["Some particles can pass through, but others cannot", "Nothing can pass through", "Everything can pass through", "Only large particles can pass through"], "The membrane lets small particles like water and oxygen through but blocks large ones."],
+  ["A plant cell is placed in fresh water. What happens?", ["Water moves in, and the cell becomes firm but does not burst", "Water moves out, and the cell shrinks", "The cell bursts", "Nothing happens"], "Water enters by osmosis. The cell wall stops the cell from bursting."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain why the cell is called the basic unit of life. Give an example of a unicellular and a multicellular organism.", a: "A cell is the smallest unit that can carry out all the processes of life, such as taking in nutrients, releasing energy, growing and reproducing. A bacterium is unicellular: the whole organism is one cell. A human is multicellular, made of trillions of cells that share the work.", k: ["Smallest unit that carries out life processes", "Example of a unicellular organism", "Example of a multicellular organism"]},
+  {q: "Describe how microscopes advanced the study of cells. Use at least two examples.", a: "Before microscopes, nobody knew cells existed. Hooke’s microscope showed the boxes in cork that he called cells. Van Leeuwenhoek’s lenses showed living single-celled organisms. Later, electron microscopes showed tiny structures such as ribosomes. Each better tool let scientists see smaller things and build the cell theory.", k: ["Cells were unknown before microscopes", "At least two examples from history", "Better tools show smaller structures"]},
+  {q: "A microscope has a 10× eyepiece and objectives of 4×, 10× and 40×. Find all three total magnifications. Show your work.", a: "10 × 4 = 40×. 10 × 10 = 100×. 10 × 40 = 400×.", k: ["Multiplies eyepiece by objective", "40×, 100× and 400×", "Includes the × unit"]},
+  {q: "Describe the steps to focus on a slide of onion cells, from low power to high power.", a: "Put the slide on the stage and hold it with the clips. Start with the 4× objective. Use the coarse focus to find the image, then the fine focus to sharpen it. Center the cells, then switch to 10× and refocus with the fine knob. Center again and switch to 40×, using only the fine focus.", k: ["Start on lowest power", "Coarse then fine focus", "Center before changing power", "Only fine focus on high power"]},
+  {q: "List four rules for a scientific drawing of cells seen under a microscope.", a: "Use a sharp pencil. Draw only what you see. Use clear outlines with no shading. Draw label lines with a ruler so they do not cross. Add a title and the total magnification.", k: ["Pencil and clear outlines", "Draw only what you see", "Ruled, non-crossing label lines", "Title and magnification"]},
+  {q: "Name three organelles found in both plant and animal cells and give the function of each.", a: "The nucleus holds the genetic instructions and controls the cell. Mitochondria release energy from food by cellular respiration. Ribosomes build proteins. (The cell membrane, cytoplasm and vacuoles are also correct.)", k: ["Three correct organelles", "Correct function for each", "Clear link between part and job"]},
+  {q: "Compare a plant cell, an animal cell and a bacterial cell. Name one difference for each pair.", a: "A plant cell has a cell wall and chloroplasts, but an animal cell does not. An animal cell has a nucleus, but a bacterial cell does not. A plant cell has chloroplasts and mitochondria, while a bacterial cell has neither and is much smaller.", k: ["Plant vs animal: wall or chloroplasts", "Animal vs bacterium: nucleus", "Plant vs bacterium: a correct difference"]},
+  {q: "Describe how one unicellular organism affects the health of another organism.", a: "Giardia is a protist. People or animals swallow it in untreated water. It attaches to the lining of the small intestine and stops it from absorbing food well, which causes cramps and diarrhea. Boiling or filtering water prevents it.", k: ["Names the organism and its type", "How it reaches the host", "Effect on the host’s cells or organs", "Prevention or treatment"]},
+  {q: "Explain the difference between diffusion and osmosis.", a: "Diffusion is the movement of any particles from where they are more concentrated to where they are less concentrated. Osmosis is a special kind of diffusion: the movement of water across a semi-permeable membrane toward the side with more dissolved particles.", k: ["Diffusion: high to low concentration", "Osmosis is water only", "Osmosis crosses a semi-permeable membrane"]},
+  {q: "Name the four processes that keep a cell’s internal environment steady and say what each one provides.", a: "Cellular respiration provides energy. Diffusion moves vital substances like oxygen in and wastes like carbon dioxide out. Osmosis moves water in or out. Protein formation makes proteins for specific jobs.", k: ["Respiration: energy", "Diffusion: vital substances", "Osmosis: water", "Protein formation: proteins for jobs"]}
+];
+var LONG = [
+  {q: "Design an investigation to test how salt concentration affects osmosis in potato cores. Include your variables, steps, a data table and how you would analyze the results.", a: "Manipulated variable: salt concentration (0%, 1%, 2%, 3%, 4%, 5%). Responding variable: percent change in mass. Controlled variables: the same potato, core size, soaking time, temperature and volume of solution. Steps: cut six equal cores, find each starting mass, soak each in a different solution for 24 hours, pat dry and find the final mass. Table: concentration, starting mass, final mass, percent change. Calculate percent change, graph it against concentration and find where the line crosses 0%. Cores in weak solutions gain mass because water moves in; cores in strong solutions lose mass because water moves out.", k: ["Manipulated, responding and controlled variables", "Clear repeatable steps", "Data table with percent change", "Graph and find the 0% crossing", "Explains results using osmosis"]},
+  {q: "A classmate says, “All microbes are dangerous, so we should get rid of them.” Do you agree? Use at least two examples of microbes and their effects on other organisms.", a: "I disagree. Some microbes cause disease: strep bacteria cause strep throat and clubroot damages canola roots. But most microbes are harmless and many are helpful. Rhizobium bacteria help peas and lentils get nitrogen, gut bacteria help us digest food and yeast makes bread rise. Getting rid of all microbes would harm people, crops and ecosystems. It is better to prevent harmful ones with safe water, hand washing and good farming practices.", k: ["Clear position", "At least one harmful example with its effect", "At least one helpful example with its effect", "Prevention instead of removal"]},
+  {q: "Explain how a cell keeps its internal environment steady. Describe the role of the membrane and at least three organelles, and link them to cellular respiration, diffusion, osmosis and protein formation.", a: "The semi-permeable membrane controls what enters and leaves. Oxygen diffuses in and carbon dioxide diffuses out because of concentration differences. Water moves in or out by osmosis. Mitochondria use glucose and oxygen in cellular respiration to release energy. The nucleus sends instructions to ribosomes, which build proteins that repair cell parts and speed up reactions. Vacuoles store water and wastes. Working together, these keep conditions inside the cell steady.", k: ["Membrane is semi-permeable", "Diffusion of oxygen and carbon dioxide", "Osmosis of water", "Mitochondria and respiration", "Nucleus and ribosomes with protein formation"]},
+  {q: "Use what you learned about microscopes to explain why the cell theory could not have been developed without them. Include how magnification works.", a: "Most cells are much smaller than 0.1 mm, the smallest thing our eyes can see. A compound microscope multiplies the eyepiece and objective (for example 10 × 40 = 400×), so a 60 µm cheek cell looks about 24 mm wide. Only after Hooke and van Leeuwenhoek used microscopes could people see that organisms are made of cells, and later microscopes showed cells dividing. These observations became the three ideas of the cell theory.", k: ["Cells are too small for the eye", "Total magnification is a product", "Historical observations", "Links observations to the cell theory"]}
+];
+
+/* ---------- Coverage ---------- */
+var COVER = [
+  ["LS1.K1", "Learn: Lesson 1 (cell size ladder). Quiz, Flashcards, Written Review short answer 1."],
+  ["LS1.K2", "Learn: Lesson 2 (microscope timeline and cell theory). Quiz, Flashcards, Written Review short answer 2, extended 4."],
+  ["LS1.K3", "Learn: Lesson 3 (clickable microscope and objective selector). Lab Bench: Investigations 1 and 2. Sort It: microscope parts deck. Quiz, Written Review short answer 3."],
+  ["LS1.K4", "Learn: Lessons 1 and 4 (organelles in unicellular and multicellular organisms). Flashcards, Quiz."],
+  ["LS1.K5", "Learn: Lesson 4 (animal cell with selectable organelles). Lab Bench: Investigation 3. Sort It: plant only or both deck. Quiz, Flashcards, Written Review short answer 6."],
+  ["LS1.K6", "Learn: Lesson 5 (plant and animal toggle). Lab Bench: Investigations 3 and 4. Sort It: plant only or both deck. Quiz, Written Review short answer 7."],
+  ["LS1.K7", "Learn: Lesson 6 (bacterial cell). Sort It: nucleus or no nucleus deck. Quiz, Written Review short answer 7."],
+  ["LS1.K8", "Learn: Lesson 7 (microbe gallery). Lab Bench: Investigation 6. Quiz, Written Review short answer 8, extended 2."],
+  ["LS1.K9", "Learn: Lessons 8 and 9 (cell at work, particle tank). Lab Bench: Investigation 7. Sort It: which process deck. Quiz, Written Review short answer 10, extended 3."],
+  ["LS1.K10", "Learn: Lesson 9 (membrane particle tank). Lab Bench: Investigations 4 and 5. Quiz, Flashcards, Written Review short answer 9."],
+  ["LS1.S1", "Lab Bench: Investigation 1 (virtual microscope: focus, stain, power changes, safety). Learn: Lesson 3. Written Review short answer 4."],
+  ["LS1.S2", "Learn: Lesson 3. Lab Bench: Investigation 2 (calculator and randomized practice) and Investigation 1 readout. Quiz, Written Review short answer 3."],
+  ["LS1.S3", "Lab Bench: Investigation 1 (cell count and size estimate) and Investigation 3 (drawing checklist and labelling). Written Review short answer 5."],
+  ["LS1.S4", "Learn: Lessons 4 to 6. Lab Bench: Investigation 3 (randomized labelling). Sort It: plant only or both deck."],
+  ["LS1.S5", "Learn: Lessons 4 to 6 (function shown for each part). Lab Bench: Investigation 3 feedback. Quiz, Written Review short answer 6."],
+  ["LS1.S6", "Lab Bench: Investigation 6 (microbe case file with saved research organizer). Learn: Lesson 7. Written Review short answer 8, extended 2."],
+  ["LS1.S7", "Learn: Lesson 9 (diffusion and osmosis runs). Lab Bench: Investigations 4 and 5 (cells in solutions, potato cores). Written Review extended 1."],
+  ["LS1.S8", "Learn: Lesson 8. Lab Bench: Investigation 7 (process detective). Sort It: which process deck. Written Review short answer 10, extended 3."]
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+
+/* ---------- Coverage ---------- */
+var STMT = {"LS1.K1": "Cells are the basic unit of life and vary in size, shape, and function.", "LS1.K2": "Microscopes have enabled and advanced the study of cells.", "LS1.K3": "The total magnification of a compound light microscope is the product of the magnification power of the microscope’s lenses.", "LS1.K4": "Organelles are specialized structures that support specific functions within the cells of unicellular and multicellular organisms.", "LS1.K5": "Organelles found in both plant and animal cells include\n• cell membrane\n• nucleus\n• cytoplasm\n• mitochondria\n• ribosomes\n• vacuoles", "LS1.K6": "Organelles found only in plant cells include the cell wall and chloroplasts.", "LS1.K7": "Some unicellular organisms, including bacteria, have no nucleus.", "LS1.K8": "Some unicellular organisms, such as bacteria, fungi, and protists, can affect the health of humans and other multicellular organisms.", "LS1.K9": "Processes that regulate the internal environment of a cell include\n• cellular respiration, which provides energy\n• diffusion, which enables movement of vital substances\n• osmosis, which enables movement of water\n• protein formation, which supports specific functions", "LS1.K10": "The semi-permeable membrane of the cell enables diffusion and osmosis.", "LS1.S1": "Use a microscope to study cells.", "LS1.S2": "Calculate total magnification of a microscope.", "LS1.S3": "Create diagrams of cells based on a microscope image.", "LS1.S4": "Identify organelles in plant and animal cells.", "LS1.S5": "Describe the function of organelles.", "LS1.S6": "Research how a unicellular organism can affect the health of another organism.", "LS1.S7": "Investigate the processes of diffusion and osmosis.", "LS1.S8": "Describe processes that regulate the internal environment of cells."};
+(function(){
+  var tb = document.querySelector("#covTable tbody");
+  COVER.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, STMT[r[0]])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[1]));
+    tb.appendChild(tr);
+  });
+})();
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+requestAnimationFrame(loop);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,1423 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/periodic-table-lab/"><meta name="description" content="Information about elements and their properties can be determined by using the periodic table."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Periodic Table Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a chemistry bench notebook built around the table itself. Sticky tab strip, then lessons that pair a short reading column with a live tile, table or particle model. Violet marks metals, teal marks non-metals, amber marks metalloids, Grade 8 blue marks codes and labels. */
+:root{
+  --bg:#EDF1F5; --surface:#FFFFFF; --surface-2:#F4F7FA; --ink:#14202D; --muted:#4F5E6E; --line:#CFD8E2;
+  --g8:#1D5FA8; --g8-soft:#DFEAF6;
+  --met:#5B4596; --met-soft:#EAE5F6; --non:#0E6E62; --non-soft:#DCF0EC; --mtd:#8A5F00; --mtd-soft:#F6ECD2; --unk:#56626E; --unk-soft:#E6EAEE;
+  --a1:#B3372C; --a2:#1D5FA8; --a3:#8A5F00; --a4:#0E6E62;
+  --good:#2C7445; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141B; --surface:#161E27; --surface-2:#1B2530; --ink:#E3EAF1; --muted:#9DAAB8; --line:#2B3744;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --met:#B9A9F2; --met-soft:#262040; --non:#6FD0C0; --non-soft:#11302B; --mtd:#E9C460; --mtd-soft:#352A10; --unk:#A9B5C1; --unk-soft:#232C35;
+  --a1:#F2897D; --a2:#7DB0F0; --a3:#E9C460; --a4:#6FD0C0;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#161E27; --surface-2:#1B2530; --ink:#E3EAF1; --muted:#9DAAB8; --line:#2B3744;
+  --g8:#7DB0F0; --g8-soft:#18283C;
+  --met:#B9A9F2; --met-soft:#262040; --non:#6FD0C0; --non-soft:#11302B; --mtd:#E9C460; --mtd-soft:#352A10; --unk:#A9B5C1; --unk-soft:#232C35;
+  --a1:#F2897D; --a2:#7DB0F0; --a3:#E9C460; --a4:#6FD0C0;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g8)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g8);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g8)}
+.mono{font-family:var(--f-mono)}
+.hint{font-size:.86rem;color:var(--muted)}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .m{color:var(--met)} header h1 .n{color:var(--non)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson.wide{grid-template-columns:minmax(0,1fr)}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g8);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--g8-soft);color:var(--g8)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g8-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g8)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.05rem;margin:0}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+.shell{fill:none;stroke:var(--line);stroke-width:1.6}
+.shell.val{stroke:var(--g8);stroke-width:2.2}
+.nuc{fill:var(--surface-2);stroke:var(--muted);stroke-width:1.5}
+.ef{fill:var(--mtd)} .ef.val{fill:var(--g8)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:2px solid currentColor}
+
+/* tiles */
+.tile{display:grid;grid-template-rows:auto auto auto auto;gap:2px;justify-items:center;border:3px solid var(--ink);border-radius:10px;background:var(--surface);padding:12px 14px;min-width:150px;width:fit-content;margin:0 auto;text-align:center}
+.tile .z{font-family:var(--f-mono);font-size:1rem;font-weight:600;justify-self:start}
+.tile .sym{font-family:var(--f-display);font-size:3.4rem;font-weight:800;line-height:1}
+.tile .nm{font-weight:700}
+.tile .ms{font-family:var(--f-mono);font-size:.9rem}
+.tile .st{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tile.c-m{border-color:var(--met)} .tile.c-n{border-color:var(--non)} .tile.c-d{border-color:var(--mtd)} .tile.c-u{border-color:var(--unk)}
+.anat{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:520px){.anat{grid-template-columns:minmax(0,1fr)}}
+.anat .tile{gap:4px}
+.part{border:2px dashed transparent;background:none;border-radius:6px;padding:0 6px;cursor:pointer;color:inherit}
+.part:hover,.part[aria-pressed="true"]{border-color:var(--g8);background:var(--g8-soft)}
+
+/* periodic table */
+.ptwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px}
+.pt{display:grid;grid-template-columns:repeat(18,minmax(34px,1fr));gap:3px;min-width:680px}
+.pt .gap{grid-column:1/-1;height:8px}
+.pt .lab{font-family:var(--f-mono);font-size:.62rem;color:var(--muted);text-align:center;align-self:end}
+.cell{display:grid;grid-template-rows:auto 1fr;padding:2px 3px;border:1.5px solid var(--line);background:var(--surface-2);border-radius:4px;cursor:pointer;min-height:42px;text-align:left;line-height:1.1;color:var(--ink)}
+.cell .cz{font-family:var(--f-mono);font-size:.56rem;color:var(--muted)}
+.cell .cs{font-family:var(--f-display);font-weight:800;font-size:.95rem;justify-self:center;align-self:center}
+.cell.c-m{background:var(--met-soft);border-color:var(--met)}
+.cell.c-n{background:var(--non-soft);border-color:var(--non)}
+.cell.c-d{background:var(--mtd-soft);border-color:var(--mtd)}
+.cell.c-u{background:var(--unk-soft);border-color:var(--unk);border-style:dashed}
+.cell.s-s{background:var(--surface-2);border-color:var(--muted)}
+.cell.s-l{background:var(--mtd-soft);border-color:var(--mtd)}
+.cell.s-g{background:var(--non-soft);border-color:var(--non)}
+.cell.s-u{background:var(--unk-soft);border-color:var(--unk);border-style:dashed}
+.cell.dim{opacity:.28}
+.cell.sel{outline:3px solid var(--ink);outline-offset:1px;z-index:1}
+.cell.ph{cursor:default;background:none;border-style:dotted;place-items:center;font-family:var(--f-mono);font-size:.55rem;color:var(--muted)}
+.stair{box-shadow:inset -3px 0 0 var(--ink)}
+.mini{display:grid;grid-template-columns:repeat(8,minmax(38px,1fr));gap:4px;max-width:440px}
+.mini .cell{min-height:46px}
+.mini .lab{font-family:var(--f-mono);font-size:.62rem;color:var(--muted);text-align:center}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.rd{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px;min-width:0}
+.rd span{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.rd b{font-family:var(--f-mono);font-size:1rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+
+/* particle box */
+.pbox svg{max-width:360px;margin:0 auto}
+.verdict{font-weight:700}
+.verdict.el{color:var(--non)} .verdict.not{color:var(--a1)}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.ptab{width:100%;border-collapse:collapse;font-size:.92rem;min-width:420px}
+.ptab th,.ptab td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+.ptab th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.ptab tr:last-child td{border-bottom:0}
+
+.tl{display:flex;flex-wrap:wrap;gap:6px}
+.tl button{display:grid;gap:0;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;cursor:pointer}
+.tl button b{font-family:var(--f-display);font-size:.95rem}
+.tl button span{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.tl button[aria-pressed="true"]{border-color:var(--g8);background:var(--g8-soft)}
+
+.stepper{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.step-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:1.25rem;font-weight:700;cursor:pointer;line-height:1}
+.step-btn:disabled{opacity:.4;cursor:default}
+.stepper output{font-family:var(--f-mono);font-size:1.3rem;font-weight:600;min-width:2.2em;text-align:center}
+
+/* bench */
+.bench{display:grid;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+@media (max-width:860px){.bench{padding:16px}}
+.bench-h{display:grid;gap:6px;max-width:75ch}
+.bench-h h3{font-size:1.3rem}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:860px){.split{grid-template-columns:minmax(0,1fr)}}
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g8)}
+input[type=number],input[type=text],input[type=search],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:5em;resize:vertical}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+.worked{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.tally{display:flex;flex-wrap:wrap;gap:6px}
+.tally span{font-family:var(--f-mono);font-size:.74rem;padding:3px 8px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line)}
+.clue{font-family:var(--f-display);font-size:1.25rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g8)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g8)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:80ch}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;color:var(--muted)}
+.tnotes li b{color:var(--ink);font-family:var(--f-mono);font-size:.82rem}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.cell,.part{transition:opacity .2s ease}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Matter: Atoms and the Periodic Table · M2</div>
+    <h1>Periodic <span class="m">Table</span> <span class="n">Lab</span></h1>
+    <p class="under"><b>Understanding:</b> Information about elements and their properties can be determined by using the periodic table. Every element has a place set by its atomic number, and that place tells you about its atoms and how it behaves.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. Start with what an element is, then learn to read every part of the periodic table.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · What is an element?</span>
+      <h3>One type of atom, and no simpler substance inside</h3>
+      <p>An <b>element</b> is a pure substance made of only one type of atom. Copper wire is made only of copper atoms. The helium in a party balloon is made only of helium atoms.</p>
+      <p>An element cannot be broken down into other substances by physical means, such as melting, filtering or boiling. It also cannot be broken down by chemical means, such as burning or passing electricity through it. If you melt copper, you get liquid copper. It is still copper.</p>
+      <p>A <b>compound</b> is different. Water is made of hydrogen and oxygen atoms joined together. Passing electricity through water splits it into hydrogen gas and oxygen gas, so water is not an element.</p>
+      <p class="note">Sometimes atoms of one element join in pairs, like the oxygen you breathe (O₂). It is still an element, because every atom in it is oxygen.</p>
+      <div class="codes"><span class="code">M2.K1</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: look at the particles</h4>
+      <p class="hint">Pick a substance to see a particle picture of it. Then decide: is it an element?</p>
+      <div class="chips" id="subChips" role="group" aria-label="Choose a substance"></div>
+      <div class="svgbox pbox"><svg id="pSvg" viewBox="0 0 360 200" role="img" aria-label="Particle picture"></svg></div>
+      <div class="detail" id="pOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Names and symbols</span>
+      <h3>Every element has a name and a symbol</h3>
+      <p>Each element is given a <b>name</b> and a <b>chemical symbol</b>. A symbol is one or two letters. The first letter is always a capital and the second is always lower case. Co is the element cobalt. CO, with two capitals, is carbon monoxide, a compound of carbon and oxygen.</p>
+      <p>Many symbols come from the English name, like O for oxygen. Some come from old Latin names. Iron is Fe from <i>ferrum</i>, and gold is Au from <i>aurum</i>.</p>
+      <p>Today, a group of chemists from around the world called <b>IUPAC</b> (the International Union of Pure and Applied Chemistry) approves new names. The scientists who make a new element suggest a name. The public can comment, and then IUPAC makes it official. New elements can be named after a place, a scientist, a myth, a mineral or a property.</p>
+      <div class="codes"><span class="code">M2.K2</span><span class="code">M2.S1</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: where names come from</h4>
+      <p class="hint">Choose a kind of name, then tap an element to read its story.</p>
+      <div class="chips" id="originChips" role="group" aria-label="Kind of name"></div>
+      <div class="chips" id="originEls" role="group" aria-label="Elements"></div>
+      <div class="detail" id="originOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Atomic number</span>
+      <h3>The number of protons decides the element</h3>
+      <p>Every atom of the same element has the same number of protons. This number is the element's <b>atomic number</b>. Every carbon atom has 6 protons, so carbon's atomic number is 6.</p>
+      <p>If you could add one proton to a carbon atom, it would no longer be carbon. With 7 protons, it would be nitrogen. Atoms of one element can have different numbers of neutrons, but they always have the same number of protons.</p>
+      <p>In a neutral atom, the number of electrons equals the number of protons. So the atomic number also tells you how many electrons a neutral atom has.</p>
+      <div class="key"><b>Atomic number</b> = number of protons = number of electrons in a neutral atom</div>
+      <div class="codes"><span class="code">M2.K3</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: add a proton, change the element</h4>
+      <p class="hint">Use the buttons to change the number of protons in the nucleus.</p>
+      <div class="stepper">
+        <button class="step-btn" type="button" id="zMinus" aria-label="Remove a proton">−</button>
+        <output id="zOut" for="zMinus zPlus" aria-live="polite">6</output>
+        <button class="step-btn" type="button" id="zPlus" aria-label="Add a proton">+</button>
+        <span class="hint">protons (1 to 20)</span>
+      </div>
+      <div class="split">
+        <div class="svgbox"><svg id="nucSvg" viewBox="0 0 200 200" role="img" aria-label="Protons in the nucleus"></svg></div>
+        <div id="zTile"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Reading a tile</span>
+      <h3>What each box on the table tells you</h3>
+      <p>The <b>periodic table</b> arranges all the elements in order of atomic number, from hydrogen (1) to oganesson (118). Each element has its own box, often called a tile.</p>
+      <p>A tile usually shows the atomic number, symbol and name. It also shows the <b>atomic mass</b>, which is the average mass of the element's atoms, measured in atomic mass units (u). Many tables also show the element's <b>state of matter</b> at room temperature: solid, liquid or gas.</p>
+      <p>Only two elements are liquids at room temperature: mercury and bromine. Eleven are gases. Almost all the rest are solids.</p>
+      <p class="note">In 1869, Dmitri Mendeleev arranged the known elements by atomic mass and left gaps for elements no one had found yet. In 1913, Henry Moseley showed that ordering by atomic number works even better. That is the order we use today.</p>
+      <div class="codes"><span class="code">M2.K4</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: take a tile apart</h4>
+      <p class="hint">Choose an element, then tap each part of its tile.</p>
+      <div class="chips" id="tileChips" role="group" aria-label="Choose an element"></div>
+      <div class="anat">
+        <div class="tile" id="anatTile"></div>
+        <div class="detail" id="anatOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Groups and periods</span>
+      <h3>Columns and rows follow the electrons</h3>
+      <p>A column on the periodic table is called a <b>group</b>. There are 18 groups. In groups 1, 2 and 13 to 18, the elements in a group have the same number of electrons in their outermost shell. This shell is the <b>valence shell</b>, and its electrons are <b>valence electrons</b>.</p>
+      <p>Lithium, sodium and potassium are all in group 1. Each has 1 valence electron. That is why they react in similar ways.</p>
+      <p>A row is called a <b>period</b>. Elements in the same period have the same number of electron shells. Sodium and chlorine are both in period 3, so both have 3 shells.</p>
+      <div class="key"><b>Group</b> → valence electrons. Group 1 has 1, group 2 has 2, group 13 has 3, up to group 18 with 8.<br><b>Period</b> → number of shells.</div>
+      <p class="note">Helium is the one exception in these groups. It has only 2 electrons, but it sits in group 18 because its only shell is full, like the other gases in that group.</p>
+      <div class="codes"><span class="code">M2.K5</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: the first 20 elements</h4>
+      <p class="hint">Tap an element. Its Bohr diagram shows the shells. Blue marks the valence electrons.</p>
+      <div class="ptwrap"><div class="mini" id="miniTable" role="group" aria-label="Elements 1 to 20"></div></div>
+      <div class="split">
+        <div class="svgbox"><svg id="bohrSvg" viewBox="0 0 220 220" role="img" aria-label="Bohr diagram"></svg></div>
+        <div class="detail" id="bohrOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson wide">
+    <div class="text">
+      <span class="step">Lesson 6 · Metals and non-metals</span>
+      <h3>A staircase line splits the table</h3>
+      <p>The organization of the table lets you tell <b>metals</b> from <b>non-metals</b>. A zigzag staircase line starts near boron and steps down to the right. Metals are on the left of the line and non-metals are on the right. Most elements are metals.</p>
+      <p>Hydrogen is the one surprise. It sits at the top of group 1, but it is a non-metal gas. Elements right beside the staircase, such as silicon, are called <b>metalloids</b>. They have some properties of metals and some of non-metals.</p>
+      <div class="codes"><span class="code">M2.K6</span></div>
+    </div>
+    <div class="model">
+      <h4>Model: find the staircase</h4>
+      <p class="hint">Choose what to highlight. Tap any tile to check what it is.</p>
+      <div class="chips" id="classChips" role="group" aria-label="Highlight"></div>
+      <div class="legend"><span style="color:var(--met)"><i></i>Metal</span><span style="color:var(--non)"><i></i>Non-metal</span><span style="color:var(--mtd)"><i></i>Metalloid</span><span style="color:var(--unk)"><i></i>Not yet known</span></div>
+      <div class="ptwrap" id="classTable"></div>
+      <div class="detail" id="classOut" aria-live="polite"></div>
+      <div class="tablebox"><table class="ptab">
+        <thead><tr><th>Property</th><th>Metals</th><th>Non-metals</th></tr></thead>
+        <tbody>
+          <tr><td>Look</td><td>Shiny (lustrous)</td><td>Usually dull</td></tr>
+          <tr><td>Electricity and heat</td><td>Good conductors</td><td>Poor conductors (insulators)</td></tr>
+          <tr><td>Shape</td><td>Malleable (can be hammered flat) and ductile (can be drawn into wire)</td><td>Brittle when solid</td></tr>
+          <tr><td>State at room temperature</td><td>Solids, except mercury</td><td>Many are gases, bromine is a liquid, some are solids</td></tr>
+          <tr><td>Alberta example</td><td>Copper wire in a home in Edmonton</td><td>Yellow sulfur piled at gas plants, removed from sour natural gas</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four stations. Use the full periodic table to find names, symbols and properties, then research how names are chosen and predict a missing element the way Mendeleev did.</p>
+  </div>
+
+  <div class="bench">
+    <div class="bench-h">
+      <span class="step">Station 1 · Periodic table explorer</span>
+      <h3>Look up any element</h3>
+      <p class="hint">Search by name, symbol or atomic number, or tap any tile. Use the arrow keys to move around the table.</p>
+    </div>
+    <div class="row">
+      <label class="field" for="exSearch">Find an element <input type="search" id="exSearch" placeholder="Try Fe, 29 or neon" autocomplete="off"></label>
+      <label class="field" for="exColour">Colour tiles by
+        <select id="exColour"><option value="class">Metal or non-metal</option><option value="state">State at room temperature</option></select>
+      </label>
+    </div>
+    <div class="legend" id="exLegend"></div>
+    <div class="ptwrap" id="exTable"></div>
+    <div class="detail" id="exOut" aria-live="polite"></div>
+    <div class="worked">
+      <b>Worked example: what is the element in period 3, group 17?</b>
+      <span>1. Find row 3 (the third row from the top).</span>
+      <span>2. Move across to column 17 (the second column from the right).</span>
+      <span>3. The tile shows 17, Cl, chlorine, 35.45. It is right of the staircase, so it is a non-metal. It is a gas at room temperature.</span>
+      <span>4. Period 3 means 3 shells. Group 17 means 7 valence electrons. Arrangement: 2, 8, 7.</span>
+    </div>
+  </div>
+
+  <div class="bench">
+    <div class="bench-h">
+      <span class="step">Station 2 · Element detective</span>
+      <h3>Use the table to solve the clue</h3>
+      <p class="hint">Each clue is made at random. Use the explorer above if you need it. Then choose your answer.</p>
+    </div>
+    <div class="q" id="detArea"></div>
+    <div class="tally" id="detTally"></div>
+  </div>
+
+  <div class="bench">
+    <div class="bench-h">
+      <span class="step">Station 3 · Research a name</span>
+      <h3>How did this element get its name and symbol?</h3>
+      <p class="hint">Warm up with the symbol match. Then choose an element and research its name. Your notes stay on this device.</p>
+    </div>
+    <div class="split">
+      <div class="q" id="symArea"></div>
+      <div class="detail">
+        <label class="field" for="resEl">Element to research
+          <select id="resEl"></select>
+        </label>
+        <p class="hint" id="resStart" aria-live="polite"></p>
+        <label class="field" for="resQ1">1. Who discovered or first made it, and when?<textarea id="resQ1"></textarea></label>
+        <label class="field" for="resQ2">2. What does its name mean, and where does its symbol come from?<textarea id="resQ2"></textarea></label>
+        <label class="field" for="resQ3">3. Who approved the name, and how?<textarea id="resQ3"></textarea></label>
+        <span class="hint">Source check</span>
+        <ul class="checks" id="resChecks"></ul>
+      </div>
+    </div>
+    <div class="tally" id="symTally"></div>
+  </div>
+
+  <div class="bench">
+    <div class="bench-h">
+      <span class="step">Station 4 · Predict a missing element</span>
+      <h3>Think like Mendeleev</h3>
+      <p class="hint">Mendeleev left gaps in his table and predicted the elements that would fill them. You can estimate a missing atomic mass from the elements on each side of the gap.</p>
+    </div>
+    <div class="worked">
+      <b>Worked example: germanium (Ge, atomic number 32)</b>
+      <span>In 1871, germanium was still unknown. Mendeleev called the gap "eka-silicon".</span>
+      <span class="mono">estimate = (mass on the left + mass on the right) ÷ 2</span>
+      <span class="mono">estimate = (69.72 + 74.92) ÷ 2 = 72.32 u</span>
+      <span>Germanium was found in 1886. Its real atomic mass is 72.63 u, very close to the estimate.</span>
+    </div>
+    <div class="q" id="gapArea"></div>
+    <div class="tally" id="gapTally"></div>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" type="button" id="fcAll" aria-pressed="true">All cards</button>
+      <button class="chip" type="button" id="fcLearning" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" type="button" id="fcCard" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="fcPrev">Back</button>
+      <button class="btn ghost" type="button" id="fcStill">Still learning</button>
+      <button class="btn" type="button" id="fcKnow">I know it</button>
+      <button class="btn ghost" type="button" id="fcShuffle">Shuffle</button>
+      <button class="btn ghost" type="button" id="fcReset">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 M2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes" id="tnotes"></div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-m2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Element data: atomic number, symbol, name, atomic mass, state at room temperature, class ---------- */
+var RAW = "H,Hydrogen,1.008,g,n|He,Helium,4.003,g,n|Li,Lithium,6.94,s,m|Be,Beryllium,9.012,s,m|B,Boron,10.81,s,d|C,Carbon,12.01,s,n|N,Nitrogen,14.01,g,n|O,Oxygen,16.00,g,n|F,Fluorine,19.00,g,n|Ne,Neon,20.18,g,n|" +
+"Na,Sodium,22.99,s,m|Mg,Magnesium,24.31,s,m|Al,Aluminum,26.98,s,m|Si,Silicon,28.09,s,d|P,Phosphorus,30.97,s,n|S,Sulfur,32.06,s,n|Cl,Chlorine,35.45,g,n|Ar,Argon,39.95,g,n|" +
+"K,Potassium,39.10,s,m|Ca,Calcium,40.08,s,m|Sc,Scandium,44.96,s,m|Ti,Titanium,47.87,s,m|V,Vanadium,50.94,s,m|Cr,Chromium,52.00,s,m|Mn,Manganese,54.94,s,m|Fe,Iron,55.85,s,m|Co,Cobalt,58.93,s,m|Ni,Nickel,58.69,s,m|Cu,Copper,63.55,s,m|Zn,Zinc,65.38,s,m|Ga,Gallium,69.72,s,m|Ge,Germanium,72.63,s,d|As,Arsenic,74.92,s,d|Se,Selenium,78.97,s,n|Br,Bromine,79.90,l,n|Kr,Krypton,83.80,g,n|" +
+"Rb,Rubidium,85.47,s,m|Sr,Strontium,87.62,s,m|Y,Yttrium,88.91,s,m|Zr,Zirconium,91.22,s,m|Nb,Niobium,92.91,s,m|Mo,Molybdenum,95.95,s,m|Tc,Technetium,[98],s,m|Ru,Ruthenium,101.07,s,m|Rh,Rhodium,102.91,s,m|Pd,Palladium,106.42,s,m|Ag,Silver,107.87,s,m|Cd,Cadmium,112.41,s,m|In,Indium,114.82,s,m|Sn,Tin,118.71,s,m|Sb,Antimony,121.76,s,d|Te,Tellurium,127.60,s,d|I,Iodine,126.90,s,n|Xe,Xenon,131.29,g,n|" +
+"Cs,Cesium,132.91,s,m|Ba,Barium,137.33,s,m|La,Lanthanum,138.91,s,m|Ce,Cerium,140.12,s,m|Pr,Praseodymium,140.91,s,m|Nd,Neodymium,144.24,s,m|Pm,Promethium,[145],s,m|Sm,Samarium,150.36,s,m|Eu,Europium,151.96,s,m|Gd,Gadolinium,157.25,s,m|Tb,Terbium,158.93,s,m|Dy,Dysprosium,162.50,s,m|Ho,Holmium,164.93,s,m|Er,Erbium,167.26,s,m|Tm,Thulium,168.93,s,m|Yb,Ytterbium,173.05,s,m|Lu,Lutetium,174.97,s,m|" +
+"Hf,Hafnium,178.49,s,m|Ta,Tantalum,180.95,s,m|W,Tungsten,183.84,s,m|Re,Rhenium,186.21,s,m|Os,Osmium,190.23,s,m|Ir,Iridium,192.22,s,m|Pt,Platinum,195.08,s,m|Au,Gold,196.97,s,m|Hg,Mercury,200.59,l,m|Tl,Thallium,204.38,s,m|Pb,Lead,207.2,s,m|Bi,Bismuth,208.98,s,m|Po,Polonium,[209],s,m|At,Astatine,[210],s,d|Rn,Radon,[222],g,n|" +
+"Fr,Francium,[223],s,m|Ra,Radium,[226],s,m|Ac,Actinium,[227],s,m|Th,Thorium,232.04,s,m|Pa,Protactinium,231.04,s,m|U,Uranium,238.03,s,m|Np,Neptunium,[237],s,m|Pu,Plutonium,[244],s,m|Am,Americium,[243],s,m|Cm,Curium,[247],s,m|Bk,Berkelium,[247],s,m|Cf,Californium,[251],s,m|Es,Einsteinium,[252],s,m|Fm,Fermium,[257],u,m|Md,Mendelevium,[258],u,m|No,Nobelium,[259],u,m|Lr,Lawrencium,[266],u,m|" +
+"Rf,Rutherfordium,[267],u,m|Db,Dubnium,[268],u,m|Sg,Seaborgium,[269],u,m|Bh,Bohrium,[270],u,m|Hs,Hassium,[269],u,m|Mt,Meitnerium,[278],u,u|Ds,Darmstadtium,[281],u,u|Rg,Roentgenium,[282],u,u|Cn,Copernicium,[285],u,u|Nh,Nihonium,[286],u,u|Fl,Flerovium,[289],u,u|Mc,Moscovium,[290],u,u|Lv,Livermorium,[293],u,u|Ts,Tennessine,[294],u,u|Og,Oganesson,[294],u,u";
+var E = [null];
+RAW.split("|").forEach(function(s, i){
+  var p = s.split(","), z = i + 1, pos = place(z);
+  E.push({z: z, sym: p[0], name: p[1], mass: p[2], st: p[3], cls: p[4], period: pos.period, group: pos.group, row: pos.row, col: pos.col});
+});
+function place(z){
+  var period = z <= 2 ? 1 : z <= 10 ? 2 : z <= 18 ? 3 : z <= 36 ? 4 : z <= 54 ? 5 : z <= 86 ? 6 : 7;
+  var group = null, row = period, col;
+  if (z === 1) group = 1; else if (z === 2) group = 18;
+  else if (period === 2 || period === 3) { var s = period === 2 ? 3 : 11, k = z - s; group = k < 2 ? k + 1 : k + 10; }
+  else if (period === 4 || period === 5) { group = z - (period === 4 ? 18 : 36); }
+  else {
+    var b = period === 6 ? 55 : 87;
+    if (z < b + 2) group = z - b + 1;
+    else if (z <= b + 16) { group = null; row = period === 6 ? 9 : 10; col = 3 + (z - b - 2); }
+    else group = z - b - 14;
+  }
+  if (group != null) col = group;
+  return {period: period, group: group, row: row, col: col};
+}
+var STATE = {s: "Solid", l: "Liquid", g: "Gas", u: "Not known"};
+var CLASS = {m: "Metal", n: "Non-metal", d: "Metalloid", u: "Not yet known"};
+var CAPS = [2, 8, 8, 8];
+function arrangement(n){ var out = [], rem = n; for (var i = 0; i < CAPS.length && rem > 0; i++) { var t = Math.min(rem, CAPS[i]); out.push(t); rem -= t; } return out; }
+function valence(e){
+  if (e.z === 2) return 2;
+  if (e.group === 1 || e.group === 2) return e.group;
+  if (e.group >= 13) return e.group - 10;
+  return null;
+}
+function massNum(e){ return parseFloat(e.mass.replace(/[\[\]]/g, "")); }
+function massText(e){ return e.mass.charAt(0) === "[" ? e.mass + " u (radioactive: mass of its longest-lasting atom)" : e.mass + " u"; }
+function findEl(q){
+  q = (q || "").trim().toLowerCase(); if (!q) return null;
+  if (/^\d+$/.test(q)) { var n = +q; return n >= 1 && n <= 118 ? E[n] : null; }
+  for (var i = 1; i < E.length; i++) if (E[i].sym.toLowerCase() === q) return E[i];
+  for (i = 1; i < E.length; i++) if (E[i].name.toLowerCase() === q || (q === "aluminium" && E[i].z === 13) || (q === "caesium" && E[i].z === 55)) return E[i];
+  for (i = 1; i < E.length; i++) if (E[i].name.toLowerCase().indexOf(q) === 0) return E[i];
+  return null;
+}
+function factsGrid(e){
+  var g = el("div", {"class": "facts"});
+  [["Name", e.name], ["Symbol", e.sym], ["Atomic number", String(e.z)], ["Protons", String(e.z)], ["Atomic mass", e.mass + " u"], ["State (room temp.)", STATE[e.st]], ["Type", CLASS[e.cls]], ["Period", String(e.period)], ["Group", e.group ? String(e.group) : "Lower rows"]].forEach(function(f){
+    var d = el("div", {"class": "rd"}); d.appendChild(el("span", null, f[0])); d.appendChild(el("b", null, f[1])); g.appendChild(d);
+  });
+  return g;
+}
+function elementNotes(e){
+  var out = [];
+  if (e.z === 1) out.push("Hydrogen sits in group 1 because it has 1 valence electron, but it is a non-metal gas.");
+  if (e.z === 2) out.push("Helium has 2 electrons in its only shell. That shell is full, so helium belongs with the other group 18 gases.");
+  var v = valence(e);
+  if (e.z <= 20) out.push("Electron arrangement: " + arrangement(e.z).join(", ") + ". Period " + e.period + " means " + e.period + (e.period === 1 ? " shell" : " shells") + "." + (v != null ? " Valence electrons: " + v + "." : ""));
+  else if (e.z === 46) out.push("Palladium is an unusual case. Its electrons fill only 4 shells, even though it sits in period 5.");
+  else if (v != null) out.push("Period " + e.period + " means " + e.period + " shells. Group " + e.group + " means " + v + " valence electrons.");
+  else if (e.group) out.push("Period " + e.period + " means " + e.period + " shells. This is a transition metal, so its group number does not give a simple count of valence electrons.");
+  else out.push("This element sits in the two separate rows under the main table. They are pulled out so the table fits on a page. It belongs in period " + e.period + ".");
+  if (e.mass.charAt(0) === "[") out.push("The atomic mass is in brackets because the element is radioactive. The number is the mass of its longest-lasting kind of atom.");
+  if (e.st === "u") out.push("Only a few atoms of this element have ever been made, so its state of matter has never been observed.");
+  if (e.cls === "u") out.push("Scientists have not made enough of it to test whether it behaves as a metal.");
+  if (e.z === 31) out.push("Gallium is a solid at room temperature, but it melts at about 30 °C, so it can melt in your hand.");
+  if (e.z === 80) out.push("Mercury is the only metal that is a liquid at room temperature.");
+  if (e.z === 35) out.push("Bromine is the only non-metal that is a liquid at room temperature.");
+  return out;
+}
+
+/* ---------- Periodic table renderer ---------- */
+function buildTable(container, onPick){
+  var grid = el("div", {"class": "pt", role: "group", "aria-label": "Periodic table of the elements"});
+  for (var g = 1; g <= 18; g++) { var l = el("span", {"class": "lab", "aria-hidden": "true"}, String(g)); l.style.gridRow = "1"; l.style.gridColumn = String(g); grid.appendChild(l); }
+  var cells = {}, posMap = {};
+  for (var z = 1; z <= 118; z++) {
+    var e = E[z];
+    var b = el("button", {"class": "cell", type: "button", tabindex: "-1", "aria-label": e.name + ", " + e.sym + ", atomic number " + e.z});
+    b.appendChild(el("span", {"class": "cz"}, String(z)));
+    b.appendChild(el("span", {"class": "cs"}, e.sym));
+    var r = e.row + 1; b.style.gridRow = String(r); b.style.gridColumn = String(e.col);
+    (function(e){ b.addEventListener("click", function(){ onPick(e); }); })(e);
+    cells[z] = b; posMap[r + "," + e.col] = z; grid.appendChild(b);
+  }
+  [[7, "57–71"], [8, "89–103"]].forEach(function(p){ var s = el("span", {"class": "cell ph", "aria-hidden": "true"}, p[1]); s.style.gridRow = String(p[0]); s.style.gridColumn = "3"; grid.appendChild(s); });
+  var gap = el("span", {"class": "gap", "aria-hidden": "true"}); gap.style.gridRow = "9"; grid.appendChild(gap);
+  cells[1].tabIndex = 0;
+  grid.addEventListener("keydown", function(ev){
+    var t = ev.target; if (!t.classList || !t.classList.contains("cell")) return;
+    var z0 = null; for (var k in cells) if (cells[k] === t) z0 = +k; if (z0 == null) return;
+    var e0 = E[z0], r0 = e0.row + 1, c0 = e0.col, dr = 0, dc = 0;
+    if (ev.key === "ArrowRight") dc = 1; else if (ev.key === "ArrowLeft") dc = -1; else if (ev.key === "ArrowDown") dr = 1; else if (ev.key === "ArrowUp") dr = -1; else return;
+    ev.preventDefault();
+    var r = r0, c = c0, found = null;
+    for (var i = 0; i < 18 && found == null; i++) { r += dr; c += dc; if (r < 2 || r > 11 || c < 1 || c > 18) break; if (posMap[r + "," + c]) found = posMap[r + "," + c]; }
+    if (found == null && dr !== 0) {
+      for (var rr = r0 + dr; rr >= 2 && rr <= 11 && found == null; rr += dr) for (var d = 1; d < 18 && found == null; d++) { if (posMap[rr + "," + (c0 - d)]) found = posMap[rr + "," + (c0 - d)]; else if (posMap[rr + "," + (c0 + d)]) found = posMap[rr + "," + (c0 + d)]; }
+    }
+    if (found != null) { focusCell(found); }
+  });
+  function focusCell(z){ for (var k in cells) cells[k].tabIndex = -1; cells[z].tabIndex = 0; cells[z].focus(); }
+  container.appendChild(grid);
+  return {
+    paint: function(mode, dimFn, selZ){
+      for (var z = 1; z <= 118; z++) {
+        var e = E[z], c = cells[z];
+        c.className = "cell " + (mode === "state" ? "s-" + e.st : mode === "none" ? "" : "c-" + e.cls) + (dimFn && dimFn(e) ? " dim" : "") + (z === selZ ? " sel" : "");
+        c.setAttribute("aria-pressed", z === selZ ? "true" : "false");
+      }
+      if (selZ) { for (var k in cells) cells[k].tabIndex = -1; cells[selZ].tabIndex = 0; }
+    },
+    focus: focusCell
+  };
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: particle pictures ---------- */
+var ATOMC = {O: "var(--a1)", H: "var(--a2)", N: "var(--a4)", C: "var(--unk)", Na: "var(--met)", Cl: "var(--non)", Cu: "var(--a3)", Au: "var(--a3)", He: "var(--a4)", Ar: "var(--mtd)"};
+var SUBS = [
+  {label: "Copper wire", solid: "Cu", el: true, why: "Every particle is a copper atom. Melting or bending copper does not change the atoms, so it cannot be broken into anything simpler."},
+  {label: "Helium balloon", parts: [[["He"], 6]], el: true, why: "Every particle is a single helium atom. Helium is an element."},
+  {label: "Oxygen gas", parts: [[["O","O"], 6]], el: true, why: "The atoms are joined in pairs (O₂), but every atom is oxygen. One type of atom means it is an element."},
+  {label: "Diamond", solid: "C", el: true, why: "Diamond is pure carbon. Every atom is a carbon atom joined to other carbon atoms."},
+  {label: "Water", parts: [[["H","O","H"], 6]], el: false, why: "Water is a compound. Each particle has two hydrogen atoms joined to one oxygen atom. Electricity can split it into hydrogen and oxygen."},
+  {label: "Carbon dioxide", parts: [[["O","C","O"], 6]], el: false, why: "Carbon dioxide is a compound of carbon and oxygen atoms. Two types of atom means it is not an element."},
+  {label: "Table salt", solid: "NaCl", el: false, why: "Salt is a compound of sodium and chlorine. Electricity can split melted salt into sodium metal and chlorine gas."},
+  {label: "Air", parts: [[["N","N"], 4], [["O","O"], 2], [["Ar"], 1]], el: false, why: "Air is a mixture of different substances, mostly nitrogen and oxygen with a little argon. It is not one pure substance."}
+];
+(function(){
+  var svg = $("pSvg");
+  function atom(g, x, y, s){
+    g.appendChild(sv("circle", {cx: x, cy: y, r: 11, fill: ATOMC[s], stroke: "var(--surface)", "stroke-width": 1.5}));
+    g.appendChild(sv("text", {x: x, y: y + 3.5, "text-anchor": "middle", "font-size": s.length > 1 ? 8.5 : 10, "font-weight": 700, fill: "var(--surface)"}, s));
+  }
+  function draw(s){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 6, y: 6, width: 348, height: 188, rx: 8, fill: "var(--surface-2)", stroke: "var(--line)"}));
+    var g = sv("g"); svg.appendChild(g);
+    if (s.solid) {
+      for (var r = 0; r < 6; r++) for (var c = 0; c < 12; c++) {
+        var sym = s.solid === "NaCl" ? ((r + c) % 2 ? "Na" : "Cl") : s.solid;
+        atom(g, 40 + c * 25, 40 + r * 25, sym);
+      }
+    } else {
+      var spots = [[60,50],[160,40],[270,55],[90,120],[200,110],[300,130],[60,165],[170,165],[260,170]], i = 0;
+      s.parts.forEach(function(p){
+        for (var k = 0; k < p[1]; k++) {
+          var sp = spots[i++ % spots.length], atoms = p[0];
+          atoms.forEach(function(a, j){ atom(g, sp[0] + (j - (atoms.length - 1) / 2) * 19, sp[1] + (atoms.length === 3 && j !== 1 ? 8 : 0), a); });
+        }
+      });
+    }
+    svg.setAttribute("aria-label", "Particle picture of " + s.label.toLowerCase());
+    var out = $("pOut"); clear(out);
+    out.appendChild(el("h5", null, s.label));
+    out.appendChild(el("p", {"class": "verdict " + (s.el ? "el" : "not")}, s.el ? "Element" : "Not an element"));
+    out.appendChild(el("p", null, s.why));
+  }
+  chipGroup($("subChips"), SUBS, "", function(s){ draw(s); }, 0);
+})();
+
+/* ---------- Lesson 2: name origins ---------- */
+var ORIGINS = [
+  {label: "Old Latin names", items: [
+    [11, "Sodium's symbol Na comes from natrium, the Latin name. It is linked to natron, a salty mineral used in ancient Egypt."],
+    [19, "Potassium's symbol K comes from kalium. The word goes back to an Arabic word for plant ashes, where potassium compounds were found. The English name comes from potash."],
+    [26, "Iron's symbol Fe comes from ferrum, the Latin word for iron."],
+    [29, "Copper's symbol Cu comes from cuprum. The Romans got much of their copper from the island of Cyprus."],
+    [47, "Silver's symbol Ag comes from argentum, the Latin word for silver. The country Argentina is named after silver too."],
+    [79, "Gold's symbol Au comes from aurum, the Latin word for gold."],
+    [50, "Tin's symbol Sn comes from stannum, the Latin word for tin."],
+    [82, "Lead's symbol Pb comes from plumbum. Lead pipes gave us the word plumber."],
+    [80, "Mercury's symbol Hg comes from hydrargyrum, a Greek word meaning water silver, because it is a shiny liquid metal."],
+    [74, "Tungsten's symbol W comes from wolfram, its German name, taken from the mineral wolframite. Tungsten means heavy stone in Swedish."]]},
+  {label: "Places", items: [
+    [39, "Yttrium is named after Ytterby, a small village in Sweden. Minerals from one mine there gave four element names: yttrium, ytterbium, terbium and erbium."],
+    [31, "Gallium comes from Gallia, the Latin name for France. The French chemist Paul-Émile Lecoq de Boisbaudran discovered it in 1875."],
+    [87, "Francium is named after France. Marguerite Perey, a French scientist, discovered it in 1939."],
+    [84, "Polonium is named after Poland, the home country of Marie Curie. She and Pierre Curie discovered it in 1898."],
+    [32, "Germanium is named after Germany, where Clemens Winkler discovered it in 1886."],
+    [113, "Nihonium comes from Nihon, a name for Japan. Scientists at the RIKEN lab in Japan made it, and the name became official in 2016."],
+    [117, "Tennessine is named after the state of Tennessee, home to labs that helped make it. The name became official in 2016."]]},
+  {label: "Scientists", items: [
+    [96, "Curium honours Marie and Pierre Curie, who studied radioactivity."],
+    [99, "Einsteinium honours the physicist Albert Einstein."],
+    [101, "Mendelevium honours Dmitri Mendeleev, who built the first useful periodic table."],
+    [109, "Meitnerium honours Lise Meitner, an Austrian physicist who helped explain how large atoms can split."],
+    [106, "Seaborgium honours Glenn Seaborg. He helped discover several elements and was still alive when it was named."],
+    [118, "Oganesson honours Yuri Oganessian, a Russian physicist who led the making of several new elements. It ends in -on like the other gases in group 18."]]},
+  {label: "Myths and space", items: [
+    [2, "Helium comes from helios, the Greek word for the Sun. It was first detected in sunlight in 1868, before anyone found it on Earth."],
+    [22, "Titanium is named after the Titans, giants in Greek mythology."],
+    [90, "Thorium is named after Thor, the Norse god of thunder."],
+    [61, "Promethium is named after Prometheus, who stole fire from the gods in a Greek myth."],
+    [92, "Uranium is named after the planet Uranus. Neptunium and plutonium, the next two elements, follow the planets beyond it."],
+    [34, "Selenium comes from selene, the Greek word for the Moon."]]},
+  {label: "Properties", items: [
+    [1, "Hydrogen means water maker in Greek, because burning it makes water."],
+    [17, "Chlorine comes from chloros, a Greek word for pale green, the colour of the gas."],
+    [53, "Iodine comes from a Greek word for violet, the colour of its vapour."],
+    [35, "Bromine comes from bromos, a Greek word for stench, because it smells very strong."],
+    [18, "Argon comes from a Greek word meaning lazy, because it almost never reacts."],
+    [24, "Chromium comes from chroma, the Greek word for colour, because its compounds are brightly coloured."]]}
+];
+(function(){
+  var row = $("originEls"), out = $("originOut");
+  function show(it){
+    var e = E[it[0]]; clear(out);
+    out.appendChild(el("h5", null, e.name + " (" + e.sym + ") · atomic number " + e.z));
+    out.appendChild(el("p", null, it[1]));
+  }
+  chipGroup($("originChips"), ORIGINS, "", function(cat){
+    clear(row);
+    chipGroup(row, cat.items.map(function(it){ return {label: E[it[0]].name, it: it}; }), "", function(x){ show(x.it); }, 0);
+  }, 0);
+})();
+
+/* ---------- Lesson 3: proton stepper ---------- */
+function tileNode(e, target){
+  clear(target);
+  var t = el("div", {"class": "tile c-" + e.cls, role: "img", "aria-label": e.name + ", symbol " + e.sym + ", atomic number " + e.z + ", atomic mass " + e.mass + ", " + STATE[e.st].toLowerCase()});
+  t.appendChild(el("span", {"class": "z"}, String(e.z)));
+  t.appendChild(el("span", {"class": "sym"}, e.sym));
+  t.appendChild(el("span", {"class": "nm"}, e.name));
+  t.appendChild(el("span", {"class": "ms"}, e.mass));
+  target.appendChild(t);
+}
+(function(){
+  var z = 6, svg = $("nucSvg");
+  function render(){
+    $("zOut").textContent = String(z);
+    $("zMinus").disabled = z <= 1; $("zPlus").disabled = z >= 20;
+    clear(svg);
+    svg.appendChild(sv("circle", {cx: 100, cy: 100, r: 86, "class": "nuc"}));
+    for (var i = 0; i < z; i++) {
+      var a = i * 2.39996, rr = 15 * Math.sqrt(i + 0.5);
+      svg.appendChild(sv("circle", {cx: 100 + rr * Math.cos(a), cy: 100 + rr * Math.sin(a), r: 9, fill: "var(--a1)"}));
+      svg.appendChild(sv("text", {x: 100 + rr * Math.cos(a), y: 100 + rr * Math.sin(a) + 4, "text-anchor": "middle", "font-size": 11, "font-weight": 700, fill: "var(--surface)"}, "+"));
+    }
+    svg.setAttribute("aria-label", z + " protons in the nucleus");
+    var e = E[z], box = $("zTile");
+    tileNode(e, box);
+    box.appendChild(el("p", {"class": "hint", style: "margin-top:8px;text-align:center"}, z + " protons makes " + e.name.toLowerCase() + ". A neutral atom has " + z + " electrons."));
+  }
+  $("zMinus").addEventListener("click", function(){ if (z > 1) { z--; render(); } });
+  $("zPlus").addEventListener("click", function(){ if (z < 20) { z++; render(); } });
+  render();
+})();
+
+/* ---------- Lesson 4: tile anatomy ---------- */
+(function(){
+  var list = [6, 26, 80, 17, 92, 43].map(function(z){ return {label: E[z].name, e: E[z]}; });
+  var tile = $("anatTile"), out = $("anatOut"), cur, curPart = "sym";
+  var PARTS = [
+    ["z", "Atomic number", function(e){ return e.z + " is the atomic number. Every " + e.name.toLowerCase() + " atom has " + e.z + " protons. The table is in order of this number."; }],
+    ["sym", "Symbol", function(e){ return e.sym + " is the chemical symbol. It is one or two letters, and only the first is a capital."; }],
+    ["nm", "Name", function(e){ return e.name + " is the element's name, approved by IUPAC."; }],
+    ["ms", "Atomic mass", function(e){ return e.mass.charAt(0) === "[" ? e.mass + " is in brackets. " + e.name + " is radioactive, so the table gives the mass of its longest-lasting kind of atom." : e.mass + " u is the atomic mass: the average mass of " + e.name.toLowerCase() + " atoms. It is not a whole number because atoms of one element can have different numbers of neutrons."; }],
+    ["st", "State", function(e){ return e.name + " is a " + STATE[e.st].toLowerCase() + " at room temperature (about 20 to 25 °C)." + (e.z === 80 ? " Mercury is the only liquid metal." : ""); }]
+  ];
+  function render(){
+    clear(tile); tile.className = "tile c-" + cur.cls;
+    PARTS.forEach(function(p){
+      var txt = p[0] === "z" ? String(cur.z) : p[0] === "sym" ? cur.sym : p[0] === "nm" ? cur.name : p[0] === "ms" ? cur.mass : STATE[cur.st];
+      var b = el("button", {"class": "part " + p[0], type: "button", "aria-pressed": p[0] === curPart ? "true" : "false", "aria-label": p[1] + ": " + txt}, txt);
+      b.addEventListener("click", function(){ curPart = p[0]; render(); });
+      tile.appendChild(b);
+    });
+    var p = PARTS.filter(function(x){ return x[0] === curPart; })[0];
+    clear(out); out.appendChild(el("h5", null, p[1])); out.appendChild(el("p", null, p[2](cur)));
+  }
+  chipGroup($("tileChips"), list, "", function(x){ cur = x.e; render(); }, 0);
+})();
+
+/* ---------- Bohr diagram ---------- */
+function drawBohr(svg, e){
+  clear(svg);
+  var cx = 110, cy = 110, radii = [40, 60, 80, 100], arr = arrangement(e.z);
+  svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 22, "class": "nuc"}));
+  svg.appendChild(sv("text", {x: cx, y: cy - 1, "text-anchor": "middle", "class": "lbl"}, e.z + "p"));
+  svg.appendChild(sv("text", {x: cx, y: cy + 12, "text-anchor": "middle", "class": "small"}, e.sym));
+  arr.forEach(function(n, i){
+    var last = i === arr.length - 1;
+    svg.appendChild(sv("circle", {cx: cx, cy: cy, r: radii[i], "class": "shell" + (last ? " val" : "")}));
+    for (var k = 0; k < n; k++) {
+      var a = -Math.PI / 2 + k * 2 * Math.PI / n;
+      svg.appendChild(sv("circle", {cx: cx + radii[i] * Math.cos(a), cy: cy + radii[i] * Math.sin(a), r: 6, "class": "ef" + (last ? " val" : "")}));
+    }
+  });
+  svg.setAttribute("aria-label", "Bohr diagram of " + e.name + ": " + arr.join(", ") + " electrons in " + arr.length + (arr.length === 1 ? " shell" : " shells"));
+}
+
+/* ---------- Lesson 5: mini table ---------- */
+(function(){
+  var box = $("miniTable"), btns = {}, sel = 11;
+  var colOf = function(e){ return e.group <= 2 ? e.group : e.group - 10; };
+  ["1","2","13","14","15","16","17","18"].forEach(function(g, i){ var s = el("span", {"class": "lab", "aria-hidden": "true"}, g); s.style.gridRow = "1"; s.style.gridColumn = String(i + 1); box.appendChild(s); });
+  for (var z = 1; z <= 20; z++) {
+    var e = E[z], b = el("button", {"class": "cell c-" + e.cls, type: "button", "aria-label": e.name + ", period " + e.period + ", group " + e.group});
+    b.appendChild(el("span", {"class": "cz"}, String(z))); b.appendChild(el("span", {"class": "cs"}, e.sym));
+    b.style.gridRow = String(e.period + 1); b.style.gridColumn = String(colOf(e));
+    (function(z){ b.addEventListener("click", function(){ sel = z; render(); }); })(z);
+    btns[z] = b; box.appendChild(b);
+  }
+  function render(){
+    var e = E[sel];
+    for (var z in btns) { var o = E[z]; btns[z].className = "cell c-" + o.cls + ((o.period === e.period || o.group === e.group) ? "" : " dim") + (+z === sel ? " sel" : ""); btns[z].setAttribute("aria-pressed", +z === sel ? "true" : "false"); }
+    drawBohr($("bohrSvg"), e);
+    var out = $("bohrOut"); clear(out);
+    var arr = arrangement(e.z), v = valence(e);
+    out.appendChild(el("h5", null, e.name + " (" + e.sym + ")"));
+    out.appendChild(el("p", null, "Electron arrangement: " + arr.join(", ") + "."));
+    out.appendChild(el("p", null, "Period " + e.period + ": " + arr.length + (arr.length === 1 ? " shell." : " shells.")));
+    out.appendChild(el("p", null, "Group " + e.group + ": " + v + " valence electron" + (v === 1 ? "." : "s.") + (e.z === 2 ? " Helium is the exception: its one shell is full with 2." : "")));
+    out.appendChild(el("p", {"class": "hint"}, "Tiles still bright share a group or period with " + e.name.toLowerCase() + "."));
+  }
+  render();
+})();
+
+/* ---------- Lesson 6: class table ---------- */
+(function(){
+  var mode = "all", sel = null, t;
+  t = buildTable($("classTable"), function(e){ sel = e.z; paint(); show(e); });
+  function paint(){ t.paint("class", function(e){ return mode !== "all" && e.cls !== mode; }, sel); }
+  function show(e){
+    var out = $("classOut"); clear(out);
+    out.appendChild(el("h5", null, e.name + " (" + e.sym + ") is " + (e.cls === "u" ? "not yet known" : "a " + CLASS[e.cls].toLowerCase())));
+    var why = e.z === 1 ? "Hydrogen is in group 1 but is a non-metal gas." : e.cls === "m" ? "It is left of the staircase line." : e.cls === "n" ? "It is right of the staircase line." : e.cls === "d" ? "It sits right beside the staircase line." : "Only a few atoms have ever been made.";
+    out.appendChild(el("p", null, why + " It is a " + STATE[e.st].toLowerCase() + " at room temperature."));
+  }
+  chipGroup($("classChips"), [{label: "Show all", v: "all"}, {label: "Metals", v: "m"}, {label: "Non-metals", v: "n"}, {label: "Metalloids", v: "d"}], "", function(x){ mode = x.v; paint(); }, 0);
+  clear($("classOut")); $("classOut").appendChild(el("p", {"class": "hint"}, "Tap a tile to see whether it is a metal, a non-metal or a metalloid."));
+})();
+
+/* ---------- Bench 1: explorer ---------- */
+var explorer;
+(function(){
+  var sel = store.exSel || 26, mode = "class";
+  explorer = buildTable($("exTable"), function(e){ select(e.z); });
+  function legend(){
+    var L = $("exLegend"); clear(L);
+    var items = mode === "class" ? [["var(--met)","Metal"],["var(--non)","Non-metal"],["var(--mtd)","Metalloid"],["var(--unk)","Not yet known"]] : [["var(--muted)","Solid"],["var(--mtd)","Liquid"],["var(--non)","Gas"],["var(--unk)","Not known"]];
+    items.forEach(function(i){ var s = el("span"); s.style.color = i[0]; s.appendChild(el("i")); s.appendChild(document.createTextNode(i[1])); L.appendChild(s); });
+  }
+  function select(z){
+    sel = z; store.exSel = z; save();
+    explorer.paint(mode, null, sel);
+    var e = E[z], out = $("exOut"); clear(out);
+    out.appendChild(el("h5", null, e.name + " (" + e.sym + ")"));
+    out.appendChild(factsGrid(e));
+    elementNotes(e).forEach(function(n){ out.appendChild(el("p", {"class": "hint"}, n)); });
+  }
+  $("exColour").addEventListener("change", function(){ mode = this.value; legend(); explorer.paint(mode, null, sel); });
+  $("exSearch").addEventListener("input", function(){ var e = findEl(this.value); if (e) select(e.z); });
+  legend(); select(sel);
+})();
+
+/* ---------- Bench 2: element detective ---------- */
+(function(){
+  var area = $("detArea"), ok = 0, tries = 0;
+  function names(correct, pool){ var o = [correct]; pool = shuffle(pool); for (var i = 0; i < pool.length && o.length < 4; i++) if (o.indexOf(pool[i]) < 0) o.push(pool[i]); return shuffle(o); }
+  function near(z, span, max){ var p = []; for (var k = Math.max(1, z - span); k <= Math.min(max || 92, z + span); k++) if (k !== z) p.push(E[k].name); return p; }
+  var MAIN = []; for (var z = 1; z <= 56; z++) { var e = E[z]; if (e.group && (e.group <= 2 || e.group >= 13)) MAIN.push(z); }
+  var TYPES = [
+    function(){ var e = E[1 + Math.floor(Math.random() * 92)]; return {clue: "Which element has atomic number " + e.z + "?", ans: e.name, opts: names(e.name, near(e.z, 4)), why: "Atomic number " + e.z + " is " + e.name + " (" + e.sym + "). Count along the table in order."}; },
+    function(){ var e = E[pick([11,19,26,29,47,79,50,82,80,74,51,1,6,7,8,16,17,20,12,10,53,13,30,28])]; return {clue: "Which element has the symbol " + e.sym + "?", ans: e.name, opts: names(e.name, near(e.z, 6)), why: e.sym + " is the symbol for " + e.name + "."}; },
+    function(){ var e = E[pick(MAIN)]; var pool = MAIN.filter(function(z){ return E[z].period === e.period || E[z].group === e.group; }).map(function(z){ return E[z].name; }); return {clue: "Which element is in period " + e.period + ", group " + e.group + "?", ans: e.name, opts: names(e.name, pool.concat(near(e.z, 3, 56))), why: "Row " + e.period + ", column " + e.group + " is " + e.name + " (" + e.sym + ")."}; },
+    function(){ var e = E[pick([1,2,7,8,10,17,18,35,80,26,6,79,16,53,36,54,86,13,15,11])]; return {clue: "What is the state of " + e.name.toLowerCase() + " at room temperature?", ans: STATE[e.st], opts: ["Solid","Liquid","Gas"], why: e.name + " is a " + STATE[e.st].toLowerCase() + " at room temperature." + (e.st === "l" ? " Only mercury and bromine are liquids." : "")}; },
+    function(){ var e = E[pick([1,5,6,8,11,14,16,17,20,26,29,32,33,35,47,51,52,53,79,80,82,13,10,18])]; return {clue: "Is " + e.name.toLowerCase() + " a metal, a non-metal or a metalloid?", ans: CLASS[e.cls], opts: ["Metal","Non-metal","Metalloid"], why: e.z === 1 ? "Hydrogen is a non-metal, even though it sits in group 1." : e.name + " is " + (e.cls === "d" ? "right beside" : e.cls === "m" ? "left of" : "right of") + " the staircase line, so it is a " + CLASS[e.cls].toLowerCase() + "."}; },
+    function(){ var e = E[pick([6,7,8,11,12,13,16,17,20,26,29,30,47,79,82,10,18,19])]; var pool = near(e.z, 3).map(function(n){ return findEl(n).mass + " u"; }); return {clue: "What is the atomic mass of " + e.name.toLowerCase() + "?", ans: e.mass + " u", opts: names(e.mass + " u", pool), why: "The tile for " + e.name + " shows an atomic mass of " + e.mass + " u. The atomic number is the whole number at the top, " + e.z + "."}; },
+    function(){ var e = E[1 + Math.floor(Math.random() * 56)]; var o = [String(e.z)]; [e.z + 1, e.z - 1, Math.round(massNum(e)), e.z + 2].forEach(function(n){ if (n > 0 && o.indexOf(String(n)) < 0 && o.length < 4) o.push(String(n)); }); return {clue: "How many protons are in every atom of " + e.name.toLowerCase() + "?", ans: String(e.z), opts: shuffle(o), why: "The number of protons equals the atomic number, " + e.z + ". The atomic mass (" + e.mass + ") is not the proton count."}; }
+  ];
+  function tally(){ clear($("detTally")); $("detTally").appendChild(el("span", null, "Solved: " + ok + " of " + tries)); }
+  function next(){
+    var q = pick(TYPES)(); clear(area);
+    area.appendChild(el("p", {"class": "clue"}, q.clue));
+    var opts = el("div", {"class": "opts"}), btns = [];
+    var fb = el("div", {"aria-live": "polite"});
+    q.opts.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o);
+      b.addEventListener("click", function(){
+        tries++; var right = o === q.ans; if (right) ok++; tally();
+        btns.forEach(function(x){ x.disabled = true; if (x.textContent === q.ans) x.classList.add("right"); });
+        if (!right) b.classList.add("wrong");
+        clear(fb); fb.appendChild(el("p", {"class": "feedback " + (right ? "ok" : "no")}, (right ? "Correct. " : "Not quite. ") + q.why));
+        var nx = el("button", {"class": "btn", type: "button"}, "New clue"); nx.addEventListener("click", next); fb.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    area.appendChild(opts); area.appendChild(fb);
+  }
+  tally(); next();
+})();
+
+/* ---------- Bench 3: symbol match and research ---------- */
+(function(){
+  var area = $("symArea"), ok = 0, tries = 0;
+  var POOL = [11,19,26,29,47,79,50,82,80,74,51,6,7,8,16,17,20,12,13,30,28,27,25,24,15,9,14,18,10,2,3,5,53,78,54,92];
+  function tally(){ clear($("symTally")); $("symTally").appendChild(el("span", null, "Symbol match: " + ok + " of " + tries)); }
+  function next(){
+    var e = E[pick(POOL)], o = [e.sym];
+    var cand = [e.name.charAt(0), e.name.slice(0, 2), e.name.charAt(0) + e.name.charAt(2)].map(function(s){ return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); });
+    shuffle(cand.concat(shuffle(POOL).slice(0, 4).map(function(z){ return E[z].sym; }))).forEach(function(s){ if (o.length < 4 && o.indexOf(s) < 0) o.push(s); });
+    o = shuffle(o); clear(area);
+    area.appendChild(el("p", {"class": "clue"}, "What is the symbol for " + e.name.toLowerCase() + "?"));
+    var opts = el("div", {"class": "opts"}), btns = [], fb = el("div", {"aria-live": "polite"});
+    o.forEach(function(s){
+      var b = el("button", {"class": "opt mono", type: "button"}, s);
+      b.addEventListener("click", function(){
+        tries++; var right = s === e.sym; if (right) ok++; tally();
+        btns.forEach(function(x){ x.disabled = true; if (x.textContent === e.sym) x.classList.add("right"); });
+        if (!right) b.classList.add("wrong");
+        var origin = null; ORIGINS.forEach(function(c){ c.items.forEach(function(it){ if (it[0] === e.z) origin = it[1]; }); });
+        var msg = e.name + " is " + e.sym + ". " + (origin || (e.sym.charAt(0) === e.name.charAt(0) ? "The symbol comes from its English name." : ""));
+        var fu = findEl(s);
+        if (!right && fu) msg += " " + s + " is " + fu.name.toLowerCase() + ".";
+        clear(fb); fb.appendChild(el("p", {"class": "feedback " + (right ? "ok" : "no")}, (right ? "Correct. " : "Not quite. ") + msg));
+        var nx = el("button", {"class": "btn", type: "button"}, "Next symbol"); nx.addEventListener("click", next); fb.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    area.appendChild(opts); area.appendChild(fb);
+  }
+  tally(); next();
+
+  store.res = store.res || {};
+  var selEl = $("resEl"), all = [];
+  ORIGINS.forEach(function(c){ c.items.forEach(function(it){ all.push(it); }); });
+  all.sort(function(a, b){ return E[a[0]].name < E[b[0]].name ? -1 : 1; });
+  all.forEach(function(it){ selEl.appendChild(el("option", {value: String(it[0])}, E[it[0]].name + " (" + E[it[0]].sym + ")")); });
+  function key(){ return "z" + selEl.value; }
+  function load(){
+    var r = store.res[key()] || {}, it = all.filter(function(x){ return String(x[0]) === selEl.value; })[0];
+    $("resStart").textContent = "Starting point: " + it[1] + " Check this in at least two sources, then add what you find.";
+    ["resQ1","resQ2","resQ3"].forEach(function(id){ $(id).value = r[id] || ""; });
+    var ul = $("resChecks"); clear(ul);
+    ["I used at least two sources.", "My sources come from experts, such as IUPAC, a university, a museum or a science centre.", "My sources agree with each other.", "I wrote my answers in my own words."].forEach(function(t, j){
+      var li = el("li"), l = el("label", {"for": "rc" + j}), cb = el("input", {type: "checkbox", id: "rc" + j});
+      cb.checked = !!(r.c && r.c[j]);
+      cb.addEventListener("change", function(){ var rr = store.res[key()] || {}; rr.c = rr.c || {}; rr.c[j] = cb.checked; store.res[key()] = rr; save(); });
+      l.appendChild(cb); l.appendChild(document.createTextNode(t)); li.appendChild(l); ul.appendChild(li);
+    });
+  }
+  ["resQ1","resQ2","resQ3"].forEach(function(id){ $(id).addEventListener("input", function(){ var rr = store.res[key()] || {}; rr[id] = this.value; store.res[key()] = rr; save(); }); });
+  selEl.addEventListener("change", function(){ store.resSel = selEl.value; save(); load(); });
+  if (store.resSel) selEl.value = store.resSel;
+  load();
+})();
+
+/* ---------- Bench 4: predict a missing element ---------- */
+(function(){
+  var area = $("gapArea"), ok = 0, tries = 0, CAND = [];
+  for (var z = 22; z <= 82; z++) { if (z >= 56 && z <= 72) continue; if (z === 36 || z === 37 || z === 42 || z === 44 || z === 54 || z === 55) continue; CAND.push(z); }
+  function tally(){ clear($("gapTally")); $("gapTally").appendChild(el("span", null, "Good estimates: " + ok + " of " + tries)); }
+  function next(){
+    var e = E[pick(CAND)], L = E[e.z - 1], R = E[e.z + 1], est = (massNum(L) + massNum(R)) / 2;
+    clear(area);
+    area.appendChild(el("p", {"class": "clue"}, "Pretend element " + e.z + " has not been found yet."));
+    area.appendChild(el("p", null, "On its left is " + L.name + " (" + L.sym + "), " + L.mass + " u. On its right is " + R.name + " (" + R.sym + "), " + R.mass + " u."));
+    var lab = el("label", {"class": "field", "for": "gapIn"}, "Your estimate of the missing atomic mass (u)");
+    var inp = el("input", {type: "number", id: "gapIn", step: "any", inputmode: "decimal"}); lab.appendChild(inp); area.appendChild(lab);
+    var go = el("button", {"class": "btn", type: "button"}, "Check estimate");
+    var fb = el("div", {"aria-live": "polite"});
+    area.appendChild(el("div", {"class": "row"})).appendChild(go); area.appendChild(fb);
+    go.addEventListener("click", function(){
+      var v = parseFloat(inp.value); clear(fb);
+      if (isNaN(v)) { fb.appendChild(el("p", {"class": "feedback no"}, "Type a number first, such as " + L.mass + ".")); return; }
+      tries++; var right = Math.abs(v - est) <= 0.15; if (right) ok++; tally();
+      var real = massNum(e), diff = Math.abs(real - est) / real * 100;
+      fb.appendChild(el("p", {"class": "feedback " + (right ? "ok" : "no")}, (right ? "Good estimate. " : "Check the average. ") + "(" + L.mass + " + " + R.mass + ") ÷ 2 = " + est.toFixed(2) + " u. The real element is " + e.name + " (" + e.sym + "), " + e.mass + " u. The estimate is off by about " + diff.toFixed(1) + "%."));
+      var nx = el("button", {"class": "btn", type: "button"}, "New gap"); nx.addEventListener("click", next); fb.appendChild(nx); nx.focus();
+    });
+  }
+  tally(); next();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Metal, non-metal or metalloid", bins: ["Metal", "Non-metal", "Metalloid"], items: [
+    ["Iron (Fe)", 0, "Iron is left of the staircase. It is shiny and conducts electricity."],
+    ["Sulfur (S)", 1, "Sulfur is right of the staircase. It is a dull, brittle yellow solid."],
+    ["Silicon (Si)", 2, "Silicon sits on the staircase. It is shiny like a metal but brittle like a non-metal."],
+    ["Copper (Cu)", 0, "Copper is a metal. It is drawn into wire because it is ductile and conducts electricity."],
+    ["Neon (Ne)", 1, "Neon is in group 18 on the far right. It is a non-metal gas."],
+    ["Hydrogen (H)", 1, "Hydrogen sits in group 1, but it is a non-metal gas."],
+    ["Mercury (Hg)", 0, "Mercury is a metal, even though it is a liquid at room temperature."],
+    ["Boron (B)", 2, "Boron is where the staircase starts. It is a metalloid."],
+    ["Bromine (Br)", 1, "Bromine is a non-metal. It is the only non-metal that is a liquid at room temperature."],
+    ["Shiny, bends without breaking, conducts electricity", 0, "These are the properties of metals."],
+    ["Dull, shatters when hit, does not conduct", 1, "These are the properties of solid non-metals."],
+    ["Aluminum (Al)", 0, "Aluminum is just left of the staircase. It is a metal used for foil and cans."]
+  ]},
+  {label: "Element or not", bins: ["Element", "Not an element"], items: [
+    ["Gold nugget", 0, "Pure gold is made only of gold atoms."],
+    ["Water", 1, "Water is a compound of hydrogen and oxygen."],
+    ["Oxygen gas (O₂)", 0, "Every atom in O₂ is oxygen, so it is an element."],
+    ["Table salt", 1, "Salt is a compound of sodium and chlorine."],
+    ["Helium in a balloon", 0, "Helium is made only of helium atoms."],
+    ["Air", 1, "Air is a mixture of several gases."],
+    ["Diamond", 0, "Diamond is pure carbon."],
+    ["Carbon dioxide", 1, "Carbon dioxide has two types of atom, carbon and oxygen."],
+    ["Aluminum foil", 0, "Aluminum foil is made of aluminum atoms."],
+    ["Salt water", 1, "Salt water is a mixture. You can boil off the water to get the salt back."],
+    ["Nitrogen gas (N₂)", 0, "Every atom is nitrogen, so it is an element."],
+    ["Sugar", 1, "Sugar is a compound of carbon, hydrogen and oxygen."]
+  ]},
+  {label: "Same group or same period", bins: ["Same group", "Same period", "Neither"], items: [
+    ["Lithium and sodium", 0, "Both are in group 1, with 1 valence electron each."],
+    ["Sodium and chlorine", 1, "Both are in period 3, with 3 shells each."],
+    ["Carbon and silicon", 0, "Both are in group 14, with 4 valence electrons."],
+    ["Neon and argon", 0, "Both are in group 18, with a full outer shell."],
+    ["Hydrogen and helium", 1, "Both are in period 1, with 1 shell."],
+    ["Oxygen and fluorine", 1, "Both are in period 2, with 2 shells."],
+    ["Potassium and argon", 2, "Potassium is period 4, group 1. Argon is period 3, group 18."],
+    ["Both atoms have 2 electron shells", 1, "The number of shells matches the period."],
+    ["Both atoms have 7 valence electrons", 0, "Valence electrons match the group, here group 17."],
+    ["Magnesium and calcium", 0, "Both are in group 2, with 2 valence electrons."],
+    ["Sodium and neon", 2, "Sodium is period 3, group 1. Neon is period 2, group 18."]
+  ]},
+  {label: "Parts of a tile", bins: ["Atomic number", "Symbol", "Atomic mass", "State"], items: [
+    ["Tells you the number of protons", 0, "The atomic number is the proton count."],
+    ["One or two letters, first one capital", 1, "That is the rule for chemical symbols."],
+    ["The average mass of the atoms, in u", 2, "Atomic mass is an average, so it often has decimals."],
+    ["Solid, liquid or gas at room temperature", 3, "Many tables show the state of matter."],
+    ["Goes up by exactly 1 from each tile to the next", 0, "The table is in order of atomic number."],
+    ["Written as [98] for technetium", 2, "Brackets mean the element is radioactive."],
+    ["Fe for iron", 1, "Fe comes from the Latin ferrum."],
+    ["35.45 for chlorine", 2, "Decimals are a clue that it is the atomic mass."],
+    ["Gas for neon", 3, "Neon is a gas at room temperature."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin") || area.querySelector(".btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Element", "A pure substance made of only one type of atom. It cannot be broken down into other substances by physical or chemical means."],
+  ["Compound", "A pure substance made of two or more types of atom joined together, such as water."],
+  ["Chemical symbol", "One or two letters that stand for an element. Only the first letter is a capital, as in Fe for iron."],
+  ["IUPAC", "The International Union of Pure and Applied Chemistry. It approves the names and symbols of elements."],
+  ["Atomic number", "The number of protons in every atom of an element. It sets the element's place on the periodic table."],
+  ["Proton", "A positive particle in the nucleus. The number of protons decides which element an atom is."],
+  ["Periodic table", "A chart of all the elements in order of atomic number, arranged in groups and periods."],
+  ["Atomic mass", "The average mass of an element's atoms, measured in atomic mass units (u)."],
+  ["Atomic mass unit (u)", "A tiny unit of mass used for atoms. A proton or a neutron has a mass of about 1 u."],
+  ["State of matter", "Whether a substance is a solid, liquid or gas. Periodic tables often show the state at room temperature."],
+  ["Group", "A column of the periodic table. In groups 1, 2 and 13 to 18, elements in a group have the same number of valence electrons."],
+  ["Period", "A row of the periodic table. Elements in the same period have the same number of electron shells."],
+  ["Valence shell", "The outermost electron shell of an atom."],
+  ["Valence electrons", "The electrons in an atom's outermost shell. They decide how the atom reacts."],
+  ["Metal", "An element that is usually shiny, malleable and ductile, and conducts heat and electricity. Metals are left of the staircase."],
+  ["Non-metal", "An element that is usually dull, brittle when solid and a poor conductor. Non-metals are right of the staircase, plus hydrogen."],
+  ["Metalloid", "An element beside the staircase line, such as silicon, with some properties of metals and some of non-metals."],
+  ["Staircase line", "The zigzag line on the periodic table that separates metals on the left from non-metals on the right."],
+  ["Malleable", "Able to be hammered or pressed into thin sheets without breaking. A property of metals."],
+  ["Ductile", "Able to be pulled into a wire. A property of metals."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is an element?", ["A pure substance made of only one type of atom", "Any substance found in nature", "Two or more atoms of different types joined together", "A mixture of metals"], "An element has only one type of atom. Atoms of different types joined together make a compound."],
+  ["Which of these is an element?", ["Oxygen gas (O₂)", "Water (H₂O)", "Carbon dioxide (CO₂)", "Salt water"], "O₂ has two atoms, but both are oxygen, so it is still an element."],
+  ["Passing electricity through water makes hydrogen and oxygen. What does this tell you about water?", ["It is not an element, because it can be broken into simpler substances.", "It is an element, because it is a liquid.", "Hydrogen and oxygen are compounds.", "Water is a mixture of two elements that are not joined."], "Elements cannot be broken down by chemical means. Water can, so water is a compound."],
+  ["Which symbol is written correctly for cobalt?", ["Co", "CO", "co", "cO"], "The first letter is a capital and the second is lower case. CO is carbon monoxide, a compound."],
+  ["Why is the symbol for sodium Na?", ["It comes from its Latin name, natrium.", "S was already used, so letters were picked at random.", "Na stands for non-metal atom.", "It was named after a place called Na."], "Several symbols come from Latin names: Na from natrium, Fe from ferrum, Au from aurum."],
+  ["Who approves the names of new elements today?", ["IUPAC, an international group of chemists", "The country where it was discovered", "The first student to write it down", "NASA"], "The discoverers suggest a name. After public comment, IUPAC makes it official."],
+  ["Which of these is NOT one of the ways new elements can be named?", ["After a company that sells it", "After a place", "After a scientist", "After a myth"], "IUPAC allows names from a place, a scientist, a myth, a mineral or a property."],
+  ["What does the atomic number tell you?", ["The number of protons in each atom", "The number of neutrons in each atom", "The average mass of the atoms", "How many atoms are in a gram"], "The atomic number is the number of protons. All atoms of an element have the same number."],
+  ["An atom has 8 protons. What element is it?", ["Oxygen", "Nitrogen", "Fluorine", "Neon"], "Atomic number 8 is oxygen."],
+  ["If you could add one proton to a carbon atom (6 protons), what would it become?", ["Nitrogen", "A heavier carbon atom", "Boron", "Oxygen"], "Changing the number of protons changes the element. 7 protons is nitrogen."],
+  ["How is the modern periodic table ordered?", ["By atomic number", "By atomic mass", "By the date each element was found", "In alphabetical order"], "Moseley showed in 1913 that atomic number gives the right order."],
+  ["On the tile for chlorine, which number is the atomic mass?", ["35.45", "17", "Cl", "3"], "17 is the atomic number. 35.45 u is the average mass of chlorine atoms."],
+  ["Why is an atomic mass usually not a whole number?", ["It is an average, and atoms of an element can have different numbers of neutrons.", "Scientists round it badly.", "Electrons have huge masses.", "Protons have different masses in different elements."], "Atomic mass is the average mass of an element's atoms, so it often has decimals."],
+  ["Which two elements are liquids at room temperature?", ["Mercury and bromine", "Water and oxygen", "Gallium and iron", "Neon and argon"], "Mercury is the only liquid metal and bromine is the only liquid non-metal."],
+  ["What do elements in the same group have in common, for groups 1, 2 and 13 to 18?", ["The same number of valence electrons", "The same number of shells", "The same atomic mass", "The same state of matter"], "A group is a column. Its elements have the same number of electrons in the outer shell."],
+  ["What do elements in the same period have in common?", ["The same number of electron shells", "The same number of valence electrons", "The same number of protons", "They are all metals"], "A period is a row. Its elements have the same number of shells."],
+  ["Magnesium is in period 3, group 2. Which describes its atom?", ["3 shells and 2 valence electrons", "2 shells and 3 valence electrons", "3 shells and 3 valence electrons", "12 shells"], "Period gives the shells (3). Group 2 gives 2 valence electrons. Arrangement: 2, 8, 2."],
+  ["How many valence electrons does an element in group 16 have?", ["6", "16", "2", "8"], "For groups 13 to 18, subtract 10 from the group number: 16 − 10 = 6."],
+  ["Why is helium in group 18 when it has only 2 electrons?", ["Its only shell is full, like the other group 18 gases.", "It was placed there by mistake.", "It has 8 hidden electrons.", "It is a metal."], "Helium's first shell holds a maximum of 2. A full outer shell is what group 18 elements share."],
+  ["Which side of the staircase line are most metals on?", ["The left side", "The right side", "Only on the line", "The top row"], "Metals are left of the staircase. Most elements are metals."],
+  ["Which element is a non-metal even though it is in group 1?", ["Hydrogen", "Lithium", "Sodium", "Potassium"], "Hydrogen has 1 valence electron like group 1, but it is a non-metal gas."],
+  ["Silicon has some properties of metals and some of non-metals. What is it called?", ["A metalloid", "A noble gas", "A compound", "An alloy"], "Elements beside the staircase line, like silicon, are metalloids."],
+  ["Which property belongs to most metals?", ["They conduct electricity.", "They shatter when hit.", "They are dull.", "They are gases at room temperature."], "Metals are shiny, malleable, ductile and good conductors."],
+  ["Which element is in period 2, group 17?", ["Fluorine", "Chlorine", "Neon", "Oxygen"], "Row 2, column 17 is fluorine (F). Chlorine is below it in period 3."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      return;
+    }
+    var item = round[idx];
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"}), btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What is an element? Give one example of an element and one example of a substance that is not an element.", a: "An element is a pure substance made of only one type of atom. It cannot be broken down into other substances by physical or chemical means. Gold is an element. Water is not, because it is a compound of hydrogen and oxygen.", k: ["Only one type of atom", "Cannot be broken down", "A correct element", "A correct non-element with a reason"]},
+  {q: "Oxygen gas is made of pairs of atoms (O₂). Explain why it is still an element.", a: "Every atom in oxygen gas is an oxygen atom. An element is made of one type of atom, and atoms of one element can join together without becoming a different substance.", k: ["All atoms are oxygen", "One type of atom", "Joined atoms of one element are still that element"]},
+  {q: "Explain the rule for writing chemical symbols. Use cobalt (Co) and carbon monoxide (CO) in your answer.", a: "A symbol has one or two letters. The first is always a capital and the second is always lower case. Co is the element cobalt. CO, with two capitals, means one carbon atom (C) and one oxygen atom (O) joined, which is the compound carbon monoxide.", k: ["One or two letters", "First capital, second lower case", "Co is cobalt", "CO is carbon and oxygen together"]},
+  {q: "Describe how a new element gets its official name and symbol.", a: "The scientists who make the element suggest a name and a symbol. The name can come from a place, a scientist, a myth, a mineral or a property. IUPAC reviews it, the public can comment, and then IUPAC approves it.", k: ["Discoverers suggest a name", "Allowed sources of names", "Public comment", "IUPAC approves"]},
+  {q: "What is the atomic number? Explain why every atom of neon has the same atomic number.", a: "The atomic number is the number of protons in an atom. Every neon atom has 10 protons. If an atom had a different number of protons, it would be a different element, so all neon atoms share atomic number 10.", k: ["Number of protons", "Neon has 10", "Different protons means a different element"]},
+  {q: "Use the tile for iron (26, Fe, Iron, 55.85, solid) to list five facts about iron.", a: "Iron's atomic number is 26, so every iron atom has 26 protons. Its symbol is Fe. Its atomic mass is 55.85 u. It is a solid at room temperature. It is left of the staircase, so it is a metal.", k: ["26 protons", "Symbol Fe", "Atomic mass 55.85 u", "Solid", "Metal"]},
+  {q: "Calcium is in period 4, group 2. What does this tell you about its atoms? Give its electron arrangement.", a: "Period 4 means calcium atoms have 4 electron shells. Group 2 means they have 2 valence electrons. Calcium has 20 electrons arranged 2, 8, 8, 2.", k: ["4 shells from the period", "2 valence electrons from the group", "Arrangement 2, 8, 8, 2"]},
+  {q: "How can you use the periodic table to tell if an element is a metal or a non-metal? Name the exception in group 1.", a: "Find the staircase line that starts near boron and steps down to the right. Elements to the left are metals and elements to the right are non-metals. Elements touching the line are metalloids. Hydrogen is in group 1 but is a non-metal.", k: ["Staircase line", "Metals left, non-metals right", "Metalloids beside the line", "Hydrogen exception"]},
+  {q: "Mendeleev left gaps in his table. Explain how a gap helped him predict an element such as germanium.", a: "Mendeleev saw that properties repeated in a pattern, so he left gaps where an element seemed to be missing. He used the elements around the gap to predict the missing element's mass and properties. When germanium was found in 1886, its mass of 72.63 u was very close to the prediction.", k: ["Properties follow a pattern", "Gaps for missing elements", "Used neighbouring elements to predict", "Prediction later confirmed"]}
+];
+var LONG = [
+  {q: "Choose one element. Use the periodic table to write a full profile: name, symbol, atomic number, protons, atomic mass, state, metal or non-metal, period, group, and what the period and group tell you about its atoms.", a: "Sample answer for sulfur: Sulfur's symbol is S and its atomic number is 16, so each atom has 16 protons and, when neutral, 16 electrons. Its atomic mass is 32.06 u. It is a solid at room temperature. It is right of the staircase, so it is a non-metal. It is in period 3, so its atoms have 3 shells, and group 16, so they have 6 valence electrons. Its arrangement is 2, 8, 6. In Alberta, sulfur is removed from sour natural gas and stored in large yellow blocks.", k: ["Name, symbol and atomic number", "Protons from the atomic number", "Atomic mass with units", "State and metal or non-metal", "Period linked to shells", "Group linked to valence electrons"]},
+  {q: "Research report: explain how one element got its name and symbol. Include who discovered or made it, what the name means, where the symbol comes from, and how you checked that your sources were reliable.", a: "Sample answer: Francium (Fr) was discovered in 1939 by Marguerite Perey, a French scientist who worked at the Curie Institute in Paris. She named it after her country, France. The symbol Fr is the first two letters of the name. Francium is very rare and radioactive. I used the IUPAC periodic table and a university chemistry page. Both were written by experts and agreed on the date and the discoverer.", k: ["Names the discoverer and date", "Explains the meaning of the name", "Explains the symbol", "Describes the naming or approval process", "Explains how sources were checked"]},
+  {q: "Compare lithium, sodium and potassium with neon and argon. Use groups, periods, valence electrons and metal or non-metal to explain how each set is alike and different.", a: "Lithium, sodium and potassium are all in group 1, so each has 1 valence electron. They are in periods 2, 3 and 4, so they have 2, 3 and 4 shells. They are metals on the left of the table and react strongly. Neon and argon are in group 18, so each has a full outer shell of 8 electrons. Neon is in period 2 and argon in period 3. They are non-metal gases that almost never react. The group shows what the elements in each set share, and the period shows how they differ.", k: ["Group 1: 1 valence electron", "Group 1 elements are metals", "Group 18: full outer shell", "Group 18 elements are non-metal gases", "Different periods mean different numbers of shells"]},
+  {q: "A classmate says, \"Atomic mass and atomic number are the same thing, so the table could be ordered either way.\" Do you agree? Use evidence from the periodic table and its history.", a: "I disagree. The atomic number is the number of protons, a whole number that goes up by 1 from each element to the next. The atomic mass is the average mass of the atoms, so it has decimals and includes neutrons. Mendeleev ordered by mass, but some pairs ended up in the wrong place. For example, tellurium (127.60 u) has a larger mass than iodine (126.90 u), but tellurium's atomic number is 52 and iodine's is 53. Moseley showed in 1913 that ordering by atomic number puts every element in the right group.", k: ["States a position", "Defines atomic number", "Defines atomic mass", "Gives a pair out of mass order, such as tellurium and iodine", "Mentions Mendeleev or Moseley"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = store.wr[id] || [];
+          s = s.filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["M2.K1", "Elements are pure substances made of only one type of atom and cannot be broken down into other substances by physical or chemical means.", "Learn: Lesson 1 (particle pictures of eight substances). Sort It: element or not deck. Flashcards, Quiz, Written Review: short answer 1 and 2."],
+    ["M2.K2", "An element is assigned a name and symbol.", "Learn: Lesson 2 (symbol rules, name origins in five kinds). Lab Bench: Station 3 symbol match. Sort It: parts of a tile. Quiz, Written Review: short answer 3."],
+    ["M2.K3", "All atoms of the same element have the same number of protons, which corresponds to that element’s atomic number.", "Learn: Lesson 3 (add a proton, change the element). Lab Bench: Station 2 proton clues. Quiz, Flashcards, Written Review: short answer 5."],
+    ["M2.K4", "The periodic table organizes elements according to atomic number and typically displays each element’s atomic mass and state of matter.", "Learn: Lesson 4 (take a tile apart, Mendeleev and Moseley). Lab Bench: Stations 1, 2 and 4. Sort It: parts of a tile. Quiz, Written Review: short answer 6 and 9, extended 4."],
+    ["M2.K5", "Elements in the periodic table are organized into\n• groups, based on the number of electrons in each element’s outermost (valence) shell\n• periods, based on each element’s number of electron shells", "Learn: Lesson 5 (first 20 elements with Bohr diagrams). Lab Bench: Station 1 notes, Station 2 group and period clues. Sort It: group or period deck. Quiz, Written Review: short answer 7, extended 3."],
+    ["M2.K6", "The organization of the periodic table can be used to distinguish metals from non-metals.", "Learn: Lesson 6 (staircase table and property chart). Lab Bench: Stations 1 and 2. Sort It: metal deck. Quiz, Flashcards, Written Review: short answer 8."],
+    ["M2.S1", "Research how the name and symbol of an element was assigned.", "Learn: Lesson 2. Lab Bench: Station 3 (research notes for 35 elements, source checklist). Written Review: short answer 4, extended 2."],
+    ["M2.S2", "Determine the name, symbol, and properties of an element, using the periodic table.", "Lab Bench: Station 1 (full explorer with search and two colour modes, worked example), Station 2 (randomized clues on name, symbol, protons, mass, state and metal type). Written Review: short answer 6, extended 1."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+  var notes = $("tnotes");
+  notes.appendChild(el("h3", null, "Teacher notes on wording"));
+  var ul = el("ul");
+  [["M2.K1", "Taught as cannot be broken down by physical or chemical means, as written. Nuclear reactions can change one element into another; this is kept to this note. \"One type of atom\" is taught as atoms with the same number of protons, and students are told that atoms of one element can have different numbers of neutrons."],
+   ["M2.K4", "Atomic mass is taught as the average mass of an element's atoms in u, with bracketed values for radioactive elements explained as the longest-lasting isotope. State of matter is taught as the state at room temperature. States for elements 100 and up are shown as not known."],
+   ["M2.K5", "The group rule is taught for groups 1, 2 and 13 to 18 only (valence electrons = group number, or group number minus 10). Helium is named as the exception. Transition metals are told they do not follow a simple count, and the two lower rows are explained as part of periods 6 and 7. Electron arrangements match the M1 lab (2, 8, 8) for elements 1 to 20. Palladium's 4 shells in period 5 are noted in the explorer."],
+   ["M2.K6", "Metalloids are added as brief context along the staircase (B, Si, Ge, As, Sb, Te, At). Classifications of polonium and astatine vary between tables. Hydrogen is taught as a non-metal despite its place in group 1. Elements 109 and up are shown as not yet known."],
+   ["M2.S1", "Name origins (Latin roots, Ytterby, Lecoq de Boisbaudran, Marguerite Perey, RIKEN, the 2016 names) and the IUPAC process are described briefly and need a fact check before sharing."],
+   ["Data", "Atomic masses are IUPAC standard values rounded to two decimals (four significant figures for the lightest). Alberta examples: sulfur recovered from sour gas, copper wiring."]
+  ].forEach(function(n){ var li = el("li"); li.appendChild(el("b", null, n[0] + " ")); li.appendChild(document.createTextNode(n[1])); ul.appendChild(li); });
+  notes.appendChild(ul);
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

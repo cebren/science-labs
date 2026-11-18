@@ -1,0 +1,1584 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/matter-sorter-lab/"><meta name="description" content="Matter can be classified based on physical properties and separated according to its particles."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Matter Sorter Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a bench notebook for sorting matter. Sticky tab strip, then lessons that pair a short reading column with a particle model or a piece of virtual glassware. Blue marks pure substances, copper marks mixtures, ember marks heat. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+header h1 .pu{color:var(--water)} header h1 .mx{color:var(--mix)}
+.chip.mx[aria-pressed="true"]{background:var(--mix);border-color:var(--mix);color:var(--surface)}
+.pbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.pfig{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px}
+.pfig svg{display:block;width:100%;height:auto}
+.pfig figcaption{font-size:.82rem;color:var(--muted)}
+.verdict{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.badge{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+.badge.pure{background:var(--water-soft);color:var(--water);border-color:var(--water)}
+.badge.mixb{background:var(--mix-soft);color:var(--mix);border-color:var(--mix)}
+.ptable{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.ptable th,.ptable td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.ptable th:first-child,.ptable td:first-child{text-align:left}
+.ptable th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ptable tr.on td{background:var(--water-soft);font-weight:700}
+.state{font-family:var(--f-display);font-size:1.3rem;font-weight:800}
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv h3{font-size:1.3rem}
+.inv .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.readout{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.choice button{background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:4px}
+.choice button:hover:not(:disabled){border-color:var(--muted)}
+.choice button.right{border-color:var(--good);background:var(--leaf-soft)}
+.choice button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice button svg{width:100%;height:auto;display:block}
+.tray{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.cup{border:1.5px dashed var(--line);border-radius:8px;padding:8px;font-size:.85rem;display:grid;gap:2px;background:var(--surface-2)}
+.cup.full{border-style:solid;border-color:var(--good);background:var(--leaf-soft)}
+.cup b{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.log{display:grid;gap:4px;padding-left:1.2em;font-size:.9rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,90px),1fr));gap:8px}
+.lbox{display:grid;gap:4px;justify-items:center;text-align:center;font-size:.85rem}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.inline label.field{flex:1 1 140px}
+.inline input{width:100%}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Matter: Pure Substances and Mixtures · M1</div>
+    <h1>Matter <span class="pu">Sorter</span> <span class="mx">Lab</span></h1>
+    <p class="under"><b>Understanding:</b> Matter can be classified based on physical properties and separated according to its particles. Everything around you is either a pure substance or a mixture. You can tell them apart, identify them by their properties, and pull mixtures apart without changing the particles inside.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. First sort matter into two big groups, then learn the properties that identify pure substances, and finish with the ways people separate mixtures.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Two big groups</span>
+      <div class="codes"><span class="code">M1.K1</span><span class="code">M1.K2</span><span class="code">M1.K5</span></div>
+      <h3>Pure substance or mixture?</h3>
+      <p><b>Matter</b> is anything that has mass and takes up space. All matter is made of tiny <b>particles</b> that are far too small to see.</p>
+      <p>Scientists sort matter into two groups by looking at its particles:</p>
+      <ul>
+        <li>A <b>pure substance</b> has only one type of particle. Copper wire and distilled water are pure substances.</li>
+        <li>A <b>mixture</b> has two or more types of particles mixed together. Salt water, air and trail mix are mixtures.</li>
+      </ul>
+      <p>The particles in a mixture keep their own identity. That is why a mixture can be separated by <b>physical techniques</b>, such as filtering or boiling, which do not change what the particles are.</p>
+      <div class="key"><b>Remember:</b> one type of particle means pure substance. Two or more types means mixture.</div>
+    </div>
+    <div class="model">
+      <h4>Model: zoom in on the particles</h4>
+      <div class="chips" id="zoomChips" role="group" aria-label="Choose a sample"></div>
+      <div class="svgbox fit"><svg id="zoomSvg" viewBox="0 0 320 200" role="img" aria-label="Particle view of the chosen sample"></svg></div>
+      <div class="detail" id="zoomDetail" aria-live="polite"></div>
+      <p class="hint">Particle pictures are models. Real particles are far smaller and move all the time.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · One type of particle</span>
+      <div class="codes"><span class="code">M1.K2</span></div>
+      <h3>Pure substances stay together</h3>
+      <p>Every particle in a pure substance is the same. In pure copper every particle is a copper atom. In pure water every particle is a water molecule.</p>
+      <p>Because there is only one type of particle, there is nothing to sort out. If you filter pure water, pure water comes through. If you boil it and cool the steam, you collect pure water again. Physical techniques cannot separate a pure substance into anything else.</p>
+      <p>Pure substances come in two kinds. An <b>element</b>, such as copper or oxygen, is made of one kind of atom. A <b>compound</b>, such as water or table salt, is made of two or more kinds of atoms that are joined together. Each water particle is two hydrogen atoms joined to one oxygen atom.</p>
+      <p class="note">A compound can only be broken into its elements by a chemical change, such as passing electricity through water. That makes new substances, so it is not a physical separation. You will study chemical changes in later grades.</p>
+    </div>
+    <div class="model">
+      <h4>Model: try to separate it</h4>
+      <label class="field" for="sepSub">Sample
+        <select id="sepSub"></select></label>
+      <div class="chips" id="sepTech" role="group" aria-label="Physical technique"></div>
+      <div class="detail" id="sepOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Fingerprints for substances</span>
+      <div class="codes"><span class="code">M1.K3</span></div>
+      <h3>Physical properties identify pure substances</h3>
+      <p>A <b>physical property</b> is a feature you can observe or measure without changing the substance into something new. Each pure substance has its own set of values, like a fingerprint. Useful ones include:</p>
+      <ul>
+        <li><b>Appearance:</b> colour, and <b>lustre</b>, which is how shiny a surface is. Copper is reddish and shiny. Sulfur is yellow and dull.</li>
+        <li><b>Density:</b> how much mass is packed into each unit of volume (Lesson 4).</li>
+        <li><b>Melting point:</b> the temperature at which a solid turns into a liquid.</li>
+        <li><b>Freezing point:</b> the temperature at which a liquid turns into a solid.</li>
+        <li><b>Boiling point:</b> the temperature at which a liquid boils and turns into a gas.</li>
+      </ul>
+      <p>For a pure substance, the melting point and the freezing point are the same temperature. Water melts at 0 °C and freezes at 0 °C. A pure substance also melts and boils at one sharp temperature. Mixtures usually melt or boil over a range of temperatures instead.</p>
+      <p class="note">Boiling points in this lab are measured at sea level. In Edmonton, about 670 m above sea level, the air pressure is a little lower, so water boils at about 98 °C.</p>
+    </div>
+    <div class="model">
+      <h4>Model: heat or cool a pure substance</h4>
+      <label class="field" for="stSub">Substance
+        <select id="stSub"></select></label>
+      <label class="field" for="stTemp">Temperature: <span id="stOut" class="mono">20 °C</span>
+        <input type="range" id="stTemp" min="-150" max="3000" step="1" value="20"></label>
+      <div class="row"><span class="state" id="stState" aria-live="polite"></span></div>
+      <div class="svgbox fit"><svg id="stSvg" viewBox="0 0 320 120" role="img" aria-label="Particle arrangement at this temperature"></svg></div>
+      <div class="tablebox"><table class="ptable" id="propTable"><thead><tr><th>Substance</th><th>Appearance</th><th>Density (g/cm³)</th><th>Melting and freezing point (°C)</th><th>Boiling point (°C)</th></tr></thead><tbody></tbody></table></div>
+      <p class="hint">Values are for pure samples at about 20 °C and sea-level pressure, rounded.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Mass per volume</span>
+      <div class="codes"><span class="code">M1.K4</span><span class="code">M1.K3</span></div>
+      <h3>Density</h3>
+      <p><b>Density</b> is the mass per unit volume of a substance. It tells you how tightly matter is packed.</p>
+      <div class="formula">d = m ÷ V &nbsp;&nbsp; (density = mass ÷ volume)</div>
+      <p>Mass (m) is measured in grams (g). Volume (V) is measured in cubic centimetres (cm³) for solids or millilitres (mL) for liquids. One millilitre equals one cubic centimetre. So density is given in g/cm³ or g/mL.</p>
+      <div class="worked"><b>Worked example</b><span>An aluminum block has a mass of 54 g and a volume of 20 cm³.</span><span>d = m ÷ V = 54 g ÷ 20 cm³ = 2.7 g/cm³</span></div>
+      <p>The density of a pure substance stays the same no matter how big the sample is. A paper clip of iron and a whole iron beam both have a density of about 7.9 g/cm³. That is why density helps identify a substance.</p>
+      <p>Objects less dense than water (1.0 g/cm³) float in it. Objects more dense than water sink.</p>
+      <p class="note">Density changes a little with temperature, because most substances expand when heated. That is why ice (0.92 g/cm³) floats on liquid water.</p>
+    </div>
+    <div class="model">
+      <h4>Model: change the size, keep the density</h4>
+      <label class="field" for="dSub">Substance
+        <select id="dSub"></select></label>
+      <label class="field" for="dVol">Volume of the block: <span id="dVolOut" class="mono">10 cm³</span>
+        <input type="range" id="dVol" min="1" max="50" step="1" value="10"></label>
+      <div class="svgbox fit"><svg id="dSvg" viewBox="0 0 320 170" role="img" aria-label="Block of the chosen substance placed in water"></svg></div>
+      <div class="stats" aria-live="polite">
+        <div class="stat"><span>Mass</span><b id="dM">0 g</b></div>
+        <div class="stat"><span>Volume</span><b id="dV">0 cm³</b></div>
+        <div class="stat"><span>Density = m ÷ V</span><b id="dD">0</b></div>
+      </div>
+      <p class="hint" id="dFloat"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Can you see the parts?</span>
+      <div class="codes"><span class="code">M1.K5</span><span class="code">M1.K6</span></div>
+      <h3>Heterogeneous and homogeneous mixtures</h3>
+      <p>A mixture has two or more types of particles. Mixtures come in two kinds.</p>
+      <p>A <b>heterogeneous mixture</b> is not the same all the way through. Different parts of it have different particles. A <b>mechanical mixture</b> is a heterogeneous mixture where you can see the separate parts, like trail mix, gravel or a salad. Muddy water is also heterogeneous: if it sits, the mud settles to the bottom.</p>
+      <p>A <b>homogeneous mixture</b> looks the same all the way through, even under a microscope. Its particles are spread out evenly. A <b>solution</b> is a homogeneous mixture, such as salt water, apple juice, vinegar or air. Some solids are solutions too: brass is a solution of copper and zinc.</p>
+      <div class="key"><b>Quick test:</b> if one scoop of the mixture could have different stuff in it than another scoop, it is heterogeneous. If every scoop is identical, it is homogeneous.</div>
+    </div>
+    <div class="model">
+      <h4>Model: mixture magnifier</h4>
+      <div class="chips" id="mixChips" role="group" aria-label="Choose a mixture"></div>
+      <div class="pbox">
+        <figure class="pfig"><svg id="mixEye" viewBox="0 0 200 130" role="img" aria-label="What you see"></svg><figcaption>What you see</figcaption></figure>
+        <figure class="pfig"><svg id="mixPart" viewBox="0 0 200 130" role="img" aria-label="Particle model"></svg><figcaption>Particle model</figcaption></figure>
+      </div>
+      <div class="detail" id="mixDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Size, density and magnets</span>
+      <div class="codes"><span class="code">M1.K7</span></div>
+      <h3>Separating heterogeneous mixtures</h3>
+      <p>Heterogeneous mixtures can be pulled apart with physical techniques. Each technique uses a difference between the parts.</p>
+      <ul>
+        <li><b>Mechanical separation</b> uses particle size and density.
+          <ul>
+            <li><b>Sorting:</b> picking pieces out by hand or by machine, like picking raisins out of trail mix.</li>
+            <li><b>Sieving:</b> shaking the mixture through a mesh. Small pieces fall through and big ones stay on top.</li>
+            <li><b>Filtration:</b> pouring a liquid through filter paper. The liquid and anything dissolved pass through. Solid bits are too big and stay behind.</li>
+            <li><b>Settling and decanting:</b> letting denser solids sink, then pouring off the liquid on top. Panning for gold uses density too.</li>
+          </ul></li>
+        <li><b>Magnetic separation</b> uses magnetism. A magnet pulls out iron, nickel or steel and leaves everything else behind.</li>
+      </ul>
+      <p>Alberta uses these ideas every day. Recycling centres use big magnets to pull steel cans out of mixed recycling. Water treatment plants on the North Saskatchewan River let silt settle, then filter the water. In the oil sands, hot water and air bubbles help bitumen float to the top while sand sinks.</p>
+    </div>
+    <div class="model">
+      <h4>Model: technique explorer</h4>
+      <div class="chips" id="techChips" role="group" aria-label="Choose a technique"></div>
+      <div class="svgbox fit"><svg id="techSvg" viewBox="0 0 320 170" role="img" aria-label="Diagram of the chosen technique"></svg></div>
+      <div class="detail" id="techDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Boil, cool, collect</span>
+      <div class="codes"><span class="code">M1.K8</span><span class="code">M1.K3</span></div>
+      <h3>Distillation separates solutions</h3>
+      <p>A solution cannot be filtered: its particles are spread out evenly and are small enough to pass through filter paper. Instead, we use differences in <b>boiling point</b>.</p>
+      <p><b>Distillation</b> works in three steps:</p>
+      <ol>
+        <li>Heat the solution. The part with the lowest boiling point boils first and turns into a gas.</li>
+        <li>The gas travels into a cool tube called a <b>condenser</b>, where it turns back into a liquid.</li>
+        <li>That liquid, called the <b>distillate</b>, drips into a clean container.</li>
+      </ol>
+      <p>Distilling salt water collects pure water and leaves the salt behind in the flask. Salt boils at 1465 °C, so it never gets near boiling.</p>
+      <p>Refineries near Edmonton use a bigger version called fractional distillation to separate crude oil into parts like gasoline, diesel and asphalt, each with its own boiling range.</p>
+      <p class="note">When two liquids have boiling points close together, such as water (100 °C) and ethanol (78 °C), one distillation gives a liquid that is richer in ethanol but not pure. Repeating the process makes it purer.</p>
+    </div>
+    <div class="model">
+      <h4>Model: run a distillation</h4>
+      <div class="chips" id="distChips" role="group" aria-label="Choose a solution"></div>
+      <label class="field" for="distTemp">Burner setting, temperature in the flask: <span id="distOut" class="mono">20 °C</span>
+        <input type="range" id="distTemp" min="20" max="110" step="1" value="20"></label>
+      <div class="row"><button class="btn" id="distRun" type="button">Heat for 5 minutes</button><button class="btn ghost" id="distReset" type="button">Reset</button></div>
+      <div class="svgbox fit"><svg id="distSvg" viewBox="0 0 320 190" role="img" aria-label="Distillation apparatus"></svg></div>
+      <div class="detail" id="distDetail" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four virtual investigations. Measure and identify mystery substances, draw matter as particles, solve density problems, and plan how to separate a five-part mixture.</p>
+  </div>
+
+  <article class="inv">
+    <span class="step">Investigation 1 · M1.S1, M1.S3</span>
+    <h3>Mystery substance</h3>
+    <p>A sample from the supply room has lost its label. Measure its properties, calculate its density, then match it to the reference table in Lesson 3.</p>
+    <div class="two">
+      <div class="model">
+        <div class="row"><button class="btn ghost" id="myLook" type="button">Observe appearance</button><button class="btn ghost" id="myMass" type="button">Measure mass</button><button class="btn ghost" id="myVol" type="button">Measure volume</button><button class="btn ghost" id="myMelt" type="button">Find melting point</button></div>
+        <div class="svgbox fit"><svg id="mySvg" viewBox="0 0 320 170" role="img" aria-label="Measuring station"></svg></div>
+        <div class="readout" id="myRead" aria-live="polite">Choose a measurement.</div>
+      </div>
+      <div class="model">
+        <h4>Your notes</h4>
+        <ul class="log" id="myLog"></ul>
+        <div class="inline">
+          <label class="field" for="myD">Your density (g/cm³)<input type="number" id="myD" step="0.01" inputmode="decimal"></label>
+          <label class="field" for="myId">Identity<select id="myId"></select></label>
+        </div>
+        <div class="row"><button class="btn" id="myCheck" type="button">Check my answer</button><button class="btn ghost" id="myNew" type="button">New sample</button></div>
+        <div class="feedback" id="myFb" aria-live="polite" hidden></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 2 · M1.S2, M1.S4</span>
+    <h3>Particle picture match</h3>
+    <p>Read the description. Choose the particle model that represents it. Each circle is one particle. Circles stuck together are particles made of joined atoms.</p>
+    <p class="mono hint" id="ppScore"></p>
+    <div class="detail" id="ppQ" aria-live="polite"></div>
+    <div class="choice" id="ppChoices"></div>
+    <div class="feedback" id="ppFb" aria-live="polite" hidden></div>
+    <div class="row"><button class="btn" id="ppNext" type="button">Next description</button></div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 3 · M1.S3</span>
+    <h3>Density calculator and practice</h3>
+    <div class="two">
+      <div class="model">
+        <h4>Calculator</h4>
+        <div class="inline">
+          <label class="field" for="cM">Mass (g)<input type="number" id="cM" value="79" step="any" inputmode="decimal"></label>
+          <label class="field" for="cV">Volume (cm³ or mL)<input type="number" id="cV" value="10" step="any" inputmode="decimal"></label>
+        </div>
+        <div class="worked" id="cOut" aria-live="polite"></div>
+      </div>
+      <div class="model">
+        <h4>Practice</h4>
+        <div class="detail" id="prQ"></div>
+        <div class="inline">
+          <label class="field" for="prA">Your answer<input type="number" id="prA" step="any" inputmode="decimal"></label>
+          <button class="btn" id="prCheck" type="button">Check</button>
+          <button class="btn ghost" id="prNew" type="button">New problem</button>
+        </div>
+        <div class="feedback" id="prFb" aria-live="polite" hidden></div>
+        <p class="hint mono" id="prScore"></p>
+      </div>
+    </div>
+    <p class="hint">Round your answer to two decimal places. Problems marked "challenge" ask for mass or volume: rearrange to m = d × V or V = m ÷ d.</p>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 4 · M1.S5, M1.S4</span>
+    <h3>Separation challenge</h3>
+    <p>A spill in the supply room mixed five things in one tub: <b>gravel, iron filings, sand, table salt and water</b>. The salt has dissolved. Choose techniques one at a time to get all five back in separate containers. Think about which property each technique uses.</p>
+    <div class="two">
+      <div class="model">
+        <h4>What is in the tub now</h4>
+        <div class="readout" id="spTub" aria-live="polite"></div>
+        <div class="chips" id="spTech" role="group" aria-label="Choose a technique"></div>
+        <div class="feedback" id="spFb" aria-live="polite" hidden></div>
+        <button class="btn ghost" id="spReset" type="button">Start over</button>
+      </div>
+      <div class="model">
+        <h4>Collected</h4>
+        <div class="tray" id="spTray"></div>
+        <h4>Your steps</h4>
+        <ol class="log" id="spLog"></ol>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 M1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>M1.K2:</b> "only one type of particle" is taught precisely: an element has one kind of atom, a compound has one kind of particle made of two or more kinds of joined atoms. The lab adds that compounds can be broken down by chemical change but not by physical techniques, so students do not conclude that pure substances can never be broken down.</li>
+      <li><b>M1.K3:</b> the lab states that a pure substance's melting point and freezing point are the same temperature, and that mixtures usually melt or boil over a range. Boiling points are given at sea level, with a note that water boils near 98 °C in Edmonton.</li>
+      <li><b>M1.K6 and M1.K7:</b> "mechanical mixture" is taught as a heterogeneous mixture with visible parts, and suspensions such as muddy water are included as heterogeneous. Density-based methods (settling, decanting, panning, flotation) are taught as mechanical separation, as the draft groups them, with density named as the property used.</li>
+      <li><b>M1.K8:</b> distillation is taught for a solid dissolved in a liquid (pure water collected, salt left behind) and for two liquids, with a note that one distillation of water and ethanol gives an ethanol-rich mixture, not pure ethanol. Evaporation is not taught as a separate technique.</li>
+      <li><b>Alberta examples:</b> oil sands hot-water extraction, Edmonton-area refineries, river water treatment and recycling magnets are described in general terms only. Property values are rounded reference values at about 20 °C.</li>
+      <li><b>Lab Bench:</b> the mystery samples are idealized, with small measurement noise added; values are labelled as practice data.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-m1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Particle drawing ---------- */
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+function fillStyle(v){ return "fill:var(" + v + ");stroke:var(--ink);stroke-width:.8"; }
+var KIND = {
+  Cu: [["--pb", 1]], Al: [["--pe", 1]], Fe: [["--pe", 1]], Au: [["--pb", 1]], S8: [["--lichen", 1]],
+  A: [["--pa", 1]], B: [["--pb", 1]], C: [["--pc", 1]], D: [["--pd", 1]], E: [["--pe", 1]]
+};
+function drawParticle(g, k, x, y, r){
+  function c(cx, cy, rr, col){ g.appendChild(sv("circle", {cx: cx.toFixed(1), cy: cy.toFixed(1), r: rr.toFixed(1), style: fillStyle(col)})); }
+  if (k === "W") { c(x - r * .55, y + r * .45, r * .5, "--surface"); c(x + r * .55, y + r * .45, r * .5, "--surface"); c(x, y - r * .1, r * .72, "--pa"); return; }
+  if (k === "O2") { c(x - r * .45, y, r * .62, "--pc"); c(x + r * .45, y, r * .62, "--pc"); return; }
+  if (k === "N2") { c(x - r * .45, y, r * .62, "--pd"); c(x + r * .45, y, r * .62, "--pd"); return; }
+  if (k === "CO2") { c(x - r * .7, y, r * .45, "--pc"); c(x + r * .7, y, r * .45, "--pc"); c(x, y, r * .55, "--pe"); return; }
+  if (k === "Su") { c(x - r * .45, y + r * .3, r * .5, "--pb"); c(x + r * .45, y + r * .3, r * .5, "--pb"); c(x, y - r * .4, r * .5, "--pb"); return; }
+  if (k === "Na") { c(x, y, r * .55, "--pb"); return; }
+  if (k === "Ar") { c(x, y, r * .5, "--pe"); return; }
+  if (k === "Zn") { c(x, y, r * .9, "--pe"); return; }
+  if (k === "Cu" || k === "Au") { c(x, y, r * .9, "--pb"); return; }
+  if (k === "Al" || k === "Fe") { c(x, y, r * .9, "--pe"); return; }
+  if (k === "Ac") { c(x - r * .4, y, r * .55, "--pd"); c(x + r * .45, y, r * .45, "--pd"); return; }
+  if (k === "Q") { c(x, y, r * .9, "--sand"); return; }
+  if (k === "Oil") { c(x - r * .5, y, r * .45, "--pb"); c(x, y, r * .45, "--pb"); c(x + r * .5, y, r * .45, "--pb"); return; }
+  var col = (KIND[k] || [["--pe"]])[0][0];
+  c(x, y, r * .85, col);
+}
+/* regions: [{x,y,w,h,s,mode:'solid'|'liquid'|'gas',items:[[kind,n],...], keep:true(no shuffle)}] */
+function scene(svg, regions, opts){
+  clear(svg); opts = opts || {};
+  var vb = svg.viewBox.baseVal, W = vb.width, H = vb.height;
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: W, height: H, style: "fill:var(--surface)"}));
+  if (opts.bg) svg.appendChild(sv("rect", {x: opts.bg[0], y: opts.bg[1], width: opts.bg[2], height: opts.bg[3], rx: 6, style: "fill:var(" + (opts.bgc || "--water-soft") + ")"}));
+  var R = rng(opts.seed || 7);
+  regions.forEach(function(rg){
+    var s = rg.s || 20, cols = Math.max(1, Math.floor(rg.w / s)), rows = Math.max(1, Math.floor(rg.h / s)), cells = [];
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+      var off = (rg.mode === "solid" && rg.hex && r % 2) ? s / 2 : 0;
+      if (off && c === cols - 1) continue;
+      cells.push([rg.x + s / 2 + c * s + off, rg.y + rg.h - s / 2 - r * s]);
+    }
+    var list = [];
+    rg.items.forEach(function(it){ for (var i = 0; i < it[1]; i++) list.push(it[0]); });
+    if (rg.mode === "gas") { for (var i = cells.length - 1; i > 0; i--) { var j = Math.floor(R() * (i + 1)); var t = cells[i]; cells[i] = cells[j]; cells[j] = t; } }
+    if (!rg.keep) { for (var a = list.length - 1; a > 0; a--) { var b = Math.floor(R() * (a + 1)); var u = list[a]; list[a] = list[b]; list[b] = u; } }
+    var jit = rg.mode === "solid" ? 0 : rg.mode === "liquid" ? s * .14 : s * .2;
+    list.forEach(function(k, i){
+      if (i >= cells.length) return;
+      var p = cells[i];
+      drawParticle(svg, k, p[0] + (R() - .5) * 2 * jit, p[1] + (R() - .5) * 2 * jit, s * .42);
+    });
+  });
+  if (opts.frame) svg.appendChild(sv("rect", {x: opts.frame[0], y: opts.frame[1], width: opts.frame[2], height: opts.frame[3], rx: 6, style: "fill:none;stroke:var(--muted);stroke-width:1.5"}));
+}
+
+/* ---------- Lesson 1: zoom in ---------- */
+(function(){
+  var S = [
+    {label: "Copper wire", pure: true, sub: "Element", regions: [{x: 40, y: 30, w: 240, h: 150, s: 22, mode: "solid", items: [["Cu", 66]], keep: true}],
+      text: ["Every particle is a copper atom, packed tightly in rows. One type of particle, so copper is a pure substance. It is an element."]},
+    {label: "Distilled water", pure: true, sub: "Compound", bg: [20, 20, 280, 165], regions: [{x: 24, y: 40, w: 272, h: 140, s: 26, mode: "liquid", items: [["W", 45]]}],
+      text: ["Every particle is a water molecule: one oxygen atom joined to two hydrogen atoms. One type of particle, so distilled water is a pure substance. It is a compound."]},
+    {label: "Oxygen gas", pure: true, sub: "Element", regions: [{x: 20, y: 20, w: 280, h: 160, s: 28, mode: "gas", items: [["O2", 14]]}],
+      text: ["Every particle is an oxygen molecule made of two oxygen atoms. The particles are far apart because it is a gas. One type of particle, so it is a pure substance."]},
+    {label: "Salt water", pure: false, sub: "Homogeneous mixture (solution)", bg: [20, 20, 280, 165], regions: [{x: 24, y: 40, w: 272, h: 140, s: 26, mode: "liquid", items: [["W", 38], ["Na", 7]]}],
+      text: ["Water particles and salt particles are mixed evenly. Two types of particle, so salt water is a mixture. Boiling off the water would leave the salt behind."]},
+    {label: "Air", pure: false, sub: "Homogeneous mixture (solution)", regions: [{x: 20, y: 20, w: 280, h: 160, s: 26, mode: "gas", items: [["N2", 12], ["O2", 4], ["Ar", 1], ["CO2", 1]]}],
+      text: ["Air is mostly nitrogen molecules (purple), with oxygen molecules (green) and small amounts of argon, carbon dioxide and water vapour. Several types of particle, so air is a mixture."]},
+    {label: "Sand and iron filings", pure: false, sub: "Heterogeneous mixture", regions: [{x: 20, y: 70, w: 140, h: 110, s: 22, mode: "liquid", items: [["Q", 24]]}, {x: 170, y: 90, w: 130, h: 90, s: 20, mode: "solid", items: [["Fe", 24]], keep: true}],
+      text: ["Clumps of sand particles sit next to clumps of iron particles. You can see the different parts. Two types of particle, so it is a mixture. A magnet can pull the iron out."]}
+  ];
+  chipGroup($("zoomChips"), S, "", function(s){
+    scene($("zoomSvg"), s.regions, {bg: s.bg, seed: 11});
+    var box = $("zoomDetail"); clear(box);
+    var v = el("div", {"class": "verdict"});
+    v.appendChild(el("span", {"class": "badge " + (s.pure ? "pure" : "mixb")}, s.pure ? "Pure substance" : "Mixture"));
+    v.appendChild(el("span", {"class": "badge"}, s.sub));
+    box.appendChild(v);
+    s.text.forEach(function(t){ box.appendChild(el("p", null, t)); });
+    $("zoomSvg").setAttribute("aria-label", "Particle view of " + s.label.toLowerCase() + ". " + s.text[0]);
+  }, 0);
+})();
+
+/* ---------- Lesson 2: try to separate ---------- */
+(function(){
+  var SUBS = [
+    {n: "Distilled water", pure: true, r: {filter: "All of the water passes through the filter paper. Nothing is left behind.", magnet: "Nothing sticks to the magnet.", sieve: "All of the water runs through the mesh.", distil: "The water boils at 100 °C and condenses into the beaker. It is still pure water, and nothing is left in the flask."}},
+    {n: "Copper (small pieces)", pure: true, r: {filter: "The copper pieces stay on the filter paper, all together. You still have only copper.", magnet: "Copper is not attracted to a magnet, so nothing happens.", sieve: "Small pieces fall through and big pieces stay. Both piles are still pure copper.", distil: "Copper would need 2562 °C to boil. When it did, you would collect copper again."}},
+    {n: "Table salt (dry)", pure: true, r: {filter: "Dry salt crystals sit on the filter paper. It is still all salt.", magnet: "Salt is not attracted to a magnet.", sieve: "Crystals split into big and small piles, but both are still salt.", distil: "Salt melts at 801 °C and boils at 1465 °C. Collected salt vapour would cool back into salt."}},
+    {n: "Sugar (dry)", pure: true, r: {filter: "Sugar crystals stay on the paper. Still all sugar.", magnet: "Sugar is not attracted to a magnet.", sieve: "Crystals sort by size, but every pile is still sugar.", distil: "Sugar breaks down and turns brown before it boils. That is a chemical change, not a separation."}},
+    {n: "Salt water (for comparison)", pure: false, r: {filter: "The salt is dissolved, so it passes through the filter with the water. Filtering does not separate a solution.", magnet: "Nothing sticks to the magnet.", sieve: "Everything runs through the mesh.", distil: "Water boils off and condenses as pure water in the beaker. Salt is left in the flask. Two different substances came out, so this was a mixture."}}
+  ];
+  var TECH = [{label: "Filter", k: "filter"}, {label: "Use a magnet", k: "magnet"}, {label: "Sieve", k: "sieve"}, {label: "Boil and collect", k: "distil"}];
+  var sel = $("sepSub"), tech = TECH[0];
+  SUBS.forEach(function(s, i){ sel.appendChild(el("option", {value: i}, s.n)); });
+  function render(){
+    var s = SUBS[+sel.value];
+    var box = $("sepOut"); clear(box);
+    box.appendChild(el("span", {"class": "tagline"}, tech.label + " · " + s.n));
+    box.appendChild(el("p", null, s.r[tech.k]));
+    box.appendChild(el("p", {"class": "fb " + (s.pure ? "ok" : "no")}, s.pure ? "Result: you still have one substance. Pure substances cannot be separated by physical techniques." : "Result: this one separated into different substances, because it is a mixture."));
+  }
+  sel.addEventListener("change", render);
+  chipGroup($("sepTech"), TECH, "", function(t){ tech = t; render(); }, 0);
+})();
+
+/* ---------- Property data ---------- */
+var PROPS = [
+  {n: "Water", k: "W", look: "Clear, colourless liquid", d: 1.00, mp: 0, bp: 100},
+  {n: "Ethanol", k: "Ac", look: "Clear, colourless liquid", d: 0.79, mp: -114, bp: 78},
+  {n: "Table salt (sodium chloride)", k: "Na", look: "White crystals, glassy", d: 2.16, mp: 801, bp: 1465},
+  {n: "Sulfur", k: "D", look: "Yellow solid, dull", d: 2.07, mp: 115, bp: 445},
+  {n: "Aluminum", k: "Al", look: "Silver-grey metal, shiny", d: 2.70, mp: 660, bp: 2519},
+  {n: "Iron", k: "Fe", look: "Grey metal, shiny", d: 7.87, mp: 1538, bp: 2862},
+  {n: "Copper", k: "Cu", look: "Reddish-brown metal, shiny", d: 8.96, mp: 1085, bp: 2562},
+  {n: "Lead", k: "E", look: "Blue-grey metal, dull when old", d: 11.34, mp: 327, bp: 1749},
+  {n: "Gold", k: "Au", look: "Yellow metal, very shiny", d: 19.32, mp: 1064, bp: 2856}
+];
+
+/* ---------- Lesson 3: states ---------- */
+(function(){
+  var sel = $("stSub"), range = $("stTemp"), tb = document.querySelector("#propTable tbody");
+  PROPS.forEach(function(p, i){
+    sel.appendChild(el("option", {value: i}, p.n));
+    var tr = el("tr");
+    [p.n, p.look, p.d.toFixed(2), String(p.mp).replace("-", "−"), String(p.bp)].forEach(function(t){ tr.appendChild(el("td", null, t)); });
+    tb.appendChild(tr);
+  });
+  function render(){
+    var p = PROPS[+sel.value], t = +range.value;
+    $("stOut").textContent = String(t).replace("-", "−") + " °C";
+    Array.prototype.forEach.call(tb.rows, function(r, i){ r.className = i === +sel.value ? "on" : ""; });
+    var st, mode;
+    if (t < p.mp) { st = "Solid"; mode = "solid"; }
+    else if (t === p.mp) { st = "Melting point: solid and liquid together"; mode = "liquid"; }
+    else if (t < p.bp) { st = "Liquid"; mode = "liquid"; }
+    else if (t === p.bp) { st = "Boiling point: liquid boiling into gas"; mode = "gas"; }
+    else { st = "Gas"; mode = "gas"; }
+    $("stState").textContent = p.n + " at " + String(t).replace("-", "−") + " °C: " + st;
+    var regions = mode === "solid" ? [{x: 60, y: 10, w: 200, h: 100, s: 20, mode: "solid", items: [[p.k, 50]], keep: true}]
+      : mode === "liquid" ? [{x: 40, y: 30, w: 240, h: 80, s: 22, mode: "liquid", items: [[p.k, 36]]}]
+      : [{x: 10, y: 6, w: 300, h: 108, s: 24, mode: "gas", items: [[p.k, 12]]}];
+    scene($("stSvg"), regions, {seed: 5});
+    $("stSvg").setAttribute("aria-label", p.n + " particles as a " + (mode === "solid" ? "solid, packed in rows" : mode === "liquid" ? "liquid, close together but jumbled" : "gas, far apart"));
+  }
+  sel.addEventListener("change", render); range.addEventListener("input", render);
+  render();
+})();
+
+/* ---------- Lesson 4: density ---------- */
+(function(){
+  var D = [{n: "Ice", d: 0.92, col: "--water-soft"}, {n: "Sulfur", d: 2.07, col: "--lichen"}, {n: "Aluminum", d: 2.70, col: "--pe"}, {n: "Iron", d: 7.87, col: "--iron"}, {n: "Copper", d: 8.96, col: "--pb"}, {n: "Lead", d: 11.34, col: "--pe"}, {n: "Gold", d: 19.32, col: "--pb"}];
+  var sel = $("dSub"), vol = $("dVol");
+  D.forEach(function(s, i){ sel.appendChild(el("option", {value: i}, s.n + " (" + s.d.toFixed(2) + " g/cm³)")); });
+  sel.value = 2;
+  function render(){
+    var s = D[+sel.value], V = +vol.value, m = s.d * V;
+    $("dVolOut").textContent = V + " cm³";
+    $("dM").textContent = m.toFixed(1) + " g"; $("dV").textContent = V + " cm³"; $("dD").textContent = (m / V).toFixed(2) + " g/cm³";
+    var svg = $("dSvg"); clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 320, height: 170, style: "fill:var(--surface)"}));
+    svg.appendChild(sv("rect", {x: 30, y: 40, width: 260, height: 120, style: "fill:var(--water-soft);stroke:var(--water);stroke-width:1.5"}));
+    svg.appendChild(sv("text", {x: 38, y: 58, "class": "small"}, "Water, 1.00 g/cm³"));
+    var side = 14 * Math.cbrt(V) + 6, x = 160 - side / 2, y;
+    if (s.d < 1) { y = 40 - side * (1 - s.d) ; } else { y = 160 - side; }
+    svg.appendChild(sv("rect", {x: x.toFixed(1), y: y.toFixed(1), width: side.toFixed(1), height: side.toFixed(1), rx: 2, style: "fill:var(" + s.col + ");stroke:var(--ink);stroke-width:1.2"}));
+    svg.appendChild(sv("text", {x: 160, y: 24, "text-anchor": "middle", "class": "lbl"}, s.d < 1 ? s.n + " floats" : s.n + " sinks"));
+    $("dFloat").textContent = "Try other sizes: the mass changes, but mass ÷ volume stays " + s.d.toFixed(2) + " g/cm³. " + (s.d < 1 ? "It is less dense than water, so it floats." : "It is denser than water, so it sinks.");
+    svg.setAttribute("aria-label", V + " cubic centimetre block of " + s.n.toLowerCase() + " that " + (s.d < 1 ? "floats" : "sinks") + " in water");
+  }
+  sel.addEventListener("change", render); vol.addEventListener("input", render);
+  render();
+})();
+
+/* ---------- Lesson 5: mixture magnifier ---------- */
+(function(){
+  function eye(svg, kind){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 200, height: 130, style: "fill:var(--surface)"}));
+    var R = rng(3), i;
+    function beaker(){ svg.appendChild(sv("path", {d: "M50 10 V120 H150 V10", style: "fill:none;stroke:var(--muted);stroke-width:2"})); }
+    if (kind === "trail") {
+      var cols = ["--pb", "--mix", "--sand", "--pd", "--pc"];
+      for (i = 0; i < 40; i++) svg.appendChild(sv("ellipse", {cx: (20 + R() * 160).toFixed(1), cy: (30 + R() * 90).toFixed(1), rx: (5 + R() * 6).toFixed(1), ry: (4 + R() * 3).toFixed(1), style: "fill:var(" + cols[i % 5] + ");stroke:var(--ink);stroke-width:.6"}));
+    } else if (kind === "mud") {
+      svg.appendChild(sv("rect", {x: 51, y: 30, width: 98, height: 70, style: "fill:var(--mix-soft)"}));
+      svg.appendChild(sv("rect", {x: 51, y: 100, width: 98, height: 19, style: "fill:var(--sand)"}));
+      for (i = 0; i < 25; i++) svg.appendChild(sv("circle", {cx: (56 + R() * 88).toFixed(1), cy: (35 + R() * 62).toFixed(1), r: 1.6, style: "fill:var(--mix)"}));
+      beaker();
+    } else if (kind === "oil") {
+      svg.appendChild(sv("rect", {x: 51, y: 70, width: 98, height: 49, style: "fill:var(--water-soft)"}));
+      svg.appendChild(sv("rect", {x: 51, y: 40, width: 98, height: 30, style: "fill:var(--pb);opacity:.55"}));
+      beaker();
+    } else if (kind === "salt" || kind === "vinegar") {
+      svg.appendChild(sv("rect", {x: 51, y: 35, width: 98, height: 84, style: "fill:var(--water-soft)"}));
+      beaker();
+    } else if (kind === "air") {
+      svg.appendChild(sv("rect", {x: 10, y: 10, width: 180, height: 110, rx: 8, style: "fill:var(--glass)"}));
+      svg.appendChild(sv("text", {x: 100, y: 70, "text-anchor": "middle", "class": "small"}, "Clear and invisible"));
+    } else if (kind === "brass") {
+      svg.appendChild(sv("rect", {x: 40, y: 35, width: 120, height: 60, rx: 4, style: "fill:var(--lichen);stroke:var(--ink);stroke-width:1"}));
+    } else if (kind === "granite") {
+      svg.appendChild(sv("rect", {x: 30, y: 25, width: 140, height: 85, rx: 4, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1"}));
+      var gc = ["--pe", "--ink", "--bloom", "--surface"];
+      for (i = 0; i < 70; i++) svg.appendChild(sv("rect", {x: (34 + R() * 128).toFixed(1), y: (29 + R() * 76).toFixed(1), width: (3 + R() * 6).toFixed(1), height: (3 + R() * 5).toFixed(1), style: "fill:var(" + gc[i % 4] + ")"}));
+    }
+  }
+  var M = [
+    {label: "Trail mix", eye: "trail", het: true, mech: true, regions: [{x: 10, y: 10, w: 60, h: 110, s: 18, mode: "solid", items: [["B", 18]], keep: true}, {x: 75, y: 30, w: 55, h: 90, s: 18, mode: "solid", items: [["D", 15]], keep: true}, {x: 135, y: 50, w: 55, h: 70, s: 18, mode: "solid", items: [["C", 9]], keep: true}],
+      t: "Nuts, raisins and seeds are separate pieces you can see. Each piece is a clump of its own particles. Heterogeneous: a mechanical mixture."},
+    {label: "Muddy water", eye: "mud", het: true, mech: false, regions: [{x: 10, y: 10, w: 180, h: 80, s: 18, mode: "liquid", items: [["W", 30], ["Q", 4]]}, {x: 10, y: 90, w: 180, h: 36, s: 18, mode: "solid", items: [["Q", 20]], keep: true}],
+      t: "Bits of soil float in the water, then settle to the bottom when it sits. The top and bottom have different particles. Heterogeneous (a suspension)."},
+    {label: "Oil and vinegar dressing", eye: "oil", het: true, mech: true, regions: [{x: 10, y: 6, w: 180, h: 50, s: 20, mode: "liquid", items: [["Oil", 18]]}, {x: 10, y: 60, w: 180, h: 64, s: 20, mode: "liquid", items: [["W", 22], ["Ac", 5]]}],
+      t: "The oil floats in a separate layer on top of the vinegar. You can see two parts. Heterogeneous: a mechanical mixture."},
+    {label: "Salt water", eye: "salt", het: false, regions: [{x: 10, y: 10, w: 180, h: 112, s: 20, mode: "liquid", items: [["W", 40], ["Na", 7]]}],
+      t: "Salt particles are spread evenly among water particles. Every drop is the same. Homogeneous: a solution."},
+    {label: "Vinegar", eye: "vinegar", het: false, regions: [{x: 10, y: 10, w: 180, h: 112, s: 20, mode: "liquid", items: [["W", 42], ["Ac", 5]]}],
+      t: "Vinegar is acetic acid (purple) dissolved in water. It looks the same all the way through. Homogeneous: a solution."},
+    {label: "Air", eye: "air", het: false, regions: [{x: 6, y: 6, w: 188, h: 118, s: 22, mode: "gas", items: [["N2", 11], ["O2", 3], ["Ar", 1]]}],
+      t: "Gas particles of nitrogen, oxygen and argon are mixed evenly. Homogeneous: a solution of gases."},
+    {label: "Brass", eye: "brass", het: false, regions: [{x: 20, y: 6, w: 160, h: 118, s: 20, mode: "solid", items: [["Cu", 34], ["Zn", 14]]}],
+      t: "Brass is a solid solution of copper (orange) and zinc (grey) atoms spread evenly. Every piece is the same. Homogeneous."},
+    {label: "Granite", eye: "granite", het: true, mech: true, regions: [{x: 6, y: 10, w: 64, h: 114, s: 18, mode: "solid", items: [["E", 18]], keep: true}, {x: 72, y: 10, w: 60, h: 114, s: 18, mode: "solid", items: [["Q", 18]], keep: true}, {x: 134, y: 10, w: 60, h: 114, s: 18, mode: "solid", items: [["D", 18]], keep: true}],
+      t: "Granite is a rock with visible grains of different minerals. Heterogeneous: a mechanical mixture."}
+  ];
+  chipGroup($("mixChips"), M, "mx", function(m){
+    eye($("mixEye"), m.eye);
+    scene($("mixPart"), m.regions, {seed: 9});
+    var box = $("mixDetail"); clear(box);
+    var v = el("div", {"class": "verdict"});
+    v.appendChild(el("span", {"class": "badge mixb"}, m.het ? "Heterogeneous" : "Homogeneous"));
+    if (m.mech) v.appendChild(el("span", {"class": "badge"}, "Mechanical mixture"));
+    if (!m.het) v.appendChild(el("span", {"class": "badge"}, "Solution"));
+    box.appendChild(v); box.appendChild(el("p", null, m.t));
+    $("mixPart").setAttribute("aria-label", "Particle model of " + m.label.toLowerCase() + ". " + m.t);
+    $("mixEye").setAttribute("aria-label", "Drawing of " + m.label.toLowerCase() + " as you would see it");
+  }, 0);
+})();
+
+/* ---------- Lesson 6: techniques ---------- */
+(function(){
+  var T = [
+    {label: "Sorting", prop: "Particle size, shape and colour", how: "Pick pieces out by hand, with tweezers, or with machines that use cameras and air jets.", ex: "Picking raisins out of trail mix. Recycling plants in Alberta sort plastics, paper and glass on conveyor belts."},
+    {label: "Sieving", prop: "Particle size", how: "Shake the mixture over a mesh. Pieces smaller than the holes fall through. Bigger pieces stay on top.", ex: "Sifting flour, or using screens to sort gravel into sizes at a gravel pit along the North Saskatchewan River."},
+    {label: "Filtration", prop: "Particle size", how: "Pour the mixture through filter paper in a funnel. The liquid, called the filtrate, passes through. Solid bits, called the residue, are too big and stay on the paper.", ex: "A coffee filter. Edmonton's water treatment plants filter river water through layers of sand and other material."},
+    {label: "Settling and decanting", prop: "Density", how: "Let the mixture stand. Denser solids sink to the bottom. Then pour the liquid off the top carefully. Panning for gold works the same way: dense gold stays in the pan while lighter sand washes away.", ex: "Letting muddy water settle. People have panned for small flakes of gold on the North Saskatchewan River since the 1800s."},
+    {label: "Magnetic separation", prop: "Magnetism", how: "Pass a magnet over the mixture. Iron, nickel and steel stick to it. Everything else is left behind.", ex: "Pulling iron filings out of sand. Recycling centres use large magnets to lift steel cans out of mixed recycling."}
+  ];
+  function draw(i){
+    var s = $("techSvg"); clear(s);
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 320, height: 170, style: "fill:var(--surface)"}));
+    var R = rng(4), k;
+    function dot(x, y, r, c){ s.appendChild(sv("circle", {cx: x.toFixed(1), cy: y.toFixed(1), r: r, style: "fill:var(" + c + ");stroke:var(--ink);stroke-width:.6"})); }
+    function txt(x, y, t){ s.appendChild(sv("text", {x: x, y: y, "class": "small", "text-anchor": "middle"}, t)); }
+    if (i === 0) {
+      for (k = 0; k < 18; k++) dot(30 + R() * 120, 60 + R() * 70, 6, k % 3 ? "--sand" : "--pd");
+      s.appendChild(sv("path", {d: "M160 95 H200", style: "stroke:var(--muted);stroke-width:2;fill:none", "marker-end": ""}));
+      for (k = 0; k < 6; k++) dot(230 + (k % 3) * 18, 80 + Math.floor(k / 3) * 18, 6, "--pd");
+      txt(90, 150, "mixed pieces"); txt(250, 150, "picked out");
+    } else if (i === 1) {
+      s.appendChild(sv("line", {x1: 60, y1: 80, x2: 260, y2: 80, style: "stroke:var(--ink);stroke-width:2;stroke-dasharray:6 5"}));
+      for (k = 0; k < 6; k++) dot(80 + k * 32, 66, 11, "--gravel");
+      for (k = 0; k < 30; k++) dot(70 + R() * 180, 100 + R() * 40, 3, "--sand");
+      txt(160, 30, "Big pieces stay on the mesh"); txt(160, 162, "Small grains fall through");
+    } else if (i === 2) {
+      s.appendChild(sv("path", {d: "M110 30 L210 30 L170 90 V120 H150 V90 Z", style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5"}));
+      for (k = 0; k < 14; k++) dot(140 + R() * 40, 50 + R() * 30, 4, "--sand");
+      s.appendChild(sv("rect", {x: 125, y: 125, width: 70, height: 38, style: "fill:var(--water-soft);stroke:var(--muted);stroke-width:1.5"}));
+      txt(60, 60, "residue stays"); txt(260, 150, "filtrate passes");
+    } else if (i === 3) {
+      s.appendChild(sv("path", {d: "M60 40 V150 H160 V40", style: "fill:none;stroke:var(--muted);stroke-width:2"}));
+      s.appendChild(sv("rect", {x: 61, y: 60, width: 98, height: 70, style: "fill:var(--water-soft)"}));
+      s.appendChild(sv("rect", {x: 61, y: 130, width: 98, height: 19, style: "fill:var(--sand)"}));
+      s.appendChild(sv("path", {d: "M210 60 V150 H290 V60", style: "fill:none;stroke:var(--muted);stroke-width:2"}));
+      s.appendChild(sv("rect", {x: 211, y: 100, width: 78, height: 49, style: "fill:var(--water-soft)"}));
+      s.appendChild(sv("path", {d: "M162 58 Q190 40 208 70", style: "fill:none;stroke:var(--water);stroke-width:3"}));
+      txt(110, 30, "solids settle"); txt(250, 50, "liquid poured off");
+    } else {
+      s.appendChild(sv("path", {d: "M130 20 h60 v40 h-15 v-25 h-30 v25 h-15 z", style: "fill:var(--bad);stroke:var(--ink);stroke-width:1"}));
+      for (k = 0; k < 10; k++) dot(140 + R() * 40, 66 + R() * 10, 2.5, "--iron");
+      for (k = 0; k < 40; k++) dot(60 + R() * 200, 110 + R() * 40, 3, "--sand");
+      txt(160, 165, "sand stays behind"); txt(250, 50, "iron sticks");
+    }
+  }
+  chipGroup($("techChips"), T, "", function(t, i){
+    draw(i);
+    detail($("techDetail"), t.label, [t.how, "Alberta and everyday examples: " + t.ex], "Property used: " + t.prop);
+    $("techSvg").setAttribute("aria-label", "Diagram of " + t.label.toLowerCase() + ". " + t.how);
+  }, 0);
+})();
+
+/* ---------- Lesson 7: distillation ---------- */
+(function(){
+  var SOL = [{label: "Salt water"}, {label: "Water and ethanol"}];
+  var cur = 0, st;
+  function reset(){ st = cur === 0 ? {flask: 200, salt: 10, coll: 0, eth: 0, ethF: 0} : {flask: 200, salt: 0, coll: 0, eth: 0, ethF: 80}; $("distTemp").value = 20; render(""); }
+  function render(msg){
+    var T = +$("distTemp").value; $("distOut").textContent = T + " °C";
+    var s = $("distSvg"); clear(s);
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 320, height: 190, style: "fill:var(--surface)"}));
+    var lvl = Math.max(0, st.flask) / 200;
+    s.appendChild(sv("circle", {cx: 70, cy: 110, r: 42, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5"}));
+    var defs = sv("defs"), cp = sv("clipPath", {id: "flaskClip"}); cp.appendChild(sv("circle", {cx: 70, cy: 110, r: 41})); defs.appendChild(cp); s.appendChild(defs);
+    if (lvl > 0) { var top = 152 - 70 * lvl; s.appendChild(sv("rect", {x: 28, y: top.toFixed(1), width: 84, height: (152 - top).toFixed(1), "clip-path": "url(#flaskClip)", style: "fill:var(--liquid)"})); }
+    s.appendChild(sv("rect", {x: 62, y: 40, width: 16, height: 32, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5"}));
+    s.appendChild(sv("text", {x: 70, y: 32, "text-anchor": "middle", "class": "small"}, "thermometer"));
+    s.appendChild(sv("line", {x1: 78, y1: 50, x2: 230, y2: 110, style: "stroke:var(--water);stroke-width:12;stroke-linecap:round"}));
+    s.appendChild(sv("line", {x1: 78, y1: 50, x2: 230, y2: 110, style: "stroke:var(--surface);stroke-width:4;stroke-linecap:round"}));
+    s.appendChild(sv("text", {x: 160, y: 66, "text-anchor": "middle", "class": "small", transform: "rotate(21 160 66)"}, "condenser (cold water)"));
+    s.appendChild(sv("path", {d: "M220 115 V180 H290 V115", style: "fill:none;stroke:var(--ink);stroke-width:1.5"}));
+    if (st.coll > 0) { var h = Math.min(62, st.coll / 200 * 62 + 3); s.appendChild(sv("rect", {x: 221, y: (179 - h).toFixed(1), width: 68, height: h.toFixed(1), style: "fill:var(--water-soft)"})); }
+    s.appendChild(sv("text", {x: 255, y: 108, "text-anchor": "middle", "class": "small"}, "distillate"));
+    if (T > 20) { var f = 8 + (T - 20) / 90 * 20; s.appendChild(sv("path", {d: "M58 172 Q70 " + (172 - f).toFixed(0) + " 82 172 Z", style: "fill:var(--fire)"})); }
+    var box = $("distDetail"); clear(box);
+    var lines = [];
+    if (cur === 0) {
+      lines.push("Flask: " + Math.max(0, st.flask) + " mL of liquid with " + st.salt + " g of salt" + (st.flask <= 40 ? " (very salty now)" : "") + ".");
+      lines.push("Beaker: " + st.coll + " mL of distillate. Salt check: " + (st.coll ? "no salt. It is pure water." : "empty."));
+    } else {
+      var pct = st.coll ? Math.round(st.eth / st.coll * 100) : 0;
+      lines.push("Flask: " + Math.max(0, st.flask) + " mL, about " + Math.round(st.ethF) + " mL of it ethanol.");
+      lines.push("Beaker: " + st.coll + " mL of distillate" + (st.coll ? ", about " + pct + "% ethanol." : "."));
+    }
+    if (msg) box.appendChild(el("p", {"class": "fb"}, msg));
+    lines.forEach(function(l){ box.appendChild(el("p", null, l)); });
+    s.setAttribute("aria-label", "Distillation apparatus. Flask at " + T + " degrees with " + Math.max(0, st.flask) + " millilitres. Beaker holds " + st.coll + " millilitres.");
+  }
+  function run(){
+    var T = +$("distTemp").value, msg;
+    if (st.flask <= 40) { render("Stop here. Never boil a flask dry: the glass can crack. Reset to start again."); return; }
+    if (cur === 0) {
+      if (T < 100) msg = "The salt water gets warmer, but nothing boils yet. Water boils at about 100 °C (a little higher with salt in it).";
+      else { st.flask -= 40; st.coll += 40; msg = "Water boils, rises as steam, condenses in the cold tube and drips into the beaker. The salt stays in the flask."; }
+    } else {
+      var water = st.flask - st.ethF;
+      if (T < 78) msg = "Nothing boils yet. Ethanol boils at 78 °C, water at 100 °C.";
+      else if (T < 100) {
+        var out = 30, e = Math.min(st.ethF, out * (st.ethF > 20 ? .85 : .5));
+        st.ethF -= e; st.flask -= out; st.coll += out; st.eth += e;
+        msg = "The mixture boils. The vapour is mostly ethanol, because ethanol has the lower boiling point. Some water comes along too.";
+      } else {
+        var out2 = 40, e2 = Math.min(st.ethF, out2 * Math.min(.6, st.ethF / Math.max(1, st.flask) + .1));
+        st.ethF -= e2; st.flask -= out2; st.coll += out2; st.eth += e2;
+        msg = "At 100 °C both liquids boil quickly, so the distillate now has much more water in it. Lower heat gives a purer distillate.";
+      }
+    }
+    render(msg);
+  }
+  chipGroup($("distChips"), SOL, "", function(x, i){ cur = i; reset(); }, 0);
+  $("distTemp").addEventListener("input", function(){ render(""); });
+  $("distRun").addEventListener("click", run);
+  $("distReset").addEventListener("click", reset);
+})();
+
+/* ---------- Bench 1: mystery substance ---------- */
+(function(){
+  var POOL = PROPS.filter(function(p){ return ["Sulfur", "Aluminum", "Iron", "Copper", "Lead", "Gold"].indexOf(p.n) > -1; });
+  var idSel = $("myId"), cur, meas;
+  idSel.appendChild(el("option", {value: ""}, "Choose a substance"));
+  PROPS.forEach(function(p){ idSel.appendChild(el("option", {value: p.n}, p.n)); });
+  function fresh(){
+    cur = pick(POOL);
+    var V = 4 + Math.floor(Math.random() * 18);
+    meas = {V: V, m: Math.round(cur.d * V * (1 + (Math.random() - .5) * .02) * 10) / 10, mp: cur.mp + Math.round((Math.random() - .5) * 4), done: {}};
+    clear($("myLog")); $("myD").value = ""; idSel.value = ""; $("myFb").hidden = true;
+    $("myRead").textContent = "New sample on the bench. Choose a measurement.";
+    drawBench("none");
+  }
+  function drawBench(kind){
+    var s = $("mySvg"); clear(s);
+    s.appendChild(sv("rect", {x: 0, y: 0, width: 320, height: 170, style: "fill:var(--surface)"}));
+    var col = cur.n === "Sulfur" ? "--lichen" : (cur.n === "Copper" || cur.n === "Gold") ? "--pb" : "--pe";
+    if (kind === "mass") {
+      s.appendChild(sv("rect", {x: 80, y: 110, width: 160, height: 40, rx: 6, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5"}));
+      s.appendChild(sv("rect", {x: 110, y: 100, width: 100, height: 10, style: "fill:var(--line)"}));
+      s.appendChild(sv("rect", {x: 145, y: 76, width: 30, height: 24, rx: 3, style: "fill:var(" + col + ");stroke:var(--ink)"}));
+      s.appendChild(sv("text", {x: 160, y: 136, "text-anchor": "middle", "class": "lbl"}, meas.m.toFixed(1) + " g"));
+    } else if (kind === "vol") {
+      [[90, 50], [230, 50 + meas.V]].forEach(function(c, i){
+        var x = c[0], h = c[1] * 1.3;
+        s.appendChild(sv("rect", {x: x - 20, y: 160 - h, width: 40, height: h, style: "fill:var(--water-soft)"}));
+        s.appendChild(sv("path", {d: "M" + (x - 20) + " 20 V160 H" + (x + 20) + " V20", style: "fill:none;stroke:var(--ink);stroke-width:1.5"}));
+        if (i) s.appendChild(sv("rect", {x: x - 9, y: 140, width: 18, height: 18, rx: 2, style: "fill:var(" + col + ");stroke:var(--ink)"}));
+        s.appendChild(sv("text", {x: x + 26, y: 164 - h, "class": "small"}, c[1].toFixed(1) + " mL"));
+      });
+      s.appendChild(sv("text", {x: 160, y: 14, "text-anchor": "middle", "class": "small"}, "before and after adding the sample"));
+    } else if (kind === "melt") {
+      s.appendChild(sv("rect", {x: 120, y: 60, width: 80, height: 50, rx: 4, style: "fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5"}));
+      s.appendChild(sv("path", {d: "M135 110 Q160 80 185 110 Z", style: "fill:var(" + col + ")"}));
+      s.appendChild(sv("path", {d: "M145 150 Q160 118 175 150 Z", style: "fill:var(--fire)"}));
+      s.appendChild(sv("text", {x: 160, y: 40, "text-anchor": "middle", "class": "lbl"}, cur.mp > 1200 ? "Not melted at 1200 °C" : "Melts at " + meas.mp + " °C"));
+    } else {
+      s.appendChild(sv("rect", {x: 135, y: 70, width: 50, height: 40, rx: 4, style: "fill:var(" + col + ");stroke:var(--ink);stroke-width:1.5"}));
+      s.appendChild(sv("text", {x: 160, y: 140, "text-anchor": "middle", "class": "small"}, "Unlabelled sample"));
+    }
+    s.setAttribute("aria-label", "Measuring station: " + (kind === "mass" ? "balance reads " + meas.m.toFixed(1) + " grams" : kind === "vol" ? "water rises from 50.0 to " + (50 + meas.V).toFixed(1) + " millilitres" : kind === "melt" ? (cur.mp > 1200 ? "sample has not melted at 1200 degrees Celsius" : "sample melts at " + meas.mp + " degrees Celsius") : "unlabelled sample"));
+  }
+  function log(key, text){
+    if (meas.done[key]) return; meas.done[key] = true;
+    $("myLog").appendChild(el("li", null, text));
+  }
+  $("myLook").addEventListener("click", function(){ var t = "Appearance: " + cur.look.toLowerCase() + "."; $("myRead").textContent = t; log("look", t); drawBench("none"); });
+  $("myMass").addEventListener("click", function(){ var t = "Mass on the balance: " + meas.m.toFixed(1) + " g."; $("myRead").textContent = t; log("m", t); drawBench("mass"); });
+  $("myVol").addEventListener("click", function(){ var t = "Water level: 50.0 mL before, " + (50 + meas.V).toFixed(1) + " mL after. Volume of sample = " + (50 + meas.V).toFixed(1) + " − 50.0 = " + meas.V.toFixed(1) + " cm³."; $("myRead").textContent = t; log("v", t); drawBench("vol"); });
+  $("myMelt").addEventListener("click", function(){ var t = cur.mp > 1200 ? "Melting point: the lab furnace reaches 1200 °C and the sample has not melted yet." : "Melting point: the sample melts sharply at about " + meas.mp + " °C."; $("myRead").textContent = t; log("mp", t); drawBench("melt"); });
+  $("myCheck").addEventListener("click", function(){
+    var fb = $("myFb"), d = parseFloat($("myD").value), trueD = meas.m / meas.V, msgs = [], ok = true;
+    if (!meas.done.m || !meas.done.v) { ok = false; msgs.push("Measure both mass and volume first."); }
+    else if (isNaN(d)) { ok = false; msgs.push("Enter your density. d = m ÷ V = " + meas.m.toFixed(1) + " ÷ " + meas.V.toFixed(1) + "."); }
+    else if (Math.abs(d - trueD) / trueD > .03) { ok = false; msgs.push("Check your density: d = m ÷ V = " + meas.m.toFixed(1) + " g ÷ " + meas.V.toFixed(1) + " cm³ = " + trueD.toFixed(2) + " g/cm³."); }
+    else msgs.push("Density correct: " + trueD.toFixed(2) + " g/cm³.");
+    if (idSel.value === cur.n) msgs.push("Identity correct: it is " + cur.n.toLowerCase() + ". Its density (" + cur.d.toFixed(2) + " g/cm³), appearance and melting point all match.");
+    else if (idSel.value) { ok = false; msgs.push("Not " + idSel.value.toLowerCase() + ". Compare your density with the table, then use appearance or melting point to decide."); }
+    else { ok = false; msgs.push("Choose an identity."); }
+    fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no"); fb.textContent = msgs.join(" ");
+    if (ok) { store.mystery = (store.mystery || 0) + 1; save(); }
+  });
+  $("myNew").addEventListener("click", fresh);
+  fresh();
+})();
+
+/* ---------- Bench 2: particle picture match ---------- */
+(function(){
+  var DIA = {
+    elSolid: {d: "Identical single particles packed in neat rows", r: [{x: 10, y: 10, w: 140, h: 90, s: 18, mode: "solid", items: [["Cu", 35]], keep: true}]},
+    elGas: {d: "Identical pairs of joined particles, far apart", r: [{x: 6, y: 6, w: 148, h: 98, s: 24, mode: "gas", items: [["O2", 8]]}]},
+    cpLiquid: {d: "Identical three-atom particles, close together and jumbled", r: [{x: 6, y: 20, w: 148, h: 84, s: 22, mode: "liquid", items: [["W", 24]]}]},
+    cpGas: {d: "Identical three-atom particles, far apart", r: [{x: 6, y: 6, w: 148, h: 98, s: 26, mode: "gas", items: [["CO2", 8]]}]},
+    solution: {d: "Two kinds of particles, close together and evenly mixed", r: [{x: 6, y: 20, w: 148, h: 84, s: 20, mode: "liquid", items: [["W", 22], ["Su", 5]]}]},
+    gasMix: {d: "Several kinds of particles, far apart and evenly mixed", r: [{x: 6, y: 6, w: 148, h: 98, s: 24, mode: "gas", items: [["N2", 6], ["O2", 2], ["Ar", 1]]}]},
+    het: {d: "Two kinds of particles in separate clumps", r: [{x: 6, y: 40, w: 70, h: 64, s: 16, mode: "solid", items: [["Q", 16]], keep: true}, {x: 84, y: 56, w: 70, h: 48, s: 16, mode: "solid", items: [["Fe", 12]], keep: true}]},
+    layers: {d: "Two kinds of particles in separate layers, one on top of the other", r: [{x: 6, y: 6, w: 148, h: 40, s: 20, mode: "liquid", items: [["Oil", 12]]}, {x: 6, y: 50, w: 148, h: 56, s: 20, mode: "liquid", items: [["W", 16]]}]}
+  };
+  var QS = [
+    ["A piece of pure aluminum foil (an element, solid)", "elSolid", "An element has one kind of atom. In a solid they are packed in rows."],
+    ["A gold ring made of pure gold", "elSolid", "Pure gold is an element: one kind of atom, packed tightly."],
+    ["Pure oxygen gas. Each particle is two oxygen atoms joined together.", "elGas", "One type of particle (pairs of oxygen atoms), spread far apart as a gas."],
+    ["Pure distilled water at room temperature", "cpLiquid", "Water is a compound. Every particle is the same three-atom molecule, close together as a liquid."],
+    ["Pure carbon dioxide gas, a compound", "cpGas", "One type of three-atom particle, far apart because it is a gas."],
+    ["Sugar dissolved in water", "solution", "A solution has two types of particle mixed evenly."],
+    ["Salt water from the ocean", "solution", "Salt particles spread evenly among water particles: a solution."],
+    ["The air in your classroom", "gasMix", "Air is a solution of gases: nitrogen, oxygen, argon and more, evenly mixed and far apart."],
+    ["Sand mixed with iron filings", "het", "A mechanical mixture: clumps of each substance stay separate."],
+    ["Gravel and sand in a bucket", "het", "You can see separate pieces. Heterogeneous."],
+    ["Cooking oil floating on water", "layers", "The oil and water form two layers. Heterogeneous."]
+  ];
+  var cur, done = 0, right = 0;
+  function next(){
+    cur = pick(QS);
+    var others = shuffle(Object.keys(DIA).filter(function(k){ return k !== cur[1]; })).slice(0, 3);
+    var opts = shuffle(others.concat([cur[1]]));
+    detail($("ppQ"), cur[0], [], "Which particle model fits?");
+    var box = $("ppChoices"); clear(box); $("ppFb").hidden = true;
+    opts.forEach(function(k, i){
+      var b = el("button", {type: "button", "aria-label": "Model " + "ABCD"[i] + ": " + DIA[k].d});
+      var svg = sv("svg", {viewBox: "0 0 160 110", "aria-hidden": "true"});
+      b.appendChild(svg); b.appendChild(el("span", {"class": "hint"}, "Model " + "ABCD"[i]));
+      box.appendChild(b);
+      scene(svg, DIA[k].r, {seed: 3 + i});
+      b.addEventListener("click", function(){
+        var ok = k === cur[1];
+        Array.prototype.forEach.call(box.children, function(x){ x.disabled = true; });
+        b.classList.add(ok ? "right" : "wrong");
+        if (!ok) box.children[opts.indexOf(cur[1])].classList.add("right");
+        done++; if (ok) right++;
+        var fb = $("ppFb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no");
+        fb.textContent = (ok ? "Correct. " : "Not quite. ") + cur[2];
+        $("ppScore").textContent = right + " of " + done + " correct this session";
+      });
+    });
+  }
+  $("ppNext").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 3: density calculator and practice ---------- */
+(function(){
+  function calc(){
+    var m = parseFloat($("cM").value), V = parseFloat($("cV").value), o = $("cOut"); clear(o);
+    if (isNaN(m) || isNaN(V) || V <= 0 || m < 0) { o.appendChild(el("span", null, "Enter a mass of 0 or more and a volume greater than 0.")); return; }
+    var d = m / V;
+    o.appendChild(el("b", null, "Step by step"));
+    o.appendChild(el("span", null, "d = m ÷ V"));
+    o.appendChild(el("span", null, "d = " + m + " g ÷ " + V + " cm³"));
+    o.appendChild(el("span", null, "d = " + d.toFixed(2) + " g/cm³"));
+    var best = PROPS.slice().sort(function(a, b){ return Math.abs(a.d - d) - Math.abs(b.d - d); })[0];
+    o.appendChild(el("span", {"class": "hint"}, (d < 1 ? "Less dense than water, so it would float. " : "Denser than water, so it would sink. ") + "Closest substance in the table: " + best.n.toLowerCase() + " (" + best.d.toFixed(2) + " g/cm³)."));
+  }
+  $("cM").addEventListener("input", calc); $("cV").addEventListener("input", calc); calc();
+  var prob, tries = 0, right = 0;
+  var THINGS = [["a block of aluminum", 2.70], ["an iron bolt", 7.87], ["a copper pipe fitting", 8.96], ["a lead fishing weight", 11.34], ["a gold nugget", 19.32], ["a sample of ethanol", 0.79], ["a chunk of ice", 0.92], ["a lump of sulfur", 2.07], ["some water", 1.00]];
+  function newProb(){
+    var t = pick(THINGS), V = 2 + Math.floor(Math.random() * 40), m = Math.round(t[1] * V * 10) / 10, kind = Math.random() < .7 ? "d" : Math.random() < .5 ? "m" : "V";
+    var unit = /ethanol|water/.test(t[0]) ? "mL" : "cm³";
+    if (kind === "d") prob = {q: "The mass of " + t[0] + " is " + m + " g and its volume is " + V + " " + unit + ". What is its density in g/" + unit + "?", a: m / V, w: "d = m ÷ V = " + m + " ÷ " + V + " = " + (m / V).toFixed(2) + " g/" + unit};
+    else if (kind === "m") prob = {q: "Challenge: " + t[0] + " has a density of " + t[1].toFixed(2) + " g/" + unit + " and a volume of " + V + " " + unit + ". What is its mass in g?", a: t[1] * V, w: "m = d × V = " + t[1].toFixed(2) + " × " + V + " = " + (t[1] * V).toFixed(2) + " g"};
+    else prob = {q: "Challenge: " + t[0] + " has a density of " + t[1].toFixed(2) + " g/" + unit + " and a mass of " + m + " g. What is its volume in " + unit + "?", a: m / t[1], w: "V = m ÷ d = " + m + " ÷ " + t[1].toFixed(2) + " = " + (m / t[1]).toFixed(2) + " " + unit};
+    detail($("prQ"), null, [prob.q], kind === "d" ? "Find the density" : "Challenge");
+    $("prA").value = ""; $("prFb").hidden = true;
+  }
+  $("prCheck").addEventListener("click", function(){
+    var v = parseFloat($("prA").value), fb = $("prFb"); fb.hidden = false;
+    if (isNaN(v)) { fb.className = "feedback no"; fb.textContent = "Type a number first."; return; }
+    var ok = Math.abs(v - prob.a) <= Math.max(.02, Math.abs(prob.a) * .01);
+    tries++; if (ok) right++;
+    store.dens = {t: tries, r: right}; save();
+    fb.className = "feedback " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + "Worked answer: " + prob.w + ".";
+    $("prScore").textContent = right + " of " + tries + " correct this session";
+  });
+  $("prNew").addEventListener("click", newProb);
+  newProb();
+})();
+
+/* ---------- Bench 4: separation challenge ---------- */
+(function(){
+  var NAMES = {gravel: "Gravel", iron: "Iron filings", sand: "Sand", water: "Water", salt: "Salt"};
+  var st;
+  var TECH = [{label: "Sieve", k: "sieve"}, {label: "Magnet", k: "magnet"}, {label: "Filter", k: "filter"}, {label: "Settle and decant", k: "decant"}, {label: "Distill", k: "distil"}, {label: "Sort by hand", k: "hand"}];
+  function reset(){ st = {tub: {gravel: 1, iron: 1, sand: 1, salty: 1}, got: {}, steps: []}; clear($("spLog")); $("spFb").hidden = true; render(); }
+  function tubText(){
+    var t = [];
+    if (st.tub.gravel) t.push("gravel"); if (st.tub.iron) t.push("iron filings"); if (st.tub.sand) t.push("sand"); if (st.tub.salty) t.push("salt water (salt dissolved in water)");
+    return t.length ? "Tub: " + t.join(", ") + "." : "Tub: empty. Everything has been separated.";
+  }
+  function render(){
+    $("spTub").textContent = tubText();
+    var tray = $("spTray"); clear(tray);
+    Object.keys(NAMES).forEach(function(k){
+      var c = el("div", {"class": "cup" + (st.got[k] ? " full" : "")});
+      c.appendChild(el("b", null, NAMES[k])); c.appendChild(el("span", null, st.got[k] || "Not yet"));
+      tray.appendChild(c);
+    });
+  }
+  function say(ok, t){ var fb = $("spFb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no"); fb.textContent = t; }
+  function step(t){ st.steps.push(t); $("spLog").appendChild(el("li", null, t)); }
+  function act(k){
+    var T = st.tub;
+    if (k === "sieve") {
+      if (T.gravel) { T.gravel = 0; st.got.gravel = "Caught on the sieve (particle size)"; step("Sieve: gravel caught on the mesh."); say(true, "The gravel is bigger than the holes, so it stays on the mesh. Everything else passes through."); }
+      else say(false, "Nothing is caught. All the remaining pieces are smaller than the holes.");
+    } else if (k === "hand") {
+      if (T.gravel) { T.gravel = 0; st.got.gravel = "Picked out by hand (size and appearance)"; step("Sort by hand: gravel picked out."); say(true, "It works for big pieces, but it is slow. A sieve does the same job faster."); }
+      else say(false, "The sand grains and iron filings are too small to pick out one by one.");
+    } else if (k === "magnet") {
+      if (T.iron) { T.iron = 0; st.got.iron = "Pulled out by a magnet (magnetism)"; step("Magnet: iron filings removed."); say(true, "The iron filings stick to the magnet. Sand, gravel and salt water are not magnetic."); }
+      else say(false, "Nothing sticks. There is no iron left.");
+    } else if (k === "filter") {
+      if (T.gravel) say(false, "Big gravel pieces would tear or clog the filter paper. Remove the gravel first.");
+      else if (T.iron) say(false, "The iron filings would be caught on the paper with the sand, and they would still be mixed. Remove the iron first.");
+      else if (T.sand) { T.sand = 0; st.got.sand = "Residue on filter paper (particle size)"; step("Filter: sand caught on the filter paper; salt water passes through."); say(true, "The sand grains are too big for the paper. The dissolved salt passes through with the water, because a solution cannot be filtered."); }
+      else say(false, "Nothing is caught. The salt is dissolved, so it passes through the filter with the water.");
+    } else if (k === "decant") {
+      if (T.sand || T.gravel || T.iron) say(false, "The solids settle and you can pour off most of the salt water, but wet sand and some water stay mixed together. Filtration gives a cleaner result, so nothing is collected this time.");
+      else say(false, "There are no solids left to settle. The salt is dissolved, so it will not settle out.");
+    } else if (k === "distil") {
+      if (T.gravel || T.iron || T.sand) say(false, "Remove the solids first. Otherwise they stay in the flask mixed with the salt.");
+      else if (T.salty) { T.salty = 0; st.got.water = "Distillate (boiling point)"; st.got.salt = "Left in the flask (boiling point)"; step("Distill: water boils off and condenses; salt stays in the flask."); say(true, "Water boils at about 100 °C and is collected as pure water. Salt boils at 1465 °C, so it stays behind."); }
+      else say(false, "Nothing is left to distill.");
+    }
+    render();
+    if (Object.keys(NAMES).every(function(n){ return st.got[n]; })) {
+      say(true, "All five separated in " + st.steps.length + " steps. Each technique used a different property: size, magnetism, size again, then boiling point.");
+      store.sepDone = true; save();
+    }
+  }
+  TECH.forEach(function(t){ var b = el("button", {"class": "chip", type: "button"}, t.label); b.addEventListener("click", function(){ act(t.k); }); $("spTech").appendChild(b); });
+  $("spReset").addEventListener("click", reset);
+  reset();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Pure or mixture", bins: ["Pure substance", "Mixture"], items: [
+    ["Distilled water", 0, "Only water particles."],
+    ["Tap water", 1, "Tap water has dissolved minerals and chlorine in it."],
+    ["Copper wire", 0, "Only copper atoms: an element."],
+    ["Air", 1, "Nitrogen, oxygen, argon and other gases."],
+    ["Table salt", 0, "Sodium chloride is a compound with one type of particle."],
+    ["Salt water", 1, "Salt particles mixed with water particles."],
+    ["Oxygen gas in a hospital tank", 0, "Only oxygen molecules."],
+    ["Trail mix", 1, "Different pieces you can see."],
+    ["Pure gold", 0, "Only gold atoms."],
+    ["Brass", 1, "Copper and zinc atoms mixed together."],
+    ["Sugar", 0, "Only sugar molecules: a compound."],
+    ["Milk", 1, "Water, fat, protein and sugar mixed together."]
+  ]},
+  {label: "Heterogeneous or homogeneous", bins: ["Heterogeneous", "Homogeneous"], items: [
+    ["Granola", 0, "You can see the oats, nuts and fruit."],
+    ["Apple juice (clear)", 1, "Sugar and other substances dissolved evenly in water."],
+    ["Muddy water", 0, "The mud settles out. Different parts have different particles."],
+    ["Vinegar", 1, "Acetic acid dissolved evenly in water."],
+    ["Oil and water", 0, "Two separate layers."],
+    ["Air", 1, "Gases evenly mixed: a solution."],
+    ["Gravel", 0, "Rocks of different sizes and colours."],
+    ["Brass", 1, "A solid solution of copper and zinc."],
+    ["Pizza", 0, "Crust, sauce and toppings are separate parts."],
+    ["Sugar water", 1, "The sugar has dissolved evenly."]
+  ]},
+  {label: "Which property does it use?", bins: ["Particle size", "Density", "Magnetism", "Boiling point"], items: [
+    ["Sieving flour", 0, "The mesh lets small grains through."],
+    ["Filtering sand out of water", 0, "Sand grains are too big for the filter paper."],
+    ["Panning for gold", 1, "Dense gold stays in the pan while lighter sand washes out."],
+    ["Letting muddy water settle", 1, "Denser soil sinks to the bottom."],
+    ["Pulling steel cans out of recycling", 2, "Steel is attracted to magnets."],
+    ["Removing iron filings from sand", 2, "Iron is magnetic. Sand is not."],
+    ["Getting pure water from salt water", 3, "Distillation: water boils long before salt."],
+    ["Separating crude oil at a refinery", 3, "Fractional distillation uses different boiling points."],
+    ["Bitumen floating up from oil sands slurry", 1, "Bitumen, helped by air bubbles, rises while denser sand sinks."],
+    ["A screen sorting gravel by size", 0, "Bigger rocks stay on the screen."]
+  ]},
+  {label: "Name the physical property", bins: ["Appearance", "Density", "Melting or freezing point", "Boiling point"], items: [
+    ["Copper is reddish and shiny.", 0, "Colour and lustre are appearance."],
+    ["Gold has 19.3 g in every cubic centimetre.", 1, "Mass per volume is density."],
+    ["Ice turns to water at 0 °C.", 2, "Solid to liquid is the melting point."],
+    ["Ethanol turns to gas at 78 °C.", 3, "Liquid to gas is the boiling point."],
+    ["Sulfur is yellow and dull.", 0, "Colour and lustre are appearance."],
+    ["Liquid water turns to ice at 0 °C.", 2, "Liquid to solid is the freezing point, the same temperature as melting."],
+    ["Ice floats because it is lighter for its size than water.", 1, "Comparing mass for the same volume is density."],
+    ["Water bubbles into steam at 100 °C at sea level.", 3, "That is water's boiling point."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Matter", "Anything that has mass and takes up space."],
+  ["Particle", "A tiny piece of matter, such as an atom or a molecule, far too small to see."],
+  ["Pure substance", "Matter made of only one type of particle. It cannot be separated by physical techniques."],
+  ["Element", "A pure substance made of one kind of atom. Examples: copper, gold, oxygen."],
+  ["Compound", "A pure substance whose particles are two or more kinds of atoms joined together. Examples: water, table salt."],
+  ["Mixture", "Matter made of two or more types of particles that can be separated by physical techniques."],
+  ["Heterogeneous mixture", "A mixture that is not the same throughout. Different parts contain different particles."],
+  ["Mechanical mixture", "A heterogeneous mixture where you can see the different parts. Example: trail mix."],
+  ["Homogeneous mixture", "A mixture that looks the same throughout because its particles are evenly spread."],
+  ["Solution", "A homogeneous mixture, such as salt water, vinegar, air or brass."],
+  ["Physical property", "A feature you can observe or measure without changing the substance into a new one."],
+  ["Lustre", "How shiny a surface is. Metals usually have a high lustre."],
+  ["Density", "Mass per unit volume: d = m ÷ V. Measured in g/cm³ or g/mL."],
+  ["Melting point", "The temperature at which a solid turns into a liquid. For water, 0 °C."],
+  ["Freezing point", "The temperature at which a liquid turns into a solid. For a pure substance it equals the melting point."],
+  ["Boiling point", "The temperature at which a liquid boils and turns into a gas. For water, 100 °C at sea level."],
+  ["Physical technique", "A way of separating a mixture that does not change the particles, such as filtering or distilling."],
+  ["Sorting", "Separating pieces by hand or by machine, based on size, shape or colour."],
+  ["Sieving", "Shaking a mixture through a mesh. Small pieces fall through and big pieces stay."],
+  ["Filtration", "Passing a mixture through filter paper. The liquid (filtrate) passes and solid bits (residue) stay."],
+  ["Settling and decanting", "Letting denser solids sink, then pouring the liquid off the top."],
+  ["Magnetic separation", "Using a magnet to remove magnetic materials such as iron from a mixture."],
+  ["Distillation", "Separating a solution by boiling one part off and cooling the gas back into a liquid. Based on boiling points."],
+  ["Condenser", "The cooled tube in a distillation setup where gas turns back into liquid."],
+  ["Distillate", "The liquid collected at the end of a distillation."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is a pure substance?", ["Matter made of only one type of particle", "Matter made of two or more types of particles", "Any liquid that looks clear", "Matter that has been filtered"], "A pure substance has one type of particle, so physical techniques cannot separate it."],
+  ["Which of these is a mixture?", ["Air", "Distilled water", "Copper", "Oxygen gas"], "Air contains nitrogen, oxygen, argon and other gases."],
+  ["Which of these is a pure substance?", ["Table salt", "Salt water", "Granite", "Milk"], "Table salt (sodium chloride) has one type of particle."],
+  ["What makes a mixture different from a pure substance?", ["It has two or more types of particles that can be separated physically.", "It is always a liquid.", "It cannot be separated.", "It always has a single colour."], "Mixtures contain more than one type of particle, each keeping its own identity."],
+  ["Water is a pure substance. Why?", ["Every particle is the same water molecule.", "It is clear and colourless.", "It is a liquid at room temperature.", "It comes from a tap."], "Being pure is about having one type of particle, not about how it looks."],
+  ["Which is a physical property used to identify a pure substance?", ["Boiling point", "Price", "Where it was bought", "Its name"], "Appearance, density, melting point, freezing point and boiling point are physical properties."],
+  ["Pure water melts at 0 °C. At what temperature does it freeze?", ["0 °C", "−10 °C", "4 °C", "100 °C"], "For a pure substance, the melting point and freezing point are the same temperature."],
+  ["Lustre describes…", ["how shiny a surface is", "how heavy an object is", "how fast it melts", "how much it stretches"], "Lustre is part of a substance's appearance."],
+  ["A block has a mass of 81 g and a volume of 30 cm³. What is its density?", ["2.7 g/cm³", "111 g/cm³", "0.37 g/cm³", "51 g/cm³"], "d = m ÷ V = 81 ÷ 30 = 2.7 g/cm³, the density of aluminum."],
+  ["A liquid has a mass of 39.5 g and a volume of 50 mL. What is its density?", ["0.79 g/mL", "1.27 g/mL", "89.5 g/mL", "1975 g/mL"], "d = 39.5 ÷ 50 = 0.79 g/mL, which matches ethanol."],
+  ["You cut an iron bar in half. What happens to the density of each half?", ["It stays the same, about 7.9 g/cm³.", "It halves.", "It doubles.", "It becomes zero."], "Mass and volume both halve, so mass ÷ volume does not change."],
+  ["Which object will float in water (1.00 g/cm³)?", ["Ice, 0.92 g/cm³", "Aluminum, 2.70 g/cm³", "Copper, 8.96 g/cm³", "Sulfur, 2.07 g/cm³"], "Things less dense than water float."],
+  ["Which is a heterogeneous mixture?", ["Oil and vinegar salad dressing", "Vinegar", "Salt water", "Air"], "The oil forms a separate layer you can see."],
+  ["Which is a solution?", ["Sugar dissolved in water", "Sand in water", "Trail mix", "Granite"], "A solution is a homogeneous mixture with particles evenly spread."],
+  ["What is a mechanical mixture?", ["A heterogeneous mixture where you can see the different parts", "A mixture made by a machine", "A solution of two metals", "A pure substance that moves"], "Trail mix, gravel and granite are mechanical mixtures."],
+  ["Brass is made of copper and zinc atoms spread evenly. It is a…", ["homogeneous mixture (solid solution)", "pure substance", "heterogeneous mixture", "compound"], "Two kinds of atoms evenly mixed makes a solution, even though it is a solid."],
+  ["Which technique separates a mixture by particle size?", ["Sieving", "Magnetic separation", "Distillation", "Settling"], "A sieve lets small pieces through and keeps big ones."],
+  ["Which technique would remove iron filings from sand?", ["Magnetic separation", "Filtration", "Distillation", "Sieving with a fine mesh"], "Iron is magnetic. Sand is not."],
+  ["You filter salt water. What passes through the filter paper?", ["Both the water and the dissolved salt", "Only the water", "Only the salt", "Nothing"], "Dissolved salt particles are small enough to pass through filter paper. Filtration cannot separate a solution."],
+  ["Panning for gold works because gold…", ["is much denser than sand", "is magnetic", "has a low boiling point", "dissolves in water"], "Dense gold sinks to the bottom of the pan while lighter sand washes away."],
+  ["Distillation separates the parts of a solution based on…", ["boiling points", "colour", "magnetism", "particle size"], "The part with the lower boiling point boils off first and is collected."],
+  ["During distillation of salt water, what collects in the beaker?", ["Pure water", "Salt", "Salt water", "Nothing"], "Water boils, condenses and drips into the beaker. The salt stays in the flask."],
+  ["What does the condenser do in distillation?", ["Cools the gas so it turns back into a liquid", "Heats the solution", "Filters out solids", "Pulls out iron"], "Cold water around the condenser tube cools the vapour."],
+  ["A mixture contains gravel, iron filings, sand and salt water. Which order works best?", ["Sieve, magnet, filter, distill", "Distill, filter, magnet, sieve", "Filter, sieve, distill, magnet", "Magnet, distill, sieve, filter"], "Remove big pieces first, then iron, then sand, and finally distill the salt water."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain the difference between a pure substance and a mixture. Use the idea of particles.", a: "A pure substance has only one type of particle, like distilled water, where every particle is a water molecule. A mixture has two or more types of particles, like salt water, which has water particles and salt particles. The particles in a mixture keep their identity, so they can be separated by physical techniques. A pure substance cannot be separated that way.", k: ["Pure: one type of particle", "Mixture: two or more types", "Mixtures separate physically; pure substances do not", "An example of each"]},
+  {q: "Draw and describe particle models for copper (a solid element), water (a liquid compound) and salt water (a solution).", a: "Copper: identical single circles packed in neat rows. Water: identical particles, each one big circle joined to two small circles, close together but jumbled. Salt water: the same water particles with a few different salt particles spread evenly among them.", k: ["Copper: identical atoms in rows", "Water: identical joined-atom particles, jumbled", "Salt water: two kinds of particle evenly mixed"]},
+  {q: "Name five physical properties that can identify a pure substance.", a: "Appearance (colour and lustre), density, melting point, freezing point and boiling point.", k: ["Appearance", "Density", "Melting point", "Freezing point", "Boiling point"]},
+  {q: "Why are the melting point and the freezing point of a pure substance the same?", a: "They are the same change in opposite directions. At that one temperature, the solid and liquid can both exist. Above it the substance melts, and below it the liquid freezes. For water this is 0 °C.", k: ["Same change in opposite directions", "Solid and liquid exist together at that temperature", "Example: water at 0 °C"]},
+  {q: "A rock has a mass of 64.8 g and displaces 24.0 mL of water. Calculate its density and say whether it floats.", a: "Volume = 24.0 cm³ (1 mL = 1 cm³). d = m ÷ V = 64.8 g ÷ 24.0 cm³ = 2.7 g/cm³. It is denser than water (1.00 g/cm³), so it sinks.", k: ["Uses displaced water as volume", "d = m ÷ V set up correctly", "2.7 g/cm³ with units", "Sinks, with a reason"]},
+  {q: "Compare heterogeneous and homogeneous mixtures. Give an example of each.", a: "A heterogeneous mixture is not the same throughout, so different samples contain different particles. Trail mix is an example. A homogeneous mixture looks the same throughout because its particles are evenly spread. A solution like vinegar is an example.", k: ["Heterogeneous: not the same throughout", "Homogeneous: evenly spread particles", "Correct example of each"]},
+  {q: "Describe how filtration works and explain why it cannot separate salt water.", a: "Filter paper has tiny holes. Liquid and very small particles pass through, while bigger solid pieces stay on the paper. In salt water, the salt is dissolved into particles small enough to pass through with the water, so both come through together.", k: ["Filter paper holes let small particles pass", "Solid bits stay as residue", "Dissolved salt particles pass through"]},
+  {q: "Name two techniques that separate by density and one that separates by magnetism, with an example of each.", a: "Settling and decanting: letting mud sink in water, then pouring the water off. Panning: dense gold stays in the pan while sand washes away. Magnetic separation: using a magnet to lift steel cans out of recycling.", k: ["Two density techniques", "Magnetic separation", "An example for each"]},
+  {q: "Describe the three main steps of distillation and what property it uses.", a: "First, the solution is heated until the part with the lowest boiling point boils into a gas. Second, the gas passes through a cold condenser and turns back into a liquid. Third, that liquid, the distillate, drips into a clean container. Distillation uses differences in boiling point.", k: ["Heat to boil the lower boiling point part", "Condense the gas", "Collect the distillate", "Names boiling point"]}
+];
+var LONG = [
+  {q: "A supply room spill mixed gravel, iron filings, sand, table salt and water. Write a step-by-step plan to recover all five. For each step, name the technique and the property it uses.", a: "1. Sieve the mixture: gravel stays on the mesh (particle size). 2. Pass a magnet over the rest: iron filings stick (magnetism). 3. Filter the remaining mixture: sand stays on the filter paper while salt water passes through (particle size). 4. Distill the salt water: water boils at 100 °C, condenses and is collected, while salt stays in the flask (boiling point). The order matters, because gravel would tear the filter and iron would stay mixed with the sand.", k: ["Sieve for gravel, by size", "Magnet for iron, by magnetism", "Filter for sand, by size", "Distill for water and salt, by boiling point", "Explains why the order matters"]},
+  {q: "You find two shiny grey cubes. Describe an investigation to decide if they are the same pure substance. Include what you would measure and how you would use the results.", a: "Measure each cube's mass on a balance and its volume by water displacement (or by measuring sides). Calculate density with d = m ÷ V. If the densities match, compare them to a reference table. For example, 2.70 g/cm³ is aluminum and 7.87 g/cm³ is iron. Also check other properties, such as whether a magnet attracts it, or its melting point if equipment allows. Matching several properties is stronger evidence than one. Different densities mean they are different substances, even if they look alike.", k: ["Measures mass and volume", "Calculates density with the formula", "Compares to reference values", "Uses at least one more property", "Explains how results lead to a conclusion"]},
+  {q: "Explain why density is useful for identifying a substance but the size or mass of a sample is not.", a: "Mass and volume depend on how much of the substance you have. A paper clip and a beam of iron have very different masses. Density is mass divided by volume, so when the sample gets bigger, mass and volume grow together and the ratio stays the same. Every pure substance has its own density at a given temperature, so it acts like a fingerprint.", k: ["Mass and volume depend on amount", "Density is a ratio that stays constant", "Each pure substance has its own density", "Example used"]},
+  {q: "Alberta industries separate huge amounts of material. Choose two examples (such as water treatment, recycling, oil sands extraction or oil refining). For each, explain which separation technique is used and which property it depends on.", a: "Water treatment: river water is left to settle so silt sinks (density), then it passes through filters that trap small particles (particle size). Recycling: large magnets lift steel cans out of mixed recycling (magnetism). Oil sands: hot water and air bubbles help bitumen float while sand sinks (density). Refining: fractional distillation separates crude oil into gasoline, diesel and asphalt (boiling point).", k: ["Two industry examples", "Correct technique for each", "Correct property for each", "Clear explanation of how it works"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["M1.K1", "Matter can be classified as a pure substance or mixture.", "Learn: Lesson 1 (particle zoom). Lab Bench: Investigation 2. Sort It: pure or mixture deck. Quiz, Flashcards, Written Review short answer 1."],
+    ["M1.K2", "A pure substance is composed of only one type of particle, and those particles cannot be separated by using physical techniques.", "Learn: Lessons 1 and 2 (try to separate it, elements and compounds). Quiz, Flashcards, Written Review short answer 1."],
+    ["M1.K3", "Pure substances can be identified or described by physical properties, including\n• appearance, e.g., colour and lustre\n• density\n• freezing point\n• melting point\n• boiling point", "Learn: Lesson 3 (property table and heating model). Lab Bench: Investigation 1. Sort It: name the physical property deck. Quiz, Flashcards, Written Review short answers 3 and 4."],
+    ["M1.K4", "Density is the mass per unit volume of a substance d = m/V", "Learn: Lesson 4 (density block model, worked example). Lab Bench: Investigations 1 and 3. Quiz, Written Review short answer 5, extended 3."],
+    ["M1.K5", "A mixture is composed of two or more types of particles, and those particles can be separated by using physical techniques.", "Learn: Lessons 1, 2 and 5. Lab Bench: Investigation 4. Quiz, Flashcards."],
+    ["M1.K6", "Mixtures can be classified as\n• heterogeneous, including mechanical mixtures\n• homogeneous, including solutions", "Learn: Lesson 5 (mixture magnifier). Lab Bench: Investigation 2. Sort It: heterogeneous or homogeneous deck. Quiz, Flashcards, Written Review short answer 6."],
+    ["M1.K7", "Techniques used to physically separate heterogeneous mixtures include\n• mechanical separation, which is based on particle size and density, e.g., sorting, sieving, and filtration\n• magnetic separation, which is based on magnetism", "Learn: Lesson 6 (technique explorer). Lab Bench: Investigation 4. Sort It: which property deck. Quiz, Written Review short answers 7 and 8."],
+    ["M1.K8", "Distillation is a technique used to physically separate homogeneous mixtures based on boiling points.", "Learn: Lesson 7 (distillation model). Lab Bench: Investigation 4. Quiz, Flashcards, Written Review short answer 9."],
+    ["M1.S1", "Investigate physical properties of various pure substances.", "Lab Bench: Investigation 1 (mystery substance: appearance, mass, volume by displacement, melting point). Learn: Lesson 3. Written Review extended 2."],
+    ["M1.S2", "Represent the particle composition of pure substances and mixtures.", "Lab Bench: Investigation 2 (particle picture match). Learn: Lessons 1 and 5. Written Review short answer 2."],
+    ["M1.S3", "Solve problems involving calculations related to density when given mass and volume.", "Lab Bench: Investigation 3 (calculator with steps and randomized practice) and Investigation 1. Learn: Lesson 4 worked example. Quiz, Written Review short answer 5."],
+    ["M1.S4", "Classify pure substances and mixtures.", "Sort It: pure or mixture and heterogeneous or homogeneous decks. Lab Bench: Investigation 2. Learn: Lessons 1 and 5. Quiz."],
+    ["M1.S5", "Separate mixtures according to physical properties.", "Lab Bench: Investigation 4 (five-part separation challenge). Learn: Lessons 6 and 7. Written Review extended 1 and 4."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

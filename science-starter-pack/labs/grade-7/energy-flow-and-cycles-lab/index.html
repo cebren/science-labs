@@ -1,0 +1,1624 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/energy-flow-and-cycles-lab/"><meta name="description" content="Ecosystem stability is maintained through the processes of cycling of matter and transfer of energy."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Energy Flow and Cycles Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field-station notebook. Sticky tab strip, then lessons that pair a short reading column with a live model. Amber marks energy, blue marks water, green marks living things. */
+:root{
+  --bg:#ECF2EE; --surface:#FFFFFF; --surface-2:#F3F7F4; --ink:#13261E; --muted:#4D6158; --line:#CCD9D1;
+  --sun:#A85F08; --sun-soft:#FBEBD3; --water:#1C6A8A; --water-soft:#DCEDF4; --leaf:#2D7546; --leaf-soft:#DDEFE3;
+  --carbon:#3D4B45; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g7:#A4501E;
+  --sky:#E3F0F7; --ground:#D9E6CF; --soil:#C9B79A; --snow:#FFFFFF; --rock:#9AA59F; --lake:#8CC4DC;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1613; --surface:#15201C; --surface-2:#1B2823; --ink:#E2ECE6; --muted:#9BB0A6; --line:#2A3A33;
+  --sun:#F2B460; --sun-soft:#3A2A12; --water:#6DC1E0; --water-soft:#132C38; --leaf:#7BCB95; --leaf-soft:#16301F;
+  --carbon:#B8C6BF; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --sky:#15262F; --ground:#1F2E22; --soil:#3B3226; --snow:#C9D6DD; --rock:#4C5853; --lake:#24506A;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1613; --surface:#15201C; --surface-2:#1B2823; --ink:#E2ECE6; --muted:#9BB0A6; --line:#2A3A33;
+  --sun:#F2B460; --sun-soft:#3A2A12; --water:#6DC1E0; --water-soft:#132C38; --leaf:#7BCB95; --leaf-soft:#16301F;
+  --carbon:#B8C6BF; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g7:#F0A070;
+  --sky:#15262F; --ground:#1F2E22; --soil:#3B3226; --snow:#C9D6DD; --rock:#4C5853; --lake:#24506A;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .sun{color:var(--sun)} header h1 .wat{color:var(--water)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.model .hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--sun-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--sun)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.sun[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:var(--surface)}
+.chip.wat[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.detail .life{color:var(--leaf);font-weight:700}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:540px;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+.sky{fill:var(--sky)} .ground{fill:var(--ground)} .soilf{fill:var(--soil)} .snowf{fill:var(--snow)} .rockf{fill:var(--rock)} .lakef{fill:var(--lake)}
+.sunf{fill:var(--sun)} .leaff{fill:var(--leaf)} .trunk{fill:var(--carbon)}
+.cloudf{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.wline{stroke:var(--water);stroke-width:3;fill:none}
+.wline.dim{opacity:.25}
+.hot{cursor:pointer}
+.hot circle{fill:var(--surface);stroke:var(--water);stroke-width:2.5}
+.hot text{font-family:var(--f-mono);font-size:13px;font-weight:600;fill:var(--water)}
+.hot.on circle{fill:var(--water)} .hot.on text{fill:var(--surface)}
+.hot:focus-visible{outline:none} .hot:focus-visible circle{stroke-width:5}
+.box rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.box.on rect{stroke:var(--sun);stroke-width:2.5}
+.arr{fill:none;stroke:var(--line);stroke-width:2}
+.arr.on{stroke:var(--sun);stroke-width:3.5}
+.ah{fill:var(--line)} .ahon{fill:var(--sun)}
+.alabel{font-size:11.5px;font-weight:700;fill:var(--sun)}
+.atom{fill:var(--carbon);stroke:var(--surface);stroke-width:2}
+
+/* food web */
+.node rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.node text{font-size:12px;font-weight:700;text-anchor:middle}
+.node.prod rect{fill:var(--leaf-soft);stroke:var(--leaf)}
+.node.decomp rect{fill:var(--surface-2);stroke:var(--carbon);stroke-dasharray:4 3}
+.node{cursor:pointer}
+.node.sel rect{stroke:var(--ink);stroke-width:3}
+.node.food rect{stroke:var(--leaf);stroke-width:3}
+.node.eater rect{stroke:var(--sun);stroke-width:3}
+.node.gone rect{fill:var(--bad-soft);stroke:var(--bad);stroke-dasharray:3 3}
+.node.gone text{text-decoration:line-through;fill:var(--muted)}
+.node.up rect{fill:var(--leaf-soft);stroke:var(--good);stroke-width:3}
+.node.down rect{fill:var(--bad-soft);stroke:var(--bad);stroke-width:3}
+.node:focus-visible{outline:none} .node:focus-visible rect{stroke:var(--water);stroke-width:4}
+.edge{stroke:var(--line);stroke-width:1.4;fill:none}
+.edge.food{stroke:var(--leaf);stroke-width:2.6}
+.edge.eater{stroke:var(--sun);stroke-width:2.6}
+.edge.faint{opacity:.25}
+.dedge{stroke:var(--carbon);stroke-width:1;stroke-dasharray:3 4;fill:none;opacity:.6}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+
+/* chain + pyramid */
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch}
+.link{display:grid;gap:2px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;min-width:0;cursor:pointer}
+.link b{font-family:var(--f-display);font-size:.98rem}
+.link span{font-size:.76rem;font-family:var(--f-mono);color:var(--muted)}
+.link.prod{border-color:var(--leaf);background:var(--leaf-soft)}
+.link[aria-pressed="true"]{outline:2px solid var(--ink)}
+.chain .to{align-self:center;color:var(--sun);font-weight:800}
+.pyr{display:grid;gap:4px;justify-items:center;padding:6px 0}
+.pyr .lvl{display:grid;justify-items:center;width:100%;gap:2px}
+.pyr .bar{height:30px;border-radius:4px;background:var(--sun);min-width:4px;max-width:100%}
+.pyr .bar.p{background:var(--leaf)}
+.pyr .cap{font-size:.82rem;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.pyr .cap b{font-family:var(--f-mono);font-size:.8rem}
+.pyr .loss{font-size:.74rem;color:var(--bad);font-family:var(--f-mono)}
+.stack{display:flex;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.stack div{display:grid;place-items:center;font-size:.74rem;font-weight:700;color:var(--surface);min-width:0;overflow:hidden;white-space:nowrap}
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--sun)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.meters{display:grid;gap:8px}
+.meter{display:grid;grid-template-columns:9.5em minmax(0,1fr) 3.5em;gap:10px;align-items:center;font-size:.86rem}
+.meter .track{height:12px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter .track i{display:block;height:100%;background:var(--water);border-radius:6px}
+.meter b{font-family:var(--f-mono);font-size:.8rem;text-align:right}
+@media (max-width:480px){.meter{grid-template-columns:7.5em minmax(0,1fr) 3em}}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.log{display:grid;gap:6px;max-height:260px;overflow-y:auto;font-size:.9rem;padding-right:4px}
+.log li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;list-style:none}
+.log{padding-left:0;margin:0}
+.log li b{color:var(--sun)}
+.tally{display:flex;flex-wrap:wrap;gap:6px}
+.tally span{font-family:var(--f-mono);font-size:.74rem;padding:3px 8px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+.effects{display:grid;gap:6px;padding-left:0}
+.effects li{list-style:none;border-left:4px solid var(--line);padding:4px 10px;background:var(--surface);border-radius:0 8px 8px 0;font-size:.92rem}
+.effects li.up{border-color:var(--good)} .effects li.down{border-color:var(--bad)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.bin span{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);font-weight:400}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.atom{transition:cx .5s ease,cy .5s ease}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Life Science: Ecosystems · LS2</div>
+    <h1>Energy <span class="sun">Flow</span> and <span class="wat">Cycles</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Ecosystem stability is maintained through the processes of cycling of matter and transfer of energy. Matter goes around and gets reused. Energy comes in from the Sun, passes along, and leaves as heat.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with the big idea, then follow water, carbon and energy through an Alberta ecosystem.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · The big idea</span>
+      <h3>Matter cycles. Energy flows.</h3>
+      <p><b>Matter</b> is anything that has mass and takes up space: water, carbon, oxygen, the atoms in a leaf. Earth does not get new matter delivered, so ecosystems reuse the same atoms again and again. That reuse is a <b>cycle</b>.</p>
+      <p><b>Energy</b> is different. It arrives as sunlight, gets stored in food, passes from one living thing to the next, and at every step some of it leaves as heat. Heat spreads out into the surroundings and cannot be used again by living things. So energy moves in one direction. That is a <b>flow</b>.</p>
+      <p>An ecosystem stays stable when both keep going: matter keeps being recycled, and new sunlight keeps arriving to replace the energy that leaves.</p>
+      <div class="key"><b>Remember:</b> atoms go around in loops; energy goes through in one direction and needs a constant supply from the Sun.</div>
+    </div>
+    <div class="model">
+      <h4>Model: follow matter or follow energy</h4>
+      <div class="chips" role="group" aria-label="What to follow">
+        <button class="chip lf" aria-pressed="true" data-follow="matter">Follow matter</button>
+        <button class="chip sun" aria-pressed="false" data-follow="energy">Follow energy</button>
+      </div>
+      <div class="svgbox"><svg id="bigIdea" viewBox="0 0 640 300" role="img" aria-label="Diagram of the Sun, an aspen, a snowshoe hare, a lynx and decomposers, showing matter cycling and energy flowing"></svg></div>
+      <p class="hint" id="bigIdeaText"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Water</span>
+      <div class="codes"><span class="code">LS2.K1</span></div>
+      <h3>The water cycle keeps life going</h3>
+      <p>Every cell needs water. Water carries nutrients, helps control body temperature, and is a raw ingredient of photosynthesis. The <b>water cycle</b> moves the same water between the air, the land, lakes, oceans and living things, over and over.</p>
+      <p>The Sun powers it. Sunlight warms water so it <b>evaporates</b>. Plants release water vapour from their leaves by <b>transpiration</b>. Vapour cools and <b>condenses</b> into clouds, then falls as <b>precipitation</b> (rain or snow). It runs off into streams and rivers, or soaks into the ground to become <b>groundwater</b>. Roots pull it up, and animals drink it.</p>
+      <p>Edmonton's drinking water comes from the North Saskatchewan River. Much of that water starts as snow and glacier ice in the Rocky Mountains, which melts each spring and summer and flows east through Treaty 6 territory.</p>
+    </div>
+    <div class="model">
+      <h4>Model: tap a numbered step</h4>
+      <div class="svgbox"><svg id="waterSvg" viewBox="0 0 640 360" role="group" aria-label="Water cycle diagram with seven numbered steps"></svg></div>
+      <div class="chips" id="waterChips" role="group" aria-label="Water cycle steps"></div>
+      <div class="detail" id="waterDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Carbon</span>
+      <div class="codes"><span class="code">LS2.K2</span></div>
+      <h3>The carbon cycle</h3>
+      <p>Carbon is the backbone of every living thing. Sugars, proteins and fats are all built around carbon atoms. Carbon moves between the air, living things, the ocean and rocks through six main processes:</p>
+      <ul>
+        <li><b>Photosynthesis:</b> producers take carbon dioxide (CO₂) from the air or water and build it into sugar.</li>
+        <li><b>Respiration:</b> living things break sugar down for energy and release CO₂.</li>
+        <li><b>Decomposition:</b> fungi and bacteria break down dead matter and waste, releasing CO₂ and returning nutrients to the soil.</li>
+        <li><b>Emission:</b> carbon is released into the air by burning, such as fossil fuels in vehicles or forests in a wildfire.</li>
+        <li><b>Ocean exchange:</b> CO₂ dissolves into ocean water and also escapes back out.</li>
+        <li><b>Geological processes:</b> over millions of years, buried remains become coal, oil or limestone, and volcanoes release carbon back into the air.</li>
+      </ul>
+      <p>Eating moves carbon too: when a hare eats aspen bark, the carbon in the bark becomes part of the hare.</p>
+    </div>
+    <div class="model">
+      <h4>Model: choose a process to light up its arrows</h4>
+      <div class="chips" id="carbonChips" role="group" aria-label="Carbon cycle processes"></div>
+      <div class="svgbox"><svg id="carbonSvg" viewBox="0 0 640 400" role="img" aria-label="Carbon cycle diagram with six carbon stores and arrows for each process"></svg></div>
+      <div class="detail" id="carbonDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · The Sun and producers</span>
+      <div class="codes"><span class="code">LS2.K3</span></div>
+      <h3>Producers capture the Sun's energy</h3>
+      <p>The Sun is the main source of energy for most ecosystems. <b>Producers</b> are living things that make their own food. Plants, algae and some bacteria capture light energy and store it as chemical energy in sugar. This is photosynthesis:</p>
+      <div class="formula">carbon dioxide + water + light energy → glucose (sugar) + oxygen<br>6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</div>
+      <p>Every other living thing in the ecosystem depends on that stored energy, either by eating producers or by eating something that ate them. Producers capture only a small share of the sunlight that hits them, often around 1 percent, yet that small share powers the whole food web.</p>
+      <p class="note">Why "most" ecosystems? Deep on the ocean floor, near hot-water vents, there is no sunlight. Bacteria there make food from chemicals coming out of the vents. This is called chemosynthesis.</p>
+    </div>
+    <div class="model">
+      <h4>Model: where does the energy start?</h4>
+      <div class="chips" id="sourceChips" role="group" aria-label="Choose an ecosystem"></div>
+      <div class="detail" id="sourceDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Who eats whom</span>
+      <div class="codes"><span class="code">LS2.K4</span></div>
+      <h3>Consumers and trophic levels</h3>
+      <p><b>Consumers</b> get energy by eating other living things. Each feeding step is a <b>trophic level</b> ("trophic" means feeding).</p>
+      <ul>
+        <li><b>Primary consumers</b> eat producers. Example: a snowshoe hare eating willow.</li>
+        <li><b>Secondary consumers</b> eat primary consumers. Example: a boreal chorus frog eating a grasshopper.</li>
+        <li><b>Tertiary consumers</b> eat secondary consumers. Example: a garter snake eating that frog.</li>
+        <li><b>Apex predators</b> are at the top of a food chain. Adults have no natural predators.</li>
+      </ul>
+      <p>An apex predator is defined by being at the top, not by a level number. A grey wolf eating a moose is a secondary consumer and also the apex predator. Many animals also feed at more than one level: a red fox eats saskatoon berries (primary consumer) and mice (secondary consumer).</p>
+    </div>
+    <div class="model">
+      <h4>Model: Alberta food chains</h4>
+      <div class="chips" id="chainChips" role="group" aria-label="Choose a food chain"></div>
+      <div class="chain" id="chainView"></div>
+      <div class="detail" id="chainDetail" aria-live="polite">Tap any living thing in the chain to see its role.</div>
+      <p class="hint">Arrows point in the direction energy moves: from the food to the eater.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Energy leaves at every step</span>
+      <div class="codes"><span class="code">LS2.K5</span></div>
+      <h3>Why there are more producers than consumers</h3>
+      <p>When a hare eats bark, only a small part of the energy in that bark ends up stored in the hare's body. The rest is used up or lost. Most of the energy is used to stay alive (breathing, moving, keeping warm) and eventually becomes heat. Some leaves in droppings, which decomposers then use. Parts like bones and fur may never be eaten.</p>
+      <div class="model" style="padding:10px">
+        <p class="hint">Where 100 kJ from aspen bark goes in a hare (example numbers; real values vary)</p>
+        <div class="stack" role="img" aria-label="About 50 kJ used for living and lost as heat, 40 kJ in droppings, 10 kJ stored in the hare's body">
+          <div style="width:50%;background:var(--bad)">50 heat</div>
+          <div style="width:40%;background:var(--carbon)">40 waste</div>
+          <div style="width:10%;background:var(--sun)">10</div>
+        </div>
+        <p class="hint">Only about 10 kJ is stored as new body tissue, which is all a lynx could get by eating the hare.</p>
+      </div>
+      <p>Scientists often use a rough rule: about <b>10 percent</b> of the energy at one level is passed to the next. The real number is usually somewhere from about 5 to 20 percent. Because so much is lost each step, an ecosystem needs a large amount of producer energy to support a few top predators. Food chains rarely have more than four or five levels.</p>
+      <div class="formula">energy at next level = energy at this level × transfer efficiency<br>E₂ = E₁ × 0.10 (using the 10 percent rule)</div>
+    </div>
+    <div class="model">
+      <h4>Model: energy pyramid</h4>
+      <div class="chips" id="pyrChips" role="group" aria-label="Choose a food chain"></div>
+      <label class="field" for="effSlider">Transfer efficiency: <span id="effOut" class="mono">10%</span>
+        <input type="range" id="effSlider" min="5" max="20" step="1" value="10"></label>
+      <div class="pyr" id="pyramid" aria-live="polite"></div>
+      <p class="hint">Bar widths are drawn to scale. Producers start with 10 000 kJ. Red numbers show energy that left the food chain at each step, mostly as heat.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Putting it together</span>
+      <div class="codes"><span class="code">LS2.K6</span></div>
+      <h3>Food webs and energy pyramids</h3>
+      <p>A food chain shows one path. Real ecosystems have many connected chains, so scientists draw a <b>food web</b>. Each arrow points from the food to the eater, showing which way energy moves.</p>
+      <p><b>Decomposers</b> such as fungi, bacteria and earthworms feed on dead matter and waste from every level. They release the last of that energy as heat and return carbon and nutrients to the air and soil, where producers can use them again.</p>
+      <p>An <b>energy pyramid</b> shows the same ecosystem a different way. Each layer is a trophic level, and its size shows how much energy it holds. The pyramid is always widest at the bottom because energy is lost at every step.</p>
+      <p class="note">A pyramid that counts numbers of organisms can look different. One aspen tree can feed thousands of caterpillars, so a "pyramid of numbers" can be narrow at the bottom. An energy pyramid never is.</p>
+    </div>
+    <div class="model">
+      <h4>Model: aspen parkland food web</h4>
+      <p class="hint">Tap a living thing. Green shows what it eats. Amber shows what eats it.</p>
+      <div class="svgbox"><svg id="webLearn" viewBox="0 0 720 430" role="group" aria-label="Food web of an aspen parkland ecosystem near Edmonton"></svg></div>
+      <div class="legend"><span><i style="background:var(--leaf)"></i>its food</span><span><i style="background:var(--sun)"></i>eats it</span><span><i style="background:var(--carbon)"></i>to decomposers</span></div>
+      <div class="detail" id="webDetail" aria-live="polite">Tap any box to explore. Try the wolf, then the grasses.</div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Change a variable, make a prediction, and check your thinking with new practice questions each time.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 1</span>
+      <div class="codes"><span class="code">LS2.S1</span></div>
+      <h3>Dry year, wet year</h3>
+      <p>Change how much rain and snow falls on the North Saskatchewan River watershed in a year. Watch how the water cycle's supply to living things changes.</p>
+      <p>Think about it: which living things depend on rivers, which depend on soil moisture, and which depend on wetlands?</p>
+      <div class="worked"><b>Ways the water cycle supports life</b>
+        <ul><li>Precipitation refills soil water that roots take up.</li><li>Runoff and snowmelt keep rivers flowing for fish, beavers and towns.</li><li>Groundwater feeds springs and wetlands during dry months.</li><li>Evaporation and transpiration return water to the air so it can fall again somewhere else.</li><li>Water in lakes and rivers moderates temperature and holds dissolved oxygen for fish.</li></ul></div>
+    </div>
+    <div class="model">
+      <label class="field" for="rainSlider">Precipitation: <span id="rainOut" class="mono">100% of normal</span>
+        <input type="range" id="rainSlider" min="40" max="160" step="10" value="100"></label>
+      <div class="meters" id="rainMeters"></div>
+      <div class="detail" id="rainDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 2</span>
+      <div class="codes"><span class="code">LS2.S2</span></div>
+      <h3>Journey of a carbon atom</h3>
+      <p>Follow one carbon atom as it moves between stores. Each tap picks a real process at random. Some trips take seconds. Others take millions of years.</p>
+      <p>After about 10 moves, use the log to draw your own carbon cycle diagram: one box for each store the atom visited and one labelled arrow for each process.</p>
+      <div class="tally" id="carbonTally"></div>
+    </div>
+    <div class="model">
+      <div class="svgbox"><svg id="carbonJourney" viewBox="0 0 640 400" role="img" aria-label="Carbon cycle diagram with a moving carbon atom"></svg></div>
+      <div class="row"><button class="btn" id="cjStep">Move the atom</button><button class="btn ghost" id="cjReset">Start over</button></div>
+      <ol class="log" id="cjLog" aria-live="polite"></ol>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 3</span>
+      <div class="codes"><span class="code">LS2.S3</span></div>
+      <h3>Build an energy pyramid</h3>
+      <p>You get a food chain and the energy its producers capture. Use the 10 percent rule to fill in each level. When every level is right, your pyramid is drawn to scale.</p>
+      <div class="worked"><b>Worked example</b>
+        <span>Chain: algae → zooplankton → yellow perch → northern pike</span>
+        <span class="mono">Algae: 50 000 kJ</span>
+        <span class="mono">Zooplankton: 50 000 × 0.10 = 5 000 kJ</span>
+        <span class="mono">Perch: 5 000 × 0.10 = 500 kJ</span>
+        <span class="mono">Pike: 500 × 0.10 = 50 kJ</span>
+        <span>Each step loses 90 percent, mostly as heat.</span></div>
+    </div>
+    <div class="model">
+      <div id="pbQ" class="detail"></div>
+      <div id="pbInputs" style="display:grid;gap:8px"></div>
+      <div class="row"><button class="btn" id="pbCheck">Check</button><button class="btn ghost" id="pbNew">New chain</button><span class="fb" id="pbFb" aria-live="polite"></span></div>
+      <div class="pyr" id="pbPyr"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 4</span>
+      <div class="codes"><span class="code">LS2.S4</span></div>
+      <h3>How much energy got through?</h3>
+      <p>Ecologists measure how much energy is stored in each level to find the <b>transfer efficiency</b>: the percentage passed on to the next level.</p>
+      <div class="formula">efficiency (%) = energy at higher level ÷ energy at lower level × 100<br>energy lost = energy at lower level − energy at higher level</div>
+      <div class="worked"><b>Worked example</b>
+        <span>Willow shrubs in a wetland store 24 000 kJ. The moose that eat them store 2 160 kJ.</span>
+        <span class="mono">2 160 ÷ 24 000 × 100 = 9%</span>
+        <span class="mono">Lost: 24 000 − 2 160 = 21 840 kJ (91%)</span>
+        <span>Most of the lost energy became heat from the moose's body and the decomposers that broke down its droppings.</span></div>
+    </div>
+    <div class="model">
+      <h4>Calculator</h4>
+      <div class="row">
+        <label class="field" for="effLow">Lower level (kJ)<input type="number" id="effLow" value="24000" min="1"></label>
+        <label class="field" for="effHigh">Higher level (kJ)<input type="number" id="effHigh" value="2160" min="0"></label>
+      </div>
+      <div class="detail" id="effResult" aria-live="polite"></div>
+      <h4>Practice</h4>
+      <div class="detail" id="epQ"></div>
+      <div class="row"><label class="field" for="epA">Efficiency (%)<input type="number" id="epA" step="0.1"></label><button class="btn" id="epCheck">Check</button><button class="btn ghost" id="epNew">New question</button></div>
+      <p class="fb" id="epFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Investigation 5</span>
+      <div class="codes"><span class="code">LS2.S5</span></div>
+      <h3>Change a population, predict the web</h3>
+      <p>Choose a living thing in the aspen parkland food web. Then choose what happens to it: it disappears from the area (local extinction), or its population booms.</p>
+      <p>Make your prediction for the species named in the question before you reveal the model's answer. Remember to follow the arrows two steps: the effect on a predator's food can spread to other prey too.</p>
+      <p class="note">This model shows the likely direction of change. Real ecosystems are more complex: animals switch foods, and populations rise and fall over seasons.</p>
+    </div>
+    <div class="model">
+      <div class="row">
+        <label class="field" for="fwSpecies">Species<select id="fwSpecies"></select></label>
+        <label class="field" for="fwMode">Change<select id="fwMode"><option value="remove">Disappears (extinction)</option><option value="boom">Population booms</option></select></label>
+      </div>
+      <div class="svgbox"><svg id="webBench" viewBox="0 0 720 430" role="img" aria-label="Food web showing predicted changes"></svg></div>
+      <div class="detail" id="fwQ" aria-live="polite"></div>
+      <div class="row" id="fwPick">
+        <button class="btn ghost" data-p="up">Increase</button><button class="btn ghost" data-p="down">Decrease</button><button class="btn ghost" data-p="none">Little change</button>
+      </div>
+      <p class="fb" id="fwFb" aria-live="polite"></p>
+      <ul class="effects" id="fwEffects"></ul>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev">Back</button>
+      <button class="btn ghost" id="fcStill">Still learning</button>
+      <button class="btn" id="fcKnow">I know it</button>
+      <button class="btn ghost" id="fcShuffle">Shuffle</button>
+      <button class="btn ghost" id="fcReset">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 7 LS2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
+
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-ls2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function fmt(n){ var r = Math.round(n * 100) / 100; var parts = String(r).split("."); parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return parts.join("."); }
+function onKeyActivate(node, fn){ node.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: big idea ---------- */
+(function(){
+  var s = $("bigIdea");
+  var nodes = [
+    {id:"sun", x:60, y:70, label:"Sun"},
+    {id:"aspen", x:200, y:150, label:"Aspen"},
+    {id:"hare", x:350, y:150, label:"Snowshoe hare"},
+    {id:"lynx", x:510, y:150, label:"Lynx"},
+    {id:"dec", x:350, y:262, label:"Decomposers and soil"},
+    {id:"air", x:350, y:40, label:"Air (CO₂, water vapour)"}
+  ];
+  var defs = sv("defs");
+  [["bi-e","var(--sun)"],["bi-m","var(--leaf)"],["bi-h","var(--bad)"],["bi-x","var(--line)"]].forEach(function(m){
+    var mk = sv("marker", {id: m[0], viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse"});
+    var p = sv("path", {d: "M0,0 L10,5 L0,10 z"}); p.style.fill = m[1]; mk.appendChild(p); defs.appendChild(mk);
+  });
+  s.appendChild(defs);
+  var g = sv("g"); s.appendChild(g);
+  var energy = [["M95,85 L165,135","Sunlight"],["M245,150 L290,150",""],["M410,150 L460,150",""]];
+  var heat = [[200,120],[350,120],[510,120],[350,232]];
+  var matter = [["M350,62 C250,70 210,100 200,128","CO₂ in"],["M215,172 C260,240 290,250 300,255",""],["M365,172 L360,240",""],["M500,172 C470,240 430,255 410,258",""],["M300,265 C230,270 200,220 195,175","nutrients"],["M390,250 C470,200 470,90 400,50","CO₂ out"]];
+  var layers = {energy: sv("g"), matter: sv("g")};
+  energy.forEach(function(e){ var p = sv("path", {d: e[0], fill: "none", "stroke-width": 4, "marker-end": "url(#bi-e)"}); p.style.stroke = "var(--sun)"; layers.energy.appendChild(p); });
+  heat.forEach(function(h){
+    var p = sv("path", {d: "M" + (h[0] + 30) + "," + (h[1] + 10) + " c 10,-10 -6,-18 4,-30", fill: "none", "stroke-width": 3, "marker-end": "url(#bi-h)"}); p.style.stroke = "var(--bad)"; layers.energy.appendChild(p);
+    var t = sv("text", {x: h[0] + 44, y: h[1] - 14, "class": "small"}, "heat"); layers.energy.appendChild(t);
+  });
+  matter.forEach(function(m){
+    var p = sv("path", {d: m[0], fill: "none", "stroke-width": 3, "stroke-dasharray": "7 5", "marker-end": "url(#bi-m)"}); p.style.stroke = "var(--leaf)"; layers.matter.appendChild(p);
+  });
+  var t1 = sv("text", {x: 200, y: 82, "class": "small"}, "CO₂ in"); layers.matter.appendChild(t1);
+  var t2 = sv("text", {x: 470, y: 90, "class": "small"}, "CO₂ out"); layers.matter.appendChild(t2);
+  var t3 = sv("text", {x: 150, y: 250, "class": "small"}, "nutrients back"); layers.matter.appendChild(t3);
+  g.appendChild(layers.matter); g.appendChild(layers.energy);
+  nodes.forEach(function(n){
+    var w = n.id === "sun" ? 70 : (n.id === "dec" || n.id === "air" ? 190 : 110);
+    var r = sv("rect", {x: n.x - w / 2, y: n.y - 18, width: w, height: 36, rx: n.id === "sun" ? 18 : 8});
+    r.style.fill = n.id === "sun" ? "var(--sun-soft)" : "var(--surface)"; r.style.stroke = n.id === "sun" ? "var(--sun)" : "var(--line)"; r.style.strokeWidth = 1.5;
+    s.appendChild(r);
+    s.appendChild(sv("text", {x: n.x, y: n.y + 5, "text-anchor": "middle", "class": "lbl"}, n.label));
+  });
+  var text = {
+    matter: "Matter (green, dashed): carbon from the air becomes part of the aspen, then the hare, then the lynx. Dead matter and droppings go to decomposers, which return CO₂ to the air and nutrients to the soil. The same atoms go around again.",
+    energy: "Energy (amber): sunlight enters the aspen and passes up the chain as food. At every stop some leaves as heat (red), and heat never comes back. New sunlight must keep arriving."
+  };
+  document.querySelectorAll("[data-follow]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var f = b.dataset.follow;
+      document.querySelectorAll("[data-follow]").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      layers.matter.style.opacity = f === "matter" ? 1 : .12;
+      layers.energy.style.opacity = f === "energy" ? 1 : .12;
+      $("bigIdeaText").textContent = text[f];
+    });
+  });
+  layers.energy.style.opacity = .12; $("bigIdeaText").textContent = text.matter;
+})();
+
+/* ---------- Lesson 2: water cycle ---------- */
+var WATER = [
+  {n:1, name:"Evaporation", x:505, y:200, what:"Sunlight warms water in lakes, rivers and oceans. Liquid water becomes water vapour and rises into the air.", life:"Evaporation lifts water so it can fall again far away, bringing fresh water to land that has no lake nearby. It also cools the surface it leaves."},
+  {n:2, name:"Transpiration", x:355, y:150, what:"Plants pull water up from their roots and release water vapour through tiny pores in their leaves.", life:"Transpiration keeps water moving up through a plant, carrying nutrients from the soil to every leaf. A boreal forest returns a large amount of water to the air this way."},
+  {n:3, name:"Condensation", x:245, y:62, what:"Water vapour cools as it rises. It condenses into tiny droplets or ice crystals that form clouds.", life:"Condensation turns invisible vapour into clouds that can deliver water as rain or snow."},
+  {n:4, name:"Precipitation", x:185, y:130, what:"Droplets join until they are heavy enough to fall as rain, snow, sleet or hail.", life:"Precipitation is the main way fresh water reaches the land. Snow piled up in the Rocky Mountains is stored water that melts slowly through spring and summer."},
+  {n:5, name:"Runoff and river flow", x:300, y:268, what:"Water that does not soak in flows downhill into streams and rivers, and on to lakes and oceans. Melting snow and glaciers add to the flow.", life:"Rivers give fish, beavers and waterbirds a home. The North Saskatchewan River supplies Edmonton's drinking water."},
+  {n:6, name:"Infiltration and groundwater", x:200, y:322, what:"Some water soaks into the soil (infiltration). Some moves deeper and is stored underground as groundwater.", life:"Soil water is what roots drink. Groundwater slowly feeds springs, wetlands and wells, even during dry months."},
+  {n:7, name:"Uptake by living things", x:450, y:315, what:"Roots absorb water from the soil. Animals drink it or get it from their food. Living things release it again when they breathe, sweat or produce waste.", life:"Every cell is mostly water. Plants also use water as a raw ingredient in photosynthesis, so the water cycle helps power the whole food web."}
+];
+(function(){
+  var s = $("waterSvg");
+  var defs = sv("defs");
+  var mk = sv("marker", {id: "wah", viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto"});
+  var mp = sv("path", {d: "M0,0 L10,5 L0,10 z"}); mp.style.fill = "var(--water)"; mk.appendChild(mp); defs.appendChild(mk); s.appendChild(defs);
+  s.appendChild(sv("rect", {x: 0, y: 0, width: 640, height: 360, "class": "sky"}));
+  s.appendChild(sv("rect", {x: 0, y: 300, width: 640, height: 60, "class": "soilf"}));
+  s.appendChild(sv("path", {d: "M0,300 L0,170 L80,80 L130,140 L190,60 L280,200 L380,240 L640,250 L640,300 Z", "class": "ground"}));
+  s.appendChild(sv("path", {d: "M80,80 L100,103 L90,108 L70,95 Z M190,60 L215,98 L200,104 L178,82 Z", "class": "snowf"}));
+  s.appendChild(sv("path", {d: "M420,252 Q520,240 640,250 L640,282 Q530,292 420,268 Z", "class": "lakef"}));
+  [370, 395, 420].forEach(function(x, i){
+    s.appendChild(sv("rect", {x: x - 3, y: 205 - i * 4, width: 6, height: 38, "class": "trunk"}));
+    s.appendChild(sv("ellipse", {cx: x, cy: 195 - i * 4, rx: 16, ry: 24, "class": "leaff"}));
+  });
+  s.appendChild(sv("circle", {cx: 585, cy: 50, r: 26, "class": "sunf"}));
+  s.appendChild(sv("path", {d: "M210,70 a22,22 0 0 1 40,-18 a28,28 0 0 1 52,6 a20,20 0 0 1 18,30 l-110,0 a16,16 0 0 1 0,-18 z", "class": "cloudf"}));
+  s.appendChild(sv("text", {x: 470, y: 278, "class": "small"}, "lake and river"));
+  s.appendChild(sv("text", {x: 20, y: 345, "class": "small"}, "soil and groundwater"));
+  s.appendChild(sv("text", {x: 60, y: 160, "class": "small"}, "Rocky Mountain snowpack"));
+  var paths = [
+    [1, "M520,250 C520,200 470,150 440,110"],
+    [2, "M395,170 C390,140 360,120 335,100"],
+    [3, "M425,105 C390,80 350,80 325,82"],
+    [4, "M215,95 L195,150 M245,95 L225,160 M275,95 L255,170"],
+    [5, "M200,210 C260,250 340,265 430,262"],
+    [6, "M300,290 L300,335"],
+    [7, "M300,330 C340,345 380,300 395,250"]
+  ];
+  var lines = {};
+  paths.forEach(function(p){ var l = sv("path", {d: p[1], "class": "wline dim", "marker-end": "url(#wah)"}); s.appendChild(l); lines[p[0]] = l; });
+  var hots = {};
+  WATER.forEach(function(w, i){
+    var g = sv("g", {"class": "hot", tabindex: 0, role: "button", "aria-label": w.n + ". " + w.name});
+    g.appendChild(sv("circle", {cx: w.x, cy: w.y, r: 13}));
+    g.appendChild(sv("text", {x: w.x, y: w.y + 4.5, "text-anchor": "middle"}, String(w.n)));
+    g.addEventListener("click", function(){ setStep(i); });
+    onKeyActivate(g, function(){ setStep(i); });
+    s.appendChild(g); hots[w.n] = g;
+  });
+  var setChip = chipGroup($("waterChips"), WATER.map(function(w){ return {label: w.n + " " + w.name}; }), "wat", function(it, i){ show(i); });
+  function setStep(i){ setChip(i); }
+  function show(i){
+    var w = WATER[i];
+    for (var k in lines) lines[k].setAttribute("class", "wline" + (+k === w.n ? "" : " dim"));
+    for (var h in hots) hots[h].setAttribute("class", "hot" + (+h === w.n ? " on" : ""));
+    var d = $("waterDetail"); d.innerHTML = "";
+    d.appendChild(el("h5", null, w.n + ". " + w.name));
+    d.appendChild(el("p", null, w.what));
+    var p = el("p"); p.appendChild(el("span", {"class": "life"}, "How it supports life: ")); p.appendChild(document.createTextNode(w.life)); d.appendChild(p);
+  }
+  setStep(0);
+})();
+
+/* ---------- Carbon cycle ---------- */
+var CBOX = {
+  atm: {x: 220, y: 18, w: 200, h: 56, label: "Atmosphere", sub: "CO₂ gas in the air"},
+  plants: {x: 14, y: 160, w: 170, h: 56, label: "Producers", sub: "plants, algae"},
+  animals: {x: 235, y: 160, w: 170, h: 56, label: "Consumers", sub: "animals"},
+  ocean: {x: 456, y: 160, w: 170, h: 56, label: "Ocean", sub: "dissolved CO₂"},
+  soil: {x: 100, y: 290, w: 210, h: 56, label: "Dead matter and soil", sub: "decomposers at work"},
+  rock: {x: 390, y: 320, w: 236, h: 56, label: "Rocks and fossil fuels", sub: "coal, oil, gas, limestone"}
+};
+var CARROWS = [
+  {f: "atm", t: "plants", p: "photo", bend: -30, label: "photosynthesis"},
+  {f: "plants", t: "atm", p: "resp", bend: -30, label: "respiration"},
+  {f: "animals", t: "atm", p: "resp", bend: 0, label: "respiration"},
+  {f: "plants", t: "animals", p: "eat", bend: 0, label: "eating"},
+  {f: "plants", t: "soil", p: "decomp", bend: 15, label: "dead leaves"},
+  {f: "animals", t: "soil", p: "decomp", bend: -10, label: "waste, remains"},
+  {f: "soil", t: "atm", p: "decomp", bend: -40, label: "decomposer respiration"},
+  {f: "rock", t: "atm", p: "emit", bend: 50, label: "burning fossil fuels"},
+  {f: "plants", t: "atm", p: "emit", bend: -90, label: "wildfire"},
+  {f: "atm", t: "ocean", p: "ocean", bend: -25, label: "dissolves"},
+  {f: "ocean", t: "atm", p: "ocean", bend: -25, label: "escapes"},
+  {f: "soil", t: "rock", p: "geo", bend: 25, label: "buried for millions of years"},
+  {f: "ocean", t: "rock", p: "geo", bend: -10, label: "shells form limestone"},
+  {f: "rock", t: "atm", p: "geo", bend: 95, label: "volcanoes"}
+];
+var CPROC = [
+  {id: "photo", label: "Photosynthesis", text: "Producers take CO₂ from the air (or from water, for algae) and use sunlight to build it into sugar. This removes carbon from the atmosphere and stores it in living things. Aspen, grasses and lake algae all do this."},
+  {id: "resp", label: "Respiration", text: "Plants and animals break down sugar to get energy, releasing CO₂ back into the air. You do this with every breath out. Respiration happens day and night in every living cell."},
+  {id: "decomp", label: "Decomposition", text: "Fungi, bacteria and earthworms feed on dead leaves, dead animals and droppings. They release CO₂ as they respire and return nutrients to the soil for plants to reuse."},
+  {id: "emit", label: "Emission", text: "Carbon is released into the air when things burn. Burning gasoline, diesel, natural gas and coal releases carbon that was locked away for millions of years. Wildfires release carbon stored in trees and soil."},
+  {id: "ocean", label: "Ocean exchange", text: "CO₂ dissolves into ocean water where the water meets the air, and some escapes back out. The ocean absorbs about a quarter of the CO₂ that people add to the air each year. Ocean algae then use some of it for photosynthesis."},
+  {id: "geo", label: "Geological processes", text: "Over millions of years, buried plant remains can become coal, and buried sea life can become oil and gas. Shells settle on the sea floor and become limestone, like the limestone in the Rocky Mountains. Volcanoes release carbon from deep in the Earth back into the air."},
+  {id: "eat", label: "Eating (food chains)", text: "When a consumer eats, carbon in the food becomes part of its body. A hare eating aspen bark moves carbon from producers to consumers. A lynx eating the hare moves it again."}
+];
+function boxCenter(b){ return {x: b.x + b.w / 2, y: b.y + b.h / 2}; }
+function clipToBox(c, b, toward){
+  var dx = toward.x - c.x, dy = toward.y - c.y;
+  var sx = dx === 0 ? Infinity : (b.w / 2 + 4) / Math.abs(dx);
+  var sy = dy === 0 ? Infinity : (b.h / 2 + 4) / Math.abs(dy);
+  var s = Math.min(sx, sy);
+  return {x: c.x + dx * s, y: c.y + dy * s};
+}
+function drawCarbon(svg, prefix){
+  var defs = sv("defs");
+  [["ah", "ah"], ["ahon", "ahon"]].forEach(function(m){
+    var mk = sv("marker", {id: prefix + m[0], viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto"});
+    mk.appendChild(sv("path", {d: "M0,0 L10,5 L0,10 z", "class": m[1]})); defs.appendChild(mk);
+  });
+  svg.appendChild(defs);
+  var arrows = [];
+  var labels = sv("g");
+  CARROWS.forEach(function(a){
+    var A = CBOX[a.f], B = CBOX[a.t];
+    var ca = boxCenter(A), cb = boxCenter(B);
+    var mx = (ca.x + cb.x) / 2, my = (ca.y + cb.y) / 2;
+    var dx = cb.x - ca.x, dy = cb.y - ca.y, len = Math.sqrt(dx * dx + dy * dy) || 1;
+    var cx = mx + (-dy / len) * a.bend, cy = my + (dx / len) * a.bend;
+    var p1 = clipToBox(ca, A, {x: cx, y: cy}), p2 = clipToBox(cb, B, {x: cx, y: cy});
+    var path = sv("path", {d: "M" + p1.x + "," + p1.y + " Q" + cx + "," + cy + " " + p2.x + "," + p2.y, "class": "arr", "marker-end": "url(#" + prefix + "ah)"});
+    svg.appendChild(path);
+    var lx = 0.25 * p1.x + 0.5 * cx + 0.25 * p2.x, ly = 0.25 * p1.y + 0.5 * cy + 0.25 * p2.y;
+    var t = sv("text", {x: lx, y: ly - 4, "text-anchor": "middle", "class": "alabel"}, a.label);
+    t.style.display = "none";
+    labels.appendChild(t);
+    arrows.push({a: a, path: path, text: t});
+  });
+  var boxes = {};
+  for (var k in CBOX) {
+    var b = CBOX[k];
+    var g = sv("g", {"class": "box"});
+    g.appendChild(sv("rect", {x: b.x, y: b.y, width: b.w, height: b.h, rx: 8}));
+    g.appendChild(sv("text", {x: b.x + b.w / 2, y: b.y + 24, "text-anchor": "middle", "class": "lbl"}, b.label));
+    g.appendChild(sv("text", {x: b.x + b.w / 2, y: b.y + 42, "text-anchor": "middle", "class": "small"}, b.sub));
+    svg.appendChild(g); boxes[k] = g;
+  }
+  svg.appendChild(labels);
+  return {
+    highlight: function(test){
+      arrows.forEach(function(x){
+        var on = test(x.a);
+        x.path.setAttribute("class", "arr" + (on ? " on" : ""));
+        x.path.setAttribute("marker-end", "url(#" + prefix + (on ? "ahon" : "ah") + ")");
+        x.text.style.display = on ? "" : "none";
+        if (on) x.path.parentNode.appendChild(x.path);
+      });
+    },
+    boxes: boxes
+  };
+}
+(function(){
+  var c = drawCarbon($("carbonSvg"), "cl");
+  chipGroup($("carbonChips"), CPROC, "sun", function(pr){
+    c.highlight(function(a){ return a.p === pr.id; });
+    var d = $("carbonDetail"); d.innerHTML = "";
+    d.appendChild(el("h5", null, pr.label)); d.appendChild(el("p", null, pr.text));
+  }, 0);
+})();
+
+/* ---------- Lesson 4: energy source ---------- */
+(function(){
+  var S = [
+    {label: "Boreal forest", title: "Boreal forest near Lac La Biche", src: "Sunlight", prod: "Trembling aspen, white spruce, mosses, shrubs", text: "Leaves capture sunlight through photosynthesis. Snowshoe hares, moose and insects eat the plants, and lynx and wolves eat them. All of that energy started as sunlight."},
+    {label: "Prairie lake", title: "Pigeon Lake", src: "Sunlight", prod: "Algae, phytoplankton, pond weeds", text: "Tiny floating algae called phytoplankton capture sunlight near the surface. Zooplankton eat them, perch eat zooplankton, and pike, pelicans and loons eat the perch."},
+    {label: "Wheat field", title: "A farm field in central Alberta", src: "Sunlight", prod: "Wheat, canola, weeds", text: "Crops are producers too. Grasshoppers, gophers (Richardson's ground squirrels) and people eat them. Even the food in your lunch started as sunlight captured by a producer."},
+    {label: "Deep-sea vent", title: "Hydrothermal vent, Pacific Ocean floor", src: "Chemicals from the vent (no sunlight)", prod: "Chemosynthetic bacteria", text: "No sunlight reaches this deep. Bacteria use energy from chemicals such as hydrogen sulfide to make food. Tubeworms, clams and crabs depend on those bacteria. This is one of the few ecosystems not powered by the Sun."}
+  ];
+  chipGroup($("sourceChips"), S, "sun", function(x){
+    var d = $("sourceDetail"); d.innerHTML = "";
+    d.appendChild(el("h5", null, x.title));
+    var p1 = el("p"); p1.appendChild(el("b", null, "Energy source: ")); p1.appendChild(document.createTextNode(x.src)); d.appendChild(p1);
+    var p2 = el("p"); p2.appendChild(el("b", null, "Producers: ")); p2.appendChild(document.createTextNode(x.prod)); d.appendChild(p2);
+    d.appendChild(el("p", null, x.text));
+  }, 0);
+})();
+
+/* ---------- Food chains ---------- */
+var CHAINS = [
+  {label: "Grassland", links: [
+    {n: "Grasses", r: "Producer", d: "Captures sunlight and stores it as sugar."},
+    {n: "Grasshopper", r: "Primary consumer", d: "Eats grass leaves. It is a herbivore."},
+    {n: "Boreal chorus frog", r: "Secondary consumer", d: "Eats grasshoppers and other insects."},
+    {n: "Garter snake", r: "Tertiary consumer", d: "Eats frogs and mice."},
+    {n: "Red-tailed hawk", r: "Quaternary consumer and apex predator", d: "Eats snakes, mice and hares. Adult hawks have no natural predators here, so it is the apex predator of this chain."}]},
+  {label: "Wetland", links: [
+    {n: "Willow", r: "Producer", d: "A shrub that grows along streams and wetlands."},
+    {n: "Moose", r: "Primary consumer", d: "Browses willow twigs and leaves, especially in winter."},
+    {n: "Grey wolf", r: "Secondary consumer and apex predator", d: "Hunts moose in packs. Nothing hunts adult wolves, so it is the apex predator even though it is only the second consumer in this chain."}]},
+  {label: "Lake", links: [
+    {n: "Algae", r: "Producer", d: "Tiny floating algae (phytoplankton) capture sunlight near the surface."},
+    {n: "Zooplankton", r: "Primary consumer", d: "Tiny animals such as water fleas that eat algae."},
+    {n: "Yellow perch", r: "Secondary consumer", d: "A small fish that eats zooplankton and insect larvae."},
+    {n: "Northern pike", r: "Tertiary consumer and apex predator", d: "A large hunting fish. Adult pike are the top predators in many Alberta lakes."}]},
+  {label: "Aspen forest", links: [
+    {n: "Saskatoon berries", r: "Producer", d: "A shrub whose berries are an important food for wildlife and people."},
+    {n: "Deer mouse", r: "Primary consumer", d: "Eats berries and seeds. It also eats insects, so it can be a secondary consumer too."},
+    {n: "Great horned owl", r: "Secondary consumer and apex predator", d: "Hunts mice and hares at night. Alberta's provincial bird is a top predator."}]}
+];
+(function(){
+  chipGroup($("chainChips"), CHAINS, "lf", function(ch){
+    var v = $("chainView"); v.innerHTML = "";
+    var btns = [];
+    ch.links.forEach(function(l, i){
+      if (i) v.appendChild(el("span", {"class": "to", "aria-hidden": "true"}, "→"));
+      var b = el("button", {"class": "link" + (i === 0 ? " prod" : ""), "aria-pressed": "false", type: "button"});
+      b.appendChild(el("b", null, l.n)); b.appendChild(el("span", null, l.r));
+      b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        var d = $("chainDetail"); d.innerHTML = "";
+        d.appendChild(el("h5", null, l.n + ": " + l.r)); d.appendChild(el("p", null, l.d));
+      });
+      v.appendChild(b); btns.push(b);
+    });
+    $("chainDetail").textContent = "Tap any living thing in the chain to see its role.";
+  }, 0);
+})();
+
+/* ---------- Pyramid ---------- */
+function levelName(i, n){
+  var names = ["Producers", "Primary consumers", "Secondary consumers", "Tertiary consumers", "Quaternary consumers"];
+  return names[i] || ("Level " + (i + 1));
+}
+function drawPyramid(container, chain, energies, showLoss){
+  container.innerHTML = "";
+  var max = energies[0];
+  for (var i = energies.length - 1; i >= 0; i--) {
+    var lv = el("div", {"class": "lvl"});
+    if (showLoss && i < energies.length - 1) {}
+    var cap = el("div", {"class": "cap"});
+    cap.appendChild(el("span", null, chain.links[i].n + " · " + levelName(i)));
+    cap.appendChild(el("b", null, fmt(energies[i]) + " kJ"));
+    lv.appendChild(cap);
+    var bar = el("div", {"class": "bar" + (i === 0 ? " p" : "")});
+    bar.style.width = Math.max(0.6, energies[i] / max * 100) + "%";
+    lv.appendChild(bar);
+    if (showLoss && i > 0) lv.appendChild(el("span", {"class": "loss"}, "lost from level below: " + fmt(energies[i - 1] - energies[i]) + " kJ"));
+    container.appendChild(lv);
+  }
+}
+(function(){
+  var cur = CHAINS[0];
+  function render(){
+    var eff = +$("effSlider").value;
+    $("effOut").textContent = eff + "%";
+    var e = [10000];
+    for (var i = 1; i < cur.links.length; i++) e.push(e[i - 1] * eff / 100);
+    drawPyramid($("pyramid"), cur, e, true);
+  }
+  chipGroup($("pyrChips"), CHAINS, "sun", function(ch){ cur = ch; render(); }, 0);
+  $("effSlider").addEventListener("input", render);
+})();
+
+/* ---------- Food web data ---------- */
+var WEB = {
+  wolf: {n: "Wolf", full: "Grey wolf", x: 150, y: 40, eats: ["moose", "beaver", "hare"], note: "Apex predator. Hunts in packs, mostly moose, beaver and hares."},
+  hawk: {n: "Hawk", full: "Red-tailed hawk", x: 560, y: 40, eats: ["mouse", "snake", "hare"], note: "Apex predator of the open parkland. Hunts from the air."},
+  fox: {n: "Red fox", full: "Red fox", x: 70, y: 135, eats: ["mouse", "hare", "grouse", "berries"], note: "An omnivore. A primary consumer when it eats berries and a secondary consumer when it eats mice."},
+  lynx: {n: "Lynx", full: "Canada lynx", x: 200, y: 135, eats: ["hare", "grouse"], note: "Depends heavily on snowshoe hares. Lynx numbers rise and fall with hare numbers in a roughly 10-year cycle."},
+  owl: {n: "Owl", full: "Great horned owl", x: 330, y: 135, eats: ["hare", "mouse", "grouse"], note: "Alberta's provincial bird. Hunts at night."},
+  snake: {n: "Snake", full: "Red-sided garter snake", x: 460, y: 135, eats: ["frog", "mouse"], note: "A tertiary consumer when it eats frogs."},
+  frog: {n: "Frog", full: "Boreal chorus frog", x: 620, y: 135, eats: ["grasshopper"], note: "A secondary consumer that eats insects."},
+  moose: {n: "Moose", full: "Moose", x: 55, y: 235, eats: ["willow", "aspen"], note: "A large herbivore. Browses willow and aspen twigs."},
+  beaver: {n: "Beaver", full: "Beaver", x: 165, y: 235, eats: ["aspen", "willow"], note: "Eats aspen and willow bark. Its dams also create wetlands."},
+  hare: {n: "Hare", full: "Snowshoe hare", x: 275, y: 235, eats: ["aspen", "willow", "grass"], note: "Food for many predators. A key species in this web."},
+  grouse: {n: "Grouse", full: "Ruffed grouse", x: 385, y: 235, eats: ["aspen", "berries"], note: "Eats aspen buds in winter and berries in summer."},
+  mouse: {n: "Mouse", full: "Deer mouse", x: 495, y: 235, eats: ["grass", "berries", "grasshopper"], note: "An omnivore. Eats seeds, berries and insects."},
+  grasshopper: {n: "Grasshopper", full: "Grasshopper", x: 625, y: 235, eats: ["grass"], note: "A primary consumer of grasses."},
+  willow: {n: "Willow", full: "Willow shrubs", x: 100, y: 330, eats: [], note: "Producer. Grows along wetlands and streams."},
+  aspen: {n: "Aspen", full: "Trembling aspen", x: 260, y: 330, eats: [], note: "Producer. The main tree of the aspen parkland."},
+  berries: {n: "Saskatoon", full: "Saskatoon berry shrubs", x: 430, y: 330, eats: [], note: "Producer. Berries feed birds, mammals and people."},
+  grass: {n: "Grasses", full: "Grasses and wildflowers", x: 590, y: 330, eats: [], note: "Producer. Covers the open meadows."},
+  decomp: {n: "Decomposers: fungi, bacteria, earthworms", full: "Decomposers", x: 360, y: 405, eats: [], note: "Feed on dead matter and waste from every level. They release CO₂ and return nutrients to the soil for producers."}
+};
+var WEB_IDS = Object.keys(WEB);
+function eatersOf(id){ return WEB_IDS.filter(function(k){ return WEB[k].eats.indexOf(id) > -1; }); }
+function isProducer(id){ return id === "willow" || id === "aspen" || id === "berries" || id === "grass"; }
+function drawWeb(svg, prefix, onSelect){
+  var defs = sv("defs");
+  [["a", "var(--line)"], ["f", "var(--leaf)"], ["e", "var(--sun)"]].forEach(function(m){
+    var mk = sv("marker", {id: prefix + m[0], viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto"});
+    var p = sv("path", {d: "M0,0 L10,5 L0,10 z"}); p.style.fill = m[1]; mk.appendChild(p); defs.appendChild(mk);
+  });
+  svg.appendChild(defs);
+  var W = function(id){ return id === "decomp" ? 600 : 92; };
+  var H = 30;
+  var edges = [];
+  var eg = sv("g"), dg = sv("g"), ng = sv("g");
+  svg.appendChild(dg); svg.appendChild(eg); svg.appendChild(ng);
+  WEB_IDS.forEach(function(pred){
+    WEB[pred].eats.forEach(function(food){
+      var a = WEB[food], b = WEB[pred];
+      var y1 = a.y - H / 2, y2 = b.y + H / 2 + 2;
+      if (a.y === b.y) { y1 = a.y; y2 = b.y; }
+      var p = sv("path", {d: "M" + a.x + "," + y1 + " L" + b.x + "," + y2, "class": "edge", "marker-end": "url(#" + prefix + "a)"});
+      eg.appendChild(p); edges.push({food: food, pred: pred, p: p});
+    });
+  });
+  var dlines = [];
+  WEB_IDS.forEach(function(id){
+    if (id === "decomp") return;
+    var a = WEB[id];
+    var l = sv("path", {d: "M" + a.x + "," + (a.y + H / 2) + " L" + (a.x * 0.6 + 360 * 0.4) + "," + (405 - H / 2), "class": "dedge"});
+    l.style.display = "none"; dg.appendChild(l); dlines.push(l);
+  });
+  var nodes = {};
+  WEB_IDS.forEach(function(id){
+    var a = WEB[id], w = W(id);
+    var g = sv("g", {"class": "node" + (isProducer(id) ? " prod" : "") + (id === "decomp" ? " decomp" : ""), tabindex: 0, role: "button", "aria-label": a.full});
+    g.appendChild(sv("rect", {x: a.x - w / 2, y: a.y - H / 2, width: w, height: H, rx: 7}));
+    g.appendChild(sv("text", {x: a.x, y: a.y + 4.5}, a.n));
+    if (onSelect) { g.addEventListener("click", function(){ onSelect(id); }); onKeyActivate(g, function(){ onSelect(id); }); }
+    ng.appendChild(g); nodes[id] = g;
+  });
+  function base(id){ return "node" + (isProducer(id) ? " prod" : "") + (id === "decomp" ? " decomp" : ""); }
+  return {
+    select: function(id){
+      var foods = id ? WEB[id].eats : [], eaters = id ? eatersOf(id) : [];
+      WEB_IDS.forEach(function(k){
+        var c = base(k);
+        if (k === id) c += " sel"; else if (foods.indexOf(k) > -1) c += " food"; else if (eaters.indexOf(k) > -1) c += " eater";
+        nodes[k].setAttribute("class", c);
+      });
+      edges.forEach(function(e){
+        var c = "edge", m = "a";
+        if (id && e.pred === id) { c += " food"; m = "f"; }
+        else if (id && e.food === id) { c += " eater"; m = "e"; }
+        else if (id) c += " faint";
+        e.p.setAttribute("class", c); e.p.setAttribute("marker-end", "url(#" + prefix + m + ")");
+      });
+      dlines.forEach(function(l){ l.style.display = id === "decomp" ? "" : "none"; });
+    },
+    mark: function(map){
+      WEB_IDS.forEach(function(k){ nodes[k].setAttribute("class", base(k) + (map[k] ? " " + map[k] : "")); });
+      edges.forEach(function(e){
+        var gone = map[e.food] === "gone" || map[e.pred] === "gone";
+        e.p.setAttribute("class", "edge" + (gone ? " faint" : "")); e.p.setAttribute("marker-end", "url(#" + prefix + "a)");
+      });
+    }
+  };
+}
+(function(){
+  var web = drawWeb($("webLearn"), "wl", function(id){
+    web.select(id);
+    var a = WEB[id], d = $("webDetail"); d.innerHTML = "";
+    d.appendChild(el("h5", null, a.full));
+    d.appendChild(el("p", null, a.note));
+    if (id !== "decomp") {
+      var foods = a.eats.map(function(k){ return WEB[k].full; });
+      var eaters = eatersOf(id).map(function(k){ return WEB[k].full; });
+      d.appendChild(el("p", null, "Eats: " + (foods.length ? foods.join(", ") : "nothing. It makes its own food from sunlight.")));
+      d.appendChild(el("p", null, "Eaten by: " + (eaters.length ? eaters.join(", ") : "no predators in this web. When it dies, decomposers feed on it.")));
+    }
+  });
+})();
+
+/* ---------- Bench 1: rain ---------- */
+(function(){
+  var s = $("rainSlider");
+  function render(){
+    var r = +s.value;
+    $("rainOut").textContent = r + "% of normal";
+    var m = [
+      ["River flow", Math.min(100, r * 0.62)],
+      ["Soil moisture", Math.min(100, r * 0.6)],
+      ["Wetland area", Math.min(100, Math.max(5, (r - 30) * 0.7))],
+      ["Groundwater", Math.min(100, 30 + r * 0.35)],
+      ["Plant growth", Math.min(100, r < 130 ? r * 0.62 : 80 - (r - 130) * 0.5)]
+    ];
+    var box = $("rainMeters"); box.innerHTML = "";
+    m.forEach(function(x){
+      var row = el("div", {"class": "meter"});
+      row.appendChild(el("span", null, x[0]));
+      var t = el("div", {"class": "track"}); var i = el("i"); i.style.width = Math.max(2, x[1]) + "%"; t.appendChild(i); row.appendChild(t);
+      row.appendChild(el("b", null, Math.round(x[1]) + "")); box.appendChild(row);
+    });
+    var msg;
+    if (r <= 60) msg = ["Drought", "Little snowmelt and rain means low, warm rivers that hold less oxygen, so fish such as trout are stressed. Wetlands shrink, leaving ducks and frogs fewer places to breed. Dry soil slows plant growth, so hares and moose find less food, and dry forests are at higher risk of wildfire. Towns may need to limit water use."];
+    else if (r <= 90) msg = ["Drier than normal", "Rivers run lower and small sloughs may dry up by late summer. Plants grow less, so there is less food at the bottom of the food web. Groundwater and deeper soil water help many plants get through."];
+    else if (r <= 120) msg = ["Normal year", "Snowmelt and rain refill soil water, rivers and wetlands. Producers grow well, which supports every consumer in the food web. Evaporation and transpiration return water to the air to fall again."];
+    else msg = ["Very wet year", "Rivers rise and may flood low areas. Wetlands expand, which is good for ducks, frogs and beavers, but flooding can drown plant roots and wash soil away. Too much water can harm life as well as too little."];
+    var d = $("rainDetail"); d.innerHTML = "";
+    d.appendChild(el("h5", null, msg[0])); d.appendChild(el("p", null, msg[1]));
+    d.appendChild(el("p", {"class": "hint"}, "Meters show relative amounts in this simple model (100 means a lot)."));
+  }
+  s.addEventListener("input", render); render();
+})();
+
+/* ---------- Bench 2: carbon journey ---------- */
+(function(){
+  var MOVES = {
+    atm: [["plants", "photo", "Photosynthesis", "An aspen leaf in Elk Island National Park takes in the CO₂ and builds the carbon into sugar.", 4], ["ocean", "ocean", "Ocean exchange", "The CO₂ dissolves into the surface of the Pacific Ocean.", 2]],
+    plants: [["animals", "eat", "Eating", "A snowshoe hare eats the aspen bark. The carbon becomes part of the hare's body.", 3], ["atm", "resp", "Respiration", "The aspen breaks down the sugar for energy and breathes out the carbon as CO₂.", 2], ["soil", "decomp", "Decomposition", "The leaf falls in autumn and lands on the forest floor.", 2], ["atm", "emit", "Emission", "A wildfire burns through the forest and releases the carbon as CO₂.", 1]],
+    animals: [["animals", "eat", "Eating", "A lynx catches and eats the hare. The carbon moves up a trophic level.", 2], ["atm", "resp", "Respiration", "The animal breaks down sugar for energy and breathes out the carbon as CO₂.", 3], ["soil", "decomp", "Decomposition", "The carbon leaves in droppings, or the animal dies. Either way it ends up on the forest floor.", 2]],
+    soil: [["atm", "decomp", "Decomposition", "Fungi and bacteria feed on the dead matter and release the carbon as CO₂.", 4], ["rock", "geo", "Geological processes", "The remains are buried under layers of mud for millions of years and slowly become part of a coal seam.", 1]],
+    ocean: [["atm", "ocean", "Ocean exchange", "The CO₂ escapes from the ocean back into the air.", 2], ["plants", "photo", "Photosynthesis", "Ocean algae (phytoplankton) take up the dissolved carbon and build it into sugar.", 2], ["rock", "geo", "Geological processes", "A tiny sea creature uses the carbon to build its shell. When it dies, the shell settles on the sea floor and, over millions of years, becomes limestone.", 1]],
+    rock: [["atm", "emit", "Emission", "The coal or oil is dug up and burned in a power plant or engine, releasing the carbon as CO₂.", 2], ["atm", "geo", "Geological processes", "The rock is carried deep into the Earth and the carbon escapes from a volcano as CO₂.", 1], ["rock", "geo", "Geological processes", "Nothing happens for a very long time. Carbon can stay locked in rock for millions of years.", 2]]
+  };
+  var NAMES = {atm: "Atmosphere", plants: "Producers", animals: "Consumers", ocean: "Ocean", soil: "Dead matter and soil", rock: "Rocks and fossil fuels"};
+  var svg = $("carbonJourney");
+  var c = drawCarbon(svg, "cj");
+  var atom = sv("circle", {r: 10, "class": "atom"}); svg.appendChild(atom);
+  var atomT = sv("text", {"text-anchor": "middle", "class": "small"}, "C"); atomT.style.fill = "var(--surface)"; atomT.style.fontWeight = 700; svg.appendChild(atomT);
+  var where, log, tally;
+  function place(){
+    var b = CBOX[where]; var x = b.x + b.w - 16, y = b.y + 14;
+    atom.setAttribute("cx", x); atom.setAttribute("cy", y); atomT.setAttribute("x", x); atomT.setAttribute("y", y + 4);
+    for (var k in c.boxes) c.boxes[k].setAttribute("class", "box" + (k === where ? " on" : ""));
+  }
+  function renderTally(){
+    var t = $("carbonTally"); t.innerHTML = "";
+    var any = false;
+    for (var k in tally) { any = true; t.appendChild(el("span", null, k + " × " + tally[k])); }
+    if (!any) t.appendChild(el("span", null, "No processes yet"));
+  }
+  function reset(){
+    where = "atm"; tally = {}; log = $("cjLog"); log.innerHTML = "";
+    var li = el("li"); li.appendChild(document.createTextNode("Start: the carbon atom is part of a CO₂ molecule in the air above Edmonton.")); log.appendChild(li);
+    c.highlight(function(){ return false; }); place(); renderTally();
+  }
+  function step(){
+    var opts = MOVES[where], total = 0;
+    opts.forEach(function(o){ total += o[4]; });
+    var r = Math.random() * total, m = opts[0];
+    for (var i = 0; i < opts.length; i++) { r -= opts[i][4]; if (r <= 0) { m = opts[i]; break; } }
+    var from = where; where = m[0];
+    c.highlight(function(a){ return a.f === from && a.t === where && a.p === m[1]; });
+    tally[m[2]] = (tally[m[2]] || 0) + 1;
+    var li = el("li"); li.appendChild(el("b", null, m[2] + ": ")); li.appendChild(document.createTextNode(NAMES[from] + " → " + NAMES[where] + ". " + m[3]));
+    log.insertBefore(li, log.firstChild);
+    place(); renderTally();
+  }
+  $("cjStep").addEventListener("click", step);
+  $("cjReset").addEventListener("click", reset);
+  reset();
+})();
+
+/* ---------- Bench 3: build a pyramid ---------- */
+(function(){
+  var cur, energies;
+  function newQ(){
+    cur = pick(CHAINS);
+    var start = (2 + Math.floor(Math.random() * 9)) * 10000;
+    energies = [start];
+    for (var i = 1; i < cur.links.length; i++) energies.push(energies[i - 1] / 10);
+    $("pbQ").innerHTML = "";
+    $("pbQ").appendChild(el("h5", null, cur.links.map(function(l){ return l.n; }).join(" → ")));
+    $("pbQ").appendChild(el("p", null, "The " + cur.links[0].n.toLowerCase() + " capture " + fmt(start) + " kJ of energy. Use the 10 percent rule to find the energy at each level."));
+    var box = $("pbInputs"); box.innerHTML = "";
+    cur.links.forEach(function(l, i){
+      if (i === 0) return;
+      var lab = el("label", {"class": "field", "for": "pb" + i}, l.n + " (" + levelName(i).toLowerCase().replace(/s$/, "") + "), kJ");
+      var inp = el("input", {type: "number", id: "pb" + i, step: "any"});
+      lab.appendChild(inp); box.appendChild(lab);
+    });
+    $("pbFb").textContent = ""; $("pbFb").className = "fb";
+    $("pbPyr").innerHTML = "";
+  }
+  $("pbCheck").addEventListener("click", function(){
+    var right = 0, n = cur.links.length - 1, firstWrong = null;
+    for (var i = 1; i <= n; i++) {
+      var v = parseFloat($("pb" + i).value);
+      var ok = !isNaN(v) && Math.abs(v - energies[i]) <= Math.max(0.01, energies[i] * 0.01);
+      $("pb" + i).style.borderColor = ok ? "var(--good)" : "var(--bad)";
+      if (ok) right++; else if (firstWrong == null) firstWrong = i;
+    }
+    var fb = $("pbFb");
+    if (right === n) { fb.textContent = "All correct. Here is your pyramid, drawn to scale."; fb.className = "fb ok"; drawPyramid($("pbPyr"), cur, energies, true); }
+    else { fb.textContent = right + " of " + n + " correct. Hint: multiply the level below (" + fmt(energies[firstWrong - 1]) + " kJ) by 0.10."; fb.className = "fb no"; }
+  });
+  $("pbNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 4: efficiency ---------- */
+(function(){
+  function calc(){
+    var lo = parseFloat($("effLow").value), hi = parseFloat($("effHigh").value), d = $("effResult");
+    d.innerHTML = "";
+    if (!(lo > 0) || isNaN(hi) || hi < 0) { d.textContent = "Enter a lower-level energy greater than 0 and a higher-level energy of 0 or more."; return; }
+    if (hi > lo) { d.textContent = "The higher level cannot hold more energy than the level it eats. Check which number belongs where."; return; }
+    var eff = hi / lo * 100;
+    d.appendChild(el("p", {"class": "mono"}, fmt(hi) + " ÷ " + fmt(lo) + " × 100 = " + fmt(Math.round(eff * 10) / 10) + "%"));
+    d.appendChild(el("p", {"class": "mono"}, "Lost: " + fmt(lo) + " − " + fmt(hi) + " = " + fmt(lo - hi) + " kJ (" + fmt(Math.round((100 - eff) * 10) / 10) + "%)"));
+    d.appendChild(el("p", null, eff < 5 ? "That is lower than most real food chains." : eff > 20 ? "That is higher than most real food chains. Check your measurements." : "That is within the usual range of about 5 to 20 percent."));
+  }
+  $("effLow").addEventListener("input", calc); $("effHigh").addEventListener("input", calc); calc();
+  var pairs = [["grasses", "grasshoppers"], ["aspen leaves", "aspen leaf caterpillars"], ["algae", "zooplankton"], ["zooplankton", "yellow perch"], ["snowshoe hares", "lynx"], ["willow", "moose"], ["grasshoppers", "chorus frogs"], ["deer mice", "great horned owls"]];
+  var ans;
+  function newQ(){
+    var p = pick(pairs);
+    var lo = (3 + Math.floor(Math.random() * 46)) * 1000;
+    var eff = 5 + Math.floor(Math.random() * 31) * 0.5;
+    var hi = Math.round(lo * eff / 100);
+    ans = hi / lo * 100;
+    $("epQ").textContent = "In a study area, the " + p[0] + " store " + fmt(lo) + " kJ of energy. The " + p[1] + " that eat them store " + fmt(hi) + " kJ. What is the transfer efficiency? Round to one decimal place.";
+    $("epA").value = ""; $("epFb").textContent = ""; $("epFb").className = "fb";
+    $("epQ").dataset.lo = lo; $("epQ").dataset.hi = hi;
+  }
+  $("epCheck").addEventListener("click", function(){
+    var v = parseFloat($("epA").value), fb = $("epFb");
+    var lo = +$("epQ").dataset.lo, hi = +$("epQ").dataset.hi;
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    if (Math.abs(v - ans) <= 0.15) { fb.textContent = "Correct: " + fmt(hi) + " ÷ " + fmt(lo) + " × 100 = " + (Math.round(ans * 10) / 10) + "%. The other " + (Math.round((100 - ans) * 10) / 10) + "% left the food chain."; fb.className = "fb ok"; }
+    else { fb.textContent = "Not yet. Divide the higher level by the lower level, then multiply by 100."; fb.className = "fb no"; }
+  });
+  $("epNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 5: food web change ---------- */
+function predictWeb(R, mode){
+  var eff = {}, why = {};
+  function set(k, d, w){ if (k === R || eff[k] || k === "decomp") return; eff[k] = d; why[k] = w; }
+  var foods = WEB[R].eats, eaters = eatersOf(R);
+  if (mode === "remove") {
+    eaters.forEach(function(p){
+      var other = WEB[p].eats.filter(function(f){ return f !== R; });
+      set(p, "down", other.length ? WEB[p].full + " lost one food source. It must rely on " + other.map(function(f){ return WEB[f].full.toLowerCase(); }).join(", ") + ", so its numbers likely drop." : WEB[p].full + " lost its only food in this web, so its numbers drop sharply.");
+    });
+    foods.forEach(function(f){ set(f, "up", isProducer(f) ? WEB[f].full + " is eaten less, so it can grow and spread." : WEB[f].full + " has one fewer predator, so its numbers likely rise."); });
+    eaters.forEach(function(p){ WEB[p].eats.forEach(function(o){ if (o !== R) set(o, "down", WEB[p].full + " now hunts or eats more " + WEB[o].full.toLowerCase() + " to make up for the missing food, so " + WEB[o].full.toLowerCase() + " numbers may drop."); }); });
+    foods.forEach(function(f){ WEB[f].eats.forEach(function(g){ set(g, "down", "With more " + WEB[f].full.toLowerCase() + " around, more " + WEB[g].full.toLowerCase() + " gets eaten."); }); });
+    foods.forEach(function(f){ eatersOf(f).forEach(function(c){ set(c, "up", WEB[c].full + " competed with " + WEB[R].full.toLowerCase() + " for " + WEB[f].full.toLowerCase() + ". With less competition, it may increase."); }); });
+  } else {
+    eaters.forEach(function(p){ set(p, "up", WEB[p].full + " has more food, so its numbers likely rise."); });
+    foods.forEach(function(f){ set(f, "down", "More " + WEB[R].full.toLowerCase() + " eat more " + WEB[f].full.toLowerCase() + ", so it decreases."); });
+    foods.forEach(function(f){ eatersOf(f).forEach(function(c){ set(c, "down", WEB[c].full + " competes with the extra " + WEB[R].full.toLowerCase() + " for " + WEB[f].full.toLowerCase() + ", so it may decrease."); }); });
+    foods.forEach(function(f){ WEB[f].eats.forEach(function(g){ set(g, "up", "With fewer " + WEB[f].full.toLowerCase() + ", less " + WEB[g].full.toLowerCase() + " gets eaten, so it may increase."); }); });
+  }
+  return {eff: eff, why: why};
+}
+(function(){
+  var sel = $("fwSpecies");
+  WEB_IDS.forEach(function(k){ if (k !== "decomp") sel.appendChild(el("option", {value: k}, WEB[k].full)); });
+  sel.value = "hare";
+  var web = drawWeb($("webBench"), "wb", null);
+  var res, target, answered;
+  function run(){
+    var R = sel.value, mode = $("fwMode").value;
+    res = predictWeb(R, mode);
+    var keys = Object.keys(res.eff);
+    var others = WEB_IDS.filter(function(k){ return k !== R && k !== "decomp" && !res.eff[k]; });
+    target = keys.length && (Math.random() < 0.85 || !others.length) ? pick(keys) : pick(others);
+    answered = false;
+    var map = {}; map[R] = mode === "remove" ? "gone" : "sel"; web.mark(map);
+    $("fwQ").innerHTML = "";
+    $("fwQ").appendChild(el("h5", null, WEB[R].full + (mode === "remove" ? " disappears from the area." : " population booms.")));
+    $("fwQ").appendChild(el("p", null, "Predict: what happens to the " + WEB[target].full.toLowerCase() + " population?"));
+    $("fwFb").textContent = ""; $("fwFb").className = "fb"; $("fwEffects").innerHTML = "";
+    document.querySelectorAll("#fwPick button").forEach(function(b){ b.disabled = false; });
+  }
+  document.querySelectorAll("#fwPick button").forEach(function(b){
+    b.addEventListener("click", function(){
+      if (answered) return; answered = true;
+      var truth = res.eff[target] || "none", fb = $("fwFb");
+      var words = {up: "increase", down: "decrease", none: "show little change"};
+      if (b.dataset.p === truth) { fb.textContent = "Good prediction. The model also expects the " + WEB[target].full.toLowerCase() + " to " + words[truth] + "."; fb.className = "fb ok"; }
+      else { fb.textContent = "The model expects the " + WEB[target].full.toLowerCase() + " to " + words[truth] + ". Read the reasons below."; fb.className = "fb no"; }
+      document.querySelectorAll("#fwPick button").forEach(function(x){ x.disabled = true; });
+      var map = {}; map[sel.value] = $("fwMode").value === "remove" ? "gone" : "sel";
+      for (var k in res.eff) map[k] = res.eff[k];
+      web.mark(map);
+      var ul = $("fwEffects"); ul.innerHTML = "";
+      var order = Object.keys(res.eff);
+      if (truth === "none") { var li0 = el("li", null, WEB[target].full + ": not directly connected to the change, so the model expects little change. Effects can still spread further in real ecosystems."); ul.appendChild(li0); }
+      order.forEach(function(k){ var li = el("li", {"class": res.eff[k]}); li.appendChild(el("b", null, (res.eff[k] === "up" ? "▲ " : "▼ ") + WEB[k].full + ": ")); li.appendChild(document.createTextNode(res.why[k])); ul.appendChild(li); });
+      ul.appendChild(el("li", null, "Decomposers: still feed on dead matter from every level. A sudden die-off would give them extra food for a while."));
+    });
+  });
+  sel.addEventListener("change", run); $("fwMode").addEventListener("change", run);
+  run();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Producer, consumer or decomposer", bins: ["Producer", "Consumer", "Decomposer"], items: [
+    ["Trembling aspen", 0, "It makes its own food from sunlight by photosynthesis."],
+    ["Phytoplankton in Pigeon Lake", 0, "These tiny algae photosynthesize, so they are producers."],
+    ["Saskatoon berry shrub", 0, "A plant that captures sunlight to make sugar."],
+    ["Cattails in a slough", 0, "Wetland plants are producers."],
+    ["Snowshoe hare", 1, "It eats plants, so it gets energy by consuming."],
+    ["Grey wolf", 1, "It eats other animals. It is a consumer and an apex predator."],
+    ["Northern pike", 1, "A fish that eats other fish."],
+    ["Deer mouse", 1, "It eats seeds, berries and insects."],
+    ["Bracket fungus on a dead log", 2, "Fungi break down dead matter and return nutrients to the soil."],
+    ["Soil bacteria", 2, "Bacteria break down dead leaves and waste, releasing CO₂."],
+    ["Earthworm", 2, "Earthworms feed on dead plant matter and help decompose it. Scientists also call them detritivores."],
+    ["Mushrooms on the forest floor", 2, "Mushrooms are the fruiting parts of fungi that decompose dead matter."]
+  ]},
+  {label: "Carbon into or out of the air", bins: ["Puts carbon into the air", "Takes carbon out of the air"], items: [
+    ["Aspen leaves photosynthesizing", 1, "Photosynthesis removes CO₂ from the air."],
+    ["A moose breathing out", 0, "Respiration releases CO₂."],
+    ["Fungi breaking down fallen leaves", 0, "Decomposers respire and release CO₂."],
+    ["Burning gasoline in a car", 0, "Emission: burning fossil fuels releases carbon stored for millions of years."],
+    ["A wildfire in the boreal forest", 0, "Burning trees is an emission that releases stored carbon."],
+    ["The ocean surface absorbing CO₂", 1, "Ocean exchange: CO₂ dissolves into the water."],
+    ["A volcano erupting", 0, "A geological process that releases carbon from deep in the Earth."],
+    ["A forest regrowing after a fire", 1, "Young trees photosynthesize and store carbon in wood."],
+    ["Phytoplankton blooming in a lake", 1, "Algae photosynthesize and take in carbon."],
+    ["Shells settling and forming limestone", 1, "A geological process that locks carbon in rock for millions of years."]
+  ]},
+  {label: "Matter cycle or energy flow", bins: ["Matter (recycled)", "Energy (flows one way)"], items: [
+    ["Carbon atoms in a dead leaf", 0, "Atoms are matter. Decomposers return them to the soil and air to be reused."],
+    ["Heat given off by a resting moose", 1, "Heat spreads into the surroundings and cannot be used again by living things."],
+    ["Water vapour from aspen leaves", 0, "Water is matter that moves through the water cycle."],
+    ["Sunlight absorbed by phytoplankton", 1, "Light energy enters the ecosystem through producers."],
+    ["CO₂ released by soil bacteria", 0, "CO₂ is matter. A plant can take it in again."],
+    ["The energy a hawk uses to fly", 1, "Energy used for movement ends up as heat."],
+    ["Rainwater soaking into the soil", 0, "Water cycles between the air, land and living things."],
+    ["Oxygen released by photosynthesis", 0, "Oxygen is matter. Animals breathe it in for respiration."],
+    ["Warmth from a compost pile", 1, "Decomposers release energy as heat while they break down matter."]
+  ]},
+  {label: "Trophic level", bins: ["Primary consumer", "Secondary consumer", "Tertiary consumer"], items: [
+    ["Grasshopper in: grass → grasshopper → frog", 0, "It eats a producer."],
+    ["Frog in: grass → grasshopper → frog → snake", 1, "It eats a primary consumer."],
+    ["Snake in: grass → grasshopper → frog → snake", 2, "It eats a secondary consumer."],
+    ["Moose in: willow → moose → wolf", 0, "It eats willow, a producer."],
+    ["Wolf in: willow → moose → wolf", 1, "It eats a primary consumer. It is also the apex predator."],
+    ["Zooplankton in: algae → zooplankton → perch", 0, "It eats algae, a producer."],
+    ["Pike in: algae → zooplankton → perch → pike", 2, "It eats perch, which are secondary consumers."],
+    ["Red fox in: saskatoon berries → fox", 0, "When it eats berries, the fox is a primary consumer."],
+    ["Red fox in: grass → mouse → fox", 1, "When it eats a mouse that ate seeds, the fox is a secondary consumer."],
+    ["Lynx in: aspen → hare → lynx", 1, "It eats a primary consumer."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score, done;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){
+    deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; done = false; render();
+  }
+  function render(fbMsg, ok){
+    area.innerHTML = "";
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no")}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Matter", "Anything that has mass and takes up space. In ecosystems, matter is recycled."],
+  ["Energy", "The ability to do work or cause change, measured in joules (J). In ecosystems, energy flows one way and leaves as heat."],
+  ["Ecosystem stability", "The ability of an ecosystem to keep its structure and processes over time. Cycling matter and a steady flow of energy help maintain it."],
+  ["Water cycle", "The continuous movement of water between the air, land, water bodies and living things."],
+  ["Evaporation", "Liquid water changing into water vapour, powered by the Sun's energy."],
+  ["Transpiration", "Plants releasing water vapour through tiny pores in their leaves."],
+  ["Condensation", "Water vapour cooling and turning into liquid droplets, such as clouds."],
+  ["Precipitation", "Water falling from clouds as rain, snow, sleet or hail."],
+  ["Runoff", "Water that flows over the land into streams, rivers and lakes."],
+  ["Groundwater", "Water stored underground in soil and rock after it soaks into the ground."],
+  ["Carbon cycle", "The continuous movement of carbon between the air, living things, the ocean and rocks."],
+  ["Photosynthesis", "Producers using light energy to turn carbon dioxide and water into sugar and oxygen."],
+  ["Cellular respiration", "Living things breaking down sugar to release energy, giving off carbon dioxide and water."],
+  ["Decomposition", "Fungi, bacteria and other decomposers breaking down dead matter and waste, releasing CO₂ and nutrients."],
+  ["Emission (carbon)", "Release of carbon into the air, especially by burning fossil fuels or forests."],
+  ["Ocean exchange", "CO₂ moving between the air and ocean water: dissolving in and escaping out."],
+  ["Geological processes (carbon)", "Slow Earth processes that store or release carbon, such as forming coal, oil and limestone, and volcanic eruptions."],
+  ["Fossil fuel", "Coal, oil or natural gas formed over millions of years from buried remains of living things."],
+  ["Producer", "A living thing that makes its own food, usually by photosynthesis. Examples: aspen, grasses, algae."],
+  ["Consumer", "A living thing that gets energy by eating other living things."],
+  ["Decomposer", "A living thing that feeds on dead matter and waste, such as fungi and bacteria."],
+  ["Trophic level", "A feeding level in a food chain, such as producer or primary consumer."],
+  ["Primary consumer", "An animal that eats producers. Example: snowshoe hare eating willow."],
+  ["Secondary consumer", "An animal that eats primary consumers. Example: frog eating a grasshopper."],
+  ["Tertiary consumer", "An animal that eats secondary consumers. Example: garter snake eating a frog."],
+  ["Apex predator", "A predator at the top of a food chain. Adults have no natural predators. Example: grey wolf."],
+  ["Food chain", "One path showing how energy passes from a producer to a series of consumers."],
+  ["Food web", "Many connected food chains in an ecosystem."],
+  ["Energy pyramid", "A diagram where each layer is a trophic level and its size shows the energy it holds. Always widest at the bottom."],
+  ["10 percent rule", "A rough rule that about 10 percent of the energy at one trophic level is passed to the next."],
+  ["Chemosynthesis", "Making food using energy from chemicals instead of sunlight, as bacteria do near deep-sea vents."],
+  ["Extinction", "When a species no longer exists anywhere. A local loss from one area is called extirpation."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    c.innerHTML = "";
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Which statement best describes how matter and energy move through an ecosystem?", ["Matter cycles and is reused; energy flows one way and leaves as heat.", "Energy cycles and is reused; matter flows one way.", "Both matter and energy are used up and disappear.", "Both matter and energy cycle back to the Sun."], "Atoms are reused again and again. Energy enters as sunlight and leaves as heat, so it must be constantly replaced."],
+  ["What powers the water cycle?", ["Energy from the Sun", "Energy from decomposers", "Wind only", "Heat from Earth's core"], "Sunlight warms water so it evaporates, and that drives the whole cycle."],
+  ["An aspen tree releases water vapour from its leaves. What is this process called?", ["Transpiration", "Condensation", "Precipitation", "Infiltration"], "Transpiration is water vapour leaving plants through tiny pores in their leaves."],
+  ["Clouds form when water vapour cools. What is this process called?", ["Condensation", "Evaporation", "Transpiration", "Runoff"], "Condensation turns vapour into liquid droplets or ice crystals."],
+  ["Much of the North Saskatchewan River's water starts as snow in the Rocky Mountains. How does this support life in Edmonton?", ["Melting snow keeps the river flowing, supplying drinking water and habitat.", "The snow adds new water to Earth that did not exist before.", "The snow stops evaporation from the river.", "It removes carbon dioxide from the air."], "Snowpack stores water and releases it slowly as it melts, keeping rivers flowing for people, fish and wildlife."],
+  ["Which process removes carbon dioxide from the air?", ["Photosynthesis", "Respiration", "Decomposition", "Burning fossil fuels"], "Producers take in CO₂ during photosynthesis and build it into sugar."],
+  ["A moose breathes out carbon dioxide. Which part of the carbon cycle is this?", ["Respiration", "Photosynthesis", "Ocean exchange", "Geological processes"], "Respiration breaks down sugar for energy and releases CO₂."],
+  ["Fungi grow on a fallen aspen log. What role do they play in the carbon cycle?", ["They decompose the log, releasing CO₂ and returning nutrients to the soil.", "They photosynthesize and store carbon.", "They turn the log into coal right away.", "They stop carbon from moving."], "Decomposers break down dead matter, respire, and recycle nutrients."],
+  ["Which is an example of carbon emission?", ["Burning gasoline in a truck", "Algae growing in a lake", "Shells forming limestone", "A tree growing new leaves"], "Burning fossil fuels releases carbon into the air. The others take carbon out of the air."],
+  ["How does carbon become part of a fossil fuel such as coal?", ["Plant remains are buried and changed by heat and pressure over millions of years.", "Animals breathe out coal.", "Carbon dioxide freezes into coal in winter.", "Decomposers make coal in a few weeks."], "This is a geological process that takes millions of years."],
+  ["What does 'ocean exchange' in the carbon cycle mean?", ["CO₂ dissolves into ocean water and also escapes back into the air.", "Fish trade carbon with birds.", "Ocean water evaporates and leaves carbon behind as salt.", "Volcanoes under the sea make all the ocean's carbon."], "The ocean and air trade CO₂ at the water's surface."],
+  ["What is the main source of energy for most ecosystems?", ["The Sun", "Soil", "Water", "Decomposers"], "Producers capture sunlight and store it in food. Almost every food web starts this way."],
+  ["Which ecosystem gets its energy from chemicals instead of sunlight?", ["A deep-sea hydrothermal vent", "A boreal forest", "A prairie lake", "A wheat field"], "Bacteria near vents use chemosynthesis because no sunlight reaches that deep."],
+  ["In the chain willow → moose → grey wolf, what is the moose?", ["Primary consumer", "Producer", "Secondary consumer", "Decomposer"], "The moose eats a producer, so it is a primary consumer."],
+  ["In the chain grass → grasshopper → frog → garter snake, what is the snake?", ["Tertiary consumer", "Primary consumer", "Secondary consumer", "Producer"], "The snake eats the frog, a secondary consumer, so it is a tertiary consumer."],
+  ["Which best describes an apex predator?", ["A predator at the top of the food chain with no natural predators as an adult", "Any animal that eats plants", "A decomposer that eats dead predators", "Always the fourth level in a food chain"], "Apex means top. An apex predator can be at different level numbers in different chains."],
+  ["A red fox eats saskatoon berries and also eats mice. Which statement is true?", ["It is a primary consumer when it eats berries and a secondary consumer when it eats mice.", "It is always a producer.", "It is always a tertiary consumer.", "It cannot be placed on a food web."], "Many animals feed at more than one trophic level."],
+  ["About how much energy is usually passed from one trophic level to the next?", ["About 10 percent", "About 50 percent", "About 90 percent", "100 percent"], "The 10 percent rule is a rough guide. Real values are often about 5 to 20 percent."],
+  ["Most of the energy in food a hare eats does not get passed on to the lynx that eats it. Where does most of it go?", ["It is used for living and released as heat, or leaves in waste.", "It is destroyed and no longer exists.", "It turns into matter.", "It is sent back to the Sun."], "Energy is not destroyed. It is transferred to the environment, mostly as heat."],
+  ["Producers in a lake capture 40 000 kJ. Using the 10 percent rule, how much energy reaches the secondary consumers?", ["400 kJ", "4 000 kJ", "40 kJ", "36 000 kJ"], "40 000 × 0.10 = 4 000 kJ for primary consumers, then 4 000 × 0.10 = 400 kJ for secondary consumers."],
+  ["Why are there more producers than consumers in an ecosystem's energy pyramid?", ["Energy is lost at each step, so each level can support less than the one below.", "Producers live longer than consumers.", "Consumers do not need energy.", "Producers eat consumers."], "Because most energy leaves at each transfer, the bottom level must hold the most energy."],
+  ["In a food web, which way do the arrows point?", ["From the food to the eater, showing the direction energy moves", "From the eater to the food", "From predators to the Sun", "In any direction, it does not matter"], "Arrows show energy moving from what is eaten to what eats it."],
+  ["Snowshoe hares disappear from an area. What is the most likely short-term effect on lynx?", ["The lynx population decreases.", "The lynx population increases.", "Nothing happens to lynx.", "Lynx become producers."], "Lynx depend heavily on hares, so losing their main food lowers lynx numbers."],
+  ["Grey wolves are removed from an area. What is most likely to happen to the willow?", ["It decreases, because more moose survive and eat more willow.", "It increases, because wolves ate willow.", "It turns into a consumer.", "Nothing, because wolves and willow are not connected."], "Removing a predator lets its prey increase, and the prey then eat more of their food. Effects spread through the web."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    area.innerHTML = "";
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        var ex = el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]);
+        q2.appendChild(ex);
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain the difference between how matter and energy move through an ecosystem.", a: "Matter cycles: the same atoms of carbon, water and nutrients are used again and again as they move between living things, air, water and soil. Energy flows in one direction: it enters as sunlight, is stored by producers, passes to consumers, and at each step some leaves as heat that cannot be reused. That is why ecosystems need a constant supply of sunlight but not new matter.", k: ["Matter is recycled or reused", "Energy flows one way", "Energy leaves as heat", "Sunlight must keep arriving"]},
+  {q: "Describe two ways the water cycle supports living things in an Alberta ecosystem.", a: "Precipitation refills soil water, which plant roots take up for photosynthesis and to carry nutrients. Snowmelt from the Rockies keeps the North Saskatchewan River flowing, which gives fish and beavers habitat and supplies Edmonton's drinking water.", k: ["Names a water cycle process", "Links it to a specific living thing", "Explains why the living thing needs the water", "Uses a second, different example"]},
+  {q: "What is the difference between evaporation and transpiration?", a: "Both put water vapour into the air. Evaporation is water changing to vapour from surfaces such as lakes, rivers and soil. Transpiration is water vapour released by plants through tiny pores in their leaves.", k: ["Both add water vapour to the air", "Evaporation is from water or soil surfaces", "Transpiration is from plant leaves"]},
+  {q: "Explain how photosynthesis and respiration work together in the carbon cycle.", a: "Photosynthesis takes CO₂ out of the air and stores the carbon in sugar. Respiration breaks that sugar down for energy and puts CO₂ back into the air. Together they keep carbon moving between the air and living things.", k: ["Photosynthesis removes CO₂", "Carbon is stored in sugar", "Respiration releases CO₂", "Describes them as a loop"]},
+  {q: "Why are decomposers important for the cycling of matter?", a: "Decomposers such as fungi and bacteria break down dead organisms and waste. They release CO₂ into the air and return nutrients to the soil, where producers can use them again. Without decomposers, matter would stay locked in dead material and producers would run short of nutrients.", k: ["Break down dead matter and waste", "Release CO₂", "Return nutrients to soil", "Producers reuse the matter"]},
+  {q: "Name two ways carbon can be stored for a very long time, and one way it can be released quickly.", a: "Carbon can be stored for millions of years in fossil fuels such as coal and oil, and in rocks such as limestone formed from shells. It can be released quickly when fossil fuels are burned (emission) or when a forest burns in a wildfire.", k: ["Fossil fuels as long-term store", "Limestone or rock as long-term store", "Burning as quick release"]},
+  {q: "In the chain grass → grasshopper → frog → garter snake → red-tailed hawk, identify the trophic level of each organism and the apex predator.", a: "Grass is the producer. The grasshopper is the primary consumer, the frog is the secondary consumer, and the garter snake is the tertiary consumer. The red-tailed hawk is the quaternary consumer and the apex predator, because adult hawks have no natural predators here.", k: ["Grass: producer", "Grasshopper, frog, snake labelled correctly", "Hawk identified as apex predator", "Explains what apex means"]},
+  {q: "Producers in a wetland capture 30 000 kJ of energy. Using the 10 percent rule, how much energy reaches the tertiary consumers? Show your work.", a: "Primary consumers: 30 000 × 0.10 = 3 000 kJ. Secondary consumers: 3 000 × 0.10 = 300 kJ. Tertiary consumers: 300 × 0.10 = 30 kJ.", k: ["Multiplies by 0.10 at each step", "Shows three steps", "Final answer 30 kJ"]},
+  {q: "Why does an energy pyramid get narrower toward the top?", a: "At each trophic level, most of the energy is used for living and released as heat, or leaves in waste. Only a small part, about 10 percent, is stored in body tissue that the next level can eat. So each level holds less energy than the one below it.", k: ["Energy is lost at each step", "Lost mostly as heat", "About 10 percent passes on", "Each level holds less energy"]}
+];
+var LONG = [
+  {q: "Follow one carbon atom from the air above Elk Island National Park through at least four processes of the carbon cycle and back to the air. Name each process and the store the atom moves into.", a: "A CO₂ molecule in the air is taken in by an aspen leaf during photosynthesis, so the carbon is stored in the tree's sugar. A snowshoe hare eats aspen bark, and the carbon becomes part of the hare. A lynx eats the hare. When the lynx dies, decomposers such as bacteria and fungi break down its body. As they respire, they release the carbon back into the air as CO₂. If the remains had instead been buried for millions of years, the carbon could have become part of a fossil fuel and returned to the air only when burned (emission).", k: ["Starts and ends in the atmosphere", "Names at least four processes correctly", "Names the store after each process", "Uses a realistic Alberta example", "Mentions a long-term store or geological process"]},
+  {q: "Draw or describe an energy pyramid for an Alberta lake with four levels. Use 60 000 kJ for the producers. Explain why the lake can support many perch but only a few pike.", a: "Algae (producers): 60 000 kJ. Zooplankton (primary consumers): 6 000 kJ. Yellow perch (secondary consumers): 600 kJ. Northern pike (tertiary consumers, apex): 60 kJ. At each step about 90 percent of the energy is used for living and released as heat, or leaves in waste. The perch level holds ten times more energy than the pike level, so there is only enough energy to support a few pike.", k: ["Four levels named correctly", "Values 60 000, 6 000, 600, 60 kJ", "Pyramid wider at the bottom", "Explains energy loss as heat or waste", "Connects energy to how many pike can live there"]},
+  {q: "A disease wipes out most snowshoe hares in an aspen parkland area. Predict how this change could affect at least four other populations in the food web. Explain each prediction.", a: "Lynx would decrease sharply because hares are their main food. Great horned owls, red foxes and wolves would also decrease or switch prey. Predators switching to other prey would hunt more ruffed grouse and deer mice, so those populations may drop. With fewer hares eating them, willow, aspen seedlings and grasses may grow more. Other plant eaters, like grasshoppers, could increase because there is more grass and less competition. Decomposers would have extra food for a while from the dead hares.", k: ["Predator effect (lynx or another predator decreases)", "Prey switching effect on other prey", "Producer effect (plants increase)", "Competitor or decomposer effect", "Each prediction is explained with a food web link"]},
+  {q: "Explain how both the water cycle and the carbon cycle help keep an ecosystem stable. Use one example of a disturbance, such as drought or burning fossil fuels, to show what happens when a cycle changes.", a: "The water cycle keeps delivering fresh water to soil, rivers and wetlands, so producers can photosynthesize and animals can drink and find habitat. The carbon cycle keeps carbon moving between the air, living things and soil, so producers always have CO₂ and decomposers recycle nutrients. In a drought, less precipitation means less soil water, so plants grow less. Less plant growth means less energy for hares and moose, which affects the predators that eat them. Dry forests are also more likely to burn, which releases stored carbon quickly. A change to one cycle can spread through the whole ecosystem.", k: ["Explains the water cycle's role", "Explains the carbon cycle's role", "Describes a specific disturbance", "Traces effects through the food web", "Links cycles to stability"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label"), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = store.wr[id] || [];
+          s = s.filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["LS2.K1", "The continuous cycling of water through ecosystems supports life.", "Learn: Lesson 2 (water cycle model). Lab Bench: Investigation 1. Quiz, Flashcards, Written Review."],
+    ["LS2.K2", "The continuous cycling of carbon includes\n• photosynthesis\n• respiration\n• decomposition\n• emission\n• ocean exchange\n• geological processes", "Learn: Lesson 3 (carbon cycle model, all six processes). Lab Bench: Investigation 2. Sort It: carbon deck. Quiz, Flashcards."],
+    ["LS2.K3", "The Sun is the primary source of energy in most ecosystems, and this energy is harnessed by producers.", "Learn: Lesson 1 and Lesson 4 (energy source explorer, includes the chemosynthesis exception). Sort It: producer deck. Quiz."],
+    ["LS2.K4", "Consumers can be classified according to trophic interactions as\n• primary consumers\n• secondary consumers\n• tertiary consumers\n• apex predators", "Learn: Lesson 5 (Alberta food chains). Sort It: trophic level deck. Quiz, Flashcards, Written Review."],
+    ["LS2.K5", "Ecosystems have more producers than consumers because each time an organism is consumed, most of the energy from that organism is eventually transferred to the environment.", "Learn: Lesson 6 (hare energy budget, pyramid with efficiency slider). Lab Bench: Investigations 3 and 4. Quiz, Written Review."],
+    ["LS2.K6", "Food webs and energy pyramids can be used to represent the transfer of energy through trophic interactions among producers, consumers, and decomposers.", "Learn: Lesson 7 (food web explorer with decomposers) and Lesson 6 (pyramid). Quiz."],
+    ["LS2.S1", "Discuss ways in which the water cycle supports life.", "Lab Bench: Investigation 1 (dry year, wet year). Learn: Lesson 2. Written Review: short answer 2, extended 4."],
+    ["LS2.S2", "Represent how matter cycles within an ecosystem.", "Lab Bench: Investigation 2 (carbon atom journey and diagram task). Learn: Lessons 1 and 3. Sort It: matter or energy deck. Written Review: extended 1."],
+    ["LS2.S3", "Represent energy transfer in an ecosystem, using an energy pyramid.", "Lab Bench: Investigation 3 (build a pyramid, randomized). Learn: Lesson 6. Written Review: extended 2."],
+    ["LS2.S4", "Analyze transfer of energy in trophic interactions.", "Lab Bench: Investigation 4 (efficiency calculator and randomized practice). Learn: Lesson 6. Quiz, Written Review: short answer 8 and 9."],
+    ["LS2.S5", "Predict the effects of population change, including an extinction of species, on a food web.", "Lab Bench: Investigation 5 (food web change predictor). Quiz. Written Review: extended 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+  var note = el("p", {"class": "note"}, "Teacher notes: LS2.K5 is taught as more producer energy (and usually biomass) than consumer energy, because a pyramid of numbers can be inverted. LS2.K4 treats apex predator as a top position that can sit at any consumer level, not as a fourth level after tertiary. LS2.K3 notes chemosynthesis as the exception to Sun-powered ecosystems.");
+  $("coverage").appendChild(note);
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+
+</script>
+
+</body></html>

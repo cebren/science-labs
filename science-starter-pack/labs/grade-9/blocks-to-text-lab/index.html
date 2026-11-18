@@ -1,0 +1,1517 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/blocks-to-text-lab/"><meta name="description" content="Text-based programming languages can enable computers to perform more complex tasks."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Blocks to Text Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a coding workbench. Sticky tab strip, then lessons that pair a short reading column with a live model: block stacks beside Python, JavaScript and Java, a syntax inspector, an indentation test, a size scale and a pseudocode stepper. Syntax colours: violet keywords, brown strings, blue numbers, teal functions, grey comments. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g9:#2E7A4F;
+  --b-mo:#1F5FA6; --b-mo-soft:#DFEAF7; --b-pen:#2D7546; --b-pen-soft:#DDEFE3; --b-out:#6B3FA0; --b-out-soft:#ECE3F6;
+  --b-ctl:#8A4B12; --b-ctl-soft:#F6E8D8; --b-math:#0F6E6A; --b-math-soft:#D9F0EE;
+  --grid:#DCE3DD; --trail:#2D7546; --bot:#B0431B; --flag:#1F5FA6; --target:#9DB7A6;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --b-mo:#82B4EE; --b-mo-soft:#172A40; --b-pen:#7BCB95; --b-pen-soft:#16301F; --b-out:#C3A4EC; --b-out-soft:#2A1E3C;
+  --b-ctl:#E8A86A; --b-ctl-soft:#3A2814; --b-math:#6FD3CB; --b-math-soft:#11302E;
+  --grid:#26332C; --trail:#7BCB95; --bot:#F2916A; --flag:#82B4EE; --target:#3F5A4A;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+
+/* ---- Blocks to Text additions ---- */
+:root{
+  --k-kw:#6B3FA0; --k-str:#9A4A12; --k-num:#1F5FA6; --k-com:#55645A; --k-fn:#0F6E6A; --k-op:#18241D;
+  --b-var:#B0431B; --b-var-soft:#FAE5DB; --b-out:#6B3FA0; --b-out-soft:#ECE3F6; --b-ctl:#8A4B12; --b-ctl-soft:#F6E8D8;
+  --hl:#FFF1C9; --hl-line:#C99A1E; --code-bg:#FBFCF9;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --k-kw:#C3A4EC; --k-str:#E8A86A; --k-num:#82B4EE; --k-com:#9DB0A5; --k-fn:#6FD3CB; --k-op:#E3ECE6;
+  --b-var:#F2916A; --b-var-soft:#3A1E14; --b-out:#C3A4EC; --b-out-soft:#2A1E3C; --b-ctl:#E8A86A; --b-ctl-soft:#3A2814;
+  --hl:#3A3214; --hl-line:#E0C060; --code-bg:#121A16;
+}}
+:root[data-theme="dark"]{
+  --k-kw:#C3A4EC; --k-str:#E8A86A; --k-num:#82B4EE; --k-com:#9DB0A5; --k-fn:#6FD3CB; --k-op:#E3ECE6;
+  --b-var:#F2916A; --b-var-soft:#3A1E14; --b-out:#C3A4EC; --b-out-soft:#2A1E3C; --b-ctl:#E8A86A; --b-ctl-soft:#3A2814;
+  --hl:#3A3214; --hl-line:#E0C060; --code-bg:#121A16;
+}
+header h1 .bk{color:var(--b-ctl)} header h1 .tx{color:var(--g9)}
+.credit a{color:var(--water)}
+.panel>*,.model>*{min-width:0}
+
+/* block stacks */
+.bstack{display:grid;gap:4px;justify-items:start}
+.blk{display:inline-flex;flex-wrap:wrap;align-items:center;gap:5px;font-family:var(--f-mono);font-size:.82rem;font-weight:600;border-radius:8px;padding:5px 10px;border:1.5px solid var(--bc);background:var(--bs);color:var(--ink);line-height:1.35;text-align:left;max-width:100%}
+.blk .kw{color:var(--bc)}
+.blk .slot{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:0 7px;font-weight:400}
+.blk.var{--bc:var(--b-var);--bs:var(--b-var-soft)} .blk.out{--bc:var(--b-out);--bs:var(--b-out-soft)} .blk.ctl{--bc:var(--b-ctl);--bs:var(--b-ctl-soft)}
+button.blk{cursor:pointer}
+button.blk:hover{border-width:2px}
+.blk.on{outline:3px solid var(--hl-line);outline-offset:1px}
+.cblock{display:grid;gap:4px;border-left:6px solid var(--b-ctl);border-bottom:6px solid var(--b-ctl);border-radius:0 0 0 8px;padding:0 0 6px 10px;justify-items:start}
+.cblock>.blk{margin-left:-16px}
+.cblock .elsetag{font-family:var(--f-mono);font-size:.8rem;font-weight:600;color:var(--b-ctl);margin-left:-10px}
+
+/* code boxes */
+.code{font-family:var(--f-mono)}
+pre.src{margin:0;font-family:var(--f-mono);font-size:.84rem;line-height:1.65;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:8px 0;overflow-x:auto;color:var(--ink)}
+pre.src .ln{display:block;padding:0 12px 0 0;white-space:pre;border-left:3px solid transparent}
+pre.src .ln::before{content:attr(data-n);display:inline-block;width:2.4em;padding-right:.8em;text-align:right;color:var(--muted);user-select:none}
+pre.src .ln.on{background:var(--hl);border-left-color:var(--hl-line)}
+pre.src .ln.bad{background:var(--bad-soft);border-left-color:var(--bad)}
+.t-kw{color:var(--k-kw);font-weight:600} .t-str{color:var(--k-str)} .t-num{color:var(--k-num)} .t-com{color:var(--k-com);font-style:italic} .t-fn{color:var(--k-fn)}
+.langtag{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.console{font-family:var(--f-mono);font-size:.84rem;background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 12px;min-height:2.6em;white-space:pre-wrap;overflow-wrap:anywhere}
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:12px;align-items:start}
+@media (max-width:560px){.split{grid-template-columns:minmax(0,1fr)}}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
+.cmp .col{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:8px;align-content:start;min-width:0}
+.tokens{display:flex;flex-wrap:wrap;gap:4px;font-family:var(--f-mono);font-size:.95rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:10px;align-items:center}
+.tok{border:1px dashed var(--line);background:var(--surface);border-radius:6px;padding:3px 7px;cursor:pointer;font:inherit;color:var(--ink)}
+.tok:hover{border-color:var(--muted)}
+.tok[aria-pressed="true"]{border:2px solid var(--hl-line);background:var(--hl)}
+.tok.indent{color:var(--muted)}
+.errbox{font-family:var(--f-mono);font-size:.82rem;border-radius:8px;padding:8px 12px;background:var(--bad-soft);color:var(--ink);border-left:4px solid var(--bad);white-space:pre-wrap;overflow-wrap:anywhere}
+.errbox.ok{background:var(--leaf-soft);border-left-color:var(--good)}
+.ctrl{display:grid;gap:10px}
+.dial{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:8px;align-items:center;font-size:.85rem}
+.dial .track{height:12px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.dial .track i{display:block;height:100%;border-radius:6px;transition:width .35s ease}
+.logbars{display:grid;gap:8px}
+.lb{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:10px;align-items:center;cursor:pointer;background:none;border:1px solid transparent;border-radius:8px;padding:4px 6px;text-align:left;color:var(--ink);font:inherit;font-size:.88rem}
+.lb:hover,.lb[aria-pressed="true"]{border-color:var(--line);background:var(--surface)}
+.lb .track{height:16px;border-radius:4px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.lb .track i{display:block;height:100%;background:var(--g9)}
+.scale{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:10px;font-family:var(--f-mono);font-size:.68rem;color:var(--muted)}
+.scale div{display:flex;justify-content:space-between}
+.steps{display:grid;gap:6px}
+.stepbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.92rem;color:var(--ink)}
+.stepbtn:hover:not(:disabled){border-color:var(--muted)}
+.stepbtn:disabled{opacity:.45;cursor:default}
+.ordered{display:grid;gap:6px;padding:0;margin:0;list-style:none;counter-reset:o}
+.ordered li{counter-increment:o;display:grid;grid-template-columns:2em minmax(0,1fr);gap:6px;align-items:start;font-family:var(--f-mono);font-size:.85rem;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.ordered li::before{content:counter(o);color:var(--muted);text-align:right}
+.ordered li.ok{border-color:var(--good);background:var(--leaf-soft)}
+.ordered li.no{border-color:var(--bad);background:var(--bad-soft)}
+.convrow{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.convrow.ok{border-color:var(--good);background:var(--leaf-soft)}
+.convrow.no{border-color:var(--bad);background:var(--bad-soft)}
+.convrow select{font-family:var(--f-mono);font-size:.82rem;width:100%}
+.convrow .fixed{font-family:var(--f-mono);font-size:.82rem;white-space:pre;overflow-x:auto;color:var(--muted)}
+.trace{width:100%;border-collapse:collapse;font-size:.86rem;min-width:420px}
+.trace th,.trace td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.trace th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ftable{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.ftable th,.ftable td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.ftable td code{font-family:var(--f-mono);font-size:.82rem}
+.ftable th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.bench-card{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.bench-card h3{font-size:1.3rem}
+.bench-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.bench-grid{grid-template-columns:minmax(0,1fr)}}
+.bench-grid>*{min-width:0}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Computer Science · CS1</div>
+    <h1><span class="bk">Blocks</span> to <span class="tx">Text</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Text-based programming languages can enable computers to perform more complex tasks. In this lab you will put block code next to Python, JavaScript and Java, learn the rules each language follows, plan with pseudocode, and explain what short programs do.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. The code samples use three popular text languages: Python, JavaScript and Java.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · Blocks and text</span>
+      <h3>Same program, two ways to write it</h3>
+      <div class="codes"><span class="code">CS1.K1</span><span class="code">CS1.S1</span></div>
+      <p>In <b>visual block-based programming</b>, you build a program by snapping shapes together. Each block already has the right shape, so it only fits where it is allowed.</p>
+      <p>In <b>text-based programming</b>, you type the instructions. A text language uses words, phrases, numbers and keyboard symbols such as <code class="mono">( ) : ; { } = "</code> to tell the computer what to do.</p>
+      <p>Blocks also contain words. The big difference is how the code is made: you choose and drag blocks, but you type text code one character at a time.</p>
+      <div class="key"><b>Try it:</b> tap a block. The matching line of text code lights up. Switch languages to see that the same idea can be typed in different ways.</div>
+    </div>
+    <div class="model">
+      <h4>Score keeper program</h4>
+      <div class="split">
+        <div><span class="langtag">Blocks</span><div id="l1-blocks" class="bstack"></div></div>
+        <div style="display:grid;gap:8px">
+          <div class="chips" id="l1-lang" role="group" aria-label="Text language"></div>
+          <pre class="src" id="l1-code" aria-label="Text code"></pre>
+        </div>
+      </div>
+      <div class="row"><button class="btn" type="button" id="l1-run">Run program</button><span class="hint">Every version prints the same output.</span></div>
+      <div class="console" id="l1-out" aria-live="polite">Output appears here.</div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · More control</span>
+      <h3>Why programmers move to text</h3>
+      <div class="codes"><span class="code">CS1.K2</span></div>
+      <p>Block tools are great for learning because they hide many details. Text languages show those details, and that gives you <b>greater control</b> over how a program is designed.</p>
+      <p>With text you can choose exactly how numbers look, open data files, use huge collections of ready-made code called <b>libraries</b>, and organize data in many ways.</p>
+      <p>More control has a cost. You have to follow every rule yourself, so there are more ways to make mistakes.</p>
+      <div class="note">Some block tools, such as Microsoft MakeCode, can switch a program between blocks and text. That makes them a good bridge.</div>
+    </div>
+    <div class="model">
+      <h4>Control explorer</h4>
+      <p class="hint">Pick a job. Compare how much control each style gives you.</p>
+      <div class="chips" id="l2-chips" role="group" aria-label="Programming job"></div>
+      <div class="ctrl" id="l2-dials" aria-live="polite"></div>
+      <pre class="src" id="l2-code" aria-label="Python example"></pre>
+      <div class="detail" id="l2-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Syntax</span>
+      <h3>Every language has its own rules</h3>
+      <div class="codes"><span class="code">CS1.K3</span><span class="code">CS1.K4</span><span class="code">CS1.S4</span></div>
+      <p>Text languages have three key features: <b>syntax</b>, <b>structure</b> and <b>complexity</b>. This lesson is about syntax.</p>
+      <p><b>Syntax</b> is the set of rules for how symbols, words and numbers can be arranged to make a program. It is like spelling and grammar for code. Each language has its own syntax.</p>
+      <p>If you break a syntax rule, you get a <b>syntax error</b>, and the program usually will not run at all. A computer cannot guess what you meant.</p>
+      <div class="key"><b>Try it:</b> tap each piece of the line to learn its job. Then break the code on purpose and read the error.</div>
+    </div>
+    <div class="model">
+      <h4>Syntax inspector (Python)</h4>
+      <div class="tokens" id="l3-tokens" role="group" aria-label="Pieces of the Python code"></div>
+      <div class="detail" id="l3-detail" aria-live="polite"></div>
+      <span class="langtag">Break the code</span>
+      <div class="chips" id="l3-break" role="group" aria-label="Break the code"></div>
+      <pre class="src" id="l3-code" aria-label="Code being tested"></pre>
+      <div class="errbox" id="l3-err" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Structure</span>
+      <h3>How code is organized</h3>
+      <div class="codes"><span class="code">CS1.K3</span><span class="code">CS1.S1</span></div>
+      <p><b>Structure</b> is the way code is organized: the order of the lines, which lines belong inside a loop or an if, and how the program is split into parts such as functions.</p>
+      <p>Block code shows structure with shapes: a C-shaped block wraps around the blocks inside it. Text code needs symbols instead. Python uses <b>indentation</b> (spaces at the start of a line). JavaScript and Java use curly braces <code class="mono">{ }</code>.</p>
+      <p>In Python, indentation is part of the syntax. In JavaScript, indentation is only there to help people read, but every good programmer uses it.</p>
+    </div>
+    <div class="model">
+      <h4>Indentation test</h4>
+      <div class="row"><button class="btn ghost" type="button" id="l4-toggle" aria-pressed="false">Remove indentation</button></div>
+      <div class="cmp">
+        <div class="col"><span class="langtag">Python</span><pre class="src" id="l4-py"></pre><div class="errbox" id="l4-pyr" aria-live="polite"></div></div>
+        <div class="col"><span class="langtag">JavaScript</span><pre class="src" id="l4-js"></pre><div class="errbox" id="l4-jsr" aria-live="polite"></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Complexity</span>
+      <h3>Bigger tasks, bigger programs</h3>
+      <div class="codes"><span class="code">CS1.K3</span><span class="code">CS1.K2</span></div>
+      <p><b>Complexity</b> describes how many parts a program has and how they depend on each other. Text languages can handle very complex tasks, such as apps, games and operating systems, that would be hard to build from blocks.</p>
+      <p>Complex programs have many lines and many connected parts. A change in one place can break something in another place. Programmers manage complexity with clear structure: named functions, comments, and testing small parts one at a time.</p>
+      <div class="note">The sizes in the model are rough orders of magnitude, not exact counts. Each step on the scale is ten times bigger.</div>
+    </div>
+    <div class="model">
+      <h4>How big is a program?</h4>
+      <div class="logbars" id="l5-bars" role="group" aria-label="Program sizes"></div>
+      <div class="scale" aria-hidden="true"><span></span><div><span>10</span><span>1 000</span><span>100 000</span><span>10 000 000</span></div></div>
+      <div class="detail" id="l5-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Pseudocode</span>
+      <h3>Plan first, then code</h3>
+      <div class="codes"><span class="code">CS1.K5</span><span class="code">CS1.S3</span></div>
+      <p><b>Pseudocode</b> is a step-by-step description of an algorithm that looks like the structure of a programming language. It uses plain words, but it is laid out like code, with steps in order and indentation for the parts inside an IF or a loop.</p>
+      <p>Pseudocode is written for people, so a computer does not run it. There is no single official rule book. Many people write keywords such as IF, THEN and ELSE in capitals to make them stand out.</p>
+      <p>Because pseudocode does not depend on one language, a team can plan an algorithm first and then write it in Python, JavaScript or any other language.</p>
+    </div>
+    <div class="model">
+      <h4>Recess check (a made-up school rule)</h4>
+      <label class="field" for="l6-temp">Outdoor temperature: <span id="l6-tv" class="mono num">−25 °C</span>
+        <input type="range" id="l6-temp" min="-35" max="10" step="1" value="-25"></label>
+      <div class="cmp">
+        <div class="col"><span class="langtag">Pseudocode</span><pre class="src" id="l6-ps"></pre></div>
+        <div class="col"><span class="langtag">Python</span><pre class="src" id="l6-py"></pre></div>
+      </div>
+      <div class="row"><button class="btn" type="button" id="l6-step">Step</button><button class="btn ghost" type="button" id="l6-reset">Restart</button></div>
+      <div class="console" id="l6-out" aria-live="polite">Press Step to follow the algorithm.</div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Each one gives you new practice every time you press New.</p>
+  </div>
+
+  <article class="bench-card" id="b1">
+    <span class="step eyebrow">Investigation 1 · CS1.S1 · CS1.S4</span>
+    <h3>Compare: one block program, three languages</h3>
+    <p class="hint">Pick a program. Look at the block version and the three text versions. Then answer the question about their syntax.</p>
+    <div class="chips" id="b1-progs" role="group" aria-label="Program"></div>
+    <div class="cmp" id="b1-cols"></div>
+    <div class="worked" id="b1-q"></div>
+  </article>
+
+  <article class="bench-card" id="b2">
+    <span class="step eyebrow">Investigation 2 · CS1.S2</span>
+    <h3>Convert blocks to text</h3>
+    <p class="hint">For each block, choose the line of text code that would run correctly in that language. Lines like a closing brace are filled in for you.</p>
+    <div class="row">
+      <div class="chips" id="b2-lang" role="group" aria-label="Target language"></div>
+      <button class="btn ghost" type="button" id="b2-new">New program</button>
+    </div>
+    <div class="bench-grid">
+      <div><span class="langtag">Blocks</span><div class="bstack" id="b2-blocks"></div></div>
+      <div style="display:grid;gap:6px" id="b2-rows"></div>
+    </div>
+    <div class="row"><button class="btn" type="button" id="b2-check">Check my code</button><button class="btn ghost" type="button" id="b2-run" hidden>Run it</button></div>
+    <div id="b2-fb" aria-live="polite"></div>
+  </article>
+
+  <article class="bench-card" id="b3">
+    <span class="step eyebrow">Investigation 3 · CS1.S3</span>
+    <h3>Write pseudocode</h3>
+    <p class="hint">Part A: tap the steps in the order the algorithm needs them. Part B: write your own pseudocode for a task.</p>
+    <div class="chips" id="b3-tasks" role="group" aria-label="Task"></div>
+    <div class="bench-grid">
+      <div style="display:grid;gap:6px"><span class="langtag">Steps to choose from</span><div class="steps" id="b3-pool"></div></div>
+      <div style="display:grid;gap:6px"><span class="langtag">Your algorithm</span><ol class="ordered" id="b3-built"></ol>
+        <div class="row"><button class="btn" type="button" id="b3-check">Check order</button><button class="btn ghost" type="button" id="b3-undo">Undo</button></div>
+        <div id="b3-fb" aria-live="polite"></div></div>
+    </div>
+    <div style="display:grid;gap:8px">
+      <label class="field" for="b3-own">Part B: <span id="b3-prompt"></span></label>
+      <textarea id="b3-own" spellcheck="true"></textarea>
+      <ul class="checks" id="b3-checks"></ul>
+    </div>
+  </article>
+
+  <article class="bench-card" id="b4">
+    <span class="step eyebrow">Investigation 4 · CS1.S4</span>
+    <h3>Syntax hunt</h3>
+    <p class="hint">Read the line. Decide if it follows the rules of its language. If not, pick what is wrong.</p>
+    <div class="row"><span class="mono num" id="b4-score">Score 0 of 0</span><button class="btn ghost" type="button" id="b4-new">Next line</button></div>
+    <div id="b4-box" style="display:grid;gap:10px"></div>
+    <details><summary>Common syntax table</summary><div class="tablebox" style="margin-top:8px"><table class="ftable" id="b4-table"></table></div></details>
+  </article>
+
+  <article class="bench-card" id="b5">
+    <span class="step eyebrow">Investigation 5 · CS1.S5</span>
+    <h3>Explain the code</h3>
+    <p class="hint">Read the Python program. Predict the last line it prints and choose its purpose. Then check the step-by-step trace.</p>
+    <div class="row"><button class="btn ghost" type="button" id="b5-new">New program</button></div>
+    <div class="bench-grid">
+      <pre class="src" id="b5-code" aria-label="Python program"></pre>
+      <div style="display:grid;gap:10px">
+        <label class="field" for="b5-ans">Last line printed<input type="text" id="b5-ans" autocomplete="off"></label>
+        <fieldset style="border:0;padding:0;margin:0;display:grid;gap:6px"><legend class="field" style="font-weight:700;font-size:.88rem;margin-bottom:4px">What is the program for?</legend><div id="b5-purpose" style="display:grid;gap:6px"></div></fieldset>
+        <div class="row"><button class="btn" type="button" id="b5-check">Check</button></div>
+        <div id="b5-fb" aria-live="polite"></div>
+      </div>
+    </div>
+    <div id="b5-trace"></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of more than twenty. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 9 CS1, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-cs1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function minus(n){ return String(n).replace("-", "−"); }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Syntax colouring ---------- */
+var KW = {py: ["for","in","if","else","elif","def","return","import","while","and","or","not","True","False","print","range","input","float","str","int"],
+  js: ["let","const","for","if","else","function","return","while","true","false","console","log"],
+  java: ["int","String","double","for","if","else","return","while","true","false","System","out","println","public","static","void"],
+  ps: ["SET","TO","IF","THEN","ELSE","END","SHOW","REPEAT","TIMES","FOR","EACH","ADD","GET","FROM","WHILE","AND","OR"]};
+var FN = {py: ["print","range","input","float","str","int","round"], js: ["log"], java: ["println"], ps: []};
+function colour(line, lang){
+  var frag = document.createDocumentFragment();
+  var re = /("[^"]*"?|#.*$|\/\/.*$|-?\b\d+(\.\d+)?\b|[A-Za-z_][A-Za-z_0-9]*|\s+|.)/g, m;
+  var kw = KW[lang] || [], fn = FN[lang] || [];
+  while ((m = re.exec(line)) !== null) {
+    var t = m[0], cls = null;
+    if (t[0] === '"') cls = "t-str";
+    else if ((t[0] === "#" && lang === "py") || t.slice(0, 2) === "//") cls = "t-com";
+    else if (/^-?\d/.test(t)) cls = "t-num";
+    else if (fn.indexOf(t) >= 0) cls = "t-fn";
+    else if (kw.indexOf(t) >= 0) cls = "t-kw";
+    if (cls) frag.appendChild(el("span", {"class": cls}, t)); else frag.appendChild(document.createTextNode(t));
+    if (t === "") break;
+  }
+  return frag;
+}
+function renderSrc(pre, lines, lang){
+  clear(pre);
+  lines.forEach(function(L, i){
+    var text = typeof L === "string" ? L : L.text;
+    var s = el("span", {"class": "ln", "data-n": String(i + 1)});
+    s.appendChild(colour(text, lang));
+    if (typeof L !== "string" && L.id != null) s.dataset.id = L.id;
+    pre.appendChild(s);
+  });
+  return Array.prototype.slice.call(pre.children);
+}
+
+/* ---------- Program model ----------
+   Statements: set (v, e), change (v, n), say (s [, v]), repeat (n, body), if (c:[a, op, b], then, else) */
+function isStr(e){ return typeof e === "string" && e[0] === '"'; }
+function condText(c, lang){ return c[0] + " " + c[1] + " " + c[2]; }
+function genCode(prog, lang){
+  var out = [], declared = {};
+  function pad(n){ return new Array(n + 1).join("    "); }
+  function walk(list, ind, path){
+    list.forEach(function(st, i){
+      var id = path + i, p = pad(ind), t;
+      if (st.k === "set") {
+        if (lang === "py") t = st.v + " = " + st.e;
+        else if (lang === "js") t = (declared[st.v] ? "" : "let ") + st.v + " = " + st.e + ";";
+        else t = (declared[st.v] ? "" : (isStr(st.e) ? "String " : "int ")) + st.v + " = " + st.e + ";";
+        declared[st.v] = true;
+        out.push({text: p + t, id: id, kind: "set", st: st, ind: ind});
+      } else if (st.k === "change") {
+        var ch = st.n < 0 ? st.v + " - " + (-st.n) : st.v + " + " + st.n;
+        t = st.v + " = " + ch + (lang === "py" ? "" : ";");
+        out.push({text: p + t, id: id, kind: "change", st: st, ind: ind});
+      } else if (st.k === "say") {
+        if (lang === "py") t = "print(" + st.s + (st.v ? ", " + st.v : "") + ")";
+        else if (lang === "js") t = "console.log(" + st.s + (st.v ? ", " + st.v : "") + ");";
+        else t = "System.out.println(" + (st.v ? st.s.slice(0, -1) + ' " + ' + st.v : st.s) + ");";
+        out.push({text: p + t, id: id, kind: "say", st: st, ind: ind});
+      } else if (st.k === "repeat") {
+        if (lang === "py") t = "for i in range(" + st.n + "):";
+        else if (lang === "js") t = "for (let i = 0; i < " + st.n + "; i++) {";
+        else t = "for (int i = 0; i < " + st.n + "; i++) {";
+        out.push({text: p + t, id: id, kind: "repeat", st: st, ind: ind});
+        walk(st.body, ind + 1, id + ".");
+        if (lang !== "py") out.push({text: p + "}", id: id, kind: "close", ind: ind});
+      } else if (st.k === "if") {
+        var c = condText(st.c, lang);
+        t = lang === "py" ? "if " + c + ":" : "if (" + c + ") {";
+        out.push({text: p + t, id: id, kind: "if", st: st, ind: ind});
+        walk(st.then, ind + 1, id + "t");
+        if (st["else"]) {
+          out.push({text: p + (lang === "py" ? "else:" : "} else {"), id: id, kind: "else", st: st, ind: ind});
+          walk(st["else"], ind + 1, id + "e");
+        }
+        if (lang !== "py") out.push({text: p + "}", id: id, kind: "close", ind: ind});
+      }
+    });
+  }
+  walk(prog, 0, "");
+  return out;
+}
+function runProg(prog){
+  var env = {}, out = [];
+  function val(x){ if (typeof x === "number") return x; if (isStr(x)) return x.slice(1, -1); if (/^-?\d+$/.test(x)) return parseInt(x, 10); return env[x]; }
+  function test(c){ var a = val(c[0]), b = val(c[2]);
+    return c[1] === ">" ? a > b : c[1] === "<" ? a < b : c[1] === ">=" ? a >= b : c[1] === "<=" ? a <= b : c[1] === "==" ? a === b : a !== b; }
+  function walk(list){
+    list.forEach(function(st){
+      if (st.k === "set") env[st.v] = val(st.e);
+      else if (st.k === "change") env[st.v] = env[st.v] + st.n;
+      else if (st.k === "say") out.push(st.s.slice(1, -1) + (st.v ? " " + env[st.v] : ""));
+      else if (st.k === "repeat") for (var i = 0; i < st.n; i++) walk(st.body);
+      else if (st.k === "if") { if (test(st.c)) walk(st.then); else if (st["else"]) walk(st["else"]); }
+    });
+  }
+  walk(prog);
+  return out;
+}
+function blockLabel(st){
+  if (st.k === "set") return [["kw","set"],["slot",st.v],["kw","to"],["slot",st.e.replace(/"/g, "")]];
+  if (st.k === "change") return [["kw","change"],["slot",st.v],["kw","by"],["slot",minus(st.n)]];
+  if (st.k === "say") return st.v ? [["kw","say"],["kw","join"],["slot",st.s.slice(1, -1)],["slot",st.v]] : [["kw","say"],["slot",st.s.slice(1, -1)]];
+  if (st.k === "repeat") return [["kw","repeat"],["slot",String(st.n)]];
+  if (st.k === "if") return [["kw","if"],["slot",st.c[0] + " " + (st.c[1] === "==" ? "=" : st.c[1]) + " " + minus(st.c[2])],["kw","then"]];
+  return [];
+}
+function blockAria(st){ return blockLabel(st).map(function(p){ return p[1]; }).join(" "); }
+function renderBlocks(box, prog, onTap){
+  clear(box);
+  var all = [];
+  function mk(st, id){
+    var cls = st.k === "say" ? "out" : (st.k === "repeat" || st.k === "if") ? "ctl" : "var";
+    var b = el(onTap ? "button" : "div", {"class": "blk " + cls});
+    if (onTap) { b.type = "button"; b.setAttribute("aria-label", "Block: " + blockAria(st)); b.addEventListener("click", function(){ onTap(id, b); }); }
+    blockLabel(st).forEach(function(p){ b.appendChild(el("span", {"class": p[0]}, p[1])); });
+    b.dataset.id = id; all.push(b);
+    return b;
+  }
+  function walk(list, parent, path){
+    list.forEach(function(st, i){
+      var id = path + i;
+      if (st.k === "repeat" || st.k === "if") {
+        var c = el("div", {"class": "cblock"});
+        c.appendChild(mk(st, id));
+        walk(st.k === "repeat" ? st.body : st.then, c, id + (st.k === "repeat" ? "." : "t"));
+        if (st["else"]) { c.appendChild(el("span", {"class": "elsetag"}, "else")); walk(st["else"], c, id + "e"); }
+        parent.appendChild(c);
+      } else parent.appendChild(mk(st, id));
+    });
+  }
+  walk(prog, box, "");
+  return all;
+}
+
+var PROGS = [
+  {label: "Score keeper", purpose: "Adds 5 points three times, shows the score each time, then checks for a level up.",
+   prog: [{k:"set",v:"score",e:"0"},{k:"repeat",n:3,body:[{k:"change",v:"score",n:5},{k:"say",s:'"Score:"',v:"score"}]},
+          {k:"if",c:["score",">","10"],then:[{k:"say",s:'"Level up!"'}],"else":[{k:"say",s:'"Keep going"'}]}]},
+  {label: "Launch countdown", purpose: "Counts down from 5 and then announces liftoff.",
+   prog: [{k:"set",v:"count",e:"5"},{k:"repeat",n:5,body:[{k:"say",s:'"T minus"',v:"count"},{k:"change",v:"count",n:-1}]},{k:"say",s:'"Liftoff!"'}]},
+  {label: "Recess check", purpose: "Uses a made-up rule to decide on indoor or outdoor recess.",
+   prog: [{k:"set",v:"temp",e:"-25"},{k:"if",c:["temp","<","-20"],then:[{k:"say",s:'"Indoor recess"'}],"else":[{k:"say",s:'"Outdoor recess"'}]}]},
+  {label: "Bus riders", purpose: "Adds 3 riders at each of 4 stops and shows the total.",
+   prog: [{k:"set",v:"riders",e:"0"},{k:"repeat",n:4,body:[{k:"change",v:"riders",n:3}]},{k:"say",s:'"Riders:"',v:"riders"}]}
+];
+var LANGS = [{label: "Python", id: "py"}, {label: "JavaScript", id: "js"}, {label: "Java", id: "java"}];
+var LNAME = {py: "Python", js: "JavaScript", java: "Java", ps: "Pseudocode"};
+
+/* ---------- Lesson 1 ---------- */
+(function(){
+  var P = PROGS[0].prog, lang = "py", lines = [], blocks = [], sel = null;
+  function hl(){
+    lines.forEach(function(s){ s.classList.toggle("on", sel != null && s.dataset.id === sel); });
+    blocks.forEach(function(b){ b.classList.toggle("on", b.dataset.id === sel); });
+  }
+  blocks = renderBlocks($("l1-blocks"), P, function(id){ sel = id; hl(); });
+  function draw(){ lines = renderSrc($("l1-code"), genCode(P, lang), lang); hl(); }
+  chipGroup($("l1-lang"), LANGS, "", function(it){ lang = it.id; draw(); }, 0);
+  $("l1-run").addEventListener("click", function(){ $("l1-out").textContent = runProg(P).join("\n"); });
+})();
+
+/* ---------- Lesson 2 ---------- */
+(function(){
+  var JOBS = [
+    {label: "Format numbers", b: 2, t: 5, code: ['marks = [78, 85, 90]', 'avg = sum(marks) / len(marks)', 'print(f"Average: {avg:.1f}")', '# prints Average: 84.3'],
+     blocks: "Most block tools show a number however the tool decides. Rounding to one decimal place takes extra blocks.",
+     text: "One short instruction sets the exact format: one decimal place, a percent sign, or commas in big numbers."},
+    {label: "Open a data file", b: 1, t: 5, code: ['with open("weather.csv") as f:', '    for line in f:', '        print(line)'],
+     blocks: "Most block tools in schools cannot open a file on their own. You type or paste the data in.",
+     text: "The program can read a file of thousands of rows, such as daily temperatures, and work through every line."},
+    {label: "Use a library", b: 2, t: 5, code: ['import statistics', 'temps = [-12, -8, -15, -3]', 'print(statistics.median(temps))', '# prints -10.0'],
+     blocks: "You can only use the blocks the tool gives you, plus any extensions it offers.",
+     text: "A library is ready-made code you bring into your program. Python has libraries for graphs, maps, robots and much more."},
+    {label: "Organize data", b: 2, t: 5, code: ['signal = {"stop": "red", "go": "green"}', 'print(signal["go"])', '# prints green'],
+     blocks: "Block tools usually offer simple lists and variables.",
+     text: "Text languages offer many ways to store data, such as lists inside lists or a dictionary that links each name to a value."},
+    {label: "Ease of starting", b: 5, t: 2, code: ['# Text code must follow every rule.', 'print("Hello")   # works', 'Print("Hello")   # error: capital P'],
+     blocks: "Blocks only fit where they are allowed, so many errors cannot happen. This is why beginners often start with blocks.",
+     text: "You must type every symbol correctly. More control means more chances for small mistakes."}
+  ];
+  chipGroup($("l2-chips"), JOBS, "", function(j){
+    var d = $("l2-dials"); clear(d);
+    [["Blocks", j.b, "var(--b-ctl)"], ["Text", j.t, "var(--g9)"]].forEach(function(r){
+      var row = el("div", {"class": "dial"}); row.appendChild(el("b", null, r[0]));
+      var tr = el("div", {"class": "track", role: "img", "aria-label": r[0] + ": " + r[1] + " out of 5"});
+      var i = el("i"); i.style.width = (r[1] * 20) + "%"; i.style.background = r[2]; tr.appendChild(i); row.appendChild(tr); d.appendChild(row);
+    });
+    renderSrc($("l2-code"), j.code, "py");
+    detail($("l2-detail"), j.label, ["In blocks: " + j.blocks, "In text: " + j.text], j.label === "Ease of starting" ? "Bar shows how easy it is" : "Bar shows how much control you have");
+  }, 0);
+})();
+
+/* ---------- Lesson 3 ---------- */
+(function(){
+  var TOK = [
+    {t: "if", role: "Keyword", d: "A word the language reserves for one job. if starts a conditional. You cannot use it as a variable name."},
+    {t: "temp", role: "Variable name", d: "A name for a stored value. Names cannot have spaces and cannot start with a number."},
+    {t: "<", role: "Comparison operator", d: "Compares two values. The answer is True or False."},
+    {t: "-20", role: "Number", d: "A number value. Numbers are typed without quotation marks."},
+    {t: ":", role: "Colon", d: "In Python, a colon ends the if line and means: the indented lines below belong to me."},
+    {t: "↵ + 4 spaces", role: "Indentation", d: "A new line and four spaces. In Python, indentation shows which lines are inside the if.", ind: true},
+    {t: "print", role: "Built-in function name", d: "A function that comes with Python. print shows a value on the screen. Python is case-sensitive, so Print does not work."},
+    {t: "(", role: "Opening parenthesis", d: "Calling a function needs parentheses. The value to use goes inside."},
+    {t: '"Indoor recess"', role: "String", d: "Text in quotation marks is called a string. The quotation marks show where the text starts and ends."},
+    {t: ")", role: "Closing parenthesis", d: "Every opening parenthesis needs a matching closing one."}
+  ];
+  var tb = [];
+  TOK.forEach(function(k){
+    var b = el("button", {"class": "tok" + (k.ind ? " indent" : ""), type: "button", "aria-pressed": "false"}, k.t);
+    b.addEventListener("click", function(){ tb.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); detail($("l3-detail"), k.role, [k.d], "Piece: " + k.t); });
+    $("l3-tokens").appendChild(b); tb.push(b);
+  });
+  detail($("l3-detail"), "Tap a piece", ["Each symbol and word has a job. Together they follow Python’s syntax."]);
+  var BR = [
+    {label: "Correct", code: ['temp = -25', 'if temp < -20:', '    print("Indoor recess")'], bad: null, msg: "Runs. Output: Indoor recess"},
+    {label: "Remove the colon", code: ['temp = -25', 'if temp < -20', '    print("Indoor recess")'], bad: 1, msg: "SyntaxError: expected ':'\nPython needs a colon at the end of an if line."},
+    {label: "Remove a quotation mark", code: ['temp = -25', 'if temp < -20:', '    print("Indoor recess)'], bad: 2, msg: "SyntaxError: unterminated string literal\nThe string has no closing quotation mark, so Python cannot tell where the text ends."},
+    {label: "Capital P", code: ['temp = -25', 'if temp < -20:', '    Print("Indoor recess")'], bad: 2, msg: "NameError: name 'Print' is not defined\nPython is case-sensitive. Print and print are different names."},
+    {label: "Use = instead of <", code: ['temp = -25', 'if temp = -20:', '    print("Indoor recess")'], bad: 1, msg: "SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?\nA single = stores a value. To compare, Python uses == (equal to) or < and >."}
+  ];
+  chipGroup($("l3-break"), BR, "", function(b){
+    var ls = renderSrc($("l3-code"), b.code, "py");
+    if (b.bad != null) ls[b.bad].classList.add("bad");
+    $("l3-err").textContent = b.msg; $("l3-err").classList.toggle("ok", b.bad == null);
+  }, 0);
+})();
+
+/* ---------- Lesson 4 ---------- */
+(function(){
+  var PY = ['temp = -25', 'if temp < -20:', '    print("Indoor recess")', '    print("Wear your toque home")', 'else:', '    print("Outdoor recess")'];
+  var JS = ['let temp = -25;', 'if (temp < -20) {', '    console.log("Indoor recess");', '    console.log("Wear your toque home");', '} else {', '    console.log("Outdoor recess");', '}'];
+  var flat = false;
+  function draw(){
+    var f = function(a){ return a.map(function(s){ return flat ? s.replace(/^\s+/, "") : s; }); };
+    var pl = renderSrc($("l4-py"), f(PY), "py"); renderSrc($("l4-js"), f(JS), "js");
+    if (flat) {
+      pl[2].classList.add("bad");
+      $("l4-pyr").textContent = "IndentationError: expected an indented block after 'if' statement on line 2\nPython uses indentation as part of its syntax.";
+      $("l4-pyr").classList.remove("ok");
+      $("l4-jsr").textContent = "Still runs. Output: Indoor recess, Wear your toque home\nThe braces show the structure, but the code is harder for people to read.";
+    } else {
+      $("l4-pyr").textContent = "Runs. Output: Indoor recess, Wear your toque home"; $("l4-pyr").classList.add("ok");
+      $("l4-jsr").textContent = "Runs. Output: Indoor recess, Wear your toque home";
+    }
+    $("l4-jsr").classList.add("ok");
+    $("l4-toggle").textContent = flat ? "Put indentation back" : "Remove indentation";
+    $("l4-toggle").setAttribute("aria-pressed", flat ? "true" : "false");
+  }
+  $("l4-toggle").addEventListener("click", function(){ flat = !flat; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 5 ---------- */
+(function(){
+  var SIZES = [
+    {label: "Traffic light controller", e: 1.5, size: "tens of lines", d: "A loop that switches between red, yellow and green with timers. One person can read it all in a few minutes."},
+    {label: "Class quiz game", e: 2.5, size: "hundreds of lines", d: "Questions, scoring, a timer and a high-score list. A student project in a text language often reaches this size."},
+    {label: "Phone game", e: 4.5, size: "tens of thousands of lines", d: "Graphics, sound, levels, saving progress and menus. A team splits the code into many files and functions."},
+    {label: "Web browser", e: 7.3, size: "tens of millions of lines", d: "Thousands of people have worked on the biggest browsers over many years. No single person knows all of the code."},
+    {label: "Operating system", e: 7.5, size: "tens of millions of lines", d: "Runs the whole device. Large operating systems are built and tested by huge teams, one small part at a time."}
+  ];
+  var btns = [];
+  SIZES.forEach(function(s, i){
+    var b = el("button", {"class": "lb", type: "button", "aria-pressed": "false", "aria-label": s.label + ": about " + s.size});
+    b.appendChild(el("span", null, s.label));
+    var tr = el("span", {"class": "track"}); var bar = el("i"); bar.style.width = Math.round((s.e / 8) * 100) + "%"; tr.appendChild(bar); b.appendChild(tr);
+    b.addEventListener("click", function(){ sel(i); });
+    $("l5-bars").appendChild(b); btns.push(b);
+  });
+  function sel(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    var s = SIZES[i]; detail($("l5-detail"), s.label + ": about " + s.size, [s.d, i >= 2 ? "Projects this size are written in text languages. Clear structure is the only way to manage this much complexity." : "A project this size can be built in blocks or text. Text becomes more useful as it grows."], "Rough size"); }
+  sel(1);
+})();
+
+/* ---------- Lesson 6 ---------- */
+(function(){
+  var PS = ['SET temp TO reading from thermometer', 'IF temp < -20 THEN', '    SHOW "Indoor recess"', 'ELSE', '    SHOW "Outdoor recess"', 'END IF'];
+  var PY = ['temp = float(input("Temperature: "))', 'if temp < -20:', '    print("Indoor recess")', 'else:', '    print("Outdoor recess")'];
+  var MAP = [[0,0],[1,1],[2,2],[3,3],[4,4],[5,null]];
+  var ps = renderSrc($("l6-ps"), PS, "ps"), py = renderSrc($("l6-py"), PY, "py");
+  var path = [], k = -1;
+  function temp(){ return parseInt($("l6-temp").value, 10); }
+  function build(){ var t = temp(); path = t < -20 ? [0,1,2,5] : [0,1,3,4,5]; k = -1; hl(); $("l6-out").textContent = "Press Step to follow the algorithm."; }
+  function hl(){
+    var cur = k >= 0 ? path[k] : null;
+    ps.forEach(function(s, i){ s.classList.toggle("on", i === cur); });
+    py.forEach(function(s, i){ s.classList.toggle("on", cur != null && MAP[cur][1] === i); });
+  }
+  $("l6-temp").addEventListener("input", function(){ $("l6-tv").textContent = minus(temp()) + " °C"; build(); });
+  $("l6-step").addEventListener("click", function(){
+    if (k >= path.length - 1) { build(); return; }
+    k++; hl();
+    var line = path[k], t = temp(), msg;
+    if (line === 0) msg = "Store the temperature: temp = " + minus(t);
+    else if (line === 1) msg = "Is " + minus(t) + " < −20? " + (t < -20 ? "Yes, so do the THEN part." : "No, so skip to ELSE.");
+    else if (line === 2) msg = "Output: Indoor recess";
+    else if (line === 3) msg = "ELSE: the test was false.";
+    else if (line === 4) msg = "Output: Outdoor recess";
+    else msg = "END IF: the decision is finished. (Python needs no END IF line. Its structure comes from indentation.)";
+    $("l6-out").textContent = msg;
+  });
+  $("l6-reset").addEventListener("click", build);
+  build();
+})();
+
+/* ---------- Bench 1: compare ---------- */
+(function(){
+  var FEAT = [
+    {f: "ends most statements with a semicolon ;", a: "JavaScript and Java", why: "Java requires semicolons. JavaScript usually uses them too (it can often add missing ones itself, but most style guides keep them). Python ends a statement at the end of the line."},
+    {f: "uses a colon and indentation to show the code inside a loop or if", a: "Python only", why: "Python lines that start a block end with a colon, and the lines inside are indented."},
+    {f: "uses curly braces { } to group the code inside a loop or if", a: "JavaScript and Java", why: "JavaScript and Java wrap the inside of a loop or if in braces."},
+    {f: "needs a type such as int or String when a variable is first made", a: "Java only", why: "Java is strict about types: int for whole numbers, String for text."},
+    {f: "uses the word let to make a new variable", a: "JavaScript only", why: "Modern JavaScript makes variables with let or const. Python just uses the name and =."},
+    {f: "prints output with System.out.println( )", a: "Java only", why: "Java’s print instruction is longer. Python uses print( ) and JavaScript uses console.log( )."},
+    {f: "requires parentheses ( ) around the condition of an if", a: "JavaScript and Java", why: "JavaScript and Java require them. Python allows them but does not need them."},
+    {f: "uses == to check if two values are equal", a: "All three", why: "All three use == for comparing. A single = stores a value. (JavaScript programmers often use === for an even stricter test.)"},
+    {f: "puts text (strings) inside quotation marks", a: "All three", why: "All three use quotation marks for strings, so the computer knows where the text starts and ends."},
+    {f: "uses range( ) in a counting loop", a: "Python only", why: "Python’s for loop counts through range(n). JavaScript and Java count with a variable: i = 0; i < n; i++."}
+  ];
+  var OPTS = ["Python only", "JavaScript only", "Java only", "JavaScript and Java", "All three"];
+  var lastF = -1;
+  function draw(p){
+    var cols = $("b1-cols"); clear(cols);
+    var c0 = el("div", {"class": "col"}); c0.appendChild(el("span", {"class": "langtag"}, "Blocks"));
+    var bs = el("div", {"class": "bstack"}); renderBlocks(bs, p.prog); c0.appendChild(bs); cols.appendChild(c0);
+    LANGS.forEach(function(L){
+      var c = el("div", {"class": "col"}); c.appendChild(el("span", {"class": "langtag"}, L.label));
+      var pre = el("pre", {"class": "src", "aria-label": L.label + " code"}); renderSrc(pre, genCode(p.prog, L.id), L.id); c.appendChild(pre); cols.appendChild(c);
+    });
+    var o = el("div", {"class": "col"}); o.appendChild(el("span", {"class": "langtag"}, "Output (all versions)"));
+    o.appendChild(el("div", {"class": "console"}, runProg(p.prog).join("\n"))); o.appendChild(el("p", {"class": "hint"}, "Purpose: " + p.purpose)); cols.appendChild(o);
+  }
+  function question(){
+    var i; do { i = rint(0, FEAT.length - 1); } while (i === lastF); lastF = i;
+    var F = FEAT[i], box = $("b1-q"); clear(box);
+    box.appendChild(el("b", null, "Which language " + F.f + "?"));
+    var row = el("div", {"class": "opts"}), fb = el("p", {"class": "fb", "aria-live": "polite"});
+    OPTS.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(row.children, function(x){ x.disabled = true; if (x.textContent === F.a) x.classList.add("right"); });
+        if (o !== F.a) b.classList.add("wrong");
+        fb.className = "fb " + (o === F.a ? "ok" : "no");
+        fb.textContent = (o === F.a ? "Correct. " : "Not quite. The answer is " + F.a + ". ") + F.why;
+      });
+      row.appendChild(b);
+    });
+    box.appendChild(row); box.appendChild(fb);
+    var nb = el("button", {"class": "btn ghost", type: "button"}, "Another question"); nb.addEventListener("click", question);
+    box.appendChild(el("div", {"class": "row"})).appendChild(nb);
+  }
+  chipGroup($("b1-progs"), PROGS, "", function(p){ draw(p); }, 0);
+  question();
+})();
+
+/* ---------- Bench 2: convert ---------- */
+(function(){
+  var lang = "py", prog = null, rows = [];
+  var NAMES = ["points", "laps", "coins", "steps", "goals"];
+  function make(){
+    var v = pick(NAMES), a = rint(0, 5), n = rint(2, 5), b = rint(2, 6), t = pick(["Total:", "Final:", "Count:"]);
+    var kind = rint(0, 2);
+    if (kind === 0) return [{k:"set",v:v,e:String(a)},{k:"repeat",n:n,body:[{k:"change",v:v,n:b}]},{k:"say",s:'"' + t + '"',v:v}];
+    if (kind === 1) { var lim = rint(5, 15); return [{k:"set",v:v,e:String(rint(1, 20))},{k:"if",c:[v,">",String(lim)],then:[{k:"say",s:'"High"'}],"else":[{k:"say",s:'"Low"'}]}]; }
+    var end = a + n * b;
+    return [{k:"set",v:v,e:String(a)},{k:"repeat",n:n,body:[{k:"say",s:'"Go!"'},{k:"change",v:v,n:b}]},{k:"if",c:[v,"==",String(pick([end, end + 1]))],then:[{k:"say",s:'"Done"'}]}];
+  }
+  function wrongs(L){
+    var st = L.st, txt = L.text.replace(/^\s+/, ""), c = st && st.c ? condText(st.c) : "";
+    var argsPy = txt.slice(txt.indexOf("(") + 1, txt.lastIndexOf(")"));
+    if (lang === "py") {
+      if (L.kind === "set") return ["set " + st.v + " to " + st.e, "let " + st.v + " = " + st.e + ";"];
+      if (L.kind === "change") return ["change " + st.v + " by " + st.n, st.v + " + " + st.n + " = " + st.v];
+      if (L.kind === "say") return ["Print(" + argsPy + ")", "print " + argsPy];
+      if (L.kind === "repeat") return ["for i in range(" + st.n + ")", "repeat " + st.n + ":"];
+      if (L.kind === "if") return ["if " + c, "if " + c + " then:"];
+      if (L.kind === "else") return ["else", "} else {"];
+    } else if (lang === "js") {
+      if (L.kind === "set") return ["let " + st.v + " == " + st.e + ";", "set " + st.v + " to " + st.e + ";"];
+      if (L.kind === "change") return ["change " + st.v + " by " + st.n + ";", st.v + " + " + st.n + " = " + st.v + ";"];
+      if (L.kind === "say") return ["Console.log(" + argsPy + ");", "console.log " + argsPy + ";"];
+      if (L.kind === "repeat") return ["for i in range(" + st.n + "):", "for (let i = 0, i < " + st.n + ", i++) {"];
+      if (L.kind === "if") return ["if " + c + " {", "if (" + c + "):"];
+      if (L.kind === "else") return ["else:", "else {"];
+    } else {
+      if (L.kind === "set") return [st.v + " = " + st.e + ";", "int " + st.v + " = " + st.e];
+      if (L.kind === "change") return ["change " + st.v + " by " + st.n + ";", txt.replace(/;$/, "")];
+      if (L.kind === "say") return [txt.replace("System", "system"), txt.replace(/;$/, "")];
+      if (L.kind === "repeat") return ["for i in range(" + st.n + "):", "for (i = 0; i < " + st.n + "; i++) {"];
+      if (L.kind === "if") return ["if " + c + " {", "if (" + c + "):"];
+      if (L.kind === "else") return ["else:", "} else:"];
+    }
+    return [];
+  }
+  function draw(){
+    renderBlocks($("b2-blocks"), prog);
+    var box = $("b2-rows"); clear(box); rows = [];
+    $("b2-fb").textContent = ""; $("b2-run").hidden = true;
+    box.appendChild(el("span", {"class": "langtag"}, LNAME[lang] + " code"));
+    genCode(prog, lang).forEach(function(L, i){
+      var pad = L.text.match(/^\s*/)[0];
+      var r = el("div", {"class": "convrow"});
+      if (L.kind === "close") { r.appendChild(el("div", {"class": "fixed"}, L.text)); box.appendChild(r); return; }
+      var id = "b2-s" + i;
+      var lab = el("label", {"for": id, "class": "sr"}, "Line " + (i + 1));
+      var s = el("select", {id: id});
+      s.appendChild(el("option", {value: ""}, "Choose line " + (i + 1)));
+      shuffle([L.text.replace(/^\s+/, "")].concat(wrongs(L))).forEach(function(o){ s.appendChild(el("option", {value: o}, pad + o)); });
+      r.appendChild(lab); r.appendChild(s); box.appendChild(r);
+      rows.push({r: r, s: s, want: L.text.replace(/^\s+/, "")});
+    });
+  }
+  function fresh(){ prog = make(); draw(); }
+  chipGroup($("b2-lang"), LANGS, "", function(L){ lang = L.id; if (prog) draw(); }, 0);
+  $("b2-new").addEventListener("click", fresh);
+  $("b2-check").addEventListener("click", function(){
+    var ok = 0;
+    rows.forEach(function(x){ var good = x.s.value === x.want; x.r.classList.toggle("ok", good); x.r.classList.toggle("no", !good); if (good) ok++; });
+    var all = ok === rows.length;
+    $("b2-fb").className = "feedback " + (all ? "ok" : "no");
+    $("b2-fb").textContent = all ? "All " + ok + " lines follow " + LNAME[lang] + " syntax. Press Run it to see the output." :
+      ok + " of " + rows.length + " lines are correct. Look at the red lines: check colons, braces, parentheses, quotation marks, semicolons and capital letters.";
+    $("b2-run").hidden = !all;
+  });
+  $("b2-run").addEventListener("click", function(){ $("b2-fb").textContent = "Output:\n" + runProg(prog).join("\n"); $("b2-fb").style.whiteSpace = "pre-line"; });
+  fresh();
+})();
+
+/* ---------- Bench 3: pseudocode ---------- */
+(function(){
+  var TASKS = [
+    {label: "Count gym laps", steps: ["SET laps TO 0", "REPEAT 8 TIMES", "    ADD 1 TO laps", "    SHOW laps", "END REPEAT", 'SHOW "Finished!"'],
+     own: "Write pseudocode that asks for a mark out of 100 and shows Pass if it is 50 or more, or Try again if it is less."},
+    {label: "Check a password", steps: ["GET password FROM user", "SET length TO number of characters in password", "IF length >= 12 THEN", '    SHOW "Long enough"', "ELSE", '    SHOW "Too short: use at least 12 characters"', "END IF"],
+     own: "Write pseudocode that counts down from 10 to 1 and then shows Liftoff."},
+    {label: "Find the warmest day", steps: ["SET warmest TO the first temperature in the list", "FOR EACH temp IN the list", "    IF temp > warmest THEN", "        SET warmest TO temp", "    END IF", "END FOR", "SHOW warmest"],
+     own: "Write pseudocode that adds up the number of riders getting on a bus at 5 stops and shows the total."}
+  ];
+  var CHECKS = ["My steps are in an order a computer could follow", "I used keywords such as SET, IF, THEN, ELSE, REPEAT or SHOW", "Lines inside an IF or a loop are indented", "Each IF or loop has a clear end", "A classmate could turn it into Python or JavaScript"];
+  var task = 0, built = [];
+  store.ps = store.ps || {};
+  function drawPool(){
+    var pool = $("b3-pool"); clear(pool);
+    var T = TASKS[task];
+    shuffle(T.steps.map(function(s, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "stepbtn mono", type: "button"}, T.steps[i].replace(/^\s+/, ""));
+      b.disabled = built.indexOf(i) >= 0;
+      b.addEventListener("click", function(){ built.push(i); b.disabled = true; drawBuilt(); });
+      pool.appendChild(b);
+    });
+  }
+  function drawBuilt(marks){
+    var ol = $("b3-built"); clear(ol);
+    built.forEach(function(i, k){
+      var li = el("li"); li.appendChild(el("span", {style: "white-space:pre-wrap"}, TASKS[task].steps[i]));
+      if (marks) li.className = i === k ? "ok" : "no";
+      ol.appendChild(li);
+    });
+    if (!built.length) ol.appendChild(el("li", {"class": "hint"}, "Tap steps on the left to add them here."));
+  }
+  function setTask(t, i){
+    task = i; built = []; $("b3-fb").textContent = ""; drawPool(); drawBuilt();
+    $("b3-prompt").textContent = t.own;
+    $("b3-own").value = store.ps[i] || "";
+    var ul = $("b3-checks"); clear(ul);
+    CHECKS.forEach(function(c, j){
+      var id = "b3-c" + j, li = el("li"), lab = el("label", {"for": id}), cb = el("input", {type: "checkbox", id: id});
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(c)); li.appendChild(lab); ul.appendChild(li);
+    });
+  }
+  $("b3-own").addEventListener("input", function(){ store.ps[task] = $("b3-own").value; save(); });
+  $("b3-undo").addEventListener("click", function(){ built.pop(); $("b3-fb").textContent = ""; drawPool(); drawBuilt(); });
+  $("b3-check").addEventListener("click", function(){
+    var T = TASKS[task], fb = $("b3-fb");
+    if (built.length < T.steps.length) { fb.className = "feedback no"; fb.textContent = "Add all " + T.steps.length + " steps first."; return; }
+    drawBuilt(true);
+    var right = built.filter(function(i, k){ return i === k; }).length;
+    fb.className = "feedback " + (right === T.steps.length ? "ok" : "no");
+    fb.textContent = right === T.steps.length ? "Correct order. Notice how the indented lines sit inside the loop or IF, just like code." :
+      right + " of " + T.steps.length + " steps are in the right place. Think: what must be set up first? What repeats? What happens only when the test is true?";
+  });
+  chipGroup($("b3-tasks"), TASKS, "", setTask, 0);
+})();
+
+/* ---------- Bench 4: syntax hunt ---------- */
+(function(){
+  var OK = "It follows the rules";
+  var BANK = [
+    {l: "py", c: 'print("Hello")', a: OK, o: ["Missing a colon", "Needs a semicolon"], ex: "A Python print call: function name, parentheses, and a string in quotation marks."},
+    {l: "py", c: 'print("Hello)', a: "Missing a closing quotation mark", o: ["Missing a colon", "print needs a capital P"], ex: "The string never ends, so Python cannot tell where the text stops."},
+    {l: "py", c: 'if score > 10', a: "Missing a colon", o: ["Needs braces { }", "score needs quotation marks"], ex: "A Python if line ends with a colon."},
+    {l: "js", c: 'console.log("Hi");', a: OK, o: ["Should be print", "Missing a colon"], ex: "JavaScript prints to the console with console.log( )."},
+    {l: "js", c: 'if score > 10 {', a: "The condition needs parentheses ( )", o: ["Missing a colon", "Needs a semicolon after {"], ex: "JavaScript requires parentheses around an if condition: if (score > 10) {"},
+    {l: "java", c: 'System.out.println("Hi")', a: "Missing a semicolon", o: ["Missing a colon", "System should be lowercase"], ex: "Java statements must end with a semicolon."},
+    {l: "java", c: 'int laps = 0;', a: OK, o: ["int is not needed", "Missing a colon"], ex: "Java gives the type (int) when a variable is first made."},
+    {l: "py", c: 'for i in range(5):', a: OK, o: ["Needs braces { }", "range needs a capital R"], ex: "This loop runs 5 times, with i going 0, 1, 2, 3, 4."},
+    {l: "js", c: 'for (let i = 0; i < 5; i++) {', a: OK, o: ["Should use range(5)", "The commas should be semicolons"], ex: "JavaScript’s counting loop has three parts separated by semicolons."},
+    {l: "py", c: 'if laps = 5:', a: "Uses = where it should use ==", o: ["Missing a colon", "laps needs quotation marks"], ex: "= stores a value. == compares two values."},
+    {l: "java", c: 'String name = Ada;', a: "Text needs quotation marks", o: ["String should be int", "Missing a colon"], ex: "Without quotation marks, Java thinks Ada is the name of a variable."},
+    {l: "py", c: 'Print(total)', a: "print must be lowercase", o: ["Missing a colon", "total needs quotation marks"], ex: "Python is case-sensitive. Print is not a built-in name."},
+    {l: "js", c: 'let 2fast = 10;', a: "A name cannot start with a number", o: ["let should be int", "Missing a colon"], ex: "Variable names can contain numbers, but not as the first character."},
+    {l: "py", c: '# count the laps', a: OK, o: ["Comments need //", "Missing a colon"], ex: "In Python, # starts a comment. The computer ignores it. Comments help people."},
+    {l: "java", c: '// count the laps', a: OK, o: ["Comments need #", "Needs a semicolon"], ex: "In Java and JavaScript, // starts a comment."},
+    {l: "py", c: 'print(score))', a: "Extra closing parenthesis", o: ["Missing a colon", "score needs quotation marks"], ex: "Every ( needs exactly one matching )."}
+  ];
+  var order = [], k = 0, right = 0, done = 0;
+  store.b4 = store.b4 || {r: 0, d: 0};
+  function score(){ $("b4-score").textContent = "Score " + right + " of " + done; }
+  function show(){
+    if (k >= order.length) { order = shuffle(BANK.map(function(x, i){ return i; })); k = 0; }
+    var Q = BANK[order[k++]], box = $("b4-box"); clear(box);
+    box.appendChild(el("span", {"class": "langtag"}, LNAME[Q.l]));
+    var pre = el("pre", {"class": "src", "aria-label": LNAME[Q.l] + " line"}); renderSrc(pre, [Q.c], Q.l); box.appendChild(pre);
+    var opts = el("div", {"class": "opts"}), fb = el("p", {"class": "fb", "aria-live": "polite"});
+    shuffle([Q.a].concat(Q.o).concat(Q.a === OK ? [] : [OK])).slice(0, 4).forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (x.textContent === Q.a) x.classList.add("right"); });
+        var good = o === Q.a; if (!good) b.classList.add("wrong");
+        done++; if (good) right++; score();
+        fb.className = "fb " + (good ? "ok" : "no"); fb.textContent = (good ? "Correct. " : "Not quite. ") + Q.ex;
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts); box.appendChild(fb);
+  }
+  var T = [["Job", "Python", "JavaScript", "Java"],
+    ["Comment", "# note", "// note", "// note"],
+    ["Make a variable", "x = 5", "let x = 5;", "int x = 5;"],
+    ["Show output", "print(x)", "console.log(x);", "System.out.println(x);"],
+    ["Text (string)", '"hello"', '"hello"', '"hello"'],
+    ["Equal to?", "==", "=== (== also works)", "=="],
+    ["End a statement", "end of the line", "; (usually)", ";"],
+    ["Group code", ": then indent", "{ }", "{ }"],
+    ["Repeat 5 times", "for i in range(5):", "for (let i = 0; i < 5; i++) {", "for (int i = 0; i < 5; i++) {"]];
+  var tb = $("b4-table");
+  T.forEach(function(r, i){ var tr = el("tr"); r.forEach(function(c, j){ var cell = el(i === 0 ? "th" : "td"); if (i > 0 && j > 0) cell.appendChild(el("code", null, c)); else cell.textContent = c; tr.appendChild(cell); }); tb.appendChild(tr); });
+  $("b4-new").addEventListener("click", show);
+  score(); show();
+})();
+
+/* ---------- Bench 5: explain the code ---------- */
+(function(){
+  var cur = null;
+  function fmtF(x){ return Number.isInteger(x) ? x.toFixed(1) : String(x); }
+  var TPL = [
+    function(){ var a = rint(2, 6), b = rint(2, 4), rows = [], tot = 0;
+      rows.push([1, "total = 0", ""]);
+      for (var i = 0; i < b; i++) { rows.push([2, "Loop round " + (i + 1) + " (i = " + i + ")", ""]); tot += a; rows.push([3, "total = " + (tot - a) + " + " + a + " = " + tot, ""]); }
+      rows.push([4, "Print total", String(tot)]);
+      return {code: ["total = 0", "for i in range(" + b + "):", "    total = total + " + a, "print(total)"], ans: String(tot), rows: rows,
+        p: ["Adds " + a + " to a total " + b + " times, so it works out " + a + " × " + b + ".", "Prints the numbers from 0 to " + b + ".", "Counts how many times the user presses a key."]}; },
+    function(){ var c = pick([-30, -25, -20, -10, 0, 10, 25]), f = c * 9 / 5 + 32;
+      return {code: ["celsius = " + c, "fahrenheit = celsius * 9 / 5 + 32", "print(fahrenheit)"], ans: fmtF(f),
+        rows: [[1, "celsius = " + c, ""], [2, "fahrenheit = " + c + " × 9 ÷ 5 + 32 = " + fmtF(f) + " (Python’s / gives a decimal)", ""], [3, "Print fahrenheit", fmtF(f)]],
+        p: ["Converts a temperature from Celsius to Fahrenheit.", "Checks whether it is cold enough for indoor recess.", "Adds 32 to a number 9 times."]}; },
+    function(){ var p = rint(5, 20), pass = p >= 12;
+      return {code: ["points = " + p, "if points >= 12:", '    print("Pass")', "else:", '    print("Try again")'], ans: pass ? "Pass" : "Try again",
+        rows: [[1, "points = " + p, ""], [2, "Is " + p + " >= 12? " + (pass ? "Yes" : "No"), ""]].concat(pass ? [[3, "Print", "Pass"]] : [[4, "else: the test was false", ""], [5, "Print", "Try again"]]),
+        p: ["Decides whether a score of 12 or more passes.", "Adds 12 points to the score.", "Repeats a message 12 times."]}; },
+    function(){ var n = rint(3, 5), rows = [[1, "n = " + n, ""]];
+      for (var i = 0; i < n; i++) { rows.push([2, "Loop round " + (i + 1) + " (i = " + i + ")", ""]); rows.push([3, "Print n − i = " + n + " − " + i, String(n - i)]); }
+      rows.push([4, "Loop finished. Print", "Go!"]);
+      return {code: ["n = " + n, "for i in range(n):", "    print(n - i)", 'print("Go!")'], ans: "Go!", rows: rows,
+        p: ["Counts down from " + n + " to 1, then prints Go!", "Counts up from 0 to " + n + ".", "Prints Go! " + n + " times."]}; },
+    function(){ var nm = pick(["Ada", "Sam", "Kai", "Noor", "Rémi"]);
+      return {code: ['name = "' + nm + '"', 'greeting = "Hi, " + name', "print(greeting)"], ans: "Hi, " + nm,
+        rows: [[1, 'name = "' + nm + '"', ""], [2, 'greeting = "Hi, " + "' + nm + '" joins two strings', ""], [3, "Print greeting", "Hi, " + nm]],
+        p: ["Joins two pieces of text to greet a person by name.", "Asks the user to type their name.", "Adds two numbers together."]}; }
+  ];
+  var last = -1;
+  function fresh(){
+    var i; do { i = rint(0, TPL.length - 1); } while (i === last); last = i;
+    cur = TPL[i](); renderSrc($("b5-code"), cur.code, "py");
+    $("b5-ans").value = ""; $("b5-fb").textContent = ""; clear($("b5-trace"));
+    var box = $("b5-purpose"); clear(box);
+    shuffle(cur.p.map(function(t, j){ return j; })).forEach(function(j, k){
+      var id = "b5-p" + k, lab = el("label", {"for": id, style: "display:flex;gap:8px;align-items:flex-start;font-size:.92rem"});
+      var r = el("input", {type: "radio", name: "b5p", id: id, value: String(j)}); lab.appendChild(r); lab.appendChild(document.createTextNode(cur.p[j])); box.appendChild(lab);
+    });
+  }
+  function norm(s){ return String(s).trim().replace(/^["']|["']$/g, "").replace(/−/g, "-").toLowerCase(); }
+  $("b5-check").addEventListener("click", function(){
+    var a = norm($("b5-ans").value), w = norm(cur.ans);
+    var okA = a === w || (a !== "" && !isNaN(parseFloat(a)) && parseFloat(a) === parseFloat(w) && /^-?[\d.]+$/.test(a));
+    var r = document.querySelector("input[name=b5p]:checked"), okP = r && r.value === "0";
+    var fb = $("b5-fb"); fb.className = "feedback " + (okA && okP ? "ok" : "no");
+    fb.textContent = (okA ? "Output correct: " : "The last line printed is: ") + cur.ans + ". " + (okP ? "Purpose correct." : "Purpose: " + cur.p[0]) +
+      (okA || !/\./.test(cur.ans) ? "" : " Python shows .0 because / always gives a decimal number.");
+    var t = $("b5-trace"); clear(t);
+    var tb = el("div", {"class": "tablebox"}), table = el("table", {"class": "trace"});
+    var hr = el("tr"); ["Step", "Line", "What happens", "Output"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); table.appendChild(hr);
+    cur.rows.forEach(function(row, i){ var tr = el("tr"); [String(i + 1), String(row[0]), row[1], row[2]].forEach(function(c){ tr.appendChild(el("td", null, c)); }); table.appendChild(tr); });
+    tb.appendChild(table); t.appendChild(el("p", {"class": "langtag", style: "margin-bottom:6px"}, "Worked trace")); t.appendChild(tb);
+  });
+  $("b5-new").addEventListener("click", fresh);
+  fresh();
+})();
+
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "Blocks, text or pseudocode?", bins: ["Visual block code", "Text-based code", "Pseudocode"], items: [
+      ["Drag shapes that snap together", 0, "Block code is built by choosing and dragging blocks."],
+      ["Blocks only fit where they are allowed, so many syntax errors cannot happen", 0, "The shapes act like the syntax rules."],
+      ["print(\"Hello\")", 1, "This is a line of Python, typed with symbols such as ( ) and \" \"."],
+      ["One missing bracket can stop the whole program", 1, "Text code must follow every syntax rule exactly."],
+      ["Written for people to read. A computer does not run it.", 2, "Pseudocode is a plan, not a program."],
+      ["IF temp < -20 THEN SHOW \"Indoor recess\"", 2, "Plain words laid out like code: pseudocode."],
+      ["for i in range(4):", 1, "A Python loop line, with a colon at the end."],
+      ["A repeat 4 block wrapped around a move 10 steps block", 0, "C-shaped blocks show structure in block code."],
+      ["No single official set of rules", 2, "Pseudocode styles vary. Teams agree on their own."],
+      ["Used to build large apps, websites and games", 1, "Text languages handle complex programs."],
+      ["Pick instructions from menus sorted by colour", 0, "Block tools group blocks by colour and category."],
+      ["Plan an algorithm before choosing a language", 2, "Pseudocode does not depend on one language."]
+    ]},
+    {label: "Syntax, structure or complexity?", bins: ["Syntax", "Structure", "Complexity"], items: [
+      ["Python needs a colon at the end of an if line", 0, "A rule about which symbols go where: syntax."],
+      ["Strings go inside quotation marks", 0, "A rule about how text must be written: syntax."],
+      ["Java statements end with a semicolon", 0, "A rule about symbols: syntax."],
+      ["= stores a value, but == compares two values", 0, "Different symbols with different meanings: syntax."],
+      ["Lines inside a loop are indented or wrapped in { }", 1, "This shows which lines belong together: structure."],
+      ["Splitting a program into named functions", 1, "Organizing code into parts: structure."],
+      ["The order of the lines decides what happens first", 1, "Sequence is part of structure."],
+      ["A game made of tens of thousands of lines", 2, "Lots of code and many parts: complexity."],
+      ["Changing one part breaks a different part", 2, "Connected parts are a sign of complexity."],
+      ["Text code can sort thousands of records or run a whole website", 2, "Text languages can handle more complex tasks."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var D = DECKS[deck], c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, "", function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Visual block-based programming", "Building a program by snapping together shapes and blocks instead of typing."],
+    ["Text-based programming language", "A language that uses words, phrases, numbers and keyboard symbols to give instructions, such as Python, JavaScript or Java."],
+    ["Control", "How much a programmer can decide about how a program works. Text languages give greater control than blocks."],
+    ["Library", "Ready-made code that you can bring into your program, such as Python’s statistics library."],
+    ["Syntax", "The set of rules for how symbols, words and numbers can be arranged to make a program in one language."],
+    ["Syntax error", "A mistake that breaks a language’s rules, such as a missing colon. The program usually will not run."],
+    ["Structure", "How code is organized: the order of lines, what is inside a loop or if, and how it is split into parts."],
+    ["Indentation", "Spaces at the start of a line. In Python, indentation shows which lines are inside a loop or if."],
+    ["Curly braces { }", "Symbols that group lines of code in JavaScript and Java."],
+    ["Complexity", "How many parts a program has and how they depend on each other. Text languages can handle more complex tasks."],
+    ["Pseudocode", "A step-by-step description of an algorithm, in plain words, laid out like the structure of a programming language."],
+    ["Algorithm", "An ordered set of steps for solving a problem or doing a task."],
+    ["Keyword", "A word reserved by a language for a special job, such as if, for or else."],
+    ["Variable", "A named place that stores a value, such as score = 0."],
+    ["Assignment ( = )", "Storing a value in a variable. In Python, score = 5 stores 5 in score."],
+    ["Comparison ( == )", "Checking whether two values are equal. The answer is True or False."],
+    ["String", "Text inside quotation marks, such as \"Indoor recess\"."],
+    ["Comment", "A note for people that the computer ignores. Python uses #. JavaScript and Java use //."],
+    ["Case-sensitive", "Capital and small letters count as different. print works in Python, but Print does not."],
+    ["Python", "A text language known for short, readable code that uses indentation for structure."],
+    ["JavaScript", "A text language that runs in every web browser. It uses braces and usually semicolons."],
+    ["Java", "A text language used for large programs and Android apps. Every statement ends with a semicolon, and variables need a type."],
+    ["Trace", "Following code one line at a time and writing down how the values change, to explain what it does."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){ list = CARDS.map(function(c, j){ return j; }).filter(function(j){ var m = store.cards[j]; return filter === "all" || (filter === "learning" ? m !== "known" : m === "known"); }); if (i >= list.length) i = 0; draw(); }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){ if (!list.length) return; store.cards[list[i]] = v; save(); flipped = false; var was = list.length; build(); if (list.length === was) { i = (i + 1) % list.length; draw(); } }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], "", function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["What is the main difference between block-based and text-based programming?", ["Text code is typed with words and symbols. Block code is built by snapping shapes together.", "Only block code can use loops.", "Text code does not use any words.", "Block code cannot make a program run."], 0, "Both can loop and both contain words. The difference is typing symbols versus snapping blocks."],
+    ["Which of these is a text-based programming language?", ["Python", "Scratch", "A flowchart", "Pseudocode"], 0, "Python is typed text. Scratch is block-based, and pseudocode is a plan that a computer does not run."],
+    ["What does syntax mean?", ["The rules for how symbols, words and numbers are arranged in a language", "How fast a program runs", "The output of a program", "The colours of the blocks"], 0, "Syntax is like spelling and grammar for code."],
+    ["Which three key features of text-based languages does this unit name?", ["Syntax, structure and complexity", "Input, process and output", "Hardware, software and interfaces", "Speed, colour and sound"], 0, "Syntax is the rules, structure is the organization, and complexity is how big and connected a program can become."],
+    ["Why do text-based languages give greater control?", ["They let you set exact details and use libraries, files and many kinds of data", "They have fewer rules", "They never have errors", "They only work on phones"], 0, "Text gives fine control over details. The cost is more chances to make mistakes."],
+    ["What happens if you leave the colon off this Python line?  if temp < -20", ["Python gives a syntax error and the program does not run", "Python adds the colon itself", "The if is skipped", "It runs but prints nothing"], 0, "A computer cannot guess. Python reports SyntaxError: expected ':'."],
+    ["In Python, what shows which lines are inside an if?", ["Indentation", "Curly braces", "Semicolons", "Capital letters"], 0, "Python uses indentation as part of its syntax. JavaScript and Java use braces."],
+    ["What do JavaScript and Java use to group the code inside a loop?", ["Curly braces { }", "A colon only", "Quotation marks", "The # symbol"], 0, "Braces mark where the inside of the loop starts and ends."],
+    ["Which line prints Hello in Java?", ["System.out.println(\"Hello\");", "print(\"Hello\")", "console.log(\"Hello\");", "say Hello"], 0, "print( ) is Python and console.log( ) is JavaScript."],
+    ["What is pseudocode?", ["A step-by-step description of an algorithm laid out like code, written for people", "A language that only robots understand", "A program that has a bug", "A secret password"], 0, "Pseudocode is a plan in plain words. A computer does not run it."],
+    ["Why might a team write pseudocode before coding?", ["To plan the algorithm without worrying about one language’s syntax", "Because computers run pseudocode faster", "Because pseudocode has strict syntax", "To make the program longer"], 0, "Once the steps are planned, the team can write them in any language."],
+    ["Which symbol compares two values to see if they are equal in Python?", ["==", "=", ":", "#"], 0, "A single = stores a value. == compares."],
+    ["What will this Python code print?  x = 4  then  print(x * 3)", ["12", "x * 3", "43", "7"], 0, "x stores 4, and 4 × 3 = 12. Without quotation marks, x * 3 is worked out, not printed as text."],
+    ["Which Python line has a syntax error?", ["print(\"Hi)", "print(\"Hi\")", "x = 5", "# a note"], 0, "The string has no closing quotation mark."],
+    ["In JavaScript, which line makes a new variable called laps?", ["let laps = 0;", "laps == 0", "int laps = 0", "set laps to 0"], 0, "Modern JavaScript uses let (or const) to make a variable."],
+    ["Why does Print(\"Hi\") fail in Python?", ["Python is case-sensitive, so Print is not the same as print", "The quotation marks are wrong", "It needs a semicolon", "Python cannot show text"], 0, "Capital and small letters count as different."],
+    ["What does the computer do with a comment such as  # count laps ?", ["It ignores it. Comments are notes for people.", "It prints it", "It runs it as a loop", "It stops the program"], 0, "Comments explain code to people. Python uses #, JavaScript and Java use //."],
+    ["How many times does this Python loop run?  for i in range(4):", ["4", "3", "5", "It runs forever"], 0, "range(4) gives 0, 1, 2 and 3: four rounds."],
+    ["Which statement about complexity is accurate?", ["Complex programs have many connected parts, so programmers use clear structure to manage them", "Complex programs never have bugs", "Only block code can be complex", "Complexity means the code has no comments"], 0, "Functions, comments and testing small parts help manage complexity."],
+    ["A Scratch program says: repeat 3, say Hi. Which Python code does the same thing?", ["for i in range(3):\n    print(\"Hi\")", "repeat 3: say Hi", "print(\"Hi\") * 3:", "for (i < 3) { print Hi }"], 0, "A Python for loop with range(3), and the print line indented inside it."],
+    ["Which is a benefit of block-based code for beginners?", ["Blocks only fit where they are allowed, so many syntax errors cannot happen", "Blocks give more control than text", "Blocks are used to build operating systems", "Blocks have no structure"], 0, "Blocks are easier to start with. Text gives more control."],
+    ["Explain the purpose of this code:  total = 0, then a loop that adds 5 to total 3 times, then print(total)", ["It adds 5 three times and prints 15", "It prints 0", "It prints 5, 5, 5", "It multiplies 0 by 3"], 0, "Tracing: 0 → 5 → 10 → 15. The print is after the loop, so only 15 is shown."],
+    ["Which language ends a statement at the end of the line instead of with a semicolon?", ["Python", "Java", "Both JavaScript and Java", "None of them"], 0, "Python uses new lines. Java needs semicolons, and JavaScript usually uses them."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, "You scored " + score + " of 10.")); d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons and the Flashcards, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); var h = el("h3", {style: "white-space:pre-line"}, Q[0]); q.appendChild(h);
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button", style: "white-space:pre-line;font-family:" + (/\n/.test(Q[1][i]) ? "var(--f-mono)" : "inherit")}, Q[1][i]);
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; });
+        opts.children[Array.prototype.indexOf.call(opts.children, b)].classList.add(i === Q[2] ? "right" : "wrong");
+        Array.prototype.forEach.call(opts.children, function(x){ if (x.textContent === Q[1][Q[2]]) x.classList.add("right"); });
+        if (i === Q[2]) score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["Describe one difference between visual block-based code and text-based code.", "In block code you build a program by snapping shapes together, and the shapes only fit where they are allowed. In text code you type words, numbers and symbols, and you must follow the language’s syntax yourself.", ["Blocks are dragged and snapped", "Text is typed with words and symbols", "Text must follow syntax rules exactly"]],
+    ["Explain what syntax is. Give one example of a syntax rule.", "Syntax is the set of rules for how symbols, words and numbers can be arranged in a programming language. For example, a Python if line must end with a colon.", ["Defines syntax as rules for arranging symbols", "Gives a real rule (colon, quotation marks, semicolon, braces)"]],
+    ["Why do text-based languages give a programmer greater control?", "They let the programmer decide exact details, such as how numbers are shown, and use files, libraries and many ways of organizing data. Block tools hide many of these details.", ["Names exact details or formatting", "Mentions libraries, files or data structures", "Compares with block tools hiding details"]],
+    ["Name the three key features of text-based languages and describe one of them.", "Syntax, structure and complexity. Structure is how code is organized, such as the order of lines and which lines are inside a loop or if.", ["Names all three features", "Describes one accurately"]],
+    ["How does Python show which lines are inside an if? How do JavaScript and Java show it?", "Python uses indentation after a line that ends in a colon. JavaScript and Java wrap the lines in curly braces { }.", ["Python: colon and indentation", "JavaScript and Java: braces"]],
+    ["What is pseudocode, and who is it written for?", "Pseudocode is a step-by-step description of an algorithm that is laid out like a programming language but uses plain words. It is written for people, to plan or explain an algorithm. A computer does not run it.", ["Step-by-step algorithm", "Laid out like code", "Written for people, not run by a computer"]],
+    ["Find and fix the error:  print(\"Score: \" , score", "The closing parenthesis is missing. The fixed line is print(\"Score: \", score).", ["Names the missing )", "Writes a fixed line"]],
+    ["Explain the purpose of this Python code:  for i in range(3):  then indented  print(\"Ready\")", "The loop runs three times, so the program prints Ready three times.", ["Says it is a loop", "Says it runs 3 times", "States the output"]],
+    ["Convert this block code to Python: set laps to 0, change laps by 1, say laps.", "laps = 0\nlaps = laps + 1\nprint(laps)", ["Uses = to store 0", "Adds 1 with laps = laps + 1 (or laps += 1)", "Uses print( ) with parentheses"]]
+  ];
+  var LONG = [
+    ["Your class is moving from block code to Python. Write a short guide for a Grade 7 student that explains what changes and what stays the same. Use at least one example of block code and the same code in Python.", "A strong answer explains that the ideas stay the same (sequences, loops, conditionals, variables), but the way they are written changes. Blocks are dragged and snapped, while Python is typed and must follow syntax rules such as colons, indentation, quotation marks and lowercase keywords. A good example shows a repeat block next to for i in range( ):, with the inside lines indented. It mentions that text gives more control and can build more complex programs, but that small mistakes cause syntax errors.", ["Ideas stay the same", "Way of writing changes (typing, syntax)", "Accurate side-by-side example", "Mentions control and complexity", "Mentions syntax errors"]],
+    ["Choose a task from your day, such as packing for a ski trip at Rabbit Hill or checking the bus schedule. Write pseudocode for it with at least one IF and one loop. Then write the first three lines in Python or JavaScript.", "A strong answer has clear steps in order, uses keywords such as SET, IF, THEN, ELSE and REPEAT, indents the steps inside the IF and the loop, and ends each with END IF or END REPEAT. The code lines follow the chosen language’s syntax exactly.", ["Steps in a sensible order", "At least one IF and one loop", "Indentation inside IF and loop", "Code follows the language’s syntax"]],
+    ["Some people say every student should skip blocks and start with text code. Others say blocks are the best start. Take a position and support it.", "A strong answer takes a clear side and supports it with accurate reasons. For blocks: fewer syntax errors, quicker results, easier to see structure. For text: greater control, used for real complex programs, builds typing and debugging skills. It considers the other side and may suggest a bridge, such as tools that switch between blocks and text.", ["Clear position", "Accurate reasons from the lessons", "Considers the other side", "Uses examples"]],
+    ["Compare how Python, JavaScript and Java would print the score after a loop that adds 5 three times. Explain the syntax differences you notice.", "Python: score = 0, for i in range(3): with score = score + 5 indented, then print(\"Score:\", score). JavaScript: let score = 0; then a for loop with braces and semicolons, then console.log(\"Score:\", score);. Java: int score = 0; then a for loop with braces, then System.out.println(\"Score: \" + score);. Differences include how variables are made (let, int, or just the name), how blocks are grouped (indentation or braces), how statements end (new line or semicolon), and the print instruction. All three print Score: 15.", ["Correct code in at least two languages", "Notes variable differences", "Notes grouping differences", "Notes statement endings and print instructions", "States the output"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      s.style.whiteSpace = "pre-line"; d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans", style: "white-space:pre-line"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["CS1.K1", "Text-based programming languages use words, phrases, numbers, and keyboard symbols to communicate instructions instead of the shapes and blocks that are used in visual block-based programming.", "Learn 1; Lab Bench 1 and 2; Sort It (deck 1); Flashcards; Quiz"],
+    ["CS1.K2", "Text-based programming languages provide greater control over how programs can be designed.", "Learn 2 and 5; Quiz; Written Review short 3, extended 3"],
+    ["CS1.K3", "Key features of text-based programming languages are\n• syntax\n• structure\n• complexity", "Learn 3, 4 and 5; Sort It (deck 2); Quiz; Written Review short 4"],
+    ["CS1.K4", "Each text-based programming language has its own syntax, a set of rules that governs the arrangement and combination of symbols to create a program.", "Learn 3; Lab Bench 1, 2 and 4; Quiz; Written Review short 2"],
+    ["CS1.K5", "Pseudocode is a step-by-step description of an algorithm that resembles the structure of a programming language.", "Learn 6; Lab Bench 3; Sort It (deck 1); Quiz; Written Review short 6"],
+    ["CS1.S1", "Compare sequences of visual block-based code to the same sequences expressed in various text-based programming languages.", "Learn 1 and 4; Lab Bench 1; Written Review extended 4"],
+    ["CS1.S2", "Convert a sequence of visual block-based code to a text-based programming language.", "Lab Bench 2; Quiz; Written Review short 9"],
+    ["CS1.S3", "Write instructions in pseudocode to describe a task.", "Learn 6; Lab Bench 3 (Parts A and B); Written Review extended 2"],
+    ["CS1.S4", "Identify common syntax of text-based programming languages.", "Learn 3; Lab Bench 1 and 4 (with syntax table); Quiz; Written Review short 7"],
+    ["CS1.S5", "Explain the purpose of a simple sequence of text-based code.", "Lab Bench 5 (trace and purpose); Quiz; Written Review short 8"]
+  ];
+  var NOTES = [
+    "CS1.K1: blocks also contain words and numbers, so the lab teaches the difference as typing words and symbols versus choosing and snapping shapes.",
+    "CS1.K2: “greater control” is taught as setting exact details and using libraries, files and data structures, with the trade-off that typed code allows more errors. Microsoft MakeCode is named once as a tool that switches between blocks and text.",
+    "CS1.K3: the draft names syntax, structure and complexity without defining them. The lab defines structure as how code is organized (order, indentation or braces, functions) and complexity as how many connected parts a program has. Program sizes in Lesson 5 are rough orders of magnitude only.",
+    "CS1.K4: examples use Python 3, JavaScript and Java fragments (Java lines are shown as if inside a main method). JavaScript semicolons are taught as usual style, since the language can often insert them. Error messages match recent Python 3 versions; wording differs slightly in older versions.",
+    "CS1.K5: pseudocode has no single standard. Capitalized keywords are taught as a common convention, not a rule.",
+    "Examples: the recess temperature rule, the password length rule and all practice programs are made up for practice. Comments and variable names can be written in French or other languages, but keywords stay in English in these languages."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

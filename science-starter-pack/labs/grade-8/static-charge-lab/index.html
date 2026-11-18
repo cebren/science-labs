@@ -1,0 +1,1481 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-8/static-charge-lab/"><meta name="description" content="Static electricity accumulates and can be discharged, which results in the transfer of energy."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Static Charge Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a charge bench. Sticky tab strip, then lessons that pair a short reading column with a model: an atom counter, a rubbing test, a force table, a charged balloon near a neutral object, a doorknob spark, static at work and a thundercloud. Red marks positive charge, violet marks electrons (negative), amber marks sparks. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#15212C; --muted:#53606D; --line:#D2D9E0;
+  --acc:#1D5FA8; --acc-soft:#DFEAF6;
+  --pos:#B5352B; --pos-soft:#F8E1DE; --neg:#5B3FA8; --neg-soft:#E8E2F6; --spark:#8A6200; --spark-fill:#F2C94C; --spark-soft:#FBF0D2;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --cloud:#C9D2DB; --cloud-dk:#8E9AA6; --ground:#7A8B5C; --sky:#E4ECF4;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --pos:#F2907F; --pos-soft:#3A1C18; --neg:#B9A2F2; --neg-soft:#241C3A; --spark:#F2C94C; --spark-fill:#F2C94C; --spark-soft:#3A2F12;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --cloud:#3A4652; --cloud-dk:#5C6A78; --ground:#56663E; --sky:#121B24;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --acc:#7DB0F0; --acc-soft:#18283C;
+  --pos:#F2907F; --pos-soft:#3A1C18; --neg:#B9A2F2; --neg-soft:#241C3A; --spark:#F2C94C; --spark-fill:#F2C94C; --spark-soft:#3A2F12;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --cloud:#3A4652; --cloud-dk:#5C6A78; --ground:#56663E; --sky:#121B24;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--acc)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--acc)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ps{color:var(--pos)} header h1 .ng{color:var(--neg)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--acc-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--acc)}
+.warnbox{background:var(--spark-soft);border-radius:8px;padding:10px 12px;font-size:.93rem}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.pos{color:var(--pos);font-weight:700} .neg{color:var(--neg);font-weight:700}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.two>*{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .ptxt{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--pos)}
+svg .ntxt{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--neg)}
+svg [tabindex]{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+select{width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--neg);border-radius:7px;transition:width .3s ease}
+.meter.sp i{background:var(--spark-fill)}
+.steps{display:grid;gap:6px;padding-left:0;counter-reset:st}
+.steps li{list-style:none;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px 8px 40px;position:relative;font-size:.93rem;counter-increment:st}
+.steps li::before{content:counter(st);position:absolute;left:10px;top:8px;width:20px;height:20px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);font-family:var(--f-mono);font-size:.72rem;display:grid;place-items:center}
+.steps li.on{border-color:var(--acc);background:var(--acc-soft)}
+.steps li.on::before{background:var(--acc);color:var(--surface);border-color:var(--acc)}
+.series{display:grid;gap:3px;font-size:.85rem}
+.series div{display:grid;grid-template-columns:2em minmax(0,1fr);gap:6px;border:1px solid var(--line);border-radius:6px;padding:3px 8px;background:var(--surface)}
+.series div b{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.series div.a{border-color:var(--pos);background:var(--pos-soft)}
+.series div.b{border-color:var(--neg);background:var(--neg-soft)}
+.series .end{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;border:0;background:none;padding:0;display:block}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:460px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;font-variant-numeric:tabular-nums}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.inv{grid-template-columns:minmax(0,1fr);padding:18px}}
+.inv>*{min-width:0}
+.inv .text{display:grid;gap:12px;align-content:start}
+.inv h3{font-size:1.3rem}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--good)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--acc)}
+.spark-anim{animation:flash .5s ease-out}
+@keyframes flash{0%{opacity:0}20%{opacity:1}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 8 · Energy: Stores, Static and Waves · EN2</div>
+    <h1><span class="ps">Static</span> <span class="ng">Charge</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Static electricity accumulates and can be discharged, which results in the transfer of energy. On a dry January day in Edmonton, a snap from a doorknob and a summer thunderstorm over the prairie come from the same idea: electrons pile up in one place, then rush back.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Seven short lessons in order. Each one has a model to try. Start with what charge is, then see how rubbing moves electrons, how charges push and pull, how a spark sends them back, and how the same idea powers machines and lightning.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Counting charges</span>
+      <div class="codes"><span class="code">EN2.K1</span></div>
+      <h3>Static electricity is a charge imbalance</h3>
+      <p>All matter is made of atoms. In the centre of each atom are <b>protons</b>, which have a <span class="pos">positive (+)</span> charge. Around the centre move <b>electrons</b>, which have a <span class="neg">negative (−)</span> charge. One proton and one electron carry the same amount of charge.</p>
+      <p>Most objects have exactly as many electrons as protons. The charges cancel, so the object is <b>neutral</b>.</p>
+      <p>Protons are locked inside the centre of the atom. Electrons on the outside can be moved. When an object gains extra electrons, it becomes <b>negatively charged</b>. When it loses electrons, it has more protons than electrons, so it becomes <b>positively charged</b>.</p>
+      <p><b>Static electricity</b> (also called <b>electrostatic charge</b>) is a build-up of charge that stays on the surface of a material. Static means staying still: the extra or missing electrons stay where they are until something lets them move.</p>
+      <div class="key"><b>Remember:</b> only electrons move. Negative means extra electrons. Positive means missing electrons.</div>
+    </div>
+    <div class="model">
+      <h4>Model: an atom’s charge count</h4>
+      <p class="hint">This simple atom has 4 protons. Add or remove electrons and watch the net charge.</p>
+      <div class="svgbox"><svg id="atomSvg" viewBox="0 0 360 220" role="img" aria-label="Atom with protons in the centre and electrons around it"></svg></div>
+      <div class="row">
+        <button class="btn ghost" id="atAdd" type="button">Add an electron</button>
+        <button class="btn ghost" id="atRem" type="button">Remove an electron</button>
+        <button class="btn ghost" id="atReset" type="button">Reset</button>
+      </div>
+      <div class="stats" id="atStats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Rub, then separate</span>
+      <div class="codes"><span class="code">EN2.K2</span><span class="code">EN2.S2</span></div>
+      <h3>Rubbing moves electrons from one surface to another</h3>
+      <p>When two different materials touch and are pulled apart, some electrons move from one surface to the other. Rubbing makes many more points of contact, so more electrons move.</p>
+      <ul>
+        <li>The material that <b>loses electrons</b> becomes <span class="pos">positively charged</span>.</li>
+        <li>The material that <b>gains electrons</b> becomes <span class="neg">negatively charged</span>.</li>
+      </ul>
+      <p>The two charges are equal in size. No charge is made or destroyed. Electrons only move from one place to another.</p>
+      <p>Which material gains electrons? Scientists list materials in a <b>rubbing series</b> (the triboelectric series). A material lower on the list holds electrons more tightly, so it takes electrons from a material higher on the list.</p>
+      <p class="note">Real results change with humidity, dirt and how hard you rub. Different books order some materials a little differently. Use the list as a guide, not a rule.</p>
+    </div>
+    <div class="model">
+      <h4>Model: the rubbing test</h4>
+      <div class="two">
+        <label class="field" for="rubA">Material A<select id="rubA"></select></label>
+        <label class="field" for="rubB">Material B<select id="rubB"></select></label>
+      </div>
+      <div class="svgbox"><svg id="rubSvg" viewBox="0 0 520 210" role="img" aria-label="Two materials showing their charges"></svg></div>
+      <div class="row">
+        <button class="btn" id="rubGo" type="button">Rub them together</button>
+        <button class="btn ghost" id="rubReset" type="button">Start over</button>
+      </div>
+      <div class="detail" id="rubOut" aria-live="polite"></div>
+      <details><summary class="hint">Show the rubbing series</summary><div class="series" id="seriesList"></div></details>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Push and pull</span>
+      <div class="codes"><span class="code">EN2.K3</span><span class="code">EN2.S2</span></div>
+      <h3>How charged materials interact</h3>
+      <p>Charged objects push or pull on each other without touching. There are three rules.</p>
+      <ul>
+        <li><b>Like charges repel.</b> Two positives push apart. Two negatives push apart.</li>
+        <li><b>Unlike charges attract.</b> A positive and a negative pull together.</li>
+        <li><b>A charged object attracts a neutral object.</b> This happens by <b>induction</b>, which you will see in Lesson 4.</li>
+      </ul>
+      <p>The force gets stronger as the objects get closer. Two balloons rubbed on the same hair both become negative, so they push away from each other.</p>
+      <div class="key"><b>Test for charge:</b> attraction can happen with a neutral object, but only two charged objects with the same charge can repel. Repelling is the sure sign that an object is charged.</div>
+    </div>
+    <div class="model">
+      <h4>Model: choose two charges</h4>
+      <p class="hint mono">Object A</p>
+      <div class="chips" id="intA" role="group" aria-label="Charge on object A"></div>
+      <p class="hint mono">Object B</p>
+      <div class="chips" id="intB" role="group" aria-label="Charge on object B"></div>
+      <div class="svgbox"><svg id="intSvg" viewBox="0 0 520 200" role="img" aria-label="Two objects and the force between them"></svg></div>
+      <div class="detail" id="intOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Charged meets neutral</span>
+      <div class="codes"><span class="code">EN2.K3</span></div>
+      <h3>Induction: why a balloon sticks to a wall</h3>
+      <p>A neutral object has equal positive and negative charge. So why does a charged balloon pull on it?</p>
+      <p>Bring a negative balloon close. Its extra electrons push on the electrons in the neutral object.</p>
+      <ul>
+        <li>In a <b>conductor</b>, such as a metal can, electrons move easily. Many of them slide to the far side. The near side is left positive.</li>
+        <li>In an <b>insulator</b>, such as paper or a wall, electrons cannot travel far. Inside each atom they shift a tiny bit away from the balloon. The near surface ends up slightly positive.</li>
+      </ul>
+      <p>The object is still neutral overall. The charge has only been rearranged. This is called an <b>induced charge</b>. The near side is closer to the balloon than the far side, so the pull wins over the push. The neutral object is attracted.</p>
+      <div class="key"><b>Remember:</b> induction rearranges charge. It does not add or remove electrons.</div>
+    </div>
+    <div class="model">
+      <h4>Model: bring the balloon closer</h4>
+      <div class="chips" id="indMat" role="group" aria-label="Choose the neutral object"></div>
+      <label class="field" for="indD">Distance from balloon: <span id="indDOut" class="mono">6 cm</span>
+        <input type="range" id="indD" min="1" max="10" step="1" value="6"></label>
+      <div class="svgbox"><svg id="indSvg" viewBox="0 0 520 210" role="img" aria-label="Charged balloon near a neutral object"></svg></div>
+      <div><p class="hint">Strength of attraction (model)</p><div class="meter"><i id="indBar" style="width:20%"></i></div></div>
+      <div class="detail" id="indOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Let it go</span>
+      <div class="codes"><span class="code">EN2.K4</span><span class="code">EN2.S1</span></div>
+      <h3>Discharge: sparks send electrons back</h3>
+      <p>Charge built up on an insulator stays put. To get rid of it, electrons need a path. A <b>conductor</b>, such as metal or your body, gives them that path.</p>
+      <p>Shuffle across a carpet in socks and you can pick up extra electrons. Reach for a metal doorknob. Just before your finger touches, the electrons jump across the tiny air gap. That jump is a <b>spark</b>. Losing the extra charge this way is called <b>discharge</b>.</p>
+      <p>A spark is an energy transfer. The energy stored in the separated charges is transferred as <b>light</b> (the flash), <b>sound</b> (the snap) and <b>heating</b> of the air. You feel it because the moving charge stimulates nerves in your finger.</p>
+      <p>Charge can also leak away quietly. Damp air carries charge away slowly, which is why shocks are much more common in dry Alberta winters than in humid summers. A wire to the ground, called <b>grounding</b>, lets charge flow away safely.</p>
+      <div class="warnbox"><b>Safety:</b> at the gas station, touch a metal part of the car away from the nozzle before you pick up the pump. This discharges you safely before you get near fuel vapour.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the doorknob spark</h4>
+      <div class="chips" id="airChips" role="group" aria-label="Choose the air"></div>
+      <label class="field" for="stepR">Steps across the carpet: <span id="stepOut" class="mono">12</span>
+        <input type="range" id="stepR" min="0" max="30" step="1" value="12"></label>
+      <div><p class="hint">Extra electrons on you (model units): <span id="chgOut" class="mono">0</span></p><div class="meter"><i id="chgBar" style="width:0%"></i></div></div>
+      <div class="svgbox"><svg id="sparkSvg" viewBox="0 0 520 200" role="img" aria-label="A hand reaching toward a metal doorknob"></svg></div>
+      <div class="row"><button class="btn" id="reachBtn" type="button">Reach for the doorknob</button><button class="btn ghost" id="sparkReset" type="button">Step back</button></div>
+      <div class="detail" id="sparkOut" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Static at work</span>
+      <div class="codes"><span class="code">EN2.K1</span><span class="code">EN2.K3</span></div>
+      <h3>Machines that use static electricity</h3>
+      <p>Static electricity is not only a nuisance. Engineers use the attraction between unlike charges to move tiny particles exactly where they want them.</p>
+      <ul>
+        <li><b>Laser printers</b> place toner powder in the shape of letters.</li>
+        <li><b>Paint sprayers</b> pull paint droplets onto a car body or a bike frame.</li>
+        <li><b>Air filters</b> pull dust and smoke out of air, from home furnace filters to factory smokestacks.</li>
+      </ul>
+      <p>Each one follows the same plan: give particles a charge, then use an oppositely charged surface to attract them.</p>
+    </div>
+    <div class="model">
+      <h4>Model: step through a machine</h4>
+      <div class="chips" id="techChips" role="group" aria-label="Choose a machine"></div>
+      <div class="svgbox"><svg id="techSvg" viewBox="0 0 520 170" role="img" aria-label="Diagram of the machine"></svg></div>
+      <ol class="steps" id="techSteps"></ol>
+      <div class="row"><button class="btn ghost" id="techPrev" type="button">Back</button><button class="btn" id="techNext" type="button">Next step</button></div>
+      <p class="detail" id="techKey" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Nature’s biggest spark</span>
+      <div class="codes"><span class="code">EN2.K5</span><span class="code">EN2.S3</span></div>
+      <h3>Lightning is static discharge</h3>
+      <p>On a hot summer afternoon over the Alberta prairie, tall thunderclouds (cumulonimbus clouds) build up. Strong rising air carries water droplets and ice up through the cloud.</p>
+      <p>Inside, small ice crystals rise while heavier soft hail, called <b>graupel</b>, falls. When they collide, electrons move between them. The light ice crystals usually end up positive and are carried to the top of the cloud. The graupel usually ends up negative and gathers lower in the cloud.</p>
+      <p>The negative cloud base repels electrons in the ground below, so the ground surface becomes positive by induction. When the charge difference is big enough, the air can no longer insulate. A giant spark jumps: <b>lightning</b>. Most lightning stays inside a cloud or goes between clouds. Some strikes the ground.</p>
+      <p>The flash heats the air to about 30 000 °C, which is hotter than the surface of the Sun. The air expands so fast that it makes the boom we call <b>thunder</b>.</p>
+      <div class="warnbox"><b>Safety:</b> when thunder roars, go indoors. Stay inside until 30 minutes after the last thunder you hear.</div>
+    </div>
+    <div class="model">
+      <h4>Model: inside a thunderstorm</h4>
+      <div class="chips" id="ltChips" role="group" aria-label="Choose a stage of the storm"></div>
+      <div class="svgbox"><svg id="ltSvg" viewBox="0 0 520 300" role="img" aria-label="Thundercloud and ground"></svg></div>
+      <div class="detail" id="ltOut" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four virtual investigations. Test materials, predict how charges interact, count electrons and track a storm. Results in these models are made up for practice.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="eyebrow">Investigation 1 · EN2.S2 · EN2.S1</span>
+      <h3>The rubbing test</h3>
+      <p><b>Question:</b> when two materials are rubbed together, which one gains electrons?</p>
+      <p>Choose two materials. Predict which one becomes negative. Then run the test. Each trial is added to your data table.</p>
+      <div class="worked"><b>Worked example</b><span>Glass rubbed with silk. Silk is lower on the rubbing series, so silk pulls electrons from the glass.</span><span>Silk: gains electrons, becomes negative. Glass: loses electrons, becomes positive.</span></div>
+    </div>
+    <div class="model">
+      <div class="two">
+        <label class="field" for="b1A">Material A<select id="b1A"></select></label>
+        <label class="field" for="b1B">Material B<select id="b1B"></select></label>
+      </div>
+      <p class="hint mono">My prediction: which becomes negative?</p>
+      <div class="chips" id="b1Pred" role="group" aria-label="Prediction"></div>
+      <div class="row"><button class="btn" id="b1Test" type="button">Run the test</button><button class="btn ghost" id="b1Rand" type="button">Random pair</button><button class="btn ghost" id="b1Clear" type="button">Clear table</button></div>
+      <p class="fb" id="b1Fb" aria-live="polite"></p>
+      <div class="tablebox"><table class="dt"><thead><tr><th>Trial</th><th>Materials</th><th>Negative</th><th>Positive</th><th>Prediction</th></tr></thead><tbody id="b1Body"></tbody></table></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="eyebrow">Investigation 2 · EN2.S2</span>
+      <h3>The sticky tape test</h3>
+      <p>Press one strip of tape onto a table (the bottom tape, B). Press a second strip on top of it (the top tape, T). Pull them apart quickly. One strip pulls electrons from the other, so <b>T and B end up with opposite charges</b>.</p>
+      <p>Hang the strips from a ruler. Predict what each pair will do, then test it. A strip of paper (P) is neutral.</p>
+      <div class="key"><b>Why this works:</b> repelling only happens between like charges. Attraction happens with unlike charges or with a neutral object.</div>
+    </div>
+    <div class="model">
+      <p class="hint mono" id="b2Count">Trial 1</p>
+      <div class="svgbox"><svg id="b2Svg" viewBox="0 0 420 200" role="img" aria-label="Two hanging strips"></svg></div>
+      <p id="b2Q" class="fb"></p>
+      <div class="chips" id="b2Pred" role="group" aria-label="Your prediction"></div>
+      <p class="fb" id="b2Fb" aria-live="polite"></p>
+      <div class="row"><button class="btn" id="b2Next" type="button">Next pair</button></div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="eyebrow">Investigation 3 · EN2.S1 · EN2.K2</span>
+      <h3>Count the charge</h3>
+      <p>The net charge of an object compares its protons and electrons:</p>
+      <p class="formula">net charge = number of protons − number of electrons</p>
+      <p>A positive answer means missing electrons. A negative answer means extra electrons. Zero means neutral. Real objects have trillions of particles, so the numbers here are tiny made-up counts for practice.</p>
+      <div class="worked"><b>Worked example</b><span>A balloon has 6000 protons and 6000 electrons. Rubbed on hair, it gains 250 electrons.</span><span>Electrons: 6000 + 250 = 6250</span><span>Net charge: 6000 − 6250 = −250, so the balloon is negative.</span><span>The hair lost 250 electrons, so its net charge is +250.</span></div>
+    </div>
+    <div class="model">
+      <p class="detail" id="b3Q" aria-live="polite"></p>
+      <label class="field" for="b3In">Net charge (use − for negative)<input type="text" id="b3In" inputmode="numeric" autocomplete="off"></label>
+      <div class="row"><button class="btn" id="b3Check" type="button">Check</button><button class="btn ghost" id="b3New" type="button">New problem</button></div>
+      <p class="fb" id="b3Fb" aria-live="polite"></p>
+      <p class="hint mono" id="b3Score"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="eyebrow">Investigation 4 · EN2.S3 · EN2.K5</span>
+      <h3>Flash to bang: how far is the storm?</h3>
+      <p>Light from a lightning flash reaches you almost instantly. Thunder travels at the speed of sound, about 340 metres per second. Count the seconds from the flash to the bang and you can find the distance:</p>
+      <p class="formula">distance = speed of sound × time<br>d = v × t &nbsp;(v ≈ 340 m/s)</p>
+      <p>A quick rule: about 3 seconds for every kilometre.</p>
+      <div class="worked"><b>Worked example</b><span>You count 9 seconds from flash to thunder.</span><span>d = 340 m/s × 9 s = 3060 m, about 3.1 km.</span><span>If you can hear thunder, you are close enough to be struck. Go indoors.</span></div>
+    </div>
+    <div class="model">
+      <label class="field" for="fbS">Seconds from flash to bang: <span id="fbSOut" class="mono">9 s</span>
+        <input type="range" id="fbS" min="1" max="30" step="1" value="9"></label>
+      <div class="stats" id="fbStats" aria-live="polite"></div>
+      <p class="detail" id="fbQ"></p>
+      <label class="field" for="fbIn">Distance in kilometres (one decimal place)<input type="text" id="fbIn" inputmode="decimal" autocomplete="off"></label>
+      <div class="row"><button class="btn" id="fbCheck" type="button">Check</button><button class="btn ghost" id="fbNew" type="button">New problem</button></div>
+      <p class="fb" id="fbFb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="eyebrow">Research planner · EN2.S3</span>
+      <h3>Research: how does lightning come from static electricity?</h3>
+      <p>Use this planner to research lightning from reliable sources, such as Environment and Climate Change Canada, a science museum or a university weather department. Answer each question in your own words.</p>
+      <p class="hint">Your notes stay on this device.</p>
+    </div>
+    <div class="model" id="resArea"></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 8 EN2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>EN2.K1:</b> the draft defines static electricity as “the accumulation of electrons on the surface of a material”. The lab teaches it as a build-up of charge imbalance on a surface: extra electrons give a negative charge and missing electrons give a positive charge. Students are told directly that positive charge never comes from gaining protons. The equipment list (laser printers, paint sprayers, air filters) is described in simplified steps in Lesson 6.</li>
+      <li><b>EN2.K2:</b> rubbing is taught as contact and separation that moves electrons between surfaces, with rubbing increasing contact. Charge is conserved: the two objects get equal and opposite charges. The rubbing series used (dry skin, glass, hair, nylon, wool, silk, paper, cotton, rubber balloon, polyester, plastic wrap, vinyl, Teflon) is a common classroom order; sources disagree on some positions and real results depend on humidity and surface condition. Walking on carpet is modelled as the person gaining electrons, which depends on the shoe and carpet materials.</li>
+      <li><b>EN2.K3:</b> “charged objects are attracted to neutral objects (induction)” is taught as induced charge separation. In conductors, electrons move across the object. In insulators, charge shifts within atoms and molecules (polarization, named only once). The near side is oppositely charged and closer, so attraction outweighs repulsion. The object stays neutral overall. The attraction strength meter is a qualitative model only.</li>
+      <li><b>EN2.K4:</b> the draft says discharge happens “when a conductor touches the material”. The lab teaches that the spark jumps across a small air gap just before contact, and that charge can also leak away without a spark (humid air, grounding). The spark is taught as an energy transfer by light, sound and heating, linking to the understanding statement. Gas station advice reflects common Canadian safety guidance; please verify current wording.</li>
+      <li><b>EN2.K5 and EN2.S3:</b> charge separation is taught with the ice crystal and graupel collision model, which is the leading explanation and is still researched. Cloud tops are usually positive and the lower cloud usually negative; real storms are more complex. Lightning temperature is rounded to about 30 000 °C (sources give roughly 20 000 °C to 30 000 °C). Flash to bang uses 340 m/s and about 3 seconds per kilometre. The safety rule (indoors when thunder roars, wait 30 minutes) matches Environment and Climate Change Canada guidance; please verify.</li>
+      <li><b>Numbers:</b> electron counts, carpet charge units, spark gaps and tape test outcomes are made-up model values for practice and are labelled that way. Lightning can be a sensitive topic for students who have experienced storms, fires or injuries.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 8 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g8-en2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function stat(box, items){
+  clear(box);
+  items.forEach(function(it){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, it[0])); d.appendChild(el("b", null, it[1])); box.appendChild(d); });
+}
+function parseNum(s){ return parseFloat(String(s).replace(/−/g, "-").replace(/,/g, ".").replace(/\s/g, "")); }
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+// draw a + (proton) or − (electron) marker
+function plus(g, x, y, r){ r = r || 8; g.appendChild(sv("circle", {cx: x, cy: y, r: r, fill: "var(--pos-soft)", stroke: "var(--pos)", "stroke-width": 1.5})); g.appendChild(sv("text", {x: x, y: y + 4, "text-anchor": "middle", "class": "ptxt"}, "+")); }
+function minus(g, x, y, r){ r = r || 7; g.appendChild(sv("circle", {cx: x, cy: y, r: r, fill: "var(--neg-soft)", stroke: "var(--neg)", "stroke-width": 1.5})); g.appendChild(sv("text", {x: x, y: y + 4, "text-anchor": "middle", "class": "ntxt"}, "−")); }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Rubbing series (top loses electrons, bottom gains) ---------- */
+var SERIES = ["Dry skin", "Glass", "Human hair", "Nylon", "Wool", "Silk", "Paper", "Cotton", "Rubber balloon", "Polyester", "Plastic wrap", "Vinyl (PVC)", "Teflon"];
+function fillSelect(s, idx){ SERIES.forEach(function(m, i){ var o = el("option", {value: i}, m); s.appendChild(o); }); s.value = idx; }
+(function(){
+  var box = $("seriesList");
+  box.appendChild(el("span", {"class": "end"}, "Top: tends to lose electrons (becomes +)"));
+  SERIES.forEach(function(m, i){ var d = el("div", {"data-i": i}); d.appendChild(el("b", null, String(i + 1))); d.appendChild(el("span", null, m)); box.appendChild(d); });
+  box.appendChild(el("span", {"class": "end"}, "Bottom: tends to gain electrons (becomes −)"));
+})();
+
+/* ---------- Lesson 1: atom ---------- */
+(function(){
+  var svg = $("atomSvg"), n = 4;
+  function draw(){
+    clear(svg);
+    svg.appendChild(sv("circle", {cx: 180, cy: 110, r: 62, fill: "none", stroke: "var(--line)", "stroke-width": 1.5, "stroke-dasharray": "4 4"}));
+    svg.appendChild(sv("circle", {cx: 180, cy: 110, r: 92, fill: "none", stroke: "var(--line)", "stroke-width": 1.5, "stroke-dasharray": "4 4"}));
+    var g = sv("g");
+    [[170,100],[190,100],[170,120],[190,120]].forEach(function(p){ plus(g, p[0], p[1], 9); });
+    for (var i = 0; i < n; i++) {
+      var ring = i < 2 ? 62 : 92, k = i < 2 ? i : i - 2, tot = i < 2 ? Math.min(n, 2) : n - 2;
+      var a = (k / tot) * Math.PI * 2 - Math.PI / 2 + (i < 2 ? 0.3 : 0);
+      minus(g, 180 + ring * Math.cos(a), 110 + ring * Math.sin(a), 8);
+    }
+    svg.appendChild(g);
+    var net = 4 - n;
+    var label = net === 0 ? "Neutral" : net > 0 ? "Positive" : "Negative";
+    svg.appendChild(sv("text", {x: 12, y: 22, "class": "lbl"}, label + (net === 0 ? "" : " (" + (net > 0 ? "+" : "−") + Math.abs(net) + ")")));
+    stat($("atStats"), [["Protons", "4"], ["Electrons", String(n)], ["Net charge", (net > 0 ? "+" : net < 0 ? "−" : "") + Math.abs(net)], ["Atom is", label]]);
+    svg.setAttribute("aria-label", "Atom with 4 protons and " + n + " electrons. " + label + ".");
+  }
+  $("atAdd").addEventListener("click", function(){ if (n < 7) { n++; draw(); } });
+  $("atRem").addEventListener("click", function(){ if (n > 1) { n--; draw(); } });
+  $("atReset").addEventListener("click", function(){ n = 4; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 2: rubbing ---------- */
+(function(){
+  var sA = $("rubA"), sB = $("rubB"), svg = $("rubSvg"), t = 0;
+  fillSelect(sA, 2); fillSelect(sB, 8);
+  function block(g, x, label, extra, gainerSide){
+    g.appendChild(sv("rect", {x: x, y: 30, width: 200, height: 140, rx: 10, fill: "var(--surface-2)", stroke: "var(--line)", "stroke-width": 1.5}));
+    g.appendChild(sv("text", {x: x + 100, y: 22, "text-anchor": "middle", "class": "lbl"}, label));
+    var pts = [];
+    for (var r = 0; r < 2; r++) for (var c = 0; c < 4; c++) pts.push([x + 30 + c * 46, 62 + r * 50]);
+    pts.forEach(function(p){ plus(g, p[0], p[1], 9); });
+    var ne = 8 + extra, shown = 0;
+    // electrons that stay: beside protons
+    var base = Math.min(8, ne);
+    for (var i = 0; i < base; i++) { minus(g, pts[i][0] + 16, pts[i][1] + 16, 7); shown++; }
+    // extra electrons collect on the contact surface
+    for (var j = 0; j < ne - 8; j++) {
+      var sx = gainerSide === "left" ? x + 12 : x + 188;
+      minus(g, sx, 48 + j * 22, 7);
+    }
+    var net = -extra;
+    g.appendChild(sv("text", {x: x + 100, y: 192, "text-anchor": "middle", "class": "lbl"}, net === 0 ? "Neutral" : net > 0 ? "Positive (+" + net + ")" : "Negative (−" + (-net) + ")"));
+  }
+  function draw(){
+    var a = +sA.value, b = +sB.value;
+    clear(svg);
+    var g = sv("g"); svg.appendChild(g);
+    var exA = 0, exB = 0;
+    if (a < b) { exA = -t; exB = t; } else if (b < a) { exA = t; exB = -t; }
+    block(g, 40, "A: " + SERIES[a], exA, "left");
+    block(g, 280, "B: " + SERIES[b], exB, "left");
+    Array.prototype.forEach.call(document.querySelectorAll("#seriesList div"), function(d){ var i = +d.dataset.i; d.className = i === a ? "a" : i === b ? "b" : ""; });
+    var out = $("rubOut");
+    if (t === 0) { detail(out, "Ready", ["Both materials start neutral: 8 protons and 8 electrons each in this model. Press Rub them together."]); return; }
+    if (a === b) { detail(out, "No change", ["Both are " + SERIES[a] + ". The same material holds electrons equally tightly, so almost no electrons move."]); return; }
+    var gain = a > b ? a : b, lose = a > b ? b : a;
+    detail(out, SERIES[gain] + " gains " + t + " electron" + (t > 1 ? "s" : ""), [
+      SERIES[gain] + " is lower on the rubbing series, so it pulls electrons from " + SERIES[lose] + ".",
+      SERIES[gain] + " becomes negative (−" + t + "). " + SERIES[lose] + " becomes positive (+" + t + "). The total charge is still zero: no charge was made, it only moved.",
+      "The extra electrons stay on the surface where the materials touched."
+    ], "Rub " + t);
+    svg.setAttribute("aria-label", SERIES[gain] + " negative " + t + ", " + SERIES[lose] + " positive " + t);
+  }
+  $("rubGo").addEventListener("click", function(){ if (t < 6) t += 2; draw(); });
+  $("rubReset").addEventListener("click", function(){ t = 0; draw(); });
+  sA.addEventListener("change", function(){ t = 0; draw(); });
+  sB.addEventListener("change", function(){ t = 0; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 3: interactions ---------- */
+(function(){
+  var A = 1, B = -1, svg = $("intSvg");
+  var opts = [{label: "Positive (+)", v: 1}, {label: "Negative (−)", v: -1}, {label: "Neutral", v: 0}];
+  function ball(g, x, v, other){
+    g.appendChild(sv("circle", {cx: x, cy: 100, r: 48, fill: v > 0 ? "var(--pos-soft)" : v < 0 ? "var(--neg-soft)" : "var(--surface-2)", stroke: v > 0 ? "var(--pos)" : v < 0 ? "var(--neg)" : "var(--muted)", "stroke-width": 2}));
+    if (v > 0) { plus(g, x - 18, 86); plus(g, x + 18, 86); plus(g, x, 116); }
+    else if (v < 0) { minus(g, x - 18, 86); minus(g, x + 18, 86); minus(g, x, 116); }
+    else if (other !== 0) {
+      // induced: side near the charged object gets opposite sign
+      var nearX = x + (x < 260 ? 26 : -26), farX = x - (x < 260 ? 26 : -26);
+      if (other < 0) { plus(g, nearX, 82); plus(g, nearX, 118); minus(g, farX, 82); minus(g, farX, 118); }
+      else { minus(g, nearX, 82); minus(g, nearX, 118); plus(g, farX, 82); plus(g, farX, 118); }
+    } else { plus(g, x - 16, 90); minus(g, x + 16, 90); plus(g, x + 16, 116); minus(g, x - 16, 116); }
+  }
+  function arrow(g, x1, x2){
+    g.appendChild(sv("line", {x1: x1, y1: 100, x2: x2, y2: 100, stroke: "var(--ink)", "stroke-width": 3}));
+    var d = x2 > x1 ? 1 : -1;
+    g.appendChild(sv("path", {d: "M" + x2 + " 100 l" + (-10 * d) + " -7 v14 z", fill: "var(--ink)"}));
+  }
+  function draw(){
+    clear(svg); var g = sv("g"); svg.appendChild(g);
+    ball(g, 140, A, B); ball(g, 380, B, A);
+    g.appendChild(sv("text", {x: 140, y: 172, "text-anchor": "middle", "class": "lbl"}, "A"));
+    g.appendChild(sv("text", {x: 380, y: 172, "text-anchor": "middle", "class": "lbl"}, "B"));
+    var res, why;
+    if (A === 0 && B === 0) { res = "No force"; why = "Both objects are neutral. Neither has extra or missing electrons, so there is no push or pull."; }
+    else if (A === 0 || B === 0) {
+      res = "Attract (induction)"; arrow(g, 200, 240); arrow(g, 320, 280);
+      why = "The charged object rearranges the charge in the neutral one. Its near side gets the opposite charge, and that side is closer, so the pull wins. The neutral object is still neutral overall.";
+    } else if (A === B) { res = "Repel"; arrow(g, 82, 30); arrow(g, 438, 490); why = "Like charges repel. Both objects have the same kind of charge, so they push apart."; }
+    else { res = "Attract"; arrow(g, 200, 240); arrow(g, 320, 280); why = "Unlike charges attract. A positive and a negative pull toward each other."; }
+    g.appendChild(sv("text", {x: 260, y: 30, "text-anchor": "middle", "class": "lbl"}, res));
+    detail($("intOut"), res, [why]);
+    svg.setAttribute("aria-label", "Object A " + ["negative","neutral","positive"][A + 1] + ", object B " + ["negative","neutral","positive"][B + 1] + ": " + res);
+  }
+  chipGroup($("intA"), opts, function(o){ A = o.v; draw(); }, 0);
+  chipGroup($("intB"), opts, function(o){ B = o.v; draw(); }, 1);
+})();
+
+/* ---------- Lesson 4: induction ---------- */
+(function(){
+  var mat = 0, svg = $("indSvg"), r = $("indD");
+  function draw(){
+    var d = +r.value; $("indDOut").textContent = d + " cm";
+    clear(svg); var g = sv("g"); svg.appendChild(g);
+    var bx = 300 - d * 26 - 10;
+    // balloon
+    g.appendChild(sv("ellipse", {cx: bx, cy: 95, rx: 38, ry: 48, fill: "var(--neg-soft)", stroke: "var(--neg)", "stroke-width": 2}));
+    g.appendChild(sv("path", {d: "M" + bx + " 143 l-5 10 h10 z", fill: "var(--neg)"}));
+    g.appendChild(sv("path", {d: "M" + bx + " 153 q8 20 -4 40", fill: "none", stroke: "var(--muted)", "stroke-width": 1.5}));
+    [[-14,-20],[14,-20],[-18,6],[18,6],[0,28],[0,-4]].forEach(function(p){ minus(g, bx + p[0], 95 + p[1], 7); });
+    g.appendChild(sv("text", {x: bx, y: 30, "text-anchor": "middle", "class": "small"}, "charged balloon"));
+    // object
+    var ox = 330, s = 1 / d; // shift strength
+    g.appendChild(sv("rect", {x: ox, y: 40, width: 160, height: 120, rx: mat === 1 ? 14 : 4, fill: mat === 1 ? "var(--surface-2)" : "var(--surface)", stroke: "var(--muted)", "stroke-width": 2}));
+    g.appendChild(sv("text", {x: ox + 80, y: 30, "text-anchor": "middle", "class": "small"}, mat === 1 ? "neutral metal can (conductor)" : "neutral paper (insulator)"));
+    if (mat === 0) {
+      for (var rr = 0; rr < 3; rr++) for (var c = 0; c < 3; c++) {
+        var cx = ox + 32 + c * 48, cy = 66 + rr * 36, sh = Math.min(14, 30 * s);
+        g.appendChild(sv("ellipse", {cx: cx + sh / 2, cy: cy, rx: 14 + sh / 2, ry: 12, fill: "none", stroke: "var(--line)", "stroke-width": 1}));
+        plus(g, cx - 4, cy, 7); minus(g, cx + 8 + sh, cy, 6);
+      }
+    } else {
+      var moved = Math.round(Math.min(6, 9 * s * 2));
+      var pts = [];
+      for (var r2 = 0; r2 < 3; r2++) for (var c2 = 0; c2 < 3; c2++) pts.push([ox + 34 + c2 * 46, 66 + r2 * 36]);
+      pts.forEach(function(p){ plus(g, p[0], p[1], 7); });
+      var stay = 9 - moved;
+      for (var i = 0; i < stay; i++) minus(g, pts[i][0] + 14, pts[i][1] + 12, 6);
+      for (var j = 0; j < moved; j++) minus(g, ox + 148, 56 + j * 18, 6);
+    }
+    var strength = Math.round(Math.min(100, 100 * (mat === 1 ? 1.3 : 1) / (d * d) * 2.5));
+    $("indBar").style.width = Math.max(3, strength) + "%";
+    var lines = mat === 0
+      ? ["In the paper, electrons cannot travel. Inside each atom they shift a little away from the balloon. The near surface becomes slightly positive.", d <= 2 ? "This close, the pull is strong enough to lift a small scrap of paper." : "Move closer. The attraction grows quickly as the distance shrinks."]
+      : ["In the metal can, electrons move freely. Many slide to the far side, leaving the near side positive.", d <= 3 ? "This close, the can starts to roll toward the balloon." : "Move closer and the can is pulled harder."];
+    lines.push("Total charge on the object: still zero. It was rearranged, not changed.");
+    detail($("indOut"), "Induced charge", lines);
+    svg.setAttribute("aria-label", "Negative balloon " + d + " centimetres from neutral " + (mat ? "metal can" : "paper") + ". Near side becomes positive.");
+  }
+  chipGroup($("indMat"), [{label: "Paper (insulator)"}, {label: "Metal can (conductor)"}], function(o, i){ mat = i; draw(); }, 0);
+  r.addEventListener("input", draw);
+})();
+
+/* ---------- Lesson 5: spark ---------- */
+(function(){
+  var dry = true, svg = $("sparkSvg"), sr = $("stepR"), busy = false;
+  function charge(){ var st = +sr.value; return Math.round(Math.min(30, st * (dry ? 1 : 0.25))); }
+  function scene(handX, spark, q){
+    clear(svg); var g = sv("g"); svg.appendChild(g);
+    // door and knob
+    g.appendChild(sv("rect", {x: 400, y: 10, width: 110, height: 180, fill: "var(--surface-2)", stroke: "var(--line)", "stroke-width": 2}));
+    g.appendChild(sv("circle", {cx: 420, cy: 100, r: 14, fill: "var(--muted)", stroke: "var(--ink)", "stroke-width": 1.5}));
+    g.appendChild(sv("text", {x: 455, y: 140, "text-anchor": "middle", "class": "small"}, "metal knob"));
+    // hand (finger)
+    g.appendChild(sv("rect", {x: handX - 120, y: 86, width: 120, height: 28, rx: 14, fill: "var(--surface)", stroke: "var(--ink)", "stroke-width": 1.5}));
+    var shown = Math.min(8, Math.ceil(q / 4));
+    for (var i = 0; i < shown; i++) minus(g, handX - 14 - i * 13, 100, 6);
+    g.appendChild(sv("text", {x: handX - 60, y: 136, "text-anchor": "middle", "class": "small"}, "your finger"));
+    if (spark) {
+      var sx1 = handX + 2, sx2 = 405;
+      var p = "M" + sx1 + " 100";
+      var n = 6;
+      for (var k = 1; k <= n; k++) { var x = sx1 + (sx2 - sx1) * k / n; p += " L" + x + " " + (100 + (k === n ? 0 : (k % 2 ? -9 : 9))); }
+      var sp = sv("path", {d: p, fill: "none", stroke: "var(--spark-fill)", "stroke-width": 4, "stroke-linejoin": "round", "class": reduced ? "" : "spark-anim"});
+      g.appendChild(sp);
+      g.appendChild(sv("text", {x: (sx1 + sx2) / 2, y: 70, "text-anchor": "middle", "class": "lbl"}, "SNAP"));
+    }
+  }
+  function update(){
+    var q = charge();
+    $("stepOut").textContent = sr.value;
+    $("chgOut").textContent = q;
+    $("chgBar").style.width = (q / 30 * 100) + "%";
+    if (!busy) { scene(250, false, q); detail($("sparkOut"), "Charged up", [q === 0 ? "No extra electrons yet." : "You carry " + q + " units of extra electrons in this model. " + (dry ? "Dry air lets charge build up." : "Humid air carries much of the charge away as you walk.")]); }
+  }
+  function reach(){
+    if (busy) return;
+    var q = charge(), gap = q * 0.12; // made-up mm per unit
+    var end = q >= 4 ? 405 - Math.max(6, q * 2.2) : 404;
+    function finish(){
+      busy = false;
+      if (q >= 4) {
+        scene(end, true, q);
+        detail($("sparkOut"), "Spark!", [
+          "When your finger was about " + fmt(gap, 1) + " mm away (model value), the electrons jumped across the air to the knob.",
+          "Energy transfer: the stored charge was transferred as light (the flash), sound (the snap) and heating of the air. You felt it in your nerves.",
+          "Now you are neutral again. Touch the knob a second time and nothing happens."
+        ], "Discharge");
+      } else {
+        scene(end, false, 0);
+        detail($("sparkOut"), "No spark you can feel", [q === 0 ? "You had no extra charge to lose." : "Your small charge flowed away quietly when you touched the knob. Damp air had already carried most of it off.", "Try a dry winter day and more steps."]);
+      }
+      $("chgBar").style.width = "0%"; $("chgOut").textContent = "0";
+    }
+    busy = true;
+    if (reduced) { finish(); return; }
+    var x = 250, t0 = null;
+    function frame(ts){
+      if (t0 == null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / 700);
+      x = 250 + (end - 250) * k;
+      scene(x, false, q);
+      if (k < 1) requestAnimationFrame(frame); else finish();
+    }
+    requestAnimationFrame(frame);
+  }
+  chipGroup($("airChips"), [{label: "Dry winter day"}, {label: "Humid summer day"}], function(o, i){ dry = i === 0; update(); }, 0);
+  sr.addEventListener("input", function(){ busy = false; update(); });
+  $("reachBtn").addEventListener("click", reach);
+  $("sparkReset").addEventListener("click", function(){ busy = false; update(); });
+  update();
+})();
+
+/* ---------- Lesson 6: static at work ---------- */
+(function(){
+  var TECH = [
+    {label: "Laser printer", steps: [
+      "A light-sensitive drum is given an even negative charge.",
+      "A laser shines on the drum in the shape of the page. Where the light hits, the charge is removed.",
+      "Toner powder is given a charge. It sticks only to the parts of the drum that match the letters and pictures.",
+      "Paper with a strong opposite charge passes the drum and pulls the toner onto the paper.",
+      "Hot rollers melt the toner into the paper so it stays."
+    ], key: "Charged powder is placed exactly where it is needed. Attraction between unlike charges moves the toner onto the paper."},
+    {label: "Paint sprayer", steps: [
+      "The spray gun gives each paint droplet the same charge.",
+      "Like charges repel, so the droplets spread out into an even cloud.",
+      "The metal object being painted is grounded, so it is attracted to the charged droplets.",
+      "Droplets curve around the object and coat even the back side. Less paint is wasted."
+    ], key: "Like charges spread the paint evenly. Attraction pulls the paint onto the object, so less ends up in the air."},
+    {label: "Air filter", steps: [
+      "Dirty air or smoke flows into the filter.",
+      "Charged wires give dust and smoke particles an electric charge.",
+      "The particles pass between collecting plates with the opposite charge.",
+      "Unlike charges attract, so the particles stick to the plates and clean air flows out.",
+      "The plates are cleaned so they keep working. Big versions clean smoke from factory smokestacks."
+    ], key: "Particles too small for a normal screen can be pulled out of the air once they are charged."}
+  ];
+  var cur = 0, step = 0, svg = $("techSvg");
+  function drawSvg(){
+    clear(svg); var g = sv("g"); svg.appendChild(g);
+    var t = cur;
+    if (t === 0) {
+      g.appendChild(sv("circle", {cx: 150, cy: 85, r: 55, fill: "var(--surface-2)", stroke: "var(--muted)", "stroke-width": 2}));
+      g.appendChild(sv("text", {x: 150, y: 160, "text-anchor": "middle", "class": "small"}, "drum"));
+      for (var i = 0; i < 8; i++) { var a = i / 8 * Math.PI * 2; if (step >= 1 && (i === 1 || i === 2)) continue; if (step >= 0) minus(g, 150 + 42 * Math.cos(a), 85 + 42 * Math.sin(a), 6); }
+      if (step >= 1) g.appendChild(sv("line", {x1: 20, y1: 20, x2: 150 + 42 * Math.cos(1.2), y2: 85 + 42 * Math.sin(1.2), stroke: "var(--pos)", "stroke-width": 2.5, "stroke-dasharray": "6 4"}));
+      if (step >= 2) { for (var j = 1; j <= 2; j++) { var b = j / 8 * Math.PI * 2; g.appendChild(sv("circle", {cx: 150 + 58 * Math.cos(b), cy: 85 + 58 * Math.sin(b), r: 6, fill: "var(--ink)"})); } }
+      g.appendChild(sv("rect", {x: 300, y: 70, width: 190, height: step >= 3 ? 12 : 10, fill: "var(--surface)", stroke: "var(--muted)", "stroke-width": 1.5}));
+      g.appendChild(sv("text", {x: 395, y: 105, "text-anchor": "middle", "class": "small"}, step >= 4 ? "toner melted into paper" : "paper"));
+      if (step >= 3) { g.appendChild(sv("circle", {cx: 380, cy: 76, r: 5, fill: "var(--ink)"})); g.appendChild(sv("circle", {cx: 396, cy: 76, r: 5, fill: "var(--ink)"})); }
+    } else if (t === 1) {
+      g.appendChild(sv("rect", {x: 20, y: 70, width: 90, height: 30, rx: 6, fill: "var(--surface-2)", stroke: "var(--muted)", "stroke-width": 2}));
+      g.appendChild(sv("text", {x: 65, y: 125, "text-anchor": "middle", "class": "small"}, "spray gun"));
+      g.appendChild(sv("rect", {x: 400, y: 30, width: 80, height: 110, rx: 8, fill: step >= 3 ? "var(--acc-soft)" : "var(--surface-2)", stroke: "var(--muted)", "stroke-width": 2}));
+      g.appendChild(sv("text", {x: 440, y: 160, "text-anchor": "middle", "class": "small"}, "grounded object"));
+      var spread = step >= 1 ? 40 : 10;
+      for (var k = 0; k < 7; k++) { var x = 140 + k * 36, y = 85 + (k % 3 - 1) * spread * (k / 7); minus(g, x, y, 6); }
+    } else {
+      g.appendChild(sv("rect", {x: 160, y: 20, width: 200, height: 10, fill: "var(--pos-soft)", stroke: "var(--pos)"}));
+      g.appendChild(sv("rect", {x: 160, y: 140, width: 200, height: 10, fill: "var(--pos-soft)", stroke: "var(--pos)"}));
+      g.appendChild(sv("text", {x: 260, y: 166, "text-anchor": "middle", "class": "small"}, "positive collecting plates"));
+      g.appendChild(sv("text", {x: 60, y: 60, "text-anchor": "middle", "class": "small"}, "dirty air in"));
+      g.appendChild(sv("text", {x: 460, y: 60, "text-anchor": "middle", "class": "small"}, step >= 3 ? "clean air out" : ""));
+      for (var m = 0; m < 6; m++) {
+        var px = 40 + m * 22, py = 85 + (m % 2 ? 12 : -12);
+        if (step >= 3) { px = 190 + m * 30; py = m % 2 ? 132 : 38; }
+        if (step >= 1) minus(g, px, py, 6); else g.appendChild(sv("circle", {cx: px, cy: py, r: 5, fill: "var(--muted)"}));
+      }
+    }
+  }
+  function render(){
+    var T = TECH[cur], ol = $("techSteps"); clear(ol);
+    T.steps.forEach(function(s, i){ ol.appendChild(el("li", {"class": i === step ? "on" : ""}, s)); });
+    $("techKey").textContent = "Step " + (step + 1) + " of " + T.steps.length + ". " + (step === T.steps.length - 1 ? "Key idea: " + T.key : T.steps[step]);
+    $("techPrev").disabled = step === 0; $("techNext").disabled = step === T.steps.length - 1;
+    drawSvg();
+    svg.setAttribute("aria-label", T.label + " diagram, step " + (step + 1));
+  }
+  chipGroup($("techChips"), TECH, function(o, i){ cur = i; step = 0; render(); }, 0);
+  $("techNext").addEventListener("click", function(){ step++; render(); });
+  $("techPrev").addEventListener("click", function(){ step--; render(); });
+})();
+
+/* ---------- Lesson 7: lightning ---------- */
+(function(){
+  var STAGES = [
+    {label: "1 Updrafts", t: "Rising air", p: ["Warm, moist air rises fast on a summer afternoon and forms a tall cumulonimbus cloud. Water droplets freeze into ice crystals and soft hail called graupel."]},
+    {label: "2 Collisions", t: "Ice crystals and graupel collide", p: ["Small ice crystals are carried up. Heavier graupel falls. When they bump, electrons move between them, like rubbing two materials together."]},
+    {label: "3 Separation", t: "Charges separate", p: ["The light crystals, usually positive, are swept to the top. The graupel, usually negative, gathers lower in the cloud. The cloud now stores a huge amount of separated charge."]},
+    {label: "4 Induction", t: "The ground becomes charged", p: ["The negative cloud base repels electrons in the ground below. The ground surface, trees and tall buildings become positive by induction."]},
+    {label: "5 Strike", t: "Lightning: a giant discharge", p: ["When the charge difference is big enough, the air breaks down. A faint path of charge, the leader, steps down from the cloud. A streamer rises from a tall object to meet it. Then a huge current flashes along the path: the bright return stroke.", "Most lightning stays inside the cloud or jumps between clouds. This one struck the ground."]},
+    {label: "6 Thunder", t: "Energy transfer: light, heating and sound", p: ["The lightning channel is heated to about 30 000 °C in a fraction of a second. The air expands so fast that it creates a shock wave we hear as thunder.", "The energy stored in separated charges was transferred as light, heating and sound, just like a doorknob spark but billions of times bigger."]}
+  ];
+  var svg = $("ltSvg"), stage = 0;
+  function draw(){
+    clear(svg); var g = sv("g"); svg.appendChild(g);
+    g.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 300, fill: "var(--sky)"}));
+    g.appendChild(sv("path", {d: "M60 150 Q50 110 100 100 Q110 50 180 55 Q220 20 290 40 Q360 20 400 60 Q470 60 470 110 Q490 150 440 150 Z", fill: "var(--cloud)", stroke: "var(--cloud-dk)", "stroke-width": 2}));
+    g.appendChild(sv("rect", {x: 0, y: 262, width: 520, height: 38, fill: "var(--ground)"}));
+    // tree
+    g.appendChild(sv("rect", {x: 344, y: 232, width: 6, height: 30, fill: "var(--muted)"}));
+    g.appendChild(sv("path", {d: "M347 200 l-16 34 h32 z", fill: "var(--good)"}));
+    if (stage <= 1) {
+      [[120,120],[200,130],[300,125],[380,118]].forEach(function(p){ g.appendChild(sv("path", {d: "M" + p[0] + " " + (p[1] + 20) + " v-40 m-6 8 l6 -8 l6 8", fill: "none", stroke: "var(--acc)", "stroke-width": 2})); });
+      g.appendChild(sv("text", {x: 260, y: 190, "text-anchor": "middle", "class": "small"}, "rising warm air"));
+    }
+    if (stage === 1) {
+      [[150,90],[240,80],[330,95]].forEach(function(p){ g.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 4, fill: "var(--surface)", stroke: "var(--ink)"})); g.appendChild(sv("circle", {cx: p[0] + 10, cy: p[1] + 8, r: 7, fill: "var(--cloud-dk)", stroke: "var(--ink)"})); g.appendChild(sv("text", {x: p[0] + 22, y: p[1] - 4, "class": "small"}, "bump")); });
+    }
+    if (stage >= 2) {
+      [130,180,230,280,330,380].forEach(function(x){ plus(g, x, 62, 8); });
+      [120,170,220,270,320,370,420].forEach(function(x){ minus(g, x, 132, 8); });
+      g.appendChild(sv("text", {x: 480, y: 66, "class": "small", "text-anchor": "end"}, ""));
+    }
+    if (stage >= 3) {
+      [80,140,200,260,320,400,460].forEach(function(x){ plus(g, x, 278, 7); });
+      plus(g, 347, 220, 6);
+    }
+    if (stage === 4 || stage === 5) {
+      var p = "M300 140 L285 170 L305 185 L290 215 L320 225 L340 212 L347 202";
+      g.appendChild(sv("path", {d: p, fill: "none", stroke: "var(--spark-fill)", "stroke-width": stage === 4 ? 6 : 3, "stroke-linejoin": "round", "class": reduced ? "" : "spark-anim"}));
+      g.appendChild(sv("path", {d: p, fill: "none", stroke: "var(--ink)", "stroke-width": 1, "stroke-linejoin": "round"}));
+    }
+    if (stage === 5) {
+      [30, 55, 80].forEach(function(r){ g.appendChild(sv("path", {d: "M" + (320 + r) + " 160 a" + r + " " + r + " 0 0 1 0 " + (r * 1.2), fill: "none", stroke: "var(--muted)", "stroke-width": 2})); });
+      g.appendChild(sv("text", {x: 440, y: 250, "text-anchor": "middle", "class": "lbl"}, "BOOM"));
+    }
+    var S = STAGES[stage];
+    detail($("ltOut"), S.t, S.p, "Stage " + (stage + 1) + " of 6");
+    svg.setAttribute("aria-label", "Thunderstorm stage " + (stage + 1) + ": " + S.t);
+  }
+  chipGroup($("ltChips"), STAGES, function(o, i){ stage = i; draw(); }, 0);
+})();
+
+/* ---------- Bench 1: rubbing test ---------- */
+(function(){
+  var sA = $("b1A"), sB = $("b1B"), pred = null, setPred;
+  fillSelect(sA, 1); fillSelect(sB, 5);
+  store.b1 = store.b1 || [];
+  function labels(){ return [{label: SERIES[+sA.value]}, {label: SERIES[+sB.value]}, {label: "Neither"}]; }
+  function buildPred(){
+    var c = $("b1Pred"); clear(c); pred = null;
+    setPred = chipGroup(c, labels(), function(o, i){ pred = i; });
+  }
+  function table(){
+    var tb = $("b1Body"); clear(tb);
+    store.b1.forEach(function(r, i){ var tr = el("tr"); [String(i + 1), r[0], r[1], r[2], r[3]].forEach(function(c){ tr.appendChild(el("td", null, c)); }); tb.appendChild(tr); });
+    if (!store.b1.length) { var tr = el("tr"); var td = el("td", {colspan: 5}, "No trials yet. Run a test to add a row."); tr.appendChild(td); tb.appendChild(tr); }
+  }
+  sA.addEventListener("change", buildPred); sB.addEventListener("change", buildPred);
+  $("b1Rand").addEventListener("click", function(){ var a = rint(0, 12), b; do { b = rint(0, 12); } while (b === a); sA.value = a; sB.value = b; buildPred(); $("b1Fb").textContent = ""; });
+  $("b1Clear").addEventListener("click", function(){ store.b1 = []; save(); table(); });
+  $("b1Test").addEventListener("click", function(){
+    var a = +sA.value, b = +sB.value, fb = $("b1Fb");
+    if (pred == null) { fb.className = "fb no"; fb.textContent = "Choose a prediction first."; return; }
+    var ans = a === b ? 2 : (a > b ? 0 : 1);
+    var right = pred === ans;
+    var neg = a === b ? "neither" : SERIES[Math.max(a, b)], pos = a === b ? "neither" : SERIES[Math.min(a, b)];
+    fb.className = "fb " + (right ? "ok" : "no");
+    fb.textContent = (right ? "Your prediction was supported. " : "Not this time. ") + (a === b ? "The same material does not transfer electrons." : neg + " is lower on the series, so it gains electrons and becomes negative. " + pos + " becomes positive.");
+    store.b1.push([SERIES[a] + " + " + SERIES[b], neg, pos, right ? "Supported" : "Not supported"]);
+    if (store.b1.length > 10) store.b1.shift();
+    save(); table();
+  });
+  buildPred(); table();
+})();
+
+/* ---------- Bench 2: tape test ---------- */
+(function(){
+  var PAIRS = [["T","T"],["B","B"],["T","B"],["T","P"],["B","P"],["P","P"]];
+  var NAMES = {T: "top tape", B: "bottom tape", P: "paper strip"};
+  var cur, n = 0, score = 0, answered = false, svg = $("b2Svg");
+  function result(p){ if (p[0] === "P" && p[1] === "P") return 2; if (p[0] === "P" || p[1] === "P") return 0; return p[0] === p[1] ? 1 : 0; }
+  var OPTS = ["Attract", "Repel", "Nothing happens"];
+  function draw(tilt){
+    clear(svg); var g = sv("g"); svg.appendChild(g);
+    g.appendChild(sv("rect", {x: 60, y: 20, width: 300, height: 10, fill: "var(--muted)"}));
+    function strip(x, kind, dir){
+      var ang = dir * 12;
+      var gg = sv("g", {transform: "rotate(" + ang + " " + x + " 30)"});
+      gg.appendChild(sv("rect", {x: x - 12, y: 30, width: 24, height: 140, fill: kind === "P" ? "var(--surface)" : "var(--spark-soft)", stroke: "var(--ink)", "stroke-width": 1.5}));
+      gg.appendChild(sv("text", {x: x, y: 110, "text-anchor": "middle", "class": "lbl"}, kind));
+      g.appendChild(gg);
+    }
+    var dl = 0, dr = 0;
+    if (tilt === 0) { dl = -1; dr = 1; } else if (tilt === 1) { dl = 1; dr = -1; }
+    strip(170, cur[0], dl); strip(250, cur[1], dr);
+    if (tilt == null) g.appendChild(sv("text", {x: 210, y: 192, "text-anchor": "middle", "class": "small"}, "Predict, then watch"));
+    svg.setAttribute("aria-label", "Hanging " + NAMES[cur[0]] + " and " + NAMES[cur[1]] + (tilt == null ? "" : ": " + OPTS[tilt]));
+  }
+  function next(){
+    cur = pick(PAIRS); n++; answered = false;
+    $("b2Count").textContent = "Trial " + n + " · Score " + score + " of " + (n - 1);
+    $("b2Q").textContent = "What will the " + NAMES[cur[0]] + " and the " + NAMES[cur[1]] + " do?";
+    $("b2Fb").textContent = "";
+    var c = $("b2Pred"); clear(c);
+    OPTS.forEach(function(o, i){
+      var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, o);
+      b.addEventListener("click", function(){
+        if (answered) return; answered = true; b.setAttribute("aria-pressed", "true");
+        var r = result(cur), ok = i === r; if (ok) score++;
+        draw(r);
+        var why = r === 1 ? "Both strips have the same charge, so they repel. Repelling proves both are charged." : r === 2 ? "Both paper strips are neutral, so there is no force." : (cur[0] === "P" || cur[1] === "P") ? "The charged tape induces a charge in the neutral paper, so they attract." : "T and B have opposite charges, so they attract.";
+        $("b2Fb").className = "fb " + (ok ? "ok" : "no");
+        $("b2Fb").textContent = (ok ? "Correct. " : "Not quite. ") + why;
+        $("b2Count").textContent = "Trial " + n + " · Score " + score + " of " + n;
+      });
+      c.appendChild(b);
+    });
+    draw(null);
+  }
+  $("b2Next").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 3: count the charge ---------- */
+(function(){
+  var ans, n = 0, right = 0;
+  var SC = [["A balloon", "rubbed on hair", true], ["A plastic comb", "pulled through dry hair", true], ["A glass rod", "rubbed with silk", false], ["A wool mitten", "rubbed on a vinyl slide", false], ["A strip of top tape", "pulled off the bottom tape", false], ["A sock", "tumbling in the dryer with a polyester shirt", false], ["A plastic ruler", "rubbed with a wool cloth", true]];
+  function make(){
+    var s = pick(SC), P = rint(20, 90) * 100, x = rint(2, 18) * 25;
+    var gain = s[2];
+    ans = gain ? -x : x;
+    $("b3Q").textContent = s[0] + " has " + P + " protons and " + P + " electrons. When " + s[1] + ", it " + (gain ? "gains " : "loses ") + x + " electrons. What is its net charge? (Made-up practice numbers.)";
+    $("b3In").value = ""; $("b3Fb").textContent = "";
+    $("b3Q").dataset.p = P; $("b3Q").dataset.e = gain ? P + x : P - x;
+  }
+  $("b3New").addEventListener("click", make);
+  $("b3Check").addEventListener("click", function(){
+    var v = parseNum($("b3In").value), fb = $("b3Fb");
+    if (isNaN(v)) { fb.className = "fb no"; fb.textContent = "Type a number, such as −150 or 150."; return; }
+    var P = $("b3Q").dataset.p, E = $("b3Q").dataset.e;
+    n++;
+    if (v === ans) { right++; fb.className = "fb ok"; fb.textContent = "Correct. " + P + " − " + E + " = " + (ans > 0 ? "+" : "−") + Math.abs(ans) + ", so it is " + (ans > 0 ? "positive (missing electrons)." : "negative (extra electrons)."); }
+    else { fb.className = "fb no"; fb.textContent = "Not quite. Electrons now: " + E + ". Net charge = " + P + " − " + E + " = " + (ans > 0 ? "+" : "−") + Math.abs(ans) + "." + (v === -ans ? " Check your sign: gaining electrons makes the charge negative." : ""); }
+    $("b3Score").textContent = right + " of " + n + " correct this session";
+  });
+  make();
+})();
+
+/* ---------- Bench 4: flash to bang ---------- */
+(function(){
+  var r = $("fbS"), t;
+  function upd(){ var s = +r.value; $("fbSOut").textContent = s + " s"; var d = 340 * s; stat($("fbStats"), [["Distance (m)", String(d)], ["Distance (km)", fmt(d / 1000, 1)], ["Quick rule (s ÷ 3)", fmt(s / 3, 1) + " km"]]); }
+  function make(){ t = rint(2, 25); $("fbQ").textContent = "You see a flash and count " + t + " seconds before the thunder. How far away was the lightning, in kilometres?"; $("fbIn").value = ""; $("fbFb").textContent = ""; }
+  r.addEventListener("input", upd);
+  $("fbNew").addEventListener("click", make);
+  $("fbCheck").addEventListener("click", function(){
+    var v = parseNum($("fbIn").value), d = 0.34 * t, fb = $("fbFb");
+    if (isNaN(v)) { fb.className = "fb no"; fb.textContent = "Type a distance in kilometres, such as 2.4."; return; }
+    var ok = Math.abs(v - d) <= 0.15;
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + "d = 340 m/s × " + t + " s = " + Math.round(340 * t) + " m, about " + fmt(d, 1) + " km." + (ok ? "" : " Remember to divide metres by 1000 to get kilometres.");
+  });
+  upd(); make();
+})();
+
+/* ---------- Research planner ---------- */
+(function(){
+  var area = $("resArea"); store.res = store.res || {};
+  var QS = [
+    "How do charges separate inside a thundercloud? Name the particles that collide.",
+    "Where do positive and negative charges usually collect in the cloud?",
+    "How does the ground below become charged?",
+    "What happens during a lightning strike? Use the words leader and return stroke.",
+    "What energy transfers happen in a lightning strike, and why do we hear thunder?",
+    "How is lightning like the spark from a doorknob? How is it different?"
+  ];
+  QS.forEach(function(q, i){
+    var lab = el("label", {"class": "field", "for": "res" + i}, (i + 1) + ". " + q);
+    var ta = el("textarea", {id: "res" + i, rows: "3"}); ta.style.minHeight = "4.5em";
+    ta.value = store.res[i] || "";
+    ta.addEventListener("input", function(){ store.res[i] = ta.value; save(); });
+    lab.appendChild(ta); area.appendChild(lab);
+  });
+  area.appendChild(el("p", {"class": "hint mono"}, "Source check"));
+  var ul = el("ul", {"class": "checks"});
+  ["The source is from a science or weather organization", "I found the same fact in a second source", "The page says who wrote it or when it was updated", "I wrote the ideas in my own words"].forEach(function(t, j){
+    var li = el("li"), l = el("label", {"for": "rc" + j}), cb = el("input", {type: "checkbox", id: "rc" + j});
+    cb.checked = !!store.res["c" + j];
+    cb.addEventListener("change", function(){ store.res["c" + j] = cb.checked; save(); });
+    l.appendChild(cb); l.appendChild(document.createTextNode(t)); li.appendChild(l); ul.appendChild(li);
+  });
+  area.appendChild(ul);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Positive, negative or neutral?", bins: ["Positive", "Negative", "Neutral"], items: [
+    ["Your hair after a balloon is rubbed on it", 0, "The hair lost electrons to the balloon."],
+    ["A balloon after it is rubbed on hair", 1, "The balloon gained electrons from the hair."],
+    ["A glass rod rubbed with silk", 0, "Glass is higher on the series, so it loses electrons to the silk."],
+    ["The silk cloth after rubbing the glass rod", 1, "Silk took electrons from the glass."],
+    ["A vinyl pipe rubbed with wool", 1, "Vinyl is low on the series, so it gains electrons."],
+    ["The wool after rubbing the vinyl pipe", 0, "The wool gave up electrons."],
+    ["An object with 40 protons and 40 electrons", 2, "Equal protons and electrons cancel out."],
+    ["An object that lost 12 electrons", 0, "Missing electrons leave more protons than electrons."],
+    ["An object that gained 7 electrons", 1, "Extra electrons give a negative charge."],
+    ["A metal can near a charged balloon, before it is touched", 2, "Induction rearranges charge, but the total stays zero."]
+  ]},
+  {label: "Attract, repel or nothing?", bins: ["Attract", "Repel", "No force"], items: [
+    ["A positive object and a positive object", 1, "Like charges repel."],
+    ["A negative object and a negative object", 1, "Like charges repel."],
+    ["A positive object and a negative object", 0, "Unlike charges attract."],
+    ["A negative balloon and a neutral wall", 0, "The balloon induces a positive charge on the near surface of the wall."],
+    ["A positive glass rod and small neutral paper bits", 0, "Charged objects attract neutral objects by induction."],
+    ["Two neutral paper strips", 2, "Neither is charged, so there is no electric force."],
+    ["Two balloons both rubbed on the same hair", 1, "Both balloons are negative, so they push apart."],
+    ["A balloon and the hair it was rubbed on", 0, "The balloon is negative and the hair is positive."],
+    ["A top tape and another top tape", 1, "Both have the same charge."],
+    ["A top tape and a bottom tape", 0, "They have opposite charges."]
+  ]},
+  {label: "Conductor or insulator?", bins: ["Conductor", "Insulator"], items: [
+    ["Copper wire", 0, "Metals let electrons move freely."],
+    ["Aluminum foil", 0, "A metal, so electrons move easily."],
+    ["A metal doorknob", 0, "That is why your spark jumps to it."],
+    ["Your body", 0, "The salty water in your body lets charge move, which is why you feel shocks."],
+    ["A rubber balloon", 1, "Charge stays in place where it was rubbed."],
+    ["Plastic wrap", 1, "Charge stays put, so it clings."],
+    ["Glass", 1, "Glass holds charge on its surface."],
+    ["Dry wool", 1, "Wool holds static charge."],
+    ["The pencil lead (graphite)", 0, "Graphite is one of the few non-metals that conducts."],
+    ["Dry wood", 1, "Dry wood does not let charge move easily."]
+  ]},
+  {label: "Where does static show up?", bins: ["Technology that uses it", "Natural event", "Everyday nuisance"], items: [
+    ["A laser printer placing toner", 0, "Charged toner is attracted to the drum and paper."],
+    ["A paint sprayer coating a bike frame", 0, "Charged droplets are pulled onto the frame."],
+    ["An air filter cleaning smoke from a smokestack", 0, "Charged particles stick to collecting plates."],
+    ["Lightning over the prairie", 1, "Charge separates in a thundercloud, then discharges."],
+    ["Lightning in the ash cloud of an erupting volcano", 1, "Colliding ash particles separate charge too."],
+    ["A shock from a doorknob in January", 2, "Dry air lets you build up charge, then it sparks."],
+    ["A sock stuck to a shirt from the dryer", 2, "Clothes tumbling together transfer electrons."],
+    ["Hair standing up after you take off a toque", 2, "The hairs gain the same charge and repel each other."],
+    ["A photocopier making copies", 0, "It works much like a laser printer."],
+    ["Plastic wrap clinging to your hands", 2, "The wrap picks up charge when it is pulled off the roll."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Static electricity", "A build-up of electric charge that stays on the surface of a material. Also called electrostatic charge."],
+  ["Electric charge", "A property of protons and electrons that makes them push or pull on each other."],
+  ["Proton", "A particle in the centre of an atom with a positive charge. Protons do not move between objects."],
+  ["Electron", "A particle outside the centre of an atom with a negative charge. Electrons can move from one object to another."],
+  ["Neutral", "Having equal numbers of protons and electrons, so there is no overall charge."],
+  ["Positive charge", "The charge on an object that has lost electrons."],
+  ["Negative charge", "The charge on an object that has gained extra electrons."],
+  ["Rubbing series", "A list of materials in order of how easily they lose or gain electrons. Also called the triboelectric series."],
+  ["Like charges", "Two charges of the same kind. Like charges repel."],
+  ["Unlike charges", "A positive and a negative charge. Unlike charges attract."],
+  ["Induction", "Rearranging the charge in a neutral object by bringing a charged object near it."],
+  ["Induced charge", "The charge that appears on one side of a neutral object near a charged object. The object stays neutral overall."],
+  ["Conductor", "A material that lets electrons move through it easily, such as metal."],
+  ["Insulator", "A material that does not let electrons move easily, such as plastic, rubber or glass."],
+  ["Discharge", "The loss of built-up charge, often as electrons jump or flow to another object."],
+  ["Spark", "A flash of light and a snap made when charge jumps across a small air gap."],
+  ["Grounding", "Connecting an object to the Earth so charge can flow away safely."],
+  ["Lightning", "A giant static discharge inside a cloud, between clouds or between a cloud and the ground."],
+  ["Graupel", "Soft hail. Collisions between graupel and ice crystals separate charge in a thundercloud."],
+  ["Thunder", "The sound made when lightning heats the air so fast that it expands violently."],
+  ["Return stroke", "The bright flash of lightning when current surges along the path between cloud and ground."],
+  ["Electrostatic precipitator", "An air filter that charges dust particles and collects them on oppositely charged plates."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is static electricity?", ["A build-up of charge on the surface of a material", "Electricity flowing steadily through a wire", "A type of magnet", "Energy stored in food"], "Static means staying still. The charge stays on the surface until it is discharged."],
+  ["Which particle moves when objects become charged by rubbing?", ["Electrons", "Protons", "Neutrons", "Whole atoms"], "Protons are locked in the centre of atoms. Only electrons move between surfaces."],
+  ["An object loses electrons. What charge does it have now?", ["Positive", "Negative", "Neutral", "It depends on its colour"], "With fewer electrons than protons, it has a positive charge."],
+  ["An object gains electrons. What charge does it have now?", ["Negative", "Positive", "Neutral", "No charge at all"], "Extra electrons give a negative charge."],
+  ["A neutral object has…", ["equal numbers of protons and electrons", "no protons or electrons", "only protons", "only electrons"], "The positive and negative charges cancel out."],
+  ["You rub a balloon on your hair. The balloon becomes negative. What happens to your hair?", ["It becomes positive.", "It becomes negative too.", "It stays neutral.", "It gains protons."], "The electrons the balloon gained came from your hair, so your hair is now positive."],
+  ["Glass is rubbed with silk. Silk is lower on the rubbing series. Which becomes negative?", ["The silk", "The glass", "Both", "Neither"], "The lower material holds electrons more tightly, so silk gains electrons."],
+  ["Two objects made of the same material are rubbed together. What usually happens?", ["Almost no charge is transferred.", "Both become positive.", "Both become negative.", "One gains protons."], "They hold electrons equally tightly, so few electrons move."],
+  ["Two balloons are rubbed on the same hair. What happens when you hold them near each other?", ["They repel.", "They attract.", "Nothing happens.", "They both become neutral."], "Both are negative. Like charges repel."],
+  ["A positive object and a negative object are brought close. What happens?", ["They attract.", "They repel.", "Nothing happens.", "They both become positive."], "Unlike charges attract."],
+  ["Why does a charged balloon stick to a neutral wall?", ["It induces an opposite charge on the near surface of the wall.", "The wall is secretly positive.", "Glue in the paint holds it.", "The balloon gives the wall protons."], "Induction rearranges charge in the wall. The near side is opposite and closer, so attraction wins."],
+  ["After induction, what is the total charge on the neutral object?", ["Still zero", "Positive", "Negative", "It doubles"], "Charge is only rearranged. No electrons were added or removed."],
+  ["Which observation proves an object is charged?", ["It repels a charged object.", "It attracts a charged object.", "It feels warm.", "It is shiny."], "A neutral object can be attracted, but only a charged object with the same charge can repel."],
+  ["Which material is a conductor?", ["Copper", "Rubber", "Plastic wrap", "Glass"], "Metals let electrons move freely."],
+  ["Why do you often get a shock from a doorknob in an Edmonton winter?", ["Dry air lets charge build up on you.", "Cold metal stores more electricity.", "Snow adds electrons to your boots.", "Doorknobs are charged in winter."], "In humid air, charge leaks away slowly. Dry air lets it build until it sparks."],
+  ["When does the spark jump from your finger to a doorknob?", ["Just before your finger touches it", "Only after you let go", "A minute after you touch it", "Only if the knob is plastic"], "The electrons jump across the tiny air gap just before contact."],
+  ["In a spark, the stored energy is transferred as…", ["light, sound and heating", "new electrons", "protons", "magnetism only"], "The flash is light, the snap is sound, and the air is heated."],
+  ["What does grounding do?", ["Lets charge flow safely to the Earth", "Adds protons to an object", "Makes an object an insulator", "Stores charge for later"], "The Earth can take or give a huge number of electrons."],
+  ["In a laser printer, why does toner stick to the paper?", ["The paper has a charge that attracts the toner.", "The toner is sticky glue.", "The laser burns it in.", "Magnets pull it down."], "The paper gets a strong opposite charge, then hot rollers melt the toner in place."],
+  ["Why do paint sprayer droplets spread into an even cloud?", ["They all have the same charge, so they repel.", "The air is windy.", "They have no charge.", "They are attracted to each other."], "Like charges repel, which spreads the paint evenly."],
+  ["In a thundercloud, what collides to separate charge?", ["Small ice crystals and graupel", "Raindrops and dust from the ground", "Lightning bolts", "Clouds and the Sun"], "Collisions between rising ice crystals and falling soft hail move electrons."],
+  ["Why does the ground under a storm become positive?", ["The negative cloud base repels electrons in the ground by induction.", "Rain carries protons down.", "The Sun charges it.", "Lightning has already struck it."], "This is induction on a giant scale."],
+  ["What causes thunder?", ["Air heated by lightning expands extremely fast.", "Clouds bump into each other.", "Rain hits the ground.", "Electrons make a buzzing noise."], "The lightning channel heats air to about 30 000 °C, making a shock wave."],
+  ["You count 6 seconds between a flash and its thunder. About how far away is the lightning?", ["About 2 km", "About 6 km", "About 18 km", "About 200 m"], "d = 340 m/s × 6 s = 2040 m, about 2 km. If you hear thunder, go indoors."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain what static electricity is. Use the words electron, surface and charge.", a: "Static electricity is a build-up of electric charge on the surface of a material. It forms when electrons move onto or off a surface. Extra electrons give a negative charge and missing electrons give a positive charge. The charge stays in place until it is discharged.", k: ["Build-up of charge", "On the surface", "Electrons gained or lost", "Stays until discharged"]},
+  {q: "A balloon is rubbed on dry hair. Describe what happens to the electrons and the charge on each object.", a: "Electrons move from the hair to the balloon because the balloon’s rubber holds electrons more tightly. The balloon gains electrons and becomes negative. The hair loses electrons and becomes positive. The two charges are equal in size.", k: ["Electrons move from hair to balloon", "Balloon becomes negative", "Hair becomes positive", "Charges are equal, none created"]},
+  {q: "Why is it wrong to say an object becomes positive by gaining protons?", a: "Protons are locked in the centre of atoms and do not move between objects during rubbing. An object becomes positive only by losing electrons, which leaves it with more protons than electrons.", k: ["Protons do not move", "Positive means lost electrons", "More protons than electrons"]},
+  {q: "State the three rules for how charged objects interact. Give an example of each.", a: "Like charges repel: two balloons rubbed on hair push apart. Unlike charges attract: the balloon and the hair pull together. A charged object attracts a neutral object: a charged comb picks up small bits of paper.", k: ["Like charges repel with example", "Unlike charges attract with example", "Charged attracts neutral with example"]},
+  {q: "Explain how a negatively charged balloon can attract a neutral metal can.", a: "The balloon’s extra electrons repel electrons in the can. Because metal is a conductor, electrons move to the far side of the can. The near side is left positive. The near side is closer to the balloon, so the attraction is stronger than the repulsion. The can rolls toward the balloon, but it is still neutral overall.", k: ["Electrons in the can are repelled", "They move to the far side", "Near side becomes positive", "Closer charge wins, so it attracts", "Can stays neutral overall"]},
+  {q: "Why is repelling a better test for charge than attracting?", a: "A charged object can attract both oppositely charged objects and neutral objects, so attraction does not prove the second object is charged. Repelling only happens between two objects with the same charge, so it proves both are charged.", k: ["Attraction can happen with neutral objects", "Repelling needs like charges", "So repelling proves charge"]},
+  {q: "Describe what happens, step by step, when you get a shock from a doorknob after walking across a carpet.", a: "Walking across the carpet moves electrons onto you, so you build up a negative charge. When your finger gets very close to the metal knob, the electrons jump across the small air gap as a spark. You lose your extra charge and become neutral again.", k: ["Charge builds up while walking", "Knob is a conductor", "Electrons jump across an air gap", "You become neutral again"]},
+  {q: "A spark is an energy transfer. Name the forms the energy takes and explain where it came from.", a: "The energy was stored in the separated charges. In the spark it is transferred as light (the flash), sound (the snap) and heating of the air. You also feel it because the moving charge stimulates your nerves.", k: ["Stored in separated charge", "Light", "Sound", "Heating of the air"]},
+  {q: "Choose one technology: laser printer, paint sprayer or air filter. Explain how it uses static electricity.", a: "An air filter gives dust and smoke particles a charge as they pass charged wires. The particles then pass between plates with the opposite charge. Unlike charges attract, so the particles stick to the plates and cleaner air flows out.", k: ["Names a technology", "Particles are given a charge", "Opposite charge attracts them", "Explains the useful result"]}
+];
+var LONG = [
+  {q: "Explain how lightning results from static electricity in a thundercloud. Include how charge separates, how the ground becomes charged, the strike itself and the energy transfers.", a: "In a tall thundercloud, rising air carries small ice crystals upward while heavier graupel falls. When they collide, electrons move between them. The crystals usually become positive and collect at the top, while the graupel usually becomes negative and collects lower down. The negative cloud base repels electrons in the ground, so the ground surface becomes positive by induction. When the charge difference is large enough, the air can no longer insulate. A leader steps down, a streamer rises from a tall object, and a huge return stroke flashes along the path. The stored energy is transferred as light, heating of the air to about 30 000 °C, and sound, because the air expands so fast that it makes thunder.", k: ["Collisions between ice crystals and graupel", "Positive top, negative lower cloud", "Ground charged by induction", "Air breaks down: leader and return stroke", "Energy transferred as light, heating and sound"]},
+  {q: "Compare a doorknob spark with a lightning strike. Describe at least two ways they are alike and two ways they are different.", a: "Alike: both are static discharges where built-up charge jumps across air, and both transfer energy as light, sound and heating. Both start with charge separated by contact between materials. Different: lightning is billions of times more energetic, it happens over kilometres instead of millimetres, it separates charge by ice and graupel collisions instead of feet on carpet, and it can kill, while a doorknob spark is only startling.", k: ["Both are discharges across air", "Both transfer light, sound and heating", "Different size and energy", "Different distance", "Different way charge builds up"]},
+  {q: "Design an investigation to test which of three materials (wool, cotton and plastic wrap) gives a balloon the biggest charge. Describe your variables, steps and how you will measure the charge.", a: "Manipulated variable: the material used to rub the balloon. Responding variable: the charge, measured by how many small paper bits the balloon picks up or how far a hanging balloon is pushed away by another charged balloon. Controlled variables: the same balloon size, number of rubs (for example 20), the same pressure, the same room and humidity, and the same distance to the paper bits. Steps: discharge the balloon by touching it to a grounded metal object, rub it 20 times with one material, hold it 2 cm above the paper bits, and count how many are lifted. Repeat three times for each material and average. A bigger charge lifts more paper.", k: ["Variables named", "Fair test controls including humidity", "A way to measure charge", "Discharging between trials", "Repeated trials and averages"]},
+  {q: "Your friend says static electricity is useless and only gives people shocks. Do you agree? Use at least two examples of technology and one safety example to support your answer.", a: "I disagree. Laser printers use charged toner and a charged drum to place letters exactly on paper. Paint sprayers charge droplets so they spread evenly and are pulled onto the object, which wastes less paint. Air filters charge smoke particles and collect them on plates, cleaning air from smokestacks. Static can be dangerous, so people manage it: at a gas station you touch a metal part of the car before using the pump so a spark does not happen near fuel vapour. Static electricity can be a nuisance, but it is also very useful when it is controlled.", k: ["Clear position", "First technology example explained", "Second technology example explained", "Safety example", "Conclusion that weighs both sides"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["EN2.K1", "Static electricity, or electrostatic charge, is the accumulation of electrons on the surface of a material and is used in equipment such as\n• laser printers\n• paint sprayers\n• air filters", "Learn: Lesson 1 (atom charge count) and Lesson 6 (step through a laser printer, paint sprayer and air filter). Sort It: where does static show up deck. Quiz, Flashcards, Written Review short answers 1, 3 and 9, extended 4."],
+    ["EN2.K2", "Static electricity can occur when two objects are rubbed together, which transfers electrons from the surface of one material to the other and causes\n• the material that loses electrons to become positively charged\n• the material that gains electrons to become negatively charged", "Learn: Lesson 2 (rubbing test with the rubbing series). Lab Bench: Investigations 1 and 3. Sort It: positive, negative or neutral deck. Quiz, Flashcards, Written Review short answers 2 and 3."],
+    ["EN2.K3", "When charged materials interact,\n• like charges repel\n• unlike charges attract\n• charged objects are attracted to neutral objects (induction)", "Learn: Lesson 3 (choose two charges) and Lesson 4 (bring the balloon closer). Lab Bench: Investigation 2 (sticky tape test). Sort It: attract, repel or nothing deck. Quiz, Flashcards, Written Review short answers 4, 5 and 6."],
+    ["EN2.K4", "Static electricity is often discharged from the surface of a material in the form of a spark when a conductor touches the material.", "Learn: Lesson 5 (doorknob spark with dry and humid air). Sort It: conductor or insulator deck. Quiz, Flashcards, Written Review short answers 7 and 8, extended 2."],
+    ["EN2.K5", "Static electricity can cause natural phenomena, including lightning.", "Learn: Lesson 7 (inside a thunderstorm, six stages). Lab Bench: Investigation 4 and the research planner. Quiz, Flashcards, Written Review extended 1 and 2."],
+    ["EN2.S1", "Explain how static electricity is discharged through the transfer of electrons.", "Learn: Lesson 5 and Lesson 2. Lab Bench: Investigation 3 (count the charge, randomized practice). Written Review short answers 7 and 8, extended 2."],
+    ["EN2.S2", "Investigate how charged materials interact with one another.", "Lab Bench: Investigation 1 (rubbing test with predictions and a data table) and Investigation 2 (sticky tape test, randomized trials). Learn: Lessons 2, 3 and 4. Written Review extended 3."],
+    ["EN2.S3", "Research how lightning results from static electricity in clouds.", "Lab Bench: research planner with source check, and Investigation 4 (flash to bang, randomized practice). Learn: Lesson 7. Written Review extended 1."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,1549 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/rock-cycle-lab/"><meta name="description" content="Transformation of rock through the rock cycle results from geological processes."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Rock Cycle Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+
+/* Layout: a geologist's sample bench. Sticky tab strip, then lessons pairing a reading column with a model: the cycle diagram, a magnified granite, crystal growth, a metamorphic press and a rock clock. Bench: journey, Alberta rock tray, cooling trials, mineral tests, rate calculator. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --g7:#A4501E; --g7-soft:#F8E7DC;
+  --sky:#E3EEF4; --rock:#9A8B78; --rock-2:#B9AC99; --rock-dark:#6E6254; --soil:#8C6A48; --soil-2:#B08A60; --sand:#D9C08C; --cap:#5A5248;
+  --water:#3E7FB8; --water-soft:#A9CBE6; --ice:#D4ECF7; --ice-line:#7FB3CF; --veg:#4E8B4A; --veg-2:#2F6B36; --lava:#D25A2A; --snow:#FFFFFF; --cloud:#C8D3DB; --arrow:#18241D;
+  --good:#2D7546; --good-soft:#DDEFE3; --warn:#8A5A00; --warn-soft:#FBEED2; --bad:#B03A2E; --bad-soft:#F7E0DC; --link:#1D5FA8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#16222B; --rock:#7D7061; --rock-2:#94877A; --rock-dark:#544A40; --soil:#6E5238; --soil-2:#8A6C4C; --sand:#B39C6C; --cap:#3E3832;
+  --water:#4F93CF; --water-soft:#2D5272; --ice:#B9DCEC; --ice-line:#6FA4C0; --veg:#5FA05A; --veg-2:#3F8546; --lava:#E06A3A; --snow:#E8EEF2; --cloud:#5B6670; --arrow:#E3ECE6;
+  --good:#7BCB95; --good-soft:#16301F; --warn:#F0C060; --warn-soft:#3A2E12; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#16222B; --rock:#7D7061; --rock-2:#94877A; --rock-dark:#544A40; --soil:#6E5238; --soil-2:#8A6C4C; --sand:#B39C6C; --cap:#3E3832;
+  --water:#4F93CF; --water-soft:#2D5272; --ice:#B9DCEC; --ice-line:#6FA4C0; --veg:#5FA05A; --veg-2:#3F8546; --lava:#E06A3A; --snow:#E8EEF2; --cloud:#5B6670; --arrow:#E3ECE6;
+  --good:#7BCB95; --good-soft:#16301F; --warn:#F0C060; --warn-soft:#3A2E12; --bad:#F2907F; --bad-soft:#3A1C18; --link:#7DB0F0;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--link)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g7);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--g7);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g7)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g7-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g7)}
+.warn{background:var(--bad-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.warn b{color:var(--bad)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.big{font-family:var(--f-display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--g7);line-height:1.1}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.scene{border-radius:8px;background:var(--sky);border:1px solid var(--line);overflow:hidden}
+.scene svg{display:block;width:100%;height:auto}
+.scene svg text{font-family:var(--f-body);fill:var(--ink)}
+.scene svg .lbl{font-size:13px;font-weight:700}
+.scene svg .small{font-size:11.5px;fill:var(--muted)}
+.scene svg .mlbl{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.scene svg .tag{paint-order:stroke;stroke:var(--sky);stroke-width:3px;stroke-linejoin:round}
+.tap{cursor:pointer}
+.tap:hover > circle:first-child{stroke:var(--ink);stroke-width:2.5}
+.tap.on > circle:first-child{stroke:var(--ink);stroke-width:3}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;transition:width .3s}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.74rem;font-weight:600;padding:2px 10px;border-radius:999px}
+.pill.ok{background:var(--good-soft);color:var(--good)}.pill.mid{background:var(--warn-soft);color:var(--warn)}.pill.no{background:var(--bad-soft);color:var(--bad)}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.mini{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;gap:4px;font-size:.9rem}
+.mini b{font-family:var(--f-display)}
+.chartbox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.chartbox svg{display:block;width:100%;min-width:340px;height:auto}
+.chartbox svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g7)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;width:100%}
+textarea{min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;align-items:end}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.dt th:first-child,.dt td:first-child{text-align:left;font-family:var(--f-body);font-weight:700}
+.dt th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g7)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* rock cycle additions */
+:root{--ign:#B0563A;--sed:#C9A25E;--met:#5F7396;--mag:#D9502A;--sedi:#E4CFA3;--qtz:#D3D7DB;--fsp:#E6AE93;--mic:#2E2A28;--cal:#F3EFE5;--grain-line:#6E6254}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--ign:#C96E50;--sed:#B39058;--met:#7D91B6;--mag:#E8663E;--sedi:#6E5C3C;--qtz:#9AA1A8;--fsp:#B07A62;--mic:#0B0A09;--cal:#CFC8B8;--grain-line:#2A2622}}
+:root[data-theme="dark"]{--ign:#C96E50;--sed:#B39058;--met:#7D91B6;--mag:#E8663E;--sedi:#6E5C3C;--qtz:#9AA1A8;--fsp:#B07A62;--mic:#0B0A09;--cal:#CFC8B8;--grain-line:#2A2622}
+.tap:hover > rect:first-child,.tap:hover > circle:first-child{stroke:var(--ink);stroke-width:2.5}
+.tap.on > rect:first-child,.tap.on > circle:first-child{stroke:var(--ink);stroke-width:3}
+.keybox{display:grid;gap:10px}
+.keyq{font-weight:700}
+.journal{display:grid;gap:6px;margin:0;padding-left:1.4em;font-size:.93rem}
+.orderlist{display:grid;gap:6px}
+.orderlist button{text-align:left}
+.swatches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.swatch{display:grid;gap:4px;font-size:.85rem;text-align:center}
+.swatch svg{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);display:block}
+.testgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:8px}
+.testgrid .btn{width:100%;text-align:left}
+.res{font-size:.92rem;display:grid;gap:4px;margin:0;padding-left:1.2em}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Earth Science · ES2</div>
+    <h1>Rock <span class="ac">Cycle</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Transformation of rock through the rock cycle results from geological processes. In this lab you will follow rock as it melts, cools, breaks, settles and gets squeezed, test minerals the way geologists do, and sort Alberta rocks into igneous, sedimentary and metamorphic.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. Lesson 1 shows the whole rock cycle. Lessons 2 and 3 are about minerals and how to identify them. Lesson 4 shows how to read a rock. Lessons 5 to 7 explain how each type of rock forms. Lesson 8 compares how fast the cycle runs.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · The big picture</span>
+      <h3>Rocks are recycled</h3>
+      <div class="codes"><span class="code">ES2.K1</span><span class="code">ES2.S1</span></div>
+      <p>Rocks seem permanent, but they are not. Over time, rock is <b>formed</b>, <b>broken down</b> and <b>formed again</b>. The processes that do this happen on Earth’s surface and deep below it. Together they are called the <b>rock cycle</b>.</p>
+      <p>There are three types of rock. <b>Igneous</b> rock forms when melted rock cools. <b>Sedimentary</b> rock forms from pieces of other rock that pile up and stick together. <b>Metamorphic</b> rock forms when heat and pressure change a rock that already exists.</p>
+      <p>The rock cycle is not a one-way loop. A rock can take many different paths. Igneous rock can become metamorphic rock without ever being broken into sediment. Any rock can melt.</p>
+      <div class="key"><b>Try it:</b> tap a rock type or a numbered process on the diagram. Then turn on the shortcuts to see the other paths a rock can take.</div>
+    </div>
+    <div class="model">
+      <h4>The rock cycle</h4>
+      <div class="row"><button class="chip" type="button" id="l1-short" aria-pressed="false">Show shortcuts</button></div>
+      <div class="scene"><svg id="l1-svg" viewBox="0 0 400 340" role="group" aria-label="Rock cycle diagram with five stages and numbered processes"></svg></div>
+      <div class="detail" id="l1-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · What rocks are made of</span>
+      <h3>Four common minerals</h3>
+      <div class="codes"><span class="code">ES2.K6</span></div>
+      <p>A <b>mineral</b> is a natural, non-living solid with its own chemical makeup. Its particles are arranged in a regular, repeating pattern called a <b>crystal</b>. A <b>rock</b> is a natural solid made of one or more minerals.</p>
+      <p>Thousands of minerals exist, but a few make up most of the rock you will ever see. Four common ones are <b>quartz</b>, <b>feldspar</b>, <b>mica</b> and <b>calcite</b>.</p>
+      <p>Granite is a good example. Look closely at a piece and you can see three of these minerals: glassy grey quartz, pink or white feldspar, and small black or silver flakes of mica. Calcite is not in granite. It is the main mineral in limestone and marble.</p>
+      <div class="key"><b>Try it:</b> choose a mineral to light it up in the magnified granite.</div>
+    </div>
+    <div class="model">
+      <h4>Granite under a magnifier</h4>
+      <div class="chips" id="l2-chips" role="group" aria-label="Choose a mineral"></div>
+      <div class="scene"><svg id="l2-svg" viewBox="0 0 400 220" role="img" aria-label="Magnified granite made of quartz, feldspar and mica grains"></svg></div>
+      <div class="detail" id="l2-detail" aria-live="polite"></div>
+      <p class="hint">Drawing only. Real grains have irregular shapes.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Mineral detective</span>
+      <h3>How to identify a mineral</h3>
+      <div class="codes"><span class="code">ES2.K7</span></div>
+      <p>Geologists identify minerals by testing their <b>properties</b>. One property is rarely enough, so they use several together.</p>
+      <p><b>Colour</b> is the easiest to see but the least reliable, because small impurities change it. <b>Lustre</b> is how the surface reflects light: metallic, glassy, pearly or dull. <b>Streak</b> is the colour of the powder left when you rub a mineral on a rough white tile. Streak is more reliable than colour.</p>
+      <p><b>Transparency</b> describes how much light passes through: transparent, translucent or opaque. <b>Hardness</b> is how well a mineral resists being scratched. It is measured on the Mohs scale from 1 (softest) to 10 (hardest). <b>Magnetism</b> means a magnet sticks to it. Only a few minerals, like magnetite, are strongly magnetic.</p>
+      <div class="key"><b>Try it:</b> choose a property to compare the four common minerals plus magnetite.</div>
+    </div>
+    <div class="model">
+      <h4>Property explorer</h4>
+      <div class="chips" id="l3-chips" role="group" aria-label="Choose a property"></div>
+      <div class="detail" id="l3-detail" aria-live="polite"></div>
+      <div class="tablebox"><table class="dt" id="l3-table"></table></div>
+      <div class="chartbox"><svg id="l3-mohs" viewBox="0 0 420 120" role="img" aria-label="Mohs hardness scale from 1 to 10 with common minerals and tools"></svg></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Reading a rock</span>
+      <h3>Texture, layering and minerals</h3>
+      <div class="codes"><span class="code">ES2.K2</span></div>
+      <p>Rocks are classified by <b>how they formed</b>. You cannot watch a rock form, so you look for clues in its characteristics.</p>
+      <p><b>Texture</b> is the size, shape and arrangement of the grains or crystals. Interlocking crystals that grew together point to igneous rock. Rounded grains glued together point to sedimentary rock. <b>Layering</b> is a clue too. Sedimentary rock often forms in flat layers called beds. Metamorphic rock often has minerals lined up in bands or sheets, called <b>foliation</b>. <b>Mineral composition</b> means which minerals are in the rock. Calcite, for example, points to limestone or marble.</p>
+      <div class="key"><b>Try it:</b> compare the three textures, then use the rock key with a rock you are holding or picturing.</div>
+    </div>
+    <div class="model">
+      <h4>Three textures</h4>
+      <div class="swatches" id="l4-sw"></div>
+      <h4>Rock key</h4>
+      <div class="keybox" id="l4-key" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Sedimentary rock</span>
+      <h3>Layers that turn to stone</h3>
+      <div class="codes"><span class="code">ES2.K3</span></div>
+      <p><b>Sediment</b> is loose pieces of rock, minerals, shells or plant remains. Weathering breaks rock into sediment, and water, wind or ice carry it away. When the sediment is dropped, it settles in layers.</p>
+      <p>As more layers pile on top, their weight squeezes the lower layers. Water is pushed out and grains are packed tightly. This is <b>compaction</b>. Then minerals dissolved in the water, such as calcite or quartz, crystallize between the grains and glue them together. This is <b>cementation</b>.</p>
+      <p>Sedimentary rock forms <b>on or just below Earth’s surface</b>. Sandstone, shale, conglomerate, limestone and coal are all sedimentary. The badlands near Drumheller and the river valley in Edmonton show layers of sandstone, mudstone and coal.</p>
+      <div class="key"><b>Try it:</b> step through the five stages. Watch the layers get thinner when they are compacted.</div>
+    </div>
+    <div class="model">
+      <h4>From sediment to sandstone</h4>
+      <div class="scene"><svg id="l5-svg" viewBox="0 0 400 230" role="img" aria-label="Basin cross section showing sediment stages"></svg></div>
+      <div class="row"><button class="btn ghost" type="button" id="l5-back">Back</button><button class="btn" type="button" id="l5-next">Next stage</button><span class="mono num" id="l5-count"></span></div>
+      <div class="detail" id="l5-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Igneous rock</span>
+      <h3>Rock from fire</h3>
+      <div class="codes"><span class="code">ES2.K4</span></div>
+      <p>Deep underground, rock can get hot enough to melt. Melted rock below the surface is called <b>magma</b>. When it reaches the surface through a volcano or a crack, it is called <b>lava</b>.</p>
+      <p>As molten rock cools, its particles lock into crystals. This is <b>crystallization</b>. The result is <b>igneous</b> rock.</p>
+      <p>Cooling speed controls crystal size. Magma that cools slowly <b>below the surface</b> has time to grow large crystals, like granite. This is <b>intrusive</b> igneous rock. Lava that cools quickly <b>on the surface</b> forms tiny crystals, like basalt. This is <b>extrusive</b> igneous rock. Lava that cools in seconds can form glass with no crystals at all, like obsidian.</p>
+      <div class="key"><b>Try it:</b> move the slider to change how fast the molten rock cools.</div>
+    </div>
+    <div class="model">
+      <h4>Cooling and crystals</h4>
+      <label class="field" for="l6-rate">Cooling speed <span class="mono num" id="l6-ratel"></span></label>
+      <input type="range" id="l6-rate" min="1" max="4" step="1" value="1">
+      <div class="scene"><svg id="l6-svg" viewBox="0 0 400 200" role="img" aria-label="Crystals forming in cooling rock"></svg></div>
+      <div class="detail" id="l6-detail" aria-live="polite"></div>
+      <p class="hint">Drawing only. Crystal sizes are exaggerated so you can see them.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l7">
+    <div class="text">
+      <span class="step">Lesson 7 · Metamorphic rock</span>
+      <h3>Changed without melting</h3>
+      <div class="codes"><span class="code">ES2.K5</span></div>
+      <p><b>Metamorphic</b> means “changed form”. Metamorphic rock forms <b>below Earth’s surface</b> when great heat and pressure act on a rock that already exists. That starting rock is called the <b>parent rock</b>.</p>
+      <p>The rock does not melt. Instead, its minerals slowly change and regrow while the rock is still solid. Pressure can squeeze the minerals so they line up in bands or sheets, called <b>foliation</b>.</p>
+      <p>Shale can become slate, then schist, then gneiss as heat and pressure increase. Limestone becomes marble. Sandstone becomes quartzite. Big Rock near Okotoks is a huge block of quartzite that a glacier carried from the mountains.</p>
+      <div class="key"><b>Try it:</b> pick a parent rock, then raise the heat and pressure. Watch what happens if you push the heat too far.</div>
+    </div>
+    <div class="model">
+      <h4>Heat and pressure</h4>
+      <div class="chips" id="l7-chips" role="group" aria-label="Choose a parent rock"></div>
+      <div class="fields">
+        <label class="field" for="l7-heat">Heat <span class="mono num" id="l7-heatl"></span><input type="range" id="l7-heat" min="0" max="4" step="1" value="0"></label>
+        <label class="field" for="l7-press">Pressure <span class="mono num" id="l7-pressl"></span><input type="range" id="l7-press" min="0" max="3" step="1" value="0"></label>
+      </div>
+      <div class="scene"><svg id="l7-svg" viewBox="0 0 400 180" role="img" aria-label="Rock texture changing with heat and pressure"></svg></div>
+      <div class="detail" id="l7-detail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="l8">
+    <div class="text">
+      <span class="step">Lesson 8 · Fast and slow</span>
+      <h3>The rock cycle runs at many speeds</h3>
+      <div class="codes"><span class="code">ES2.K1</span></div>
+      <p>The processes in the rock cycle happen at <b>different rates</b>. A lava flow can form a solid crust in hours. Freeze and thaw can crack rock in a single Alberta winter. Turning sediment into solid rock, or changing rock by metamorphism, usually takes thousands to millions of years.</p>
+      <p>Because times range from hours to millions of years, the timeline uses a special scale. Each step to the right is ten times longer than the one before.</p>
+      <div class="key"><b>Try it:</b> tap each bar to read about the process and its rough time range.</div>
+    </div>
+    <div class="model">
+      <h4>Rock cycle clock</h4>
+      <div class="chartbox"><svg id="l8-svg" viewBox="0 0 440 300" role="group" aria-label="Timeline of rock cycle processes from hours to millions of years"></svg></div>
+      <div class="detail" id="l8-detail" aria-live="polite"></div>
+      <p class="hint">Time ranges are rough and rounded. Real rates depend on the place and the rock.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five stations. Explain the rock cycle, analyze and classify Alberta rocks, investigate how rocks form, identify minerals from a sample, and work out how long rock takes to form.</p>
+  </div>
+
+  <article class="lesson" id="b1">
+    <div class="text">
+      <span class="step">Station 1 · Rock cycle journey</span>
+      <h3>Take a rock on a trip</h3>
+      <div class="codes"><span class="code">ES2.S1</span></div>
+      <p>Your rock starts in one stage of the cycle. Choose a process to move it. Each step is written in your journal so you can explain the whole path.</p>
+      <p>Then try a challenge. Reach the target stage in as few steps as you can.</p>
+      <div class="worked"><b>Worked example</b><span>Granite (igneous) to sandstone (sedimentary): weathering and erosion break granite into sand. Deposition, compaction and cementation turn the sand into sandstone. Two steps.</span></div>
+    </div>
+    <div class="model">
+      <div class="row"><span class="tagline">Now:</span><span class="pill ok" id="b1-now"></span><span class="tagline" id="b1-goal"></span></div>
+      <div class="testgrid" id="b1-moves" role="group" aria-label="Choose a process"></div>
+      <div class="feedback" id="b1-fb" aria-live="polite" hidden></div>
+      <ol class="journal" id="b1-journal"></ol>
+      <div class="row"><button class="btn ghost" type="button" id="b1-reset">Start a new rock</button><button class="btn" type="button" id="b1-chal">New challenge</button></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b2">
+    <div class="text">
+      <span class="step">Station 2 · Alberta rock tray</span>
+      <h3>Analyze and classify local rocks</h3>
+      <div class="codes"><span class="code">ES2.S2</span><span class="code">ES2.S3</span></div>
+      <p>Each specimen comes with a field note: where it was found and what you see. Read the clues about texture, layering and minerals. Then classify the rock.</p>
+      <p>The map shows where the Alberta specimens come from. Some samples come from a classroom rock kit because those rocks are rare at Alberta’s surface.</p>
+    </div>
+    <div class="model">
+      <div class="scene"><svg id="b2-map" viewBox="0 0 300 300" role="img" aria-label="Simple map of Alberta showing where the specimen was found"></svg></div>
+      <div class="detail" id="b2-spec"></div>
+      <div class="bins" id="b2-bins" role="group" aria-label="Classify the rock"></div>
+      <div class="feedback" id="b2-fb" aria-live="polite" hidden></div>
+      <div class="row"><button class="btn" type="button" id="b2-next">Next specimen</button><span class="mono num" id="b2-score"></span></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3">
+    <div class="text">
+      <span class="step">Station 3 · Formation investigation</span>
+      <h3>Does cooling time change crystal size?</h3>
+      <div class="codes"><span class="code">ES2.S4</span></div>
+      <p><b>Question:</b> how does the time molten rock takes to cool affect the size of its crystals?</p>
+      <p>Choose a cooling time and run a trial. Run each time at least twice. The graph shows your average results. Then answer the conclusion question.</p>
+      <p class="note">The crystal sizes come from a made-up model for practice, with a little random variation like a real test.</p>
+    </div>
+    <div class="model">
+      <div class="fields">
+        <label class="field" for="b3-time">Cooling time<select id="b3-time"></select></label>
+        <button class="btn" type="button" id="b3-run">Run trial</button>
+        <button class="btn ghost" type="button" id="b3-clear">Clear data</button>
+      </div>
+      <div class="tablebox"><table class="dt" id="b3-table"></table></div>
+      <div class="chartbox"><svg id="b3-chart" viewBox="0 0 420 220" role="img" aria-label="Graph of average crystal size against cooling time"></svg></div>
+      <div class="keybox" id="b3-concl" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3b">
+    <div class="text">
+      <span class="step">Station 3B · Formation stories</span>
+      <h3>Put the story in order</h3>
+      <div class="codes"><span class="code">ES2.S4</span><span class="code">ES2.S1</span></div>
+      <p>Every rock has a formation story. Tap the steps in the order they happened. A new rock appears each round.</p>
+    </div>
+    <div class="model">
+      <div class="detail" id="b3b-rock"></div>
+      <div class="orderlist" id="b3b-opts" role="group" aria-label="Steps to put in order"></div>
+      <ol class="journal" id="b3b-picked"></ol>
+      <div class="feedback" id="b3b-fb" aria-live="polite" hidden></div>
+      <div class="row"><button class="btn ghost" type="button" id="b3b-undo">Undo</button><button class="btn" type="button" id="b3b-new">New rock</button></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b4">
+    <div class="text">
+      <span class="step">Station 4 · Mineral ID</span>
+      <h3>Identify the unknown mineral</h3>
+      <div class="codes"><span class="code">ES2.S5</span><span class="code">ES2.K7</span></div>
+      <p>You have an unknown mineral from a sample. Run tests to collect evidence, then choose its name. Use as few tests as you can.</p>
+      <div class="worked"><b>Worked example</b><span>A mineral is white and glassy. Your fingernail does not scratch it, but a steel nail does, so its hardness is between 2.5 and 5.5. It fizzes in dilute acid. Quartz is too hard (7) and gypsum too soft (2). The mineral is calcite (hardness 3).</span></div>
+      <p class="note">Tool hardness values are approximate: fingernail about 2.5, steel nail about 5.5, glass about 5.5.</p>
+    </div>
+    <div class="model">
+      <div class="testgrid" id="b4-tests" role="group" aria-label="Mineral tests"></div>
+      <ul class="res" id="b4-res" aria-live="polite"></ul>
+      <label class="field" for="b4-guess">Your identification<select id="b4-guess"></select></label>
+      <div class="row"><button class="btn" type="button" id="b4-check">Check</button><button class="btn ghost" type="button" id="b4-new">New sample</button><span class="mono num" id="b4-score"></span></div>
+      <div class="feedback" id="b4-fb" aria-live="polite" hidden></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b5">
+    <div class="text">
+      <span class="step">Station 5 · Rock clock</span>
+      <h3>How long did the layers take?</h3>
+      <div class="codes"><span class="code">ES2.K1</span><span class="code">ES2.S1</span></div>
+      <p>If you know how fast sediment piles up, you can estimate how long a layer took to form.</p>
+      <div class="formula">time = thickness ÷ rate &nbsp; (t = h ÷ r)</div>
+      <div class="worked"><b>Worked example</b><span>A mud layer is 3 m thick. Mud settles at 0.5 mm per year. First change metres to millimetres: 3 m = 3000 mm. Then t = 3000 mm ÷ 0.5 mm per year = 6000 years.</span></div>
+      <p class="note">Rates here are made up for practice. Real rates change from place to place.</p>
+    </div>
+    <div class="model">
+      <div class="fields">
+        <label class="field" for="b5-h">Thickness (m)<input type="number" id="b5-h" min="0" step="0.1" value="2"></label>
+        <label class="field" for="b5-r">Rate (mm per year)<input type="number" id="b5-r" min="0.01" step="0.01" value="0.2"></label>
+      </div>
+      <div class="stats" id="b5-out" aria-live="polite"></div>
+      <h4>Practice</h4>
+      <p id="b5-q"></p>
+      <div class="fields">
+        <label class="field" for="b5-a">Your answer (years)<input type="number" id="b5-a" step="any"></label>
+        <button class="btn" type="button" id="b5-check">Check</button>
+        <button class="btn ghost" type="button" id="b5-new">New problem</button>
+      </div>
+      <div class="feedback" id="b5-fb" aria-live="polite" hidden></div>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Each card names a rock, a clue or a process. Tap the rock type it belongs to.</p>
+  </div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><span class="mono num" id="s-score"></span></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins" role="group" aria-label="Rock types"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+    <div class="row"><button class="btn" type="button" id="s-next" hidden>Next card</button><button class="btn ghost" type="button" id="s-restart">Restart</button></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap a card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><button class="chip" type="button" id="fc-all" aria-pressed="true">All cards</button><button class="chip" type="button" id="fc-learn" aria-pressed="false">Still learning only</button><span class="mono num" id="fc-count"></span></div>
+    <div class="prog"><i id="fc-bar"></i></div>
+    <button class="card3" type="button" id="fc-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="fc-prev">Previous</button>
+      <button class="btn ghost" type="button" id="fc-no">Still learning</button>
+      <button class="btn" type="button" id="fc-yes">I know it</button>
+      <button class="btn ghost" type="button" id="fc-nx">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="qz-prog"></span><span class="mono num" id="qz-best"></span></div>
+    <div id="qz-box"></div>
+    <div class="row"><button class="btn" type="button" id="qz-next" hidden>Next question</button><button class="btn ghost" type="button" id="qz-new">New round</button></div>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and check off the key ideas you included. Drafts are saved in this browser.</p>
+  </div>
+  <div class="wr" id="wr-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="wr-ext"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for ES2 and where the lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var STAGES = {
+  magma: {name: "Magma", type: "Molten rock", color: "var(--mag)", text: "Magma is melted rock below Earth’s surface. When it erupts onto the surface it is called lava. Rock melts deep underground where temperatures are very high."},
+  igneous: {name: "Igneous rock", type: "Rock type", color: "var(--ign)", text: "Igneous rock forms when magma or lava cools and crystallizes. Examples: granite, basalt, obsidian."},
+  sediment: {name: "Sediment", type: "Loose pieces", color: "var(--sedi)", text: "Sediment is loose pieces of rock, minerals, shells or plant remains. It is made by weathering and moved by water, wind or ice."},
+  sedimentary: {name: "Sedimentary rock", type: "Rock type", color: "var(--sed)", text: "Sedimentary rock forms on or just below the surface when layers of sediment are compacted and cemented. Examples: sandstone, shale, limestone, coal."},
+  metamorphic: {name: "Metamorphic rock", type: "Rock type", color: "var(--met)", text: "Metamorphic rock forms below the surface when heat and pressure change an existing rock without melting it. Examples: slate, gneiss, marble, quartzite."}
+};
+var NODEPOS = {sediment: [200, 32], sedimentary: [338, 125], metamorphic: [290, 282], magma: [110, 282], igneous: [62, 125]};
+var PROCS = [
+  {n: 1, from: "magma", to: "igneous", name: "Cooling and crystallization", main: true, where: "On or below the surface", rate: "Hours to years for lava at the surface. Thousands to millions of years for magma deep underground.", text: "As molten rock cools, its particles lock together into crystals. Slow cooling makes large crystals. Fast cooling makes small crystals or glass."},
+  {n: 2, from: "igneous", to: "sediment", name: "Weathering and erosion", main: true, where: "On the surface", rate: "Days to millions of years, depending on the rock and the climate.", text: "Weathering breaks rock into smaller pieces. Erosion carries the pieces away by water, wind, ice or gravity."},
+  {n: 3, from: "sediment", to: "sedimentary", name: "Deposition, compaction and cementation", main: true, where: "On or just below the surface", rate: "Usually thousands to millions of years.", text: "Sediment is dropped in layers. The weight of new layers squeezes out water (compaction). Dissolved minerals glue the grains together (cementation)."},
+  {n: 4, from: "sedimentary", to: "metamorphic", name: "Heat and pressure", main: true, where: "Below the surface", rate: "Usually millions of years.", text: "When rock is buried deep or squeezed as mountains form, heat and pressure change its minerals and texture while it stays solid."},
+  {n: 5, from: "metamorphic", to: "magma", name: "Melting", main: true, where: "Deep below the surface", rate: "Thousands to millions of years.", text: "If the rock gets hot enough, it melts and becomes magma. Then the cycle can start again."},
+  {n: 6, from: "igneous", to: "metamorphic", name: "Heat and pressure", main: false, where: "Below the surface", rate: "Usually millions of years.", text: "Igneous rock can be changed into metamorphic rock without ever becoming sediment. Granite can become gneiss."},
+  {n: 7, from: "metamorphic", to: "sediment", name: "Uplift, weathering and erosion", main: false, where: "On the surface", rate: "Millions of years to bring rock up, then weathering begins.", text: "Mountain building can lift metamorphic rock to the surface. There it is weathered and eroded into sediment."},
+  {n: 8, from: "sedimentary", to: "sediment", name: "Weathering and erosion", main: false, where: "On the surface", rate: "Days to millions of years.", text: "Sedimentary rock at the surface can be broken down again. The Drumheller hoodoos are sandstone being weathered and eroded today."},
+  {n: 9, from: "sedimentary", to: "magma", name: "Melting", main: false, where: "Deep below the surface", rate: "Thousands to millions of years.", text: "Any rock that is buried deep enough and gets hot enough can melt into magma."}
+];
+
+var MINERALS4 = [
+  {id: "qtz", name: "Quartz", color: "var(--qtz)", inGranite: true, text: "Glassy, often clear, white or grey. Very hard (7 on the Mohs scale), so it scratches glass. Breaks with curved surfaces. Most beach and river sand is mostly quartz."},
+  {id: "fsp", name: "Feldspar", color: "var(--fsp)", inGranite: true, text: "Pink, white or grey with a glassy to pearly lustre. Hard (6). Breaks along flat surfaces. The most common mineral group in Earth’s crust. Feldspar gives many granites their pink colour."},
+  {id: "mic", name: "Mica", color: "var(--mic)", inGranite: true, text: "Black (biotite) or silvery (muscovite). Soft (about 2.5). Peels into thin, flexible sheets like pages of a book. Mica is a group of minerals, not just one."},
+  {id: "cal", name: "Calcite", color: "var(--cal)", inGranite: false, text: "White or clear and glassy. Soft (3). Fizzes in dilute acid. Calcite is not found in granite. It is the main mineral in limestone and marble, and many shells are made of it."}
+];
+
+var PROPS = [
+  {id: "colour", name: "Colour", how: "Look at a fresh, clean surface.", tip: "Least reliable. Quartz can be clear, white, pink, purple or smoky because of tiny impurities.", vals: {Quartz: "Clear, white, pink, grey", Feldspar: "Pink, white, grey", Mica: "Black or silvery", Calcite: "White or clear", Magnetite: "Black"}},
+  {id: "lustre", name: "Lustre", how: "Tilt it in the light. Does it shine like metal, glass or pearl, or look dull?", tip: "Metallic lustre quickly separates minerals like magnetite from glassy ones.", vals: {Quartz: "Glassy", Feldspar: "Glassy to pearly", Mica: "Pearly to glassy", Calcite: "Glassy", Magnetite: "Metallic"}},
+  {id: "streak", name: "Streak", how: "Rub the mineral on a rough white porcelain tile and look at the powder.", tip: "More reliable than colour. Many light minerals leave a white streak. Very hard minerals like quartz may only scratch the tile.", vals: {Quartz: "White (or none)", Feldspar: "White", Mica: "White to grey", Calcite: "White", Magnetite: "Black"}},
+  {id: "trans", name: "Transparency", how: "Hold a thin piece up to the light.", tip: "Transparent: you can see through it. Translucent: light passes but you cannot see clearly. Opaque: no light passes.", vals: {Quartz: "Transparent to translucent", Feldspar: "Translucent to opaque", Mica: "Transparent in thin sheets", Calcite: "Transparent to translucent", Magnetite: "Opaque"}},
+  {id: "hard", name: "Hardness", how: "Try to scratch it with a fingernail, a steel nail, or use it to scratch glass.", tip: "Measured on the Mohs scale from 1 to 10. A harder mineral scratches a softer one.", vals: {Quartz: "7", Feldspar: "6", Mica: "2.5 to 3", Calcite: "3", Magnetite: "6"}},
+  {id: "mag", name: "Magnetism", how: "Hold a strong magnet near it.", tip: "Only a few minerals are strongly magnetic. Magnetite is the most common.", vals: {Quartz: "No", Feldspar: "No", Mica: "No", Calcite: "No", Magnetite: "Yes, strongly"}}
+];
+var MOHS = [[1, "Talc"], [2, "Gypsum"], [3, "Calcite"], [4, "Fluorite"], [5, "Apatite"], [6, "Feldspar"], [7, "Quartz"], [8, "Topaz"], [9, "Corundum"], [10, "Diamond"]];
+var TOOLS = [[2.5, "Fingernail"], [5.5, "Glass, steel nail"]];
+
+var KEYQ = {
+  q1: {q: "Can you see pieces such as sand grains, pebbles, shells or fossils, held together like they were glued?", yes: "r_sed", no: "q2"},
+  q2: {q: "Are the minerals lined up in bands, stripes or thin flat sheets?", yes: "r_metf", no: "q3"},
+  q3: {q: "Is it glassy, full of gas bubble holes, or made of crystals that interlock in random directions?", yes: "r_ign", no: "q4"},
+  q4: {q: "Is it made of tightly fused, sugary grains or crystals with no layers, like marble or quartzite?", yes: "r_metn", no: "r_unsure"},
+  r_sed: {r: "Sedimentary", t: "Grains or fragments cemented together are the sign of sedimentary rock. Look for layers (beds) and fossils too."},
+  r_metf: {r: "Metamorphic (foliated)", t: "Minerals lined up in bands or sheets are foliation. Pressure lined them up. Examples: slate, schist, gneiss."},
+  r_ign: {r: "Igneous", t: "Interlocking crystals in random directions grew as molten rock cooled. Glass and gas holes mean very fast cooling at the surface."},
+  r_metn: {r: "Metamorphic (not foliated)", t: "Heat made the grains regrow and fuse. Marble (from limestone) fizzes in acid. Quartzite (from sandstone) is very hard."},
+  r_unsure: {r: "Not sure yet", t: "Look at a fresh surface with a hand lens, or test the minerals. Some fine-grained rocks need more tests to classify."}
+};
+
+var SEDSTAGES = [
+  {name: "Weathering", text: "Frost, roots and water break rock in the mountains into smaller pieces. This makes sediment."},
+  {name: "Erosion and transport", text: "A river carries sand, silt and mud away from the mountains. Faster water carries bigger pieces."},
+  {name: "Deposition", text: "When the river slows down at a lake or sea, it drops its sediment. The sediment settles in flat layers."},
+  {name: "Compaction", text: "New layers pile on top. Their weight squeezes the lower layers, pushes out water and packs the grains closer. The layers get thinner."},
+  {name: "Cementation", text: "Minerals dissolved in the water, such as calcite or quartz, crystallize between the grains and glue them together. Sand becomes sandstone and mud becomes shale."}
+];
+
+var COOL = [
+  null,
+  {lab: "Very slow", where: "Deep underground (intrusive)", time: "Thousands to millions of years", rock: "Granite", n: 9, text: "Magma deep underground is surrounded by warm rock, so it cools very slowly. Crystals have time to grow large enough to see easily."},
+  {lab: "Slow", where: "Shallow underground (intrusive)", time: "Hundreds to thousands of years", rock: "Fine to medium crystals", n: 30, text: "Magma that pushes up near the surface cools faster. The crystals are smaller but may still be visible with a hand lens."},
+  {lab: "Fast", where: "Lava flow on the surface (extrusive)", time: "Days to years", rock: "Basalt", n: 160, text: "Lava on the surface loses heat to the air quickly. Crystals are tiny, so the rock looks smooth and dark. Gas bubbles can leave holes."},
+  {lab: "Very fast", where: "Lava quenched in air or water (extrusive)", time: "Seconds to minutes", rock: "Obsidian", n: 0, text: "When lava cools in seconds, the particles have no time to form crystals. The result is volcanic glass, like obsidian. Pumice is glassy too but full of gas holes."}
+];
+
+var PARENTS = [
+  {id: "shale", name: "Shale", path: ["Shale", "Slate", "Phyllite", "Schist", "Gneiss"], foliates: true, note: "Shale is a sedimentary rock made of mud. As heat and pressure rise, its clay minerals regrow as mica and line up."},
+  {id: "lime", name: "Limestone", path: ["Limestone", "Marble", "Marble", "Marble", "Marble"], foliates: false, note: "Limestone is made mostly of calcite. Heat makes the calcite regrow into larger, interlocking crystals. Marble still fizzes in acid."},
+  {id: "sand", name: "Sandstone", path: ["Sandstone", "Quartzite", "Quartzite", "Quartzite", "Quartzite"], foliates: false, note: "Quartz sandstone becomes quartzite. The grains fuse so tightly that the rock breaks through the grains, not around them."},
+  {id: "gran", name: "Granite", path: ["Granite", "Granite", "Gneiss", "Gneiss", "Gneiss"], foliates: true, note: "Granite is igneous. Under high heat and pressure its minerals separate into light and dark bands. The result is gneiss."}
+];
+
+var RATES = [
+  {name: "Lava forms a solid crust", lo: -3.9, hi: -2.9, text: "The top of a lava flow can cool to a solid crust within hours of erupting.", range: "Hours"},
+  {name: "Thick lava flow becomes solid", lo: -2, hi: 1.3, text: "The inside of a thick lava flow stays hot much longer. It can take months to years or more to become solid.", range: "Weeks to decades"},
+  {name: "Frost cracks rock", lo: -1, hi: 0, text: "In an Alberta winter, water freezes and thaws in cracks again and again. One season can split rock.", range: "One winter"},
+  {name: "A year of mud settles", lo: 0, hi: 0, text: "In a calm lake, a thin layer of mud may settle each year. It can be less than a millimetre thick.", range: "About a year"},
+  {name: "Sediment becomes rock", lo: 3, hi: 7, text: "Compaction and cementation usually take thousands to millions of years.", range: "Thousands to millions of years"},
+  {name: "Magma cools into granite", lo: 3, hi: 6.3, text: "A large body of magma deep underground cools very slowly. It can take thousands to millions of years.", range: "Thousands to millions of years"},
+  {name: "Metamorphism", lo: 5.7, hi: 7.3, text: "Heat and pressure change rock slowly, usually over millions of years.", range: "Millions of years"},
+  {name: "Mountains worn down", lo: 7, hi: 8, text: "Weathering and erosion can wear a mountain range down over tens of millions of years.", range: "Tens of millions of years"}
+];
+
+var MOVES = {
+  magma: [{to: "igneous", name: "Cool and crystallize"}],
+  igneous: [{to: "sediment", name: "Weathering and erosion"}, {to: "metamorphic", name: "Heat and pressure"}, {to: "magma", name: "Melting"}],
+  sediment: [{to: "sedimentary", name: "Deposition, compaction and cementation"}],
+  sedimentary: [{to: "sediment", name: "Weathering and erosion"}, {to: "metamorphic", name: "Heat and pressure"}, {to: "magma", name: "Melting"}],
+  metamorphic: [{to: "sediment", name: "Uplift, weathering and erosion"}, {to: "metamorphic", name: "More heat and pressure"}, {to: "magma", name: "Melting"}]
+};
+var JNOTE = {
+  igneous: "Magma cooled and crystallized into igneous rock.",
+  sediment: "The rock was weathered into pieces and the pieces were carried away.",
+  sedimentary: "The sediment settled in layers, was compacted, then cemented into sedimentary rock.",
+  metamorphic: "Heat and pressure changed the solid rock into metamorphic rock.",
+  magma: "The rock got so hot that it melted into magma."
+};
+
+var SPECS = [
+  {name: "Sandstone", place: "Drumheller badlands", pos: [175, 225], local: true, type: "sed", clues: ["Texture: sand-sized grains you can feel, rounded and glued together", "Layering: the cliff it came from shows flat beds of different colours", "Minerals: mostly quartz grains with some feldspar"], why: "Rounded grains cemented together and flat beds are signs of sedimentary rock. This sand was deposited by ancient rivers."},
+  {name: "Mudstone", place: "North Saskatchewan River valley, Edmonton", pos: [150, 160], local: true, type: "sed", clues: ["Texture: grains too fine to see, feels smooth", "Layering: breaks into thin flat layers", "Other: leaf prints of ancient plants"], why: "Fine mud that settled in layers and was compacted. Plant fossils form in sedimentary rock, not igneous or metamorphic rock."},
+  {name: "Coal", place: "Seam in the river valley, Edmonton", pos: [150, 160], local: true, type: "sed", clues: ["Texture: black, light for its size, may show plant shapes", "Layering: found as a layer between sandstone and mudstone", "Composition: made of ancient plant remains, not minerals"], why: "Coal forms from layers of plant remains buried and compacted in swamps. It is a sedimentary rock made of organic material."},
+  {name: "Limestone", place: "Rocky Mountains near Banff", pos: [95, 205], local: true, type: "sed", clues: ["Texture: fine grey grains, some shell fossils", "Layering: in thick beds that are now tilted", "Minerals: mostly calcite, fizzes in dilute acid"], why: "Limestone forms from shells and calcite that settled on an ancient sea floor. The fossils and beds are clues. Mountain building later tilted the layers."},
+  {name: "Conglomerate", place: "Foothills west of Calgary", pos: [110, 235], local: true, type: "sed", clues: ["Texture: rounded pebbles the size of marbles in a sandy cement", "Layering: found in beds", "Minerals: pebbles of quartzite and other rock"], why: "Rounded pebbles were tumbled by fast rivers, deposited, then cemented. Fragments of older rock glued together means sedimentary."},
+  {name: "Granite erratic", place: "Farm field near Edmonton", pos: [160, 150], local: true, type: "ign", clues: ["Texture: interlocking crystals large enough to see, random directions", "Layering: none", "Minerals: glassy grey quartz, pink feldspar, black mica"], why: "Large interlocking crystals mean magma cooled slowly underground. Glaciers carried boulders like this from the Canadian Shield."},
+  {name: "Quartzite", place: "Big Rock near Okotoks", pos: [130, 245], local: true, type: "met", clues: ["Texture: very hard, sugary grains fused tightly", "Layering: no foliation", "Minerals: almost all quartz, scratches glass easily"], why: "Sandstone changed by heat and pressure. The quartz grains fused so tightly that the rock breaks through the grains. A glacier carried this block from the mountains."},
+  {name: "Gneiss", place: "Canadian Shield near Fort Chipewyan", pos: [245, 45], local: true, type: "met", clues: ["Texture: coarse crystals", "Layering: wavy light and dark bands (foliation)", "Minerals: feldspar, quartz, dark mica"], why: "Light and dark minerals separated into bands under high heat and pressure deep in the crust. Some of Alberta’s oldest rocks are in the far northeast."},
+  {name: "Basalt", place: "Classroom rock kit", pos: null, local: false, type: "ign", clues: ["Texture: dark, crystals too tiny to see, some round gas holes", "Layering: none", "Minerals: dark minerals, no quartz visible"], why: "Tiny crystals and gas holes mean lava cooled quickly at the surface. Basalt is extrusive igneous rock."},
+  {name: "Obsidian", place: "Classroom rock kit", pos: null, local: false, type: "ign", clues: ["Texture: smooth black glass, no crystals", "Layering: none", "Other: breaks with sharp curved edges"], why: "Glass forms when lava cools in seconds, too fast for crystals. It is extrusive igneous rock."},
+  {name: "Slate", place: "Classroom rock kit", pos: null, local: false, type: "met", clues: ["Texture: very fine, harder than shale", "Layering: splits into smooth flat sheets (foliation)", "Other: rings when tapped"], why: "Slate is shale changed by low heat and pressure. Its tiny minerals line up so it splits into sheets."},
+  {name: "Marble", place: "Classroom rock kit", pos: null, local: false, type: "met", clues: ["Texture: sugary, interlocking crystals that sparkle", "Layering: no foliation, no fossils", "Minerals: calcite, fizzes in dilute acid"], why: "Marble is limestone changed by heat. The calcite regrew as interlocking crystals and any fossils were destroyed."}
+];
+var TYPES = {ign: "Igneous", sed: "Sedimentary", met: "Metamorphic"};
+
+var B3T = [
+  {lab: "1 minute", logt: -5.7, base: 0},
+  {lab: "1 day", logt: -2.6, base: 0.05},
+  {lab: "10 years", logt: 1, base: 0.4},
+  {lab: "10 000 years", logt: 4, base: 2.5},
+  {lab: "1 million years", logt: 6, base: 9}
+];
+
+var STORIES = [
+  {rock: "Sandstone in the Drumheller badlands", steps: ["Older rock in the mountains is weathered into sand", "A river carries the sand downstream", "The sand is deposited in layers", "New layers compact the sand", "Minerals cement the grains into sandstone"]},
+  {rock: "Granite boulder near Edmonton", steps: ["Rock deep underground melts into magma", "Magma cools slowly underground", "Large crystals form, making granite", "Uplift and erosion expose the granite", "A glacier carries the boulder to Alberta"]},
+  {rock: "Marble", steps: ["Shells and calcite settle on a sea floor", "The layers are compacted and cemented into limestone", "The limestone is buried deep", "Heat and pressure make the calcite regrow", "Interlocking calcite crystals form marble"]},
+  {rock: "Basalt", steps: ["Rock deep underground melts into magma", "Magma rises through a crack", "Lava erupts onto the surface", "The lava cools quickly in the air", "Tiny crystals form, making basalt"]},
+  {rock: "Slate", steps: ["Rock is weathered into mud", "Mud settles in a calm lake or sea", "The mud is compacted into shale", "The shale is buried and squeezed", "Minerals line up, making slate"]}
+];
+
+var MINS = [
+  {name: "Quartz", colour: "Clear to white", lustre: "Glassy", streak: "White, or scratches the tile", trans: "Transparent to translucent", nail: "No", steel: "No", glass: "Yes, it scratches glass", magnet: "No", acid: "No fizz"},
+  {name: "Feldspar", colour: "Pink", lustre: "Glassy to pearly", streak: "White", trans: "Translucent to opaque", nail: "No", steel: "No", glass: "Yes, it scratches glass", magnet: "No", acid: "No fizz"},
+  {name: "Mica (muscovite)", colour: "Silvery to clear", lustre: "Pearly", streak: "White", trans: "Transparent in thin sheets", nail: "Yes, just barely", steel: "Yes", glass: "No", magnet: "No", acid: "No fizz", extra: "Peels into thin flexible sheets"},
+  {name: "Mica (biotite)", colour: "Black to dark brown", lustre: "Glassy to pearly", streak: "White to grey", trans: "Translucent in thin sheets", nail: "Yes, just barely", steel: "Yes", glass: "No", magnet: "No", acid: "No fizz", extra: "Peels into thin flexible sheets"},
+  {name: "Calcite", colour: "White", lustre: "Glassy", streak: "White", trans: "Transparent to translucent", nail: "No", steel: "Yes", glass: "No", magnet: "No", acid: "Fizzes"},
+  {name: "Magnetite", colour: "Black", lustre: "Metallic", streak: "Black", trans: "Opaque", nail: "No", steel: "No", glass: "Yes, scratches glass slightly", magnet: "Yes, strongly", acid: "No fizz"},
+  {name: "Hematite", colour: "Silver-grey to reddish brown", lustre: "Metallic to dull", streak: "Red-brown", trans: "Opaque", nail: "No", steel: "No", glass: "Yes, scratches glass slightly", magnet: "No", acid: "No fizz"},
+  {name: "Pyrite", colour: "Brassy yellow", lustre: "Metallic", streak: "Greenish black", trans: "Opaque", nail: "No", steel: "No", glass: "Yes, scratches glass", magnet: "No", acid: "No fizz"},
+  {name: "Gypsum", colour: "White to clear", lustre: "Glassy to silky", streak: "White", trans: "Transparent to translucent", nail: "Yes", steel: "Yes", glass: "No", magnet: "No", acid: "No fizz"},
+  {name: "Talc", colour: "White to pale green", lustre: "Pearly to greasy", streak: "White", trans: "Translucent to opaque", nail: "Yes, easily", steel: "Yes", glass: "No", magnet: "No", acid: "No fizz", extra: "Feels soapy"}
+];
+var TESTS = [["colour", "Colour"], ["lustre", "Lustre"], ["streak", "Streak"], ["trans", "Transparency"], ["nail", "Fingernail scratches it?"], ["steel", "Steel nail scratches it?"], ["glass", "It scratches glass?"], ["magnet", "Magnet"], ["acid", "Dilute acid"]];
+
+var SORTS = [
+  ["Granite", "ign"], ["Basalt", "ign"], ["Obsidian", "ign"], ["Pumice", "ign"], ["Forms when lava cools on the surface", "ign"], ["Large interlocking crystals from slow cooling underground", "ign"], ["Glassy texture with no crystals", "ign"], ["Crystallization of magma", "ign"],
+  ["Sandstone", "sed"], ["Shale", "sed"], ["Conglomerate", "sed"], ["Limestone", "sed"], ["Coal", "sed"], ["Compaction and cementation", "sed"], ["Contains fossils of shells or leaves", "sed"], ["Rounded grains glued together in flat beds", "sed"],
+  ["Slate", "met"], ["Gneiss", "met"], ["Marble", "met"], ["Quartzite", "met"], ["Schist", "met"], ["Minerals lined up in bands (foliation)", "met"], ["Changed by heat and pressure without melting", "met"], ["Big Rock near Okotoks", "met"]
+];
+var SORTWHY = {ign: "Igneous rock forms when magma or lava cools and crystallizes.", sed: "Sedimentary rock forms from sediment that is compacted and cemented on or just below the surface.", met: "Metamorphic rock forms when heat and pressure change an existing rock below the surface."};
+
+var CARDS = [
+  ["Rock cycle", "The processes that form, break down and re-form rocks on and below Earth’s surface, at many different rates."],
+  ["Rock", "A natural solid made of one or more minerals, or sometimes of other natural material like plant remains."],
+  ["Mineral", "A natural, non-living solid with its own chemical makeup and particles arranged in a regular crystal pattern."],
+  ["Crystal", "A solid whose particles are arranged in a regular, repeating pattern."],
+  ["Sediment", "Loose pieces of rock, minerals, shells or plant remains made by weathering."],
+  ["Sedimentary rock", "Rock formed on or just below the surface by compaction and cementation of sediment."],
+  ["Compaction", "The squeezing of sediment by the weight of layers above, which pushes out water and packs grains together."],
+  ["Cementation", "Dissolved minerals crystallize between grains and glue them together."],
+  ["Igneous rock", "Rock formed when magma or lava cools and crystallizes."],
+  ["Magma", "Molten rock below Earth’s surface."],
+  ["Lava", "Molten rock that has reached Earth’s surface."],
+  ["Crystallization", "The process of particles locking into crystals as molten rock cools."],
+  ["Intrusive igneous rock", "Igneous rock that cooled slowly below the surface. It has large crystals. Example: granite."],
+  ["Extrusive igneous rock", "Igneous rock that cooled quickly on the surface. It has tiny crystals or none. Examples: basalt, obsidian."],
+  ["Metamorphic rock", "Rock formed below the surface when heat and pressure change an existing rock without melting it."],
+  ["Parent rock", "The original rock that changes into a metamorphic rock. Limestone is the parent rock of marble."],
+  ["Foliation", "Minerals lined up in bands or thin sheets in a metamorphic rock, caused by pressure."],
+  ["Texture", "The size, shape and arrangement of grains or crystals in a rock."],
+  ["Layering", "Flat beds in sedimentary rock, or bands of foliation in metamorphic rock."],
+  ["Mineral composition", "Which minerals a rock contains."],
+  ["Quartz", "Hard (7), glassy mineral. Very common in granite and sand."],
+  ["Feldspar", "Hard (6) mineral group, often pink or white. The most common minerals in the crust."],
+  ["Mica", "Soft mineral group that peels into thin sheets. Biotite is black, muscovite is silvery."],
+  ["Calcite", "Soft (3) mineral that fizzes in dilute acid. Main mineral in limestone and marble."],
+  ["Lustre", "How a mineral’s surface reflects light: metallic, glassy, pearly or dull."],
+  ["Streak", "The colour of a mineral’s powder when rubbed on a rough white tile."],
+  ["Transparency", "How much light passes through a mineral: transparent, translucent or opaque."],
+  ["Hardness", "How well a mineral resists scratching, measured on the Mohs scale from 1 to 10."],
+  ["Magnetism", "Whether a magnet is attracted to the mineral. Magnetite is strongly magnetic."],
+  ["Erratic", "A boulder carried by a glacier and left far from where it formed, like Big Rock."]
+];
+
+var QUIZ = [
+  {q: "Which statement best describes the rock cycle?", o: ["Rocks always change in the same fixed order", "Rocks are formed, broken down and re-formed by processes that run at different rates", "Rocks only change during volcanic eruptions", "Once a rock forms it never changes"], a: 1, e: "The rock cycle is a set of possible paths. Processes act on and below the surface at rates from hours to millions of years."},
+  {q: "Igneous rock forms by...", o: ["compaction and cementation", "heat and pressure without melting", "cooling and crystallization of magma or lava", "weathering of other rocks"], a: 2, e: "Igneous rock forms when molten rock cools and its particles lock into crystals."},
+  {q: "Which process happens second when sediment becomes rock?", o: ["Cementation", "Compaction", "Melting", "Crystallization of magma"], a: 1, e: "Sediment is deposited, then compacted by the weight above, then cemented. Compaction comes before cementation."},
+  {q: "Where does metamorphic rock form?", o: ["On the surface in lakes", "Below Earth’s surface", "Only inside volcanoes", "In the air"], a: 1, e: "Heat and pressure high enough to change rock are found below Earth’s surface."},
+  {q: "A rock has large interlocking crystals of quartz, feldspar and mica, with no layers. It is most likely...", o: ["sandstone", "granite", "slate", "limestone"], a: 1, e: "Large interlocking crystals mean slow cooling underground. That describes granite, an intrusive igneous rock."},
+  {q: "Why does basalt have smaller crystals than granite?", o: ["Basalt cooled more quickly at the surface", "Basalt was compacted", "Basalt contains more calcite", "Basalt was heated more"], a: 0, e: "Fast cooling gives particles little time to build crystals, so the crystals stay tiny."},
+  {q: "Obsidian is volcanic glass. What does that tell you?", o: ["It cooled so fast that no crystals formed", "It cooled very slowly underground", "It is made of cemented sand", "It was changed by pressure"], a: 0, e: "When lava cools in seconds, particles freeze in place before forming crystals."},
+  {q: "Which rock is the parent rock of marble?", o: ["Granite", "Sandstone", "Limestone", "Shale"], a: 2, e: "Heat makes the calcite in limestone regrow into the interlocking crystals of marble."},
+  {q: "What happens to a metamorphic rock if it gets hot enough to melt?", o: ["It becomes more metamorphic", "It becomes sediment", "It becomes magma", "It becomes sedimentary rock"], a: 2, e: "Melted rock is magma. Metamorphic change happens only while the rock stays solid."},
+  {q: "Which clue points most strongly to sedimentary rock?", o: ["Minerals lined up in bands", "Glassy surface", "Fossils of shells in flat layers", "Large interlocking crystals"], a: 2, e: "Fossils and flat beds form when sediment and remains settle in layers."},
+  {q: "Foliation is...", o: ["a layer of soil", "minerals lined up in bands or sheets by pressure", "the fizz of calcite in acid", "holes left by gas bubbles"], a: 1, e: "Foliation is a texture of many metamorphic rocks such as slate, schist and gneiss."},
+  {q: "Which mineral property is least reliable for identification?", o: ["Streak", "Hardness", "Colour", "Magnetism"], a: 2, e: "Small impurities can change colour. The same mineral can come in many colours."},
+  {q: "A mineral leaves a red-brown streak but looks silver-grey. Which test was most useful?", o: ["Colour", "Streak", "Transparency", "Magnetism"], a: 1, e: "Streak shows the colour of the powder. Hematite can look silver but always leaves a red-brown streak."},
+  {q: "A fingernail cannot scratch a mineral, but a steel nail can. Its hardness is about...", o: ["less than 2.5", "between 2.5 and 5.5", "more than 7", "exactly 10"], a: 1, e: "A fingernail is about 2.5 and a steel nail about 5.5. The mineral falls between them."},
+  {q: "Which mineral fizzes in dilute acid?", o: ["Quartz", "Feldspar", "Mica", "Calcite"], a: 3, e: "Calcite reacts with acid and gives off carbon dioxide gas bubbles."},
+  {q: "Which mineral peels into thin flexible sheets?", o: ["Mica", "Quartz", "Calcite", "Magnetite"], a: 0, e: "Mica splits along one direction into very thin sheets."},
+  {q: "Which mineral is strongly attracted to a magnet?", o: ["Calcite", "Magnetite", "Quartz", "Feldspar"], a: 1, e: "Magnetite is one of the few common minerals that is strongly magnetic."},
+  {q: "Lustre describes...", o: ["how hard a mineral is", "how a mineral’s surface reflects light", "the colour of its powder", "how much it weighs"], a: 1, e: "Lustre can be metallic, glassy, pearly or dull."},
+  {q: "Big Rock near Okotoks is quartzite. Which rock type is it?", o: ["Igneous", "Sedimentary", "Metamorphic", "It is not a rock"], a: 2, e: "Quartzite forms when heat and pressure change sandstone. A glacier carried Big Rock from the mountains."},
+  {q: "Coal in the Edmonton river valley formed from...", o: ["cooled lava", "layers of plant remains that were buried and compacted", "melted sand", "heated granite"], a: 1, e: "Coal is a sedimentary rock made of ancient plant remains."},
+  {q: "Which pair of processes changes igneous rock into sediment?", o: ["Melting and cooling", "Weathering and erosion", "Heat and pressure", "Compaction and cementation"], a: 1, e: "Weathering breaks the rock and erosion carries the pieces away."},
+  {q: "Can igneous rock become metamorphic rock without becoming sediment first?", o: ["No, it must become sediment", "Yes, through heat and pressure", "Only if it melts first", "Only at the surface"], a: 1, e: "The rock cycle has shortcuts. Heat and pressure can change granite directly into gneiss."},
+  {q: "Which process in the rock cycle is usually the fastest?", o: ["Metamorphism", "Sediment turning into rock", "Lava forming a solid crust", "Magma cooling into granite"], a: 2, e: "The surface of a lava flow can form a crust in hours. The others usually take thousands to millions of years."},
+  {q: "Mud settles at 0.2 mm per year. How long does it take to build a 1 m (1000 mm) layer?", o: ["200 years", "500 years", "5000 years", "50 000 years"], a: 2, e: "t = h ÷ r = 1000 mm ÷ 0.2 mm per year = 5000 years."}
+];
+
+var SHORTQ = [
+  {q: "Explain what the rock cycle is.", a: "The rock cycle is the set of processes that form rocks, break them down and form them again. These processes happen on and below Earth’s surface and at different rates, from hours to millions of years.", k: ["Rocks are formed, broken down and re-formed", "Processes on and below the surface", "Different rates"]},
+  {q: "Describe how sedimentary rock forms.", a: "Weathering breaks rock into sediment, which is carried away and deposited in layers. The weight of new layers compacts the lower layers. Dissolved minerals then cement the grains together. This happens on or just below the surface.", k: ["Sediment deposited in layers", "Compaction by weight", "Cementation by minerals", "On or just below the surface"]},
+  {q: "Explain why granite has larger crystals than basalt.", a: "Granite formed from magma that cooled slowly deep underground, so crystals had time to grow. Basalt formed from lava that cooled quickly on the surface, so its crystals stayed small.", k: ["Granite cooled slowly underground", "Basalt cooled quickly on the surface", "Slow cooling gives larger crystals"]},
+  {q: "What is the difference between magma and lava?", a: "Both are molten rock. Magma is below Earth’s surface. Lava is molten rock that has reached the surface.", k: ["Both molten rock", "Magma below the surface", "Lava on the surface"]},
+  {q: "Describe how metamorphic rock forms and give one example.", a: "Metamorphic rock forms below the surface when great heat and pressure change an existing rock without melting it. For example, limestone becomes marble.", k: ["Heat and pressure", "Existing (parent) rock", "No melting", "Correct example"]},
+  {q: "Name the three characteristics used to classify rocks and give a clue for each.", a: "Texture: interlocking crystals suggest igneous rock. Layering: flat beds suggest sedimentary rock and bands of foliation suggest metamorphic rock. Mineral composition: calcite suggests limestone or marble.", k: ["Texture with a clue", "Layering with a clue", "Mineral composition with a clue"]},
+  {q: "Name four common minerals found in rock and one property of each.", a: "Quartz is hard (7) and glassy. Feldspar is often pink and hardness 6. Mica peels into thin sheets. Calcite fizzes in dilute acid and has hardness 3.", k: ["Quartz with a property", "Feldspar with a property", "Mica with a property", "Calcite with a property"]},
+  {q: "Why is streak more useful than colour for identifying a mineral?", a: "The colour of a mineral can change because of small impurities, but the colour of its powder stays the same. Hematite can look silver or red but always has a red-brown streak.", k: ["Colour changes with impurities", "Streak is consistent", "Example"]},
+  {q: "Describe one path a piece of granite could take to become sandstone.", a: "Granite at the surface is weathered into sand grains. A river carries and deposits the sand in layers. The sand is compacted and cemented into sandstone.", k: ["Weathering of granite", "Erosion and deposition", "Compaction and cementation"]}
+];
+var EXTQ = [
+  {q: "Choose one Alberta rock: sandstone from Drumheller, coal from the Edmonton river valley, or Big Rock near Okotoks. Explain how it formed, what clues show its rock type, and where it could go next in the rock cycle.", a: "Big Rock is quartzite. It began as sand that was deposited, compacted and cemented into sandstone. Deep underground, heat and pressure fused the quartz grains into quartzite, a metamorphic rock. The clues are very hard, tightly fused grains that break through the grains. Mountain building lifted it, and a glacier carried it to Okotoks. Next, weathering and erosion can break it into sand again, which could become new sedimentary rock.", k: ["Correct rock type", "Formation processes in order", "Clues from texture, layering or minerals", "A next step in the cycle with a process named"]},
+  {q: "A classmate says, “The rock cycle always goes igneous, then sedimentary, then metamorphic.” Do you agree? Use at least two examples to explain.", a: "I disagree. The rock cycle has many paths. Granite (igneous) can be changed by heat and pressure into gneiss (metamorphic) without becoming sediment. Sandstone can be weathered back into sand and form new sandstone. Any rock can melt into magma. The order depends on the processes that act on the rock.", k: ["Clear position", "Example of a shortcut path", "Second example", "Explains that processes decide the path"]},
+  {q: "Design an investigation to test how cooling time affects crystal size. Name your variables, describe your steps and predict the result.", a: "Manipulated variable: cooling time. Responding variable: average crystal size. Controlled variables: same solution, same amount, same container. Dissolve a crystal-forming substance in hot water, pour equal amounts into two dishes, cool one quickly in a fridge and one slowly at room temperature, then measure crystals with a hand lens. Prediction: slow cooling gives larger crystals, like granite compared to basalt.", k: ["Manipulated, responding and controlled variables", "Clear safe steps", "Measurement method", "Prediction linked to igneous rocks"]},
+  {q: "You find an unknown mineral in a sample. Explain which tests you would do, in what order, and why one test is never enough.", a: "Start with quick tests: lustre and magnetism separate metallic minerals. Then streak, then hardness with a fingernail, a steel nail and glass. If it is soft and white, test with dilute acid for calcite. One test is not enough because different minerals share properties. Quartz and calcite can both be white and glassy, but hardness and the acid test separate them.", k: ["Names several properties", "Logical order", "Explains why several tests are needed", "Example of two similar minerals"]}
+];
+
+var COVER = [
+  ["ES2.K1", "Rocks are formed, broken down, and reformed through specific processes on or below Earth’s surface, which occur at different rates and are referred to as the rock cycle.", "Learn 1, Learn 8, Bench 1, Bench 5, Quiz"],
+  ["ES2.K2", "Rocks are classified as sedimentary, igneous, or metamorphic according to how they were formed and their characteristics, including texture, layering, mineral composition.", "Learn 4, Bench 2, Sort It, Quiz"],
+  ["ES2.K3", "Sedimentary rock is formed on or just below Earth’s surface through compaction and cementation of sediments.", "Learn 5, Bench 3B, Sort It"],
+  ["ES2.K4", "Igneous rock is formed on or below Earth’s surface through cooling and crystallization of molten rock, including magma or lava.", "Learn 6, Bench 3, Sort It"],
+  ["ES2.K5", "Metamorphic rock is formed below Earth’s surface through extreme heat and pressure acting on pre-existing rocks.", "Learn 7, Bench 3B, Sort It"],
+  ["ES2.K6", "Common minerals found in rock include quartz, feldspar, mica, and calcite.", "Learn 2, Learn 3, Flashcards"],
+  ["ES2.K7", "Minerals can be identified by properties such as colour, lustre, streak, transparency, hardness, and magnetism.", "Learn 3, Bench 4"],
+  ["ES2.S1", "Explain the rock cycle.", "Learn 1, Bench 1, Bench 3B, Written Review"],
+  ["ES2.S2", "Analyze characteristics of local rocks.", "Bench 2 (Alberta rock tray)"],
+  ["ES2.S3", "Classify rocks as sedimentary, igneous, or metamorphic.", "Learn 4 (rock key), Bench 2, Sort It"],
+  ["ES2.S4", "Investigate how different types of rocks were formed.", "Bench 3 (cooling investigation), Bench 3B (formation stories)"],
+  ["ES2.S5", "Identify different minerals from a sample.", "Bench 4 (mineral ID)"]
+];
+var NOTES = [
+  "ES2.K1: the rock cycle is taught as many possible paths, not a fixed loop. Shortcuts such as igneous to metamorphic are shown. Rates are rough ranges (hours for a lava crust to millions of years for metamorphism) on a log timeline.",
+  "ES2.K3: sedimentary rock is taught as compaction and cementation, as drafted. Sediment is defined to include shells and plant remains so that limestone and coal fit. Rocks that form when minerals crystallize out of water (rock salt) are not taught.",
+  "ES2.K4: intrusive and extrusive are added as terms. Obsidian is described as glass with no crystals, so the lab says crystallization happens when there is time for it.",
+  "ES2.K5: “extreme heat and pressure” is taught as heat and pressure high enough to change minerals while the rock stays solid. Melting is taught as the point where rock becomes magma. Contact metamorphism next to magma is not named.",
+  "ES2.K6: mica and feldspar are taught as mineral groups (biotite and muscovite named). Calcite is taught as the main mineral in limestone and marble, not in granite.",
+  "ES2.K7: hardness uses the Mohs scale with approximate tool values (fingernail about 2.5, steel nail and glass about 5.5). The dilute acid test is added as context for calcite; teachers should demonstrate it with suitable safety equipment.",
+  "ES2.S2: Alberta specimen notes (Drumheller sandstone and mudstone, Edmonton river valley coal, Banff area limestone, foothills conglomerate, Big Rock quartzite, Canadian Shield gneiss near Fort Chipewyan, granite erratics) are general descriptions and should be checked against local sources. Basalt, obsidian, slate and marble are presented as rock kit samples.",
+  "ES2.S4: crystal size data in Station 3 come from a made-up practice model. Station 5 deposition rates are made up for practice."
+];
+
+var KEY = "riverbend-g7-es2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+var NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) {
+    var v = attrs[k];
+    if ((k === "fill" || k === "stroke") && String(v).indexOf("var(") === 0) n.style[k] = v;
+    else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function rng(seed){ var s = seed; return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+function fmt(x, d){ return Number(x).toFixed(d); }
+function nice(x){ return Number(x).toLocaleString("en-CA", {maximumFractionDigits: 2}); }
+function tappable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label);
+  g.setAttribute("class", "tap");
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+function detail(box, title, tag, lines){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  box.appendChild(el("h5", null, title));
+  lines.forEach(function(l){ box.appendChild(el("p", null, l)); });
+}
+function arrow(svg, x1, y1, x2, y2, col, w, dash){
+  col = col || "var(--arrow)"; w = w || 2.5;
+  var ln = S("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: col, "stroke-width": w, "stroke-linecap": "round"}, svg);
+  if (dash) ln.setAttribute("stroke-dasharray", "6 5");
+  var a = Math.atan2(y2 - y1, x2 - x1), h = 9;
+  var p = [[x2, y2], [x2 - h * Math.cos(a - 0.45), y2 - h * Math.sin(a - 0.45)], [x2 - h * Math.cos(a + 0.45), y2 - h * Math.sin(a + 0.45)]];
+  S("polygon", {points: p.map(function(q){ return fmt(q[0], 1) + "," + fmt(q[1], 1); }).join(" "), fill: col}, svg);
+}
+
+/* ---------- tabs ---------- */
+var TABS = ["learn", "bench", "sort", "cards", "quiz", "written", "coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- L1 rock cycle ---------- */
+var l1Short = false;
+function edgePt(a, b, pad){ var dx = b[0] - a[0], dy = b[1] - a[1]; var t = Math.min((50 + pad) / Math.abs(dx || 1e-6), (20 + pad) / Math.abs(dy || 1e-6)); return [a[0] + dx * t, a[1] + dy * t]; }
+function drawL1(sel){
+  var svg = $("l1-svg"); clear(svg);
+  PROCS.forEach(function(p){
+    if (!p.main && !l1Short) return;
+    var a = NODEPOS[p.from].slice(), b = NODEPOS[p.to].slice();
+    if (p.n === 8) { var nx = -(b[1] - a[1]), ny = b[0] - a[0], d = Math.sqrt(nx * nx + ny * ny); a[0] += nx / d * 26; a[1] += ny / d * 26; b[0] += nx / d * 26; b[1] += ny / d * 26; }
+    var s = edgePt(a, b, 4), e = edgePt(b, a, 6);
+    arrow(svg, s[0], s[1], e[0], e[1], p.main ? "var(--arrow)" : "var(--muted)", p.main ? 2.5 : 2, !p.main);
+    var m = [(s[0] + e[0]) / 2, (s[1] + e[1]) / 2];
+    var g = S("g", null, svg);
+    S("circle", {cx: m[0], cy: m[1], r: 12, fill: "var(--surface)", stroke: p.main ? "var(--arrow)" : "var(--muted)", "stroke-width": 1.5}, g);
+    S("text", {x: m[0], y: m[1] + 4.5, "text-anchor": "middle", "class": "mlbl", style: "font-weight:600;fill:var(--ink)"}, g, String(p.n));
+    tappable(g, "Process " + p.n + ": " + p.name, function(){ showProc(p); });
+    if (sel === "p" + p.n) g.setAttribute("class", "tap on");
+  });
+  Object.keys(NODEPOS).forEach(function(k){
+    var P = NODEPOS[k], st = STAGES[k];
+    var g = S("g", null, svg);
+    S("rect", {x: P[0] - 50, y: P[1] - 20, width: 100, height: 40, rx: 20, fill: st.color, stroke: "var(--line)", "stroke-width": 1.5}, g);
+    var words = st.name.split(" ");
+    if (words.length === 2) {
+      S("text", {x: P[0], y: P[1] - 3, "text-anchor": "middle", "class": "lbl tag", style: "font-size:12.5px"}, g, words[0]);
+      S("text", {x: P[0], y: P[1] + 12, "text-anchor": "middle", "class": "lbl tag", style: "font-size:12.5px"}, g, words[1]);
+    } else S("text", {x: P[0], y: P[1] + 5, "text-anchor": "middle", "class": "lbl tag"}, g, st.name);
+    tappable(g, st.name, function(){ showStage(k); });
+    if (sel === k) g.setAttribute("class", "tap on");
+  });
+  S("text", {x: 200, y: 332, "text-anchor": "middle", "class": "small"}, svg, "Solid arrows: main loop. Dashed arrows: shortcuts.");
+}
+function showProc(p){
+  detail($("l1-detail"), p.n + ". " + p.name, STAGES[p.from].name + " to " + STAGES[p.to].name, [p.text, "Where: " + p.where + ".", "How fast: " + p.rate]);
+  drawL1("p" + p.n);
+}
+function showStage(k){
+  var st = STAGES[k];
+  detail($("l1-detail"), st.name, st.type, [st.text]);
+  drawL1(k);
+}
+$("l1-short").addEventListener("click", function(){
+  l1Short = !l1Short; this.setAttribute("aria-pressed", l1Short ? "true" : "false");
+  this.textContent = l1Short ? "Hide shortcuts" : "Show shortcuts";
+  drawL1(null);
+  detail($("l1-detail"), l1Short ? "Shortcuts shown" : "Main loop", null, [l1Short ? "Dashed arrows are other paths. Igneous rock can become metamorphic. Metamorphic and sedimentary rock can be weathered into sediment or melt into magma." : "The main loop is one common path. Tap a number to read about a process."]);
+});
+drawL1(null);
+detail($("l1-detail"), "Start anywhere", null, ["The cycle has no real start or end. Tap Magma, then follow the numbers 1 to 5 around the main loop."]);
+
+/* ---------- L2 granite ---------- */
+var GR = [];
+(function(){
+  var r = rng(17);
+  for (var row = 0; row < 7; row++) for (var col = 0; col < 13; col++) {
+    var v = r(), m = v < 0.32 ? "qtz" : (v < 0.84 ? "fsp" : "mic");
+    var w = 26 + r() * 10, h = 22 + r() * 9;
+    GR.push({m: m, x: 8 + col * 30 + (row % 2) * 8 + r() * 4 - 2, y: 8 + row * 29 + r() * 4, w: Math.min(w, 32), h: Math.min(h, 28), rot: (r() - 0.5) * 30});
+  }
+})();
+var l2Sel = null;
+function drawL2(){
+  var svg = $("l2-svg"); clear(svg);
+  S("rect", {x: 0, y: 0, width: 400, height: 220, fill: "var(--fsp)"}, svg);
+  GR.forEach(function(g){
+    var col = g.m === "qtz" ? "var(--qtz)" : (g.m === "fsp" ? "var(--fsp)" : "var(--mic)");
+    var dim = l2Sel && l2Sel !== g.m;
+    var rc = S("rect", {x: g.x, y: g.y, width: g.m === "mic" ? g.w * 0.6 : g.w, height: g.m === "mic" ? g.h * 0.6 : g.h, rx: g.m === "qtz" ? 9 : 3, fill: col, stroke: "var(--grain-line)", "stroke-width": l2Sel === g.m ? 2.5 : 0.8, transform: "rotate(" + fmt(g.rot, 1) + " " + fmt(g.x + g.w / 2, 1) + " " + fmt(g.y + g.h / 2, 1) + ")"}, svg);
+    if (dim) rc.setAttribute("opacity", "0.25");
+  });
+}
+MINERALS4.forEach(function(m){
+  var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, m.name);
+  b.addEventListener("click", function(){
+    l2Sel = m.inGranite ? m.id : "none";
+    Array.prototype.forEach.call($("l2-chips").children, function(c){ c.setAttribute("aria-pressed", c === b ? "true" : "false"); });
+    drawL2();
+    detail($("l2-detail"), m.name, m.inGranite ? "In granite: yes" : "In granite: no", [m.text]);
+  });
+  $("l2-chips").appendChild(b);
+});
+drawL2();
+detail($("l2-detail"), "Choose a mineral", null, ["Granite is mostly feldspar and quartz, with a smaller amount of dark mica."]);
+
+/* ---------- L3 properties ---------- */
+function drawMohs(){
+  var svg = $("l3-mohs"); clear(svg);
+  var x0 = 30, x1 = 400; function X(h){ return x0 + (h - 1) / 9 * (x1 - x0); }
+  S("line", {x1: x0, y1: 60, x2: x1, y2: 60, stroke: "var(--ink)", "stroke-width": 2}, svg);
+  MOHS.forEach(function(m){
+    var hi = ["Quartz", "Feldspar", "Calcite"].indexOf(m[1]) >= 0;
+    S("circle", {cx: X(m[0]), cy: 60, r: hi ? 7 : 5, fill: hi ? "var(--g7)" : "var(--surface)", stroke: "var(--ink)", "stroke-width": 1.5}, svg);
+    S("text", {x: X(m[0]), y: 84, "text-anchor": "middle", style: "fill:var(--ink)"}, svg, String(m[0]));
+    S("text", {x: X(m[0]), y: m[0] % 2 ? 102 : 116, "text-anchor": "middle"}, svg, m[1]);
+  });
+  TOOLS.forEach(function(t){
+    S("line", {x1: X(t[0]), y1: 26, x2: X(t[0]), y2: 54, stroke: "var(--muted)", "stroke-width": 1.5, "stroke-dasharray": "3 3"}, svg);
+    S("text", {x: X(t[0]), y: 20, "text-anchor": "middle"}, svg, t[1] + " ≈ " + t[0]);
+  });
+  S("text", {x: X(2.75), y: 42, "text-anchor": "middle"}, svg, "Mica ≈ 2.5 to 3");
+}
+function showProp(p){
+  Array.prototype.forEach.call($("l3-chips").children, function(c){ c.setAttribute("aria-pressed", c.dataset.p === p.id ? "true" : "false"); });
+  detail($("l3-detail"), p.name, "How to test", [p.how, p.tip]);
+  var t = $("l3-table"); clear(t);
+  var tr = el("tr"); tr.appendChild(el("th", null, "Mineral")); tr.appendChild(el("th", null, p.name)); t.appendChild(tr);
+  Object.keys(p.vals).forEach(function(k){ var r = el("tr"); r.appendChild(el("td", null, k)); var c = el("td", null, p.vals[k]); c.style.textAlign = "left"; c.style.fontFamily = "var(--f-body)"; r.appendChild(c); t.appendChild(r); });
+}
+PROPS.forEach(function(p){
+  var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false", "data-p": p.id}, p.name);
+  b.addEventListener("click", function(){ showProp(p); });
+  $("l3-chips").appendChild(b);
+});
+showProp(PROPS[0]); drawMohs();
+
+/* ---------- L4 textures and key ---------- */
+function swatch(kind){
+  var svg = S("svg", {viewBox: "0 0 120 90", role: "img"});
+  var r = rng(kind === "ign" ? 3 : (kind === "sed" ? 5 : 9));
+  if (kind === "ign") {
+    svg.setAttribute("aria-label", "Igneous texture: interlocking crystals in random directions");
+    S("rect", {x: 0, y: 0, width: 120, height: 90, fill: "var(--fsp)"}, svg);
+    for (var i = 0; i < 26; i++) { var x = r() * 110, y = r() * 80, m = r(); S("rect", {x: x, y: y, width: 10 + r() * 14, height: 8 + r() * 10, fill: m < 0.4 ? "var(--qtz)" : (m < 0.8 ? "var(--fsp)" : "var(--mic)"), stroke: "var(--grain-line)", "stroke-width": 0.8, transform: "rotate(" + fmt(r() * 90, 0) + " " + fmt(x + 6, 0) + " " + fmt(y + 5, 0) + ")"}, svg); }
+  } else if (kind === "sed") {
+    svg.setAttribute("aria-label", "Sedimentary texture: rounded grains cemented in flat layers");
+    var bands = ["var(--sed)", "var(--sand)", "var(--soil-2)"];
+    for (var b = 0; b < 3; b++) {
+      S("rect", {x: 0, y: b * 30, width: 120, height: 30, fill: bands[b]}, svg);
+      for (var j = 0; j < 16; j++) S("circle", {cx: r() * 120, cy: b * 30 + 4 + r() * 22, r: b === 1 ? 2 + r() * 2 : 3 + r() * 3, fill: "var(--rock-2)", stroke: "var(--grain-line)", "stroke-width": 0.6}, svg);
+    }
+  } else {
+    svg.setAttribute("aria-label", "Metamorphic texture: minerals lined up in wavy bands");
+    S("rect", {x: 0, y: 0, width: 120, height: 90, fill: "var(--qtz)"}, svg);
+    for (var k = 0; k < 7; k++) {
+      var y0 = 8 + k * 12, d = "M0 " + y0;
+      for (var xx = 0; xx <= 120; xx += 20) d += " Q" + (xx + 10) + " " + (y0 + (k % 2 ? 5 : -5)) + " " + (xx + 20) + " " + y0;
+      S("path", {d: d, fill: "none", stroke: k % 2 ? "var(--mic)" : "var(--fsp)", "stroke-width": k % 2 ? 4 : 6}, svg);
+    }
+  }
+  return svg;
+}
+[["ign", "Igneous: interlocking crystals"], ["sed", "Sedimentary: grains in layers"], ["met", "Metamorphic: banded (foliated)"]].forEach(function(s){
+  var d = el("div", {"class": "swatch"}); d.appendChild(swatch(s[0])); d.appendChild(el("span", null, s[1])); $("l4-sw").appendChild(d);
+});
+function keyStep(id){
+  var box = $("l4-key"); clear(box); var n = KEYQ[id];
+  if (n.q) {
+    box.appendChild(el("p", {"class": "keyq"}, n.q));
+    var row = el("div", {"class": "row"});
+    var y = el("button", {"class": "btn", type: "button"}, "Yes"), no = el("button", {"class": "btn ghost", type: "button"}, "No");
+    y.addEventListener("click", function(){ keyStep(n.yes); }); no.addEventListener("click", function(){ keyStep(n.no); });
+    row.appendChild(y); row.appendChild(no); box.appendChild(row);
+  } else {
+    var d = el("div", {"class": "key"}); d.appendChild(el("b", null, n.r + ". ")); d.appendChild(document.createTextNode(n.t)); box.appendChild(d);
+    var again = el("button", {"class": "btn ghost", type: "button"}, "Start the key again"); again.addEventListener("click", function(){ keyStep("q1"); }); box.appendChild(again);
+  }
+}
+keyStep("q1");
+
+/* ---------- L5 sedimentary stages ---------- */
+var l5 = 0;
+function drawL5(){
+  var svg = $("l5-svg"); clear(svg); var st = l5;
+  S("rect", {x: 0, y: 0, width: 400, height: 230, fill: "var(--sky)"}, svg);
+  S("path", {d: "M0 120 L40 40 L80 90 L110 60 L150 130 L150 230 L0 230 Z", fill: "var(--rock)"}, svg);
+  S("path", {d: "M150 130 L400 140 L400 230 L150 230 Z", fill: "var(--rock-dark)"}, svg);
+  S("rect", {x: 150, y: 110, width: 250, height: 30, fill: "var(--water-soft)"}, svg);
+  S("text", {x: 60, y: 30, "class": "small tag", "text-anchor": "middle"}, svg, "Mountains");
+  S("text", {x: 330, y: 105, "class": "small tag", "text-anchor": "middle"}, svg, "Lake");
+  var r = rng(4);
+  if (st === 0) {
+    for (var i = 0; i < 6; i++) S("path", {d: "M" + (30 + i * 15) + " " + (70 + (i % 3) * 12) + " l6 10 l-4 8", fill: "none", stroke: "var(--ink)", "stroke-width": 1.5}, svg);
+    S("text", {x: 75, y: 170, "class": "lbl tag", "text-anchor": "middle"}, svg, "Cracks form");
+  }
+  if (st >= 1) {
+    S("path", {d: "M110 70 Q130 110 160 118", fill: "none", stroke: "var(--water)", "stroke-width": 5}, svg);
+    for (var j = 0; j < 8; j++) S("circle", {cx: 118 + j * 5, cy: 84 + j * 4, r: 2, fill: "var(--sand)", stroke: "var(--grain-line)", "stroke-width": 0.5}, svg);
+    if (st === 1) arrow(svg, 165, 100, 230, 100, "var(--water)", 2.5);
+  }
+  if (st >= 2) {
+    var cols = ["var(--sand)", "var(--soil-2)", "var(--sed)", "var(--sand)", "var(--soil)"];
+    var thick = st >= 3 ? 9 : 16, base = 230;
+    var nL = st >= 3 ? 5 : 4;
+    for (var k = 0; k < nL; k++) {
+      var y = base - (k + 1) * thick;
+      S("rect", {x: 160, y: y, width: 240, height: thick, fill: cols[k], stroke: "var(--grain-line)", "stroke-width": 0.6}, svg);
+      for (var g = 0; g < 14; g++) S("circle", {cx: 165 + r() * 230, cy: y + 2 + r() * (thick - 4), r: st >= 3 ? 1.6 : 2.4, fill: "var(--rock-2)"}, svg);
+    }
+    if (st >= 4) S("rect", {x: 160, y: base - nL * thick, width: 240, height: nL * thick, fill: "none", stroke: "var(--g7)", "stroke-width": 3}, svg);
+    if (st === 3) { arrow(svg, 280, 150, 280, 176, "var(--ink)", 2.5); S("text", {x: 290, y: 160, "class": "small tag"}, svg, "weight of new layers"); }
+    if (st === 4) S("text", {x: 280, y: 160, "class": "lbl tag", "text-anchor": "middle"}, svg, "Sandstone and shale");
+  }
+  var s = SEDSTAGES[st];
+  detail($("l5-detail"), s.name, "Stage " + (st + 1) + " of 5", [s.text]);
+  $("l5-count").textContent = (st + 1) + " / 5";
+  $("l5-back").disabled = st === 0; $("l5-next").disabled = st === 4;
+}
+$("l5-next").addEventListener("click", function(){ if (l5 < 4) { l5++; drawL5(); } });
+$("l5-back").addEventListener("click", function(){ if (l5 > 0) { l5--; drawL5(); } });
+drawL5();
+
+/* ---------- L6 cooling ---------- */
+function drawL6(){
+  var v = +$("l6-rate").value, c = COOL[v], svg = $("l6-svg"); clear(svg);
+  $("l6-ratel").textContent = c.lab;
+  S("rect", {x: 0, y: 0, width: 400, height: 200, fill: v >= 3 ? "var(--rock-dark)" : "var(--ign)"}, svg);
+  if (c.n === 0) {
+    S("rect", {x: 0, y: 0, width: 400, height: 200, fill: "var(--mic)"}, svg);
+    S("path", {d: "M40 40 Q120 20 200 60", fill: "none", stroke: "var(--qtz)", "stroke-width": 3, opacity: 0.5}, svg);
+    S("text", {x: 200, y: 110, "text-anchor": "middle", "class": "lbl", style: "fill:var(--qtz)"}, svg, "Smooth glass: no crystals");
+  } else {
+    var r = rng(11 + v), size = Math.sqrt(400 * 200 / c.n) * 0.85;
+    for (var i = 0; i < c.n; i++) {
+      var x = r() * 400, y = r() * 200, m = r();
+      var col = v >= 3 ? (m < 0.6 ? "var(--mic)" : "var(--rock-2)") : (m < 0.35 ? "var(--qtz)" : (m < 0.85 ? "var(--fsp)" : "var(--mic)"));
+      S("rect", {x: x - size / 2, y: y - size / 2, width: size * (0.7 + r() * 0.5), height: size * (0.5 + r() * 0.4), fill: col, stroke: "var(--grain-line)", "stroke-width": 0.6, transform: "rotate(" + fmt(r() * 180, 0) + " " + fmt(x, 0) + " " + fmt(y, 0) + ")"}, svg);
+    }
+  }
+  detail($("l6-detail"), c.rock, c.where + " · " + c.time, [c.text]);
+}
+$("l6-rate").addEventListener("input", drawL6); drawL6();
+
+/* ---------- L7 metamorphism ---------- */
+var l7P = PARENTS[0];
+PARENTS.forEach(function(p, i){
+  var b = el("button", {"class": "chip", type: "button", "aria-pressed": i === 0 ? "true" : "false"}, p.name);
+  b.addEventListener("click", function(){ l7P = p; Array.prototype.forEach.call($("l7-chips").children, function(c){ c.setAttribute("aria-pressed", c === b ? "true" : "false"); }); drawL7(); });
+  $("l7-chips").appendChild(b);
+});
+var HEATL = ["Surface", "Warm", "Hot", "Very hot", "Melting"], PRESSL = ["Low", "Medium", "High", "Very high"];
+function drawL7(){
+  var h = +$("l7-heat").value, p = +$("l7-press").value, svg = $("l7-svg"); clear(svg);
+  $("l7-heatl").textContent = HEATL[h]; $("l7-pressl").textContent = PRESSL[p];
+  if (h === 4) {
+    S("rect", {x: 0, y: 0, width: 400, height: 180, fill: "var(--mag)"}, svg);
+    S("text", {x: 200, y: 96, "text-anchor": "middle", "class": "lbl tag"}, svg, "Melted: now magma");
+    detail($("l7-detail"), "Magma, not metamorphic rock", "Too hot", ["The rock melted. Metamorphism happens only while the rock stays solid. When this magma cools, it will form igneous rock."]);
+    return;
+  }
+  var grade = Math.min(4, Math.round((h + p) / 1.5));
+  if (h === 0 && p === 0) grade = 0;
+  var name = l7P.path[grade];
+  var r = rng(5), align = l7P.foliates ? Math.min(1, (p + grade) / 5) : 0;
+  var base = l7P.id === "lime" ? "var(--cal)" : (l7P.id === "sand" ? "var(--sand)" : (l7P.id === "shale" ? "var(--rock)" : "var(--fsp)"));
+  S("rect", {x: 0, y: 0, width: 400, height: 180, fill: base}, svg);
+  var n = l7P.id === "shale" ? 160 - grade * 25 : 90, sz = l7P.id === "shale" ? 4 + grade * 3 : 8 + grade * 3;
+  for (var i = 0; i < n; i++) {
+    var x = r() * 400, y = r() * 180, ang = (1 - align) * (r() * 180) + align * (r() * 10 - 5);
+    var col = (l7P.id === "lime") ? "var(--qtz)" : (l7P.id === "sand" ? "var(--qtz)" : (r() < 0.5 ? "var(--mic)" : "var(--qtz)"));
+    var w = l7P.foliates ? sz * (1 + align) : sz, hh = l7P.foliates ? sz * (1 - align * 0.6) : sz * 0.8;
+    S("rect", {x: x, y: y, width: w, height: Math.max(1.5, hh), rx: l7P.foliates ? 1 : 3, fill: col, opacity: 0.85, transform: "rotate(" + fmt(ang, 0) + " " + fmt(x, 0) + " " + fmt(y, 0) + ")"}, svg);
+  }
+  if (p > 0) { arrow(svg, 200, 2, 200, 28, "var(--ink)", 3); arrow(svg, 200, 178, 200, 152, "var(--ink)", 3); }
+  var lines = [l7P.note];
+  if (grade === 0) lines.unshift("No change yet. Add heat and pressure.");
+  else if (l7P.foliates && align > 0.4) lines.unshift("Pressure has lined up the minerals. This is foliation.");
+  else if (!l7P.foliates) lines.unshift("Grains regrow and fuse. This rock does not get foliation because its minerals are not flat or long.");
+  detail($("l7-detail"), name, grade === 0 ? "Parent rock" : "Metamorphic rock", lines);
+}
+$("l7-heat").addEventListener("input", drawL7); $("l7-press").addEventListener("input", drawL7); drawL7();
+
+/* ---------- L8 rates ---------- */
+var l8Sel = -1;
+function drawL8(){
+  var svg = $("l8-svg"); clear(svg);
+  var x0 = 20, x1 = 425, lo = -4, hi = 8; function X(v){ return x0 + (v - lo) / (hi - lo) * (x1 - x0); }
+  var ticks = [[-3.94, "1 h"], [-2.56, "1 d"], [0, "1 yr"], [2, "100 yr"], [4, "10 000"], [6, "1 million"]];
+  ticks.forEach(function(t){ S("line", {x1: X(t[0]), y1: 28, x2: X(t[0]), y2: 270, stroke: "var(--line)", "stroke-width": 1}, svg); S("text", {x: X(t[0]), y: 288, "text-anchor": "middle"}, svg, t[1]); });
+  S("text", {x: x0, y: 16}, svg, "Faster");
+  S("text", {x: x1, y: 16, "text-anchor": "end"}, svg, "Slower (years)");
+  RATES.forEach(function(rt, i){
+    var y = 34 + i * 29, g = S("g", null, svg);
+    var a = X(rt.lo), b = Math.max(X(rt.hi), a + 8);
+    S("rect", {x: a, y: y, width: b - a, height: 12, rx: 6, fill: i === l8Sel ? "var(--g7)" : "var(--met)", stroke: "var(--line)"}, g);
+    var lx = a < 220 ? b + 6 : a - 6;
+    S("text", {x: lx, y: y + 10, "text-anchor": a < 220 ? "start" : "end", style: "font-family:var(--f-body);font-size:11.5px;fill:var(--ink)"}, g, rt.name);
+    tappable(g, rt.name + ", " + rt.range, function(){ l8Sel = i; drawL8(); detail($("l8-detail"), rt.name, rt.range, [rt.text]); });
+    if (i === l8Sel) g.setAttribute("class", "tap on");
+  });
+}
+drawL8();
+detail($("l8-detail"), "Compare the bars", null, ["Bars near the left happen in hours or days. Bars near the right take millions of years. Most rock forming processes sit far to the right."]);
+
+/* ---------- B1 journey ---------- */
+var b1 = {now: "igneous", goal: null, steps: 0, log: []};
+function bfs(a, b){
+  if (a === b) return 0; var seen = {}, q = [[a, 0]]; seen[a] = 1;
+  while (q.length) { var c = q.shift(); var mv = MOVES[c[0]]; for (var i = 0; i < mv.length; i++) { var t = mv[i].to; if (t === b) return c[1] + 1; if (!seen[t]) { seen[t] = 1; q.push([t, c[1] + 1]); } } }
+  return 99;
+}
+function drawB1(){
+  $("b1-now").textContent = STAGES[b1.now].name;
+  $("b1-goal").textContent = b1.goal ? "Goal: " + STAGES[b1.goal].name : "";
+  var m = $("b1-moves"); clear(m);
+  MOVES[b1.now].forEach(function(mv){
+    var b = el("button", {"class": "btn ghost", type: "button"}, mv.name);
+    b.addEventListener("click", function(){
+      b1.now = mv.to; b1.steps++;
+      b1.log.push(mv.name + ": " + JNOTE[mv.to]);
+      if (b1.goal && b1.now === b1.goal) {
+        var best = b1.best;
+        var fb = $("b1-fb"); fb.hidden = false;
+        fb.className = "feedback " + (b1.steps <= best ? "ok" : "no");
+        fb.textContent = "You reached " + STAGES[b1.goal].name + " in " + b1.steps + " step" + (b1.steps > 1 ? "s" : "") + ". The shortest path takes " + best + ". " + (b1.steps <= best ? "Excellent." : "Try another challenge and look for a shortcut.");
+        b1.goal = null;
+      }
+      drawB1();
+    });
+    m.appendChild(b);
+  });
+  var j = $("b1-journal"); clear(j);
+  b1.log.forEach(function(l){ j.appendChild(el("li", null, l)); });
+  if (!b1.log.length) j.appendChild(el("li", null, "Start: a piece of " + STAGES[b1.now].name.toLowerCase() + "."));
+}
+$("b1-reset").addEventListener("click", function(){ var k = Object.keys(STAGES); b1 = {now: k[Math.floor(Math.random() * k.length)], goal: null, steps: 0, log: []}; $("b1-fb").hidden = true; drawB1(); });
+$("b1-chal").addEventListener("click", function(){
+  var k = Object.keys(STAGES), a, b;
+  do { a = k[Math.floor(Math.random() * k.length)]; b = k[Math.floor(Math.random() * k.length)]; } while (a === b);
+  b1 = {now: a, goal: b, steps: 0, log: [], best: bfs(a, b)}; $("b1-fb").hidden = true; drawB1();
+});
+drawB1();
+
+/* ---------- B2 rock tray ---------- */
+var b2 = {order: shuffle(SPECS.map(function(_, i){ return i; })), i: 0, right: 0, done: 0, answered: false};
+function drawMap(spec){
+  var svg = $("b2-map"); clear(svg);
+  S("polygon", {points: "40,15 260,15 260,285 150,285 40,140", fill: "var(--surface)", stroke: "var(--ink)", "stroke-width": 2}, svg);
+  S("polygon", {points: "200,15 260,15 260,75", fill: "var(--met)", opacity: 0.45}, svg);
+  S("polygon", {points: "40,140 150,285 120,285 40,175", fill: "var(--rock)", opacity: 0.6}, svg);
+  S("text", {x: 236, y: 30, "class": "small tag", "text-anchor": "middle"}, svg, "Shield");
+  S("text", {x: 60, y: 215, "class": "small tag", transform: "rotate(52 60 215)"}, svg, "Rockies");
+  S("text", {x: 180, y: 120, "class": "small tag", "text-anchor": "middle"}, svg, "Plains: sedimentary rock");
+  S("circle", {cx: 150, cy: 160, r: 3, fill: "var(--ink)"}, svg); S("text", {x: 158, y: 172, "class": "small tag"}, svg, "Edmonton");
+  if (spec && spec.pos) {
+    S("circle", {cx: spec.pos[0], cy: spec.pos[1], r: 10, fill: "none", stroke: "var(--g7)", "stroke-width": 3}, svg);
+    S("circle", {cx: spec.pos[0], cy: spec.pos[1], r: 4, fill: "var(--g7)"}, svg);
+  } else S("text", {x: 150, y: 260, "class": "lbl tag", "text-anchor": "middle"}, svg, "Rock kit sample");
+}
+function drawB2(){
+  var sp = SPECS[b2.order[b2.i]]; b2.answered = false;
+  drawMap(sp);
+  var box = $("b2-spec"); clear(box);
+  box.appendChild(el("span", {"class": "tagline"}, "Specimen " + (b2.i + 1) + " of " + SPECS.length + " · " + sp.place));
+  box.appendChild(el("h5", null, "Specimen " + String.fromCharCode(65 + (b2.i % 26))));
+  var ul = el("ul"); sp.clues.forEach(function(c){ ul.appendChild(el("li", null, c)); }); box.appendChild(ul);
+  $("b2-fb").hidden = true;
+  var bins = $("b2-bins"); clear(bins);
+  Object.keys(TYPES).forEach(function(t){
+    var b = el("button", {"class": "bin", type: "button"}, TYPES[t]);
+    b.addEventListener("click", function(){
+      if (b2.answered) return; b2.answered = true; b2.done++;
+      var ok = t === sp.type; if (ok) b2.right++;
+      var fb = $("b2-fb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no");
+      fb.textContent = (ok ? "Correct. " : "Not quite. ") + "This is " + sp.name.toLowerCase() + ", a " + TYPES[sp.type].toLowerCase() + " rock. " + sp.why;
+      $("b2-score").textContent = b2.right + " of " + b2.done + " correct";
+    });
+    bins.appendChild(b);
+  });
+}
+$("b2-next").addEventListener("click", function(){ b2.i = (b2.i + 1) % SPECS.length; if (b2.i === 0) b2.order = shuffle(b2.order); drawB2(); });
+drawB2();
+
+/* ---------- B3 cooling investigation ---------- */
+var b3 = store.b3 || [];
+B3T.forEach(function(t, i){ $("b3-time").appendChild(el("option", {value: i}, t.lab)); });
+function drawB3(){
+  var t = $("b3-table"); clear(t);
+  var h = el("tr"); ["Cooling time", "Trials (mm)", "Average (mm)"].forEach(function(x){ h.appendChild(el("th", null, x)); }); t.appendChild(h);
+  var avgs = [];
+  B3T.forEach(function(bt, i){
+    var vals = b3.filter(function(r){ return r[0] === i; }).map(function(r){ return r[1]; });
+    if (!vals.length) return;
+    var av = vals.reduce(function(a, b){ return a + b; }, 0) / vals.length; avgs.push([i, av]);
+    var r = el("tr"); r.appendChild(el("td", null, bt.lab)); r.appendChild(el("td", null, vals.map(function(v){ return fmt(v, 2); }).join(", "))); r.appendChild(el("td", null, fmt(av, 2))); t.appendChild(r);
+  });
+  if (!avgs.length) { var e = el("tr"); var c = el("td", {colspan: 3}, "No trials yet. Choose a cooling time and run a trial."); e.appendChild(c); t.appendChild(e); }
+  var svg = $("b3-chart"); clear(svg);
+  var x0 = 50, x1 = 400, y0 = 180, y1 = 20, maxY = 12;
+  function X(i){ return x0 + i / 4 * (x1 - x0); } function Y(v){ return y0 - v / maxY * (y0 - y1); }
+  [0, 3, 6, 9, 12].forEach(function(v){ S("line", {x1: x0, y1: Y(v), x2: x1, y2: Y(v), stroke: "var(--line)"}, svg); S("text", {x: x0 - 8, y: Y(v) + 4, "text-anchor": "end"}, svg, String(v)); });
+  B3T.forEach(function(bt, i){ S("text", {x: X(i), y: y0 + 18, "text-anchor": "middle"}, svg, bt.lab); });
+  S("text", {x: 12, y: 14}, svg, "Average crystal size (mm)");
+  S("text", {x: x1, y: 214, "text-anchor": "end"}, svg, "Cooling time (each step is much longer)");
+  if (avgs.length > 1) S("polyline", {points: avgs.map(function(a){ return X(a[0]) + "," + Y(a[1]); }).join(" "), fill: "none", stroke: "var(--g7)", "stroke-width": 2.5}, svg);
+  avgs.forEach(function(a){ S("circle", {cx: X(a[0]), cy: Y(a[1]), r: 5, fill: "var(--g7)", stroke: "var(--surface)", "stroke-width": 1.5}, svg); });
+  var cb = $("b3-concl"); clear(cb);
+  var kinds = {}; b3.forEach(function(r){ kinds[r[0]] = 1; });
+  if (Object.keys(kinds).length >= 3) {
+    cb.appendChild(el("p", {"class": "keyq"}, "Conclusion: what happens to crystal size as cooling time increases?"));
+    var row = el("div", {"class": "row"}), fb = el("p", {"class": "fb"});
+    [["Crystals get larger", true], ["Crystals get smaller", false], ["No change", false]].forEach(function(o){
+      var b = el("button", {"class": "btn ghost", type: "button"}, o[0]);
+      b.addEventListener("click", function(){ fb.className = "fb " + (o[1] ? "ok" : "no"); fb.textContent = o[1] ? "Yes. Longer cooling gives particles more time to join crystals, so crystals grow larger. Granite cooled slowly underground. Basalt and obsidian cooled quickly at the surface." : "Look at your graph again. Compare the 1 minute and 1 million year averages."; });
+      row.appendChild(b);
+    });
+    cb.appendChild(row); cb.appendChild(fb);
+  } else cb.appendChild(el("p", {"class": "hint"}, "Test at least three different cooling times to unlock the conclusion."));
+}
+$("b3-run").addEventListener("click", function(){
+  var i = +$("b3-time").value, base = B3T[i].base;
+  var v = base === 0 ? 0 : base * (0.85 + Math.random() * 0.3);
+  b3.push([i, Math.round(v * 100) / 100]); store.b3 = b3; save(); drawB3();
+});
+$("b3-clear").addEventListener("click", function(){ b3 = []; store.b3 = b3; save(); drawB3(); });
+drawB3();
+
+/* ---------- B3B stories ---------- */
+var b3b = {s: null, picked: [], opts: []};
+function newStory(){ var s = STORIES[Math.floor(Math.random() * STORIES.length)]; b3b = {s: s, picked: [], opts: shuffle(s.steps)}; drawStory(); }
+function drawStory(){
+  var box = $("b3b-rock"); clear(box);
+  box.appendChild(el("span", {"class": "tagline"}, "Formation story"));
+  box.appendChild(el("h5", null, b3b.s.rock));
+  var o = $("b3b-opts"); clear(o);
+  b3b.opts.forEach(function(st){
+    if (b3b.picked.indexOf(st) >= 0) return;
+    var b = el("button", {"class": "btn ghost", type: "button"}, st);
+    b.addEventListener("click", function(){ b3b.picked.push(st); drawStory(); });
+    o.appendChild(b);
+  });
+  var p = $("b3b-picked"); clear(p); b3b.picked.forEach(function(st){ p.appendChild(el("li", null, st)); });
+  var fb = $("b3b-fb");
+  if (b3b.picked.length === b3b.s.steps.length) {
+    var right = 0; b3b.picked.forEach(function(st, i){ if (st === b3b.s.steps[i]) right++; });
+    fb.hidden = false; fb.className = "feedback " + (right === b3b.s.steps.length ? "ok" : "no");
+    fb.textContent = right === b3b.s.steps.length ? "Correct order. You explained how this rock formed." : right + " of " + b3b.s.steps.length + " in the right place. Correct order: " + b3b.s.steps.join(", then ") + ".";
+  } else fb.hidden = true;
+}
+$("b3b-undo").addEventListener("click", function(){ b3b.picked.pop(); drawStory(); });
+$("b3b-new").addEventListener("click", newStory);
+newStory();
+
+/* ---------- B4 mineral ID ---------- */
+var b4 = {m: null, done: {}, right: store.b4r || 0, tries: store.b4t || 0, checked: false};
+MINS.forEach(function(m, i){ $("b4-guess").appendChild(el("option", {value: i}, m.name)); });
+TESTS.forEach(function(t){
+  var b = el("button", {"class": "btn ghost", type: "button", "data-t": t[0]}, t[1]);
+  b.addEventListener("click", function(){ b4.done[t[0]] = 1; drawB4(); });
+  $("b4-tests").appendChild(b);
+});
+function newMin(){ b4.m = Math.floor(Math.random() * MINS.length); b4.done = {}; b4.checked = false; $("b4-fb").hidden = true; drawB4(); }
+function drawB4(){
+  var m = MINS[b4.m], ul = $("b4-res"); clear(ul);
+  var n = 0;
+  TESTS.forEach(function(t){ if (b4.done[t[0]]) { n++; var li = el("li"); li.appendChild(el("b", null, t[1] + " ")); li.appendChild(document.createTextNode(m[t[0]])); ul.appendChild(li); } });
+  if (b4.done.lustre && m.extra) ul.appendChild(el("li", null, "You also notice: " + m.extra + "."));
+  if (!n) ul.appendChild(el("li", null, "No tests yet. Choose a test to start."));
+  Array.prototype.forEach.call($("b4-tests").children, function(b){ b.disabled = !!b4.done[b.dataset.t]; });
+  $("b4-score").textContent = b4.right + " of " + b4.tries + " identified";
+}
+$("b4-check").addEventListener("click", function(){
+  if (b4.checked) return;
+  var g = +$("b4-guess").value, m = MINS[b4.m], n = Object.keys(b4.done).length;
+  b4.checked = true; b4.tries++; var ok = g === b4.m; if (ok) b4.right++;
+  store.b4r = b4.right; store.b4t = b4.tries; save();
+  var fb = $("b4-fb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no");
+  fb.textContent = ok ? "Correct. It is " + m.name.toLowerCase() + ". You used " + n + " test" + (n === 1 ? "" : "s") + "." : "Not this time. The sample was " + m.name.toLowerCase() + ": " + m.lustre.toLowerCase() + " lustre, " + m.streak.toLowerCase() + " streak, and scratches glass: " + m.glass.toLowerCase() + ". Compare these with your choice.";
+  drawB4();
+});
+$("b4-new").addEventListener("click", newMin);
+newMin();
+
+/* ---------- B5 rate ---------- */
+function calcB5(){
+  var h = parseFloat($("b5-h").value), r = parseFloat($("b5-r").value), out = $("b5-out"); clear(out);
+  function stat(l, v){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, l)); d.appendChild(el("b", null, v)); out.appendChild(d); }
+  if (!(h >= 0) || !(r > 0)) { stat("Result", "Enter a thickness and a rate above 0"); return; }
+  stat("Thickness in mm", nice(h * 1000)); stat("Time (years)", nice(h * 1000 / r));
+}
+$("b5-h").addEventListener("input", calcB5); $("b5-r").addEventListener("input", calcB5); calcB5();
+var b5p = null;
+function newB5(){
+  var hs = [0.5, 1, 1.5, 2, 3, 4, 5, 10], rs = [0.1, 0.2, 0.25, 0.5, 1, 2];
+  var h = hs[Math.floor(Math.random() * hs.length)], r = rs[Math.floor(Math.random() * rs.length)];
+  var kind = ["mud on a lake floor", "sand at a river mouth", "shells on a sea floor"][Math.floor(Math.random() * 3)];
+  b5p = {h: h, r: r};
+  $("b5-q").textContent = "A layer of " + kind + " is " + h + " m thick. It built up at " + r + " mm per year (made-up rate). About how many years did it take?";
+  $("b5-a").value = ""; $("b5-fb").hidden = true;
+}
+$("b5-check").addEventListener("click", function(){
+  var a = parseFloat($("b5-a").value), ans = b5p.h * 1000 / b5p.r, fb = $("b5-fb"); fb.hidden = false;
+  var ok = Math.abs(a - ans) <= ans * 0.01;
+  fb.className = "feedback " + (ok ? "ok" : "no");
+  fb.textContent = (ok ? "Correct. " : "Check your work. ") + b5p.h + " m = " + nice(b5p.h * 1000) + " mm. t = " + nice(b5p.h * 1000) + " ÷ " + b5p.r + " = " + nice(ans) + " years.";
+});
+$("b5-new").addEventListener("click", newB5); newB5();
+
+/* ---------- Sort ---------- */
+var sortS = {deck: shuffle(SORTS), i: 0, right: 0, answered: false};
+function drawSort(){
+  var c = $("s-card"); clear(c);
+  $("s-next").hidden = true; $("s-fb").hidden = true; sortS.answered = false;
+  if (sortS.i >= sortS.deck.length) {
+    c.appendChild(document.createTextNode("Round complete: " + sortS.right + " of " + sortS.deck.length));
+    c.appendChild(el("small", null, "Press Restart to sort a new shuffle."));
+    $("s-count").textContent = ""; store.sortBest = Math.max(store.sortBest || 0, sortS.right); save();
+    $("s-score").textContent = "Best: " + store.sortBest + " of " + SORTS.length;
+    Array.prototype.forEach.call($("s-bins").children, function(b){ b.disabled = true; });
+    return;
+  }
+  var card = sortS.deck[sortS.i];
+  c.appendChild(document.createTextNode(card[0])); c.appendChild(el("small", null, "Which rock type?"));
+  $("s-count").textContent = "Card " + (sortS.i + 1) + " of " + sortS.deck.length;
+  $("s-score").textContent = "Score: " + sortS.right;
+  Array.prototype.forEach.call($("s-bins").children, function(b){ b.disabled = false; });
+}
+Object.keys(TYPES).forEach(function(t){
+  var b = el("button", {"class": "bin", type: "button"}, TYPES[t]);
+  b.addEventListener("click", function(){
+    if (sortS.answered || sortS.i >= sortS.deck.length) return; sortS.answered = true;
+    var card = sortS.deck[sortS.i], ok = card[1] === t; if (ok) sortS.right++;
+    var fb = $("s-fb"); fb.hidden = false; fb.className = "feedback " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. It belongs with " + TYPES[card[1]].toLowerCase() + " rock. ") + SORTWHY[card[1]];
+    $("s-score").textContent = "Score: " + sortS.right; $("s-next").hidden = false; $("s-next").focus();
+  });
+  $("s-bins").appendChild(b);
+});
+$("s-next").addEventListener("click", function(){ sortS.i++; drawSort(); });
+$("s-restart").addEventListener("click", function(){ sortS = {deck: shuffle(SORTS), i: 0, right: 0, answered: false}; drawSort(); });
+drawSort();
+
+/* ---------- Flashcards ---------- */
+var fcKnown = store.fc || {}, fcOnly = false, fcI = 0, fcFlip = false;
+function fcList(){ return CARDS.filter(function(c){ return !fcOnly || !fcKnown[c[0]]; }); }
+function drawFC(){
+  var list = fcList(), card = $("fc-card"); clear(card);
+  var known = CARDS.filter(function(c){ return fcKnown[c[0]]; }).length;
+  $("fc-bar").style.width = (known / CARDS.length * 100) + "%";
+  $("fc-count").textContent = known + " of " + CARDS.length + " known";
+  if (!list.length) { card.appendChild(el("span", {"class": "term"}, "All known")); card.appendChild(el("span", {"class": "def"}, "Every card is marked known. Switch to All cards to review.")); return; }
+  if (fcI >= list.length) fcI = 0;
+  var c = list[fcI];
+  card.appendChild(el("span", {"class": "tag"}, (fcI + 1) + " / " + list.length + (fcKnown[c[0]] ? " · known" : " · still learning") + " · tap to flip"));
+  card.appendChild(el("span", {"class": fcFlip ? "def" : "term"}, fcFlip ? c[1] : c[0]));
+  card.setAttribute("aria-label", (fcFlip ? "Definition: " + c[1] : "Term: " + c[0]) + ". Activate to flip.");
+}
+$("fc-card").addEventListener("click", function(){ fcFlip = !fcFlip; drawFC(); });
+function fcMove(d){ var n = fcList().length || 1; fcI = (fcI + d + n) % n; fcFlip = false; drawFC(); }
+$("fc-prev").addEventListener("click", function(){ fcMove(-1); });
+$("fc-nx").addEventListener("click", function(){ fcMove(1); });
+function fcMark(v){ var l = fcList(); if (!l.length) return; var c = l[fcI]; if (v) fcKnown[c[0]] = 1; else delete fcKnown[c[0]]; store.fc = fcKnown; save(); if (fcOnly && v) { fcFlip = false; drawFC(); } else fcMove(1); }
+$("fc-yes").addEventListener("click", function(){ fcMark(true); });
+$("fc-no").addEventListener("click", function(){ fcMark(false); });
+$("fc-all").addEventListener("click", function(){ fcOnly = false; this.setAttribute("aria-pressed", "true"); $("fc-learn").setAttribute("aria-pressed", "false"); fcI = 0; drawFC(); });
+$("fc-learn").addEventListener("click", function(){ fcOnly = true; this.setAttribute("aria-pressed", "true"); $("fc-all").setAttribute("aria-pressed", "false"); fcI = 0; drawFC(); });
+drawFC();
+
+/* ---------- Quiz ---------- */
+var qz = null;
+function newRound(){ qz = {qs: shuffle(QUIZ).slice(0, 10), i: 0, score: 0}; drawQ(); }
+function drawQ(){
+  var box = $("qz-box"); clear(box); $("qz-next").hidden = true;
+  $("qz-best").textContent = store.qbest != null ? "Best: " + store.qbest + " / 10" : "";
+  if (qz.i >= qz.qs.length) {
+    store.qbest = Math.max(store.qbest || 0, qz.score); save();
+    var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, "Round complete: " + qz.score + " out of 10")); d.appendChild(el("p", {"class": "expl"}, "Press New round for a fresh set of questions.")); box.appendChild(d);
+    $("qz-prog").textContent = ""; $("qz-best").textContent = "Best: " + store.qbest + " / 10"; return;
+  }
+  var q = qz.qs[qz.i];
+  $("qz-prog").textContent = "Question " + (qz.i + 1) + " of 10 · Score " + qz.score;
+  var d2 = el("div", {"class": "q"}); d2.appendChild(el("h3", null, q.q));
+  var opts = el("div", {"class": "opts", role: "group", "aria-label": "Answer choices"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+  var order = shuffle(q.o.map(function(_, i){ return i; }));
+  order.forEach(function(oi){
+    var b = el("button", {"class": "opt", type: "button"}, q.o[oi]);
+    b.addEventListener("click", function(){
+      var ok = oi === q.a; if (ok) qz.score++;
+      Array.prototype.forEach.call(opts.children, function(c, k){ c.disabled = true; if (order[k] === q.a) c.classList.add("right"); });
+      if (!ok) b.classList.add("wrong");
+      ex.textContent = (ok ? "Correct. " : "Not quite. ") + q.e;
+      $("qz-prog").textContent = "Question " + (qz.i + 1) + " of 10 · Score " + qz.score;
+      $("qz-next").hidden = false;
+    });
+    opts.appendChild(b);
+  });
+  d2.appendChild(opts); d2.appendChild(ex); box.appendChild(d2);
+}
+$("qz-next").addEventListener("click", function(){ qz.i++; drawQ(); });
+$("qz-new").addEventListener("click", newRound);
+newRound();
+
+/* ---------- Written ---------- */
+store.wr = store.wr || {}; store.wc = store.wc || {};
+function wrBuild(list, boxId, pre){
+  var box = $(boxId);
+  list.forEach(function(item, i){
+    var id = pre + i, d = el("details"), s = el("summary", null, (i + 1) + ". " + item.q); d.appendChild(s);
+    var inner = el("div", {"class": "inner"});
+    var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+    var ta = el("textarea", {id: "wr-" + id}); ta.value = store.wr[id] || "";
+    ta.addEventListener("input", function(){ store.wr[id] = ta.value; save(); });
+    lab.appendChild(ta); inner.appendChild(lab);
+    var md = el("details"); md.appendChild(el("summary", null, "Show model answer"));
+    var mi = el("div", {"class": "inner"}); mi.appendChild(el("p", {"class": "model-ans"}, item.a));
+    mi.appendChild(el("p", {"class": "tagline"}, "Key ideas I included"));
+    var ul = el("ul", {"class": "checks"});
+    item.k.forEach(function(k, j){
+      var cid = id + "-" + j, li = el("li"), l = el("label", {"for": "wc-" + cid}), cb = el("input", {type: "checkbox", id: "wc-" + cid});
+      cb.checked = !!store.wc[cid]; cb.addEventListener("change", function(){ store.wc[cid] = cb.checked; save(); });
+      l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+    });
+    mi.appendChild(ul); md.appendChild(mi); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+  });
+}
+wrBuild(SHORTQ, "wr-short", "s"); wrBuild(EXTQ, "wr-ext", "e");
+
+/* ---------- Coverage ---------- */
+(function(){
+  var t = $("cov-table"), h = el("tr"); ["Code", "Statement", "Where it is taught"].forEach(function(x){ h.appendChild(el("th", null, x)); }); t.appendChild(h);
+  COVER.forEach(function(c){ var r = el("tr"); c.forEach(function(x){ r.appendChild(el("td", null, x)); }); t.appendChild(r); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+showTab(location.hash.slice(1) || store.tab || "learn");
+
+})();
+</script>
+
+</body></html>

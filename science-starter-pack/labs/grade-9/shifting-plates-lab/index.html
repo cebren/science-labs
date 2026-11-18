@@ -1,0 +1,1666 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/shifting-plates-lab/"><meta name="description" content="The layers of Earth behave differently and contribute to geological processes that continually reshape Earth’s surface."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Shifting Plates Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a field notebook for a restless planet. Sticky tab strip, then lessons pairing a short reading column with a cross-section, simulation or map. Rock browns for crust, ember for mantle heat, gold for the core, Grade 9 green for codes. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --fire:#B0431B; --fire-soft:#FAE5DB; --leaf:#2D7546; --leaf-soft:#DDEFE3; --water:#1C6A8A; --water-soft:#DCEDF4;
+  --mix:#8A4B12; --mix-soft:#F6E8D8; --good:#2D7546; --bad:#B03A2E; --bad-soft:#F7E0DC; --g9:#2E7A4F;
+  --pa:#2F6FB3; --pb:#D9822B; --pc:#3E9A5B; --pd:#8C5BB0; --pe:#5E6862;
+  --glass:#E3EEF2; --liquid:#9CCBE0; --sand:#C9A66B; --iron:#4A4F57; --salt:#FFFFFF; --gravel:#8E8577; --lichen:#C8A93A; --bloom:#B4407A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --fire:#F2916A; --fire-soft:#3A1E14; --leaf:#7BCB95; --leaf-soft:#16301F; --water:#6DC1E0; --water-soft:#132C38;
+  --mix:#E8A86A; --mix-soft:#3A2814; --good:#7BCB95; --bad:#F2907F; --bad-soft:#3A1C18; --g9:#74C995;
+  --pa:#6FA8E8; --pb:#F0A55A; --pc:#72C48B; --pd:#B892DA; --pe:#A9B3AD;
+  --glass:#15252B; --liquid:#2C5A6E; --sand:#A88A55; --iron:#9AA1AA; --salt:#E8ECEA; --gravel:#7A7366; --lichen:#B39A3C; --bloom:#E07AAE;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--water)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .fi{color:var(--fire)} header h1 .lf{color:var(--leaf)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--leaf-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--leaf)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.fi[aria-pressed="true"]{background:var(--fire);border-color:var(--fire);color:var(--surface)}
+.chip.lf[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.chip.wa[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;min-width:520px;height:auto}
+.svgbox.fit svg{min-width:0}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--fire)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* status ladder */
+.ladder{display:grid;gap:4px}
+.rung{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface);font-size:.88rem}
+.rung b{font-family:var(--f-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.rung.on{border-color:var(--fire);background:var(--fire-soft)}
+.rung.on b{color:var(--fire)}
+@media (max-width:480px){.rung{grid-template-columns:minmax(0,1fr)}}
+
+/* bars */
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:8em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.85rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--leaf);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--fire)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 2.6em}}
+
+/* sequencer */
+.seq{display:grid;gap:8px}
+.seqbtn{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.seqbtn:hover:not(:disabled){border-color:var(--muted)}
+.seqbtn:disabled{cursor:default;background:var(--leaf-soft);border-color:var(--leaf)}
+.seqbtn small{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.placed{display:grid;gap:4px;padding-left:0;counter-reset:s}
+.placed li{list-style:none;font-size:.9rem;background:var(--leaf-soft);border-radius:6px;padding:6px 10px}
+
+/* forest grid */
+.forest{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.forest i{aspect-ratio:1;display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:middle;border:1px solid var(--line)}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+
+/* data table */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt tr.tot td{font-weight:700}
+.dt td.flag{color:var(--fire);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--leaf-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--leaf-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+header h1 .pu{color:var(--water)} header h1 .mx{color:var(--mix)}
+.chip.mx[aria-pressed="true"]{background:var(--mix);border-color:var(--mix);color:var(--surface)}
+.pbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.pfig{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px}
+.pfig svg{display:block;width:100%;height:auto}
+.pfig figcaption{font-size:.82rem;color:var(--muted)}
+.verdict{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.badge{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+.badge.pure{background:var(--water-soft);color:var(--water);border-color:var(--water)}
+.badge.mixb{background:var(--mix-soft);color:var(--mix);border-color:var(--mix)}
+.ptable{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.ptable th,.ptable td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.ptable th:first-child,.ptable td:first-child{text-align:left}
+.ptable th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.ptable tr.on td{background:var(--water-soft);font-weight:700}
+.state{font-family:var(--f-display);font-size:1.3rem;font-weight:800}
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv h3{font-size:1.3rem}
+.inv .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.readout{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.choice{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.choice button{background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;display:grid;gap:4px}
+.choice button:hover:not(:disabled){border-color:var(--muted)}
+.choice button.right{border-color:var(--good);background:var(--leaf-soft)}
+.choice button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice button svg{width:100%;height:auto;display:block}
+.tray{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.cup{border:1.5px dashed var(--line);border-radius:8px;padding:8px;font-size:.85rem;display:grid;gap:2px;background:var(--surface-2)}
+.cup.full{border-style:solid;border-color:var(--good);background:var(--leaf-soft)}
+.cup b{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.log{display:grid;gap:4px;padding-left:1.2em;font-size:.9rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,90px),1fr));gap:8px}
+.lbox{display:grid;gap:4px;justify-items:center;text-align:center;font-size:.85rem}
+.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.inline label.field{flex:1 1 140px}
+.inline input{width:100%}
+/* ---- Shifting Plates additions: rock and heat tokens ---- */
+:root{
+  --crust:#B98A5A; --mantle:#D9774A; --outer:#E8A93C; --inner:#F2D36B; --ocean:#3B7FB0; --oc-crust:#5B6E7E; --cont:#A88B5C; --lith:#8C6A4A; --asth:#E39A6C; --sed:#C9B48A; --hot:#C2401F; --cold:#2F6FB3; --stripeA:#2A3A48; --stripeB:#E6E1D4; --sea:#CFE3EE;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --crust:#8A6440; --mantle:#9C4A2A; --outer:#9E6E1E; --inner:#B39433; --ocean:#2C5F86; --oc-crust:#55697A; --cont:#7E6844; --lith:#6A4E36; --asth:#8F5534; --sed:#857553; --hot:#F2916A; --cold:#6FA8E8; --stripeA:#C9D4DE; --stripeB:#2A3540; --sea:#16303F;
+}}
+:root[data-theme="dark"]{
+  --crust:#8A6440; --mantle:#9C4A2A; --outer:#9E6E1E; --inner:#B39433; --ocean:#2C5F86; --oc-crust:#55697A; --cont:#7E6844; --lith:#6A4E36; --asth:#8F5534; --sed:#857553; --hot:#F2916A; --cold:#6FA8E8; --stripeA:#C9D4DE; --stripeB:#2A3540; --sea:#16303F;
+}
+header h1 .ea{color:var(--fire)} header h1 .pl{color:var(--g9)}
+svg [role=button]{cursor:pointer}
+svg [role=button]:focus{outline:none}
+svg [role=button]:focus-visible>*:first-child, svg [role=button].sel>*:first-child{stroke:var(--ink);stroke-width:3}
+.layerkey{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:6px}
+.layerkey button{display:flex;gap:8px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.88rem;font-weight:700}
+.layerkey button[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2)}
+.layerkey i{width:14px;height:14px;border-radius:3px;border:1px solid var(--line);flex:0 0 auto}
+.timeline{display:grid;gap:6px;padding:0;margin:0;list-style:none}
+.timeline button{width:100%;display:grid;grid-template-columns:4.2em minmax(0,1fr);gap:10px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.timeline button b{font-family:var(--f-mono);color:var(--g9);font-size:.85rem}
+.timeline button[aria-pressed="true"]{border-color:var(--g9);background:var(--leaf-soft)}
+.compare{width:100%;border-collapse:collapse;font-size:.88rem;min-width:460px}
+.compare th,.compare td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.compare th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.plates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px}
+.plates button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;text-align:left;cursor:pointer;font-weight:700;font-size:.88rem;display:grid;gap:2px}
+.plates button small{font-weight:400;color:var(--muted);font-size:.78rem}
+.plates button[aria-pressed="true"]{border-color:var(--g9);background:var(--leaf-soft)}
+.stage{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.chip.g9[aria-pressed="true"]{background:var(--g9);border-color:var(--g9);color:var(--surface)}
+input[type=range]{accent-color:var(--g9)}
+.model,.inv,.panel{grid-template-columns:minmax(0,1fr)}
+.simbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.simbox canvas{display:block;width:100%;height:auto;max-width:100%}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Earth Science: Plate Tectonics · ES1</div>
+    <h1><span class="pl">Shifting</span> <span class="ea">Plates</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> The layers of Earth behave differently and contribute to geological processes that continually reshape Earth’s surface. In this lab you will cut Earth open, watch the mantle churn, put the continents back together, and see how plates pushing on each other built the Rocky Mountains west of Edmonton.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. Start deep inside Earth, work up to the plates, then follow the evidence from Wegener’s idea to the theory of plate tectonics.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Inside Earth</span>
+      <div class="codes"><span class="code">ES1.K1</span><span class="code">ES1.S1</span></div>
+      <h3>Crust, mantle and core</h3>
+      <p>Nobody has ever drilled through the crust. Scientists learned what is inside Earth by studying earthquake waves. The waves speed up, slow down and bend as they pass through different materials, a bit like an X-ray of the planet.</p>
+      <p>Earth has three main layers:</p>
+      <ul>
+        <li>The <b>crust</b> is the thin, rocky outer layer we live on. It is only about 7 km thick under the oceans and about 35 to 40 km thick under most continents.</li>
+        <li>The <b>mantle</b> is the thickest layer, about 2900 km deep. It is hot rock that is mostly solid, but it can flow very slowly over millions of years, like very stiff putty.</li>
+        <li>The <b>core</b> is the centre, made mostly of iron and nickel. The <b>outer core</b> is liquid metal. The <b>inner core</b> is solid, even though it is hotter, because the pressure there is enormous.</li>
+      </ul>
+      <p>If Earth were an apple, the crust would be thinner than the skin.</p>
+      <div class="key"><b>Remember:</b> crust (thin, solid rock), mantle (thick, mostly solid rock that flows slowly), outer core (liquid metal), inner core (solid metal).</div>
+    </div>
+    <div class="model">
+      <h4>Model: cut Earth open</h4>
+      <p class="hint">Tap a layer, or drag the depth slider to travel from the surface to the centre.</p>
+      <div class="svgbox fit"><svg id="layersSvg" viewBox="0 0 440 300" role="group" aria-label="Cross-section of Earth's layers"></svg></div>
+      <label class="field" for="depth">Depth below the surface: <span class="mono num" id="depthOut">0 km</span></label>
+      <input type="range" id="depth" min="0" max="6371" step="1" value="0">
+      <div class="stats" aria-live="polite">
+        <div class="stat"><span>Layer</span><b id="dLayer">Crust</b></div>
+        <div class="stat"><span>State</span><b id="dState">Solid</b></div>
+        <div class="stat"><span>Temperature</span><b id="dTemp">about 15 °C</b></div>
+      </div>
+      <div class="detail" id="layerDetail" aria-live="polite"></div>
+      <p class="hint">Temperatures are rounded estimates. The crust is drawn thicker than true scale so you can see it.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Two ways to slice the top</span>
+      <div class="codes"><span class="code">ES1.K2</span><span class="code">ES1.K1</span></div>
+      <h3>The lithosphere is broken into plates</h3>
+      <p>You can describe the outer part of Earth by what it is <b>made of</b> or by how it <b>behaves</b>.</p>
+      <p>By what it is made of, there is crust on top of mantle rock. By how it behaves, there are two different zones:</p>
+      <ul>
+        <li>The <b>lithosphere</b> is the stiff, solid outer shell. It includes all of the crust <i>and</i> the uppermost solid part of the mantle. It is about 100 km thick on average.</li>
+        <li>Under it is the <b>asthenosphere</b>, the upper part of the mantle that is hot enough to be soft. It is still mostly solid, but it can flow slowly.</li>
+      </ul>
+      <p>The lithosphere is cracked into large pieces called <b>tectonic plates</b>. The plates fit together like a cracked eggshell and ride on the soft asthenosphere below.</p>
+      <div class="key"><b>Remember:</b> a tectonic plate is a piece of lithosphere: crust plus the top layer of solid mantle.</div>
+    </div>
+    <div class="model">
+      <h4>Model: relabel the slice</h4>
+      <div class="chips" id="sliceChips" role="group" aria-label="Label the slice by"></div>
+      <div class="svgbox"><svg id="sliceSvg" viewBox="0 0 560 260" role="img" aria-label="Slice of the top 300 km of Earth"></svg></div>
+      <p class="hint" id="sliceNote" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · What moves the plates</span>
+      <div class="codes"><span class="code">ES1.K3</span></div>
+      <h3>Convection currents and gravity</h3>
+      <p>Heat from deep inside Earth warms the bottom of the mantle. Warm rock is a little less dense, so it slowly rises. Near the top it cools, becomes denser and sinks again. This loop is a <b>convection current</b>. It is the same pattern you see in a pot of soup on a stove, but mantle rock moves only a few centimetres a year.</p>
+      <p>The plates sit on top of this moving mantle. Gravity also pulls on them in two ways:</p>
+      <ul>
+        <li><b>Slab pull:</b> where an old, cold, dense plate sinks into the mantle, its sinking edge pulls the rest of the plate along behind it. Scientists think this is the biggest force on most plates.</li>
+        <li><b>Ridge push:</b> new plate is hot and sits high at an ocean ridge. As it cools it slides down and away from the ridge.</li>
+      </ul>
+      <div class="key"><b>Remember:</b> plates move on the upper mantle because of convection currents and gravity (slab pull and ridge push).</div>
+    </div>
+    <div class="model">
+      <h4>Simulation: mantle convection</h4>
+      <div class="row">
+        <button class="btn" id="convPlay" type="button" aria-pressed="false">Turn on the heat</button>
+        <div class="chips" id="forceChips" role="group" aria-label="Show a force"></div>
+      </div>
+      <div class="simbox"><canvas id="convCanvas" width="560" height="300" role="img" aria-label="Animation of mantle rock rising when heated and sinking when cooled, carrying plates apart and together"></canvas></div>
+      <p class="hint" id="convNote" aria-live="polite">Rock heated at the bottom rises (red). Rock cooled at the top sinks (blue). Watch the two plates on top.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · A puzzle of continents</span>
+      <div class="codes"><span class="code">ES1.K4</span><span class="code">ES1.K5</span></div>
+      <h3>Wegener and continental drift</h3>
+      <p>In 1912 the German scientist <b>Alfred Wegener</b> proposed that all the continents were once joined in one huge land mass. He called it <b>Pangaea</b>, which means “all lands”. About 200 million years ago Pangaea began to break apart, and the pieces slowly drifted to where they are today. This idea is called <b>continental drift</b>.</p>
+      <p>Wegener gathered evidence:</p>
+      <ul>
+        <li><b>Shapes of the continents.</b> The east coast of South America fits into the west coast of Africa like puzzle pieces. The fit is even better along the edges of the continental shelves under the sea.</li>
+        <li><b>Matching fossils.</b> Fossils of the same land plants and animals are found on continents now separated by oceans. <i>Mesosaurus</i>, a small freshwater reptile, could not have swum across an ocean, yet its fossils are in both Brazil and southern Africa.</li>
+        <li>He also found matching rock layers, matching mountain belts, and signs of ancient glaciers in places that are warm today.</li>
+      </ul>
+      <p>Most scientists rejected the idea for about 40 years. Wegener could not explain what force could push whole continents through solid ocean floor.</p>
+      <div class="key"><b>Remember:</b> continental drift says the continents were once one land mass that broke and drifted apart over millions of years. The evidence: continent shapes and matching fossils.</div>
+    </div>
+    <div class="model">
+      <h4>Model: run time backwards</h4>
+      <label class="field" for="driftAge">Millions of years ago: <span class="mono num" id="driftOut">0 (today)</span></label>
+      <input type="range" id="driftAge" min="0" max="200" step="5" value="0">
+      <div class="chips" id="fossilChips" role="group" aria-label="Show fossils"></div>
+      <div class="svgbox fit"><svg id="driftSvg" viewBox="0 0 520 380" role="img" aria-label="South America and Africa moving together as you go back in time"></svg></div>
+      <p class="hint" id="driftNote" aria-live="polite">Outlines are simplified. Drag the slider to 200 million years ago.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · From an idea to a theory</span>
+      <div class="codes"><span class="code">ES1.K6</span><span class="code">ES1.S2</span></div>
+      <h3>The theory of plate tectonics</h3>
+      <p>In the 1950s and 1960s, new tools let scientists map the ocean floor and measure its rocks. Researchers from many countries found evidence Wegener never had. Their work built on continental drift and became the <b>theory of plate tectonics</b>.</p>
+      <p>Plate tectonics says Earth’s lithosphere is broken into <b>seven major plates</b> and many smaller ones. The plates move over the upper mantle, driven by heat-related convection and by gravity. Continents do not plough through the ocean floor. They ride along as passengers on moving plates.</p>
+      <p>A <b>scientific theory</b> is a well-tested explanation backed by many lines of evidence. Plate tectonics explains far more than continental drift: it explains why the continents moved <i>and</i> where earthquakes, volcanoes and mountains form.</p>
+      <div class="key"><b>Remember:</b> continental drift described <i>that</i> continents moved. Plate tectonics explains <i>how</i> and <i>why</i>.</div>
+    </div>
+    <div class="model">
+      <h4>Timeline: who added what</h4>
+      <ul class="timeline" id="timeline"></ul>
+      <div class="detail" id="tlDetail" aria-live="polite"></div>
+      <h4>The seven major plates</h4>
+      <div class="plates" id="plates" role="group" aria-label="Major plates"></div>
+      <div class="detail" id="plateDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Two kinds of plate</span>
+      <div class="codes"><span class="code">ES1.K7</span></div>
+      <h3>Oceanic and continental</h3>
+      <p>Plates are made of two kinds of lithosphere.</p>
+      <ul>
+        <li><b>Oceanic</b> lithosphere lies under the oceans. Its crust is dark basalt rock about 7 km thick. It is <b>thinner and denser</b>.</li>
+        <li><b>Continental</b> lithosphere carries the continents. Its crust is lighter rock like granite, about 35 to 40 km thick, and up to 70 km under big mountains. It is <b>thicker and less dense</b>.</li>
+      </ul>
+      <p>Both kinds float on the denser mantle below, a bit like wood on water. The less dense continental crust floats higher, which is why continents stand above the sea.</p>
+      <p>When two plates push together, the denser oceanic one sinks under the other. This sinking is called <b>subduction</b>. Because oceanic plates keep getting recycled, the oldest ocean floor is only about 200 million years old. Continental rock does not sink, so it can be very old. Some of the oldest known rock on Earth, about 4 billion years old, is in the Northwest Territories.</p>
+      <p class="note">Many large plates carry both kinds. The North American Plate holds the continent and also the western half of the Atlantic Ocean floor. We often call a plate “oceanic” or “continental” by the kind of lithosphere at its leading edge.</p>
+    </div>
+    <div class="model">
+      <h4>Model: float the crust on the mantle</h4>
+      <p class="hint">Change thickness and density. A block floats higher when it is less dense.</p>
+      <div class="two">
+        <div class="row" style="display:grid;gap:6px">
+          <label class="field" for="ocT">Oceanic thickness: <span class="mono num" id="ocTo"></span></label>
+          <input type="range" id="ocT" min="4" max="15" step="1" value="7">
+          <label class="field" for="ocD">Oceanic density: <span class="mono num" id="ocDo"></span></label>
+          <input type="range" id="ocD" min="2.6" max="3.2" step="0.05" value="3.0">
+        </div>
+        <div class="row" style="display:grid;gap:6px">
+          <label class="field" for="coT">Continental thickness: <span class="mono num" id="coTo"></span></label>
+          <input type="range" id="coT" min="20" max="70" step="1" value="35">
+          <label class="field" for="coD">Continental density: <span class="mono num" id="coDo"></span></label>
+          <input type="range" id="coD" min="2.6" max="3.2" step="0.05" value="2.7">
+        </div>
+      </div>
+      <div class="svgbox"><svg id="floatSvg" viewBox="0 0 560 250" role="img" aria-label="Oceanic and continental crust blocks floating on mantle"></svg></div>
+      <p class="hint" id="floatNote" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · The evidence</span>
+      <div class="codes"><span class="code">ES1.K8</span><span class="code">ES1.S3</span></div>
+      <h3>Four clues that plates move</h3>
+      <p><b>Seafloor spreading.</b> A chain of underwater mountains runs down the middle of the Atlantic. Molten rock rises there, cools and forms new ocean floor that moves away on both sides. Rock near the ridge is young. Rock gets older the farther it is from the ridge.</p>
+      <p>Earth’s magnetic field flips direction every so often. New rock records the direction of the field as it cools. That makes matching magnetic stripes on both sides of the ridge, like a barcode printed twice.</p>
+      <p><b>Mountain formation.</b> Where plates push together, rock crumples and stacks into mountain ranges. Fossils of sea creatures are found near the tops of the Himalaya and the Rockies.</p>
+      <p><b>Seismic activity.</b> Earthquakes are not scattered at random. Most happen in narrow belts along plate edges, where plates grind past, pull apart or push together.</p>
+      <p><b>Volcanic activity.</b> Most volcanoes also line up along plate edges: at spreading ridges and where one plate sinks under another.</p>
+    </div>
+    <div class="model">
+      <h4>Simulation: grow a spreading ridge</h4>
+      <label class="field" for="spreadT">Time since spreading began: <span class="mono num" id="spreadOut">0 million years</span></label>
+      <input type="range" id="spreadT" min="0" max="5" step="0.1" value="3">
+      <div class="svgbox"><svg id="spreadSvg" viewBox="0 0 560 190" role="img" aria-label="Magnetic stripes forming at a mid-ocean ridge"></svg></div>
+      <p class="hint">Dark stripes formed when the magnetic field pointed north as it does today (normal). Light stripes formed when it was reversed. The flip pattern here is simplified.</p>
+      <h4>Tap a clue</h4>
+      <div class="chips" id="clueChips" role="group" aria-label="Evidence"></div>
+      <div class="detail" id="clueDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Close to home</span>
+      <div class="codes"><span class="code">ES1.K9</span><span class="code">ES1.S3</span></div>
+      <h3>How the Rocky Mountains formed</h3>
+      <p>For hundreds of millions of years, western Alberta lay under shallow seas. Layer after layer of sand, mud and shells built up and hardened into sedimentary rock: limestone, shale and sandstone.</p>
+      <p>Then the edge of North America became a <b>collision zone</b>. An ocean plate to the west was sinking under the continent, and chains of volcanic islands rode in on it and crashed into the coast. This <b>compression</b> squeezed the land from the west, mostly between about 150 and 55 million years ago.</p>
+      <p>The squeezing pushed the old sea-floor layers east. They broke along low-angle cracks called <b>thrust faults</b> and stacked up like a pile of rugs shoved across a floor. At Mount Yamnuska near Canmore, much older limestone sits right on top of younger rock along the McConnell Thrust.</p>
+      <p>Since then, rivers and glaciers have carved the stacked slabs into the peaks and valleys you see from Highway 1. That is why you can find fossil sea shells high in Banff and Jasper.</p>
+      <div class="key"><b>Remember:</b> the Rockies formed when tectonic plates collided and compressed the edge of North America, folding and stacking rock layers.</div>
+    </div>
+    <div class="model">
+      <h4>Model: build the Rockies step by step</h4>
+      <div class="row">
+        <button class="btn ghost" id="rkPrev" type="button">Back</button>
+        <button class="btn" id="rkNext" type="button">Next step</button>
+        <span class="stage" id="rkStage" aria-live="polite"></span>
+      </div>
+      <div class="svgbox"><svg id="rockySvg" viewBox="0 0 560 260" role="img" aria-label="Cross-section of western Canada as the Rockies form"></svg></div>
+      <div class="detail" id="rkDetail" aria-live="polite"></div>
+      <p class="hint">West is on the left, east is on the right. Drawing is not to scale.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Build a scale model of Earth, calculate how far plates travel, read real-style data from the ocean floor, and predict what happens where plates meet.</p>
+  </div>
+
+  <article class="inv">
+    <span class="step">Investigation 1 · ES1.S1</span>
+    <h3>Build Earth to scale</h3>
+    <p>Choose the radius of your model. The calculator works out how thick each layer must be. To scale a layer, divide its real thickness by Earth’s radius (6371 km) and multiply by your model’s radius.</p>
+    <div class="formula">model thickness = real thickness ÷ 6371 km × model radius</div>
+    <div class="inline">
+      <label class="field" for="modelR">Model radius (cm)</label>
+      <input type="number" id="modelR" min="1" max="1000" step="1" value="20">
+    </div>
+    <div class="chips" id="modelPresets" role="group" aria-label="Model presets"></div>
+    <div class="tablebox"><table class="dt" id="scaleTable"><thead><tr><th>Layer</th><th>Real thickness</th><th>Share of radius</th><th>Model thickness</th></tr></thead><tbody></tbody></table></div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>A model Earth has a radius of 50 cm. How thick is the mantle?</span>
+      <span class="mono">2900 km ÷ 6371 km = 0.455</span>
+      <span class="mono">0.455 × 50 cm = 22.8 cm</span>
+      <span>The continental crust would be 35 ÷ 6371 × 50 = 0.27 cm, less than 3 mm.</span>
+    </div>
+    <div class="two">
+      <div class="worked" id="scaleQ"></div>
+      <div style="display:grid;gap:8px;align-content:start">
+        <label class="field" for="scaleA">Your answer (cm)</label>
+        <input type="number" id="scaleA" step="0.01">
+        <div class="row"><button class="btn" id="scaleCheck" type="button">Check</button><button class="btn ghost" id="scaleNew" type="button">New problem</button></div>
+        <p class="fb" id="scaleFb" aria-live="polite"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 2 · ES1.S3</span>
+    <h3>How far do plates travel?</h3>
+    <p>Plates move about 2 to 10 cm a year, roughly as fast as your fingernails grow. That sounds tiny, but over millions of years it adds up to whole oceans.</p>
+    <div class="formula">speed = distance ÷ time &nbsp;&nbsp; v = d ÷ t &nbsp;&nbsp; so &nbsp; d = v × t</div>
+    <div class="two">
+      <div style="display:grid;gap:8px">
+        <label class="field" for="vIn">Plate speed: <span class="mono num" id="vOut">2.5 cm per year</span></label>
+        <input type="range" id="vIn" min="1" max="15" step="0.5" value="2.5">
+        <label class="field" for="tIn">Time: <span class="mono num" id="tOut">180 million years</span></label>
+        <input type="range" id="tIn" min="1" max="200" step="1" value="180">
+      </div>
+      <div class="readout" id="dOut" aria-live="polite"></div>
+    </div>
+    <div class="worked">
+      <b>Worked example</b>
+      <span>The Atlantic Ocean widens about 2.5 cm a year. How far would it spread in 1 million years?</span>
+      <span class="mono">d = v × t = 2.5 cm/yr × 1 000 000 yr = 2 500 000 cm</span>
+      <span class="mono">2 500 000 cm ÷ 100 000 cm per km = 25 km</span>
+      <span>Over about 180 million years, that is roughly 4500 km: the width of an ocean.</span>
+    </div>
+    <div class="two">
+      <div class="worked" id="spdQ"></div>
+      <div style="display:grid;gap:8px;align-content:start">
+        <label class="field" for="spdA" id="spdLbl">Your answer</label>
+        <input type="number" id="spdA" step="0.1">
+        <div class="row"><button class="btn" id="spdCheck" type="button">Check</button><button class="btn ghost" id="spdNew" type="button">New problem</button></div>
+        <p class="fb" id="spdFb" aria-live="polite"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 3 · ES1.K8 · ES1.S2</span>
+    <h3>Read the ocean floor</h3>
+    <p>A research ship drilled rock samples at different distances east and west of a mid-ocean ridge and measured their ages. <b>These data are made up for practice.</b> Plot them, then answer the questions.</p>
+    <div class="tablebox"><table class="dt" id="floorTable"><thead><tr><th>Sample</th><th>Side</th><th>Distance from ridge (km)</th><th>Age (million years)</th></tr></thead><tbody></tbody></table></div>
+    <div class="svgbox"><svg id="floorSvg" viewBox="0 0 560 260" role="img" aria-label="Graph of rock age against distance from the ridge"></svg></div>
+    <div class="row"><button class="btn ghost" id="floorNew" type="button">New ship data</button></div>
+    <div id="floorQs" style="display:grid;gap:12px"></div>
+  </article>
+
+  <article class="inv">
+    <span class="step">Investigation 4 · ES1.S3 · ES1.K7</span>
+    <h3>Plate boundary builder</h3>
+    <p>Choose how two plates move and what kind of lithosphere meets. Predict what will happen first, then check.</p>
+    <div style="display:grid;gap:8px">
+      <span class="tagline">How do the plates move?</span>
+      <div class="chips" id="bMotion" role="group" aria-label="Plate motion"></div>
+      <span class="tagline">What meets?</span>
+      <div class="chips" id="bTypes" role="group" aria-label="What meets"></div>
+    </div>
+    <div class="svgbox"><svg id="bSvg" viewBox="0 0 560 220" role="img" aria-label="Plate boundary diagram"></svg></div>
+    <div class="detail" id="bDetail" aria-live="polite"></div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 ES1, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>ES1.K4:</b> the draft calls continental drift a theory. The lab presents it as Wegener’s 1912 proposal, commonly called the theory of continental drift, and explains that it was not widely accepted until plate tectonics supplied a mechanism. This supports ES1.S2 and the Grade 9 work on how theories change.</li>
+      <li><b>ES1.K6:</b> “seven primary tectonic plates that make up Earth’s crust” is taught as seven major plates (Pacific, North American, Eurasian, African, Antarctic, Indo-Australian, South American) plus many smaller plates such as the Juan de Fuca Plate off British Columbia. Some sources split the Indo-Australian Plate into two. Plates are taught as pieces of lithosphere (crust plus uppermost mantle), matching K2.</li>
+      <li><b>ES1.K3 and K6:</b> the draft names convection; K3 also names gravitational forces. The lab teaches both, naming slab pull and ridge push, and notes that many geologists consider slab pull the largest force on most plates.</li>
+      <li><b>ES1.K7:</b> most large plates carry both oceanic and continental lithosphere (the North American Plate includes the western Atlantic floor). The lab teaches oceanic and continental lithosphere and notes that plates are often named by the kind at their leading edge. Values are rounded: oceanic crust about 7 km and 3.0 g/cm³; continental crust about 35 to 40 km and 2.7 g/cm³.</li>
+      <li><b>ES1.K9:</b> the Rockies are taught as compression of the western edge of North America by subduction and by island chains (terranes) colliding with the coast, which pushed sedimentary layers east along thrust faults. The timing “mostly between about 150 and 55 million years ago” is a simplified range; please check against your preferred source. Mount Yamnuska and the McConnell Thrust are used as the Alberta example.</li>
+      <li><b>ES1.K1:</b> layer depths and temperatures are rounded reference values (crust 7 km oceanic and 35 to 40 km continental; mantle to about 2900 km; outer core to about 5150 km; centre at 6371 km; centre about 5400 °C).</li>
+      <li><b>ES1.K8 and contributors:</b> the timeline names Wegener, Arthur Holmes, Marie Tharp and Bruce Heezen, Harry Hess, Fred Vine and Drummond Matthews, and the Canadians Lawrence Morley and J. Tuzo Wilson, described briefly. Investigation 3 ship data are invented and labelled as practice data.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-es1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function toggle(btn, fn){
+  btn.addEventListener("click", function(){ var on = btn.getAttribute("aria-pressed") !== "true"; btn.setAttribute("aria-pressed", on ? "true" : "false"); fn(on); });
+}
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function rng(seed){ var s = (seed >>> 0) || 1; return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+function focusBtn(g, label, fn){
+  g.setAttribute("role", "button"); g.setAttribute("tabindex", "0"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+
+/* ---------- Lesson 1: layers ---------- */
+(function(){
+  var svg = $("layersSvg");
+  var R = 6371;
+  var LAY = [
+    {id: "crust", name: "Crust", from: 0, to: 35, fill: "--crust", state: "Solid rock",
+     text: ["The thin, rocky outer layer. About 7 km thick under oceans and about 35 to 40 km under most continents.", "It is the only layer we have ever touched. The deepest hole ever drilled reached only about 12 km."]},
+    {id: "mantle", name: "Mantle", from: 35, to: 2900, fill: "--mantle", state: "Mostly solid rock that flows slowly",
+     text: ["The thickest layer, reaching down to about 2900 km. It holds most of Earth’s volume.", "The rock is hot enough to flow very slowly, a few centimetres a year. Its top part is stiff and belongs to the lithosphere."]},
+    {id: "outer", name: "Outer core", from: 2900, to: 5150, fill: "--outer", state: "Liquid metal",
+     text: ["Liquid iron and nickel, about 2250 km thick.", "Swirling liquid metal here makes Earth’s magnetic field. Some earthquake waves (S waves) cannot pass through it, which is how scientists know it is liquid."]},
+    {id: "inner", name: "Inner core", from: 5150, to: 6371, fill: "--inner", state: "Solid metal",
+     text: ["A solid ball of iron and nickel about 1220 km in radius.", "It is the hottest layer, about as hot as the surface of the Sun, but the huge pressure keeps it solid."]}
+  ];
+  var TEMP = [[0, 15], [35, 600], [100, 1300], [660, 1900], [2900, 3700], [5150, 5000], [6371, 5400]];
+  function temp(d){ for (var i = 1; i < TEMP.length; i++) if (d <= TEMP[i][0]) { var a = TEMP[i - 1], b = TEMP[i]; return a[1] + (b[1] - a[1]) * (d - a[0]) / (b[0] - a[0]); } return 5400; }
+  var cx = 30, cy = 280, S = 250 / R;
+  function rr(depth, i){ var r = (R - depth) * S; if (i === 0) return r; return depth === 35 ? (R * S - 12) : r; }
+  var groups = [];
+  LAY.forEach(function(L, i){
+    var g = sv("g");
+    var outer = i === 0 ? R * S : (i === 1 ? R * S - 12 : (R - L.from) * S);
+    g.appendChild(sv("path", {d: "M" + cx + " " + (cy - outer) + " A" + outer + " " + outer + " 0 0 1 " + (cx + outer) + " " + cy + " L" + cx + " " + cy + " Z", style: "fill:var(" + L.fill + ");stroke:var(--surface);stroke-width:1.5"}));
+    focusBtn(g, L.name + ": " + L.state, function(){ select(i, true); });
+    svg.appendChild(g); groups.push(g);
+  });
+  var labels = [[0, 300, 30, "Crust"], [1, 300, 95, "Mantle"], [2, 300, 170, "Outer core"], [3, 300, 240, "Inner core"]];
+  var lx = [[cx + 175, cy - 175], [cx + 150, cy - 130], [cx + 85, cy - 85], [cx + 30, cy - 50]];
+  labels.forEach(function(l, i){
+    svg.appendChild(sv("line", {x1: lx[i][0], y1: lx[i][1], x2: l[1] - 6, y2: l[2] - 4, "class": "axis", style: "stroke:var(--muted)"}));
+    svg.appendChild(sv("text", {x: l[1], y: l[2], "class": "lbl"}, l[3]));
+  });
+  [[0, "0 km"], [2900, "2900 km"], [5150, "5150 km"], [6371, "6371 km (centre)"]].forEach(function(t){
+    svg.appendChild(sv("text", {x: 300, y: [48, 113, 188, 258][[0, 2900, 5150, 6371].indexOf(t[0])], "class": "small"}, "from " + (t[0] === 0 ? "the surface" : t[1])));
+  });
+  var marker = sv("line", {x1: cx, y1: cy, x2: cx, y2: cy, style: "stroke:var(--ink);stroke-width:2;stroke-dasharray:4 3"});
+  var dot = sv("circle", {r: 6, cx: cx, cy: cy, style: "fill:var(--surface);stroke:var(--ink);stroke-width:2.5"});
+  svg.appendChild(marker); svg.appendChild(dot);
+  function layerAt(d){ if (d < 35) return 0; if (d < 2900) return 1; if (d < 5150) return 2; return 3; }
+  function select(i, fromTap){
+    groups.forEach(function(g, j){ g.classList.toggle("sel", j === i); });
+    var L = LAY[i];
+    detail($("layerDetail"), L.name, L.text, L.state);
+    if (fromTap) { var mid = Math.round((L.from + L.to) / 2); $("depth").value = mid; showDepth(mid, true); }
+  }
+  function showDepth(d, skipSel){
+    $("depthOut").textContent = d + " km";
+    var i = layerAt(d), L = LAY[i];
+    $("dLayer").textContent = L.name; $("dState").textContent = L.state.split(" ")[0] === "Mostly" ? "Mostly solid" : L.state.replace(" rock", "").replace(" metal", "");
+    $("dTemp").textContent = "about " + (Math.round(temp(d) / 100) * 100).toLocaleString("en-CA") + " °C";
+    var ang = -Math.PI / 4, rad;
+    if (d <= 35) rad = R * S - (d / 35) * 12; else rad = (R - d) * S;
+    var x = cx + Math.cos(ang) * rad, y = cy + Math.sin(ang) * rad;
+    marker.setAttribute("x1", cx + Math.cos(ang) * R * S); marker.setAttribute("y1", cy + Math.sin(ang) * R * S);
+    marker.setAttribute("x2", x); marker.setAttribute("y2", y);
+    dot.setAttribute("cx", x); dot.setAttribute("cy", y);
+    if (!skipSel) select(i, false);
+  }
+  $("depth").addEventListener("input", function(){ showDepth(+this.value); });
+  showDepth(0);
+})();
+
+/* ---------- Lesson 2: lithosphere slice ---------- */
+(function(){
+  var svg = $("sliceSvg"), mode = 0;
+  function draw(){
+    clear(svg);
+    // y: 0..260 maps 0..300 km roughly. ocean water on left
+    var k = 0.75; // px per km
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 560, height: 260, style: "fill:var(--asth)"}));
+    // lithosphere base: 70 km under ocean, 150 under continent
+    var litho = "M0 0 L560 0 L560 " + (150 * k + 20) + " L330 " + (150 * k + 20) + " C290 " + (150 * k + 20) + " 270 " + (75 * k + 20) + " 230 " + (75 * k + 20) + " L0 " + (75 * k + 20) + " Z";
+    svg.appendChild(sv("path", {d: litho, style: "fill:var(--lith)"}));
+    // crust
+    svg.appendChild(sv("rect", {x: 0, y: 20, width: 240, height: 7 * k + 2, style: "fill:var(--oc-crust)"}));
+    svg.appendChild(sv("path", {d: "M240 20 L560 20 L560 " + (20 + 38 * k) + " L300 " + (20 + 38 * k) + " Q260 " + (20 + 20 * k) + " 240 " + (20 + 7 * k + 2) + " Z", style: "fill:var(--crust)"}));
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 250, height: 20, style: "fill:var(--sea)"}));
+    svg.appendChild(sv("text", {x: 10, y: 14, "class": "small"}, "Ocean"));
+    svg.appendChild(sv("text", {x: 440, y: 14, "class": "small"}, "Continent"));
+    function tag(x, y, t){ var w = t.length * 7.4 + 14; svg.appendChild(sv("rect", {x: x - 4, y: y - 14, width: w, height: 20, rx: 4, style: "fill:var(--surface);stroke:var(--line)"})); svg.appendChild(sv("text", {x: x + 3, y: y, "class": "lbl"}, t)); }
+    if (mode === 0) {
+      tag(20, 52, "Oceanic crust (about 7 km)");
+      tag(330, 45, "Continental crust (35 to 40 km)");
+      tag(40, 150, "Mantle rock");
+      tag(330, 200, "Mantle rock");
+      $("sliceNote").textContent = "Labelled by material: crust on top, mantle rock below. The boundary is a change in the kind of rock.";
+    } else {
+      tag(20, 70, "Lithosphere: stiff, solid");
+      tag(330, 100, "Lithosphere: stiff, solid");
+      tag(150, 200, "Asthenosphere: hot, soft, flows slowly");
+      $("sliceNote").textContent = "Labelled by behaviour: the lithosphere includes the crust and the top of the mantle. Plates are pieces of lithosphere sliding over the asthenosphere.";
+    }
+    svg.appendChild(sv("text", {x: 548, y: 254, "text-anchor": "end", "class": "small"}, "Depth shown: about 0 to 320 km"));
+  }
+  chipGroup($("sliceChips"), [{label: "What it is made of"}, {label: "How it behaves"}], "g9", function(it, i){ mode = i; draw(); }, 0);
+})();
+
+/* ---------- Lesson 3: convection canvas ---------- */
+(function(){
+  var cv = $("convCanvas"), ctx = cv.getContext("2d"), W = 560, H = 300, running = false, t = 0, force = -1, raf = null;
+  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888"; }
+  var P = [];
+  var r = rng(7);
+  for (var i = 0; i < 70; i++) P.push({cell: i % 2, a: r() * Math.PI * 2, rx: 0.75 + r() * 0.2});
+  function pos(p){
+    var cx = p.cell === 0 ? W * 0.27 : W * 0.73, cy = 175, ax = W * 0.21 * p.rx, ay = 85 * p.rx;
+    var dir = p.cell === 0 ? 1 : -1;
+    return {x: cx + Math.cos(p.a * dir) * ax, y: cy + Math.sin(p.a * dir) * ay, hot: Math.sin(p.a * dir) > -0.0 ? 0 : 1, c: Math.cos(p.a * dir)};
+  }
+  function frame(){
+    var bg = css("--asth"), hot = css("--hot"), cold = css("--cold"), ink = css("--ink"), lith = css("--lith"), surf = css("--surface");
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = bg; ctx.fillRect(0, 50, W, H - 50);
+    ctx.fillStyle = hot; ctx.fillRect(0, H - 10, W, 10);
+    // plates
+    var shift = running ? (t * 0.15) % 40 : 0;
+    ctx.fillStyle = lith;
+    ctx.fillRect(0, 30, W / 2 - 4, 22); ctx.fillRect(W / 2 + 4, 30, W / 2 - 4, 22);
+    ctx.fillStyle = surf; ctx.strokeStyle = ink; ctx.lineWidth = 2;
+    for (var k = 0; k < 6; k++) {
+      var x1 = W / 2 - 30 - k * 40 - shift, x2 = W / 2 + 30 + k * 40 + shift;
+      ctx.beginPath(); ctx.moveTo(x1 + 10, 41); ctx.lineTo(x1, 41); ctx.moveTo(x1 + 4, 36); ctx.lineTo(x1, 41); ctx.lineTo(x1 + 4, 46); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x2 - 10, 41); ctx.lineTo(x2, 41); ctx.moveTo(x2 - 4, 36); ctx.lineTo(x2, 41); ctx.lineTo(x2 - 4, 46); ctx.stroke();
+    }
+    ctx.fillStyle = ink; ctx.font = "13px " + css("--f-body");
+    ctx.fillText("Plate", 20, 22); ctx.fillText("Plate", W - 56, 22);
+    ctx.fillText("Ridge", W / 2 - 18, 22);
+    P.forEach(function(p){
+      if (running) p.a += 0.008;
+      var q = pos(p);
+      var warm = q.c; // rising in the middle
+      ctx.fillStyle = (p.cell === 0 ? q.c > 0 : q.c < 0) ? hot : cold;
+      ctx.beginPath(); ctx.arc(q.x, q.y, 5, 0, Math.PI * 2); ctx.fill();
+    });
+    ctx.fillStyle = ink;
+    ctx.fillText("Heat from the core", W / 2 - 60, H - 16);
+    if (force === 0) { ctx.fillText("Ridge push: hot new plate slides away from the high ridge", 16, 75); arrow(W / 2 - 20, 60, W / 2 - 110, 60); arrow(W / 2 + 20, 60, W / 2 + 110, 60); }
+    if (force === 1) { ctx.fillText("Slab pull: a cold, dense edge sinks and pulls the plate", 16, 75); arrow(W - 30, 52, W - 10, 130); arrow(100, 52, 20, 52); }
+    t++;
+    if (running) raf = requestAnimationFrame(frame);
+  }
+  function arrow(x1, y1, x2, y2){
+    ctx.strokeStyle = css("--ink"); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    var a = Math.atan2(y2 - y1, x2 - x1); ctx.beginPath(); ctx.moveTo(x2, y2); ctx.lineTo(x2 - 10 * Math.cos(a - 0.4), y2 - 10 * Math.sin(a - 0.4)); ctx.lineTo(x2 - 10 * Math.cos(a + 0.4), y2 - 10 * Math.sin(a + 0.4)); ctx.closePath(); ctx.fillStyle = css("--ink"); ctx.fill();
+  }
+  $("convPlay").addEventListener("click", function(){
+    running = !running; this.setAttribute("aria-pressed", running ? "true" : "false");
+    this.textContent = running ? "Pause" : "Turn on the heat";
+    $("convNote").textContent = running ? "Hot rock rises under the ridge and spreads out. The plates move apart on top of it. Cooled rock sinks at the far edges." : "Paused. Rock heated at the bottom rises (red). Rock cooled at the top sinks (blue).";
+    if (running && !reduced) frame(); else { if (running) { for (var s = 0; s < 120; s++) P.forEach(function(p){ p.a += 0.008; }); } cancelAnimationFrame(raf); frame(); }
+  });
+  chipGroup($("forceChips"), [{label: "Ridge push"}, {label: "Slab pull"}], "g9", function(it, i){ force = i; if (!running) frame(); });
+  frame();
+  try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){ if (!running) frame(); }); } catch(e) {}
+})();
+
+/* ---------- Lesson 4: drift ---------- */
+(function(){
+  var svg = $("driftSvg");
+  var seam = [[262, 40], [228, 72], [214, 104], [230, 122], [262, 132], [274, 154], [270, 192], [260, 232], [250, 272], [240, 312]];
+  var africa = seam.concat([[300, 345], [338, 300], [382, 230], [404, 160], [392, 100], [360, 52], [310, 30]]);
+  var sam = seam.slice(3).concat([[226, 362], [204, 330], [178, 262], [150, 200], [142, 150], [168, 116], [208, 110]]);
+  function pts(a){ return a.map(function(p){ return p.join(","); }).join(" "); }
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 380, style: "fill:var(--sea)"}));
+  var gA = sv("g"), gS = sv("g");
+  gA.appendChild(sv("polygon", {points: pts(africa), style: "fill:var(--cont);stroke:var(--ink);stroke-width:1.5"}));
+  gS.appendChild(sv("polygon", {points: pts(sam), style: "fill:var(--cont);stroke:var(--ink);stroke-width:1.5"}));
+  gA.appendChild(sv("text", {x: 320, y: 140, "class": "lbl"}, "Africa"));
+  gS.appendChild(sv("text", {x: 160, y: 190, "class": "lbl"}, "South"));
+  gS.appendChild(sv("text", {x: 160, y: 206, "class": "lbl"}, "America"));
+  var FOS = [
+    {label: "Mesosaurus", col: "--fire", a: [[285, 250], [300, 265]], s: [[232, 252], [244, 268]], note: "Mesosaurus, a small freshwater reptile, lived about 280 million years ago. Its fossils are found only in southern Brazil and southern Africa."},
+    {label: "Glossopteris", col: "--leaf", a: [[280, 300], [305, 310]], s: [[222, 300], [215, 325]], note: "Glossopteris was a seed fern. Its fossils are found in South America, Africa, India, Antarctica and Australia. Its seeds were too heavy to blow across an ocean."},
+    {label: "Cynognathus", col: "--pd", a: [[292, 175], [310, 200]], s: [[236, 170], [248, 196]], note: "Cynognathus was a land reptile about the size of a wolf. Its fossils are found in South America and Africa."}
+  ];
+  var fosG = FOS.map(function(f){
+    var ga = sv("g"), gs = sv("g");
+    f.a.forEach(function(p){ ga.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 7, style: "fill:var(" + f.col + ");stroke:var(--surface);stroke-width:2"})); });
+    f.s.forEach(function(p){ gs.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 7, style: "fill:var(" + f.col + ");stroke:var(--surface);stroke-width:2"})); });
+    ga.style.display = "none"; gs.style.display = "none";
+    gA.appendChild(ga); gS.appendChild(gs);
+    return [ga, gs];
+  });
+  svg.appendChild(gS); svg.appendChild(gA);
+  var oceanLbl = sv("text", {x: 210, y: 360, "class": "lbl"}, "Atlantic Ocean");
+  svg.appendChild(oceanLbl);
+  function set(age){
+    var f = 1 - age / 200; // 0 together, 1 today
+    gS.setAttribute("transform", "translate(" + (-115 * f) + "," + (20 * f) + ") rotate(" + (-14 * f) + ",240,200)");
+    gA.setAttribute("transform", "translate(" + (40 * f) + ",0)");
+    oceanLbl.style.display = f > 0.35 ? "" : "none";
+    $("driftOut").textContent = age === 0 ? "0 (today)" : age + " million";
+    $("driftNote").textContent = age >= 190 ? "Pangaea: the coastlines fit together, and the fossil sites line up across the join." : age === 0 ? "Today the Atlantic Ocean separates the two continents." : "The Atlantic is narrower. Keep going back.";
+  }
+  $("driftAge").addEventListener("input", function(){ set(+this.value); });
+  set(0);
+  var btns = [];
+  FOS.forEach(function(f, i){
+    var b = el("button", {"class": "chip g9", type: "button", "aria-pressed": "false"}, f.label);
+    toggle(b, function(on){ fosG[i][0].style.display = on ? "" : "none"; fosG[i][1].style.display = on ? "" : "none"; if (on) $("driftNote").textContent = f.note; });
+    $("fossilChips").appendChild(b);
+  });
+})();
+
+/* ---------- Lesson 5: timeline and plates ---------- */
+(function(){
+  var TL = [
+    ["1912", "Alfred Wegener (Germany)", "Proposes continental drift and the supercontinent Pangaea, using continent shapes, fossils, rocks and ancient climate clues."],
+    ["1929", "Arthur Holmes (Britain)", "Suggests that slow convection currents in the mantle could carry continents. Few scientists take it up at the time."],
+    ["1953", "Marie Tharp and Bruce Heezen (USA)", "While mapping ocean-floor depth data, Tharp spots a deep valley running along the middle of the Mid-Atlantic Ridge: a crack where the sea floor pulls apart."],
+    ["1962", "Harry Hess (USA)", "Proposes seafloor spreading: new ocean floor forms at ridges, moves away, and sinks back into the mantle at deep trenches."],
+    ["1963", "Fred Vine, Drummond Matthews (Britain) and Lawrence Morley (Canada)", "Explain the matching magnetic stripes on each side of a ridge as a record of seafloor spreading. Morley, of the Geological Survey of Canada, reached the idea on his own."],
+    ["1965", "J. Tuzo Wilson (Canada)", "The University of Toronto geophysicist describes plates as rigid pieces with three kinds of edges, including transform faults, and helps join the evidence into one theory."],
+    ["Late 1960s", "Scientists worldwide", "Earthquake maps, seafloor ages and magnetic data fit together. Plate tectonics becomes the accepted theory."]
+  ];
+  var ul = $("timeline"), btns = [];
+  TL.forEach(function(t, i){
+    var li = el("li"), b = el("button", {type: "button", "aria-pressed": "false"});
+    b.appendChild(el("b", null, t[0])); b.appendChild(el("span", null, t[1]));
+    b.addEventListener("click", function(){ btns.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); }); detail($("tlDetail"), t[1], [t[2]], t[0]); });
+    li.appendChild(b); ul.appendChild(li); btns.push(b);
+  });
+  btns[0].click();
+  var PL = [
+    ["Pacific", "Mostly oceanic", "The largest plate. Its edges are ringed by earthquakes and volcanoes."],
+    ["North American", "Continental and oceanic", "Carries Alberta, all of Canada and the western half of the Atlantic floor. It moves about 2 cm a year."],
+    ["Eurasian", "Continental and oceanic", "Carries Europe and most of Asia. India pushing into it raised the Himalaya."],
+    ["African", "Continental and oceanic", "Carries Africa. The East African Rift is slowly splitting it."],
+    ["Antarctic", "Continental and oceanic", "Carries Antarctica and the ocean floor around it."],
+    ["Indo-Australian", "Continental and oceanic", "Carries India and Australia. Some scientists count it as two plates."],
+    ["South American", "Continental and oceanic", "Carries South America. The Nazca Plate sinks under its west edge, raising the Andes."]
+  ];
+  var pb = [];
+  PL.forEach(function(p, i){
+    var b = el("button", {type: "button", "aria-pressed": "false"});
+    b.appendChild(document.createTextNode(p[0])); b.appendChild(el("small", null, p[1]));
+    b.addEventListener("click", function(){ pb.forEach(function(x, j){ x.setAttribute("aria-pressed", j === i ? "true" : "false"); }); detail($("plateDetail"), p[0] + " Plate", [p[2], "Smaller plates sit between the big ones. The Juan de Fuca Plate, off the coast of British Columbia, is sinking under North America."], p[1]); });
+    $("plates").appendChild(b); pb.push(b);
+  });
+  pb[1].click();
+})();
+
+/* ---------- Lesson 6: floating crust ---------- */
+(function(){
+  var svg = $("floatSvg"), MANTLE = 3.3;
+  function draw(){
+    var oT = +$("ocT").value, oD = +$("ocD").value, cT = +$("coT").value, cD = +$("coD").value;
+    $("ocTo").textContent = oT + " km"; $("ocDo").textContent = oD.toFixed(2) + " g/cm³";
+    $("coTo").textContent = cT + " km"; $("coDo").textContent = cD.toFixed(2) + " g/cm³";
+    clear(svg);
+    var k = 2.6, lvl = 80;
+    svg.appendChild(sv("rect", {x: 0, y: lvl, width: 560, height: 170, style: "fill:var(--mantle)"}));
+    svg.appendChild(sv("text", {x: 12, y: 240, "class": "lbl"}, "Mantle (about 3.3 g/cm³)"));
+    function block(x, w, T, D, fill, name){
+      var sub = T * D / MANTLE, above = T - sub;
+      var top = lvl - above * k;
+      svg.appendChild(sv("rect", {x: x, y: top, width: w, height: T * k, style: "fill:var(" + fill + ");stroke:var(--ink);stroke-width:1.5"}));
+      svg.appendChild(sv("text", {x: x + 6, y: top - 8, "class": "lbl"}, name));
+      svg.appendChild(sv("text", {x: x + 6, y: Math.min(top + 18, lvl + T * k - 6), "class": "small", style: "fill:var(--ink)"}, "top " + above.toFixed(1) + " km above"));
+      return above;
+    }
+    var a1 = block(40, 200, oT, oD, "--oc-crust", "Oceanic");
+    var a2 = block(310, 210, cT, cD, "--crust", "Continental");
+    svg.appendChild(sv("line", {x1: 0, y1: lvl, x2: 560, y2: lvl, style: "stroke:var(--ink);stroke-width:1;stroke-dasharray:4 4"}));
+    var msg;
+    if (Math.abs(a1 - a2) < 0.3) msg = "Both blocks stand about equally high.";
+    else msg = (a2 > a1 ? "The continental block" : "The oceanic block") + " stands " + Math.abs(a2 - a1).toFixed(1) + " km higher.";
+    if (oD > cD) msg += " The oceanic block is denser, so if these plates pushed together, it would sink under the other one.";
+    else if (oD < cD) msg += " In this made-up setting the oceanic block is less dense, which is not true on Earth.";
+    $("floatNote").textContent = msg;
+  }
+  ["ocT", "ocD", "coT", "coD"].forEach(function(id){ $(id).addEventListener("input", draw); });
+  draw();
+})();
+
+/* ---------- Lesson 7: spreading and clues ---------- */
+(function(){
+  var svg = $("spreadSvg");
+  var FLIPS = [0, 0.78, 0.99, 1.07, 1.78, 1.95, 2.58, 3.04, 3.11, 3.22, 3.33, 3.58, 4.18, 4.29, 4.48, 4.62, 4.80, 4.89, 4.98, 5.0];
+  // polarity: even interval normal (going back in time from today)
+  function draw(T){
+    clear(svg);
+    var v = 22, mid = 280; // px per million years per side
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 560, height: 40, style: "fill:var(--sea)"}));
+    svg.appendChild(sv("rect", {x: 0, y: 40, width: 560, height: 150, style: "fill:var(--asth)"}));
+    // stripes: rock formed at time s million years after start sits at distance (T - s)*v
+    for (var i = 0; i < FLIPS.length - 1; i++) {
+      // interval i in "years ago from present T" terms: we map ages 0..T
+      var a0 = FLIPS[i], a1 = Math.min(FLIPS[i + 1], T);
+      if (a0 >= T) break;
+      var fill = i % 2 === 0 ? "--stripeA" : "--stripeB";
+      [1, -1].forEach(function(s){
+        var x0 = mid + s * a0 * v, x1 = mid + s * a1 * v;
+        svg.appendChild(sv("rect", {x: Math.min(x0, x1), y: 40, width: Math.abs(x1 - x0), height: 46, style: "fill:var(" + fill + ");stroke:var(--line);stroke-width:.5"}));
+      });
+    }
+    svg.appendChild(sv("path", {d: "M" + (mid - 14) + " 40 L" + mid + " 28 L" + (mid + 14) + " 40 Z", style: "fill:var(--fire)"}));
+    svg.appendChild(sv("path", {d: "M" + mid + " 186 C" + (mid - 10) + " 140 " + (mid + 10) + " 110 " + mid + " 86", style: "fill:none;stroke:var(--fire);stroke-width:4"}));
+    svg.appendChild(sv("text", {x: mid, y: 22, "text-anchor": "middle", "class": "lbl"}, "Ridge"));
+    svg.appendChild(sv("text", {x: mid + 8, y: 150, "class": "small", style: "fill:var(--ink)"}, "Magma rises"));
+    if (T > 0.5) {
+      svg.appendChild(sv("text", {x: mid - T * v, y: 106, "text-anchor": "middle", "class": "small", style: "fill:var(--ink)"}, "oldest"));
+      svg.appendChild(sv("text", {x: mid + T * v, y: 106, "text-anchor": "middle", "class": "small", style: "fill:var(--ink)"}, "oldest"));
+      svg.appendChild(sv("text", {x: mid, y: 106, "text-anchor": "middle", "class": "small", style: "fill:var(--ink)"}, "youngest"));
+    }
+    svg.appendChild(sv("text", {x: 10, y: 180, "class": "small", style: "fill:var(--ink)"}, "← plate moves west"));
+    svg.appendChild(sv("text", {x: 550, y: 180, "text-anchor": "end", "class": "small", style: "fill:var(--ink)"}, "plate moves east →"));
+    $("spreadOut").textContent = (+T).toFixed(1) + " million years";
+  }
+  $("spreadT").addEventListener("input", function(){ draw(+this.value); });
+  draw(3);
+  var CL = [
+    {label: "Seafloor spreading", t: ["New ocean floor forms at mid-ocean ridges and moves outward on both sides.", "Rock ages increase with distance from the ridge, and magnetic stripes match on both sides. This shows the plates really are moving apart. It also answered Wegener’s missing piece: continents ride along on spreading plates."]},
+    {label: "Mountain formation", t: ["Where plates push together, rock crumples, folds and stacks up.", "The Himalaya are still rising as India pushes into Asia. The Rockies formed from compression along the west edge of North America. Sea fossils high on peaks show the rock was once under water."]},
+    {label: "Seismic activity", t: ["An earthquake is the shaking when rock suddenly slips along a crack.", "Maps of earthquakes trace narrow lines that match plate edges. Deep earthquakes slope down where one plate sinks under another."]},
+    {label: "Volcanic activity", t: ["Volcanoes form where magma reaches the surface.", "Most active volcanoes sit along spreading ridges or above sinking plates, like the volcanoes along the west coast of the Americas. A few, like Hawaii, sit over hot spots in the middle of a plate."]}
+  ];
+  chipGroup($("clueChips"), CL, "g9", function(c){ detail($("clueDetail"), c.label, c.t); }, 0);
+})();
+
+/* ---------- Lesson 8: Rockies ---------- */
+(function(){
+  var svg = $("rockySvg"), step = 0;
+  var ST = [
+    {t: "Step 1 · Shallow seas", p: ["Hundreds of millions of years ago, western Alberta was under a shallow sea at the edge of North America.", "Sand, mud and shells settled in flat layers and hardened into sedimentary rock."]},
+    {t: "Step 2 · A plate sinks", p: ["An oceanic plate to the west began sinking under the edge of North America.", "The denser ocean plate slid down into the mantle. Volcanoes formed above it."]},
+    {t: "Step 3 · Islands collide", p: ["Chains of volcanic islands riding on the ocean plate crashed into the coast and stuck there. Much of British Columbia is made of these added pieces.", "Each collision squeezed the continent from the west. This is compression."]},
+    {t: "Step 4 · Layers stack up", p: ["The squeezing pushed the flat sea-floor layers east. They broke along low-angle thrust faults and slid up and over each other.", "Older rock ended up on top of younger rock, as at Mount Yamnuska near Canmore."]},
+    {t: "Step 5 · Today", p: ["Since the squeezing stopped, rivers and glaciers have carved the stacked slabs into sharp peaks and deep valleys.", "From west to east: the Main Ranges, the Front Ranges, the Foothills, then the flat prairie around Calgary and Edmonton."]}
+  ];
+  var COLS = ["--sed", "--crust", "--leaf", "--water"];
+  function layers(offset){
+    for (var i = 0; i < 4; i++) svg.appendChild(sv("rect", {x: 180 + offset, y: 120 + i * 12, width: 380 - offset, height: 12, style: "fill:var(" + COLS[i] + ");opacity:.85"}));
+  }
+  function draw(){
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 560, height: 260, style: "fill:var(--surface)"}));
+    svg.appendChild(sv("rect", {x: 0, y: 168, width: 560, height: 92, style: "fill:var(--mantle);opacity:.5"}));
+    svg.appendChild(sv("text", {x: 10, y: 250, "class": "small", style: "fill:var(--ink)"}, "Mantle"));
+    svg.appendChild(sv("text", {x: 10, y: 18, "class": "small"}, "West"));
+    svg.appendChild(sv("text", {x: 550, y: 18, "text-anchor": "end", "class": "small"}, "East"));
+    if (step === 0) {
+      svg.appendChild(sv("rect", {x: 150, y: 96, width: 410, height: 24, style: "fill:var(--sea)"}));
+      layers(0);
+      svg.appendChild(sv("rect", {x: 0, y: 112, width: 180, height: 56, style: "fill:var(--oc-crust)"}));
+      svg.appendChild(sv("text", {x: 330, y: 112, "class": "lbl"}, "Shallow sea"));
+      svg.appendChild(sv("text", {x: 20, y: 140, "class": "lbl", style: "fill:var(--surface)"}, "Ocean floor"));
+    } else {
+      layers(step >= 3 ? 80 : 0);
+      svg.appendChild(sv("path", {d: "M0 112 L170 120 L250 200 L230 210 L150 132 L0 126 Z", style: "fill:var(--oc-crust)"}));
+      svg.appendChild(sv("text", {x: 12, y: 106, "class": "small", style: "fill:var(--ink)"}, "Ocean plate sinks →"));
+      if (step >= 1) { svg.appendChild(sv("path", {d: "M150 120 L165 90 L180 120 Z", style: "fill:var(--fire)"})); if (step < 3) svg.appendChild(sv("text", {x: 140, y: 82, "class": "small", style: "fill:var(--ink)"}, "Volcano")); }
+      if (step >= 2) {
+        svg.appendChild(sv("path", {d: step >= 3 ? "M110 120 L130 80 L170 76 L190 120 Z" : "M40 112 L60 80 L95 78 L115 116 Z", style: "fill:var(--pd);opacity:.9"}));
+        svg.appendChild(sv("text", {x: step >= 3 ? 112 : 40, y: step >= 3 ? 70 : 70, "class": "small", style: "fill:var(--ink)"}, "Island chain"));
+      }
+      if (step >= 3) {
+        for (var s = 0; s < 3; s++) {
+          var x = 200 + s * 62, y = 120 - (2 - s) * 18;
+          svg.appendChild(sv("path", {d: "M" + x + " " + (y + 48) + " L" + (x + 40) + " " + y + " L" + (x + 120) + " " + y + " L" + (x + 80) + " " + (y + 48) + " Z", style: "fill:var(" + COLS[s] + ");stroke:var(--ink);stroke-width:1"}));
+        }
+        if (step === 3) svg.appendChild(sv("text", {x: 330, y: 150, "class": "small", style: "fill:var(--ink)"}, "Thrust faults stack slabs"));
+        svg.appendChild(sv("text", {x: 70, y: 40, "class": "lbl"}, "Compression →"));
+      }
+      if (step >= 4) {
+        svg.appendChild(sv("path", {d: "M190 120 L215 58 L232 84 L252 50 L275 92 L300 66 L330 104 L350 88 L380 116 L420 112 L460 120 Z", style: "fill:var(--muted);opacity:.55"}));
+        svg.appendChild(sv("text", {x: 205, y: 46, "class": "small", style: "fill:var(--ink)"}, "Main Ranges"));
+        svg.appendChild(sv("text", {x: 290, y: 58, "class": "small", style: "fill:var(--ink)"}, "Front Ranges"));
+        svg.appendChild(sv("text", {x: 370, y: 104, "class": "small", style: "fill:var(--ink)"}, "Foothills"));
+        svg.appendChild(sv("text", {x: 470, y: 112, "class": "small", style: "fill:var(--ink)"}, "Prairie"));
+      }
+    }
+    var s0 = ST[step];
+    $("rkStage").textContent = s0.t + " (" + (step + 1) + " of " + ST.length + ")";
+    detail($("rkDetail"), s0.t.split(" · ")[1], s0.p);
+    $("rkPrev").disabled = step === 0; $("rkNext").disabled = step === ST.length - 1;
+  }
+  $("rkNext").addEventListener("click", function(){ if (step < ST.length - 1) { step++; draw(); } });
+  $("rkPrev").addEventListener("click", function(){ if (step > 0) { step--; draw(); } });
+  draw();
+})();
+
+/* ---------- Bench 1: scale model ---------- */
+(function(){
+  var LAY = [["Continental crust", 35], ["Oceanic crust", 7], ["Mantle", 2900], ["Outer core", 2250], ["Inner core (radius)", 1221]];
+  function fmtcm(x){ return x < 0.1 ? fmt(x * 10, 2) + " mm" : fmt(x, 2) + " cm"; }
+  function draw(){
+    var R = Math.max(1, +$("modelR").value || 1), tb = document.querySelector("#scaleTable tbody");
+    clear(tb);
+    LAY.forEach(function(l){
+      var tr = el("tr");
+      tr.appendChild(el("td", null, l[0])); tr.appendChild(el("td", null, l[1].toLocaleString("en-CA") + " km"));
+      tr.appendChild(el("td", null, fmt(l[1] / 6371 * 100, 1) + "%")); tr.appendChild(el("td", null, fmtcm(l[1] / 6371 * R)));
+      tb.appendChild(tr);
+    });
+  }
+  $("modelR").addEventListener("input", draw);
+  chipGroup($("modelPresets"), [{label: "Marble (0.8 cm)", r: 0.8}, {label: "Basketball (12 cm)", r: 12}, {label: "Classroom globe (20 cm)", r: 20}, {label: "Gym floor circle (300 cm)", r: 300}], "", function(it){ $("modelR").value = it.r; draw(); });
+  draw();
+  var cur;
+  function newQ(){
+    var l = pick(LAY.slice(0, 5)), R = pick([10, 15, 25, 40, 50, 60, 75, 100, 150, 200]);
+    cur = {ans: l[1] / 6371 * R, l: l, R: R};
+    var q = $("scaleQ"); clear(q);
+    q.appendChild(el("b", null, "Practice"));
+    q.appendChild(el("span", null, "Your model Earth has a radius of " + R + " cm. How thick should the " + l[0].toLowerCase().replace(" (radius)", " radius") + " be, in centimetres? Round to two decimal places."));
+    q.appendChild(el("span", {"class": "hint"}, "Real value: " + l[1].toLocaleString("en-CA") + " km. Earth’s radius: 6371 km."));
+    $("scaleA").value = ""; $("scaleFb").textContent = ""; $("scaleFb").className = "fb";
+  }
+  $("scaleCheck").addEventListener("click", function(){
+    var v = parseFloat($("scaleA").value), fb = $("scaleFb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    var ok = Math.abs(v - cur.ans) <= Math.max(0.01, cur.ans * 0.03);
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + cur.l[1] + " ÷ 6371 × " + cur.R + " = " + fmt(cur.ans, 2) + " cm.";
+  });
+  $("scaleNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 2: plate speed ---------- */
+(function(){
+  function calc(){
+    var v = +$("vIn").value, t = +$("tIn").value;
+    $("vOut").textContent = fmt(v, 1) + " cm per year"; $("tOut").textContent = t + " million years";
+    var km = v * t * 1e6 / 1e5;
+    $("dOut").textContent = "d = " + fmt(v, 1) + " cm/yr × " + t + " 000 000 yr = " + Math.round(km).toLocaleString("en-CA") + " km";
+  }
+  $("vIn").addEventListener("input", calc); $("tIn").addEventListener("input", calc); calc();
+  var cur;
+  function newQ(){
+    var type = rint(0, 2), q = $("spdQ"); clear(q);
+    q.appendChild(el("b", null, "Practice"));
+    if (type === 0) {
+      var v = pick([2, 2.5, 3, 4, 5, 6, 8]), t = pick([1, 2, 5, 10, 20, 50]);
+      cur = {ans: v * t * 10, unit: "km", work: "d = " + v + " cm/yr × " + t + " 000 000 yr = " + (v * t) + " 000 000 cm = " + (v * t * 10) + " km"};
+      q.appendChild(el("span", null, "A plate moves " + v + " cm per year. How far does it move in " + t + " million years? Answer in km."));
+      q.appendChild(el("span", {"class": "hint"}, "Hint: 1 million years at 1 cm per year is 10 km."));
+    } else if (type === 1) {
+      var t2 = pick([2, 4, 5, 10, 20]), v2 = pick([2, 3, 4, 5, 6, 8, 10]), d2 = v2 * t2 * 10;
+      cur = {ans: v2, unit: "cm per year", work: "v = d ÷ t = " + d2 + " km ÷ " + t2 + " million years. " + d2 + " km = " + (d2 / 10) + " 000 000 cm, so v = " + v2 + " cm per year"};
+      q.appendChild(el("span", null, "Rock that formed at a ridge " + t2 + " million years ago is now " + d2 + " km away from it. How fast did the plate move? Answer in cm per year."));
+      q.appendChild(el("span", {"class": "hint"}, "Hint: 10 km in 1 million years is 1 cm per year."));
+    } else {
+      var v3 = pick([2, 2.5, 4, 5]), d3 = pick([100, 200, 500, 1000]);
+      cur = {ans: d3 / (v3 * 10), unit: "million years", work: "t = d ÷ v = " + d3 + " km ÷ (" + v3 + " cm/yr = " + (v3 * 10) + " km per million years) = " + fmt(d3 / (v3 * 10), 1) + " million years"};
+      q.appendChild(el("span", null, "Two islands on a plate moving " + v3 + " cm per year need to travel " + d3 + " km. How long will it take? Answer in millions of years."));
+      q.appendChild(el("span", {"class": "hint"}, "Hint: " + v3 + " cm per year = " + (v3 * 10) + " km per million years."));
+    }
+    $("spdLbl").textContent = "Your answer (" + cur.unit + ")";
+    $("spdA").value = ""; $("spdFb").textContent = ""; $("spdFb").className = "fb";
+  }
+  $("spdCheck").addEventListener("click", function(){
+    var v = parseFloat($("spdA").value), fb = $("spdFb");
+    if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; }
+    var ok = Math.abs(v - cur.ans) <= Math.max(0.05, cur.ans * 0.02);
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = (ok ? "Correct. " : "Not quite. ") + cur.work + ".";
+  });
+  $("spdNew").addEventListener("click", newQ);
+  newQ();
+})();
+
+/* ---------- Bench 3: ocean floor data ---------- */
+(function(){
+  var data, rate;
+  function gen(){
+    rate = pick([2, 2.5, 3, 4, 5]); // cm per year = 10*rate km per Ma
+    var r = Math.random;
+    data = [];
+    var dists = shuffle([60, 120, 180, 250, 320, 400, 470, 540]).slice(0, 6).sort(function(a, b){ return a - b; });
+    dists.forEach(function(d, i){
+      var side = i % 2 ? "West" : "East";
+      var age = d / (rate * 10) * (0.94 + r() * 0.12);
+      data.push({id: String.fromCharCode(65 + i), side: side, d: d, age: Math.round(age * 10) / 10});
+    });
+    data.sort(function(a, b){ return a.id < b.id ? -1 : 1; });
+  }
+  function render(){
+    var tb = document.querySelector("#floorTable tbody"); clear(tb);
+    data.forEach(function(s){ var tr = el("tr"); [s.id, s.side, s.d, fmt(s.age, 1)].forEach(function(v){ tr.appendChild(el("td", null, String(v))); }); tb.appendChild(tr); });
+    var svg = $("floorSvg"); clear(svg);
+    var x0 = 280, maxD = 560, maxA = Math.ceil(Math.max.apply(null, data.map(function(s){ return s.age; })) / 5) * 5 || 5;
+    function X(s){ return x0 + (s.side === "East" ? 1 : -1) * s.d / maxD * 230; }
+    function Y(a){ return 220 - a / maxA * 180; }
+    svg.appendChild(sv("line", {x1: 40, y1: 220, x2: 520, y2: 220, "class": "axis"}));
+    svg.appendChild(sv("line", {x1: x0, y1: 30, x2: x0, y2: 220, style: "stroke:var(--fire);stroke-width:2;stroke-dasharray:5 4"}));
+    svg.appendChild(sv("text", {x: x0, y: 22, "text-anchor": "middle", "class": "lbl"}, "Ridge"));
+    for (var a = 0; a <= maxA; a += maxA / 5) {
+      svg.appendChild(sv("line", {x1: 40, y1: Y(a), x2: 520, y2: Y(a), "class": "grid"}));
+      svg.appendChild(sv("text", {x: 34, y: Y(a) + 4, "text-anchor": "end", "class": "small"}, fmt(a, 0)));
+    }
+    [-500, -250, 250, 500].forEach(function(d){ svg.appendChild(sv("text", {x: x0 + d / maxD * 230, y: 236, "text-anchor": "middle", "class": "small"}, Math.abs(d) + " km")); });
+    svg.appendChild(sv("text", {x: 40, y: 254, "class": "small"}, "← West"));
+    svg.appendChild(sv("text", {x: 520, y: 254, "text-anchor": "end", "class": "small"}, "East →"));
+    svg.appendChild(sv("text", {x: 6, y: 16, "class": "small"}, "Age (million years)"));
+    data.forEach(function(s){
+      var g = sv("g");
+      g.appendChild(sv("circle", {cx: X(s), cy: Y(s.age), r: 7, style: "fill:var(--g9);stroke:var(--surface);stroke-width:2"}));
+      g.appendChild(sv("text", {x: X(s), y: Y(s.age) - 11, "text-anchor": "middle", "class": "lbl"}, s.id));
+      focusBtn(g, "Sample " + s.id + ", " + s.side + ", " + s.d + " km, " + s.age + " million years", function(){ $("floorPick").textContent = "Sample " + s.id + ": " + s.d + " km " + s.side.toLowerCase() + " of the ridge, " + fmt(s.age, 1) + " million years old."; });
+      svg.appendChild(g);
+    });
+    var area = $("floorQs"); clear(area);
+    area.appendChild(el("p", {"class": "hint", id: "floorPick", "aria-live": "polite"}, "Tap or focus a point to read it."));
+    var Qs = [
+      ["What pattern do the ages show?", ["Rock gets older the farther it is from the ridge, on both sides.", "Rock gets younger the farther it is from the ridge.", "All the rock is the same age.", "Only the east side changes with distance."], "New rock forms at the ridge and moves away, so distance from the ridge means more time since it formed."],
+      ["Which theory does this pattern support?", ["Seafloor spreading, part of plate tectonics", "A fixed Earth that does not change", "Continental drift with continents ploughing through the sea floor", "Rock forming at random places"], "Matching age patterns on both sides of a ridge show new floor forming at the ridge and spreading apart."],
+      ["Use the data to estimate how fast this plate moves away from the ridge.", null, "Pick a sample, divide its distance by its age. For example " + data[data.length - 1].d + " km ÷ " + fmt(data[data.length - 1].age, 1) + " million years ≈ " + fmt(data[data.length - 1].d / data[data.length - 1].age, 0) + " km per million years, which is about " + fmt(data[data.length - 1].d / data[data.length - 1].age / 10, 1) + " cm per year. The data were made with " + rate + " cm per year."]
+    ];
+    Qs.forEach(function(q, qi){
+      var box = el("div", {"class": "q"});
+      box.appendChild(el("h3", null, q[0]));
+      if (q[1]) {
+        var opts = el("div", {"class": "opts"}), order = shuffle(q[1].map(function(t, i){ return {t: t, ok: i === 0}; })), bs = [];
+        order.forEach(function(o){
+          var b = el("button", {"class": "opt", type: "button"}, o.t);
+          b.addEventListener("click", function(){ bs.forEach(function(x, j){ x.disabled = true; if (order[j].ok) x.classList.add("right"); }); if (!o.ok) b.classList.add("wrong"); box.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.ok ? "Correct. " : "Not quite. ") + q[2])); });
+          opts.appendChild(b); bs.push(b);
+        });
+        box.appendChild(opts);
+      } else {
+        var lab = el("label", {"class": "field", "for": "floorRate"}, "Your estimate (cm per year)");
+        var inp = el("input", {type: "number", id: "floorRate", step: "0.1"});
+        var b2 = el("button", {"class": "btn", type: "button"}, "Check"), fb = el("p", {"class": "fb", "aria-live": "polite"});
+        b2.addEventListener("click", function(){ var v = parseFloat(inp.value); if (isNaN(v)) { fb.textContent = "Type a number first."; fb.className = "fb no"; return; } var ok = Math.abs(v - rate) <= rate * 0.12; fb.className = "fb " + (ok ? "ok" : "no"); fb.textContent = (ok ? "Close enough. " : "Not quite. ") + q[2]; });
+        box.appendChild(lab); box.appendChild(inp); var rw = el("div", {"class": "row"}); rw.appendChild(b2); box.appendChild(rw); box.appendChild(fb);
+      }
+      area.appendChild(box);
+    });
+  }
+  $("floorNew").addEventListener("click", function(){ gen(); render(); });
+  gen(); render();
+})();
+
+/* ---------- Bench 4: boundary builder ---------- */
+(function(){
+  var motion = 0, types = 0;
+  var TYPES = [
+    [{label: "In an ocean"}, {label: "In a continent"}],
+    [{label: "Oceanic meets continental"}, {label: "Oceanic meets oceanic"}, {label: "Continental meets continental"}],
+    [{label: "Any two plates"}]
+  ];
+  var OUT = {
+    "0-0": ["Divergent boundary: mid-ocean ridge", "The plates pull apart. Magma rises, cools and makes new oceanic crust. You get an underwater mountain ridge, small earthquakes and volcanoes.", "Example: the Mid-Atlantic Ridge, which rises above sea level in Iceland."],
+    "0-1": ["Divergent boundary: rift valley", "A continent stretches and cracks. The middle drops down into a long valley with volcanoes and earthquakes. If it keeps going, the sea floods in and a new ocean forms.", "Example: the East African Rift."],
+    "1-0": ["Convergent boundary: subduction under a continent", "The denser oceanic plate sinks under the continental plate. A deep trench forms offshore. Melting above the sinking plate feeds a chain of volcanoes in coastal mountains. Large earthquakes happen.", "Example: the Juan de Fuca Plate sinking under British Columbia and the U.S. Pacific Northwest, and the Nazca Plate under the Andes."],
+    "1-1": ["Convergent boundary: island arc", "The older, colder and denser oceanic plate sinks under the other. A trench forms, and a curved chain of volcanic islands grows above the sinking plate.", "Example: the Aleutian Islands of Alaska and the islands of Japan."],
+    "1-2": ["Convergent boundary: collision mountains", "Neither plate is dense enough to sink far. The crust crumples, folds and stacks into high mountains. Earthquakes are common. Volcanoes are rare.", "Example: the Himalaya, where India is pushing into Asia."],
+    "2-0": ["Transform boundary", "The plates grind past each other sideways. Crust is not made or destroyed, but rock sticks and then suddenly slips, causing earthquakes.", "Example: the Queen Charlotte Fault off Haida Gwaii, British Columbia, and the San Andreas Fault in California."]
+  };
+  function draw(){
+    var svg = $("bSvg"); clear(svg);
+    svg.appendChild(sv("rect", {x: 0, y: 0, width: 560, height: 220, style: "fill:var(--surface)"}));
+    svg.appendChild(sv("rect", {x: 0, y: 150, width: 560, height: 70, style: "fill:var(--asth)"}));
+    function slab(d, fill){ svg.appendChild(sv("path", {d: d, style: "fill:var(" + fill + ");stroke:var(--ink);stroke-width:1.2"})); }
+    function arr(x1, x2, y){ svg.appendChild(sv("line", {x1: x1, y1: y, x2: x2, y2: y, style: "stroke:var(--ink);stroke-width:3"})); var s = x2 > x1 ? -1 : 1; svg.appendChild(sv("path", {d: "M" + x2 + " " + y + " l" + (10 * s) + " -6 l0 12 Z", style: "fill:var(--ink)"})); }
+    var k = motion + "-" + types;
+    if (k === "0-0") { svg.appendChild(sv("rect", {x: 0, y: 60, width: 560, height: 40, style: "fill:var(--sea)"})); slab("M0 100 L260 100 L272 92 L272 140 L0 140 Z", "--oc-crust"); slab("M288 92 L300 100 L560 100 L560 140 L288 140 Z", "--oc-crust"); slab("M272 150 Q280 100 288 150 Z", "--fire"); arr(200, 120, 80); arr(360, 440, 80); }
+    if (k === "0-1") { slab("M0 80 L240 80 L255 110 L255 150 L0 150 Z", "--crust"); slab("M305 110 L320 80 L560 80 L560 150 L305 150 Z", "--crust"); slab("M255 150 L255 112 L305 112 L305 150 Z", "--sed"); slab("M272 112 L280 96 L288 112 Z", "--fire"); arr(180, 100, 60); arr(380, 460, 60); }
+    if (k === "1-0") { svg.appendChild(sv("rect", {x: 0, y: 70, width: 260, height: 30, style: "fill:var(--sea)"})); slab("M0 100 L250 100 L360 200 L330 205 L240 118 L0 118 Z", "--oc-crust"); slab("M250 98 L300 60 L560 60 L560 150 L330 150 Z", "--crust"); slab("M330 60 L345 32 L360 60 Z", "--fire"); arr(100, 180, 86); arr(500, 420, 40); svg.appendChild(sv("text", {x: 236, y: 92, "text-anchor": "end", "class": "small", style: "fill:var(--ink)"}, "trench")); }
+    if (k === "1-1") { svg.appendChild(sv("rect", {x: 0, y: 70, width: 560, height: 30, style: "fill:var(--sea)"})); slab("M0 100 L250 100 L360 200 L330 205 L240 118 L0 118 Z", "--oc-crust"); slab("M250 98 L560 98 L560 118 L330 118 Z", "--oc-crust"); slab("M320 98 L338 58 L356 98 Z", "--fire"); arr(100, 180, 86); arr(500, 420, 86); svg.appendChild(sv("text", {x: 338, y: 50, "text-anchor": "middle", "class": "small", style: "fill:var(--ink)"}, "volcanic islands")); }
+    if (k === "1-2") { slab("M0 90 L230 90 L260 40 L280 30 L300 44 L330 90 L560 90 L560 150 L0 150 Z", "--crust"); arr(80, 160, 70); arr(480, 400, 70); svg.appendChild(sv("text", {x: 280, y: 22, "text-anchor": "middle", "class": "small", style: "fill:var(--ink)"}, "mountains")); }
+    if (k === "2-0") { slab("M0 80 L276 80 L276 150 L0 150 Z", "--crust"); slab("M284 80 L560 80 L560 150 L284 150 Z", "--cont"); svg.appendChild(sv("text", {x: 140, y: 120, "text-anchor": "middle", "class": "lbl"}, "moves toward you ⊙")); svg.appendChild(sv("text", {x: 420, y: 120, "text-anchor": "middle", "class": "lbl"}, "moves away from you ⊗")); svg.appendChild(sv("text", {x: 280, y: 70, "text-anchor": "middle", "class": "small", style: "fill:var(--ink)"}, "fault: earthquakes")); }
+    var o = OUT[k];
+    detail($("bDetail"), o[0], [o[1], o[2]], ["Moving apart", "Moving together", "Sliding past"][motion]);
+  }
+  var setT;
+  function buildTypes(){ clear($("bTypes")); types = 0; setT = chipGroup($("bTypes"), TYPES[motion], "g9", function(it, i){ types = i; draw(); }, 0); }
+  chipGroup($("bMotion"), [{label: "Moving apart"}, {label: "Moving together"}, {label: "Sliding past"}], "g9", function(it, i){ motion = i; buildTypes(); }, 1);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Which layer?", bins: ["Crust", "Mantle", "Outer core", "Inner core"], items: [
+    ["The layer we live on", 0, "The crust is the thin rocky outer layer."],
+    ["Thickest layer, about 2900 km deep", 1, "The mantle is by far the thickest layer."],
+    ["Liquid iron and nickel", 2, "The outer core is liquid metal."],
+    ["Solid metal ball at the very centre", 3, "Huge pressure keeps the inner core solid."],
+    ["Only about 7 km thick under the oceans", 0, "Oceanic crust is about 7 km thick."],
+    ["Hot rock that flows a few centimetres a year", 1, "Mantle rock is mostly solid but flows very slowly."],
+    ["Swirling metal here makes Earth’s magnetic field", 2, "Moving liquid metal in the outer core makes the field."],
+    ["The hottest layer, about 5400 °C", 3, "The inner core is the hottest part of Earth."],
+    ["Holds the convection currents that move plates", 1, "Convection in the mantle carries heat up and helps move the plates."],
+    ["Granite and basalt rock", 0, "Continental crust is granite-like; oceanic crust is basalt."]
+  ]},
+  {label: "Oceanic or continental", bins: ["Oceanic", "Continental"], items: [
+    ["About 7 km thick", 0, "Oceanic crust is thin."],
+    ["About 35 to 40 km thick", 1, "Continental crust is thick."],
+    ["Denser, about 3.0 g/cm³", 0, "Basalt is denser than granite."],
+    ["Less dense, about 2.7 g/cm³", 1, "Granite-like rock is lighter."],
+    ["Sinks when two plates push together", 0, "The denser plate is the one that subducts."],
+    ["Rock up to about 4 billion years old", 1, "Continental rock does not sink, so it can be very old."],
+    ["No older than about 200 million years", 0, "Ocean floor keeps being recycled into the mantle."],
+    ["Made mostly of dark basalt", 0, "Basalt forms when magma cools at ridges."],
+    ["Carries Alberta", 1, "Alberta sits on the continental part of the North American Plate."]
+  ]},
+  {label: "Drift or plate tectonics?", bins: ["Wegener’s continental drift", "Added by plate tectonics"], items: [
+    ["The continents were once joined as Pangaea", 0, "This was Wegener’s main idea in 1912."],
+    ["South America and Africa fit like puzzle pieces", 0, "Wegener used continent shapes as evidence."],
+    ["Matching fossils on continents far apart", 0, "Wegener used Mesosaurus and Glossopteris fossils."],
+    ["New ocean floor forms at mid-ocean ridges", 1, "Seafloor spreading was discovered in the 1950s and 1960s."],
+    ["Magnetic stripes match on both sides of a ridge", 1, "Magnetic data came from ocean surveys in the 1960s."],
+    ["Mantle convection and gravity move the plates", 1, "This mechanism was the piece Wegener was missing."],
+    ["Earthquakes and volcanoes line up along plate edges", 1, "Earthquake maps helped outline the plates."],
+    ["The lithosphere is broken into seven major plates", 1, "Plate tectonics describes the plates and their edges."],
+    ["Matching rock layers and mountains across oceans", 0, "Wegener used geology on both sides of the Atlantic."]
+  ]},
+  {label: "What happens here?", bins: ["Moving apart", "Moving together", "Sliding past"], items: [
+    ["Mid-Atlantic Ridge", 0, "Plates pull apart and new sea floor forms."],
+    ["Himalaya", 1, "India and Asia are colliding."],
+    ["Queen Charlotte Fault off Haida Gwaii", 2, "The Pacific and North American plates slide past each other."],
+    ["East African Rift", 0, "Africa is slowly splitting apart."],
+    ["Andes mountains and volcanoes", 1, "The Nazca Plate sinks under South America."],
+    ["Deep ocean trench", 1, "Trenches form where one plate sinks under another."],
+    ["San Andreas Fault", 2, "Two plates grind past each other sideways."],
+    ["Iceland’s volcanoes", 0, "Iceland sits on the Mid-Atlantic Ridge."],
+    ["Rocky Mountains being built", 1, "Compression from the west built the Rockies."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Crust", "Earth’s thin, rocky outermost layer: about 7 km under oceans and 35 to 40 km under continents."],
+  ["Mantle", "The thickest layer, between the crust and core. Hot rock that is mostly solid but flows slowly."],
+  ["Outer core", "The liquid layer of iron and nickel around the inner core. It makes Earth’s magnetic field."],
+  ["Inner core", "The solid metal centre of Earth. It stays solid because of enormous pressure."],
+  ["Lithosphere", "The stiff outer shell of Earth: the crust plus the uppermost solid part of the mantle."],
+  ["Asthenosphere", "The hot, soft upper part of the mantle under the lithosphere. Plates move over it."],
+  ["Tectonic plate", "A large piece of the lithosphere that moves slowly over the upper mantle."],
+  ["Convection current", "A loop where warm material rises, cools, then sinks again. Mantle convection helps move plates."],
+  ["Slab pull", "The pull of gravity on the cold, dense edge of a plate that is sinking into the mantle."],
+  ["Ridge push", "Gravity making new, high plate at a ridge slide away from the ridge."],
+  ["Continental drift", "Wegener’s idea that the continents were once joined and slowly drifted apart."],
+  ["Pangaea", "The supercontinent that began breaking apart about 200 million years ago."],
+  ["Theory of plate tectonics", "The well-tested explanation that Earth’s lithosphere is broken into moving plates, driven by convection and gravity."],
+  ["Oceanic plate", "Lithosphere under the oceans: thinner and denser than continental."],
+  ["Continental plate", "Lithosphere that carries continents: thicker and less dense than oceanic."],
+  ["Subduction", "One plate sinking under another into the mantle, usually the denser oceanic plate."],
+  ["Seafloor spreading", "New ocean floor forming at a mid-ocean ridge and moving away on both sides."],
+  ["Mid-ocean ridge", "An underwater mountain chain where plates move apart and new crust forms."],
+  ["Magnetic stripes", "Bands of sea-floor rock that recorded Earth’s magnetic field direction as they cooled. They match on both sides of a ridge."],
+  ["Seismic activity", "Earthquakes and the vibrations they send through Earth."],
+  ["Compression", "Squeezing forces that push rock together. Compression built the Rocky Mountains."],
+  ["Thrust fault", "A low-angle crack where one slab of rock is pushed up and over another."],
+  ["Scientific theory", "A well-tested explanation supported by many lines of evidence."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["Which layer of Earth is the thickest?", ["Mantle", "Crust", "Outer core", "Inner core"], "The mantle is about 2900 km thick."],
+  ["Which layer is liquid?", ["Outer core", "Inner core", "Crust", "Lithosphere"], "The outer core is liquid iron and nickel."],
+  ["Why is the inner core solid even though it is the hottest layer?", ["The pressure is so great that the metal cannot melt.", "It is made of ice.", "It is cooled by the outer core.", "It is actually liquid."], "Huge pressure from all the layers above keeps it solid."],
+  ["How do scientists know what is inside Earth?", ["By studying how earthquake waves travel through it", "By drilling to the core", "By digging mines to the mantle", "By looking at photos from space"], "No hole has ever passed through the crust. Earthquake waves act like an X-ray."],
+  ["What does the lithosphere include?", ["The crust and the uppermost solid part of the mantle", "Only the crust", "The mantle and core", "Only the oceans"], "Plates are pieces of lithosphere: crust plus the top of the mantle."],
+  ["What is the asthenosphere?", ["The soft, slowly flowing part of the upper mantle under the plates", "The solid inner core", "The layer of air above Earth", "A kind of oceanic crust"], "Plates move over this hot, soft layer."],
+  ["What causes convection currents in the mantle?", ["Hot rock rises, cools near the top, then sinks", "Wind blowing on the surface", "The Moon pulling on the crust", "Earthquakes shaking the rock"], "Heating from below and cooling from above make a loop."],
+  ["Besides convection, what else moves plates?", ["Gravity, through slab pull and ridge push", "Ocean waves", "Earth’s magnetic field", "Rivers"], "The sinking edge of a plate pulls the rest along, and plates slide away from high ridges."],
+  ["Who first proposed continental drift?", ["Alfred Wegener", "J. Tuzo Wilson", "Isaac Newton", "Marie Curie"], "Wegener proposed it in 1912."],
+  ["What was Pangaea?", ["A supercontinent made of all the continents joined together", "An ancient ocean", "A layer of the mantle", "A type of fossil"], "Pangaea began breaking apart about 200 million years ago."],
+  ["Which two kinds of evidence are named for continental drift?", ["The shapes of the continents and matching fossils", "Earthquakes and volcanoes", "Magnetic stripes and trenches", "Weather and climate"], "Wegener used how the coasts fit and fossils found on separate continents."],
+  ["Why is Mesosaurus good evidence for continental drift?", ["It was a freshwater reptile that could not swim across an ocean, yet its fossils are in both South America and Africa.", "It could fly between continents.", "It lived in the deep ocean.", "Its fossils are found everywhere on Earth."], "The simplest explanation is that the two continents were once joined."],
+  ["Why did most scientists reject continental drift at first?", ["Wegener could not explain what force moved the continents.", "There were no fossils.", "The continents did not fit at all.", "Wegener said Earth was flat."], "Without a mechanism, the idea seemed impossible. Plate tectonics later supplied one."],
+  ["How does plate tectonics build on continental drift?", ["It explains how and why continents move: they ride on plates driven by convection and gravity.", "It says continents never moved.", "It replaces fossils with weather data.", "It says only oceans move."], "Plate tectonics kept the idea that continents move and added the mechanism and new evidence."],
+  ["How many major tectonic plates does Earth have?", ["Seven, plus many smaller plates", "Two", "One hundred", "None"], "Seven major plates, such as the Pacific and North American plates, plus smaller ones like the Juan de Fuca Plate."],
+  ["Compared with continental plates, oceanic plates are…", ["thinner and denser", "thicker and denser", "thinner and less dense", "thicker and less dense"], "Oceanic crust is about 7 km of dense basalt."],
+  ["When an oceanic plate and a continental plate push together, what happens?", ["The oceanic plate sinks under the continental plate.", "The continental plate sinks.", "Both plates melt.", "They bounce apart."], "The denser oceanic plate subducts."],
+  ["What is seafloor spreading?", ["New ocean floor forms at a ridge and moves away on both sides.", "The ocean getting deeper over time", "Sand spreading on beaches", "Ice spreading across the sea"], "It shows that plates are moving apart at ridges."],
+  ["Rock samples near a mid-ocean ridge are young, and they get older farther away. What does this show?", ["New crust forms at the ridge and moves outward.", "The ridge is the oldest part of the ocean.", "Rock ages are random.", "The ocean floor never changes."], "This age pattern is key evidence for seafloor spreading."],
+  ["Why do magnetic stripes match on both sides of a ridge?", ["Rock on both sides formed at the ridge at the same times and recorded the same magnetic direction.", "Magnets were placed there.", "The Moon makes them.", "Only one side has stripes."], "Each new strip of rock splits and moves both ways, so the pattern is mirrored."],
+  ["Where do most earthquakes and volcanoes happen?", ["Along plate edges", "In the middle of continents", "Only at the North Pole", "Randomly everywhere"], "Their pattern traces the edges of the plates."],
+  ["How did the Rocky Mountains form?", ["Plates colliding compressed western North America and stacked rock layers.", "A giant volcano erupted.", "Glaciers piled up rock.", "Plates pulled apart."], "Compression pushed layers east along thrust faults. Glaciers and rivers later carved the peaks."],
+  ["Why are sea-shell fossils found high in the Rockies?", ["The rock formed under ancient seas and was later pushed up by compression.", "Birds carried shells up there.", "The sea used to be at the mountain tops.", "Shells grow in mountain lakes."], "Sedimentary rock from shallow seas was stacked and raised as the Rockies formed."],
+  ["A plate moves 5 cm a year. How far does it move in 2 million years?", ["100 km", "10 km", "1000 km", "10 m"], "d = v × t = 5 cm/yr × 2 000 000 yr = 10 000 000 cm = 100 km."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Name Earth’s four layers from the outside in, and give one fact about each.", a: "Crust: the thin, rocky outer layer, about 7 km thick under oceans and 35 to 40 km under continents. Mantle: the thickest layer, about 2900 km of hot rock that is mostly solid but flows slowly. Outer core: liquid iron and nickel that makes the magnetic field. Inner core: solid iron and nickel at the centre, kept solid by huge pressure.", k: ["Correct order", "Crust fact", "Mantle fact", "Outer core is liquid", "Inner core is solid"]},
+  {q: "Explain the difference between the crust and the lithosphere.", a: "The crust is a layer defined by the kind of rock it is made of. The lithosphere is defined by how it behaves: it is the stiff outer shell, and it includes the crust plus the uppermost solid part of the mantle. Tectonic plates are pieces of lithosphere, not just crust.", k: ["Crust is a material layer", "Lithosphere is stiff and solid", "Lithosphere = crust + top of mantle", "Plates are lithosphere"]},
+  {q: "Describe how a convection current forms in the mantle.", a: "Rock deep in the mantle is heated from below by the core. Warm rock is a little less dense, so it slowly rises. Near the top it cools, becomes denser and sinks again. This loop is a convection current. Plates on top are carried along.", k: ["Heated from below", "Warm rock rises (less dense)", "Cools and sinks (denser)", "Loop moves the plates"]},
+  {q: "Name two ways gravity helps move tectonic plates.", a: "Slab pull: the old, cold, dense edge of a plate sinks into the mantle and pulls the rest of the plate after it. Ridge push: new plate at a ridge is hot and high, and it slides down and away from the ridge as it cools.", k: ["Slab pull described", "Ridge push described", "Both linked to gravity"]},
+  {q: "State the theory of continental drift and give two pieces of evidence Wegener used.", a: "Continental drift says the continents were once joined as one land mass, Pangaea, that broke apart and drifted to their present positions over millions of years. Evidence: the coastlines of South America and Africa fit together, and fossils of the same land species, such as Mesosaurus and Glossopteris, are found on continents now separated by oceans.", k: ["One land mass, Pangaea", "Broke and drifted over millions of years", "Continent shapes", "Matching fossils with an example"]},
+  {q: "Why was continental drift not accepted when Wegener proposed it?", a: "Wegener could not explain what force could move whole continents through the solid ocean floor. Without a mechanism, most scientists rejected the idea, even though his evidence was strong.", k: ["No mechanism", "Continents could not plough through ocean floor", "Evidence alone was not enough"]},
+  {q: "Compare oceanic and continental plates in three ways.", a: "Oceanic lithosphere is thinner (crust about 7 km) while continental is thicker (35 to 40 km). Oceanic is denser (basalt, about 3.0 g/cm³) while continental is less dense (granite-like, about 2.7 g/cm³). Oceanic rock is young, under about 200 million years, because it sinks back into the mantle, while continental rock can be billions of years old.", k: ["Thickness", "Density", "Age or rock type", "Uses comparison words"]},
+  {q: "Explain how magnetic stripes on the sea floor support seafloor spreading.", a: "As new rock forms at a ridge, tiny magnetic minerals line up with Earth’s magnetic field and are locked in as the rock cools. The field flips direction from time to time. Because new rock moves away on both sides, the same pattern of normal and reversed stripes appears as a mirror image on each side of the ridge.", k: ["Rock records field as it cools", "Field reverses", "Mirror pattern on both sides", "Shows new floor moves away from ridge"]},
+  {q: "A plate moves 4 cm per year. How far does it move in 3 million years? Show your work in km.", a: "d = v × t = 4 cm/yr × 3 000 000 yr = 12 000 000 cm. There are 100 000 cm in 1 km, so d = 120 km.", k: ["Uses d = v × t", "Correct multiplication", "Converts cm to km", "120 km with units"]}
+];
+var LONG = [
+  {q: "Relate the theory of continental drift to the theory of plate tectonics. What did each explain, what evidence supported each, and why was one accepted when the other was not?", a: "Continental drift (Wegener, 1912) said the continents were once joined as Pangaea and drifted apart. It was supported by the fit of the coastlines and by matching fossils such as Mesosaurus, but it could not explain what moved the continents, so it was rejected. In the 1950s and 1960s, ocean-floor mapping, rock ages and magnetic stripes showed seafloor spreading. Plate tectonics built on drift: the lithosphere is broken into seven major plates and many smaller ones that move over the upper mantle, driven by convection and gravity. It explains why continents move and also where earthquakes, volcanoes and mountains form. It was accepted because it had a mechanism and many lines of evidence.", k: ["Continental drift idea and evidence", "Missing mechanism", "New evidence: seafloor spreading, magnetic stripes", "Plate tectonics: plates, convection and gravity", "Why plate tectonics was accepted"]},
+  {q: "Discuss how the movement of tectonic plates changes Earth’s surface. Give an example for plates moving apart, moving together and sliding past each other.", a: "Moving apart: new crust forms. In oceans this builds mid-ocean ridges like the Mid-Atlantic Ridge; on land it makes rift valleys like the East African Rift. Moving together: an oceanic plate sinks under another, making trenches and volcanoes, as where the Juan de Fuca Plate sinks under British Columbia; or two continents collide and crumple into mountains like the Himalaya and, long ago, the Rockies. Sliding past: crust is neither made nor destroyed, but sudden slips cause earthquakes, as on the Queen Charlotte Fault. Over millions of years these changes open and close oceans and build and wear down mountains.", k: ["Apart: ridges or rift valleys with example", "Together: subduction or collision with example", "Sliding: earthquakes with example", "Changes add up over millions of years"]},
+  {q: "Explain how the Rocky Mountains west of Edmonton formed. Use the words compression, plate, sedimentary rock and thrust fault.", a: "Long ago western Alberta lay under shallow seas, where layers of sand, mud and shells hardened into sedimentary rock. An oceanic plate to the west sank under North America, and chains of volcanic islands riding on it collided with the coast. This compression squeezed the edge of the continent. The sedimentary layers were pushed east, broke along thrust faults and stacked on top of each other, as at Mount Yamnuska. Rivers and glaciers then carved the stacked slabs into peaks. Fossil sea shells in the mountains show the rock formed under water.", k: ["Sedimentary rock from shallow seas", "Ocean plate sinking and islands colliding", "Compression", "Thrust faults stacking layers", "Erosion shaped today’s peaks"]},
+  {q: "Design a model of Earth’s layers for a Grade 4 class. Choose a scale, list what each layer would be made of in your model, and explain one thing your model shows well and one thing it gets wrong.", a: "Example: a 20 cm radius model. Scaled thicknesses: mantle about 9.1 cm, outer core about 7.1 cm, inner core radius about 3.8 cm, crust only about 0.1 cm. Materials: a hard candy for the solid inner core, a layer of honey or syrup in a bag for the liquid outer core, thick modelling clay for the mantle, and a thin coat of paint for the crust. It shows well how thin the crust is and how thick the mantle is. It gets wrong that the mantle is mostly solid rock that flows only very slowly, that the layers get hotter with depth, and that the crust is broken into moving plates.", k: ["Chooses a scale and calculates layers", "Material matches each layer’s state", "Strength of the model", "Limitation of the model", "Crust is very thin"]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["ES1.K1", "Layers of Earth include\n• the crust: the thin outermost layer of continental and oceanic rock\n• the mantle: the thickest and mostly solid layer between the crust and core\n• the core: the innermost layer with a fluid outer core and solid inner core", "Learn: Lesson 1 (cut Earth open, depth slider). Lab Bench: Investigation 1. Sort It: which layer deck. Quiz, Flashcards, Written Review short answer 1, extended 4."],
+    ["ES1.K2", "The lithosphere consists of large tectonic plates that make up Earth’s crust and the uppermost solid part of Earth’s mantle.", "Learn: Lesson 2 (relabel the slice). Quiz, Flashcards, Written Review short answer 2."],
+    ["ES1.K3", "Tectonic plates move on the upper part of the mantle because of convection currents and gravitational forces.", "Learn: Lesson 3 (convection simulation, ridge push and slab pull). Quiz, Flashcards, Written Review short answers 3 and 4."],
+    ["ES1.K4", "The theory of continental drift states that Earth’s continents were once a large land mass that broke and drifted apart over millions of years.", "Learn: Lesson 4 (run time backwards). Sort It: drift or plate tectonics deck. Quiz, Flashcards, Written Review short answers 5 and 6, extended 1."],
+    ["ES1.K5", "The theory of continental drift is supported by evidence, including the shapes of Earth’s continents and similarities among fossils found on different continents.", "Learn: Lesson 4 (fossil toggles on matching continents). Sort It: drift or plate tectonics deck. Quiz, Written Review short answer 5."],
+    ["ES1.K6", "The theory of plate tectonics builds on the theory of continental drift and describes Earth’s crust as seven primary tectonic plates that move over Earth’s upper mantle, driven by heat-related convection.", "Learn: Lesson 5 (timeline, seven major plates). Sort It: drift or plate tectonics deck. Quiz, Flashcards, Written Review extended 1."],
+    ["ES1.K7", "Tectonic plates are classified as\n• oceanic, which are thinner and denser than continental plates\n• continental, which are thicker and less dense than oceanic plates", "Learn: Lesson 6 (float the crust). Lab Bench: Investigation 4. Sort It: oceanic or continental deck. Quiz, Flashcards, Written Review short answer 7."],
+    ["ES1.K8", "Evidence supporting the theory of plate tectonics includes\n• seafloor spreading\n• mountain formation\n• seismic activity\n• volcanic activity", "Learn: Lesson 7 (spreading ridge simulation, four clues). Lab Bench: Investigation 3 (ocean floor data). Quiz, Flashcards, Written Review short answer 8."],
+    ["ES1.K9", "The Rocky Mountains were formed by the collision and compression of tectonic plates.", "Learn: Lesson 8 (build the Rockies). Sort It: what happens here deck. Quiz, Written Review extended 3."],
+    ["ES1.S1", "Model Earth’s layers.", "Learn: Lesson 1 cross-section model. Lab Bench: Investigation 1 (scale model calculator with randomized practice). Written Review extended 4."],
+    ["ES1.S2", "Relate the theory of continental drift to the theory of plate tectonics.", "Learn: Lessons 4 and 5 (timeline, drift versus plate tectonics). Lab Bench: Investigation 3. Sort It: drift or plate tectonics deck. Written Review extended 1."],
+    ["ES1.S3", "Discuss how the movement of tectonic plates changes Earth’s surface.", "Learn: Lessons 7 and 8. Lab Bench: Investigation 2 (plate speed with randomized practice) and Investigation 4 (boundary builder). Sort It: what happens here deck. Written Review extended 2 and 3."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

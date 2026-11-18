@@ -1,0 +1,1501 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/energy-efficiency-lab/"><meta name="description" content="The conservation of energy is evident in the energy transfers of electrical devices."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Energy Efficiency Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an energy meter bench. Sticky tab strip, then lessons that pair a reading column with a live model: power bars racing, a kWh converter, a store ledger that never changes its total, Sankey arrows that split useful from wasted energy, an efficiency gauge, two fridge labels, a bill calculator and Alberta's power sources. Useful energy is always blue, wasted (dissipated) energy always warm orange. */
+:root{
+  --bg:#EDF2EF; --surface:#FFFFFF; --surface-2:#F4F7F5; --ink:#15221B; --muted:#4E5E55; --line:#CCD8D1;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5; --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --use:#1F64A8; --use-soft:#DCE8F5; --waste:#B4520D; --waste-soft:#F8E4D3; --input:#3F4F46;
+  --gas:#6B4C9A; --wind:#17707F; --solar:#9A6A00; --hydro:#1D5FA8; --bio:#4F6E22; --coal:#4A4F4C;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --use:#7DB8F0; --use-soft:#17283B; --waste:#F5A25F; --waste-soft:#3A2614; --input:#C9D6CE;
+  --gas:#C3A3F0; --wind:#6CCBDB; --solar:#F2C14E; --hydro:#7DB0F0; --bio:#A9C97A; --coal:#A6ADA9;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1512; --surface:#151F1A; --surface-2:#1B2620; --ink:#E3ECE6; --muted:#9DAEA4; --line:#2B3A32;
+  --g9:#74C995; --g9-soft:#16301F; --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --use:#7DB8F0; --use-soft:#17283B; --waste:#F5A25F; --waste-soft:#3A2614; --input:#C9D6CE;
+  --gas:#C3A3F0; --wind:#6CCBDB; --solar:#F2C14E; --hydro:#7DB0F0; --bio:#A9C97A; --coal:#A6ADA9;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4,h5{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--g9)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g9);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g9)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.inv{grid-template-columns:minmax(0,1fr)}
+.inv .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}.inv{padding:18px}.inv .two{grid-template-columns:minmax(0,1fr)}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model,.map{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.92rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row,.inline{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
+.inline input,.inline select{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-size:1.02rem}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g9)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700;min-height:1.4em}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.worked .mono{font-size:.88rem}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.dt th:first-child,.dt td:first-child{text-align:left}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+.choice2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px}
+.choice2 button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.9rem}
+.choice2 button:hover:not(:disabled){border-color:var(--muted)}
+.choice2 button[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);font-weight:700}
+.choice2 button.right{background:var(--good-soft);border-color:var(--good)}
+.choice2 button.wrong{background:var(--bad-soft);border-color:var(--bad)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--g9)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+/* lab-specific */
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.ro{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px;min-width:0}
+.ro span{font-size:.78rem;color:var(--muted)}
+.ro b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.ro.u b{color:var(--use)} .ro.w b{color:var(--waste)}
+.big{font-family:var(--f-mono);font-size:1.6rem;font-weight:600;font-variant-numeric:tabular-nums;background:var(--ink);color:var(--bg);border-radius:8px;padding:6px 14px;width:fit-content;max-width:100%;overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.barrow{display:grid;grid-template-columns:6.5em minmax(0,1fr) 6.2em;gap:8px;align-items:center;font-size:.85rem}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+.bar2{height:14px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.bar2 i{display:block;height:100%;transition:width .25s}
+.label-card{background:var(--surface);border:2px solid var(--ink);border-radius:10px;padding:12px;display:grid;gap:6px;min-width:0}
+.label-card .t{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.label-card .n{font-family:var(--f-display);font-size:1.8rem;font-weight:800;font-variant-numeric:tabular-nums}
+.scale{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--use-soft),var(--waste-soft));border:1px solid var(--line)}
+.scale i{position:absolute;top:-5px;width:4px;height:20px;background:var(--ink);border-radius:2px}
+.scale-l{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-family:var(--f-mono)}
+.star{display:inline-block;font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--use-soft);color:var(--use);width:fit-content}
+.steps{font-family:var(--f-mono);font-size:.86rem;display:grid;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.src-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,110px),1fr));gap:6px}
+.src-btns button{border:1px solid var(--line);border-left:6px solid var(--sc);background:var(--surface);border-radius:8px;padding:8px 10px;text-align:left;font-weight:700;cursor:pointer;font-size:.9rem}
+.src-btns button[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:-2px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem}
+.chain span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:700}
+.chain em{font-style:normal;color:var(--muted);font-family:var(--f-mono)}
+.audit{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+.audit th,.audit td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:middle}
+.audit td.n{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.audit th{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.audit input{width:5.5em}
+svg .band-u{fill:var(--use);opacity:.85}
+svg .band-w{fill:var(--waste);opacity:.85}
+svg .band-in{fill:var(--input);opacity:.8}
+svg .tl{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--ink)}
+svg .tm{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .gridl{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+svg [role=button]{cursor:pointer}
+svg [role=button]:focus{outline:none}
+svg [role=button]:focus-visible rect.hit{stroke:var(--ink);stroke-width:3;stroke-dasharray:4 3}
+svg rect.hit{fill:transparent}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Electricity · E2</div>
+    <h1><span class="ac">Energy Efficiency</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> The conservation of energy is evident in the energy transfers of electrical devices. Measure power, count joules and kilowatt hours, follow every joule through a device, compare efficiency labels, work out what a device costs to run, and explore where Alberta’s electricity comes from.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Start with power and energy, then follow the law of conservation of energy through real devices. Finish with efficiency labels, the cost of running a device, and the sources of Alberta’s electricity.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Power</span>
+      <div class="codes"><span class="code">E2.K1</span></div>
+      <h3>Power is how fast energy is transferred</h3>
+      <p>Every electrical device transfers energy. Some do it slowly and some do it quickly. <b>Power</b> is the <b>rate</b> at which a device transfers energy. In other words, power tells you how many joules the device transfers each second.</p>
+      <p>Power is measured in <b>watts</b> (W). One watt means one joule of energy is transferred each second. A <b>kilowatt</b> (kW) is 1000 watts.</p>
+      <div class="formula">power = energy ÷ time &nbsp;&nbsp; P = E ÷ t &nbsp;&nbsp; 1 W = 1 J/s</div>
+      <p>The <b>power rating</b> printed on a device, such as 1500 W on a kettle, tells you how fast it transfers energy when it runs normally.</p>
+      <div class="key"><b>Remember:</b> a higher power rating does not mean a device uses more energy in total. It means the device transfers energy faster. Total energy also depends on time.</div>
+    </div>
+    <div class="model">
+      <h4>Model: energy race</h4>
+      <p class="hint">Choose two devices and slide the time. Each bar shows the energy each device has transferred so far.</p>
+      <div class="grid2">
+        <label class="field" for="l1A">Device A
+          <select id="l1A"></select></label>
+        <label class="field" for="l1B">Device B
+          <select id="l1B"></select></label>
+      </div>
+      <label class="field" for="l1T">Time running: <span class="mono" id="l1Tv"></span></label>
+      <input type="range" id="l1T" min="0" max="60" step="1" value="10">
+      <div id="l1Bars" class="detail" aria-live="polite"></div>
+      <p class="hint">Power ratings are typical rounded values for practice.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · Energy from power and time</span>
+      <div class="codes"><span class="code">E2.K2</span><span class="code">E2.K3</span></div>
+      <h3>Use the power rating to find the energy input</h3>
+      <p>If you know how fast a device transfers energy and how long it runs, you can find the total <b>energy input</b> it needs. Multiply the power by the time.</p>
+      <div class="formula">energy = power × time &nbsp;&nbsp; E = P × t</div>
+      <p>The units must match. Use one of these two pairs:</p>
+      <ul>
+        <li>power in <b>watts</b> and time in <b>seconds</b> gives energy in <b>joules</b> (J)</li>
+        <li>power in <b>kilowatts</b> and time in <b>hours</b> gives energy in <b>kilowatt hours</b> (kWh)</li>
+      </ul>
+      <p>A <b>kilowatt hour</b> is the energy a 1 kW device transfers in one hour. It is a unit of energy, not power. One kilowatt hour equals 3 600 000 J, or 3.6 MJ.</p>
+      <div class="worked"><b>Worked example</b>
+        <span class="mono">A 1500 W kettle runs for 3 min.</span>
+        <span class="mono">t = 3 × 60 = 180 s</span>
+        <span class="mono">E = 1500 W × 180 s = 270 000 J</span>
+        <span class="mono">In kWh: 1.5 kW × 0.05 h = 0.075 kWh</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Model: energy calculator</h4>
+      <p class="hint">Enter a power rating and a time. The calculator shows each step in joules and in kilowatt hours.</p>
+      <div class="grid2">
+        <label class="field" for="l2P">Power (W)
+          <input type="number" id="l2P" min="0" step="1" value="1500"></label>
+        <label class="field" for="l2T">Time
+          <input type="number" id="l2T" min="0" step="any" value="3"></label>
+        <label class="field" for="l2U">Time unit
+          <select id="l2U"><option value="s">seconds</option><option value="min" selected>minutes</option><option value="h">hours</option></select></label>
+      </div>
+      <div class="steps" id="l2Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Conservation of energy</span>
+      <div class="codes"><span class="code">E2.K4</span></div>
+      <h3>Energy is never made or lost</h3>
+      <p>The <b>law of conservation of energy</b> says that energy cannot be created or destroyed. It can only be transferred from one <b>energy store</b> to another.</p>
+      <p>You met energy stores in Science 8: chemical, kinetic, thermal, gravitational, elastic and nuclear. An electric current is not a store. It is a way of <b>transferring</b> energy from one store to another.</p>
+      <p>Think about a battery fan. The battery’s chemical store goes down. The kinetic store of the spinning blades goes up, and the thermal store of the motor and the air around it goes up. Sound is a transfer too, and it ends up warming the air.</p>
+      <div class="key"><b>Remember:</b> add up every store at the start and every store at the end. The totals are always the same.</div>
+    </div>
+    <div class="model">
+      <h4>Model: the energy ledger</h4>
+      <p class="hint">Slide the run time of a battery fan. The battery’s store shrinks while the other stores grow. Watch the total.</p>
+      <label class="field" for="l3T">Run time: <span class="mono" id="l3Tv"></span></label>
+      <input type="range" id="l3T" min="0" max="100" step="5" value="40">
+      <div id="l3Bars" class="detail" aria-live="polite"></div>
+      <p class="hint">Made-up numbers for a toy fan that starts with 2000 J in its battery. Once the blades are spinning steadily, their kinetic store stays the same and the rest of the transfer heats the room.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Dissipation</span>
+      <div class="codes"><span class="code">E2.K5</span></div>
+      <h3>Some energy always spreads out as heat</h3>
+      <p>No device transfers all of its energy to the store we want. Some energy always <b>dissipates</b>. This means it spreads out into the surroundings by <b>heating</b> them, often through friction or the resistance of wires.</p>
+      <p>The dissipated energy is not destroyed. It is still there, in the thermal store of the room. It is just spread so thinly that it is very hard to use again. So the amount of <b>useful energy</b> goes down.</p>
+      <p>A <b>Sankey diagram</b> shows this. The width of each arrow stands for an amount of energy. The input arrow splits into a useful arrow and a wasted arrow. The arrows out always add up to the arrow in.</p>
+      <div class="key"><b>Remember:</b> useful energy + wasted energy = total energy input.</div>
+    </div>
+    <div class="model">
+      <h4>Model: Sankey diagram</h4>
+      <p class="hint">Pick a device. Every 100 J of electrical energy going in is split into useful and wasted energy.</p>
+      <div class="chips" id="l4Chips" role="group" aria-label="Choose a device"></div>
+      <div class="svgbox"><svg id="l4Svg" viewBox="0 0 520 230" role="img" aria-label="Sankey diagram"></svg></div>
+      <div class="legend"><span><i style="background:var(--input)"></i>Energy in</span><span><i style="background:var(--use)"></i>Useful</span><span><i style="background:var(--waste)"></i>Wasted (dissipated)</span></div>
+      <p class="detail" id="l4Txt" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Efficiency</span>
+      <div class="codes"><span class="code">E2.K6</span></div>
+      <h3>Efficiency compares useful output to input</h3>
+      <p><b>Energy efficiency</b> tells you how much of the energy input a device turns into useful output. It is a ratio, usually written as a percentage.</p>
+      <div class="formula">efficiency = useful energy output ÷ total energy input × 100%</div>
+      <p>You can use power in place of energy, as long as both numbers are in the same units: useful power out ÷ power in × 100%.</p>
+      <p>Because energy cannot be created, the useful output can never be more than the input. Because some energy always dissipates, real devices are always below 100% efficient.</p>
+      <div class="worked"><b>Worked example</b>
+        <span class="mono">An LED bulb takes in 900 J. It gives out 270 J of light.</span>
+        <span class="mono">efficiency = 270 J ÷ 900 J × 100% = 30%</span>
+        <span class="mono">wasted = 900 J − 270 J = 630 J (heats the room)</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Model: efficiency gauge</h4>
+      <p class="hint">Set the energy input and the useful output. The useful output cannot go higher than the input.</p>
+      <label class="field" for="l5In">Energy input: <span class="mono" id="l5Inv"></span></label>
+      <input type="range" id="l5In" min="100" max="2000" step="50" value="1000">
+      <label class="field" for="l5Out">Useful energy output: <span class="mono" id="l5Outv"></span></label>
+      <input type="range" id="l5Out" min="0" max="2000" step="10" value="400">
+      <div class="svgbox"><svg id="l5Svg" viewBox="0 0 320 180" role="img" aria-label="Efficiency gauge"></svg></div>
+      <div class="readouts" aria-live="polite">
+        <div class="ro u"><span>Useful</span><b id="l5U"></b></div>
+        <div class="ro w"><span>Wasted</span><b id="l5W"></b></div>
+        <div class="ro"><span>Efficiency</span><b id="l5E"></b></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · Energy ratings</span>
+      <div class="codes"><span class="code">E2.K7</span></div>
+      <h3>EnerGuide and ENERGY STAR</h3>
+      <p>When you shop for an appliance in Canada, two programs help you compare energy use.</p>
+      <p>The <b>EnerGuide</b> label is found on major appliances such as fridges, freezers, washers, dryers, dishwashers and stoves. It shows how much energy the model is expected to use in one year, in kilowatt hours, under standard test conditions. A scale shows where that model sits compared with similar models. The program is run by Natural Resources Canada.</p>
+      <p>The <b>ENERGY STAR</b> symbol marks models that meet strict efficiency standards. They are among the most efficient models in their category. The symbol does not show a number. It tells you the model passed the test.</p>
+      <p>EnerGuide ratings also exist for whole houses, which helps when people renovate or buy a home.</p>
+      <div class="key"><b>Remember:</b> a lower EnerGuide number means less energy used each year, which means a lower bill and less demand on power plants.</div>
+    </div>
+    <div class="model">
+      <h4>Model: compare two fridges</h4>
+      <p class="hint">These simplified labels are practice examples, not real models. Change the years to see how the difference adds up.</p>
+      <div class="grid2">
+        <div class="label-card"><span class="t">Fridge A · simplified EnerGuide-style label</span><span class="n" id="l6A"></span><span class="mono">kWh per year</span><div class="scale" aria-hidden="true"><i id="l6Am"></i></div><div class="scale-l"><span>uses least</span><span>uses most</span></div></div>
+        <div class="label-card"><span class="t">Fridge B · simplified EnerGuide-style label</span><span class="n" id="l6B"></span><span class="mono">kWh per year</span><div class="scale" aria-hidden="true"><i id="l6Bm"></i></div><div class="scale-l"><span>uses least</span><span>uses most</span></div><span class="star">ENERGY STAR qualified</span></div>
+      </div>
+      <label class="field" for="l6Y">Years of use: <span class="mono" id="l6Yv"></span></label>
+      <input type="range" id="l6Y" min="1" max="15" step="1" value="10">
+      <div class="steps" id="l6Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Cost of operating</span>
+      <div class="codes"><span class="code">E2.K8</span></div>
+      <h3>What a device costs to run</h3>
+      <p>Electricity companies charge for <b>energy</b>, counted in kilowatt hours. To find the cost of running a device, multiply the energy it uses by the price of each kilowatt hour.</p>
+      <div class="formula">cost = energy used (kWh) × price per kWh</div>
+      <p>If you only know the power rating, find the energy first: E = P × t, with power in kW and time in hours.</p>
+      <div class="worked"><b>Worked example</b>
+        <span class="mono">A 1.2 kW space heater runs 5 h a day for 30 days.</span>
+        <span class="mono">E = 1.2 kW × 150 h = 180 kWh</span>
+        <span class="mono">cost = 180 kWh × $0.15/kWh = $27.00</span>
+      </div>
+      <p class="note">In this lab the price is a made-up practice price of 15¢ per kWh. Real Alberta prices change from month to month, and real bills also add delivery and other charges.</p>
+    </div>
+    <div class="model">
+      <h4>Model: running cost calculator</h4>
+      <p class="hint">Pick a device and change how long it runs. The steps update as you go.</p>
+      <label class="field" for="l7D">Device
+        <select id="l7D"></select></label>
+      <div class="grid2">
+        <label class="field" for="l7H">Hours per day
+          <input type="number" id="l7H" min="0" max="24" step="0.25" value="2"></label>
+        <label class="field" for="l7N">Days
+          <input type="number" id="l7N" min="1" max="365" step="1" value="30"></label>
+        <label class="field" for="l7P">Price (¢ per kWh)
+          <input type="number" id="l7P" min="1" max="60" step="0.5" value="15"></label>
+      </div>
+      <div class="steps" id="l7Out" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Alberta’s electricity</span>
+      <div class="codes"><span class="code">E2.K9</span></div>
+      <h3>Where Alberta’s electricity comes from</h3>
+      <p>Electricity is not found in nature ready to use. Power plants transfer energy from a store, such as the chemical store of a fuel or the kinetic store of moving air, into an electric current.</p>
+      <p>In Alberta, most electricity comes from power plants that burn <b>natural gas</b>. <b>Wind</b> and <b>solar</b> generation have grown quickly, mostly in southern Alberta where it is windy and sunny. <b>Biomass</b> plants burn wood waste, often at pulp and sawmills. A small amount comes from <b>hydro</b> dams on mountain rivers.</p>
+      <p><b>Coal</b> was Alberta’s main source for decades. The last coal units stopped burning coal in 2024, and several were converted to burn natural gas. Very little electricity comes from <b>oil</b>. Diesel generators still power a few remote places that are not connected to the grid.</p>
+      <p>Several First Nations and Métis communities in Alberta, including some in Treaty 6 territory, own or share in solar and wind projects.</p>
+      <div class="key"><b>Remember:</b> every source follows the conservation of energy. A gas plant transfers chemical energy to thermal, then to the kinetic store of a turbine, then to the grid. A lot of energy dissipates along the way.</div>
+    </div>
+    <div class="model">
+      <h4>Model: Alberta’s sources</h4>
+      <p class="hint">Approximate share of electricity generated in Alberta in recent years, rounded. Tap a source to see its energy transfers.</p>
+      <div class="svgbox"><svg id="l8Svg" viewBox="0 0 520 250" role="group" aria-label="Approximate share of Alberta electricity by source. Each bar is a button."></svg></div>
+      <div class="detail" id="l8Txt" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Each one has a model to explore and practice problems that change every time. All numbers are practice data unless a note says otherwise.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · Power, energy and time</span>
+      <div class="codes"><span class="code">E2.S1</span><span class="code">E2.S2</span></div>
+      <h3>Solve energy, power and time problems</h3>
+      <p>Each problem gives two of the three quantities. Rearrange E = P × t to find the third: P = E ÷ t and t = E ÷ P. Check your units before you calculate.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <h4>Practice problem</h4>
+        <p class="detail" id="b1Q"></p>
+        <div class="inline">
+          <label class="field" for="b1A">Your answer <span class="mono" id="b1Unit"></span>
+            <input type="number" id="b1A" step="any"></label>
+          <button class="btn" id="b1Check" type="button">Check</button>
+          <button class="btn ghost" id="b1New" type="button">New problem</button>
+        </div>
+        <p class="fb" id="b1Fb" aria-live="polite"></p>
+      </div>
+      <div class="model">
+        <h4>Worked solution</h4>
+        <div class="steps" id="b1Sol"><span>Check your answer to see the steps.</span></div>
+        <p class="hint mono" id="b1Score"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Account for every joule</span>
+      <div class="codes"><span class="code">E2.S3</span><span class="code">E2.S4</span></div>
+      <h3>Balance the energy accounts</h3>
+      <p>Use the law of conservation of energy: energy in = useful energy out + wasted energy out. Find the missing amount, then name the stores. The Sankey diagram draws itself once you check.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <h4>Missing energy</h4>
+        <p class="detail" id="b2Q"></p>
+        <div class="inline">
+          <label class="field" for="b2A">Missing energy (J)
+            <input type="number" id="b2A" step="any"></label>
+          <button class="btn" id="b2Check" type="button">Check</button>
+          <button class="btn ghost" id="b2New" type="button">New device</button>
+        </div>
+        <p class="fb" id="b2Fb" aria-live="polite"></p>
+      </div>
+      <div class="model">
+        <h4>Sankey diagram</h4>
+        <div class="svgbox"><svg id="b2Svg" viewBox="0 0 520 230" role="img" aria-label="Sankey diagram for this device"></svg></div>
+        <p class="hint" id="b2Note"></p>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Efficiency problems</span>
+      <div class="codes"><span class="code">E2.S5</span><span class="code">E2.S1</span></div>
+      <h3>How efficient is it?</h3>
+      <p>Find the efficiency, find the useful output from an efficiency, or decide which of two devices is more efficient. Give percentages to one decimal place.</p>
+    </div>
+    <div class="two">
+      <div class="model">
+        <h4>Practice problem</h4>
+        <p class="detail" id="b3Q"></p>
+        <div class="inline" id="b3In">
+          <label class="field" for="b3A">Your answer <span class="mono" id="b3Unit"></span>
+            <input type="number" id="b3A" step="any"></label>
+          <button class="btn" id="b3Check" type="button">Check</button>
+        </div>
+        <div class="chips" id="b3Pick" role="group" aria-label="Choose a device" hidden></div>
+        <button class="btn ghost" id="b3New" type="button">New problem</button>
+        <p class="fb" id="b3Fb" aria-live="polite"></p>
+      </div>
+      <div class="model">
+        <h4>Worked solution</h4>
+        <div class="steps" id="b3Sol"><span>Check your answer to see the steps.</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Home energy audit</span>
+      <div class="codes"><span class="code">E2.S6</span><span class="code">E2.S2</span></div>
+      <h3>What does a month of electricity cost?</h3>
+      <p>Here is a made-up household. Change the hours each device runs per day. The table finds the energy for 30 days and the cost at the practice price. Then try the cost problem below the table.</p>
+    </div>
+    <label class="field" for="b4Price" style="max-width:260px">Practice price (¢ per kWh)
+      <input type="number" id="b4Price" min="1" max="60" step="0.5" value="15"></label>
+    <div class="tablebox"><table class="audit" id="b4Table"><thead><tr><th>Device</th><th>Power (W)</th><th>Hours per day</th><th>kWh in 30 days</th><th>Cost in 30 days</th></tr></thead><tbody></tbody><tfoot></tfoot></table></div>
+    <div class="two">
+      <div class="model">
+        <h4>Where the money goes</h4>
+        <div id="b4Bars" class="detail" aria-live="polite"></div>
+      </div>
+      <div class="model">
+        <h4>Cost problem</h4>
+        <p class="detail" id="b4Q"></p>
+        <div class="inline">
+          <label class="field" for="b4A">Cost in dollars
+            <input type="number" id="b4A" step="any"></label>
+          <button class="btn" id="b4Check" type="button">Check</button>
+          <button class="btn ghost" id="b4New" type="button">New problem</button>
+        </div>
+        <p class="fb" id="b4Fb" aria-live="polite"></p>
+        <div class="steps" id="b4Sol" hidden></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 5 · A day on Alberta’s grid</span>
+      <div class="codes"><span class="code">E2.S7</span><span class="code">E2.K9</span></div>
+      <h3>Meeting demand when the weather changes</h3>
+      <p>Electricity must be generated at the same moment it is used. Wind and solar change with the weather and the time of day. Gas plants can speed up or slow down to fill the gap. Pick a day and see how the sources share the work.</p>
+    </div>
+    <div class="chips" id="b5Chips" role="group" aria-label="Choose a day"></div>
+    <div class="svgbox"><svg id="b5Svg" viewBox="0 0 600 280" role="img" aria-label="Stacked chart of electricity by source over one day"></svg></div>
+    <div class="legend" id="b5Legend"></div>
+    <div class="readouts" id="b5Ro" aria-live="polite"></div>
+    <p class="note">This is a simplified model with made-up numbers in the right general range for Alberta. Real hourly data is published by the Alberta Electric System Operator (AESO).</p>
+    <div class="model">
+      <h4>Think about it</h4>
+      <ul id="b5Qs"></ul>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p id="quizIntro">Ten questions drawn from the bank. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 E2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>E2.K1 / E2.K2:</b> power is taught as the rate of energy transfer (1 W = 1 J/s). The power rating is taught as the rate at normal operation; real devices may draw less (a fridge cycles on and off, a phone charger tapers), so E = P × t gives the energy input only while the device runs at its rated power.</li>
+      <li><b>E2.K4:</b> energy stores follow the Science 8 list (chemical, kinetic, thermal, gravitational, elastic, nuclear). Electric current, light and sound are taught as ways of transferring energy rather than stores, so light and sound are shown ending up in the thermal store of the surroundings.</li>
+      <li><b>E2.K5:</b> dissipation is taught as energy spreading into the thermal store of the surroundings; the energy is conserved but less useful. Sankey splits are rounded typical values for practice (incandescent about 5% light, LED about 30% light, kettle about 90%, fan motor about 70%, phone charger about 80%); real values vary by model.</li>
+      <li><b>E2.K6:</b> the draft says efficiency compares “the input from the energy store to the output of the device”. The lab teaches the precise ratio: useful energy (or power) output ÷ total energy (or power) input × 100%, and stresses that efficiency is always below 100%.</li>
+      <li><b>E2.K7:</b> EnerGuide is described as the Natural Resources Canada label showing estimated annual kWh with a comparison scale, and ENERGY STAR as a symbol for top-performing models. Labels in the lab are simplified practice examples, not copies of the official designs. Please check the current list of labelled appliances.</li>
+      <li><b>E2.K8:</b> the draft says “energy rating in kilowatt hours and the price of power per kilowatt hour”. The lab teaches cost = energy used (kWh) × price per kWh, since the kWh is a unit of energy, not power. The 15¢/kWh practice price is made up; real bills add delivery, transmission and administration charges.</li>
+      <li><b>E2.K9:</b> the draft lists oil, natural gas, coal, biomass, solar and wind. The lab teaches all six with up-to-date context: coal-fired generation ended in Alberta in 2024 (units retired or converted to gas), oil (diesel) plays only a very small role in remote off-grid places, and hydro is added as a small source. Source shares (gas about 70%, wind about 16%, solar about 7%, hydro about 2%, biomass and other about 5%) are rounded approximations that need a currency check against AESO data.</li>
+      <li><b>E2.K9:</b> First Nations and Métis ownership of solar and wind projects is described generally, with no community named. Please review the wording and consider a local example or community partner.</li>
+      <li><b>Data:</b> appliance power ratings are typical rounded values. The household audit, fridge labels, fan ledger, grid day profiles and all practice problems are made up for practice.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+
+(function(){
+"use strict";
+var KEY = "riverbend-g9-e2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); if (s.indexOf(".") > -1) s = s.replace(/0+$/, "").replace(/\.$/, ""); return s; }
+function grp(x){ var s = String(x); var p = s.split("."); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " "); return p.join("."); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+var REDUCED = false;
+try { REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+function f2(x){ return (Math.round(x * 100) / 100).toFixed(2); }
+function sig(x){
+  if (x === 0) return "0";
+  var a = Math.abs(x);
+  if (a >= 100) return String(Math.round(x));
+  if (a >= 10) return fmt(x, 1);
+  if (a >= 1) return fmt(x, 2);
+  return String(Number(x.toPrecision(2)));
+}
+function svgBtn(g, label, fn){
+  g.setAttribute("role", "button"); g.setAttribute("tabindex", "0"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+function refocus(svg, label){
+  if (!label) return;
+  var nodes = svg.querySelectorAll("[role=button]");
+  for (var i = 0; i < nodes.length; i++) if (nodes[i].getAttribute("aria-label") === label) { nodes[i].focus(); return; }
+}
+
+/* ---------- shared device data (typical rounded ratings, practice values) ---------- */
+var DEVICES = [
+  {n: "LED bulb", p: 9}, {n: "Phone charger", p: 10}, {n: "Laptop", p: 60}, {n: "Incandescent bulb", p: 60},
+  {n: "TV", p: 100}, {n: "Fridge (while running)", p: 150}, {n: "Gaming console", p: 200}, {n: "Microwave", p: 1000},
+  {n: "Toaster", p: 900}, {n: "Space heater", p: 1200}, {n: "Hair dryer", p: 1500}, {n: "Kettle", p: 1500}
+];
+function money(x){ return "$" + (Math.round(x * 100) / 100).toFixed(2); }
+function jfmt(x){ return grp(Math.round(x)) + " J"; }
+function near(a, b, tol){ return Math.abs(a - b) <= Math.max(Math.abs(b) * (tol || 0.02), 1e-9); }
+
+/* ---------- Lesson 1: energy race ---------- */
+(function(){
+  var A = $("l1A"), B = $("l1B"), T = $("l1T");
+  DEVICES.forEach(function(d, i){
+    A.appendChild(el("option", {value: i}, d.n + " · " + d.p + " W"));
+    B.appendChild(el("option", {value: i}, d.n + " · " + d.p + " W"));
+  });
+  A.value = 0; B.value = 11;
+  function draw(){
+    var t = +T.value, a = DEVICES[+A.value], b = DEVICES[+B.value];
+    $("l1Tv").textContent = t + " s";
+    var max = Math.max(a.p, b.p) * 60 || 1, box = $("l1Bars"); clear(box);
+    [[a, "var(--use)"], [b, "var(--waste)"]].forEach(function(r){
+      var e = r[0].p * t, row = el("div", {"class": "barrow"});
+      row.appendChild(el("span", null, r[0].n));
+      var bar = el("div", {"class": "bar2"}), i = el("i"); i.style.width = (e / max * 100) + "%"; i.style.background = r[1];
+      bar.appendChild(i); row.appendChild(bar); row.appendChild(el("b", null, jfmt(e)));
+      box.appendChild(row);
+    });
+    var msg = a.p === b.p ? "Both devices transfer energy at the same rate." :
+      (a.p > b.p ? a.n : b.n) + " transfers energy " + fmt(Math.max(a.p, b.p) / Math.min(a.p, b.p), 1) + " times as fast, so in the same time it transfers " + fmt(Math.max(a.p, b.p) / Math.min(a.p, b.p), 1) + " times as much energy.";
+    box.appendChild(el("p", {"class": "hint"}, msg));
+  }
+  [A, B, T].forEach(function(x){ x.addEventListener("input", draw); });
+  draw();
+})();
+
+/* ---------- Lesson 2: energy calculator ---------- */
+(function(){
+  function draw(){
+    var p = Math.max(0, +$("l2P").value || 0), t = Math.max(0, +$("l2T").value || 0), u = $("l2U").value;
+    var s = u === "s" ? t : u === "min" ? t * 60 : t * 3600, h = s / 3600, out = $("l2Out"); clear(out);
+    var lines = [
+      "t = " + fmt(t, 3) + " " + (u === "s" ? "s" : u === "min" ? "min" : "h") + " = " + grp(fmt(s, 2)) + " s = " + sig(h) + " h",
+      "E = P × t = " + grp(p) + " W × " + grp(fmt(s, 2)) + " s = " + jfmt(p * s),
+      "E = " + sig(p / 1000) + " kW × " + sig(h) + " h = " + sig(p / 1000 * h) + " kWh",
+      "check: " + sig(p / 1000 * h) + " kWh × 3 600 000 J/kWh = " + jfmt(p / 1000 * h * 3600000)
+    ];
+    lines.forEach(function(l){ out.appendChild(el("span", null, l)); });
+  }
+  ["l2P", "l2T", "l2U"].forEach(function(id){ $(id).addEventListener("input", draw); });
+  draw();
+})();
+
+/* ---------- Lesson 3: energy ledger ---------- */
+(function(){
+  var T = $("l3T");
+  function draw(){
+    var t = +T.value, used = 2000 * t / 100;
+    var kin = Math.min(used, 60), therm = used - kin;
+    var rows = [["Chemical (battery)", 2000 - used, "var(--input)"], ["Kinetic (blades)", kin, "var(--use)"], ["Thermal (motor, air, room)", therm, "var(--waste)"]];
+    $("l3Tv").textContent = t + " s";
+    var box = $("l3Bars"); clear(box);
+    rows.forEach(function(r){
+      var row = el("div", {"class": "barrow"});
+      row.appendChild(el("span", null, r[0]));
+      var bar = el("div", {"class": "bar2"}), i = el("i"); i.style.width = (r[1] / 2000 * 100) + "%"; i.style.background = r[2];
+      bar.appendChild(i); row.appendChild(bar); row.appendChild(el("b", null, jfmt(r[1])));
+      box.appendChild(row);
+    });
+    box.appendChild(el("p", {"class": "mono"}, "Total = " + jfmt(2000 - used) + " + " + jfmt(kin) + " + " + jfmt(therm) + " = " + jfmt(2000)));
+  }
+  T.addEventListener("input", draw); draw();
+})();
+
+/* ---------- Sankey drawing ---------- */
+function sankey(svg, total, useful, uLabel, wLabel, unit){
+  clear(svg);
+  unit = unit || "J";
+  var H = 150, x0 = 20, x1 = 170, x2 = 360, top = 40;
+  var hu = Math.max(2, H * useful / total), hw = Math.max(2, H * (total - useful) / total);
+  svg.appendChild(sv("rect", {"class": "band-in", x: x0, y: top, width: x1 - x0, height: H}));
+  svg.appendChild(sv("text", {"class": "tl", x: x0 + 6, y: top - 10}, "In: " + grp(fmt(total, 1)) + " " + unit));
+  /* useful band goes straight right */
+  svg.appendChild(sv("rect", {"class": "band-u", x: x1, y: top, width: x2 - x1 + 60, height: hu}));
+  svg.appendChild(sv("polygon", {"class": "band-u", points: (x2 + 60) + "," + (top - 6) + " " + (x2 + 92) + "," + (top + hu / 2) + " " + (x2 + 60) + "," + (top + hu + 6)}));
+  svg.appendChild(sv("text", {"class": "tl", x: x1 + 10, y: top - 10}, uLabel + ": " + grp(fmt(useful, 1)) + " " + unit));
+  /* wasted band curves down */
+  var y0 = top + hu, yb = 222 - hw;
+  var d = "M" + x1 + "," + y0 + " C" + (x1 + 90) + "," + y0 + " " + (x1 + 60) + "," + yb + " " + (x1 + 150) + "," + yb +
+    " L" + (x2 - 20) + "," + yb + " L" + (x2 - 20) + "," + (yb + hw) + " L" + (x1 + 150) + "," + (yb + hw) +
+    " C" + (x1 + 60 - hw * 0.2) + "," + (yb + hw) + " " + (x1 + 90 - hw * 0.4) + "," + (y0 + hw) + " " + x1 + "," + (y0 + hw) + " Z";
+  svg.appendChild(sv("path", {"class": "band-w", d: d}));
+  svg.appendChild(sv("polygon", {"class": "band-w", points: (x2 - 20) + "," + (yb - 5) + " " + (x2 + 8) + "," + (yb + hw / 2) + " " + (x2 - 20) + "," + (yb + hw + 5)}));
+  svg.appendChild(sv("text", {"class": "tl", x: x2 + 14, y: Math.min(yb + hw / 2 + 4, 226)}, "Wasted: " + grp(fmt(total - useful, 1)) + " " + unit));
+  svg.appendChild(sv("text", {"class": "tm", x: x2 + 14, y: Math.min(yb + hw / 2 + 4, 226) - 16}, wLabel));
+  svg.setAttribute("aria-label", "Sankey diagram. In " + fmt(total, 1) + " " + unit + ". " + uLabel + " " + fmt(useful, 1) + " " + unit + ". Wasted " + fmt(total - useful, 1) + " " + unit + ", " + wLabel + ".");
+}
+
+/* ---------- Lesson 4: Sankey devices ---------- */
+var SANK = [
+  {label: "Incandescent bulb", u: 5, ul: "Light", wl: "heats bulb and room", t: "An incandescent bulb makes light by heating a thin wire until it glows. About 95 of every 100 J heat the surroundings. That is why old bulbs feel hot."},
+  {label: "LED bulb", u: 30, ul: "Light", wl: "heats the bulb base", t: "An LED turns much more of its input into light. About 30 of every 100 J become light, so it needs far less power for the same brightness."},
+  {label: "Electric kettle", u: 90, ul: "Thermal (water)", wl: "heats kettle and air", t: "A kettle’s useful store is the thermal store of the water. Most energy reaches the water. Some warms the kettle body and the kitchen air."},
+  {label: "Fan motor", u: 70, ul: "Kinetic (air)", wl: "heats motor, sound", t: "A fan motor makes the blades and air move. Friction and the resistance of the coil wires heat the motor. Some energy also leaves as sound."},
+  {label: "Phone charger", u: 80, ul: "Chemical (battery)", wl: "heats charger and phone", t: "A charger fills the chemical store of the phone battery. The charger and phone get warm because some energy dissipates."}
+];
+(function(){
+  chipGroup($("l4Chips"), SANK, function(d){
+    sankey($("l4Svg"), 100, d.u, d.ul, d.wl);
+    $("l4Txt").textContent = d.t + " Values are rounded and typical; real devices vary.";
+  }, 0);
+})();
+
+/* ---------- Lesson 5: efficiency gauge ---------- */
+(function(){
+  var I = $("l5In"), O = $("l5Out"), svg = $("l5Svg");
+  function draw(){
+    var a = +I.value; O.max = a; if (+O.value > a) O.value = a;
+    var b = +O.value, eff = a ? b / a : 0;
+    $("l5Inv").textContent = jfmt(a); $("l5Outv").textContent = jfmt(b);
+    $("l5U").textContent = jfmt(b); $("l5W").textContent = jfmt(a - b); $("l5E").textContent = fmt(eff * 100, 1) + "%";
+    clear(svg);
+    var cx = 160, cy = 150, r = 110;
+    function pt(f, rr){ var ang = Math.PI * (1 - f); return [cx + rr * Math.cos(ang), cy - rr * Math.sin(ang)]; }
+    var p0 = pt(0, r), p1 = pt(1, r), pe = pt(eff, r);
+    svg.appendChild(sv("path", {d: "M" + p0 + " A" + r + "," + r + " 0 0 1 " + p1, fill: "none", stroke: "var(--waste)", "stroke-width": 22, opacity: .55}));
+    if (eff > 0.001) svg.appendChild(sv("path", {d: "M" + p0 + " A" + r + "," + r + " 0 0 1 " + pe, fill: "none", stroke: "var(--use)", "stroke-width": 22}));
+    var pn = pt(eff, r - 30);
+    svg.appendChild(sv("line", {x1: cx, y1: cy, x2: pn[0], y2: pn[1], stroke: "var(--ink)", "stroke-width": 4, "stroke-linecap": "round"}));
+    svg.appendChild(sv("circle", {cx: cx, cy: cy, r: 7, fill: "var(--ink)"}));
+    svg.appendChild(sv("text", {"class": "tm", x: 30, y: 172}, "0%"));
+    svg.appendChild(sv("text", {"class": "tm", x: 262, y: 172}, "100%"));
+    svg.appendChild(sv("text", {"class": "tl", x: cx, y: 110, "text-anchor": "middle", "font-size": 22}, fmt(eff * 100, 1) + "%"));
+    svg.setAttribute("aria-label", "Efficiency gauge reading " + fmt(eff * 100, 1) + " percent");
+  }
+  I.addEventListener("input", draw); O.addEventListener("input", draw); draw();
+})();
+
+/* ---------- Lesson 6: two fridges ---------- */
+(function(){
+  var A = 620, B = 410, Y = $("l6Y");
+  $("l6A").textContent = A; $("l6B").textContent = B;
+  $("l6Am").style.left = "calc(" + ((A - 300) / 500 * 100) + "% - 2px)";
+  $("l6Bm").style.left = "calc(" + ((B - 300) / 500 * 100) + "% - 2px)";
+  function draw(){
+    var y = +Y.value, d = (A - B) * y, out = $("l6Out"); clear(out);
+    $("l6Yv").textContent = y + (y === 1 ? " year" : " years");
+    [
+      "difference each year = " + A + " − " + B + " = " + (A - B) + " kWh",
+      "over " + y + " years = " + (A - B) + " × " + y + " = " + grp(d) + " kWh",
+      "in joules = " + grp(d) + " × 3.6 MJ = " + grp(fmt(d * 3.6, 1)) + " MJ",
+      "saving at 15¢/kWh = " + grp(d) + " × $0.15 = " + money(d * 0.15)
+    ].forEach(function(l){ out.appendChild(el("span", null, l)); });
+  }
+  Y.addEventListener("input", draw); draw();
+})();
+
+/* ---------- Lesson 7: running cost ---------- */
+(function(){
+  var D = $("l7D");
+  DEVICES.forEach(function(d, i){ D.appendChild(el("option", {value: i}, d.n + " · " + d.p + " W")); });
+  D.value = 6;
+  function draw(){
+    var d = DEVICES[+D.value], h = Math.max(0, +$("l7H").value || 0), n = Math.max(0, +$("l7N").value || 0), pr = Math.max(0, +$("l7P").value || 0);
+    var hrs = h * n, kwh = d.p / 1000 * hrs, out = $("l7Out"); clear(out);
+    [
+      "P = " + d.p + " W = " + sig(d.p / 1000) + " kW",
+      "t = " + fmt(h, 2) + " h/day × " + n + " days = " + grp(fmt(hrs, 2)) + " h",
+      "E = " + sig(d.p / 1000) + " kW × " + grp(fmt(hrs, 2)) + " h = " + sig(kwh) + " kWh",
+      "cost = " + sig(kwh) + " kWh × $" + fmt(pr / 100, 4) + "/kWh = " + money(kwh * pr / 100)
+    ].forEach(function(l){ out.appendChild(el("span", null, l)); });
+  }
+  ["l7D", "l7H", "l7N", "l7P"].forEach(function(id){ $(id).addEventListener("input", draw); });
+  draw();
+})();
+
+/* ---------- Lesson 8: Alberta sources ---------- */
+var SOURCES = [
+  {k: "gas", n: "Natural gas", share: 70, c: "var(--gas)", chain: ["Chemical (gas)", "Thermal (hot gases, steam)", "Kinetic (turbine)", "Electric current"],
+   t: "Burning natural gas releases energy from its chemical store. Hot gases or steam spin a turbine, and a generator turns that motion into an electric current. Gas plants can be turned up or down quickly. Burning gas releases carbon dioxide, and much of the energy dissipates as heat at the plant."},
+  {k: "wind", n: "Wind", share: 16, c: "var(--wind)", chain: ["Kinetic (moving air)", "Kinetic (blades)", "Electric current"],
+   t: "Moving air turns the blades of a wind turbine, which spins a generator. Wind is renewable and burns no fuel, but its output changes with the weather. Most Alberta wind farms are in the south, near Pincher Creek and Lethbridge."},
+  {k: "solar", n: "Solar", share: 7, c: "var(--solar)", chain: ["Radiation (sunlight)", "Electric current"],
+   t: "Solar panels transfer energy from sunlight straight into an electric current, with no moving parts. Solar is renewable but produces nothing at night and less in winter. Southern Alberta is one of the sunniest parts of Canada."},
+  {k: "hydro", n: "Hydro", share: 2, c: "var(--hydro)", chain: ["Gravitational (water behind a dam)", "Kinetic (falling water)", "Electric current"],
+   t: "Water held behind a dam has a gravitational store. As it falls through the dam it spins turbines. Alberta has a few hydro dams on rivers flowing from the Rockies. The draft curriculum does not list hydro, so it is included here as a small extra source."},
+  {k: "bio", n: "Biomass and other", share: 5, c: "var(--bio)", chain: ["Chemical (wood waste)", "Thermal (steam)", "Kinetic (turbine)", "Electric current"],
+   t: "Biomass plants burn wood waste, such as bark and sawdust, often at pulp mills and sawmills. Biomass counts as renewable when the trees are regrown. Other sources include waste heat recovered from industry."},
+  {k: "coal", n: "Coal", share: 0, c: "var(--coal)", chain: ["Chemical (coal)", "Thermal (steam)", "Kinetic (turbine)", "Electric current"],
+   t: "Coal was Alberta’s main source of electricity for decades. Coal plants worked like gas plants, but burning coal released more carbon dioxide and other pollutants for the same energy. The last coal units stopped burning coal in 2024, and several were converted to burn natural gas."},
+  {k: "oil", n: "Oil (diesel)", share: 0, c: "var(--coal)", chain: ["Chemical (diesel)", "Kinetic (engine)", "Electric current"],
+   t: "Very little of Alberta’s electricity comes from oil. Diesel generators, which burn a fuel made from oil, still power a few remote places that are not connected to the grid, and they serve as backup power for hospitals and other buildings."}
+];
+(function(){
+  var svg = $("l8Svg"), sel = 0;
+  function draw(){
+    clear(svg);
+    var x0 = 150, W = 300;
+    SOURCES.forEach(function(s, i){
+      var y = 12 + i * 33, g = sv("g");
+      g.appendChild(sv("rect", {"class": "hit", x: 2, y: y - 3, width: 514, height: 30, rx: 6}));
+      g.appendChild(sv("text", {"class": "tl", x: 10, y: y + 17}, s.n));
+      g.appendChild(sv("rect", {x: x0, y: y + 3, width: W, height: 18, rx: 4, fill: "var(--surface-2)", stroke: "var(--line)"}));
+      if (s.share > 0) g.appendChild(sv("rect", {x: x0, y: y + 3, width: W * s.share / 100, height: 18, rx: 4, fill: s.c}));
+      g.appendChild(sv("text", {"class": "tl", x: x0 + W + 10, y: y + 17}, s.share > 0 ? "about " + s.share + "%" : "near 0%"));
+      if (i === sel) g.appendChild(sv("rect", {x: 2, y: y - 3, width: 514, height: 30, rx: 6, fill: "none", stroke: "var(--ink)", "stroke-width": 1.5}));
+      svgBtn(g, s.n + ", about " + s.share + " percent. Show energy transfers.", function(){ sel = i; draw(); refocus(svg, g.getAttribute("aria-label")); });
+      svg.appendChild(g);
+    });
+    var s = SOURCES[sel], box = $("l8Txt"); clear(box);
+    box.appendChild(el("h5", null, s.n));
+    var ch = el("div", {"class": "chain"});
+    s.chain.forEach(function(c, j){ if (j) ch.appendChild(el("em", null, "→")); ch.appendChild(el("span", null, c)); });
+    box.appendChild(ch);
+    box.appendChild(el("p", null, s.t));
+  }
+  draw();
+})();
+
+/* ---------- Bench 1: E = P t problems ---------- */
+(function(){
+  var cur, tries = 0, right = 0;
+  var B1 = [
+    function(){ var d = pick(DEVICES), m = rint(2, 30); return {q: "A " + d.n.toLowerCase() + " rated at " + d.p + " W runs for " + m + " minutes. How much energy does it transfer, in joules?", unit: "J", a: d.p * m * 60,
+      s: ["t = " + m + " min × 60 = " + m * 60 + " s", "E = P × t = " + d.p + " W × " + m * 60 + " s", "E = " + jfmt(d.p * m * 60)]}; },
+    function(){ var d = pick(DEVICES), h = pick([0.5, 1, 1.5, 2, 3, 4, 6, 8]); return {q: "A " + d.n.toLowerCase() + " rated at " + d.p + " W runs for " + h + " hours. How much energy does it use, in kilowatt hours?", unit: "kWh", a: d.p / 1000 * h,
+      s: ["P = " + d.p + " W ÷ 1000 = " + sig(d.p / 1000) + " kW", "E = P × t = " + sig(d.p / 1000) + " kW × " + h + " h", "E = " + sig(d.p / 1000 * h) + " kWh"]}; },
+    function(){ var p = pick([40, 60, 100, 250, 500, 800, 1200, 2000]), s = rint(2, 12) * 10; return {q: "A device transfers " + grp(p * s) + " J of energy in " + s + " seconds. What is its power?", unit: "W", a: p,
+      s: ["P = E ÷ t", "P = " + grp(p * s) + " J ÷ " + s + " s", "P = " + p + " W"]}; },
+    function(){ var p = pick([500, 1000, 1500, 2000]), t = rint(1, 12) * 30; return {q: "A " + p + " W heater transfers " + grp(p * t) + " J. How long did it run, in seconds?", unit: "s", a: t,
+      s: ["t = E ÷ P", "t = " + grp(p * t) + " J ÷ " + p + " W", "t = " + t + " s"]}; },
+    function(){ var k = pick([0.5, 1, 2, 3, 5]); return {q: "How many joules are in " + k + " kWh?", unit: "J", a: k * 3600000,
+      s: ["1 kWh = 1 kW × 1 h = 1000 W × 3600 s = 3 600 000 J", "E = " + k + " × 3 600 000 J", "E = " + jfmt(k * 3600000)]}; }
+  ];
+  function next(){ cur = pick(B1)(); $("b1Q").textContent = cur.q; $("b1Unit").textContent = "(" + cur.unit + ")"; $("b1A").value = ""; $("b1Fb").textContent = ""; $("b1Fb").className = "fb"; clear($("b1Sol")); $("b1Sol").appendChild(el("span", null, "Check your answer to see the steps.")); }
+  $("b1New").addEventListener("click", next);
+  $("b1Check").addEventListener("click", function(){
+    var v = parseFloat($("b1A").value);
+    if (isNaN(v)) { $("b1Fb").textContent = "Type a number first."; $("b1Fb").className = "fb no"; return; }
+    var ok = near(v, cur.a, 0.02); tries++; if (ok) right++;
+    $("b1Fb").textContent = ok ? "Correct." : "Not quite. The answer is " + grp(sig(cur.a)) + " " + cur.unit + ".";
+    $("b1Fb").className = "fb " + (ok ? "ok" : "no");
+    var sol = $("b1Sol"); clear(sol); cur.s.forEach(function(l){ sol.appendChild(el("span", null, l)); });
+    $("b1Score").textContent = right + " of " + tries + " correct this visit";
+  });
+  next();
+})();
+
+/* ---------- Bench 2: energy accounts ---------- */
+(function(){
+  var cur;
+  var B2 = [
+    {d: "kettle", ul: "Thermal (water)", wl: "heats kettle and air", e: [0.85, 0.92]},
+    {d: "LED bulb", ul: "Light", wl: "heats the bulb", e: [0.25, 0.4]},
+    {d: "incandescent bulb", ul: "Light", wl: "heats bulb and room", e: [0.03, 0.08]},
+    {d: "electric drill", ul: "Kinetic (drill bit)", wl: "heats motor, sound", e: [0.55, 0.75]},
+    {d: "phone charger", ul: "Chemical (battery)", wl: "heats charger", e: [0.75, 0.88]},
+    {d: "electric car motor", ul: "Kinetic (car)", wl: "heats motor and wires", e: [0.85, 0.92]},
+    {d: "elevator motor", ul: "Gravitational (lifted car)", wl: "heats motor, cables", e: [0.6, 0.8]}
+  ];
+  function next(){
+    var d = pick(B2), tin = rint(4, 40) * 500, u = Math.round(tin * (d.e[0] + Math.random() * (d.e[1] - d.e[0])) / 10) * 10;
+    var askUseful = Math.random() < 0.5;
+    cur = {d: d, tin: tin, u: u, ask: askUseful};
+    $("b2Q").textContent = askUseful ?
+      "A " + d.d + " takes in " + grp(tin) + " J of electrical energy. " + grp(tin - u) + " J dissipates (" + d.wl + "). How much energy goes to the useful store, " + d.ul.toLowerCase() + "?" :
+      "A " + d.d + " takes in " + grp(tin) + " J of electrical energy. " + grp(u) + " J goes to the useful store, " + d.ul.toLowerCase() + ". How much energy dissipates?";
+    $("b2A").value = ""; $("b2Fb").textContent = ""; $("b2Fb").className = "fb";
+    clear($("b2Svg")); $("b2Note").textContent = "Check your answer to draw the diagram.";
+  }
+  $("b2New").addEventListener("click", next);
+  $("b2Check").addEventListener("click", function(){
+    var v = parseFloat($("b2A").value), ans = cur.ask ? cur.u : cur.tin - cur.u;
+    if (isNaN(v)) { $("b2Fb").textContent = "Type a number first."; $("b2Fb").className = "fb no"; return; }
+    var ok = near(v, ans, 0.005);
+    $("b2Fb").textContent = (ok ? "Correct. " : "Not quite. ") + "Energy in = useful + wasted, so " + grp(cur.tin) + " J = " + grp(cur.u) + " J + " + grp(cur.tin - cur.u) + " J.";
+    $("b2Fb").className = "fb " + (ok ? "ok" : "no");
+    sankey($("b2Svg"), cur.tin, cur.u, cur.d.ul, cur.d.wl);
+    $("b2Note").textContent = "Efficiency = " + grp(cur.u) + " ÷ " + grp(cur.tin) + " × 100% = " + fmt(cur.u / cur.tin * 100, 1) + "%. No energy was created or destroyed; the wasted part is still in the thermal store of the surroundings.";
+  });
+  next();
+})();
+
+/* ---------- Bench 3: efficiency problems ---------- */
+(function(){
+  var cur;
+  function setMode(pickMode){ $("b3In").hidden = pickMode; $("b3Pick").hidden = !pickMode; }
+  function show(ok, msg, steps){
+    $("b3Fb").textContent = (ok ? "Correct. " : "Not quite. ") + msg; $("b3Fb").className = "fb " + (ok ? "ok" : "no");
+    var sol = $("b3Sol"); clear(sol); steps.forEach(function(l){ sol.appendChild(el("span", null, l)); });
+  }
+  var B3 = [
+    function(){ var tin = rint(2, 30) * 100, u = Math.round(tin * (0.1 + Math.random() * 0.8)); var dev = pick(["blender", "fan", "speaker", "toaster", "pump"]);
+      return {q: "A " + dev + " takes in " + grp(tin) + " J and gives " + grp(u) + " J of useful output. What is its efficiency, in percent?", unit: "%", a: u / tin * 100,
+        s: ["efficiency = useful output ÷ input × 100%", "= " + grp(u) + " J ÷ " + grp(tin) + " J × 100%", "= " + fmt(u / tin * 100, 1) + "%"]}; },
+    function(){ var pin = pick([40, 60, 100, 500, 1000, 1500, 2000]), e = rint(10, 95); return {q: "A motor with an input power of " + pin + " W is " + e + "% efficient. What is its useful output power, in watts?", unit: "W", a: pin * e / 100,
+        s: ["useful output = efficiency × input", "= " + (e / 100) + " × " + pin + " W", "= " + fmt(pin * e / 100, 1) + " W"]}; },
+    function(){ var a = {n: "Heater A", i: rint(8, 20) * 100}, b = {n: "Heater B", i: rint(8, 20) * 100};
+      a.u = Math.round(a.i * (0.5 + Math.random() * 0.45)); b.u = Math.round(b.i * (0.5 + Math.random() * 0.45));
+      if (Math.abs(a.u / a.i - b.u / b.i) < 0.03) b.u = Math.round(b.i * Math.min(0.97, a.u / a.i + 0.1));
+      var best = a.u / a.i > b.u / b.i ? 0 : 1;
+      return {pick: true, q: "Two space heaters warm the same room. " + a.n + " takes in " + grp(a.i) + " J and gives " + grp(a.u) + " J to the room air. " + b.n + " takes in " + grp(b.i) + " J and gives " + grp(b.u) + " J to the room air. Which is more efficient?",
+        opts: [a.n, b.n], a: best,
+        s: [a.n + ": " + grp(a.u) + " ÷ " + grp(a.i) + " × 100% = " + fmt(a.u / a.i * 100, 1) + "%", b.n + ": " + grp(b.u) + " ÷ " + grp(b.i) + " × 100% = " + fmt(b.u / b.i * 100, 1) + "%", "Compare percentages, not the size of the useful output."]}; },
+    function(){ var e = pick([20, 25, 40, 50, 80]), u = rint(2, 20) * 50; return {q: "A device is " + e + "% efficient and gives " + grp(u) + " J of useful energy. How much energy did it take in, in joules?", unit: "J", a: u / (e / 100),
+        s: ["input = useful output ÷ efficiency", "= " + grp(u) + " J ÷ " + (e / 100), "= " + grp(fmt(u / (e / 100), 1)) + " J"]}; }
+  ];
+  function next(){
+    cur = pick(B3)(); $("b3Q").textContent = cur.q; $("b3Fb").textContent = ""; $("b3Fb").className = "fb";
+    clear($("b3Sol")); $("b3Sol").appendChild(el("span", null, "Check your answer to see the steps."));
+    if (cur.pick) {
+      setMode(true); var box = $("b3Pick"); clear(box);
+      cur.opts.forEach(function(o, i){
+        var b = el("button", {"class": "chip", type: "button", "aria-pressed": "false"}, o);
+        b.addEventListener("click", function(){ box.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); show(i === cur.a, cur.opts[cur.a] + " is more efficient.", cur.s); });
+        box.appendChild(b);
+      });
+    } else { setMode(false); $("b3Unit").textContent = "(" + cur.unit + ")"; $("b3A").value = ""; }
+  }
+  $("b3Check").addEventListener("click", function(){
+    var v = parseFloat($("b3A").value);
+    if (isNaN(v)) { $("b3Fb").textContent = "Type a number first."; $("b3Fb").className = "fb no"; return; }
+    show(near(v, cur.a, 0.01) || Math.abs(v - cur.a) < 0.06, "The answer is " + grp(fmt(cur.a, 1)) + " " + cur.unit + ".", cur.s);
+  });
+  $("b3New").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 4: household audit ---------- */
+(function(){
+  var ROWS = [
+    {n: "Fridge (average over a day)", p: 50, h: 24}, {n: "LED lights (10 bulbs)", p: 90, h: 5}, {n: "TV", p: 100, h: 3},
+    {n: "Gaming console", p: 200, h: 2}, {n: "Laptop", p: 60, h: 4}, {n: "Microwave", p: 1000, h: 0.25},
+    {n: "Kettle", p: 1500, h: 0.2}, {n: "Hair dryer", p: 1500, h: 0.15}, {n: "Block heater (winter)", p: 500, h: 4}
+  ];
+  if (store.audit && store.audit.length === ROWS.length) store.audit.forEach(function(h, i){ ROWS[i].h = h; });
+  var tb = document.querySelector("#b4Table tbody"), tf = document.querySelector("#b4Table tfoot"), cells = [];
+  ROWS.forEach(function(r, i){
+    var tr = el("tr"); tr.appendChild(el("td", null, r.n)); tr.appendChild(el("td", {"class": "n"}, String(r.p)));
+    var td = el("td"), inp = el("input", {type: "number", id: "b4h" + i, min: "0", max: "24", step: "0.05", "aria-label": "Hours per day for " + r.n});
+    inp.value = r.h; inp.addEventListener("input", function(){ r.h = Math.min(24, Math.max(0, +inp.value || 0)); store.audit = ROWS.map(function(x){ return x.h; }); save(); draw(); });
+    td.appendChild(inp); tr.appendChild(td);
+    var k = el("td", {"class": "n"}), c = el("td", {"class": "n"}); tr.appendChild(k); tr.appendChild(c); cells.push([k, c]);
+    tb.appendChild(tr);
+  });
+  function draw(){
+    var price = Math.max(0, +$("b4Price").value || 0) / 100, tot = 0, totC = 0, ks = [];
+    ROWS.forEach(function(r, i){ var k = r.p / 1000 * r.h * 30; ks.push(k); tot += k; cells[i][0].textContent = fmt(k, 1); cells[i][1].textContent = money(k * price); });
+    totC = tot * price; clear(tf);
+    var tr = el("tr"); tr.appendChild(el("th", null, "Total")); tr.appendChild(el("td")); tr.appendChild(el("td"));
+    tr.appendChild(el("td", {"class": "n"}, fmt(tot, 1))); tr.appendChild(el("td", {"class": "n"}, money(totC))); tf.appendChild(tr);
+    var box = $("b4Bars"); clear(box); var max = Math.max.apply(null, ks) || 1;
+    ROWS.map(function(r, i){ return [r.n, ks[i]]; }).sort(function(a, b){ return b[1] - a[1]; }).forEach(function(r){
+      var row = el("div", {"class": "barrow"}); row.appendChild(el("span", null, r[0].replace(/ \(.*\)/, "")));
+      var bar = el("div", {"class": "bar2"}), i = el("i"); i.style.width = (r[1] / max * 100) + "%"; i.style.background = "var(--use)";
+      bar.appendChild(i); row.appendChild(bar); row.appendChild(el("b", null, money(r[1] * price))); box.appendChild(row);
+    });
+    box.appendChild(el("p", {"class": "hint"}, "Devices that run for many hours can cost more than powerful devices used for a few minutes."));
+  }
+  $("b4Price").addEventListener("input", draw); draw();
+  var cur;
+  function next(){
+    var d = pick(DEVICES), h = pick([0.5, 1, 2, 3, 4, 6, 8]), n = pick([7, 30, 31, 365]), pr = pick([10, 12, 15, 18, 20]);
+    var kwh = d.p / 1000 * h * n; cur = kwh * pr / 100;
+    $("b4Q").textContent = "A " + d.n.toLowerCase() + " (" + d.p + " W) runs " + h + " h a day for " + n + " days. Electricity costs " + pr + "¢ per kWh. What is the cost?";
+    $("b4A").value = ""; $("b4Fb").textContent = ""; $("b4Fb").className = "fb"; $("b4Sol").hidden = true;
+    var sol = $("b4Sol"); clear(sol);
+    ["E = " + sig(d.p / 1000) + " kW × " + h + " h × " + n + " = " + sig(kwh) + " kWh", "cost = " + sig(kwh) + " kWh × $" + (pr / 100).toFixed(2) + " = " + money(cur)].forEach(function(l){ sol.appendChild(el("span", null, l)); });
+  }
+  $("b4New").addEventListener("click", next);
+  $("b4Check").addEventListener("click", function(){
+    var v = parseFloat($("b4A").value);
+    if (isNaN(v)) { $("b4Fb").textContent = "Type a number first."; $("b4Fb").className = "fb no"; return; }
+    var ok = Math.abs(v - cur) <= Math.max(0.01, cur * 0.01);
+    $("b4Fb").textContent = ok ? "Correct." : "Not quite. The cost is " + money(cur) + ".";
+    $("b4Fb").className = "fb " + (ok ? "ok" : "no"); $("b4Sol").hidden = false;
+  });
+  next();
+})();
+
+/* ---------- Bench 5: a day on the grid ---------- */
+(function(){
+  /* made-up hourly profiles in MW, in the right general range */
+  function demand(h){ return 10000 + 900 * Math.sin((h - 9) / 24 * 2 * Math.PI) + (h >= 17 && h <= 20 ? 600 : 0); }
+  var DAYS = [
+    {label: "Windy summer day", wind: function(h){ return 3200 + 300 * Math.sin(h / 4); }, sun: function(h){ return h > 5 && h < 21 ? 1600 * Math.sin((h - 5) / 16 * Math.PI) : 0; }},
+    {label: "Calm summer day", wind: function(h){ return 400 + 150 * Math.sin(h / 3); }, sun: function(h){ return h > 5 && h < 21 ? 1600 * Math.sin((h - 5) / 16 * Math.PI) : 0; }},
+    {label: "Windy winter day", wind: function(h){ return 3000 + 400 * Math.cos(h / 5); }, sun: function(h){ return h > 8 && h < 17 ? 600 * Math.sin((h - 8) / 9 * Math.PI) : 0; }, extra: 1200},
+    {label: "Calm cold winter day", wind: function(h){ return 250 + 100 * Math.sin(h / 4); }, sun: function(h){ return h > 8 && h < 17 ? 450 * Math.sin((h - 8) / 9 * Math.PI) : 0; }, extra: 1500}
+  ];
+  var BASE = {hydro: 250, bio: 450};
+  var svg = $("b5Svg");
+  var leg = $("b5Legend");
+  [["Natural gas", "var(--gas)"], ["Wind", "var(--wind)"], ["Solar", "var(--solar)"], ["Hydro", "var(--hydro)"], ["Biomass and other", "var(--bio)"]].forEach(function(l){ var s = el("span"); var i = el("i"); i.style.background = l[1]; s.appendChild(i); s.appendChild(document.createTextNode(l[0])); leg.appendChild(s); });
+  ["Which source changes the most between the two summer days? Why?", "On the calm cold winter day, which source does most of the work? What would happen if that source were not available?", "Trace the energy stores for one source from the chart, from its starting store to the electric current."].forEach(function(q){ $("b5Qs").appendChild(el("li", null, q)); });
+  function draw(day){
+    clear(svg);
+    var x0 = 56, x1 = 590, y0 = 250, y1 = 16, maxMW = 14000;
+    function X(h){ return x0 + (x1 - x0) * h / 24; } function Y(v){ return y0 - (y0 - y1) * v / maxMW; }
+    for (var g = 0; g <= maxMW; g += 3500) { svg.appendChild(sv("line", {"class": "gridl", x1: x0, x2: x1, y1: Y(g), y2: Y(g)})); svg.appendChild(sv("text", {"class": "tm", x: x0 - 6, y: Y(g) + 4, "text-anchor": "end"}, grp(g))); }
+    [0, 6, 12, 18, 24].forEach(function(h){ svg.appendChild(sv("text", {"class": "tm", x: X(h), y: y0 + 18, "text-anchor": h === 24 ? "end" : h === 0 ? "start" : "middle"}, (h < 10 ? "0" : "") + h + ":00")); });
+    svg.appendChild(sv("text", {"class": "tm", x: x0, y: y1 - 4}, "MW"));
+    var layers = {bio: [], hydro: [], solar: [], wind: [], gas: []}, tot = {bio: 0, hydro: 0, solar: 0, wind: 0, gas: 0}, all = 0;
+    for (var h = 0; h <= 24; h += 0.5) {
+      var D = demand(h) + (day.extra || 0), w = Math.max(0, day.wind(h)), s = Math.max(0, day.sun(h));
+      var gas = Math.max(0, D - w - s - BASE.hydro - BASE.bio);
+      var vals = {bio: BASE.bio, hydro: BASE.hydro, solar: s, wind: w, gas: gas};
+      var acc = 0;
+      ["bio", "hydro", "solar", "wind", "gas"].forEach(function(k){ layers[k].push([h, acc, acc + vals[k]]); acc += vals[k]; if (h < 24) { tot[k] += vals[k] * 0.5; all += vals[k] * 0.5; } });
+    }
+    var col = {bio: "var(--bio)", hydro: "var(--hydro)", solar: "var(--solar)", wind: "var(--wind)", gas: "var(--gas)"};
+    Object.keys(layers).forEach(function(k){
+      var L = layers[k], d = "M" + X(L[0][0]) + "," + Y(L[0][2]);
+      L.forEach(function(p){ d += " L" + X(p[0]) + "," + Y(p[2]); });
+      for (var i = L.length - 1; i >= 0; i--) d += " L" + X(L[i][0]) + "," + Y(L[i][1]);
+      svg.appendChild(sv("path", {d: d + " Z", fill: col[k], opacity: .85}));
+    });
+    svg.appendChild(sv("line", {"class": "axis", x1: x0, x2: x1, y1: y0, y2: y0}));
+    var ro = $("b5Ro"); clear(ro);
+    [["Natural gas", "gas"], ["Wind", "wind"], ["Solar", "solar"], ["Hydro and biomass", "hb"]].forEach(function(r){
+      var v = r[1] === "hb" ? tot.hydro + tot.bio : tot[r[1]];
+      var d = el("div", {"class": "ro"}); d.appendChild(el("span", null, r[0] + " share")); d.appendChild(el("b", null, fmt(v / all * 100, 0) + "%")); ro.appendChild(d);
+    });
+    var d2 = el("div", {"class": "ro"}); d2.appendChild(el("span", null, "Energy for the day")); d2.appendChild(el("b", null, grp(Math.round(all)) + " MWh")); ro.appendChild(d2);
+    svg.setAttribute("aria-label", day.label + ": natural gas " + fmt(tot.gas / all * 100, 0) + "%, wind " + fmt(tot.wind / all * 100, 0) + "%, solar " + fmt(tot.solar / all * 100, 0) + "%.");
+  }
+  chipGroup($("b5Chips"), DAYS, function(d){ draw(d); }, 0);
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "What does the unit measure?", bins: ["Power", "Energy", "Efficiency", "Cost"], items: [
+    ["1500 W", 0, "The watt is the unit of power: joules per second."],
+    ["270 000 J", 1, "The joule is the unit of energy."],
+    ["0.075 kWh", 1, "A kilowatt hour is an amount of energy, even though it has kilowatt in its name."],
+    ["2.4 kW", 0, "A kilowatt is 1000 watts, a unit of power."],
+    ["30%", 2, "Efficiency is a ratio, usually given as a percentage."],
+    ["$27.00", 3, "Dollars measure cost: kWh × price per kWh."],
+    ["15¢ per kWh", 3, "This is a price per unit of energy, used to find cost."],
+    ["3.6 MJ", 1, "Megajoules are millions of joules, a unit of energy. 3.6 MJ is the same as 1 kWh."],
+    ["410 kWh per year", 1, "An EnerGuide label shows energy used in a year."],
+    ["useful output ÷ input × 100%", 2, "This is the efficiency formula."],
+    ["1 J each second", 0, "One joule per second is one watt of power."]
+  ]},
+  {label: "Useful or wasted?", bins: ["Useful output", "Wasted (dissipated)"], items: [
+    ["Light from an LED bulb", 0, "Light is what a bulb is for."],
+    ["Warmth of an LED bulb’s base", 1, "This heats the surroundings and is not what we want from a bulb."],
+    ["Heating the water in a kettle", 0, "A kettle’s job is to raise the thermal store of the water."],
+    ["Warming the outside of a kettle", 1, "Energy that heats the kettle body and the air is dissipated."],
+    ["Spinning blades of a fan", 0, "The kinetic store of the blades and air is the useful output."],
+    ["Humming sound from a fan motor", 1, "Sound is not the job of a fan, and it ends up warming the air."],
+    ["Warm phone charger", 1, "The charger heats up because some energy dissipates."],
+    ["Chemical store of a charging battery", 0, "Filling the battery is the useful output of a charger."],
+    ["Heat from a space heater", 0, "For a heater, heating the room is the useful job."],
+    ["Light from a toaster’s glowing coils", 1, "A toaster’s job is to heat bread, so the glow is not useful."],
+    ["Lifting an elevator car", 0, "The gravitational store of the lifted car is the useful output."]
+  ]},
+  {label: "Renewable or non-renewable?", bins: ["Renewable", "Non-renewable"], items: [
+    ["Wind", 0, "Wind keeps being renewed by the Sun heating Earth unevenly."],
+    ["Solar radiation", 0, "Sunlight arrives every day."],
+    ["Natural gas", 1, "Natural gas formed over millions of years and is used up when burned."],
+    ["Coal", 1, "Coal is a fossil fuel. Alberta stopped burning it for electricity in 2024."],
+    ["Oil (diesel)", 1, "Diesel is made from oil, a fossil fuel."],
+    ["Biomass (wood waste)", 0, "Biomass is renewable when the trees are regrown."],
+    ["Hydro (falling water)", 0, "The water cycle refills the rivers."]
+  ]},
+  {label: "EnerGuide or ENERGY STAR?", bins: ["EnerGuide", "ENERGY STAR"], items: [
+    ["Shows a number of kWh per year", 0, "EnerGuide labels give the estimated yearly energy use."],
+    ["A symbol that marks top-performing models", 1, "ENERGY STAR marks models that meet strict efficiency standards."],
+    ["Has a scale comparing similar models", 0, "The EnerGuide scale shows where the model sits among similar ones."],
+    ["Does not show a number", 1, "ENERGY STAR is a pass mark, not a measurement."],
+    ["Also used to rate whole houses", 0, "EnerGuide ratings exist for homes as well as appliances."],
+    ["Tells you a model is among the most efficient in its category", 1, "That is what the ENERGY STAR symbol means."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Power", "The rate at which a device transfers energy. Measured in watts (W)."],
+  ["Watt (W)", "The unit of power. One watt is one joule of energy transferred each second."],
+  ["Kilowatt (kW)", "1000 watts."],
+  ["Power rating", "The power printed on a device. It tells how fast the device transfers energy when it runs normally."],
+  ["Joule (J)", "The unit of energy."],
+  ["Kilowatt hour (kWh)", "A unit of energy: the energy a 1 kW device transfers in one hour. 1 kWh = 3 600 000 J."],
+  ["E = P × t", "Energy equals power times time. Watts × seconds gives joules; kilowatts × hours gives kilowatt hours."],
+  ["Law of conservation of energy", "Energy cannot be created or destroyed. It can only be transferred from one store to another."],
+  ["Energy store", "A place energy is held, such as chemical, kinetic, thermal, gravitational, elastic or nuclear."],
+  ["Energy transfer", "Energy moving from one store to another, for example by an electric current, heating, light or sound."],
+  ["Dissipation", "Energy spreading into the surroundings by heating them. It is not destroyed, but it is hard to use again."],
+  ["Useful energy", "The energy that ends up in the store we want, such as light from a bulb."],
+  ["Wasted energy", "Energy that does not do the job we want, usually because it heats the surroundings."],
+  ["Sankey diagram", "A diagram of arrows whose widths show amounts of energy in, useful out and wasted out."],
+  ["Energy efficiency", "Useful energy output ÷ total energy input × 100%. Always less than 100% for real devices."],
+  ["EnerGuide", "A Canadian label showing an appliance’s estimated yearly energy use in kWh, with a scale comparing similar models."],
+  ["ENERGY STAR", "A symbol that marks appliances and devices among the most efficient in their category."],
+  ["Cost of operating", "Energy used in kWh × price per kWh."],
+  ["Generator", "A machine that transfers energy from a spinning turbine into an electric current."],
+  ["Biomass", "Plant material, such as wood waste, that can be burned to generate electricity."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What does power measure?", ["The rate at which energy is transferred", "The total energy a device uses", "The cost of running a device", "The efficiency of a device"], "Power is a rate: joules per second."],
+  ["One watt is equal to…", ["one joule per second", "one joule per hour", "one kilowatt hour", "1000 joules"], "1 W = 1 J/s."],
+  ["A 2000 W heater and a 1000 W heater both run for 10 minutes. Which statement is true?", ["The 2000 W heater transfers twice as much energy", "Both transfer the same energy", "The 1000 W heater transfers more energy", "Power has nothing to do with energy"], "Same time, double the power, so double the energy (E = P × t)."],
+  ["How much energy does a 60 W bulb transfer in 100 s?", ["6000 J", "0.6 J", "160 J", "600 J"], "E = 60 W × 100 s = 6000 J."],
+  ["A 1.5 kW kettle runs for 0.1 h. How much energy does it use?", ["0.15 kWh", "15 kWh", "1.6 kWh", "150 kWh"], "E = 1.5 kW × 0.1 h = 0.15 kWh."],
+  ["The kilowatt hour is a unit of…", ["energy", "power", "time", "efficiency"], "A kWh is power × time, which is energy."],
+  ["How many joules are in 1 kWh?", ["3 600 000 J", "1000 J", "3600 J", "60 000 J"], "1000 W × 3600 s = 3 600 000 J."],
+  ["A device transfers 12 000 J in 60 s. What is its power?", ["200 W", "720 000 W", "12 000 W", "0.005 W"], "P = E ÷ t = 12 000 J ÷ 60 s = 200 W."],
+  ["The law of conservation of energy says energy…", ["cannot be created or destroyed, only transferred between stores", "is used up when a device runs", "is created by power plants", "is destroyed by friction"], "Energy is only transferred. The total stays the same."],
+  ["A battery fan runs. Which store decreases?", ["The chemical store of the battery", "The thermal store of the room", "The kinetic store of the blades", "No store decreases"], "The battery’s chemical store goes down while other stores go up."],
+  ["When energy dissipates, it…", ["spreads into the surroundings by heating them", "disappears completely", "turns into new energy", "returns to the battery"], "Dissipated energy still exists in the thermal store of the surroundings but is hard to use."],
+  ["A motor takes in 500 J and gives 350 J of kinetic energy. How much energy is wasted?", ["150 J", "850 J", "350 J", "0 J"], "500 J − 350 J = 150 J wasted."],
+  ["In a Sankey diagram, the width of an arrow shows…", ["the amount of energy", "the speed of the energy", "the time taken", "the cost"], "Wider arrows stand for more energy."],
+  ["A bulb takes in 200 J and gives 50 J of light. What is its efficiency?", ["25%", "4%", "75%", "150%"], "50 ÷ 200 × 100% = 25%."],
+  ["Why can no real device be 100% efficient?", ["Some energy always dissipates by heating the surroundings", "Energy is destroyed inside the device", "Power ratings are always wrong", "Electricity is a store that runs out"], "Friction and resistance always heat the surroundings a little."],
+  ["A device claims to give 120 J of useful output from 100 J of input. What is wrong?", ["It would create energy, which breaks the law of conservation of energy", "Nothing; it is very efficient", "The input should be in watts", "Efficiency cannot be found"], "Output can never be more than input."],
+  ["An LED bulb is more efficient than an incandescent bulb because it…", ["turns a larger share of its input into light", "creates extra light energy", "uses a higher power rating", "has no wasted energy at all"], "LEDs dissipate less energy as heat for the same light."],
+  ["What does an EnerGuide label show?", ["Estimated energy use in kWh per year and a comparison scale", "The price of the appliance", "The appliance’s power source", "Only whether it is efficient or not"], "EnerGuide gives a number of kWh per year with a scale."],
+  ["What does the ENERGY STAR symbol tell you?", ["The model is among the most efficient in its category", "The model uses solar power", "The model costs nothing to run", "The model has the highest power rating"], "It marks top-performing efficient models."],
+  ["Fridge A uses 600 kWh a year and Fridge B uses 400 kWh a year. At 15¢ per kWh, how much does B save each year?", ["$30", "$60", "$90", "$200"], "200 kWh × $0.15 = $30."],
+  ["A 0.1 kW TV runs 4 h a day for 30 days at 15¢ per kWh. What is the cost?", ["$1.80", "$18.00", "$0.06", "$12.00"], "E = 0.1 × 4 × 30 = 12 kWh. 12 × $0.15 = $1.80."],
+  ["Which source generates most of Alberta’s electricity today?", ["Natural gas", "Coal", "Hydro", "Oil"], "Natural gas plants generate most of Alberta’s electricity. Coal ended in 2024."],
+  ["What happened to coal-fired electricity in Alberta in 2024?", ["The last coal units stopped burning coal", "It became the largest source", "It doubled", "It switched to solar panels"], "Coal units were retired or converted to burn natural gas."],
+  ["Which energy transfer happens in a wind turbine?", ["Kinetic store of moving air to an electric current", "Chemical store of fuel to thermal", "Gravitational store of water to kinetic", "Radiation to chemical"], "Moving air turns the blades, and the generator produces a current."],
+  ["Why do gas plants help when the wind drops?", ["They can be turned up or down quickly", "They need no fuel", "They make energy from nothing", "They only run at night"], "Gas plants can change output quickly to match demand."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Explain the difference between power and energy. Use a kettle as your example.", a: "Energy is the amount transferred, measured in joules or kWh. Power is how fast energy is transferred, measured in watts. A 1500 W kettle transfers 1500 J every second. If it runs for 180 s, it transfers 1500 × 180 = 270 000 J in total.", k: ["Energy is an amount (J or kWh)", "Power is a rate (W = J/s)", "Uses E = P × t", "Example with numbers"]},
+  {q: "A 900 W microwave runs for 4 minutes. Find the energy in joules and in kilowatt hours.", a: "t = 240 s, so E = 900 W × 240 s = 216 000 J. In kWh: 0.9 kW × (4 ÷ 60) h = 0.9 × 0.0667 = 0.06 kWh.", k: ["Converts minutes to seconds or hours", "216 000 J", "0.06 kWh", "Units shown"]},
+  {q: "State the law of conservation of energy and apply it to a phone charger.", a: "Energy cannot be created or destroyed. It can only be transferred from one store to another. In a charger, electrical energy transfers to the chemical store of the battery. Some dissipates and heats the charger and phone. The energy in equals the useful energy plus the wasted energy.", k: ["States the law", "Names the useful store", "Names the wasted energy as heating", "Energy in = useful + wasted"]},
+  {q: "What does it mean when energy dissipates? Is it destroyed?", a: "Dissipated energy spreads into the surroundings by heating them. It is not destroyed; it is still in the thermal store of the surroundings. It is spread so thinly that it is very hard to use again, so the useful energy available goes down.", k: ["Spreads into surroundings", "By heating", "Not destroyed", "Less useful energy available"]},
+  {q: "A hair dryer takes in 90 000 J. 63 000 J heats the air and 27 000 J is wasted. Is heating the air useful here? Find the efficiency.", a: "Yes. A hair dryer’s job is to blow warm air, so heating the air and moving it is useful. Efficiency = 63 000 ÷ 90 000 × 100% = 70%.", k: ["Explains what is useful depends on the job", "Correct formula", "70%"]},
+  {q: "Explain why no real electrical device can have an efficiency of 100% or more.", a: "More than 100% would mean energy was created, which breaks the law of conservation of energy. Exactly 100% is not reached because some energy always dissipates, for example through the resistance of wires and friction, heating the surroundings.", k: ["Above 100% would create energy", "Some energy always dissipates", "Names a cause such as resistance or friction"]},
+  {q: "Describe what EnerGuide and ENERGY STAR each tell a shopper.", a: "An EnerGuide label shows the appliance’s estimated energy use in kWh per year and a scale comparing it with similar models. The ENERGY STAR symbol shows that the model meets strict efficiency standards and is among the most efficient in its category.", k: ["EnerGuide: kWh per year", "EnerGuide: comparison scale", "ENERGY STAR: top efficient models"]},
+  {q: "A 1.2 kW block heater runs 4 h a night for 31 nights. At 15¢ per kWh, what does it cost?", a: "E = 1.2 kW × 4 h × 31 = 148.8 kWh. Cost = 148.8 × $0.15 = $22.32.", k: ["Finds energy in kWh", "148.8 kWh", "$22.32"]},
+  {q: "Name three sources of electricity in Alberta and the starting energy store for each.", a: "Natural gas: chemical store of the gas. Wind: kinetic store of moving air. Solar: energy from the Sun’s radiation. Biomass: chemical store of wood waste. Hydro: gravitational store of water behind a dam.", k: ["Three correct sources", "Correct store for each", "Mentions gas as the main source"]}
+];
+var LONG = [
+  {q: "Your family wants to replace ten 60 W incandescent bulbs with 9 W LED bulbs that give the same light. Each bulb is on 5 h a day. Use energy, efficiency and cost to argue whether the switch is worthwhile over one year. Use the practice price of 15¢ per kWh.", a: "Old bulbs: 10 × 0.06 kW × 5 h × 365 = 1095 kWh, costing about $164. LED bulbs: 10 × 0.009 kW × 5 × 365 = 164.25 kWh, about $24.64. The saving is about 931 kWh and $140 a year. The LEDs give the same light with much less input because a larger share of their energy becomes light, while incandescent bulbs dissipate most of their energy as heat. The switch is worthwhile, and it also lowers demand on power plants. In winter the old bulbs’ heat warms the house a little, but a gas furnace heats the house at a lower cost.", k: ["Energy for both sets in kWh", "Cost for both", "Explains efficiency difference", "Links to conservation or dissipation", "Clear conclusion"]},
+  {q: "Use the law of conservation of energy to explain where the energy goes from a natural gas power plant to the light from a lamp in your home.", a: "The chemical store of natural gas is transferred to the thermal store of hot gases or steam when it burns. This spins a turbine (kinetic store) and a generator transfers the energy as an electric current through the grid to your home. The lamp transfers it to light, and the light ends up warming the room. At every step some energy dissipates by heating the surroundings, at the plant, in power lines and in the lamp. No energy is created or destroyed, but only a small share of the starting energy ends up as light.", k: ["Starts at the chemical store", "Names turbine and generator", "Dissipation at several steps", "Total energy conserved", "Useful share is small"]},
+  {q: "Alberta’s electricity mix has changed a lot in recent years. Describe the main sources today and discuss one benefit and one challenge of adding more wind and solar.", a: "Most electricity comes from natural gas, with a fast-growing share from wind and solar in southern Alberta, plus small amounts from biomass and hydro. Coal ended in 2024 and oil is used only in a few remote places. A benefit of wind and solar is that they burn no fuel and are renewable. A challenge is that their output changes with weather and time of day, so other sources such as gas plants or storage must fill the gap to match demand.", k: ["Gas is the main source", "Wind and solar growing", "Coal ended 2024", "A benefit", "A challenge such as variability"]},
+  {q: "Design a short plan to cut your household’s electricity cost by 10%. Use calculations with E = P × t and cost, and refer to EnerGuide or ENERGY STAR.", a: "Answers will vary. A strong plan audits devices (power × hours), finds the largest energy users, and targets them: shorter use of high-power devices, switching to LEDs, unplugging chargers, and choosing an ENERGY STAR appliance with a lower EnerGuide number when replacing one. It shows the kWh and dollars saved and compares them with 10% of the current bill.", k: ["Audit with E = P × t", "Targets largest users", "Uses EnerGuide or ENERGY STAR", "Shows savings calculation", "Checks the 10% goal"]}
+];
+var COV = [["E2.K1", "Power, expressed in watts, is the rate at which an electrical device transfers energy.", "Learn: Lesson 1 (energy race); Flashcards; Quiz"], ["E2.K2", "The power rating can be used to calculate the energy input required by a device.", "Learn: Lesson 2; Lab Bench: Investigation 1"], ["E2.K3", "The relationship between power and time can be used to determine energy input E = P × t.", "Learn: Lesson 2 (energy calculator); Lab Bench: Investigation 1"], ["E2.K4", "The law of conservation of energy states that energy\n• cannot be created or destroyed\n• can be transferred from one energy store to another", "Learn: Lesson 3 (energy ledger); Lab Bench: Investigation 2"], ["E2.K5", "During an energy transfer, energy dissipates from a system through heating the system’s surroundings, reducing the amount of useful energy available.", "Learn: Lesson 4 (Sankey diagram); Lab Bench: Investigation 2; Sort It: Useful or wasted"], ["E2.K6", "The energy efficiency of electrical devices can be determined by comparing the input from the energy store to the output of the device, quantified in a ratio.", "Learn: Lesson 5 (efficiency gauge); Lab Bench: Investigation 3"], ["E2.K7", "Appliances or devices can be rated according to their energy efficiency by programs such as EnerGuide or Energy Star.", "Learn: Lesson 6 (two fridges); Sort It: EnerGuide or ENERGY STAR"], ["E2.K8", "The cost of operating electrical devices is the product of the energy rating in kilowatt hours and the price of power per kilowatt hour.", "Learn: Lesson 7 (running cost); Lab Bench: Investigation 4"], ["E2.K9", "In Alberta, electricity can be derived from various sources, including oil, natural gas, coal, biomass, solar radiation, and wind.", "Learn: Lesson 8 (Alberta sources); Lab Bench: Investigation 5; Sort It: Renewable or non-renewable"], ["E2.S1", "Explain the relationships between power, energy, and efficiency.", "Learn: Lessons 1, 2 and 5; Lab Bench: Investigations 1 and 3; Written Review"], ["E2.S2", "Solve problems involving energy, power, and time.", "Lab Bench: Investigation 1 (randomized practice) and Investigation 4"], ["E2.S3", "Apply the law of conservation of energy to account for the total energy involved in energy transfers.", "Learn: Lesson 3; Lab Bench: Investigation 2 (balance the accounts)"], ["E2.S4", "Relate energy efficiency to energy stores and transfers.", "Learn: Lessons 4 and 5; Lab Bench: Investigation 2; Written Review extended response 2"], ["E2.S5", "Solve problems involving the efficiency of various electrical devices.", "Lab Bench: Investigation 3 (randomized efficiency problems)"], ["E2.S6", "Solve problems involving the cost of operating electrical devices.", "Learn: Lesson 7; Lab Bench: Investigation 4 (home audit and cost problems)"], ["E2.S7", "Explore sources of electricity in Alberta.", "Learn: Lesson 8; Lab Bench: Investigation 5 (a day on the grid); Written Review extended response 3"]];
+(function(){
+  var tb = document.querySelector("#covTable tbody");
+  COV.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+$("quizIntro").textContent = "Ten questions drawn from a bank of " + QUIZ.length + ". Each answer shows an explanation. Start a new round for a fresh set.";
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+
+</script>
+
+</body></html>

@@ -1,0 +1,1576 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/light-waves-lab/"><meta name="description" content="Light waves transfer energy from the source of the light wave."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Light Waves Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an optics bench. Sticky tab strip, then lessons that pair a short reading column with a live light model: a source and target, a jar with a bell and a lamp, rays and a three-card test, a tunable wave, the spectrum, a prism, a material beam, a lamp-mug-eye room and a shadow caster. Gold marks light rays, teal marks waves, Grade 9 green marks codes and eyebrows. */
+:root{
+  --bg:#EDF1F4; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#15212C; --muted:#53606D; --line:#D2D9E0;
+  --beam:#B87400; --beam-soft:#FBF0D8; --shadow:#33404C; --whitebeam:#8C98A4;
+  --acc:#2E7A4F; --acc-soft:#DFF0E5;
+  --wave:#0F6E7A; --wave-soft:#DCEFF1; --ray:#B3261E; --ray-soft:#F8E1DE; --energy:#8A5A00; --energy-fill:#E9A93A; --energy-soft:#FBF0D8;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --water:#CFE6F2; --glass:#E3E9EE; --air:#FFFFFF; --mirror:#7E8C99;
+  --d1:#C62828; --d2:#D97706; --d3:#2E8B47; --d4:#2F64C8; --d5:#7340B8;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --beam:#F2C14E; --beam-soft:#3A2F12; --shadow:#04070A; --whitebeam:#F1F4F7;
+  --acc:#74C995; --acc-soft:#16301F;
+  --wave:#5FC8D4; --wave-soft:#12303A; --ray:#FF8A80; --ray-soft:#3A1C18; --energy:#F2C14E; --energy-fill:#E9A93A; --energy-soft:#3A2F12;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --water:#163447; --glass:#26313B; --air:#161E26; --mirror:#8E9CAA;
+  --d1:#FF6B6B; --d2:#FFB347; --d3:#6FD08C; --d4:#7FA8FF; --d5:#C49BFF;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161E26; --surface-2:#1B242E; --ink:#E4EAF0; --muted:#9AA7B4; --line:#2A3540;
+  --beam:#F2C14E; --beam-soft:#3A2F12; --shadow:#04070A; --whitebeam:#F1F4F7;
+  --acc:#74C995; --acc-soft:#16301F;
+  --wave:#5FC8D4; --wave-soft:#12303A; --ray:#FF8A80; --ray-soft:#3A1C18; --energy:#F2C14E; --energy-fill:#E9A93A; --energy-soft:#3A2F12;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  --water:#163447; --glass:#26313B; --air:#161E26; --mirror:#8E9CAA;
+  --d1:#FF6B6B; --d2:#FFB347; --d3:#6FD08C; --d4:#7FA8FF; --d5:#C49BFF;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--acc)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--acc)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.mono{font-family:var(--f-mono)}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .wv{color:var(--wave)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel>*{min-width:0}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson,.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson,.inv{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text,.inv .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3,.inv h3{font-size:1.35rem;font-weight:700}
+.step{font-family:var(--f-mono);font-size:.72rem;color:var(--acc);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--acc)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--acc-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--acc)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+.wv{color:var(--wave);font-weight:700} .rv{color:var(--ray);font-weight:700}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px}
+.two>*{min-width:0}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tg{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tg.on{background:var(--wave-soft);border-color:var(--wave);color:var(--ink)}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .mtxt{font-family:var(--f-mono);font-size:12px;font-weight:600}
+svg [tabindex]{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+label.field output{font-family:var(--f-mono);font-weight:600;color:var(--wave)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+select{width:100%}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--energy-fill);border-radius:7px;transition:width .3s ease}
+.chain{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.chain div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;display:grid;gap:2px}
+.chain b{font-family:var(--f-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--energy)}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;font-variant-numeric:tabular-nums}
+.dt th{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--good)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--acc)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.credit a{color:var(--acc)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.f-ink{fill:var(--ink)} .s-ink{stroke:var(--ink)} .f-muted{fill:var(--muted)} .s-muted{stroke:var(--muted)} .s-line{stroke:var(--line)}
+.f-surface{fill:var(--surface)} .f-surface2{fill:var(--surface-2)} .f-glass{fill:var(--glass)} .f-accsoft{fill:var(--acc-soft)}
+.f-beam{fill:var(--beam)} .s-beam{stroke:var(--beam)} .c-beam{color:var(--beam)} .c-ray{color:var(--ray)} .f-ray{fill:var(--ray)} .s-ray{stroke:var(--ray)}
+.s-wave{stroke:var(--wave)} .f-energy{fill:var(--energy-fill)} .f-shadow{fill:var(--shadow)} .s-white{stroke:var(--whitebeam)}
+.flow{animation:flow 1s linear infinite} @keyframes flow{to{stroke-dashoffset:-18}}
+header h1 .lt{color:var(--beam)}
+.safety{font-size:.92rem;background:var(--beam-soft);border-radius:8px;padding:8px 12px;color:var(--ink)}
+.bars{display:grid;gap:6px}
+.barrow{display:grid;grid-template-columns:6.5em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.88rem}
+.barrow b{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.meter i.m-beam{background:var(--beam)} .meter i.m-muted{background:var(--muted)} .meter i.m-energy{background:var(--ray)}
+.swatch{height:28px;border-radius:8px;border:1px solid var(--line)}
+.prob{font-weight:700}
+.band:focus{outline:none} .band:focus-visible rect{stroke:var(--acc);stroke-width:4}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Waves: Sound and Light · W2</div>
+    <h1><span class="lt">Light</span> Waves Lab</h1>
+    <p class="under"><b>Understanding:</b> Light waves transfer energy from the source of the light wave. Sunlight on a cold prairie morning, the northern lights over northern Alberta and the lamp on your desk all send energy outward from a source. Light needs no medium, travels in straight lines and behaves in ways you can predict.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Nine short lessons in order. Each one has a model to try. First see where light comes from and how it travels. Then learn what sets brightness and colour, and finish with how we see objects and why shadows form.</p>
+    <p class="safety"><b>Safety:</b> never look straight at the Sun, even through a prism, sunglasses or a camera. Never shine a laser pointer at anyone's eyes.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · Light carries energy</span>
+      <div class="codes"><span class="code">W2.K1</span><span class="code">W2.S1</span></div>
+      <h3>Every light wave starts at a source</h3>
+      <p>A <b>light source</b> is an object that gives off its own light. The Sun, a campfire, an LED bulb and a firefly are all light sources. Each one changes some other kind of energy into light.</p>
+      <p>Light then carries that energy away from the source. When light lands on something, the energy can be transferred again. A solar panel turns it into electricity. A leaf uses it to make food. Dark pavement warms up.</p>
+      <div class="key"><b>Remember:</b> no source, no light. The light wave carries energy from the source to whatever it reaches.</div>
+    </div>
+    <div class="model">
+      <h4>Model: from source to target</h4>
+      <p class="hint">Pick a source and a place for the light to land. Follow the energy.</p>
+      <div class="chips" id="l1Src" role="group" aria-label="Choose a light source"></div>
+      <div class="svgbox"><svg id="l1Svg" viewBox="0 0 520 200" role="img" aria-label="A light source on the left sends rays to a target on the right."></svg></div>
+      <div class="chips" id="l1Tgt" role="group" aria-label="Choose where the light lands"></div>
+      <div class="detail" id="l1Det" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · No medium needed</span>
+      <div class="codes"><span class="code">W2.K1</span><span class="code">W2.S1</span></div>
+      <h3>Light can cross empty space</h3>
+      <p>Sound is a mechanical wave. It needs particles to pass the vibration along. Light is different. Light is an <b>electromagnetic wave</b>: a wave made of changing electric and magnetic fields. It does not need a <b>medium</b>, which is a material for a wave to travel through.</p>
+      <p>That is how sunlight crosses about 150 million km of nearly empty space to reach Earth. In a vacuum, light travels at about <b>300 000 km every second</b>, written 3.00 × 10<sup>8</sup> m/s. Nothing travels faster.</p>
+      <div class="formula">time = distance ÷ speed<br>Sun to Earth: 150 000 000 km ÷ 300 000 km/s = 500 s ≈ 8.3 minutes</div>
+      <p class="note">You do not need to memorize these formulas. Use them as tools.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a bell and a lamp in a jar</h4>
+      <p class="hint">Pump the air out of the jar. What happens to the sound? What happens to the light?</p>
+      <div class="svgbox"><svg id="l2Svg" viewBox="0 0 520 220" role="img" aria-label="A glass jar holding a ringing bell and a glowing lamp."></svg></div>
+      <label class="field" for="l2Air">Air left in the jar <output id="l2AirOut">100%</output>
+        <input type="range" id="l2Air" min="0" max="100" step="5" value="100"></label>
+      <div class="stats" id="l2Stats"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Straight lines, every direction</span>
+      <div class="codes"><span class="code">W2.K1</span><span class="code">W2.S1</span></div>
+      <h3>Light travels outward in straight lines</h3>
+      <p>A bulb sends light out in <b>all directions</b>. That is why everyone in the room can see it. We draw the path of light as a <b>ray</b>: a straight arrow pointing away from the source.</p>
+      <p>In one material, such as air, light travels in <b>straight lines</b>. You can test this with three cards that each have a small hole. You only see the lamp when all three holes line up.</p>
+      <p class="note">Light does change direction when it reflects off a surface or passes into a new material, like air into water. You will study that bending in W3.</p>
+    </div>
+    <div class="model">
+      <h4>Model: rays from a bulb</h4>
+      <label class="field" for="l3Rays">Number of rays drawn <output id="l3RaysOut">12</output>
+        <input type="range" id="l3Rays" min="4" max="24" step="2" value="12"></label>
+      <div class="svgbox"><svg id="l3Svg" viewBox="0 0 520 180" role="img" aria-label="A bulb with straight rays spreading in all directions."></svg></div>
+      <h4>Model: the three-card test</h4>
+      <div class="svgbox"><svg id="l3bSvg" viewBox="0 0 520 170" role="img" aria-label="A lamp, three cards with holes and an eye."></svg></div>
+      <div class="row">
+        <button class="btn" id="l3Line" type="button">Line up the holes</button>
+        <button class="btn ghost" id="l3Shift" type="button">Move the middle card</button>
+      </div>
+      <p class="detail" id="l3Det" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Brightness and colour</span>
+      <div class="codes"><span class="code">W2.K2</span><span class="code">W2.S1</span></div>
+      <h3>Amplitude sets brightness. Frequency sets colour.</h3>
+      <p>A light wave has the same parts as any wave. The <b>amplitude</b> is the height of a crest above the middle line. A bigger amplitude carries more energy, so the light looks <b>brighter</b>.</p>
+      <p>The <b>frequency</b> is how many waves pass a point each second. For light it is huge, so we measure it in terahertz (THz): one trillion waves each second. Frequency sets the <b>colour</b>. Red light has the lowest frequency we can see. Violet has the highest.</p>
+      <p>The <b>wavelength</b> is the distance from one crest to the next. Light with a high frequency has a short wavelength.</p>
+      <div class="formula">c = f × λ<br>speed = frequency × wavelength<br>Shortcut: λ (nm) = 300 000 ÷ f (THz)</div>
+      <p class="note">Most colours you see are mixes. A screen makes yellow by mixing red and green light. A single frequency gives one pure colour.</p>
+    </div>
+    <div class="model">
+      <h4>Model: tune a light wave</h4>
+      <div class="two">
+        <label class="field" for="l4Amp">Amplitude <output id="l4AmpOut">3</output>
+          <input type="range" id="l4Amp" min="1" max="5" step="1" value="3"></label>
+        <label class="field" for="l4F">Frequency <output id="l4FOut">540 THz</output>
+          <input type="range" id="l4F" min="430" max="750" step="5" value="540"></label>
+      </div>
+      <div class="svgbox"><svg id="l4Svg" viewBox="0 0 520 200" role="img" aria-label="A light wave and the lamp it would make."></svg></div>
+      <div class="stats" id="l4Stats" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · The electromagnetic spectrum</span>
+      <div class="codes"><span class="code">W2.K4</span><span class="code">W2.S1</span></div>
+      <h3>We see only a thin slice</h3>
+      <p>Light is one member of a big family of electromagnetic waves called the <b>electromagnetic spectrum</b>. From lowest to highest frequency: radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and gamma rays. All of them travel at the same speed in a vacuum.</p>
+      <p>Human eyes detect only a small part, the <b>visible light spectrum</b>. It runs from red (about 700 nm) to violet (about 400 nm). A nanometre (nm) is one billionth of a metre. Some animals see a bit more. Bees can see some ultraviolet.</p>
+      <p>Higher frequency waves carry more energy. That is why ultraviolet can burn skin and X-rays need careful shielding.</p>
+    </div>
+    <div class="model">
+      <h4>Model: explore the spectrum</h4>
+      <p class="hint">Select a band (tap, or Tab to it and press Enter).</p>
+      <div class="svgbox"><svg id="l5Svg" viewBox="0 0 560 190" role="group" aria-label="The electromagnetic spectrum from radio waves to gamma rays, with the visible spectrum enlarged."></svg></div>
+      <div class="detail" id="l5Det" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · White light and a prism</span>
+      <div class="codes"><span class="code">W2.K5</span><span class="code">W2.S3</span></div>
+      <h3>White light is every colour together</h3>
+      <p>Sunlight looks white, but it contains all the colours of the visible spectrum. A <b>prism</b> is a block of glass with flat, angled faces. When white light passes through it, each colour bends by a slightly different amount. Violet bends the most and red bends the least. The colours spread apart into a band called a <b>spectrum</b>. This spreading is called <b>dispersion</b>.</p>
+      <p>In 1666 Isaac Newton showed that a prism does not add colour to light. It separates colours that were already there. Raindrops do the same thing to make a rainbow. On very cold days, ice crystals in the air can make bright spots beside the Sun called sundogs, often seen over Alberta.</p>
+      <div class="key"><b>Remember the order:</b> red, orange, yellow, green, blue, violet. Red has the lowest frequency and the longest wavelength.</div>
+    </div>
+    <div class="model">
+      <h4>Model: shine light into a prism</h4>
+      <div class="chips" id="l6Chips" role="group" aria-label="Choose the light"></div>
+      <div class="svgbox"><svg id="l6Svg" viewBox="0 0 520 230" role="img" aria-label="A beam of light entering a triangular glass prism."></svg></div>
+      <div class="detail" id="l6Det" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Transparent, translucent, opaque</span>
+      <div class="codes"><span class="code">W2.K3</span><span class="code">W2.S2</span></div>
+      <h3>Materials let light through in different ways</h3>
+      <p>When light reaches a material, it can pass through (<b>transmission</b>), bounce off (<b>reflection</b>) or be taken in (<b>absorption</b>). Absorbed light energy usually warms the material.</p>
+      <ul>
+        <li><b>Transparent</b> materials let almost all light pass straight through. You see clear images through them. Example: window glass.</li>
+        <li><b>Translucent</b> materials let some light through but scatter it in many directions. Images look blurry. Example: wax paper.</li>
+        <li><b>Opaque</b> materials let no light through. They reflect or absorb all of it. Example: cardboard.</li>
+      </ul>
+    </div>
+    <div class="model">
+      <h4>Model: shine a beam at a material</h4>
+      <div class="chips" id="l7Chips" role="group" aria-label="Choose a material"></div>
+      <div class="svgbox"><svg id="l7Svg" viewBox="0 0 520 200" role="img" aria-label="A light beam hitting a material."></svg></div>
+      <div class="bars" id="l7Bars"></div>
+      <div class="detail" id="l7Det" aria-live="polite"></div>
+      <p class="hint">Percentages are rough values for a model, not measurements.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · How we see things</span>
+      <div class="codes"><span class="code">W2.K6</span><span class="code">W2.S1</span></div>
+      <h3>Light must reach your eye</h3>
+      <p>You see an object only when light from it enters your eye. A <b>luminous</b> object makes its own light, so you see it directly. A lamp and the Sun are luminous.</p>
+      <p>Most objects are <b>non-luminous</b>. You see them because they <b>reflect</b> light from a source into your eyes. The Moon is non-luminous. Moonlight is sunlight reflected off the Moon's surface.</p>
+      <p>In a room with no light at all, you see nothing, even though the objects are still there.</p>
+    </div>
+    <div class="model">
+      <h4>Model: a lamp, a mug and an eye</h4>
+      <div class="chips" id="l8Chips" role="group" aria-label="Choose a situation"></div>
+      <div class="svgbox"><svg id="l8Svg" viewBox="0 0 520 210" role="img" aria-label="A lamp, a mug and an eye in a room."></svg></div>
+      <div class="detail" id="l8Det" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 9 · Shadows</span>
+      <div class="codes"><span class="code">W2.K7</span><span class="code">W2.S4</span></div>
+      <h3>A shadow is where light is blocked</h3>
+      <p>Light travels in straight lines, so it cannot bend around an opaque object to fill the space behind it. The object absorbs or reflects the light that hits it. That leaves a dark area behind the object: a <b>shadow</b>.</p>
+      <p>A small source makes a sharp shadow. A wide source, like a long fluorescent light, makes a shadow with two parts. The <b>umbra</b> is the fully dark centre, where no light reaches. The <b>penumbra</b> is the partly lit edge, where only some of the source is blocked.</p>
+      <p>Move an object closer to the source and its shadow gets bigger. Translucent objects make faint shadows because some light still gets through.</p>
+    </div>
+    <div class="model">
+      <h4>Model: make a shadow</h4>
+      <div class="chips" id="l9Chips" role="group" aria-label="Choose the light source"></div>
+      <label class="field" for="l9X">Distance from source to object <output id="l9XOut">150 cm</output>
+        <input type="range" id="l9X" min="60" max="380" step="10" value="150"></label>
+      <div class="svgbox"><svg id="l9Svg" viewBox="0 0 520 240" role="img" aria-label="A light source, an object and a screen with the object's shadow."></svg></div>
+      <div class="stats" id="l9Stats" aria-live="polite"></div>
+    </div>
+  </article>
+</section>
+
+<!-- LAB BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Describe light waves with numbers, test materials with a light meter, repeat Newton's prism experiment and predict the size of shadows. Each one has a worked example and new practice each time.</p>
+  </div>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 1 · Describe a light wave</span>
+      <div class="codes"><span class="code">W2.S1</span><span class="code">W2.K2</span><span class="code">W2.K4</span></div>
+      <h3>From frequency to wavelength and colour</h3>
+      <p>Every colour of visible light has its own frequency and wavelength. Use the shortcut to find the wavelength, then use the colour table to name the colour.</p>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>A light wave has a frequency of 500 THz.</span>
+        <span>λ = 300 000 ÷ f = 300 000 ÷ 500 = 600 nm</span>
+        <span>600 nm falls in the orange range, so the light is orange.</span>
+      </div>
+      <div class="tablebox"><table class="dt"><thead><tr><th>Colour</th><th>Wavelength (nm)</th><th>Frequency (THz)</th></tr></thead>
+        <tbody><tr><td>Red</td><td>620 to 700</td><td>430 to 480</td></tr><tr><td>Orange</td><td>590 to 620</td><td>480 to 510</td></tr><tr><td>Yellow</td><td>570 to 590</td><td>510 to 530</td></tr><tr><td>Green</td><td>495 to 570</td><td>530 to 610</td></tr><tr><td>Blue</td><td>450 to 495</td><td>610 to 670</td></tr><tr><td>Violet</td><td>400 to 450</td><td>670 to 750</td></tr></tbody></table></div>
+      <p class="hint">Ranges are rounded. Colours blend into each other with no sharp edges.</p>
+    </div>
+    <div class="model">
+      <h4>Practice</h4>
+      <p class="prob" id="b1Q" aria-live="polite"></p>
+      <div class="two">
+        <label class="field" for="b1L">Wavelength (nm)<input type="number" id="b1L" inputmode="decimal"></label>
+        <label class="field" for="b1C">Colour
+          <select id="b1C"><option value="">Choose…</option><option>Red</option><option>Orange</option><option>Yellow</option><option>Green</option><option>Blue</option><option>Violet</option></select></label>
+      </div>
+      <div class="row">
+        <button class="btn" id="b1Check" type="button">Check</button>
+        <button class="btn ghost" id="b1New" type="button">New problem</button>
+        <button class="btn ghost" id="b1Show" type="button">Show solution</button>
+      </div>
+      <p class="fb" id="b1Fb" aria-live="polite"></p>
+      <div class="swatch" id="b1Sw" aria-hidden="true"></div>
+      <p class="hint mono" id="b1Score"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 2 · Light meter test</span>
+      <div class="codes"><span class="code">W2.S2</span><span class="code">W2.K3</span></div>
+      <h3>How much light gets through?</h3>
+      <p><b>Question:</b> how do different materials affect light passing through them?</p>
+      <p>A lamp shines 1000 lux at a light meter. (Lux measures how much light lands on a surface.) Put a material in the way and read the meter. Then look through it at a sign. Is the image clear or blurry?</p>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Wax paper: meter reads 420 lux. 420 ÷ 1000 × 100% = 42% gets through.</span>
+        <span>The sign looks blurry. Some light passes, but it is scattered, so wax paper is translucent.</span>
+        <span>Tinted glass lets less light through, but the sign is still clear. It is transparent.</span>
+      </div>
+      <p class="hint">Meter readings are simulated practice data, with a little random variation like a real meter.</p>
+    </div>
+    <div class="model">
+      <div class="two">
+        <label class="field" for="b2M">Material
+          <select id="b2M"></select></label>
+        <div class="row" style="align-self:end"><button class="btn" id="b2Test" type="button">Shine the light</button></div>
+      </div>
+      <div class="svgbox"><svg id="b2Svg" viewBox="0 0 520 150" role="img" aria-label="A lamp, a material and a light meter."></svg></div>
+      <div class="tablebox"><table class="dt" id="b2Table"><thead><tr><th>Material</th><th>Meter (lux)</th><th>% through</th><th>Image</th><th>Your classification</th></tr></thead><tbody></tbody></table></div>
+      <div class="row">
+        <button class="btn" id="b2Check" type="button">Check my classifications</button>
+        <button class="btn ghost" id="b2Clear" type="button">Clear table</button>
+      </div>
+      <p class="fb" id="b2Fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 3 · Newton's two prisms</span>
+      <div class="codes"><span class="code">W2.S3</span><span class="code">W2.K5</span></div>
+      <h3>Does a prism make colours, or separate them?</h3>
+      <p>The first prism spreads white light into a spectrum. A card with a narrow slit lets only one colour through to a second prism.</p>
+      <p><b>Predict:</b> will the second prism split that colour into more colours?</p>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Green light passes the slit. The second prism bends it, but it stays green.</span>
+        <span>So the prism did not add colours. White light already held all of them, and the prism separated them.</span>
+      </div>
+    </div>
+    <div class="model">
+      <div class="chips" id="b3Chips" role="group" aria-label="Choose the colour that passes the slit"></div>
+      <div class="svgbox"><svg id="b3Svg" viewBox="0 0 560 220" role="img" aria-label="Two prisms with a slit card between them."></svg></div>
+      <div class="detail" id="b3Det" aria-live="polite"></div>
+      <h4>Quick check</h4>
+      <p class="prob" id="b3Q"></p>
+      <div class="opts" id="b3Opts"></div>
+      <p class="fb" id="b3Fb" aria-live="polite"></p>
+      <button class="btn ghost" id="b3New" type="button">New question</button>
+    </div>
+  </article>
+
+  <article class="inv">
+    <div class="text">
+      <span class="step">Investigation 4 · Predict a shadow</span>
+      <div class="codes"><span class="code">W2.S4</span><span class="code">W2.K7</span></div>
+      <h3>How big will the shadow be?</h3>
+      <p>Light from a small source travels in straight lines past the top and bottom of an object. Those lines spread out, so the shadow on a screen is bigger than the object. Similar triangles give a formula.</p>
+      <div class="formula">shadow height = object height × (source to screen) ÷ (source to object)<br>H = h × D ÷ d</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>A 10 cm puppet is 50 cm from a small flashlight. The wall is 200 cm from the flashlight.</span>
+        <span>H = 10 × 200 ÷ 50 = 40 cm. The shadow is 4 times as tall as the puppet.</span>
+        <span>Move the puppet to 100 cm: H = 10 × 200 ÷ 100 = 20 cm. Farther from the source means a smaller shadow.</span>
+      </div>
+    </div>
+    <div class="model">
+      <div class="svgbox"><svg id="b4Svg" viewBox="0 0 520 200" role="img" aria-label="A flashlight, a puppet and a wall with the shadow."></svg></div>
+      <p class="prob" id="b4Q" aria-live="polite"></p>
+      <label class="field" for="b4A">Shadow height (cm)<input type="number" id="b4A" inputmode="decimal"></label>
+      <div class="row">
+        <button class="btn" id="b4Check" type="button">Check</button>
+        <button class="btn ghost" id="b4New" type="button">New problem</button>
+        <button class="btn ghost" id="b4Show" type="button">Show solution</button>
+      </div>
+      <p class="fb" id="b4Fb" aria-live="polite"></p>
+      <p class="hint mono" id="b4Score"></p>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 24. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 W2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>W2.K1:</b> “travel in straight lines” is taught as straight paths through one even material. A note says light changes direction when it reflects or passes into a new material (left for W3), so students are not confused later. “Require a light source” is taught as needing a source that changes another form of energy into light. Speed is given as about 3.00 × 10<sup>8</sup> m/s in a vacuum, as context.</li>
+      <li><b>W2.K2:</b> brightness is taught as set by amplitude because bigger waves carry more energy. Strictly, the energy carried grows with the square of the amplitude, and brightness also falls with distance as light spreads out. Frequency is taught as setting the colour of a single-frequency light. A note says most colours we see are mixes (for example, screens make yellow from red and green).</li>
+      <li><b>W2.K4:</b> the visible spectrum is given as about 400 to 700 nm (about 430 to 750 THz). Colour band edges are rounded and vary between sources. c = f × λ and the shortcut λ (nm) = 300 000 ÷ f (THz) are tools, not for memorizing.</li>
+      <li><b>W2.K5:</b> “white light contains all colours” is taught for sunlight. Many white LEDs and screens make light that looks white from only a few colours, so this is not mentioned as universal. Newton's prism experiment (1666) is summarized generally.</li>
+      <li><b>W2.K6:</b> taught with luminous and non-luminous objects. Transparent objects such as glass are seen mainly because they reflect and bend a little of the light.</li>
+      <li><b>W2.K7:</b> the draft says a shadow forms when light is “absorbed by a body”. The lab teaches the more precise idea: a shadow forms where an opaque object blocks light, by absorbing or reflecting it (a mirror also casts a shadow). Umbra and penumbra are added to explain shadow edges. Please review whether this precision suits the final wording.</li>
+      <li><b>Context:</b> sundogs and the northern lights are general Alberta examples. Material percentages, light meter readings and shadow problems are made-up practice data and are labelled that way. Safety notes cover looking at the Sun and laser pointers.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-w2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+function fmt(x, d){ d = d == null ? 1 : d; var s = (Math.round(x * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d); return s.replace(/\.0+$/, ""); }
+function chipGroup(container, items, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function stat(box, items){
+  clear(box);
+  items.forEach(function(it){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, it[0])); d.appendChild(el("b", null, it[1])); box.appendChild(d); });
+}
+function parseNum(s){ return parseFloat(String(s).replace(/−/g, "-").replace(/,/g, ".").replace(/\s/g, "")); }
+var reduced = false;
+try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e) {}
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+function arrow(g, x1, y1, x2, y2, color, opts){
+  opts = opts || {};
+  var w = opts.w || 3;
+  g.appendChild(sv("line", {x1: x1, y1: y1, x2: x2, y2: y2, stroke: color, "stroke-width": w, "stroke-dasharray": opts.dash || "none", "stroke-linecap": "round"}));
+  if (opts.head === false) return;
+  var a = Math.atan2(y2 - y1, x2 - x1), L = 11, s = 0.45;
+  var p = [x2, y2, x2 - L * Math.cos(a - s), y2 - L * Math.sin(a - s), x2 - L * Math.cos(a + s), y2 - L * Math.sin(a + s)];
+  g.appendChild(sv("polygon", {points: p.join(" "), fill: color}));
+}
+
+/* ---------- Animation loop ---------- */
+var anims = [];
+function addAnim(fn){ anims.push(fn); }
+function loop(t){
+  var s = t / 1000;
+  if (!$("learn").hidden || !$("bench").hidden) anims.forEach(function(fn){ fn(s); });
+  requestAnimationFrame(loop);
+}
+function css(name){ try { return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888"; } catch(e) { return "#888"; } }
+
+/* ---------- Light helpers ---------- */
+function wlColor(nm){
+  var r, g, b;
+  if (nm < 440) { r = (440 - nm) / 60; g = 0; b = 1; }
+  else if (nm < 490) { r = 0; g = (nm - 440) / 50; b = 1; }
+  else if (nm < 510) { r = 0; g = 1; b = (510 - nm) / 20; }
+  else if (nm < 580) { r = (nm - 510) / 70; g = 1; b = 0; }
+  else if (nm < 645) { r = 1; g = (645 - nm) / 65; b = 0; }
+  else { r = 1; g = 0; b = 0; }
+  var f = nm < 420 ? 0.55 + 0.45 * (nm - 380) / 40 : nm > 680 ? 0.55 + 0.45 * (720 - nm) / 40 : 1;
+  function c(v){ return Math.round(255 * Math.pow(Math.max(0, Math.min(1, v * f)), 0.8)); }
+  return "rgb(" + c(r) + "," + c(g) + "," + c(b) + ")";
+}
+function colorName(nm){ return nm >= 620 ? "Red" : nm >= 590 ? "Orange" : nm >= 570 ? "Yellow" : nm >= 495 ? "Green" : nm >= 450 ? "Blue" : "Violet"; }
+var SIX = [["Red", 680], ["Orange", 605], ["Yellow", 580], ["Green", 530], ["Blue", 470], ["Violet", 420]];
+function line(g, x1, y1, x2, y2, cls, extra){
+  var a = {x1: x1, y1: y1, x2: x2, y2: y2, "class": cls || ""};
+  if (extra) for (var k in extra) a[k] = extra[k];
+  g.appendChild(sv("line", a));
+}
+function txt(g, x, y, s, cls, anchor){ g.appendChild(sv("text", {x: x, y: y, "class": cls || "lbl", "text-anchor": anchor || "start"}, s)); }
+function svgFocus(node, label, fn){
+  node.setAttribute("tabindex", "0"); node.setAttribute("role", "button"); node.setAttribute("aria-label", label);
+  node.addEventListener("click", fn);
+  node.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+
+/* ---------- Lesson 1: source to target ---------- */
+(function(){
+  var SRC = [
+    {label: "Sun", from: "nuclear energy in its core, where fusion joins small particles together", r: 30},
+    {label: "Campfire", from: "chemical energy stored in the wood, released by burning", r: 24},
+    {label: "LED lamp", from: "electrical energy from the outlet", r: 20},
+    {label: "Firefly", from: "chemical energy in its body, through a reaction that makes light with very little heat", r: 12}
+  ];
+  var TGT = [
+    {label: "Solar panel", to: "electrical energy", more: "Solar farms in southern Alberta turn sunlight into electricity for the grid."},
+    {label: "Canola leaf", to: "chemical energy stored in food", more: "Plants use light energy for photosynthesis, making sugar from carbon dioxide and water."},
+    {label: "Dark pavement", to: "thermal energy, so it warms up", more: "Dark surfaces absorb most of the light that reaches them."},
+    {label: "Your eye", to: "signals your brain reads as sight", more: "Cells at the back of your eye absorb light and send signals along a nerve."}
+  ];
+  var s = 0, t = 0, svg = $("l1Svg");
+  function draw(){
+    clear(svg);
+    var src = SRC[s], tg = TGT[t];
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    [-40, -20, 0, 20, 40].forEach(function(dy){
+      line(g, 70 + src.r, 95 + dy * 0.4, 400, 95 + dy, "s-beam flow", {"stroke-width": 3, "stroke-dasharray": "10 8"});
+    });
+    g.appendChild(sv("circle", {cx: 70, cy: 95, r: src.r, "class": "f-beam"}));
+    txt(svg, 70, 160, src.label, "lbl", "middle");
+    svg.appendChild(sv("rect", {x: 400, y: 50, width: 90, height: 90, rx: 8, "class": "f-surface2 s-line", "stroke-width": 2}));
+    txt(svg, 445, 100, tg.label, "small", "middle");
+    txt(svg, 445, 160, "Target", "lbl", "middle");
+    txt(svg, 235, 190, "Light carries energy →", "small", "middle");
+    detail($("l1Det"), "Follow the energy", [
+      src.label + ": " + src.from + " → light energy → " + tg.label.toLowerCase() + ": " + tg.to + ".",
+      tg.more
+    ], "Energy chain");
+  }
+  chipGroup($("l1Src"), SRC, function(it, i){ s = i; draw(); }, 0);
+  chipGroup($("l1Tgt"), TGT, function(it, i){ t = i; draw(); }, 0);
+})();
+
+/* ---------- Lesson 2: jar ---------- */
+(function(){
+  var svg = $("l2Svg"), pts = [];
+  for (var i = 0; i < 70; i++) pts.push([170 + Math.random() * 180, 50 + Math.random() * 140]);
+  function draw(){
+    var air = +$("l2Air").value; $("l2AirOut").textContent = air + "%";
+    clear(svg);
+    svg.appendChild(sv("rect", {x: 160, y: 30, width: 200, height: 170, rx: 30, "class": "f-glass s-line", "stroke-width": 3}));
+    var n = Math.round(pts.length * air / 100);
+    for (var j = 0; j < n; j++) svg.appendChild(sv("circle", {cx: pts[j][0], cy: pts[j][1], r: 2.5, "class": "f-muted"}));
+    // bell
+    svg.appendChild(sv("path", {d: "M200 140 Q200 95 225 95 Q250 95 250 140 Z", "class": "f-energy"}));
+    svg.appendChild(sv("circle", {cx: 225, cy: 146, r: 5, "class": "f-energy"}));
+    // lamp
+    var lg = sv("g", {"class": "c-beam"}); svg.appendChild(lg);
+    lg.appendChild(sv("circle", {cx: 305, cy: 115, r: 16, "class": "f-beam"}));
+    for (var k = -2; k <= 2; k++) arrow(lg, 375, 115 + k * 22, 470, 115 + k * 34, "currentColor", {w: 3});
+    // sound arcs
+    var op = air / 100;
+    for (var m = 0; m < 3; m++) {
+      svg.appendChild(sv("path", {d: "M" + (140 - m * 30) + " 70 Q" + (120 - m * 30) + " 115 " + (140 - m * 30) + " 160", fill: "none", "class": "s-wave", "stroke-width": 3, opacity: op}));
+    }
+    txt(svg, 80, 210, "Sound", "lbl", "middle");
+    txt(svg, 440, 210, "Light", "lbl", "middle");
+    stat($("l2Stats"), [
+      ["Sound outside", air > 60 ? "Clear" : air > 20 ? "Faint" : air > 0 ? "Barely" : "None"],
+      ["Light outside", "Unchanged"],
+      ["Sun to Earth", "≈ 8.3 min"],
+      ["Moon to Earth", "≈ 1.3 s"]
+    ]);
+  }
+  $("l2Air").addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 3: rays and three cards ---------- */
+(function(){
+  var svg = $("l3Svg");
+  function draw(){
+    var n = +$("l3Rays").value; $("l3RaysOut").textContent = n;
+    clear(svg);
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    for (var i = 0; i < n; i++) {
+      var a = i / n * Math.PI * 2;
+      arrow(g, 260 + 22 * Math.cos(a), 90 + 22 * Math.sin(a), 260 + 80 * Math.cos(a), 90 + 80 * Math.sin(a), "currentColor", {w: 2.5});
+    }
+    g.appendChild(sv("circle", {cx: 260, cy: 90, r: 16, "class": "f-beam"}));
+  }
+  $("l3Rays").addEventListener("input", draw); draw();
+  var svg2 = $("l3bSvg"), aligned = true;
+  function card(x, hole){
+    svg2.appendChild(sv("rect", {x: x - 5, y: 20, width: 10, height: hole - 7 - 20, "class": "f-ink"}));
+    svg2.appendChild(sv("rect", {x: x - 5, y: hole + 7, width: 10, height: 150 - hole - 7, "class": "f-ink"}));
+  }
+  function draw2(){
+    clear(svg2);
+    var holeMid = aligned ? 85 : 50;
+    var g = sv("g", {"class": "c-beam"}); svg2.appendChild(g);
+    arrow(g, 62, 85, aligned ? 440 : 252, 85, "currentColor", {w: 4});
+    g.appendChild(sv("circle", {cx: 45, cy: 85, r: 16, "class": "f-beam"}));
+    card(170, 85); card(260, holeMid); card(350, 85);
+    svg2.appendChild(sv("ellipse", {cx: 475, cy: 85, rx: 22, ry: 13, "class": "f-surface s-ink", "stroke-width": 2}));
+    svg2.appendChild(sv("circle", {cx: 470, cy: 85, r: 6, "class": "f-ink"}));
+    txt(svg2, 45, 160, "Lamp", "small", "middle");
+    txt(svg2, 475, 160, aligned ? "Sees the lamp" : "Sees nothing", "small", "middle");
+    $("l3Det").textContent = aligned
+      ? "All three holes are in a straight line. Light travels straight through them and reaches the eye."
+      : "The middle hole is out of line. Light cannot curve to find it, so the card blocks the light and the eye sees nothing.";
+  }
+  $("l3Line").addEventListener("click", function(){ aligned = true; draw2(); });
+  $("l3Shift").addEventListener("click", function(){ aligned = false; draw2(); });
+  draw2();
+})();
+
+/* ---------- Lesson 4: tune a wave ---------- */
+(function(){
+  var svg = $("l4Svg");
+  function draw(){
+    var A = +$("l4Amp").value, f = +$("l4F").value, nm = 300000 / f;
+    $("l4AmpOut").textContent = A; $("l4FOut").textContent = f + " THz";
+    clear(svg);
+    line(svg, 20, 100, 370, 100, "s-line", {"stroke-dasharray": "4 4", "stroke-width": 1.5});
+    var cyc = f / 540 * 5, amp = A * 15, d = "";
+    for (var x = 0; x <= 350; x += 2) d += (x ? "L" : "M") + (20 + x) + " " + (100 - amp * Math.sin(x / 350 * cyc * 2 * Math.PI)).toFixed(1);
+    svg.appendChild(sv("path", {d: d, fill: "none", stroke: wlColor(nm), "stroke-width": 4}));
+    svg.appendChild(sv("path", {d: d, fill: "none", "class": "s-ink", "stroke-width": 1, opacity: 0.35}));
+    svg.appendChild(sv("circle", {cx: 455, cy: 100, r: 48, "class": "f-surface2 s-line", "stroke-width": 2}));
+    svg.appendChild(sv("circle", {cx: 455, cy: 100, r: 46, fill: wlColor(nm), opacity: (0.15 + A * 0.17).toFixed(2)}));
+    txt(svg, 455, 175, "Lamp", "small", "middle");
+    txt(svg, 20, 190, "Wave height shows amplitude. Waves per window show frequency.", "small");
+    var bright = ["Very dim", "Dim", "Medium", "Bright", "Very bright"][A - 1];
+    stat($("l4Stats"), [["Colour", colorName(nm)], ["Wavelength", Math.round(nm) + " nm"], ["Brightness", bright], ["Frequency", f + " THz"]]);
+  }
+  $("l4Amp").addEventListener("input", draw); $("l4F").addEventListener("input", draw); draw();
+})();
+
+/* ---------- Lesson 5: spectrum ---------- */
+(function(){
+  var BANDS = [
+    ["Radio waves", "Lowest frequency, longest wavelengths: from about a metre to many kilometres. Used for radio, TV and two-way radios. Radio telescopes also use them to study space."],
+    ["Microwaves", "Wavelengths from about 1 mm to 30 cm. Used in microwave ovens, cell phones, Wi-Fi and weather radar."],
+    ["Infrared", "Just past red, longer than about 700 nm. You feel it as warmth from a campfire. Thermal cameras and TV remotes use it."],
+    ["Visible", "About 400 to 700 nm. The only part human eyes detect: red, orange, yellow, green, blue and violet."],
+    ["Ultraviolet", "Just past violet, shorter than about 400 nm. It can cause sunburn, so sunscreen and sunglasses block much of it. Bees can see some ultraviolet."],
+    ["X-rays", "Very short wavelengths with high energy. They pass through soft tissue but are blocked more by bone, so they are used for medical and dental images, with shielding."],
+    ["Gamma rays", "Shortest wavelengths and highest frequency and energy. Given off by radioactive materials and some events in space. Used to treat some cancers."]
+  ];
+  var svg = $("l5Svg"), W = [100, 80, 70, 40, 65, 70, 85], sel = 3, nodes = [];
+  var defs = sv("defs"); var lg = sv("linearGradient", {id: "visGrad", x1: "0", x2: "1", y1: "0", y2: "0"});
+  for (var i = 0; i <= 10; i++) { var nm = 700 - i * 30; lg.appendChild(sv("stop", {offset: (i / 10).toFixed(2), "stop-color": wlColor(nm)})); }
+  defs.appendChild(lg); svg.appendChild(defs);
+  txt(svg, 20, 18, "← lower frequency, longer wavelength", "small");
+  txt(svg, 540, 18, "higher frequency, shorter wavelength →", "small", "end");
+  var x = 20, vx = 0;
+  BANDS.forEach(function(b, j){
+    var g = sv("g", {"class": "band"});
+    var r = sv("rect", {x: x, y: 28, width: W[j], height: 52, rx: 4, "class": "s-line", "stroke-width": 1.5});
+    if (j === 3) { r.setAttribute("fill", "url(#visGrad)"); vx = x; }
+    g.appendChild(r);
+    var t = sv("text", {x: x + W[j] / 2, y: 98, "class": "small", "text-anchor": "middle"}, b[0].replace(" waves", "").replace(" rays", ""));
+    g.appendChild(t);
+    svgFocus(g, b[0], function(){ sel = j; mark(); });
+    svg.appendChild(g); nodes.push(r);
+    x += W[j] + 4;
+  });
+  // zoom lines
+  line(svg, vx, 80, 120, 130, "s-line", {"stroke-dasharray": "3 3"});
+  line(svg, vx + 40, 80, 440, 130, "s-line", {"stroke-dasharray": "3 3"});
+  svg.appendChild(sv("rect", {x: 120, y: 130, width: 320, height: 24, fill: "url(#visGrad)"}));
+  [700, 600, 500, 400].forEach(function(nm){
+    var xx = 120 + (700 - nm) / 300 * 320;
+    line(svg, xx, 154, xx, 160, "s-ink");
+    txt(svg, xx, 176, nm + " nm", "small", "middle");
+  });
+  function mark(){
+    nodes.forEach(function(r, j){
+      r.setAttribute("class", (j === sel ? "s-ink" : "s-line") + (j === 3 ? "" : j === sel ? " f-accsoft" : " f-surface2"));
+      r.setAttribute("stroke-width", j === sel ? 3 : 1.5);
+    });
+    detail($("l5Det"), BANDS[sel][0], [BANDS[sel][1]], "Band " + (sel + 1) + " of 7");
+  }
+  mark();
+})();
+
+/* ---------- Lesson 6: prism ---------- */
+(function(){
+  var svg = $("l6Svg"), mode = 0;
+  var MODES = [{label: "White sunlight"}, {label: "Red light", c: 0}, {label: "Green light", c: 3}, {label: "Violet light", c: 5}];
+  function draw(){
+    clear(svg);
+    svg.appendChild(sv("polygon", {points: "190,200 330,200 260,50", "class": "f-glass s-line", "stroke-width": 2}));
+    var ex = 225, ey = 125;
+    line(svg, 20, 95, ex, ey, mode === 0 ? "s-white" : "", mode === 0 ? {"stroke-width": 6} : {"stroke-width": 6, stroke: wlColor(SIX[MODES[mode].c][1])});
+    var list = mode === 0 ? [0, 1, 2, 3, 4, 5] : [MODES[mode].c];
+    list.forEach(function(i){
+      var s = 0.40 + i * 0.03, ox = 260 + 70 * s, oy = 50 + 150 * s;
+      var col = wlColor(SIX[i][1]);
+      line(svg, ex, ey, ox, oy, "", {stroke: col, "stroke-width": 3});
+      line(svg, ox, oy, 495, 120 + i * 15, "", {stroke: col, "stroke-width": 4});
+    });
+    svg.appendChild(sv("rect", {x: 495, y: 60, width: 10, height: 150, "class": "f-surface2 s-line"}));
+    if (mode === 0) SIX.forEach(function(c, i){ txt(svg, 490, 124 + i * 15, c[0], "small", "end"); });
+    txt(svg, 20, 85, mode === 0 ? "white light" : MODES[mode].label.toLowerCase(), "small");
+    txt(svg, 260, 222, "glass prism", "small", "middle");
+    var msgs = [
+      ["Dispersion", "White sunlight spreads into red, orange, yellow, green, blue and violet. Violet bends the most. Red bends the least. The colours were already in the white light."],
+      ["One colour in, one colour out", "Red light bends the least. It comes out still red. A prism cannot split a single colour."],
+      ["One colour in, one colour out", "Green light bends more than red but less than violet. It comes out still green."],
+      ["One colour in, one colour out", "Violet light has the highest frequency we can see, so it bends the most. It comes out still violet."]
+    ];
+    detail($("l6Det"), msgs[mode][0], [msgs[mode][1]]);
+  }
+  chipGroup($("l6Chips"), MODES, function(m, i){ mode = i; draw(); }, 0);
+})();
+
+/* ---------- Lesson 7: materials ---------- */
+var MATS = [
+  {label: "Window glass", T: 90, R: 8, A: 2, k: 0, why: "Almost all the light passes straight through, so you see a clear image."},
+  {label: "Wax paper", T: 45, R: 35, A: 20, k: 1, why: "Some light gets through, but it is scattered in many directions, so images look blurry."},
+  {label: "Frosted glass", T: 70, R: 10, A: 20, k: 1, why: "Lots of light gets through, but the rough surface scatters it. Bathrooms use it for privacy with light."},
+  {label: "Cardboard", T: 0, R: 30, A: 70, k: 2, why: "No light gets through. It reflects some light and absorbs the rest."},
+  {label: "Aluminum foil", T: 0, R: 88, A: 12, k: 2, why: "No light gets through. Shiny foil reflects most of the light."},
+  {label: "Black paper", T: 0, R: 5, A: 95, k: 2, why: "No light gets through. Black paper absorbs almost all of it and warms up."}
+];
+var KINDS = ["Transparent", "Translucent", "Opaque"];
+(function(){
+  var svg = $("l7Svg"), m = 0;
+  function bar(box, label, v, cls){
+    var r = el("div", {"class": "barrow"});
+    r.appendChild(el("span", null, label));
+    var mtr = el("div", {"class": "meter", "aria-hidden": "true"}); var i = el("i", {"class": cls}); i.style.width = v + "%"; mtr.appendChild(i); r.appendChild(mtr);
+    r.appendChild(el("b", null, v + "%"));
+    box.appendChild(r);
+  }
+  function draw(){
+    var mt = MATS[m]; clear(svg);
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    arrow(g, 20, 100, 235, 100, "currentColor", {w: 6});
+    svg.appendChild(sv("rect", {x: 240, y: 30, width: 30, height: 140, rx: 3, "class": mt.k === 2 ? "f-ink" : mt.k === 1 ? "f-muted" : "f-glass s-line", opacity: mt.k === 1 ? 0.55 : 1}));
+    if (mt.R > 0) arrow(g, 235, 95, 120, 40, "currentColor", {w: Math.max(1.5, mt.R / 15), dash: "6 5"});
+    if (mt.k === 0) arrow(g, 275, 100, 490, 100, "currentColor", {w: Math.max(2, mt.T / 15)});
+    if (mt.k === 1) [-50, -25, 0, 25, 50].forEach(function(dy){ arrow(g, 275, 100, 400, 100 + dy * 1.4, "currentColor", {w: 2}); });
+    if (mt.k === 2) txt(svg, 330, 105, "no light gets through", "small");
+    txt(svg, 255, 192, mt.label, "lbl", "middle");
+    txt(svg, 120, 30, mt.R ? "reflected" : "", "small", "middle");
+    var b = $("l7Bars"); clear(b);
+    bar(b, "Through", mt.T, "m-beam"); bar(b, "Reflected", mt.R, "m-muted"); bar(b, "Absorbed", mt.A, "m-energy");
+    detail($("l7Det"), mt.label + " is " + KINDS[mt.k].toLowerCase(), [mt.why], KINDS[mt.k]);
+  }
+  chipGroup($("l7Chips"), MATS, function(it, i){ m = i; draw(); }, 0);
+})();
+
+/* ---------- Lesson 8: seeing ---------- */
+(function(){
+  var svg = $("l8Svg"), mode = 0;
+  var MODES = [{label: "Look at the lamp"}, {label: "Look at the mug"}, {label: "Lamp off"}];
+  function draw(){
+    clear(svg);
+    var on = mode !== 2;
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    g.appendChild(sv("circle", {cx: 80, cy: 60, r: 20, "class": on ? "f-beam" : "f-surface2 s-line"}));
+    line(svg, 80, 80, 80, 190, "s-muted", {"stroke-width": 4});
+    svg.appendChild(sv("rect", {x: 270, y: 135, width: 50, height: 55, rx: 6, "class": "f-ray"}));
+    svg.appendChild(sv("path", {d: "M320 148 q22 0 22 16 q0 16 -22 16", fill: "none", "class": "s-ray", "stroke-width": 6}));
+    svg.appendChild(sv("ellipse", {cx: 470, cy: 90, rx: 26, ry: 15, "class": "f-surface s-ink", "stroke-width": 2}));
+    svg.appendChild(sv("circle", {cx: 462, cy: 90, r: 7, "class": "f-ink"}));
+    if (mode === 0) arrow(g, 102, 62, 440, 88, "currentColor", {w: 3});
+    if (mode === 1) {
+      arrow(g, 98, 74, 268, 150, "currentColor", {w: 3});
+      var g2 = sv("g", {"class": "c-ray"}); svg.appendChild(g2);
+      arrow(g2, 322, 140, 440, 96, "currentColor", {w: 3});
+      arrow(g, 300, 132, 290, 70, "currentColor", {w: 1.5, dash: "4 4"});
+      arrow(g, 320, 175, 400, 200, "currentColor", {w: 1.5, dash: "4 4"});
+    }
+    if (!on) svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 210, "class": "f-ink", opacity: 0.55}));
+    txt(svg, 80, 205, "lamp", "small", "middle"); txt(svg, 295, 205, "mug", "small", "middle"); txt(svg, 470, 125, "eye", "small", "middle");
+    var msgs = [
+      ["Luminous", "The lamp makes its own light. Light travels straight from the lamp into your eye."],
+      ["Non-luminous", "The mug makes no light. Light from the lamp hits the mug and reflects in many directions. Some of the reflected light enters your eye, so you see the mug."],
+      ["Darkness", "With no source, no light reaches the mug or your eye. The mug is still there, but you cannot see it."]
+    ];
+    detail($("l8Det"), msgs[mode][0], [msgs[mode][1]]);
+  }
+  chipGroup($("l8Chips"), MODES, function(m, i){ mode = i; draw(); }, 0);
+})();
+
+/* ---------- Lesson 9: shadows ---------- */
+(function(){
+  var svg = $("l9Svg"), wide = false;
+  var SRC = [{label: "Small bulb"}, {label: "Wide light"}];
+  function clampY(y){ return Math.max(10, Math.min(230, y)); }
+  function draw(){
+    var d = +$("l9X").value, D = 440, k = D / d, ox = 40 + d;
+    $("l9XOut").textContent = d + " cm";
+    clear(svg);
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    svg.appendChild(sv("rect", {x: 480, y: 10, width: 12, height: 220, "class": "f-surface2 s-line"}));
+    var stats;
+    if (!wide) {
+      var top = 120 - 20 * k, bot = 120 + 20 * k;
+      svg.appendChild(sv("rect", {x: 480, y: clampY(top), width: 12, height: clampY(bot) - clampY(top), "class": "f-shadow"}));
+      line(g, 40, 120, 480, top, "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "5 4"});
+      line(g, 40, 120, 480, bot, "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "5 4"});
+      g.appendChild(sv("circle", {cx: 40, cy: 120, r: 9, "class": "f-beam"}));
+      stats = [["Object height", "40 cm"], ["Shadow height", fmt(40 * k, 0) + " cm"], ["Edge", "Sharp"]];
+    } else {
+      var a = 95, b2 = 145;
+      var uT = a + (100 - a) * k, uB = b2 + (140 - b2) * k, pT = b2 + (100 - b2) * k, pB = a + (140 - a) * k;
+      svg.appendChild(sv("rect", {x: 480, y: clampY(pT), width: 12, height: clampY(pB) - clampY(pT), "class": "f-shadow", opacity: 0.45}));
+      if (uT < uB) svg.appendChild(sv("rect", {x: 480, y: uT, width: 12, height: uB - uT, "class": "f-shadow"}));
+      line(g, 40, a, 480, uT, "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "5 4"});
+      line(g, 40, b2, 480, uB, "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "5 4"});
+      line(g, 40, b2, 480, pT, "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "2 4"});
+      line(g, 40, a, 480, pB, "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "2 4"});
+      g.appendChild(sv("rect", {x: 34, y: a, width: 12, height: b2 - a, rx: 4, "class": "f-beam"}));
+      stats = [["Umbra", uT < uB ? fmt(uB - uT, 0) + " cm" : "None"], ["Penumbra and umbra", (pB - pT > 220 ? "Wider than screen" : fmt(pB - pT, 0) + " cm")], ["Edge", "Blurry"]];
+    }
+    svg.appendChild(sv("rect", {x: ox - 4, y: 100, width: 8, height: 40, "class": "f-ink"}));
+    txt(svg, ox, 94, "object", "small", "middle");
+    txt(svg, 486, 238, "screen", "small", "middle");
+    stat($("l9Stats"), stats);
+  }
+  chipGroup($("l9Chips"), SRC, function(s, i){ wide = i === 1; draw(); }, 0);
+  $("l9X").addEventListener("input", draw);
+})();
+
+/* ---------- Bench 1: wavelength and colour ---------- */
+(function(){
+  var RANGES = [["Red", 626, 694], ["Orange", 595, 614], ["Yellow", 575, 585], ["Green", 501, 564], ["Blue", 456, 489], ["Violet", 405, 444]];
+  var cur, shown = false;
+  store.b1 = store.b1 || {r: 0, n: 0};
+  function score(){ $("b1Score").textContent = "Correct this device: " + store.b1.r + " of " + store.b1.n + " checked"; }
+  function newP(){
+    var r = pick(RANGES), nm = rint(r[1], r[2]), f = Math.round(300000 / nm);
+    cur = {f: f, nm: 300000 / f, c: colorName(300000 / f)};
+    $("b1Q").textContent = "A light wave has a frequency of " + f + " THz. Find its wavelength and name its colour.";
+    $("b1L").value = ""; $("b1C").value = ""; $("b1Fb").textContent = ""; $("b1Fb").className = "fb";
+    $("b1Sw").style.background = "transparent"; shown = false;
+  }
+  $("b1Check").addEventListener("click", function(){
+    var v = parseNum($("b1L").value), c = $("b1C").value, fb = $("b1Fb");
+    if (isNaN(v) || !c) { fb.textContent = "Enter a wavelength and choose a colour."; fb.className = "fb no"; return; }
+    var okL = Math.abs(v - cur.nm) <= 3, okC = c === cur.c;
+    store.b1.n++; if (okL && okC) store.b1.r++; save(); score();
+    fb.className = "fb " + (okL && okC ? "ok" : "no");
+    fb.textContent = okL && okC ? "Correct. λ = 300 000 ÷ " + cur.f + " ≈ " + Math.round(cur.nm) + " nm, which is " + cur.c.toLowerCase() + "."
+      : (okL ? "Wavelength correct. " : "Check the wavelength: divide 300 000 by the frequency. ") + (okC ? "Colour correct." : "Check the colour table for that wavelength.");
+    if (okL && okC) $("b1Sw").style.background = wlColor(cur.nm);
+  });
+  $("b1Show").addEventListener("click", function(){
+    $("b1Fb").className = "fb"; $("b1Fb").textContent = "λ = 300 000 ÷ " + cur.f + " = " + fmt(cur.nm, 1) + " nm. That is in the " + cur.c.toLowerCase() + " range.";
+    $("b1Sw").style.background = wlColor(cur.nm);
+  });
+  $("b1New").addEventListener("click", newP);
+  newP(); score();
+})();
+
+/* ---------- Bench 2: light meter ---------- */
+(function(){
+  var M = [
+    ["Clear window glass", 0.90, "Clear", 0], ["Tinted car window", 0.35, "Clear", 0], ["Clear plastic wrap", 0.92, "Clear", 0],
+    ["Wax paper", 0.45, "Blurry", 1], ["Frosted shower glass", 0.70, "Blurry", 1], ["Tissue paper", 0.50, "Blurry", 1],
+    ["Cardboard", 0, "None", 2], ["Aluminum foil", 0, "None", 2], ["Wooden board", 0, "None", 2]
+  ];
+  var sel = $("b2M"), rows = [], svg = $("b2Svg");
+  M.forEach(function(m, i){ sel.appendChild(el("option", {value: i}, m[0])); });
+  function drawSvg(m, lux){
+    clear(svg);
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    g.appendChild(sv("circle", {cx: 40, cy: 70, r: 18, "class": "f-beam"}));
+    arrow(g, 60, 70, 225, 70, "currentColor", {w: 5});
+    svg.appendChild(sv("rect", {x: 230, y: 20, width: 24, height: 100, rx: 3, "class": m && m[3] === 2 ? "f-ink" : m && m[3] === 1 ? "f-muted" : "f-glass s-line", opacity: m && m[3] === 1 ? 0.55 : 1}));
+    if (m && m[1] > 0) arrow(g, 258, 70, 385, 70, "currentColor", {w: Math.max(2, 5 * m[1]), dash: m[3] === 1 ? "6 4" : "none"});
+    svg.appendChild(sv("rect", {x: 390, y: 35, width: 110, height: 70, rx: 8, "class": "f-surface2 s-ink", "stroke-width": 2}));
+    txt(svg, 445, 78, lux == null ? "— lux" : lux + " lux", "mtxt", "middle");
+    txt(svg, 445, 128, "light meter", "small", "middle");
+    txt(svg, 242, 140, m ? m[0] : "material", "small", "middle");
+  }
+  function render(){
+    var tb = document.querySelector("#b2Table tbody"); clear(tb);
+    rows.forEach(function(r, i){
+      var tr = el("tr");
+      tr.appendChild(el("td", null, M[r.m][0]));
+      tr.appendChild(el("td", null, String(r.lux)));
+      tr.appendChild(el("td", null, Math.round(r.lux / 10) + "%"));
+      tr.appendChild(el("td", null, M[r.m][2]));
+      var td = el("td"), s = el("select", {id: "b2s" + i, "aria-label": "Classification for " + M[r.m][0]});
+      ["Choose…"].concat(KINDS).forEach(function(k, j){ s.appendChild(el("option", {value: j ? j - 1 : ""}, k)); });
+      s.value = r.pick == null ? "" : r.pick;
+      s.addEventListener("change", function(){ r.pick = s.value === "" ? null : +s.value; });
+      td.appendChild(s); tr.appendChild(td); tb.appendChild(tr);
+    });
+  }
+  $("b2Test").addEventListener("click", function(){
+    var i = +sel.value, m = M[i];
+    var lux = m[1] > 0 ? Math.round(1000 * m[1] * (1 + (Math.random() - 0.5) * 0.06)) : rint(0, 2);
+    drawSvg(m, lux);
+    rows = rows.filter(function(r){ return r.m !== i; }); rows.push({m: i, lux: lux, pick: null}); render();
+    $("b2Fb").textContent = m[0] + ": " + lux + " lux reached the meter. Image through it: " + m[2].toLowerCase() + "."; $("b2Fb").className = "fb";
+  });
+  $("b2Check").addEventListener("click", function(){
+    var fb = $("b2Fb");
+    if (!rows.length) { fb.textContent = "Test at least one material first."; fb.className = "fb no"; return; }
+    var right = 0, miss = [];
+    rows.forEach(function(r){ if (r.pick === M[r.m][3]) right++; else miss.push(M[r.m][0] + " is " + KINDS[M[r.m][3]].toLowerCase()); });
+    fb.className = "fb " + (miss.length ? "no" : "ok");
+    fb.textContent = right + " of " + rows.length + " correct. " + (miss.length ? "Check: " + miss.join("; ") + ". Use the image column: clear means transparent, blurry means translucent, none means opaque." : "Every material is classified correctly.");
+  });
+  $("b2Clear").addEventListener("click", function(){ rows = []; render(); drawSvg(null, null); $("b2Fb").textContent = ""; });
+  drawSvg(null, null);
+})();
+
+/* ---------- Bench 3: Newton's two prisms ---------- */
+(function(){
+  var svg = $("b3Svg"), c = 3;
+  function draw(){
+    clear(svg);
+    svg.appendChild(sv("polygon", {points: "80,180 190,180 135,60", "class": "f-glass s-line", "stroke-width": 2}));
+    line(svg, 10, 90, 108, 115, "s-white", {"stroke-width": 6});
+    SIX.forEach(function(s, i){
+      var col = wlColor(s[1]), ox = 160 + i * 3, oy = 105 + i * 8, ty = 60 + i * 20;
+      line(svg, 108, 115, ox, oy, "", {stroke: col, "stroke-width": 2.5});
+      line(svg, ox, oy, 280, ty, "", {stroke: col, "stroke-width": 3});
+      if (i === c) {
+        line(svg, 290, ty, 392, 140, "", {stroke: col, "stroke-width": 4});
+        line(svg, 392, 140, 430, 150, "", {stroke: col, "stroke-width": 4});
+        line(svg, 430, 150, 535, 175 + i * 3, "", {stroke: col, "stroke-width": 4});
+      }
+    });
+    var hy = 60 + c * 20;
+    svg.appendChild(sv("rect", {x: 280, y: 30, width: 10, height: hy - 5 - 30, "class": "f-ink"}));
+    svg.appendChild(sv("rect", {x: 280, y: hy + 5, width: 10, height: 205 - hy - 5, "class": "f-ink"}));
+    svg.appendChild(sv("polygon", {points: "360,205 470,205 415,80", "class": "f-glass s-line", "stroke-width": 2}));
+    svg.appendChild(sv("rect", {x: 535, y: 130, width: 10, height: 85, "class": "f-surface2 s-line"}));
+    txt(svg, 135, 210, "prism 1", "small", "middle"); txt(svg, 285, 22, "slit card", "small", "middle"); txt(svg, 415, 220, "prism 2", "small", "middle");
+    detail($("b3Det"), "Result: still " + SIX[c][0].toLowerCase(), ["Only " + SIX[c][0].toLowerCase() + " light passes the slit. The second prism bends it, but no new colours appear. The first prism separated colours that were already in white light."], "Observation");
+  }
+  chipGroup($("b3Chips"), SIX.map(function(s){ return {label: s[0]}; }), function(s, i){ c = i; draw(); }, 3);
+  var TYPES = [["bends more in a prism", 1], ["bends less in a prism", -1], ["has the higher frequency", 1], ["has the longer wavelength", -1]];
+  function newQ(){
+    var a = rint(0, 5), b; do { b = rint(0, 5); } while (b === a);
+    var t = pick(TYPES), ans = t[1] > 0 ? (a > b ? a : b) : (a < b ? a : b);
+    $("b3Q").textContent = SIX[a][0] + " light and " + SIX[b][0].toLowerCase() + " light enter the same prism. Which one " + t[0] + "?";
+    var box = $("b3Opts"); clear(box); $("b3Fb").textContent = ""; $("b3Fb").className = "fb";
+    [a, b].forEach(function(i){
+      var btn = el("button", {"class": "opt", type: "button"}, SIX[i][0]);
+      btn.addEventListener("click", function(){
+        var ok = i === ans;
+        $("b3Fb").className = "fb " + (ok ? "ok" : "no");
+        $("b3Fb").textContent = (ok ? "Correct. " : "Not quite. ") + SIX[ans][0] + ". In the order red, orange, yellow, green, blue, violet, frequency and bending increase toward violet, and wavelength increases toward red.";
+      });
+      box.appendChild(btn);
+    });
+  }
+  $("b3New").addEventListener("click", newQ); newQ();
+})();
+
+/* ---------- Bench 4: shadow size ---------- */
+(function(){
+  var cur;
+  store.b4 = store.b4 || {r: 0, n: 0};
+  var svg = $("b4Svg");
+  function score(){ $("b4Score").textContent = "Correct this device: " + store.b4.r + " of " + store.b4.n + " checked"; }
+  function draw(){
+    clear(svg);
+    var D = cur.D, sc = 440 / D, ox = 40 + cur.d * sc, hpx = Math.min(60, cur.h * 3), k = D / cur.d;
+    var g = sv("g", {"class": "c-beam"}); svg.appendChild(g);
+    var top = 100 - hpx / 2 * k, bot = 100 + hpx / 2 * k;
+    line(g, 40, 100, 480, Math.max(4, top), "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "5 4"});
+    line(g, 40, 100, 480, Math.min(196, bot), "s-beam", {"stroke-width": 1.5, "stroke-dasharray": "5 4"});
+    g.appendChild(sv("circle", {cx: 40, cy: 100, r: 8, "class": "f-beam"}));
+    svg.appendChild(sv("rect", {x: 480, y: 4, width: 10, height: 192, "class": "f-surface2 s-line"}));
+    svg.appendChild(sv("rect", {x: 480, y: Math.max(4, top), width: 10, height: Math.min(196, bot) - Math.max(4, top), "class": "f-shadow"}));
+    svg.appendChild(sv("rect", {x: ox - 3, y: 100 - hpx / 2, width: 6, height: hpx, "class": "f-ink"}));
+    txt(svg, (40 + ox) / 2, 190, "d = " + cur.d + " cm", "small", "middle");
+    txt(svg, 470, 190, "D = " + D + " cm", "small", "end");
+  }
+  function newP(){
+    var d = pick([25, 40, 50, 60, 80, 100]), D; do { D = pick([150, 200, 240, 300]); } while (D < d + 40);
+    cur = {h: pick([5, 8, 10, 12, 15, 20]), d: d, D: D};
+    cur.H = cur.h * D / d;
+    $("b4Q").textContent = "A " + cur.h + " cm toy is " + d + " cm from a small flashlight. The wall is " + D + " cm from the flashlight. How tall is the shadow?";
+    $("b4A").value = ""; $("b4Fb").textContent = ""; $("b4Fb").className = "fb";
+    draw();
+  }
+  $("b4Check").addEventListener("click", function(){
+    var v = parseNum($("b4A").value), fb = $("b4Fb");
+    if (isNaN(v)) { fb.textContent = "Enter the shadow height in centimetres."; fb.className = "fb no"; return; }
+    var ok = Math.abs(v - cur.H) <= Math.max(0.2, cur.H * 0.02);
+    store.b4.n++; if (ok) store.b4.r++; save(); score();
+    fb.className = "fb " + (ok ? "ok" : "no");
+    fb.textContent = ok ? "Correct. H = " + cur.h + " × " + cur.D + " ÷ " + cur.d + " = " + fmt(cur.H, 1) + " cm." : "Not yet. Multiply the object height by D, then divide by d.";
+  });
+  $("b4Show").addEventListener("click", function(){ $("b4Fb").className = "fb"; $("b4Fb").textContent = "H = h × D ÷ d = " + cur.h + " × " + cur.D + " ÷ " + cur.d + " = " + fmt(cur.H, 1) + " cm. The shadow is " + fmt(cur.D / cur.d, 1) + " times as tall as the toy."; });
+  $("b4New").addEventListener("click", newP);
+  newP(); score();
+})();
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Transparent, translucent or opaque?", bins: ["Transparent", "Translucent", "Opaque"], items: [
+    ["Clear window glass", 0, "Light passes straight through, so you see a clear image."],
+    ["Wax paper", 1, "Some light passes, but it is scattered, so images are blurry."],
+    ["A brick wall", 2, "No light passes through brick."],
+    ["Frosted bathroom glass", 1, "Light gets through but is scattered by the rough surface."],
+    ["Clear water in a glass", 0, "You can see clearly through clean, still water."],
+    ["Aluminum foil", 2, "Foil reflects most light and lets none through."],
+    ["A plastic milk jug", 1, "Light glows through it, but you cannot see clear shapes."],
+    ["Your textbook", 2, "Paper this thick lets no light through."],
+    ["Clear plastic wrap", 0, "Thin clear plastic lets light straight through."],
+    ["Tinted sunglasses lens", 0, "It lets less light through, but images are still clear, so it is transparent."],
+    ["Tissue paper", 1, "Light passes through and scatters, so you see only blurry shapes."],
+    ["A wooden door", 2, "Wood this thick blocks all the light."]
+  ]},
+  {label: "Luminous or non-luminous?", bins: ["Luminous: makes its own light", "Non-luminous: reflects light"], items: [
+    ["The Sun", 0, "The Sun produces its own light from nuclear energy."],
+    ["The Moon", 1, "Moonlight is sunlight reflected off the Moon's surface."],
+    ["A firefly's glowing tail", 0, "A chemical reaction in its body makes light."],
+    ["A campfire", 0, "Burning wood gives off light."],
+    ["A bicycle reflector", 1, "It shines only when light from headlights hits it and bounces back."],
+    ["A phone screen that is turned on", 0, "The screen makes its own light from electrical energy."],
+    ["A white sheet of paper", 1, "Paper reflects light from a lamp or window."],
+    ["The northern lights", 0, "Gases high in the atmosphere give off light when energized by particles from the Sun."],
+    ["The planet Venus in the night sky", 1, "Planets shine by reflecting sunlight."],
+    ["A mirror", 1, "A mirror reflects light very well, but makes none."],
+    ["A lightning bolt", 0, "Lightning heats the air so much that it glows."],
+    ["A glow stick after you snap it", 0, "A chemical reaction inside makes light."]
+  ]},
+  {label: "Light, sound or both?", bins: ["Light waves", "Sound waves", "Both"], items: [
+    ["Can travel through a vacuum", 0, "Light is electromagnetic and needs no medium."],
+    ["Needs a medium to travel", 1, "Sound is a mechanical wave that needs particles."],
+    ["Carries energy from a source", 2, "All waves carry energy away from their source."],
+    ["Travels about 300 000 km every second", 0, "That is the speed of light in a vacuum. Sound in air is about 0.34 km each second."],
+    ["Travels in all directions from the source", 2, "Both light and sound spread out from their sources."],
+    ["Frequency sets the colour", 0, "For light, frequency sets colour."],
+    ["Frequency sets the pitch", 1, "For sound, frequency sets pitch."],
+    ["Starts with a vibrating object", 1, "Every sound starts with a vibration."],
+    ["Is an electromagnetic wave", 0, "Light is made of changing electric and magnetic fields."],
+    ["Has amplitude and frequency", 2, "Every wave has an amplitude and a frequency."],
+    ["Amplitude sets the brightness", 0, "A bigger light wave carries more energy and looks brighter."],
+    ["Travels in straight lines through one material", 2, "Both are drawn as straight rays through an even material."]
+  ]},
+  {label: "Higher or lower frequency than green light?", bins: ["Higher frequency", "Lower frequency"], items: [
+    ["Red light", 1, "Red has the lowest frequency of visible light."],
+    ["Violet light", 0, "Violet has the highest frequency of visible light."],
+    ["Blue light", 0, "Blue is on the violet side of green."],
+    ["Orange light", 1, "Orange is on the red side of green."],
+    ["Yellow light", 1, "Yellow is just on the red side of green."],
+    ["Ultraviolet", 0, "Ultraviolet is beyond violet."],
+    ["Infrared", 1, "Infrared is beyond red."],
+    ["X-rays", 0, "X-rays have far higher frequencies than visible light."],
+    ["Radio waves", 1, "Radio waves have the lowest frequencies in the spectrum."],
+    ["Microwaves", 1, "Microwaves have lower frequencies than infrared."],
+    ["Gamma rays", 0, "Gamma rays have the highest frequencies of all."]
+  ]}
+];
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Light source", "An object that gives off its own light by changing another form of energy into light."],
+  ["Luminous", "Describes an object that makes its own light, such as the Sun or a lamp."],
+  ["Non-luminous", "Describes an object that makes no light. We see it because it reflects light."],
+  ["Electromagnetic wave", "A wave made of changing electric and magnetic fields. It needs no medium. Light is one."],
+  ["Medium", "A material that a wave travels through, such as air, water or glass."],
+  ["Vacuum", "A space with almost no particles. Light can cross it. Sound cannot."],
+  ["Speed of light", "About 300 000 km each second (3.00 × 10⁸ m/s) in a vacuum."],
+  ["Ray", "A straight arrow that shows the path light travels."],
+  ["Amplitude", "The height of a wave's crest above the middle line. For light, it sets brightness."],
+  ["Brightness", "How strong a light looks. A bigger amplitude carries more energy and looks brighter."],
+  ["Frequency", "The number of waves that pass a point each second. For light, it sets colour."],
+  ["Terahertz (THz)", "A unit of frequency: one trillion waves each second. Visible light is about 430 to 750 THz."],
+  ["Wavelength (λ)", "The distance from one crest to the next. Higher frequency means shorter wavelength."],
+  ["Nanometre (nm)", "One billionth of a metre. Visible light is about 400 to 700 nm."],
+  ["Electromagnetic spectrum", "The whole family of electromagnetic waves: radio, microwaves, infrared, visible, ultraviolet, X-rays and gamma rays."],
+  ["Visible light spectrum", "The part of the electromagnetic spectrum human eyes can see, from red to violet."],
+  ["Infrared", "Electromagnetic waves just past red. We feel them as warmth."],
+  ["Ultraviolet (UV)", "Electromagnetic waves just past violet. They can cause sunburn."],
+  ["White light", "Light that contains all the colours of the visible spectrum, such as sunlight."],
+  ["Prism", "A block of glass with flat, angled faces that spreads white light into colours."],
+  ["Dispersion", "The spreading of white light into its colours because each colour bends a different amount."],
+  ["Transmission", "Light passing through a material."],
+  ["Reflection", "Light bouncing off a surface."],
+  ["Absorption", "Light being taken in by a material, usually warming it."],
+  ["Transparent", "Lets almost all light pass straight through. Images are clear."],
+  ["Translucent", "Lets some light through but scatters it. Images are blurry."],
+  ["Opaque", "Lets no light through. It reflects or absorbs all the light."],
+  ["Shadow", "A dark area behind an opaque object, where the object blocks light."],
+  ["Umbra", "The fully dark centre of a shadow, where no light from the source reaches."],
+  ["Penumbra", "The partly lit edge of a shadow, where only part of a wide source is blocked."]
+];
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What kind of wave is light?", ["An electromagnetic wave", "A mechanical wave", "A sound wave", "A water wave"], "Light is made of changing electric and magnetic fields."],
+  ["Why can sunlight reach Earth through space?", ["Light does not need a medium", "Space is full of air", "Light travels through particles of dust", "Sound carries the light"], "Electromagnetic waves can travel through a vacuum."],
+  ["What does every light wave need to start?", ["A light source", "A medium", "A mirror", "A prism"], "A source changes another form of energy into light."],
+  ["About how fast does light travel in a vacuum?", ["300 000 km each second", "343 m each second", "300 km each hour", "1480 m each second"], "That is 3.00 × 10⁸ m/s. 343 m/s is sound in air."],
+  ["Three cards with holes only let you see a lamp when the holes line up. What does this show?", ["Light travels in straight lines", "Light needs a medium", "Light is a mechanical wave", "Light bends around cards"], "Light cannot curve to reach an out-of-line hole."],
+  ["Why can everyone in a room see a ceiling light?", ["Light travels in all directions from the source", "Light only travels downward", "Their eyes make light", "The room is a vacuum"], "Light spreads out from its source in every direction."],
+  ["What does the amplitude of a light wave determine?", ["Brightness", "Colour", "Speed", "Medium"], "A bigger amplitude carries more energy, so the light looks brighter."],
+  ["What does the frequency of a light wave determine?", ["Colour", "Brightness", "Loudness", "Shadow size"], "Each colour of visible light has its own frequency."],
+  ["Which visible colour has the lowest frequency?", ["Red", "Violet", "Green", "Blue"], "Red has the lowest frequency and longest wavelength we can see."],
+  ["Which visible colour has the shortest wavelength?", ["Violet", "Red", "Orange", "Yellow"], "Violet has the highest frequency, so the shortest wavelength."],
+  ["Light has a frequency of 600 THz. Use λ = 300 000 ÷ f. What is its wavelength?", ["500 nm", "600 nm", "180 nm", "5000 nm"], "300 000 ÷ 600 = 500 nm, which is green."],
+  ["What is the visible light spectrum?", ["The part of the electromagnetic spectrum human eyes can detect", "All electromagnetic waves", "Only ultraviolet light", "The colours of a shadow"], "We see only a small slice, about 400 to 700 nm."],
+  ["Which is NOT part of the visible light spectrum?", ["Infrared", "Red", "Green", "Violet"], "Infrared lies just past red and we cannot see it."],
+  ["What happens when white sunlight passes through a prism?", ["It spreads into a spectrum of colours", "It turns all red", "It disappears", "It becomes a shadow"], "Each colour bends a different amount. This is dispersion."],
+  ["In a prism, which colour bends the most?", ["Violet", "Red", "Yellow", "They all bend the same"], "Violet light, with the highest frequency, bends the most."],
+  ["Newton sent one colour from a prism into a second prism. What happened?", ["It bent but stayed the same colour", "It split into more colours", "It turned white", "It stopped"], "This showed the prism separates colours that were already in white light."],
+  ["Which material is translucent?", ["Wax paper", "Window glass", "Cardboard", "Aluminum foil"], "Wax paper lets some light through but scatters it."],
+  ["A tinted car window lets through only 35% of light, but you see clearly through it. It is…", ["transparent", "translucent", "opaque", "luminous"], "Clear images mean transparent, even if some light is absorbed."],
+  ["What happens to light that hits an opaque object?", ["It is reflected or absorbed", "It passes straight through", "It speeds up", "It turns into sound"], "Opaque objects let no light through."],
+  ["Why can you see the Moon at night?", ["It reflects sunlight", "It makes its own light", "It absorbs all light", "It is a prism"], "The Moon is non-luminous. Moonlight is reflected sunlight."],
+  ["Why can't you see a book in a completely dark room?", ["No light reflects from the book into your eyes", "The book stops existing", "Your eyes make the room dark", "The book becomes transparent"], "You see non-luminous objects only by light they reflect."],
+  ["How does a shadow form?", ["An opaque object blocks light travelling in straight lines", "Light bends behind the object", "The object gives off dark rays", "Sound blocks the light"], "Light cannot curve around the object, so the space behind it is dark."],
+  ["A wide light source makes a shadow with a dark centre and a lighter edge. The lighter edge is the…", ["penumbra", "umbra", "spectrum", "prism"], "The penumbra gets light from part of the source."],
+  ["A puppet moves closer to a small lamp. What happens to its shadow on the wall?", ["It gets bigger", "It gets smaller", "It stays the same", "It disappears"], "H = h × D ÷ d. A smaller d gives a bigger shadow."]
+];
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "Describe four characteristics of light waves. Give an example or piece of evidence for each.", a: "Light waves need a light source, such as the Sun or a lamp. They do not need a medium, which is why sunlight crosses empty space. They travel in straight lines, shown by the three-card test. They travel in all directions from the source, which is why everyone in a room can see a ceiling light.", k: ["Needs a source, with example", "No medium needed, with evidence", "Straight lines, with evidence", "All directions, with evidence"]},
+  {q: "Compare light waves and sound waves. Give two ways they are alike and two ways they are different.", a: "Alike: both carry energy from a source, and both travel in all directions in straight lines through one material. Different: sound needs a medium but light does not. Sound is a mechanical wave made by a vibrating object, while light is an electromagnetic wave. Light is also far faster, about 300 000 km/s compared with 343 m/s for sound in air.", k: ["Both carry energy", "Both spread in all directions", "Light needs no medium", "Mechanical vs electromagnetic, or speed"]},
+  {q: "Two lamps give off green light. Lamp A looks brighter than lamp B. What is different about their light waves? What is the same?", a: "Lamp A's light waves have a bigger amplitude, so they carry more energy and look brighter. Both lamps are green, so their light has the same frequency and the same wavelength.", k: ["A has bigger amplitude", "More energy means brighter", "Same frequency, same colour"]},
+  {q: "Light has a frequency of 450 THz. Find its wavelength and name its colour. Show your work.", a: "λ = 300 000 ÷ f = 300 000 ÷ 450 ≈ 667 nm. That is in the red range (about 620 to 700 nm), so the light is red.", k: ["Uses λ = 300 000 ÷ f", "About 667 nm", "Names red"]},
+  {q: "What is the visible light spectrum, and how does it fit into the electromagnetic spectrum?", a: "The visible light spectrum is the small part of the electromagnetic spectrum that human eyes can detect, from red (about 700 nm) to violet (about 400 nm). On the low-frequency side are infrared, microwaves and radio waves. On the high-frequency side are ultraviolet, X-rays and gamma rays.", k: ["Only part our eyes detect", "Red to violet, about 400 to 700 nm", "Names waves on both sides"]},
+  {q: "Explain what happens when white light passes through a prism, and what this shows about white light.", a: "Each colour bends by a different amount as it passes through the glass. Violet bends most and red bends least, so the colours spread apart into a spectrum. This is dispersion. It shows that white light already contains all the colours of the visible spectrum.", k: ["Colours bend different amounts", "Violet most, red least", "Names dispersion or spectrum", "White light contains all colours"]},
+  {q: "Classify window glass, wax paper and cardboard as transparent, translucent or opaque. Explain what happens to light in each.", a: "Window glass is transparent: almost all light passes straight through, so images are clear. Wax paper is translucent: some light passes through but is scattered, so images are blurry. Cardboard is opaque: no light passes through, and the light is reflected or absorbed.", k: ["Glass transparent", "Wax paper translucent", "Cardboard opaque", "Describes what light does in each"]},
+  {q: "Explain how you can see a lamp and how you can see a book on your desk. Use the words luminous and non-luminous.", a: "The lamp is luminous. It makes its own light, which travels straight into my eyes. The book is non-luminous. Light from the lamp hits the book and reflects in many directions, and some of it enters my eyes. If there were no light source, I could not see the book.", k: ["Lamp is luminous", "Book is non-luminous", "Book reflects light", "Light must enter the eye"]},
+  {q: "Explain why a shadow forms behind a person standing in sunlight. Why is the shadow longest in the early morning?", a: "The person is opaque. Their body absorbs or reflects the sunlight that hits it. Light travels in straight lines and cannot bend around them to fill the space behind, so a dark shadow forms there. In the early morning the Sun is low in the sky, so its rays come in at a low angle and the blocked area stretches far along the ground.", k: ["Body is opaque", "Absorbs or reflects light", "Straight lines, no bending around", "Low Sun angle makes long shadows"]}
+];
+var LONG = [
+  {q: "Design an investigation to compare how much light passes through five materials. Name your variables, describe your steps, explain how you will classify each material, and predict one result.", a: "Manipulated variable: the material. Responding variables: the light meter reading and whether an image through the material is clear, blurry or not visible. Controlled variables: same lamp, same distance from lamp to material and to meter, same size of each sample, and a dark room. Steps: measure the lamp with no material, then place each material in the beam, record the meter reading three times and average. Look through each at a printed sign. Classify: a clear image is transparent, a blurry image with some light is translucent, and no light is opaque. Prediction: wax paper will let some light through but give a blurry image, so it is translucent.", k: ["Manipulated and responding variables", "At least three controlled variables", "Measures a baseline with no material", "Repeated trials", "Classification rule", "Prediction with reason"]},
+  {q: "Use the full journey of sunlight to explain how light waves transfer energy from a source. Start in the Sun and end with a canola field near Edmonton. Include the medium, speed, straight-line travel and what happens to the energy.", a: "In the Sun's core, nuclear energy is changed into light, so the Sun is a light source. Light leaves the Sun in all directions. It crosses about 150 million km of nearly empty space with no medium, travelling in straight lines at about 300 000 km/s, so it reaches Earth in about 8.3 minutes. Some light is reflected by clouds and some passes through the transparent air. When it reaches the canola leaves, they absorb some of it and use the energy for photosynthesis, storing it as chemical energy in food. Light that hits dark soil is absorbed and warms the ground.", k: ["Sun as source changing nuclear energy to light", "No medium through space", "Straight lines, all directions, speed or time", "Interaction with air or clouds", "Energy transferred to chemical or thermal energy"]},
+  {q: "A classmate says, “A prism adds colours to white light.” Use evidence from Newton's two-prism experiment to evaluate this claim.", a: "The claim is not supported. When white light passes through one prism, it spreads into a spectrum. If one colour, such as green, is sent through a slit into a second prism, it bends but stays green. No new colours appear. If prisms added colour, the second prism should also add colours. Instead the evidence shows white light already contains all the colours, and a prism only separates them because each colour bends a different amount.", k: ["States a clear position", "Describes the first prism", "Describes the second prism result", "Explains dispersion as separation", "Uses evidence to reject the claim"]},
+  {q: "At a school play, a spotlight shines on an actor standing in front of a backdrop. Explain the shadow the audience sees. Then explain how it would change if the actor walked toward the spotlight, and if a wide floodlight replaced the spotlight.", a: "The actor is opaque, so they block the spotlight's light, which travels in straight lines. A dark shadow forms on the backdrop where no light reaches. If the actor walks toward the spotlight, the shadow gets bigger, because H = h × D ÷ d and d gets smaller. With a wide floodlight, light comes from many points, so the shadow has a dark umbra in the middle and a lighter penumbra around the edges, and the edge looks blurry instead of sharp.", k: ["Actor is opaque and blocks light", "Straight-line travel explains the shape", "Closer to source makes a bigger shadow", "Wide source makes umbra and penumbra", "Uses the formula or a diagram"]}
+];
+
+/* ---------- Coverage rows ---------- */
+var COVER = [
+  ["W2.K1", "Learn: Lesson 1 (source to target), Lesson 2 (bell and lamp in a jar: no medium, speed), Lesson 3 (rays and three-card test: straight lines, all directions). Sort It: luminous or non-luminous, light sound or both. Quiz, Flashcards, Written Review short answers 1 and 2, extended 2."],
+  ["W2.K2", "Learn: Lesson 4 (tune a light wave). Lab Bench: Investigation 1. Sort It: light sound or both. Quiz, Flashcards, Written Review short answers 3 and 4."],
+  ["W2.K3", "Learn: Lesson 7 (beam and materials). Lab Bench: Investigation 2 (light meter test). Sort It: transparent, translucent or opaque. Quiz, Flashcards, Written Review short answer 7, extended 1."],
+  ["W2.K4", "Learn: Lessons 4 and 5 (spectrum explorer). Lab Bench: Investigation 1 (colour table). Sort It: higher or lower frequency than green. Quiz, Flashcards, Written Review short answer 5."],
+  ["W2.K5", "Learn: Lesson 6 (prism model). Lab Bench: Investigation 3 (Newton's two prisms). Quiz, Flashcards, Written Review short answer 6, extended 3."],
+  ["W2.K6", "Learn: Lesson 8 (lamp, mug and eye). Sort It: luminous or non-luminous. Quiz, Flashcards, Written Review short answer 8."],
+  ["W2.K7", "Learn: Lesson 9 (shadow model with umbra and penumbra). Lab Bench: Investigation 4. Quiz, Flashcards, Written Review short answer 9, extended 4."],
+  ["W2.S1", "Learn: Lessons 1 to 5 and 8. Lab Bench: Investigation 1 (frequency, wavelength and colour, with worked example and randomized practice). Sort It: light, sound or both. Written Review short answers 1 to 5."],
+  ["W2.S2", "Learn: Lesson 7. Lab Bench: Investigation 2 (simulated light meter with data table and classification check). Sort It: transparent, translucent or opaque. Written Review short answer 7, extended 1."],
+  ["W2.S3", "Learn: Lesson 6. Lab Bench: Investigation 3 (two-prism experiment with randomized quick check). Written Review short answer 6, extended 3."],
+  ["W2.S4", "Learn: Lesson 9. Lab Bench: Investigation 4 (shadow size with worked example and randomized practice). Written Review short answer 9, extended 4."]
+];
+var STMT = {"W2.K1": "Light waves are electromagnetic waves that\n• require a light source\n• do not require a medium to propagate\n• travel in straight lines\n• travel in all directions from the source", "W2.K2": "The amplitude of a light wave determines brightness, and the frequency of a light wave determines colour.", "W2.K3": "Light waves behave differently when interacting with mediums of different transparency, e.g., transparent, translucent, or opaque.", "W2.K4": "The human eye can see only a portion of the electromagnetic spectrum, referred to as the visible light spectrum.", "W2.K5": "White light contains all colours of the visible light spectrum and can be dispersed through a prism.", "W2.K6": "Bodies can only be seen if they produce or reflect light.", "W2.K7": "A shadow is caused when light rays are absorbed by a body, creating an area of darkness behind the body.", "W2.S1": "Describe characteristics of light waves.", "W2.S2": "Investigate how light waves interact with different mediums.", "W2.S3": "Explore the effect of a prism on white light.", "W2.S4": "Discuss the formation of shadows in relation to the behaviour of light."};
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, function(d, i){ start(d, i); }, 0);
+})();
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+
+(function(){
+  var tb = document.querySelector("#covTable tbody");
+  COVER.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, STMT[r[0]])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[1]));
+    tb.appendChild(tr);
+  });
+})();
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+requestAnimationFrame(loop);
+})();
+</script>
+
+
+</body></html>

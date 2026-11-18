@@ -1,0 +1,1411 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-9/life-beyond-earth-lab/"><meta name="description" content="Space exploration seeks to answer questions about life in the universe."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Life Beyond Earth Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: an astrobiology field notebook. Sticky tab strip, then lessons that pair a short reading column with a live model. Night panels hold sky scenes; ocean blue marks water, ember marks energy and heat, violet marks signs of life. */
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --surface-2:#F4F6F8; --ink:#16202A; --muted:#4E5C69; --line:#CDD5DD;
+  --g9:#2E7A4F; --g9-soft:#DFF0E5;
+  --rocket:#B4471F; --rocket-soft:#FAE4DA; --orbit:#1D6A96; --orbit-soft:#DCEBF4; --law:#7A3E9D; --law-soft:#EFE2F6;
+  --good:#2E7A4F; --good-soft:#DFF0E5; --bad:#B03A2E; --bad-soft:#F7E0DC; --warn:#8A5A00; --warn-soft:#FBEFD5;
+  --night:#0E1828; --night-2:#1A2740; --star:#E8EEF5; --star-dim:#A9B7C9; --sun:#F2C14E; --red-dwarf:#E8774A; --hot-star:#BFD8FF;
+  --zone:#3FA36B; --ice:#CFE6F2; --rock:#8C7357; --rock-2:#6B573F; --lava:#D9622B;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E131A; --surface:#161D26; --surface-2:#1C2530; --ink:#E4EAF0; --muted:#9FADBB; --line:#2B3744;
+  --g9:#74C995; --g9-soft:#16301F;
+  --rocket:#F2916A; --rocket-soft:#3A1E14; --orbit:#7CC0E8; --orbit-soft:#13283A; --law:#CDA3EC; --law-soft:#2C1D3A;
+  --good:#74C995; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --warn:#F0C060; --warn-soft:#3A2C10;
+  --night:#070D17; --night-2:#121C2E; --star:#E8EEF5; --star-dim:#A9B7C9; --sun:#F2C14E; --red-dwarf:#E8774A; --hot-star:#BFD8FF;
+  --zone:#4FB57C; --ice:#A9CDE0; --rock:#9C8466; --rock-2:#5E4C37; --lava:#E8743C;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E131A; --surface:#161D26; --surface-2:#1C2530; --ink:#E4EAF0; --muted:#9FADBB; --line:#2B3744;
+  --g9:#74C995; --g9-soft:#16301F;
+  --rocket:#F2916A; --rocket-soft:#3A1E14; --orbit:#7CC0E8; --orbit-soft:#13283A; --law:#CDA3EC; --law-soft:#2C1D3A;
+  --good:#74C995; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18; --warn:#F0C060; --warn-soft:#3A2C10;
+  --night:#070D17; --night-2:#121C2E; --star:#E8EEF5; --star-dim:#A9B7C9; --sun:#F2C14E; --red-dwarf:#E8774A; --hot-star:#BFD8FF;
+  --zone:#4FB57C; --ice:#A9CDE0; --rock:#9C8466; --rock-2:#5E4C37; --lava:#E8743C;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--orbit)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orbit);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:none}
+svg .hot:focus-visible circle, svg .hot:focus-visible rect, svg .hot:focus-visible path{stroke:var(--rocket);stroke-width:4}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g9)}
+.mono{font-family:var(--f-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ro{color:var(--rocket)} header h1 .lw{color:var(--law)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g9);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g9)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g9-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g9)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.ro[aria-pressed="true"]{background:var(--rocket);border-color:var(--rocket);color:var(--surface)}
+.chip.or[aria-pressed="true"]{background:var(--orbit);border-color:var(--orbit);color:var(--surface)}
+.chip.lw[aria-pressed="true"]{background:var(--law);border-color:var(--law);color:var(--surface)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.svgbox{overflow-x:auto;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.svgbox.night{background:var(--night);border-color:var(--night-2)}
+.svgbox svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-body);fill:var(--ink)}
+svg .lbl{font-size:13px;font-weight:700}
+svg .small{font-size:11px;fill:var(--muted)}
+svg .lt{fill:var(--star)} svg .ltd{fill:var(--star-dim)}
+svg .axis{stroke:var(--line);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+svg .hot{cursor:pointer}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--orbit)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+
+/* investigation blocks */
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px}
+.inv > header{display:grid;gap:4px}
+.inv h3{font-size:1.3rem}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+.checks2{display:grid;gap:6px}
+.checks2 label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks2 input{margin-top:.3em}
+.verdicts{display:grid;gap:8px}
+.vrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface-2)}
+@media (max-width:560px){.vrow{grid-template-columns:minmax(0,1fr)}}
+.vrow.ok{border-color:var(--good);background:var(--good-soft)} .vrow.no{border-color:var(--bad);background:var(--bad-soft)}
+.vrow p{font-size:.92rem}
+.vrow .why{grid-column:1/-1;font-size:.86rem;color:var(--muted)}
+.scen{background:var(--law-soft);border-radius:10px;padding:14px;display:grid;gap:6px}
+.scen b{font-family:var(--f-display);font-size:1.1rem}
+.status{font-family:var(--f-mono);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:999px;width:fit-content}
+.status.cov{background:var(--good-soft);color:var(--good)} .status.part{background:var(--warn-soft);color:var(--warn)} .status.gap{background:var(--bad-soft);color:var(--bad)}
+
+/* bars */
+.bars{display:grid;gap:8px}
+.barrow{display:grid;grid-template-columns:8.5em minmax(0,1fr) 4.2em;gap:8px;align-items:center;font-size:.86rem}
+.barrow .track{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.barrow .track i{display:block;height:100%;background:var(--orbit);border-radius:7px;transition:width .4s ease}
+.barrow .track i.warn{background:var(--rocket)}
+.barrow b{font-family:var(--f-mono);font-size:.8rem;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:480px){.barrow{grid-template-columns:6.5em minmax(0,1fr) 3.8em}}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g9)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g9)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit a{color:var(--g9);font-weight:700}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.meter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.meter span{display:grid;gap:2px;text-align:center;font-size:.78rem;color:var(--muted)}
+.meter i{display:block;height:10px;border-radius:5px;background:var(--surface);border:1px solid var(--line)}
+.meter i.on{background:var(--good);border-color:var(--good)}
+.meter i.half{background:var(--warn);border-color:var(--warn)}
+.verdict{font-family:var(--f-display);font-weight:800;font-size:1.15rem}
+.verdict.ok{color:var(--good)} .verdict.no{color:var(--bad)} .verdict.mid{color:var(--warn)}
+.ratings{display:grid;gap:10px}
+.rate{display:grid;gap:6px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--surface-2)}
+.rate p{font-size:.92rem}
+.rate .chips .chip{font-size:.82rem;padding:4px 10px}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 9 · Space · SP2</div>
+    <h1>Life <span class="lw">Beyond</span> Earth Lab</h1>
+    <p class="under"><b>Understanding:</b> Space exploration seeks to answer questions about life in the universe. Astrobiologists ask what life needs and look for places that could have it, in our solar system and around other stars. Bases in lava tubes on the Moon or Mars could one day help people explore further and stay longer.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Eight short lessons in order. Each one has a model to try. First meet the science of astrobiology and what life needs. Then visit places that might have life, near and far. Finish with lava tubes and the bases people may build in them.</p>
+  </div>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 1 · A science made of sciences</span>
+      <div class="codes"><span class="code">SP2.K1</span><span class="code">SP2.S1</span></div>
+      <h3>What is astrobiology?</h3>
+      <p><b>Astrobiology</b> is the scientific study of life in the universe. It asks three big questions: How does life begin? Does life exist anywhere other than Earth? Where could it be, and how is it spread out across space?</p>
+      <p>Astrobiology is <b>interdisciplinary</b>. That means it joins many fields of science together. No single field can answer these questions alone.</p>
+      <ul>
+        <li><b>Biologists</b> study how living things survive, even in extreme places.</li>
+        <li><b>Chemists</b> look for the molecules life uses.</li>
+        <li><b>Geologists</b> read rocks for signs of past water and past life.</li>
+        <li><b>Astronomers and physicists</b> find planets and study starlight.</li>
+        <li><b>Engineers and computer scientists</b> build the spacecraft, rovers and software that do the searching.</li>
+      </ul>
+      <div class="key"><b>Big idea:</b> astrobiology explores space to find out whether life exists elsewhere, and if it does, where.</div>
+    </div>
+    <div class="model">
+      <h4>Model: meet the astrobiology team</h4>
+      <div class="chips" id="fieldChips" role="group" aria-label="Choose a field of science"></div>
+      <div class="detail" id="fieldDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 2 · The checklist</span>
+      <div class="codes"><span class="code">SP2.K2</span></div>
+      <h3>What does life need?</h3>
+      <p>Every living thing on Earth needs four things. Astrobiologists use these needs as a checklist when they judge another world.</p>
+      <ul>
+        <li><b>Liquid water</b>, where the chemistry of life happens.</li>
+        <li><b>An energy source</b>, such as sunlight or chemical energy from hot rocks.</li>
+        <li><b>Chemical building blocks</b>, mainly carbon, hydrogen, nitrogen, oxygen, phosphorus and sulfur.</li>
+        <li><b>Stable conditions</b> that last long enough for life to start and survive.</li>
+      </ul>
+      <p><b>Extremophiles</b> are living things that thrive in extreme places, such as boiling hot springs, acid lakes or rock deep underground. They show that life can survive in places once thought impossible. This gives scientists hope that life could survive on harsher worlds too.</p>
+      <p class="note">Oxygen in the air and sunlight are not on the list. Many microbes on Earth live without either one.</p>
+    </div>
+    <div class="model">
+      <h4>Model: life at the edges</h4>
+      <div class="chips" id="extChips" role="group" aria-label="Choose an extreme place"></div>
+      <div class="detail" id="extDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 3 · Not too hot, not too cold</span>
+      <div class="codes"><span class="code">SP2.K2</span><span class="code">SP2.S2</span></div>
+      <h3>The habitable zone</h3>
+      <p>The <b>habitable zone</b> is the range of distances from a star where a planet with enough air could have liquid water on its surface. Closer in, water boils away. Farther out, it freezes.</p>
+      <p>A brighter star has a habitable zone farther out. A dim red dwarf has one tucked in close. Scientists estimate the middle of the zone with a simple rule, using the star's brightness compared with the Sun (its <b>luminosity</b>, L):</p>
+      <div class="formula">zone edges ≈ 0.95 × √L to 1.67 × √L &nbsp; (in AU)</div>
+      <p>One <b>astronomical unit</b> (AU) is the distance from Earth to the Sun, about 150 million km.</p>
+      <p class="note">Being in the zone is a starting point, not a promise. Mars sits near the outer edge, but its air is too thin to hold liquid water at the surface today. Moons such as Europa are far outside the zone but may hide oceans warmed from inside.</p>
+    </div>
+    <div class="model">
+      <h4>Model: place a planet</h4>
+      <div class="chips" id="starChips" role="group" aria-label="Choose a star"></div>
+      <label class="field" for="hzD">Planet distance from the star: <span id="hzOut" class="mono">1.00 AU</span>
+        <input type="range" id="hzD" min="0.02" max="3" step="0.01" value="1"></label>
+      <div class="svgbox night"><svg id="hzSvg" viewBox="0 0 520 170" role="img" aria-label="A star, its habitable zone band, and a planet"></svg></div>
+      <div class="detail" id="hzDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 4 · Close to home</span>
+      <div class="codes"><span class="code">SP2.K2</span><span class="code">SP2.S2</span></div>
+      <h3>Places in our solar system that might hold life</h3>
+      <p>Conditions on some <b>celestial bodies</b> (planets, moons and other natural objects in space) suggest that life may exist, or once existed, beyond Earth.</p>
+      <p><b>Mars</b> once had rivers and lakes. Ice is still there today, under the ground and at the poles. <b>Europa</b>, a moon of Jupiter, and <b>Enceladus</b>, a moon of Saturn, have salty liquid oceans under their icy shells. Enceladus sprays water from its ocean into space. <b>Titan</b>, Saturn's largest moon, has lakes of liquid methane and likely a water ocean deep below.</p>
+      <p>No one has found life on any of them yet. Each one has some, but not all, of the checklist items scientists can confirm.</p>
+    </div>
+    <div class="model">
+      <h4>Model: tap a world</h4>
+      <div class="svgbox night"><svg id="ssSvg" viewBox="0 0 520 150" role="group" aria-label="Five worlds in our solar system. Select one to read about it."></svg></div>
+      <div class="detail" id="ssDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 5 · Other stars</span>
+      <div class="codes"><span class="code">SP2.K2</span><span class="code">SP2.S2</span></div>
+      <h3>Exoplanets and the transit method</h3>
+      <p>An <b>exoplanet</b> is a planet that orbits a star other than the Sun. Scientists had confirmed more than 6000 of them by 2025.</p>
+      <p>Most are found with the <b>transit method</b>. When a planet passes in front of its star, the star's light dims a tiny bit. A bigger planet blocks more light:</p>
+      <div class="formula">dip in brightness ≈ (planet radius ÷ star radius)²</div>
+      <p>When starlight passes through a planet's air, gases leave fingerprints in the light. Telescopes such as Webb read these fingerprints, a method called <b>spectroscopy</b>. A gas that could point to life is called a <b>biosignature</b>. Oxygen and methane found together would be a strong hint, because on Earth living things keep both in the air.</p>
+      <p class="note">Canada built NIRISS, one of the instruments on the James Webb Space Telescope. It was designed partly to study the air of exoplanets.</p>
+    </div>
+    <div class="model">
+      <h4>Model: watch a transit</h4>
+      <label class="field" for="trR">Planet size: <span id="trOut" class="mono">Earth size</span>
+        <input type="range" id="trR" min="1" max="11" step="0.5" value="1"></label>
+      <div class="svgbox night"><svg id="trSvg" viewBox="0 0 520 220" role="img" aria-label="A planet crossing a star and the light curve it makes"></svg></div>
+      <div class="row"><button class="btn" id="trPlay" type="button">Play transit</button></div>
+      <div class="detail" id="trDetail" aria-live="polite"></div>
+      <p class="hint">The dip is drawn larger than real life so you can see it.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 6 · How the search works</span>
+      <div class="codes"><span class="code">SP2.K1</span><span class="code">SP2.S1</span></div>
+      <h3>Missions that look for life</h3>
+      <p>Astrobiology moves forward one mission at a time. Rovers read rocks on Mars. Orbiters fly through plumes and map icy moons. Telescopes study the air of distant planets. Radio searches listen for signals from other civilizations.</p>
+      <p>Scientists are careful. A claim of life needs strong evidence, ruled-out explanations and checks by other teams. Several exciting claims, such as the 2020 report of the gas phosphine at Venus, are still debated.</p>
+      <div class="key"><b>Big idea:</b> the search for life is slow, careful work. "We have not found it yet" is an honest scientific answer.</div>
+    </div>
+    <div class="model">
+      <h4>Model: mission timeline</h4>
+      <div class="chips" id="misChips" role="group" aria-label="Choose a mission"></div>
+      <div class="detail" id="misDetail" aria-live="polite"></div>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 7 · Natural shelters</span>
+      <div class="codes"><span class="code">SP2.K3</span></div>
+      <h3>Lava tubes on the Moon and Mars</h3>
+      <p>A <b>lava tube</b> is a tunnel made by flowing lava. The top of a lava river cools and hardens into a crust. Hot lava keeps flowing underneath, then drains away and leaves a hollow tube.</p>
+      <p>Spacecraft have photographed <b>pits</b> (holes) on the Moon and Mars where tube roofs have collapsed. In 2024, scientists used radar data to show that a pit on the Moon opens into a cave passage.</p>
+      <p>Conditions inside a lava tube could make it a good place for people and labs:</p>
+      <ul>
+        <li>Several metres of rock overhead would block most harmful <b>radiation</b> from the Sun and space.</li>
+        <li>The rock roof would stop tiny <b>micrometeorites</b>.</li>
+        <li>The <b>temperature</b> would stay much steadier than on the surface.</li>
+      </ul>
+      <p class="note">Lava tubes on Earth, such as those in Hawaii and Iceland, are used to train astronauts and test equipment.</p>
+    </div>
+    <div class="model">
+      <h4>Model: surface or tube?</h4>
+      <div class="chips" id="tubeChips" role="group" aria-label="Choose a location"></div>
+      <div class="svgbox night"><svg id="tubeSvg" viewBox="0 0 520 220" role="img" aria-label="Cross-section of ground with a lava tube"></svg></div>
+      <div class="stats" id="tubeStats"></div>
+      <p class="hint">Values are rounded. The tube temperature is an estimate from studies of one Moon pit.</p>
+    </div>
+  </article>
+
+  <article class="lesson">
+    <div class="text">
+      <span class="step">Lesson 8 · Why build out there?</span>
+      <div class="codes"><span class="code">SP2.K4</span><span class="code">SP2.S3</span></div>
+      <h3>Labs and homes on other worlds</h3>
+      <p>Research labs and places to live on the Moon, Mars or other bodies could help space exploration in three ways:</p>
+      <ul>
+        <li><b>Reducing costs.</b> Launching anything from Earth is expensive. Making water, oxygen and fuel from local ice, and building with local rock, means less has to be launched.</li>
+        <li><b>More technology beyond Earth.</b> Workshops, 3D printers, spare parts and fuel depots would be close to where they are needed, instead of days or months away.</li>
+        <li><b>Longer research missions.</b> People could stay for months, run long experiments, and use places such as the quiet far side of the Moon for telescopes.</li>
+      </ul>
+      <p>The Moon's gravity is about one sixth of Earth's. A rocket leaving the Moon needs much less energy than one leaving Earth.</p>
+      <p class="note">Bases also bring costs, risks to crews, and the duty not to spread Earth microbes to places that might have life of their own.</p>
+    </div>
+    <div class="model">
+      <h4>Model: three benefits</h4>
+      <div class="chips" id="benChips" role="group" aria-label="Choose a benefit"></div>
+      <div class="detail" id="benDetail" aria-live="polite"></div>
+      <h4>Speed needed to escape (escape velocity)</h4>
+      <div class="bars" id="escBars"></div>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Five investigations. Judge evidence like an astrobiologist, use the habitable zone and transit formulas, investigate a world that might hold life, and plan a base.</p>
+  </div>
+
+  <div class="inv">
+    <header><span class="eyebrow">Investigation 1 · SP2.S1</span><h3>Biosignature judge</h3>
+    <p class="hint">Read each report from a mission. Decide how strong the evidence for life is. Reports are based on real missions, simplified, or made up for practice where marked.</p></header>
+    <div class="scen" id="bjCase" aria-live="polite"></div>
+    <div class="chips" id="bjChips" role="group" aria-label="Your judgment"></div>
+    <div class="row"><button class="btn ghost" id="bjNext" type="button">Next report</button><span class="hint mono" id="bjScore"></span></div>
+    <div id="bjFb" aria-live="polite"></div>
+  </div>
+
+  <div class="inv">
+    <header><span class="eyebrow">Investigation 2 · SP2.S2</span><h3>Habitable zone calculator</h3>
+    <p class="hint">Find the habitable zone for any star, then practise with random stars and planets.</p></header>
+    <div class="two">
+      <div class="checks2">
+        <label class="field" for="hzL">Star luminosity (Sun = 1)
+          <input type="number" id="hzL" min="0.0001" step="0.0001" value="1"></label>
+        <label class="field" for="hzP">Planet distance (AU)
+          <input type="number" id="hzP" min="0.001" step="0.001" value="1"></label>
+        <button class="btn" id="hzCalc" type="button">Calculate</button>
+      </div>
+      <div class="worked" id="hzWork" aria-live="polite"></div>
+    </div>
+    <h4>Practice</h4>
+    <div class="worked" id="hzQ"></div>
+    <div class="chips" id="hzAns" role="group" aria-label="Your answer"></div>
+    <div class="row"><button class="btn ghost" id="hzNew" type="button">New problem</button></div>
+    <div id="hzFb" aria-live="polite"></div>
+  </div>
+
+  <div class="inv">
+    <header><span class="eyebrow">Investigation 3 · SP2.S2</span><h3>Transit depth calculator</h3>
+    <p class="hint">Find how much a planet dims its star. Radii are in kilometres. Then practise with random planets.</p></header>
+    <div class="two">
+      <div class="checks2">
+        <label class="field" for="tdP">Planet radius (km)
+          <input type="number" id="tdP" min="1" step="1" value="6371"></label>
+        <label class="field" for="tdS">Star radius (km)
+          <input type="number" id="tdS" min="1" step="1" value="696000"></label>
+        <button class="btn" id="tdCalc" type="button">Calculate</button>
+      </div>
+      <div class="worked" id="tdWork" aria-live="polite"></div>
+    </div>
+    <h4>Practice</h4>
+    <div class="worked" id="tdQ"></div>
+    <div class="row">
+      <label class="field" for="tdIn">Your answer (percent)
+        <input type="number" id="tdIn" step="any"></label>
+      <button class="btn" id="tdCheck" type="button">Check</button>
+      <button class="btn ghost" id="tdNew" type="button">New problem</button>
+    </div>
+    <div id="tdFb" aria-live="polite"></div>
+  </div>
+
+  <div class="inv">
+    <header><span class="eyebrow">Investigation 4 · SP2.S2</span><h3>Investigate a world</h3>
+    <p class="hint">Choose a celestial body. Read the evidence for each need of life and rate it. Then build your summary.</p></header>
+    <div class="chips" id="wbChips" role="group" aria-label="Choose a celestial body"></div>
+    <p id="wbIntro"></p>
+    <div class="ratings" id="wbRatings"></div>
+    <div class="meter" id="wbMeter" aria-hidden="true"></div>
+    <div class="row"><button class="btn" id="wbBuild" type="button">Build my summary</button></div>
+    <div class="worked" id="wbOut" aria-live="polite"></div>
+  </div>
+
+  <div class="inv">
+    <header><span class="eyebrow">Investigation 5 · SP2.S3</span><h3>Base planner</h3>
+    <p class="hint">Pick a site and a purpose for a research base. See its strengths and challenges. Then work out how much a base saves by making its own water. Costs are made up for practice.</p></header>
+    <div class="two">
+      <div class="checks2">
+        <span class="tagline">Site</span>
+        <div class="chips" id="bpSite" role="group" aria-label="Choose a site"></div>
+        <span class="tagline">Main purpose</span>
+        <div class="chips" id="bpGoal" role="group" aria-label="Choose a purpose"></div>
+      </div>
+      <div class="detail" id="bpOut" aria-live="polite"></div>
+    </div>
+    <h4>Water budget</h4>
+    <div class="two">
+      <div class="checks2">
+        <label class="field" for="wCrew">Crew size <input type="number" id="wCrew" min="1" max="20" value="4"></label>
+        <label class="field" for="wDays">Mission length (days) <input type="number" id="wDays" min="1" max="1000" value="180"></label>
+        <label class="field" for="wKg">Water used per person per day (kg, after recycling) <input type="number" id="wKg" min="0.1" step="0.1" value="1"></label>
+        <label class="field" for="wCost">Cost to ship 1 kg from Earth to the Moon (practice value, dollars) <input type="number" id="wCost" min="1" step="1000" value="500000"></label>
+      </div>
+      <div class="worked" id="wOut" aria-live="polite"></div>
+    </div>
+    <h4>Practice</h4>
+    <div class="worked" id="wQ"></div>
+    <div class="row">
+      <label class="field" for="wIn">Water to ship (kg)
+        <input type="number" id="wIn" step="any"></label>
+      <button class="btn" id="wCheck" type="button">Check</button>
+      <button class="btn ghost" id="wNew" type="button">New problem</button>
+    </div>
+    <div id="wFb" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Pick a deck. Read each card and tap the group it belongs in. Every answer comes with a reason.</p>
+  </div>
+  <div class="chips" id="deckChips" role="group" aria-label="Choose a deck"></div>
+  <div class="sort" id="sortArea"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card (or press Space) to flip it. Mark it as known or still learning. Your progress is saved on this device.</p>
+  </div>
+  <div class="fc">
+    <div class="chips" role="group" aria-label="Which cards">
+      <button class="chip" id="fcAll" type="button" aria-pressed="true">All cards</button>
+      <button class="chip" id="fcLearning" type="button" aria-pressed="false">Still learning only</button>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="fcBar"></i></div>
+    <p class="hint mono" id="fcCount"></p>
+    <button class="card3" id="fcCard" type="button" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" id="fcPrev" type="button">Back</button>
+      <button class="btn ghost" id="fcStill" type="button">Still learning</button>
+      <button class="btn" id="fcKnow" type="button">I know it</button>
+      <button class="btn ghost" id="fcShuffle" type="button">Shuffle</button>
+      <button class="btn ghost" id="fcReset" type="button">Reset progress</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of 25. Each answer shows an explanation. Start a new round for a fresh set.</p>
+  </div>
+  <div class="quiz" id="quizArea"></div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first. Then open the model answer and tick the key ideas you included. Your notes and ticks stay on this device.</p>
+  </div>
+  <div class="wr" id="wrArea"></div>
+</section>
+
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers. Every knowledge (K) and skills (S) statement for Science 9 SP2, with where this lab teaches it. Codes are labels added for this collection; the draft curriculum is unnumbered.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="covTable"><thead><tr><th>Code</th><th>Statement</th><th>Where it is taught</th></tr></thead><tbody></tbody></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes</h3>
+    <ul>
+      <li><b>SP2.K1:</b> the draft defines astrobiology by detecting "the possible existence and distribution" of life. The lab also names the origin of life as one of the field's questions, since NASA and most sources include it. The fields named in Lesson 1 are examples, not a fixed list.</li>
+      <li><b>SP2.K2:</b> "conditions indicate that life may exist" is taught carefully: conditions can make life possible, but no life has been found beyond Earth. The needs checklist (liquid water, energy, chemical building blocks, stable conditions) is a common simplification. The habitable zone rule (0.95√L to 1.67√L AU) is a rounded conservative estimate; published edges vary by model. Mission facts need a currency check: more than 6000 confirmed exoplanets (NASA Exoplanet Archive, 2025); phosphates in Enceladus plume grains (2023); methane and carbon dioxide at K2-18 b (Webb, 2023) with the 2025 dimethyl sulfide claim still disputed; Venus phosphine (2020) disputed; the 2025 report of a possible biosignature in a Jezero rock sample (Cheyava Falls, sample Sapphire Canyon) taught as possible, not proven; Europa Clipper (launched 2024, arrival 2030), JUICE (launched 2023, arrival 2031) and Dragonfly (planned launch 2028, arrival 2034).</li>
+      <li><b>SP2.K3:</b> lava tubes on the Moon and Mars are inferred from pits and collapse chains; the 2024 radar study of the Mare Tranquillitatis pit is the first evidence of an accessible cave passage on the Moon. The tube temperature (about 17 °C in shaded parts of that pit, from a 2022 study) and surface range (about −170 °C to 120 °C on the Moon) are rounded estimates. Radiation protection is described in words, without dose numbers.</li>
+      <li><b>SP2.K4:</b> the three draft benefits are taught as listed. Escape velocities (Earth about 11.2 km/s, Mars about 5.0 km/s, Moon about 2.4 km/s) are standard values. The shipping cost and water use in Investigation 5 are made-up practice values and are labelled. MOXIE (oxygen made from Mars air, 2021 to 2023) is named as a real test of making supplies on site. Planetary protection is mentioned as brief context.</li>
+      <li><b>Alberta example:</b> the warm springs at Banff (home of the endangered Banff Springs snail and of microbial mats) are used as a local example of life in unusual water. They are warm rather than extreme, and the lab says so.</li>
+      <li><b>Practice data:</b> the habitable zone and transit practice stars, the water budget, and two biosignature reports marked "practice" are made up or rounded.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 9 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g9-sp2-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+var NS = "http://www.w3.org/2000/svg";
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+function sv(tag, attrs, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (text != null) n.textContent = text;
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function fmt(x, d){ return x.toLocaleString("en-CA", {maximumFractionDigits: d == null ? 1 : d, minimumFractionDigits: 0}); }
+function chipGroup(container, items, cls, onPick, startIdx){
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip " + (cls || ""), "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  paras.forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function hot(g, label, onAct){
+  g.setAttribute("class", "hot"); g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label);
+  g.addEventListener("click", onAct);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onAct(); } });
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: fields ---------- */
+var FIELDS = [
+  {label: "Biology", t: "Biology: what life can survive", p: ["Question: what are the limits of life? Biologists study extremophiles in hot springs, ice and deep rock.", "Job in the search: decide which worlds have conditions some living thing could handle, and what signs life leaves behind."]},
+  {label: "Chemistry", t: "Chemistry: the molecules of life", p: ["Question: which molecules does life build and use? Life on Earth is built mostly from carbon, hydrogen, nitrogen, oxygen, phosphorus and sulfur.", "Job in the search: identify gases and molecules in plumes, rocks and planet air, and work out whether life or ordinary chemistry made them."]},
+  {label: "Geology", t: "Geology: reading rocks", p: ["Question: did water flow here, and for how long? Rocks keep a record of past lakes, rivers and hot springs.", "Job in the search: choose landing sites, such as the old lake bed in Jezero crater on Mars, and spot rock textures that tiny living things can leave."]},
+  {label: "Astronomy and physics", t: "Astronomy and physics: finding worlds", p: ["Question: where are the planets and moons that could hold water? Astronomers find exoplanets and measure their size, orbit and air.", "Job in the search: use telescopes and the physics of light to read the gases around faraway planets."]},
+  {label: "Engineering and computing", t: "Engineering and computing: getting there", p: ["Question: how do we reach a world and test it? Engineers design rovers, drills, orbiters and sample tubes.", "Job in the search: build the machines and write the software that collect and send back the data. Clean-room rules keep Earth microbes off the spacecraft so they are not mistaken for alien life."]}
+];
+chipGroup($("fieldChips"), FIELDS, "or", function(t){ detail($("fieldDetail"), t.t, t.p, "Astrobiology team"); }, 0);
+
+/* ---------- Lesson 2: extremophiles ---------- */
+var EXT = [
+  {label: "Deep-sea vents", t: "Hydrothermal vents on the ocean floor", p: ["Conditions: total darkness, crushing pressure, water hotter than 100 °C near the vent openings.", "Who lives there: microbes that get energy from chemicals in the vent water instead of sunlight. Tube worms and crabs depend on them.", "Why it matters: Europa and Enceladus may have vents on their ocean floors."], c: "Energy without sunlight"},
+  {label: "Hot springs", t: "Boiling hot springs", p: ["Conditions: water near boiling, often acidic or full of minerals.", "Who lives there: heat-loving microbes that form colourful mats. Some grow best above 80 °C.", "Close to home: the warm mineral springs at Banff are not extreme, but they are home to microbial mats and the endangered Banff Springs snail, found nowhere else."], c: "Life in hot water"},
+  {label: "Ice and cold", t: "Lakes under Antarctic ice", p: ["Conditions: dark, near freezing, sealed under hundreds of metres of ice.", "Who lives there: microbes found in lakes buried under the Antarctic ice sheet.", "Why it matters: this is a little like the ocean under Europa's icy shell."], c: "Life under ice"},
+  {label: "Radiation", t: "High radiation", p: ["Conditions: radiation doses that would kill a person many times over.", "Who lives there: the bacterium Deinococcus radiodurans can repair badly damaged DNA and survive.", "Why it matters: the surface of Mars has much more radiation than Earth's surface."], c: "Surviving radiation"},
+  {label: "Tardigrades", t: "Tardigrades (water bears)", p: ["What they are: tiny animals, about half a millimetre long.", "What they survive: drying out, deep cold and even a short trip to open space in a 2007 experiment, by shutting down into a dormant state.", "Careful: surviving is not the same as thriving. They need liquid water to be active and grow."], c: "Tough animals"}
+];
+chipGroup($("extChips"), EXT, "ro", function(t){ detail($("extDetail"), t.t, t.p, t.c); }, 0);
+
+/* ---------- Lesson 3: habitable zone ---------- */
+var STARS = [
+  {label: "Red dwarf", L: 0.0017, col: "var(--red-dwarf)", r: 9, name: "a red dwarf like Proxima Centauri", lum: "0.0017"},
+  {label: "Sun-like star", L: 1, col: "var(--sun)", r: 15, name: "the Sun", lum: "1"},
+  {label: "Bright white star", L: 5, col: "var(--hot-star)", r: 20, name: "a bright white star", lum: "5"}
+];
+var hzStar = STARS[1];
+function hzEdges(L){ return [0.95 * Math.sqrt(L), 1.67 * Math.sqrt(L)]; }
+function drawHZ(){
+  var svg = $("hzSvg"); clear(svg);
+  var d = parseFloat($("hzD").value);
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 170, fill: "var(--night)"}));
+  var max = hzStar.L < 0.01 ? 0.12 : hzStar.L > 2 ? 4.5 : 3;
+  var x0 = 40, x1 = 500, sc = function(a){ return x0 + (Math.min(a, max) / max) * (x1 - x0); };
+  var e = hzEdges(hzStar.L);
+  svg.appendChild(sv("rect", {x: sc(e[0]), y: 30, width: Math.max(2, sc(e[1]) - sc(e[0])), height: 90, fill: "var(--zone)", opacity: 0.35}));
+  svg.appendChild(sv("text", {x: (sc(e[0]) + sc(e[1])) / 2, y: 24, "text-anchor": "middle", "class": "small lt"}, "habitable zone"));
+  svg.appendChild(sv("circle", {cx: x0 - 10, cy: 75, r: hzStar.r, fill: hzStar.col}));
+  svg.appendChild(sv("line", {x1: x0, y1: 140, x2: x1, y2: 140, stroke: "var(--star-dim)", "stroke-width": 1}));
+  for (var i = 0; i <= 4; i++) {
+    var v = max * i / 4, x = sc(v);
+    svg.appendChild(sv("line", {x1: x, y1: 136, x2: x, y2: 144, stroke: "var(--star-dim)"}));
+    svg.appendChild(sv("text", {x: x, y: 160, "text-anchor": "middle", "class": "small ltd"}, fmt(v, 2) + " AU"));
+  }
+  var px = sc(d), inZ = d >= e[0] && d <= e[1];
+  var col = d < e[0] ? "var(--lava)" : d > e[1] ? "var(--ice)" : "var(--orbit)";
+  svg.appendChild(sv("circle", {cx: px, cy: 75, r: 7, fill: col, stroke: "var(--star)", "stroke-width": 1.5}));
+  if (d > max) svg.appendChild(sv("text", {x: x1, y: 100, "text-anchor": "end", "class": "small lt"}, "planet is off the scale →"));
+  $("hzOut").textContent = fmt(d, 2) + " AU";
+  var verdict = d < e[0] ? "Too hot: surface water would boil away." : d > e[1] ? "Too cold: surface water would freeze." : "In the habitable zone: liquid water is possible if the planet has enough air.";
+  detail($("hzDetail"), verdict, ["Star: " + hzStar.name + " (L = " + hzStar.lum + "). Zone ≈ " + fmt(e[0], 3) + " to " + fmt(e[1], 3) + " AU.", hzStar.L < 0.01 ? "Red dwarf zones are very close in. Planets there may face strong flares, and many may always show the same face to the star." : hzStar.L > 2 ? "Bright stars burn out faster, which may leave less time for life to begin." : "Earth sits at 1 AU, inside the zone. Venus (0.72 AU) is too close. Mars (1.52 AU) is near the outer edge."], inZ ? "Just right" : "Outside the zone");
+}
+chipGroup($("starChips"), STARS, "or", function(s){
+  hzStar = s;
+  var r = $("hzD");
+  if (s.L < 0.01) { r.min = 0.005; r.max = 0.12; r.step = 0.001; r.value = 0.05; }
+  else if (s.L > 2) { r.min = 0.1; r.max = 4.5; r.step = 0.01; r.value = 2.8; }
+  else { r.min = 0.1; r.max = 3; r.step = 0.01; r.value = 1; }
+  drawHZ();
+}, 1);
+$("hzD").addEventListener("input", drawHZ);
+
+/* ---------- Lesson 4: solar system worlds ---------- */
+var WORLDS = [
+  {n: "Mars", x: 60, r: 18, col: "var(--rock)", t: "Mars", p: ["Water: ancient river valleys, lake beds and minerals that form in water. Ice today under the ground and at the poles. Liquid water at the surface would freeze or boil away in the thin air.", "Energy and chemistry: sunlight, and chemical energy in rocks. Rovers have found carbon-based (organic) molecules.", "Best bet: life in the past, or microbes deep underground today. In 2025, NASA reported a Jezero rock sample with features that could come from ancient microbes, but ordinary chemistry could also explain them."], c: "Planet · 1.5 AU"},
+  {n: "Europa", x: 160, r: 14, col: "var(--ice)", t: "Europa (moon of Jupiter)", p: ["Water: a salty ocean under an icy shell, likely holding more water than all of Earth's oceans.", "Energy: tides from Jupiter's gravity flex and heat the moon's inside. There may be vents on the ocean floor.", "Next step: NASA's Europa Clipper launched in 2024 and should arrive in 2030."], c: "Moon · 5.2 AU"},
+  {n: "Enceladus", x: 260, r: 10, col: "var(--star)", t: "Enceladus (moon of Saturn)", p: ["Water: geysers spray water from an ocean under the ice into space. The Cassini spacecraft flew through them.", "Chemistry: Cassini found salts, organic molecules and hydrogen gas. In 2023, scientists reported phosphates, a building block not found there before.", "Why it excites scientists: it seems to have water, energy and the needed chemistry all at once."], c: "Moon · 9.5 AU"},
+  {n: "Titan", x: 360, r: 17, col: "var(--sun)", t: "Titan (moon of Saturn)", p: ["Surface: thick, hazy air and lakes of liquid methane and ethane. It is about −180 °C.", "Below: likely a water ocean deep under the icy crust.", "Next step: NASA's Dragonfly, a flying drone lander, is planned to launch in 2028 and arrive in 2034. Any life in methane lakes would have to be very different from Earth life."], c: "Moon · 9.5 AU"},
+  {n: "Venus clouds", x: 460, r: 17, col: "var(--rocket-soft)", t: "Venus (the clouds)", p: ["Surface: about 465 °C, far too hot for life as we know it.", "Clouds: about 50 km up, temperature and pressure are closer to Earth's, but the droplets are mostly sulfuric acid.", "Evidence: a 2020 report of the gas phosphine raised hopes, but later studies question it. It is still debated."], c: "Planet · 0.72 AU"}
+];
+(function(){
+  var svg = $("ssSvg");
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 150, fill: "var(--night)"}));
+  [[20,20],[110,130],[210,25],[300,135],[410,20],[500,120],[230,95]].forEach(function(p){ svg.appendChild(sv("circle", {cx: p[0], cy: p[1], r: 1.3, fill: "var(--star-dim)"})); });
+  var gs = [];
+  function sel(i){
+    var w = WORLDS[i];
+    gs.forEach(function(g, j){ g.querySelector("circle.ring").setAttribute("stroke-opacity", j === i ? 1 : 0); });
+    detail($("ssDetail"), w.t, w.p, w.c);
+  }
+  WORLDS.forEach(function(w, i){
+    var g = sv("g");
+    g.appendChild(sv("circle", {"class": "ring", cx: w.x, cy: 62, r: w.r + 7, fill: "none", stroke: "var(--star)", "stroke-width": 2, "stroke-opacity": 0}));
+    g.appendChild(sv("circle", {cx: w.x, cy: 62, r: w.r, fill: w.col}));
+    g.appendChild(sv("text", {x: w.x, y: 118, "text-anchor": "middle", "class": "lbl lt"}, w.n));
+    hot(g, w.n + ". Show details.", function(){ sel(i); });
+    svg.appendChild(g); gs.push(g);
+  });
+  sel(0);
+})();
+
+/* ---------- Lesson 5: transit ---------- */
+var trFrame = 0, trTimer = null;
+function trDepth(){ var rE = parseFloat($("trR").value); return Math.pow(rE * 6371 / 696000, 2); }
+function drawTR(phase){
+  var svg = $("trSvg"); clear(svg);
+  var rE = parseFloat($("trR").value), dep = trDepth();
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 220, fill: "var(--night)"}));
+  svg.appendChild(sv("circle", {cx: 130, cy: 80, r: 60, fill: "var(--sun)"}));
+  var p = phase == null ? 0.5 : phase;
+  var px = 40 + p * 180, pr = Math.max(2.5, rE * 1.2);
+  svg.appendChild(sv("circle", {cx: px, cy: 80, r: pr, fill: "var(--night-2)", stroke: "var(--star-dim)", "stroke-width": 1}));
+  svg.appendChild(sv("text", {x: 130, y: 166, "text-anchor": "middle", "class": "small ltd"}, "view from Earth"));
+  // light curve
+  var gx0 = 270, gx1 = 505, gy = 60, gh = 110;
+  svg.appendChild(sv("text", {x: gx0, y: 30, "class": "small ltd"}, "brightness"));
+  svg.appendChild(sv("line", {x1: gx0, y1: gy + gh, x2: gx1, y2: gy + gh, stroke: "var(--star-dim)"}));
+  svg.appendChild(sv("text", {x: gx1, y: gy + gh + 16, "text-anchor": "end", "class": "small ltd"}, "time →"));
+  var vis = Math.min(1, dep * 60);
+  var dipY = gy + vis * 80;
+  var d = "", n = 60;
+  for (var i = 0; i <= n; i++) {
+    var t = i / n, x = gx0 + t * (gx1 - gx0);
+    var cover = 0;
+    var pos = 40 + t * 180, overlap = Math.abs(pos - 130) < 60 ? 1 : 0;
+    var y = overlap ? dipY : gy;
+    if (phase != null && t > phase) break;
+    d += (i ? " L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+  }
+  if (d) svg.appendChild(sv("path", {d: d, fill: "none", stroke: "var(--orbit)", "stroke-width": 3}));
+  var pct = dep * 100;
+  $("trOut").textContent = rE === 1 ? "Earth size" : rE === 11 ? "Jupiter size (about 11 Earths wide)" : fmt(rE, 1) + " × Earth's width";
+  detail($("trDetail"), "Dip: about " + (pct < 0.1 ? fmt(pct, 4) : fmt(pct, 2)) + "% of the star's light", ["(" + fmt(rE * 6371, 0) + " km ÷ 696 000 km)² = " + fmt(dep, 6) + ", or " + (pct < 0.1 ? fmt(pct, 4) : fmt(pct, 2)) + "%.", rE <= 2 ? "An Earth-size planet dims a Sun-like star by less than one hundredth of one percent. That is why finding small planets takes very sensitive telescopes such as Kepler and TESS." : "Big planets are easier to find, which is one reason giant planets were found first."], "Transit method");
+}
+$("trR").addEventListener("input", function(){ if (trTimer) { clearInterval(trTimer); trTimer = null; } drawTR(); });
+$("trPlay").addEventListener("click", function(){
+  if (trTimer) clearInterval(trTimer);
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { drawTR(1); return; }
+  trFrame = 0;
+  trTimer = setInterval(function(){ trFrame++; drawTR(trFrame / 60); if (trFrame >= 60) { clearInterval(trTimer); trTimer = null; } }, 50);
+});
+drawTR();
+
+/* ---------- Lesson 6: missions ---------- */
+var MIS = [
+  {label: "1976 · Viking", t: "Viking landers, Mars (1976)", p: ["The first life-detection experiments on another planet. Two landers scooped soil and tested it.", "Result: one test gave a puzzling positive result, but others found no organic molecules. Most scientists concluded the results came from soil chemistry, not life. It taught scientists to plan for many kinds of evidence."]},
+  {label: "1995 · First exoplanets", t: "First planet around a Sun-like star (1995)", p: ["Swiss astronomers Michel Mayor and Didier Queloz found 51 Pegasi b, a giant planet very close to its star. They shared the 2019 Nobel Prize in Physics.", "Since then, scientists around the world have confirmed more than 6000 exoplanets."]},
+  {label: "2005 · Cassini", t: "Cassini at Saturn (2004 to 2017)", p: ["In 2005, Cassini spotted water plumes shooting from Enceladus. It later flew through them and tasted salts, organic molecules and hydrogen.", "Cassini also dropped the Huygens probe onto Titan in 2005."]},
+  {label: "2021 · Perseverance", t: "Perseverance rover, Jezero crater, Mars (2021 to now)", p: ["Jezero was once a lake with a river delta. Perseverance studies its rocks and seals samples in tubes for a possible return to Earth.", "It also carried MOXIE, which made oxygen from the carbon dioxide in Mars air, a test of making supplies on another world."]},
+  {label: "2021 · Webb", t: "James Webb Space Telescope (2021 to now)", p: ["Webb reads the air of exoplanets using infrared light. In 2023 it found methane and carbon dioxide around the exoplanet K2-18 b.", "Canada built Webb's Fine Guidance Sensor and the NIRISS science instrument, which studies exoplanet atmospheres."]},
+  {label: "2024 · Europa Clipper", t: "Europa Clipper (launched 2024)", p: ["NASA's orbiter will fly past Europa dozens of times starting in 2030, measuring the ice shell, the ocean and the chemistry.", "Europe's JUICE mission, launched in 2023, will also study Europa and other moons of Jupiter, arriving in 2031."]},
+  {label: "2028 · Dragonfly", t: "Dragonfly to Titan (planned)", p: ["A drone-like lander that will fly from place to place on Titan, testing the chemistry of the surface.", "It is planned to launch in 2028 and arrive in 2034."]},
+  {label: "Ongoing · SETI", t: "SETI: listening for signals", p: ["SETI stands for the Search for Extraterrestrial Intelligence. Radio telescopes listen for signals that could only come from technology.", "No such signal has been confirmed. Most astrobiology looks for simple life, such as microbes, rather than civilizations."]}
+];
+chipGroup($("misChips"), MIS, "lw", function(t){ detail($("misDetail"), t.t, t.p, "Mission"); }, 0);
+
+/* ---------- Lesson 7: lava tube ---------- */
+var SITES7 = [
+  {label: "Moon surface", tube: false, stats: [["Temperature", "about −170 to 120 °C"], ["Radiation", "full exposure"], ["Micrometeorites", "direct hits"], ["Sunlight for power", "yes, in daytime"]]},
+  {label: "Moon lava tube", tube: true, stats: [["Temperature", "steady, about 17 °C (estimate)"], ["Radiation", "mostly blocked by rock"], ["Micrometeorites", "blocked"], ["Sunlight for power", "no, panels go outside"]]}
+];
+function drawTube(s){
+  var svg = $("tubeSvg"); clear(svg);
+  svg.appendChild(sv("rect", {x: 0, y: 0, width: 520, height: 70, fill: "var(--night)"}));
+  svg.appendChild(sv("rect", {x: 0, y: 70, width: 520, height: 150, fill: "var(--rock-2)"}));
+  svg.appendChild(sv("path", {d: "M0 70 L210 70 L230 100 L290 100 L310 70 L520 70", fill: "none", stroke: "var(--rock)", "stroke-width": 4}));
+  svg.appendChild(sv("rect", {x: 210, y: 70, width: 100, height: 30, fill: "var(--night)"}));
+  svg.appendChild(sv("ellipse", {cx: 260, cy: 150, rx: 200, ry: 40, fill: "var(--night-2)"}));
+  svg.appendChild(sv("rect", {x: 230, y: 100, width: 60, height: 20, fill: "var(--night-2)"}));
+  svg.appendChild(sv("text", {x: 70, y: 196, "class": "small lt"}, "lava tube (hollow tunnel)"));
+  svg.appendChild(sv("text", {x: 330, y: 92, "class": "small lt"}, "pit (collapsed roof)"));
+  // radiation arrows
+  for (var i = 0; i < 6; i++) {
+    var x = 40 + i * 85;
+    var stop = (x > 200 && x < 320) ? 135 : 70 + (s.tube ? 10 : 0);
+    svg.appendChild(sv("line", {x1: x + 20, y1: 8, x2: x, y2: stop, stroke: "var(--rocket)", "stroke-width": 2, "stroke-dasharray": "5 4"}));
+  }
+  svg.appendChild(sv("text", {x: 8, y: 20, "class": "small lt"}, "radiation"));
+  // habitat
+  var hx = s.tube ? 120 : 400, hy = s.tube ? 140 : 52;
+  svg.appendChild(sv("rect", {x: hx, y: hy, width: 44, height: 18, rx: 8, fill: "var(--star)", stroke: "var(--orbit)", "stroke-width": 3}));
+  svg.appendChild(sv("text", {x: hx + 22, y: hy - 6, "text-anchor": "middle", "class": "small lt"}, "habitat"));
+  var st = $("tubeStats"); clear(st);
+  s.stats.forEach(function(r){ var d = el("div", {"class": "stat"}); d.appendChild(el("span", null, r[0])); d.appendChild(el("b", null, r[1])); st.appendChild(d); });
+}
+chipGroup($("tubeChips"), SITES7, "or", function(s){ drawTube(s); }, 1);
+
+/* ---------- Lesson 8: benefits ---------- */
+var BEN = [
+  {label: "Reducing costs", t: "Reducing costs", p: ["Every kilogram launched from Earth costs a lot. A base that makes supplies from local materials needs fewer launches.", "Example: ice in dark craters near the Moon's south pole could be melted for drinking water, split into oxygen to breathe, and turned into hydrogen and oxygen rocket fuel. NASA's Artemis program plans to land near the south pole partly for this ice.", "Example: lunar soil (regolith) could be 3D printed into walls and landing pads."]},
+  {label: "More technology beyond Earth", t: "Making more technology available beyond Earth", p: ["Today, almost every tool in space was built on Earth and launched. A broken part can mean waiting months.", "A base could hold workshops, spare parts, 3D printers, power stations and fuel depots. Rovers and spacecraft could be repaired and refuelled on site.", "A fuel depot on the Moon could help spacecraft travel on to Mars, because leaving the Moon takes far less energy than leaving Earth."]},
+  {label: "Longer research missions", t: "Allowing longer research missions", p: ["Crews could stay for months instead of days, running long experiments on geology, health and plants.", "A lab on Mars avoids the long signal delay, so scientists can react to discoveries right away.", "The Moon's far side is shielded from Earth's radio noise, a good place for radio telescopes that search the early universe."]}
+];
+chipGroup($("benChips"), BEN, "ro", function(t){ detail($("benDetail"), t.t, t.p, "Benefit of a base"); }, 0);
+(function(){
+  var box = $("escBars");
+  [["Earth", 11.2], ["Mars", 5.0], ["Moon", 2.4]].forEach(function(r){
+    var row = el("div", {"class": "barrow"});
+    row.appendChild(el("span", null, r[0]));
+    var tr = el("div", {"class": "track"}), i = el("i"); i.style.width = (r[1] / 11.2 * 100) + "%"; if (r[0] === "Earth") i.className = "warn"; tr.appendChild(i);
+    row.appendChild(tr); row.appendChild(el("b", null, fmt(r[1], 1) + " km/s"));
+    box.appendChild(row);
+  });
+})();
+
+/* ---------- Investigation 1: biosignature judge ---------- */
+var BJ = [
+  {t: "Rover finds rounded grains of a mineral that forms in water, in an old Mars lake bed.", a: 2, why: "Evidence of past water makes a place more habitable, but water is not life. This is not a sign of life by itself."},
+  {t: "Spacecraft flies through Enceladus plumes and detects salt, organic molecules and hydrogen gas.", a: 1, why: "These point to an ocean with energy and chemistry that life could use. Non-living chemistry can make all of them, so it is possible but not proof."},
+  {t: "A telescope finds a planet whose air has lots of oxygen AND methane together, with no volcanoes or other known source. (Practice report, made up.)", a: 1, why: "This pair is one of the strongest hints scientists hope to find, but they would still test every non-living explanation first. It would be exciting, but not yet proof."},
+  {t: "Webb detects water vapour in the air of a planet that is far too hot for liquid water.", a: 2, why: "Steam on a scorching planet tells us about its air, not about life."},
+  {t: "A sample returned to Earth contains tiny cell-shaped fossils with chemistry that only living things make, confirmed by three independent labs. (Practice report, made up.)", a: 0, why: "Many lines of evidence, ruled-out alternatives and confirmation by other teams are what a strong case needs."},
+  {t: "A 2020 study reports the gas phosphine in the clouds of Venus. Later studies cannot find it at the same strength.", a: 1, why: "A single claim that other teams cannot repeat stays possible at best. This is still debated."},
+  {t: "A Mars rock sample has spots with chemistry that microbes on Earth can make. Hot rock and water can also make similar spots.", a: 1, why: "This is a potential biosignature. Scientists need to rule out non-living causes, likely by studying the sample in labs on Earth."},
+  {t: "A radio telescope picks up a strange signal once. It never repeats and later matches a phone signal on Earth. (Practice report, made up.)", a: 2, why: "Signals from human technology are a common source of false alarms. This one was explained."},
+  {t: "Craters in dark polar regions of the Moon hold water ice.", a: 2, why: "Ice is a resource for future bases, but the Moon has no liquid water at the surface and no evidence of life."}
+];
+var BJL = ["Strong evidence of life", "Possible, needs more evidence", "Not evidence of life"];
+(function(){
+  var order = shuffle(BJ), i = 0, answered = false, sc = 0, n = 0;
+  var setChip = chipGroup($("bjChips"), BJL.map(function(l){ return {label: l}; }), "lw", function(it, k){
+    if (answered) return; answered = true; n++;
+    var c = order[i], ok = k === c.a; if (ok) sc++;
+    clear($("bjFb"));
+    $("bjFb").appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no")}, (ok ? "Good judgment. " : "Best answer: " + BJL[c.a] + ". ") + c.why));
+    $("bjScore").textContent = sc + " of " + n + " judged well";
+  });
+  function show(){
+    answered = false; var c = order[i];
+    clear($("bjCase")); $("bjCase").appendChild(el("span", {"class": "tagline"}, "Mission report " + (i + 1) + " of " + order.length)); $("bjCase").appendChild(el("p", null, c.t));
+    clear($("bjFb"));
+    Array.prototype.forEach.call($("bjChips").children, function(b){ b.setAttribute("aria-pressed", "false"); });
+  }
+  $("bjNext").addEventListener("click", function(){ i = (i + 1) % order.length; if (i === 0) order = shuffle(BJ); show(); });
+  show();
+})();
+
+/* ---------- Investigation 2: habitable zone calculator ---------- */
+function hzWork(box, L, d){
+  var e = hzEdges(L), r = Math.sqrt(L);
+  clear(box);
+  box.appendChild(el("b", null, "Worked solution"));
+  box.appendChild(el("p", {"class": "mono"}, "√L = √" + fmt(L, 4) + " = " + fmt(r, 4)));
+  box.appendChild(el("p", {"class": "mono"}, "inner edge = 0.95 × " + fmt(r, 4) + " = " + fmt(e[0], 3) + " AU"));
+  box.appendChild(el("p", {"class": "mono"}, "outer edge = 1.67 × " + fmt(r, 4) + " = " + fmt(e[1], 3) + " AU"));
+  var v = d < e[0] ? "too close (too hot)" : d > e[1] ? "too far (too cold)" : "inside the habitable zone";
+  box.appendChild(el("p", null, "The planet at " + fmt(d, 3) + " AU is " + v + "."));
+  return d < e[0] ? 0 : d > e[1] ? 2 : 1;
+}
+$("hzCalc").addEventListener("click", function(){
+  var L = parseFloat($("hzL").value), d = parseFloat($("hzP").value);
+  if (!(L > 0) || !(d > 0)) { clear($("hzWork")); $("hzWork").appendChild(el("p", {"class": "fb no"}, "Enter a luminosity and a distance greater than zero.")); return; }
+  hzWork($("hzWork"), L, d);
+});
+hzWork($("hzWork"), 1, 1);
+(function(){
+  var cur, ans = ["Too hot (inside the inner edge)", "In the habitable zone", "Too cold (beyond the outer edge)"], done = false;
+  function gen(){
+    var Ls = [0.04, 0.09, 0.16, 0.25, 0.36, 0.49, 0.64, 1, 1.44, 2.25, 4, 6.25, 9];
+    var L = pick(Ls), r = Math.sqrt(L), e = hzEdges(L), k = Math.floor(Math.random() * 3);
+    var d = k === 0 ? e[0] * (0.4 + Math.random() * 0.45) : k === 1 ? e[0] + (e[1] - e[0]) * (0.15 + Math.random() * 0.7) : e[1] * (1.15 + Math.random() * 0.6);
+    d = Math.round(d * 100) / 100;
+    var real = d < e[0] ? 0 : d > e[1] ? 2 : 1;
+    cur = {L: L, d: d, a: real}; done = false;
+    clear($("hzQ")); $("hzQ").appendChild(el("p", null, "Practice star (made up): luminosity L = " + fmt(L, 2) + ". A planet orbits at " + fmt(d, 2) + " AU. Where is the planet?"));
+    clear($("hzFb"));
+    Array.prototype.forEach.call($("hzAns").children, function(b){ b.setAttribute("aria-pressed", "false"); });
+  }
+  chipGroup($("hzAns"), ans.map(function(a){ return {label: a}; }), "or", function(it, k){
+    if (done) return; done = true;
+    clear($("hzFb"));
+    var fb = el("div", {"class": "feedback " + (k === cur.a ? "ok" : "no")});
+    fb.appendChild(el("p", null, (k === cur.a ? "Correct." : "Not quite. The answer is: " + ans[cur.a] + ".")));
+    var w = el("div", {"class": "worked"}); hzWork(w, cur.L, cur.d); fb.appendChild(w);
+    $("hzFb").appendChild(fb);
+  });
+  $("hzNew").addEventListener("click", gen);
+  gen();
+})();
+
+/* ---------- Investigation 3: transit depth ---------- */
+function tdWork(box, rp, rs){
+  var ratio = rp / rs, dep = ratio * ratio, pct = dep * 100;
+  clear(box);
+  box.appendChild(el("b", null, "Worked solution"));
+  box.appendChild(el("p", {"class": "mono"}, "ratio = " + fmt(rp, 0) + " ÷ " + fmt(rs, 0) + " = " + fmt(ratio, 5)));
+  box.appendChild(el("p", {"class": "mono"}, "dip = ratio² = " + fmt(dep, 7)));
+  box.appendChild(el("p", {"class": "mono"}, "dip in percent = " + fmt(dep, 7) + " × 100 = " + fmt(pct, pct < 0.1 ? 4 : 2) + "%"));
+  return pct;
+}
+$("tdCalc").addEventListener("click", function(){
+  var p = parseFloat($("tdP").value), s = parseFloat($("tdS").value);
+  if (!(p > 0) || !(s > 0)) { clear($("tdWork")); $("tdWork").appendChild(el("p", {"class": "fb no"}, "Enter two radii greater than zero.")); return; }
+  if (p >= s) { clear($("tdWork")); $("tdWork").appendChild(el("p", {"class": "fb no"}, "A transiting planet must be smaller than its star. Check the radii.")); return; }
+  tdWork($("tdWork"), p, s);
+});
+tdWork($("tdWork"), 6371, 696000);
+(function(){
+  var cur;
+  var PL = [["a planet", 7000], ["a planet", 12000], ["a planet", 25000], ["a planet", 35000], ["a planet", 50000], ["a planet", 70000]];
+  var ST = [["a Sun-like star", 700000], ["a small orange star", 500000], ["a red dwarf", 150000], ["a red dwarf", 100000]];
+  function gen(){
+    var p = pick(PL), s = pick(ST);
+    cur = {p: p[1], s: s[1], a: Math.pow(p[1] / s[1], 2) * 100};
+    clear($("tdQ")); $("tdQ").appendChild(el("p", null, "Practice (made up): " + p[0] + " with radius " + fmt(p[1], 0) + " km crosses " + s[0] + " with radius " + fmt(s[1], 0) + " km. By what percent does the star dim? Give at least two significant figures."));
+    $("tdIn").value = ""; clear($("tdFb"));
+  }
+  $("tdCheck").addEventListener("click", function(){
+    var v = parseFloat($("tdIn").value); clear($("tdFb"));
+    if (isNaN(v)) { $("tdFb").appendChild(el("p", {"class": "fb no"}, "Type a number first.")); return; }
+    var ok = Math.abs(v - cur.a) / cur.a < 0.05;
+    var fb = el("div", {"class": "feedback " + (ok ? "ok" : "no")});
+    fb.appendChild(el("p", null, ok ? "Correct, within rounding." : "Not quite. Check the steps below."));
+    var w = el("div", {"class": "worked"}); tdWork(w, cur.p, cur.s); fb.appendChild(w);
+    if (cur.s <= 150000) fb.appendChild(el("p", {"class": "hint"}, "Notice: the same planet makes a much bigger dip in front of a small red dwarf. That is one reason small planets are easier to study around red dwarfs."));
+    $("tdFb").appendChild(fb);
+  });
+  $("tdNew").addEventListener("click", gen);
+  gen();
+})();
+
+/* ---------- Investigation 4: investigate a world ---------- */
+var NEEDS = ["Liquid water", "Energy source", "Building blocks", "Stable conditions"];
+var BODIES = [
+  {label: "Mars", intro: "Planet in our solar system, 1.5 AU from the Sun. Visited by orbiters, landers and rovers since the 1970s.", ev: ["Lots of ice, and strong evidence of rivers and lakes billions of years ago. No stable liquid water at the surface today; there may be salty water deep underground.", "Sunlight, plus chemical energy in rocks.", "Organic molecules found by rovers; all key elements present in rocks and air.", "Thin air, strong radiation and freezing nights at the surface. Underground could be steadier."], best: [1, 2, 2, 1], next: "Return rock samples to Earth labs, and drill deeper to look for underground water."},
+  {label: "Europa", intro: "Icy moon of Jupiter, about 5.2 AU from the Sun. Studied by flybys; Europa Clipper arrives in 2030.", ev: ["A global salty ocean under an icy shell, likely kilometres to tens of kilometres thick.", "Tidal heating from Jupiter. Possible vents on the sea floor. No sunlight reaches the ocean.", "Salts at the surface; organic molecules are expected but not yet confirmed.", "The ocean may have existed for billions of years, shielded by ice from radiation."], best: [2, 1, 1, 2], next: "Map the ice shell and ocean chemistry with Europa Clipper, then perhaps send a lander."},
+  {label: "Enceladus", intro: "Small icy moon of Saturn, about 9.5 AU from the Sun. Studied closely by Cassini from 2004 to 2017.", ev: ["An ocean under the ice that sprays out through cracks near the south pole.", "Hydrogen gas in the plumes suggests hot water reacting with rock, a chemical energy source.", "Salts, organic molecules and phosphates found in plume material.", "Unknown how long the ocean has existed; it may be young or old."], best: [2, 2, 2, 1], next: "Send a spacecraft to fly through the plumes again with instruments built to detect life."},
+  {label: "Titan", intro: "Largest moon of Saturn, about 9.5 AU from the Sun. Huygens landed there in 2005; Dragonfly is planned.", ev: ["Liquid methane and ethane lakes on the surface, too cold for liquid water. A water ocean likely lies deep below the crust.", "Weak sunlight through thick haze; possible chemical energy.", "Very rich in organic (carbon-based) molecules.", "Thick air protects the surface; it has been stable for a long time, but at about −180 °C."], best: [1, 1, 2, 1], next: "Sample surface chemistry with the Dragonfly lander."},
+  {label: "Proxima b", intro: "Exoplanet orbiting Proxima Centauri, the closest star to the Sun, about 4.2 light-years away. Found in 2016.", ev: ["Inside its star's habitable zone, so liquid water is possible if it has air. We do not know if it does.", "Starlight from a red dwarf.", "Unknown: we cannot yet study its air.", "The star sends out strong flares that could strip away air. The planet may always show one face to its star."], best: [1, 2, 0, 0], next: "Use future telescopes to find out whether it has an atmosphere."},
+  {label: "TRAPPIST-1e", intro: "One of seven Earth-size planets around a cool red dwarf about 40 light-years away. The system was announced in 2017.", ev: ["In the habitable zone, with a size close to Earth's. Whether it has water is unknown.", "Starlight from a red dwarf.", "Unknown; Webb is studying the planets in this system.", "Webb found that the two innermost planets likely lack thick air, which raises questions about the others."], best: [1, 2, 0, 1], next: "Use Webb to test whether TRAPPIST-1e has an atmosphere and what is in it."},
+  {label: "K2-18 b", intro: "Exoplanet about 124 light-years away, about 2.6 times Earth's width. It orbits a red dwarf in its habitable zone.", ev: ["Possibly a planet with a deep ocean under a hydrogen-rich atmosphere, but it may be too hot or have no surface. Still debated.", "Starlight from a red dwarf.", "Webb found methane and carbon dioxide (2023). A 2025 claim of a possible biosignature gas (dimethyl sulfide) has not been confirmed by other teams.", "Unknown; its structure is still debated."], best: [1, 2, 1, 0], next: "Collect more Webb observations to test the claims."}
+];
+(function(){
+  var body, ratings, lev = ["No evidence", "Some evidence", "Strong evidence"];
+  function render(){
+    $("wbIntro").textContent = body.intro;
+    var box = $("wbRatings"); clear(box);
+    NEEDS.forEach(function(n, i){
+      var r = el("div", {"class": "rate"});
+      r.appendChild(el("span", {"class": "tagline"}, n));
+      r.appendChild(el("p", null, body.ev[i]));
+      var ch = el("div", {"class": "chips", role: "group", "aria-label": "Rate the evidence for " + n.toLowerCase()});
+      r.appendChild(ch); box.appendChild(r);
+      chipGroup(ch, lev.map(function(l){ return {label: l}; }), "", function(it, k){ ratings[i] = k; meter(); }, ratings[i] == null ? undefined : ratings[i]);
+    });
+    meter(); clear($("wbOut"));
+  }
+  function meter(){
+    var m = $("wbMeter"); clear(m);
+    NEEDS.forEach(function(n, i){ var s = el("span"); var b = el("i"); if (ratings[i] === 2) b.className = "on"; else if (ratings[i] === 1) b.className = "half"; s.appendChild(b); s.appendChild(document.createTextNode(n)); m.appendChild(s); });
+  }
+  chipGroup($("wbChips"), BODIES, "or", function(b){ body = b; ratings = [null, null, null, null]; render(); }, 2);
+  $("wbBuild").addEventListener("click", function(){
+    var out = $("wbOut"); clear(out);
+    if (ratings.some(function(r){ return r == null; })) { out.appendChild(el("p", {"class": "fb no"}, "Rate all four needs first.")); return; }
+    var total = ratings.reduce(function(a, b){ return a + b; }, 0);
+    var strong = NEEDS.filter(function(n, i){ return ratings[i] === 2; }), weak = NEEDS.filter(function(n, i){ return ratings[i] === 0; });
+    out.appendChild(el("b", null, "My summary: " + body.label));
+    out.appendChild(el("p", null, body.label + " scores " + total + " out of 8 on my habitability checklist. " + (strong.length ? "The strongest evidence is for " + strong.join(", ").toLowerCase() + ". " : "No need has strong evidence yet. ") + (weak.length ? "We have no evidence yet for " + weak.join(", ").toLowerCase() + ". " : "") + "This makes it " + (total >= 6 ? "one of the most promising places to search" : total >= 4 ? "a possible place to search" : "a long shot for now") + ". No life has been found there."));
+    out.appendChild(el("p", null, "Next step to investigate: " + body.next));
+    var diff = ratings.reduce(function(a, r, i){ return a + Math.abs(r - body.best[i]); }, 0);
+    out.appendChild(el("p", {"class": "hint"}, diff <= 1 ? "Your ratings match a scientist's reading of the evidence closely." : "Compare with a scientist's reading: " + NEEDS.map(function(n, i){ return n + ": " + lev[body.best[i]].toLowerCase(); }).join("; ") + "."));
+  });
+})();
+
+/* ---------- Investigation 5: base planner ---------- */
+var BSITES = [
+  {label: "Moon surface (south pole)", s: ["Close to Earth: about 3 days of travel and about 1.3 s signal delay.", "Near ice in dark craters, and some ridges get sunlight most of the time."], c: ["Full radiation and micrometeorite exposure.", "Huge temperature swings; lunar dust is sharp and clings to everything."]},
+  {label: "Moon lava tube", s: ["Rock roof blocks most radiation and all micrometeorites.", "Steady temperature saves energy for heating and cooling."], c: ["Hard to reach and map; landing must happen at the surface nearby.", "No sunlight inside, so power and radio antennas must be outside."]},
+  {label: "Mars surface", s: ["Ice and carbon dioxide air can be turned into water, oxygen and fuel.", "Close to sites where ancient life might be found."], c: ["Trip of about 6 to 9 months; signal delay of several minutes or more.", "Radiation, dust storms and cold."]},
+  {label: "Mars lava tube", s: ["Shielded from radiation, dust storms and temperature swings.", "Underground water ice may collect in caves."], c: ["Very far and hard to explore; robots must scout first.", "Caves might hold Martian microbes, so crews must avoid contaminating them."]}
+];
+var BGOALS = [
+  {label: "Search for life", k: "Allows longer research missions: scientists can study samples on site instead of waiting years for them to come to Earth."},
+  {label: "Make fuel and water", k: "Reduces costs: supplies made on site do not need to be launched from Earth."},
+  {label: "Repair and refuel spacecraft", k: "Makes more technology available beyond Earth: tools, spare parts and fuel are ready where they are needed."}
+];
+(function(){
+  var site = 0, goal = 0;
+  function out(){
+    var s = BSITES[site], g = BGOALS[goal], box = $("bpOut"); clear(box);
+    box.appendChild(el("span", {"class": "tagline"}, "Plan"));
+    box.appendChild(el("h5", null, s.label + " · " + g.label));
+    box.appendChild(el("p", null, "Strengths: " + s.s.join(" ")));
+    box.appendChild(el("p", null, "Challenges: " + s.c.join(" ")));
+    box.appendChild(el("p", null, "How it helps exploration: " + g.k));
+  }
+  chipGroup($("bpSite"), BSITES, "or", function(it, i){ site = i; out(); }, 1);
+  chipGroup($("bpGoal"), BGOALS, "ro", function(it, i){ goal = i; out(); }, 0);
+})();
+function wWork(box, crew, days, kg, cost){
+  var water = crew * days * kg, dollars = water * cost;
+  clear(box);
+  box.appendChild(el("b", null, "Worked solution"));
+  box.appendChild(el("p", {"class": "mono"}, "water = crew × days × kg per person per day"));
+  box.appendChild(el("p", {"class": "mono"}, "water = " + crew + " × " + days + " × " + fmt(kg, 1) + " = " + fmt(water, 1) + " kg"));
+  if (cost != null) {
+    box.appendChild(el("p", {"class": "mono"}, "cost = " + fmt(water, 1) + " kg × $" + fmt(cost, 0) + " = $" + fmt(dollars, 0)));
+    box.appendChild(el("p", null, "If the base melts local ice instead, it avoids about $" + fmt(dollars, 0) + " in shipping (minus the cost of the ice-mining equipment). This is the cost-reducing benefit."));
+  }
+  return water;
+}
+function wCalc(){
+  var c = parseFloat($("wCrew").value), d = parseFloat($("wDays").value), k = parseFloat($("wKg").value), p = parseFloat($("wCost").value);
+  if (!(c > 0 && d > 0 && k > 0 && p > 0)) { clear($("wOut")); $("wOut").appendChild(el("p", {"class": "fb no"}, "Enter numbers greater than zero in every box.")); return; }
+  wWork($("wOut"), c, d, k, p);
+}
+["wCrew", "wDays", "wKg", "wCost"].forEach(function(id){ $(id).addEventListener("input", wCalc); });
+wCalc();
+(function(){
+  var cur;
+  function gen(){
+    cur = {c: pick([2, 3, 4, 6, 8]), d: pick([30, 60, 90, 120, 180, 365]), k: pick([0.5, 1, 1.5, 2, 2.5])};
+    cur.a = cur.c * cur.d * cur.k;
+    clear($("wQ")); $("wQ").appendChild(el("p", null, "Practice (made up): a crew of " + cur.c + " stays " + cur.d + " days. After recycling, each person uses " + fmt(cur.k, 1) + " kg of new water per day. How much water would have to be shipped from Earth?"));
+    $("wIn").value = ""; clear($("wFb"));
+  }
+  $("wCheck").addEventListener("click", function(){
+    var v = parseFloat($("wIn").value); clear($("wFb"));
+    if (isNaN(v)) { $("wFb").appendChild(el("p", {"class": "fb no"}, "Type a number first.")); return; }
+    var ok = Math.abs(v - cur.a) < 0.01 * cur.a + 0.01;
+    var fb = el("div", {"class": "feedback " + (ok ? "ok" : "no")});
+    fb.appendChild(el("p", null, ok ? "Correct." : "Not quite. Check the steps below."));
+    var w = el("div", {"class": "worked"}); wWork(w, cur.c, cur.d, cur.k, null); fb.appendChild(w);
+    $("wFb").appendChild(fb);
+  });
+  $("wNew").addEventListener("click", gen);
+  gen();
+})();
+
+
+/* ---------- Sort It ---------- */
+var DECKS = [
+  {label: "Which field?", bins: ["Biology", "Chemistry", "Geology", "Astronomy and physics"], items: [
+    ["Studies microbes that live in boiling hot springs", 0, "Living things and their limits are biology."],
+    ["Identifies organic molecules in a plume sample", 1, "Molecules are chemistry."],
+    ["Reads layers in an old Mars lake bed", 2, "Rocks and their history are geology."],
+    ["Measures the dip in starlight as a planet crosses", 3, "Starlight and orbits are astronomy and physics."],
+    ["Tests how tardigrades survive drying out", 0, "How an animal survives is biology."],
+    ["Works out which gases absorb certain colours of light", 1, "How gases interact with light is chemistry (and physics)."],
+    ["Chooses a landing site on an ancient river delta", 2, "Geologists pick sites where water once flowed."],
+    ["Calculates the habitable zone of a red dwarf", 3, "Star brightness and distance are astronomy and physics."],
+    ["Spots a rock mineral that only forms in water", 2, "Minerals are read by geologists."],
+    ["Finds phosphates in ice grains from Enceladus", 1, "Detecting a compound is chemistry."]
+  ]},
+  {label: "Needs of life", bins: ["Liquid water", "Energy source", "Building blocks", "Not needed by all life"], items: [
+    ["Sunlight", 3, "Vent microbes live in total darkness, using chemical energy."],
+    ["A salty ocean under ice", 0, "Liquid water is where life's chemistry happens."],
+    ["Chemicals from hot rock on a sea floor", 1, "Chemical energy can power life without sunlight."],
+    ["Carbon, nitrogen and phosphorus", 2, "These are building blocks of life's molecules."],
+    ["Oxygen in the air", 3, "Many microbes live without oxygen. Early Earth had almost none."],
+    ["Tidal heating from a giant planet", 1, "Tides heat moons such as Europa from inside."],
+    ["Being inside the habitable zone", 3, "Moons such as Europa and Enceladus may have oceans far outside it."],
+    ["Organic molecules", 2, "Carbon-based molecules are the building blocks."],
+    ["A solid, rocky surface", 3, "Life could live in an ocean without ever touching land."],
+    ["Melted ice in rock pores underground", 0, "Liquid water underground could support microbes."]
+  ]},
+  {label: "Lava tube or surface?", bins: ["Lava tube", "Surface"], items: [
+    ["Rock roof blocks most radiation", 0, "Several metres of rock shield people inside."],
+    ["Easy place to land a spacecraft", 1, "Landers need open, flat ground."],
+    ["Temperature stays steady day and night", 0, "Rock insulates the tube."],
+    ["Solar panels get direct sunlight", 1, "No sunlight reaches inside a tube."],
+    ["Protected from micrometeorites", 0, "The roof stops tiny space rocks."],
+    ["Swings from about −170 °C to 120 °C on the Moon", 1, "The surface has no air to even out the temperature."],
+    ["Hard to reach and map", 0, "Robots must scout tubes first."],
+    ["Mars dust storms blow right over the base", 1, "A tube would shelter a base from storms."]
+  ]},
+  {label: "Benefit of a base", bins: ["Reduces costs", "More technology beyond Earth", "Longer research missions"], items: [
+    ["Melting Moon ice for drinking water", 0, "Less water has to be launched from Earth."],
+    ["A workshop that repairs a broken rover on Mars", 1, "Tools and parts are close to where they are needed."],
+    ["Scientists stay six months to watch a slow experiment", 2, "Longer stays allow longer research."],
+    ["Printing landing pads from lunar soil", 0, "Local material replaces launched material."],
+    ["A fuel depot that refuels spacecraft heading to Mars", 1, "Technology placed beyond Earth supports more missions."],
+    ["A radio telescope on the quiet far side of the Moon", 2, "A base supports long research projects."],
+    ["Turning Mars air into oxygen, as MOXIE tested", 0, "Making supplies on site means fewer launches."],
+    ["Testing Mars samples on site instead of waiting years to send them home", 2, "Research can go on longer and faster on site."]
+  ]}
+];
+(function(){
+  var area = $("sortArea"), deck, order, idx, score;
+  store.sortBest = store.sortBest || {};
+  function start(d, i){ deck = d; deck.i = i; order = shuffle(d.items); idx = 0; score = 0; render(); }
+  function render(fbMsg, ok){
+    clear(area);
+    var best = store.sortBest[deck.i];
+    area.appendChild(el("p", {"class": "hint mono"}, "Card " + Math.min(idx + 1, order.length) + " of " + order.length + " · Score " + score + (best != null ? " · Best " + best + "/" + order.length : "")));
+    if (idx >= order.length) {
+      var c = el("div", {"class": "sortcard"}, "Deck complete: " + score + " of " + order.length);
+      c.appendChild(el("small", null, score === order.length ? "Perfect sort." : "Try again to beat your score."));
+      area.appendChild(c);
+      if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+      var again = el("button", {"class": "btn", type: "button"}, "Play this deck again");
+      again.addEventListener("click", function(){ start(deck, deck.i); });
+      area.appendChild(again);
+      if (best == null || score > best) { store.sortBest[deck.i] = score; save(); }
+      return;
+    }
+    var it = order[idx];
+    var card = el("div", {"class": "sortcard"}, it[0]);
+    card.appendChild(el("small", null, "Tap the group this belongs in."));
+    area.appendChild(card);
+    var bins = el("div", {"class": "bins"});
+    deck.bins.forEach(function(b, bi){
+      var btn = el("button", {"class": "bin", type: "button"}, b);
+      btn.addEventListener("click", function(){
+        var right = bi === it[1];
+        if (right) score++;
+        idx++;
+        render((right ? "Correct. " : "Not quite: it belongs in " + deck.bins[it[1]] + ". ") + it[2], right);
+        var nb = area.querySelector(".bin, .btn"); if (nb) nb.focus();
+      });
+      bins.appendChild(btn);
+    });
+    area.appendChild(bins);
+    if (fbMsg) area.appendChild(el("div", {"class": "feedback " + (ok ? "ok" : "no"), "aria-live": "polite"}, fbMsg));
+  }
+  chipGroup($("deckChips"), DECKS, "", function(d, i){ start(d, i); }, 0);
+})();
+
+/* ---------- Flashcards ---------- */
+var CARDS = [
+  ["Astrobiology", "The interdisciplinary science that explores space to find out whether life exists beyond Earth, and where."],
+  ["Interdisciplinary", "Joining many fields of science, such as biology, chemistry, geology and astronomy, to answer one question."],
+  ["Celestial body", "A natural object in space, such as a planet, moon, star or asteroid."],
+  ["Extremophile", "A living thing that thrives in extreme conditions, such as boiling water, acid or deep cold."],
+  ["Building blocks of life", "The elements life uses most: carbon, hydrogen, nitrogen, oxygen, phosphorus and sulfur."],
+  ["Organic molecule", "A carbon-based molecule. Living things make many, but non-living chemistry can make some too."],
+  ["Habitable zone", "The range of distances from a star where a planet with enough air could have liquid water on its surface."],
+  ["Luminosity", "How much light a star gives off, often compared with the Sun (Sun = 1)."],
+  ["Astronomical unit (AU)", "The distance from Earth to the Sun, about 150 million km."],
+  ["Subsurface ocean", "Liquid water hidden under the icy shell of a moon such as Europa or Enceladus."],
+  ["Tidal heating", "Heat made inside a moon as a giant planet's gravity squeezes and flexes it."],
+  ["Plume", "A spray of water and ice shooting into space, as from cracks on Enceladus."],
+  ["Exoplanet", "A planet that orbits a star other than the Sun."],
+  ["Transit method", "Finding a planet by the small dip in starlight when it passes in front of its star."],
+  ["Spectroscopy", "Splitting light into colours to find which gases or materials it passed through."],
+  ["Biosignature", "Evidence, such as a gas, molecule or rock texture, that could point to past or present life."],
+  ["Red dwarf", "A small, cool, dim star. Most stars are red dwarfs. Their habitable zones are very close in."],
+  ["SETI", "The Search for Extraterrestrial Intelligence, which listens for signals from technology."],
+  ["Lava tube", "A tunnel left behind when flowing lava drains from under a hardened crust."],
+  ["Pit (skylight)", "A hole where a lava tube's roof has collapsed, seen from orbit on the Moon and Mars."],
+  ["Radiation", "High-energy particles and rays from the Sun and space that can damage cells and electronics."],
+  ["Micrometeorite", "A tiny, fast-moving space rock that can damage spacecraft and habitats."],
+  ["Escape velocity", "The speed needed to leave a world's gravity: about 11.2 km/s for Earth and 2.4 km/s for the Moon."],
+  ["In-situ resource use", "Making supplies such as water, oxygen and fuel from materials found at the site, not shipped from Earth."],
+  ["Planetary protection", "Rules and practices that keep Earth microbes off other worlds, and keep any alien material contained."]
+];
+(function(){
+  store.known = store.known || []; store.learning = store.learning || [];
+  var deck = CARDS.map(function(c, i){ return i; }), pos = 0, flipped = false, onlyLearning = false;
+  function list(){ return onlyLearning ? deck.filter(function(i){ return store.known.indexOf(i) < 0; }) : deck; }
+  function render(){
+    var L = list(), c = $("fcCard");
+    $("fcBar").style.width = (store.known.length / CARDS.length * 100) + "%";
+    $("fcCount").textContent = store.known.length + " of " + CARDS.length + " known · " + store.learning.filter(function(i){ return store.known.indexOf(i) < 0; }).length + " marked still learning";
+    clear(c);
+    if (!L.length) { c.appendChild(el("span", {"class": "term"}, "All cards known")); c.appendChild(el("span", {"class": "def"}, "Switch to All cards or reset to practise again.")); return; }
+    if (pos >= L.length) pos = 0;
+    var i = L[pos], card = CARDS[i];
+    var status = store.known.indexOf(i) > -1 ? "Known" : store.learning.indexOf(i) > -1 ? "Still learning" : "New";
+    c.appendChild(el("span", {"class": "tag"}, "Card " + (pos + 1) + " of " + L.length + " · " + status + " · " + (flipped ? "Definition" : "Term")));
+    c.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? card[1] : card[0]));
+    if (!flipped) c.appendChild(el("span", {"class": "tag"}, "Tap to flip"));
+  }
+  function cur(){ var L = list(); return L.length ? L[pos % L.length] : null; }
+  function mark(known){
+    var i = cur(); if (i == null) return;
+    store.known = store.known.filter(function(x){ return x !== i; });
+    store.learning = store.learning.filter(function(x){ return x !== i; });
+    (known ? store.known : store.learning).push(i); save();
+    if (!(known && onlyLearning)) pos++;
+    flipped = false; render();
+  }
+  $("fcCard").addEventListener("click", function(){ flipped = !flipped; render(); });
+  $("fcKnow").addEventListener("click", function(){ mark(true); });
+  $("fcStill").addEventListener("click", function(){ mark(false); });
+  $("fcPrev").addEventListener("click", function(){ var L = list(); pos = (pos - 1 + L.length) % Math.max(1, L.length); flipped = false; render(); });
+  $("fcShuffle").addEventListener("click", function(){ deck = shuffle(deck); pos = 0; flipped = false; render(); });
+  $("fcReset").addEventListener("click", function(){ store.known = []; store.learning = []; save(); pos = 0; flipped = false; render(); });
+  $("fcAll").addEventListener("click", function(){ onlyLearning = false; $("fcAll").setAttribute("aria-pressed", "true"); $("fcLearning").setAttribute("aria-pressed", "false"); pos = 0; flipped = false; render(); });
+  $("fcLearning").addEventListener("click", function(){ onlyLearning = true; $("fcAll").setAttribute("aria-pressed", "false"); $("fcLearning").setAttribute("aria-pressed", "true"); pos = 0; flipped = false; render(); });
+  render();
+})();
+
+/* ---------- Quiz ---------- */
+var QUIZ = [
+  ["What is astrobiology?", ["The interdisciplinary study of whether life exists beyond Earth and where it might be", "The study of star signs", "The study of how rockets fly", "The study of plants grown on space stations only"], "Astrobiology joins many sciences to search for life in the universe."],
+  ["Why is astrobiology called interdisciplinary?", ["It combines biology, chemistry, geology, astronomy, physics and engineering.", "It is studied only in one country.", "It uses only telescopes.", "It is a branch of biology only."], "No single field can answer questions about life in the universe alone."],
+  ["Which is NOT one of the four basic needs of life used by astrobiologists?", ["Oxygen in the air", "Liquid water", "An energy source", "Chemical building blocks"], "Many microbes live without oxygen. The needs are water, energy, building blocks and stable conditions."],
+  ["Microbes at deep-sea vents live in total darkness. What does this show?", ["Life can use chemical energy instead of sunlight.", "Life needs sunlight.", "Vents are too hot for anything.", "Life needs a solid surface."], "Vent microbes get energy from chemicals, which is why ocean moons interest scientists."],
+  ["What is the habitable zone?", ["The range of distances from a star where liquid water could exist on a planet's surface", "The part of a planet where people live", "The area of space with no radiation", "The orbit of the Moon"], "Too close, water boils; too far, it freezes."],
+  ["A star has luminosity L = 4. Using zone edges ≈ 0.95√L to 1.67√L, where is its habitable zone?", ["About 1.9 to 3.3 AU", "About 0.95 to 1.67 AU", "About 3.8 to 6.7 AU", "About 0.5 to 0.8 AU"], "√4 = 2, so 0.95 × 2 = 1.9 AU and 1.67 × 2 = 3.34 AU."],
+  ["Why do red dwarf stars have habitable zones very close to the star?", ["They are dim, so a planet must be close to stay warm enough.", "They are the hottest stars.", "They have no gravity.", "Their planets are made of ice."], "Less light means the warm zone is tucked in close."],
+  ["Mars sits near the outer edge of the Sun's habitable zone. Why is there no liquid water on its surface today?", ["Its air is too thin, so water freezes or turns to gas.", "It has no water at all.", "It is too close to the Sun.", "Its gravity is stronger than Earth's."], "Being in the zone is not enough. A planet also needs enough air."],
+  ["Which moon sprays water from an underground ocean into space?", ["Enceladus", "Earth's Moon", "Titan", "Phobos"], "Cassini flew through the Enceladus plumes and found salts, organics and hydrogen."],
+  ["What heats the ocean inside Europa?", ["Tidal heating from Jupiter's gravity", "Sunlight shining through the ice", "Volcanoes on Jupiter", "Lightning"], "Jupiter's gravity squeezes and flexes Europa, making heat inside."],
+  ["Titan has lakes on its surface. What are they made of?", ["Liquid methane and ethane", "Liquid water", "Lava", "Sulfuric acid"], "At about −180 °C, water is frozen solid. Methane and ethane are liquid."],
+  ["What is an exoplanet?", ["A planet that orbits a star other than the Sun", "A planet with no moons", "A planet outside the habitable zone", "A dwarf planet"], "More than 6000 had been confirmed by 2025."],
+  ["How does the transit method find a planet?", ["It detects a small dip in starlight as the planet passes in front of the star.", "It takes a close-up photo of the planet.", "It listens for radio signals.", "It measures the planet's temperature directly."], "The dip repeats every orbit."],
+  ["A planet's radius is one tenth of its star's radius. By what fraction does the star dim during a transit?", ["1/100 (1%)", "1/10 (10%)", "1/1000 (0.1%)", "1/20 (5%)"], "(1/10)² = 1/100 = 1%."],
+  ["What is a biosignature?", ["Evidence that could point to life, such as certain gases or rock textures", "A scientist's signature on a report", "Proof that life exists", "A type of rocket fuel"], "A biosignature is a possible sign, which still needs testing."],
+  ["A scientist reports a possible sign of life on another world. What should happen next?", ["Other teams test it and rule out non-living explanations.", "Everyone accepts it immediately.", "The data should be kept secret.", "Scientists should stop searching."], "Strong claims need strong evidence and independent checks."],
+  ["What did Canada build for the James Webb Space Telescope?", ["The Fine Guidance Sensor and the NIRISS instrument", "The main mirror", "The rocket that launched it", "Nothing"], "NIRISS was designed partly to study exoplanet atmospheres."],
+  ["How does a lava tube form?", ["Lava's surface cools into a crust while hot lava flows underneath, then drains away.", "A meteorite digs a tunnel.", "Water carves through ice.", "Astronauts dig it."], "The empty tunnel is left behind when the lava drains."],
+  ["Which is a reason lava tubes could suit human habitats?", ["The rock roof blocks most radiation and micrometeorites.", "They get the most sunlight.", "They are the easiest places to land.", "They have breathable air."], "Rock overhead shields people and keeps temperatures steady."],
+  ["How do scientists know lava tubes exist on the Moon?", ["Orbiters photographed pits, and a 2024 radar study showed a cave passage under one.", "Astronauts lived in one during Apollo.", "Rovers have driven through them.", "They are visible from Earth with binoculars."], "Pits where roofs collapsed were the first clue."],
+  ["How could a Moon base reduce the cost of exploration?", ["By making water, oxygen and fuel from local ice instead of launching them", "By building rockets out of cheese", "By sending more supplies from Earth", "By using bigger rockets only"], "Every kilogram not launched from Earth saves money."],
+  ["Why would refuelling at a Moon base help a trip to Mars?", ["Leaving the Moon needs far less speed than leaving Earth (about 2.4 vs 11.2 km/s).", "The Moon is closer to Mars than Earth is.", "Rockets fly faster in moonlight.", "Mars requires Moon fuel."], "Weaker gravity means less fuel to get going again."],
+  ["Which is an example of a base allowing longer research missions?", ["A crew staying months to run long experiments", "A rover landing for one day", "A one-week flyby", "Taking a single photo"], "Bases let people and equipment stay and keep working."],
+  ["A crew of 4 needs 2 kg of new water each per day for 30 days. How much water is that?", ["240 kg", "120 kg", "60 kg", "8 kg"], "4 × 30 × 2 = 240 kg."],
+  ["Why must a Mars base be careful about exploring caves?", ["Caves could hold Martian microbes that Earth microbes might contaminate.", "Caves are always full of water.", "Caves are illegal to enter.", "Caves block all signals forever."], "Planetary protection keeps both worlds' samples clean."]
+];
+(function(){
+  var area = $("quizArea"), round, idx, score;
+  function newRound(){ round = shuffle(QUIZ).slice(0, 10); idx = 0; score = 0; render(); }
+  function render(){
+    clear(area);
+    var best = store.quizBest;
+    area.appendChild(el("p", {"class": "hint mono"}, "Question " + Math.min(idx + 1, 10) + " of 10 · Score " + score + (best != null ? " · Best " + best + "/10" : "")));
+    if (idx >= round.length) {
+      var q = el("div", {"class": "q"});
+      q.appendChild(el("h3", null, "Round complete: " + score + " out of 10"));
+      q.appendChild(el("p", null, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons for the questions you missed, then try a new round."));
+      var b = el("button", {"class": "btn", type: "button"}, "New round"); b.addEventListener("click", newRound); q.appendChild(b);
+      area.appendChild(q);
+      if (best == null || score > best) { store.quizBest = score; save(); }
+      b.focus();
+      return;
+    }
+    var item = round[idx];
+    var q2 = el("div", {"class": "q"});
+    q2.appendChild(el("h3", null, item[0]));
+    var opts = el("div", {"class": "opts"});
+    var order = shuffle(item[1].map(function(t, i){ return {t: t, right: i === 0}; }));
+    var btns = [];
+    order.forEach(function(o){
+      var b = el("button", {"class": "opt", type: "button"}, o.t);
+      b.addEventListener("click", function(){
+        btns.forEach(function(x, j){ x.disabled = true; if (order[j].right) x.classList.add("right"); });
+        if (o.right) score++; else b.classList.add("wrong");
+        q2.appendChild(el("p", {"class": "expl", "aria-live": "polite"}, (o.right ? "Correct. " : "Not quite. ") + item[2]));
+        var nx = el("button", {"class": "btn", type: "button"}, idx === 9 ? "See results" : "Next question");
+        nx.addEventListener("click", function(){ idx++; render(); var f = area.querySelector(".opt,.btn"); if (f) f.focus(); });
+        q2.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b); btns.push(b);
+    });
+    q2.appendChild(opts);
+    area.appendChild(q2);
+  }
+  newRound();
+})();
+
+/* ---------- Written review ---------- */
+var SHORT = [
+  {q: "What is astrobiology, and why does it need scientists from many fields?", a: "Astrobiology is the scientific study of whether life exists beyond Earth and where it might be. It is interdisciplinary: biologists study what life can survive, chemists identify molecules, geologists read rocks for past water, astronomers find planets, and engineers build the spacecraft. No single field could answer the question alone.", k: ["Defines astrobiology", "Uses the word interdisciplinary or explains it", "Names at least three fields and what each does"]},
+  {q: "List the four basic needs of life that astrobiologists look for, and explain why one is important.", a: "Liquid water, an energy source, chemical building blocks, and stable conditions. Liquid water matters because the chemical reactions of life happen in it: it dissolves and carries substances in cells.", k: ["All four needs", "One explained clearly"]},
+  {q: "How do extremophiles on Earth change where scientists look for life in space?", a: "Extremophiles live in places once thought impossible, such as dark deep-sea vents, acid hot springs and lakes under ice. Since life survives these on Earth, scientists also search harsh places in space, such as the dark oceans under Europa's and Enceladus's ice.", k: ["Defines or describes extremophiles", "Gives an Earth example", "Links to a place in space"]},
+  {q: "Explain what the habitable zone is and why being in it does not guarantee life.", a: "The habitable zone is the range of distances from a star where a planet with enough air could have liquid water on its surface. A planet in it might still have no air, as Mars has very thin air, or be blasted by flares. It also needs energy, building blocks and stable conditions.", k: ["Defines habitable zone", "Mentions liquid water and distance", "Gives a reason it is not a guarantee"]},
+  {q: "A star has luminosity L = 0.25. Find its habitable zone using 0.95√L to 1.67√L. Is a planet at 0.6 AU inside it?", a: "√0.25 = 0.5. Inner edge = 0.95 × 0.5 = 0.475 AU. Outer edge = 1.67 × 0.5 = 0.835 AU. A planet at 0.6 AU is between 0.475 and 0.835, so it is inside the habitable zone.", k: ["Square root correct", "Both edges correct", "Correct conclusion"]},
+  {q: "Choose Europa or Enceladus. Describe the evidence that it may be able to support life.", a: "Enceladus: Cassini saw plumes spraying water from an ocean under the ice, so it has liquid water. The plumes held hydrogen, a sign of hot water reacting with rock, which is an energy source. They also held salts, organic molecules and phosphates, which are building blocks. No life has been found yet.", k: ["Names the body", "Evidence of liquid water", "Evidence of energy or chemistry", "Notes no life found yet"]},
+  {q: "Describe how the transit method finds exoplanets, and how spectroscopy adds to it.", a: "When a planet passes in front of its star, it blocks a little light, so the star dims slightly every orbit. The size of the dip shows the planet's size. With spectroscopy, scientists study starlight that passed through the planet's air to find which gases are there, such as water vapour, methane or carbon dioxide.", k: ["Dip in starlight explained", "Dip relates to planet size", "Spectroscopy reads gases in the air"]},
+  {q: "What is a lava tube, and why could one be a good place for a habitat on the Moon?", a: "A lava tube is a tunnel left when lava flows under a hardened crust and then drains out. On the Moon, a tube's rock roof would block most radiation and stop micrometeorites, and the temperature inside would stay steadier than on the surface, which swings from about −170 °C to 120 °C.", k: ["Explains how it forms", "Radiation protection", "Micrometeorite protection", "Steady temperature"]},
+  {q: "Describe the three ways labs and habitats on other bodies could support space exploration. Give an example of each.", a: "Reducing costs: making water and fuel from Moon ice means less is launched from Earth. More technology beyond Earth: a workshop or fuel depot could repair and refuel spacecraft without waiting for parts from Earth. Longer research missions: crews could stay months to run long experiments or operate a far-side radio telescope.", k: ["Reduces costs with example", "More technology beyond Earth with example", "Longer missions with example"]}
+];
+var LONG = [
+  {q: "Investigate one celestial body, inside or beyond the solar system, that may be able to support life. Describe the evidence for each need of life, what is still unknown, and the next mission or observation you would recommend.", a: "Example: Europa. Liquid water: magnetic and surface evidence points to a salty ocean under an icy shell. Energy: Jupiter's gravity flexes Europa, producing heat, and there may be vents on the sea floor. Building blocks: salts have been seen; organic molecules are expected but unconfirmed. Stable conditions: the ocean may have lasted billions of years under protective ice. Unknown: the ice thickness, the ocean's chemistry, and whether anything lives there. Recommendation: use Europa Clipper data (from 2030) to find thin ice or places where ocean water reaches the surface, then send a lander to sample them.", k: ["Body named and located", "Evidence for each need", "Clearly states what is unknown", "Recommends a realistic next step", "Avoids claiming life has been found"]},
+  {q: "Should the first permanent base on the Moon be built inside a lava tube or on the surface near the south pole? Take a position and support it.", a: "A strong answer weighs both sides. Lava tube: shields crews from radiation and micrometeorites and keeps temperatures steady, which protects health and saves energy, but it is hard to reach, dark inside, and must be explored by robots first. South pole surface: near water ice and long sunlight for solar power, easier to land, but crews face radiation, temperature swings and dust. A reasonable position: start on the surface near the ice with shielded modules, send robots to map tubes, then move living quarters into a tube once one is proven safe.", k: ["Clear position", "Uses lava tube evidence", "Uses surface evidence", "Addresses the other side", "Links to safety or cost"]},
+  {q: "A news headline says: 'Scientists find signs of alien life!' The article describes a gas detected in the air of an exoplanet. Explain how an astrobiologist would evaluate this claim.", a: "An astrobiologist would ask whether the gas could be made without life, for example by volcanoes, sunlight on the air, or the planet's chemistry. They would check how strong the signal is and whether other teams and other telescopes can repeat it. They would look for other evidence, such as a pair of gases that should not exist together without life. Until those checks are done, the gas is a possible biosignature, not proof of life. The headline overstates the result.", k: ["Considers non-living explanations", "Requires repeat observations by other teams", "Looks for more than one line of evidence", "Distinguishes possible sign from proof"]},
+  {q: "Explain how a research base on the Moon could help humans explore Mars. Include at least two of the three benefits from this lab.", a: "A Moon base could make rocket fuel and oxygen from ice. Because leaving the Moon needs only about 2.4 km/s instead of 11.2 km/s from Earth, refuelling there lowers costs. The base could hold workshops and spare parts, making more technology available beyond Earth. Crews could also practise living far from Earth for months, testing habitats, recycling and health care during longer research missions before the much longer Mars trip.", k: ["Reducing costs explained", "More technology beyond Earth or longer missions explained", "Specific link to Mars", "Uses an example or a number"]}
+];
+(function(){
+  var area = $("wrArea");
+  store.wr = store.wr || {}; store.notes = store.notes || {};
+  function build(list, prefix, title){
+    area.appendChild(el("h3", {"class": "sub"}, title));
+    list.forEach(function(it, i){
+      var id = prefix + i;
+      var d = el("details");
+      var done = (store.wr[id] || []).length;
+      d.appendChild(el("summary", null, (i + 1) + ". " + it.q + (done ? "  (" + done + "/" + it.k.length + " key ideas)" : "")));
+      var inner = el("div", {"class": "inner"});
+      var lab = el("label", {"class": "field", "for": "wr-" + id}, "Your answer");
+      var ta = el("textarea", {id: "wr-" + id});
+      ta.value = store.notes[id] || "";
+      ta.addEventListener("input", function(){ store.notes[id] = ta.value; save(); });
+      lab.appendChild(ta); inner.appendChild(lab);
+      var reveal = el("details");
+      reveal.appendChild(el("summary", null, "Show model answer and key ideas"));
+      var mi = el("div", {"class": "inner"});
+      mi.appendChild(el("p", {"class": "model-ans"}, it.a));
+      var ul = el("ul", {"class": "checks"});
+      it.k.forEach(function(k, j){
+        var li = el("li"), l = el("label", {"for": "wk-" + id + "-" + j}), cb = el("input", {type: "checkbox", id: "wk-" + id + "-" + j});
+        cb.checked = (store.wr[id] || []).indexOf(j) > -1;
+        cb.addEventListener("change", function(){
+          var s = (store.wr[id] || []).filter(function(x){ return x !== j; }); if (cb.checked) s.push(j);
+          store.wr[id] = s; save();
+        });
+        l.appendChild(cb); l.appendChild(document.createTextNode(k)); li.appendChild(l); ul.appendChild(li);
+      });
+      mi.appendChild(ul); reveal.appendChild(mi); inner.appendChild(reveal);
+      d.appendChild(inner); area.appendChild(d);
+    });
+  }
+  build(SHORT, "s", "Short answer");
+  build(LONG, "l", "Extended response");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var rows = [
+    ["SP2.K1", "Astrobiology is an interdisciplinary scientific field focused on exploring space to detect the possible existence and distribution of life in the universe.", "Learn: Lesson 1 (astrobiology team) and Lesson 6 (mission timeline). Lab Bench: Investigation 1. Sort It: which field deck. Quiz, Flashcards, Written Review short answer 1 and extended 3."],
+    ["SP2.K2", "Conditions on some celestial bodies indicate that life may exist elsewhere in the universe.", "Learn: Lesson 2 (needs of life, extremophiles), Lesson 3 (habitable zone model), Lesson 4 (solar system worlds), Lesson 5 (exoplanets and transits). Lab Bench: Investigations 2, 3 and 4. Sort It: needs of life deck. Quiz, Flashcards, Written Review short answers 2 to 7 and extended 1."],
+    ["SP2.K3", "Conditions within lava tubes found on the Moon and Mars have potential to support human habitation and house research laboratories.", "Learn: Lesson 7 (surface or tube model). Lab Bench: Investigation 5 (base planner). Sort It: lava tube or surface deck. Quiz, Flashcards, Written Review short answer 8 and extended 2."],
+    ["SP2.K4", "Research laboratories and human habitation on the Moon, Mars, or other celestial bodies could support space exploration in various ways, such as\n• reducing costs of bringing technologies to space\n• making more space technology available in locations beyond Earth\n• allowing for longer research missions", "Learn: Lesson 8 (three benefits, escape velocity bars). Lab Bench: Investigation 5 (base planner and water budget). Sort It: benefit of a base deck. Quiz, Flashcards, Written Review short answer 9 and extended 4."],
+    ["SP2.S1", "Examine the field of astrobiology.", "Lab Bench: Investigation 1 (biosignature judge, 9 mission reports). Learn: Lessons 1 and 6. Written Review: extended 3."],
+    ["SP2.S2", "Investigate a celestial body within or beyond the solar system that may have potential to support life.", "Lab Bench: Investigation 4 (investigate a world: 7 bodies, rating and summary), Investigations 2 and 3 (habitable zone and transit calculators with randomized practice). Learn: Lessons 3 to 5. Written Review: extended 1."],
+    ["SP2.S3", "Discuss how facilities on the Moon, Mars, or other celestial bodies could benefit space exploration.", "Lab Bench: Investigation 5 (base planner and water budget with randomized practice). Learn: Lessons 7 and 8. Written Review: extended 2 and 4."]
+  ];
+  var tb = document.querySelector("#covTable tbody");
+  rows.forEach(function(r){
+    var tr = el("tr");
+    tr.appendChild(el("td", null, r[0]));
+    var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td);
+    tr.appendChild(el("td", null, r[2]));
+    tb.appendChild(tr);
+  });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>

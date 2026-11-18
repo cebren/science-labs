@@ -1,0 +1,1372 @@
+<!doctype html><html><head><link rel="canonical" href="https://confluenceeducation.ca/science-starter-pack/labs/grade-7/moon-and-tides-lab/"><meta name="description" content="Interactions of celestial bodies are observed and experienced on Earth."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Moon and Tides Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a backyard observatory. Sticky tab strip, then lessons pairing a reading column with a night-sky model window: the Sun, Earth and Moon system, a phase orbit, a tide globe, two eclipse shadow views and an orbit tilt side view. Bench: phase predictor, tide table, eclipse lineup and an apparent size calculator. */
+:root{
+  --bg:#EEF1EC; --surface:#FFFFFF; --surface-2:#F4F6F2; --ink:#18241D; --muted:#4F5F55; --line:#CFD8D0;
+  --g7:#A4501E; --g7-soft:#F8E7DC;
+  --sky:#17202C; --sky-2:#222D3B; --sky-ink:#E8EDF3; --sky-muted:#AEB9C6; --sky-line:#3A4757;
+  --sun:#F2B632; --sun-glow:#F7D27A; --moon:#E3E7EC; --moon-dark:#3C4553; --earth:#3F7FBF; --land:#5E9E5A;
+  --sea:#1C6A8A; --sea-soft:#DCEDF4; --umbra:#06090D; --penumbra:#5B6573; --blood:#B4502E;
+  --good:#2D7546; --good-soft:#DDEFE3; --bad:#B03A2E; --bad-soft:#F7E0DC;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#0A0F16; --sky-2:#141C27; --sky-ink:#E8EDF3; --sky-muted:#A9B5C3; --sky-line:#2C3746;
+  --sun:#F2B632; --sun-glow:#F7D27A; --moon:#E3E7EC; --moon-dark:#323A47; --earth:#4F8FCF; --land:#6CAE68;
+  --sea:#6DC1E0; --sea-soft:#132C38; --umbra:#000000; --penumbra:#4A5462; --blood:#C9603A;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F1512; --surface:#161F1A; --surface-2:#1C2721; --ink:#E3ECE6; --muted:#9DB0A5; --line:#2B3A32;
+  --g7:#F0A070; --g7-soft:#3A2418;
+  --sky:#0A0F16; --sky-2:#141C27; --sky-ink:#E8EDF3; --sky-muted:#A9B5C3; --sky-line:#2C3746;
+  --sun:#F2B632; --sun-glow:#F7D27A; --moon:#E3E7EC; --moon-dark:#323A47; --earth:#4F8FCF; --land:#6CAE68;
+  --sea:#6DC1E0; --sea-soft:#132C38; --umbra:#000000; --penumbra:#4A5462; --blood:#C9603A;
+  --good:#7BCB95; --good-soft:#16301F; --bad:#F2907F; --bad-soft:#3A1C18;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.2em}
+a{color:var(--sea)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--g7);outline-offset:2px;border-radius:6px}
+svg :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g7)}
+.mono{font-family:var(--f-mono)}
+.num{font-variant-numeric:tabular-nums}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:26px 20px;display:grid;gap:10px}
+header h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;letter-spacing:-.025em}
+header h1 .ac{color:var(--g7)}
+.under{max-width:70ch;color:var(--muted)}
+.under b{color:var(--ink)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+nav.tabs button{flex:0 0 auto;border:1px solid transparent;background:none;font-weight:700;font-size:.92rem;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button:hover{color:var(--ink);border-color:var(--line)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+
+main{padding-block:26px 56px}
+.panel{display:grid;gap:22px}
+.panel-head{display:grid;gap:6px;max-width:72ch}
+.panel-head h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800}
+.panel-head p{color:var(--muted)}
+
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+@media (max-width:860px){.lesson{grid-template-columns:minmax(0,1fr);padding:18px}}
+.lesson .text{display:grid;gap:12px;align-content:start;min-width:0}
+.lesson h3{font-size:1.35rem;font-weight:700}
+.lesson .step{font-family:var(--f-mono);font-size:.72rem;color:var(--g7);letter-spacing:.06em;text-transform:uppercase}
+.codes{display:flex;flex-wrap:wrap;gap:6px}
+.code{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--g7)}
+.model{display:grid;gap:12px;align-content:start;min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.model h4{font-size:1rem;font-weight:700}
+.hint{font-size:.85rem;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.key{background:var(--g7-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.key b{color:var(--g7)}
+.warn{background:var(--bad-soft);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.warn b{color:var(--bad)}
+.formula{font-family:var(--f-mono);font-size:.95rem;background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:6px;font-size:.95rem;min-height:4.5em}
+.detail h5{font-family:var(--f-display);font-size:1.02rem;margin:0}
+.tagline{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+.skybox{border-radius:8px;background:var(--sky);border:1px solid var(--sky-line);overflow:hidden}
+.skybox svg{display:block;width:100%;height:auto}
+.skybox svg text{font-family:var(--f-body);fill:var(--sky-ink)}
+.skybox svg .lbl{font-size:13px;font-weight:700}
+.skybox svg .small{font-size:11.5px;fill:var(--sky-muted)}
+.skybox svg .mlbl{font-family:var(--f-mono);font-size:11px;fill:var(--sky-muted)}
+.tap{cursor:pointer}
+.tap:hover > circle:first-child{stroke:var(--sun);stroke-width:2}
+.views{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:10px}
+@media (max-width:480px){.views{grid-template-columns:minmax(0,1fr)}}
+.chartbox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.chartbox svg{display:block;width:100%;min-width:360px;height:auto}
+.chartbox svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+
+label.field{display:grid;gap:4px;font-size:.88rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--g7)}
+input[type=number],input[type=text],select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:7em;resize:vertical}
+.fb{font-weight:700}
+.fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+.worked{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;font-size:.93rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;gap:2px}
+.stat span{font-size:.78rem;color:var(--muted)}
+.stat b{font-family:var(--f-mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.meter{height:14px;border-radius:7px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--sea);border-radius:7px;transition:width .3s ease}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;align-items:end}
+
+.phasegrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.phasegrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.phasebtn{display:grid;justify-items:center;gap:4px;border:1px solid var(--line);background:var(--sky);color:var(--sky-ink);border-radius:10px;padding:8px 4px;cursor:pointer;font-size:.8rem;font-weight:700;text-align:center}
+.phasebtn svg{width:44px;height:44px}
+.phasebtn.right{outline:3px solid var(--good);outline-offset:1px}
+.phasebtn.wrong{outline:3px solid var(--bad);outline-offset:1px}
+.phasebtn:disabled{cursor:default}
+.slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.slots{grid-template-columns:minmax(0,1fr)}}
+
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px}
+.dt{width:100%;border-collapse:collapse;font-size:.88rem}
+.dt th,.dt td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono)}
+.dt th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.dt td.hi{color:var(--sea);font-weight:700}
+
+/* sort */
+.sort{display:grid;gap:16px;max-width:760px}
+.sortcard{background:var(--surface);border:2px solid var(--ink);border-radius:var(--r);padding:20px;font-size:1.15rem;font-weight:700;font-family:var(--f-display);min-height:5em;display:grid;align-content:center;gap:6px}
+.sortcard small{font-family:var(--f-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.bin{border:2px dashed var(--line);background:var(--surface-2);border-radius:10px;padding:14px 10px;font-weight:700;cursor:pointer;display:grid;gap:4px;text-align:center}
+.bin:hover{border-color:var(--muted)}
+.feedback{border-radius:8px;padding:10px 12px;font-size:.95rem}
+.feedback.ok{background:var(--good-soft)} .feedback.no{background:var(--bad-soft)}
+
+/* flashcards */
+.fc{display:grid;gap:14px;max-width:640px}
+.card3{border:2px solid var(--ink);border-radius:var(--r);background:var(--surface);min-height:220px;padding:24px;display:grid;align-content:center;gap:10px;cursor:pointer;text-align:left;width:100%}
+.card3 .term{font-family:var(--f-display);font-size:1.7rem;font-weight:800}
+.card3 .def{font-size:1.05rem}
+.card3 .tag{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prog{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--g7)}
+
+/* quiz */
+.quiz{display:grid;gap:14px;max-width:760px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:12px}
+.q h3{font-size:1.15rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.right{background:var(--good-soft);border-color:var(--good)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{font-size:.93rem;color:var(--muted)}
+
+/* written */
+.wr{display:grid;gap:12px;max-width:820px}
+.wr details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.wr summary{cursor:pointer;font-weight:700}
+.wr .inner{display:grid;gap:10px;margin-top:10px}
+.model-ans{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.checks{display:grid;gap:4px;padding-left:0}
+.checks li{list-style:none}
+.checks label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem}
+.checks input{margin-top:.3em}
+h3.sub{font-size:1.2rem;margin-top:10px}
+
+/* coverage */
+.cov{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.cov th,.cov td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cov th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cov td:first-child{font-family:var(--f-mono);font-weight:600;white-space:nowrap;color:var(--g7)}
+.cov td span{white-space:pre-line}
+.tnotes{display:grid;gap:8px;max-width:820px}
+.tnotes h3{font-size:1.15rem}
+.tnotes li{font-size:.92rem;margin-bottom:4px}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px 28px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+footer .credit{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Science 7 · Space · SP1</div>
+    <h1>Moon and <span class="ac">Tides</span> Lab</h1>
+    <p class="under"><b>Understanding:</b> Interactions of celestial bodies are observed and experienced on Earth. In this lab you will model how the Sun, Earth and Moon move and pull on each other, and use those models to explain the phases of the Moon, the tides and solar and lunar eclipses.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Lab sections">
+  <div class="wrap" role="tablist" id="tablist">
+    <button role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learn</button>
+    <button role="tab" id="t-bench" aria-controls="bench" data-tab="bench">Lab Bench</button>
+    <button role="tab" id="t-sort" aria-controls="sort" data-tab="sort">Sort It</button>
+    <button role="tab" id="t-cards" aria-controls="cards" data-tab="cards">Flashcards</button>
+    <button role="tab" id="t-quiz" aria-controls="quiz" data-tab="quiz">Quiz</button>
+    <button role="tab" id="t-written" aria-controls="written" data-tab="written">Written Review</button>
+    <button role="tab" id="t-coverage" aria-controls="coverage" data-tab="coverage">Coverage</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<!-- LEARN -->
+<section class="panel" id="learn" role="tabpanel" aria-labelledby="t-learn">
+  <div class="panel-head">
+    <h2>Learn</h2>
+    <p>Six short lessons in order. Each one has a model to try. Lesson 1 sets up the Sun, Earth and Moon. Lessons 2 and 3 explain the Moon’s phases and the tides. Lessons 4 to 6 explain eclipses.</p>
+  </div>
+
+  <article class="lesson" id="l1">
+    <div class="text">
+      <span class="step">Lesson 1 · Sky events</span>
+      <h3>Three bodies, three things we notice on Earth</h3>
+      <div class="codes"><span class="code">SP1.K1</span></div>
+      <p>A <b>celestial body</b> is a natural object in space, such as a star, a planet or a moon. The three that matter most in this lab are the <b>Sun</b>, <b>Earth</b> and the <b>Moon</b>.</p>
+      <p>These bodies <b>interact</b>. Gravity holds Earth in its orbit around the Sun and holds the Moon in its orbit around Earth. An <b>orbit</b> is the curved path one body follows around another. Sunlight shines on Earth and the Moon, and each one casts a shadow into space.</p>
+      <p>Those interactions cause three natural events that people on Earth can see or feel: <b>tides</b>, <b>eclipses</b> and <b>lunar phases</b>. People have watched all three for thousands of years.</p>
+      <div class="key"><b>Try it:</b> tap a body in the model, then tap each event to see what causes it and how often it happens.</div>
+    </div>
+    <div class="model">
+      <h4>The Sun, Earth and Moon system</h4>
+      <div class="skybox"><svg id="l1-svg" viewBox="0 0 600 270" role="group" aria-label="Diagram of the Sun, Earth and the Moon's orbit around Earth"></svg></div>
+      <div class="chips" id="l1-chips" role="group" aria-label="Choose an event"></div>
+      <div class="detail" id="l1-detail" aria-live="polite"></div>
+      <p class="hint">Not to scale. The real Sun is about 109 times wider than Earth, and the Moon is about 384 400 km from Earth.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l2">
+    <div class="text">
+      <span class="step">Lesson 2 · Lunar phases</span>
+      <h3>The Moon is always half lit</h3>
+      <div class="codes"><span class="code">SP1.K5</span><span class="code">SP1.S3</span></div>
+      <p>The Moon makes no light of its own. We see it because it reflects sunlight. At every moment, the half of the Moon facing the Sun is lit and the other half is dark.</p>
+      <p>As the Moon orbits Earth, the angle between the Sun, Earth and the Moon changes. So we see a different amount of the lit half each night. These observed changes are called <b>lunar phases</b>. The full cycle repeats about every <b>29.5 days</b>.</p>
+      <p>The four main phases are <b>new moon</b>, <b>first quarter</b>, <b>full moon</b> and <b>last quarter</b>. Between them are crescent and gibbous phases. While the lit part grows, the Moon is <b>waxing</b>. While it shrinks, the Moon is <b>waning</b>.</p>
+      <div class="warn"><b>Common mix-up:</b> phases are not caused by Earth’s shadow. Earth’s shadow only falls on the Moon during a lunar eclipse.</div>
+      <p class="note">From Alberta, a waxing Moon is lit on the right side and a waning Moon is lit on the left. In the Southern Hemisphere the view is flipped. Many cultures, including First Nations, Métis and Inuit peoples, have long followed the Moon’s cycle to mark time through the year.</p>
+    </div>
+    <div class="model">
+      <h4>Move the Moon around its orbit</h4>
+      <div class="views">
+        <div class="skybox"><svg id="l2-orbit" viewBox="0 0 300 300" role="group" aria-label="Top view of the Moon's orbit with sunlight from the left"></svg></div>
+        <div class="skybox"><svg id="l2-view" viewBox="0 0 200 200" role="img" aria-label="The Moon as seen from Earth"></svg></div>
+      </div>
+      <label class="field" for="l2-day">Days since new moon: <span class="mono num" id="l2-dayout">0</span></label>
+      <input type="range" id="l2-day" min="0" max="29.5" step="0.5" value="7.5">
+      <div class="chips" id="l2-chips" role="group" aria-label="Jump to a main phase"></div>
+      <div class="stats">
+        <div class="stat"><span>Phase</span><b id="l2-name">-</b></div>
+        <div class="stat"><span>Lit part we see</span><b id="l2-lit">-</b></div>
+        <div class="stat"><span>Changing</span><b id="l2-wax">-</b></div>
+      </div>
+      <p class="hint" id="l2-when" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l3">
+    <div class="text">
+      <span class="step">Lesson 3 · Tides</span>
+      <h3>The Moon and the Sun pull on the oceans</h3>
+      <div class="codes"><span class="code">SP1.K2</span><span class="code">SP1.S1</span></div>
+      <p><b>Tides</b> are the regular rise and fall of the ocean surface. They result from the <b>gravitational forces</b> of the Moon and the Sun.</p>
+      <p>The Moon pulls hardest on the ocean on the side of Earth nearest to it, and weakest on the far side. That difference stretches the oceans into two <b>bulges</b>: one facing the Moon and one on the opposite side. As Earth spins, a coast passes through both bulges. So most coasts get two <b>high tides</b> and two <b>low tides</b> about every 24 hours and 50 minutes.</p>
+      <p>The Sun pulls on the oceans too. Its effect on tides is about half as strong as the Moon’s, because the Sun is so far away. When the Sun and Moon line up, at new moon and full moon, their effects add up to bigger <b>spring tides</b>. When they are at right angles, at the quarter moons, the effects partly cancel and we get smaller <b>neap tides</b>.</p>
+      <p class="note">The Bay of Fundy, between New Brunswick and Nova Scotia, has some of the highest tides in the world, up to about 16 m. Alberta has no ocean coast, and tides in our lakes are far too small to notice.</p>
+    </div>
+    <div class="model">
+      <h4>Tide bulges through a lunar cycle</h4>
+      <div class="skybox"><svg id="l3-svg" viewBox="0 0 420 300" role="img" aria-label="Earth with ocean bulges, the Moon and sunlight from the left"></svg></div>
+      <label class="field" for="l3-day">Days since new moon: <span class="mono num" id="l3-dayout">0</span></label>
+      <input type="range" id="l3-day" min="0" max="29.5" step="0.5" value="0">
+      <div class="stats">
+        <div class="stat"><span>Moon phase</span><b id="l3-phase">-</b></div>
+        <div class="stat"><span>Tide type</span><b id="l3-type">-</b></div>
+      </div>
+      <div>
+        <p class="hint">Tidal range compared with the biggest spring tide</p>
+        <div class="meter" aria-hidden="true"><i id="l3-bar" style="width:100%"></i></div>
+      </div>
+      <p class="hint" id="l3-msg" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l4">
+    <div class="text">
+      <span class="step">Lesson 4 · Solar eclipses</span>
+      <h3>When the Moon blocks the Sun</h3>
+      <div class="codes"><span class="code">SP1.K3</span><span class="code">SP1.S2</span></div>
+      <p>A <b>solar eclipse</b> happens when the Moon passes between Earth and the Sun. The Moon casts its shadow on a small part of Earth. This can only happen at new moon.</p>
+      <p>A shadow has two parts. The <b>umbra</b> is the dark centre, where all of the Sun’s light is blocked. The <b>penumbra</b> is the lighter outer part, where only some light is blocked. People in the umbra see a <b>total</b> solar eclipse. People in the much wider penumbra see a <b>partial</b> eclipse. Everyone else sees no eclipse at all.</p>
+      <p>The umbra makes a narrow path across Earth, usually less than about 270 km wide, and totality lasts only a few minutes in any one place. On April 8, 2024, a total solar eclipse crossed parts of Ontario, Quebec and Atlantic Canada.</p>
+      <div class="warn"><b>Eye safety:</b> never look straight at the Sun, even when most of it is covered. Use certified eclipse glasses or a pinhole projector.</div>
+    </div>
+    <div class="model">
+      <h4>Where are you standing?</h4>
+      <div class="skybox"><svg id="l4-svg" viewBox="0 0 600 260" role="group" aria-label="Solar eclipse diagram with the Moon's shadow falling on Earth"></svg></div>
+      <div class="views">
+        <div class="detail" id="l4-detail" aria-live="polite"></div>
+        <div class="skybox"><svg id="l4-view" viewBox="0 0 160 160" role="img" aria-label="View of the Sun from the chosen place"></svg></div>
+      </div>
+      <p class="hint">Tap A, B or C on Earth. Not to scale.</p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l5">
+    <div class="text">
+      <span class="step">Lesson 5 · Lunar eclipses</span>
+      <h3>When Earth’s shadow falls on the Moon</h3>
+      <div class="codes"><span class="code">SP1.K4</span><span class="code">SP1.S2</span></div>
+      <p>A <b>lunar eclipse</b> happens when Earth is directly between the Sun and the Moon. Earth casts its shadow on the Moon. This can only happen at full moon.</p>
+      <p>If the whole Moon passes through Earth’s umbra, it is a <b>total</b> lunar eclipse. If only part of the Moon enters the umbra, it is a <b>partial</b> lunar eclipse.</p>
+      <p>During totality the Moon often looks <b>coppery red</b>. Earth’s air bends a little sunlight into the shadow, and the air scatters away most of the blue light, just like at sunset. So reddish light still reaches the Moon.</p>
+      <p>A lunar eclipse can be seen from anywhere on Earth’s night side, so many more people see one than see a total solar eclipse. It is safe to look at with your eyes.</p>
+    </div>
+    <div class="model">
+      <h4>Move the Moon through Earth’s shadow</h4>
+      <div class="skybox"><svg id="l5-svg" viewBox="0 0 420 240" role="img" aria-label="The Moon moving through Earth's shadow"></svg></div>
+      <div class="chips" id="l5-chips" role="group" aria-label="Moon's path"></div>
+      <label class="field" for="l5-x">Moon’s position along its path</label>
+      <input type="range" id="l5-x" min="0" max="100" step="1" value="50">
+      <div class="stats"><div class="stat"><span>What we see</span><b id="l5-stage">-</b></div></div>
+      <p class="hint" id="l5-msg" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="l6">
+    <div class="text">
+      <span class="step">Lesson 6 · Why not every month?</span>
+      <h3>The Moon’s orbit is tilted</h3>
+      <div class="codes"><span class="code">SP1.K3</span><span class="code">SP1.K4</span><span class="code">SP1.S2</span></div>
+      <p>There is a new moon and a full moon every month, but there is not an eclipse every month. Why?</p>
+      <p>The Moon’s orbit is tilted about <b>5°</b> compared with Earth’s orbit around the Sun. Most months, the new moon passes a little above or below the Sun, and the full moon passes above or below Earth’s shadow. So nothing is blocked.</p>
+      <p>An eclipse can only happen when a new moon or full moon falls near the place where the Moon’s orbit crosses the plane of Earth’s orbit. Then the Sun, Earth and the Moon line up closely. This happens during <b>eclipse seasons</b> about every six months. At least two solar eclipses happen somewhere on Earth every year.</p>
+      <div class="key"><b>Remember:</b> solar eclipse means Sun, Moon, Earth in a line (new moon). Lunar eclipse means Sun, Earth, Moon in a line (full moon).</div>
+    </div>
+    <div class="model">
+      <h4>Side view: line them up</h4>
+      <div class="skybox"><svg id="l6-svg" viewBox="0 0 600 220" role="img" aria-label="Side view of the Sun, Earth and the Moon above or below Earth's orbit plane"></svg></div>
+      <div class="chips" id="l6-chips" role="group" aria-label="Moon phase"></div>
+      <label class="field" for="l6-h">Moon above or below Earth’s orbit plane: <span class="mono num" id="l6-hout">0</span></label>
+      <input type="range" id="l6-h" min="-5" max="5" step="0.5" value="3">
+      <div class="stats"><div class="stat"><span>Result</span><b id="l6-res">-</b></div></div>
+      <p class="hint" id="l6-msg" aria-live="polite"></p>
+      <p class="hint">Model only. The tilt is exaggerated so you can see it.</p>
+    </div>
+  </article>
+</section>
+
+<!-- BENCH -->
+<section class="panel" id="bench" role="tabpanel" aria-labelledby="t-bench" hidden>
+  <div class="panel-head">
+    <h2>Lab Bench</h2>
+    <p>Four investigations. Predict and represent lunar phases, read a tide table, explain eclipses from the positions of the Sun, Earth and the Moon, and test why some solar eclipses are total and others are not.</p>
+  </div>
+
+  <article class="lesson" id="b1">
+    <div class="text">
+      <span class="step">Investigation 1 · Phase predictor</span>
+      <h3>What will the Moon look like?</h3>
+      <div class="codes"><span class="code">SP1.S3</span><span class="code">SP1.K5</span></div>
+      <p>Each main phase is about one quarter of the cycle after the one before.</p>
+      <div class="formula">time between main phases ≈ 29.5 days ÷ 4 ≈ 7.4 days</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Tonight is a first quarter moon. What will it look like in about 15 days?</span>
+        <span>15 days ≈ 2 × 7.4 days, so move two main phases forward.</span>
+        <span>first quarter → full moon → <b>last quarter</b>.</span>
+      </div>
+      <p class="hint">Pictures show the Moon as seen from Alberta (Northern Hemisphere).</p>
+    </div>
+    <div class="model">
+      <h4>Practice: tap the right picture</h4>
+      <p id="b1-q" class="fb" aria-live="polite"></p>
+      <div class="phasegrid" id="b1-grid" role="group" aria-label="Phase choices"></div>
+      <p id="b1-fb" aria-live="polite"></p>
+      <div class="row"><button class="btn" type="button" id="b1-next">New question</button><span class="mono num hint" id="b1-score"></span></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b2">
+    <div class="text">
+      <span class="step">Investigation 2 · Tide table</span>
+      <h3>Read a day of tides</h3>
+      <div class="codes"><span class="code">SP1.S1</span><span class="code">SP1.K2</span></div>
+      <p>Tide tables list the water level at a harbour through the day. The <b>tidal range</b> is the difference between high tide and the low tide next to it.</p>
+      <div class="formula">tidal range = high tide height − low tide height</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>High tide is 10.4 m. The next low tide is 1.8 m.</span>
+        <span>tidal range = 10.4 m − 1.8 m = <b>8.6 m</b></span>
+        <span>The next high tide comes about 12 h 25 min after this one, because Earth spins under the two bulges as the Moon moves along its orbit.</span>
+      </div>
+      <p class="note">Practice Harbour and all its tide heights are made up for practice. Choose a spring tide day or a neap tide day and compare.</p>
+    </div>
+    <div class="model">
+      <h4>Practice Harbour water level (made-up data)</h4>
+      <div class="chips" id="b2-chips" role="group" aria-label="Kind of day"></div>
+      <div class="chartbox"><svg id="b2-chart" viewBox="0 0 520 220" role="img" aria-label="Line graph of water level over 24 hours"></svg></div>
+      <details><summary class="hint">Show the data table</summary><div class="tablebox"><table class="dt" id="b2-table"></table></div></details>
+      <div class="fields">
+        <label class="field" for="b2-hi">Highest level (m)<input type="number" id="b2-hi" step="0.1"></label>
+        <label class="field" for="b2-lo">Lowest level (m)<input type="number" id="b2-lo" step="0.1"></label>
+        <label class="field" for="b2-rg">Tidal range (m)<input type="number" id="b2-rg" step="0.1"></label>
+      </div>
+      <div class="row"><button class="btn" type="button" id="b2-check">Check</button><button class="btn ghost" type="button" id="b2-new">New data</button></div>
+      <p id="b2-fb" aria-live="polite"></p>
+    </div>
+  </article>
+
+  <article class="lesson" id="b3">
+    <div class="text">
+      <span class="step">Investigation 3 · Eclipse lineup</span>
+      <h3>Explain an eclipse from positions</h3>
+      <div class="codes"><span class="code">SP1.S2</span><span class="code">SP1.K3</span><span class="code">SP1.K4</span></div>
+      <p>Put the Sun, Earth and the Moon in a line in any order, then check what people on Earth would see. Then try the scenario cards.</p>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Order: Sun, Moon, Earth. The Moon is between, so it is new moon.</span>
+        <span>The Moon’s shadow falls on Earth, so people in the shadow see a <b>solar eclipse</b>.</span>
+      </div>
+    </div>
+    <div class="model">
+      <h4>Build the line</h4>
+      <div class="slots">
+        <label class="field" for="b3-s0">Left<select id="b3-s0"></select></label>
+        <label class="field" for="b3-s1">Middle<select id="b3-s1"></select></label>
+        <label class="field" for="b3-s2">Right<select id="b3-s2"></select></label>
+      </div>
+      <div class="skybox"><svg id="b3-svg" viewBox="0 0 600 120" role="img" aria-label="The three bodies in the chosen order"></svg></div>
+      <p id="b3-fb" aria-live="polite"></p>
+      <h4>Scenario cards</h4>
+      <p id="b3-card" class="detail" aria-live="polite"></p>
+      <div class="chips" id="b3-ans" role="group" aria-label="Your prediction"></div>
+      <p id="b3-cfb" aria-live="polite"></p>
+      <div class="row"><button class="btn ghost" type="button" id="b3-next">Next card</button><span class="mono num hint" id="b3-score"></span></div>
+    </div>
+  </article>
+
+  <article class="lesson" id="b4">
+    <div class="text">
+      <span class="step">Investigation 4 · Total or annular?</span>
+      <h3>A lucky size match</h3>
+      <div class="codes"><span class="code">SP1.S2</span><span class="code">SP1.K3</span></div>
+      <p>The Sun is about 400 times wider than the Moon, but it is also about 400 times farther away. So the two look almost the same size in our sky. How big something looks depends on its width divided by its distance.</p>
+      <div class="formula">apparent size ≈ diameter ÷ distance</div>
+      <div class="worked">
+        <b>Worked example</b>
+        <span>Sun: 1 392 700 km ÷ 149 600 000 km ≈ 0.00931</span>
+        <span>Moon at 380 000 km: 3 474 km ÷ 380 000 km ≈ 0.00914</span>
+        <span>0.00914 is smaller than 0.00931, so the Moon looks a bit smaller than the Sun. A thin ring of Sun shows around it: an <b>annular</b> eclipse.</span>
+      </div>
+      <p class="note">The Moon’s orbit is an oval, so its distance changes from about 356 500 km to about 406 700 km. You do not need to memorize these numbers.</p>
+    </div>
+    <div class="model">
+      <h4>Change the Moon’s distance at new moon</h4>
+      <div class="views">
+        <div class="skybox"><svg id="b4-svg" viewBox="0 0 200 200" role="img" aria-label="The Moon in front of the Sun"></svg></div>
+        <div class="stats">
+          <div class="stat"><span>Moon apparent size</span><b id="b4-m">-</b></div>
+          <div class="stat"><span>Sun apparent size</span><b>0.00931</b></div>
+          <div class="stat"><span>Eclipse type</span><b id="b4-t">-</b></div>
+        </div>
+      </div>
+      <label class="field" for="b4-d">Moon distance: <span class="mono num" id="b4-dout">-</span></label>
+      <input type="range" id="b4-d" min="356500" max="406700" step="100" value="365000">
+      <h4>Quick practice</h4>
+      <p id="b4-q" aria-live="polite"></p>
+      <div class="chips" id="b4-ans" role="group" aria-label="Total or annular"></div>
+      <p id="b4-fb" aria-live="polite"></p>
+      <button class="btn ghost" type="button" id="b4-next">New question</button>
+    </div>
+  </article>
+</section>
+
+<!-- SORT -->
+<section class="panel" id="sort" role="tabpanel" aria-labelledby="t-sort" hidden>
+  <div class="panel-head">
+    <h2>Sort It</h2>
+    <p>Read each card and tap the group it belongs to. Choose a deck to start.</p>
+  </div>
+  <div class="chips" id="s-decks" role="group" aria-label="Deck"></div>
+  <div class="sort">
+    <div class="row"><span class="mono num" id="s-count"></span><button class="btn ghost" type="button" id="s-restart">Restart deck</button></div>
+    <div class="sortcard" id="s-card" aria-live="polite"></div>
+    <div class="bins" id="s-bins"></div>
+    <div class="feedback" id="s-fb" aria-live="polite" hidden></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="panel" id="cards" role="tabpanel" aria-labelledby="t-cards" hidden>
+  <div class="panel-head">
+    <h2>Flashcards</h2>
+    <p>Tap the card to flip it. Mark each term as known or still learning. Your marks are saved in this browser.</p>
+  </div>
+  <div class="fc">
+    <div class="row"><span class="mono num" id="c-count"></span><div class="chips" id="c-filter" role="group" aria-label="Which cards"></div></div>
+    <div class="prog" aria-hidden="true"><i id="c-bar" style="width:0"></i></div>
+    <button class="card3" type="button" id="c-card" aria-live="polite"></button>
+    <div class="row">
+      <button class="btn ghost" type="button" id="c-prev">Previous</button>
+      <button class="btn ghost" type="button" id="c-learn">Still learning</button>
+      <button class="btn" type="button" id="c-know">I know it</button>
+      <button class="btn ghost" type="button" id="c-next">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="panel" id="quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+  <div class="panel-head">
+    <h2>Quiz</h2>
+    <p>Ten questions drawn from a bank of more than twenty. Each answer comes with an explanation.</p>
+  </div>
+  <div class="quiz">
+    <div class="row"><span class="mono num" id="q-status"></span><button class="btn ghost" type="button" id="q-new">New round</button></div>
+    <div id="q-box"></div>
+    <p class="hint" id="q-best"></p>
+  </div>
+</section>
+
+<!-- WRITTEN -->
+<section class="panel" id="written" role="tabpanel" aria-labelledby="t-written" hidden>
+  <div class="panel-head">
+    <h2>Written Review</h2>
+    <p>Write your answer first, then open the model answer and tick the key ideas you included. Your writing is saved in this browser.</p>
+  </div>
+  <div class="wr" id="w-short"></div>
+  <h3 class="sub">Extended response</h3>
+  <div class="wr" id="w-long"></div>
+</section>
+
+<!-- COVERAGE -->
+<section class="panel" id="coverage" role="tabpanel" aria-labelledby="t-coverage" hidden>
+  <div class="panel-head">
+    <h2>Coverage</h2>
+    <p>For teachers: every knowledge (K) and skills (S) statement for Science 7 SP1, and where this lab teaches it.</p>
+  </div>
+  <div class="tablebox"><table class="cov" id="cov-table"></table></div>
+  <div class="tnotes">
+    <h3>Teacher notes on wording</h3>
+    <ul id="cov-notes"></ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <p class="credit" data-credit="v1">Created by Dr. Lance Pedersen · <a href="/science-starter-pack/" >More labs by the author</a></p>
+  <span>Edmonton, Treaty 6 territory · Science 7 (2027/28 draft curriculum)</span>
+  <span>Progress is saved only in this browser. Nothing is sent anywhere.</span>
+</div></footer>
+<script>
+(function(){
+"use strict";
+var KEY = "riverbend-g7-sp1-v1";
+var store = {};
+try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { store = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+function $(id){ return document.getElementById(id); }
+function el(tag, attrs, text){
+  var n = document.createElement(tag);
+  if (attrs) for (var k in attrs) { if (k === "class") n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if (text != null) n.textContent = text;
+  return n;
+}
+var NS = "http://www.w3.org/2000/svg";
+function S(tag, attrs, parent, text){
+  var n = document.createElementNS(NS, tag);
+  if (attrs) for (var k in attrs) {
+    var v = attrs[k];
+    if ((k === "fill" || k === "stroke") && String(v).indexOf("var(") === 0) n.style[k] = v;
+    else if (k === "class") n.setAttribute("class", v);
+    else n.setAttribute(k, v);
+  }
+  if (text != null) n.textContent = text;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+function clear(n){ while (n.firstChild) n.removeChild(n.firstChild); }
+function rnd(a, b){ return a + Math.random() * (b - a); }
+function fmt(n, d){ return Number(n).toFixed(d); }
+function km(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " km"; }
+function chipGroup(container, items, onPick, startIdx){
+  clear(container);
+  var btns = [];
+  items.forEach(function(it, i){
+    var b = el("button", {"class": "chip", "aria-pressed": "false", type: "button"}, it.label);
+    b.addEventListener("click", function(){ set(i); });
+    container.appendChild(b); btns.push(b);
+  });
+  function set(i){ btns.forEach(function(b, j){ b.setAttribute("aria-pressed", j === i ? "true" : "false"); }); onPick(items[i], i); }
+  if (startIdx != null) set(startIdx);
+  return set;
+}
+function detail(box, title, paras, tag){
+  clear(box);
+  if (tag) box.appendChild(el("span", {"class": "tagline"}, tag));
+  if (title) box.appendChild(el("h5", null, title));
+  (paras || []).forEach(function(p){ box.appendChild(el("p", null, p)); });
+}
+function tappable(g, label, fn){
+  g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", label); g.setAttribute("class", "tap");
+  g.addEventListener("click", fn);
+  g.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } });
+}
+function stars(svg, w, h, n, seed){
+  var s = seed || 7;
+  function r(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }
+  for (var i = 0; i < n; i++) S("circle", {cx: fmt(r() * w, 1), cy: fmt(r() * h, 1), r: fmt(0.6 + r() * 0.9, 2), fill: "var(--sky-muted)", opacity: fmt(0.35 + r() * 0.4, 2)}, svg);
+}
+
+/* ---------- Moon phase helpers ---------- */
+var P = 29.53;
+var PHASES = ["New moon", "Waxing crescent", "First quarter", "Waxing gibbous", "Full moon", "Waning gibbous", "Last quarter", "Waning crescent"];
+var WHEN = [
+  "The Moon is near the Sun in the sky, and its dark side faces us, so we cannot see it.",
+  "Seen low in the west after sunset.",
+  "Rises around noon and is high in the south at sunset.",
+  "Seen in the afternoon, evening and most of the night.",
+  "Rises at sunset and is up all night.",
+  "Rises in the late evening and is seen into the morning.",
+  "Rises around midnight and is high in the south at sunrise.",
+  "Seen low in the east before sunrise."
+];
+function phaseIdx(age){ return Math.round(age / P * 8) % 8; }
+function litFrac(age){ var t = age / P * 2 * Math.PI; return (1 - Math.cos(t)) / 2; }
+/* draws the Moon as seen from the Northern Hemisphere */
+function drawPhase(parent, cx, cy, r, age){
+  var g = S("g", null, parent);
+  S("circle", {cx: cx, cy: cy, r: r, fill: "var(--moon-dark)", stroke: "var(--sky-line)", "stroke-width": 1}, g);
+  var th = ((age / P) * 360) % 360;
+  if (th < 4 || th > 356) return g;
+  if (Math.abs(th - 180) < 4) { S("circle", {cx: cx, cy: cy, r: r, fill: "var(--moon)"}, g); return g; }
+  var rx = Math.abs(r * Math.cos(th * Math.PI / 180));
+  var top = cx + "," + (cy - r), bot = cx + "," + (cy + r), d;
+  if (th < 180) d = "M" + top + " A" + r + " " + r + " 0 0 1 " + bot + " A" + fmt(rx, 2) + " " + r + " 0 0 " + (th < 90 ? 0 : 1) + " " + top + " Z";
+  else d = "M" + top + " A" + r + " " + r + " 0 0 0 " + bot + " A" + fmt(rx, 2) + " " + r + " 0 0 " + (th > 270 ? 1 : 0) + " " + top + " Z";
+  S("path", {d: d, fill: "var(--moon)"}, g);
+  return g;
+}
+function halfLit(parent, cx, cy, r){
+  S("circle", {cx: cx, cy: cy, r: r, fill: "var(--moon-dark)", stroke: "var(--sky-line)"}, parent);
+  S("path", {d: "M" + cx + "," + (cy - r) + " A" + r + " " + r + " 0 0 0 " + cx + "," + (cy + r) + " Z", fill: "var(--moon)"}, parent);
+}
+function sunRays(svg, x, y0, y1, n){
+  for (var i = 0; i < n; i++) {
+    var y = y0 + (y1 - y0) * i / (n - 1);
+    S("line", {x1: x, y1: y, x2: x + 34, y2: y, stroke: "var(--sun)", "stroke-width": 2, "stroke-linecap": "round", opacity: 0.8}, svg);
+    S("path", {d: "M" + (x + 34) + "," + (y - 4) + " L" + (x + 41) + "," + y + " L" + (x + 34) + "," + (y + 4) + " Z", fill: "var(--sun)", opacity: 0.8}, svg);
+  }
+}
+
+/* ---------- Tabs ---------- */
+var TABS = ["learn","bench","sort","cards","quiz","written","coverage"];
+var tabBtns = Array.prototype.slice.call(document.querySelectorAll("[role=tab]"));
+function showTab(name, focus){
+  if (TABS.indexOf(name) < 0) name = "learn";
+  tabBtns.forEach(function(b){
+    var on = b.dataset.tab === name;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    b.tabIndex = on ? 0 : -1;
+    $(b.dataset.tab).hidden = !on;
+    if (on && focus) b.focus();
+  });
+  store.tab = name; save();
+  try { if (location.hash.slice(1) !== name) history.replaceState(null, "", "#" + name); } catch(e) {}
+}
+tabBtns.forEach(function(b, i){
+  b.addEventListener("click", function(){ showTab(b.dataset.tab); window.scrollTo({top: 0}); });
+  b.addEventListener("keydown", function(e){
+    var j = null;
+    if (e.key === "ArrowRight") j = (i + 1) % tabBtns.length;
+    if (e.key === "ArrowLeft") j = (i - 1 + tabBtns.length) % tabBtns.length;
+    if (e.key === "Home") j = 0;
+    if (e.key === "End") j = tabBtns.length - 1;
+    if (j != null) { e.preventDefault(); showTab(tabBtns[j].dataset.tab, true); }
+  });
+});
+window.addEventListener("hashchange", function(){ showTab(location.hash.slice(1)); });
+
+/* ---------- Lesson 1: system ---------- */
+(function(){
+  var svg = $("l1-svg"), box = $("l1-detail");
+  stars(svg, 600, 270, 40, 11);
+  S("circle", {cx: 20, cy: 135, r: 380, fill: "none", stroke: "var(--sky-line)", "stroke-dasharray": "4 6"}, svg);
+  S("text", {x: 330, y: 22, "class": "small"}, svg, "Earth’s orbit around the Sun (1 year)");
+  var sun = S("g", null, svg);
+  S("circle", {cx: 20, cy: 135, r: 92, fill: "var(--sun)"}, sun);
+  S("circle", {cx: 20, cy: 135, r: 104, fill: "var(--sun-glow)", opacity: 0.18}, sun);
+  S("text", {x: 34, y: 140, "class": "lbl", style: "fill:#2A1C00"}, sun, "Sun");
+  S("circle", {cx: 400, cy: 135, r: 95, fill: "none", stroke: "var(--sky-muted)", "stroke-dasharray": "3 5"}, svg);
+  S("text", {x: 400, y: 254, "class": "small", "text-anchor": "middle"}, svg, "Moon’s orbit around Earth (about 1 month)");
+  var earth = S("g", null, svg);
+  S("circle", {cx: 400, cy: 135, r: 26, fill: "var(--earth)"}, earth);
+  S("path", {d: "M388,120 q8,-6 14,2 q6,8 -2,14 q-8,4 -12,-4 z", fill: "var(--land)"}, earth);
+  S("text", {x: 400, y: 182, "class": "lbl", "text-anchor": "middle"}, earth, "Earth");
+  var moon = S("g", null, svg);
+  var mx = 400 + 95 * Math.cos(-0.7), my = 135 + 95 * Math.sin(-0.7);
+  halfLit(moon, fmt(mx, 1), fmt(my, 1), 11);
+  S("text", {x: fmt(mx + 16, 1), y: fmt(my + 4, 1), "class": "lbl"}, moon, "Moon");
+  var BODIES = [
+    [sun, "Sun", "A star: a huge ball of hot gas that gives off its own light. Its light lights up Earth and the Moon. Its gravity holds Earth in orbit."],
+    [earth, "Earth", "Our planet. It spins once about every 24 hours, which gives us day and night, and it orbits the Sun once a year. Its gravity holds the Moon in orbit."],
+    [moon, "Moon", "Earth’s natural satellite. It orbits Earth about once a month. It makes no light of its own. It reflects sunlight."]
+  ];
+  BODIES.forEach(function(b){ tappable(b[0], b[1] + ": show details", function(){ detail(box, b[1], [b[2]], "Celestial body"); }); });
+  var EVENTS = [
+    {label: "Tides", t: "Tides", p: ["The ocean surface rises and falls. The Moon’s and the Sun’s gravity pull the oceans into bulges, and Earth spins through them.", "How often: most coasts get two high tides and two low tides about every 24 hours and 50 minutes."]},
+    {label: "Lunar phases", t: "Lunar phases", p: ["The Moon’s shape seems to change from night to night. As the Moon orbits Earth, we see different amounts of its sunlit half.", "How often: the whole cycle repeats about every 29.5 days."]},
+    {label: "Eclipses", t: "Eclipses", p: ["One body blocks sunlight from reaching another. In a solar eclipse the Moon blocks the Sun. In a lunar eclipse Earth’s shadow falls on the Moon.", "How often: only when the Sun, Earth and Moon line up closely. Each year has at least two solar eclipses somewhere on Earth."]}
+  ];
+  chipGroup($("l1-chips"), EVENTS, function(e){ detail(box, e.t, e.p, "Event seen from Earth"); }, 0);
+})();
+
+/* ---------- Lesson 2: phases ---------- */
+(function(){
+  var orbit = $("l2-orbit"), view = $("l2-view"), slider = $("l2-day");
+  function draw(){
+    var age = parseFloat(slider.value), th = age / P * 2 * Math.PI, idx = phaseIdx(age);
+    clear(orbit); stars(orbit, 300, 300, 18, 3);
+    sunRays(orbit, 4, 40, 260, 6);
+    S("text", {x: 6, y: 24, "class": "small"}, orbit, "Sunlight");
+    var cx = 165, cy = 150, R = 95;
+    S("circle", {cx: cx, cy: cy, r: R, fill: "none", stroke: "var(--sky-muted)", "stroke-dasharray": "3 5"}, orbit);
+    halfLit(orbit, cx, cy, 20);
+    S("circle", {cx: cx, cy: cy, r: 20, fill: "var(--earth)", opacity: 0.55}, orbit);
+    S("text", {x: cx, y: cy + 36, "class": "small", "text-anchor": "middle"}, orbit, "Earth");
+    for (var k = 0; k < 8; k += 2) {
+      (function(k){
+        var a = k / 8 * 2 * Math.PI, px = cx - R * Math.cos(a), py = cy + R * Math.sin(a);
+        var g = S("g", null, orbit);
+        S("circle", {cx: fmt(px, 1), cy: fmt(py, 1), r: 13, fill: "transparent", stroke: "var(--sky-line)"}, g);
+        tappable(g, "Move the Moon to " + PHASES[k], function(){ slider.value = Math.round(k / 8 * P * 2) / 2; draw(); });
+      })(k);
+    }
+    var mx = cx - R * Math.cos(th), my = cy + R * Math.sin(th);
+    halfLit(orbit, fmt(mx, 1), fmt(my, 1), 10);
+    S("path", {d: "M" + cx + "," + cy + " L" + fmt(mx, 1) + "," + fmt(my, 1), stroke: "var(--sky-muted)", "stroke-dasharray": "2 4"}, orbit);
+    S("text", {x: 290, y: 292, "class": "mlbl", "text-anchor": "end"}, orbit, "view from above the North Pole");
+    clear(view); stars(view, 200, 200, 14, 9);
+    drawPhase(view, 100, 92, 58, age);
+    S("text", {x: 100, y: 186, "class": "small", "text-anchor": "middle"}, view, "Seen from Alberta");
+    $("l2-dayout").textContent = fmt(age, 1);
+    $("l2-name").textContent = PHASES[idx];
+    $("l2-lit").textContent = Math.round(litFrac(age) * 100) + "%";
+    $("l2-wax").textContent = (idx === 0 || idx === 4) ? "Turning point" : (age < P / 2 ? "Waxing" : "Waning");
+    $("l2-when").textContent = WHEN[idx];
+    view.setAttribute("aria-label", PHASES[idx] + ", about " + Math.round(litFrac(age) * 100) + " percent of the side facing us is lit");
+  }
+  slider.addEventListener("input", draw);
+  chipGroup($("l2-chips"), [{label: "New", d: 0}, {label: "First quarter", d: 7.5}, {label: "Full", d: 15}, {label: "Last quarter", d: 22}], function(it){ slider.value = it.d; draw(); });
+  draw();
+})();
+
+/* ---------- Lesson 3: tides ---------- */
+(function(){
+  var svg = $("l3-svg"), slider = $("l3-day");
+  function draw(){
+    var age = parseFloat(slider.value), th = age / P * 2 * Math.PI;
+    clear(svg); stars(svg, 420, 300, 22, 5);
+    sunRays(svg, 4, 50, 250, 5);
+    S("text", {x: 6, y: 30, "class": "small"}, svg, "Sunlight");
+    var cx = 220, cy = 150, R = 118;
+    S("circle", {cx: cx, cy: cy, r: R, fill: "none", stroke: "var(--sky-muted)", "stroke-dasharray": "3 5"}, svg);
+    var mx = cx - R * Math.cos(th), my = cy + R * Math.sin(th);
+    var am = Math.atan2(my - cy, mx - cx);
+    var zx = Math.cos(2 * am) + 0.46, zy = Math.sin(2 * am);
+    var amp = Math.sqrt(zx * zx + zy * zy), phi = Math.atan2(zy, zx) / 2 * 180 / Math.PI;
+    var rx = 54 + 30 * amp / 1.46, ry = 52;
+    S("ellipse", {cx: cx, cy: cy, rx: fmt(rx, 1), ry: ry, fill: "var(--sea)", opacity: 0.9, transform: "rotate(" + fmt(phi, 1) + " " + cx + " " + cy + ")"}, svg);
+    S("circle", {cx: cx, cy: cy, r: 48, fill: "var(--land)"}, svg);
+    S("text", {x: cx, y: cy + 4, "class": "lbl", "text-anchor": "middle", style: "fill:#0E1A0E"}, svg, "Earth");
+    S("line", {x1: fmt(cx + 50 * Math.cos(am), 1), y1: fmt(cy + 50 * Math.sin(am), 1), x2: fmt(mx - 16 * Math.cos(am), 1), y2: fmt(my - 16 * Math.sin(am), 1), stroke: "var(--sky-ink)", "stroke-width": 1.5, "stroke-dasharray": "5 4"}, svg);
+    halfLit(svg, fmt(mx, 1), fmt(my, 1), 11);
+    S("text", {x: fmt(mx, 1), y: fmt(my < cy ? my - 16 : my + 24, 1), "class": "lbl", "text-anchor": "middle"}, svg, "Moon");
+    S("text", {x: 414, y: 292, "class": "mlbl", "text-anchor": "end"}, svg, "bulges exaggerated · top view");
+    var pct = Math.round(amp / 1.46 * 100), idx = phaseIdx(age), type, msg;
+    if (amp > 1.3) { type = "Spring tide"; msg = "The Sun, Earth and the Moon are lined up. The Sun’s and Moon’s effects add together, so high tides are extra high and low tides extra low."; }
+    else if (amp < 0.7) { type = "Neap tide"; msg = "The Sun and Moon pull at right angles. Their effects partly cancel, so the difference between high and low tide is small."; }
+    else { type = "In between"; msg = "The tidal range is changing as the Moon moves between a lined-up position and a right-angle position."; }
+    $("l3-dayout").textContent = fmt(age, 1);
+    $("l3-phase").textContent = PHASES[idx];
+    $("l3-type").textContent = type;
+    $("l3-bar").style.width = pct + "%";
+    $("l3-msg").textContent = msg + " Tidal range: about " + pct + "% of the biggest spring tide in this model.";
+    svg.setAttribute("aria-label", "Earth with two ocean bulges. " + PHASES[idx] + ". " + type + ".");
+  }
+  slider.addEventListener("input", draw);
+  draw();
+})();
+
+/* ---------- Lesson 4: solar eclipse ---------- */
+(function(){
+  var svg = $("l4-svg"), view = $("l4-view"), box = $("l4-detail");
+  stars(svg, 600, 260, 30, 13);
+  S("circle", {cx: -10, cy: 130, r: 128, fill: "var(--sun-glow)", opacity: 0.18}, svg);
+  S("circle", {cx: -10, cy: 130, r: 115, fill: "var(--sun)"}, svg);
+  S("text", {x: 20, y: 135, "class": "lbl", style: "fill:#2A1C00"}, svg, "Sun");
+  S("circle", {cx: 520, cy: 130, r: 55, fill: "var(--earth)"}, svg);
+  S("path", {d: "M500,98 q14,-8 24,4 q10,14 -4,22 q-14,6 -20,-8 z M530,150 q12,0 14,12 q-6,10 -16,4 z", fill: "var(--land)"}, svg);
+  S("text", {x: 540, y: 205, "class": "lbl", "text-anchor": "middle"}, svg, "Earth");
+  S("polygon", {points: "300,114 300,146 500,170.4 500,89.6", fill: "var(--penumbra)", opacity: 0.55}, svg);
+  S("polygon", {points: "300,117 300,143 468,132 468,128", fill: "var(--umbra)", opacity: 0.9}, svg);
+  S("circle", {cx: 300, cy: 130, r: 15, fill: "var(--moon-dark)", stroke: "var(--sky-muted)"}, svg);
+  S("path", {d: "M300,115 A15 15 0 0 0 300,145 Z", fill: "var(--moon)"}, svg);
+  S("text", {x: 300, y: 104, "class": "lbl", "text-anchor": "middle"}, svg, "Moon (new)");
+  S("text", {x: 390, y: 214, "class": "small", "text-anchor": "middle"}, svg, "penumbra");
+  S("text", {x: 390, y: 228, "class": "small", "text-anchor": "middle"}, svg, "(partial shadow)");
+  S("text", {x: 390, y: 40, "class": "small", "text-anchor": "middle"}, svg, "umbra (full shadow) reaches");
+  S("text", {x: 390, y: 54, "class": "small", "text-anchor": "middle"}, svg, "only a small spot on Earth");
+  S("line", {x1: 390, y1: 60, x2: 440, y2: 126, stroke: "var(--sky-muted)"}, svg);
+  var SPOTS = [
+    {k: "A", x: 466, y: 130, title: "A: in the umbra", tag: "Total solar eclipse", p: ["All of the Sun’s bright face is covered. The sky goes dark like late evening for a few minutes, and the Sun’s faint outer glow, the corona, appears."], off: 0},
+    {k: "B", x: 475, y: 104, title: "B: in the penumbra", tag: "Partial solar eclipse", p: ["The Moon covers only part of the Sun. The Sun looks like a cookie with a bite out of it. Daylight barely changes, so eye protection is still needed."], off: 46},
+    {k: "C", x: 492, y: 176, title: "C: outside the shadow", tag: "No eclipse", p: ["The Moon’s shadow misses this place, so the Sun looks normal. Most of the daytime side of Earth sees no eclipse at all."], off: null}
+  ];
+  function show(s){
+    detail(box, s.title, s.p, s.tag);
+    clear(view); stars(view, 160, 160, 10, 4);
+    if (s.off === 0) S("circle", {cx: 80, cy: 80, r: 66, fill: "var(--sun-glow)", opacity: 0.35}, view);
+    if (s.off !== 0) S("circle", {cx: 80, cy: 80, r: 48, fill: "var(--sun)"}, view);
+    if (s.off != null) S("circle", {cx: 80 + s.off, cy: 80 - s.off * 0.3, r: 49, fill: "var(--umbra)", stroke: "var(--sky-line)"}, view);
+    view.setAttribute("aria-label", s.tag + " as seen from place " + s.k);
+  }
+  SPOTS.forEach(function(s){
+    var g = S("g", null, svg);
+    S("circle", {cx: s.x, cy: s.y, r: 9, fill: "var(--sky-2)", stroke: "var(--sun)", "stroke-width": 2}, g);
+    S("text", {x: s.x, y: s.y + 4, "class": "lbl", "text-anchor": "middle", style: "font-size:11px"}, g, s.k);
+    tappable(g, "Place " + s.k + ": " + s.tag, function(){ show(s); });
+  });
+  show(SPOTS[0]);
+})();
+
+/* ---------- Lesson 5: lunar eclipse ---------- */
+(function(){
+  var svg = $("l5-svg"), slider = $("l5-x"), off = 0;
+  function draw(){
+    var x = 30 + parseFloat(slider.value) * 3.6, y = 120 + off, cx = 210, cy = 120, rp = 100, ru = 62, rm = 24;
+    var d = Math.sqrt((x - cx) * (x - cx) + (y - cy) * (y - cy)), stage, msg, fill = "var(--moon)";
+    if (d + rm <= ru) { stage = "Total lunar eclipse"; fill = "var(--blood)"; msg = "The whole Moon is inside Earth’s umbra. Only reddish light bent through Earth’s air reaches it."; }
+    else if (d - rm < ru) { stage = "Partial lunar eclipse"; msg = "Part of the Moon is inside Earth’s umbra. That part looks dark."; }
+    else if (d - rm < rp) { stage = "Faint dimming"; msg = "The Moon is only in the penumbra. It dims so slightly that most people do not notice."; }
+    else { stage = "Full moon, no eclipse"; msg = "The Moon is outside Earth’s shadow and fully lit."; }
+    clear(svg); stars(svg, 420, 240, 26, 21);
+    S("circle", {cx: cx, cy: cy, r: rp, fill: "var(--penumbra)", opacity: 0.45}, svg);
+    S("circle", {cx: cx, cy: cy, r: ru, fill: "var(--umbra)", opacity: 0.95}, svg);
+    S("circle", {cx: fmt(x, 1), cy: y, r: rm, fill: fill, stroke: "var(--sky-line)"}, svg);
+    if (stage === "Partial lunar eclipse") S("circle", {cx: cx, cy: cy, r: ru, fill: "var(--umbra)", opacity: 0.82}, svg);
+    if (stage === "Faint dimming") S("circle", {cx: fmt(x, 1), cy: y, r: rm, fill: "var(--penumbra)", opacity: 0.3}, svg);
+    S("line", {x1: 10, y1: y, x2: 410, y2: y, stroke: "var(--sky-muted)", "stroke-dasharray": "2 5"}, svg);
+    S("text", {x: cx, y: cy - 4, "class": "small", "text-anchor": "middle"}, svg, "Earth’s umbra");
+    S("text", {x: cx, y: cy - rp + 14, "class": "small", "text-anchor": "middle"}, svg, "penumbra");
+    S("text", {x: 414, y: 234, "class": "mlbl", "text-anchor": "end"}, svg, "looking from Earth toward the shadow");
+    $("l5-stage").textContent = stage; $("l5-msg").textContent = msg;
+    svg.setAttribute("aria-label", stage + ". The Moon moving through Earth's shadow.");
+  }
+  slider.addEventListener("input", draw);
+  chipGroup($("l5-chips"), [{label: "Through the middle", o: 0}, {label: "Off centre", o: 66}, {label: "Misses the umbra", o: 94}], function(it){ off = it.o; draw(); }, 0);
+})();
+
+/* ---------- Lesson 6: tilt ---------- */
+(function(){
+  var svg = $("l6-svg"), slider = $("l6-h"), phase = "new";
+  function draw(){
+    var h = parseFloat(slider.value), ex = 430, ey = 110;
+    clear(svg); stars(svg, 600, 220, 26, 31);
+    S("line", {x1: 0, y1: ey, x2: 600, y2: ey, stroke: "var(--sky-muted)", "stroke-dasharray": "4 6"}, svg);
+    S("text", {x: 596, y: ey + 22, "class": "small", "text-anchor": "end"}, svg, "plane of Earth’s orbit");
+    S("circle", {cx: 40, cy: ey, r: 36, fill: "var(--sun)"}, svg);
+    S("text", {x: 40, y: ey + 56, "class": "lbl", "text-anchor": "middle"}, svg, "Sun");
+    var mx = phase === "new" ? 350 : 510, my = ey - h * 14;
+    S("line", {x1: mx, y1: fmt(my, 1), x2: 2 * ex - mx, y2: fmt(2 * ey - my, 1), stroke: "var(--sky-muted)", "stroke-dasharray": "2 4"}, svg);
+    S("text", {x: 2 * ex - mx, y: fmt(2 * ey - my + (h >= 0 ? 18 : -10), 1), "class": "small", "text-anchor": "middle"}, svg, "Moon’s orbit");
+    if (phase === "full") {
+      S("polygon", {points: ex + "," + (ey - 15) + " " + ex + "," + (ey + 15) + " 590," + (ey + 7) + " 590," + (ey - 7), fill: "var(--penumbra)", opacity: 0.55}, svg);
+      S("text", {x: 590, y: ey - 22, "class": "small", "text-anchor": "end"}, svg, "Earth’s shadow");
+    } else {
+      var yc = my + (my - ey) / (mx - 40) * (600 - mx);
+      S("polygon", {points: mx + "," + fmt(my - 7, 1) + " " + mx + "," + fmt(my + 7, 1) + " 600," + fmt(yc + 22, 1) + " 600," + fmt(yc - 22, 1), fill: "var(--penumbra)", opacity: 0.45}, svg);
+      S("text", {x: mx, y: fmt(h >= 0 ? my + 26 : my - 14, 1), "class": "small", "text-anchor": "middle"}, svg, "Moon’s shadow");
+    }
+    S("circle", {cx: ex, cy: ey, r: 15, fill: "var(--earth)"}, svg);
+    S("text", {x: ex, y: ey + 36, "class": "lbl", "text-anchor": "middle"}, svg, "Earth");
+    var mf = phase === "full" ? "var(--moon)" : "var(--moon-dark)";
+    var a = Math.abs(h), res, msg;
+    if (phase === "full" && a <= 0.5) mf = "var(--blood)";
+    S("circle", {cx: mx, cy: fmt(my, 1), r: 7, fill: mf, stroke: "var(--sky-muted)"}, svg);
+    S("text", {x: mx, y: fmt(my + (h >= 0 ? -14 : 22), 1), "class": "lbl", "text-anchor": "middle"}, svg, "Moon");
+    var where = h > 0 ? "above" : "below";
+    if (phase === "new") {
+      if (a <= 0.5) { res = "Solar eclipse (total or annular)"; msg = "Sun, Moon and Earth are lined up exactly. The Moon’s dark centre shadow reaches Earth."; }
+      else if (a <= 1.5) { res = "Partial solar eclipse"; msg = "Nearly lined up. Only the penumbra touches Earth, so the Moon covers part of the Sun."; }
+      else { res = "No eclipse"; msg = "New moon, but the Moon passes " + where + " the Sun from Earth’s view. Its shadow misses Earth."; }
+    } else {
+      if (a <= 0.5) { res = "Total lunar eclipse"; msg = "Sun, Earth and Moon are lined up exactly. The whole Moon passes through Earth’s umbra."; }
+      else if (a <= 1.5) { res = "Partial lunar eclipse"; msg = "Nearly lined up. Part of the Moon dips into Earth’s umbra."; }
+      else { res = "No eclipse"; msg = "Full moon, but the Moon passes " + where + " Earth’s shadow, so it stays fully lit."; }
+    }
+    $("l6-hout").textContent = (h > 0 ? "+" : "") + fmt(h, 1).replace("-", "−");
+    $("l6-res").textContent = res; $("l6-msg").textContent = msg;
+    svg.setAttribute("aria-label", "Side view at " + phase + " moon. " + res + ".");
+  }
+  slider.addEventListener("input", draw);
+  chipGroup($("l6-chips"), [{label: "New moon", p: "new"}, {label: "Full moon", p: "full"}], function(it){ phase = it.p; draw(); }, 0);
+})();
+
+/* ---------- Bench 1: phase predictor ---------- */
+(function(){
+  var grid = $("b1-grid"), right = 0, tries = 0, ans = 0, done = false;
+  var AGES = [0, 3.7, 7.4, 11.1, 14.8, 18.5, 22.1, 25.8];
+  var btns = PHASES.map(function(name, i){
+    var b = el("button", {"class": "phasebtn", type: "button", "aria-label": name});
+    var s = S("svg", {viewBox: "0 0 44 44", "aria-hidden": "true"}, b);
+    drawPhase(s, 22, 22, 18, AGES[i]);
+    b.appendChild(el("span", null, name));
+    b.addEventListener("click", function(){ answer(i, b); });
+    grid.appendChild(b); return b;
+  });
+  var DESC = [
+    ["The lit part is a thin sliver on the right, and it grows each night.", 1],
+    ["The right half is lit, and the lit part is growing.", 2],
+    ["The whole face we see is lit.", 4],
+    ["The left half is lit, and the Moon rises around midnight.", 6],
+    ["More than half is lit, lit on the left, and shrinking.", 5],
+    ["A thin sliver on the left, seen low in the east before sunrise.", 7],
+    ["We cannot see it because its dark side faces Earth.", 0],
+    ["More than half is lit on the right, and it grows each night.", 3]
+  ];
+  function make(){
+    var t = rint(0, 2), q;
+    if (t === 0) {
+      var s = pick([0, 2, 4, 6]), st = pick([[1, 4], [2, 7], [3, 11], [4, 15], [6, 22]]);
+      ans = (s + st[0]) % 8; q = "Tonight is a " + PHASES[s].toLowerCase() + ". Which picture shows the Moon about " + st[1] + " days from now?";
+    } else if (t === 1) {
+      var d = pick([0, 4, 7, 11, 15, 18, 22, 26]); ans = phaseIdx(d); q = "It is day " + d + " after a new moon. Which picture shows the Moon tonight?";
+    } else { var D = pick(DESC); ans = D[1]; q = "Which phase is this? " + D[0]; }
+    return q;
+  }
+  function rint(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+  function next(){ done = false; $("b1-q").textContent = make(); $("b1-fb").textContent = ""; btns.forEach(function(b){ b.disabled = false; b.classList.remove("right", "wrong"); }); }
+  function answer(i, b){
+    if (done) return; done = true; tries++;
+    btns.forEach(function(x){ x.disabled = true; });
+    btns[ans].classList.add("right");
+    if (i === ans) { right++; $("b1-fb").textContent = "Correct: " + PHASES[ans] + "."; }
+    else { b.classList.add("wrong"); $("b1-fb").textContent = "Not quite. The answer is " + PHASES[ans] + ". Count main phases about 7.4 days apart, in the order new, first quarter, full, last quarter."; }
+    $("b1-score").textContent = right + " of " + tries + " correct";
+  }
+  $("b1-next").addEventListener("click", next);
+  next();
+})();
+
+/* ---------- Bench 2: tide table ---------- */
+(function(){
+  var kind = "spring", data = [];
+  function gen(){
+    var A = kind === "spring" ? rnd(4.4, 5.6) : rnd(1.6, 2.4), t0 = Math.round(rnd(0, 11) * 2) / 2, mean = rnd(5.8, 6.4);
+    data = [];
+    for (var t = 0; t <= 24; t++) data.push(Math.round((mean + A * Math.cos(2 * Math.PI * (t - t0) / 12.42)) * 10) / 10);
+    draw(); ["b2-hi", "b2-lo", "b2-rg"].forEach(function(id){ $(id).value = ""; }); $("b2-fb").textContent = "";
+  }
+  function draw(){
+    var svg = $("b2-chart"); clear(svg);
+    function X(t){ return 44 + t * 19; } function Y(h){ return 190 - h * 14; }
+    for (var h = 0; h <= 12; h += 2) { S("line", {x1: 44, x2: 500, y1: Y(h), y2: Y(h), stroke: "var(--line)", "stroke-dasharray": h ? "3 4" : ""}, svg); S("text", {x: 38, y: Y(h) + 4, "text-anchor": "end"}, svg, h + " m"); }
+    for (var t = 0; t <= 24; t += 4) S("text", {x: X(t), y: 208, "text-anchor": "middle"}, svg, (t < 10 ? "0" : "") + t + ":00");
+    S("polyline", {points: data.map(function(v, t){ return X(t) + "," + fmt(Y(v), 1); }).join(" "), fill: "none", stroke: "var(--sea)", "stroke-width": 2.5}, svg);
+    data.forEach(function(v, t){ S("circle", {cx: X(t), cy: fmt(Y(v), 1), r: 3, fill: "var(--sea)"}, svg); });
+    var tb = $("b2-table"); clear(tb);
+    var hr = el("tr"); ["Time", "Level (m)", "Time", "Level (m)"].forEach(function(x){ hr.appendChild(el("th", null, x)); }); tb.appendChild(hr);
+    for (var i = 0; i < 13; i++) {
+      var tr = el("tr");
+      tr.appendChild(el("td", null, (i < 10 ? "0" : "") + i + ":00")); tr.appendChild(el("td", null, fmt(data[i], 1)));
+      var j = i + 13;
+      tr.appendChild(el("td", null, j <= 24 ? j + ":00" : "")); tr.appendChild(el("td", null, j <= 24 ? fmt(data[j], 1) : ""));
+      tb.appendChild(tr);
+    }
+  }
+  function check(){
+    var hi = Math.max.apply(null, data), lo = Math.min.apply(null, data), rg = Math.round((hi - lo) * 10) / 10;
+    var a = parseFloat($("b2-hi").value), b = parseFloat($("b2-lo").value), c = parseFloat($("b2-rg").value), out = [];
+    var okHi = Math.abs(a - hi) < 0.06, okLo = Math.abs(b - lo) < 0.06, okRg = Math.abs(c - rg) < 0.16 || (!isNaN(a) && !isNaN(b) && Math.abs(c - (a - b)) < 0.06 && okHi && okLo);
+    out.push(okHi ? "Highest level correct." : "Highest level: " + fmt(hi, 1) + " m.");
+    out.push(okLo ? "Lowest level correct." : "Lowest level: " + fmt(lo, 1) + " m.");
+    out.push(okRg ? "Tidal range correct: " + fmt(hi, 1) + " − " + fmt(lo, 1) + " = " + fmt(rg, 1) + " m." : "Tidal range = " + fmt(hi, 1) + " − " + fmt(lo, 1) + " = " + fmt(rg, 1) + " m.");
+    out.push(kind === "spring" ? "This is a spring tide day, near a new or full moon, so the range is large." : "This is a neap tide day, near a quarter moon, so the range is small.");
+    var fb = $("b2-fb"); fb.textContent = out.join(" "); fb.className = "fb " + (okHi && okLo && okRg ? "ok" : "no");
+  }
+  chipGroup($("b2-chips"), [{label: "Spring tide day", k: "spring"}, {label: "Neap tide day", k: "neap"}], function(it){ kind = it.k; gen(); }, 0);
+  $("b2-new").addEventListener("click", gen);
+  $("b2-check").addEventListener("click", check);
+})();
+
+/* ---------- Bench 3: eclipse lineup ---------- */
+(function(){
+  var NAMES = ["Sun", "Moon", "Earth"], sel = [$("b3-s0"), $("b3-s1"), $("b3-s2")];
+  sel.forEach(function(s, i){ NAMES.forEach(function(n){ s.appendChild(el("option", {value: n}, n)); }); s.value = NAMES[i]; s.addEventListener("change", draw); });
+  function draw(){
+    var v = sel.map(function(s){ return s.value; }), svg = $("b3-svg"), fb = $("b3-fb");
+    clear(svg); stars(svg, 600, 120, 14, 17);
+    var uniq = v[0] !== v[1] && v[1] !== v[2] && v[0] !== v[2];
+    var sunAt = v.indexOf("Sun"), mid = v[1];
+    if (uniq && sunAt !== 1) {
+      var dir = sunAt === 0 ? 1 : -1, x = 300;
+      S("polygon", {points: x + ",52 " + x + ",68 " + (x + dir * 200) + ",62 " + (x + dir * 200) + ",58", fill: "var(--umbra)", opacity: 0.9}, svg);
+    }
+    v.forEach(function(n, i){
+      var x = 100 + i * 200;
+      if (n === "Sun") S("circle", {cx: x, cy: 60, r: 36, fill: "var(--sun)"}, svg);
+      else if (n === "Earth") S("circle", {cx: x, cy: 60, r: 20, fill: "var(--earth)"}, svg);
+      else S("circle", {cx: x, cy: 60, r: 9, fill: "var(--moon)"}, svg);
+      S("text", {x: x, y: 112, "class": "lbl", "text-anchor": "middle"}, svg, n);
+    });
+    if (!uniq) { fb.textContent = "Use each body once: Sun, Moon and Earth."; fb.className = "fb no"; return; }
+    if (sunAt === 1) { fb.textContent = "The Sun is in the middle. That cannot really happen, because the Moon always stays close to Earth. Near new moon the Moon is lost in the Sun’s glare, but there is no eclipse."; fb.className = "fb no"; }
+    else if (mid === "Moon") { fb.textContent = "Sun, Moon, Earth: new moon. The Moon’s shadow falls on a small part of Earth. People there see a solar eclipse."; fb.className = "fb ok"; }
+    else { fb.textContent = "Sun, Earth, Moon: full moon. Earth’s shadow falls on the Moon. Everyone on Earth’s night side can see a lunar eclipse."; fb.className = "fb ok"; }
+    svg.setAttribute("aria-label", "Order from left: " + v.join(", "));
+  }
+  draw();
+  var CARDS = [
+    ["New moon. The Sun, the Moon and Earth line up exactly.", 0, "The Moon is between Earth and the Sun, so its shadow reaches Earth."],
+    ["Full moon. The Moon passes right through Earth’s umbra.", 1, "Earth is between the Sun and the Moon: a total lunar eclipse."],
+    ["First quarter moon.", 2, "At a quarter moon the three bodies make a right angle, not a line."],
+    ["New moon, but the Moon passes a little above the Sun in our sky.", 2, "Because of the 5° tilt, the shadow misses Earth."],
+    ["Full moon, and part of the Moon dips into Earth’s umbra.", 1, "That is a partial lunar eclipse."],
+    ["People in a narrow path see the sky go dark in the daytime for a few minutes.", 0, "That is the umbra of the Moon crossing Earth: a total solar eclipse."],
+    ["The Moon turns coppery red in the night sky.", 1, "Reddish light bent through Earth’s air reaches the Moon during a total lunar eclipse."],
+    ["Last quarter moon.", 2, "No line-up, so no eclipse."],
+    ["Earth is directly between the Sun and the Moon.", 1, "Earth’s shadow falls on the Moon."],
+    ["The Moon is directly between the Sun and Earth.", 0, "The Moon’s shadow falls on Earth."],
+    ["Full moon, but the Moon passes just below Earth’s shadow.", 2, "The Moon misses the shadow and stays fully lit."],
+    ["Viewers need certified eclipse glasses to watch safely.", 0, "Looking at the Sun can damage eyes. A lunar eclipse is safe to watch."]
+  ];
+  var order = shuffle(CARDS), k = 0, right = 0, tries = 0, open = true;
+  var setAns = chipGroup($("b3-ans"), [{label: "Solar eclipse"}, {label: "Lunar eclipse"}, {label: "No eclipse"}], function(it, i){
+    if (!open) return; open = false; tries++;
+    var C = order[k], ok = i === C[1]; if (ok) right++;
+    var f = $("b3-cfb"); f.className = "fb " + (ok ? "ok" : "no");
+    f.textContent = (ok ? "Correct. " : "Not quite: " + ["solar eclipse", "lunar eclipse", "no eclipse"][C[1]] + ". ") + C[2];
+    $("b3-score").textContent = right + " of " + tries + " correct";
+  });
+  function card(){ open = true; $("b3-card").textContent = order[k][0]; $("b3-cfb").textContent = ""; Array.prototype.forEach.call($("b3-ans").children, function(b){ b.setAttribute("aria-pressed", "false"); }); }
+  $("b3-next").addEventListener("click", function(){ k = (k + 1) % order.length; if (k === 0) order = shuffle(CARDS); card(); });
+  card();
+})();
+
+/* ---------- Bench 4: total or annular ---------- */
+(function(){
+  var SUN = 0.00931, slider = $("b4-d");
+  function ratio(d){ return 3474 / d; }
+  function draw(){
+    var d = parseFloat(slider.value), m = ratio(d), tot = m >= SUN, svg = $("b4-svg");
+    clear(svg); stars(svg, 200, 200, 12, 41);
+    if (tot) S("circle", {cx: 100, cy: 100, r: 82, fill: "var(--sun-glow)", opacity: 0.35}, svg);
+    S("circle", {cx: 100, cy: 100, r: 60, fill: "var(--sun)"}, svg);
+    S("circle", {cx: 100, cy: 100, r: fmt(60 * m / SUN, 2), fill: "var(--umbra)", stroke: "var(--sky-line)"}, svg);
+    $("b4-dout").textContent = km(d);
+    $("b4-m").textContent = fmt(m, 5);
+    $("b4-t").textContent = tot ? "Total" : "Annular (ring)";
+    svg.setAttribute("aria-label", tot ? "The Moon covers the whole Sun" : "A ring of Sun shows around the Moon");
+  }
+  slider.addEventListener("input", draw); draw();
+  var D = [358000, 362000, 368000, 371000, 376000, 384000, 395000, 404000], cur = 0, open = true;
+  chipGroup($("b4-ans"), [{label: "Total"}, {label: "Annular"}], function(it, i){
+    if (!open) return; open = false;
+    var m = ratio(cur), tot = m >= SUN, ok = (i === 0) === tot, f = $("b4-fb");
+    f.className = "fb " + (ok ? "ok" : "no");
+    f.textContent = (ok ? "Correct. " : "Not quite. ") + "Moon: 3 474 ÷ " + String(cur).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ≈ " + fmt(m, 5) + ". Sun ≈ 0.00931. The Moon looks " + (tot ? "bigger, so it covers the whole Sun: total." : "smaller, so a ring of Sun shows: annular.");
+  });
+  function q(){ open = true; cur = pick(D); $("b4-q").textContent = "A new moon lines up exactly with the Sun. The Moon is " + km(cur) + " away. Will the eclipse be total or annular?"; $("b4-fb").textContent = ""; Array.prototype.forEach.call($("b4-ans").children, function(b){ b.setAttribute("aria-pressed", "false"); }); }
+  $("b4-next").addEventListener("click", q); q();
+})();
+
+/* ---------- Sort It ---------- */
+(function(){
+  var DECKS = [
+    {label: "Solar or lunar eclipse?", bins: ["Solar eclipse", "Lunar eclipse", "Both"], items: [
+      ["Can only happen at new moon", 0, "The Moon must be between the Sun and Earth, which is the new moon position."],
+      ["Can only happen at full moon", 1, "Earth must be between the Sun and the Moon, which is the full moon position."],
+      ["The Moon is between Earth and the Sun", 0, "The Moon blocks the Sun."],
+      ["Earth is directly between the Moon and the Sun", 1, "Earth’s shadow falls on the Moon."],
+      ["Earth’s shadow falls on the Moon", 1, "That is a lunar eclipse."],
+      ["The Moon’s shadow falls on a small part of Earth", 0, "That is a solar eclipse."],
+      ["Can be total or partial", 2, "Both kinds of eclipse can be total or partial."],
+      ["Needs the Sun, Earth and the Moon lined up closely", 2, "Every eclipse needs a close line-up."],
+      ["Can be seen from anywhere on Earth’s night side", 1, "Everyone who can see the Moon can see a lunar eclipse."],
+      ["Total phase seen only along a narrow path", 0, "The Moon’s umbra is small when it reaches Earth."],
+      ["The Moon can turn coppery red", 1, "Reddish light bent through Earth’s air reaches the Moon."],
+      ["Never watch without certified eclipse glasses", 0, "Looking at the Sun can harm your eyes. A lunar eclipse is safe to watch."],
+      ["Involves an umbra and a penumbra", 2, "Every shadow has a dark umbra and a lighter penumbra."]
+    ]},
+    {label: "Spring or neap tide?", bins: ["Spring tide", "Neap tide"], items: [
+      ["Around a new moon", 0, "Sun and Moon line up, so their effects add."],
+      ["Around a full moon", 0, "Sun, Earth and Moon line up, so the effects add."],
+      ["Around a first quarter moon", 1, "Sun and Moon are at right angles."],
+      ["Around a last quarter moon", 1, "Sun and Moon are at right angles."],
+      ["The Sun and Moon pull along the same line", 0, "Lined up means bigger bulges."],
+      ["The Sun and Moon pull at right angles", 1, "Their effects partly cancel."],
+      ["Biggest tidal range of the month", 0, "Spring tides have the highest highs and lowest lows."],
+      ["Smallest tidal range of the month", 1, "Neap tides have a small difference between high and low."],
+      ["About 7 days after a full moon", 1, "Full moon plus about 7 days is a last quarter moon."],
+      ["About 7 days after a first quarter moon", 0, "First quarter plus about 7 days is a full moon."],
+      ["Can happen in January, even though it is called spring", 0, "Spring tides have nothing to do with the season. They happen twice every month."]
+    ]},
+    {label: "Waxing or waning?", bins: ["Waxing", "Waning"], items: [
+      ["Waxing crescent", 0, "Crescent after new moon, growing."],
+      ["Waning gibbous", 1, "Gibbous after full moon, shrinking."],
+      ["Lit on the right side, seen from Alberta", 0, "In the Northern Hemisphere a growing Moon is lit on the right."],
+      ["Lit on the left side, seen from Alberta", 1, "In the Northern Hemisphere a shrinking Moon is lit on the left."],
+      ["Comes after new moon and before full moon", 0, "The lit part grows from new to full."],
+      ["Comes after full moon and before new moon", 1, "The lit part shrinks from full to new."],
+      ["First quarter", 0, "First quarter is halfway through the waxing part of the cycle."],
+      ["Last quarter", 1, "Last quarter is halfway through the waning part of the cycle."],
+      ["Seen low in the west just after sunset", 0, "A young crescent sets soon after the Sun."],
+      ["Seen low in the east just before sunrise", 1, "An old crescent rises just before the Sun."],
+      ["Rises around midnight", 1, "A last quarter moon rises around midnight."]
+    ]}
+  ];
+  var deck = 0, order = [], k = 0, right = 0, binBtns = [];
+  store.sortBest = store.sortBest || {};
+  function start(){
+    var D = DECKS[deck]; order = shuffle(D.items); k = 0; right = 0;
+    var bins = $("s-bins"); clear(bins); binBtns = [];
+    D.bins.forEach(function(b, i){ var x = el("button", {"class": "bin", type: "button"}, b); x.addEventListener("click", function(){ answer(i); }); bins.appendChild(x); binBtns.push(x); });
+    $("s-fb").hidden = true; show();
+  }
+  function show(){
+    var c = $("s-card"); clear(c);
+    if (k >= order.length) {
+      var best = Math.max(store.sortBest[deck] || 0, right); store.sortBest[deck] = best; save();
+      c.appendChild(el("span", null, "Deck finished: " + right + " of " + order.length + " correct."));
+      c.appendChild(el("small", null, "Best score in this browser: " + best + ". Press Restart deck to try again."));
+      binBtns.forEach(function(b){ b.disabled = true; });
+      $("s-count").textContent = order.length + " of " + order.length; return;
+    }
+    binBtns.forEach(function(b){ b.disabled = false; });
+    c.appendChild(el("span", null, order[k][0])); c.appendChild(el("small", null, "Which group?"));
+    $("s-count").textContent = "Card " + (k + 1) + " of " + order.length + " · " + right + " correct";
+  }
+  function answer(i){
+    var it = order[k], good = i === it[1], fb = $("s-fb");
+    if (good) right++;
+    fb.hidden = false; fb.className = "feedback " + (good ? "ok" : "no");
+    fb.textContent = (good ? "Correct. " : "Not quite: " + DECKS[deck].bins[it[1]] + ". ") + it[2];
+    k++; show();
+  }
+  chipGroup($("s-decks"), DECKS, function(d, i){ deck = i; start(); }, 0);
+  $("s-restart").addEventListener("click", start);
+})();
+
+/* ---------- Flashcards ---------- */
+(function(){
+  var CARDS = [
+    ["Celestial body", "A natural object in space, such as a star, a planet or a moon."],
+    ["Orbit", "The curved path one body follows around another, held by gravity."],
+    ["Gravity", "The force of attraction between objects. It holds Earth in orbit around the Sun and the Moon in orbit around Earth."],
+    ["Tide", "The regular rise and fall of the ocean surface, caused by the gravitational forces of the Moon and the Sun."],
+    ["High tide", "The time when the water reaches its highest level."],
+    ["Low tide", "The time when the water reaches its lowest level."],
+    ["Tidal range", "The difference in height between a high tide and the next low tide."],
+    ["Tidal bulge", "One of two places where the ocean is stretched outward: one facing the Moon and one on the opposite side of Earth."],
+    ["Spring tide", "A tide with a large range, near new and full moon, when the Sun and Moon line up with Earth. It has nothing to do with the season."],
+    ["Neap tide", "A tide with a small range, near the quarter moons, when the Sun and Moon pull at right angles."],
+    ["Lunar phase", "The shape of the lit part of the Moon that we see, which changes as the Moon orbits Earth."],
+    ["Lunar cycle", "The repeating pattern of phases, about 29.5 days long."],
+    ["New moon", "The phase when the Moon is between Earth and the Sun and its lit side faces away from us."],
+    ["First quarter", "The phase about 7 days after new moon, when the right half of the Moon looks lit (seen from Alberta)."],
+    ["Full moon", "The phase when Earth is between the Sun and the Moon and we see the whole lit side."],
+    ["Last quarter", "The phase about 7 days after full moon, when the left half of the Moon looks lit (seen from Alberta). Also called third quarter."],
+    ["Waxing", "Growing. The lit part we see gets bigger each night, from new moon to full moon."],
+    ["Waning", "Shrinking. The lit part we see gets smaller each night, from full moon to new moon."],
+    ["Crescent", "A phase when less than half of the Moon’s face looks lit."],
+    ["Gibbous", "A phase when more than half, but not all, of the Moon’s face looks lit."],
+    ["Solar eclipse", "When the Moon passes between Earth and the Sun and its shadow blocks all or part of the Sun for a small area of Earth."],
+    ["Lunar eclipse", "When Earth is directly between the Sun and the Moon and Earth’s shadow falls on the Moon."],
+    ["Umbra", "The dark centre of a shadow, where all of the light is blocked."],
+    ["Penumbra", "The lighter outer part of a shadow, where only some of the light is blocked."],
+    ["Total eclipse", "An eclipse in which the Sun is completely covered (solar) or the whole Moon is in Earth’s umbra (lunar)."],
+    ["Partial eclipse", "An eclipse in which only part of the Sun is covered (solar) or only part of the Moon enters Earth’s umbra (lunar)."],
+    ["Annular eclipse", "A solar eclipse where the Moon is a bit too far away to cover the Sun, so a ring of Sun shows around it."]
+  ];
+  store.cards = store.cards || {};
+  var filter = "all", list = [], i = 0, flipped = false;
+  function build(){ list = CARDS.map(function(c, j){ return j; }).filter(function(j){ var m = store.cards[j]; return filter === "all" || (filter === "learning" ? m !== "known" : m === "known"); }); if (i >= list.length) i = 0; draw(); }
+  function draw(){
+    var card = $("c-card"); clear(card);
+    var known = CARDS.filter(function(c, j){ return store.cards[j] === "known"; }).length;
+    $("c-bar").style.width = Math.round(known / CARDS.length * 100) + "%";
+    $("c-count").textContent = known + " of " + CARDS.length + " known";
+    if (!list.length) { card.appendChild(el("span", {"class": "def"}, "No cards here yet. Choose another group.")); return; }
+    var j = list[i], c = CARDS[j], m = store.cards[j];
+    card.appendChild(el("span", {"class": "tag"}, "Card " + (i + 1) + " of " + list.length + (m === "known" ? " · known" : m === "learning" ? " · still learning" : "")));
+    card.appendChild(el("span", {"class": flipped ? "def" : "term"}, flipped ? c[1] : c[0]));
+    card.appendChild(el("span", {"class": "tag"}, flipped ? "Tap to see the term" : "Tap to see the meaning"));
+  }
+  function mark(v){ if (!list.length) return; store.cards[list[i]] = v; save(); flipped = false; var was = list.length; build(); if (list.length === was && list.length) { i = (i + 1) % list.length; draw(); } }
+  $("c-card").addEventListener("click", function(){ flipped = !flipped; draw(); });
+  $("c-next").addEventListener("click", function(){ if (list.length) { i = (i + 1) % list.length; flipped = false; draw(); } });
+  $("c-prev").addEventListener("click", function(){ if (list.length) { i = (i - 1 + list.length) % list.length; flipped = false; draw(); } });
+  $("c-know").addEventListener("click", function(){ mark("known"); });
+  $("c-learn").addEventListener("click", function(){ mark("learning"); });
+  chipGroup($("c-filter"), [{label: "All", f: "all"}, {label: "Still learning", f: "learning"}, {label: "Known", f: "known"}], function(it){ filter = it.f; i = 0; flipped = false; build(); }, 0);
+})();
+
+/* ---------- Quiz ---------- */
+(function(){
+  var BANK = [
+    ["Which three natural events come from interactions of the Sun, Earth and the Moon?", ["Tides, eclipses and lunar phases", "Earthquakes, volcanoes and tides", "Seasons, rainbows and eclipses", "Wind, rain and lunar phases"], 0, "These are the three events named in this unit."],
+    ["Why can we see the Moon?", ["It reflects sunlight", "It makes its own light", "It glows from heat inside", "Earth’s light reflects off it"], 0, "The Moon makes no light of its own."],
+    ["What causes lunar phases?", ["We see different amounts of the Moon’s sunlit half as it orbits Earth", "Earth’s shadow covers part of the Moon", "Clouds block part of the Moon", "The Moon changes shape"], 0, "Earth’s shadow only reaches the Moon during a lunar eclipse."],
+    ["About how long is one full cycle of lunar phases?", ["29.5 days", "7 days", "24 hours", "365 days"], 0, "The phases repeat about every 29.5 days."],
+    ["Which list shows the four main phases in order?", ["New moon, first quarter, full moon, last quarter", "Full moon, new moon, first quarter, last quarter", "First quarter, last quarter, new moon, full moon", "New moon, full moon, first quarter, last quarter"], 0, "Each main phase comes about 7.4 days after the one before."],
+    ["At new moon, where is the Moon?", ["Between Earth and the Sun", "On the far side of Earth from the Sun", "At a right angle to the Sun", "Behind the Sun"], 0, "Its lit side faces away from us, so we cannot see it."],
+    ["From Alberta, a first quarter moon looks", ["lit on the right half", "lit on the left half", "fully lit", "completely dark"], 0, "A waxing Moon is lit on the right in the Northern Hemisphere."],
+    ["What does waning mean?", ["The lit part we see is shrinking", "The lit part we see is growing", "The Moon is moving closer", "The Moon is in Earth’s shadow"], 0, "From full moon to new moon the Moon is waning."],
+    ["Tonight is a full moon. What phase will it be in about 7 days?", ["Last quarter", "First quarter", "New moon", "Full moon again"], 0, "Full moon plus one main step is last quarter."],
+    ["Tides result from", ["the gravitational forces of the Moon and the Sun", "wind blowing across the ocean", "earthquakes under the sea", "rivers flowing into the ocean"], 0, "The Moon has the bigger effect, and the Sun adds to it or partly cancels it."],
+    ["Why are there two tidal bulges?", ["The Moon pulls harder on the near side of Earth than on the far side", "Two moons pull on Earth", "The Sun and Moon each make one bulge on the same side", "Wind piles water on two sides"], 0, "The difference in pull stretches the oceans on both sides."],
+    ["About how many high tides does most of the coast get each day?", ["Two", "One", "Four", "Twelve"], 0, "Earth spins through both bulges, so most coasts get two high tides about every 24 hours and 50 minutes."],
+    ["When do spring tides happen?", ["Near new moon and full moon", "Only in March, April and May", "Near the quarter moons", "Only during eclipses"], 0, "The Sun and Moon line up and their effects add together."],
+    ["A neap tide has", ["a small tidal range", "a large tidal range", "no tides at all", "three high tides"], 0, "At the quarter moons the Sun’s and Moon’s effects partly cancel."],
+    ["High tide is 9.2 m and low tide is 2.6 m. What is the tidal range?", ["6.6 m", "11.8 m", "5.9 m", "2.6 m"], 0, "tidal range = 9.2 m − 2.6 m = 6.6 m."],
+    ["The Sun’s pull on Earth is much stronger than the Moon’s. Why does the Moon have a bigger effect on tides?", ["The Moon is much closer, so its pull changes more from one side of Earth to the other", "The Moon is bigger than the Sun", "The Sun has no gravity", "The Moon is made of water"], 0, "Tides depend on the difference in pull across Earth, which is larger for the nearby Moon."],
+    ["A solar eclipse happens when", ["the Moon passes between Earth and the Sun", "Earth passes between the Sun and the Moon", "the Sun passes between Earth and the Moon", "clouds block the Sun"], 0, "The Moon’s shadow falls on a small part of Earth."],
+    ["People standing in the Moon’s umbra see", ["a total solar eclipse", "a partial solar eclipse", "a lunar eclipse", "no eclipse"], 0, "The umbra is where all of the Sun’s bright face is blocked."],
+    ["Why must you never look straight at a partial solar eclipse?", ["The uncovered Sun can still damage your eyes", "It is too dark to see", "The Moon gives off harmful light", "It only lasts a second"], 0, "Use certified eclipse glasses or a pinhole projector."],
+    ["A lunar eclipse happens when", ["Earth is directly between the Sun and the Moon", "the Moon is between Earth and the Sun", "the Moon is at first quarter", "the Sun is behind the Moon"], 0, "Earth’s shadow falls on the Moon at full moon."],
+    ["Why does the Moon often look red during a total lunar eclipse?", ["Earth’s air bends reddish light into the shadow", "The Moon gets hot", "The Sun turns red", "Red dust covers the Moon"], 0, "Like a sunset, the air scatters blue light and lets red light through."],
+    ["Why do more people see a lunar eclipse than a total solar eclipse?", ["A lunar eclipse can be seen from all of Earth’s night side", "Lunar eclipses happen in the daytime", "Solar eclipses are only seen at night", "Lunar eclipses last for weeks"], 0, "The total phase of a solar eclipse is seen only along a narrow path."],
+    ["Why is there not an eclipse every month?", ["The Moon’s orbit is tilted about 5°, so the Moon usually passes above or below the line-up", "The Moon stops orbiting some months", "Eclipses only happen in summer", "The Sun is too bright most months"], 0, "Eclipses need a new or full moon near where the orbits cross."],
+    ["What is an annular solar eclipse?", ["The Moon is a bit too far away to cover the Sun, so a ring of Sun shows", "The Moon turns red", "Earth’s shadow covers half the Moon", "The Sun is completely covered"], 0, "The Moon’s distance changes because its orbit is an oval."],
+    ["In which order would the bodies line up for a lunar eclipse?", ["Sun, Earth, Moon", "Sun, Moon, Earth", "Earth, Sun, Moon", "Moon, Sun, Earth"], 0, "Earth must be in the middle to cast its shadow on the Moon."]
+  ];
+  var round = [], k = 0, score = 0;
+  store.quizBest = store.quizBest || 0;
+  function best(){ $("q-best").textContent = store.quizBest ? "Best score in this browser: " + store.quizBest + " of 10." : ""; }
+  function start(){ round = shuffle(BANK).slice(0, 10); k = 0; score = 0; show(); }
+  function show(){
+    var box = $("q-box"); clear(box);
+    if (k >= round.length) {
+      if (score > store.quizBest) { store.quizBest = score; save(); }
+      $("q-status").textContent = "Round finished";
+      var d = el("div", {"class": "q"}); d.appendChild(el("h3", null, "You scored " + score + " of 10.")); d.appendChild(el("p", {"class": "expl"}, score >= 8 ? "Strong work. Try the Written Review next." : "Review the Learn lessons and the Flashcards, then try a new round."));
+      box.appendChild(d); best(); return;
+    }
+    var Q = round[k]; $("q-status").textContent = "Question " + (k + 1) + " of 10 · Score " + score;
+    var q = el("div", {"class": "q"}); q.appendChild(el("h3", null, Q[0]));
+    var opts = el("div", {"class": "opts"}), ex = el("p", {"class": "expl", "aria-live": "polite"});
+    shuffle(Q[1].map(function(o, i){ return i; })).forEach(function(i){
+      var b = el("button", {"class": "opt", type: "button"}, Q[1][i]);
+      b.dataset.i = i;
+      b.addEventListener("click", function(){
+        Array.prototype.forEach.call(opts.children, function(x){ x.disabled = true; if (+x.dataset.i === Q[2]) x.classList.add("right"); });
+        if (i !== Q[2]) b.classList.add("wrong"); else score++;
+        ex.textContent = (i === Q[2] ? "Correct. " : "Not quite. ") + Q[3];
+        var nx = el("button", {"class": "btn", type: "button"}, k < 9 ? "Next question" : "See score");
+        nx.addEventListener("click", function(){ k++; show(); });
+        q.appendChild(nx); nx.focus();
+      });
+      opts.appendChild(b);
+    });
+    q.appendChild(opts); q.appendChild(ex); box.appendChild(q);
+  }
+  $("q-new").addEventListener("click", start);
+  best(); start();
+})();
+
+/* ---------- Written review ---------- */
+(function(){
+  var SHORT = [
+    ["Name the three natural events in this unit that come from interactions of celestial bodies, and say which bodies are involved.", "Tides, eclipses and lunar phases. All three involve the Sun, Earth and the Moon: gravity and sunlight connect them.", ["Tides", "Eclipses", "Lunar phases", "Names the Sun, Earth and the Moon"]],
+    ["Explain why the Moon seems to change shape over a month.", "The Sun always lights half of the Moon. As the Moon orbits Earth, the angle between the Sun, Earth and the Moon changes, so we see different amounts of the lit half. The cycle repeats about every 29.5 days.", ["Half is always lit by the Sun", "The Moon orbits Earth", "We see different amounts of the lit half", "About 29.5 days"]],
+    ["A classmate says the phases happen because Earth’s shadow covers part of the Moon. Correct this idea.", "Phases come from viewing angle, not shadow. At full moon, Earth is between the Sun and the Moon, yet the Moon is fully lit, so Earth’s shadow is not causing phases. Earth’s shadow only reaches the Moon during a lunar eclipse.", ["Says it is a misconception", "Explains viewing angle", "Shadow only in a lunar eclipse"]],
+    ["Sketch or describe the four main lunar phases in order, starting at new moon.", "New moon: dark. First quarter: right half lit (seen from Alberta). Full moon: whole face lit. Last quarter: left half lit. Each comes about 7.4 days after the one before.", ["Correct order", "Correct lit side for each quarter", "Mentions about a week between phases"]],
+    ["Explain how gravity causes tides.", "The Moon’s gravity pulls on Earth’s oceans. It pulls hardest on the side nearest the Moon and weakest on the far side, so the oceans stretch into two bulges. As Earth spins, a coast passes through both bulges, giving about two high tides and two low tides a day. The Sun’s gravity adds a smaller effect.", ["Moon’s gravity pulls on oceans", "Two bulges from the difference in pull", "Earth spins through the bulges", "Sun’s smaller effect"]],
+    ["Compare spring tides and neap tides.", "Spring tides happen near new and full moon, when the Sun and Moon line up and their effects add, so the tidal range is large. Neap tides happen near the quarter moons, when the Sun and Moon pull at right angles and their effects partly cancel, so the range is small.", ["Spring: new and full moon", "Spring: large range", "Neap: quarter moons", "Neap: small range, at right angles"]],
+    ["Explain a solar eclipse using the positions of the Sun, Earth and the Moon.", "The Moon passes directly between the Sun and Earth at new moon. The Moon’s shadow falls on a small part of Earth. People in the dark umbra see a total eclipse, and people in the wider penumbra see a partial eclipse.", ["Moon between Sun and Earth", "New moon", "Shadow on a small part of Earth", "Umbra total, penumbra partial"]],
+    ["Explain a lunar eclipse using the positions of the Sun, Earth and the Moon.", "Earth passes directly between the Sun and the Moon at full moon. Earth’s shadow falls on the Moon. If the whole Moon enters Earth’s umbra the eclipse is total, and the Moon often looks red. If only part enters, it is partial.", ["Earth between Sun and Moon", "Full moon", "Earth’s shadow on the Moon", "Total or partial"]],
+    ["Why does an eclipse not happen at every new moon and full moon?", "The Moon’s orbit is tilted about 5° compared with Earth’s orbit. Most months the Moon passes above or below the line from the Sun to Earth, so its shadow misses Earth, or it misses Earth’s shadow. Eclipses happen only when the line-up is close.", ["Orbit is tilted about 5°", "Moon passes above or below", "Eclipses need a close line-up"]]
+  ];
+  var LONG = [
+    ["Your cousin in Nova Scotia says the tides at her beach are much bigger on some days than others. Write her an explanation that uses the positions of the Sun, Earth and the Moon and the idea of gravitational forces.", "A strong answer explains that the Moon’s gravity pulls unevenly on Earth and makes two ocean bulges, that Earth spins through them to give about two high tides a day, and that the Sun’s smaller effect adds to the Moon’s near new and full moon (spring tides, big range) and partly cancels it near the quarter moons (neap tides, small range). It may mention that coastline shape, as in the Bay of Fundy, makes some tides especially large.", ["Moon’s gravity and two bulges", "Earth’s spin gives two high tides a day", "Spring tides at new and full moon", "Neap tides at quarter moons", "Clear, friendly explanation"]],
+    ["Compare solar and lunar eclipses. Include the order of the bodies, the Moon phase, which shadow falls where, who can see it, and how to watch safely.", "Solar: Sun, Moon, Earth in a line at new moon. The Moon’s shadow falls on a small part of Earth, so only people in its path see it, and certified eclipse glasses are needed. Lunar: Sun, Earth, Moon in a line at full moon. Earth’s shadow falls on the Moon, everyone on Earth’s night side can see it, and it is safe to watch with your eyes. Both can be total or partial.", ["Order of bodies for each", "Phase for each", "Whose shadow falls where", "Who can see each", "Safety difference"]],
+    ["Use a model (a lamp, a ball and your head, or a labelled drawing) to represent all eight lunar phases. Explain what your model shows and one way it is not like the real Sun, Earth and Moon.", "A strong answer places the lamp as the Sun, the ball as the Moon and the head as Earth, shows the ball moving around the head so that the lit half is seen in different amounts, names all eight phases in order with the correct lit side, and notes a limit such as sizes and distances not being to scale or the lamp being close.", ["Parts of the model named", "All eight phases in order", "Correct lit side", "Explains why the view changes", "Names a limit of the model"]],
+    ["A news headline says “Eclipse this month!” but you notice it is first quarter moon tonight. Predict when in the month any eclipse could happen, what kind each could be, and what else must be true.", "A strong answer reasons that a solar eclipse could only happen at the next new moon (about 22 days away from first quarter) and a lunar eclipse only at the full moon (about 7 days away), that the Moon must also be near the place where its tilted orbit crosses Earth’s orbit plane, and that only one or both might happen depending on the line-up.", ["Lunar eclipse only at full moon", "Solar eclipse only at new moon", "Correct timing from first quarter", "Mentions the tilted orbit or close line-up"]]
+  ];
+  store.wr = store.wr || {};
+  function build(box, list, pre){
+    list.forEach(function(W, i){
+      var key = pre + i, d = el("details"), s = el("summary", null, (pre === "s" ? "Short answer " : "Extended response ") + (i + 1) + ": " + W[0]);
+      d.appendChild(s);
+      var inner = el("div", {"class": "inner"});
+      var id = "w-" + key, lab = el("label", {"for": id, "class": "field"}, "Your answer");
+      var ta = el("textarea", {id: id}); ta.value = (store.wr[key] && store.wr[key].t) || "";
+      ta.addEventListener("input", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key].t = ta.value; save(); });
+      inner.appendChild(lab); inner.appendChild(ta);
+      var md = el("details"); md.appendChild(el("summary", null, "Model answer and key ideas"));
+      var m = el("div", {"class": "inner"}); m.appendChild(el("div", {"class": "model-ans"}, W[1]));
+      var ul = el("ul", {"class": "checks"});
+      W[2].forEach(function(c, j){
+        var cid = id + "-c" + j, li = el("li"), l = el("label", {"for": cid}), cb = el("input", {type: "checkbox", id: cid});
+        cb.checked = !!(store.wr[key] && store.wr[key]["c" + j]);
+        cb.addEventListener("change", function(){ store.wr[key] = store.wr[key] || {}; store.wr[key]["c" + j] = cb.checked; save(); });
+        l.appendChild(cb); l.appendChild(document.createTextNode(c)); li.appendChild(l); ul.appendChild(li);
+      });
+      m.appendChild(ul); md.appendChild(m); inner.appendChild(md); d.appendChild(inner); box.appendChild(d);
+    });
+  }
+  build($("w-short"), SHORT, "s"); build($("w-long"), LONG, "l");
+})();
+
+/* ---------- Coverage ---------- */
+(function(){
+  var ROWS = [
+    ["SP1.K1", "Natural phenomena that result from interactions of celestial bodies include tides, eclipses, and lunar phases.", "Learn 1; Quiz; Written Review short 1"],
+    ["SP1.K2", "Tides result from gravitational forces of the Sun and the Moon.", "Learn 3; Lab Bench 2 (tide table); Sort It (deck 2); Flashcards; Quiz; Written Review short 5 and 6, extended 1"],
+    ["SP1.K3", "A solar eclipse occurs when the Moon passes between Earth and the Sun, casting a shadow on a small portion of Earth, totally or partially blocking the view of the Sun from that area.", "Learn 4 and 6; Lab Bench 3 and 4; Sort It (deck 1); Flashcards; Quiz; Written Review short 7 and 9, extended 2 and 4"],
+    ["SP1.K4", "A total or partial lunar eclipse occurs when Earth is directly between the Moon and the Sun, resulting in Earth casting a shadow on the Moon.", "Learn 5 and 6; Lab Bench 3; Sort It (deck 1); Flashcards; Quiz; Written Review short 8 and 9, extended 2 and 4"],
+    ["SP1.K5", "Lunar phases are observed changes in the illumination of the Moon as a result of cyclical patterns in the Moon’s orbit and include\n• new moon\n• first quarter moon\n• full moon\n• last quarter moon", "Learn 2; Lab Bench 1 (phase predictor); Sort It (deck 3); Flashcards; Quiz; Written Review short 2 to 4, extended 3"],
+    ["SP1.S1", "Discuss tides in relation to gravitational forces.", "Learn 3; Lab Bench 2; Written Review short 5 and 6, extended 1"],
+    ["SP1.S2", "Explain lunar and solar eclipses in relation to the position of Earth, the Moon, and the Sun.", "Learn 4 to 6; Lab Bench 3 (eclipse lineup) and 4 (total or annular); Written Review short 7 to 9, extended 2 and 4"],
+    ["SP1.S3", "Represent lunar phases.", "Learn 2 (orbit and view model); Lab Bench 1; Written Review short 4, extended 3"]
+  ];
+  var NOTES = [
+    "SP1.K2: tides are taught as caused by the difference in the Moon’s and Sun’s gravitational pull across Earth, which makes two bulges. The Sun’s tidal effect is taught as about half the Moon’s, even though its overall pull on Earth is stronger. Spring and neap tides, about two high tides every 24 h 50 min, and the role of coastline shape (Bay of Fundy, up to about 16 m) are added as context.",
+    "SP1.K3: the umbra (total) and penumbra (partial) are named so “totally or partially” has a clear cause. The path of totality is described as usually less than about 270 km wide. Annular eclipses are added in Lab Bench 4 using apparent size ≈ diameter ÷ distance with rounded values. Eye safety is stressed. The April 8, 2024 eclipse route through Ontario, Quebec and Atlantic Canada should be spot checked.",
+    "SP1.K4: “directly between” is taught as a close line-up at full moon. The red colour during totality is explained by sunlight bent and filtered through Earth’s air. The faint penumbral stage appears in the Lesson 5 model only as “faint dimming”.",
+    "SP1.K5: the four listed phases are taught as the main phases, with crescent and gibbous phases added. “Cyclical patterns in the Moon’s orbit” is taught as the changing angle between the Sun, Earth and the Moon over a 29.5-day cycle. The misconception that Earth’s shadow causes phases is addressed directly. Pictures show the Northern Hemisphere view.",
+    "Lesson 6 adds the Moon’s 5° orbit tilt and eclipse seasons to explain why eclipses are not monthly. The tilt model is exaggerated and not to scale.",
+    "Lesson 2 mentions in general terms that First Nations, Métis and Inuit peoples have long followed the Moon’s cycle. No specific community knowledge is described. Consider inviting a local Knowledge Keeper to share moon teachings.",
+    "Practice Harbour tide heights are made up for practice (a smooth model with a 12.42 h period). Orbit, shadow and tide bulge drawings are not to scale."
+  ];
+  var t = $("cov-table"), hr = el("tr");
+  ["Code", "Statement", "Where it is taught"].forEach(function(h){ hr.appendChild(el("th", null, h)); }); t.appendChild(hr);
+  ROWS.forEach(function(r){ var tr = el("tr"); tr.appendChild(el("td", null, r[0])); var td = el("td"); td.appendChild(el("span", null, r[1])); tr.appendChild(td); tr.appendChild(el("td", null, r[2])); t.appendChild(tr); });
+  NOTES.forEach(function(n){ $("cov-notes").appendChild(el("li", null, n)); });
+})();
+
+/* ---------- Start ---------- */
+var startTab = (location.hash || "").slice(1);
+if (TABS.indexOf(startTab) < 0) startTab = store.tab || "learn";
+showTab(startTab);
+})();
+</script>
+
+</body></html>
