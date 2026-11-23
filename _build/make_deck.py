@@ -57,14 +57,13 @@ page = f"""<!doctype html>
 </head>
 <body class="deck">
 <header class="dk-bar">
+<div class="dk-titlerow"><span class="dk-title">{e(title)}</span><span class="dk-meta">Science {g} · {e(codes)}</span></div>
 <a class="dk-home" href="/science-starter-pack/">← Science Starter Pack</a>
-<span class="dk-title">{e(title)}</span>
-<span>Science {g} · {e(codes)}</span>
+<a href="/science-starter-pack/science-{g}/"><span class="dk-dot g{g}" aria-hidden="true"></span>Science {g} labs</a>
+<a href="/science-starter-pack/year-plans/science-{g}/">Science {g} year plan</a>
 <a href="{lab_path}">Open the lab</a>
 <a class="dk-dl" href="{path}{slug(title)}.pptx" download>Download for PowerPoint or Google Slides</a>
-<a href="/use/#google-slides">How to open in Google Slides</a>
-<a href="/science-starter-pack/science-{g}/">All Science {g}</a>
-<a href="/science-starter-pack/year-plans/science-{g}/">Science {g} year plan</a>
+<a class="dk-help" href="/use/#google-slides">Google Slides help</a>
 </header>
 <main class="dk-stage-wrap"><div class="dk-stage" aria-roledescription="slide deck" aria-label="{e(title)}"><div class="dk-scaler">
 {chr(10).join(sections)}

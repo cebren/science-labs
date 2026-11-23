@@ -17,20 +17,33 @@ for l in cat["labs"]:
         lab_map[l["url"].rstrip("/")] = f"/science-starter-pack/labs/grade-{l['grade']}/{slug(l['title'])}/"
 deck_map = {u.rstrip("/"): v["path"] for u, v in hosted.items()}
 
+GC = {7: "#F0A070", 8: "#7DB0F0", 9: "#74C995"}
+MARK = ('<svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" style="flex:none">'
+        '<path d="M6 10 C 20 14, 26 26, 32 36" fill="none" stroke="#5A9CCB" stroke-width="7" stroke-linecap="round"/>'
+        '<path d="M58 10 C 44 14, 38 26, 32 36" fill="none" stroke="#5CC4B8" stroke-width="7" stroke-linecap="round"/>'
+        '<path d="M32 36 C 32 44, 30 50, 32 58" fill="none" stroke="#4FAFC0" stroke-width="10" stroke-linecap="round"/></svg>')
+
 def bar(g, label=None):
-    link = "color:inherit"
-    items = ['<a href="/science-starter-pack/" style="color:#FFFFFF;text-decoration:none;display:inline-flex;align-items:center;gap:6px"><span aria-hidden="true">←</span> Science Starter Pack</a>']
+    font = "'Atkinson Hyperlegible','Segoe UI',system-ui,sans-serif"
+    pill = ("display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 14px;border-radius:999px;"
+            "text-decoration:none;font:700 14px/1.2 " + font + ";white-space:nowrap;")
+    primary = pill + "background:#FFFFFF;color:#14303F;border:2px solid #FFFFFF;"
+    ghost = pill + "background:transparent;color:#FFFFFF;border:2px solid rgba(255,255,255,.45);"
+    btns = [f'<a href="/science-starter-pack/" style="{primary}"><span aria-hidden="true">←</span>Science Starter Pack</a>']
     if g:
-        items.append(f'<a href="/science-starter-pack/science-{g}/" style="{link}">Science {g}</a>')
+        dot = f'<span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:{GC[g]};flex:none"></span>'
+        btns.append(f'<a href="/science-starter-pack/science-{g}/" style="{ghost}">{dot}Science {g} labs</a>')
         if label != "plan":
-            items.append(f'<a href="/science-starter-pack/year-plans/science-{g}/" style="{link}">Year plan</a>')
-    sep = '<span aria-hidden="true" style="opacity:.6">·</span>'
-    return ('<nav data-cf-home aria-label="Site" style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;'
-            'padding:8px 16px;background:#14303F;color:#E6F1F5;font:600 14px/1.3 \'Atkinson Hyperlegible\',\'Segoe UI\',system-ui,sans-serif;position:relative;z-index:50">'
-            + sep.join(items) +
-            f'<a href="/" style="{link};margin-left:auto">Confluence Curriculum &amp; PD</a></nav>'
+            btns.append(f'<a href="/science-starter-pack/year-plans/science-{g}/" style="{ghost}">'
+                        '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="flex:none"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+                        f'Science {g} year plan</a>')
+    brand = (f'<a href="/" style="display:inline-flex;align-items:center;gap:8px;margin-left:auto;color:#E6F1F5;text-decoration:none;'
+             f'font:700 14px/1.2 \'Bricolage Grotesque\',{font}">{MARK}<span>Confluence Curriculum &amp; PD</span></a>')
+    return ('<nav data-cf-home aria-label="Site" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;'
+            'padding:10px 16px;background:#14303F;border-bottom:3px solid #3A9E96;position:relative;z-index:50">'
+            + "".join(btns) + brand + '</nav>'
             '<a data-cf-float href="/science-starter-pack/" aria-label="Back to the Science Starter Pack" style="position:fixed;left:12px;bottom:12px;z-index:2147483000;'
-            'background:#14303F;color:#fff;font:700 13px/1 \'Atkinson Hyperlegible\',\'Segoe UI\',system-ui,sans-serif;text-decoration:none;padding:9px 12px;border-radius:999px;'
+            f'display:inline-flex;align-items:center;gap:6px;background:#14303F;color:#fff;font:700 13px/1 {font};text-decoration:none;padding:10px 14px;border-radius:999px;border:2px solid #3A9E96;'
             'box-shadow:0 4px 14px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .2s">← Starter Pack</a>'
             '<script>(function(){var n=document.querySelector("[data-cf-home]"),f=document.querySelector("[data-cf-float]");'
             'if(!n||!f||!window.IntersectionObserver)return;new IntersectionObserver(function(e){var v=e[0].isIntersecting;'
