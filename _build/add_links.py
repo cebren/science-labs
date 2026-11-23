@@ -23,7 +23,7 @@ MARK = ('<svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true" styl
         '<path d="M58 10 C 44 14, 38 26, 32 36" fill="none" stroke="#5CC4B8" stroke-width="7" stroke-linecap="round"/>'
         '<path d="M32 36 C 32 44, 30 50, 32 58" fill="none" stroke="#4FAFC0" stroke-width="10" stroke-linecap="round"/></svg>')
 
-def bar(g, label=None):
+def bar(g, label=None, iwk=False):
     font = "'Atkinson Hyperlegible','Segoe UI',system-ui,sans-serif"
     pill = ("display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 14px;border-radius:999px;"
             "text-decoration:none;font:700 14px/1.2 " + font + ";white-space:nowrap;")
@@ -37,6 +37,8 @@ def bar(g, label=None):
             btns.append(f'<a href="/science-starter-pack/year-plans/science-{g}/" style="{ghost}">'
                         '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="flex:none"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
                         f'Science {g} year plan</a>')
+    if iwk:
+        btns.append(f'<a href="#ways-of-knowing" style="{ghost}"><span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:#5CC4B8;flex:none"></span>Ways of knowing</a>')
     brand = (f'<a href="/" style="display:inline-flex;align-items:center;gap:8px;margin-left:auto;color:#E6F1F5;text-decoration:none;'
              f'font:700 14px/1.2 \'Bricolage Grotesque\',{font}">{MARK}<span>Confluence Curriculum &amp; PD</span></a>')
     return ('<nav data-cf-home aria-label="Site" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;'
@@ -50,11 +52,11 @@ def bar(g, label=None):
             'f.style.opacity=v?"0":"1";f.style.pointerEvents=v?"none":"auto";f.tabIndex=v?-1:0;}).observe(n);})();</script>')
 
 def inject(s, g, label=None):
+    b = bar(g, label, 'data-cf-iwk=' in s)
     if "data-cf-home" in s:
-        s = re.sub(r'<nav data-cf-home.*?</nav>(<a data-cf-float.*?</script>)?', lambda m: bar(g, label), s, count=1, flags=re.S)
-        return s
+        return re.sub(r'<nav data-cf-home.*?</nav>(<a data-cf-float.*?</script>)?', lambda m: b, s, count=1, flags=re.S)
     m = re.search(r"<body[^>]*>", s)
-    return s[:m.end()] + bar(g, label) + s[m.end():] if m else bar(g, label) + s
+    return s[:m.end()] + b + s[m.end():] if m else b + s
 
 # labs
 n_labs = 0
